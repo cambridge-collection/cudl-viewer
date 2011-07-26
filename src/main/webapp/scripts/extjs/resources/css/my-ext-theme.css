@@ -1,0 +1,70 @@
+/*
+Syntax error: Invalid CSS after "@function min(": expected ")", was "$value1, $value..."
+        on line 1 of /home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/./_functions.scss
+        from line 7 of /home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/_all.scss
+        from line 8 of /home/jennie/Documents/FoundationsInterface2/resources/sass/my-ext-theme.scss
+
+1: /home/jennie/Documents/FoundationsInterface2/resources/sass/my-ext-theme.scss
+
+Backtrace:
+/home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/./_functions.scss:1
+/home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/_all.scss:7
+/home/jennie/Documents/FoundationsInterface2/resources/sass/my-ext-theme.scss:8
+/usr/lib/ruby/1.8/sass/scss/parser.rb:806:in `expected'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:781:in `expected'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:777:in `tok!'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:666:in `function'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:646:in `term'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:633:in `expr'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:115:in `directive'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:708:in `str'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:112:in `directive'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:330:in `block_child'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:321:in `block_contents'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:57:in `stylesheet'
+/usr/lib/ruby/1.8/sass/scss/parser.rb:26:in `parse'
+/usr/lib/ruby/1.8/sass/engine.rb:205:in `_to_tree'
+/usr/lib/ruby/1.8/sass/engine.rb:177:in `to_tree'
+/usr/lib/ruby/1.8/sass/files.rb:44:in `tree_for'
+/usr/lib/ruby/1.8/sass/tree/import_node.rb:75:in `perform!'
+/usr/lib/ruby/1.8/sass/tree/node.rb:301:in `_perform'
+/usr/lib/ruby/1.8/sass/tree/import_node.rb:64:in `_perform'
+/usr/lib/ruby/1.8/sass/tree/node.rb:209:in `perform'
+/usr/lib/ruby/1.8/sass/tree/root_node.rb:37:in `perform'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `perform_children'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `map'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `perform_children'
+/usr/lib/ruby/1.8/sass/tree/import_node.rb:78:in `perform!'
+/usr/lib/ruby/1.8/sass/tree/node.rb:301:in `_perform'
+/usr/lib/ruby/1.8/sass/tree/import_node.rb:64:in `_perform'
+/usr/lib/ruby/1.8/sass/tree/node.rb:209:in `perform'
+/usr/lib/ruby/1.8/sass/tree/root_node.rb:37:in `perform'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `perform_children'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `map'
+/usr/lib/ruby/1.8/sass/tree/node.rb:322:in `perform_children'
+/usr/lib/ruby/1.8/sass/tree/node.rb:313:in `perform!'
+/usr/lib/ruby/1.8/sass/tree/root_node.rb:59:in `perform!'
+/usr/lib/ruby/1.8/sass/tree/node.rb:301:in `_perform'
+/usr/lib/ruby/1.8/sass/tree/node.rb:209:in `perform'
+/usr/lib/ruby/1.8/sass/tree/root_node.rb:37:in `perform'
+/usr/lib/ruby/1.8/sass/tree/root_node.rb:29:in `render'
+/usr/lib/ruby/1.8/sass/engine.rb:196:in `_render'
+/usr/lib/ruby/1.8/sass/engine.rb:167:in `render'
+/usr/lib/ruby/1.8/compass/compiler.rb:103:in `compile'
+/usr/lib/ruby/1.8/compass/logger.rb:43:in `red'
+/usr/lib/ruby/1.8/compass/compiler.rb:102:in `compile'
+/usr/lib/ruby/1.8/compass/compiler.rb:93:in `compile_if_required'
+/usr/lib/ruby/1.8/compass/compiler.rb:84:in `run'
+/usr/lib/ruby/1.8/compass/compiler.rb:82:in `each'
+/usr/lib/ruby/1.8/compass/compiler.rb:82:in `run'
+/usr/lib/ruby/1.8/compass/commands/update_project.rb:33:in `perform'
+/usr/lib/ruby/1.8/compass/commands/base.rb:18:in `execute'
+/usr/lib/ruby/1.8/compass/commands/project_base.rb:19:in `execute'
+/usr/lib/ruby/1.8/compass/exec/sub_command_ui.rb:38:in `perform!'
+/usr/lib/ruby/1.8/compass/exec/sub_command_ui.rb:15:in `run!'
+/usr/bin/compass:26
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"@function min(\": expected \")\", was \"$value1, $value...\"\A         on line 1 of /home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/./_functions.scss\A         from line 7 of /home/jennie/Documents/FoundationsInterface2/resources/sass/../../ext-4.0.2a/resources/themes/stylesheets/ext4/default/_all.scss\A         from line 8 of /home/jennie/Documents/FoundationsInterface2/resources/sass/my-ext-theme.scss\A \A 1: /home/jennie/Documents/FoundationsInterface2/resources/sass/my-ext-theme.scss"; }

@@ -118,10 +118,10 @@ public class NewtonTranscriptionViewer extends HttpServlet {
 				
 		} 
 		
-		// include the content 
-		if (sourcePage.indexOf("<!--start-text-container-->")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
+		// include the content //<!--start-text-container-->
+		if (sourcePage.indexOf("<div id=\"tei\">")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
 			
-			output.append(sourcePage.substring(sourcePage.indexOf("<!--start-text-container-->"),sourcePage.indexOf("<!--end-text-container-->")));
+			output.append(sourcePage.substring(sourcePage.indexOf("<div id=\"tei\">"),sourcePage.indexOf("<!--end-text-container-->")));
 				
 		} 
 		
