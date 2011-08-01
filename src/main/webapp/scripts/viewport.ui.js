@@ -94,7 +94,7 @@ MyViewportUi = Ext.extend(Ext.Viewport, {
 					xtype : 'button',
 					height : 28,
   			        	border: false,			
-					text:'<< Back',
+					text:'<< Collection',
 					handler: function() {
 					        history.go(-1);
 					    }
