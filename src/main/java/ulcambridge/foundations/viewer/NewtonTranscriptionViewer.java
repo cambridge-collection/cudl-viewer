@@ -122,8 +122,15 @@ public class NewtonTranscriptionViewer extends HttpServlet {
 		return output.toString();
 	}
 	
+	/**
+	 * Sets content type as html
+	 * @param response
+	 * @param page
+	 * @throws IOException
+	 */
 	private void writePage(HttpServletResponse response, String page) throws IOException {
-		PrintWriter out = response.getWriter();
+		response.setHeader("content-type","text/html");
+		PrintWriter out = response.getWriter();		
 		out.print(page);
 		out.close();
 	}
