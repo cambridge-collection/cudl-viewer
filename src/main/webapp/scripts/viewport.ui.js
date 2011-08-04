@@ -1,24 +1,59 @@
 var jsonreader = new Ext.data.JsonReader({
-        	root:'rows', totalProperty: 'results'
-        	}, [ 'name', 'imageURL' ]        	    
+        	root:'rows', totalProperty: 'numberOfPages'
+        	}, [ 'name', 'displayImageURL', 'downloadImageURL', 'transcriptionNormalisedURL', 'transcriptionDiplomaticURL' ]      	    
         );
 
 var store = Ext.create('Ext.data.Store', {
     id:'pageStore',
     autoLoad: {start: 0, limit: 3},
-    fields:[ 'name', 'imageURL' ],
+    fields:[ 'name', 'displayImageURL', 'downloadImageURL', 'transcriptionNormalisedURL', 'transcriptionDiplomaticURL' ],
     pageSize: 1, // items per page
     proxy: new Ext.data.HttpProxy({
-    	url: 'JSONImageURLGenerator?doc=MSADD-03958-001', method: 'POST',
+    	url: 'sampleJSON', method: 'POST',
         reader: jsonreader
     })
 });
 
 store.load();
 
+var beforetabchange = function (panel, newCard) {
+
+	tabpanel.el.mask("Loading ...", "x-mask-loading");
+//alert ('change tab: ');
+//console.debug(panel);
+//console.debug(newCard);
+//return true;
+};
+
+var aftertabchange = function (panel, newCard) {
+	tabpanel.el.unmask();
+//alert ('change tab: ');
+//console.debug(panel);
+//console.debug(newCard);
+//return true;
+};
+
 updateCurrentPage = function(){
  if (viewer) {
-  viewer.openDzi(jsonreader.rawData.images[store.currentPage-1].imageURL);
+	 console.debug(jsonreader);
+  viewer.openDzi(jsonreader.rawData.pages[store.currentPage-1].displayImageURL);
+
+	// setup transcription
+	beforetabchange();
+ 	document.getElementById("transcription_normal_frame").onload= aftertabchange;
+	document.getElementById("transcription_normal_frame").src="NewtonTranscriptionViewer?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionNormalisedURL);
+	document.getElementById("transcription_diplomatic_frame").src="NewtonTranscriptionViewer?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionDiplomaticURL);
+
+	// setup metadata
+	document.getElementById("metadata-title").innerHTML=jsonreader.rawData.title;
+	document.getElementById("metadata-author").innerHTML=jsonreader.rawData.author;
+	document.getElementById("metadata-rights").innerHTML=jsonreader.rawData.rights;
+	document.getElementById("metadata-page").innerHTML=jsonreader.rawData.pages[store.currentPage-1].name;
+	document.getElementById("metadata-subject").innerHTML=jsonreader.rawData.subject;
+	document.getElementById("metadata-physicalLocation").innerHTML=jsonreader.rawData.physicalLocation;
+	document.getElementById("metadata-shelfLocation").innerHTML=jsonreader.rawData.shelfLocator;
+	document.getElementById("metadata-dateCreatedDisplay").innerHTML=jsonreader.rawData.dateCreatedDisplay;
+	
  }
 };
 
@@ -47,26 +82,23 @@ var tabpanel =  Ext.create('Ext.tab.Panel',{
 			margins : 0,
 			items : [ {
 				xtype : 'panel',
+				title : 'About',
+				el : 'metadata'
+			},{
+				xtype : 'panel',
 				title : 'Transcription (normalised)',
 				el : 'transcription_normal'
 			}, {
 				xtype : 'panel',
-				title : 'Translation (diplomatic)',
+				title : 'Transcription (diplomatic)',
 				el: 'transcription_diplomatic'
-			}, {
-				xtype : 'panel',
-				title : 'Metadata'
 			}]
 		});
 
-var beforetabchange = function (panel, newCard) {
-//alert ('change tab: ');
-//console.debug(panel);
-//console.debug(newCard);
-//return true;
-};
+
 
 tabpanel.on('beforetabchange', beforetabchange);
+tabpanel.on('tabchange', aftertabchange);
 
 
 MyViewportUi = Ext.extend(Ext.Viewport, {
@@ -81,7 +113,7 @@ MyViewportUi = Ext.extend(Ext.Viewport, {
 				xtype : 'panel',
 				height : 28,
   		        	border: false,			
-				title:'<b>Extract from Untitled Treatise on Revelation</b> &nbsp;<i>by Isaac Newton</i>'
+				title:'<b>'+jsonreader.rawData.title+'</b> &nbsp;<i>by '+jsonreader.rawData.author+'</i>'
 			},{
 				xtype : 'toolbar',
 				height : 28,

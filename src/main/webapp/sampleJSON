@@ -1,0 +1,41 @@
+{
+	"title":"Three paragraphs on religion, with drafts",
+	"author":["Isaac Newton"],
+	"subject":["Religion","Doctrine"],
+	"dateCreated":"1711-01-01",
+	"dateCreatedDisplay":"post-1710",
+	"languageCodes":["eng","lat"],
+	"physicalLocation":"King's College, Cambridge, UK",
+	"shelfLocator":"Keynes Ms. 9",
+	"rights":"The copyright and rights in the nature of copyright worldwide for the images of this manuscript are reserved to King's College, Cambridge. These images may be viewed without payment on the understanding that they have been made available by the copyright holder for private study, educational or research purposes only. Please contact the Archivist at <archivist@kings.cam.ac.uk> for permission to use this material in print or any other medium.  Please click OK to agree to these terms.",	
+	"collectionURL":"http://172.22.46.205:8080/FoundationsViewer/",
+	"numberOfPages":4,
+	"pages":[
+ 		{"name":"1r",
+		"displayImageURL":"data/MSADD-03958-001/MSADD-03958-001-00001.dzi",
+		"downloadImageURL":"http://cudl.lib.cam.ac.uk/images/image000001.jpg",
+		"transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p001r&end=p001r",
+		"transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00009/start=p001r&end=p001r"},
+ 		{"name":"2r",
+		"displayImageURL":"data/MSADD-03958-001/MSADD-03958-001-00002.dzi",
+		"downloadImageURL":"http://cudl.lib.cam.ac.uk/images/image000002.jpg",
+		"transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p002r&end=p002r",
+		"transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00009/start=p002r&end=p002r"},
+		{"name":"3r",
+		"displayImageURL":"data/MSADD-03958-001/MSADD-03958-001-00003.dzi",
+		"downloadImageURL":"http://cudl.lib.cam.ac.uk/images/image000003.jpg",
+		"transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p003r&end=p003r",
+		"transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00009/start=p003r&end=p003r"},
+		{"name":"4r",
+		"displayImageURL":"data/MSADD-03958-001/MSADD-03958-001-00004.dzi",
+		"downloadImageURL":"http://cudl.lib.cam.ac.uk/images/image000004.jpg",
+		"transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p004r&end=p004r",
+		"transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00009/start=p004r&end=p004r"}
+	],
+	"logicalStructure":[
+		{
+		"name":"Isaac Newton. Three paragraphs on religion, with drafts.",
+		"range":["1","4"]
+		}
+	]
+}

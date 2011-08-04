@@ -31,41 +31,31 @@ public class NewtonTranscriptionViewer extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Load in the properties specified
-		// THEM00135/start=p001r&end=p019r
-		String document = request.getParameter("doc");
-		String view = request.getParameter("view");
-		String startPage = request.getParameter("start");
-		String endPage = request.getParameter("end");
+		// Load in the url for the transcription specified.
+		//http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p001r&end=p001r
+
+		String url = request.getParameter("url");
 
 		// TODO input validation and
 		// removing non alphanumeric characters from inputs.
 
-		if (document == null || startPage == null || endPage == null || view == null) {
+		if (url == null) {
 			throw new IOException(
-					"missing parameter(s). Expecting doc, view, start and end.");
+					"missing parameter(s). Expecting url.");
 		}
 
-		// Load in the base URL
-		ResourceBundle props = ResourceBundle.getBundle("viewer");
-		String baseURL = props.getString("newtonTranscriptionBaseURL");
-		String dirNormalPathURL = props.getString("newtonTranscriptionNormalDocPath");
-		String dirDiploPathURL = props.getString("newtonTranscriptionDiplomaticDocPath");
 		
-		String dirPathURL = dirNormalPathURL;
-		if (view.equals("diplomatic")) {
-			dirPathURL = dirDiploPathURL;
-		}
+		System.out.println("Getting transcriptions from: "+url);
 		
-		System.out.println("Getting transcriptions from: "+baseURL + dirPathURL + document + "/start="
-				+ startPage + "&end=" + endPage);
+		String sourcePage = readContent(new URL(url));
 		
-		String sourcePage = readContent(new URL(baseURL + dirPathURL + document + "/start="
-				+ startPage + "&end=" + endPage));
-		
-		String fullRequestURL = request.getRequestURL().append("?" + request.getQueryString()).toString();
+		//String fullRequestURL = request.getRequestURL().append("?" + request.getQueryString()).toString();
 
-		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL, fullRequestURL);
+		// This should be http://www.newtonproject.sussex.ac.uk/
+		String baseURL = url.substring(0, url.indexOf('/', 7));
+		System.out.println("baseURL: " +baseURL);
+		
+		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL);
 		writePage(response, transcriptionPage);
 
 	}
@@ -94,17 +84,18 @@ public class NewtonTranscriptionViewer extends HttpServlet {
 
 	}		 
 	
-	private String generateTranscriptionPage(String sourcePage, String baseURL, String thisURL) {
+	private String generateTranscriptionPage(String sourcePage, String baseURL) {
 		
 		StringBuffer output = new StringBuffer();
 				
 		// replace any relative links, should all start with /mainui
+		// FIXME - temporary until sussex has the appropriate feed setup. 
 		sourcePage = sourcePage.replaceAll("\"/mainui", "\""+baseURL+"/mainui" );
 			
 		// replace any links to the view (diplomatic or normal) 
-		thisURL = thisURL.replaceAll("&view=\\w", "");
-		sourcePage = sourcePage.replaceAll("\"/view/extract/diplomatic/[\\w|/|\\d|&|=]*\"", thisURL+"&view=diplomatic" );
-		sourcePage = sourcePage.replaceAll("\"/view/extract/normalized/[\\w|/|\\d|&|=]*\"", thisURL+"&view=normal" );
+		//thisURL = thisURL.replaceAll("&view=\\w", "");
+		//sourcePage = sourcePage.replaceAll("\"/view/extract/diplomatic/[\\w|/|\\d|&|=]*\"", thisURL+"&view=diplomatic" );
+		//sourcePage = sourcePage.replaceAll("\"/view/extract/normalized/[\\w|/|\\d|&|=]*\"", thisURL+"&view=normal" );
 		
 		// Add HTML tag and DOCTYPE.
 		output.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"><html>");
