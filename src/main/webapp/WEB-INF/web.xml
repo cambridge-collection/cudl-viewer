@@ -13,19 +13,29 @@
         <servlet-name>NewtonTranscriptionViewer</servlet-name>
         <servlet-class>ulcambridge.foundations.viewer.NewtonTranscriptionViewer</servlet-class>
     </servlet>
-
+    
     <servlet>
+        <servlet-name>DocumentViewController</servlet-name>
+        <servlet-class>ulcambridge.foundations.viewer.DocumentViewController</servlet-class>
+    </servlet>
+
+    <!-- <servlet>
         <servlet-name>JSONImageURLGenerator</servlet-name>
         <servlet-class>ulcambridge.foundations.viewer.JSONImageURLGenerator</servlet-class>
-    </servlet>
+    </servlet>-->
     
     <servlet-mapping>
         <servlet-name>NewtonTranscriptionViewer</servlet-name>
         <url-pattern>/NewtonTranscriptionViewer</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
+   <!--  <servlet-mapping>
         <servlet-name>JSONImageURLGenerator</servlet-name>
         <url-pattern>/JSONImageURLGenerator</url-pattern>
+    </servlet-mapping>
+    -->
+    <servlet-mapping>
+        <servlet-name>DocumentViewController</servlet-name>
+        <url-pattern>/view/*</url-pattern>
     </servlet-mapping>
 </web-app>   

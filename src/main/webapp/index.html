@@ -10,6 +10,7 @@
         
         <link rel="icon" type="image/png" href="img/favicon.png">
         <link rel="stylesheet" href="styles/uoc.min.css">
+        <link rel="stylesheet" href="styles/style.css">
         <!--[if lt IE 9]>
             <link rel="stylesheet" href="styles/ie.min.css"/>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,41 +32,31 @@
 		}
 		h3, h2, h1, h4{ line-height: 18px; }
 	        
-	        section#content p {
-	        	background: #F1F1F1;  
-	        	padding: 6px 0;	
 
-	        }
-	        
+	     		/* Header Styles */
 			#localMasthead h1,
 			#localMasthead h1 a,
 			#localMasthead h2,
 			#localMasthead h2 a {			    
 			    color: #333333;
 			}
-#localMasthead {
-height:35px;
-}	 
+			#localMasthead {
+			height:35px;
+			}	 
 
-      
-        	ol#carousel1 li {margin:4px; height:217px;}
-		ol#carousel2 li {margin:4px; height:217px;}
-		.grid_9 {
+
+		.grid_19 {
 		      margin-left: 35px;
 		}	
         </style>
 <script type="text/javascript">
+ var carousel1;
+
  function init() {
-    var carousel1 = new glow.widgets.Carousel("#carousel1",{
+        carousel1 = new glow.widgets.Carousel("#carousel1",{
         loop: true,
-        size: 2,
-        step: 2,
-        pageNav: true
-	});
-    var carousel2 = new glow.widgets.Carousel("#carousel2",{
-        loop: true,
-        size: 2,
-        step: 2,
+        size: 1,
+        step: 1,
         pageNav: true
 	});
  }
@@ -73,9 +64,7 @@ height:35px;
     </head>
     
     <body onload="init()">
-    
         <div class="container">
-
             <!--<header id="globalMasthead" class="grid_20">        
                 <a id="identifier" class="grid_4 alpha" href="#" title="University of Cambridge">
                     University of Cambridge
@@ -120,11 +109,13 @@ height:35px;
             
             <header id="localMasthead" class="grid_20">                    
                 <hgroup>
+		   <img src="images/logo.gif" width="150px" height="36px"/>
                     <h2>
                         <a href="" title="Digital Library@Cambridge">
                             Digital Library@Cambridge
                         </a>                    
                     </h2> 
+		   <img  align="right" src="images/ul-small.gif" width="84px" height="36px"/>
                 </hgroup>            
             </header>
             <!-- end #localMasthead -->
@@ -159,41 +150,61 @@ height:35px;
             
             <section id="content" class="grid_20 content">
 
-				<div class="grid_9">
-					<p>
-						<h4><a href="">Foundations of Science</a></h4>
+				<div class="grid_13">
+ <ol id="carousel1">
+	
 
+<!-- newton collection -->
+		<li>
+<div class="panel">
+<h4><a href="">Newton Collection</a></h4>
+<p>
+Cambridge University is proud to present the first of the special collections that will become available as part of Cambridge Digital Library, a collection of the works of Isaac Newton. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of Science Mauris velit quam, ornare a congue eu, accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
+</p>
+</div>
+<a href="collections.html"><img src="images/NewtonDoc.jpg" alt="Test" width="920" height="388"  /></a>
+</li>
 
-	<ol id="carousel1"> 
-		<li><a href="collections.html"><img src="images/sample/s1.jpg" alt="Test" width="197" height="213"  /></a></li>
-		<li><a href="collections.html"><img src="images/newton.jpg" alt="Test" width="197" height="213"  /></a></li>  
-		<li><a href="collections.html"><img src="images/sample/s2.jpg" alt="Test" width="197" height="213"  /></a></li> 
-		<li><a href="collections.html"><img src="images/sample/s3.jpg" alt="Test" width="197" height="213"  /></a></li>
+<!--  collection -->
+		<li>
+<div class="panel">
+<h4>Coming Soon: Bezae Collection</h4>
+								<p>
+[Coming Soon]. Bezae Collection. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of Science Mauris velit quam, ornare a congue eu, accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
+</p>
+</div>
+<img src="images/BezaeDoc.jpg" alt="Test" width="920" height="388"  />
+</li>
 	</ol> 
+</div>								
 
-<br/>
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec gravida felis. Etiam at enim nisi, id vehicula tortor. <a href="collections.html">Foundations of Science</a> Mauris velit quam, ornare a congue eu, accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam.
-<br/><br/>
-				</p>
-				</div>
-				
-				<div class="grid_9">
-					<p>
-						<h4><a href="">Foundations of Religion</a></h4>
+<!-- side panel -->
+<div class="grid_6" style="background-color:#c5e3ff">
 
-	<ol id="carousel2"> 
-		<li><a href="collections.html"><img src="images/sample/r1.jpg" alt="Test" width="197" height="213"  /></a></li> 
-		<li><a href="collections.html"><img src="images/sample/r2.jpg" alt="Test" width="197" height="213"  /></a></li> 
-		<li><a href="collections.html"><img src="images/sample/r3.jpg" alt="Test" width="197" height="213"  /></a></li> 
-		<li><a href="collections.html"><img src="images/sample/r4.jpg" alt="Test" width="197" height="213"  /></a></li>
-	</ol> 
+    <div id="news" class="panel light">
+       <h3>Latest updates</h3>
+	
+        <div class="news">
+		<br/>
+		<a href="" onclick="carousel1.moveTo(1, true);return false;"><center><img alt="View of a gallery" src="images/BezaeSmall.jpg" height="55" width="195"></center></a>				
+		<span class="date">30/09/2011</span><h4><a href="">New collections coming soon</a></h4>
+        </div>
+        <div class="news">
+		<br/>
+		<a href="" onclick="carousel1.moveTo(0, true);return false;"><center><img alt="View of a gallery" src="images/NewtonDocSmall.jpg" height="55" width="195"></center></a>				
+		<span class="date">30/09/2011</span><h4><a href="">Newton Collection Launched</a></h4>
+        </div>				
 
-<br/>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec gravida felis. Etiam at enim nisi, id vehicula tortor. <a href="collections.html">Foundations of Religion</a> Mauris velit quam, ornare a congue eu, accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
-<br/><br/>
-					</p>
-				</div>
-				
+    </div>
+</div>
+
+
 
             </section>
             
