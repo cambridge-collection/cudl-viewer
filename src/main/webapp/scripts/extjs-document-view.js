@@ -29,7 +29,7 @@ var store = Ext.create('Ext.data.Store', {
 	fields:[ 'name', 'displayImageURL', 'downloadImageURL', 'transcriptionNormalisedURL', 'transcriptionDiplomaticURL' ],
 	pageSize: 1, // items per page
 	proxy: new Ext.data.HttpProxy({
-		url: '3958.json', method: 'POST',
+		url: '/3958.json', method: 'POST',
 		reader: jsonreader
 	})
 });
@@ -53,12 +53,12 @@ updateCurrentPage = function(){
 
 		// setup transcription
 		beforetabchange();
-		
+
 		if (jsonreader.rawData.pages[store.currentPage-1].transcriptionNormalisedURL &&
 			jsonreader.rawData.pages[store.currentPage-1].transcriptionDiplomaticURL) { 	
 			document.getElementById("transcription_normal_frame").onload= aftertabchange;
-			document.getElementById("transcription_normal_frame").src="NewtonTranscriptionViewer?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionNormalisedURL);
-			document.getElementById("transcription_diplomatic_frame").src="NewtonTranscriptionViewer?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionDiplomaticURL);
+			document.getElementById("transcription_normal_frame").src="/transcription?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionNormalisedURL);		
+			document.getElementById("transcription_diplomatic_frame").src="/transcription?url="+encodeURIComponent(jsonreader.rawData.pages[store.currentPage-1].transcriptionDiplomaticURL);
 		} else {	
 			// there is no transcription to load, unmask the tab. 
 			tabpanel.el.unmask(); 

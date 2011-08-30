@@ -1,23 +1,39 @@
 package ulcambridge.foundations.viewer;
 
-import org.springframework.web.servlet.mvc.Controller;
-import org.springframework.web.servlet.ModelAndView;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.io.IOException;
-
-public class DocumentViewController implements Controller {
+@Controller
+public class DocumentViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		logger.info("Returning index view");
-		System.out.println("stdout - Returning index view");
+	
+	// on path /view/{docId}
+	@RequestMapping(value = "/{docId}")
+	public ModelAndView handleRequest(@PathVariable("docId") String docId) {
+		logger.info("Returning doc view");
 
-		return new ModelAndView("/WEB-INF/document-view.jsp");
+		ModelAndView modelAndView = new ModelAndView("document-view");
+		modelAndView.addObject("docId", docId);
+		modelAndView.addObject("page", 1); // defaults to first page. 
+		return modelAndView;
 	}
+	
+	// on path /view/{docId}/{page}
+	@RequestMapping(value = "/{docId}/{page}")
+	public ModelAndView handleRequest(@PathVariable("docId") String docId,
+			@PathVariable("page") String page) {
+		logger.info("Returning page view");
+
+		ModelAndView modelAndView = new ModelAndView("document-view");
+		modelAndView.addObject("docId", docId);
+		modelAndView.addObject("page", page);
+		return modelAndView;
+	}
+
 }

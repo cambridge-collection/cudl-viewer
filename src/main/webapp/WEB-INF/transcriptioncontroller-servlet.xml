@@ -15,8 +15,8 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 				
-	<bean id="docView" 
-		class="ulcambridge.foundations.viewer.DocumentViewController">
+	<bean id="transcriptionView" 
+		class="ulcambridge.foundations.viewer.TranscriptionViewController">
 	</bean>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,13 +25,6 @@
     	<property name="suffix"><value>.jsp</value></property>
 
 	</bean>
-
-	<mvc:annotation-driven />
-
-    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-
-    <!-- FIXME -->
-	<!-- <mvc:resources mapping="/content/images/*" location="path/to/content/" /> -->
 
 	
 </beans>

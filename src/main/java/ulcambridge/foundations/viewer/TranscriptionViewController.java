@@ -6,12 +6,16 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ResourceBundle;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Reads in the URL specified by the newtonDoc parameter and filters the content
@@ -20,30 +24,25 @@ import javax.servlet.http.HttpServletResponse;
  * @author jennie
  * 
  */
-public class NewtonTranscriptionViewer extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+@Controller
+public class TranscriptionViewController {
 
-		doPost(request, response);
+	protected final Log logger = LogFactory.getLog(getClass());
+	
+	// on path /transcription
+	@RequestMapping(value = "/transcription")
+	public ModelAndView handleRequest(@RequestParam("url") String url, HttpServletRequest request, HttpServletResponse 
+			response) throws IOException {
+		
+		// The url for the transcription specified should be something like the following:.
+		// http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p001r&end=p001r
 
-	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		// Load in the url for the transcription specified.
-		//http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p001r&end=p001r
-
-		String url = request.getParameter("url");
-
-		// TODO input validation and
-		// removing non alphanumeric characters from inputs.
+		// TODO input validation
 
 		if (url == null) {
 			throw new IOException(
 					"missing parameter(s). Expecting url.");
 		}
-
 		
 		System.out.println("Getting transcriptions from: "+url);
 		
@@ -57,6 +56,8 @@ public class NewtonTranscriptionViewer extends HttpServlet {
 		
 		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL);
 		writePage(response, transcriptionPage);
+		
+		return null;		
 
 	}
 	

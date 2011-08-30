@@ -5,7 +5,9 @@ var viewer;
     
 function init() {
 
+	Seadragon.Config.imagePath = "/img/";
     viewer = new Seadragon.Viewer("center");
+    
     updateCurrentPage();
 
 }    
