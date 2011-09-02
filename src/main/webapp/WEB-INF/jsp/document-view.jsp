@@ -1,25 +1,28 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>               
+
 <!DOCTYPE html>
 
 <html>
 <head>
+     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Foundations</title>
-        <link rel="icon" type="image/png" href="img/favicon.png">
-        <link rel="stylesheet" href="styles/uoc.min.css">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
+        <link rel="stylesheet" href="/styles/uoc.min.css">
         <!--[if lt IE 9]>
             <link rel="stylesheet" href="styles/ie.min.css"/>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-	<script src="scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
-        <script src="scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="scripts/glow/1.7.7/widgets/widgets.css">
-    <link rel="stylesheet" type="text/css" href="scripts/extjs/resources/css/ext-all-gray.css"/>
-<!--    <link rel="stylesheet" type="text/css" href="scripts/extjs/resources/css/foundations-ext-theme.css"/> -->
+	<script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
+        <script src="/scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
+    <link rel="stylesheet" type="text/css" href="/scripts/extjs/resources/css/ext-all-gray.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="/scripts/extjs/resources/css/foundations-ext-theme.css"/> -->
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css"/>
         <style>
         	.container {
-        		background: url(images/5681508010_07041549e9_a_header.jpg) 50% 0 repeat-x;
+        		background: url(<spring:url value="/images/5681508010_07041549e9_a_header.jpg" htmlEscape="true" />) 50% 0 repeat-x;
 			background-color:#999999;
         	}
 		.center {
@@ -55,15 +58,19 @@ height:35px;
 		}	
         </style>
 
-    <script type="text/javascript" src="scripts/extjs/ext-all.js"></script>
-    <script type="text/javascript" src="scripts/extjs-viewport.js"></script>
-    <script type="text/javascript" src="scripts/extjs-document-view.js"></script>
-    <script type="text/javascript" src="scripts/seadragon-min.js"></script>
-    <script type="text/javascript" src="scripts/document-view.js"></script>
-
+    <script type="text/javascript">     	
+    	var JSONURL = '/json/${docId}.json';
+    	var pagenum = ${page}; 
+    </script>
+    <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
+    <script type="text/javascript" src="/scripts/docData.js"></script>
+    <script type="text/javascript" src="/scripts/docViewport.js"></script>
+    <script type="text/javascript" src="/scripts/docView.js"></script>
+    <script type="text/javascript" src="/scripts/seadragon-min.js"></script>
+    <script type="text/javascript" src="/scripts/document-view.js"></script>
+    
 </head>
 <body>
-    
         <div class="container" id="north">
 
             <div class="clear"></div>

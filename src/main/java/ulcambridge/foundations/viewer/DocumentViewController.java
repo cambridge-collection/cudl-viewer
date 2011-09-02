@@ -18,7 +18,7 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId) {
 		logger.info("Returning doc view");
 
-		ModelAndView modelAndView = new ModelAndView("document-view");
+		ModelAndView modelAndView = new ModelAndView("jsp/document-view");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page. 
 		return modelAndView;
@@ -30,7 +30,7 @@ public class DocumentViewController {
 			@PathVariable("page") String page) {
 		logger.info("Returning page view");
 
-		ModelAndView modelAndView = new ModelAndView("document-view");
+		ModelAndView modelAndView = new ModelAndView("jsp/document-view");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
 		return modelAndView;
