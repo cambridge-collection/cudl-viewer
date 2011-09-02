@@ -8,20 +8,20 @@
         
         <title>Digital Experience Guidelines - University of Cambridge</title>
         
-        <link rel="icon" type="image/png" href="img/favicon.png">
-        <link rel="stylesheet" href="styles/uoc.min.css">
+        <link rel="icon" type="image/png" href="/img/favicon.png">
+        <link rel="stylesheet" href="/styles/uoc.min.css">
         <!--[if lt IE 9]>
             <link rel="stylesheet" href="styles/ie.min.css"/>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-	<script src="scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
-        <script src="scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="scripts/glow/1.7.7/widgets/widgets.css">
+	<script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
+        <script src="/scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
 
         <style>
         	
         	body {
-        		background: url(images/5681508010_07041549e9_a.jpg) 50% 0 repeat-x;
+        		background: url(/images/5681508010_07041549e9_a.jpg) 50% 0 repeat-x;
 			background-repeat: no-repeat;
 			background-color:#999999;
         	}
@@ -132,7 +132,7 @@ padding: 5px;
             <nav id="navPrimary" class="grid_20">            
                 <ul>
                     <li class="first">
-                        <a href="index.html" title="Lorem ipsum">
+                        <a href="/" title="Lorem ipsum">
                             Home
                         </a>
                     </li>
@@ -167,7 +167,7 @@ padding: 5px;
 			     </p>
 			   </blockquote>
 <br/><br/>
-<div class="grid_4"><img src="images/newton.jpg" alt="Newton" width="197" height="213"  /></div>
+<div class="grid_4"><img src="/images/newton.jpg" alt="Newton" width="197" height="213"  /></div>
 <div class="grid_8">
 <p>
 Phasellus et enim nibh. Nullam at lorem vitae est mollis pulvinar. Pellentesque odio sapien, rutrum in venenatis sed, faucibus at dolor. Nullam consectetur blandit tellus, id placerat lorem sagittis porta. Pellentesque rhoncus scelerisque accumsan. Vivamus euismod lorem vel dolor tempus in vulputate nisi tempor. Donec ipsum dolor, mattis eu vestibulum eu, adipiscing ut nisi. Maecenas eget augue euismod purus tincidunt bibendum.</p>
@@ -179,11 +179,11 @@ Phasellus et enim nibh. Nullam at lorem vitae est mollis pulvinar. Pellentesque 
 				<div class="grid_9">
 
 	<ol id="carousel1"> 
-		<li><a href="/view/MSADD-03958/"><img class="bookSelectImage" src="content/MSADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Early Papers [Ms.3958]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
-		<li><a href="/view/MSADD-03958/"><img class="bookSelectImage" src="content/MSADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5> 'Quæstiones quædam Philosophiæ' ('Certain Philosophical Questions') [Ms.3996]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
-		<li><a href="/view/MSADD-03958/"><img class="bookSelectImage" src="content/MSADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Draft of 'A Theory Concerning Light and Colors' [Ms.3970]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
-		<li><a href="/view/MSADD-03958/"><img class="bookSelectImage" src="content/MSADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Science Notebook [Ms.4000]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
-		<li><a href="/view/MSADD-03958/"><img class="bookSelectImage" src="content/MSADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Notebook [Ms.4004]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
+		<li><a href="/view/MS-ADD-03958/"><img class="bookSelectImage" src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Early Papers [Ms.3958]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
+		<li><a href="/view/MS-ADD-03958/"><img class="bookSelectImage" src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5> 'Quæstiones quædam Philosophiæ' ('Certain Philosophical Questions') [Ms.3996]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
+		<li><a href="/view/MS-ADD-03958/"><img class="bookSelectImage" src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Draft of 'A Theory Concerning Light and Colors' [Ms.3970]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
+		<li><a href="/view/MS-ADD-03958/"><img class="bookSelectImage" src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Science Notebook [Ms.4000]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
+		<li><a href="/view/MS-ADD-03958/"><img class="bookSelectImage" src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg" alt="MSADD-03958" width="139" height="180"  /></a><h5>Notebook [Ms.4004]</h5>A description of the book should go here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam. </li> 
 	</ol> 
 
 

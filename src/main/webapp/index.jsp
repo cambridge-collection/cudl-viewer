@@ -124,12 +124,12 @@
             <nav id="navPrimary" class="grid_20">            
                 <ul>
                     <li class="first" >
-                        <a href="index.html" title="Lorem ipsum" class="active">
+                        <a href="/" title="Lorem ipsum" class="active">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="collections.html" title="Dolor sit amet" >
+                        <a href="/view/" title="Dolor sit amet" >
                             Browse
                         </a>
                     </li>         
@@ -165,7 +165,7 @@ Cambridge University is proud to present the first of the special collections th
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of Science Mauris velit quam, ornare a congue eu, accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec pretium vel, tristique in massa. Pellentesque quis tellus ac velit pellentesque molestie quis at diam. 
 </p>
 </div>
-<a href="collections.html"><img src="images/NewtonDoc.jpg" alt="Test" width="920" height="388"  /></a>
+<a href="/view/"><img src="images/NewtonDoc.jpg" alt="Test" width="920" height="388"  /></a>
 </li>
 
 <!--  collection -->

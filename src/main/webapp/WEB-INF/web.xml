@@ -10,13 +10,13 @@
 
 	<!-- viewcontroller servlet -->
 	<servlet>
-		<servlet-name>viewcontroller</servlet-name>
+		<servlet-name>documentviewcontroller</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>viewcontroller</servlet-name>
+		<servlet-name>documentviewcontroller</servlet-name>
 		<url-pattern>/view/*</url-pattern>
 	</servlet-mapping>
 	

@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/styles/style.css"/>
         <style>
         	.container {
-        		background: url(<spring:url value="/images/5681508010_07041549e9_a_header.jpg" htmlEscape="true" />) 50% 0 repeat-x;
+        		background: url(/images/5681508010_07041549e9_a_header.jpg) 50% 0 repeat-x;
 			background-color:#999999;
         	}
 		.center {
@@ -91,7 +91,7 @@ height:35px;
 <div id="metadata">
 <b><div id="metadata-title"></div></b> by <div id="metadata-author"></div>
 <br/>
-Part of the <a href="collections.html">Newton Collection</a>
+Part of the <a href="/view/">Newton Collection</a>
 <br/><br/>
 You are viewing page: <div id="metadata-page"></div>
 <br/>
