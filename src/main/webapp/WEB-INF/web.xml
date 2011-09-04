@@ -8,35 +8,57 @@
 	<description>
     </description>
 
+	<!-- sitecontroller servlet -->
+	<servlet>
+		<servlet-name>siteviewcontroller</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>siteviewcontroller</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
 	<!-- viewcontroller servlet -->
 	<servlet>
 		<servlet-name>documentviewcontroller</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>documentviewcontroller</servlet-name>
 		<url-pattern>/view/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- transcriptioncontroller servlet -->
 	<servlet>
 		<servlet-name>transcriptioncontroller</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>transcriptioncontroller</servlet-name>
 		<url-pattern>/transcription</url-pattern>
 	</servlet-mapping>
-	
-		
+
+
 	<!-- Welcome file -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
+   <!--  mime types are required or the mvc:resources fails to ignore them -->
+	<mime-mapping>
+		<extension>json</extension>
+		<mime-type>application/json</mime-type>
+	</mime-mapping>
 
+	<mime-mapping>
+		<extension>dzi</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
 </web-app>   
