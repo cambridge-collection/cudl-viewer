@@ -33,10 +33,7 @@ body {
 
 <script type="text/javascript">
 	var JSONURL = '/json/${docId}.json';
-	var pagenum = $
-	{
-		page
-	};
+	var pagenum = ${page};
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
