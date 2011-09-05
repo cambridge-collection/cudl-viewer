@@ -10,7 +10,7 @@ section#content p {
 }
 </style>
 <script type="text/javascript">
-	function init() {
+	function pageinit() {
 		var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
 			loop : true,
 			size : 3,
@@ -75,7 +75,7 @@ section#content p {
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
 					alt="MSADD-03958" width="139" height="180" />
 			</a>
-			<h5>'QuÃ¦stiones quÃ¦dam PhilosophiÃ¦' ('Certain Philosophical
+			<h5>'Quæstiones quædam Philosophiæ' ('Certain Philosophical
 					Questions') [Ms.3996]</h5>A description of the book should go here.
 				Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed
 				leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam.</li>
@@ -115,28 +115,7 @@ section#content p {
 
 </section>
 
-<footer id="footer" class="grid_20">
-	<p class="grid_13 prefix_1 suffix_1 alpha">&copy; 2011 Cambridge
-		University Library, West Road, Cambridge CB3 9DR, UK</p>
-	<ul class="grid_5 omega">
-		<li><a href="http://www.cam.ac.uk/privacy/" title="Privacy">
-				Privacy </a></li>
-		<li><a href="http://www.cam.ac.uk/site/" title="Accessibility">
-				Accessibility </a></li>
-		<li><a href="http://www.admin.cam.ac.uk/univ/information/foi/"
-			title="Freedom of Information"> Freedom of Information </a></li>
-		<li><a href="http://www.cam.ac.uk/comment-form.html"
-			title="Can't find it?"> Can't find it? </a></li>
-	</ul>
-</footer>
-<!-- end #footer -->
-<div class="clear"></div>
-
-</div>
-
-</body>
-
-</html>
+<jsp:include page="footer/footer.jsp" />
 
 
 

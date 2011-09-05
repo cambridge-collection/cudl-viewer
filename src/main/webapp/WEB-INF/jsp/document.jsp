@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<jsp:include page="header/header-docview.jsp" />
+<jsp:include page="header/header-document.jsp" />
 
 <div id="center"></div>
 <div id="metadata">

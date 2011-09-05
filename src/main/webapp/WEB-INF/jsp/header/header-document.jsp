@@ -41,7 +41,7 @@ body {
 <script type="text/javascript" src="/scripts/docViewport.js"></script>
 <script type="text/javascript" src="/scripts/docView.js"></script>
 <script type="text/javascript" src="/scripts/seadragon-min.js"></script>
-<script type="text/javascript" src="/scripts/document-view.js"></script>
+<script type="text/javascript" src="/scripts/document.js"></script>
 
 </head>
 <body>

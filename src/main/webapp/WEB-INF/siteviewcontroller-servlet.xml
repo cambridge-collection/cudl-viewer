@@ -42,10 +42,12 @@
 	<mvc:resources mapping="/scripts/**" location="/scripts/" />
 	<mvc:resources mapping="/styles/**" location="/styles/" />
 	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
-	
+	<mvc:resources mapping="/**" location="/" />
+		
 	<!--  These are used by the httpd resources (see httpd rewrite rules) -->
 	<mvc:resources mapping="/content/**" location="/content/" />
 	<mvc:resources mapping="/netwon/**" location="/newton/" />
+
 		
 
 </beans>

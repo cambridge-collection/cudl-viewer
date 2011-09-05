@@ -8,6 +8,15 @@
 
 <jsp:include page="includes.jsp" />
 
+<script type="text/javascript">
+    // initalise page if function is available. 
+	function init() {
+		if (typeof pageinit == 'function') {
+			pageinit();
+		}
+	}
+</script>
+
 </head>
 
 <body onload="init()">

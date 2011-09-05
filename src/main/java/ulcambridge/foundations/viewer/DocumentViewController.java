@@ -25,7 +25,7 @@ public class DocumentViewController {
 	@RequestMapping(value = "/{docId}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId) {
 
-		ModelAndView modelAndView = new ModelAndView("jsp/document-view");
+		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page. 
 		return modelAndView;
@@ -36,7 +36,7 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			@PathVariable("page") String page) {
 
-		ModelAndView modelAndView = new ModelAndView("jsp/document-view");
+		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
 		return modelAndView;

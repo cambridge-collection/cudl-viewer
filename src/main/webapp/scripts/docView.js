@@ -28,15 +28,14 @@ var docView = function() {
 		/* NOTE: ANY changes to the toolbar cause this top be called */		
 		updateCurrentPage : function() {
 			
-			//alert ("update: "+store.currentPage+ " "+pagenum);
 			// FIXME validate input properly.
-			if (!pagenum || !view.isNumber(pagenum) || view.pageSet) {
+			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {
 				pagenum = store.currentPage;
 			}
 
 			// This will cause this function to be called again as the toolbar
 			// has changed.
-			if (pagenum != store.currentPage && !view.pageSet) {
+			if (!view.pageSet) {
 				store.loadPage(pagenum);
 				view.pageSet = true;
 				return;

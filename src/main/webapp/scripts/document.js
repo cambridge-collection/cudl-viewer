@@ -9,7 +9,14 @@ var currentPage;
 
 function setupSeaDragon() {
 	Seadragon.Config.imagePath = "/img/";
-	viewer = new Seadragon.Viewer("center");
+	Seadragon.Config.debugMode=true;
+	Seadragon.Strings.Tooltips.Home="Full Page View";
+	
+	viewer = new Seadragon.Viewer("center");	
+	
+	// FIXME remove the maximize button as it's causing problems 
+	viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
+	
 };
 
 function loadData() {

@@ -88,7 +88,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					region : 'north',
 					el : 'north',
 					height : 52
-				}, {
+				}/*, {
 					xtype : 'container',
 					region : 'south',
 					height : 28,
@@ -96,14 +96,9 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 						xtype : 'toolbar',
 						height : 28,
 						items : [ '->', // right align spacer
-						/*
-						 * { xtype : 'button', text : 'Example Menu', menu : {
-						 * xtype : 'menu', items : [ { xtype : 'menuitem', text :
-						 * 'Report Error' }, { xtype : 'menuitem', text :
-						 * 'Additional Items' } ] } },
-						 */'Terms & Conditions' ]
+						]
 					} ]
-				} ];
+				} */];
 
 				MyViewportUi.superclass.initComponent.call(this);
 			}

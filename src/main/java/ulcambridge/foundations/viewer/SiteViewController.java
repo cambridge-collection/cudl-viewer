@@ -33,6 +33,14 @@ public class SiteViewController {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/about");
 		return modelAndView;
+	}	
+	
+	// on path /terms/
+	@RequestMapping(value = "/terms/")
+	public ModelAndView handleTermsRequest() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/terms");
+		return modelAndView;
 	}		
 	
 }

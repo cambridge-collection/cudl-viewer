@@ -60,28 +60,7 @@
 	
 </section>
 
-<footer id="footer" class="grid_20">
-	<p class="grid_13 prefix_1 suffix_1 alpha">&copy; 2011 Cambridge
-		University Library, West Road, Cambridge CB3 9DR, UK</p>
-	<ul class="grid_5 omega">
-		<li><a href="http://www.cam.ac.uk/privacy/" title="Privacy">
-				Privacy </a></li>
-		<li><a href="http://www.cam.ac.uk/site/" title="Accessibility">
-				Accessibility </a></li>
-		<li><a href="http://www.admin.cam.ac.uk/univ/information/foi/"
-			title="Freedom of Information"> Freedom of Information </a></li>
-		<li><a href="http://www.cam.ac.uk/comment-form.html"
-			title="Can't find it?"> Can't find it? </a></li>
-	</ul>
-</footer>
-<!-- end #footer -->
-<div class="clear"></div>
-
-</div>
-
-</body>
-
-</html>
+<jsp:include page="footer/footer.jsp" />
 
 
 

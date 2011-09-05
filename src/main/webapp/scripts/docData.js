@@ -44,11 +44,7 @@ var docData = function() {
 		},
 
 		getData : function() {
-			console.debug("getting data");
-
-			console.debug(this.store);
-			console.debug(this.jsonreader.rawData);
-			
+		
 			return this.jsonreader.rawData;
 		}
 
