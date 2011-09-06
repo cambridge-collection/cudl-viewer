@@ -15,7 +15,7 @@
 	} catch (err) {
 	}
 </script>
-<script src="/global/js/gaAddons.js" type="text/javascript"></script>
+<script src="http://www.lib.cam.ac.uk/global/js/gaAddons.js" type="text/javascript"></script>
 
 </body>
 
