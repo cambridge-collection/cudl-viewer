@@ -20,7 +20,4 @@
 <div id="logical_structure">
 </div>
 
-
-</body>
-
-</html>
+<jsp:include page="footer/footer-document.jsp" />
