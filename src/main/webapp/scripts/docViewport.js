@@ -3,28 +3,31 @@
  */
 var viewportComponents = {
 
-	pageTitlePanel : Ext.create('Ext.panel.Panel', {
-		xtype : 'panel',
-		height : 28,
-		border : false,
-		title : '<b>Unknown Title</b> &nbsp;<i>by Unknown</i>'
+	pageTitlePanel: new Ext.Toolbar({
+		xtype : 'toolbar',
+		height : 26,
+		margin : '0 0 0 0',					
+		border : 0,
+		padding : 0,
+		items:[ '<b>Unknown Title</b> &nbsp;<i>by Unknown</i>' ]
 	}),
 
 	/* Setup the toolbar used to change page */
 	pagingToolbar : new Ext.Toolbar({
 		xtype : 'toolbar',
-		height : 28,
+		height : 26,
 		border : 0,
 		padding : 0,
 		autoShow : true,
 		margin : '0 0 0 0',
-		items : [ ]
+		items : [  ]
 	}),
 
 	/* Setup the tab panel for the document information */
 	tabpanel : Ext.create('Ext.tab.Panel', {
 		xtype : 'tabpanel',
 		activeTab : 0,
+		defaults:{ autoScroll:true },
 		region : 'east',
 		split : true, // enable resizing
 		width : '50%',
@@ -33,11 +36,12 @@ var viewportComponents = {
 		collapsible : true,
 		buttonAlign : 'left',
 		bodyPadding : 10,
-		margins : 0,
 		items : [ {
 			xtype : 'panel',
 			title : 'About',
+			autoScroll:true,
 			el : 'metadata'
+				
 		}, {
 			xtype : 'panel',
 			title : 'Transcription (normalised)',
@@ -57,13 +61,19 @@ var viewportComponents = {
 MyViewportUi = Ext.extend(Ext.Viewport,
 		{
 			layout : 'border',
+			margin : '0 0 0 0',					
+			border : 0,
+			padding : 0,			
 			initComponent : function() {
 				this.items = [ {
 					layout : 'anchor',
 					region : 'center',
 					border : false,
+					margin : '0 0 0 0',					
+					border : 0,
+					padding : 0,
 					width : 100,
-					items : [ viewportComponents.pageTitlePanel, 
+					items : [ viewportComponents.pageTitlePanel,
 					          viewportComponents.pagingToolbar , {
 						el : 'center',
 						height : '90%',
@@ -74,13 +84,16 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					activeTab : 0,
 					width : 250,
 					height : 250,
+					defaults:{ autoScroll:true },
 					region : 'west',
 					collapsed : true,
 					collapsible : true,
-					title : 'Document Structure',
+					title : 'Contents',
+					split:true,
 					items : [ {
 						xtype : 'panel',
-						title : 'Content',
+						title : 'Chapters',
+						autoScroll:true,
 						el : 'logical_structure'
 					} ]
 				}, {

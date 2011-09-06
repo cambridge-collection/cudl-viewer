@@ -7,27 +7,22 @@
 
 <link rel="icon" type="image/png" href="/img/favicon.png">
 <link rel="stylesheet" href="/styles/uoc.min.css">
-<!--[if lt IE 9]>
-            <link rel="stylesheet" href="styles/ie.min.css"/>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
 
 <link rel="stylesheet" type="text/css"
-	href="/scripts/extjs/resources/css/ext-all-gray.css" />
+	href="/scripts/extjs/resources/css/ext-all.css" />
 
 <link rel="stylesheet" type="text/css" href="/styles/style.css" />
 <style>
 .container {
 	background: url(/images/documentView/background_header.jpg) 50% 0
 		repeat-x;
-	background-color: #999999;
+	background-color: #FFFFFF;
 }
-
 h2 {
 	font-size: 36px;
 }
 body {
-    background: url("") repeat-x scroll 50% 0 #999999;
+	background: #ffffff url(/images/header/gradient.png) repeat-x;
 }
 </style>
 

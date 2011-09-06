@@ -1,7 +1,37 @@
 /* main pages style */
-
 html {
 	background: #ffffff url(/images/header/gradient.png) repeat-x;
+}
+
+.document-about-title {
+	color: #333333;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-weight: normal;
+	font-size: 30px;
+	margin-bottom: 10px;
+}
+
+.document-about-author {
+	color: #333333;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-weight: normal;
+	font-size: 20px;
+}
+
+.document-about {
+	color: #333333;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-weight: normal;
+	font-size: 14px;
+}
+
+.document-spacer {
+	height: 3px;
+}
+
+#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay
+	{
+	font-weight: bold;
 }
 
 ol#collections_carousel li {
@@ -20,7 +50,7 @@ ol#collections_carousel li {
 	padding: 5px;
 }
 
-body {		
+body {
 	background: url(/images/header/clouds.png) no-repeat center top;
 }
 
@@ -47,18 +77,9 @@ h3,h2,h1,h4 {
 	margin-left: 35px;
 }
 
-.x-border-layout-ct {
+/*.x-border-layout-ct {
 	background-color: #FFFFFF;
-}
-
-h1 { /*text-decoration:underline;*/
-	font-style: italic;
-	margin-top: 6px;
-	margin-bottom: 0;
-	margin-left: 8px;
-	font-size: 12px;
-	color: #5E2605;
-}
+}*/
 
 /* Banner Image */
 #localMasthead h2 {
@@ -92,7 +113,7 @@ ol#index_carousel li {
 	margin: 4px;
 	height: 390px;
 	width: 600px;
-	list-style: none outside none;	
+	list-style: none outside none;
 }
 
 #index_carousel .panel {
@@ -107,12 +128,12 @@ ol#index_carousel li {
 	width: 278px;
 }
 
-
 #index_carousel h4,h4 a,#index_carousel p {
 	color: #ffffff;
 }
 
-#index_carousel a:link,#index_carousel a:visited,#index_carousel a:active {
+#index_carousel a:link,#index_carousel a:visited,#index_carousel a:active
+	{
 	color: #ffffff;
 }
 
@@ -124,6 +145,16 @@ ol#index_carousel li {
 }
 
 /* Ext JS panel header styling */
+.x-toolbar-default {
+	border: 0;
+}
+/*
+.x-panel-header-text-default {
+	color: #000000;
+	font-weight: bold;
+
+}
+
 .x-panel-header-default-top {
 	background-image:
 		url('../images/panel-header/panel-header-default-top-bg.gif')
@@ -181,7 +212,7 @@ ol#index_carousel li {
 	background-image: -ms-linear-gradient(top, #323131, #262626);
 	background-image: linear-gradient(top, #323131, #262626)
 }
-
+*/
 /* Toolbar style */
 /*.x-toolbar-default{color:#ffffff;font-size:11px;line-height:15px;border-color:#ebe7e7;border-width:1px;border-style:solid;background-image:none;background-color:#2a2525;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #332e2e), color-stop(45%, #2b2626), color-stop(46%, #151313), color-stop(50%, #151313), color-stop(51%, #1d1a1a), color-stop(100%, #2a2525));background-image:-webkit-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-moz-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-o-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-ms-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);-moz-box-shadow:#453d3d 0 1px 0px 0 inset;-webkit-box-shadow:#453d3d 0 1px 0px 0 inset;-o-box-shadow:#453d3d 0 1px 0px 0 inset;box-shadow:#453d3d 0 1px 0px 0 inset}
 .x-toolbar-default{border:0}*/
