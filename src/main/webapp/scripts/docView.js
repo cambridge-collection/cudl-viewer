@@ -1,6 +1,7 @@
 /**
  * Script to configure the ext viewport and data for the document view.
  */
+var downloadImageLink;
 
 var docView = function() {
 	return {
@@ -41,47 +42,50 @@ var docView = function() {
 				return;
 			}
 
-			var jsonData = data;
-
 			if (viewer && data) {
 
-				viewer.openDzi(jsonData.pages[pagenum - 1].displayImageURL);
+				// show image
+				viewer.openDzi(data.pages[pagenum - 1].displayImageURL);
 
+				// setup image download link
+				downloadImageLink = data.pages[pagenum - 1].downloadImageURL;
+				
 				// setup transcription
 				view.beforetabchange();
 
-				if (jsonData.pages[pagenum - 1].transcriptionNormalisedURL
-						&& jsonData.pages[pagenum - 1].transcriptionDiplomaticURL) {
+				if (data.pages[pagenum - 1].transcriptionNormalisedURL
+						&& data.pages[pagenum - 1].transcriptionDiplomaticURL) {
 					document.getElementById("transcription_normal_frame").onload = view.aftertabchange;
 					document.getElementById("transcription_normal_frame").src = "/transcription?url="
-							+ encodeURIComponent(jsonData.pages[pagenum - 1].transcriptionNormalisedURL);
+							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
 					document.getElementById("transcription_diplomatic_frame").src = "/transcription?url="
-							+ encodeURIComponent(jsonData.pages[pagenum - 1].transcriptionDiplomaticURL);
+							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 				} else {
 					// there is no transcription to load, unmask the tab.
 					//tabpanel.el.unmask();
 				}
 
 				// setup metadata
-				document.getElementById("metadata-title").innerHTML = jsonData.title;
-				document.getElementById("metadata-author").innerHTML = jsonData.author;
-				document.getElementById("metadata-rights").innerHTML = jsonData.rights;
-				document.getElementById("metadata-page").innerHTML = jsonData.pages[pagenum - 1].name;
-				document.getElementById("metadata-subject").innerHTML = jsonData.subject;
-				document.getElementById("metadata-physicalLocation").innerHTML = jsonData.physicalLocation;
-				document.getElementById("metadata-shelfLocation").innerHTML = jsonData.shelfLocator;
-				document.getElementById("metadata-dateCreatedDisplay").innerHTML = jsonData.dateCreatedDisplay;
-
+				document.getElementById("metadata-title").innerHTML = data.title;
+				document.getElementById("metadata-author").innerHTML = data.author;
+				document.getElementById("metadata-rights").innerHTML = data.rights;
+				document.getElementById("metadata-page").innerHTML = data.pages[pagenum - 1].name;
+				document.getElementById("metadata-subject").innerHTML = data.subject;
+				document.getElementById("metadata-physicalLocation").innerHTML = data.physicalLocation;
+				document.getElementById("metadata-shelfLocation").innerHTML = data.shelfLocator;
+				document.getElementById("metadata-dateCreatedDisplay").innerHTML = data.dateCreatedDisplay;
+				
 				// setup logical structure
 				var ls = "";
-				for ( var i = 0; i < jsonData.logicalStructure.length; i++) {
-					var lsItem = jsonData.logicalStructure[i];
+				for ( var i = 0; i < data.logicalStructure.length; i++) {
+					var lsItem = data.logicalStructure[i];
 					ls += "<li><a href='" + lsItem.startPagePosition + "'>"
-							+ lsItem.title + "</a> [page:"
-							+ lsItem.startPagePosition + "]</li>";
+							+ lsItem.title + "</a> (image "
+							+ lsItem.startPagePosition + ", page "
+							+ lsItem.startPage+")</li>";
 				}
-				document.getElementById("logical_structure").innerHTML = "<ul>"
-						+ ls + "</ul>";
+				document.getElementById("logical_structure").innerHTML = "<div style='height: 100%; overflow:auto;'><ul>"
+						+ ls + "</ul></div>";
 
 			}
 

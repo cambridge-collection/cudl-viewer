@@ -21,7 +21,7 @@
 			<div class="grid_11">
 				<span class="date">30/09/2011</span>
 				<h4>
-					<a href="">New collections coming soon</a>
+					Introducing the Cambridge Digital Library
 				</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
 						nec gravida felis. Etiam at enim nisi, id vehicula tortor.
@@ -44,7 +44,7 @@
 			<div class="grid_11">
 				<span class="date">30/09/2011</span>
 				<h4>
-					<a href="">Newton Collection Launched</a>
+					Newton Collection Launched
 				</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
 						nec gravida felis. Etiam at enim nisi, id vehicula tortor.

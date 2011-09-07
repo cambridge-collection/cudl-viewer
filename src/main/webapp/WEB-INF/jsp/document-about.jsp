@@ -1,4 +1,4 @@
-<div id="metadata" class="document-about">
+<div id="metadata" class="document-about"><div style="height: 100%; overflow:auto;">
 	<br />
 	<p>
 		<el class="document-about-title" id="metadata-title"></el>
@@ -8,12 +8,12 @@
 	</p>
 	<div class="document-spacer"></div>
 	<p>
-		Part of the <a href="/view/">Newton Collection</a>.
+		Part of the <a href="/view/">Newton Papers</a>.
 	</p>
 
 	<br />
 
-	<iframe style="float: right; padding-left:10px" width="320" height="245"
+	<iframe style="float: right; padding-left:10px; padding-right:10px" width="320" height="245"
 		src="http://www.youtube.com/embed/1XJkvMyupds" frameborder="0"
 		allowfullscreen></iframe>
 
@@ -39,19 +39,29 @@
 		pellentesque molestie quis at diam.</p>
 	<br /> <br />
 
-
+About the document:<br/>
 	<div>
 		Physical location:
 		<el id="metadata-physicalLocation"></el>
-		<br /> Shelf locator:
+		<br /> Classmark:
 		<el id="metadata-shelfLocation"></el>
 		<br /> Subject:
 		<el id="metadata-subject"></el>
 		<br /> Date created:
 		<el id="metadata-dateCreatedDisplay"></el>
-		<br /> <br /> <br /> You are viewing page:
-		<el id="metadata-page">1v</el>
+		<br /> <br/>
+		
+		<!--  about the page -->
+		
+		Current page: <el id="metadata-page"></el><br/>
+		
+		<br />
+		<b><a href="downloadImage">Bookmark direct link to this page</a></b>
+		<br /> 
+		<b><a href="" onclick="downloadImageCheck(); return false;">Download Image for this page</a></b>
 		<br /> <br />
+		 
+
 		<p>
 			<el id="metadata-rights"></el>
 		</p>
@@ -60,6 +70,6 @@
 	</div>
 
 
-
+</div>
 
 </div>

@@ -4,7 +4,7 @@
 
 <jsp:include page="header/header-document.jsp" />
 
-<div id="center"></div>
+<div id="doc"></div>
 <jsp:include page="document-about.jsp" />
 
 <div id="transcription_normal">

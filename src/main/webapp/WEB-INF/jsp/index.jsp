@@ -12,9 +12,9 @@
 
 			<!-- newton collection -->
 			<li>
-				<div class="panel">
+				<div class="panel" style="overflow:auto;">
 					<h4>
-						<a href="">Newton Collection</a>
+						Newton Papers
 					</h4>
 					<p>Cambridge University is proud to present the first of the
 						special collections that will become available as part of
@@ -27,9 +27,7 @@
 						nec gravida felis. Etiam at enim nisi, id vehicula tortor.
 						Foundations of Science Mauris velit quam, ornare a congue eu,
 						accumsan vitae eros. Pellentesque ac nisl felis. Pellentesque
-						lacus augue, elementum nec pretium vel, tristique in massa.
-						Pellentesque quis tellus ac velit pellentesque molestie quis at
-						diam.</p>
+						lacus augue, elementum nec pretium vel, tristique in massa.</p>
 				</div> <a href="/view/"><img  id="newtonImage" src="/images/index/newtondoc.jpg" alt="Test"
 					width="600" height="390" /> </a></li>
 
@@ -50,7 +48,7 @@
 				</center>
 				<span class="date">30/09/2011</span>
 				<h4>
-					<a href="">New collections coming soon</a>
+					<a href="/news/">Introducing the Cambridge Digital Library</a>
 				</h4>
 			</div>
 			<div class="news">
@@ -61,7 +59,7 @@
 				</center>
 				<span class="date">30/09/2011</span>
 				<h4>
-					<a href="">Newton Collection Launched</a>
+					<a href="/news/">Newton Collection Launched</a>
 				</h4>
 			</div>
 

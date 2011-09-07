@@ -11,7 +11,7 @@
 	<div class="grid_20"margin-bottom:18px;">
 
 		<div class="panel light">
-			<h3>Creating the Cambridge Digital Library</h3>
+			<h3>Introducing the Cambridge Digital Library</h3>
 
 			<div class="grid_11">
 				<h4>

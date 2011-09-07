@@ -31,7 +31,7 @@ var viewportComponents = {
 		region : 'east',
 		split : true, // enable resizing
 		width : '50%',
-		title : 'More about the document',
+		title : 'More about this item',
 		collapsed : false,
 		collapsible : true,
 		buttonAlign : 'left',
@@ -75,7 +75,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					width : 100,
 					items : [ viewportComponents.pageTitlePanel,
 					          viewportComponents.pagingToolbar , {
-						el : 'center',
+						el : 'doc',
 						height : '90%',
 						border : true
 					} ]
@@ -92,7 +92,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					split:true,
 					items : [ {
 						xtype : 'panel',
-						title : 'Chapters',
+						title : 'Sections',
 						autoScroll:true,
 						el : 'logical_structure'
 					} ]

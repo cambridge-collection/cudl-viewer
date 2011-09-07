@@ -12,9 +12,9 @@ function setupSeaDragon() {
 	Seadragon.Config.debugMode=true;
 	Seadragon.Strings.Tooltips.Home="Full Page View";
 	
-	viewer = new Seadragon.Viewer("center");	
+	viewer = new Seadragon.Viewer("doc");	
 	
-	// FIXME remove the maximize button as it's causing problems 
+	// FIXME remove the maximize button as it's causing problems
 	viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
 	
 };
@@ -50,7 +50,7 @@ function loadData() {
  */
 function setupViewport() {
 
-	// Set the title before we make the viewport. 
+	// Set the title before we make the viewport.
 	viewportComponents.pageTitlePanel.items.items[0].text = '<b>' + data.title
 	+ '</b> &nbsp;<i>by ' + data.author + '</i>';
 	
@@ -61,16 +61,37 @@ function setupViewport() {
 		xtype : 'pagingtoolbar',
 		padding : 0,
 		width : 250,
+		beforePageText:'Image',
 		store : store,
 		margin : '0 0 0 0',
 		border : 0
 	});
 
+	downloadImage = function(answer) {
+		if (answer=='yes') {
+		 window.open(downloadImageLink);
+		} else {
+		 return;
+		}
+	};
+	
+	downloadImageCheck = function () {
+		Ext.Msg.show({
+			   title:'Image Licensing',
+			   msg: 'This image has the following copyright: <br/>Copyright &copy; Cambridge University Library. Licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).<br/><br/> Do you want to download this image?',
+			   buttons: Ext.Msg.YESNO,
+			   fn: downloadImage
+			});
+	};
+	
 	// Setup component behaviour
 	pagingTool.on('change', view.updateCurrentPage);
 	viewportComponents.pagingToolbar.add(pagingTool);
-	viewportComponents.tabpanel.on('beforetabchange', view.beforetabchange);
-	viewportComponents.tabpanel.on('tabchange', this.aftertabchange);
+	viewportComponents.pagingToolbar.add('->');
+	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.png', handler: downloadImageCheck});
+	
+	// viewportComponents.tabpanel.on('beforetabchange', view.beforetabchange);
+	// viewportComponents.tabpanel.on('tabchange', this.aftertabchange);
 
 	// initialise viewport.
 	Ext.QuickTips.init();
