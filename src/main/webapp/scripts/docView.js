@@ -48,22 +48,22 @@ var docView = function() {
 				viewer.openDzi(data.pages[pagenum - 1].displayImageURL);
 
 				// setup image download link
-				downloadImageLink = data.pages[pagenum - 1].downloadImageURL;
+				downloadImageLink = "/download/image%252Fjpg/document-image"+pagenum+".jpg?path="+data.pages[pagenum - 1].downloadImageURL;
 				
 				// setup transcription
-				view.beforetabchange();
+				//view.beforetabchange();
 
-				if (data.pages[pagenum - 1].transcriptionNormalisedURL
-						&& data.pages[pagenum - 1].transcriptionDiplomaticURL) {
-					document.getElementById("transcription_normal_frame").onload = view.aftertabchange;
+				//if (data.pages[pagenum - 1].transcriptionNormalisedURL
+				//		&& data.pages[pagenum - 1].transcriptionDiplomaticURL) {
+					//document.getElementById("transcription_normal_frame").onload = view.aftertabchange;
 					document.getElementById("transcription_normal_frame").src = "/transcription?url="
 							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
 					document.getElementById("transcription_diplomatic_frame").src = "/transcription?url="
 							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
-				} else {
+				//} else {
 					// there is no transcription to load, unmask the tab.
 					//tabpanel.el.unmask();
-				}
+				//}
 
 				// setup metadata
 				document.getElementById("metadata-title").innerHTML = data.title;

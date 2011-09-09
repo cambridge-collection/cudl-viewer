@@ -2,7 +2,7 @@
 
 <head>
 
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <title>Cambridge Digital Library - University of Cambridge</title>
 

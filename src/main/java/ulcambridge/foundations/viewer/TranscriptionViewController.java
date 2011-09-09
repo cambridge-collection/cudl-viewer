@@ -39,12 +39,17 @@ public class TranscriptionViewController {
 
 		// TODO input validation
 
-		if (url == null) {
-			throw new IOException(
-					"missing parameter(s). Expecting url.");
+		// no url param or empty url - so no transcription available for this page.
+		if (url == null || url.trim().equals("")) {
+			
+			String page = "<html><head>" +
+					"<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n"+
+					"</head><body> No transcription available for this image. </body></html>";
+			
+			writePage(response,page);
+			return null;
+			
 		}
-		
-		System.out.println("Getting transcriptions from: "+url);
 		
 		String sourcePage = readContent(new URL(url));
 		
@@ -106,7 +111,7 @@ public class TranscriptionViewController {
 			
 			output.append(sourcePage.substring(sourcePage.indexOf("<head>"),sourcePage.indexOf("</head>")));
 			output.append("<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
-			output.append("</head>\n");
+			output.append("</head><body>\n");
 				
 		} 
 		
@@ -117,8 +122,11 @@ public class TranscriptionViewController {
 				
 		} 
 		
+		// Add link to Newton Project
+		output.append("<br/><br/>This transcription was provided by the <a target='_blank' href='http://www.newtonproject.sussex.ac.uk/'>Newton Project</a>.");
+		
 		// End Tag
-		output.append("</HTML>");
+		output.append("</body></HTML>");
 
 		return output.toString();
 	}

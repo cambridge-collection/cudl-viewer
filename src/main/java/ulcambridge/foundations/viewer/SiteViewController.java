@@ -41,6 +41,14 @@ public class SiteViewController {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/terms");
 		return modelAndView;
+	}	
+	
+	// on path /contributors/
+	@RequestMapping(value = "/contributors/")
+	public ModelAndView handleContributorsRequest() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/contributors");
+		return modelAndView;
 	}		
 	
 }

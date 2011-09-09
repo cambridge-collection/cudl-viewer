@@ -1,9 +1,9 @@
 <div id="metadata" class="document-about"><div style="height: 100%; overflow:auto;">
 	<br />
 	<p>
-		<el class="document-about-title" id="metadata-title"></el>
+		<em class="document-about-title" id="metadata-title"></em>
 		by
-		<el class="document-about-author" id="metadata-author"></el>
+		<em class="document-about-author" id="metadata-author"></em>
 		<br />
 	</p>
 	<div class="document-spacer"></div>
@@ -42,18 +42,18 @@
 About the document:<br/>
 	<div>
 		Physical location:
-		<el id="metadata-physicalLocation"></el>
+		<em id="metadata-physicalLocation"></em>
 		<br /> Classmark:
-		<el id="metadata-shelfLocation"></el>
+		<em id="metadata-shelfLocation"></em>
 		<br /> Subject:
-		<el id="metadata-subject"></el>
+		<em id="metadata-subject"></em>
 		<br /> Date created:
-		<el id="metadata-dateCreatedDisplay"></el>
+		<em id="metadata-dateCreatedDisplay"></em>
 		<br /> <br/>
 		
 		<!--  about the page -->
 		
-		Current page: <el id="metadata-page"></el><br/>
+		Current page: <em id="metadata-page"></em><br/>
 		
 		<br />
 		<b><a href="downloadImage">Bookmark direct link to this page</a></b>
@@ -63,7 +63,7 @@ About the document:<br/>
 		 
 
 		<p>
-			<el id="metadata-rights"></el>
+			<em id="metadata-rights"></em>
 		</p>
 		<br /> <br />
 

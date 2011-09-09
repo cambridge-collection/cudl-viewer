@@ -14,7 +14,7 @@
 			<h3>Latest updates</h3>
 
 			<div class="grid_7">
-				<img alt="View of a gallery" src="/images/index/bezaedoc.jpg"
+				<img alt="Introducing the Cambridge Digital Library" src="/images/index/bezaedoc.jpg"
 					style="display: inline;" height="200">
 			</div>
 
@@ -37,14 +37,14 @@
 				<div class="grid_20" margin-bottom:18px;">
 
 			<div class="grid_7">
-				<img alt="View of a gallery" src="/images/index/newtondoc.jpg"
+				<img alt="Dissecting a Newton notebook" src="/images/index/newtondoc.jpg"
 					style="display: inline;" height="200">
 			</div>
 
 			<div class="grid_11">
 				<span class="date">30/09/2011</span>
 				<h4>
-					Newton Collection Launched
+					Dissecting a Newton notebook
 				</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
 						nec gravida felis. Etiam at enim nisi, id vehicula tortor.

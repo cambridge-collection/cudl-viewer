@@ -2,7 +2,7 @@
 <p class="grid_13 prefix_1 suffix_1 alpha">&copy; 2011 Cambridge
 	University Library, West Road, Cambridge CB3 9DR, UK</p>
 <ul class="grid_5 omega">
-	<li><a href="/acknowledgements/" title="Acknowledgements"> Acknowledgements </a>
+	<li><a href="/contributors/" title="Contributors"> Contributors </a>
 	</li>
 	<li><a href="http://www.lib.cam.ac.uk/privacy_statement.html"
 		title="Privacy"> Privacy </a>

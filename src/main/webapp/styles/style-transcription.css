@@ -2,7 +2,11 @@ body {
     background-color: #ffffff;
     margin: 0px;
     text-align: left;
+    font-family: Verdana,Tahoma,Geneva,sans-serif;
+    font-size:12px;
 }
+
+
 
 html {
     background: none repeat scroll 0 0 #FFFFFF;

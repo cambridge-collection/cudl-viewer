@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 
-	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
+	<bean id="download" class="ulcambridge.foundations.viewer.DownloadController">
 	</bean>
 
 	<bean id="viewResolver"
@@ -35,20 +35,6 @@
 
 	<bean
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-
-	<!-- resources exclusions from servlet mapping -->
-	<mvc:resources mapping="/images/**" location="/images/" />
-	<mvc:resources mapping="/img/**" location="/img/" />
-	<mvc:resources mapping="/json/**" location="/json/" />
-	<mvc:resources mapping="/scripts/**" location="/scripts/" />
-	<mvc:resources mapping="/styles/**" location="/styles/" />
-	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
-	<mvc:resources mapping="/**" location="/" />
-		
-	<!--  These are used by the httpd resources (see httpd rewrite rules) -->
-	<mvc:resources mapping="/content/**" location="/content/" />
-	<mvc:resources mapping="/netwon/**" location="/newton/" />
-
-		
+	
 
 </beans>

@@ -23,6 +23,7 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jettyVersion}</version>
 				<configuration>
+					<encoding>UTF-8</encoding>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>1111</port>

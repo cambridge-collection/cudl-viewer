@@ -76,7 +76,7 @@ section#content p {
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
 					alt="MSADD-03958" width="139" height="180" />
 			</a>
-			<h5>'Quæstiones quædam Philosophiæ' ('Certain Philosophical
+			<h5>'Qu&aelig;stiones qu&aelig;dam Philosophi&aelig;' ('Certain Philosophical
 					Questions') [Ms.3996]</h5>A description of the book should go here.
 				Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed
 				leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam.</li>
