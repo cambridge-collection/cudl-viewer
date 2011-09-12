@@ -1,6 +1,6 @@
 <footer id="footer" class="grid_20">
-<p class="grid_13 prefix_1 suffix_1 alpha">&copy; 2011 Cambridge
-	University Library, West Road, Cambridge CB3 9DR, UK</p>
+<p class="grid_13 prefix_1 suffix_1 alpha footer"><a href="/terms/">&copy; 2011 Cambridge
+	University Library</a>, West Road, Cambridge CB3 9DR, UK</p>
 <ul class="grid_5 omega">
 	<li><a href="/contributors/" title="Contributors"> Contributors </a>
 	</li>

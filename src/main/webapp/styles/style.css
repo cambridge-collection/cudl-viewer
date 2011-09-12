@@ -140,6 +140,11 @@ ol#index_carousel li {
 	color: #ffffff;
 }
 
+.footer a:link,.footer a:visited,.footer a:active {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
 .news {
 	background: #ffffff;
 	color: #000000;

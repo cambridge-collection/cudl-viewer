@@ -17,7 +17,6 @@
  </iframe>
 </div>
 
-<div id="logical_structure">
-</div>
+<div id="logical_structure"></div>
 
 <jsp:include page="footer/footer-document.jsp" />

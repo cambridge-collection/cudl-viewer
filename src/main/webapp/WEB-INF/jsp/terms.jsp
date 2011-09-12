@@ -8,7 +8,7 @@
 <section id="content" class="grid_20 content">
 
 
-	<div class="grid_20"margin-bottom:18px;">
+	<div class="grid_20" style="margin-bottom:18px;">
 
 		<div class="panel light">
 			<h3>Terms & Conditions</h3>

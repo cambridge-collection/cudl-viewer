@@ -11,33 +11,10 @@
 		Part of the <a href="/view/">Newton Papers</a>.
 	</p>
 
+   <div id="metadata-media"></div>
+   <div id="metadata-abstract"></div>
+	
 	<br />
-
-	<iframe style="float: right; padding-left:10px; padding-right:10px" width="320" height="245"
-		src="http://www.youtube.com/embed/1XJkvMyupds" frameborder="0"
-		allowfullscreen></iframe>
-
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
-		gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of
-		Science Mauris velit quam, ornare a congue eu, accumsan vitae eros.
-		Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec
-		pretium vel, tristique in massa. Pellentesque quis tellus ac velit
-		pellentesque molestie quis at diam.</p>
-	<br />
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
-		gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of
-		Science Mauris velit quam, ornare a congue eu, accumsan vitae eros.
-		Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec
-		pretium vel, tristique in massa. Pellentesque quis tellus ac velit
-		pellentesque molestie quis at diam.</p>
-	<br />
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec
-		gravida felis. Etiam at enim nisi, id vehicula tortor. Foundations of
-		Science Mauris velit quam, ornare a congue eu, accumsan vitae eros.
-		Pellentesque ac nisl felis. Pellentesque lacus augue, elementum nec
-		pretium vel, tristique in massa. Pellentesque quis tellus ac velit
-		pellentesque molestie quis at diam.</p>
-	<br /> <br />
 
 About the document:<br/>
 	<div>

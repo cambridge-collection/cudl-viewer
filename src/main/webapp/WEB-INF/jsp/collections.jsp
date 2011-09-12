@@ -66,42 +66,42 @@ section#content p {
 			<li><a href="/view/MS-ADD-03958/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MSADD-03958" width="139" height="180" />
+					alt="MS-ADD-03958" width="139" height="180" />
 			</a>
 			<h5>Early Papers [Ms.3958]</h5>A description of the book should go
 				here. Suspendisse lorem magna, mattis at volutpat aliquet, placerat
 				sed leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam.</li>
-			<li><a href="/view/MS-ADD-03958/"><img
+			<li><a href="/view/MS-ADD-03996/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MSADD-03958" width="139" height="180" />
+					alt="MS-ADD-03996" width="139" height="180" />
 			</a>
 			<h5>'Qu&aelig;stiones qu&aelig;dam Philosophi&aelig;' ('Certain Philosophical
 					Questions') [Ms.3996]</h5>A description of the book should go here.
 				Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed
 				leo. Cras nulla orci, aliquam nec sagittis et, tempor at quam.</li>
-			<li><a href="/view/MS-ADD-03958/"><img
+			<li><a href="/view/MS-ADD-03970/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MSADD-03958" width="139" height="180" />
+					alt="MS-ADD-03970" width="139" height="180" />
 			</a>
 			<h5>Draft of 'A Theory Concerning Light and Colors' [Ms.3970]</h5>A
 				description of the book should go here. Suspendisse lorem magna,
 				mattis at volutpat aliquet, placerat sed leo. Cras nulla orci,
 				aliquam nec sagittis et, tempor at quam.</li>
-			<li><a href="/view/MS-ADD-03958/"><img
+			<li><a href="/view/MS-ADD-04000/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MSADD-03958" width="139" height="180" />
+					alt="MS-ADD-04000" width="139" height="180" />
 			</a>
 			<h5>Mathematical Notebook [Ms.4000]</h5>A description of the book should
 				go here. Suspendisse lorem magna, mattis at volutpat aliquet,
 				placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor
 				at quam.</li>
-			<li><a href="/view/MS-ADD-03958/"><img
+			<li><a href="/view/MS-ADD-04004/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MSADD-03958" width="139" height="180" />
+					alt="MS-ADD-04004" width="139" height="180" />
 			</a>
 			<h5>Wastebook (vol.1) [Ms.4004]</h5>A description of the book should go here.
 				Suspendisse lorem magna, mattis at volutpat aliquet, placerat sed
