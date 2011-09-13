@@ -9,13 +9,12 @@ var docView = function() {
 		pageSet: false,
 		
 		/* While a tab is loading it is masked. */
-		beforetabchange : function(panel, newCard) {
-		//	console.debug (viewportComponents.tabpanel.items.items[1]);
-		//	viewportComponents.tabpanel.items.items[1].el.mask("Loading ...", "x-mask-loading");
+		beforetabchange : function(panel) {			
+			panel.mask("Loading ...", "x-mask-loading");			
 		},
 
 		aftertabchange : function(panel, newCard) {
-			//viewportComponents.tabpanel.el.unmask();
+			panel.unmask();
 		},
 
 		isNumber : function(n) {
@@ -71,18 +70,21 @@ var docView = function() {
 				downloadImageLink = "/download/image%252Fjpg/document-image"+pagenum+".jpg?path="+data.pages[pagenum - 1].downloadImageURL;
 				
 				// setup transcription
-				//view.beforetabchange();
+				view.beforetabchange(viewportComponents.tabpanel.items.items[1].el);
+				view.beforetabchange(viewportComponents.tabpanel.items.items[2].el);
 
 				//if (data.pages[pagenum - 1].transcriptionNormalisedURL
 				//		&& data.pages[pagenum - 1].transcriptionDiplomaticURL) {
-					//document.getElementById("transcription_normal_frame").onload = view.aftertabchange;
+					document.getElementById("transcription_normal_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[1].el)};
+					document.getElementById("transcription_diplomatic_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[2].el)};
+					
 					document.getElementById("transcription_normal_frame").src = "/transcription?url="
 							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
 					document.getElementById("transcription_diplomatic_frame").src = "/transcription?url="
 							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 				//} else {
 					// there is no transcription to load, unmask the tab.
-					//tabpanel.el.unmask();
+				//	viewportComponents.tabpanel.items.items[1].body.unmask();
 				//}
 
 				// setup metadata
