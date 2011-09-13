@@ -57,9 +57,8 @@ public class TranscriptionViewController {
 
 		// This should be http://www.newtonproject.sussex.ac.uk/
 		String baseURL = url.substring(0, url.indexOf('/', 7));
-		System.out.println("baseURL: " +baseURL);
 		
-		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL);
+		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL, url);
 		writePage(response, transcriptionPage);
 		
 		return null;		
@@ -90,7 +89,7 @@ public class TranscriptionViewController {
 
 	}		 
 	
-	private String generateTranscriptionPage(String sourcePage, String baseURL) {
+	private String generateTranscriptionPage(String sourcePage, String baseURL, String requestURL) {
 		
 		StringBuffer output = new StringBuffer();
 				
@@ -123,7 +122,7 @@ public class TranscriptionViewController {
 		} 
 		
 		// Add link to Newton Project
-		output.append("<br/><br/>This transcription was provided by the <a target='_blank' href='http://www.newtonproject.sussex.ac.uk/'>Newton Project</a>.");
+		output.append("<br/><br/>This transcription was provided by the <a target='_blank' href='"+requestURL+"'>Newton Project</a>.");
 		
 		// End Tag
 		output.append("</body></HTML>");
