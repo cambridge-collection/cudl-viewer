@@ -24,8 +24,7 @@
 				<p>
 					This first release features some of Newton's most important work
 					from the 1660s, including his '<a href="/view/MS-ADD-04000/">Mathematical
-						notebook</a>' (MS Add 4000), '<a href="/view/MS-ADD-03996/">Qu&aelig;stiones
-						qu&aelig;dam Philosophi&aelig;</a>' notebook (MS Add 3996) and the '<a
+						Notebook</a>' (MS Add 4000), '<a href="/view/MS-ADD-03996/">Trinity College Notebook</a>' (MS Add 3996) and the '<a
 						href="/view/MS-ADD-04004/">Waste Book</a>' (MS Add 4004).
 				</p>
 			</div> <a href="/view/"><img id="newtonImage"
@@ -47,7 +46,7 @@
 			<br />
 			<center>
 				<a href="/news/"><img alt="New collections coming soon"
-					src="/images/index/bezaesmall.jpg" height="55" width="195"> </a>
+					src="/images/index/cernesmall.jpg" height="55" width="195"> </a>
 			</center>
 			<span class="date">30/09/2011</span>
 			<h4>
@@ -58,7 +57,7 @@
 			<br />
 			<center>
 				<a href="/news/"><img alt="Dissecting a Newton notebook"
-					src="/images/index/newtondocsmall.jpg" height="55" width="195">
+					src="/images/index/conservationsmall.jpg" height="55" width="195">
 				</a>
 			</center>
 			<span class="date">30/09/2011</span>

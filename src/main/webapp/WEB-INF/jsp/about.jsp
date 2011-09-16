@@ -12,24 +12,23 @@
 		<div class="panel light">
 			<h3>Introducing the Cambridge Digital Library</h3>
 
-			<div class="grid_19">
-				<div class="grid_1">&nbsp;</div>
+			<div class="grid_20">
 				<blockquote class="grid_7 omega print">
 					<p>
 						Cambridge University Library contains evidence of some of the
 						greatest ideas and discoveries over two millennia. We want to make
 						it accessible to anyone, anywhere in the world with an internet
-						connection and a thirst for knowledge." <cite>-Anne Jarvis,
+						connection and a thirst for knowledge." <cite>&mdash;Anne Jarvis,
 							University Librarian</cite>
 					</p>
 				</blockquote>
+				<br/><br/>
 				<div class="grid_5">
 					<img src="/images/about/anne_jarvis.jpg" />
 				</div>
 			</div>
 
-			<div class="grid_19">
-				<div class="grid_1">&nbsp;</div>
+			<div class="grid_20">
 				<div class="grid_11">
 
 					<p>Over the course of six centuries Cambridge University

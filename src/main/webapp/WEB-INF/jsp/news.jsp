@@ -13,8 +13,8 @@
 		<div class="panel light">
 			<h3>Latest updates</h3>
 
-			<div class="grid_7">
-				<img alt="Introducing the Cambridge Digital Library" src="/images/index/bezaedoc.jpg"
+			<div class="grid_5">
+				<img alt="Introducing the Cambridge Digital Library" src="/images/index/cernes.jpg"
 					style="display: inline;" height="200">
 			</div>
 
@@ -34,10 +34,10 @@
 			</div>
 			
 			</div>
-				<div class="grid_20" margin-bottom:18px;">
+				<div class="grid_20" style="margin-bottom:18px;">
 
-			<div class="grid_7">
-				<img alt="Dissecting a Newton notebook" src="/images/index/newtondoc.jpg"
+			<div class="grid_5">
+				<img alt="Dissecting a Newton notebook" src="/images/index/conservation.jpg"
 					style="display: inline;" height="200">
 			</div>
 

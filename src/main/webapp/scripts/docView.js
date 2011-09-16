@@ -2,6 +2,7 @@
  * Script to configure the ext viewport and data for the document view.
  */
 var downloadImageLink;
+var isMSIE = /*@cc_on!@*/0;
 
 var docView = function() {
 	return {
@@ -9,16 +10,38 @@ var docView = function() {
 		pageSet: false,
 		
 		/* While a tab is loading it is masked. */
-		beforetabchange : function(panel) {			
-			panel.mask("Loading ...", "x-mask-loading");			
+		beforetabchange : function(panel) {	
+			//alert ("before");
+			if (isMSIE) {
+			   /* do not show loading mask in ie */
+			} else {
+				panel.mask("Loading ...", "x-mask-loading");
+			}						
 		},
 
 		aftertabchange : function(panel, newCard) {
-			panel.unmask();
+			//alert ("after");
+			if (isMSIE) {
+				/* do not show loading mask in ie */
+			} else {
+				panel.unmask();
+			}
 		},
 
 		isNumber : function(n) {
 			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		
+		bookmarkPage: function(title, url) {
+
+		  if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) {
+			  window.external.AddFavorite(url,title);
+		  } else if (navigator.appName == "Netscape") {
+			  window.sidebar.addPanel(title,url,"");
+		  } else {
+		    alert("Press CTRL-D (Netscape) or CTRL-T (Opera) to bookmark");
+		  }
+	
 		},
 		
 		/**
@@ -75,8 +98,8 @@ var docView = function() {
 
 				//if (data.pages[pagenum - 1].transcriptionNormalisedURL
 				//		&& data.pages[pagenum - 1].transcriptionDiplomaticURL) {
-					document.getElementById("transcription_normal_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[1].el)};
-					document.getElementById("transcription_diplomatic_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[2].el)};
+					document.getElementById("transcription_normal_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[1].el);};
+					document.getElementById("transcription_diplomatic_frame").onload = function(){view.aftertabchange(viewportComponents.tabpanel.items.items[2].el);};
 					
 					document.getElementById("transcription_normal_frame").src = "/transcription?url="
 							+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);

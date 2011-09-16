@@ -6,7 +6,13 @@ body {
     font-size:12px;
 }
 
+.pagenumber {
+	text-align: left;
+}
 
+.transcription-credit {
+	text-align: right;
+}
 
 html {
     background: none repeat scroll 0 0 #FFFFFF;

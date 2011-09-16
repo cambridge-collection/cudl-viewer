@@ -3,6 +3,11 @@ html {
 	background: #ffffff url(/images/header/gradient.png) repeat-x;
 }
 
+#doc {
+	background-color: black;
+	color: white;
+	}
+		
 .document-about-title {
 	color: #333333;
 	font-family: Georgia, 'Times New Roman', serif;

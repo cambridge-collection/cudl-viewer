@@ -111,6 +111,8 @@ public class TranscriptionViewController {
 			output.append(sourcePage.substring(sourcePage.indexOf("<head>"),sourcePage.indexOf("</head>")));
 			output.append("<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
 			output.append("</head><body>\n");
+			// Add link to Newton Project
+			output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='"+requestURL+"'>Newton Project</a></div>");
 				
 		} 
 		
@@ -119,10 +121,7 @@ public class TranscriptionViewController {
 			
 			output.append(sourcePage.substring(sourcePage.indexOf("<div id=\"tei\">"),sourcePage.indexOf("<!--end-text-container-->")));
 				
-		} 
-		
-		// Add link to Newton Project
-		output.append("<br/><br/>This transcription was provided by the <a target='_blank' href='"+requestURL+"'>Newton Project</a>.");
+		} 				
 		
 		// End Tag
 		output.append("</body></HTML>");
