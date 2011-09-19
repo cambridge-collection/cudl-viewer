@@ -34,7 +34,7 @@ html {
 	height: 3px;
 }
 
-#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay, #metadata-page
+#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page
 	{
 	font-weight: bold;
 }
@@ -65,7 +65,6 @@ body {
 	background-color: #FFFFFF;
 	padding: 18px 0 0 0;
 }
-
 
 h3,h2,h1,h4 {
 	line-height: 18px;
@@ -146,8 +145,8 @@ ol#index_carousel li {
 }
 
 .footer a:link,.footer a:visited,.footer a:active {
-    color: #FFFFFF;
-    text-decoration: underline;
+	color: #FFFFFF;
+	text-decoration: underline;
 }
 
 .news {
@@ -161,6 +160,13 @@ ol#index_carousel li {
 .x-toolbar-default {
 	border: 0;
 }
+
+/* overwrite the university style for the bottom margin as
+ this is conflicting with the Ext Style, esp in ie */
+table {
+	margin-bottom: 0px;
+}
+
 /*
 .x-panel-header-text-default {
 	color: #000000;
