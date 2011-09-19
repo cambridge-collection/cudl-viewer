@@ -33,7 +33,7 @@ About the document:<br/>
 		Current page: <em id="metadata-page"></em><br/>
 		
 		<br />
-		<b><a href="downloadImage">Bookmark direct link to this page</a></b>
+		<b><a href="" onclick="bookmarkPage('Cambridge Digital Library', docURL+'/'+pagenum); return false;">Bookmark direct link to this page</a></b>
 		<br /> 
 		<b><a href="" onclick="downloadImageCheck(); return false;">Download Image for this page</a></b>
 		<br /> <br />

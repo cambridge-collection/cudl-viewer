@@ -32,18 +32,6 @@ var docView = function() {
 			return !isNaN(parseFloat(n)) && isFinite(n);
 		},
 		
-		bookmarkPage: function(title, url) {
-
-		  if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) {
-			  window.external.AddFavorite(url,title);
-		  } else if (navigator.appName == "Netscape") {
-			  window.sidebar.addPanel(title,url,"");
-		  } else {
-		    alert("Press CTRL-D (Netscape) or CTRL-T (Opera) to bookmark");
-		  }
-	
-		},
-		
 		/**
 		 * Replaces the innerHTML of the element if it has changed.
 		 * @param element should always exist

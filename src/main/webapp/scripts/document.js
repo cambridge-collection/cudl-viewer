@@ -84,6 +84,16 @@ function setupViewport() {
 			});
 	};
 	
+	bookmarkPage = function(title, url) {
+
+		Ext.Msg.show({
+			   title:'Bookmark Page',
+			   msg: 'The URL to bookmark for direct access to this page is: <br/>'+url,
+			   buttons: Ext.Msg.OK,
+			   fn: function() {return;}
+			});
+
+	};
 	// Setup component behaviour
 	pagingTool.on('change', view.updateCurrentPage);
 	viewportComponents.pagingToolbar.add(pagingTool);

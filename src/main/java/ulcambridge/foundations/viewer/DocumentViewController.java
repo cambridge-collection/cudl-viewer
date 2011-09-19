@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -23,22 +25,40 @@ public class DocumentViewController {
 	
 	// on path /view/{docId}
 	@RequestMapping(value = "/{docId}")
-	public ModelAndView handleRequest(@PathVariable("docId") String docId) {
+	public ModelAndView handleRequest(@PathVariable("docId") String docId, HttpServletRequest request) {
 
+		String requestURL = request.getRequestURL().toString();
+		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
+			//cut off last character. 
+			requestURL = requestURL.substring(0, requestURL.length()-2);	
+		}
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page. 
+		modelAndView.addObject("docURL", requestURL);
+		
+		System.out.println("docURL: "+requestURL);
 		return modelAndView;
 	}
 	
 	// on path /view/{docId}/{page}
 	@RequestMapping(value = "/{docId}/{page}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
-			@PathVariable("page") String page) {
+			@PathVariable("page") String page, HttpServletRequest request) {
 
+		String requestURL = request.getRequestURL().toString();
+		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
+			//cut off last character. 
+			requestURL = requestURL.substring(0, requestURL.length()-2);	
+		}
+		// cut off the page part of the url. 
+		requestURL = requestURL.substring(0, requestURL.lastIndexOf("/"));
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
+		modelAndView.addObject("docURL", requestURL);
 		return modelAndView;
 	}
 

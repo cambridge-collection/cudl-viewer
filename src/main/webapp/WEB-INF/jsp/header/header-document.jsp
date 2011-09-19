@@ -34,6 +34,7 @@ body {
 	var JSONURL = '/json/${docId}.json';
 	var pagenum = ${page};
 	var docId = '${docId}';
+	var docURL = '${docURL}';
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
