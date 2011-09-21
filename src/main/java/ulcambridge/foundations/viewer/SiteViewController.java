@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -51,4 +52,12 @@ public class SiteViewController {
 		return modelAndView;
 	}		
 	
+	// on path /nojavascript
+	@RequestMapping(value = "/nojavascript")
+	public ModelAndView handleNoJavascriptRequest(@RequestParam("url") String url) {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/nojavascript");
+		modelAndView.addObject("requestURL", url);
+		return modelAndView;
+	}	
 }

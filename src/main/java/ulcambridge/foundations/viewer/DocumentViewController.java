@@ -28,15 +28,17 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId, HttpServletRequest request) {
 
 		String requestURL = request.getRequestURL().toString();
+		String docURL = requestURL;
 		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
 			//cut off last character. 
-			requestURL = requestURL.substring(0, requestURL.length()-2);	
+			docURL = docURL.substring(0, requestURL.length()-2);	
 		}
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page. 
-		modelAndView.addObject("docURL", requestURL);
+		modelAndView.addObject("docURL", docURL);
+		modelAndView.addObject("requestURL", requestURL);
 		
 		return modelAndView;
 	}
@@ -47,17 +49,19 @@ public class DocumentViewController {
 			@PathVariable("page") String page, HttpServletRequest request) {
 
 		String requestURL = request.getRequestURL().toString();
+		String docURL = requestURL;
 		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
 			//cut off last character. 
-			requestURL = requestURL.substring(0, requestURL.length()-2);	
+			docURL = docURL.substring(0, requestURL.length()-2);	
 		}
 		// cut off the page part of the url. 
-		requestURL = requestURL.substring(0, requestURL.lastIndexOf("/"));
+		docURL = docURL.substring(0, requestURL.lastIndexOf("/"));
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
-		modelAndView.addObject("docURL", requestURL);
+		modelAndView.addObject("docURL", docURL);
+		modelAndView.addObject("requestURL", requestURL);
 		return modelAndView;
 	}
 

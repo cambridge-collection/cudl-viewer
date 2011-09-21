@@ -1,7 +1,16 @@
+<%@ page import="java.net.URLEncoder"%>
 <html>
 <head>
-
+<%
+	String requestURL = request.getAttribute("requestURL").toString();
+	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<NOSCRIPT>
+	<!--  no javascript redirect. -->
+	<META HTTP-EQUIV="refresh"
+		content="0;URL=/nojavascript?url=<%=encodedRequestURL%>">
+</NOSCRIPT>
 
 <title>Cambridge Digital Library - University of Cambridge</title>
 
@@ -22,9 +31,11 @@
 		repeat-x;
 	background-color: #FFFFFF;
 }
+
 h2 {
 	font-size: 36px;
 }
+
 body {
 	background: #ffffff url(/images/header/gradient.png) repeat-x;
 }
@@ -32,7 +43,10 @@ body {
 
 <script type="text/javascript">
 	var JSONURL = '/json/${docId}.json';
-	var pagenum = ${page};
+	var pagenum = $
+	{
+		page
+	};
 	var docId = '${docId}';
 	var docURL = '${docURL}';
 </script>
@@ -50,12 +64,15 @@ body {
 
 		<div class="clear"></div>
 
-		<header id="localMasthead"> <hgroup>
-		<a href="http://www.cam.ac.uk"><img title="University of Cambridge" align="left" src="/images/header/logo.png" width="130px" height="27px" /></a>
+		<header id="localMasthead"> <hgroup> <a
+			href="http://www.cam.ac.uk"><img title="University of Cambridge"
+			align="left" src="/images/header/logo.png" width="130px"
+			height="27px" /> </a>
 		<h2>
-			<a  href="/" title="Cambridge Digital Library ">|&nbsp; Cambridge
+			<a href="/" title="Cambridge Digital Library ">|&nbsp; Cambridge
 				Digital Library </a>
 		</h2>
-		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" align="right" src="/images/header/ul-small.png" width="84px"
-			height="36px" /></a> </hgroup> </header>
+		<a href="http://www.lib.cam.ac.uk"><img
+			title="Cambridge University Library" align="right"
+			src="/images/header/ul-small.png" width="84px" height="36px" /> </a> </hgroup> </header>
 		<!-- end #localMasthead -->
