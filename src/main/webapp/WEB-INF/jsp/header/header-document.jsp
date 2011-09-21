@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/scripts/extjs/resources/css/ext-all.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style.css" />
-
+<link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 <style>
 .container {
 	background: url(/images/documentView/background_header.jpg) 50% 0

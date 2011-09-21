@@ -38,7 +38,6 @@ public class DocumentViewController {
 		modelAndView.addObject("page", 1); // defaults to first page. 
 		modelAndView.addObject("docURL", requestURL);
 		
-		System.out.println("docURL: "+requestURL);
 		return modelAndView;
 	}
 	

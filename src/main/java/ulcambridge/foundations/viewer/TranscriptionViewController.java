@@ -44,7 +44,7 @@ public class TranscriptionViewController {
 			
 			String page = "<html><head>" +
 					"<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n"+
-					"</head><body> No transcription available for this image. </body></html>";
+					"</head><body><div class=\"transcription\"> No transcription available for this image. </div></body></html>";
 			
 			writePage(response,page);
 			return null;
@@ -110,7 +110,7 @@ public class TranscriptionViewController {
 			
 			output.append(sourcePage.substring(sourcePage.indexOf("<head>"),sourcePage.indexOf("</head>")));
 			output.append("<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
-			output.append("</head><body>\n");
+			output.append("</head><body><div class=\"transcription\">\n");
 			// Add link to Newton Project
 			output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='"+requestURL+"'>Newton Project</a></div>");
 				
@@ -124,7 +124,7 @@ public class TranscriptionViewController {
 		} 				
 		
 		// End Tag
-		output.append("</body></HTML>");
+		output.append("</div></body></HTML>");
 
 		return output.toString();
 	}

@@ -35,13 +35,11 @@ var viewportComponents = {
 		collapsed : false,
 		collapsible : true,
 		buttonAlign : 'left',
-		bodyPadding : 10,
+		bodyPadding : 0,
 		items : [ {
 			xtype : 'panel',
-			title : 'About',
-			autoScroll:true,
-			el : 'metadata'
-				
+			title : 'About',			
+			el : 'metadata'				
 		}, {
 			xtype : 'panel',
 			title : 'Transcription (normalised)',

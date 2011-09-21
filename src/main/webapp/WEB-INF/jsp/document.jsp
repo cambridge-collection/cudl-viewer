@@ -7,6 +7,7 @@
 <div id="doc"></div>
 <jsp:include page="document-about.jsp" />
 
+
 <div id="transcription_normal">
  <iframe id="transcription_normal_frame" width="100%" height="100%" frameborder='0' src="">
  </iframe>

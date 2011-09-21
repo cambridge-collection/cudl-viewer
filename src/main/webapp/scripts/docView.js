@@ -109,10 +109,13 @@ var docView = function() {
 				view.populateElement(document.getElementById("metadata-dateCreatedDisplay"), data.dateCreatedDisplay);
 
 				if (data.abstract) {
-					view.populateElement(document.getElementById("metadata-abstract"),"<br />"+data.abstract+"<br />");
+					view.populateElement(document.getElementById("metadata-abstract"),""+data.abstract+"<br />");
 				}
 				if (data.mediaurl) {
-					view.populateElement(document.getElementById("metadata-media"),"<iframe style='float: right; padding-left:10px; padding-right:10px' width='320' height='245'	src='"+data.mediaurl+"' frameborder='0' allowfullscreen></iframe>");
+					//view.populateElement(document.getElementById("metadata-media"),"<iframe style='float: right; padding-left:10px; padding-right:10px' width='320' height='245'	src='"+data.mediaurl+"' frameborder='0' allowfullscreen></iframe>");
+					var mediawidth = 220;
+					var mediaheight = 175;
+					view.populateElement(document.getElementById("metadata-media"),"<object width=\""+mediawidth+"\" height=\""+mediaheight+"\"><param name=\"movie\" value=\""+data.mediaurl+"\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\""+data.mediaurl+"\" type=\"application/x-shockwave-flash\" width=\""+mediawidth+"\" height=\""+mediaheight+"\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>");
 				}
 				
 				// setup logical structure
@@ -124,7 +127,7 @@ var docView = function() {
 							+ lsItem.startPagePosition + ", page "
 							+ lsItem.startPage+")</li>";
 				}
-				view.populateElement(document.getElementById("logical_structure"),"<div style='height: 100%; overflow:auto;'><ul>"
+				view.populateElement(document.getElementById("logical_structure"),"<div style='height: 100%; overflow-y:auto;'><ul>"
 						+ ls + "</ul></div>", true);
 
 			}

@@ -6,6 +6,10 @@ body {
     font-size:12px;
 }
 
+.transcription {	
+	padding: 10px;
+}
+
 .pagenumber {
 	text-align: left;
 }
