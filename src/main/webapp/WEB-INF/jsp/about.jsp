@@ -42,15 +42,14 @@
 						so that our collections can be much more accessible to students,
 						researchers and the wider public.</p>
 					<p>We have called the first phase of our work on the Cambridge
-						Digital Library the Foundations Project, which runs from mid-2010
+						Digital Library the <b>Foundations Project</b>, which runs from mid-2010
 						to mid-2013 and has been made possible through a lead gift of
 						&pound;1.5m by Dr Leonard Polonsky. This generous support will enable
 						the Library to develop its technical infrastructure and create
 						significant content in the areas of faith and science - two areas
 						of particular strength within our collections.</p>
 
-					<h4>Foundations of Faith</h4>
-					<p>The Foundations of Faith Collection will include important
+					<p><b>The Foundations of Faith Collection</b> will include important
 						works from many religious traditions, particularly Judaism, Islam,
 						Christianity and Buddhism. The Library's faith collections are
 						breathtaking. They include some of the oldest and most significant
@@ -65,8 +64,7 @@
 						Library's substantial Sanskrit collection are some of the earliest
 						surviving Buddhist manuscripts.</p>
 
-					<h4>Foundations of Science</h4>
-					<p>The Foundations of Science Collection will focuses on
+					<p><b>The Foundations of Science Collection</b> will focuses on
 						scientific works, beginning with the papers of Isaac Newton and
 						his contemporaries. Cambridge University Library has very strong
 						collections in the history of Science. In addition to our Newton

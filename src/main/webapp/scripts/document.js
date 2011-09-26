@@ -52,7 +52,7 @@ function setupViewport() {
 
 	// Set the title before we make the viewport.
 	viewportComponents.pageTitlePanel.items.items[0].text = '<b>' + data.title
-	+ '</b> &nbsp;<i>by ' + data.author + '</i>';
+	+ '</b> &nbsp;by ' + data.author + '';
 	
 	view = new docView();
 

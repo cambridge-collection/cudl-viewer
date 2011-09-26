@@ -24,8 +24,8 @@
 				<p>
 					This first release features some of Newton's most important work
 					from the 1660s, including his '<a href="/view/MS-ADD-04000/">Mathematical
-						Notebook</a>' (MS Add 4000), '<a href="/view/MS-ADD-03996/">Trinity College Notebook</a>' (MS Add 3996) and the '<a
-						href="/view/MS-ADD-04004/">Waste Book</a>' (MS Add 4004).
+						Notebook</a>', '<a href="/view/MS-ADD-03996/">Trinity College Notebook</a>' and '<a
+						href="/view/MS-ADD-04004/">Waste Book</a>'.
 				</p>
 			</div> <a href="/view/"><img id="newtonImage"
 				src="/images/index/newtondoc.jpg" alt="Test" width="600"

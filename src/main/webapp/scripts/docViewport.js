@@ -9,7 +9,7 @@ var viewportComponents = {
 		margin : '0 0 0 0',					
 		border : 0,
 		padding : 0,
-		items:[ '<b>Unknown Title</b> &nbsp;<i>by Unknown</i>' ]
+		items:[ '<b>Unknown Title</b> &nbsp;by Unknown' ]
 	}),
 
 	/* Setup the toolbar used to change page */

@@ -8,7 +8,7 @@
 		title="Privacy"> Privacy </a>
 	</li>
 	<li><a
-		href="http://www.lib.cam.ac.uk/disabledreaders/accessibility.html"
+		href="http://www.cam.ac.uk/site/"
 		title="Accessibility"> Accessibility </a>
 	</li>
 	<li><a href="/terms/" title="Terms & Conditions"> Terms &

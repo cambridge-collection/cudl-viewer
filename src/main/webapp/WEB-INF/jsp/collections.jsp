@@ -112,7 +112,7 @@ section#content p {
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg"
 					alt="MS-ADD-03970" width="139" height="180" /> </a>
-				<h5>Draft of 'A Theory Concerning Light and Colors' (Ms.3970)</h5>A
+				<h5>Hydrostatics, Optics, Sound and Heat (Ms.3970)</h5>A
 				description of the book should go here. Suspendisse lorem magna,
 				mattis at volutpat aliquet, placerat sed leo. Cras nulla orci,
 				aliquam nec sagittis et, tempor at quam.</li>

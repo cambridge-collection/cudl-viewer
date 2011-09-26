@@ -29,9 +29,9 @@ public class DocumentViewController {
 
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
-		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
+		if (docURL.lastIndexOf("/")==docURL.length()-1){
 			//cut off last character. 
-			docURL = docURL.substring(0, requestURL.length()-2);	
+			docURL = docURL.substring(0, docURL.length()-2);	
 		}
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
@@ -50,13 +50,13 @@ public class DocumentViewController {
 
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
-		if (requestURL.lastIndexOf("/")==requestURL.length()-1){
+		if (docURL.lastIndexOf("/")==docURL.length()-1){
 			//cut off last character. 
-			docURL = docURL.substring(0, requestURL.length()-2);	
+			docURL = docURL.substring(0, docURL.length()-2);	
 		}
 		// cut off the page part of the url. 
-		docURL = docURL.substring(0, requestURL.lastIndexOf("/"));
-		
+		docURL = docURL.substring(0, docURL.lastIndexOf("/"));
+
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
