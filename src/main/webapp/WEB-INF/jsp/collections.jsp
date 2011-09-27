@@ -96,7 +96,7 @@ section#content p {
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-04004-001-00001_files/8/0_0.jpg"
 					alt="MS-ADD-04004" width="139" height="180" /> </a>
-				<h5>Waste Book (Ms.4004)</h5>Much of Newton's important work on
+				<h5>Waste Book (Ms.4004) Part 2</h5>Much of Newton's important work on
 				calculus is developed in this large notebook, used when he was away
 				from Cambridge due to the plague.</li>
 			<li><a href="/view/MS-ADD-04000/"><img

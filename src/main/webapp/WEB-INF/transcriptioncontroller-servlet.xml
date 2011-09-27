@@ -19,12 +19,21 @@
 		class="ulcambridge.foundations.viewer.TranscriptionViewController">
 	</bean>
 	
+	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+      <property name="locations">
+        <list><value>classpath:cudl-global.properties</value></list>
+      </property>
+    </bean>
+    	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
 		<property name="contentType" value="text/html;charset=UTF-8"></property>
     	<property name="prefix"><value>/WEB-INF/</value></property>
     	<property name="suffix"><value>.jsp</value></property>
-
+    	<property name="exposedContextBeanNames">
+       	 	<list><value>globalproperties</value></list>
+    	</property>
+    	
 	</bean>
 
 	

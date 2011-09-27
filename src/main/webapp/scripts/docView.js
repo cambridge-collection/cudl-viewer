@@ -103,6 +103,7 @@ var docView = function() {
 				view.populateElement(document.getElementById("metadata-author"), data.author);
 				view.populateElement(document.getElementById("metadata-rights"), data.rights);
 				view.populateElement(document.getElementById("metadata-page"), data.pages[pagenum - 1].name, true);
+				view.populateElement(document.getElementById("metadata-page-toolbar"), data.pages[pagenum - 1].name, true);				
 				view.populateElement(document.getElementById("metadata-subject"), data.subject);
 				view.populateElement(document.getElementById("metadata-physicalLocation"), data.physicalLocation);
 				view.populateElement(document.getElementById("metadata-shelfLocation"), data.shelfLocator);

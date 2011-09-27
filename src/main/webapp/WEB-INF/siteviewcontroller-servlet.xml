@@ -18,6 +18,12 @@
 	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
 	</bean>
 
+	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+      <property name="locations">
+        <list><value>classpath:cudl-global.properties</value></list>
+      </property>
+    </bean>
+    
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 
@@ -28,7 +34,9 @@
 		<property name="suffix">
 			<value>.jsp</value>
 		</property>
-
+    	<property name="exposedContextBeanNames">
+       	 	<list><value>globalproperties</value></list>
+    	</property>
 	</bean>
 
 	<mvc:annotation-driven />

@@ -11,7 +11,7 @@
 
 		<!-- Metadata -->
 		<div id="metadata-media" class="document-about-media"></div>
-
+<br/><br/>
 		<div id="metadata-abstract"></div>
 
  		<!--  About the document -->
@@ -40,12 +40,14 @@
 			<div class="rbcontent">
 				<!--  about the page -->
 				<div class="document-about-page">
-					Current page: <span id="metadata-page"></span> <br /> <br /> <b><a
+					Current page/folio: <span id="metadata-page"></span> <br /> <br /> <b><a
 						href=""
 						onclick="bookmarkPage('Cambridge Digital Library', docURL+'/'+pagenum); return false;">Bookmark
 							direct link to this page</a> </b> <br /> <b><a href=""
-						onclick="downloadImageCheck(); return false;">Download Image
-							for this page</a> </b>
+						onclick="downloadImageCheck(); return false;">Download image
+							for this page</a> </b><br /> <b><a href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
+						target="_blank">Request reproduction rights to this image</a> </b>
+							
 				</div>
 			</div>
 			<div class="rbbot">

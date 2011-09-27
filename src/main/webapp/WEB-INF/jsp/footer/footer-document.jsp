@@ -1,6 +1,8 @@
 
 <!--  Google Analytics -->
+
 <script type="text/javascript">
+
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
 			: "http://www.");
 	document
@@ -9,8 +11,11 @@
 					+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
+
+	var googleAnalyticsID = "${globalproperties.GoogleAnalyticsId}";
+
 	try {
-		var pageTracker = _gat._getTracker("UA-10976633-1");
+		var pageTracker = _gat._getTracker(googleAnalyticsID);
 		pageTracker._trackPageview();
 	} catch (err) {
 	}

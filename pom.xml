@@ -30,6 +30,7 @@
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
+
 				</configuration>
 			</plugin>
 			<plugin>
@@ -41,7 +42,21 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+
+
+			<!-- We don't want to include the global properties file as this changes 
+				depending on the environment - dev, beta live etc. -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<warName>FoundationsViewer</warName>
+					<packagingExcludes>WEB-INF/classes/cudl-global.properties</packagingExcludes>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</build>
 
 	<dependencies>

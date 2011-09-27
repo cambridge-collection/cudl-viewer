@@ -60,7 +60,8 @@ function setupViewport() {
 	var pagingTool = Ext.create('Ext.toolbar.Paging', {
 		xtype : 'pagingtoolbar',
 		padding : 0,
-		width : 250,
+		width : 275,
+		inputItemWidth:40,
 		beforePageText:'Image',
 		store : store,
 		margin : '0 0 0 0',
@@ -97,6 +98,7 @@ function setupViewport() {
 	// Setup component behaviour
 	pagingTool.on('change', view.updateCurrentPage);
 	viewportComponents.pagingToolbar.add(pagingTool);
+	viewportComponents.pagingToolbar.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
 	viewportComponents.pagingToolbar.add('->');
 	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.png', handler: downloadImageCheck});
 	

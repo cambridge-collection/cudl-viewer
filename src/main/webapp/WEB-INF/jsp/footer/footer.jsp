@@ -1,3 +1,4 @@
+
 <footer id="footer" class="grid_20">
 <p class="grid_13 prefix_1 suffix_1 alpha footer"><a href="/terms/">&copy; 2011 Cambridge
 	University Library</a>, West Road, Cambridge CB3 9DR, UK</p>
@@ -22,7 +23,9 @@
 </div>
 
 <!--  Google Analytics -->
+
 <script type="text/javascript">
+
 	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
 			: "http://www.");
 	document
@@ -31,14 +34,17 @@
 					+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
+
+	var googleAnalyticsID = "${globalproperties.GoogleAnalyticsId}";
+
 	try {
-		var pageTracker = _gat._getTracker("UA-10976633-1");
+		var pageTracker = _gat._getTracker(googleAnalyticsID);
 		pageTracker._trackPageview();
 	} catch (err) {
 	}
 </script>
 <script src="http://www.lib.cam.ac.uk/global/js/gaAddons.js" type="text/javascript"></script>
-
+  
 </body>
 
 </html>
