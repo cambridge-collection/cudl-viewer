@@ -57,12 +57,17 @@ var docView = function() {
 		 * displayed.
 		 */
 		/* NOTE: ANY changes to the toolbar cause this top be called */		
-		updateCurrentPage : function() {
+		updateCurrentPage : function(toolbar, pageData, eOpts) {									  	
+
+			// FIXME validate input 
 			
-			// FIXME validate input properly.
+			// Input page from next/back button etc. 
 			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {
+
 				pagenum = store.currentPage;
-			}
+				
+			} 
+								
 
 			// This will cause this function to be called again as the toolbar
 			// has changed.
@@ -123,7 +128,7 @@ var docView = function() {
 				var ls = "";
 				for ( var i = 0; i < data.logicalStructure.length; i++) {
 					var lsItem = data.logicalStructure[i];
-					ls += "<li><a href='" + lsItem.startPagePosition + "'>"
+					ls += "<li><a href='' onclick='store.loadPage(" + lsItem.startPagePosition + ");return false;'>"
 							+ lsItem.title + "</a> (image "
 							+ lsItem.startPagePosition + ", page "
 							+ lsItem.startPage+")</li>";

@@ -71,11 +71,6 @@
 	</servlet-mapping>
 
 
-	<!-- Welcome file -->
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>
 		<extension>json</extension>
@@ -86,4 +81,15 @@
 		<extension>dzi</extension>
 		<mime-type>text/xml</mime-type>
 	</mime-mapping>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errors/404.html</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errors/500.html</location>
+	</error-page>	
+	
 </web-app>   

@@ -60,4 +60,20 @@ public class SiteViewController {
 		modelAndView.addObject("requestURL", url);
 		return modelAndView;
 	}	
+	
+	// on path /errors/404.html
+	@RequestMapping(value = "/errors/404.html")
+	public ModelAndView handle404() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/errors/404");
+		return modelAndView;
+	}	
+	
+	// on path /errors/500.html
+	@RequestMapping(value = "/errors/500.html")
+	public ModelAndView handle500() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/errors/500");
+		return modelAndView;
+	}		
 }

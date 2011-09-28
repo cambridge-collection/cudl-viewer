@@ -49,6 +49,7 @@ body {
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
+<script type="text/javascript" src="/scripts/cudl-util.js"></script>
 <script type="text/javascript" src="/scripts/docData.js"></script>
 <script type="text/javascript" src="/scripts/docViewport.js"></script>
 <script type="text/javascript" src="/scripts/docView.js"></script>
