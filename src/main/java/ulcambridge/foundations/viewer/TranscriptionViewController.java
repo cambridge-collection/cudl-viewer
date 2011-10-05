@@ -36,6 +36,7 @@ public class TranscriptionViewController {
 		
 		// The url for the transcription specified should be something like the following:.
 		// http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00009/start=p001r&end=p001r
+		// onload should be the function to call onpage load. 
 
 		// TODO input validation
 
@@ -97,6 +98,8 @@ public class TranscriptionViewController {
 		// FIXME - temporary until sussex has the appropriate feed setup. 
 		sourcePage = sourcePage.replaceAll("\"/mainui", "\""+baseURL+"/mainui" );
 			
+		// FIXME remove problem js		
+		
 		// replace any links to the view (diplomatic or normal) 
 		//thisURL = thisURL.replaceAll("&view=\\w", "");
 		//sourcePage = sourcePage.replaceAll("\"/view/extract/diplomatic/[\\w|/|\\d|&|=]*\"", thisURL+"&view=diplomatic" );
@@ -117,11 +120,12 @@ public class TranscriptionViewController {
 		} 
 		
 		// include the content //<!--start-text-container-->
-		if (sourcePage.indexOf("<div id=\"tei\">")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
+		if (sourcePage.indexOf("<!--start-text-container-->")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
 			
-			output.append(sourcePage.substring(sourcePage.indexOf("<div id=\"tei\">"),sourcePage.indexOf("<!--end-text-container-->")));
+			output.append(sourcePage.substring(sourcePage.indexOf("<!--start-text-container-->"),sourcePage.indexOf("<!--end-text-container-->")));
 				
 		} 				
+		
 		
 		// End Tag
 		output.append("</div></body></HTML>");
