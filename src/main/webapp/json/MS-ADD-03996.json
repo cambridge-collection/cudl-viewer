@@ -1,5 +1,4 @@
-
-               {
+              {
                "title":"Trinity College Notebook",
                "author":[
                "Isaac Newton"
@@ -7,10 +6,8 @@
                "contributor":[
                ""
                ],
-               "abstract":"This is a notebook Newton kept while studying at Trinity College and used from about 1661 to 1665. It includes many notes from his studies and, increasingly, his own explorations into mathematics, physics and metaphysics. It was judged 'Not fit to be printed' by Newton’s executors and was presented to the Library by the fifth Earl of Portsmouth in 1872."
-               ,
-               "mediaurl":"http://www.youtube.com/v/1XJkvMyupds?version=3&amp;hl=en_GB"
-               ,                   
+               "abstract":"This is a notebook Newton kept while studying at Trinity College and used from about 1661 to 1665. It includes many notes from his studies and, increasingly, his own explorations into mathematics, physics and metaphysics. It was judged 'Not fit to be printed' by Newton's executors and was presented to the Library by the fifth Earl of Portsmouth in 1872.",
+               "mediaurl":"http://www.youtube.com/v/1XJkvMyupds?version=3&amp;hl=en_GB",
                "subject":[
                "Mathematics"
                ],
@@ -25,7 +22,7 @@
                "eng","lat","gre"
                ],
                "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"Additional Ms. 3996",
+               "shelfLocator":"MS Add. 3996",
                "rights":"Zooming image &copy; Cambridge University Library, All rights reserved. Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).",
                "type":"manuscript",
                "extent":"",
@@ -531,8 +528,24 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"31r",
+                  "name":"back cover",
                   "physID":"PHYS-63",
+                  "displayImageURL":"/content/images/MS-ADD-03996-000-00284.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-03996-000-00284.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"back cover (inside)",
+                  "physID":"PHYS-64",
+                  "displayImageURL":"/content/images/MS-ADD-03996-000-00283.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-03996-000-00283.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"31r",
+                  "physID":"PHYS-65",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00063.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00063.jpg",
                   "transcriptionNormalisedURL":"",
@@ -540,7 +553,7 @@
                   },
                   {
                   "name":"31v",
-                  "physID":"PHYS-64",
+                  "physID":"PHYS-66",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00064.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00064.jpg",
                   "transcriptionNormalisedURL":"",
@@ -548,7 +561,7 @@
                   },
                   {
                   "name":"32r",
-                  "physID":"PHYS-65",
+                  "physID":"PHYS-67",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00065.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00065.jpg",
                   "transcriptionNormalisedURL":"",
@@ -556,7 +569,7 @@
                   },
                   {
                   "name":"32v",
-                  "physID":"PHYS-66",
+                  "physID":"PHYS-68",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00066.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00066.jpg",
                   "transcriptionNormalisedURL":"",
@@ -564,7 +577,7 @@
                   },
                   {
                   "name":"33r",
-                  "physID":"PHYS-67",
+                  "physID":"PHYS-69",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00067.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00067.jpg",
                   "transcriptionNormalisedURL":"",
@@ -572,7 +585,7 @@
                   },
                   {
                   "name":"33v",
-                  "physID":"PHYS-68",
+                  "physID":"PHYS-70",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00068.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00068.jpg",
                   "transcriptionNormalisedURL":"",
@@ -580,7 +593,7 @@
                   },
                   {
                   "name":"34r",
-                  "physID":"PHYS-69",
+                  "physID":"PHYS-71",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00069.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00069.jpg",
                   "transcriptionNormalisedURL":"",
@@ -588,7 +601,7 @@
                   },
                   {
                   "name":"34v",
-                  "physID":"PHYS-70",
+                  "physID":"PHYS-72",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00070.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00070.jpg",
                   "transcriptionNormalisedURL":"",
@@ -596,7 +609,7 @@
                   },
                   {
                   "name":"35r",
-                  "physID":"PHYS-71",
+                  "physID":"PHYS-73",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00071.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00071.jpg",
                   "transcriptionNormalisedURL":"",
@@ -604,7 +617,7 @@
                   },
                   {
                   "name":"35v",
-                  "physID":"PHYS-72",
+                  "physID":"PHYS-74",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00072.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00072.jpg",
                   "transcriptionNormalisedURL":"",
@@ -612,7 +625,7 @@
                   },
                   {
                   "name":"36r",
-                  "physID":"PHYS-73",
+                  "physID":"PHYS-75",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00073.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00073.jpg",
                   "transcriptionNormalisedURL":"",
@@ -620,7 +633,7 @@
                   },
                   {
                   "name":"36v",
-                  "physID":"PHYS-74",
+                  "physID":"PHYS-76",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00074.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00074.jpg",
                   "transcriptionNormalisedURL":"",
@@ -628,7 +641,7 @@
                   },
                   {
                   "name":"37r",
-                  "physID":"PHYS-75",
+                  "physID":"PHYS-77",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00075.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00075.jpg",
                   "transcriptionNormalisedURL":"",
@@ -636,7 +649,7 @@
                   },
                   {
                   "name":"37v",
-                  "physID":"PHYS-76",
+                  "physID":"PHYS-78",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00076.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00076.jpg",
                   "transcriptionNormalisedURL":"",
@@ -644,7 +657,7 @@
                   },
                   {
                   "name":"38r",
-                  "physID":"PHYS-77",
+                  "physID":"PHYS-79",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00077.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00077.jpg",
                   "transcriptionNormalisedURL":"",
@@ -652,7 +665,7 @@
                   },
                   {
                   "name":"38v",
-                  "physID":"PHYS-78",
+                  "physID":"PHYS-80",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00078.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00078.jpg",
                   "transcriptionNormalisedURL":"",
@@ -660,7 +673,7 @@
                   },
                   {
                   "name":"39r",
-                  "physID":"PHYS-79",
+                  "physID":"PHYS-81",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00079.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00079.jpg",
                   "transcriptionNormalisedURL":"",
@@ -668,7 +681,7 @@
                   },
                   {
                   "name":"39v",
-                  "physID":"PHYS-80",
+                  "physID":"PHYS-82",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00080.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00080.jpg",
                   "transcriptionNormalisedURL":"",
@@ -676,7 +689,7 @@
                   },
                   {
                   "name":"40r",
-                  "physID":"PHYS-81",
+                  "physID":"PHYS-83",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00081.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00081.jpg",
                   "transcriptionNormalisedURL":"",
@@ -684,7 +697,7 @@
                   },
                   {
                   "name":"40v",
-                  "physID":"PHYS-82",
+                  "physID":"PHYS-84",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00082.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00082.jpg",
                   "transcriptionNormalisedURL":"",
@@ -692,7 +705,7 @@
                   },
                   {
                   "name":"41r",
-                  "physID":"PHYS-83",
+                  "physID":"PHYS-85",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00083.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00083.jpg",
                   "transcriptionNormalisedURL":"",
@@ -700,7 +713,7 @@
                   },
                   {
                   "name":"41v",
-                  "physID":"PHYS-84",
+                  "physID":"PHYS-86",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00084.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00084.jpg",
                   "transcriptionNormalisedURL":"",
@@ -708,7 +721,7 @@
                   },
                   {
                   "name":"42r",
-                  "physID":"PHYS-85",
+                  "physID":"PHYS-87",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00085.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00085.jpg",
                   "transcriptionNormalisedURL":"",
@@ -716,7 +729,7 @@
                   },
                   {
                   "name":"42v",
-                  "physID":"PHYS-86",
+                  "physID":"PHYS-88",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00086.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00086.jpg",
                   "transcriptionNormalisedURL":"",
@@ -724,7 +737,7 @@
                   },
                   {
                   "name":"43r",
-                  "physID":"PHYS-87",
+                  "physID":"PHYS-89",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00087.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00087.jpg",
                   "transcriptionNormalisedURL":"",
@@ -732,7 +745,7 @@
                   },
                   {
                   "name":"43v",
-                  "physID":"PHYS-88",
+                  "physID":"PHYS-90",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00088.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00088.jpg",
                   "transcriptionNormalisedURL":"",
@@ -740,7 +753,7 @@
                   },
                   {
                   "name":"44r",
-                  "physID":"PHYS-89",
+                  "physID":"PHYS-91",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00089.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00089.jpg",
                   "transcriptionNormalisedURL":"",
@@ -748,7 +761,7 @@
                   },
                   {
                   "name":"44v",
-                  "physID":"PHYS-90",
+                  "physID":"PHYS-92",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00090.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00090.jpg",
                   "transcriptionNormalisedURL":"",
@@ -756,7 +769,7 @@
                   },
                   {
                   "name":"45r",
-                  "physID":"PHYS-91",
+                  "physID":"PHYS-93",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00091.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00091.jpg",
                   "transcriptionNormalisedURL":"",
@@ -764,7 +777,7 @@
                   },
                   {
                   "name":"45v",
-                  "physID":"PHYS-92",
+                  "physID":"PHYS-94",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00092.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00092.jpg",
                   "transcriptionNormalisedURL":"",
@@ -772,7 +785,7 @@
                   },
                   {
                   "name":"46r",
-                  "physID":"PHYS-93",
+                  "physID":"PHYS-95",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00093.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00093.jpg",
                   "transcriptionNormalisedURL":"",
@@ -780,7 +793,7 @@
                   },
                   {
                   "name":"46v",
-                  "physID":"PHYS-94",
+                  "physID":"PHYS-96",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00094.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00094.jpg",
                   "transcriptionNormalisedURL":"",
@@ -788,7 +801,7 @@
                   },
                   {
                   "name":"47r",
-                  "physID":"PHYS-95",
+                  "physID":"PHYS-97",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00095.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00095.jpg",
                   "transcriptionNormalisedURL":"",
@@ -796,7 +809,7 @@
                   },
                   {
                   "name":"47v",
-                  "physID":"PHYS-96",
+                  "physID":"PHYS-98",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00096.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00096.jpg",
                   "transcriptionNormalisedURL":"",
@@ -804,7 +817,7 @@
                   },
                   {
                   "name":"48r",
-                  "physID":"PHYS-97",
+                  "physID":"PHYS-99",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00097.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00097.jpg",
                   "transcriptionNormalisedURL":"",
@@ -812,7 +825,7 @@
                   },
                   {
                   "name":"48v",
-                  "physID":"PHYS-98",
+                  "physID":"PHYS-100",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00098.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00098.jpg",
                   "transcriptionNormalisedURL":"",
@@ -820,7 +833,7 @@
                   },
                   {
                   "name":"49r",
-                  "physID":"PHYS-99",
+                  "physID":"PHYS-101",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00099.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00099.jpg",
                   "transcriptionNormalisedURL":"",
@@ -828,7 +841,7 @@
                   },
                   {
                   "name":"49v",
-                  "physID":"PHYS-100",
+                  "physID":"PHYS-102",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00100.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00100.jpg",
                   "transcriptionNormalisedURL":"",
@@ -836,7 +849,7 @@
                   },
                   {
                   "name":"50r",
-                  "physID":"PHYS-101",
+                  "physID":"PHYS-103",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00101.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00101.jpg",
                   "transcriptionNormalisedURL":"",
@@ -844,7 +857,7 @@
                   },
                   {
                   "name":"50v",
-                  "physID":"PHYS-102",
+                  "physID":"PHYS-104",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00102.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00102.jpg",
                   "transcriptionNormalisedURL":"",
@@ -852,7 +865,7 @@
                   },
                   {
                   "name":"51r",
-                  "physID":"PHYS-103",
+                  "physID":"PHYS-105",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00103.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00103.jpg",
                   "transcriptionNormalisedURL":"",
@@ -860,7 +873,7 @@
                   },
                   {
                   "name":"51v",
-                  "physID":"PHYS-104",
+                  "physID":"PHYS-106",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00104.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00104.jpg",
                   "transcriptionNormalisedURL":"",
@@ -868,7 +881,7 @@
                   },
                   {
                   "name":"52r",
-                  "physID":"PHYS-105",
+                  "physID":"PHYS-107",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00105.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00105.jpg",
                   "transcriptionNormalisedURL":"",
@@ -876,7 +889,7 @@
                   },
                   {
                   "name":"52v",
-                  "physID":"PHYS-106",
+                  "physID":"PHYS-108",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00106.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00106.jpg",
                   "transcriptionNormalisedURL":"",
@@ -884,7 +897,7 @@
                   },
                   {
                   "name":"53r",
-                  "physID":"PHYS-107",
+                  "physID":"PHYS-109",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00107.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00107.jpg",
                   "transcriptionNormalisedURL":"",
@@ -892,7 +905,7 @@
                   },
                   {
                   "name":"53v",
-                  "physID":"PHYS-108",
+                  "physID":"PHYS-110",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00108.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00108.jpg",
                   "transcriptionNormalisedURL":"",
@@ -900,7 +913,7 @@
                   },
                   {
                   "name":"54r",
-                  "physID":"PHYS-109",
+                  "physID":"PHYS-111",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00109.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00109.jpg",
                   "transcriptionNormalisedURL":"",
@@ -908,7 +921,7 @@
                   },
                   {
                   "name":"54v",
-                  "physID":"PHYS-110",
+                  "physID":"PHYS-112",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00110.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00110.jpg",
                   "transcriptionNormalisedURL":"",
@@ -916,7 +929,7 @@
                   },
                   {
                   "name":"55r",
-                  "physID":"PHYS-111",
+                  "physID":"PHYS-113",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00111.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00111.jpg",
                   "transcriptionNormalisedURL":"",
@@ -924,7 +937,7 @@
                   },
                   {
                   "name":"55v",
-                  "physID":"PHYS-112",
+                  "physID":"PHYS-114",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00112.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00112.jpg",
                   "transcriptionNormalisedURL":"",
@@ -932,7 +945,7 @@
                   },
                   {
                   "name":"56r",
-                  "physID":"PHYS-113",
+                  "physID":"PHYS-115",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00113.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00113.jpg",
                   "transcriptionNormalisedURL":"",
@@ -940,7 +953,7 @@
                   },
                   {
                   "name":"56v",
-                  "physID":"PHYS-114",
+                  "physID":"PHYS-116",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00114.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00114.jpg",
                   "transcriptionNormalisedURL":"",
@@ -948,7 +961,7 @@
                   },
                   {
                   "name":"57r",
-                  "physID":"PHYS-115",
+                  "physID":"PHYS-117",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00115.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00115.jpg",
                   "transcriptionNormalisedURL":"",
@@ -956,7 +969,7 @@
                   },
                   {
                   "name":"57v",
-                  "physID":"PHYS-116",
+                  "physID":"PHYS-118",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00116.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00116.jpg",
                   "transcriptionNormalisedURL":"",
@@ -964,7 +977,7 @@
                   },
                   {
                   "name":"58r",
-                  "physID":"PHYS-117",
+                  "physID":"PHYS-119",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00117.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00117.jpg",
                   "transcriptionNormalisedURL":"",
@@ -972,7 +985,7 @@
                   },
                   {
                   "name":"58v",
-                  "physID":"PHYS-118",
+                  "physID":"PHYS-120",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00118.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00118.jpg",
                   "transcriptionNormalisedURL":"",
@@ -980,7 +993,7 @@
                   },
                   {
                   "name":"59r",
-                  "physID":"PHYS-119",
+                  "physID":"PHYS-121",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00119.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00119.jpg",
                   "transcriptionNormalisedURL":"",
@@ -988,7 +1001,7 @@
                   },
                   {
                   "name":"59v",
-                  "physID":"PHYS-120",
+                  "physID":"PHYS-122",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00120.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00120.jpg",
                   "transcriptionNormalisedURL":"",
@@ -996,7 +1009,7 @@
                   },
                   {
                   "name":"60r",
-                  "physID":"PHYS-121",
+                  "physID":"PHYS-123",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00121.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00121.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1004,7 +1017,7 @@
                   },
                   {
                   "name":"60v",
-                  "physID":"PHYS-122",
+                  "physID":"PHYS-124",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00122.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00122.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1012,7 +1025,7 @@
                   },
                   {
                   "name":"61r",
-                  "physID":"PHYS-123",
+                  "physID":"PHYS-125",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00123.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00123.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1020,7 +1033,7 @@
                   },
                   {
                   "name":"61v",
-                  "physID":"PHYS-124",
+                  "physID":"PHYS-126",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00124.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00124.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1028,7 +1041,7 @@
                   },
                   {
                   "name":"62r",
-                  "physID":"PHYS-125",
+                  "physID":"PHYS-127",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00125.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00125.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1036,7 +1049,7 @@
                   },
                   {
                   "name":"62v",
-                  "physID":"PHYS-126",
+                  "physID":"PHYS-128",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00126.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00126.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1044,7 +1057,7 @@
                   },
                   {
                   "name":"63r",
-                  "physID":"PHYS-127",
+                  "physID":"PHYS-129",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00127.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00127.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1052,7 +1065,7 @@
                   },
                   {
                   "name":"63v",
-                  "physID":"PHYS-128",
+                  "physID":"PHYS-130",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00128.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00128.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1060,7 +1073,7 @@
                   },
                   {
                   "name":"64r",
-                  "physID":"PHYS-129",
+                  "physID":"PHYS-131",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00129.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00129.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1068,7 +1081,7 @@
                   },
                   {
                   "name":"64v",
-                  "physID":"PHYS-130",
+                  "physID":"PHYS-132",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00130.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00130.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1076,7 +1089,7 @@
                   },
                   {
                   "name":"65r",
-                  "physID":"PHYS-131",
+                  "physID":"PHYS-133",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00131.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00131.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1084,7 +1097,7 @@
                   },
                   {
                   "name":"65v",
-                  "physID":"PHYS-132",
+                  "physID":"PHYS-134",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00132.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00132.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1092,7 +1105,7 @@
                   },
                   {
                   "name":"66r",
-                  "physID":"PHYS-133",
+                  "physID":"PHYS-135",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00133.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00133.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1100,7 +1113,7 @@
                   },
                   {
                   "name":"66v",
-                  "physID":"PHYS-134",
+                  "physID":"PHYS-136",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00134.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00134.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1108,7 +1121,7 @@
                   },
                   {
                   "name":"67r",
-                  "physID":"PHYS-135",
+                  "physID":"PHYS-137",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00135.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00135.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1116,7 +1129,7 @@
                   },
                   {
                   "name":"67v",
-                  "physID":"PHYS-136",
+                  "physID":"PHYS-138",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00136.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00136.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1124,7 +1137,7 @@
                   },
                   {
                   "name":"68r",
-                  "physID":"PHYS-137",
+                  "physID":"PHYS-139",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00137.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00137.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1132,7 +1145,7 @@
                   },
                   {
                   "name":"68v",
-                  "physID":"PHYS-138",
+                  "physID":"PHYS-140",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00138.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00138.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1140,7 +1153,7 @@
                   },
                   {
                   "name":"69r",
-                  "physID":"PHYS-139",
+                  "physID":"PHYS-141",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00139.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00139.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1148,7 +1161,7 @@
                   },
                   {
                   "name":"69v",
-                  "physID":"PHYS-140",
+                  "physID":"PHYS-142",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00140.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00140.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1156,7 +1169,7 @@
                   },
                   {
                   "name":"70r",
-                  "physID":"PHYS-141",
+                  "physID":"PHYS-143",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00141.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00141.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1164,7 +1177,7 @@
                   },
                   {
                   "name":"70v",
-                  "physID":"PHYS-142",
+                  "physID":"PHYS-144",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00142.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00142.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1172,7 +1185,7 @@
                   },
                   {
                   "name":"71r",
-                  "physID":"PHYS-143",
+                  "physID":"PHYS-145",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00143.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00143.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1180,7 +1193,7 @@
                   },
                   {
                   "name":"71v",
-                  "physID":"PHYS-144",
+                  "physID":"PHYS-146",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00144.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00144.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1188,7 +1201,7 @@
                   },
                   {
                   "name":"72r",
-                  "physID":"PHYS-145",
+                  "physID":"PHYS-147",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00145.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00145.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1196,7 +1209,7 @@
                   },
                   {
                   "name":"72v",
-                  "physID":"PHYS-146",
+                  "physID":"PHYS-148",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00146.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00146.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1204,7 +1217,7 @@
                   },
                   {
                   "name":"73r",
-                  "physID":"PHYS-147",
+                  "physID":"PHYS-149",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00147.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00147.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1212,7 +1225,7 @@
                   },
                   {
                   "name":"73v",
-                  "physID":"PHYS-148",
+                  "physID":"PHYS-150",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00148.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00148.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1220,7 +1233,7 @@
                   },
                   {
                   "name":"74r",
-                  "physID":"PHYS-149",
+                  "physID":"PHYS-151",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00149.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00149.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1228,7 +1241,7 @@
                   },
                   {
                   "name":"74v",
-                  "physID":"PHYS-150",
+                  "physID":"PHYS-152",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00150.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00150.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1236,7 +1249,7 @@
                   },
                   {
                   "name":"75r",
-                  "physID":"PHYS-151",
+                  "physID":"PHYS-153",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00151.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00151.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1244,7 +1257,7 @@
                   },
                   {
                   "name":"75v",
-                  "physID":"PHYS-152",
+                  "physID":"PHYS-154",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00152.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00152.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1252,7 +1265,7 @@
                   },
                   {
                   "name":"76r",
-                  "physID":"PHYS-153",
+                  "physID":"PHYS-155",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00153.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00153.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1260,7 +1273,7 @@
                   },
                   {
                   "name":"76v",
-                  "physID":"PHYS-154",
+                  "physID":"PHYS-156",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00154.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00154.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1268,7 +1281,7 @@
                   },
                   {
                   "name":"77r",
-                  "physID":"PHYS-155",
+                  "physID":"PHYS-157",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00155.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00155.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1276,7 +1289,7 @@
                   },
                   {
                   "name":"77v",
-                  "physID":"PHYS-156",
+                  "physID":"PHYS-158",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00156.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00156.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1284,7 +1297,7 @@
                   },
                   {
                   "name":"78r",
-                  "physID":"PHYS-157",
+                  "physID":"PHYS-159",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00157.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00157.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1292,7 +1305,7 @@
                   },
                   {
                   "name":"78v",
-                  "physID":"PHYS-158",
+                  "physID":"PHYS-160",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00158.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00158.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1300,7 +1313,7 @@
                   },
                   {
                   "name":"79r",
-                  "physID":"PHYS-159",
+                  "physID":"PHYS-161",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00159.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00159.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1308,7 +1321,7 @@
                   },
                   {
                   "name":"79v",
-                  "physID":"PHYS-160",
+                  "physID":"PHYS-162",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00160.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00160.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1316,7 +1329,7 @@
                   },
                   {
                   "name":"80r",
-                  "physID":"PHYS-161",
+                  "physID":"PHYS-163",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00161.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00161.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1324,7 +1337,7 @@
                   },
                   {
                   "name":"80v",
-                  "physID":"PHYS-162",
+                  "physID":"PHYS-164",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00162.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00162.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1332,7 +1345,7 @@
                   },
                   {
                   "name":"81r",
-                  "physID":"PHYS-163",
+                  "physID":"PHYS-165",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00163.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00163.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1340,7 +1353,7 @@
                   },
                   {
                   "name":"81v",
-                  "physID":"PHYS-164",
+                  "physID":"PHYS-166",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00164.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00164.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1348,7 +1361,7 @@
                   },
                   {
                   "name":"82r",
-                  "physID":"PHYS-165",
+                  "physID":"PHYS-167",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00165.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00165.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1356,7 +1369,7 @@
                   },
                   {
                   "name":"82v",
-                  "physID":"PHYS-166",
+                  "physID":"PHYS-168",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00166.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00166.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1364,7 +1377,7 @@
                   },
                   {
                   "name":"83r",
-                  "physID":"PHYS-167",
+                  "physID":"PHYS-169",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00167.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00167.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1372,7 +1385,7 @@
                   },
                   {
                   "name":"83v",
-                  "physID":"PHYS-168",
+                  "physID":"PHYS-170",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00168.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00168.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1380,7 +1393,7 @@
                   },
                   {
                   "name":"84r",
-                  "physID":"PHYS-169",
+                  "physID":"PHYS-171",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00169.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00169.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1388,7 +1401,7 @@
                   },
                   {
                   "name":"84v",
-                  "physID":"PHYS-170",
+                  "physID":"PHYS-172",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00170.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00170.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1396,7 +1409,7 @@
                   },
                   {
                   "name":"85r",
-                  "physID":"PHYS-171",
+                  "physID":"PHYS-173",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00171.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00171.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1404,7 +1417,7 @@
                   },
                   {
                   "name":"85v",
-                  "physID":"PHYS-172",
+                  "physID":"PHYS-174",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00172.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00172.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1412,7 +1425,7 @@
                   },
                   {
                   "name":"86r",
-                  "physID":"PHYS-173",
+                  "physID":"PHYS-175",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00173.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00173.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1420,7 +1433,7 @@
                   },
                   {
                   "name":"86v",
-                  "physID":"PHYS-174",
+                  "physID":"PHYS-176",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00174.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00174.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1428,7 +1441,7 @@
                   },
                   {
                   "name":"87r",
-                  "physID":"PHYS-175",
+                  "physID":"PHYS-177",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00175.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00175.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1436,7 +1449,7 @@
                   },
                   {
                   "name":"87v",
-                  "physID":"PHYS-176",
+                  "physID":"PHYS-178",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00176.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00176.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1444,7 +1457,7 @@
                   },
                   {
                   "name":"88r",
-                  "physID":"PHYS-177",
+                  "physID":"PHYS-179",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00177.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00177.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088r&end=THEM00092-p088r",
@@ -1452,7 +1465,7 @@
                   },
                   {
                   "name":"88v",
-                  "physID":"PHYS-178",
+                  "physID":"PHYS-180",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00178.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00178.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088v&end=THEM00092-p088v",
@@ -1460,7 +1473,7 @@
                   },
                   {
                   "name":"89r",
-                  "physID":"PHYS-179",
+                  "physID":"PHYS-181",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00179.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00179.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089r&end=THEM00092-p089r",
@@ -1468,7 +1481,7 @@
                   },
                   {
                   "name":"89v",
-                  "physID":"PHYS-180",
+                  "physID":"PHYS-182",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00180.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00180.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089v&end=THEM00092-p089v",
@@ -1476,7 +1489,7 @@
                   },
                   {
                   "name":"90r",
-                  "physID":"PHYS-181",
+                  "physID":"PHYS-183",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00181.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00181.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090r&end=THEM00092-p090r",
@@ -1484,7 +1497,7 @@
                   },
                   {
                   "name":"90v",
-                  "physID":"PHYS-182",
+                  "physID":"PHYS-184",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00182.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00182.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090v&end=THEM00092-p090v",
@@ -1492,7 +1505,7 @@
                   },
                   {
                   "name":"91r",
-                  "physID":"PHYS-183",
+                  "physID":"PHYS-185",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00183.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00183.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091r&end=THEM00092-p091r",
@@ -1500,7 +1513,7 @@
                   },
                   {
                   "name":"91v",
-                  "physID":"PHYS-184",
+                  "physID":"PHYS-186",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00184.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00184.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091v&end=THEM00092-p091v",
@@ -1508,7 +1521,7 @@
                   },
                   {
                   "name":"92r",
-                  "physID":"PHYS-185",
+                  "physID":"PHYS-187",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00185.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00185.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092r&end=THEM00092-p092r",
@@ -1516,7 +1529,7 @@
                   },
                   {
                   "name":"92v",
-                  "physID":"PHYS-186",
+                  "physID":"PHYS-188",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00186.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00186.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092v&end=THEM00092-p092v",
@@ -1524,7 +1537,7 @@
                   },
                   {
                   "name":"93r",
-                  "physID":"PHYS-187",
+                  "physID":"PHYS-189",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00187.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00187.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093r&end=THEM00092-p093r",
@@ -1532,7 +1545,7 @@
                   },
                   {
                   "name":"93v",
-                  "physID":"PHYS-188",
+                  "physID":"PHYS-190",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00188.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00188.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093v&end=THEM00092-p093v",
@@ -1540,7 +1553,7 @@
                   },
                   {
                   "name":"94r",
-                  "physID":"PHYS-189",
+                  "physID":"PHYS-191",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00189.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00189.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094r&end=THEM00092-p094r",
@@ -1548,7 +1561,7 @@
                   },
                   {
                   "name":"94v",
-                  "physID":"PHYS-190",
+                  "physID":"PHYS-192",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00190.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00190.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094v&end=THEM00092-p094v",
@@ -1556,7 +1569,7 @@
                   },
                   {
                   "name":"95r",
-                  "physID":"PHYS-191",
+                  "physID":"PHYS-193",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00191.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00191.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095r&end=THEM00092-p095r",
@@ -1564,7 +1577,7 @@
                   },
                   {
                   "name":"95v",
-                  "physID":"PHYS-192",
+                  "physID":"PHYS-194",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00192.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00192.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095v&end=THEM00092-p095v",
@@ -1572,7 +1585,7 @@
                   },
                   {
                   "name":"96r",
-                  "physID":"PHYS-193",
+                  "physID":"PHYS-195",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00193.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00193.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096r&end=THEM00092-p096r",
@@ -1580,7 +1593,7 @@
                   },
                   {
                   "name":"96v",
-                  "physID":"PHYS-194",
+                  "physID":"PHYS-196",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00194.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00194.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096v&end=THEM00092-p096v",
@@ -1588,7 +1601,7 @@
                   },
                   {
                   "name":"97r",
-                  "physID":"PHYS-195",
+                  "physID":"PHYS-197",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00195.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00195.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097r&end=THEM00092-p097r",
@@ -1596,7 +1609,7 @@
                   },
                   {
                   "name":"97v",
-                  "physID":"PHYS-196",
+                  "physID":"PHYS-198",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00196.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00196.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097v&end=THEM00092-p097v",
@@ -1604,7 +1617,7 @@
                   },
                   {
                   "name":"98r",
-                  "physID":"PHYS-197",
+                  "physID":"PHYS-199",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00197.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00197.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098r&end=THEM00092-p098r",
@@ -1612,7 +1625,7 @@
                   },
                   {
                   "name":"98v",
-                  "physID":"PHYS-198",
+                  "physID":"PHYS-200",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00198.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00198.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098v&end=THEM00092-p098v",
@@ -1620,7 +1633,7 @@
                   },
                   {
                   "name":"99r",
-                  "physID":"PHYS-199",
+                  "physID":"PHYS-201",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00199.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00199.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099r&end=THEM00092-p099r",
@@ -1628,7 +1641,7 @@
                   },
                   {
                   "name":"99v",
-                  "physID":"PHYS-200",
+                  "physID":"PHYS-202",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00200.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00200.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099v&end=THEM00092-p099v",
@@ -1636,7 +1649,7 @@
                   },
                   {
                   "name":"100r",
-                  "physID":"PHYS-201",
+                  "physID":"PHYS-203",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00201.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00201.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100r&end=THEM00092-p100r",
@@ -1644,7 +1657,7 @@
                   },
                   {
                   "name":"100v",
-                  "physID":"PHYS-202",
+                  "physID":"PHYS-204",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00202.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00202.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100v&end=THEM00092-p100v",
@@ -1652,7 +1665,7 @@
                   },
                   {
                   "name":"101r",
-                  "physID":"PHYS-203",
+                  "physID":"PHYS-205",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00203.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00203.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101r&end=THEM00092-p101r",
@@ -1660,7 +1673,7 @@
                   },
                   {
                   "name":"101v",
-                  "physID":"PHYS-204",
+                  "physID":"PHYS-206",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00204.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00204.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101v&end=THEM00092-p101v",
@@ -1668,7 +1681,7 @@
                   },
                   {
                   "name":"102r",
-                  "physID":"PHYS-205",
+                  "physID":"PHYS-207",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00205.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00205.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102r&end=THEM00092-p102r",
@@ -1676,7 +1689,7 @@
                   },
                   {
                   "name":"102v",
-                  "physID":"PHYS-206",
+                  "physID":"PHYS-208",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00206.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00206.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102v&end=THEM00092-p102v",
@@ -1684,7 +1697,7 @@
                   },
                   {
                   "name":"103r",
-                  "physID":"PHYS-207",
+                  "physID":"PHYS-209",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00207.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00207.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103r&end=THEM00092-p103r",
@@ -1692,7 +1705,7 @@
                   },
                   {
                   "name":"103v",
-                  "physID":"PHYS-208",
+                  "physID":"PHYS-210",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00208.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00208.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103v&end=THEM00092-p103v",
@@ -1700,7 +1713,7 @@
                   },
                   {
                   "name":"104r",
-                  "physID":"PHYS-209",
+                  "physID":"PHYS-211",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00209.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00209.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104r&end=THEM00092-p104r",
@@ -1708,7 +1721,7 @@
                   },
                   {
                   "name":"104v",
-                  "physID":"PHYS-210",
+                  "physID":"PHYS-212",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00210.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00210.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104v&end=THEM00092-p104v",
@@ -1716,7 +1729,7 @@
                   },
                   {
                   "name":"105r",
-                  "physID":"PHYS-211",
+                  "physID":"PHYS-213",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00211.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00211.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105r&end=THEM00092-p105r",
@@ -1724,7 +1737,7 @@
                   },
                   {
                   "name":"105v",
-                  "physID":"PHYS-212",
+                  "physID":"PHYS-214",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00212.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00212.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105v&end=THEM00092-p105v",
@@ -1732,7 +1745,7 @@
                   },
                   {
                   "name":"106r",
-                  "physID":"PHYS-213",
+                  "physID":"PHYS-215",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00213.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00213.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106r&end=THEM00092-p106r",
@@ -1740,7 +1753,7 @@
                   },
                   {
                   "name":"106v",
-                  "physID":"PHYS-214",
+                  "physID":"PHYS-216",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00214.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00214.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106v&end=THEM00092-p106v",
@@ -1748,7 +1761,7 @@
                   },
                   {
                   "name":"107r",
-                  "physID":"PHYS-215",
+                  "physID":"PHYS-217",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00215.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00215.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107r&end=THEM00092-p107r",
@@ -1756,7 +1769,7 @@
                   },
                   {
                   "name":"107v",
-                  "physID":"PHYS-216",
+                  "physID":"PHYS-218",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00216.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00216.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107v&end=THEM00092-p107v",
@@ -1764,7 +1777,7 @@
                   },
                   {
                   "name":"108r",
-                  "physID":"PHYS-217",
+                  "physID":"PHYS-219",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00217.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00217.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p108r&end=THEM00092-p108r",
@@ -1772,7 +1785,7 @@
                   },
                   {
                   "name":"108v",
-                  "physID":"PHYS-218",
+                  "physID":"PHYS-220",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00218.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00218.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1780,7 +1793,7 @@
                   },
                   {
                   "name":"109r",
-                  "physID":"PHYS-219",
+                  "physID":"PHYS-221",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00219.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00219.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109r&end=THEM00092-p109r",
@@ -1788,7 +1801,7 @@
                   },
                   {
                   "name":"109v",
-                  "physID":"PHYS-220",
+                  "physID":"PHYS-222",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00220.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00220.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109v&end=THEM00092-p109v",
@@ -1796,7 +1809,7 @@
                   },
                   {
                   "name":"110r",
-                  "physID":"PHYS-221",
+                  "physID":"PHYS-223",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00221.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00221.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110r&end=THEM00092-p110r",
@@ -1804,7 +1817,7 @@
                   },
                   {
                   "name":"110v",
-                  "physID":"PHYS-222",
+                  "physID":"PHYS-224",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00222.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00222.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110v&end=THEM00092-p110v",
@@ -1812,7 +1825,7 @@
                   },
                   {
                   "name":"111r",
-                  "physID":"PHYS-223",
+                  "physID":"PHYS-225",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00223.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00223.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111r&end=THEM00092-p111r",
@@ -1820,7 +1833,7 @@
                   },
                   {
                   "name":"111v",
-                  "physID":"PHYS-224",
+                  "physID":"PHYS-226",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00224.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00224.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111v&end=THEM00092-p111v",
@@ -1828,7 +1841,7 @@
                   },
                   {
                   "name":"112r",
-                  "physID":"PHYS-225",
+                  "physID":"PHYS-227",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00225.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00225.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p112r&end=THEM00092-p112r",
@@ -1836,7 +1849,7 @@
                   },
                   {
                   "name":"112v",
-                  "physID":"PHYS-226",
+                  "physID":"PHYS-228",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00226.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00226.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1844,7 +1857,7 @@
                   },
                   {
                   "name":"113r",
-                  "physID":"PHYS-227",
+                  "physID":"PHYS-229",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00227.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00227.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113r&end=THEM00092-p113r",
@@ -1852,7 +1865,7 @@
                   },
                   {
                   "name":"113v",
-                  "physID":"PHYS-228",
+                  "physID":"PHYS-230",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00228.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00228.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113v&end=THEM00092-p113v",
@@ -1860,7 +1873,7 @@
                   },
                   {
                   "name":"114r",
-                  "physID":"PHYS-229",
+                  "physID":"PHYS-231",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00229.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00229.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114r&end=THEM00092-p114r",
@@ -1868,7 +1881,7 @@
                   },
                   {
                   "name":"114v",
-                  "physID":"PHYS-230",
+                  "physID":"PHYS-232",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00230.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00230.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114v&end=THEM00092-p114v",
@@ -1876,7 +1889,7 @@
                   },
                   {
                   "name":"115r",
-                  "physID":"PHYS-231",
+                  "physID":"PHYS-233",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00231.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00231.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115r&end=THEM00092-p115r",
@@ -1884,7 +1897,7 @@
                   },
                   {
                   "name":"115v",
-                  "physID":"PHYS-232",
+                  "physID":"PHYS-234",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00232.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00232.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115v&end=THEM00092-p115v",
@@ -1892,7 +1905,7 @@
                   },
                   {
                   "name":"116r",
-                  "physID":"PHYS-233",
+                  "physID":"PHYS-235",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00233.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00233.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116r&end=THEM00092-p116r",
@@ -1900,7 +1913,7 @@
                   },
                   {
                   "name":"116v",
-                  "physID":"PHYS-234",
+                  "physID":"PHYS-236",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00234.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00234.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116v&end=THEM00092-p116v",
@@ -1908,7 +1921,7 @@
                   },
                   {
                   "name":"117r",
-                  "physID":"PHYS-235",
+                  "physID":"PHYS-237",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00235.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00235.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p117r&end=THEM00092-p117r",
@@ -1916,7 +1929,7 @@
                   },
                   {
                   "name":"117v",
-                  "physID":"PHYS-236",
+                  "physID":"PHYS-238",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00236.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00236.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1924,7 +1937,7 @@
                   },
                   {
                   "name":"118r",
-                  "physID":"PHYS-237",
+                  "physID":"PHYS-239",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00237.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00237.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1932,7 +1945,7 @@
                   },
                   {
                   "name":"118v",
-                  "physID":"PHYS-238",
+                  "physID":"PHYS-240",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00238.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00238.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1940,7 +1953,7 @@
                   },
                   {
                   "name":"119r",
-                  "physID":"PHYS-239",
+                  "physID":"PHYS-241",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00239.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00239.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119r&end=THEM00092-p119r",
@@ -1948,7 +1961,7 @@
                   },
                   {
                   "name":"119v",
-                  "physID":"PHYS-240",
+                  "physID":"PHYS-242",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00240.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00240.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119v&end=THEM00092-p119v",
@@ -1956,7 +1969,7 @@
                   },
                   {
                   "name":"120r",
-                  "physID":"PHYS-241",
+                  "physID":"PHYS-243",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00241.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00241.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p120r&end=THEM00092-p120r",
@@ -1964,7 +1977,7 @@
                   },
                   {
                   "name":"120v",
-                  "physID":"PHYS-242",
+                  "physID":"PHYS-244",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00242.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00242.jpg",
                   "transcriptionNormalisedURL":"",
@@ -1972,7 +1985,7 @@
                   },
                   {
                   "name":"121r",
-                  "physID":"PHYS-243",
+                  "physID":"PHYS-245",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00243.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00243.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121r&end=THEM00092-p121r",
@@ -1980,7 +1993,7 @@
                   },
                   {
                   "name":"121v",
-                  "physID":"PHYS-244",
+                  "physID":"PHYS-246",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00244.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00244.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121v&end=THEM00092-p121v",
@@ -1988,7 +2001,7 @@
                   },
                   {
                   "name":"122r",
-                  "physID":"PHYS-245",
+                  "physID":"PHYS-247",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00245.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00245.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122r&end=THEM00092-p122r",
@@ -1996,7 +2009,7 @@
                   },
                   {
                   "name":"122v",
-                  "physID":"PHYS-246",
+                  "physID":"PHYS-248",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00246.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00246.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122v&end=THEM00092-p122v",
@@ -2004,7 +2017,7 @@
                   },
                   {
                   "name":"123r",
-                  "physID":"PHYS-247",
+                  "physID":"PHYS-249",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00247.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00247.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123r&end=THEM00092-p123r",
@@ -2012,7 +2025,7 @@
                   },
                   {
                   "name":"123v",
-                  "physID":"PHYS-248",
+                  "physID":"PHYS-250",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00248.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00248.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123v&end=THEM00092-p123v",
@@ -2020,7 +2033,7 @@
                   },
                   {
                   "name":"124r",
-                  "physID":"PHYS-249",
+                  "physID":"PHYS-251",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00249.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00249.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124r&end=THEM00092-p124r",
@@ -2028,7 +2041,7 @@
                   },
                   {
                   "name":"124v",
-                  "physID":"PHYS-250",
+                  "physID":"PHYS-252",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00250.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00250.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124v&end=THEM00092-p124v",
@@ -2036,7 +2049,7 @@
                   },
                   {
                   "name":"125r",
-                  "physID":"PHYS-251",
+                  "physID":"PHYS-253",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00251.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00251.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125r&end=THEM00092-p125r",
@@ -2044,7 +2057,7 @@
                   },
                   {
                   "name":"125v",
-                  "physID":"PHYS-252",
+                  "physID":"PHYS-254",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00252.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00252.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125v&end=THEM00092-p125v",
@@ -2052,7 +2065,7 @@
                   },
                   {
                   "name":"126r",
-                  "physID":"PHYS-253",
+                  "physID":"PHYS-255",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00253.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00253.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2060,7 +2073,7 @@
                   },
                   {
                   "name":"126v",
-                  "physID":"PHYS-254",
+                  "physID":"PHYS-256",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00254.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00254.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2068,7 +2081,7 @@
                   },
                   {
                   "name":"127r",
-                  "physID":"PHYS-255",
+                  "physID":"PHYS-257",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00255.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00255.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2076,7 +2089,7 @@
                   },
                   {
                   "name":"127v",
-                  "physID":"PHYS-256",
+                  "physID":"PHYS-258",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00256.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00256.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2084,7 +2097,7 @@
                   },
                   {
                   "name":"128r",
-                  "physID":"PHYS-257",
+                  "physID":"PHYS-259",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00257.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00257.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128r&end=THEM00092-p128r",
@@ -2092,7 +2105,7 @@
                   },
                   {
                   "name":"128v",
-                  "physID":"PHYS-258",
+                  "physID":"PHYS-260",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00258.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00258.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128v&end=THEM00092-p128v",
@@ -2100,7 +2113,7 @@
                   },
                   {
                   "name":"129r",
-                  "physID":"PHYS-259",
+                  "physID":"PHYS-261",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00259.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00259.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p129r&end=THEM00092-p129r",
@@ -2108,7 +2121,7 @@
                   },
                   {
                   "name":"129v",
-                  "physID":"PHYS-260",
+                  "physID":"PHYS-262",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00260.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00260.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2116,7 +2129,7 @@
                   },
                   {
                   "name":"130r",
-                  "physID":"PHYS-261",
+                  "physID":"PHYS-263",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00261.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00261.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130r&end=THEM00092-p130r",
@@ -2124,7 +2137,7 @@
                   },
                   {
                   "name":"130v",
-                  "physID":"PHYS-262",
+                  "physID":"PHYS-264",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00262.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00262.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130v&end=THEM00092-p130v",
@@ -2132,7 +2145,7 @@
                   },
                   {
                   "name":"131r",
-                  "physID":"PHYS-263",
+                  "physID":"PHYS-265",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00263.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00263.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p131r&end=THEM00092-p131r",
@@ -2140,7 +2153,7 @@
                   },
                   {
                   "name":"131v",
-                  "physID":"PHYS-264",
+                  "physID":"PHYS-266",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00264.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00264.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2148,7 +2161,7 @@
                   },
                   {
                   "name":"132r",
-                  "physID":"PHYS-265",
+                  "physID":"PHYS-267",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00265.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00265.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p132r&end=THEM00092-p132r",
@@ -2156,7 +2169,7 @@
                   },
                   {
                   "name":"132v",
-                  "physID":"PHYS-266",
+                  "physID":"PHYS-268",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00266.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00266.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2164,7 +2177,7 @@
                   },
                   {
                   "name":"133r",
-                  "physID":"PHYS-267",
+                  "physID":"PHYS-269",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00267.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00267.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133r&end=THEM00092-p133r",
@@ -2172,7 +2185,7 @@
                   },
                   {
                   "name":"133v",
-                  "physID":"PHYS-268",
+                  "physID":"PHYS-270",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00268.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00268.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133v&end=THEM00092-p133v",
@@ -2180,7 +2193,7 @@
                   },
                   {
                   "name":"134r",
-                  "physID":"PHYS-269",
+                  "physID":"PHYS-271",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00269.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00269.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134r&end=THEM00092-p134r",
@@ -2188,7 +2201,7 @@
                   },
                   {
                   "name":"134v",
-                  "physID":"PHYS-270",
+                  "physID":"PHYS-272",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00270.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00270.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134v&end=THEM00092-p134v",
@@ -2196,7 +2209,7 @@
                   },
                   {
                   "name":"135r",
-                  "physID":"PHYS-271",
+                  "physID":"PHYS-273",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00271.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00271.jpg",
                   "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p135r&end=THEM00092-p135r",
@@ -2204,7 +2217,7 @@
                   },
                   {
                   "name":"135v",
-                  "physID":"PHYS-272",
+                  "physID":"PHYS-274",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00272.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00272.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2212,7 +2225,7 @@
                   },
                   {
                   "name":"136r",
-                  "physID":"PHYS-273",
+                  "physID":"PHYS-275",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00273.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00273.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2220,7 +2233,7 @@
                   },
                   {
                   "name":"136v",
-                  "physID":"PHYS-274",
+                  "physID":"PHYS-276",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00274.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00274.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2228,7 +2241,7 @@
                   },
                   {
                   "name":"137r",
-                  "physID":"PHYS-275",
+                  "physID":"PHYS-277",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00275.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00275.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2236,7 +2249,7 @@
                   },
                   {
                   "name":"137v",
-                  "physID":"PHYS-276",
+                  "physID":"PHYS-278",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00276.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00276.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2244,7 +2257,7 @@
                   },
                   {
                   "name":"138r",
-                  "physID":"PHYS-277",
+                  "physID":"PHYS-279",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00277.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00277.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2252,7 +2265,7 @@
                   },
                   {
                   "name":"138v",
-                  "physID":"PHYS-278",
+                  "physID":"PHYS-280",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00278.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00278.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2260,7 +2273,7 @@
                   },
                   {
                   "name":"139r",
-                  "physID":"PHYS-279",
+                  "physID":"PHYS-281",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00279.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00279.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2268,7 +2281,7 @@
                   },
                   {
                   "name":"139v",
-                  "physID":"PHYS-280",
+                  "physID":"PHYS-282",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00280.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00280.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2276,7 +2289,7 @@
                   },
                   {
                   "name":"140r",
-                  "physID":"PHYS-281",
+                  "physID":"PHYS-283",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00281.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00281.jpg",
                   "transcriptionNormalisedURL":"",
@@ -2284,25 +2297,9 @@
                   },
                   {
                   "name":"140v",
-                  "physID":"PHYS-282",
+                  "physID":"PHYS-284",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00282.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00282.jpg",
-                  "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
-                  },
-                  {
-                  "name":"back cover (inside)",
-                  "physID":"PHYS-283",
-                  "displayImageURL":"/content/images/MS-ADD-03996-000-00283.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-03996-000-00283.jpg",
-                  "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
-                  },
-                  {
-                  "name":"back cover",
-                  "physID":"PHYS-284",
-                  "displayImageURL":"/content/images/MS-ADD-03996-000-00284.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-03996-000-00284.jpg",
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   },
@@ -2316,10 +2313,10 @@
                   }],
                "logicalStructure":[
                   {
-                  "title":"'Questiones quædam Philosophiæ'",
+                  "title":"'Quæstiones quædam Philosophiæ' ('Certain Philosophical Questions')",
                   "startPage":"88r",
-                  "startPageID":"PHYS-177",
-                  "startPagePosition":"177"
+                  "startPageID":"PHYS-179",
+                  "startPagePosition":"179"
                   }]
                }
    
