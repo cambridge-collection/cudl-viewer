@@ -38,7 +38,7 @@ section#content p {
 		<br /> <br />
 		<div class="grid_4">
 			<img src="/images/collectionsView/newton.jpg" alt="Newton"
-				width="197" height="213" />
+				width="150" height="225" align="right"/>
 		</div>
 		<div class="grid_8">
 			Cambridge University Library holds the largest and most important
