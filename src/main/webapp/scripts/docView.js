@@ -4,7 +4,7 @@
 var downloadImageLink;
 var isMSIE = /* @cc_on!@ */0;
 
-// Functions to show and hide the right hand panel. 
+// Functions to show and hide the right hand panel.
 var unmaskRightPanel = function(pos) {
 	if (viewportComponents.tabpanel.items.items[pos].el.unmask) {
 		viewportComponents.tabpanel.items.items[pos].el.unmask();
@@ -17,6 +17,24 @@ var maskRightPanel = function(pos) {
 				"x-mask-loading");
 		;
 	}
+};
+
+var downloadImage = function(answer) {
+	if (answer=='yes') {
+	 window.open(downloadImageLink);
+	} else {
+	 return;
+	}
+};
+
+var dloadMessage = {
+	   title:'Image Licensing',	   
+	   buttons: Ext.Msg.YESNO,
+	   fn: downloadImage
+	};
+
+var downloadImageCheck = function () {
+	Ext.Msg.show(dloadMessage);
 };
 
 var docView = function() {
@@ -97,16 +115,16 @@ var docView = function() {
 				document.getElementById("transcription_diplomatic_frame").src = "/transcription?url="
 						+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 
-
 				// setup metadata
 				view.populateElement(document.getElementById("metadata-title"),
 						data.title);
 				view
 						.populateElement(document
 								.getElementById("metadata-author"), data.author);
-				view
-						.populateElement(document
-								.getElementById("metadata-rights"), data.rights);
+				view.populateElement(document
+						.getElementById("metadata-display-rights"),
+						data.displayImageRights);
+				dloadMessage.msg='This image has the following copyright: <br/><br/>'+data.downloadImageRights+'<br/><br/> Do you want to download this image?';
 				view.populateElement(document.getElementById("metadata-page"),
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document

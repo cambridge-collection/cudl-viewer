@@ -7,16 +7,14 @@
                "contributor":[
                ""
                ],
-               "abstract":"Much of Newton's important work on calculus is developed in this large notebook, used when he was away from Cambridge due to the plague."
-               ,
-               "mediaurl":""
-               ,               
+               "abstract":"Much of Newton's important work on calculus is developed in this large notebook, used when he was away from Cambridge due to the plague.",
                "subject":[
                "Mathematics"
                ],
                "publisher":[
                ""
                ],
+               "mediaurl":"",
                "dateCreated":"1612-01-01",
                "dateCreatedDisplay":"c. 1612 - c. 1653",
                "dateIssued":"",
@@ -26,7 +24,8 @@
                ],
                "physicalLocation":"Cambridge University Library, Cambridge, UK",
                "shelfLocator":"Additional Ms. 4004",
-               "rights":"Zooming image &copy; Cambridge University Library, All rights reserved. Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).",
+               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                "type":"manuscript",
                "extent":"",
                "collection":[

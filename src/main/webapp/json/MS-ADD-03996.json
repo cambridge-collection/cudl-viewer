@@ -1,4 +1,5 @@
-              {
+
+               {
                "title":"Trinity College Notebook",
                "author":[
                "Isaac Newton"
@@ -7,13 +8,13 @@
                ""
                ],
                "abstract":"This is a notebook Newton kept while studying at Trinity College and used from about 1661 to 1665. It includes many notes from his studies and, increasingly, his own explorations into mathematics, physics and metaphysics. It was judged 'Not fit to be printed' by Newton's executors and was presented to the Library by the fifth Earl of Portsmouth in 1872.",
-               "mediaurl":"http://www.youtube.com/v/1XJkvMyupds?version=3&amp;hl=en_GB",
                "subject":[
                "Mathematics"
                ],
                "publisher":[
                ""
                ],
+               "mediaurl":"",
                "dateCreated":"1665-01-01",
                "dateCreatedDisplay":"c. 1661 - c. 1665",
                "dateIssued":"",
@@ -23,7 +24,8 @@
                ],
                "physicalLocation":"Cambridge University Library, Cambridge, UK",
                "shelfLocator":"MS Add. 3996",
-               "rights":"Zooming image &copy; Cambridge University Library, All rights reserved. Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).",
+               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                "type":"manuscript",
                "extent":"",
                "collection":[

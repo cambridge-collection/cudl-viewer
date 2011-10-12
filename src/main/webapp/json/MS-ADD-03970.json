@@ -7,16 +7,14 @@
                "contributor":[
                ""
                ],
-               "abstract":""
-               ,
-               "mediaurl":""
-               ,               
+               "abstract":"",
                "subject":[
                "Science - Optics"
                ],
                "publisher":[
                ""
                ],
+               "mediaurl":"",
                "dateCreated":"1672-01-01",
                "dateCreatedDisplay":"c. 1672 - c. 1706",
                "dateIssued":"",
@@ -25,8 +23,9 @@
                "eng","lat"
                ],
                "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"Additional Ms. 3970",
-               "rights":"Zooming image &copy; Cambridge University Library, All rights reserved. Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).",
+               "shelfLocator":"MS Add. 3970",
+               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                "type":"manuscript",
                "extent":"",
                "collection":[

@@ -68,22 +68,6 @@ function setupViewport() {
 		border : 0
 	});
 
-	downloadImage = function(answer) {
-		if (answer=='yes') {
-		 window.open(downloadImageLink);
-		} else {
-		 return;
-		}
-	};
-	
-	downloadImageCheck = function () {
-		Ext.Msg.show({
-			   title:'Image Licensing',
-			   msg: 'This image has the following copyright: <br/>Copyright &copy; Cambridge University Library. Licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0).<br/><br/> Do you want to download this image?',
-			   buttons: Ext.Msg.YESNO,
-			   fn: downloadImage
-			});
-	};
 	
 	bookmarkPage = function(title, url) {
 
