@@ -11,9 +11,10 @@
 	<div class="grid_19 terms">
 
 		<div class="panel light">
-			<h3>Terms & Conditions</h3>
-
+			
 			<div class="grid_11">
+			<h3>Terms & Conditions</h3>
+			
 				<h4>Terms of website use</h4>
 				<p>These terms of use (together with the documents referred to
 					in them) set out the terms for use of the Cambridge Digital Library

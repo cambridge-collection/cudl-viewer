@@ -27,7 +27,7 @@ section#content p {
 <section id="content" class="grid_20 content">
 
 	<div class="grid_9">
-		<h3>Newton Papers</h3>
+		<h3 style="margin-left:8px">Newton Papers</h3>
 		<blockquote class="grid_4 omega print">
 			
 				To me there has never been a higher source of earthly honor or

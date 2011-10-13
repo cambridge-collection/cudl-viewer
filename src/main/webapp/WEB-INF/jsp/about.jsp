@@ -11,7 +11,7 @@
 
 		<div class="panel light">
 		
-			<h3>Introducing the Cambridge Digital Library</h3>
+			<h3 style="margin-left:8px">Introducing the Cambridge Digital Library</h3>
 
 
 				<blockquote class="grid_7 omega print">
