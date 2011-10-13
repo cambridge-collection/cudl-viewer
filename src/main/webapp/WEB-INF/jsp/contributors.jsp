@@ -97,7 +97,7 @@
 				<li>Grant Young, Project Manager - <a
 					href="mailto:gy219@cam.ac.uk">gy219@cam.ac.uk</a></li>
 				<li>Jennie Fletcher, Lead Software Engineer - <a
-					href="jlf44@cam.ac.uk">jlf44@cam.ac.uk</a>
+					href="mailto:jlf44@cam.ac.uk">jlf44@cam.ac.uk</a>
 				</li>
 				<li>Huw Jones, Metadata Specialist - <a
 					href="mailto:hej23@cam.ac.uk">hej23@cam.ac.uk</a>

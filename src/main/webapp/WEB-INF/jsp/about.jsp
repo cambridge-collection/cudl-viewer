@@ -7,12 +7,13 @@
 
 <section id="content" class="grid_20 content">
 
-	<div class="grid_20" style="margin-bottom: 18px; margin-left: 18px;">
+	<div class="grid_19" >
 
 		<div class="panel light">
+		
 			<h3>Introducing the Cambridge Digital Library</h3>
 
-			<div class="grid_20">
+
 				<blockquote class="grid_7 omega print">
 					<p>
 						Cambridge University Library contains evidence of some of the
@@ -26,9 +27,7 @@
 				<div class="grid_5">
 					<img src="/images/about/anne_jarvis.jpg" />
 				</div>
-			</div>
 
-			<div class="grid_20">
 				<div class="grid_11">
 
 					<p>Over the course of six centuries Cambridge University
@@ -94,7 +93,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </section>
 
 <jsp:include page="footer/footer.jsp" />
