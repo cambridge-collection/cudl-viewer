@@ -8,15 +8,17 @@
 <section id="content" class="grid_20 content">
 
 
-	<div class="grid_20" style="margin-bottom: 18px;">
+	<div class="grid_19 contibutors">
 
 		<h3>Contributors to Cambridge Digital Library</h3>
 
-		<div class="grid_1">&nbsp;</div>
 		<h4>Funders</h4>
 
-		<div class="grid_3">&nbsp;</div>
-		<div class="grid_16">
+		<div class="grid_3">
+			<img src="/images/funder.gif" title="JISC" style="float: right" />
+			<!--<ul><li style="float: right" >&nbsp;</li></ul>-->
+		</div>
+		<div class="grid_13">
 			Dr Leonard S Polonsky has provided major funding towards the first
 			phase of the Foundations Digital Library Project, supporting the
 			development of the initial infrastructure and the digitisation of
@@ -25,137 +27,88 @@
 		</div>
 
 		<div class="grid_3">
-			<img src="/images/jisc.gif" title="JISC" style="float:right"/>
+			<img src="/images/jisc.gif" title="JISC" style="float: right" />
 		</div>
-		<div class="grid_16">
+		<div class="grid_13">
 			The JISC (Joint Information Systems Committee) awarded a grant to
 			Cambridge University Library and the Newton Project at the University
 			of Sussex for the <a
 				href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/econtent11/windows.aspx"
 				target="_blank">Windows on Genius</a> project (JISC e-Content
 			Programme 2011). This project has enabled the linking of Newton's
-			facsimiles and transcriptions.<br /> <br />
+			facsimiles and transcriptions.<br /> <br /> <br />
 		</div>
 
-		<div class="grid_1">&nbsp;</div>
-		<h4>Advisors - Foundations of Faith Collection</h4>
-
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_4">
-			<b>James Aitken<br/>
-			Catherine Ansorge<br/>
-			James Coakley<br/>
-			Yasmin Faghihi</br/>
-			David Instone-Brewer<br/>
-			Geoffrey Khan<br/><br/>
-			Peter Meadows<br/>
-			Ben Outhwaite<br/>
-			Richard Rex<br/>
-			Tony Street<br/></b>
-		</div>
-		 
 		<div class="grid_14">
-			Lecturer in Hebrew, Old Testament and Second Temple Studies, University of Cambridge<br/>
-Joint-Head of Near and Middle Eastern Department, Cambridge University Library<br/>
-Affiliated Lecturer in Divinity, and Manuscripts Specialist, Cambridge University Library<br/>
-Joint-Head of Near and Middle Eastern Department, Cambridge University Library<br/>
-Senior Research Fellow in Rabbinics and the New Testament, Tyndale House<br/>
-Professor of Semitic Philology and Chairman of the Faculty of Asian and Middle Eastern Studies, University of Cambridge<br/>
-Manuscripts Curator, Cambridge University Library<br/>
-Head of the Genizah Research Unit<br/>
-Reader in Reformation History, University of Cambridge<br/>
-Assistant Director of Research in Islamic Studies, University of Cambridge<br/><br/>
-		</div>
-		
-			<div class="grid_3">... more to come. </div>
-		<br/><br/>
-		<!-- 
+			<h4>Advisors - Foundations of Faith Collection</h4>
+			<ul>
+				<li>James Aitken, Lecturer in Hebrew, Old Testament and Second
+					Temple Studies, University of Cambridge</li>
+				<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
+					Department, Cambridge University Library</li>
+				<li>James Coakley, Affiliated Lecturer in Divinity, and
+					Manuscripts Specialist, Cambridge University Library</li>
+				<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
+					Department, Cambridge University Library</li>
 
-		<div class="grid_1">&nbsp;</div>
-		<h4>Funders</h4>
+				<li>David Instone-Brewer, Senior Research Fellow in Rabbinics
+					and the New Testament, Tyndale House</li>
+				<li>Geoffrey Khan, Professor of Semitic Philology and Chairman
+					of the Faculty of Asian and Middle Eastern Studies, University of
+					Cambridge</li>
+				<li>Peter Meadows, Manuscripts Curator, Cambridge University
+					Library</li>
+				<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
+				<li>Richard Rex, Reader in Reformation History, University of
+					Cambridge</li>
+				<li>Tony Street, Assistant Director of Research in Islamic
+					Studies, University of Cambridge</li>
+			</ul>
 
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Grant Young</b>
-		</div>
-		<div class="grid_15">
-			<em>Project Lead</em><br />
-		</div>
+			<h4>Advisors - Foundations of Science Collection</h4>
 
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Jennie Fletcher</b>
-		</div>
-		<div class="grid_15">
-			<em>Lead Software Engineer</em><br />
-		</div>
+			<ul>
+				<li>Rob Iliffe, Professor of Intellectual History and History
+					of Science, University of Sussex, and Editorial Director of the
+					Newton Project</li>
+				<li>Adam Perkins, Curator of Scientific Manuscripts, Cambridge
+					University Library</li>
+				<li>Ed Potten, Head of Rare Books, Cambridge University Library</li>
+				<li>Simon Schaffer, Professor of the History and Philosophy of
+					Science, University of Cambridge, and Director of the Board of
+					Longitude Project</li>
+				<li>Jim Secord, Professor of the History and Philosophy of
+					Science, University of Cambridge, and Director of the Darwin
+					Correspondence Project</li>
+			</ul>
 
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Huw Jones</b>
-		</div>
-		<div class="grid_15">
-			<em>Metadata Specialist</em><br />
-		</div>
+			<h4>Foundations Project Management Group</h4>
 
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Tony Stevenson</b>
-		</div>
-		<div class="grid_15">
-			<em>System Administration Lead</em><br />
-		</div>
+			<ul>
+				<li>Patricia Killiard, Head of Electronic Services and Systems</li>
+				<li>Jill Whitelock, Head of Special Collections</li>
+				<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
+				<li>Grant Young, Digitisation and Digital Preservation Manager</li>
+			</ul>
 
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Daniel Parry</b>
+			<h4>Foundations Project Team</h4>
+
+			<ul>
+				<li>Grant Young, Project Manager - <a
+					href="mailto:gy219@cam.ac.uk">gy219@cam.ac.uk</a></li>
+				<li>Jennie Fletcher, Lead Software Engineer - <a
+					href="jlf44@cam.ac.uk">jlf44@cam.ac.uk</a>
+				</li>
+				<li>Huw Jones, Metadata Specialist - <a
+					href="mailto:hej23@cam.ac.uk">hej23@cam.ac.uk</a>
+				</li>
+				<li>Tony Stevenson, System Administration - <a
+					href="mailto:tony@caret.cam.ac.uk">tony@caret.cam.ac.uk</a></li>
+			</ul>
+
+			<br /> <br />
+			
 		</div>
-		<div class="grid_15">
-			<em>System Administration</em><br /> <br />
-		</div>
-		<br />
-
-		<div class="grid_1">&nbsp;</div>
-		<h4>Imaging Services</h4>
-
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Placeholder</b>
-		</div>
-		<div class="grid_15">
-			<em>To come</em><br />
-		</div>
-
-		<br /> <br />
-
-		<div class="grid_1">&nbsp;</div>
-		<h4>Funders</h4>
-
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Placeholder</b>
-		</div>
-		<div class="grid_15">
-			<em>To come</em><br />
-		</div>
-
-		<br /> <br />
-
-		<div class="grid_1">&nbsp;</div>
-		<img src="/images/jisc.gif" />
-
-		<div class="grid_1">&nbsp;</div>
-		<h4>Conservation</h4>
-
-		<div class="grid_1">&nbsp;</div>
-		<div class="grid_3">
-			<b>Placeholder</b>
-		</div>
-		<div class="grid_15">
-			<em>To come</em><br />
-		</div>
-		<br /> <br />
--->
 	</div>
 </section>
 
