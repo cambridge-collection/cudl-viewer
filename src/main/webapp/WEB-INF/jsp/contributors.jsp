@@ -15,7 +15,7 @@
 		<h4>Funders</h4>
 
 		<div class="grid_3">
-			<img src="/images/funder.gif" title="JISC" style="float: right" />
+			<img src="/images/funder.gif" title="Funder" />
 			<!--<ul><li style="float: right" >&nbsp;</li></ul>-->
 		</div>
 		<div class="grid_13">
@@ -27,7 +27,7 @@
 		</div>
 
 		<div class="grid_3">
-			<img src="/images/jisc.gif" title="JISC" style="float: right" />
+			<img src="/images/jisc.gif" title="JISC" />
 		</div>
 		<div class="grid_13">
 			The JISC (Joint Information Systems Committee) awarded a grant to
