@@ -10,5 +10,9 @@
    <link rel="stylesheet" href="/styles/ie.min.css"/>
    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+
 <link rel="stylesheet" href="/styles/style.css">	
 <link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
+<!--[if lt IE 8]>
+   <link rel="stylesheet" href="/styles/ie.style.css"/>
+<![endif]-->

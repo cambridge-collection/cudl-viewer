@@ -9,7 +9,7 @@
 
 
 	<div class="grid_19">
-		<h3>Latest updates</h3>
+		<h3 style="margin-left:8px">News</h3>
 	</div>
 
 	<div class="grid_19">
@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="grid_11">
-			<span class="date">30/09/2011</span>
+			<span class="date">18/10/2011</span>
 			<h4>Introducing the Cambridge Digital Library</h4>
 			<p>
 				Over the next two years we will be adding a lot of content and
@@ -41,7 +41,7 @@
 		</div>
 
 		<div class="grid_11">
-			<span class="date">30/09/2011</span>
+			<span class="date">18/10/2011</span>
 			<h4>Dissecting a Newton notebook</h4>
 			<p>Digitisation is not just a matter of placing something on a
 				scanner or in front of a camera - fragile items will often require

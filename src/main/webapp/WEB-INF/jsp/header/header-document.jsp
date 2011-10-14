@@ -18,13 +18,18 @@
 <link rel="stylesheet" href="/styles/uoc.min.css">
 <!--[if lt IE 9]>
    <link rel="stylesheet" href="/styles/ie.min.css"/>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>   
 <![endif]-->
 
 <link rel="stylesheet" type="text/css"
 	href="/scripts/extjs/resources/css/ext-all.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
+
+<!--[if lt IE 8]>
+   <link rel="stylesheet" href="/styles/ie.style.css"/>
+<![endif]-->
+
 <style>
 .container {
 	background: url(/images/documentView/background_header.jpg) 50% 0
@@ -37,7 +42,7 @@ h2 {
 }
 
 body {
-	background: #ffffff url(/images/header/gradient.png) repeat-x;
+	background: #ffffff url(/images/header/gradient.jpg) repeat-x;
 }
 </style>
 
@@ -62,15 +67,14 @@ body {
 
 		<div class="clear"></div>
 
-		<header id="localMasthead"> <hgroup> <a
+		<header id="localMasthead"> <hgroup> <a id="UoCLogo"
 			href="http://www.cam.ac.uk"><img title="University of Cambridge"
-			align="left" src="/images/header/logo.png" width="130px"
-			height="27px" /> </a>
+			align="left" src="/images/header/logo.gif" /></a>
 		<h2>
-			<a href="/" title="Cambridge Digital Library ">|&nbsp; Cambridge
-				Digital Library </a>
+			|&nbsp; <a href="/" title="Cambridge Digital Library ">Cambridge
+				Digital Library</a>
 		</h2>
-		<a href="http://www.lib.cam.ac.uk"><img
-			title="Cambridge University Library" align="right"
-			src="/images/header/ul-small.png" width="84px" height="36px" /> </a> </hgroup> </header>
+		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" align="right" src="/images/header/ul-small.gif" /></a> 
+			
+			</hgroup> </header>
 		<!-- end #localMasthead -->

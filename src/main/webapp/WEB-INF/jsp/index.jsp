@@ -3,12 +3,10 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-home.jsp" />
 
-<div class="clear"></div>
+<div id="content" class="grid_20 content" >
 
-<section id="content" class="grid_20 content">
-
-<div class="grid_13">
-	<ol id="index_carousel">
+<div class="grid_13" >
+	<ol id="index_carousel"  style="margin-left:16px">
 
 		<!-- newton collection -->
 		<li>
@@ -28,7 +26,7 @@
 						href="/view/MS-ADD-04004/">Waste Book</a>'.
 				</p>
 			</div> <a href="/view/"><img id="newtonImage"
-				src="/images/index/newtondoc.jpg" alt="Test" width="600"
+				src="/images/index/newtondoc.jpg" alt="Newton Papers" width="600"
 				height="390" /> </a>
 		</li>
 
@@ -40,7 +38,7 @@
 	style="background-color: #b2d7f2; margin-bottom: 18px;">
 
 	<div id="news" class="panel light">
-		<h3>Latest updates</h3>
+		<h3>News</h3>
 
 		<div class="news">
 			<br />
@@ -48,7 +46,7 @@
 				<a href="/news/"><img alt="New collections coming soon"
 					src="/images/index/cernesmall.jpg" height="55" width="195"> </a>
 			</center>
-			<span class="date">30/09/2011</span>
+			<span class="date">18/10/2011</span>
 			<h4>
 				<a href="/news/">Introducing the Cambridge Digital Library</a>
 			</h4>
@@ -60,7 +58,7 @@
 					src="/images/index/conservationsmall.jpg" height="55" width="195">
 				</a>
 			</center>
-			<span class="date">30/09/2011</span>
+			<span class="date">18/10/2011</span>
 			<h4>
 				<a href="/news/">Dissecting a Newton notebook</a>
 			</h4>
@@ -70,8 +68,7 @@
 </div>
 
 
-
-</section>
+</div>
 
 <jsp:include page="footer/footer.jsp" />
 
