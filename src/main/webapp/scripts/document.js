@@ -84,7 +84,7 @@ function setupViewport() {
 	viewportComponents.pagingToolbar.add(pagingTool);
 	viewportComponents.pagingToolbar.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
 	viewportComponents.pagingToolbar.add('->');
-	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.png', handler: downloadImageCheck});
+	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.gif', handler: downloadImageCheck});
 	
 	// viewportComponents.tabpanel.on('beforetabchange', view.beforetabchange);
 	// viewportComponents.tabpanel.on('tabchange', this.aftertabchange);

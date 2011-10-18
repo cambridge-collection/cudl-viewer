@@ -18,7 +18,7 @@
 						<p>
 							Sorry, there has been an error displaying the page you requested.
 							Please <a href="mailto:foundations@lib.cam.ac.uk"
-								title="404 Page - Resource Missing">Contact Us</a> so we can
+								title="500 Page - Error">Contact Us</a> so we can
 							resolve the issue or click on the link below to go to our home
 							page. <br /> <br /> <a href="/">Cambridge Digital Library</a>.
 						</p>

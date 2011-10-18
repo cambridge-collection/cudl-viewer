@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
         http://www.springframework.org/schema/aop 
@@ -12,20 +13,45 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/mvc 
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/util 
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
 	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
 	</bean>
 
-	<bean id="globalproperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="locations">
+	<util:properties id="globalproperties" location="classpath:cudl-global.properties" 
+		/> 
+		
+  <!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <value>classpath:cudl-global.properties</value>
+      </list>
+    </property>
+  </bean> -->		
+
+	<!-- General Configuration beans -->
+
+	<!-- <bean id="config" class="org.apache.commons.configuration.CompositeConfiguration">
+		<constructor-arg>
 			<list>
-				<value>classpath:cudl-global.properties</value>
+				<ref bean="cudlproperties" />
 			</list>
-		</property>
+		</constructor-arg>
 	</bean>
+
+	<bean id="cudlproperties"
+		class="org.apache.commons.configuration.PropertiesConfiguration">
+		<constructor-arg value="cudl-global.properties" />
+
+		<property name="reloadingStrategy">
+			<bean
+				class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy">
+				<property name="refreshDelay" value="10000" />
+			</bean>
+		</property>
+	</bean>-->
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

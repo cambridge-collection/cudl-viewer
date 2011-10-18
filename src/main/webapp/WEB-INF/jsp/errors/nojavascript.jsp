@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
-<jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav-about.jsp" />
+<jsp:include page="../header/header-full.jsp" />
+<jsp:include page="../header/nav-about.jsp" />
 
 <div class="clear"></div>
 
@@ -25,7 +25,7 @@
 	
 </section>
 
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="../footer/footer.jsp" />
 
 
 
