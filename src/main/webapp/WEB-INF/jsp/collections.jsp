@@ -64,7 +64,7 @@ section#content p {
 			catalogue made. Based on this catalogue, the earl generously
 			presented all the mathematical and scientific manuscripts to the
 			University, and it is these that form the 'Portsmouth collection' in
-			the University Library (MSS Add. 3958-4007). <br /> <br /> The
+			the University Library (MS Add. 3958-4007). <br /> <br /> The
 			remainder of the papers, many concerned with alchemy, theology and
 			chronology, were returned to Lord Portsmouth as being of little
 			scientific interest. These manuscripts were then sold at auction at
@@ -79,40 +79,39 @@ section#content p {
 	<div class="grid_9">
 
 		<ol id="collections_carousel">
-			<li><a href="/view/MS-ADD-03958/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-					alt="MS-ADD-03958" width="139" height="180" /> </a>
-				<h5>Early Papers (Ms.3958)</h5>These papers document Newton's early
-				mathematical thinking. They include extracts from books he was
-				reading and many of his own notes and calculations.</li>
 			<li><a href="/view/MS-ADD-03996/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03996-000-00001_files/8/0_0.jpg"
 					alt="MS-ADD-03996" width="139" height="180" /> </a>
-				<h5>Trinity College Notebook (Ms.3996)</h5>A notebook Newton kept as a
+				<h5>Trinity College Notebook (MS Add. 3996)</h5>A notebook Newton kept as a
 				student at Trinity College from about 1661 to 1665.</li>
-			<li><a href="/view/MS-ADD-04004/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-04004-001-00001_files/8/0_0.jpg"
-					alt="MS-ADD-04004" width="139" height="180" /> </a>
-				<h5>Waste Book (Ms.4004) Part 2</h5>Much of Newton's important work on
-				calculus is developed in this large notebook, used when he was away
-				from Cambridge due to the plague.</li>
 			<li><a href="/view/MS-ADD-04000/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-04000-000-00001_files/8/0_0.jpg"
 					alt="MS-ADD-04000" width="139" height="180" /> </a>
-				<h5>Mathematical Notebook (Ms.4000)</h5>A description of the book
+				<h5>Mathematical Notebook (MS Add. 4000)</h5>A description of the book
 				should go here. Suspendisse lorem magna, mattis at volutpat aliquet,
 				placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor
-				at quam.</li>
-
+				at quam.</li>				
+			<li><a href="/view/MS-ADD-04004/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-ADD-04004-001-00001_files/8/0_0.jpg"
+					alt="MS-ADD-04004" width="139" height="180" /> </a>
+				<h5>Waste Book (MS Add. 4004) Part 2</h5>Much of Newton's important work on
+				calculus is developed in this large notebook, used when he was away
+				from Cambridge due to the plague.</li>
+			<li><a href="/view/MS-ADD-03958/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
+					alt="MS-ADD-03958" width="139" height="180" /> </a>
+				<h5>Early Papers (MS Add. 3958)</h5>These papers document Newton's early
+				mathematical thinking. They include extracts from books he was
+				reading and many of his own notes and calculations.</li>
 			<li><a href="/view/MS-ADD-03970/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg"
 					alt="MS-ADD-03970" width="139" height="180" /> </a>
-				<h5>Hydrostatics, Optics, Sound and Heat (Ms.3970)</h5>A
+				<h5>Hydrostatics, Optics, Sound and Heat (MS Add. 3970)</h5>A
 				description of the book should go here. Suspendisse lorem magna,
 				mattis at volutpat aliquet, placerat sed leo. Cras nulla orci,
 				aliquam nec sagittis et, tempor at quam.</li>
