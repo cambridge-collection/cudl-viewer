@@ -43,7 +43,7 @@
 		<div class="news">
 			<br />
 			<center>
-				<a href="/news/"><img alt="New collections coming soon"
+				<a href="/news/"><img alt="Introducing the Cambridge Digital Library"
 					src="/images/index/cernesmall.jpg" height="55" width="195"> </a>
 			</center>
 			<span class="date">18/10/2011</span>

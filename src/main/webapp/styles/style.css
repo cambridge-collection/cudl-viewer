@@ -42,6 +42,12 @@ h3,h2,h1,h4 {
 	line-height: 18px;
 }
 
+/* credit text for images, small */
+.image-credit {
+	font-size:70%;
+	color:#999999;
+}
+
 /* Header Styles */
 #localMasthead h1,#localMasthead h1 a,#localMasthead h2,#localMasthead h2 a
 	{

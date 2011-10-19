@@ -68,13 +68,13 @@ body {
 		<div class="clear"></div>
 
 		<header id="localMasthead"> <hgroup> <a id="UoCLogo"
-			href="http://www.cam.ac.uk"><img title="University of Cambridge"
+			href="http://www.cam.ac.uk"><img title="University of Cambridge" alt="University of Cambridge"
 			align="left" src="/images/header/logo.gif" /></a>
 		<h2>
 			|&nbsp; <a href="/" title="Cambridge Digital Library ">Cambridge
 				Digital Library</a>
 		</h2>
-		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" align="right" src="/images/header/ul-small.gif" /></a> 
+		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" alt="Cambridge University Library" align="right" src="/images/header/ul-small.gif" /></a> 
 			
 			</hgroup> </header>
 		<!-- end #localMasthead -->

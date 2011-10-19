@@ -11,7 +11,7 @@
 </script>
 <script type="text/javascript">
 
-	var googleAnalyticsID = UA-10976633-3; // default to live. 
+	var googleAnalyticsID = "UA-10976633-3"; // default to live. 
 	
 	if ("${globalproperties.GoogleAnalyticsId}" != "") {
 		googleAnalyticsID = "${globalproperties.GoogleAnalyticsId}";

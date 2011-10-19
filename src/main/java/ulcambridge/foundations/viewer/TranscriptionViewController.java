@@ -110,9 +110,11 @@ public class TranscriptionViewController {
 		
 		// include the page head from the source 
 		if (sourcePage.indexOf("<head>")!=-1 && sourcePage.indexOf("</head>")!=-1) {
-			
+			//output.append("<script type='text/javascript'>window.onerror = function() { alert (\"error\") }</script>\n");
 			output.append(sourcePage.substring(sourcePage.indexOf("<head>"),sourcePage.indexOf("</head>")));
 			output.append("<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
+
+			
 			output.append("</head><body><div class=\"transcription\">\n");
 			// Add link to Newton Project
 			output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='"+requestURL+"'>Newton Project</a></div>");
@@ -120,15 +122,15 @@ public class TranscriptionViewController {
 		} 
 		
 		// include the content //<!--start-text-container-->
-		if (sourcePage.indexOf("<!--start-text-container-->")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
+		if (sourcePage.indexOf("<div id=\"tei\">")!=-1 && sourcePage.indexOf("<!--end-text-container-->")!=-1) {
 			
-			output.append(sourcePage.substring(sourcePage.indexOf("<!--start-text-container-->"),sourcePage.indexOf("<!--end-text-container-->")));
+			output.append(sourcePage.substring(sourcePage.indexOf("<div id=\"tei\">"),sourcePage.indexOf("<!--end-text-container-->")));
 				
 		} 				
 		
 		
-		// End Tag
-		output.append("</div></body></HTML>");
+		// End Tag (inc end of transcription div.)
+		output.append("</div><div id=\"navigation\"></div></body></HTML>");
 
 		return output.toString();
 	}
