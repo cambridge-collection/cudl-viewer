@@ -31,19 +31,11 @@
 <![endif]-->
 
 <style>
-.container {
-	background: url(/images/documentView/background_header.jpg) 50% 0
-		repeat-x;
-	background-color: #FFFFFF;
-}
 
 h2 {
 	font-size: 36px;
 }
 
-body {
-	background: #ffffff url(/images/header/gradient.jpg) repeat-x;
-}
 </style>
 
 <script type="text/javascript">

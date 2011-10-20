@@ -3,6 +3,8 @@
  */
 var downloadImageLink;
 var isMSIE = /* @cc_on!@ */0;
+var transcriptionNormalisedURL;
+var transcriptionDiplomaticURL;
 
 // Functions to show and hide the right hand panel.
 var unmaskRightPanel = function(pos) {
@@ -110,11 +112,18 @@ var docView = function() {
 				maskRightPanel(1);
 				maskRightPanel(2);
 
-				document.getElementById("transcription_normal_frame").src = "/transcription?url="
-						+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
-				document.getElementById("transcription_diplomatic_frame").src = "/transcription?url="
-						+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
-
+				transcriptionNormalisedURL="/transcription?url="
+					+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
+				transcriptionDiplomaticURL="/transcription?url="
+					+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
+				
+				if (currentTab==1) {
+					  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
+				} else 
+				if (currentTab==2) {
+					  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
+				}
+				
 				// setup metadata
 				view.populateElement(document.getElementById("metadata-title"),
 						data.title);

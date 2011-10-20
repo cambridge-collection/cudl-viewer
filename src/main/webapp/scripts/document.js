@@ -6,6 +6,7 @@ var data;
 var store;
 var view; // viewport
 var currentPage;
+var currentTab = 0;
 
 function setupSeaDragon() {
 	Seadragon.Config.imagePath = "/img/";
@@ -43,6 +44,28 @@ function loadData() {
 	});
 
 	docDataLoader.load(); // loads in the JSON
+}
+
+/**
+ * Load content into the current tab that is being viewed. 
+ * 
+ * @param tabs
+ * @param thisTab
+ */
+function beforeTabChange(tabs, thisTab) {
+
+	for (var i=0; i<tabTitles.length; i++) {
+		if (tabTitles[i]==thisTab.title) {
+			currentTab=i;
+		};
+	}
+
+	if (currentTab==1) {
+	  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
+    } else 
+    if (currentTab==2) {
+	  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
+	}
 }
 
 /**
@@ -86,7 +109,7 @@ function setupViewport() {
 	viewportComponents.pagingToolbar.add('->');
 	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.gif', handler: downloadImageCheck});
 	
-	// viewportComponents.tabpanel.on('beforetabchange', view.beforetabchange);
+	 viewportComponents.tabpanel.on('beforetabchange', beforeTabChange);
 	// viewportComponents.tabpanel.on('tabchange', this.aftertabchange);
 
 	// initialise viewport.

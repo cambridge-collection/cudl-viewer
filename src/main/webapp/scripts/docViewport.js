@@ -1,6 +1,7 @@
 /**
  * Setup the components required by the viewport.
  */
+var tabTitles = ["About", "Transcription (normalised)", "Transcription (diplomatic)"];
 var viewportComponents = {
 
 	pageTitlePanel: new Ext.Toolbar({
@@ -38,15 +39,15 @@ var viewportComponents = {
 		bodyPadding : 0,
 		items : [ {
 			xtype : 'panel',
-			title : 'About',			
+			title : tabTitles[0],			
 			el : 'metadata'				
 		}, {
 			xtype : 'panel',
-			title : 'Transcription (normalised)',
+			title : tabTitles[1],
 			el : 'transcription_normal'
 		}, {
 			xtype : 'panel',
-			title : 'Transcription (diplomatic)',
+			title : tabTitles[2],
 			el : 'transcription_diplomatic'
 		} ]
 	})
