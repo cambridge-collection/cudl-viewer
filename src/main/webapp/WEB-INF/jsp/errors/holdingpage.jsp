@@ -19,7 +19,7 @@
 				<p>Cambridge University Library is undertaking significant
 					development work and digitisation to open up its collections to the
 					world via the web. Content will begin to become available from this
-					address in late October 2011 and then grow considerably over the
+					address in early November 2011 and then grow considerably over the
 					next two years. We will be putting up a wide range of content from
 					the Library's great collections, but will focus particularly on two
 					themes: faith and science.</p>
@@ -39,7 +39,7 @@
 					Cambridge's Cavendish Laboratory. The initial focus for the
 					Foundations of Science Collection will be on Seventeenth and
 					Eighteenth Century Science. Our first release of content, in
-					October 2011, will include a selection of manuscripts from the
+					November 2011, will include a selection of manuscripts from the
 					Papers of Isaac Newton.</p>
 			</div>
 		</div>
