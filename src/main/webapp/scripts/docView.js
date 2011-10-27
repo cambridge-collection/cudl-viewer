@@ -112,10 +112,17 @@ var docView = function() {
 				maskRightPanel(1);
 				maskRightPanel(2);
 
-				transcriptionNormalisedURL="/transcription?url="
-					+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
-				transcriptionDiplomaticURL="/transcription?url="
-					+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
+				//transcriptionNormalisedURL="/transcription?url="
+				//	+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
+				//transcriptionDiplomaticURL="/transcription?url="
+				//	+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
+				var normalTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
+				var diploTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
+				
+				transcriptionNormalisedURL="/externalresource?url="+encodeURIComponent("/transcription?url="
+					+ normalTransURL) +"&doc="+docId;
+				transcriptionDiplomaticURL="/externalresource?url="+encodeURIComponent("/transcription?url="
+					+ diploTransURL) +"&doc="+docId;
 				
 				if (currentTab==1) {
 					  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;

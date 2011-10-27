@@ -48,8 +48,7 @@ public class TranscriptionViewController {
 					"</head><body><div class=\"transcription\"> No transcription available for this image. </div></body></html>";
 			
 			writePage(response,page);
-			return null;
-			
+			return null;			
 		}
 		
 		String sourcePage = readContent(new URL(url));
@@ -60,6 +59,7 @@ public class TranscriptionViewController {
 		String baseURL = url.substring(0, url.indexOf('/', 7));
 		
 		String transcriptionPage = generateTranscriptionPage(sourcePage, baseURL, url);
+		
 		writePage(response, transcriptionPage);
 		
 		return null;		

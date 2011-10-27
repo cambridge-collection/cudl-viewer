@@ -14,13 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class SiteViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
+	private ResourceBundle config = ResourceBundle.getBundle("cudl-global");
+	private	String showHoldingPage = config.getString("showHoldingPage");
 	
 	// on path /
 	@RequestMapping(value = "/")
 	public ModelAndView handleRequest() {
-
-		ResourceBundle config = ResourceBundle.getBundle("cudl-global");
-		String showHoldingPage = config.getString("showHoldingPage");
 
 		if (showHoldingPage!=null && showHoldingPage.equals("true")) {
 			ModelAndView modelAndView = new ModelAndView(
