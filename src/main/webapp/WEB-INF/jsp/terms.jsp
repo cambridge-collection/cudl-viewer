@@ -11,10 +11,10 @@
 	<div class="grid_19 terms">
 
 		<div class="panel light">
-			
+
 			<div class="grid_11">
-			<h3>Terms & Conditions</h3>
-			
+				<h3>Terms & Conditions</h3>
+
 				<h4>Terms of website use</h4>
 				<p>These terms of use (together with the documents referred to
 					in them) set out the terms for use of the Cambridge Digital Library
@@ -30,11 +30,11 @@
 					amended terms.</p>
 
 				<h4>Information about us</h4>
-				<p>The site is operated by Cambridge University Library ('we' or
-					'us'), whose postal address is Cambridge University Library, West
-					Road, Cambridge, United Kingdom CB3 9DR. The registered address of
-					the University of Cambridge (the 'University') is The Old Schools,
-					Trinity Lane, Cambridge, United Kingdom CB2 1TN.</p>
+				<p>The site is operated by Cambridge University Library
+					('we','us' or the 'University'), whose postal address is Cambridge
+					University Library, West Road, Cambridge, United Kingdom CB3 9DR.
+					The registered address of the University is Cambridge, The Old
+					Schools, Trinity Lane, Cambridge, United Kingdom CB2 1TN.</p>
 
 				<h4>Accessibility</h4>
 				<p>
@@ -45,8 +45,7 @@
 
 				<h4>Information we collect (privacy policy)</h4>
 				<p>General. This policy explains what information we gather when
-					you visit the Cambridge Digital Library website, and explains how
-					that information is used.</p>
+					you visit the site, and explains how that information is used.</p>
 
 				<p>It is important for you to appreciate that the site provides
 					links to other independent sites, both within the University and
@@ -184,29 +183,35 @@
 				<h4>Intellectual property rights</h4>
 				<p>The University is the owner or the licensee of all
 					intellectual property rights in the site and in the material
-					published on it. Those works are protected by copyright laws and
-					treaties around the world. All such rights are reserved.</p>
+					appearing on the site. The material includes but is not limited to
+					works such as images, artwork, text, data, files, audio/visual
+					clips, illustrations, designs and documentation (the 'Content') and
+					the collection, arrangement and assembly of the Content. Those
+					works are protected by copyright laws and treaties around the
+					world. All such rights are reserved.</p>
 				<p>Material prepared for the primary purpose of providing
 					information about the Cambridge Digital Library and the University
 					of Cambridge and organisations with which it is associated or
 					affiliated has been placed on the site by the University
 					('University Material').</p>
-				<p>Subject to statutory allowances, extracts of material from
-					the site may be accessed, downloaded and printed for your personal
-					and non-commercial use and you may draw the attention of others
-					within your organisation to material posted on the site. Unless
-					explicitly licensed or permitted by us, you may not:</p>
+				<p>Subject to statutory allowances, extracts of the Content and
+					University Material from the site may be accessed, downloaded and
+					printed for your personal and non-commercial use and you may draw
+					the attention of others within your organisation to material posted
+					on the site. Unless explicitly licensed or permitted by us, you may
+					not:</p>
 				<ul>
-					<li>use any part of the material on the site for direct or
-						indirect commercial purposes or advantage without obtaining a
-						licence to do so from the University or its licensors</li>
-					<li>modify or alter the paper or digital copies of any
-						material printed off or downloaded in any way</li>
+					<li>use any part of the Content or University Material on the
+						site for direct or indirect commercial purposes or advantage
+						without obtaining a licence to do so from the University or its
+						licensors</li>
+					<li>modify or alter the paper or digital copies of any Content
+						or University Material printed off or downloaded in any way</li>
 					<li>sell, resell, license, transfer, transmit, display in any
-						form, perform, hire, lease or loan any content in whole or in part
-						printed or downloaded from the site</li>
+						form, perform, hire, lease or loan any Content or University
+						Material in whole or in part printed or downloaded from the site</li>
 					<li>systematically extract and/or re-utilise substantial parts
-						of the content or material on the site</li>
+						of the Content or University Material from the site</li>
 					<li>create and/or publish your own database that features
 						substantial parts of this site.</li>
 				</ul>
@@ -277,12 +282,12 @@
 					students (and others as prescribed) is also subject to the Statutes
 					and Ordinances of the University of Cambridge, specifically
 					Ordinances, Chapter XIII Finance and Property, Intellectual
-					Property Rights, pp. 978-986: <a
-						href="http://www.admin.cam.ac.uk/univ/so/pdfs/cso_4_ordinance13_964_993.pdf">http://www.admin.cam.ac.uk/univ/so/pdfs/cso_4_ordinance13_964_993.pdf</a>.
+					Property Rights, pp. 982-990: <a
+						href="http://www.admin.cam.ac.uk/univ/so/pdfs/ordinance13.pdf">http://www.admin.cam.ac.uk/univ/so/pdfs/ordinance13.pdf</a>.
 				</p>
 				<h4>Content standards</h4>
 				<p>These content standards apply to any and all material which
-					you contribute to the site ('contributions') and to any interactive
+					you contribute to the site ('Contributions') and to any interactive
 					services or features associated with it.</p>
 				Contributions must:<br /> <br />
 				<ul>
@@ -332,14 +337,13 @@
 					accuracy of any material posted by any user of the site.</p>
 
 				<h4>Limitation of liability</h4>
-				<p>University Material is provided on an 'AS IS' and 'AS
-					AVAILABLE' basis. To the extent permitted by law, the University
-					excludes any representations or any warranties (whether express or
-					implied by law), including the implied warranties of satisfactory
-					quality, fitness of a particular purpose, non-infringement,
-					compatibility, security and accuracy.</p>
-				<p>Unless material is part of University Material, or unless
-					stated otherwise, the site may contain advice, opinions, statements
+				<p>The site and its Content and University Material is provided
+					on an 'AS IS' and 'AS AVAILABLE' basis. To the extent permitted by
+					law, the University excludes any representations or any warranties
+					(whether express or implied by law), including the implied
+					warranties of satisfactory quality, fitness of a particular
+					purpose, non-infringement, compatibility, security and accuracy.</p>
+				<p>The site may contain advice, opinions, statements
 					or other information by various authors or organisations. Reliance
 					upon any such advice, opinion, statement or other information is at
 					your risk and to the extent permitted by law the University
