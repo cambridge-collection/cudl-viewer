@@ -1,9 +1,12 @@
 package ulcambridge.foundations.viewer;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,39 +33,35 @@ public class ExternalCache {
 	static ResourceBundle config = ResourceBundle.getBundle("cudl-global");
 	static final String cachePath = config.getString("cachePath");
 	static final String cacheURL = config.getString("cacheURL");
-	// holds those pointers to files that have been requested since the last
-	// restart
+	
+	// holds ref to files that have been requested recently
 	static Hashtable<String, Date> cachedFiles = new Hashtable<String, Date>();
-	// Time since last disk check to trust that the cached file is still there.
-	static final long aMinute = 60000;
-	static final long anHour = 3600000;
-	static final long aDay = 86400000;
 
-	static final long cacheCheckTimeout = aMinute; // in ms
-	static final long cacheFileTimeout = aDay * 3; // in ms
+	static final long cacheCheckTimeout = Long.parseLong(config.getString("cacheCheckTimeout").trim());
+	static final long cacheFileTimeout = Long.parseLong(config.getString("cacheFileTimeout").trim());
 
 	public static boolean existsInCache(String url, String docId) {
 
 		// look for corresponding file in memory (from last check on disk).
 		String filename = getCachedItemFilename(url);
-		if (cachedFiles.containsKey(filename)) {
-			Date dateFileChecked = cachedFiles.get(filename);
-
+		if (cachedFiles.containsKey(docId+filename)) {
+			Date dateFileChecked = cachedFiles.get(docId+filename);
+			
 			if (dateFileChecked.getTime() + cacheCheckTimeout > (new Date())
 					.getTime()) {
 				// file is in hashtable, so recently been found on file system.
 				return true;
 			} else {
 				// file is timed out in hashtable, checking disk
-				cachedFiles.remove(filename);
+				cachedFiles.remove(docId+filename);
 			}
 		}
 
 		// look for corresponding file on disk
-		String filepath = cachePath + File.separator + docId
-		+ File.separator + filename;
+		String filepath = cachePath + File.separator + docId + File.separator
+				+ filename;
 		File file = new File(filepath);
-		System.out.println(filepath + " exists in cache: " + file.exists());
+		//System.out.println(filepath + " exists in cache: " + file.exists());
 		if (file.exists()) {
 
 			// Check if the file is older than the allowed File timeout.
@@ -109,7 +108,7 @@ public class ExternalCache {
 
 		String filename = getCachedItemFilename(url);
 		if (filename != null) {
-			return cacheURL +  docId + "/" + filename;
+			return cacheURL + docId + "/" + filename;
 		}
 		return url; // default to original url.
 	}
@@ -119,15 +118,23 @@ public class ExternalCache {
 		try {
 			site = new URL(url);
 			URLConnection uc = site.openConnection();
-			System.out.println("connection type: " + uc.getContentType());
+			//System.out.println("connection type: " + uc.getContentType());
 			if (uc instanceof HttpURLConnection) {
 				HttpURLConnection connection = (HttpURLConnection) uc;
 				if (connection.getResponseCode() == 200) {
 					// URL exists and returns ok (200)
 					if (connection.getContentType().toLowerCase()
 							.startsWith("text/html")) {
+
 						loadPageIntoCache(url, connection, docId);
+
+					} else if (connection.getContentType().toLowerCase()
+							.startsWith("text/css")) {
+
+						loadCSSIntoCache(url, connection, docId);
+
 					} else {
+
 						loadResourceIntoCache(url, connection, docId);
 					}
 				} else {
@@ -151,7 +158,7 @@ public class ExternalCache {
 
 		// request URL
 		try {
-			System.out.println("loading PAGE into cache: " + url);
+			//System.out.println("loading PAGE into cache: " + url);
 
 			URL site = new URL(url);
 			String baseURL = site.getProtocol()
@@ -221,25 +228,99 @@ public class ExternalCache {
 				}
 				// rewrite link to local resource
 				href.setNodeValue(getCachedItemFilename(linkSRC));
-				loadIntoCache(linkSRC, docId);
+				if (!existsInCache(linkSRC,  docId)) {
+					loadIntoCache(linkSRC, docId);
+				}
 			}
 		}
 		return dom;
 	}
 
-	private static void loadResourceIntoCache(String url,
+	private static void loadCSSIntoCache(String url,
 			HttpURLConnection connection, String docId) {
-
-		System.out.println("loading into cache: " + url);
+		//System.out.println("loading into cache: " + url);
 
 		try {
 			String filename = getCachedItemFilename(url);
 
 			String filepath = cachePath + File.separator + docId
-			+ File.separator + filename;
-			File file = new File (filepath);
+					+ File.separator + filename;
+			File file = new File(filepath);
 			file.getParentFile().mkdirs();
-			
+
+			if (!url.startsWith("http")) {
+				return;
+			}
+			URL site = new URL(url);
+
+			URLConnection uc = site.openConnection();
+
+			BufferedReader is = new BufferedReader(new InputStreamReader(
+					uc.getInputStream()));
+			FileWriter out = new FileWriter(file);
+
+			String strLine;
+			while ((strLine = is.readLine()) != null) {
+
+				if (strLine.contains("url(") && !strLine.contains("url(data")) {
+					// replace url(/external/url) with url(local/cached/url)
+					int start = strLine.indexOf("url(");
+					int end = strLine.indexOf(')', start);
+					String urlExtRef = strLine.substring(start + 4, end);
+					if (!urlExtRef.startsWith("http")
+							&& !urlExtRef.startsWith("/")) {
+						urlExtRef = url.substring(0, url.lastIndexOf("/") + 1)
+								+ urlExtRef;
+					} else if (!urlExtRef.startsWith("http")
+							&& urlExtRef.startsWith("/")) {
+						urlExtRef = url.substring(0, url.indexOf("/",8) + 1)
+						+ urlExtRef;
+					}
+					//System.out.println("CSS URL: " + urlExtRef);
+
+					out.write(strLine.substring(0, start));
+					out.write("url(" + getCachedItemFilename(urlExtRef) + ")");
+					out.write(strLine.substring(end+1) + "\n");
+
+					if (!existsInCache(urlExtRef,docId)) {
+						loadIntoCache(urlExtRef, docId);
+					}
+
+				} else {
+
+					out.write(strLine + "\n");
+				}
+			}
+
+			out.flush();
+			out.close();
+			is.close();
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+	}
+
+	private static void loadResourceIntoCache(String url,
+			HttpURLConnection connection, String docId) {
+
+		//System.out.println("loading into cache: " + url);
+
+		try {
+			String filename = getCachedItemFilename(url);
+
+			String filepath = cachePath + File.separator + docId
+					+ File.separator + filename;
+			File file = new File(filepath);
+			file.getParentFile().mkdirs();
+
 			if (!url.startsWith("http")) {
 				return;
 			}

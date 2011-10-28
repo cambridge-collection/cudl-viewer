@@ -32,22 +32,21 @@ public class ExternalResourceController {
 
 		// translate any relative url into an absolute value
 		if (!url.startsWith("http")) {
-
 			
 			String baseURL = (request.getRequestURL().toString().replaceAll("/externalresource", ""));
 			
-			System.out.println(baseURL);
+			//System.out.println(baseURL);
 			
 			url = baseURL+url;
 		}
 
 		if (!ExternalCache.existsInCache(url, docId)) {
-			System.out.println("loading into cache..."+url);
+			//System.out.println("loading into cache..."+url);
 			ExternalCache.loadIntoCache(url, docId);
 		} 
 		
 		String localURL = ExternalCache.getCachedItemLocalURL(url, docId);
-		System.out.println("forwarding to url: "+localURL);
+		//System.out.println("forwarding to url: "+localURL);
 		//String localURL = ExternalCache.getCachedItemLocalURL(url);
 		//RequestDispatcher rd = request.getRequestDispatcher(localURL);
 		//rd.forward(request, response);
