@@ -3,12 +3,6 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-browse.jsp" />
 
-<style>
-section#content p {
-	background: #F1F1F1;
-	padding: 6px 0;
-}
-</style>
 <script type="text/javascript">
 	/*	function pageinit() {
 	 var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
@@ -27,53 +21,76 @@ section#content p {
 <section id="content" class="grid_20 content">
 
 	<div class="grid_9">
-		<h3 style="margin-left:8px">Newton Papers</h3>
+		<h3 style="margin-left: 8px">Newton Papers</h3>
 		<blockquote class="grid_4 omega print">
-			
-				To me there has never been a higher source of earthly honor or
-				distinction than that connected with advances in science." <cite>&mdash;Sir
-					Isaac Newton</cite>
-			
+
+			To me there has never been a higher source of earthly honor or
+			distinction than that connected with advances in science." <cite>&mdash;Sir
+				Isaac Newton</cite>
+
 		</blockquote>
 		<br /> <br />
 		<div class="grid_4">
 			<img src="/images/collectionsView/newton.jpg" alt="Newton"
-				width="150" height="225" align="right"/>
+				width="150" height="225" align="right" />
 		</div>
 		<div class="grid_8">
-			Cambridge University Library holds the largest and most important
-			collection of Newton's scientific works. Isaac Newton (1642-1727)
-			came to the University of Cambridge as a student in 1661, graduating
-			in 1665. In 1669 he succeeded Isaac Barrow in the Lucasian Chair of
-			Mathematics. In 1699 Newton was appointed Master of the Mint,
-			resigning the Lucasian Chair and his Trinity College Fellowship in
-			1701. He was elected President of the Royal Society in 1703, which
-			post he occupied until his death. <br /> <br /> Under the
-			regulations for the Lucasian Chair, Newton deposited copies of his
-			lectures in the University Library in the seventeenth century. These,
-			and some correspondence relating to the University, were assigned the
-			classmarks Dd.4.18, Dd.9.46, Dd.9.67, Dd.9.68, and Mm.6.50. <br /> <br />
-			After his death, the manuscripts in Newton's possession passed to his
-			niece Catherine and her husband John Conduitt. In 1740 the Conduitt's
-			daughter, also Catherine, married John Wallop, who became Viscount
-			Lymington when his father was created first Earl of Portsmouth. Their
-			son became the second earl, the manuscripts then being inherited by
-			succeeding generations of the Portsmouth family. <br /> <br /> In
-			1872 the fifth earl passed all the Newton manuscripts he had to the
-			University of Cambridge, where the manuscripts were assessed and a
-			catalogue made. Based on this catalogue, the earl generously
-			presented all the mathematical and scientific manuscripts to the
-			University, and it is these that form the 'Portsmouth collection' in
-			the University Library (MS Add. 3958-4007). <br /> <br /> The
-			remainder of the papers, many concerned with alchemy, theology and
-			chronology, were returned to Lord Portsmouth as being of little
-			scientific interest. These manuscripts were then sold at auction at
-			Sotheby's in London in 1936 and purchased by other libraries and
-			individuals. <br /> <br /> In 2000 Cambridge University Library
-			acquired a very important collection of scientific manuscripts from
-			the Earl of Macclesfield, which included a significant number of
-			Isaac Newton's letters and other papers.
-			<br /> <br />
+			<p>We present an initial selection of the works of Isaac Newton
+				(1642-1727), concentrating on his mathematical work in the 1660s.
+				Over the next few months we will be adding further manuscripts until
+				the majority of our Newton Papers are available on this site.</p>
+
+			<p>Cambridge University Library holds the largest and most
+				important collection of Newton's scientific works. Newton was
+				closely associated with Cambridge. He came to the university as a
+				student in 1661, graduating in 1665, and from 1669 to 1701 held the
+				Lucasian Chair of Mathematics. In 1699 Newton was appointed Master
+				of the Mint, and in 1703 he was elected President of the Royal
+				Society, a post he occupied until his death.</p>
+			<p>Under the regulations for the Lucasian Chair, Newton was
+				required to deposit copies of his lectures in the University
+				Library. These, and some correspondence relating to the University,
+				were assigned the classmarks Dd.4.18, Dd.9.46, Dd.9.67, Dd.9.68, and
+				Mm.6.50.</p>
+			<p>After his death, the manuscripts in Newton's possession passed
+				to his niece Catherine and her husband John Conduitt. In 1740 the
+				Conduitt's daughter, also Catherine, married John Wallop, who became
+				Viscount Lymington when his father was created first Earl of
+				Portsmouth. Their son became the second earl and the manuscripts
+				were passed down succeeding generations of the Portsmouth family.</p>
+			<p>In 1872 the fifth earl passed all the Newton manuscripts he
+				had to the University of Cambridge, where they were assessed and a
+				detailed catalogue made. Based on this catalogue, the earl
+				generously presented all the mathematical and scientific manuscripts
+				to the University, and it is these that form the Library's
+				'Portsmouth collection' (MS Add. 3958-4007).</p>
+			<p>The remainder of the Newton papers, many concerned with
+				alchemy, theology and chronology, were returned to Lord Portsmouth
+				as being of little scientific interest. These manuscripts were then
+				sold at auction at Sotheby's in London in 1936 and purchased by
+				other libraries and individuals.</p>
+			<p>
+				In 2000 Cambridge University Library acquired a very important
+				collection of scientific manuscripts from the Earl of Macclesfield,
+				which included a significant number of Isaac Newton's letters and
+				other papers. 
+			</p>
+			See also
+			<ul>
+				<li><a target="_blank"
+					href="http://www.lib.cam.ac.uk/deptserv/manuscripts/newton.html">Overview
+						of Newton Papers held at Cambridge University Library (from
+						Manuscripts Department website)</a></li>
+				<li><a target="_blank"
+					href="http://www.newtonproject.sussex.ac.uk/prism.php?id=20">History
+						of Isaac Newton's Papers (from Newton Project website) </a></li>
+				<li><a target="_blank"
+					href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007">Catalogue
+						of the Portsmouth Collection</a></li>
+				<li><a target="_blank"
+					href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.9597">Catalogue
+						of the Macclesfield Collection</a></li>
+			</ul>
 		</div>
 	</div>
 	<div class="grid_9">
@@ -83,29 +100,29 @@ section#content p {
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03996-000-00001_files/8/0_0.jpg"
 					alt="MS-ADD-03996" width="139" height="180" /> </a>
-				<h5>Trinity College Notebook (MS Add. 3996)</h5>A notebook Newton kept as a
-				student at Trinity College from about 1661 to 1665.</li>
+				<h5>Trinity College Notebook (MS Add. 3996)</h5>A notebook Newton
+				kept as a student at Trinity College from about 1661 to 1665.</li>
 			<li><a href="/view/MS-ADD-04000/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-04000-000-00001_files/8/0_0.jpg"
 					alt="MS-ADD-04000" width="139" height="180" /> </a>
-				<h5>Mathematical Notebook (MS Add. 4000)</h5>A description of the book
+				<h5>College Notebook (MS Add. 4000)</h5>A description of the book
 				should go here. Suspendisse lorem magna, mattis at volutpat aliquet,
 				placerat sed leo. Cras nulla orci, aliquam nec sagittis et, tempor
-				at quam.</li>				
+				at quam.</li>
 			<li><a href="/view/MS-ADD-04004/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-04004-001-00001_files/8/0_0.jpg"
 					alt="MS-ADD-04004" width="139" height="180" /> </a>
-				<h5>Waste Book (MS Add. 4004) Part 2</h5>Much of Newton's important work on
-				calculus is developed in this large notebook, used when he was away
-				from Cambridge due to the plague.</li>
+				<h5>Waste Book (MS Add. 4004) Part 2</h5>Much of Newton's important
+				work on calculus is developed in this large notebook, used when he
+				was away from Cambridge due to the plague.</li>
 			<li><a href="/view/MS-ADD-03958/"><img
 					class="bookSelectImage"
 					src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
 					alt="MS-ADD-03958" width="139" height="180" /> </a>
-				<h5>Early Papers (MS Add. 3958)</h5>These papers document Newton's early
-				mathematical thinking. They include extracts from books he was
+				<h5>Early Papers (MS Add. 3958)</h5>These papers document Newton's
+				early mathematical thinking. They include extracts from books he was
 				reading and many of his own notes and calculations.</li>
 			<li><a href="/view/MS-ADD-03970/"><img
 					class="bookSelectImage"
