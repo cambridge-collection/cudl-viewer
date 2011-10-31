@@ -39,7 +39,8 @@ public class ExternalCache {
 
 	static final long cacheCheckTimeout = Long.parseLong(config.getString("cacheCheckTimeout").trim());
 	static final long cacheFileTimeout = Long.parseLong(config.getString("cacheFileTimeout").trim());
-
+	static final int externalConnectionTimeout = Integer.parseInt(config.getString("externalConnectionTimeout").trim());
+	
 	public static boolean existsInCache(String url, String docId) {
 
 		// look for corresponding file in memory (from last check on disk).
@@ -61,13 +62,14 @@ public class ExternalCache {
 		String filepath = cachePath + File.separator + docId + File.separator
 				+ filename;
 		File file = new File(filepath);
-		//System.out.println(filepath + " exists in cache: " + file.exists());
 		if (file.exists()) {
 
 			// Check if the file is older than the allowed File timeout.
 			if (file.lastModified() + cacheFileTimeout < (new Date()).getTime()) {
 
-				loadIntoCache(url, docId);
+				// File which has timed out is considered not in the cache 
+				// to prompt it to be reloaded. 
+				return false;
 			}
 
 			cachedFiles.put(filename, new Date());
@@ -78,6 +80,7 @@ public class ExternalCache {
 	}
 
 	// This returns the local url to pull the item from the cache.
+	// does not guarantee this file exists. 
 	public static String getCachedItemFilename(String url) {
 
 		MessageDigest digest;
@@ -99,11 +102,12 @@ public class ExternalCache {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null; // default to original url
+		return null;
 
 	}
 
 	// This returns the local url to pull the item from the cache.
+	// does not guarantee this url exists
 	public static String getCachedItemLocalURL(String url, String docId) {
 
 		String filename = getCachedItemFilename(url);
@@ -118,7 +122,8 @@ public class ExternalCache {
 		try {
 			site = new URL(url);
 			URLConnection uc = site.openConnection();
-			//System.out.println("connection type: " + uc.getContentType());
+			uc.setConnectTimeout(externalConnectionTimeout);  			
+
 			if (uc instanceof HttpURLConnection) {
 				HttpURLConnection connection = (HttpURLConnection) uc;
 				if (connection.getResponseCode() == 200) {

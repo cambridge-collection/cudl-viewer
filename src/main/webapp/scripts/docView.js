@@ -117,7 +117,7 @@ var docView = function() {
 				//transcriptionDiplomaticURL="/transcription?url="
 				//	+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 				var normalTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
-				var diploTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
+				var diploTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 				
 				transcriptionNormalisedURL="/externalresource?url="+encodeURIComponent("/transcription?url="
 					+ normalTransURL) +"&doc="+docId;
