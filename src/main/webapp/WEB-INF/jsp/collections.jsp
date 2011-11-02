@@ -24,9 +24,8 @@
 		<h3 style="margin-left: 8px">Newton Papers</h3>
 		<blockquote class="grid_4 omega print">
 
-			To me there has never been a higher source of earthly honor or
-			distinction than that connected with advances in science." <cite>&mdash;Sir
-				Isaac Newton</cite>
+			Plato is my friend Aristotle is my friend but my greatest friend is
+			truth." <cite>&mdash;Sir Isaac Newton</cite>
 
 		</blockquote>
 		<br /> <br />
@@ -69,27 +68,29 @@
 				as being of little scientific interest. These manuscripts were then
 				sold at auction at Sotheby's in London in 1936 and purchased by
 				other libraries and individuals.</p>
-			<p>
-				In 2000 Cambridge University Library acquired a very important
+			<p>In 2000 Cambridge University Library acquired a very important
 				collection of scientific manuscripts from the Earl of Macclesfield,
 				which included a significant number of Isaac Newton's letters and
-				other papers. 
-			</p>
+				other papers.</p>
 			See also
 			<ul>
 				<li><a target="_blank"
 					href="http://www.lib.cam.ac.uk/deptserv/manuscripts/newton.html">Overview
 						of Newton Papers held at Cambridge University Library (from
-						Manuscripts Department website)</a></li>
+						Manuscripts Department website)</a>
+				</li>
 				<li><a target="_blank"
 					href="http://www.newtonproject.sussex.ac.uk/prism.php?id=20">History
-						of Isaac Newton's Papers (from Newton Project website) </a></li>
+						of Isaac Newton's Papers (from Newton Project website) </a>
+				</li>
 				<li><a target="_blank"
 					href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007">Catalogue
-						of the Portsmouth Collection</a></li>
+						of the Portsmouth Collection</a>
+				</li>
 				<li><a target="_blank"
 					href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.9597">Catalogue
-						of the Macclesfield Collection</a></li>
+						of the Macclesfield Collection</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -112,9 +113,9 @@
 				at quam.</li>
 			<li><a href="/view/MS-ADD-04004/"><img
 					class="bookSelectImage"
-					src="/content/images/MS-ADD-04004-001-00001_files/8/0_0.jpg"
+					src="/content/images/MS-ADD-04004-002-00001_files/8/0_0.jpg"
 					alt="MS-ADD-04004" width="139" height="180" /> </a>
-				<h5>Waste Book (MS Add. 4004) Part 2</h5>Much of Newton's important
+				<h5>Waste Book (MS Add. 4004)</h5>Much of Newton's important
 				work on calculus is developed in this large notebook, used when he
 				was away from Cambridge due to the plague.</li>
 			<li><a href="/view/MS-ADD-03958/"><img
