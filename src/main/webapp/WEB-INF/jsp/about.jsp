@@ -7,7 +7,7 @@
 
 <section id="content" class="grid_20 content">
 
-	<div class="grid_19" >
+	<div class="grid_13" >
 
 		<div class="panel light">
 		

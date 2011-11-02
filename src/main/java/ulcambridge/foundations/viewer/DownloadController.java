@@ -18,13 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controls the download of a file from the storage, currently used for the
+ * download of jpg image files under the creative commons license. 
+ * 
+ * @author jennie
+ */
 @Controller
 public class DownloadController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	// on path /download/{type}/{name}.{ext}
 	// type should be url encoded twice.
+	// on path /download/{type}/{name}.{ext}
 	@RequestMapping(value = "/{type}/{name}.{ext}")
 	public ModelAndView handleRequest(@RequestParam("path") String path,
 			@PathVariable("type") String type,
@@ -34,8 +40,8 @@ public class DownloadController {
 
 		// unencode
 		type = URLDecoder.decode(type, "UTF-8");
-		String filename = name+"."+ext;
-		
+		String filename = name + "." + ext;
+
 		// FIXME validation.
 		String baseURL = request.getRequestURL().substring(0,
 				request.getRequestURL().indexOf("/", 9));

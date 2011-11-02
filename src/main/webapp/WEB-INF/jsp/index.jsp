@@ -24,7 +24,7 @@
 					<p>
 						This first release features some of Newton's most important work
 						from the 1660s, including his <a href="/view/">college
-							notebooks</a>and the second part of his '<a
+							notebooks</a> and the second part of his '<a
 							href="/view/MS-ADD-04004/">Waste Book</a>'.
 					</p>
 				</div> <a href="/view/"><img id="newtonImage"
@@ -50,7 +50,7 @@
 						src="/images/index/cernesmall.jpg" height="55" width="195">
 					</a>
 				</center>
-				<span class="date">18/10/2011</span>
+				<span class="date">07/11/2011</span>
 				<h4>
 					<a href="/news/">Introducing the Cambridge Digital Library</a>
 				</h4>
@@ -62,7 +62,7 @@
 						src="/images/index/conservationsmall.jpg" height="55" width="195">
 					</a>
 				</center>
-				<span class="date">18/10/2011</span>
+				<span class="date">07/11/2011</span>
 				<h4>
 					<a href="/news/">Dissecting a Newton notebook</a>
 				</h4>

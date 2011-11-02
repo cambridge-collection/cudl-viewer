@@ -28,14 +28,12 @@ var viewportComponents = {
 	tabpanel : Ext.create('Ext.tab.Panel', {
 		xtype : 'tabpanel',
 		activeTab : 0,
-		defaults:{ autoScroll:true },
 		region : 'east',
 		split : true, // enable resizing
 		width : '50%',
 		title : 'More about this item',
 		collapsed : false,
 		collapsible : true,
-		buttonAlign : 'left',
 		bodyPadding : 0,
 		items : [ {
 			xtype : 'panel',

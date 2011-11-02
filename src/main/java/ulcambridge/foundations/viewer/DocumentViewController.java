@@ -12,6 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controller for viewing a specific document or a specific page within a
+ * document. Documents and pages are specified in the url requested.
+ * 
+ * @author jennie
+ * 
+ */
 @Controller
 public class DocumentViewController {
 
@@ -33,7 +40,7 @@ public class DocumentViewController {
 
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
-		
+
 		if (docURL.lastIndexOf("/") == docURL.length() - 1) {
 			// cut off last character.
 			docURL = docURL.substring(0, docURL.length() - 1);
@@ -43,7 +50,7 @@ public class DocumentViewController {
 		if (!docExists(docURL)) {
 			return new ModelAndView("jsp/errors/404");
 		}
-		
+
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page.
@@ -58,7 +65,6 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			@PathVariable("page") String page, HttpServletRequest request) {
 
-
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
 		if (docURL.lastIndexOf("/") == docURL.length() - 1) {
@@ -72,7 +78,7 @@ public class DocumentViewController {
 		if (!docExists(docURL)) {
 			return new ModelAndView("jsp/errors/404");
 		}
-		
+
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
@@ -81,13 +87,21 @@ public class DocumentViewController {
 		return modelAndView;
 	}
 
+	/**
+	 * Checks to see if the document at the specified url exists on the file
+	 * system or not.
+	 * 
+	 * @param docURL
+	 * @return
+	 */
 	private boolean docExists(String docURL) {
 
 		String[] docURLParts = docURL.split("/");
-		
-		// See if the json file is there. 
-		String jsonURL = docURLParts[0]+"//"+docURLParts[2]+"/json/"+docURLParts[4]+".json";
-		
+
+		// See if the json file is there.
+		String jsonURL = docURLParts[0] + "//" + docURLParts[2] + "/json/"
+				+ docURLParts[4] + ".json";
+
 		try {
 			URL url = new URL(jsonURL);
 

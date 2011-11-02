@@ -158,19 +158,12 @@ var docView = function() {
 						.getElementById("metadata-dateCreatedDisplay"),
 						data.dateCreatedDisplay);
 
-				if (data.abstract) {
-					view.populateElement(document
-							.getElementById("metadata-abstract"), ""
-							+ data.abstract + "<br />");
-				}
+				var abstractText = "";
 				if (data.mediaurl) {
 
-					var mediawidth = 220;
-					var mediaheight = 175;
-					view
-							.populateElement(
-									document.getElementById("metadata-media"),
-									"<object width=\""
+					var mediawidth = 280;
+					var mediaheight = 157;
+					abstractText = 	"<object style=\"float:left; margin-right:10px;\" width=\""
 											+ mediawidth
 											+ "\" height=\""
 											+ mediaheight
@@ -182,8 +175,17 @@ var docView = function() {
 											+ mediawidth
 											+ "\" height=\""
 											+ mediaheight
-											+ "\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>");
+											+ "\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>";
+					
 				}
+				if (data.abstract) {
+					abstractText = abstractText+data.abstract;
+					
+					view.populateElement(document
+							.getElementById("metadata-abstract"), ""
+							+ abstractText + "<br />");
+				}
+
 
 				// setup logical structure
 				var ls = "";

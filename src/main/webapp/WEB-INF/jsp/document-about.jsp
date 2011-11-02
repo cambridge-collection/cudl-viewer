@@ -6,15 +6,14 @@
 			<br /> <span class="document-about-title" id="metadata-title"></span>
 			by <span class="document-about-author" id="metadata-author"></span> <br />
 			<div class="document-spacer"></div>
-			Part of the <a href="/view/">Newton Papers</a>.
+			&nbsp;Part of the <a href="/view/">Newton Papers</a>.
 
 			<!-- Metadata -->
-			<div id="metadata-media" class="document-about-media"></div>
-			<br />
-			<br />
+			<br/><br/>
+
 			<div id="metadata-abstract"></div>
 
-			<div style="width:500px;height:240px">
+			<div style="width:100%;height:240px">
 				<!--  About the document -->
 				<div class="rbroundbox">
 					<div class="rbtop">
