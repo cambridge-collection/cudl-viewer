@@ -9,7 +9,7 @@
 
 
 	<div class="grid_19">
-		<h3 style="margin-left:8px">News</h3>
+		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
 	<div class="grid_19">
@@ -36,19 +36,31 @@
 	<div class="grid_19">
 		<div class="grid_5">
 			<img alt="Dissecting a Newton notebook"
-				src="/images/index/conservation.jpg" height="200"
+				src="/images/index/Add1464_fol127v.jpg" height="200"
 				title="Conservator separates sections of a notebook">
 		</div>
 
 		<div class="grid_11">
 			<span class="date">07/11/2011</span>
-			<h4>Dissecting a Newton notebook</h4>
-			<p>Digitisation is not just a matter of placing something on a
-				scanner or in front of a camera - fragile items will often require
-				some conservation work before they can be safely imaged. Two of the
-				notebooks in our Newton collection had been rebound a little too
-				tightly in the past and needed to be carefully taken apart. Find out
-				more about this process in our blog entry.</p>
+			<h4>Upcoming Collections</h4>
+			<p>
+				In addition to the digitisation we have already planned for the
+				Cambridge Digital Library, we are pleased to announce two
+				externally-funded projects which will add significant content. The
+				AHRC are providing funding for the cataloguing of our important
+				Sanskrit manuscript collection, which includes some of the earliest
+				surviving Buddhist manuscripts. Approximately 1000 of these
+				manuscripts will be digitised and made available within the
+				Cambridge Digital Library’s Foundations of Faith collection. The
+				JISC are funding the complete digitisation of the Board of Longitude
+				papers, which provide a fascinating record of 18th century science
+				and technology and the great voyages of discovery. This collection
+				will be made available as part of the Foundations of Science
+				collection and closely linked to collections held by the National
+				Maritime Museum at Greenwich. Please <a
+					href="mailto:foundations@lib.cam.ac.uk">contact us</a> for more
+				information about these projects.
+			</p>
 		</div>
 
 	</div>

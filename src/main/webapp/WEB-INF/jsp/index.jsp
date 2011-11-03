@@ -24,7 +24,7 @@
 					<p>
 						This first release features some of Newton's most important work
 						from the 1660s, including his <a href="/view/">college
-							notebooks</a> and the second part of his '<a
+							notebooks</a> and '<a
 							href="/view/MS-ADD-04004/">Waste Book</a>'.
 					</p>
 				</div> <a href="/view/"><img id="newtonImage"
@@ -59,12 +59,12 @@
 				<br />
 				<center>
 					<a href="/news/"><img alt="Dissecting a Newton notebook"
-						src="/images/index/conservationsmall.jpg" height="55" width="195">
+						src="/images/index/Add1464_fol127v_slice.jpg" height="55" width="195">
 					</a>
 				</center>
 				<span class="date">07/11/2011</span>
 				<h4>
-					<a href="/news/">Dissecting a Newton notebook</a>
+					<a href="/news/">Upcoming Collections</a>
 				</h4>
 			</div>
 
