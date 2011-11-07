@@ -1,6 +1,6 @@
 <div id="metadata" class="document-about">
 	<div style="height: 100%; overflow-y: auto;">
-		<div id="metadata-about" class="grid_11">
+		<div id="metadata-about">
 
 			<!-- Title -->
 			<br /> <span class="document-about-title" id="metadata-title"></span>
