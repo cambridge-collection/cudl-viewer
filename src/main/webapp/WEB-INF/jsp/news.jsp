@@ -51,7 +51,7 @@
 				Sanskrit manuscript collection, which includes some of the earliest
 				surviving Buddhist manuscripts. Approximately 1000 of these
 				manuscripts will be digitised and made available within the
-				Cambridge Digital Library’s Foundations of Faith collection. The
+				Cambridge Digital Library's Foundations of Faith collection. The
 				JISC are funding the complete digitisation of the Board of Longitude
 				papers, which provide a fascinating record of 18th century science
 				and technology and the great voyages of discovery. This collection
