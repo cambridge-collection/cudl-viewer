@@ -9,12 +9,11 @@
                ],
                "abstract":"<p>This is a notebook Newton acquired while he was an undergraduate at Trinity College and used from about 1661 to 1665 (see <a href='' onclick='store.loadPage(3);return false;'>his inscription</a>). It includes many notes from his studies and, increasingly, his own explorations into mathematics, physics and metaphysics. It was judged 'Not fit to be printed' by Newton's executor and was presented to the Library by the fifth Earl of Portsmouth in 1872.<br/><br/></p><p>This notebook contains many blank pages (all shown) and has been used by Newton from both ends. Our presentation displays the notebook in a sensible reading order. It shows the 'front' cover and the 30 folios that follow and then turns the notebook upside down showing the <a href='' onclick='store.loadPage(63);return false;''>other cover</a> and the pages that follow it. Full transcriptions are available for <a href='' onclick='store.loadPage(179);return false;' >folios 88r-135r</a>, a famous section of the manuscript where Newton organises his notetaking according to “Questiones quaedam Philosophiae” (certain philosophical questions). The notebook was photographed while it was disbound in 2011</p>",
                "subject":[
-               "Mathematics"
+               "Science - Mathematics"
                ],
                "publisher":[
                ""
                ],
-               "useTranscriptions":"Y",               
                "mediaurl":"",
                "dateCreated":"1665-01-01",
                "dateCreatedDisplay":"c. 1661 - c. 1665",
@@ -33,6 +32,7 @@
                ""
                ],
                "numberOfPages":"285",
+               "useTranscriptions":"Y",
                "pages":[
                   {
                   "name":"cover",
@@ -1463,328 +1463,328 @@
                   "physID":"PHYS-179",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00177.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00177.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088r&end=THEM00092-p088r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p088r&end=THEM00092-p088r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088r&end=THEM00092-p088r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p088r&end=THEM00092-p088r"
                   },
                   {
                   "name":"88v",
                   "physID":"PHYS-180",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00178.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00178.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088v&end=THEM00092-p088v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p088v&end=THEM00092-p088v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p088v&end=THEM00092-p088v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p088v&end=THEM00092-p088v"
                   },
                   {
                   "name":"89r",
                   "physID":"PHYS-181",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00179.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00179.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089r&end=THEM00092-p089r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p089r&end=THEM00092-p089r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089r&end=THEM00092-p089r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p089r&end=THEM00092-p089r"
                   },
                   {
                   "name":"89v",
                   "physID":"PHYS-182",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00180.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00180.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089v&end=THEM00092-p089v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p089v&end=THEM00092-p089v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p089v&end=THEM00092-p089v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p089v&end=THEM00092-p089v"
                   },
                   {
                   "name":"90r",
                   "physID":"PHYS-183",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00181.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00181.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090r&end=THEM00092-p090r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p090r&end=THEM00092-p090r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090r&end=THEM00092-p090r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p090r&end=THEM00092-p090r"
                   },
                   {
                   "name":"90v",
                   "physID":"PHYS-184",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00182.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00182.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090v&end=THEM00092-p090v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p090v&end=THEM00092-p090v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p090v&end=THEM00092-p090v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p090v&end=THEM00092-p090v"
                   },
                   {
                   "name":"91r",
                   "physID":"PHYS-185",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00183.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00183.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091r&end=THEM00092-p091r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p091r&end=THEM00092-p091r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091r&end=THEM00092-p091r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p091r&end=THEM00092-p091r"
                   },
                   {
                   "name":"91v",
                   "physID":"PHYS-186",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00184.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00184.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091v&end=THEM00092-p091v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p091v&end=THEM00092-p091v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p091v&end=THEM00092-p091v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p091v&end=THEM00092-p091v"
                   },
                   {
                   "name":"92r",
                   "physID":"PHYS-187",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00185.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00185.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092r&end=THEM00092-p092r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p092r&end=THEM00092-p092r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092r&end=THEM00092-p092r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p092r&end=THEM00092-p092r"
                   },
                   {
                   "name":"92v",
                   "physID":"PHYS-188",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00186.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00186.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092v&end=THEM00092-p092v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p092v&end=THEM00092-p092v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p092v&end=THEM00092-p092v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p092v&end=THEM00092-p092v"
                   },
                   {
                   "name":"93r",
                   "physID":"PHYS-189",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00187.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00187.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093r&end=THEM00092-p093r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p093r&end=THEM00092-p093r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093r&end=THEM00092-p093r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p093r&end=THEM00092-p093r"
                   },
                   {
                   "name":"93v",
                   "physID":"PHYS-190",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00188.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00188.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093v&end=THEM00092-p093v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p093v&end=THEM00092-p093v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p093v&end=THEM00092-p093v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p093v&end=THEM00092-p093v"
                   },
                   {
                   "name":"94r",
                   "physID":"PHYS-191",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00189.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00189.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094r&end=THEM00092-p094r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p094r&end=THEM00092-p094r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094r&end=THEM00092-p094r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p094r&end=THEM00092-p094r"
                   },
                   {
                   "name":"94v",
                   "physID":"PHYS-192",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00190.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00190.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094v&end=THEM00092-p094v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p094v&end=THEM00092-p094v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p094v&end=THEM00092-p094v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p094v&end=THEM00092-p094v"
                   },
                   {
                   "name":"95r",
                   "physID":"PHYS-193",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00191.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00191.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095r&end=THEM00092-p095r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p095r&end=THEM00092-p095r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095r&end=THEM00092-p095r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p095r&end=THEM00092-p095r"
                   },
                   {
                   "name":"95v",
                   "physID":"PHYS-194",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00192.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00192.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095v&end=THEM00092-p095v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p095v&end=THEM00092-p095v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p095v&end=THEM00092-p095v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p095v&end=THEM00092-p095v"
                   },
                   {
                   "name":"96r",
                   "physID":"PHYS-195",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00193.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00193.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096r&end=THEM00092-p096r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p096r&end=THEM00092-p096r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096r&end=THEM00092-p096r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p096r&end=THEM00092-p096r"
                   },
                   {
                   "name":"96v",
                   "physID":"PHYS-196",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00194.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00194.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096v&end=THEM00092-p096v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p096v&end=THEM00092-p096v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p096v&end=THEM00092-p096v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p096v&end=THEM00092-p096v"
                   },
                   {
                   "name":"97r",
                   "physID":"PHYS-197",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00195.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00195.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097r&end=THEM00092-p097r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p097r&end=THEM00092-p097r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097r&end=THEM00092-p097r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p097r&end=THEM00092-p097r"
                   },
                   {
                   "name":"97v",
                   "physID":"PHYS-198",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00196.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00196.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097v&end=THEM00092-p097v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p097v&end=THEM00092-p097v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p097v&end=THEM00092-p097v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p097v&end=THEM00092-p097v"
                   },
                   {
                   "name":"98r",
                   "physID":"PHYS-199",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00197.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00197.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098r&end=THEM00092-p098r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p098r&end=THEM00092-p098r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098r&end=THEM00092-p098r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p098r&end=THEM00092-p098r"
                   },
                   {
                   "name":"98v",
                   "physID":"PHYS-200",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00198.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00198.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098v&end=THEM00092-p098v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p098v&end=THEM00092-p098v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p098v&end=THEM00092-p098v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p098v&end=THEM00092-p098v"
                   },
                   {
                   "name":"99r",
                   "physID":"PHYS-201",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00199.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00199.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099r&end=THEM00092-p099r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p099r&end=THEM00092-p099r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099r&end=THEM00092-p099r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p099r&end=THEM00092-p099r"
                   },
                   {
                   "name":"99v",
                   "physID":"PHYS-202",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00200.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00200.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099v&end=THEM00092-p099v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p099v&end=THEM00092-p099v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p099v&end=THEM00092-p099v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p099v&end=THEM00092-p099v"
                   },
                   {
                   "name":"100r",
                   "physID":"PHYS-203",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00201.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00201.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100r&end=THEM00092-p100r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p100r&end=THEM00092-p100r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100r&end=THEM00092-p100r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p100r&end=THEM00092-p100r"
                   },
                   {
                   "name":"100v",
                   "physID":"PHYS-204",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00202.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00202.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100v&end=THEM00092-p100v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p100v&end=THEM00092-p100v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p100v&end=THEM00092-p100v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p100v&end=THEM00092-p100v"
                   },
                   {
                   "name":"101r",
                   "physID":"PHYS-205",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00203.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00203.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101r&end=THEM00092-p101r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p101r&end=THEM00092-p101r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101r&end=THEM00092-p101r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p101r&end=THEM00092-p101r"
                   },
                   {
                   "name":"101v",
                   "physID":"PHYS-206",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00204.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00204.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101v&end=THEM00092-p101v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p101v&end=THEM00092-p101v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p101v&end=THEM00092-p101v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p101v&end=THEM00092-p101v"
                   },
                   {
                   "name":"102r",
                   "physID":"PHYS-207",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00205.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00205.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102r&end=THEM00092-p102r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p102r&end=THEM00092-p102r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102r&end=THEM00092-p102r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p102r&end=THEM00092-p102r"
                   },
                   {
                   "name":"102v",
                   "physID":"PHYS-208",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00206.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00206.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102v&end=THEM00092-p102v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p102v&end=THEM00092-p102v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p102v&end=THEM00092-p102v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p102v&end=THEM00092-p102v"
                   },
                   {
                   "name":"103r",
                   "physID":"PHYS-209",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00207.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00207.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103r&end=THEM00092-p103r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p103r&end=THEM00092-p103r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103r&end=THEM00092-p103r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p103r&end=THEM00092-p103r"
                   },
                   {
                   "name":"103v",
                   "physID":"PHYS-210",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00208.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00208.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103v&end=THEM00092-p103v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p103v&end=THEM00092-p103v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p103v&end=THEM00092-p103v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p103v&end=THEM00092-p103v"
                   },
                   {
                   "name":"104r",
                   "physID":"PHYS-211",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00209.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00209.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104r&end=THEM00092-p104r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p104r&end=THEM00092-p104r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104r&end=THEM00092-p104r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p104r&end=THEM00092-p104r"
                   },
                   {
                   "name":"104v",
                   "physID":"PHYS-212",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00210.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00210.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104v&end=THEM00092-p104v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p104v&end=THEM00092-p104v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p104v&end=THEM00092-p104v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p104v&end=THEM00092-p104v"
                   },
                   {
                   "name":"105r",
                   "physID":"PHYS-213",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00211.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00211.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105r&end=THEM00092-p105r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p105r&end=THEM00092-p105r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105r&end=THEM00092-p105r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p105r&end=THEM00092-p105r"
                   },
                   {
                   "name":"105v",
                   "physID":"PHYS-214",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00212.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00212.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105v&end=THEM00092-p105v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p105v&end=THEM00092-p105v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p105v&end=THEM00092-p105v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p105v&end=THEM00092-p105v"
                   },
                   {
                   "name":"106r",
                   "physID":"PHYS-215",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00213.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00213.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106r&end=THEM00092-p106r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p106r&end=THEM00092-p106r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106r&end=THEM00092-p106r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p106r&end=THEM00092-p106r"
                   },
                   {
                   "name":"106v",
                   "physID":"PHYS-216",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00214.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00214.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106v&end=THEM00092-p106v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p106v&end=THEM00092-p106v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p106v&end=THEM00092-p106v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p106v&end=THEM00092-p106v"
                   },
                   {
                   "name":"107r",
                   "physID":"PHYS-217",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00215.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00215.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107r&end=THEM00092-p107r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p107r&end=THEM00092-p107r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107r&end=THEM00092-p107r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p107r&end=THEM00092-p107r"
                   },
                   {
                   "name":"107v",
                   "physID":"PHYS-218",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00216.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00216.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107v&end=THEM00092-p107v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p107v&end=THEM00092-p107v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p107v&end=THEM00092-p107v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p107v&end=THEM00092-p107v"
                   },
                   {
                   "name":"108r",
                   "physID":"PHYS-219",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00217.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00217.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p108r&end=THEM00092-p108r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p108r&end=THEM00092-p108r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p108r&end=THEM00092-p108r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p108r&end=THEM00092-p108r"
                   },
                   {
                   "name":"108v",
@@ -1799,56 +1799,56 @@
                   "physID":"PHYS-221",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00219.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00219.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109r&end=THEM00092-p109r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p109r&end=THEM00092-p109r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109r&end=THEM00092-p109r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p109r&end=THEM00092-p109r"
                   },
                   {
                   "name":"109v",
                   "physID":"PHYS-222",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00220.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00220.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109v&end=THEM00092-p109v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p109v&end=THEM00092-p109v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p109v&end=THEM00092-p109v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p109v&end=THEM00092-p109v"
                   },
                   {
                   "name":"110r",
                   "physID":"PHYS-223",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00221.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00221.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110r&end=THEM00092-p110r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p110r&end=THEM00092-p110r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110r&end=THEM00092-p110r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p110r&end=THEM00092-p110r"
                   },
                   {
                   "name":"110v",
                   "physID":"PHYS-224",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00222.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00222.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110v&end=THEM00092-p110v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p110v&end=THEM00092-p110v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p110v&end=THEM00092-p110v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p110v&end=THEM00092-p110v"
                   },
                   {
                   "name":"111r",
                   "physID":"PHYS-225",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00223.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00223.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111r&end=THEM00092-p111r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p111r&end=THEM00092-p111r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111r&end=THEM00092-p111r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p111r&end=THEM00092-p111r"
                   },
                   {
                   "name":"111v",
                   "physID":"PHYS-226",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00224.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00224.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111v&end=THEM00092-p111v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p111v&end=THEM00092-p111v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p111v&end=THEM00092-p111v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p111v&end=THEM00092-p111v"
                   },
                   {
                   "name":"112r",
                   "physID":"PHYS-227",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00225.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00225.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p112r&end=THEM00092-p112r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p112r&end=THEM00092-p112r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p112r&end=THEM00092-p112r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p112r&end=THEM00092-p112r"
                   },
                   {
                   "name":"112v",
@@ -1863,72 +1863,72 @@
                   "physID":"PHYS-229",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00227.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00227.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113r&end=THEM00092-p113r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p113r&end=THEM00092-p113r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113r&end=THEM00092-p113r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p113r&end=THEM00092-p113r"
                   },
                   {
                   "name":"113v",
                   "physID":"PHYS-230",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00228.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00228.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113v&end=THEM00092-p113v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p113v&end=THEM00092-p113v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p113v&end=THEM00092-p113v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p113v&end=THEM00092-p113v"
                   },
                   {
                   "name":"114r",
                   "physID":"PHYS-231",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00229.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00229.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114r&end=THEM00092-p114r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p114r&end=THEM00092-p114r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114r&end=THEM00092-p114r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p114r&end=THEM00092-p114r"
                   },
                   {
                   "name":"114v",
                   "physID":"PHYS-232",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00230.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00230.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114v&end=THEM00092-p114v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p114v&end=THEM00092-p114v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p114v&end=THEM00092-p114v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p114v&end=THEM00092-p114v"
                   },
                   {
                   "name":"115r",
                   "physID":"PHYS-233",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00231.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00231.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115r&end=THEM00092-p115r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p115r&end=THEM00092-p115r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115r&end=THEM00092-p115r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p115r&end=THEM00092-p115r"
                   },
                   {
                   "name":"115v",
                   "physID":"PHYS-234",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00232.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00232.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115v&end=THEM00092-p115v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p115v&end=THEM00092-p115v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p115v&end=THEM00092-p115v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p115v&end=THEM00092-p115v"
                   },
                   {
                   "name":"116r",
                   "physID":"PHYS-235",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00233.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00233.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116r&end=THEM00092-p116r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p116r&end=THEM00092-p116r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116r&end=THEM00092-p116r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p116r&end=THEM00092-p116r"
                   },
                   {
                   "name":"116v",
                   "physID":"PHYS-236",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00234.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00234.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116v&end=THEM00092-p116v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p116v&end=THEM00092-p116v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p116v&end=THEM00092-p116v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p116v&end=THEM00092-p116v"
                   },
                   {
                   "name":"117r",
                   "physID":"PHYS-237",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00235.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00235.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p117r&end=THEM00092-p117r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p117r&end=THEM00092-p117r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p117r&end=THEM00092-p117r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p117r&end=THEM00092-p117r"
                   },
                   {
                   "name":"117v",
@@ -1959,24 +1959,24 @@
                   "physID":"PHYS-241",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00239.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00239.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119r&end=THEM00092-p119r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p119r&end=THEM00092-p119r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119r&end=THEM00092-p119r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p119r&end=THEM00092-p119r"
                   },
                   {
                   "name":"119v",
                   "physID":"PHYS-242",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00240.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00240.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119v&end=THEM00092-p119v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p119v&end=THEM00092-p119v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p119v&end=THEM00092-p119v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p119v&end=THEM00092-p119v"
                   },
                   {
                   "name":"120r",
                   "physID":"PHYS-243",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00241.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00241.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p120r&end=THEM00092-p120r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p120r&end=THEM00092-p120r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p120r&end=THEM00092-p120r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p120r&end=THEM00092-p120r"
                   },
                   {
                   "name":"120v",
@@ -1991,80 +1991,80 @@
                   "physID":"PHYS-245",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00243.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00243.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121r&end=THEM00092-p121r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p121r&end=THEM00092-p121r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121r&end=THEM00092-p121r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p121r&end=THEM00092-p121r"
                   },
                   {
                   "name":"121v",
                   "physID":"PHYS-246",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00244.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00244.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121v&end=THEM00092-p121v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p121v&end=THEM00092-p121v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p121v&end=THEM00092-p121v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p121v&end=THEM00092-p121v"
                   },
                   {
                   "name":"122r",
                   "physID":"PHYS-247",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00245.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00245.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122r&end=THEM00092-p122r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p122r&end=THEM00092-p122r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122r&end=THEM00092-p122r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p122r&end=THEM00092-p122r"
                   },
                   {
                   "name":"122v",
                   "physID":"PHYS-248",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00246.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00246.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122v&end=THEM00092-p122v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p122v&end=THEM00092-p122v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p122v&end=THEM00092-p122v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p122v&end=THEM00092-p122v"
                   },
                   {
                   "name":"123r",
                   "physID":"PHYS-249",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00247.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00247.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123r&end=THEM00092-p123r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p123r&end=THEM00092-p123r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123r&end=THEM00092-p123r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p123r&end=THEM00092-p123r"
                   },
                   {
                   "name":"123v",
                   "physID":"PHYS-250",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00248.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00248.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123v&end=THEM00092-p123v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p123v&end=THEM00092-p123v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p123v&end=THEM00092-p123v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p123v&end=THEM00092-p123v"
                   },
                   {
                   "name":"124r",
                   "physID":"PHYS-251",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00249.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00249.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124r&end=THEM00092-p124r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p124r&end=THEM00092-p124r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124r&end=THEM00092-p124r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p124r&end=THEM00092-p124r"
                   },
                   {
                   "name":"124v",
                   "physID":"PHYS-252",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00250.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00250.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124v&end=THEM00092-p124v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p124v&end=THEM00092-p124v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p124v&end=THEM00092-p124v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p124v&end=THEM00092-p124v"
                   },
                   {
                   "name":"125r",
                   "physID":"PHYS-253",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00251.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00251.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125r&end=THEM00092-p125r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p125r&end=THEM00092-p125r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125r&end=THEM00092-p125r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p125r&end=THEM00092-p125r"
                   },
                   {
                   "name":"125v",
                   "physID":"PHYS-254",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00252.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00252.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125v&end=THEM00092-p125v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p125v&end=THEM00092-p125v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p125v&end=THEM00092-p125v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p125v&end=THEM00092-p125v"
                   },
                   {
                   "name":"126r",
@@ -2103,24 +2103,24 @@
                   "physID":"PHYS-259",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00257.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00257.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128r&end=THEM00092-p128r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p128r&end=THEM00092-p128r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128r&end=THEM00092-p128r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p128r&end=THEM00092-p128r"
                   },
                   {
                   "name":"128v",
                   "physID":"PHYS-260",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00258.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00258.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128v&end=THEM00092-p128v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p128v&end=THEM00092-p128v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p128v&end=THEM00092-p128v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p128v&end=THEM00092-p128v"
                   },
                   {
                   "name":"129r",
                   "physID":"PHYS-261",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00259.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00259.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p129r&end=THEM00092-p129r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p129r&end=THEM00092-p129r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p129r&end=THEM00092-p129r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p129r&end=THEM00092-p129r"
                   },
                   {
                   "name":"129v",
@@ -2135,24 +2135,24 @@
                   "physID":"PHYS-263",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00261.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00261.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130r&end=THEM00092-p130r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p130r&end=THEM00092-p130r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130r&end=THEM00092-p130r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p130r&end=THEM00092-p130r"
                   },
                   {
                   "name":"130v",
                   "physID":"PHYS-264",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00262.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00262.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130v&end=THEM00092-p130v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p130v&end=THEM00092-p130v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p130v&end=THEM00092-p130v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p130v&end=THEM00092-p130v"
                   },
                   {
                   "name":"131r",
                   "physID":"PHYS-265",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00263.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00263.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p131r&end=THEM00092-p131r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p131r&end=THEM00092-p131r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p131r&end=THEM00092-p131r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p131r&end=THEM00092-p131r"
                   },
                   {
                   "name":"131v",
@@ -2167,8 +2167,8 @@
                   "physID":"PHYS-267",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00265.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00265.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p132r&end=THEM00092-p132r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p132r&end=THEM00092-p132r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p132r&end=THEM00092-p132r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p132r&end=THEM00092-p132r"
                   },
                   {
                   "name":"132v",
@@ -2183,40 +2183,40 @@
                   "physID":"PHYS-269",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00267.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00267.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133r&end=THEM00092-p133r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p133r&end=THEM00092-p133r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133r&end=THEM00092-p133r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p133r&end=THEM00092-p133r"
                   },
                   {
                   "name":"133v",
                   "physID":"PHYS-270",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00268.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00268.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133v&end=THEM00092-p133v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p133v&end=THEM00092-p133v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p133v&end=THEM00092-p133v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p133v&end=THEM00092-p133v"
                   },
                   {
                   "name":"134r",
                   "physID":"PHYS-271",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00269.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00269.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134r&end=THEM00092-p134r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p134r&end=THEM00092-p134r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134r&end=THEM00092-p134r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p134r&end=THEM00092-p134r"
                   },
                   {
                   "name":"134v",
                   "physID":"PHYS-272",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00270.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00270.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134v&end=THEM00092-p134v",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p134v&end=THEM00092-p134v"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p134v&end=THEM00092-p134v",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p134v&end=THEM00092-p134v"
                   },
                   {
                   "name":"135r",
                   "physID":"PHYS-273",
                   "displayImageURL":"/content/images/MS-ADD-03996-000-00271.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03996-000-00271.jpg",
-                  "transcriptionNormalisedURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p135r&end=THEM00092-p135r",
-                  "transcriptionDiplomaticURL":"http://dev.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p135r&end=THEM00092-p135r"
+                  "transcriptionNormalisedURL":"http://www.newtonproject.sussex.ac.uk/view/extract/normalized/THEM00295/start=THEM00092-p135r&end=THEM00092-p135r",
+                  "transcriptionDiplomaticURL":"http://www.newtonproject.sussex.ac.uk/view/extract/diplomatic/THEM00295/start=THEM00092-p135r&end=THEM00092-p135r"
                   },
                   {
                   "name":"135v",
