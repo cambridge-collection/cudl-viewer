@@ -13,57 +13,69 @@ ol#collections_carousel li {
 
 .contibutors li {
 	padding: 5px;
-}
+} 
 
 .terms li {
 	padding: 5px;
 }
 
-.grid_9 {
+/*.grid_9 {
 	margin-left: 35px;
-}
+}*/
 
 .bookSelectImage {
 	position: relative;
 	float: right;
-	padding: 5px;
+	padding: 10px;
+}
+.container {
+	background-color: #FFFFFF;
 }
 
 body {
-	background: url(/images/header/clouds.png) no-repeat center top;
+	background: none;
+}
+
+#libraryLogo {
+    background: url("/images/header/ul-small.gif") no-repeat right top;
+    float:right;
+    align:top;
+    width:130px;
+    height:45px;
 }
 
 .content {
 	background-color: #FFFFFF;
-	padding: 18px 0 0 0;
+	/*padding: 18px 0 0 0;*/
 }
 
-h3,h2,h1,h4 {
+
+/*h3,h2,h1,h4 {
 	line-height: 18px;
-}
+}*/
 
 /* credit text for images, small */
 .image-credit {
-	font-size:70%;
-	color:#999999;
+	font-size: 70%;
+	color: #999999;
 }
 
 /* Header Styles */
-#localMasthead h1,#localMasthead h1 a,#localMasthead h2,#localMasthead h2 a
+/*#localMasthead h1,#localMasthead h1 a,#localMasthead h2,#localMasthead h2 a
 	{
 	color: #333333;
-}
+}*/
 
-#localMasthead {
+/*#localMasthead {
 	height: 35px;
 }
 
 .grid_19 {
 	margin-left: 35px;
-}
+}*/
 
 /* Banner Image */
-#localMasthead h2 {
+/*#localMasthead h2 {
 	display: inline;
 	vertical-align: top;
 	margin-left: 10px;
@@ -75,7 +87,7 @@ h3,h2,h1,h4 {
 	vertical-align: top;
 	margin-top: -10px;
 	padding: 0px;
-}
+}*/
 
 ol#index_carousel li {
 	position: relative;
@@ -113,14 +125,12 @@ ol#index_carousel li {
 }
 
 .news {
-	background: #ffffff;
+	background: #eeeeee;
 	color: #000000;
 	margin: 15px;
 	padding: 4px;
+	border-width: .2em;
+	border-style: dotted;
+	border-color: #900;
 }
 
-/* overwrite the university style for the bottom margin as
- this is conflicting with the Ext Style, esp in ie */
-table {
-	margin-bottom: 0px;
-}

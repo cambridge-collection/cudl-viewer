@@ -22,15 +22,15 @@
 <body onload="init()">
 	<div class="container">
 
-		<!--<header id="globalMasthead" class="grid_20">        
+		<header id="globalMasthead" class="grid_20">        
                 <a id="identifier" class="grid_4 alpha" href="#" title="University of Cambridge">
                     University of Cambridge
-                </a>
+                </a><!-- 
                 <nav>
                     <ul class="grid_10">
                         <li class="first">
                             <a href="http://www.cam.ac.uk/research" title="Research">
-                                Research
+                             p   Research
                             </a>
                         </li>
                         <li>
@@ -59,19 +59,20 @@
                             </a>
                         </li>                                                                
                     </ul>
-                </nav>
-            </header>-->
+                </nav>-->
+                <a id="libraryLogo" class="grid_4 alpha" title="Cambridge University Library" href="http://www.lib.cam.ac.uk">Cambridge University Library</a>
+            </header>
 
 		<!-- end #globalMasthead -->
 		<div class="clear"></div>
 
 		<header id="localMasthead" class="grid_20"> <hgroup>
-		<a href="http://www.cam.ac.uk"><img id="UoCLogo" title="University of Cambridge" alt="University of Cambridge" align="left" src="/images/header/logo.gif" /></a>
-		<h2>
-			|&nbsp; <a  href="/" title="Cambridge Digital Library ">Cambridge
-				Digital Library</a>
-		</h2>
-		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" alt="Cambridge University Library" align="right" src="/images/header/ul-small.gif" /></a> 
+		
+		<h1>
+			<a  href="/" title="Cambridge Digital Library ">Cambridge
+				Digital Library</a> 
+		</h1>
+		 
 			
 			</hgroup> </header>
 		<!-- end #localMasthead -->

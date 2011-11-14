@@ -100,7 +100,7 @@
 						reuse.</p>
 					<p>
 						We have plans to add much more content and functionality during
-						2012 and 2013, but hope you will find the selection of works we’re
+						2012 and 2013, but hope you will find the selection of works we're
 						already included stimulating and the website easy to use. If you
 						have any questions or suggestions, please <a
 							href="mailto:foundations@lib.cam.ac.uk">let us know</a>.

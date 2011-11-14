@@ -97,7 +97,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					xtype : 'container',
 					region : 'north',
 					el : 'north',
-					height : 52
+					height : 81
 				}/*, {
 					xtype : 'container',
 					region : 'south',

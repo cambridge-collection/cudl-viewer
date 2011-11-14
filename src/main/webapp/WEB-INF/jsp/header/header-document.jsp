@@ -22,21 +22,13 @@
 <![endif]-->
 
 <link rel="stylesheet" type="text/css"
-	href="/scripts/extjs/resources/css/ext-all.css" />
+	href="/scripts/extjs/resources/css/ext-partial-gray.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
 <!--[if lt IE 8]>
    <link rel="stylesheet" href="/styles/ie.style.css"/>
 <![endif]-->
-
-<style>
-
-h2 {
-	font-size: 36px;
-}
-
-</style>
 
 <script type="text/javascript">
 	var JSONURL = '/json/${docId}.json';
@@ -55,18 +47,43 @@ h2 {
 
 </head>
 <body>
-	<div class="container" id="north">
+	<div id="north">
+ 
+		<header id="globalMasthead" style="width:100%; height:45px">        
+                <a id="identifier" class="grid_4 alpha" href="#" title="University of Cambridge">
+                    University of Cambridge
+                </a>
+                
+                <span class="header-title"><a href="/" title="Cambridge Digital Library" alt="Cambridge Digital Library">Cambridge Digital Library</a></span>
+                <!-- 
+                <nav>
+                    <ul class="grid_10">
+                        <li class="first">
+                            <a href="/" title="Home">
+                             Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/view/" title="Browse">
+                                Browse
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about/" title="About">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/feedback/" title="Feedback">
+                                Feedback
+                            </a>
+                        </li>                                                              
+                    </ul>
+                </nav> -->
+                <a id="libraryLogo" class="grid_4 alpha" title="Cambridge University Library" href="http://www.lib.cam.ac.uk"></a>
+            </header>
 
-		<div class="clear"></div>
-
-		<header id="localMasthead"> <hgroup> <a id="UoCLogo"
-			href="http://www.cam.ac.uk"><img title="University of Cambridge" alt="University of Cambridge"
-			align="left" src="/images/header/logo.gif" /></a>
-		<h2>
-			|&nbsp; <a href="/" title="Cambridge Digital Library ">Cambridge
-				Digital Library</a>
-		</h2>
-		<a href="http://www.lib.cam.ac.uk"><img title="Cambridge University Library" alt="Cambridge University Library" align="right" src="/images/header/ul-small.gif" /></a> 
-			
-			</hgroup> </header>
-		<!-- end #localMasthead -->
+		<!-- end #globalMasthead -->		
+		<jsp:include page="nav-browse-document.jsp" />
+		</div>
+		

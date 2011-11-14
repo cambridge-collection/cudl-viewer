@@ -1,4 +1,41 @@
 /* Main Page */
+
+/* overwrite the university style for the bottom margin as
+ this is conflicting with the Ext Style, esp in ie */
+table {
+	margin-bottom: 0px;
+}
+
+#globalMasthead {
+	background: none repeat scroll 0 0 transparent;
+	background-color: #ffffff;
+	min-width:800px;
+	height:45x;
+}
+
+#globalMasthead #identifier {
+	background: url("../images/header/logo.png") no-repeat left center;
+	margin-left: 8px;
+	width:140px;
+}
+
+h3,h2,h1,h4 {
+	line-height: 18px;
+}
+
+.header-title {
+	color: #444444;
+	font-size: 32px;
+	letter-spacing: -1px;
+	line-height: 45px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-weight: normal;
+}
+
+.header-title a {
+	text-decoration: none;
+}
+
 #doc {
 	background-color: black;
 	color: white;

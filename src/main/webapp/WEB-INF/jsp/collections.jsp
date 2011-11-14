@@ -20,7 +20,7 @@
 
 <section id="content" class="grid_20 content">
 
-	<div class="grid_9">
+	<div class="grid_10">
 		<h3 style="margin-left: 8px">Newton Papers</h3>
 		<blockquote class="grid_4 omega print">
 
@@ -34,7 +34,7 @@
 			<img src="/images/collectionsView/newton.jpg" alt="Newton"
 				width="150" height="225" align="right" />
 		</div>
-		<div class="grid_8">
+		<div class="grid_9">
 			<p>Cambridge University Library holds the largest and most
 				important collection of the scientific works of Isaac Newton
 				(1642-1727). We present here an initial selection of Newton's
