@@ -13,7 +13,7 @@ ol#collections_carousel li {
 
 .contibutors li {
 	padding: 5px;
-} 
+}
 
 .terms li {
 	padding: 5px;
@@ -22,12 +22,12 @@ ol#collections_carousel li {
 /*.grid_9 {
 	margin-left: 35px;
 }*/
-
 .bookSelectImage {
 	position: relative;
 	float: right;
 	padding: 10px;
 }
+
 .container {
 	background-color: #FFFFFF;
 }
@@ -37,18 +37,17 @@ body {
 }
 
 #libraryLogo {
-    background: url("/images/header/ul-small.gif") no-repeat right top;
-    float:right;
-    align:top;
-    width:130px;
-    height:45px;
+	background: url("/images/header/ul-small.gif") no-repeat right top;
+	float: right;
+	align: top;
+	width: 130px;
+	height: 45px;
 }
 
 .content {
 	background-color: #FFFFFF;
 	/*padding: 18px 0 0 0;*/
 }
-
 
 /*h3,h2,h1,h4 {
 	line-height: 18px;
@@ -88,7 +87,6 @@ body {
 	margin-top: -10px;
 	padding: 0px;
 }*/
-
 ol#index_carousel li {
 	position: relative;
 	float: left;
@@ -124,13 +122,21 @@ ol#index_carousel li {
 	text-decoration: underline;
 }
 
+.collectionImage {
+	margin-left: auto;
+}
+
 .news {
 	background: #eeeeee;
 	color: #000000;
 	margin: 15px;
 	padding: 4px;
-	border-width: .2em;
 	border-style: dotted;
 	border-color: #900;
+	border-width: .2em;
 }
 
+.news img {
+	margin-left: auto;
+	margin-right: auto;
+}

@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-browse.jsp" />
 
@@ -31,8 +29,8 @@
 		</blockquote>
 		<br /> <br />
 		<div class="grid_4">
-			<img src="/images/collectionsView/newton.jpg" alt="Newton"
-				width="150" height="225" align="right" />
+			<img class="collectionImage" src="/images/collectionsView/newton.jpg" alt="Newton"
+				width="150" height="225"/>
 		</div>
 		<div class="grid_9">
 			<p>Cambridge University Library holds the largest and most

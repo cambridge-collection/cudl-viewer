@@ -1,5 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-home.jsp" />
 
@@ -42,12 +40,10 @@
 
 			<div class="news">
 				<br />
-				<center>
 					<a href="/news/"><img
 						alt="Introducing the Cambridge Digital Library"
 						src="/images/index/cernesmall.jpg" height="55" width="195">
 					</a>
-				</center>
 				<span class="date">07/11/2011</span>
 				<h4>
 					<a href="/news/">Introducing the Cambridge Digital Library</a>
@@ -55,11 +51,9 @@
 			</div>
 			<div class="news">
 				<br />
-				<center>
 					<a href="/news/"><img alt="Dissecting a Newton notebook"
 						src="/images/index/Add1464_fol127v_slice.jpg" height="55"
 						width="195"> </a>
-				</center>
 				<span class="date">07/11/2011</span>
 				<h4>
 					<a href="/news/">Upcoming Collections</a>

@@ -1,5 +1,4 @@
 <%@ page isErrorPage="true"%>
-<!DOCTYPE html>
 
 <jsp:include page="../header/header-full.jsp" />
 <jsp:include page="../header/nav-home.jsp" />

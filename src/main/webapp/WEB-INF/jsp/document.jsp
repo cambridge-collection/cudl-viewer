@@ -1,7 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>               
 
-<!DOCTYPE html>
-
 <jsp:include page="header/header-document.jsp" />
 
 
@@ -10,12 +8,12 @@
 
 
 <div id="transcription_normal">
- <iframe id="transcription_normal_frame" onload="unmaskRightPanel(1)" width="100%" height="100%" frameborder='0' src="">
+ <iframe id="transcription_normal_frame" onload="unmaskRightPanel(1)" src="/errors/404">
  </iframe>
 </div>
 
 <div id="transcription_diplomatic">
- <iframe id="transcription_diplomatic_frame" onload="unmaskRightPanel(2)" width="100%" height="100%" frameborder='0' src="">
+ <iframe id="transcription_diplomatic_frame" onload="unmaskRightPanel(2)" src="/errors/404">
  </iframe>
 </div>
 

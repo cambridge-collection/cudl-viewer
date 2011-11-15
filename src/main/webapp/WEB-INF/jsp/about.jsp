@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-about.jsp" />
@@ -26,7 +25,7 @@
 				</blockquote>
 				<br /> <br />
 				<div class="grid_5">
-					<img src="/images/about/ColourAnneJarvisSmall.jpg" />
+					<img src="/images/about/ColourAnneJarvisSmall.jpg" alt="Anne Jarvis" title="Anne Jarvis"/>
 				</div>
 
 				<div class="grid_11">

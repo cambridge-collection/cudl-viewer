@@ -1,15 +1,16 @@
 <%@ page import="java.net.URLEncoder"%>
+<!DOCTYPE html>
+
 <html>
 <head>
 <%
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <NOSCRIPT>
 	<!--  no javascript redirect. -->
 	<META HTTP-EQUIV="refresh"
-		content="0;URL=/nojavascript?url=<%=encodedRequestURL%>">
+		content="0; URL=/nojavascript?url=<%=encodedRequestURL%>" />
 </NOSCRIPT>
 
 <title>Cambridge Digital Library - University of Cambridge</title>
@@ -54,7 +55,7 @@
                     University of Cambridge
                 </a>
                 
-                <span class="header-title"><a href="/" title="Cambridge Digital Library" alt="Cambridge Digital Library">Cambridge Digital Library</a></span>
+                <span class="header-title"><a href="/" title="Cambridge Digital Library">Cambridge Digital Library</a></span>
                 <!-- 
                 <nav>
                     <ul class="grid_10">
