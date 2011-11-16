@@ -1,8 +1,10 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 
-<script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
-<script src="/scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
-
+<!-- JQuery -->
+<script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="/scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="/scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+	
 <script src="/scripts/cudl-util.js"	type="text/javascript"></script>
 
 <link rel="stylesheet" href="/styles/uoc.min.css">
@@ -12,7 +14,8 @@
 <![endif]-->
 
 <link rel="stylesheet" href="/styles/style.css">	
-<link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
 <!--[if lt IE 8]>
    <link rel="stylesheet" href="/styles/ie.style.css"/>
 <![endif]-->
+
+<link rel="stylesheet" href="/styles/lightbox.css" type="text/css" media="all" />

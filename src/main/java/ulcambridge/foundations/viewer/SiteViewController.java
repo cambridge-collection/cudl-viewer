@@ -32,7 +32,7 @@ public class SiteViewController {
 	}
 
 	// on path /news/
-	@RequestMapping(value = "/news/")
+	@RequestMapping(value = "/news")
 	public ModelAndView handleNewsRequest() {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/news");
@@ -40,15 +40,23 @@ public class SiteViewController {
 	}
 
 	// on path /about/
-	@RequestMapping(value = "/about/")
+	@RequestMapping(value = "/about")
 	public ModelAndView handleAboutRequest() {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/about");
 		return modelAndView;
 	}
+	
+	// on path /feedback/
+	@RequestMapping(value = "/feedback")
+	public ModelAndView handleFeedbackRequest() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/feedback");
+		return modelAndView;
+	}	
 
 	// on path /terms/
-	@RequestMapping(value = "/terms/")
+	@RequestMapping(value = "/terms")
 	public ModelAndView handleTermsRequest() {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/terms");
@@ -56,7 +64,7 @@ public class SiteViewController {
 	}
 
 	// on path /contributors/
-	@RequestMapping(value = "/contributors/")
+	@RequestMapping(value = "/contributors")
 	public ModelAndView handleContributorsRequest() {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/contributors");

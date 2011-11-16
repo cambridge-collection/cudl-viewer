@@ -82,6 +82,17 @@
 		<url-pattern>/download/*</url-pattern>
 	</servlet-mapping>
 
+	<!-- formcontroller servlet -->
+	<servlet>
+		<servlet-name>formcontroller</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>formcontroller</servlet-name>
+		<url-pattern>/feedbackform.html</url-pattern>
+	</servlet-mapping>
 
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>
@@ -102,6 +113,13 @@
 	<error-page>
 		<error-code>500</error-code>
 		<location>/errors/500.html</location>
-	</error-page>	
+	</error-page>
+	
+	<jsp-config>
+      <taglib>
+        <taglib-uri>/spring</taglib-uri>
+        <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+      </taglib>
+    </jsp-config>
 	
 </web-app>   

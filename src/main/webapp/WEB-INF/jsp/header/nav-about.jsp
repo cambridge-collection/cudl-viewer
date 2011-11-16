@@ -8,7 +8,7 @@
 	</li>
 	<li><a href="/about/" title="About" class="active"> About </a>
 	</li>
-	<li><a href="mailto:foundations@lib.cam.ac.uk"
+	<li><a class="iframe" href="/feedbackform.html"
 		title="Feedback"> Feedback </a>
 	</li>
 </ul>
