@@ -36,6 +36,11 @@ h3,h2,h1,h4 {
 	text-decoration: none;
 }
 
+#libraryLogo {
+	background: url("/images/header/ULLogoblack.gif") no-repeat right top;
+}
+
+
 #doc {
 	background-color: black;
 	color: white;

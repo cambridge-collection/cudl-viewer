@@ -3,6 +3,8 @@ package ulcambridge.foundations.viewer;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.mail.EmailException;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
-import ulcambridge.foundations.viewer.forms.FeedbackFormValidator;
 
 @Controller
 public class FormController {
@@ -37,13 +38,9 @@ public class FormController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/feedbackform.html")
-	public ModelAndView processSubmit(FeedbackForm feedbackForm,
+	public ModelAndView processSubmit(@Valid FeedbackForm feedbackForm,
 			BindingResult result, Map model) throws EmailException {
 
-		FeedbackFormValidator validator = new FeedbackFormValidator();
-
-		// validate
-		validator.validate(feedbackForm, result);
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("jsp/feedback");
 			modelAndView.addObject("errors", result);

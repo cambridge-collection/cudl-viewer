@@ -37,11 +37,12 @@ body {
 }
 
 #libraryLogo {
-	background: url("/images/header/ul-small.gif") no-repeat right top;
+	margin-top:3px;
+	background: url("/images/header/ULLogowhite.gif") no-repeat right top;
 	float: right;
 	align: top;
 	width: 130px;
-	height: 45px;
+	height: 42px;
 }
 
 .content {

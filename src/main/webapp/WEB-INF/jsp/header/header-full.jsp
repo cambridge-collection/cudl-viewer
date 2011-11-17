@@ -59,7 +59,7 @@
                         </li>                                                                
                     </ul>
                 </nav>-->
-                <a id="libraryLogo" class="grid_4 alpha" title="Cambridge University Library" href="http://www.lib.cam.ac.uk">Cambridge University Library</a>
+                <a id="libraryLogo" class="grid_4 alpha" title="Cambridge University Library" href="http://www.lib.cam.ac.uk"></a>
             </header>
 
 		<!-- end #globalMasthead -->

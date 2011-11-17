@@ -52,15 +52,14 @@ body {
 					<form:errors path="name" cssClass="error"/>
 				</p>
 				<p>
-					<form:label path="email">E-Mail:</form:label> <em>*</em><input id="email"
-						name="email" size="30" class="required email" />
+					<form:label path="email">E-Mail:</form:label> <em>*</em><form:input path="email"
+						name="email" size="30" />
 					<form:errors path="email" cssClass="error"/>
 				</p>
 				<p>
 
 					<form:label path="comment">Your comment:</form:label> <em>*</em>
-					<textarea id="comment" name="comment" cols="50" rows="4"
-						class="required"></textarea>
+					<form:textarea path="comment" name="comment" cols="50" rows="4"></form:textarea>
 					<form:errors path="comment" cssClass="error"/>						
 				</p>
 
