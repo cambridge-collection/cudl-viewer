@@ -6,7 +6,6 @@
 
 <section id="content" class="grid_20 content">
 	<div class="grid_19 contibutors">
-		<div class="grid_13">
 
 			<div class="panel light">
 
@@ -107,7 +106,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 </section>
 
 <jsp:include page="footer/footer.jsp" />

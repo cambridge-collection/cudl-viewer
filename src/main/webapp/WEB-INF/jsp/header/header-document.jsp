@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/view/" title="Browse">
+                            <a href="/collections/newton" title="Browse">
                                 Browse
                             </a>
                         </li>

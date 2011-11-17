@@ -11,7 +11,7 @@
 			<li>			
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/view/">Newton Papers</a>
+						<a href="/collections/newton">Newton Papers</a>
 					</h4>
 
 					<p>Cambridge University Library is pleased to present the first
@@ -23,10 +23,10 @@
 
 					<p>
 						This first release features some of Newton's most important work
-						from the 1660s, including his <a href="/view/">college
-							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
+						from the 1660s, including his <a href="/collections/newton">college
+							notebooks</a> and '<a href="/view/MS-ADD-/collections/newton">Waste Book</a>'.
 					</p>
-				</div> <a href="/view/"><img id="newtonImage"
+				</div> <a href="/collections/newton"><img id="newtonImage"
 					src="/images/index/newtondoc.jpg" alt="Newton Papers" width="600"
 					height="394" /> </a></li>
 

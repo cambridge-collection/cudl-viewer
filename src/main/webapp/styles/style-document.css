@@ -9,14 +9,14 @@ table {
 #globalMasthead {
 	background: none repeat scroll 0 0 transparent;
 	background-color: #ffffff;
-	min-width:800px;
-	height:45x;
+	min-width: 800px;
+	height: 45x;
 }
 
 #globalMasthead #identifier {
 	background: url("../images/header/logo.png") no-repeat left center;
 	margin-left: 8px;
-	width:140px;
+	width: 140px;
 }
 
 h3,h2,h1,h4 {
@@ -40,10 +40,19 @@ h3,h2,h1,h4 {
 	background: url("/images/header/ULLogoblack.gif") no-repeat right top;
 }
 
-
 #doc {
 	background-color: black;
 	color: white;
+}
+
+#transcription_normal_frame {
+	width: 100%;
+	height: 100%;
+}
+
+#transcription_diplomatic_frame {
+	width: 100%;
+	height: 100%;
 }
 
 /* overwrite the university style for the bottom margin as

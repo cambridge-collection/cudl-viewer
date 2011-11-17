@@ -8,12 +8,12 @@
 
 
 <div id="transcription_normal">
- <iframe id="transcription_normal_frame" onload="unmaskRightPanel(1)" src="/errors/404">
+ <iframe id="transcription_normal_frame" onload="unmaskRightPanel(1)" src="/transcription?url=">
  </iframe>
 </div>
 
 <div id="transcription_diplomatic">
- <iframe id="transcription_diplomatic_frame" onload="unmaskRightPanel(2)" src="/errors/404">
+ <iframe id="transcription_diplomatic_frame" onload="unmaskRightPanel(2)" src="/transcription?url=">
  </iframe>
 </div>
 

@@ -4,7 +4,7 @@
 	<li class="first"><a href="/" title="Home">
 			Home </a>
 	</li>
-	<li><a href="/view/" title="Browse"> Browse </a>
+	<li><a href="/collections/newton" title="Browse"> Browse </a>
 	</li>
 	<li><a href="/about/" title="About" class="active"> About </a>
 	</li>
