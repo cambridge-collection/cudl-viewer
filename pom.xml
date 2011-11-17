@@ -3,7 +3,7 @@
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
 	<artifactId>FoundationsViewer</artifactId>
-	<version>0.2</version>
+	<version>0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Foundations Viewer</name>
@@ -16,9 +16,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.2</connection>
-		<developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.2</developerConnection>
-		<url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.2</url>
+		<connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</connection>
+		<developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</developerConnection>
+		<url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url>
 	</scm>
 
 	<build>
