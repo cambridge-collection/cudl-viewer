@@ -15,21 +15,12 @@
 
 <title>Cambridge Digital Library - University of Cambridge</title>
 
-<link rel="icon" type="image/png" href="/img/favicon.png">
-<link rel="stylesheet" href="/styles/uoc.min.css">
-<!--[if lt IE 9]>
-   <link rel="stylesheet" href="/styles/ie.min.css"/>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>   
-<![endif]-->
+<jsp:include page="includes.jsp" />
 
 <link rel="stylesheet" type="text/css"
 	href="/scripts/extjs/resources/css/ext-partial-gray.css" />
-<link rel="stylesheet" type="text/css" href="/styles/style.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
-<!--[if lt IE 8]>
-   <link rel="stylesheet" href="/styles/ie.style.css"/>
-<![endif]-->
 
 <script type="text/javascript">
 	var JSONURL = '/json/${docId}.json';
@@ -39,7 +30,6 @@
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
-<script type="text/javascript" src="/scripts/cudl-util.js"></script>
 <script type="text/javascript" src="/scripts/docData.js"></script>
 <script type="text/javascript" src="/scripts/docViewport.js"></script>
 <script type="text/javascript" src="/scripts/docView.js"></script>
