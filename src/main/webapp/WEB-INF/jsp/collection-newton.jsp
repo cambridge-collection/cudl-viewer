@@ -167,8 +167,15 @@
 			href="http://www.jisc.ac.uk/fundingopportunities/funding_calls/2010/09/grant1110.aspx"
 			target="_blank">JISC e-Content Programme 2011</a>). This project has
 		enabled the linking of Newton's facsimiles and transcriptions.<br />
-		<br /> <br />
+		<br /> 
 	</div>
+	
+	<div class="grid_3">
+		&nbsp;
+	</div>
+	<div class="grid_13">
+		<p class="image-credit">Sir James Thornhill's Portrait of Isaac Newton reproduced with the kind permission of the Master and Fellows, Trinity College, Cambridge.</p>
+	</div>	
 </div>
 
 </section>
