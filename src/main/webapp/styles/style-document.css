@@ -36,6 +36,11 @@ h3,h2,h1,h4 {
 	text-decoration: none;
 }
 
+/* feedback box close icon was in slightly the wrong place */
+#fancybox-close {
+	right: -35px;
+}
+
 #libraryLogo {
 	background: url("/images/header/ULLogoblack.gif") no-repeat right top;
 }

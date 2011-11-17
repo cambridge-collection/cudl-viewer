@@ -5,7 +5,7 @@
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-	<div class="grid_19 contibutors">
+	<div class="grid_16">
 
 			<div class="panel light">
 

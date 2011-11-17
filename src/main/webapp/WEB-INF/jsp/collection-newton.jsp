@@ -91,6 +91,7 @@
 				href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.9597">Catalogue
 					of the Macclesfield Collection</a></li>
 		</ul>
+		<br/>
 	</div>
 </div>
 <div class="grid_9">
@@ -138,9 +139,9 @@
 			drafts of his book on Opticks and other miscellaneous writings.</li>
 	</ol>
 
-
-
 </div>
+
+<hr/>
 <div class="grid_19">
 	<br />
 	<div class="grid_3">

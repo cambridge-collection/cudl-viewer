@@ -17,5 +17,3 @@
 <!--[if lt IE 8]>
    <link rel="stylesheet" href="/styles/ie.style.css"/>
 <![endif]-->
-
-<link rel="stylesheet" href="/styles/lightbox.css" type="text/css" media="all" />

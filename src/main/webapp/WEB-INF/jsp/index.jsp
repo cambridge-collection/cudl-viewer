@@ -24,7 +24,7 @@
 					<p>
 						This first release features some of Newton's most important work
 						from the 1660s, including his <a href="/collections/newton">college
-							notebooks</a> and '<a href="/view/MS-ADD-/collections/newton">Waste Book</a>'.
+							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
 					</p>
 				</div> <a href="/collections/newton"><img id="newtonImage"
 					src="/images/index/newtondoc.jpg" alt="Newton Papers" width="600"
