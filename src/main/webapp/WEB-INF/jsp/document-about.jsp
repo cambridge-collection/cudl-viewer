@@ -1,5 +1,19 @@
 <div id="metadata" class="document-about">
 	<div style="height: 100%; overflow-y: auto;">
+
+		<!-- AddThis Button BEGIN -->
+		<div class="addthis">
+			<div class="addthis_toolbox addthis_default_style ">
+				<a class="addthis_button_email"></a><a
+					class="addthis_button_facebook"></a> <a
+					class="addthis_button_twitter"></a> <a
+					class="addthis_button_compact"></a>
+			</div>
+			<script type="text/javascript"
+				src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ec62d915a6efb9f"></script>
+		</div>
+		<!-- AddThis Button END -->
+
 		<div id="metadata-about">
 
 			<!-- Title -->
@@ -8,12 +22,13 @@
 			<div class="document-spacer"></div>
 			&nbsp;Part of the <a href="/collections/newton">Newton Papers</a>.
 
+
 			<!-- Metadata -->
-			<br/><br/>
+			<br /> <br />
 
 			<div id="metadata-abstract"></div>
 
-			<div style="width:100%;height:240px">
+			<div style="width: 100%; height: 240px">
 				<!--  About the document -->
 				<div class="rbroundbox">
 					<div class="rbtop">
