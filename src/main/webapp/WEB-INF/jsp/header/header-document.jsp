@@ -41,7 +41,7 @@
 	<div id="north">
  
 		<header id="globalMasthead" style="width:100%; height:45px">        
-                <a id="identifier" class="grid_4 alpha" href="#" title="University of Cambridge">
+                <a id="identifier" class="grid_4 alpha" href="http://www.cam.ac.uk" title="University of Cambridge">
                     University of Cambridge
                 </a>
                 

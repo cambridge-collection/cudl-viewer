@@ -22,7 +22,7 @@
 	<div class="container">
 
 		<header id="globalMasthead" class="grid_20">        
-                <a id="identifier" class="grid_4 alpha" href="#" title="University of Cambridge">
+                <a id="identifier" class="grid_4 alpha" href="http://www.cam.ac.uk" title="University of Cambridge">
                     University of Cambridge
                 </a><!-- 
                 <nav>
