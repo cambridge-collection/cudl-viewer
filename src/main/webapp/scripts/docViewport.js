@@ -72,7 +72,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					width : 100,
 					items : [ viewportComponents.pageTitlePanel,
 					          viewportComponents.pagingToolbar , {
-						el : 'doc',
+						el : 'center',
 						height : '90%',
 						border : true
 					} ]

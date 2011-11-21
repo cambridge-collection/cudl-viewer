@@ -3,7 +3,7 @@
 <jsp:include page="header/header-document.jsp" />
 
 
-<div id="doc"></div>
+<div id="center"><div id="doc" style="height:100%;width:100%"></div></div>
 <jsp:include page="document-about.jsp" />
 
 

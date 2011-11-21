@@ -14,9 +14,9 @@ function setupSeaDragon() {
 	Seadragon.Strings.Tooltips.Home="Full Page View";
 	
 	viewer = new Seadragon.Viewer("doc");	
-	
+	console.debug(viewer);
 	// FIXME remove the maximize button as it's causing problems
-	viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
+	//viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
 	
 };
 
@@ -126,8 +126,9 @@ function setupViewport() {
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {
 
-	setupSeaDragon();
 	loadData();
+	setupSeaDragon();
+	
 
 });
 
