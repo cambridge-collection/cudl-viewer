@@ -140,14 +140,14 @@
 			<h5>Hydrostatics, Optics, Sound and Heat (MS Add. 3970)</h5>This
 			large accumulation of papers dates from about 1672-1706. It includes
 			drafts of his book on Opticks and other miscellaneous writings.</li>
-		<li><a href="/view/PR-ADV-B-00039-00001/"><img
+		<!--<li><a href="/view/PR-ADV-B-00039-00001/"><img
 				class="bookSelectImage"
 				src="/content/images/PR-ADV-B-00039-00001-000-00009_files/8/0_0.jpg"
 				alt="PR-ADV-B-00039-00001" width="139" height="180" /> </a>
 			<h5>Philosophi&aelig; Naturalis Principia Mathematica (Adv.b.39.1)</h5>
 			Newton's monumental <i>Principia</i> was published in July 1687 and
 			brought him international fame... <a
-			href="/view/PR-ADV-B-00039-00001/">more</a></li>
+			href="/view/PR-ADV-B-00039-00001/">more</a></li>-->
 	</ol>
 
 
