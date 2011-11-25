@@ -126,9 +126,11 @@ var docView = function() {
 				
 				if (currentTab==1) {
 					  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
+					  document.getElementById("transcription_normal_frame").style.display="inline";
 				} else 
 				if (currentTab==2) {
 					  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
+					  document.getElementById("transcription_diplomatic_frame").style.display="inline";
 				}
 				
 				// setup metadata
