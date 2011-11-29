@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8" %>
 <%@ page isErrorPage="true"%>
 
 <jsp:include page="../header/header-full.jsp" />
