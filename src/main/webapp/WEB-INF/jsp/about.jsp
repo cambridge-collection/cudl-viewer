@@ -61,19 +61,19 @@
 				including the unique extant copy of the Kit&#257;b al-Tawh&#299;d by
 				al-M&#257;tur&#299;d&#299;.
 			</p>
-			<p>The Library also has a collection of over 1000 manuscripts in
+			<p>The Library has a collection of over 1000 manuscripts in
 				Hebrew covering a wide range of texts; Bibles, commentaries,
 				liturgy, philosophy, kabbalah, literature and legal documents. Most
 				of these are in codex form thought there are also scrolls and
 				fragments; some date back to the earliest collections in the
-				Library. The oldest manuscript in the collection - a copy of the Ten
-				Commandments written on papyrus, and thought to date from the 2nd
-				century B.C. - was presented by Dr. W.L. Nash in 1903.</p>
-			<p>The Library holds the world's largest and most important
-				collection of Jewish Genizah materials, including the
+				Library. The oldest manuscript in the collection is a copy of the
+				Ten Commandments written on papyrus, and thought to date from the
+				2nd century B.C.  The Library also holds the world's largest and most
+				important collection of Jewish Genizah materials, including the
 				Taylor-Schechter Genizah Collection - 193,000 fragments of
 				manuscripts considered by many to be as significant as the Dead Sea
-				Scrolls. Our Christian holdings include the Codex Bezae
+				Scrolls.</p>
+			<p>Our Christian holdings include the Codex Bezae
 				Cantabrigiensis, one of the most important New Testament
 				manuscripts, the Moore Bede and the Book of Cerne. Among the
 				Library's substantial Sanskrit collection are some of the earliest

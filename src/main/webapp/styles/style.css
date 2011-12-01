@@ -55,9 +55,13 @@ body {
 }*/
 
 /* credit text for images, small */
-.image-credit {
-	font-size: 70%;
+.image-credit, .image-credit a {
+	font-size: 8px;
 	color: #999999;
+	vertical-align: top;
+	text-decoration:none;
+	border:0px;
+	padding:0px;	
 }
 
 /* Header Styles */
@@ -125,6 +129,7 @@ ol#index_carousel li {
 
 .collectionImage {
 	margin-left: auto;
+	margin-bottom: 0px;
 }
 
 .news {

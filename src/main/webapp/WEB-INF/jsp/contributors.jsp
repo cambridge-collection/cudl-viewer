@@ -13,20 +13,21 @@
 
 	<h4>Funders</h4>
 
-	<div class="grid_3">
-		<!-- <img src="/images/funder.gif" title="Funder" /> -->
-		&nbsp;
+	<div class="grid_4">
+		<img src="/images/PolonskySmall.gif" title="Polonsky Foundation" />
+		<!-- &nbsp; -->
 		<!--<ul><li style="float: right" >&nbsp;</li></ul>-->
 	</div>
 	<div class="grid_13">
-		<b>Dr Leonard S Polonsky</b> has provided major funding towards the
-		first phase of the Foundations Digital Library Project, supporting the
-		development of the initial infrastructure and the digitisation of
-		content for the Foundations of Faith and Foundations of Science
-		collections.<br /> <br />
+		Under the leadership of Dr Leonard Polonsky and as part of its
+		International Digitisation Project, <b>The Polonsky Foundation</b> has
+		provided major funding towards the development of the digital
+		library's infrastructure and the digitisation of content for its
+		Foundations of Faith and Foundations of Science collections.
+		<br /> <br />
 	</div>
 
-	<div class="grid_3">
+	<div class="grid_4">
 		<img src="/images/jisc.gif" title="JISC" />
 	</div>
 	<div class="grid_13">
@@ -127,8 +128,7 @@
 				of Sussex</li>
 			<li><a
 				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24"
-				target="_blank">Other members of the Newton Project team</a>
-			</li>
+				target="_blank">Other members of the Newton Project team</a></li>
 		</ul>
 
 
