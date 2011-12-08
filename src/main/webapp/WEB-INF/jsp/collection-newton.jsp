@@ -28,13 +28,15 @@
 
 	</blockquote>
 	<br /> <br />
-	<div  class="grid_4">
-		<img class="collectionImage"  src="/images/collectionsView/newton.jpg"
-			alt="Newton" width="150" height="225" />
-			<span class="image-credit">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity College, Cambridge.</a></span> 			
+	<div class="grid_4">
+		<img class="collectionImage" src="/images/collectionsView/newton.jpg"
+			alt="Newton" width="150" height="225" /> <span class="image-credit">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
+				College, Cambridge.</a>
+		</span>
 	</div>
 	<div class="grid_9">
-	<br/>
+		<br />
 		<p>Cambridge University Library holds the largest and most
 			important collection of the scientific works of Isaac Newton
 			(1642-1727). We present here an initial selection of Newton's
@@ -82,16 +84,20 @@
 			<li><a target="_blank"
 				href="http://www.lib.cam.ac.uk/deptserv/manuscripts/newton.html">Overview
 					of Newton Papers held at Cambridge University Library (from
-					Manuscripts Department website)</a></li>
+					Manuscripts Department website)</a>
+			</li>
 			<li><a target="_blank"
 				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=20">History
-					of Isaac Newton's Papers (from Newton Project website) </a></li>
+					of Isaac Newton's Papers (from Newton Project website) </a>
+			</li>
 			<li><a target="_blank"
 				href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007">Catalogue
-					of the Portsmouth Collection</a></li>
+					of the Portsmouth Collection</a>
+			</li>
 			<li><a target="_blank"
 				href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.9597">Catalogue
-					of the Macclesfield Collection</a></li>
+					of the Macclesfield Collection</a>
+			</li>
 		</ul>
 		<br />
 	</div>
@@ -114,8 +120,7 @@
 			<h5>College Notebook (MS Add. 4000)</h5>This small notebook was
 			probably used by Newton from about 1664 to 1665. It contains notes
 			from his reading on mathematics and geometry... <a
-			href="/view/MS-ADD-04000/">more</a>
-		</li>
+			href="/view/MS-ADD-04000/">more</a></li>
 		<li><a href="/view/MS-ADD-04004/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-04004-002-00001_files/8/0_0.jpg"
@@ -123,15 +128,15 @@
 			<h5>Waste Book (MS Add. 4004)</h5>Much of Newton's important work on
 			calculus is developed in this large notebook, which he began using in
 			1664 when he was away from Cambridge due to the plague... <a
-			href="/view/MS-ADD-04004/">more</a></li>
+			href="/view/MS-ADD-04004/">more</a>
+		</li>
 		<li><a href="/view/MS-ADD-03958/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
 				alt="MS-ADD-03958" width="139" height="180" /> </a>
 			<h5>Early Papers (MS Add. 3958)</h5>This set of papers documents some
 			of Newton's early mathematical thinking, work that would develop into
-			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a>
-		</li>
+			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a></li>
 		<li><a href="/view/MS-ADD-03970/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg"
@@ -146,8 +151,19 @@
 			<h5>Philosophi&aelig; Naturalis Principia Mathematica
 				(Adv.b.39.1)</h5> Newton's monumental <i>Principia</i> was published in
 			July 1687 and brought him international fame... <a
-			href="/view/PR-ADV-B-00039-00001/">more</a>
-		</li>
+			href="/view/PR-ADV-B-00039-00001/">more</a></li>
+		<li><a href="/view/MS-ADD-03959/"><img
+				class="bookSelectImage"
+				src="/content/images/MS-ADD-03959-000-00003_files/8/0_0.jpg"
+				alt="MS-ADD-03959" width="139" height="180" /> </a>
+			<h5>Elementary Mathematics (MS Add. 3959)</h5> Notes and papers
+			regarding algebra and geometry.</li>
+		<li><a href="/view/MS-ADD-03961/"><img
+				class="bookSelectImage"
+				src="/content/images/MS-ADD-03961-001-00001_files/8/0_0.jpg"
+				alt="MS-ADD-03961" width="139" height="180" /> </a>
+			<h5>Enumeration of lines of the third order (MS Add. 3961)</h5>
+			Papers regarding curves.</li>
 	</ol>
 
 
@@ -187,8 +203,8 @@
 
 	<div class="grid_4">&nbsp;</div>
 	<div class="grid_13">
-		<a name="trinity">Sir James Thornhill's Portrait of Isaac
-			Newton reproduced with the kind permission of the Master and Fellows,
+		<a name="trinity">Sir James Thornhill's Portrait of Isaac Newton
+			reproduced with the kind permission of the Master and Fellows,
 			Trinity College, Cambridge.</a>
 	</div>
 </div>
