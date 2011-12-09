@@ -1,38 +1,57 @@
 
                {
-               "title":"Philosophiæ naturalis principia mathematica",
-               "author":[
-               "Isaac Newton"
-               ],
-               "contributor":[
-               ""
-               ],
-               "abstract":"<p>Newton's monumental <i>Philosophiæ Naturalis Principia Mathematica</i>, often shortened to <i>Principia</i>, was published in July 1687 and brought him international fame. In this three-part work, he lays out in mathematical terms his laws of motion and account of universal gravitation.</p> <br/> <p>Although he was able to provide a convincing description of the effects of gravitation, Newton failed to provide a sufficient explanation for why gravity occurred, so he sought to address this and other concerns by preparing a further edition. We have digitised Newton's own copy of the first edition. It is interleaved with blank pages so he had sufficient space for annotations and corrections for his second edition, which he eventually published in 1713.</p> <br/> <p>The book was severely damaged by fire and damp some time before it was given to the Library in 1872 as part of the Portsmouth collection.</p> <br/> <p>A BBC Radio 4 'In Our Time' discussion of Newton's laws of motion can be listened to <a href='http://www.bbc.co.uk/programmes/b009mvj0' target='_blank' >here</a> </p>",
-               "subject":[
-               "Celestial Mechanics - Early works to 1800","Mechanics - Early works to 1800"
-               ],
-               "publisher":[
-               "Jussu Societatis Regiæ ac Typis Joseph Streater ..."
-               ],
-               "mediaurl":"",
-               "dateCreated":"1687-01-01",
-               "dateCreatedDisplay":"1687",
-               "dateIssued":"",
-               "dateIssuedDisplay":"",
-               "languageCodes":[
-               "lat"
-               ],
-               "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"Adv.b.39.1",
-               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
-               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-               "type":"text",
-               "extent":"[12], 510, [2]p; 27cm (4to)",
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Philosophiæ naturalis principia mathematica",
+                  "uniformTitle":"Principia",
+                  "author":[
+                  "Isaac Newton"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Newton's monumental <i>Philosophiæ Naturalis Principia Mathematica</i>, often shortened to <i>Principia</i>, was published in July 1687 and brought him international fame. In this three-part work, he lays out in mathematical terms his laws of motion and account of universal gravitation.</p> <br/> <p>Although he was able to provide a convincing description of the effects of gravitation, Newton failed to provide a sufficient explanation for why gravity occurred, so he sought to address this and other concerns by preparing a further edition. We have digitised Newton's own copy of the first edition. It is interleaved with blank pages so he had sufficient space for annotations and corrections for his second edition, which he eventually published in 1713.</p> <br/> <p>The book was severely damaged by fire and damp some time before it was given to the Library in 1872 as part of the Portsmouth collection.</p> <br/> <p>A BBC Radio 4 'In Our Time' discussion of Newton's laws of motion can be listened to <a href='http://www.bbc.co.uk/programmes/b009mvj0' target='_blank' >here</a> </p>",
+                  "subject":[
+                  "Celestial Mechanics - Early works to 1800","Mechanics - Early works to 1800"
+                  ],
+                  "publisher":[
+                  "Jussu Societatis Regiæ ac Typis Joseph Streater ..."
+                  ],
+                  "publicationPlace":[
+                  "Londini"
+                  ],
+                  "mediaurl":"",
+                  "dateCreated":"1687-01-01",
+                  "dateCreatedDisplay":"1687",
+                  "dateIssued":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "lat"
+                  ],
+                  "notes":[
+                  "Much damaged by fire. T.p. defective, removing some of imprint.","With final errata leaf."
+                  ],
+                  "ownership":[
+                  "With MS. notes by the author; from the Portsmouth collection."
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"Adv.b.39.1",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "extent":"[12], 510, [2]p; 27cm (4to)"
+                  }],
+      
+               
                "collection":[
                "newton"
                ],
                "numberOfPages":"1031",
                "useTranscriptions":"N",
+               
+               
                "pages":[
                   {
                   "name":"cover",
@@ -8282,210 +8301,310 @@
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   }],
-               "logicalStructure":[
-                  {
-                  "title":"Title Page",
-                  "startPage":"[v]",
-                  "startPageID":"PHYS-9",
-                  "startPagePosition":"9"
-                  },
-                  {
-                  "title":"Dedication",
-                  "startPage":"[ix]",
-                  "startPageID":"PHYS-13",
-                  "startPagePosition":"13"
-                  },
-                  {
-                  "title":"Preface",
-                  "startPage":"[xiii]",
-                  "startPageID":"PHYS-17",
-                  "startPagePosition":"17"
-                  },
-                  {
-                  "title":"Commendatory Poem",
-                  "startPage":"[xvii]",
-                  "startPageID":"PHYS-21",
-                  "startPagePosition":"21"
-                  },
-                  {
-                  "title":"Definitions",
-                  "startPage":"1",
-                  "startPageID":"PHYS-25",
-                  "startPagePosition":"25"
-                  },
-                  {
-                  "title":"Axiomata Sive Leges Motus",
-                  "startPage":"12",
-                  "startPageID":"PHYS-46",
-                  "startPagePosition":"46"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 1",
-                  "startPage":"26",
-                  "startPageID":"PHYS-74",
-                  "startPagePosition":"74"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 2",
-                  "startPage":"37",
-                  "startPageID":"PHYS-97",
-                  "startPagePosition":"97"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 3",
-                  "startPage":"50",
-                  "startPageID":"PHYS-122",
-                  "startPagePosition":"122"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 4",
-                  "startPage":"61",
-                  "startPageID":"PHYS-145",
-                  "startPagePosition":"145"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 5",
-                  "startPage":"70",
-                  "startPageID":"PHYS-162",
-                  "startPagePosition":"162"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 6",
-                  "startPage":"104",
-                  "startPageID":"PHYS-230",
-                  "startPagePosition":"230"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 7",
-                  "startPage":"115",
-                  "startPageID":"PHYS-253",
-                  "startPagePosition":"253"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 8",
-                  "startPage":"125",
-                  "startPageID":"PHYS-275",
-                  "startPagePosition":"275"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 9",
-                  "startPage":"132",
-                  "startPageID":"PHYS-288",
-                  "startPagePosition":"288"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 10",
-                  "startPage":"145",
-                  "startPageID":"PHYS-315",
-                  "startPagePosition":"315"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 11",
-                  "startPage":"162",
-                  "startPageID":"PHYS-348",
-                  "startPagePosition":"348"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 12",
-                  "startPage":"192",
-                  "startPageID":"PHYS-408",
-                  "startPagePosition":"408"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 13",
-                  "startPage":"213",
-                  "startPageID":"PHYS-451",
-                  "startPagePosition":"451"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Primus. Section 14",
-                  "startPage":"226",
-                  "startPageID":"PHYS-479",
-                  "startPagePosition":"479"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 1",
-                  "startPage":"236",
-                  "startPageID":"PHYS-496",
-                  "startPagePosition":"496"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 2",
-                  "startPage":"246",
-                  "startPageID":"PHYS-516",
-                  "startPagePosition":"516"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 3",
-                  "startPage":"274",
-                  "startPageID":"PHYS-572",
-                  "startPagePosition":"572"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 4",
-                  "startPage":"283",
-                  "startPageID":"PHYS-591",
-                  "startPagePosition":"591"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 5",
-                  "startPage":"290",
-                  "startPageID":"PHYS-604",
-                  "startPagePosition":"604"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 6",
-                  "startPage":"303",
-                  "startPageID":"PHYS-631",
-                  "startPagePosition":"631"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 7",
-                  "startPage":"317",
-                  "startPageID":"PHYS-659",
-                  "startPagePosition":"659"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 8",
-                  "startPage":"354",
-                  "startPageID":"PHYS-716",
-                  "startPagePosition":"716"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Secundus. Section 9",
-                  "startPage":"373",
-                  "startPageID":"PHYS-755",
-                  "startPagePosition":"755"
-                  },
-                  {
-                  "title":"De Motu Corporum. Liber Tertius",
-                  "startPage":"401",
-                  "startPageID":"PHYS-779",
-                  "startPagePosition":"779"
-                  },
-                  {
-                  "title":"Hypotheses",
-                  "startPage":"402",
-                  "startPageID":"PHYS-780",
-                  "startPagePosition":"780"
-                  },
-                  {
-                  "title":"Satellitum Tempora Periodica",
-                  "startPage":"403",
-                  "startPageID":"PHYS-783",
-                  "startPagePosition":"783"
-                  },
-                  {
-                  "title":"Propositiones",
-                  "startPage":"405",
-                  "startPageID":"PHYS-787",
-                  "startPagePosition":"787"
-                  },
-                  {
-                  "title":"Errata Sensum Turbantia Sic Emenda",
-                  "startPage":"back [v]",
-                  "startPageID":"PHYS-1011",
-                  "startPagePosition":"1011"
-                  }]
+               "logicalStructure":[   
+      {
+      "label":"Philosophiæ naturalis principia mathematica",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"cover",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"Title Page",
+      "descriptiveMetadataID":"",
+      "startPage":"[v]",
+      "startPageID":"LOGICAL-PAGE-9",
+      "startPagePosition":"9",
+      "children":[]
+      },   
+      {
+      "label":"Dedication",
+      "descriptiveMetadataID":"",
+      "startPage":"[ix]",
+      "startPageID":"LOGICAL-PAGE-13",
+      "startPagePosition":"13",
+      "children":[]
+      },   
+      {
+      "label":"Preface",
+      "descriptiveMetadataID":"",
+      "startPage":"[xiii]",
+      "startPageID":"LOGICAL-PAGE-17",
+      "startPagePosition":"17",
+      "children":[]
+      },   
+      {
+      "label":"Commendatory Poem",
+      "descriptiveMetadataID":"",
+      "startPage":"[xvii]",
+      "startPageID":"LOGICAL-PAGE-21",
+      "startPagePosition":"21",
+      "children":[]
+      },   
+      {
+      "label":"Definitions",
+      "descriptiveMetadataID":"",
+      "startPage":"1",
+      "startPageID":"LOGICAL-PAGE-25",
+      "startPagePosition":"25",
+      "children":[]
+      },   
+      {
+      "label":"Axiomata Sive Leges Motus",
+      "descriptiveMetadataID":"",
+      "startPage":"12",
+      "startPageID":"LOGICAL-PAGE-46",
+      "startPagePosition":"46",
+      "children":[]
+      },   
+      {
+      "label":"De Motu Corporum",
+      "descriptiveMetadataID":"",
+      "startPage":"26",
+      "startPageID":"LOGICAL-PAGE-74",
+      "startPagePosition":"74",
+      "children":[   
+      {
+      "label":"Liber Primus",
+      "descriptiveMetadataID":"",
+      "startPage":"26",
+      "startPageID":"LOGICAL-PAGE-74",
+      "startPagePosition":"74",
+      "children":[   
+      {
+      "label":"Section 1",
+      "descriptiveMetadataID":"",
+      "startPage":"26",
+      "startPageID":"LOGICAL-PAGE-74",
+      "startPagePosition":"74",
+      "children":[]
+      },   
+      {
+      "label":"Section 2",
+      "descriptiveMetadataID":"",
+      "startPage":"37",
+      "startPageID":"LOGICAL-PAGE-97",
+      "startPagePosition":"97",
+      "children":[]
+      },   
+      {
+      "label":"Section 3",
+      "descriptiveMetadataID":"",
+      "startPage":"50",
+      "startPageID":"LOGICAL-PAGE-122",
+      "startPagePosition":"122",
+      "children":[]
+      },   
+      {
+      "label":"Section 4",
+      "descriptiveMetadataID":"",
+      "startPage":"61",
+      "startPageID":"LOGICAL-PAGE-145",
+      "startPagePosition":"145",
+      "children":[]
+      },   
+      {
+      "label":"Section 5",
+      "descriptiveMetadataID":"",
+      "startPage":"70",
+      "startPageID":"LOGICAL-PAGE-162",
+      "startPagePosition":"162",
+      "children":[]
+      },   
+      {
+      "label":"Section 6",
+      "descriptiveMetadataID":"",
+      "startPage":"104",
+      "startPageID":"LOGICAL-PAGE-230",
+      "startPagePosition":"230",
+      "children":[]
+      },   
+      {
+      "label":"Section 7",
+      "descriptiveMetadataID":"",
+      "startPage":"115",
+      "startPageID":"LOGICAL-PAGE-253",
+      "startPagePosition":"253",
+      "children":[]
+      },   
+      {
+      "label":"Section 8",
+      "descriptiveMetadataID":"",
+      "startPage":"125",
+      "startPageID":"LOGICAL-PAGE-275",
+      "startPagePosition":"275",
+      "children":[]
+      },   
+      {
+      "label":"Section 9",
+      "descriptiveMetadataID":"",
+      "startPage":"132",
+      "startPageID":"LOGICAL-PAGE-288",
+      "startPagePosition":"288",
+      "children":[]
+      },   
+      {
+      "label":"Section 10",
+      "descriptiveMetadataID":"",
+      "startPage":"145",
+      "startPageID":"LOGICAL-PAGE-315",
+      "startPagePosition":"315",
+      "children":[]
+      },   
+      {
+      "label":"Section 11",
+      "descriptiveMetadataID":"",
+      "startPage":"162",
+      "startPageID":"LOGICAL-PAGE-348",
+      "startPagePosition":"348",
+      "children":[]
+      },   
+      {
+      "label":"Section 12",
+      "descriptiveMetadataID":"",
+      "startPage":"192",
+      "startPageID":"LOGICAL-PAGE-408",
+      "startPagePosition":"408",
+      "children":[]
+      },   
+      {
+      "label":"Section 13",
+      "descriptiveMetadataID":"",
+      "startPage":"213",
+      "startPageID":"LOGICAL-PAGE-451",
+      "startPagePosition":"451",
+      "children":[]
+      },   
+      {
+      "label":"Section 14",
+      "descriptiveMetadataID":"",
+      "startPage":"226",
+      "startPageID":"LOGICAL-PAGE-479",
+      "startPagePosition":"479",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"Liber Secundus",
+      "descriptiveMetadataID":"",
+      "startPage":"236",
+      "startPageID":"LOGICAL-PAGE-496",
+      "startPagePosition":"496",
+      "children":[   
+      {
+      "label":"Section 1",
+      "descriptiveMetadataID":"",
+      "startPage":"236",
+      "startPageID":"LOGICAL-PAGE-496",
+      "startPagePosition":"496",
+      "children":[]
+      },   
+      {
+      "label":"Section 2",
+      "descriptiveMetadataID":"",
+      "startPage":"246",
+      "startPageID":"LOGICAL-PAGE-516",
+      "startPagePosition":"516",
+      "children":[]
+      },   
+      {
+      "label":"Section 3",
+      "descriptiveMetadataID":"",
+      "startPage":"274",
+      "startPageID":"LOGICAL-PAGE-572",
+      "startPagePosition":"572",
+      "children":[]
+      },   
+      {
+      "label":"Section 4",
+      "descriptiveMetadataID":"",
+      "startPage":"283",
+      "startPageID":"LOGICAL-PAGE-591",
+      "startPagePosition":"591",
+      "children":[]
+      },   
+      {
+      "label":"Section 5",
+      "descriptiveMetadataID":"",
+      "startPage":"290",
+      "startPageID":"LOGICAL-PAGE-604",
+      "startPagePosition":"604",
+      "children":[]
+      },   
+      {
+      "label":"Section 6",
+      "descriptiveMetadataID":"",
+      "startPage":"303",
+      "startPageID":"LOGICAL-PAGE-631",
+      "startPagePosition":"631",
+      "children":[]
+      },   
+      {
+      "label":"Section 7",
+      "descriptiveMetadataID":"",
+      "startPage":"317",
+      "startPageID":"LOGICAL-PAGE-659",
+      "startPagePosition":"659",
+      "children":[]
+      },   
+      {
+      "label":"Section 8",
+      "descriptiveMetadataID":"",
+      "startPage":"354",
+      "startPageID":"LOGICAL-PAGE-716",
+      "startPagePosition":"716",
+      "children":[]
+      },   
+      {
+      "label":"Section 9",
+      "descriptiveMetadataID":"",
+      "startPage":"373",
+      "startPageID":"LOGICAL-PAGE-755",
+      "startPagePosition":"755",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"De Motu Corporum. Liber Tertius",
+      "descriptiveMetadataID":"",
+      "startPage":"401",
+      "startPageID":"LOGICAL-PAGE-779",
+      "startPagePosition":"779",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"Hypotheses",
+      "descriptiveMetadataID":"",
+      "startPage":"402",
+      "startPageID":"LOGICAL-PAGE-780",
+      "startPagePosition":"780",
+      "children":[]
+      },   
+      {
+      "label":"Satellitum Tempora Periodica",
+      "descriptiveMetadataID":"",
+      "startPage":"403",
+      "startPageID":"LOGICAL-PAGE-783",
+      "startPagePosition":"783",
+      "children":[]
+      },   
+      {
+      "label":"Propositiones",
+      "descriptiveMetadataID":"",
+      "startPage":"405",
+      "startPageID":"LOGICAL-PAGE-787",
+      "startPagePosition":"787",
+      "children":[]
+      },   
+      {
+      "label":"Errata Sensum Turbantia Sic Emenda",
+      "descriptiveMetadataID":"",
+      "startPage":"back [v]",
+      "startPageID":"LOGICAL-PAGE-1011",
+      "startPagePosition":"1011",
+      "children":[]
+      }]
+      }]
                }
    
