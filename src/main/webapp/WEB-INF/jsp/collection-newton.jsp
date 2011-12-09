@@ -130,20 +130,6 @@
 			1664 when he was away from Cambridge due to the plague... <a
 			href="/view/MS-ADD-04004/">more</a>
 		</li>
-		<li><a href="/view/MS-ADD-03958/"><img
-				class="bookSelectImage"
-				src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
-				alt="MS-ADD-03958" width="139" height="180" /> </a>
-			<h5>Early Papers (MS Add. 3958)</h5>This set of papers documents some
-			of Newton's early mathematical thinking, work that would develop into
-			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a></li>
-		<li><a href="/view/MS-ADD-03970/"><img
-				class="bookSelectImage"
-				src="/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg"
-				alt="MS-ADD-03970" width="139" height="180" /> </a>
-			<h5>Hydrostatics, Optics, Sound and Heat (MS Add. 3970)</h5>This
-			large accumulation of papers dates from about 1672-1706. It includes
-			drafts of his book on Opticks and other miscellaneous writings.</li>
 		<li><a href="/view/PR-ADV-B-00039-00001/"><img
 				class="bookSelectImage"
 				src="/content/images/PR-ADV-B-00039-00001-000-00009_files/8/0_0.jpg"
@@ -151,19 +137,33 @@
 			<h5>Philosophi&aelig; Naturalis Principia Mathematica
 				(Adv.b.39.1)</h5> Newton's monumental <i>Principia</i> was published in
 			July 1687 and brought him international fame... <a
-			href="/view/PR-ADV-B-00039-00001/">more</a></li>
+			href="/view/PR-ADV-B-00039-00001/">more</a></li>		
+		<li><a href="/view/MS-ADD-03958/"><img
+				class="bookSelectImage"
+				src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
+				alt="MS-ADD-03958" width="139" height="180" /> </a>
+			<h5>Early Papers (MS Add. 3958)</h5>This set of papers documents some
+			of Newton's early mathematical thinking, work that would develop into
+			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a></li>
 		<li><a href="/view/MS-ADD-03959/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03959-000-00003_files/8/0_0.jpg"
 				alt="MS-ADD-03959" width="139" height="180" /> </a>
 			<h5>Elementary Mathematics (MS Add. 3959)</h5> Notes and papers
-			regarding algebra and geometry.</li>
+			regarding algebra and geometry.</li>			
 		<li><a href="/view/MS-ADD-03961/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03961-001-00001_files/8/0_0.jpg"
 				alt="MS-ADD-03961" width="139" height="180" /> </a>
 			<h5>Enumeration of lines of the third order (MS Add. 3961)</h5>
-			Papers regarding curves.</li>
+			Papers regarding curves.</li>			
+		<li><a href="/view/MS-ADD-03970/"><img
+				class="bookSelectImage"
+				src="/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg"
+				alt="MS-ADD-03970" width="139" height="180" /> </a>
+			<h5>Hydrostatics, Optics, Sound and Heat (MS Add. 3970)</h5>This
+			large accumulation of papers dates from about 1672-1706. It includes
+			drafts of his book on Opticks and other miscellaneous writings.</li>
 	</ol>
 
 
