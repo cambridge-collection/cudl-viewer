@@ -1,48 +1,57 @@
 
                {
-               "title":"Enumeration of lines of the third order",
-               "uniformTitle":"",
-               "author":[
-               "Isaac Newton"
-               ],
-               "contributor":[
-               ""
-               ],
-               "abstract":"<p>Papers regarding curves</p>",
-               "subject":[
-               "Geometry - Early works to 1800"
-               ],
-               "publisher":[
-               ""
-               ],
-               "publicationPlace":[
-               ""
-               ],
-               "mediaurl":"",
-               "dateCreated":"1706-01-01",
-               "dateCreatedDisplay":"c.1706",
-               "dateIssued":"",
-               "dateIssuedDisplay":"",
-               "languageCodes":[
-               "eng","lat"
-               ],
-               "notes":[
-               ""
-               ],
-               "ownership":[
-               ""
-               ],
-               "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"MS Add.3961",
-               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
-               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-               "type":"manuscript",
-               "extent":"79 ff.",
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Enumeration of lines of the third order",
+                  "uniformTitle":"",
+                  "author":[
+                  "Isaac Newton"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Papers regarding curves</p>",
+                  "subject":[
+                  "Geometry - Early works to 1800"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreated":"1706-01-01",
+                  "dateCreatedDisplay":"c.1706",
+                  "dateIssued":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "eng","lat"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  ""
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add.3961",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":"79 ff."
+                  }],
+      
+               
                "collection":[
                "newton"
                ],
                "numberOfPages":"160",
                "useTranscriptions":"N",
+               
+               
                "pages":[
                   {
                   "name":"1r",
@@ -1324,30 +1333,46 @@
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   }],
-               "logicalStructure":[
-                  {
-                  "title":"Enumeratio Curvarum Trium Dimensionum",
-                  "startPage":"2r",
-                  "startPageID":"PHYS-3",
-                  "startPagePosition":"3"
-                  },
-                  {
-                  "title":"Enumeratio Linearum tertii Ordinis",
-                  "startPage":"1r",
-                  "startPageID":"PHYS-109",
-                  "startPagePosition":"109"
-                  },
-                  {
-                  "title":"On the curves of the third order, produced by the projections of the Parabola Neiliana",
-                  "startPage":"17r",
-                  "startPageID":"PHYS-141",
-                  "startPagePosition":"141"
-                  },
-                  {
-                  "title":"Miscellaneous fragments. On the lines of the third order and on Descartes",
-                  "startPage":"19r",
-                  "startPageID":"PHYS-145",
-                  "startPagePosition":"145"
-                  }]
+               "logicalStructure":[   
+      {
+      "label":"Enumeration of lines of the third order",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"Enumeratio Curvarum Trium Dimensionum",
+      "descriptiveMetadataID":"",
+      "startPage":"2r",
+      "startPageID":"LOGICAL-PAGE-3",
+      "startPagePosition":"3",
+      "children":[]
+      },   
+      {
+      "label":"Enumeratio Linearum tertii Ordinis",
+      "descriptiveMetadataID":"",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-109",
+      "startPagePosition":"109",
+      "children":[]
+      },   
+      {
+      "label":"On the curves of the third order, produced by the projections of the Parabola Neiliana",
+      "descriptiveMetadataID":"",
+      "startPage":"17r",
+      "startPageID":"LOGICAL-PAGE-141",
+      "startPagePosition":"141",
+      "children":[]
+      },   
+      {
+      "label":"Miscellaneous fragments. On the lines of the third order and on Descartes",
+      "descriptiveMetadataID":"",
+      "startPage":"19r",
+      "startPageID":"LOGICAL-PAGE-145",
+      "startPagePosition":"145",
+      "children":[]
+      }]
+      }]
                }
    

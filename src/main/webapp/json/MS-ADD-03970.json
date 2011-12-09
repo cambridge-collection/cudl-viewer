@@ -1,38 +1,57 @@
 
                {
-               "title":"Hydrostatics, Optics, Sound and Heat",
-               "author":[
-               "Isaac Newton"
-               ],
-               "contributor":[
-               ""
-               ],
-               "abstract":"<p>This large accumulation of papers dates from about 1672-1706. It includes drafts of his book on Opticks and other miscellaneous writings. The Contents tab provides some navigation for these papers, as does <a href='http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007%2FMS%20Add.3970' target='_blank'>the record in the Library’s archives catalogue</a>.<br/><br/></p><p>Transcriptions are available for a small selection of papers within this manuscript.</p>",
-               "subject":[
-               "Science - Optics"
-               ],
-               "publisher":[
-               ""
-               ],
-               "mediaurl":"",
-               "dateCreated":"1672-01-01",
-               "dateCreatedDisplay":"c. 1672 - c. 1706",
-               "dateIssued":"",
-               "dateIssuedDisplay":"",
-               "languageCodes":[
-               "eng","lat"
-               ],
-               "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"MS Add. 3970",
-               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
-               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-               "type":"manuscript",
-               "extent":"",
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Hydrostatics, Optics, Sound and Heat",
+                  "uniformTitle":"",
+                  "author":[
+                  "Isaac Newton"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>This large accumulation of papers dates from about 1672-1706. It includes drafts of his book on Opticks and other miscellaneous writings. The Contents tab provides some navigation for these papers, as does <a href='http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007%2FMS%20Add.3970' target='_blank'>the record in the Library’s archives catalogue</a>.<br/><br/></p><p>Transcriptions are available for a small selection of papers within this manuscript.</p>",
+                  "subject":[
+                  "Science - Optics"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreated":"1672-01-01",
+                  "dateCreatedDisplay":"c. 1672 - c. 1706",
+                  "dateIssued":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "eng","lat"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  ""
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add. 3970",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":""
+                  }],
+      
+               
                "collection":[
                ""
                ],
                "numberOfPages":"1326",
                "useTranscriptions":"Y",
+               
+               
                "pages":[
                   {
                   "name":"1{top}-r",
@@ -10642,108 +10661,158 @@
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   }],
-               "logicalStructure":[
-                  {
-                  "title":"On the Division of a Monochord. Plus an extract 'out of Mr Sympson's Division Violist'.",
-                  "startPage":"1{top}-r",
-                  "startPageID":"PHYS-1",
-                  "startPagePosition":"1"
-                  },
-                  {
-                  "title":"Notes on the Velocity of Sound",
-                  "startPage":"16r",
-                  "startPageID":"PHYS-35",
-                  "startPagePosition":"35"
-                  },
-                  {
-                  "title":"Draft Versions of 'The Queries'",
-                  "startPage":"231r",
-                  "startPageID":"PHYS-465",
-                  "startPagePosition":"465"
-                  },
-                  {
-                  "title":"Covering letter to the Hypothesis, Dec. 7 1675",
-                  "startPage":"459r",
-                  "startPageID":"PHYS-937",
-                  "startPagePosition":"937"
-                  },
-                  {
-                  "title":"Draft of the 'Hypothesis Concerning Light and Colors'",
-                  "startPage":"475r",
-                  "startPageID":"PHYS-969",
-                  "startPagePosition":"969"
-                  },
-                  {
-                  "title":"Draft of the 'Discourse Concerning Light and Colors'",
-                  "startPage":"501r",
-                  "startPageID":"PHYS-1021",
-                  "startPagePosition":"1021"
-                  },
-                  {
-                  "title":"Draft of the 'Discourse Concerning Light and Colors'",
-                  "startPage":"519r",
-                  "startPageID":"PHYS-1057",
-                  "startPagePosition":"1057"
-                  },
-                  {
-                  "title":"Draft of the 'Discourse concerning Light and Colors'",
-                  "startPage":"549r",
-                  "startPageID":"PHYS-1117",
-                  "startPagePosition":"1117"
-                  },
-                  {
-                  "title":"Draft Latin Translation of Opticks, Book I, Part I, Experiments 8-10",
-                  "startPage":"583r",
-                  "startPageID":"PHYS-1185",
-                  "startPagePosition":"1185"
-                  },
-                  {
-                  "title":"Answer to Objections made to Newton's Optical Theories",
-                  "startPage":"585r",
-                  "startPageID":"PHYS-1189",
-                  "startPagePosition":"1189"
-                  },
-                  {
-                  "title":"Memorandum of Observations on the Colours of Thick Plates",
-                  "startPage":"593r",
-                  "startPageID":"PHYS-1205",
-                  "startPagePosition":"1205"
-                  },
-                  {
-                  "title":"Fragments on Light and Heat",
-                  "startPage":"594r",
-                  "startPageID":"PHYS-1207",
-                  "startPagePosition":"1207"
-                  },
-                  {
-                  "title":"On the Refraction Observed in Iceland Spar",
-                  "startPage":"610r",
-                  "startPageID":"PHYS-1239",
-                  "startPagePosition":"1239"
-                  },
-                  {
-                  "title":"Fragments on Optics",
-                  "startPage":"619r",
-                  "startPageID":"PHYS-1257",
-                  "startPagePosition":"1257"
-                  },
-                  {
-                  "title":"Optical Experiments",
-                  "startPage":"640r",
-                  "startPageID":"PHYS-1299",
-                  "startPagePosition":"1299"
-                  },
-                  {
-                  "title":"Figure and Description of a Sheep's Eye",
-                  "startPage":"649r",
-                  "startPageID":"PHYS-1317",
-                  "startPagePosition":"1317"
-                  },
-                  {
-                  "title":"Speculations as to the Constitution of Matter and the Nature of the Action of Heat",
-                  "startPage":"652r",
-                  "startPageID":"PHYS-1323",
-                  "startPagePosition":"1323"
-                  }]
+               "logicalStructure":[   
+      {
+      "label":"Hydrostatics, Optics, Sound and Heat",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1{top}-r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"On the Division of a Monochord. Plus an extract 'out of Mr Sympson's Division Violist'.",
+      "descriptiveMetadataID":"",
+      "startPage":"1{top}-r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Notes on the Velocity of Sound",
+      "descriptiveMetadataID":"",
+      "startPage":"16r",
+      "startPageID":"LOGICAL-PAGE-35",
+      "startPagePosition":"35",
+      "children":[]
+      },   
+      {
+      "label":"Miscellaneous Optical Writings",
+      "descriptiveMetadataID":"",
+      "startPage":"231r",
+      "startPageID":"LOGICAL-PAGE-465",
+      "startPagePosition":"465",
+      "children":[   
+      {
+      "label":"Draft Versions of 'The Queries'",
+      "descriptiveMetadataID":"",
+      "startPage":"231r",
+      "startPageID":"LOGICAL-PAGE-465",
+      "startPagePosition":"465",
+      "children":[]
+      },   
+      {
+      "label":"Covering letter to the Hypothesis, Dec. 7 1675",
+      "descriptiveMetadataID":"",
+      "startPage":"459r",
+      "startPageID":"LOGICAL-PAGE-937",
+      "startPagePosition":"937",
+      "children":[]
+      },   
+      {
+      "label":"Draft of the 'Hypothesis Concerning Light and Colors'",
+      "descriptiveMetadataID":"",
+      "startPage":"475r",
+      "startPageID":"LOGICAL-PAGE-969",
+      "startPagePosition":"969",
+      "children":[]
+      },   
+      {
+      "label":"Draft of the 'Discourse Concerning Light and Colors'",
+      "descriptiveMetadataID":"",
+      "startPage":"501r",
+      "startPageID":"LOGICAL-PAGE-1021",
+      "startPagePosition":"1021",
+      "children":[]
+      },   
+      {
+      "label":"Draft of the 'Discourse Concerning Light and Colors'",
+      "descriptiveMetadataID":"",
+      "startPage":"519r",
+      "startPageID":"LOGICAL-PAGE-1057",
+      "startPagePosition":"1057",
+      "children":[]
+      },   
+      {
+      "label":"Draft of the 'Discourse concerning Light and Colors'",
+      "descriptiveMetadataID":"",
+      "startPage":"549r",
+      "startPageID":"LOGICAL-PAGE-1117",
+      "startPagePosition":"1117",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"Draft Latin Translation of Opticks, Book I, Part I, Experiments 8-10",
+      "descriptiveMetadataID":"",
+      "startPage":"583r",
+      "startPageID":"LOGICAL-PAGE-1185",
+      "startPagePosition":"1185",
+      "children":[]
+      },   
+      {
+      "label":"Answer to Objections made to Newton's Optical Theories",
+      "descriptiveMetadataID":"",
+      "startPage":"585r",
+      "startPageID":"LOGICAL-PAGE-1189",
+      "startPagePosition":"1189",
+      "children":[]
+      },   
+      {
+      "label":"Memorandum of Observations on the Colours of Thick Plates",
+      "descriptiveMetadataID":"",
+      "startPage":"593r",
+      "startPageID":"LOGICAL-PAGE-1205",
+      "startPagePosition":"1205",
+      "children":[]
+      },   
+      {
+      "label":"Fragments on Light and Heat",
+      "descriptiveMetadataID":"",
+      "startPage":"594r",
+      "startPageID":"LOGICAL-PAGE-1207",
+      "startPagePosition":"1207",
+      "children":[]
+      },   
+      {
+      "label":"On the Refraction Observed in Iceland Spar",
+      "descriptiveMetadataID":"",
+      "startPage":"610r",
+      "startPageID":"LOGICAL-PAGE-1239",
+      "startPagePosition":"1239",
+      "children":[]
+      },   
+      {
+      "label":"Fragments on Optics",
+      "descriptiveMetadataID":"",
+      "startPage":"619r",
+      "startPageID":"LOGICAL-PAGE-1257",
+      "startPagePosition":"1257",
+      "children":[]
+      },   
+      {
+      "label":"Optical Experiments",
+      "descriptiveMetadataID":"",
+      "startPage":"640r",
+      "startPageID":"LOGICAL-PAGE-1299",
+      "startPagePosition":"1299",
+      "children":[]
+      },   
+      {
+      "label":"Figure and Description of a Sheep's Eye",
+      "descriptiveMetadataID":"",
+      "startPage":"649r",
+      "startPageID":"LOGICAL-PAGE-1317",
+      "startPagePosition":"1317",
+      "children":[]
+      },   
+      {
+      "label":"Speculations as to the Constitution of Matter and the Nature of the Action of Heat",
+      "descriptiveMetadataID":"",
+      "startPage":"652r",
+      "startPageID":"LOGICAL-PAGE-1323",
+      "startPagePosition":"1323",
+      "children":[]
+      }]
+      }]
                }
    

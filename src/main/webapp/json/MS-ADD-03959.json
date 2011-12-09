@@ -1,48 +1,57 @@
 
                {
-               "title":"Elementary Mathematics",
-               "uniformTitle":"",
-               "author":[
-               "Isaac Newton"
-               ],
-               "contributor":[
-               ""
-               ],
-               "abstract":"<p>Notes and papers regarding algebra and geometry</p>",
-               "subject":[
-               "Algebra - Early works to 1800","Trigonometry - Early works to 1800"
-               ],
-               "publisher":[
-               ""
-               ],
-               "publicationPlace":[
-               ""
-               ],
-               "mediaurl":"",
-               "dateCreated":"1700-01-01",
-               "dateCreatedDisplay":"c.1700",
-               "dateIssued":"",
-               "dateIssuedDisplay":"",
-               "languageCodes":[
-               "eng","lat"
-               ],
-               "notes":[
-               ""
-               ],
-               "ownership":[
-               ""
-               ],
-               "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"MS Add.3959",
-               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
-               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-               "type":"manuscript",
-               "extent":"49 ff.",
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Elementary Mathematics",
+                  "uniformTitle":"",
+                  "author":[
+                  "Isaac Newton"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Notes and papers regarding algebra and geometry</p>",
+                  "subject":[
+                  "Algebra - Early works to 1800","Trigonometry - Early works to 1800"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreated":"1700-01-01",
+                  "dateCreatedDisplay":"c.1700",
+                  "dateIssued":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "eng","lat"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  ""
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add.3959",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":"49 ff."
+                  }],
+      
+               
                "collection":[
                "newton"
                ],
                "numberOfPages":"104",
                "useTranscriptions":"N",
+               
+               
                "pages":[
                   {
                   "name":"1r",
@@ -876,48 +885,70 @@
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   }],
-               "logicalStructure":[
-                  {
-                  "title":"Observations on the algebra of Kinckhuysen",
-                  "startPage":"2r",
-                  "startPageID":"PHYS-3",
-                  "startPagePosition":"3"
-                  },
-                  {
-                  "title":"First ten propositions of the second book of Euclid",
-                  "startPage":"22r",
-                  "startPageID":"PHYS-43",
-                  "startPagePosition":"43"
-                  },
-                  {
-                  "title":"Theorem on the area of a triangle",
-                  "startPage":"23r",
-                  "startPageID":"PHYS-45",
-                  "startPagePosition":"45"
-                  },
-                  {
-                  "title":"Trigonometria succinte proposita et nova methodo demonstrata",
-                  "startPage":"24r",
-                  "startPageID":"PHYS-47",
-                  "startPagePosition":"47"
-                  },
-                  {
-                  "title":"A few MS leaves, containing Compendium Trigonometriaea",
-                  "startPage":"33r",
-                  "startPageID":"PHYS-65",
-                  "startPagePosition":"65"
-                  },
-                  {
-                  "title":"Table of Sines to every half degree",
-                  "startPage":"45r",
-                  "startPageID":"PHYS-95",
-                  "startPagePosition":"95"
-                  },
-                  {
-                  "title":"Epitome Trigonometriaea",
-                  "startPage":"47r",
-                  "startPageID":"PHYS-99",
-                  "startPagePosition":"99"
-                  }]
+               "logicalStructure":[   
+      {
+      "label":"Elementary Mathematics",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"Observations on the algebra of Kinckhuysen",
+      "descriptiveMetadataID":"",
+      "startPage":"2r",
+      "startPageID":"LOGICAL-PAGE-3",
+      "startPagePosition":"3",
+      "children":[]
+      },   
+      {
+      "label":"First ten propositions of the second book of Euclid",
+      "descriptiveMetadataID":"",
+      "startPage":"22r",
+      "startPageID":"LOGICAL-PAGE-43",
+      "startPagePosition":"43",
+      "children":[]
+      },   
+      {
+      "label":"Theorem on the area of a triangle",
+      "descriptiveMetadataID":"",
+      "startPage":"23r",
+      "startPageID":"LOGICAL-PAGE-45",
+      "startPagePosition":"45",
+      "children":[]
+      },   
+      {
+      "label":"Trigonometria succinte proposita et nova methodo demonstrata",
+      "descriptiveMetadataID":"",
+      "startPage":"24r",
+      "startPageID":"LOGICAL-PAGE-47",
+      "startPagePosition":"47",
+      "children":[]
+      },   
+      {
+      "label":"A few MS leaves, containing Compendium Trigonometriaea",
+      "descriptiveMetadataID":"",
+      "startPage":"33r",
+      "startPageID":"LOGICAL-PAGE-65",
+      "startPagePosition":"65",
+      "children":[]
+      },   
+      {
+      "label":"Table of Sines to every half degree",
+      "descriptiveMetadataID":"",
+      "startPage":"45r",
+      "startPageID":"LOGICAL-PAGE-95",
+      "startPagePosition":"95",
+      "children":[]
+      },   
+      {
+      "label":"Epitome Trigonometriaea",
+      "descriptiveMetadataID":"",
+      "startPage":"47r",
+      "startPageID":"LOGICAL-PAGE-99",
+      "startPagePosition":"99",
+      "children":[]
+      }]
+      }]
                }
    

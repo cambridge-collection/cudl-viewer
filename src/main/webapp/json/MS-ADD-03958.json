@@ -1,38 +1,57 @@
 
                {
-               "title":"Early Papers",
-               "author":[
-               "Isaac Newton"
-               ],
-               "contributor":[
-               ""
-               ],
-               "abstract":"<p>This set of papers documents some of Newton's early mathematical thinking, work that would develop into his theories of calculus. The texts include extracts he made from books he was reading and various notes and calculations - often on small scraps of paper he had to hand.<br/><br/></p><p>Transcriptions are available for parts of the papers, beginning on <a href='' onclick='store.loadPage(92);return false;'>folio 48v</a>.</p>",
-               "subject":[
-               "Science - Mathematics"
-               ],
-               "publisher":[
-               ""
-               ],
-               "mediaurl":"",
-               "dateCreated":"1665-01-01",
-               "dateCreatedDisplay":"c. 1665 - c. 1672",
-               "dateIssued":"",
-               "dateIssuedDisplay":"",
-               "languageCodes":[
-               "eng","lat"
-               ],
-               "physicalLocation":"Cambridge University Library, Cambridge, UK",
-               "shelfLocator":"MS Add. 3958",
-               "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
-               "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-               "type":"manuscript",
-               "extent":"",
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Early Papers",
+                  "uniformTitle":"",
+                  "author":[
+                  "Isaac Newton"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>This set of papers documents some of Newton's early mathematical thinking, work that would develop into his theories of calculus. The texts include extracts he made from books he was reading and various notes and calculations - often on small scraps of paper he had to hand.<br/><br/></p><p>Transcriptions are available for parts of the papers, beginning on <a href='' onclick='store.loadPage(92);return false;'>folio 48v</a>.</p>",
+                  "subject":[
+                  "Science - Mathematics"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreated":"1665-01-01",
+                  "dateCreatedDisplay":"c. 1665 - c. 1672",
+                  "dateIssued":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "eng","lat"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  ""
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add. 3958",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":""
+                  }],
+      
+               
                "collection":[
                ""
                ],
                "numberOfPages":"190",
                "useTranscriptions":"Y",
+               
+               
                "pages":[
                   {
                   "name":"1r",
@@ -1554,48 +1573,86 @@
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":""
                   }],
-               "logicalStructure":[
-                  {
-                  "title":"Extracts from Various Texts",
-                  "startPage":"1r",
-                  "startPageID":"PHYS-1",
-                  "startPagePosition":"1"
-                  },
-                  {
-                  "title":"Miscellaneous Early Scraps and Extracts",
-                  "startPage":"30r",
-                  "startPageID":"PHYS-55",
-                  "startPagePosition":"55"
-                  },
-                  {
-                  "title":"The October 1666 Tract on Fluxions",
-                  "startPage":"48v",
-                  "startPageID":"PHYS-92",
-                  "startPagePosition":"92"
-                  },
-                  {
-                  "title":"De Solutione Problematum per Motum",
-                  "startPage":"68r",
-                  "startPageID":"PHYS-131",
-                  "startPagePosition":"131"
-                  },
-                  {
-                  "title":"Calculation of the Area of the Hyperbola",
-                  "startPage":"78r",
-                  "startPageID":"PHYS-149",
-                  "startPagePosition":"149"
-                  },
-                  {
-                  "title":"The Lawes of Motion",
-                  "startPage":"81r",
-                  "startPageID":"PHYS-157",
-                  "startPagePosition":"157"
-                  },
-                  {
-                  "title":"Problems in Geometrical Optics",
-                  "startPage":"93r",
-                  "startPageID":"PHYS-181",
-                  "startPagePosition":"181"
-                  }]
+               "logicalStructure":[   
+      {
+      "label":"Early Papers",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"Extracts from Various Texts",
+      "descriptiveMetadataID":"",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Miscellaneous Early Scraps and Extracts",
+      "descriptiveMetadataID":"",
+      "startPage":"",
+      "startPageID":"",
+      "startPagePosition":"",
+      "children":[]
+      },   
+      {
+      "label":"Short Tracts",
+      "descriptiveMetadataID":"",
+      "startPage":"48v",
+      "startPageID":"LOGICAL-PAGE-92",
+      "startPagePosition":"92",
+      "children":[   
+      {
+      "label":"The October 1666 Tract on Fluxions",
+      "descriptiveMetadataID":"",
+      "startPage":"48v",
+      "startPageID":"LOGICAL-PAGE-92",
+      "startPagePosition":"92",
+      "children":[]
+      },   
+      {
+      "label":"De Solutione Problematum per Motum",
+      "descriptiveMetadataID":"",
+      "startPage":"68r",
+      "startPageID":"LOGICAL-PAGE-131",
+      "startPagePosition":"131",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"Calculation of the Area of the Hyperbola",
+      "descriptiveMetadataID":"",
+      "startPage":"78r",
+      "startPageID":"LOGICAL-PAGE-149",
+      "startPagePosition":"149",
+      "children":[]
+      },   
+      {
+      "label":"Three Tracts",
+      "descriptiveMetadataID":"",
+      "startPage":"81r",
+      "startPageID":"LOGICAL-PAGE-157",
+      "startPagePosition":"157",
+      "children":[   
+      {
+      "label":"The Lawes of Motion",
+      "descriptiveMetadataID":"",
+      "startPage":"81r",
+      "startPageID":"LOGICAL-PAGE-157",
+      "startPagePosition":"157",
+      "children":[]
+      }]
+      },   
+      {
+      "label":"Problems in Geometrical Optics",
+      "descriptiveMetadataID":"",
+      "startPage":"93r",
+      "startPageID":"LOGICAL-PAGE-181",
+      "startPagePosition":"181",
+      "children":[]
+      }]
+      }]
                }
    
