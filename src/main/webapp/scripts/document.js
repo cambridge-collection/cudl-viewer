@@ -52,7 +52,7 @@ function loadData() {
  * @param tabs
  * @param thisTab
  */
-function beforeTabChange(tabs, thisTab) {
+function beforeTranscriptionTabChange(tabs, thisTab) {
 
 	for (var i=0; i<tabTitles.length; i++) {
 		if (tabTitles[i]==thisTab.title) {
@@ -74,12 +74,16 @@ function beforeTabChange(tabs, thisTab) {
  * Should run only once.
  */
 function setupViewport() {
-
-	// Set the title before we make the viewport.
-	viewportComponents.pageTitlePanel.items.items[0].text = '<b>' + data.title
-	+ '</b> &nbsp;by ' + data.author + '';
 	
 	view = new docView();
+	
+	// Find the ROOT descriptiveMetadata object. 
+	var descriptiveMetadataID = data.logicalStructure[0].descriptiveMetadataID;
+	var descriptiveMetadata = view.findDescriptiveMetadata(descriptiveMetadataID, data);
+	
+	// set title
+	viewportComponents.pageTitlePanel.items.items[0].text = '<b>' + descriptiveMetadata.title
+	+ '</b> &nbsp;by ' + descriptiveMetadata.author + '';
 
 	// We now have data in the store so we can setup the pageing toolbar.
 	var pagingTool = Ext.create('Ext.toolbar.Paging', {
@@ -111,7 +115,8 @@ function setupViewport() {
 	viewportComponents.pagingToolbar.add('->');
 	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.gif', handler: downloadImageCheck});
 	
-	 viewportComponents.tabpanel.on('beforetabchange', beforeTabChange);
+	viewportComponents.rightTabPanel.on('beforetabchange', beforeTranscriptionTabChange);
+	//viewportComponents.leftTabPanel.on('beforetabchange', beforeContentsTabChange);
 	// viewportComponents.tabpanel.on('tabchange', this.aftertabchange);
 
 	// initialise viewport.

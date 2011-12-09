@@ -3,7 +3,7 @@
  */
 var tabTitles = ["About", "Transcription (normalised)", "Transcription (diplomatic)"];
 var viewportComponents = {
-
+	
 	pageTitlePanel: new Ext.Toolbar({
 		xtype : 'toolbar',
 		height : 26,
@@ -11,10 +11,14 @@ var viewportComponents = {
 		border : 0,
 		padding : 0,
 		items:[ '<b>Unknown Title</b> &nbsp;by Unknown' ]
-	}),
+	   }),
+		
+	getPageTitlePanel: function() {
+		return this.pageTitlePanel;
+	},
 
 	/* Setup the toolbar used to change page */
-	pagingToolbar : new Ext.Toolbar({
+	pagingToolbar: new Ext.Toolbar({
 		xtype : 'toolbar',
 		height : 26,
 		border : 0,
@@ -22,10 +26,15 @@ var viewportComponents = {
 		autoShow : true,
 		margin : '0 0 0 0',
 		items : [  ]
-	}),
+ 	    }), 
+	
+
+	getPagingToolbar : function() {
+		return pagingToolbar;
+	},
 
 	/* Setup the tab panel for the document information */
-	tabpanel : Ext.create('Ext.tab.Panel', {
+	rightTabPanel: Ext.create('Ext.tab.Panel', {
 		xtype : 'tabpanel',
 		activeTab : 0,
 		region : 'east',
@@ -48,8 +57,59 @@ var viewportComponents = {
 			title : tabTitles[2],
 			el : 'transcription_diplomatic'
 		} ]
-	})
-
+	    }),
+	    
+	getRightTabPanel : function() {
+		return rightTabPanel;
+	},
+	
+	/*
+	contentsTree: new Ext.tree.TreePanel({
+	    renderTo: Ext.getBody(),
+	    title: 'Sections',
+	    width: 200,
+	    height: 250,
+	    userArrows: true,
+	    animate: true,
+	    autoScroll: true,
+	    dataUrl: 'tree-nodes.php',
+	    root: {
+	        nodeType: 'async',
+	        text: 'Root Node'
+	    },
+	    listeners: {
+	        render: function() {
+	            this.getRootNode().expand();
+	        }
+	    }
+	   }),
+	
+	getContentsTree: function () {
+		return contentsTree;
+	},*/
+		
+	leftTabPanel: new Ext.create('Ext.tab.Panel', {
+		xtype : 'tabpanel',
+		activeTab : 0,
+		width : 250,
+		height : 250,
+		defaults:{ autoScroll:true },
+		region : 'west',
+		collapsed : true,
+		collapsible : true,
+		title : 'Contents',
+		split:true,
+		items : [{
+			xtype : 'panel',
+			title : 'Sections',
+			autoScroll:true,
+			el : 'logical_structure'
+		}]
+	   }),
+	   
+	getLeftTabPanel: function() {
+		return leftTabPanel;
+	}
 };
 
 /**
@@ -76,24 +136,8 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 						height : '90%',
 						border : true
 					} ]
-				}, viewportComponents.tabpanel, {
-					xtype : 'tabpanel',
-					activeTab : 0,
-					width : 250,
-					height : 250,
-					defaults:{ autoScroll:true },
-					region : 'west',
-					collapsed : true,
-					collapsible : true,
-					title : 'Contents',
-					split:true,
-					items : [ {
-						xtype : 'panel',
-						title : 'Sections',
-						autoScroll:true,
-						el : 'logical_structure'
-					} ]
-				}, {
+				}, viewportComponents.rightTabPanel, 
+				   viewportComponents.leftTabPanel, {
 					xtype : 'container',
 					region : 'north',
 					el : 'north',

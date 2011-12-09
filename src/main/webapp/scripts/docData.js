@@ -16,7 +16,7 @@ var docData = function() {
 
 			/* read json that defines the data for this page */
 			this.jsonreader = new Ext.data.JsonReader({
-				root : 'rows',
+				root : 'pages',
 				totalProperty : 'numberOfPages'
 			},
 					[ 'name', 'displayImageURL', 'downloadImageURL',
