@@ -1,4 +1,4 @@
-
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-about.jsp" />
 
@@ -40,6 +40,8 @@
 				digital formats, we are now building a substantial online resource
 				so that our collections can be much more accessible to students,
 				researchers and the wider public.</p>
+				
+				<a href="" name="foundations"></a>
 			<p>
 				We have called the first phase of our work on the Cambridge Digital
 				Library the <b>Foundations Project</b>, which runs from mid-2010 to
@@ -64,7 +66,7 @@
 			<p>The Library has a collection of over 1000 manuscripts in
 				Hebrew covering a wide range of texts; Bibles, commentaries,
 				liturgy, philosophy, kabbalah, literature and legal documents. Most
-				of these are in codex form thought there are also scrolls and
+				of these are in codex form though there are also scrolls and
 				fragments; some date back to the earliest collections in the
 				Library. The oldest manuscript in the collection is a copy of the
 				Ten Commandments written on papyrus, and thought to date from the

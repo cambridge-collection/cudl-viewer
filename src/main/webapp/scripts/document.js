@@ -82,8 +82,11 @@ function setupViewport() {
 	var descriptiveMetadata = view.findDescriptiveMetadata(descriptiveMetadataID, data);
 	
 	// set title
-	viewportComponents.pageTitlePanel.items.items[0].text = '<b>' + descriptiveMetadata.title
-	+ '</b> &nbsp;by ' + descriptiveMetadata.author + '';
+	 var docTitle = '<b>' + descriptiveMetadata.title+ '</b>';
+	 if (descriptiveMetadata.author && descriptiveMetadata.author!="") {
+		docTitle += ' &nbsp;by ' + descriptiveMetadata.author; 
+	 }
+	 viewportComponents.pageTitlePanel.items.items[0].text = docTitle;
 
 	// We now have data in the store so we can setup the pageing toolbar.
 	var pagingTool = Ext.create('Ext.toolbar.Paging', {

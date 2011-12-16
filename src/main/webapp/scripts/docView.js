@@ -120,10 +120,12 @@ var docView = function() {
 				maskRightPanel(1);
 				maskRightPanel(2);
 
-				//transcriptionNormalisedURL="/transcription?url="
-				//	+ encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
-				//transcriptionDiplomaticURL="/transcription?url="
-				//	+ encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
+				// transcriptionNormalisedURL="/transcription?url="
+				// + encodeURIComponent(data.pages[pagenum -
+				// 1].transcriptionNormalisedURL);
+				// transcriptionDiplomaticURL="/transcription?url="
+				// + encodeURIComponent(data.pages[pagenum -
+				// 1].transcriptionDiplomaticURL);
 				var normalTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
 				var diploTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
 				
@@ -141,16 +143,17 @@ var docView = function() {
 					  document.getElementById("transcription_diplomatic_frame").style.display="inline";
 				}
 				
-				// setup metadata				
-				// Find the ROOT descriptiveMetadata object. 
+				// setup metadata
+				// Find the ROOT descriptiveMetadata object.
 				var descriptiveMetadataID = data.logicalStructure[0].descriptiveMetadataID;
 				var descriptiveMetadata = view.findDescriptiveMetadata(descriptiveMetadataID, data);
 				
 				view.populateElement(document.getElementById("metadata-title"),
 						descriptiveMetadata.title);
-				view
-						.populateElement(document
-								.getElementById("metadata-author"), descriptiveMetadata.author);
+				if (descriptiveMetadata.author && descriptiveMetadata.author!="") { 
+					view.populateElement(document
+								.getElementById("metadata-author"), " by <span class='document-about-author'>"+descriptiveMetadata.author+"</span>");
+				}
 				view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
@@ -192,7 +195,7 @@ var docView = function() {
 											+ "\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>";
 					
 				}
-				if (data.abstract) {
+				if (descriptiveMetadata.abstract) {
 					abstractText = abstractText+descriptiveMetadata.abstract;
 					
 					view.populateElement(document
@@ -204,6 +207,12 @@ var docView = function() {
 				// setup logical structure
 
 				var ls = view.buildLogicalStructure(data.logicalStructure[0].children, 0);
+				
+				// If no first level contents use the root element
+				// to prevent empty contents list.
+				if (ls=="") {
+					ls = view.buildLogicalStructure(data.logicalStructure, 0);
+				}
 				
 				view.populateElement(document
 						.getElementById("logical_structure"),
@@ -237,6 +246,7 @@ var docView = function() {
 					ls += view.buildLogicalStructure(lsItem.children, level+1 );
 				}
 			}
+			
 			
 			return ls;			
 		}

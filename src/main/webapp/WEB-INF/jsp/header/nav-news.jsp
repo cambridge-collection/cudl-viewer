@@ -6,9 +6,9 @@
 	</li>
 	<li><a href="/collections/" title="Browse"> Browse </a>
 	</li>
-	<li><a href="/news/" title="News"> News </a>
-	</li>		
-	<li><a href="/about/" title="About" class="active"> About </a>
+	<li><a href="/news/" title="News" class="active"> News </a>
+	</li>	
+	<li><a href="/about/" title="About"> About </a>
 	</li>
 	<li><a class="iframe" href="/feedbackform.html"
 		title="Feedback"> Feedback </a>

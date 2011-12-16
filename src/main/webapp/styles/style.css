@@ -97,7 +97,7 @@ ol#index_carousel li {
 	float: left;
 	margin: 4px;
 	/*height: 390px;*/
-	width: 600px;
+	width: 540px;
 	list-style: none outside none;
 }
 
@@ -121,6 +121,9 @@ ol#index_carousel li {
 	{
 	color: #ffffff;
 }
+ol#index_carousel li {
+	height: 370px;
+}
 
 .footer a:link,.footer a:visited,.footer a:active {
 	color: #FFFFFF;
@@ -135,14 +138,30 @@ ol#index_carousel li {
 .news {
 	background: #eeeeee;
 	color: #000000;
-	margin: 15px;
+	margin-bottom: 15px;
 	padding: 4px;
-	border-style: dotted;
-	border-color: #900;
-	border-width: .2em;
 }
 
 .news img {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.featured-item-list {
+	background: #eeeeee;
+	color: #000000;
+	margin-bottom: 15px;
+	height:152px;
+	padding: 14px;
+}
+.featured-item-list img {
+	margin-left: auto;
+	margin-right: auto;
+}
+.featured-item-list h4 {
+	margin-left:20px;
+}
+
+.foundations-link, .foundations-link a{
+	color: #900;
 }

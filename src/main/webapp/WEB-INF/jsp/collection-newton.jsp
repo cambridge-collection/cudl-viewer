@@ -1,5 +1,7 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-browse.jsp" />
+<jsp:include page="header/nav-browse-newton.jsp" />
 
 <script type="text/javascript">
 	/*	function pageinit() {

@@ -1,3 +1,4 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div id="metadata" class="document-about">
 	<div style="height: 100%; overflow-y: auto;">
 
@@ -18,7 +19,7 @@
 
 			<!-- Title -->
 			<br /> <span class="document-about-title" id="metadata-title"></span>
-			by <span class="document-about-author" id="metadata-author"></span> <br />
+			<span id="metadata-author"></span> <br />
 			<div class="document-spacer"></div>
 			&nbsp;Part of the <a href="/collections/newton">Newton Papers</a>.
 

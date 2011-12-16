@@ -1,12 +1,18 @@
-<%@page contentType="text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
 <title>Cambridge Digital Library - University of Cambridge</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+        
 <jsp:include page="includes.jsp" />
+
+<script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
+<script src="/scripts/glow/1.7.7/widgets/widgets.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
 
 <script type="text/javascript">
     // initalise page if function is available. 

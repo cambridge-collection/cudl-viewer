@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,23 +23,20 @@ public class CollectionViewController {
 		
 	// on path /collections/
 	@RequestMapping(value = "/")
-	public ModelAndView handleViewRequest() throws Exception {
-
-		ModelAndView modelAndView = new ModelAndView("jsp/errors/404");
+	public ModelAndView handleViewRequest(HttpServletResponse response) throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+		ModelAndView modelAndView = new ModelAndView("jsp/collections");
 		return modelAndView;
 	}
 
 	// on path /collections/{collectionId}
 	@RequestMapping(value = "/{collectionId}")
-	public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId,
+	public ModelAndView handleRequest(HttpServletResponse response, @PathVariable("collectionId") String collectionId,
 			HttpServletRequest request) {
-
-		if (collectionId.equalsIgnoreCase("newton")) {
-			ModelAndView modelAndView = new ModelAndView("jsp/collection-newton");
-			return modelAndView;
-		}
+		response.setContentType("text/html;charset=utf-8");
+		ModelAndView modelAndView = new ModelAndView("jsp/collection-"+collectionId);
+		return modelAndView;
 		
-		return new ModelAndView("jsp/errors/404");
 	}
 
 }
