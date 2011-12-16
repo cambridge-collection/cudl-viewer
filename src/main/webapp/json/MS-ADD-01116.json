@@ -12,7 +12,7 @@
                   "contributor":[
                   ""
                   ],
-                  "abstract":"<p>Fragments of an Abbasid Kūfic Qurʼān (9th century), containing verses from the sura Āl ʿImrān (سورة آل عمران)</p>",
+                  "abstract":"<p>Fragments of an Abbasid Kūfic Qurʼān (3rd century A.H./9th century A.D.), containing verses from the sura Āl ʿImrān (سورة آل عمران)</p>",
                   "subject":[
                   "Koran"
                   ],
@@ -23,9 +23,9 @@
                   ""
                   ],
                   "mediaurl":"",
-                  "dateCreatedStart":"",
-                  "dateCreatedEnd":"",
-                  "dateCreatedDisplay":"Undated",
+                  "dateCreatedStart":"0800-01-01",
+                  "dateCreatedEnd":"0900-01-01",
+                  "dateCreatedDisplay":"Third century A.H. / ninth century A.D",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",
@@ -39,7 +39,7 @@
                   "Bought from Professor E.H. Palmer and E.E. Tyrwhitt in 1878."
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
-                  "shelfLocator":"MS Add. 1116",
+                  "shelfLocator":"MS Add.1116",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"manuscript",
