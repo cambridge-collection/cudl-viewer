@@ -21,7 +21,7 @@
 			<br /> <span class="document-about-title" id="metadata-title"></span>
 			<span id="metadata-author"></span> <br />
 			<div class="document-spacer"></div>
-			&nbsp;Part of the <a href="/collections/newton">Newton Papers</a>.
+			&nbsp;Part of the <a href="${collectionURL}">${collectionTitle}</a>.
 
 
 			<!-- Metadata -->

@@ -37,7 +37,7 @@ body {
 }
 
 #libraryLogo {
-	margin-top:3px;
+	margin-top: 3px;
 	background: url("/images/header/ULLogowhite.gif") no-repeat right top;
 	float: right;
 	align: top;
@@ -55,13 +55,13 @@ body {
 }*/
 
 /* credit text for images, small */
-.image-credit, .image-credit a {
+.image-credit,.image-credit a {
 	font-size: 8px;
 	color: #999999;
 	vertical-align: top;
-	text-decoration:none;
-	border:0px;
-	padding:0px;	
+	text-decoration: none;
+	border: 0px;
+	padding: 0px;
 }
 
 /* Header Styles */
@@ -121,6 +121,7 @@ ol#index_carousel li {
 	{
 	color: #ffffff;
 }
+
 ol#index_carousel li {
 	height: 370px;
 }
@@ -151,17 +152,26 @@ ol#index_carousel li {
 	background: #eeeeee;
 	color: #000000;
 	margin-bottom: 15px;
-	height:152px;
+	height: 152px;
 	padding: 14px;
 }
+
 .featured-item-list img {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .featured-item-list h4 {
-	margin-left:20px;
+	margin-left: 20px;
 }
 
-.foundations-link, .foundations-link a{
+.foundations-link,.foundations-link a {
 	color: #900;
+}
+
+.arabic {
+	font-style: normal;
+	margin-left: auto;
+	margin-right: 0px;
+	text-align:right;
 }

@@ -1,15 +1,15 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-home.jsp" />
 
 <script type="text/javascript">
-    var index_carousel;
+	var index_carousel;
 	function init() {
 		index_carousel = new glow.widgets.Carousel("#index_carousel", {
 			loop : false,
 			size : 1,
-			step : 1, 
-			theme: "light"
+			step : 1,
+			theme : "light"
 		});
 	}
 </script>
@@ -23,25 +23,25 @@
 
 			<div class="featured-item-list">
 				<br /> <a href="/collections/newton"><img alt="Newton Papers"
-				    title="Newton Papers"
-					src="/images/index/Newton-slice.jpg" height="80"
-					width="195"> </a> 
+					title="Newton Papers" src="/images/index/Newton-slice.jpg"
+					height="80" width="195"> </a>
 				<h4>
 					<a href="/collections/newton">Newton Papers</a>
 				</h4>
 			</div>
-			
+
 			<div class="featured-item-list">
 				<br /> <a href="/collections/islamic"><img
 					alt="Islamic Manuscripts" title="Islamic Manuscripts"
-					src="/images/index/Islamic195x80.jpg" height="80" width="195"> </a>
+					src="/images/index/Islamic195x80.jpg" height="80" width="195">
+				</a>
 
 				<h4>
-					<a href="/collections/islamic">Islamic Manuscripts</a> 
+					<a href="/collections/islamic">Islamic Manuscripts</a>
 				</h4>
 			</div>
 
-<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
+			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
 		</div>
 	</div>
@@ -70,9 +70,8 @@
 							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
 					</p>
 				</div> <a href="/collections/newton"><img id="newtonImage"
-					src="/images/index/newtondoccarousel.jpg" alt="Newton Papers" width="540"
-					height="394" /> </a>
-			</li>
+					src="/images/index/newtondoccarousel.jpg" alt="Newton Papers"
+					width="540" height="394" /> </a></li>
 
 
 			<!-- islamic collection -->
@@ -82,22 +81,18 @@
 						<a href="/collections/islamic">Islamic Manuscripts</a>
 					</h4>
 
-					<p>Cambridge University Library is pleased to present the first
-						items in its Foundations of Science collection: a selection from
-						the Papers of Sir Isaac Newton. The Library holds the most
-						important and substantial collection of Newton's scientific and
-						mathematical manuscripts and over the next few months we intend to
-						make most of our Newton papers available on this site.</p>
+					<p>Cambridge University Library has released the first items in
+						its Foundations of Faith collection: a selection of Islamic
+						manuscripts from its Near and Middle Eastern Department. The
+						Library's collection of Islamic manuscripts began in the 1630s and
+						has since grown substantially in its size and diversity. It now
+						contains more than 5,000 works.</p>
 
-					<p>
-						This first release features some of Newton's most important work
-						from the 1660s, including his <a href="/collections/newton">college
-							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
-					</p>
-				</div> <a href="/collections/newton"><img id="newtonImage"
-					src="/images/index/Islamic540x394.jpg" alt="Newton Papers"
-					width="540" height="394" /> </a>
-			</li>
+					<p>Our initial selection includes several important early
+						Qur'ans.</p>
+				</div> <a href="/collections/islamic"><img
+					src="/images/index/Islamic540x394.jpg" alt="Islamic Manuscripts"
+					width="540" height="394" /> </a></li>
 
 
 		</ol>

@@ -23,8 +23,11 @@
 	<div class="grid_10">
 		<h3 style="margin-left: 8px">Islamic Manuscripts</h3>
 		<blockquote class="grid_4 omega print">
-
-			Quote? " <cite>&mdash; Someone <br /> </cite>
+			<div class="arabic"> أديـن بدين الحــــب أنّى توجـهـت
+				<br/>
+				ركـائـبه </div> <br />I embrace the religion of love wherever its
+			caravans head" <cite><span class="arabic">ابن عربي</span><br />Ibn
+				ʿArabī (1165-1240)<br /> </cite>
 
 		</blockquote>
 		<br /> <br />
@@ -35,12 +38,51 @@
 		</div>
 		<div class="grid_9">
 			<br />
-			<p>Cambridge University Library holds the largest and most
-				important collection of the scientific works of Isaac Newton
-				(1642-1727). We present here an initial selection of Newton's
-				manuscripts, concentrating on his mathematical work in the 1660s.
-				Over the next few months we will be adding further works until the
-				majority of our Newton Papers are available on this site.</p>
+			<p>Cambridge University Library's collection of Islamic
+				manuscripts dates from the origins of teaching and scholarship in
+				Arabic in Cambridge in the early 17th century. In the 1630s the
+				University founded a Professorship in Arabic and the Library
+				acquired its first Islamic manuscripts, including a Qur'an from
+				William Bedwell and the library of the famous Leiden scholar, Thomas
+				Erpenius. Since that time the collection has grown in size and
+				diversity to over 5,000 items. They shed light on many aspects of
+				the Islamic world, its beliefs and learning.</p>
+
+			<p>Such a collection was amassed over subsequent centuries from
+				scholarly collectors or purchased by skilled librarians to add more
+				depth to the already impressive range of manuscripts - yet this
+				extraordinary collection has remained relatively unknown outside
+				Cambridge. Now, through cataloguing and digitising the collection,
+				we hope to draw better attention to its treasures.</p>
+
+			<p>
+				We have collaborated with the Bodleian at Oxford and other research
+				libraries to provide an <a target="_blank"
+					href="http://www.fihrist.org.uk/">online catalogue of the
+					collection</a> and we have begun digitising some of the earliest or
+				most important works in the collection.
+			</p>
+
+			<p>The holy Qur'an is the most significant text in Islamic
+				civilisation. Continued reproduction of the unchanging Arabic text
+				led to the development of many differing calligraphic styles. A very
+				rich heritage of manuscript copies of the Qur'an survives and the
+				library has an impressive collection. Our first selection includes
+				several examples from the collection.</p>
+
+			See also
+			<ul>
+				<li><a target="_blank" href="http://www.fihrist.org.uk/">Fihrist
+						Islamic Manuscripts Catalogue Online</a></li>
+				<li><a target="_blank"
+					href="http://www.lib.cam.ac.uk/deptserv/neareastern/">Cambridge
+						University Library Near and Middle Eastern Department </a></li>
+				<li><a target="_blank"
+					href="http://www.lib.cam.ac.uk/deptserv/neareastern/Faith_&__Fable.pdf"><i>Faith
+							and Fable: Islamic Manuscripts from Cambridge University Library</i>
+						(PDF, 2.5MB)</a></li>
+			</ul>
+
 		</div>
 	</div>
 	<div class="grid_9">
@@ -53,8 +95,7 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Or. 770)</h5>Fragments of an Abbasid Kūfic
 				Qurʼān (9th century), containing verses from the suras: al-Dhārīyāt
 				(سورة الذاريات), al-Ṭūr (سورة الطور), ... <a
-				href="/view/MS-OR-00770/">more</a>
-		    </li>
+				href="/view/MS-OR-00770/">more</a></li>
 
 			<li><a href="/view/MS-NN-00003-00075/"><img
 					class="bookSelectImage"
@@ -63,8 +104,15 @@
 				<h5>al-Qurʼān (MS Nn.3.75)</h5>Illuminated Qurʾān from the library
 				of Tippoo Ṣāḥib, presented to the University of Cambridge by the
 				Court of Directors of the East India Company in 1806.... <a
-				href="/view/MS-NN-00003-00075/">more</a>
-			</li>
+				href="/view/MS-NN-00003-00075/">more</a></li>
+
+			<li><a href="/view/MS-ADD-01116/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-ADD-01116-000-00003_files/8/0_0.jpg"
+					alt="MS-ADD-01116" /> </a>
+				<h5>al-Qurʼān (ajzāʼ) (MS Add.1116)</h5>Fragments of an Abbasid
+				Kūfic Qurʼān (9th century), containing verses from the sura Āl
+				ʿImrān (سورة آل عمران) ...<a href="/view/MS-ADD-001116/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01125/"><img
 					class="bookSelectImage"
@@ -73,8 +121,7 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1125)</h5>Fragments of a Hijazi Qurʼān
 				written in the second century A.H. / eighth century A.D., containing
 				verses from the Sura al-Anfāl (سورة الأنفال).... <a
-				href="/view/MS-ADD-01125/">more</a>
-			</li>
+				href="/view/MS-ADD-01125/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01146/"><img
 					class="bookSelectImage"
@@ -83,9 +130,7 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1146)</h5>Fragments of a Hijazi Qurʼān
 				written in the second century A.H. / eighth century A.D., containing
 				verses from Sura al-Aḥzāb (سورة الأحزاب) and Sura Sabaʾ (سورة
-				سبا)... <a href="/view/MS-ADD-01146/">more</a>
-			</li>
-
+				سبا)... <a href="/view/MS-ADD-01146/">more</a></li>
 
 		</ol>
 

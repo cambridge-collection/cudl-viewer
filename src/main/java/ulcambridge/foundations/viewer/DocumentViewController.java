@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,11 +43,29 @@ public class DocumentViewController {
 			return new ModelAndView("jsp/errors/404");
 		}
 
+		Collection docCollection = null;
+		Iterator<Collection> collectionIterator = CollectionFactory
+				.getCollections();
+		while (collectionIterator.hasNext()) {
+			Collection collection = collectionIterator.next();
+			if (collection.getItems().contains(docId)) {
+				docCollection = collection;
+				break;
+			}
+		}
+		//System.out.println("docID: " + docId);
+		//System.out.println("collection: " + docCollection.getURL());
+		//System.out.println("collection: " + docCollection.getTitle());
+
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page.
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("requestURL", requestURL);
+		if (docCollection!=null) {
+			modelAndView.addObject("collectionURL", docCollection.getURL());
+			modelAndView.addObject("collectionTitle", docCollection.getTitle());
+		}
 
 		return modelAndView;
 	}
@@ -70,11 +89,26 @@ public class DocumentViewController {
 			return new ModelAndView("jsp/errors/404");
 		}
 
+		Collection docCollection = null;
+		Iterator<Collection> collectionIterator = CollectionFactory
+				.getCollections();
+		while (collectionIterator.hasNext()) {
+			Collection collection = collectionIterator.next();
+			if (collection.getItems().contains(docId)) {
+				docCollection = collection;
+				break;
+			}
+		}
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("requestURL", requestURL);
+		if (docCollection!=null) {
+			modelAndView.addObject("collectionURL", docCollection.getURL());
+			modelAndView.addObject("collectionTitle", docCollection.getTitle());
+		}
 		return modelAndView;
 	}
 

@@ -24,7 +24,7 @@ public class CollectionViewController {
 	// on path /collections/
 	@RequestMapping(value = "/")
 	public ModelAndView handleViewRequest(HttpServletResponse response) throws Exception {
-		response.setContentType("text/html;charset=utf-8");
+
 		ModelAndView modelAndView = new ModelAndView("jsp/collections");
 		return modelAndView;
 	}
@@ -33,7 +33,7 @@ public class CollectionViewController {
 	@RequestMapping(value = "/{collectionId}")
 	public ModelAndView handleRequest(HttpServletResponse response, @PathVariable("collectionId") String collectionId,
 			HttpServletRequest request) {
-		response.setContentType("text/html;charset=utf-8");
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"+collectionId);
 		return modelAndView;
 		

@@ -82,7 +82,7 @@ function setupViewport() {
 	var descriptiveMetadata = view.findDescriptiveMetadata(descriptiveMetadataID, data);
 	
 	// set title
-	 var docTitle = '<b>' + descriptiveMetadata.title+ '</b>';
+	 var docTitle = '<a href="'+collectionURL+'">'+collectionTitle+'</a> > <b>' + descriptiveMetadata.title+ '</b>';
 	 if (descriptiveMetadata.author && descriptiveMetadata.author!="") {
 		docTitle += ' &nbsp;by ' + descriptiveMetadata.author; 
 	 }
