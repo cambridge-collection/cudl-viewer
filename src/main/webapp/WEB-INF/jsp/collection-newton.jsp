@@ -22,10 +22,10 @@
 
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Newton Papers</h3>
-	<blockquote class="grid_4 omega print">
+	<blockquote class="grid_5 omega print">
 
-		Plato is my friend, Aristotle is my friend, but my greatest friend is
-		truth." <cite>&mdash;Sir Isaac Newton <br />(<a
+		Plato is my friend,<br/> Aristotle is my friend,<br/> but my greatest friend is
+		truth." <br/><br/><cite>&mdash;Sir Isaac Newton <br />(<a
 			href="/view/MS-ADD-03996/179">MS Add.3996, 88r</a>)</cite>
 
 	</blockquote>

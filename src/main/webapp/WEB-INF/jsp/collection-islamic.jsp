@@ -22,19 +22,24 @@
 
 	<div class="grid_10">
 		<h3 style="margin-left: 8px">Islamic Manuscripts</h3>
-		<blockquote class="grid_4 omega print">
-			<div class="arabic"> أديـن بدين الحــــب أنّى توجـهـت
-				<br/>
-				ركـائـبه </div> <br />I embrace the religion of love wherever its
-			caravans head" <cite><span class="arabic">ابن عربي</span><br />Ibn
-				ʿArabī (1165-1240)<br /> </cite>
+		<blockquote class="grid_5 omega print">
+			<div class="arabic">
+				أديـن بدين الحــــب أنّى توجـهـت <br /> ركـائـبه
+			</div>
+			<br />I embrace the religion of love wherever its caravans head" <br />
+			<br /> <cite><span class="arabic">(ابن عربي (٥٥٨-٦٣٨
+					هـ</span> <br />Ibn ʿArabī (1165-1240 C.E.)<br /> </cite>
 
 		</blockquote>
 		<br /> <br />
 		<div class="grid_4">
 			<img class="collectionImage"
-				src="/images/collectionsView/islamic.jpg" alt="Newton" width="150"
-				height="225" />
+				src="/images/collectionsView/islamic.jpg" alt="Islamic Manuscripts"
+				width="150" height="225" />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="image-credit"><a
+				href="/view/MS-NN-00003-00075/8">Detail from MS Nn.3.75</a>
+			</span>
+
 		</div>
 		<div class="grid_9">
 			<br />

@@ -36,8 +36,6 @@ public class CollectionFactory {
 			String collectionURL = config.getString(collectionId + ".url");
 			String collectionTitle = config.getString(collectionId + ".title");
 			String collectionHTML = config.getString(collectionId + ".html");
-
-			System.out.println("adding collection docID: "+collectionId);
 			
 			Collection collection = new Collection(collectionId,
 					collectionTitle, collectionItems, collectionURL,

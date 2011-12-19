@@ -53,9 +53,6 @@ public class DocumentViewController {
 				break;
 			}
 		}
-		//System.out.println("docID: " + docId);
-		//System.out.println("collection: " + docCollection.getURL());
-		//System.out.println("collection: " + docCollection.getTitle());
 
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);

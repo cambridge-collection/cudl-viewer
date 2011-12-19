@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="grid_11">
-		<span class="date">02/01/2012</span>
+		<span class="date">20/12/2012</span>
 		<h4>Islamic Manuscripts</h4>
 		<p>We are pleased to announce the release of the first items
 			within the Foundations of Faith collection: a selection of Islamic
