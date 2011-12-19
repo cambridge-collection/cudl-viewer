@@ -87,13 +87,13 @@ table {
 	margin-right: 15px;
 	font-size: 12px;
 	color: #5E2605;
-	/*list-style: disc outside none;*/	
-	list-style: none;		
+	/*list-style: disc outside none;*/
+	list-style: none;
 }
 
 #logical_structure li ul li {
-    padding-left: 10px;
-    list-style: none;	
+	padding-left: 10px;
+	list-style: none;
 }
 
 /* Right Panel */
@@ -131,6 +131,11 @@ table {
 #metadata-about {
 	max-width: 500px;
 	min-width: 300px;
+}
+
+#document-about-link-out {
+	color: #900;
+	font-weight: bold;
 }
 
 /* Rounded Boxes */
