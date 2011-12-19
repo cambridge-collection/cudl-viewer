@@ -1,0 +1,3388 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"al-Qurʼān (ajzāʼ)",
+                  "uniformTitle":"القرآن (اجزاء)",
+                  "author":[
+                  ""
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"Fragments of an Abbasid Qurʼān (probably third century A.H. / ninth century C.E.), containing verses from the <a href='' onclick='store.loadPage(10);return false;'>Sura al-Muʾminūn (سورة المؤمنون)</a>, the complete <a href='' onclick='store.loadPage(81);return false;'>Sura al-Nūr (سورة النور)</a>, and verses from the <a href='' onclick='store.loadPage(171);return false;'>Sura al-Furqān (سورة الفرقان)</a>. The script seems to correspond to the Abbasid Style D.I as described by F. Deroche.",
+                  "subject":[
+                  "Koran"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreatedStart":"0800-01-01",
+                  "dateCreatedEnd":"0900-01-01",
+                  "dateCreatedDisplay":"3rd century A.H./9th century C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "ara"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  ""
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add.1138",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":"96 ff."
+                  }],
+      
+               
+               "collection":[
+               "islamic"
+               ],
+               "numberOfPages":"201",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-3",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00003.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00003.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-4",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00004.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00004.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-5",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00005.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00005.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-6",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00006.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00006.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-7",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00007.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00007.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-8",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00008.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00008.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"2r",
+                  "physID":"PHYS-9",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00009.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00009.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"2v",
+                  "physID":"PHYS-10",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00010.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00010.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"3r",
+                  "physID":"PHYS-11",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00011.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00011.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"3v",
+                  "physID":"PHYS-12",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00012.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00012.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"4r",
+                  "physID":"PHYS-13",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00013.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00013.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"4v",
+                  "physID":"PHYS-14",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00014.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00014.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"5r",
+                  "physID":"PHYS-15",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00015.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00015.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"5v",
+                  "physID":"PHYS-16",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00016.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00016.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"6r",
+                  "physID":"PHYS-17",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00017.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00017.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"6v",
+                  "physID":"PHYS-18",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00018.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00018.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"7r",
+                  "physID":"PHYS-19",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00019.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00019.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"7v",
+                  "physID":"PHYS-20",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00020.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00020.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"8r",
+                  "physID":"PHYS-21",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00021.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00021.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"8v",
+                  "physID":"PHYS-22",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00022.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00022.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"9r",
+                  "physID":"PHYS-23",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00023.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00023.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"9v",
+                  "physID":"PHYS-24",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00024.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00024.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"10r",
+                  "physID":"PHYS-25",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00025.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00025.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"10v",
+                  "physID":"PHYS-26",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00026.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00026.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"11r",
+                  "physID":"PHYS-27",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00027.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00027.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"11v",
+                  "physID":"PHYS-28",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00028.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00028.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"12r",
+                  "physID":"PHYS-29",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00029.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00029.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"12v",
+                  "physID":"PHYS-30",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00030.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00030.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"13r",
+                  "physID":"PHYS-31",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00031.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00031.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"13v",
+                  "physID":"PHYS-32",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00032.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00032.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"14r",
+                  "physID":"PHYS-33",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00033.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00033.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"14v",
+                  "physID":"PHYS-34",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00034.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00034.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"15r",
+                  "physID":"PHYS-35",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00035.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00035.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"15v",
+                  "physID":"PHYS-36",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00036.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00036.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"16r",
+                  "physID":"PHYS-37",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00037.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00037.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"16v",
+                  "physID":"PHYS-38",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00038.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00038.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"17r",
+                  "physID":"PHYS-39",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00039.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00039.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"17v",
+                  "physID":"PHYS-40",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00040.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00040.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"18r",
+                  "physID":"PHYS-41",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00041.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00041.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"18v",
+                  "physID":"PHYS-42",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00042.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00042.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"19r",
+                  "physID":"PHYS-43",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00043.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00043.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"19v",
+                  "physID":"PHYS-44",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00044.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00044.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"20r",
+                  "physID":"PHYS-45",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00045.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00045.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"20v",
+                  "physID":"PHYS-46",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00046.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00046.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"21r",
+                  "physID":"PHYS-47",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00047.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00047.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"21v",
+                  "physID":"PHYS-48",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00048.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00048.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"22r",
+                  "physID":"PHYS-49",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00049.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00049.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"22v",
+                  "physID":"PHYS-50",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00050.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00050.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"23r",
+                  "physID":"PHYS-51",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00051.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00051.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"23v",
+                  "physID":"PHYS-52",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00052.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00052.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"24r",
+                  "physID":"PHYS-53",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00053.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00053.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"24v",
+                  "physID":"PHYS-54",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00054.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00054.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"25r",
+                  "physID":"PHYS-55",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00055.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00055.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"25v",
+                  "physID":"PHYS-56",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00056.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00056.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"26r",
+                  "physID":"PHYS-57",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00057.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00057.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"26v",
+                  "physID":"PHYS-58",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00058.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00058.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"27r",
+                  "physID":"PHYS-59",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00059.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00059.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"27v",
+                  "physID":"PHYS-60",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00060.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00060.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"28r",
+                  "physID":"PHYS-61",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00061.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00061.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"28v",
+                  "physID":"PHYS-62",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00062.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00062.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"29r",
+                  "physID":"PHYS-63",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00063.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00063.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"29v",
+                  "physID":"PHYS-64",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00064.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00064.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"30r",
+                  "physID":"PHYS-65",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00065.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00065.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"30v",
+                  "physID":"PHYS-66",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00066.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00066.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"31r",
+                  "physID":"PHYS-67",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00067.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00067.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"31v",
+                  "physID":"PHYS-68",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00068.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00068.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"32r",
+                  "physID":"PHYS-69",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00069.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00069.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"32v",
+                  "physID":"PHYS-70",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00070.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00070.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"33r",
+                  "physID":"PHYS-71",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00071.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00071.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"33v",
+                  "physID":"PHYS-72",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00072.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00072.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"34r",
+                  "physID":"PHYS-73",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00073.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00073.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"34v",
+                  "physID":"PHYS-74",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00074.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00074.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"35r",
+                  "physID":"PHYS-75",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00075.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00075.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"35v",
+                  "physID":"PHYS-76",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00076.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00076.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"36r",
+                  "physID":"PHYS-77",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00077.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00077.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"36v",
+                  "physID":"PHYS-78",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00078.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00078.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"37r",
+                  "physID":"PHYS-79",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00079.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00079.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"37v",
+                  "physID":"PHYS-80",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00080.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00080.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"38r",
+                  "physID":"PHYS-81",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00081.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00081.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"38v",
+                  "physID":"PHYS-82",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00082.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00082.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"39r",
+                  "physID":"PHYS-83",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00083.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00083.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"39v",
+                  "physID":"PHYS-84",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00084.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00084.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"40r",
+                  "physID":"PHYS-85",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00085.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00085.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"40v",
+                  "physID":"PHYS-86",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00086.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00086.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"41r",
+                  "physID":"PHYS-87",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00087.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00087.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"41v",
+                  "physID":"PHYS-88",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00088.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00088.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"42r",
+                  "physID":"PHYS-89",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00089.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00089.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"42v",
+                  "physID":"PHYS-90",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00090.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00090.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"43r",
+                  "physID":"PHYS-91",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00091.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00091.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"43v",
+                  "physID":"PHYS-92",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00092.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00092.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"44r",
+                  "physID":"PHYS-93",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00093.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00093.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"44v",
+                  "physID":"PHYS-94",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00094.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00094.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"45r",
+                  "physID":"PHYS-95",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00095.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00095.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"45v",
+                  "physID":"PHYS-96",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00096.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00096.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"46r",
+                  "physID":"PHYS-97",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00097.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00097.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"46v",
+                  "physID":"PHYS-98",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00098.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00098.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"47r",
+                  "physID":"PHYS-99",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00099.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00099.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"47v",
+                  "physID":"PHYS-100",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00100.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00100.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"49r",
+                  "physID":"PHYS-101",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00101.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00101.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"49v",
+                  "physID":"PHYS-102",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00102.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00102.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"50r",
+                  "physID":"PHYS-103",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00103.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00103.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"50v",
+                  "physID":"PHYS-104",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00104.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00104.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"51r",
+                  "physID":"PHYS-105",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00105.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00105.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"51v",
+                  "physID":"PHYS-106",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00106.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00106.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"52r",
+                  "physID":"PHYS-107",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00107.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00107.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"52v",
+                  "physID":"PHYS-108",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00108.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00108.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"53r",
+                  "physID":"PHYS-109",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00109.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00109.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"53v",
+                  "physID":"PHYS-110",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00110.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00110.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"54r",
+                  "physID":"PHYS-111",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00111.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00111.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"54v",
+                  "physID":"PHYS-112",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00112.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00112.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"55r",
+                  "physID":"PHYS-113",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00113.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00113.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"55v",
+                  "physID":"PHYS-114",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00114.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00114.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"56r",
+                  "physID":"PHYS-115",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00115.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00115.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"56v",
+                  "physID":"PHYS-116",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00116.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00116.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"57r",
+                  "physID":"PHYS-117",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00117.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00117.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"57v",
+                  "physID":"PHYS-118",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00118.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00118.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"58r",
+                  "physID":"PHYS-119",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00119.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00119.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"58v",
+                  "physID":"PHYS-120",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00120.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00120.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"59r",
+                  "physID":"PHYS-121",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00121.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00121.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"59v",
+                  "physID":"PHYS-122",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00122.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00122.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"60r",
+                  "physID":"PHYS-123",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00123.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00123.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"60v",
+                  "physID":"PHYS-124",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00124.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00124.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"61r",
+                  "physID":"PHYS-125",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00125.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00125.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"61v",
+                  "physID":"PHYS-126",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00126.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00126.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"62r",
+                  "physID":"PHYS-127",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00127.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00127.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"62v",
+                  "physID":"PHYS-128",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00128.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00128.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"63r",
+                  "physID":"PHYS-129",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00129.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00129.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"63v",
+                  "physID":"PHYS-130",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00130.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00130.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"64r",
+                  "physID":"PHYS-131",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00131.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00131.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"64v",
+                  "physID":"PHYS-132",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00132.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00132.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"65r",
+                  "physID":"PHYS-133",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00133.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00133.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"65v",
+                  "physID":"PHYS-134",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00134.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00134.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"66r",
+                  "physID":"PHYS-135",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00135.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00135.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"66v",
+                  "physID":"PHYS-136",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00136.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00136.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"67r",
+                  "physID":"PHYS-137",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00137.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00137.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"67v",
+                  "physID":"PHYS-138",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00138.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00138.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"68r",
+                  "physID":"PHYS-139",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00139.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00139.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"68v",
+                  "physID":"PHYS-140",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00140.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00140.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"69r",
+                  "physID":"PHYS-141",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00141.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00141.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"69v",
+                  "physID":"PHYS-142",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00142.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00142.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"70r",
+                  "physID":"PHYS-143",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00143.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00143.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"70v",
+                  "physID":"PHYS-144",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00144.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00144.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"71r",
+                  "physID":"PHYS-145",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00145.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00145.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"71v",
+                  "physID":"PHYS-146",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00146.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00146.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"72r",
+                  "physID":"PHYS-147",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00147.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00147.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"72v",
+                  "physID":"PHYS-148",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00148.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00148.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"73r",
+                  "physID":"PHYS-149",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00149.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00149.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"73v",
+                  "physID":"PHYS-150",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00150.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00150.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"74r",
+                  "physID":"PHYS-151",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00151.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00151.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"74v",
+                  "physID":"PHYS-152",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00152.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00152.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"75r",
+                  "physID":"PHYS-153",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00153.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00153.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"75v",
+                  "physID":"PHYS-154",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00154.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00154.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"76r",
+                  "physID":"PHYS-155",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00155.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00155.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"76v",
+                  "physID":"PHYS-156",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00156.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00156.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"77r",
+                  "physID":"PHYS-157",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00157.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00157.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"77v",
+                  "physID":"PHYS-158",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00158.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00158.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"78r",
+                  "physID":"PHYS-159",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00159.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00159.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"78v",
+                  "physID":"PHYS-160",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00160.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00160.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"79r",
+                  "physID":"PHYS-161",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00161.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00161.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"79v",
+                  "physID":"PHYS-162",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00162.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00162.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"80r",
+                  "physID":"PHYS-163",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00163.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00163.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"80v",
+                  "physID":"PHYS-164",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00164.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00164.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"81r",
+                  "physID":"PHYS-165",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00165.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00165.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"81v",
+                  "physID":"PHYS-166",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00166.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00166.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"82r",
+                  "physID":"PHYS-167",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00167.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00167.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"82v",
+                  "physID":"PHYS-168",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00168.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00168.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"83r",
+                  "physID":"PHYS-169",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00169.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00169.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"83v",
+                  "physID":"PHYS-170",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00170.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00170.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"84r",
+                  "physID":"PHYS-171",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00171.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00171.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"84v",
+                  "physID":"PHYS-172",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00172.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00172.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"85r",
+                  "physID":"PHYS-173",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00173.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00173.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"85v",
+                  "physID":"PHYS-174",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00174.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00174.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"86r",
+                  "physID":"PHYS-175",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00175.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00175.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"86v",
+                  "physID":"PHYS-176",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00176.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00176.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"87r",
+                  "physID":"PHYS-177",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00177.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00177.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"87v",
+                  "physID":"PHYS-178",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00178.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00178.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"88r",
+                  "physID":"PHYS-179",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00179.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00179.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"88v",
+                  "physID":"PHYS-180",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00180.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00180.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"89r",
+                  "physID":"PHYS-181",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00181.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00181.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"89v",
+                  "physID":"PHYS-182",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00182.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00182.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"90r",
+                  "physID":"PHYS-183",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00183.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00183.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"90v",
+                  "physID":"PHYS-184",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00184.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00184.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"91r",
+                  "physID":"PHYS-185",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00185.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00185.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"91v",
+                  "physID":"PHYS-186",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00186.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00186.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"92r",
+                  "physID":"PHYS-187",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00187.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00187.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"92v",
+                  "physID":"PHYS-188",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00188.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00188.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"93r",
+                  "physID":"PHYS-189",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00189.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00189.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"93v",
+                  "physID":"PHYS-190",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00190.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00190.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"94r",
+                  "physID":"PHYS-191",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00191.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00191.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"94v",
+                  "physID":"PHYS-192",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00192.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00192.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"95r",
+                  "physID":"PHYS-193",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00193.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00193.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"95v",
+                  "physID":"PHYS-194",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00194.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00194.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"96r",
+                  "physID":"PHYS-195",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00195.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00195.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"96v",
+                  "physID":"PHYS-196",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00196.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00196.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-197",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00197.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00197.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-198",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00198.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00198.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-199",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00199.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00199.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-200",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00200.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00200.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"{unnumbered sheet}",
+                  "physID":"PHYS-201",
+                  "displayImageURL":"/content/images/MS-ADD-01138-000-00201.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01138-000-00201.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"al-Qurʼān (ajzāʼ)",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1v",
+      "startPageID":"LOGICAL-PAGE-8",
+      "startPagePosition":"8",
+      "children":[   
+      {
+      "label":"Ornamentation",
+      "descriptiveMetadataID":"",
+      "startPage":"1v",
+      "startPageID":"LOGICAL-PAGE-8",
+      "startPagePosition":"8",
+      "children":[]
+      },   
+      {
+      "label":"Ornamentation",
+      "descriptiveMetadataID":"",
+      "startPage":"2r",
+      "startPageID":"LOGICAL-PAGE-9",
+      "startPagePosition":"9",
+      "children":[]
+      },   
+      {
+      "label":"Title: Sura al-Muʾminūn",
+      "descriptiveMetadataID":"",
+      "startPage":"2v line 1",
+      "startPageID":"LOGICAL-PAGE-10a",
+      "startPagePosition":"10",
+      "children":[]
+      },   
+      {
+      "label":"Basmallah",
+      "descriptiveMetadataID":"",
+      "startPage":"2v line 2",
+      "startPageID":"LOGICAL-PAGE-10b",
+      "startPagePosition":"10",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:1",
+      "descriptiveMetadataID":"",
+      "startPage":"2v line 3",
+      "startPageID":"LOGICAL-PAGE-10c",
+      "startPagePosition":"10",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:2",
+      "descriptiveMetadataID":"",
+      "startPage":"2v line 5",
+      "startPageID":"LOGICAL-PAGE-10d",
+      "startPagePosition":"10",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:3",
+      "descriptiveMetadataID":"",
+      "startPage":"3r line 2",
+      "startPageID":"LOGICAL-PAGE-11a",
+      "startPagePosition":"11",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:4",
+      "descriptiveMetadataID":"",
+      "startPage":"3r line 4",
+      "startPageID":"LOGICAL-PAGE-11b",
+      "startPagePosition":"11",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:5",
+      "descriptiveMetadataID":"",
+      "startPage":"3v line 1",
+      "startPageID":"LOGICAL-PAGE-12a",
+      "startPagePosition":"12",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:6",
+      "descriptiveMetadataID":"",
+      "startPage":"3v line 3",
+      "startPageID":"LOGICAL-PAGE-12b",
+      "startPagePosition":"12",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:7",
+      "descriptiveMetadataID":"",
+      "startPage":"4r line 1",
+      "startPageID":"LOGICAL-PAGE-13a",
+      "startPagePosition":"13",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:8",
+      "descriptiveMetadataID":"",
+      "startPage":"4r line 3",
+      "startPageID":"LOGICAL-PAGE-13b",
+      "startPagePosition":"13",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:9",
+      "descriptiveMetadataID":"",
+      "startPage":"4v line 1",
+      "startPageID":"LOGICAL-PAGE-14a",
+      "startPagePosition":"14",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:10",
+      "descriptiveMetadataID":"",
+      "startPage":"4v line 3",
+      "startPageID":"LOGICAL-PAGE-14b",
+      "startPagePosition":"14",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:11",
+      "descriptiveMetadataID":"",
+      "startPage":"4v line 4",
+      "startPageID":"LOGICAL-PAGE-14c",
+      "startPagePosition":"14",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:12",
+      "descriptiveMetadataID":"",
+      "startPage":"5r line 2",
+      "startPageID":"LOGICAL-PAGE-15a",
+      "startPagePosition":"15",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:13",
+      "descriptiveMetadataID":"",
+      "startPage":"5r line 3",
+      "startPageID":"LOGICAL-PAGE-15b",
+      "startPagePosition":"15",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:14",
+      "descriptiveMetadataID":"",
+      "startPage":"5r line 5",
+      "startPageID":"LOGICAL-PAGE-15c",
+      "startPagePosition":"15",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:15",
+      "descriptiveMetadataID":"",
+      "startPage":"6r line 2",
+      "startPageID":"LOGICAL-PAGE-17a",
+      "startPagePosition":"17",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:16",
+      "descriptiveMetadataID":"",
+      "startPage":"6r line 3",
+      "startPageID":"LOGICAL-PAGE-17b",
+      "startPagePosition":"17",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:17",
+      "descriptiveMetadataID":"",
+      "startPage":"6r line 5",
+      "startPageID":"LOGICAL-PAGE-17c",
+      "startPagePosition":"17",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:18",
+      "descriptiveMetadataID":"",
+      "startPage":"6r line 3",
+      "startPageID":"LOGICAL-PAGE-17d",
+      "startPagePosition":"17",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:19",
+      "descriptiveMetadataID":"",
+      "startPage":"7r line 2",
+      "startPageID":"LOGICAL-PAGE-19",
+      "startPagePosition":"19",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:20",
+      "descriptiveMetadataID":"",
+      "startPage":"7v line 1",
+      "startPageID":"LOGICAL-PAGE-20a",
+      "startPagePosition":"20",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:21",
+      "descriptiveMetadataID":"",
+      "startPage":"7v line 4",
+      "startPageID":"LOGICAL-PAGE-20b",
+      "startPagePosition":"20",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:22",
+      "descriptiveMetadataID":"",
+      "startPage":"8r line 3",
+      "startPageID":"LOGICAL-PAGE-21a",
+      "startPagePosition":"21",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:23",
+      "descriptiveMetadataID":"",
+      "startPage":"8r line 5",
+      "startPageID":"LOGICAL-PAGE-21b",
+      "startPagePosition":"21",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:24",
+      "descriptiveMetadataID":"",
+      "startPage":"8v line 5",
+      "startPageID":"LOGICAL-PAGE-22",
+      "startPagePosition":"22",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:25",
+      "descriptiveMetadataID":"",
+      "startPage":"9v line 3",
+      "startPageID":"LOGICAL-PAGE-24",
+      "startPagePosition":"24",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:26",
+      "descriptiveMetadataID":"",
+      "startPage":"10r line 1",
+      "startPageID":"LOGICAL-PAGE-25a",
+      "startPagePosition":"25",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:27",
+      "descriptiveMetadataID":"",
+      "startPage":"10r line 2",
+      "startPageID":"LOGICAL-PAGE-25b",
+      "startPagePosition":"25",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:28",
+      "descriptiveMetadataID":"",
+      "startPage":"11r line 2",
+      "startPageID":"LOGICAL-PAGE-27",
+      "startPagePosition":"27",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:30",
+      "descriptiveMetadataID":"",
+      "startPage":"12r line 1",
+      "startPageID":"LOGICAL-PAGE-29a",
+      "startPagePosition":"29",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:31",
+      "descriptiveMetadataID":"",
+      "startPage":"12r line 3",
+      "startPageID":"LOGICAL-PAGE-29b",
+      "startPagePosition":"29",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:32",
+      "descriptiveMetadataID":"",
+      "startPage":"12r line 5",
+      "startPageID":"LOGICAL-PAGE-29c",
+      "startPagePosition":"29",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:33",
+      "descriptiveMetadataID":"",
+      "startPage":"12v line 4",
+      "startPageID":"LOGICAL-PAGE-30",
+      "startPagePosition":"30",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:34",
+      "descriptiveMetadataID":"",
+      "startPage":"13v line 3",
+      "startPageID":"LOGICAL-PAGE-32",
+      "startPagePosition":"32",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:35",
+      "descriptiveMetadataID":"",
+      "startPage":"14r line 1",
+      "startPageID":"LOGICAL-PAGE-33a",
+      "startPagePosition":"33",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:36",
+      "descriptiveMetadataID":"",
+      "startPage":"14r line 5",
+      "startPageID":"LOGICAL-PAGE-33b",
+      "startPagePosition":"33",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:37",
+      "descriptiveMetadataID":"",
+      "startPage":"14v line 1",
+      "startPageID":"LOGICAL-PAGE-34a",
+      "startPagePosition":"34",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:38",
+      "descriptiveMetadataID":"",
+      "startPage":"14v line 4",
+      "startPageID":"LOGICAL-PAGE-34b",
+      "startPagePosition":"34",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:39",
+      "descriptiveMetadataID":"",
+      "startPage":"15r line 3",
+      "startPageID":"LOGICAL-PAGE-35a",
+      "startPagePosition":"35",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:40",
+      "descriptiveMetadataID":"",
+      "startPage":"15r line 4",
+      "startPageID":"LOGICAL-PAGE-35b",
+      "startPagePosition":"35",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:41",
+      "descriptiveMetadataID":"",
+      "startPage":"15v line 1",
+      "startPageID":"LOGICAL-PAGE-36a",
+      "startPagePosition":"36",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:42",
+      "descriptiveMetadataID":"",
+      "startPage":"15v line 4",
+      "startPageID":"LOGICAL-PAGE-36b",
+      "startPagePosition":"36",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:43",
+      "descriptiveMetadataID":"",
+      "startPage":"16r line 1",
+      "startPageID":"LOGICAL-PAGE-37",
+      "startPagePosition":"37",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:44",
+      "descriptiveMetadataID":"",
+      "startPage":"16v line 4",
+      "startPageID":"LOGICAL-PAGE-38a",
+      "startPagePosition":"38",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:45",
+      "descriptiveMetadataID":"",
+      "startPage":"16v line 4",
+      "startPageID":"LOGICAL-PAGE-38b",
+      "startPagePosition":"38",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:46",
+      "descriptiveMetadataID":"",
+      "startPage":"17r line 2",
+      "startPageID":"LOGICAL-PAGE-39a",
+      "startPagePosition":"39",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:47",
+      "descriptiveMetadataID":"",
+      "startPage":"17r line 4",
+      "startPageID":"LOGICAL-PAGE-39b",
+      "startPagePosition":"39",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:48",
+      "descriptiveMetadataID":"",
+      "startPage":"17v line 2",
+      "startPageID":"LOGICAL-PAGE-40a",
+      "startPagePosition":"40",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:49",
+      "descriptiveMetadataID":"",
+      "startPage":"17v line 4",
+      "startPageID":"LOGICAL-PAGE-40b",
+      "startPagePosition":"40",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:50",
+      "descriptiveMetadataID":"",
+      "startPage":"18r line 1",
+      "startPageID":"LOGICAL-PAGE-41a",
+      "startPagePosition":"41",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:51",
+      "descriptiveMetadataID":"",
+      "startPage":"18r line 4",
+      "startPageID":"LOGICAL-PAGE-41b",
+      "startPagePosition":"41",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:52",
+      "descriptiveMetadataID":"",
+      "startPage":"18v line 3",
+      "startPageID":"LOGICAL-PAGE-42",
+      "startPagePosition":"42",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:53",
+      "descriptiveMetadataID":"",
+      "startPage":"19r line 1",
+      "startPageID":"LOGICAL-PAGE-43",
+      "startPagePosition":"43",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:54",
+      "descriptiveMetadataID":"",
+      "startPage":"19r line 5",
+      "startPageID":"LOGICAL-PAGE-43a",
+      "startPagePosition":"43",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:55",
+      "descriptiveMetadataID":"",
+      "startPage":"19r line 1",
+      "startPageID":"LOGICAL-PAGE-43b",
+      "startPagePosition":"43",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:56",
+      "descriptiveMetadataID":"",
+      "startPage":"19r line 3",
+      "startPageID":"LOGICAL-PAGE-43c",
+      "startPagePosition":"43",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:57",
+      "descriptiveMetadataID":"",
+      "startPage":"20r line 1",
+      "startPageID":"LOGICAL-PAGE-45a",
+      "startPagePosition":"45",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:58",
+      "descriptiveMetadataID":"",
+      "startPage":"20r line 3",
+      "startPageID":"LOGICAL-PAGE-45b",
+      "startPagePosition":"45",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:59",
+      "descriptiveMetadataID":"",
+      "startPage":"20r line 5",
+      "startPageID":"LOGICAL-PAGE-45c",
+      "startPagePosition":"45",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:60",
+      "descriptiveMetadataID":"",
+      "startPage":"20v line 1",
+      "startPageID":"LOGICAL-PAGE-46a",
+      "startPagePosition":"46",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:61",
+      "descriptiveMetadataID":"",
+      "startPage":"20v line 5",
+      "startPageID":"LOGICAL-PAGE-46b",
+      "startPagePosition":"46",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:62",
+      "descriptiveMetadataID":"",
+      "startPage":"21r line 3",
+      "startPageID":"LOGICAL-PAGE-47",
+      "startPagePosition":"47",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:63",
+      "descriptiveMetadataID":"",
+      "startPage":"21v line 2",
+      "startPageID":"LOGICAL-PAGE-48",
+      "startPagePosition":"48",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:64",
+      "descriptiveMetadataID":"",
+      "startPage":"22r line 1",
+      "startPageID":"LOGICAL-PAGE-49a",
+      "startPagePosition":"49",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:65",
+      "descriptiveMetadataID":"",
+      "startPage":"22r line 4",
+      "startPageID":"LOGICAL-PAGE-49b",
+      "startPagePosition":"49",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:66",
+      "descriptiveMetadataID":"",
+      "startPage":"22v line 1",
+      "startPageID":"LOGICAL-PAGE-50a",
+      "startPagePosition":"50",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:67",
+      "descriptiveMetadataID":"",
+      "startPage":"22v line 4",
+      "startPageID":"LOGICAL-PAGE-50b",
+      "startPagePosition":"50",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:68",
+      "descriptiveMetadataID":"",
+      "startPage":"22v line 5",
+      "startPageID":"LOGICAL-PAGE-50c",
+      "startPagePosition":"50",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:69",
+      "descriptiveMetadataID":"",
+      "startPage":"23r line 3",
+      "startPageID":"LOGICAL-PAGE-51",
+      "startPagePosition":"51",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:70",
+      "descriptiveMetadataID":"",
+      "startPage":"23v line 1",
+      "startPageID":"LOGICAL-PAGE-52a",
+      "startPagePosition":"52",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:71",
+      "descriptiveMetadataID":"",
+      "startPage":"23v line 4",
+      "startPageID":"LOGICAL-PAGE-52b",
+      "startPagePosition":"52",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:72",
+      "descriptiveMetadataID":"",
+      "startPage":"24r line 4",
+      "startPageID":"LOGICAL-PAGE-53",
+      "startPagePosition":"53",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:73",
+      "descriptiveMetadataID":"",
+      "startPage":"24v line 3",
+      "startPageID":"LOGICAL-PAGE-54a",
+      "startPagePosition":"54",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:74",
+      "descriptiveMetadataID":"",
+      "startPage":"24v line 5",
+      "startPageID":"LOGICAL-PAGE-54b",
+      "startPagePosition":"54",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:75",
+      "descriptiveMetadataID":"",
+      "startPage":"25r line 3",
+      "startPageID":"LOGICAL-PAGE-55",
+      "startPagePosition":"55",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:76",
+      "descriptiveMetadataID":"",
+      "startPage":"25v line 1",
+      "startPageID":"LOGICAL-PAGE-56a",
+      "startPagePosition":"56",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:77",
+      "descriptiveMetadataID":"",
+      "startPage":"25v line 5",
+      "startPageID":"LOGICAL-PAGE-56b",
+      "startPagePosition":"56",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:78",
+      "descriptiveMetadataID":"",
+      "startPage":"26r line 3",
+      "startPageID":"LOGICAL-PAGE-57",
+      "startPagePosition":"57",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:79",
+      "descriptiveMetadataID":"",
+      "startPage":"26v line 2",
+      "startPageID":"LOGICAL-PAGE-58a",
+      "startPagePosition":"58",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:80",
+      "descriptiveMetadataID":"",
+      "startPage":"26v line 5",
+      "startPageID":"LOGICAL-PAGE-58b",
+      "startPagePosition":"58",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:81",
+      "descriptiveMetadataID":"",
+      "startPage":"27r line 3",
+      "startPageID":"LOGICAL-PAGE-59a",
+      "startPagePosition":"59",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:82",
+      "descriptiveMetadataID":"",
+      "startPage":"27r line 5",
+      "startPageID":"LOGICAL-PAGE-59b",
+      "startPagePosition":"59",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:83",
+      "descriptiveMetadataID":"",
+      "startPage":"27v line 2",
+      "startPageID":"LOGICAL-PAGE-60",
+      "startPagePosition":"60",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:84",
+      "descriptiveMetadataID":"",
+      "startPage":"28r line 1",
+      "startPageID":"LOGICAL-PAGE-61a",
+      "startPagePosition":"61",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:85",
+      "descriptiveMetadataID":"",
+      "startPage":"28r line 4",
+      "startPageID":"LOGICAL-PAGE-61b",
+      "startPagePosition":"61",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:86",
+      "descriptiveMetadataID":"",
+      "startPage":"28r line 5",
+      "startPageID":"LOGICAL-PAGE-61c",
+      "startPagePosition":"61",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:87",
+      "descriptiveMetadataID":"",
+      "startPage":"28v line 3",
+      "startPageID":"LOGICAL-PAGE-62a",
+      "startPagePosition":"62",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:88",
+      "descriptiveMetadataID":"",
+      "startPage":"28v line 5",
+      "startPageID":"LOGICAL-PAGE-62b",
+      "startPagePosition":"62",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:89",
+      "descriptiveMetadataID":"",
+      "startPage":"29r line 3",
+      "startPageID":"LOGICAL-PAGE-63a",
+      "startPagePosition":"63",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:90",
+      "descriptiveMetadataID":"",
+      "startPage":"29r line 5",
+      "startPageID":"LOGICAL-PAGE-63b",
+      "startPagePosition":"63",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:91",
+      "descriptiveMetadataID":"",
+      "startPage":"29v line 2",
+      "startPageID":"LOGICAL-PAGE-64",
+      "startPagePosition":"64",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:92",
+      "descriptiveMetadataID":"",
+      "startPage":"30r line 3",
+      "startPageID":"LOGICAL-PAGE-65a",
+      "startPagePosition":"65",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:93",
+      "descriptiveMetadataID":"",
+      "startPage":"30r line 5",
+      "startPageID":"LOGICAL-PAGE-65b",
+      "startPagePosition":"65",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:94",
+      "descriptiveMetadataID":"",
+      "startPage":"30v line 2",
+      "startPageID":"LOGICAL-PAGE-66a",
+      "startPagePosition":"66",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:95",
+      "descriptiveMetadataID":"",
+      "startPage":"30v line 4",
+      "startPageID":"LOGICAL-PAGE-66b",
+      "startPagePosition":"66",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:95",
+      "descriptiveMetadataID":"",
+      "startPage":"31r line 1",
+      "startPageID":"LOGICAL-PAGE-67",
+      "startPagePosition":"67",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:97",
+      "descriptiveMetadataID":"",
+      "startPage":"31v line 1",
+      "startPageID":"LOGICAL-PAGE-68",
+      "startPagePosition":"68",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:99",
+      "descriptiveMetadataID":"",
+      "startPage":"32r line 1",
+      "startPageID":"LOGICAL-PAGE-69a",
+      "startPagePosition":"69",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:100",
+      "descriptiveMetadataID":"",
+      "startPage":"32r line 2",
+      "startPageID":"LOGICAL-PAGE-69b",
+      "startPagePosition":"69",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:101",
+      "descriptiveMetadataID":"",
+      "startPage":"32v line 2",
+      "startPageID":"LOGICAL-PAGE-70",
+      "startPagePosition":"70",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:102",
+      "descriptiveMetadataID":"",
+      "startPage":"33r line 1",
+      "startPageID":"LOGICAL-PAGE-71a",
+      "startPagePosition":"71",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:103",
+      "descriptiveMetadataID":"",
+      "startPage":"33r line 3",
+      "startPageID":"LOGICAL-PAGE-71b",
+      "startPagePosition":"71",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:104",
+      "descriptiveMetadataID":"",
+      "startPage":"33v line 3",
+      "startPageID":"LOGICAL-PAGE-72a",
+      "startPagePosition":"72",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:105",
+      "descriptiveMetadataID":"",
+      "startPage":"33v line 5",
+      "startPageID":"LOGICAL-PAGE-72b",
+      "startPagePosition":"72",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:106",
+      "descriptiveMetadataID":"",
+      "startPage":"34r line 2",
+      "startPageID":"LOGICAL-PAGE-73a",
+      "startPagePosition":"73",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:106",
+      "descriptiveMetadataID":"",
+      "startPage":"34r line 5",
+      "startPageID":"LOGICAL-PAGE-73b",
+      "startPagePosition":"73",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:107",
+      "descriptiveMetadataID":"",
+      "startPage":"34r line 5",
+      "startPageID":"LOGICAL-PAGE-73",
+      "startPagePosition":"73",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:108",
+      "descriptiveMetadataID":"",
+      "startPage":"34v line 2",
+      "startPageID":"LOGICAL-PAGE-74a",
+      "startPagePosition":"74",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:109",
+      "descriptiveMetadataID":"",
+      "startPage":"34v line 4",
+      "startPageID":"LOGICAL-PAGE-74b",
+      "startPagePosition":"74",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:110",
+      "descriptiveMetadataID":"",
+      "startPage":"35r line 3",
+      "startPageID":"LOGICAL-PAGE-75",
+      "startPagePosition":"75",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:111",
+      "descriptiveMetadataID":"",
+      "startPage":"35v line 2",
+      "startPageID":"LOGICAL-PAGE-76a",
+      "startPagePosition":"76",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:112",
+      "descriptiveMetadataID":"",
+      "startPage":"35v line 5",
+      "startPageID":"LOGICAL-PAGE-76b",
+      "startPagePosition":"76",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:113",
+      "descriptiveMetadataID":"",
+      "startPage":"36r line 2",
+      "startPageID":"LOGICAL-PAGE-77a",
+      "startPagePosition":"77",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:114",
+      "descriptiveMetadataID":"",
+      "startPage":"36r line 4",
+      "startPageID":"LOGICAL-PAGE-77b",
+      "startPagePosition":"77",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:115",
+      "descriptiveMetadataID":"",
+      "startPage":"36v line 1",
+      "startPageID":"LOGICAL-PAGE-78a",
+      "startPagePosition":"78",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:116",
+      "descriptiveMetadataID":"",
+      "startPage":"36v line 4",
+      "startPageID":"LOGICAL-PAGE-78b",
+      "startPagePosition":"78",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:116",
+      "descriptiveMetadataID":"",
+      "startPage":"36v line 4",
+      "startPageID":"LOGICAL-PAGE-78c",
+      "startPagePosition":"78",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:117",
+      "descriptiveMetadataID":"",
+      "startPage":"37r line 3",
+      "startPageID":"LOGICAL-PAGE-79",
+      "startPagePosition":"79",
+      "children":[]
+      },   
+      {
+      "label":"Q. 23:118",
+      "descriptiveMetadataID":"",
+      "startPage":"37v line 3",
+      "startPageID":"LOGICAL-PAGE-80",
+      "startPagePosition":"80",
+      "children":[]
+      },   
+      {
+      "label":"Title: Sura al-Nūr",
+      "descriptiveMetadataID":"",
+      "startPage":"38r line 1",
+      "startPageID":"LOGICAL-PAGE-81a",
+      "startPagePosition":"81",
+      "children":[]
+      },   
+      {
+      "label":"Basmallah",
+      "descriptiveMetadataID":"",
+      "startPage":"38r line 2",
+      "startPageID":"LOGICAL-PAGE-81b",
+      "startPagePosition":"81",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:1",
+      "descriptiveMetadataID":"",
+      "startPage":"38r line 2",
+      "startPageID":"LOGICAL-PAGE-81c",
+      "startPagePosition":"81",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:2",
+      "descriptiveMetadataID":"",
+      "startPage":"38v line 2",
+      "startPageID":"LOGICAL-PAGE-82",
+      "startPagePosition":"82",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:3",
+      "descriptiveMetadataID":"",
+      "startPage":"39v line 2",
+      "startPageID":"LOGICAL-PAGE-84",
+      "startPagePosition":"84",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:4",
+      "descriptiveMetadataID":"",
+      "startPage":"40r line 4",
+      "startPageID":"LOGICAL-PAGE-85",
+      "startPagePosition":"85",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:5",
+      "descriptiveMetadataID":"",
+      "startPage":"41r line 2",
+      "startPageID":"LOGICAL-PAGE-87",
+      "startPagePosition":"87",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:6",
+      "descriptiveMetadataID":"",
+      "startPage":"41v line 1",
+      "startPageID":"LOGICAL-PAGE-88",
+      "startPagePosition":"88",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:7",
+      "descriptiveMetadataID":"",
+      "startPage":"42r line 3",
+      "startPageID":"LOGICAL-PAGE-89",
+      "startPagePosition":"89",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:8",
+      "descriptiveMetadataID":"",
+      "startPage":"42v line 1",
+      "startPageID":"LOGICAL-PAGE-90a",
+      "startPagePosition":"90",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:9",
+      "descriptiveMetadataID":"",
+      "startPage":"42v line 5",
+      "startPageID":"LOGICAL-PAGE-90b",
+      "startPagePosition":"90",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:10",
+      "descriptiveMetadataID":"",
+      "startPage":"43r line 3",
+      "startPageID":"LOGICAL-PAGE-91",
+      "startPagePosition":"91",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:11",
+      "descriptiveMetadataID":"",
+      "startPage":"43v line 1",
+      "startPageID":"LOGICAL-PAGE-92",
+      "startPagePosition":"92",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:12",
+      "descriptiveMetadataID":"",
+      "startPage":"44r line 4",
+      "startPageID":"LOGICAL-PAGE-93",
+      "startPagePosition":"93",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:13",
+      "descriptiveMetadataID":"",
+      "startPage":"44v line 4",
+      "startPageID":"LOGICAL-PAGE-94",
+      "startPagePosition":"94",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:14",
+      "descriptiveMetadataID":"",
+      "startPage":"45r line 4",
+      "startPageID":"LOGICAL-PAGE-95",
+      "startPagePosition":"95",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:15",
+      "descriptiveMetadataID":"",
+      "startPage":"45v line 4",
+      "startPageID":"LOGICAL-PAGE-96",
+      "startPagePosition":"96",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:16",
+      "descriptiveMetadataID":"",
+      "startPage":"46r line 4",
+      "startPageID":"LOGICAL-PAGE-97",
+      "startPagePosition":"97",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:17",
+      "descriptiveMetadataID":"",
+      "startPage":"46v line 4",
+      "startPageID":"LOGICAL-PAGE-98",
+      "startPagePosition":"98",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:18",
+      "descriptiveMetadataID":"",
+      "startPage":"47r line 1",
+      "startPageID":"LOGICAL-PAGE-99a",
+      "startPagePosition":"99",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:19",
+      "descriptiveMetadataID":"",
+      "startPage":"47r line 4",
+      "startPageID":"LOGICAL-PAGE-99b",
+      "startPagePosition":"99",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:21",
+      "descriptiveMetadataID":"",
+      "startPage":"49r line 1",
+      "startPageID":"LOGICAL-PAGE-101",
+      "startPagePosition":"101",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:22",
+      "descriptiveMetadataID":"",
+      "startPage":"49v line 1",
+      "startPageID":"LOGICAL-PAGE-102a",
+      "startPagePosition":"102",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:22",
+      "descriptiveMetadataID":"",
+      "startPage":"49v line 1",
+      "startPageID":"LOGICAL-PAGE-102b",
+      "startPagePosition":"102",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:23",
+      "descriptiveMetadataID":"",
+      "startPage":"50v line 1",
+      "startPageID":"LOGICAL-PAGE-104",
+      "startPagePosition":"104",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:24",
+      "descriptiveMetadataID":"",
+      "startPage":"51r line 2",
+      "startPageID":"LOGICAL-PAGE-105",
+      "startPagePosition":"105",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:25",
+      "descriptiveMetadataID":"",
+      "startPage":"51v line 1",
+      "startPageID":"LOGICAL-PAGE-106a",
+      "startPagePosition":"106",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:26",
+      "descriptiveMetadataID":"",
+      "startPage":"51v line 4",
+      "startPageID":"LOGICAL-PAGE-106b",
+      "startPagePosition":"106",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:27",
+      "descriptiveMetadataID":"",
+      "startPage":"52v line 2",
+      "startPageID":"LOGICAL-PAGE-108",
+      "startPagePosition":"108",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:28",
+      "descriptiveMetadataID":"",
+      "startPage":"53r line 3",
+      "startPageID":"LOGICAL-PAGE-109",
+      "startPagePosition":"109",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:29",
+      "descriptiveMetadataID":"",
+      "startPage":"54r line 1",
+      "startPageID":"LOGICAL-PAGE-111",
+      "startPagePosition":"111",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:30",
+      "descriptiveMetadataID":"",
+      "startPage":"54v line 1",
+      "startPageID":"LOGICAL-PAGE-112",
+      "startPagePosition":"112",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:31",
+      "descriptiveMetadataID":"",
+      "startPage":"55r line 1",
+      "startPageID":"LOGICAL-PAGE-113",
+      "startPagePosition":"113",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:32",
+      "descriptiveMetadataID":"",
+      "startPage":"57v line 2",
+      "startPageID":"LOGICAL-PAGE-118",
+      "startPagePosition":"118",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:33",
+      "descriptiveMetadataID":"",
+      "startPage":"58r line 4",
+      "startPageID":"LOGICAL-PAGE-119",
+      "startPagePosition":"119",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:34",
+      "descriptiveMetadataID":"",
+      "startPage":"60r line 4",
+      "startPageID":"LOGICAL-PAGE-123",
+      "startPagePosition":"123",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:35",
+      "descriptiveMetadataID":"",
+      "startPage":"60v line 1",
+      "startPageID":"LOGICAL-PAGE-124",
+      "startPagePosition":"124",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:36",
+      "descriptiveMetadataID":"",
+      "startPage":"62r line 3",
+      "startPageID":"LOGICAL-PAGE-127",
+      "startPagePosition":"127",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:37",
+      "descriptiveMetadataID":"",
+      "startPage":"62v line 3",
+      "startPageID":"LOGICAL-PAGE-128",
+      "startPagePosition":"128",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:38",
+      "descriptiveMetadataID":"",
+      "startPage":"63v line 1",
+      "startPageID":"LOGICAL-PAGE-130a",
+      "startPagePosition":"130",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:39",
+      "descriptiveMetadataID":"",
+      "startPage":"63v line 5",
+      "startPageID":"LOGICAL-PAGE-130b",
+      "startPagePosition":"130",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:40",
+      "descriptiveMetadataID":"",
+      "startPage":"64v line 4",
+      "startPageID":"LOGICAL-PAGE-132a",
+      "startPagePosition":"132",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:41",
+      "descriptiveMetadataID":"",
+      "startPage":"65v line 4",
+      "startPageID":"LOGICAL-PAGE-134",
+      "startPagePosition":"134",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:42",
+      "descriptiveMetadataID":"",
+      "startPage":"66r line 4",
+      "startPageID":"LOGICAL-PAGE-135",
+      "startPagePosition":"135",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:43",
+      "descriptiveMetadataID":"",
+      "startPage":"66v line 3",
+      "startPageID":"LOGICAL-PAGE-136",
+      "startPagePosition":"136",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:44",
+      "descriptiveMetadataID":"",
+      "startPage":"67v line 3",
+      "startPageID":"LOGICAL-PAGE-138",
+      "startPagePosition":"138",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:45",
+      "descriptiveMetadataID":"",
+      "startPage":"68r line 2",
+      "startPageID":"LOGICAL-PAGE-139",
+      "startPagePosition":"139",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:46",
+      "descriptiveMetadataID":"",
+      "startPage":"68v line 5",
+      "startPageID":"LOGICAL-PAGE-140",
+      "startPagePosition":"140",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:47",
+      "descriptiveMetadataID":"",
+      "startPage":"69r line 3",
+      "startPageID":"LOGICAL-PAGE-141",
+      "startPagePosition":"141",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:48",
+      "descriptiveMetadataID":"",
+      "startPage":"69v line 4",
+      "startPageID":"LOGICAL-PAGE-142",
+      "startPagePosition":"142",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:49",
+      "descriptiveMetadataID":"",
+      "startPage":"70r line 3",
+      "startPageID":"LOGICAL-PAGE-143a",
+      "startPagePosition":"143",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:50",
+      "descriptiveMetadataID":"",
+      "startPage":"70r line 5",
+      "startPageID":"LOGICAL-PAGE-143b",
+      "startPagePosition":"143",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:51",
+      "descriptiveMetadataID":"",
+      "startPage":"71r line 1",
+      "startPageID":"LOGICAL-PAGE-145",
+      "startPagePosition":"145",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:52",
+      "descriptiveMetadataID":"",
+      "startPage":"71v line 3",
+      "startPageID":"LOGICAL-PAGE-146",
+      "startPagePosition":"146",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:53",
+      "descriptiveMetadataID":"",
+      "startPage":"72r line 1",
+      "startPageID":"LOGICAL-PAGE-147",
+      "startPagePosition":"147",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:54",
+      "descriptiveMetadataID":"",
+      "startPage":"72v line 2",
+      "startPageID":"LOGICAL-PAGE-148",
+      "startPagePosition":"148",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:55",
+      "descriptiveMetadataID":"",
+      "startPage":"73r line 4",
+      "startPageID":"LOGICAL-PAGE-149",
+      "startPagePosition":"149",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:56",
+      "descriptiveMetadataID":"",
+      "startPage":"74v line 2",
+      "startPageID":"LOGICAL-PAGE-152",
+      "startPagePosition":"152",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:57",
+      "descriptiveMetadataID":"",
+      "startPage":"75r line 1",
+      "startPageID":"LOGICAL-PAGE-153a",
+      "startPagePosition":"153",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:58",
+      "descriptiveMetadataID":"",
+      "startPage":"75r line 5",
+      "startPageID":"LOGICAL-PAGE-153b",
+      "startPagePosition":"153",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:59",
+      "descriptiveMetadataID":"",
+      "startPage":"77r line 3",
+      "startPageID":"LOGICAL-PAGE-157",
+      "startPagePosition":"157",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:60",
+      "descriptiveMetadataID":"",
+      "startPage":"77v line 5",
+      "startPageID":"LOGICAL-PAGE-158",
+      "startPagePosition":"158",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:61",
+      "descriptiveMetadataID":"",
+      "startPage":"78v line 3",
+      "startPageID":"LOGICAL-PAGE-160",
+      "startPagePosition":"160",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:62",
+      "descriptiveMetadataID":"",
+      "startPage":"81r line 5",
+      "startPageID":"LOGICAL-PAGE-165",
+      "startPagePosition":"165",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:63",
+      "descriptiveMetadataID":"",
+      "startPage":"82v line 5",
+      "startPageID":"LOGICAL-PAGE-168",
+      "startPagePosition":"168",
+      "children":[]
+      },   
+      {
+      "label":"Q. 24:64",
+      "descriptiveMetadataID":"",
+      "startPage":"",
+      "startPageID":"",
+      "startPagePosition":"",
+      "children":[]
+      },   
+      {
+      "label":"Title: Sura al-Furqān",
+      "descriptiveMetadataID":"",
+      "startPage":"84r line 5",
+      "startPageID":"LOGICAL-PAGE-171",
+      "startPagePosition":"171",
+      "children":[]
+      },   
+      {
+      "label":"Basmallah",
+      "descriptiveMetadataID":"",
+      "startPage":"84v line 1",
+      "startPageID":"LOGICAL-PAGE-172a",
+      "startPagePosition":"172",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:1",
+      "descriptiveMetadataID":"",
+      "startPage":"84v line 2",
+      "startPageID":"LOGICAL-PAGE-172b",
+      "startPagePosition":"172",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:2",
+      "descriptiveMetadataID":"",
+      "startPage":"85r line 1",
+      "startPageID":"LOGICAL-PAGE-173",
+      "startPagePosition":"173",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:3",
+      "descriptiveMetadataID":"",
+      "startPage":"85v line 2",
+      "startPageID":"LOGICAL-PAGE-174",
+      "startPagePosition":"174",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:4",
+      "descriptiveMetadataID":"",
+      "startPage":"86r line 5",
+      "startPageID":"LOGICAL-PAGE-175",
+      "startPagePosition":"175",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:5",
+      "descriptiveMetadataID":"",
+      "startPage":"87r line 1",
+      "startPageID":"LOGICAL-PAGE-177a",
+      "startPagePosition":"177",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:6",
+      "descriptiveMetadataID":"",
+      "startPage":"87r line 4",
+      "startPageID":"LOGICAL-PAGE-177b",
+      "startPagePosition":"177",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:7",
+      "descriptiveMetadataID":"",
+      "startPage":"87v line 3",
+      "startPageID":"LOGICAL-PAGE-178",
+      "startPagePosition":"178",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:8",
+      "descriptiveMetadataID":"",
+      "startPage":"88r line 4",
+      "startPageID":"LOGICAL-PAGE-179",
+      "startPagePosition":"179",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:9",
+      "descriptiveMetadataID":"",
+      "startPage":"88v line 4",
+      "startPageID":"LOGICAL-PAGE-180",
+      "startPagePosition":"180",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:10",
+      "descriptiveMetadataID":"",
+      "startPage":"89r line 2",
+      "startPageID":"LOGICAL-PAGE-181",
+      "startPagePosition":"181",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:11",
+      "descriptiveMetadataID":"",
+      "startPage":"89v line 3",
+      "startPageID":"LOGICAL-PAGE-182",
+      "startPagePosition":"182",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:12",
+      "descriptiveMetadataID":"",
+      "startPage":"90r line 1",
+      "startPageID":"LOGICAL-PAGE-183a",
+      "startPagePosition":"183",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:13",
+      "descriptiveMetadataID":"",
+      "startPage":"90r line 3",
+      "startPageID":"LOGICAL-PAGE-183b",
+      "startPagePosition":"183",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:14",
+      "descriptiveMetadataID":"",
+      "startPage":"90v line 2",
+      "startPageID":"LOGICAL-PAGE-184",
+      "startPagePosition":"184",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:15",
+      "descriptiveMetadataID":"",
+      "startPage":"91r line 1",
+      "startPageID":"LOGICAL-PAGE-185a",
+      "startPagePosition":"185",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:16",
+      "descriptiveMetadataID":"",
+      "startPage":"91r line 5",
+      "startPageID":"LOGICAL-PAGE-185b",
+      "startPagePosition":"185",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:17",
+      "descriptiveMetadataID":"",
+      "startPage":"91v line 3",
+      "startPageID":"LOGICAL-PAGE-186",
+      "startPagePosition":"186",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:18",
+      "descriptiveMetadataID":"",
+      "startPage":"92r line 4",
+      "startPageID":"LOGICAL-PAGE-187",
+      "startPagePosition":"187",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:19",
+      "descriptiveMetadataID":"",
+      "startPage":"93r line 1",
+      "startPageID":"LOGICAL-PAGE-189",
+      "startPagePosition":"189",
+      "children":[]
+      },   
+      {
+      "label":"Q. 25:20",
+      "descriptiveMetadataID":"",
+      "startPage":"93v line 2",
+      "startPageID":"LOGICAL-PAGE-190",
+      "startPagePosition":"190",
+      "children":[]
+      },   
+      {
+      "label":"Ornament",
+      "descriptiveMetadataID":"",
+      "startPage":"95r",
+      "startPageID":"LOGICAL-PAGE-193",
+      "startPagePosition":"193",
+      "children":[]
+      },   
+      {
+      "label":"Ornament",
+      "descriptiveMetadataID":"",
+      "startPage":"95v",
+      "startPageID":"LOGICAL-PAGE-194",
+      "startPagePosition":"194",
+      "children":[]
+      },   
+      {
+      "label":"Ornament",
+      "descriptiveMetadataID":"",
+      "startPage":"96r",
+      "startPageID":"LOGICAL-PAGE-195",
+      "startPagePosition":"195",
+      "children":[]
+      },   
+      {
+      "label":"Ornament",
+      "descriptiveMetadataID":"",
+      "startPage":"96v",
+      "startPageID":"LOGICAL-PAGE-196",
+      "startPagePosition":"196",
+      "children":[]
+      }]
+      }]
+               }
+   
