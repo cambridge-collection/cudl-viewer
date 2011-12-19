@@ -12,7 +12,7 @@
                   "contributor":[
                   ""
                   ],
-                  "abstract":"<p>Fragments of a Hijazi Qurʼān written in the second century A.H. / eighth century A.D., containing verses from the Sura al-Anfāl (سورة الأنفال).</p>",
+                  "abstract":"<p>Fragments of a Hijazi Qurʼān written in the second century A.H. / eighth century C.E., containing verses from the Sura al-Anfāl (سورة الأنفال).</p> <br/> <div class='grid_9'> <div class='grid_2'> <img src='/images/general/BBCQuran86x48.jpg' alt='BBC Radio 4' title='BBC Radio 4' /> </div> <div class='grid_6' id='document-about-link-out'> Featured in BBC Radio 4's '<a target='_blank' href='http://www.bbc.co.uk/radio4/'>The Written World</a>'. </div> </div>",
                   "subject":[
                   "Koran"
                   ],
@@ -25,7 +25,7 @@
                   "mediaurl":"",
                   "dateCreatedStart":"0700-01-01",
                   "dateCreatedEnd":"0800-01-01",
-                  "dateCreatedDisplay":"Second century A.H. / eighth century A.D",
+                  "dateCreatedDisplay":"2nd century A.H. / 8th century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",

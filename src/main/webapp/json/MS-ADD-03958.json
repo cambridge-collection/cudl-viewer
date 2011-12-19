@@ -23,9 +23,11 @@
                   ""
                   ],
                   "mediaurl":"",
-                  "dateCreated":"1665-01-01",
+                  "dateCreatedStart":"1665-01-01",
+                  "dateCreatedEnd":"1665-01-01",
                   "dateCreatedDisplay":"c. 1665 - c. 1672",
-                  "dateIssued":"",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",
                   "languageCodes":[
                   "eng","lat"

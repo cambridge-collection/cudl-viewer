@@ -23,9 +23,11 @@
                   ""
                   ],
                   "mediaurl":"",
-                  "dateCreated":"1706-01-01",
+                  "dateCreatedStart":"1706-01-01",
+                  "dateCreatedEnd":"1706-01-01",
                   "dateCreatedDisplay":"c.1706",
-                  "dateIssued":"",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",
                   "languageCodes":[
                   "eng","lat"

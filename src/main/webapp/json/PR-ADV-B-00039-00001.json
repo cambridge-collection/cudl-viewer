@@ -23,9 +23,11 @@
                   "Londini"
                   ],
                   "mediaurl":"",
-                  "dateCreated":"1687-01-01",
+                  "dateCreatedStart":"1687-01-01",
+                  "dateCreatedEnd":"1687-01-01",
                   "dateCreatedDisplay":"1687",
-                  "dateIssued":"",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",
                   "languageCodes":[
                   "lat"
