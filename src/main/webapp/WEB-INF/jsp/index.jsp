@@ -71,7 +71,8 @@
 					</p>
 				</div> <a href="/collections/newton"><img id="newtonImage"
 					src="/images/index/newtondoccarousel.jpg" alt="Newton Papers"
-					width="540" height="394" /> </a></li>
+					width="540" height="394" /> </a>
+			</li>
 
 
 			<!-- islamic collection -->
@@ -88,11 +89,14 @@
 						has since grown substantially in its size and diversity. It now
 						contains more than 5,000 works.</p>
 
-					<p>Our initial selection includes several important early
-						Qur'ans.</p>
+					<p>
+						Our <a href="/collections/islamic">initial selection</a> includes
+						several important early Qur'ans.
+					</p>
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/Islamic540x394.jpg" alt="Islamic Manuscripts"
-					width="540" height="394" /> </a></li>
+					width="540" height="394" /> </a>
+			</li>
 
 
 		</ol>

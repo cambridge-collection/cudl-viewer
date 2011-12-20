@@ -137,7 +137,7 @@
 		<ul>
 			<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern Department</li>
 			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern Department</li>
-			<li>Ignatio Sanchez, Specialist Cataloguer </li>
+			<li>Ignacio Sanchez, Specialist Cataloguer </li>
 		</ul>		
 
 		<h4>Contact Details</h4>

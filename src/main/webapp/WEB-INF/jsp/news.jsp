@@ -20,13 +20,16 @@
 	<div class="grid_11">
 		<span class="date">20/12/2012</span>
 		<h4>Islamic Manuscripts</h4>
-		<p>We are pleased to announce the release of the first items
-			within the Foundations of Faith collection: a selection of Islamic
-			manuscripts from the Library's Near and Middle Eastern Department.
-			The Library's collection of Islamic manuscripts began in the 1630s
-			and has since grown substantially in its size and diversity. It now
-			contains more than 5,000 works. Our initial selection includes
-			several important early Qur'ans.</p>
+		<p>
+			We are pleased to announce the release of the first items within the
+			Foundations of Faith collection: a selection of <a
+				href="/collections/islamic">Islamic manuscripts</a> from the
+			Library's Near and Middle Eastern Department. The Library's
+			collection of Islamic manuscripts began in the 1630s and has since
+			grown substantially in its size and diversity. It now contains more
+			than 5,000 works. Our initial selection includes several important
+			early Qur'ans.
+		</p>
 	</div>
 
 </div>
