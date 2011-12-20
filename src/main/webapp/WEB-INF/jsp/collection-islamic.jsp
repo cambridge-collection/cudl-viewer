@@ -77,17 +77,14 @@
 			See also
 			<ul>
 				<li><a target="_blank" href="http://www.fihrist.org.uk/">Fihrist
-						Islamic Manuscripts Catalogue Online</a>
-				</li>
+						Islamic Manuscripts Catalogue Online</a></li>
 				<li><a target="_blank"
 					href="http://www.lib.cam.ac.uk/deptserv/neareastern/">Cambridge
-						University Library Near and Middle Eastern Department </a>
-				</li>
+						University Library Near and Middle Eastern Department </a></li>
 				<li><a target="_blank"
 					href="http://www.lib.cam.ac.uk/deptserv/neareastern/Faith_&__Fable.pdf"><i>Faith
 							and Fable: Islamic Manuscripts from Cambridge University Library</i>
-						(PDF, 2.5MB)</a>
-				</li>
+						(PDF, 2.5MB)</a></li>
 			</ul>
 		</div>
 		<br />
@@ -100,8 +97,8 @@
 			</div>
 			<div class="grid_7" id="document-about-radio-link">
 				Several items from this collection will feature in BBC Radio 4's <a
-					target="_blank" href="http://www.bbc.co.uk/programmes/b0192yhn">The Written
-					World</a>, to be broadcast in January 2012
+					target="_blank" href="http://www.bbc.co.uk/programmes/b0192yhn">In
+					Our Time - The Written World</a>, to be broadcast in January 2012
 			</div>
 		</div>
 	</div>
@@ -115,8 +112,7 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1125)</h5>Fragments of a Hijazi Qurʼān
 				written in the second century A.H. / eighth century C.E., containing
 				verses from the Sura al-Anfāl (سورة الأنفال)... <a
-				href="/view/MS-ADD-01125/">more</a>
-			</li>
+				href="/view/MS-ADD-01125/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01116/"><img
 					class="bookSelectImage" src="/images/thumbnails/Add1116thumb.jpg"
@@ -124,16 +120,14 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1116)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the third century A.H./ninth century
 				C.E., containing verses from the sura ... <a
-				href="/view/MS-ADD-001116/">more</a>
-			</li>
+				href="/view/MS-ADD-001116/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01138/"><img
 					class="bookSelectImage" src="/images/thumbnails/Add1138thumb.jpg"
 					width="185" alt="MS-ADD-01138" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1138)</h5>Fragments of an Abbasid
 				Qurʼān (probably third century A.H. / ninth century C.E.),... <a
-				href="/view/MS-ADD-001138/">more</a>
-			</li>
+				href="/view/MS-ADD-001138/">more</a></li>
 
 			<li><a href="/view/MS-OR-00770/"><img
 					class="bookSelectImage" src="/images/thumbnails/Or770thumb.jpg"
@@ -141,32 +135,28 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Or. 770)</h5>Fragments of an Abbasid
 				Qurʼān, probably written in the third century A.H / ninth century
 				C.E., containing verses from the suras... <a
-				href="/view/MS-OR-00770/">more</a>
-			</li>
+				href="/view/MS-OR-00770/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01146/"><img
 					class="bookSelectImage" src="/images/thumbnails/Add1146thumb.jpg"
 					width="125" alt="MS-ADD-01146" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1146)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the second or third century A.H. / eighth
-				or ninth century C.E... <a href="/view/MS-ADD-01146/">more</a>
-			</li>
+				or ninth century C.E... <a href="/view/MS-ADD-01146/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01130/"><img
 					class="bookSelectImage" src="/images/thumbnails/Add1130thumb.jpg"
 					width="185" alt="MS-ADD-01130" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1130)</h5>Kufic fragments from an
 				Abbasid Qurʼān (probably third century A.H. / ninth century
-				C.E.),... <a href="/view/MS-ADD-01130/">more</a>
-			</li>
+				C.E.),... <a href="/view/MS-ADD-01130/">more</a></li>
 
 			<li><a href="/view/MS-ADD-01135/"><img
 					class="bookSelectImage" src="/images/thumbnails/Add1135thumb.jpg"
 					width="185" alt="MS-ADD-01135" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1135)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the third or fourth century A.H. / ninth
-				or tenth century C.E,... <a href="/view/MS-ADD-01130/">more</a>
-			</li>
+				or tenth century C.E,... <a href="/view/MS-ADD-01130/">more</a></li>
 
 			<li><a href="/view/MS-NN-00003-00075/"><img
 					class="bookSelectImage" src="/images/thumbnails/Nn375thumb.jpg"
@@ -174,8 +164,7 @@
 				<h5>al-Qurʼān (MS Nn.3.75)</h5>Illuminated Qurʾān from the library
 				of Tippoo Ṣāḥib, presented to the University of Cambridge by the
 				Court of Directors of the East India Company in 1806... <a
-				href="/view/MS-NN-00003-00075/">more</a>
-			</li>
+				href="/view/MS-NN-00003-00075/">more</a></li>
 
 		</ol>
 
