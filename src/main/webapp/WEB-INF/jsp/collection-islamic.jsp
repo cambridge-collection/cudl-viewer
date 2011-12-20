@@ -93,14 +93,14 @@
 		<br />
 		<div class="grid_10" id="document-about-radio">
 			<div class="grid_1" id="document-about-radio-icon-div">
-				<a href="http://www.bbc.co.uk/radio4/" target="_blank"><img
+				<a href="http://www.bbc.co.uk/programmes/b0192yhn" target="_blank"><img
 					id="document-about-radio-icon"
 					src="/images/general/BBCNewton86x48.jpg" alt="Radio icon"
 					title="Radio icon"> </a>
 			</div>
 			<div class="grid_7" id="document-about-radio-link">
 				Several items from this collection will feature in BBC Radio 4's <a
-					target="_blank" href="http://www.bbc.co.uk/radio4/">The Written
+					target="_blank" href="http://www.bbc.co.uk/programmes/b0192yhn">The Written
 					World</a>, to be broadcast in January 2012
 			</div>
 		</div>
