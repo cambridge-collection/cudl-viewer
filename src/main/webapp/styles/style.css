@@ -176,3 +176,17 @@ ol#index_carousel li {
 	margin-right: 0px;
 	text-align:right;
 }
+
+#document-about-radio-link {
+	font-weight: bold;
+	color: #458be0;
+}
+#document-about-radio-link a {	
+	font-weight: bold;
+	color: #458be0;
+}
+#document-about-radio-icon-div {
+	border: 3px;
+	border-color: #000;
+	font-weight: bold;
+}

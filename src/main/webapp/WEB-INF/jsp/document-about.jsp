@@ -28,7 +28,18 @@
 			<br /> <br />
 
 			<div id="metadata-abstract"></div>
-
+<!-- 
+			<div class="grid_10" id="document-about-radio">
+				<div class="grid_1" id="document-about-radio-icon-div">
+					<a href="http://www.bbc.co.uk/radio4/" target="_blank"><img id="document-about-radio-icon" src="/images/general/BBCNewton86x48.jpg"
+					alt="Radio icon" title="Radio icon"></a>
+				</div>
+				<div class="grid_7" id="document-about-radio-link">
+					Featured in BBC Radio 4's <br/>'<a target="_blank" href="http://www.bbc.co.uk/radio4/">The
+					Written World</a>'.
+				</div>
+			</div>
+ -->
 			<div style="width: 100%; height: 240px">
 				<!--  About the document -->
 				<div class="rbroundbox">

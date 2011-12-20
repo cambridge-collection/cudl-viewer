@@ -130,7 +130,15 @@
 				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24"
 				target="_blank">Other members of the Newton Project team</a></li>
 		</ul>
+		
+		<h4>Islamic Manuscripts</h4>
 
+
+		<ul>
+			<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern Department</li>
+			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern Department</li>
+			<li>Ignatio Sanchez, Specialist Cataloguer </li>
+		</ul>		
 
 		<h4>Contact Details</h4>
 		<p>

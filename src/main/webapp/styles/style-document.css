@@ -133,11 +133,6 @@ table {
 	min-width: 300px;
 }
 
-#document-about-link-out {
-	color: #900;
-	font-weight: bold;
-}
-
 /* Rounded Boxes */
 .rbroundbox {
 	background: url(/images/general/cornernt.gif) repeat;

@@ -35,8 +35,8 @@
 		<div class="grid_4">
 			<img class="collectionImage"
 				src="/images/collectionsView/islamic.jpg" alt="Islamic Manuscripts"
-				width="150" height="225" />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="image-credit"><a
+				width="150" height="225" /><span class="image-credit">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
 				href="/view/MS-NN-00003-00075/8">Detail from MS Nn.3.75</a> </span>
 
 		</div>
@@ -89,7 +89,20 @@
 						(PDF, 2.5MB)</a>
 				</li>
 			</ul>
-
+		</div>
+		<br />
+		<div class="grid_10" id="document-about-radio">
+			<div class="grid_1" id="document-about-radio-icon-div">
+				<a href="http://www.bbc.co.uk/radio4/" target="_blank"><img
+					id="document-about-radio-icon"
+					src="/images/general/BBCNewton86x48.jpg" alt="Radio icon"
+					title="Radio icon"> </a>
+			</div>
+			<div class="grid_7" id="document-about-radio-link">
+				Several items from this collection will feature in BBC Radio 4's <a
+					target="_blank" href="http://www.bbc.co.uk/radio4/">The Written
+					World</a>, to be broadcast in January 2012
+			</div>
 		</div>
 	</div>
 	<div class="grid_9">
@@ -97,8 +110,7 @@
 		<ol id="collections_carousel">
 
 			<li><a href="/view/MS-ADD-01125/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01125-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1125thumb.jpg"
 					width="125" alt="MS-ADD-01125" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1125)</h5>Fragments of a Hijazi Qurʼān
 				written in the second century A.H. / eighth century C.E., containing
@@ -107,55 +119,49 @@
 			</li>
 
 			<li><a href="/view/MS-ADD-01116/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01116-000-00003_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1116thumb.jpg"
 					width="185" alt="MS-ADD-01116" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1116)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the third century A.H./ninth century
-				C.E., containing verses from the sura Āl ʿImrān (سورة آل عمران)...<a
+				C.E., containing verses from the sura ... <a
 				href="/view/MS-ADD-001116/">more</a>
 			</li>
 
 			<li><a href="/view/MS-ADD-01138/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01138-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1138thumb.jpg"
 					width="185" alt="MS-ADD-01138" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1138)</h5>Fragments of an Abbasid
-				Qurʼān (probably third century A.H. / ninth century C.E.),...<a
+				Qurʼān (probably third century A.H. / ninth century C.E.),... <a
 				href="/view/MS-ADD-001138/">more</a>
 			</li>
 
 			<li><a href="/view/MS-OR-00770/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-OR-00770-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Or770thumb.jpg"
 					width="185" alt="MS-OR-00770" /> </a>
-				<h5>al-Qurʼān (ajzāʼ) (MS Or. 770)</h5>Fragments of an Abbasid Kūfic
-				Qurʼān (9th century), containing verses from the suras: al-Dhārīyāt
-				(سورة الذاريات), al-Ṭūr (سورة الطور), ... <a
+				<h5>al-Qurʼān (ajzāʼ) (MS Or. 770)</h5>Fragments of an Abbasid
+				Qurʼān, probably written in the third century A.H / ninth century
+				C.E., containing verses from the suras... <a
 				href="/view/MS-OR-00770/">more</a>
 			</li>
 
 			<li><a href="/view/MS-ADD-01146/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01146-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1146thumb.jpg"
 					width="125" alt="MS-ADD-01146" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1146)</h5>Fragments of an Abbasid
-				Qurʼān probably written in the second or third centurt A.H. / eighth
+				Qurʼān probably written in the second or third century A.H. / eighth
 				or ninth century C.E... <a href="/view/MS-ADD-01146/">more</a>
 			</li>
 
 			<li><a href="/view/MS-ADD-01130/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01130-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1130thumb.jpg"
 					width="185" alt="MS-ADD-01130" /> </a>
-				<h5>al-Qurʼān (ajzāʼ) (MS Add.1130)</h5>Fragments from an Abbasid
-				Qurʼān (third century A.H. / ninth century C.E.),... <a
-				href="/view/MS-ADD-01130/">more</a>
+				<h5>al-Qurʼān (ajzāʼ) (MS Add.1130)</h5>Kufic fragments from an
+				Abbasid Qurʼān (probably third century A.H. / ninth century
+				C.E.),... <a href="/view/MS-ADD-01130/">more</a>
 			</li>
 
 			<li><a href="/view/MS-ADD-01135/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-ADD-01135-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Add1135thumb.jpg"
 					width="185" alt="MS-ADD-01135" /> </a>
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1135)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the third or fourth century A.H. / ninth
@@ -163,8 +169,7 @@
 			</li>
 
 			<li><a href="/view/MS-NN-00003-00075/"><img
-					class="bookSelectImage"
-					src="/content/images/MS-NN-00003-00075-000-00001_files/8/0_0.jpg"
+					class="bookSelectImage" src="/images/thumbnails/Nn375thumb.jpg"
 					width="125" alt="MS-NN-00003-00075" /> </a>
 				<h5>al-Qurʼān (MS Nn.3.75)</h5>Illuminated Qurʾān from the library
 				of Tippoo Ṣāḥib, presented to the University of Cambridge by the
