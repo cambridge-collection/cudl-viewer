@@ -1,0 +1,284 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"al-Qurʼān (ajzāʼ)",
+                  "uniformTitle":"(القران (اجزاء",
+                  "author":[
+                  ""
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Fragments from an Abbasid Qurʼān, probably written in the third century A.H. / ninth century C.E., containing verses from the Sura al-Naḥl (سورة النحل). The script seems to correspond to the Abbasid Style E.I as described by F. Deroche</p>",
+                  "subject":[
+                  "Koran"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaurl":"",
+                  "dateCreatedStart":"0800-01-01",
+                  "dateCreatedEnd":"0900-01-01",
+                  "dateCreatedDisplay":"3rd century A.H. / 9th century C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "ara"
+                  ],
+                  "notes":[
+                  ""
+                  ],
+                  "ownership":[
+                  "Bought from Professor E.H. Palmer and E.E. Tyrwhitt in 1878"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"MS Add.1133",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"manuscript",
+                  "extent":"1 f."
+                  }],
+      
+               
+               "collection":[
+               "islamic"
+               ],
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-ADD-01133-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01133-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-ADD-01133-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01133-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":""
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"al-Qurʼān (ajzāʼ)",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r line 1",
+      "startPageID":"LOGICAL-PAGE-1a",
+      "startPagePosition":"1",
+      "children":[   
+      {
+      "label":"Q. 16:67",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 1",
+      "startPageID":"LOGICAL-PAGE-1a",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:68",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 1",
+      "startPageID":"LOGICAL-PAGE-1b",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:69",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 2",
+      "startPageID":"LOGICAL-PAGE-1c",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:70",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 4",
+      "startPageID":"LOGICAL-PAGE-1d",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:71",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 6",
+      "startPageID":"LOGICAL-PAGE-1e",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:72",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 7",
+      "startPageID":"LOGICAL-PAGE-1f",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:73",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 9",
+      "startPageID":"LOGICAL-PAGE-1g",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:74",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 10",
+      "startPageID":"LOGICAL-PAGE-1h",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:76",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 13",
+      "startPageID":"LOGICAL-PAGE-1i",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:76",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 13",
+      "startPageID":"LOGICAL-PAGE-1j",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:77",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 15",
+      "startPageID":"LOGICAL-PAGE-1k",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:78",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 16",
+      "startPageID":"LOGICAL-PAGE-1l",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:79",
+      "descriptiveMetadataID":"",
+      "startPage":"1r line 17",
+      "startPageID":"LOGICAL-PAGE-1m",
+      "startPagePosition":"1",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:80",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 18",
+      "startPageID":"LOGICAL-PAGE-2n",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:81",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 4",
+      "startPageID":"LOGICAL-PAGE-2a",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:82",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 6",
+      "startPageID":"LOGICAL-PAGE-2b",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:83",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 7",
+      "startPageID":"LOGICAL-PAGE-2c",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:84",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 7",
+      "startPageID":"LOGICAL-PAGE-2d",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:85",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 8",
+      "startPageID":"LOGICAL-PAGE-2e",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:86",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 9",
+      "startPageID":"LOGICAL-PAGE-2f",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:87",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 11",
+      "startPageID":"LOGICAL-PAGE-2g",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:88",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 12",
+      "startPageID":"LOGICAL-PAGE-2h",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:89",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 13",
+      "startPageID":"LOGICAL-PAGE-2i",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:90",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 15",
+      "startPageID":"LOGICAL-PAGE-2j",
+      "startPagePosition":"2",
+      "children":[]
+      },   
+      {
+      "label":"Q. 16:91",
+      "descriptiveMetadataID":"",
+      "startPage":"1v line 17",
+      "startPageID":"LOGICAL-PAGE-2k",
+      "startPagePosition":"2",
+      "children":[]
+      }]
+      }]
+               }
+   

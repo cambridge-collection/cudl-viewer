@@ -56,7 +56,7 @@
                
                "pages":[
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"cover",
                   "physID":"PHYS-1",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00001.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00001.jpg",
@@ -64,7 +64,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"cover (inside)",
                   "physID":"PHYS-2",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00002.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00002.jpg",
@@ -4920,7 +4920,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"back cover (inside)",
                   "physID":"PHYS-609",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00609.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00609.jpg",
@@ -4928,7 +4928,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"back cover",
                   "physID":"PHYS-610",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00610.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00610.jpg",
@@ -4936,7 +4936,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"flap",
                   "physID":"PHYS-611",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00611.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00611.jpg",
@@ -4944,7 +4944,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"flap",
                   "physID":"PHYS-612",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00612.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00612.jpg",
@@ -4952,7 +4952,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"spine",
                   "physID":"PHYS-613",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00613.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00613.jpg",

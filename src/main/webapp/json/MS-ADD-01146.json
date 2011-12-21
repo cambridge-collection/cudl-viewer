@@ -12,7 +12,7 @@
                   "contributor":[
                   ""
                   ],
-                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the second or third century A.H. / eighth or ninth century C.E., containing verses from <a href='' onclick='store.loadPage(1);return false;'>Sura al-Aḥzāb (سورة الأحزاب) </a> and <a href='' onclick='store.loadPage(3);return false;'> Sura Sabaʾ (سورة سبا)</a>. The script seems to correspond to the Abbasid Style F.I. as described by F. Deroche</p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/programmes/b0192yhn'>In Our Time - The Written World</a>'. </div> </div> </div>",
+                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the second or third century A.H. / eighth or ninth century C.E., containing verses from <a href='' onclick='store.loadPage(1);return false;'>Sura al-Aḥzāb (سورة الأحزاب) </a> and <a href='' onclick='store.loadPage(3);return false;'> Sura Sabaʾ (سورة سبا). The script seems to correspond to the Abbasid Style F.I. as described by F. Deroche</a></p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/radio4/'>In Our Time - The Written World</a>'. </div> </div> </div>",
                   "subject":[
                   "Koran"
                   ],
@@ -25,7 +25,7 @@
                   "mediaurl":"",
                   "dateCreatedStart":"0700-01-01",
                   "dateCreatedEnd":"0800-01-01",
-                  "dateCreatedDisplay":"2nd or 3rd century A.H. / 8th or 9th century C.E.",
+                  "dateCreatedDisplay":"2nd century A.H. / 8th century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",

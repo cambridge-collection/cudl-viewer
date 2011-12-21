@@ -12,7 +12,7 @@
                   "contributor":[
                   ""
                   ],
-                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the third century A.H./ninth century C.E., containing verses from the sura Āl ʿImrān (سورة آل عمران). The script seems to correspond to the Abbasid Style D.I as described by F. Deroche</p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/programmes/b0192yhn'>In Our Time - The Written World</a>'. </div> </div> </div>",
+                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the third century A.H./ninth century C.E., containing verses from the sura Āl ʿImrān (سورة آل عمران). The script seems to correspond to the Abbasid Style D.I as described by F. Deroche</p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/radio4/'>In Our Time - The Written World</a>'. </div> </div> </div>",
                   "subject":[
                   "Koran"
                   ],
@@ -56,7 +56,7 @@
                
                "pages":[
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"cover",
                   "physID":"PHYS-1",
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00001.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00001.jpg",
@@ -64,7 +64,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"cover (inside)",
                   "physID":"PHYS-2",
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00002.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00002.jpg",
@@ -664,7 +664,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"back cover (inside)",
                   "physID":"PHYS-77",
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00077.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00077.jpg",
@@ -672,7 +672,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"back cover",
                   "physID":"PHYS-78",
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00078.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00078.jpg",
@@ -680,7 +680,7 @@
                   "transcriptionDiplomaticURL":""
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"spine",
                   "physID":"PHYS-79",
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00079.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00079.jpg",
