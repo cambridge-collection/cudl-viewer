@@ -14,7 +14,7 @@
                   ],
                   "abstract":"<p>This large accumulation of papers dates from about 1672-1706. It includes drafts of his book on Opticks and other miscellaneous writings. The Contents tab provides some navigation for these papers, as does <a href='http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007%2FMS%20Add.3970' target='_blank'>the record in the Library’s archives catalogue</a>.<br/><br/></p><p>Transcriptions are available for a small selection of papers within this manuscript.</p>",
                   "subject":[
-                  "Science - Optics"
+                  "Optics - Early works to 1800"
                   ],
                   "publisher":[
                   ""
@@ -24,7 +24,7 @@
                   ],
                   "mediaurl":"",
                   "dateCreatedStart":"1672-01-01",
-                  "dateCreatedEnd":"1672-01-01",
+                  "dateCreatedEnd":"1706-01-01",
                   "dateCreatedDisplay":"c. 1672 - c. 1706",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
@@ -39,7 +39,7 @@
                   ""
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
-                  "shelfLocator":"MS Add. 3970",
+                  "shelfLocator":"MS Add.3970",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"manuscript",
