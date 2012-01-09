@@ -61,7 +61,7 @@
 
 		<p>After his death, the manuscripts in Newton's possession passed
 			to his niece Catherine and her husband John Conduitt. In 1740 the
-			Conduitt's daughter, also Catherine, married John Wallop, who became
+			Conduitts' daughter, also Catherine, married John Wallop, who became
 			Viscount Lymington when his father was created first Earl of
 			Portsmouth. Their son became the second earl and the manuscripts were
 			passed down succeeding generations of the family.</p>
