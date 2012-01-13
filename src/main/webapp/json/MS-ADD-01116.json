@@ -42,14 +42,16 @@
                   "shelfLocator":"MS Add.1116",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "type":"manuscript",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
                   "extent":"37 ff."
                   }],
       
-               
-               "collection":[
-               "islamic"
-               ],
+               "organisationCollection":"islamic",
+              
                "numberOfPages":"79",
                "useTranscriptions":"N",
                
@@ -61,7 +63,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00001.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00001.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"cover (inside)",
@@ -69,7 +72,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00002.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00002.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"1r",
@@ -77,7 +81,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00003.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00003.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"1v",
@@ -85,7 +90,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00004.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00004.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"2r",
@@ -93,7 +99,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00005.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00005.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"2v",
@@ -101,7 +108,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00006.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00006.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"3r",
@@ -109,7 +117,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00007.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00007.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"3v",
@@ -117,7 +126,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00008.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00008.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"4r",
@@ -125,7 +135,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00009.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00009.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"4v",
@@ -133,7 +144,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00010.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00010.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"5r",
@@ -141,7 +153,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00011.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00011.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"5v",
@@ -149,7 +162,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00012.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00012.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"6r",
@@ -157,7 +171,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00013.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00013.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"6v",
@@ -165,7 +180,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00014.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00014.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"7r",
@@ -173,7 +189,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00015.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00015.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"7v",
@@ -181,7 +198,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00016.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00016.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"8r",
@@ -189,7 +207,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00017.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00017.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"8v",
@@ -197,7 +216,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00018.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00018.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"9r",
@@ -205,7 +225,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00019.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00019.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"9v",
@@ -213,7 +234,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00020.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00020.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"10r",
@@ -221,7 +243,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00021.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00021.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"10v",
@@ -229,7 +252,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00022.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00022.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"11r",
@@ -237,7 +261,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00023.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00023.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"11v",
@@ -245,7 +270,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00024.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00024.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"12r",
@@ -253,7 +279,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00025.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00025.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"12v",
@@ -261,7 +288,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00026.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00026.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"13r",
@@ -269,7 +297,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00027.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00027.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"13v",
@@ -277,7 +306,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00028.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00028.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"14r",
@@ -285,7 +315,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00029.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00029.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"14v",
@@ -293,7 +324,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00030.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00030.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"15r",
@@ -301,7 +333,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00031.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00031.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"15v",
@@ -309,7 +342,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00032.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00032.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"16r",
@@ -317,7 +351,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00033.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00033.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"16v",
@@ -325,7 +360,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00034.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00034.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"17r",
@@ -333,7 +369,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00035.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00035.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"17v",
@@ -341,7 +378,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00036.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00036.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"18r",
@@ -349,7 +387,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00037.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00037.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"18v",
@@ -357,7 +396,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00038.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00038.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"19r",
@@ -365,7 +405,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00039.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00039.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"19v",
@@ -373,7 +414,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00040.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00040.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"20r",
@@ -381,7 +423,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00041.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00041.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"20v",
@@ -389,7 +432,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00042.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00042.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"21r",
@@ -397,7 +441,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00043.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00043.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"21v",
@@ -405,7 +450,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00044.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00044.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"22r",
@@ -413,7 +459,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00045.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00045.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"22v",
@@ -421,7 +468,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00046.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00046.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"23r",
@@ -429,7 +477,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00047.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00047.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"23v",
@@ -437,7 +486,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00048.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00048.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"24r",
@@ -445,7 +495,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00049.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00049.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"24v",
@@ -453,7 +504,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00050.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00050.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"25r",
@@ -461,7 +513,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00051.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00051.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"25v",
@@ -469,7 +522,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00052.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00052.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"26r",
@@ -477,7 +531,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00053.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00053.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"26v",
@@ -485,7 +540,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00054.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00054.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"27r",
@@ -493,7 +549,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00055.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00055.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"27v",
@@ -501,7 +558,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00056.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00056.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"28r",
@@ -509,7 +567,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00057.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00057.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"28v",
@@ -517,7 +576,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00058.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00058.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"29r",
@@ -525,7 +585,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00059.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00059.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"29v",
@@ -533,7 +594,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00060.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00060.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"30r",
@@ -541,7 +603,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00061.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00061.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"30v",
@@ -549,7 +612,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00062.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00062.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"31r",
@@ -557,7 +621,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00063.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00063.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"31v",
@@ -565,7 +630,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00064.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00064.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"32r",
@@ -573,7 +639,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00065.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00065.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"32v",
@@ -581,7 +648,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00066.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00066.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"33r",
@@ -589,7 +657,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00067.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00067.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"33v",
@@ -597,7 +666,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00068.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00068.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"34r",
@@ -605,7 +675,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00069.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00069.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"34v",
@@ -613,7 +684,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00070.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00070.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"35r",
@@ -621,7 +693,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00071.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00071.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"35v",
@@ -629,7 +702,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00072.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00072.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"36r",
@@ -637,7 +711,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00073.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00073.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"36v",
@@ -645,7 +720,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00074.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00074.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"37r",
@@ -653,7 +729,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00075.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00075.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"37v",
@@ -661,7 +738,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00076.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00076.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"back cover (inside)",
@@ -669,7 +747,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00077.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00077.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"back cover",
@@ -677,7 +756,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00078.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00078.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"spine",
@@ -685,7 +765,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01116-000-00079.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01116-000-00079.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   }],
                "logicalStructure":[   
       {

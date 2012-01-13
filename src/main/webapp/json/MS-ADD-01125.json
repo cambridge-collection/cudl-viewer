@@ -42,14 +42,16 @@
                   "shelfLocator":"MS Add.1125",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "type":"manuscript",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
                   "extent":"2 ff."
                   }],
       
-               
-               "collection":[
-               "islamic"
-               ],
+               "organisationCollection":"islamic",
+              
                "numberOfPages":"4",
                "useTranscriptions":"N",
                
@@ -61,7 +63,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01125-000-00001.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01125-000-00001.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"1v",
@@ -69,7 +72,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01125-000-00002.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01125-000-00002.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"2r",
@@ -77,7 +81,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01125-000-00003.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01125-000-00003.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"2v",
@@ -85,7 +90,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01125-000-00004.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01125-000-00004.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   }],
                "logicalStructure":[   
       {

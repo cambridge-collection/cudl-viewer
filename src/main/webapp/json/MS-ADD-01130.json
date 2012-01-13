@@ -42,14 +42,16 @@
                   "shelfLocator":"MS Add.1130",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "type":"manuscript",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
                   "extent":"1 f."
                   }],
       
-               
-               "collection":[
-               "islamic"
-               ],
+               "organisationCollection":"islamic",
+              
                "numberOfPages":"2",
                "useTranscriptions":"N",
                
@@ -61,7 +63,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01130-000-00001.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01130-000-00001.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   },
                   {
                   "name":"1v",
@@ -69,7 +72,8 @@
                   "displayImageURL":"/content/images/MS-ADD-01130-000-00002.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01130-000-00002.jpg",
                   "transcriptionNormalisedURL":"",
-                  "transcriptionDiplomaticURL":""
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
                   }],
                "logicalStructure":[   
       {
