@@ -58,7 +58,7 @@ function beforeTabShown(thisTab) {
 
 	// mask this tab if required
 	if (thisTab.displayLoadingMask) {
-		thisTab.el.mask();
+		thisTab.el.mask("Loading...", "x-mask-loading");
 	}
 	
 	// Update the URL if this tab contains external resources
