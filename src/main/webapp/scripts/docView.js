@@ -8,16 +8,17 @@ var transcriptionDiplomaticURL;
 
 // Functions to show and hide the right hand panel.
 var unmaskRightPanel = function(pos) {
-	if (viewportComponents.rightTabPanel.items.items[pos].el.unmask) {
+	if (viewportComponents.rightTabPanel.items.items[pos] &&
+			viewportComponents.rightTabPanel.items.items[pos].el.unmask) {
 		viewportComponents.rightTabPanel.items.items[pos].el.unmask();
 	}
 };
 
 var maskRightPanel = function(pos) {
-	if (viewportComponents.rightTabPanel.items.items[pos].el.mask) {
+	if (viewportComponents.rightTabPanel.items.items[pos] &&
+			viewportComponents.rightTabPanel.items.items[pos].el.unmask) {
 		viewportComponents.rightTabPanel.items.items[pos].el.mask("Loading ...",
-				"x-mask-loading");
-		;
+				"x-mask-loading");		
 	}
 };
 
@@ -134,11 +135,13 @@ var docView = function() {
 				transcriptionDiplomaticURL="/externalresource?url="+encodeURIComponent("/transcription?url="
 					+ diploTransURL) +"&doc="+docId;
 				
-				if (currentTab==1) {
+				var thisTab = viewportComponents.rightTabPanel.activeTab;
+			
+				if (thisTab.title=='Transcription (normalised)') {
 					  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
 					  document.getElementById("transcription_normal_frame").style.display="inline";
 				} else 
-				if (currentTab==2) {
+				if (thisTab.title=='Transcription (diplomatic)') {
 					  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
 					  document.getElementById("transcription_diplomatic_frame").style.display="inline";
 				}

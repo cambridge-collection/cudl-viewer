@@ -35,11 +35,17 @@ function loadData() {
 			data = docDataLoader.getData();
 
 			// placing it here means the viewport should only be initalised once
-			// the
-			// data is loaded.
+			// the data is loaded.
 
 			setupViewport();
-			setupDone = true;
+			 			
+			if (data.useTranscriptions=='Y') {
+			  setupTab('Transcription (normalised)','transcription_normal');
+			  setupTab('Transcription (diplomatic)','transcription_diplomatic');
+			}
+			
+			setupDone = true;			
+			
 		}
 	});
 
@@ -54,17 +60,11 @@ function loadData() {
  */
 function beforeTranscriptionTabChange(tabs, thisTab) {
 
-	for (var i=0; i<tabTitles.length; i++) {
-		if (tabTitles[i]==thisTab.title) {
-			currentTab=i;
-		};
-	}
-
-	if (currentTab==1) {
+	if (thisTab.title=='Transcription (normalised)') {
 		  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
 		  document.getElementById("transcription_normal_frame").style.display="inline";
 	} else 
-	if (currentTab==2) {
+	if (thisTab.title=='Transcription (diplomatic)') {
 		  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
 		  document.getElementById("transcription_diplomatic_frame").style.display="inline";
 	}
@@ -133,13 +133,25 @@ function setupViewport() {
 
 }
 
+
+function setupTab(title, element) {
+
+	var index = 1;
+	viewportComponents.rightTabPanel.add({
+        title: title,
+        el: element,
+        closable: false		
+    });
+    	
+} 
+
+
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {
 
 	loadData();
 	setupSeaDragon();
 	
-
 });
 
 
