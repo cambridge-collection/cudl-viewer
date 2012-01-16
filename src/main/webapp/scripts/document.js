@@ -14,7 +14,7 @@ function setupSeaDragon() {
 	Seadragon.Strings.Tooltips.Home="Full Page View";
 	
 	viewer = new Seadragon.Viewer("doc");	
-	//console.debug(viewer);
+
 	// FIXME remove the maximize button as it's causing problems
 	//viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
 	
@@ -37,12 +37,7 @@ function loadData() {
 			// placing it here means the viewport should only be initalised once
 			// the data is loaded.
 
-			setupViewport();
-			 			
-			if (data.useTranscriptions=='Y') {
-			  setupTab('Transcription (normalised)','transcription_normal');
-			  setupTab('Transcription (diplomatic)','transcription_diplomatic');
-			}
+			setupViewport();			 			
 			
 			setupDone = true;			
 			
@@ -54,21 +49,44 @@ function loadData() {
 
 /**
  * Load content into the current tab that is being viewed. 
+ * Uses data as setting SRC depends on currently viewed page. 
  * 
  * @param tabs
  * @param thisTab
  */
-function beforeTranscriptionTabChange(tabs, thisTab) {
+function beforeTabShown(thisTab) {
 
-	if (thisTab.title=='Transcription (normalised)') {
-		  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
-		  document.getElementById("transcription_normal_frame").style.display="inline";
-	} else 
-	if (thisTab.title=='Transcription (diplomatic)') {
-		  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
-		  document.getElementById("transcription_diplomatic_frame").style.display="inline";
+	// mask this tab if required
+	if (thisTab.displayLoadingMask) {
+		thisTab.el.mask();
+	}
+	
+	// Update the URL if this tab contains external resources
+	var urlAttribute = thisTab.urlAttribute;	
+	if (urlAttribute) {
+		
+	  var url = encodeURIComponent(data.pages[pagenum - 1][urlAttribute+'']);
+
+	  cachedURL="/externalresource?url="+encodeURIComponent("/transcription?url="
+		+ url) +"&doc="+docId;
+
+	  thisTab.el.dom.children[0].src=cachedURL;
+	}
+	
+	// Display tab
+	thisTab.el.dom.children[0].style.display="inline";
+}
+
+function afterTabShown() {
+	
+	// Unmask tab if required
+	if (viewportComponents.rightTabPanel.el &&
+			viewportComponents.rightTabPanel.el.unmask) {
+		
+	   viewportComponents.rightTabPanel.activeTab.el.unmask();
 	}
 }
+
 
 /**
  * Should run only once.
@@ -117,34 +135,61 @@ function setupViewport() {
 	viewportComponents.pagingToolbar.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
 	viewportComponents.pagingToolbar.add('->');
 	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.gif', handler: downloadImageCheck});
-	
-	viewportComponents.rightTabPanel.on('beforetabchange', beforeTranscriptionTabChange);
-	//viewportComponents.leftTabPanel.on('beforetabchange', beforeContentsTabChange);
-	// viewportComponents.tabpanel.on('tabchange', this.aftertabchange);
 
+	// Add tabs
+	if (data.useTranscriptions=='Y') {
+		  setupTab('Transcription (normalised)','transcription_normal', 'transcriptionNormalisedURL', true);
+		  setupTab('Transcription (diplomatic)','transcription_diplomatic', 'transcriptionDiplomaticURL', true);
+	}
+	
 	// initialise viewport.
 	Ext.QuickTips.init();
 
 	var cmp1 = new MyViewport({
 		renderTo : Ext.getBody()
 	});
-
+	
 	cmp1.show();
 
 }
 
-
-function setupTab(title, element) {
+/**
+ * Note that the URL is only set when the tab is shown, not when it is created.
+ *  
+ * @param title
+ * @param element
+ * @param urlAttribute - page level attribute specifying URL.
+ * @param displayLoadingMask - boolean, only works with url Attribute (when it's an external resource tab)  
+ */
+function setupTab(title, element, urlAttribute, displayLoadingMask) {
 
 	var index = 1;
-	viewportComponents.rightTabPanel.add({
-        title: title,
-        el: element,
-        closable: false		
-    });
-    	
+	var tab = Ext.create('Ext.tab.Tab', {
+	        title: title,
+	        el: element,
+	        closable: false
+	    });
+	
+	// This assumes we are loading in content from an external url
+	// specified in an attribute from the JSON. 
+	// This content is displayed in an iframe we create. 
+	if (urlAttribute) {
+		
+		// Add iframe for content. Src will be set when content is loaded. 
+		var iframe = document.createElement("iframe");
+		iframe.setAttribute('id', element+'_frame');
+		iframe.setAttribute('onload', 'afterTabShown()');
+		iframe.setAttribute('src', '/transcription?url='); // needed for HTML validation. 
+		Ext.get(element).appendChild(iframe);
+		
+	    tab.urlAttribute = urlAttribute;
+	    tab.displayLoadingMask=displayLoadingMask;
+	    tab.addListener('beforeshow', beforeTabShown);
+	       
+	}
+	
+	viewportComponents.rightTabPanel.add(tab);
 } 
-
 
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {

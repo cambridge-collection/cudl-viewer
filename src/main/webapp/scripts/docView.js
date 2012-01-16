@@ -6,22 +6,6 @@ var isMSIE = /* @cc_on!@ */0;
 var transcriptionNormalisedURL;
 var transcriptionDiplomaticURL;
 
-// Functions to show and hide the right hand panel.
-var unmaskRightPanel = function(pos) {
-	if (viewportComponents.rightTabPanel.items.items[pos] &&
-			viewportComponents.rightTabPanel.items.items[pos].el.unmask) {
-		viewportComponents.rightTabPanel.items.items[pos].el.unmask();
-	}
-};
-
-var maskRightPanel = function(pos) {
-	if (viewportComponents.rightTabPanel.items.items[pos] &&
-			viewportComponents.rightTabPanel.items.items[pos].el.unmask) {
-		viewportComponents.rightTabPanel.items.items[pos].el.mask("Loading ...",
-				"x-mask-loading");		
-	}
-};
-
 var downloadImage = function(answer) {
 	if (answer=='yes') {
 	 window.open(downloadImageLink);
@@ -117,34 +101,8 @@ var docView = function() {
 						+ pagenum + ".jpg?path="
 						+ data.pages[pagenum - 1].downloadImageURL;
 
-				// setup transcription
-				maskRightPanel(1);
-				maskRightPanel(2);
-
-				// transcriptionNormalisedURL="/transcription?url="
-				// + encodeURIComponent(data.pages[pagenum -
-				// 1].transcriptionNormalisedURL);
-				// transcriptionDiplomaticURL="/transcription?url="
-				// + encodeURIComponent(data.pages[pagenum -
-				// 1].transcriptionDiplomaticURL);
-				var normalTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionNormalisedURL);
-				var diploTransURL = encodeURIComponent(data.pages[pagenum - 1].transcriptionDiplomaticURL);
-				
-				transcriptionNormalisedURL="/externalresource?url="+encodeURIComponent("/transcription?url="
-					+ normalTransURL) +"&doc="+docId;
-				transcriptionDiplomaticURL="/externalresource?url="+encodeURIComponent("/transcription?url="
-					+ diploTransURL) +"&doc="+docId;
-				
-				var thisTab = viewportComponents.rightTabPanel.activeTab;
-			
-				if (thisTab.title=='Transcription (normalised)') {
-					  document.getElementById("transcription_normal_frame").src = transcriptionNormalisedURL;
-					  document.getElementById("transcription_normal_frame").style.display="inline";
-				} else 
-				if (thisTab.title=='Transcription (diplomatic)') {
-					  document.getElementById("transcription_diplomatic_frame").src = transcriptionDiplomaticURL;
-					  document.getElementById("transcription_diplomatic_frame").style.display="inline";
-				}
+				// setup transcription	
+				beforeTabShown(viewportComponents.rightTabPanel.activeTab);
 				
 				// setup metadata
 				// Find the ROOT descriptiveMetadata object.
