@@ -7765,16 +7765,16 @@
       {
       "label":"Codex Bezae",
       "descriptiveMetadataID":"DMD1",
-      "startPage":"3r",
-      "startPageID":"LOGICAL-PAGE-7",
-      "startPagePosition":"7",
+      "startPage":"cover",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
       "children":[   
       {
       "label":"Volume 1",
       "descriptiveMetadataID":"",
-      "startPage":"3r",
-      "startPageID":"LOGICAL-PAGE-7",
-      "startPagePosition":"7",
+      "startPage":"cover",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
       "children":[   
       {
       "label":"St. Matthew's Gospel",
@@ -7796,9 +7796,9 @@
       {
       "label":"Volume 2",
       "descriptiveMetadataID":"",
-      "startPage":"177r",
-      "startPageID":"LOGICAL-PAGE-334",
-      "startPagePosition":"334",
+      "startPage":"cover",
+      "startPageID":"LOGICAL-PAGE-328",
+      "startPagePosition":"328",
       "children":[   
       {
       "label":"St. John's Gospel (continued)",
