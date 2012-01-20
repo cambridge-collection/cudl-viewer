@@ -44,11 +44,7 @@ var viewportComponents = {
 		collapsed : false,
 		collapsible : true,
 		bodyPadding : 0,
-		items : [ {
-			xtype : 'panel',
-			title : 'About',			
-			el : 'metadata'			
-		} ]
+		items : [  ]
 	    }),
 	    
 	getRightTabPanel : function() {

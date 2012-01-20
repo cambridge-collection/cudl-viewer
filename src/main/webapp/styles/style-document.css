@@ -56,13 +56,13 @@ h3,h2,h1,h4 {
 }
 
 #transcription_normal_frame {
-	display: none;
+	/*display: none;*/
 	width: 100%;
 	height: 100%;
 }
 
 #transcription_diplomatic_frame {
-	display: none;
+	/*display: none;*/
 	width: 100%;
 	height: 100%;
 }

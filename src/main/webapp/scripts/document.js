@@ -37,8 +37,7 @@ function loadData() {
 			// placing it here means the viewport should only be initalised once
 			// the data is loaded.
 
-			setupViewport();			 			
-			
+			setupViewport();			 						
 			setupDone = true;			
 			
 		}
@@ -73,8 +72,6 @@ function beforeTabShown(thisTab) {
 	  thisTab.el.dom.children[0].src=cachedURL;
 	}
 	
-	// Display tab
-	thisTab.el.dom.children[0].style.display="inline";
 }
 
 function afterTabShown() {
@@ -137,12 +134,18 @@ function setupViewport() {
 	viewportComponents.pagingToolbar.add({tooltip:'Download Image', icon: '/img/icon-download-blue.gif', handler: downloadImageCheck});
 
 	// Add tabs
+	var aboutTab = setupTab('About','metadata');
+ 
 	if (data.useTranscriptions=='Y') {
+		  
 		  setupTab('Transcription (normalised)','transcription_normal', 'transcriptionNormalisedURL', true);
 		  setupTab('Transcription (diplomatic)','transcription_diplomatic', 'transcriptionDiplomaticURL', true);
 	}
 	
-	// initialise viewport.
+	viewportComponents.rightTabPanel.activeTab=0;
+	
+	
+	// Initialise viewport.
 	Ext.QuickTips.init();
 
 	var cmp1 = new MyViewport({
@@ -157,38 +160,48 @@ function setupViewport() {
  * Note that the URL is only set when the tab is shown, not when it is created.
  *  
  * @param title
- * @param element
- * @param urlAttribute - page level attribute specifying URL.
- * @param displayLoadingMask - boolean, only works with url Attribute (when it's an external resource tab)  
+ * @param element - specifies the element that contains the content for this tab.  
+ * If using urlAttribute to pull in content this will be the name given to the div that is created.  
+ * @param urlAttribute - page level attribute specifying URL. 
+ * @param displayLoadingMask - boolean, only works with urlAttribute (when it's an external resource tab)  
  */
 function setupTab(title, element, urlAttribute, displayLoadingMask) {
-
-	var index = 1;
-	var tab = Ext.create('Ext.tab.Tab', {
-	        title: title,
-	        el: element,
-	        closable: false
-	    });
+	
+	var tab = Ext.create('Ext.panel.Panel', {
+        xtype: 'panel',
+		title: title,	
+		el : element
+    });
 	
 	// This assumes we are loading in content from an external url
 	// specified in an attribute from the JSON. 
 	// This content is displayed in an iframe we create. 
-	if (urlAttribute) {
+	if (urlAttribute) {			
+	
+		var div = document.createElement("div");
+		div.setAttribute("id", element);
+		div.setAttribute('width', '100%');
+		div.setAttribute('height', '100%');
 		
 		// Add iframe for content. Src will be set when content is loaded. 
 		var iframe = document.createElement("iframe");
 		iframe.setAttribute('id', element+'_frame');
 		iframe.setAttribute('onload', 'afterTabShown()');
-		iframe.setAttribute('src', '/transcription?url='); // needed for HTML validation. 
-		Ext.get(element).appendChild(iframe);
+		iframe.setAttribute('width', '100%');
+		iframe.setAttribute('height', '100%');
+		iframe.setAttribute('src', '/transcription?url='); // needed for HTML validation.		
+
+		div.appendChild(iframe);		
+		document.body.appendChild(div);
 		
 	    tab.urlAttribute = urlAttribute;
 	    tab.displayLoadingMask=displayLoadingMask;
 	    tab.addListener('beforeshow', beforeTabShown);
-	       
-	}
+	    	       
+	} 
 	
 	viewportComponents.rightTabPanel.add(tab);
+	return tab;
 } 
 
 // This runs when the page has viewport has loaded.

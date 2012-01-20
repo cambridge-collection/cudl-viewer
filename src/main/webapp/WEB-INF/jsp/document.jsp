@@ -8,10 +8,6 @@
 <jsp:include page="document-about.jsp" />
 
 
-<div id="transcription_normal"></div>
-
-<div id="transcription_diplomatic"></div>
-
 <div id="logical_structure"></div>
 
 <jsp:include page="footer/footer-document.jsp" />
