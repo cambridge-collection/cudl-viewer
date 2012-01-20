@@ -77,8 +77,8 @@ function beforeTabShown(thisTab) {
 function afterTabShown() {
 	
 	// Unmask tab if required
-	if (viewportComponents.rightTabPanel.el &&
-			viewportComponents.rightTabPanel.el.unmask) {
+	if (viewportComponents.rightTabPanel.activeTab.el &&
+			viewportComponents.rightTabPanel.activeTab.el.unmask) {
 		
 	   viewportComponents.rightTabPanel.activeTab.el.unmask();
 	}
@@ -142,7 +142,7 @@ function setupViewport() {
 		  setupTab('Transcription (diplomatic)','transcription_diplomatic', 'transcriptionDiplomaticURL', true);
 	}
 	
-	viewportComponents.rightTabPanel.activeTab=0;
+	viewportComponents.rightTabPanel.setActiveTab(0);
 	
 	
 	// Initialise viewport.
