@@ -60,8 +60,8 @@
                   {
                   "name":"1r",
                   "physID":"PHYS-1",
-                  "displayImageURL":"/content/images/MS-ADD-01142-001-00001.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-01142-001-00001.jpg",
+                  "displayImageURL":"/content/images/MS-ADD-01142-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01142-000-00001.jpg",
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":"",
                   "pageType":"text"
@@ -69,8 +69,8 @@
                   {
                   "name":"1v",
                   "physID":"PHYS-2",
-                  "displayImageURL":"/content/images/MS-ADD-01142-001-00002.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-01142-001-00002.jpg",
+                  "displayImageURL":"/content/images/MS-ADD-01142-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01142-000-00002.jpg",
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":"",
                   "pageType":"text"
@@ -78,8 +78,8 @@
                   {
                   "name":"2r",
                   "physID":"PHYS-3",
-                  "displayImageURL":"/content/images/MS-ADD-01142-001-00003.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-01142-001-00003.jpg",
+                  "displayImageURL":"/content/images/MS-ADD-01142-000-00003.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01142-000-00003.jpg",
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":"",
                   "pageType":"text"
@@ -87,8 +87,8 @@
                   {
                   "name":"2v",
                   "physID":"PHYS-4",
-                  "displayImageURL":"/content/images/MS-ADD-01142-001-00004.dzi",
-                  "downloadImageURL":"/content/images/MS-ADD-01142-001-00004.jpg",
+                  "displayImageURL":"/content/images/MS-ADD-01142-000-00004.dzi",
+                  "downloadImageURL":"/content/images/MS-ADD-01142-000-00004.jpg",
                   "transcriptionNormalisedURL":"",
                   "transcriptionDiplomaticURL":"",
                   "pageType":"text"
