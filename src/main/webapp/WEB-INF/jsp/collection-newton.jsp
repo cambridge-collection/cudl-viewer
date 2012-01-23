@@ -86,20 +86,16 @@
 			<li><a target="_blank"
 				href="http://www.lib.cam.ac.uk/deptserv/manuscripts/newton.html">Overview
 					of Newton Papers held at Cambridge University Library (from
-					Manuscripts Department website)</a>
-			</li>
+					Manuscripts Department website)</a></li>
 			<li><a target="_blank"
 				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=20">History
-					of Isaac Newton's Papers (from Newton Project website) </a>
-			</li>
+					of Isaac Newton's Papers (from Newton Project website) </a></li>
 			<li><a target="_blank"
 				href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007">Catalogue
-					of the Portsmouth Collection</a>
-			</li>
+					of the Portsmouth Collection</a></li>
 			<li><a target="_blank"
 				href="http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.9597">Catalogue
-					of the Macclesfield Collection</a>
-			</li>
+					of the Macclesfield Collection</a></li>
 		</ul>
 		<br />
 		<div class="grid_10" id="document-about-radio">
@@ -137,7 +133,8 @@
 			<h5>College Notebook (MS Add. 4000)</h5>This small notebook was
 			probably used by Newton from about 1664 to 1665. It contains notes
 			from his reading on mathematics and geometry... <a
-			href="/view/MS-ADD-04000/">more</a></li>
+			href="/view/MS-ADD-04000/">more</a>
+		</li>
 		<li><a href="/view/MS-ADD-04004/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-04004-002-00001_files/8/0_0.jpg"
@@ -145,8 +142,17 @@
 			<h5>Waste Book (MS Add. 4004)</h5>Much of Newton's important work on
 			calculus is developed in this large notebook, which he began using in
 			1664 when he was away from Cambridge due to the plague... <a
-			href="/view/MS-ADD-04004/">more</a>
+			href="/view/MS-ADD-04004/">more</a></li>
+			
+		<li><a href="/view/MS-ADD-03975/"><img
+				class="bookSelectImage"
+				src="/content/images/MS-ADD-03975-000-00001_files/8/0_0.jpg"
+				alt="MS-ADD-03975" width="139" height="180" /> </a>
+			<h5>Laboratory Notebook (MS Add.3975)</h5>Notes on optics, precious
+			stones, colours, temperatures, salts, medical matters, alchemy and
+			other subjects, in English and Latin... <a href="/view/MS-ADD-03975/">more</a>
 		</li>
+					
 		<li><a href="/view/PR-ADV-B-00039-00001/"><img
 				class="bookSelectImage"
 				src="/content/images/PR-ADV-B-00039-00001-000-00009_files/8/0_0.jpg"
@@ -154,14 +160,16 @@
 			<h5>Philosophi&aelig; Naturalis Principia Mathematica
 				(Adv.b.39.1)</h5> Newton's monumental <i>Principia</i> was published in
 			July 1687 and brought him international fame... <a
-			href="/view/PR-ADV-B-00039-00001/">more</a></li>
+			href="/view/PR-ADV-B-00039-00001/">more</a>
+		</li>
 		<li><a href="/view/MS-ADD-03958/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03958-001-00001_files/8/0_0.jpg"
 				alt="MS-ADD-03958" width="139" height="180" /> </a>
 			<h5>Early Papers (MS Add. 3958)</h5>This set of papers documents some
 			of Newton's early mathematical thinking, work that would develop into
-			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a></li>
+			his theories of calculus... <a href="/view/MS-ADD-03958/">more</a>
+		</li>
 		<li><a href="/view/MS-ADD-03959/"><img
 				class="bookSelectImage"
 				src="/content/images/MS-ADD-03959-000-00003_files/8/0_0.jpg"
@@ -186,9 +194,8 @@
 				src="/content/images/MS-ADD-03973-000-00001_files/8/0_0.jpg"
 				alt="MS-ADD-03973" width="139" height="180" /> </a>
 			<h5>Notes of experiments in chemistry and alchemy (MS Add.3973)</h5>Notes
-			of experiments, all in Newton's hand... <a
-			href="/view/MS-ADD-03973/">more</a></li>			
-
+			of experiments, all in Newton's hand... <a href="/view/MS-ADD-03973/">more</a>
+		</li>
 
 	</ol>
 

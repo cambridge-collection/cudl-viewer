@@ -62,8 +62,8 @@
 				Bodleian at Oxford and other research libraries to provide an <a
 					target="_blank" href="http://www.fihrist.org.uk/">online
 					catalogue of the collection</a>. We will be offering a selection of
-				digitised manuscripts through the Foundations project and will
-				seek funding for further digitisation.
+				digitised manuscripts through the Foundations project and will seek
+				funding for further digitisation.
 			</p>
 
 			<p>Our initial release includes several examples of Qur'anic
@@ -164,6 +164,41 @@
 				<h5>al-Qurʼān (ajzāʼ) (MS Add.1135)</h5>Fragments of an Abbasid
 				Qurʼān probably written in the third or fourth century A.H. / ninth
 				or tenth century C.E,... <a href="/view/MS-ADD-01135/">more</a></li>
+
+			<li><a href="/view/MS-ADD-01142/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-ADD-01142-000-00001_files/8/0_0.jpg"
+					width="185" alt="MS-ADD-01142" /> </a>
+				<h5>al-Qurʼān (ajzāʼ) (MS Add.1142)</h5>Fragments of an early Qurʼān
+				written in the Maghrib or al-Andalus in the fourth or fifth century
+				A.H. / tenth or eleventh century C.E,... <a
+				href="/view/MS-ADD-01142/">more</a></li>
+
+			<li><a href="/view/MS-ADD-01149/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-ADD-01149-000-00001_files/8/0_0.jpg"
+					width="185" alt="MS-ADD-01149" /> </a>
+				<h5>al-Qurʼān (ajzāʼ) (MS Add.1149)</h5>Fragments of an Abbasid
+				Qurʼān probably written in the third century A.H. / ninth century
+				C.E... <a href="/view/MS-ADD-01149/">more</a></li>
+
+			<li><a href="/view/MS-MM-00006-00023/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-MM-00006-00023-000-00001_files/8/0_0.jpg"
+					width="125" alt="MS-MM-00006-00023" /> </a>
+				<h5>Sharḥ Alfīyah Ibn Mālik (Mm.6.23)</h5>This manuscript contains
+				al-Makkūdī (d. 1404)'s commentary on one of the most popular Arabic
+				grammatical works, the Alfīyah of Ibn Malik (d. 1274)... <a
+				href="/view/MS-MM-00006-00023/">more</a></li>
+
+			<li><a href="/view/MS-DD-00009-00049/"><img
+					class="bookSelectImage"
+					src="/content/images/MS-DD-00009-00049-000-00001_files/8/0_0.jpg"
+					width="125" alt="MS-DD-00009-00049" /> </a>
+				<h5>El breve compendio de nuestra santa ley alçunna (Dd.9.49)</h5>This
+				Aljamiado manuscript contains a compendium of Islamic law written by
+				Baray de Reminjo with the help of a young scholar known as Mancebo
+				de Arévalo... <a href="/view/MS-DD-00009-00049/">more</a></li>
 
 			<li><a href="/view/MS-NN-00003-00075/"><img
 					class="bookSelectImage" src="/images/thumbnails/Nn375thumb.jpg"
