@@ -5035,7 +5035,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo deceno: Del alsala del eclipse del sol",
+      "label":"Capitulo dezeno: Del alsala del eclipse del sol",
       "descriptiveMetadataID":"",
       "startPage":"44r",
       "startPageID":"LOGICAL-PAGE-101",
@@ -5043,7 +5043,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo del alsala del rogar por agua. Onceno capitulo",
+      "label":"Capitulo del alsala del rogar por agua. Onzeno capitulo",
       "descriptiveMetadataID":"",
       "startPage":"44v",
       "startPageID":"LOGICAL-PAGE-102",
@@ -5051,7 +5051,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo doseno: Del alsala de dambas las Pascuas",
+      "label":"Capitulo dozeno: Del alsala de dambas las Pascuas",
       "descriptiveMetadataID":"",
       "startPage":"45r",
       "startPageID":"LOGICAL-PAGE-103",
@@ -5059,7 +5059,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo treceno: Del alsala del dia del alchuma",
+      "label":"Capitulo trezeno: Del alsala del dia del alchuma",
       "descriptiveMetadataID":"",
       "startPage":"45v",
       "startPageID":"LOGICAL-PAGE-104",
@@ -5067,18 +5067,10 @@
       "children":[]
       },   
       {
-      "label":"Capitulo catorseno: Del bañar y mortajar y alsala y entierro de los alchanases",
+      "label":"Capitulo catorzeno: Del bañar y mortajar y alsala y entierro de los alchanases",
       "descriptiveMetadataID":"",
       "startPage":"46v",
       "startPageID":"LOGICAL-PAGE-106",
-      "startPagePosition":"106",
-      "children":[]
-      },   
-      {
-      "label":"Capitulo catorseno: Del bañar y mortajar y alsala y entierro de los alchanases",
-      "descriptiveMetadataID":"",
-      "startPage":"46v",
-      "startPageID":"LOGICAL-PAGE-106a",
       "startPagePosition":"106",
       "children":[]
       },   
@@ -5091,18 +5083,10 @@
       "children":[]
       },   
       {
-      "label":"Capitulo primero: Del ayuno del mes de ramaḍān honrado",
+      "label":"Capitulo primero: Del ayuno del mes de Ramaḍān honrado",
       "descriptiveMetadataID":"",
       "startPage":"48v",
       "startPageID":"LOGICAL-PAGE-110a",
-      "startPagePosition":"110",
-      "children":[]
-      },   
-      {
-      "label":"Capitulo primero: Del ayuno del mes de ramaḍān honrado",
-      "descriptiveMetadataID":"",
-      "startPage":"48v",
-      "startPageID":"LOGICAL-PAGE-110b",
       "startPagePosition":"110",
       "children":[]
       },   
@@ -5115,7 +5099,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo tersero que trata del acto del salaḥiya",
+      "label":"Capitulo terçero que trata del acto del salaḥiya",
       "descriptiveMetadataID":"",
       "startPage":"55r",
       "startPageID":"LOGICAL-PAGE-123",
@@ -5147,7 +5131,7 @@
       "children":[]
       },   
       {
-      "label":"Capitulo tersero: Del alzaka del labrança y sus simientes",
+      "label":"Capitulo terçero: Del alzaka del labrança y sus simientes",
       "descriptiveMetadataID":"",
       "startPage":"58r",
       "startPageID":"LOGICAL-PAGE-129",
@@ -5179,6 +5163,14 @@
       "children":[]
       },   
       {
+      "label":"[Capitulo primero]",
+      "descriptiveMetadataID":"",
+      "startPage":"63r",
+      "startPageID":"LOGICAL-PAGE-139a",
+      "startPagePosition":"139",
+      "children":[]
+      },   
+      {
       "label":"Capitulo segundo. De los amahos que causan los tres preçebtos",
       "descriptiveMetadataID":"",
       "startPage":"64r",
@@ -5200,6 +5192,22 @@
       "startPage":"72r",
       "startPageID":"LOGICAL-PAGE-157",
       "startPagePosition":"157",
+      "children":[]
+      },   
+      {
+      "label":"[Capitulo primero]",
+      "descriptiveMetadataID":"",
+      "startPage":"72r",
+      "startPageID":"LOGICAL-PAGE-157a",
+      "startPagePosition":"157",
+      "children":[]
+      },   
+      {
+      "label":"Capitulo segundo que trata de las siete maneras en que habla nuestro honrado al-Qurʾān",
+      "descriptiveMetadataID":"",
+      "startPage":"72v",
+      "startPageID":"LOGICAL-PAGE-158",
+      "startPagePosition":"158",
       "children":[]
       },   
       {
@@ -5455,14 +5463,6 @@
       "descriptiveMetadataID":"",
       "startPage":"130r",
       "startPageID":"LOGICAL-PAGE-273",
-      "startPagePosition":"273",
-      "children":[]
-      },   
-      {
-      "label":"Capitulo terçero: De los enpeños y lo que es liçito en ellos",
-      "descriptiveMetadataID":"",
-      "startPage":"130r",
-      "startPageID":"LOGICAL-PAGE-273a",
       "startPagePosition":"273",
       "children":[]
       },   
@@ -5755,6 +5755,14 @@
       "children":[]
       },   
       {
+      "label":"Capitulo cuarto: Como tenemos grandes meritanças de que aprovecharnos",
+      "descriptiveMetadataID":"",
+      "startPage":"183v",
+      "startPageID":"LOGICAL-PAGE-374",
+      "startPagePosition":"374",
+      "children":[]
+      },   
+      {
       "label":"Capitulo quinto: De çinco casos perfidos que dan origen a los demas pecados",
       "descriptiveMetadataID":"",
       "startPage":"184v",
@@ -5763,18 +5771,10 @@
       "children":[]
       },   
       {
-      "label":"Capitulo quinto: De çinco casos perfidos que dan origen a los demas pecados",
-      "descriptiveMetadataID":"",
-      "startPage":"186v",
-      "startPageID":"LOGICAL-PAGE-380",
-      "startPagePosition":"380",
-      "children":[]
-      },   
-      {
       "label":"Capitulo sesto: De los prevaleçientes y su obligaçion",
       "descriptiveMetadataID":"",
       "startPage":"186v",
-      "startPageID":"LOGICAL-PAGE-380a",
+      "startPageID":"LOGICAL-PAGE-380",
       "startPagePosition":"380",
       "children":[]
       },   
