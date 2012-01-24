@@ -4371,7 +4371,7 @@
       "children":[]
       },   
       {
-      "label":"المفعول معه",
+      "label":"الاستثناء",
       "descriptiveMetadataID":"",
       "startPage":"62",
       "startPageID":"LOGICAL-PAGE-150",
@@ -4399,14 +4399,6 @@
       "descriptiveMetadataID":"",
       "startPage":"73",
       "startPageID":"LOGICAL-PAGE-179",
-      "startPagePosition":"179",
-      "children":[]
-      },   
-      {
-      "label":"حروف الجر",
-      "descriptiveMetadataID":"",
-      "startPage":"73",
-      "startPageID":"LOGICAL-PAGE-179a",
       "startPagePosition":"179",
       "children":[]
       },   
