@@ -4419,14 +4419,6 @@
       "children":[]
       },   
       {
-      "label":"الاضافة",
-      "descriptiveMetadataID":"",
-      "startPage":"77",
-      "startPageID":"LOGICAL-PAGE-187a",
-      "startPagePosition":"187",
-      "children":[]
-      },   
-      {
       "label":"الامضاف الى ياء المتكلم",
       "descriptiveMetadataID":"",
       "startPage":"84",
@@ -4515,15 +4507,7 @@
       "children":[]
       },   
       {
-      "label":"التوكيد",
-      "descriptiveMetadataID":"",
-      "startPage":"105",
-      "startPageID":"LOGICAL-PAGE-249a",
-      "startPagePosition":"249",
-      "children":[]
-      },   
-      {
-      "label":"التوكيد",
+      "label":"عطف البيان",
       "descriptiveMetadataID":"",
       "startPage":"107",
       "startPageID":"LOGICAL-PAGE-253",
@@ -4607,14 +4591,6 @@
       "descriptiveMetadataID":"",
       "startPage":"125",
       "startPageID":"LOGICAL-PAGE-291a",
-      "startPagePosition":"291",
-      "children":[]
-      },   
-      {
-      "label":"التحذير والاعراء",
-      "descriptiveMetadataID":"",
-      "startPage":"125",
-      "startPageID":"LOGICAL-PAGE-291b",
       "startPagePosition":"291",
       "children":[]
       },   
