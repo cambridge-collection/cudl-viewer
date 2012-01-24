@@ -7,20 +7,20 @@ var transcriptionNormalisedURL;
 var transcriptionDiplomaticURL;
 
 var downloadImage = function(answer) {
-	if (answer=='yes') {
-	 window.open(downloadImageLink);
+	if (answer == 'yes') {
+		window.open(downloadImageLink);
 	} else {
-	 return;
+		return;
 	}
 };
 
 var dloadMessage = {
-	   title:'Image Licensing',	   
-	   buttons: Ext.Msg.YESNO,
-	   fn: downloadImage
-	};
+	title : 'Image Licensing',
+	buttons : Ext.Msg.YESNO,
+	fn : downloadImage
+};
 
-var downloadImageCheck = function () {
+var downloadImageCheck = function() {
 	Ext.Msg.show(dloadMessage);
 };
 
@@ -58,14 +58,14 @@ var docView = function() {
 
 			}
 		},
-		
-		findDescriptiveMetadata : function (id, data){
-			
-			for (var i = 0; i < data.descriptiveMetadata.length; i++) {
-				if (data.descriptiveMetadata[i].ID==id) {
+
+		findDescriptiveMetadata : function(id, data) {
+
+			for ( var i = 0; i < data.descriptiveMetadata.length; i++) {
+				if (data.descriptiveMetadata[i].ID == id) {
 					return data.descriptiveMetadata[i];
 				}
-				
+
 			}
 		},
 
@@ -91,8 +91,8 @@ var docView = function() {
 				return;
 			}
 
-			if (viewer && data) {			
-				
+			if (viewer && data) {
+
 				// show image
 				viewer.openDzi(data.pages[pagenum - 1].displayImageURL);
 
@@ -101,31 +101,38 @@ var docView = function() {
 						+ pagenum + ".jpg?path="
 						+ data.pages[pagenum - 1].downloadImageURL;
 
-				// setup transcription	
+				// setup transcription
 				beforeTabShown(viewportComponents.rightTabPanel.activeTab);
-				
+
 				// setup metadata
 				// Find the ROOT descriptiveMetadata object.
 				var descriptiveMetadataID = data.logicalStructure[0].descriptiveMetadataID;
-				var descriptiveMetadata = view.findDescriptiveMetadata(descriptiveMetadataID, data);
-				
+				var descriptiveMetadata = view.findDescriptiveMetadata(
+						descriptiveMetadataID, data);
+
 				view.populateElement(document.getElementById("metadata-title"),
 						descriptiveMetadata.title);
-				if (descriptiveMetadata.author && descriptiveMetadata.author!="") { 
+				if (descriptiveMetadata.author
+						&& descriptiveMetadata.author != "") {
 					view.populateElement(document
-								.getElementById("metadata-author"), " by <span class='document-about-author'>"+descriptiveMetadata.author+"</span>");
+							.getElementById("metadata-author"),
+							" by <span class='document-about-author'>"
+									+ descriptiveMetadata.author + "</span>");
 				}
 				view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
-				dloadMessage.msg='This image has the following copyright: <br/><br/>'+descriptiveMetadata.downloadImageRights+'<br/><br/> Do you want to download this image?';
+				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
+						+ descriptiveMetadata.downloadImageRights
+						+ '<br/><br/> Do you want to download this image?';
 				view.populateElement(document.getElementById("metadata-page"),
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document
 						.getElementById("metadata-page-toolbar"),
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document
-						.getElementById("metadata-subject"), descriptiveMetadata.subject);
+						.getElementById("metadata-subject"),
+						descriptiveMetadata.subject);
 				view.populateElement(document
 						.getElementById("metadata-physicalLocation"),
 						descriptiveMetadata.physicalLocation);
@@ -141,57 +148,63 @@ var docView = function() {
 
 					var mediawidth = 280;
 					var mediaheight = 157;
-					abstractText = 	"<object style=\"float:left; margin-right:10px;\" width=\""
-											+ mediawidth
-											+ "\" height=\""
-											+ mediaheight
-											+ "\"><param name=\"movie\" value=\""
-											+ descriptiveMetadata.mediaurl
-											+ "\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\""
-											+ descriptiveMetadata.mediaurl
-											+ "\" type=\"application/x-shockwave-flash\" width=\""
-											+ mediawidth
-											+ "\" height=\""
-											+ mediaheight
-											+ "\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>";
-					
+					abstractText = "<object style=\"float:left; margin-right:10px;\" width=\""
+							+ mediawidth
+							+ "\" height=\""
+							+ mediaheight
+							+ "\"><param name=\"movie\" value=\""
+							+ descriptiveMetadata.mediaurl
+							+ "\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\""
+							+ descriptiveMetadata.mediaurl
+							+ "\" type=\"application/x-shockwave-flash\" width=\""
+							+ mediawidth
+							+ "\" height=\""
+							+ mediaheight
+							+ "\" allowscriptaccess=\"always\" allowfullscreen=\"true\"></embed></object>";
+
 				}
 				if (descriptiveMetadata.abstract) {
-					abstractText = abstractText+descriptiveMetadata.abstract;
-					
+					abstractText = abstractText + descriptiveMetadata.abstract;
+
 					view.populateElement(document
 							.getElementById("metadata-abstract"), ""
 							+ abstractText + "<br />");
 				}
 
-
 				// setup logical structure
 
-				var ls = view.buildLogicalStructure(data.logicalStructure[0].children, 0);
-				
+				var ls = view.buildLogicalStructure(
+						data.logicalStructure[0].children, 0);
+
 				// If no first level contents use the root element
 				// to prevent empty contents list.
-				if (ls=="") {
+				if (ls == "") {
 					ls = view.buildLogicalStructure(data.logicalStructure, 0);
 				}
-				
-				view.populateElement(document
-						.getElementById("logical_structure"),
-						"<div style='height: 100%; overflow-y:auto;'><ul>" + ls
-								+ "</ul></div>", true);
+
+				// only write out contents if the element is currently empty 
+				// (the first time the page loads). 
+				if (document.getElementById("logical_structure").children[0].innerHTML=="") {
+
+					view.populateElement(document
+							.getElementById("logical_structure"),
+							"<div style='height: 100%; overflow-y:auto;'><ul>"
+									+ ls + "</ul></div>", true);
+
+				}
 
 			}
 
-		}, 
-		
-		buildLogicalStructure : function (logicalStructureElement, level) {
+		},
+
+		buildLogicalStructure : function(logicalStructureElement, level) {
 
 			// setup logical structure
 			var ls = "";
- 
+
 			for ( var i = 0; i < logicalStructureElement.length; i++) {
 				var lsItem = logicalStructureElement[i];
-				for (var j=0; j<level; j++) {
+				for ( var j = 0; j < level; j++) {
 					ls += "<li><ul>";
 				}
 				ls += "<li><a href='' onclick='store.loadPage("
@@ -199,17 +212,17 @@ var docView = function() {
 						+ lsItem.label + "</a> (image "
 						+ lsItem.startPagePosition + ", page "
 						+ lsItem.startPage + ")</li>";
-				for (var j=0; j<level; j++) {
+				for ( var j = 0; j < level; j++) {
 					ls += "</ul></li> ";
 				}
-				
-				if (lsItem.children.length>0) {
-					ls += view.buildLogicalStructure(lsItem.children, level+1 );
+
+				if (lsItem.children.length > 0) {
+					ls += view
+							.buildLogicalStructure(lsItem.children, level + 1);
 				}
 			}
-			
-			
-			return ls;			
+
+			return ls;
 		}
 
 	};
