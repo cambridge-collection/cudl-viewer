@@ -51,7 +51,8 @@
 							Physical location: <span id="metadata-physicalLocation"></span> <br />
 							Classmark: <span id="metadata-shelfLocation"></span> <br />
 							Subject: <span id="metadata-subject"></span> <br /> Date
-							created: <span id="metadata-dateCreatedDisplay"></span>
+							Created: <span id="metadata-dateCreatedDisplay"></span>
+							<span id="metadata-optional"></span>							
 						</div>
 					</div>
 					<div class="rbbot">

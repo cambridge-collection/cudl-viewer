@@ -143,6 +143,20 @@ var docView = function() {
 						.getElementById("metadata-dateCreatedDisplay"),
 						descriptiveMetadata.dateCreatedDisplay);
 
+				// optional metadata
+				
+				var optionalMetadata = "";
+				optionalMetadata += view.getMetadataHTML("Uniform title: ", descriptiveMetadata.uniformTitle);
+				optionalMetadata += view.getMetadataHTML("Publisher: ", descriptiveMetadata.publisher);
+				optionalMetadata += view.getMetadataHTML("Publication place: ", descriptiveMetadata.publicationPlace);
+				optionalMetadata += view.getMetadataHTML("Extent: ", descriptiveMetadata.extent);
+				optionalMetadata += view.getMetadataHTML("Notes: ", descriptiveMetadata.notes);
+				optionalMetadata += view.getMetadataHTML("Ownership: ", descriptiveMetadata.ownership);
+						
+				view.populateElement(document
+						.getElementById("metadata-optional"),
+						optionalMetadata);
+
 				var abstractText = "";
 				if (descriptiveMetadata.mediaurl) {
 
@@ -182,9 +196,9 @@ var docView = function() {
 					ls = view.buildLogicalStructure(data.logicalStructure, 0);
 				}
 
-				// only write out contents if the element is currently empty 
-				// (the first time the page loads). 
-				if (document.getElementById("logical_structure").children[0].innerHTML=="") {
+				// only write out contents if the element is currently empty
+				// (the first time the page loads).
+				if (document.getElementById("logical_structure").children[0].innerHTML == "") {
 
 					view.populateElement(document
 							.getElementById("logical_structure"),
@@ -195,6 +209,14 @@ var docView = function() {
 
 			}
 
+		},
+		
+		getMetadataHTML : function (title, metadataItem) {
+			
+			if (metadataItem && metadataItem!="") {
+				return "<div>"+title + "<b>"+metadataItem+"</b></div>\n";
+			}
+			return "";
 		},
 
 		buildLogicalStructure : function(logicalStructureElement, level) {
