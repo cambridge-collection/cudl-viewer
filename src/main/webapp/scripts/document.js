@@ -11,6 +11,7 @@ var currentTab = 0;
 function setupSeaDragon() {
 	Seadragon.Config.imagePath = "/img/";
 	Seadragon.Config.debugMode=true;
+	Seadragon.Config.maxZoomPixelRatio=1;
 	Seadragon.Strings.Tooltips.Home="Full Page View";
 	
 	viewer = new Seadragon.Viewer("doc");	
