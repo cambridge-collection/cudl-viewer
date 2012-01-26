@@ -106,10 +106,10 @@
 					title="Radio icon"> </a>
 			</div>
 			<div class="grid_7" id="document-about-radio-link">
-				The <a href="/view/MS-ADD-03996/">Trinity College Notebook</a> will
-				feature in BBC Radio 4's '<a target="_blank"
+				The <a href="/view/MS-ADD-03996/">Trinity College Notebook</a> 
+				featured on BBC Radio 4's '<a target="_blank"
 					href="http://www.bbc.co.uk/programmes/b0192yhn">In Our Time -
-					The Written World</a>', to be broadcast in January 2012.
+					The Written World</a>', broadcast in January 2012.
 			</div>
 		</div>
 		<br />
