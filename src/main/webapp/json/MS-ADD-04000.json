@@ -76,7 +76,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"scrap-r",
+                  "name":"[fragment] r",
                   "physID":"PHYS-3",
                   "displayImageURL":"/content/images/MS-ADD-04000-000-00003.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-04000-000-00003.jpg",
@@ -85,7 +85,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"scrap-v",
+                  "name":"[fragment] v",
                   "physID":"PHYS-4",
                   "displayImageURL":"/content/images/MS-ADD-04000-000-00004.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-04000-000-00004.jpg",

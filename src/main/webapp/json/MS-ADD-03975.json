@@ -94,7 +94,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"i",
+                  "name":"[i]",
                   "physID":"PHYS-5",
                   "displayImageURL":"/content/images/MS-ADD-03975-000-00005.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03975-000-00005.jpg",
@@ -103,7 +103,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"ii",
+                  "name":"[ii]",
                   "physID":"PHYS-6",
                   "displayImageURL":"/content/images/MS-ADD-03975-000-00006.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03975-000-00006.jpg",
@@ -3274,14 +3274,14 @@
       {
       "label":"Laboratory Notebook",
       "descriptiveMetadataID":"DMD1",
-      "startPage":"i",
+      "startPage":"[i]",
       "startPageID":"LOGICAL-PAGE-5",
       "startPagePosition":"5",
       "children":[   
       {
       "label":"Idea Of a table booke of ye [illeg.] & [illeg.]i Sand",
       "descriptiveMetadataID":"",
-      "startPage":"i",
+      "startPage":"[i]",
       "startPageID":"LOGICAL-PAGE-5",
       "startPagePosition":"5",
       "children":[]

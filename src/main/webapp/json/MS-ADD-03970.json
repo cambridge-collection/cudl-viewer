@@ -58,7 +58,7 @@
                
                "pages":[
                   {
-                  "name":"1{top}-r",
+                  "name":"1[top]-r",
                   "physID":"PHYS-1",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00001.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00001.jpg",
@@ -67,7 +67,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"1{top}-v",
+                  "name":"1[top]-v",
                   "physID":"PHYS-2",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00002.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00002.jpg",
@@ -328,7 +328,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{quadrifolium}-r",
+                  "name":"[quadrifolium]-r",
                   "physID":"PHYS-31",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00031.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00031.jpg",
@@ -337,7 +337,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{quadrifolium}-v",
+                  "name":"[quadrifolium]-v",
                   "physID":"PHYS-32",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00032.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00032.jpg",
@@ -346,7 +346,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"1{bottom}-r",
+                  "name":"1[bottom]-r",
                   "physID":"PHYS-33",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00033.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00033.jpg",
@@ -355,7 +355,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"1{bottom}-v",
+                  "name":"1[bottom]-v",
                   "physID":"PHYS-34",
                   "displayImageURL":"/content/images/MS-ADD-03970-001-00034.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-001-00034.jpg",
@@ -6646,7 +6646,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}r",
+                  "name":"[unnumbered sheet] r",
                   "physID":"PHYS-733",
                   "displayImageURL":"/content/images/MS-ADD-03970-003-00697.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-003-00697.jpg",
@@ -6655,7 +6655,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}v",
+                  "name":"[unnumbered sheet] v",
                   "physID":"PHYS-734",
                   "displayImageURL":"/content/images/MS-ADD-03970-003-00698.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-003-00698.jpg",
@@ -7726,7 +7726,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}r",
+                  "name":"[unnumbered sheet] r",
                   "physID":"PHYS-853",
                   "displayImageURL":"/content/images/MS-ADD-03970-003-00817.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-003-00817.jpg",
@@ -7735,7 +7735,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}v",
+                  "name":"[unnumbered sheet] v",
                   "physID":"PHYS-854",
                   "displayImageURL":"/content/images/MS-ADD-03970-003-00818.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-03970-003-00818.jpg",
@@ -11995,14 +11995,14 @@
       {
       "label":"Hydrostatics, Optics, Sound and Heat",
       "descriptiveMetadataID":"DMD1",
-      "startPage":"1{top}-r",
+      "startPage":"1[top]-r",
       "startPageID":"LOGICAL-PAGE-1",
       "startPagePosition":"1",
       "children":[   
       {
       "label":"On the Division of a Monochord. Plus an extract 'out of Mr Sympson's Division Violist'.",
       "descriptiveMetadataID":"",
-      "startPage":"1{top}-r",
+      "startPage":"1[top]-r",
       "startPageID":"LOGICAL-PAGE-1",
       "startPagePosition":"1",
       "children":[]

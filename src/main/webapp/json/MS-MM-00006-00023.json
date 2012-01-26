@@ -76,7 +76,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"guardpage1",
+                  "name":"flyleaf",
                   "physID":"PHYS-3",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00003.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00003.jpg",
@@ -85,7 +85,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"guardpage2",
+                  "name":"flyleaf",
                   "physID":"PHYS-4",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00004.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00004.jpg",
@@ -94,7 +94,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage1",
+                  "name":"[i]",
                   "physID":"PHYS-5",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00005.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00005.jpg",
@@ -103,7 +103,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage2",
+                  "name":"[ii]",
                   "physID":"PHYS-6",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00006.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00006.jpg",
@@ -112,7 +112,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage3",
+                  "name":"[iii]",
                   "physID":"PHYS-7",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00007.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00007.jpg",
@@ -121,7 +121,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage4",
+                  "name":"[iv]",
                   "physID":"PHYS-8",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00008.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00008.jpg",
@@ -130,7 +130,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage5",
+                  "name":"[v]",
                   "physID":"PHYS-9",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00009.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00009.jpg",
@@ -139,7 +139,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage6",
+                  "name":"[vi]",
                   "physID":"PHYS-10",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00010.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00010.jpg",
@@ -148,7 +148,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage7",
+                  "name":"[vii]",
                   "physID":"PHYS-11",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00011.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00011.jpg",
@@ -157,7 +157,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage8",
+                  "name":"[viii]",
                   "physID":"PHYS-12",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00012.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00012.jpg",
@@ -166,7 +166,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage9",
+                  "name":"[ix]",
                   "physID":"PHYS-13",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00013.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00013.jpg",
@@ -175,7 +175,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage10",
+                  "name":"[x]",
                   "physID":"PHYS-14",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00014.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00014.jpg",
@@ -184,7 +184,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage11",
+                  "name":"[xi]",
                   "physID":"PHYS-15",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00015.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00015.jpg",
@@ -193,7 +193,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"blankpage12",
+                  "name":"[xii]",
                   "physID":"PHYS-16",
                   "displayImageURL":"/content/images/MS-MM-00006-00023-000-00016.dzi",
                   "downloadImageURL":"/content/images/MS-MM-00006-00023-000-00016.jpg",

@@ -5494,7 +5494,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-605",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00605.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00605.jpg",
@@ -5503,7 +5503,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-606",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00606.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00606.jpg",
@@ -5512,7 +5512,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-607",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00607.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00607.jpg",
@@ -5521,7 +5521,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-608",
                   "displayImageURL":"/content/images/MS-NN-00003-00075-000-00608.dzi",
                   "downloadImageURL":"/content/images/MS-NN-00003-00075-000-00608.jpg",

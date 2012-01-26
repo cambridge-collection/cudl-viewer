@@ -76,7 +76,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-3",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00003.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00003.jpg",
@@ -85,7 +85,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-4",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00004.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00004.jpg",
@@ -94,7 +94,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-5",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00005.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00005.jpg",
@@ -103,7 +103,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-6",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00006.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00006.jpg",
@@ -112,7 +112,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-7",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00007.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00007.jpg",
@@ -1822,7 +1822,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-197",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00197.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00197.jpg",
@@ -1831,7 +1831,7 @@
                   "pageType":"text"
                   },
                   {
-                  "name":"{unnumbered sheet}",
+                  "name":"[unnumbered sheet]",
                   "physID":"PHYS-198",
                   "displayImageURL":"/content/images/MS-ADD-01138-000-00198.dzi",
                   "downloadImageURL":"/content/images/MS-ADD-01138-000-00198.jpg",
