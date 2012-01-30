@@ -99,27 +99,28 @@ function setupViewport() {
 			descriptiveMetadataID, data);
 
 	// set title
-	// limit length here, as display width is limited.	
-	var tbTitle=descriptiveMetadata.title;
+	// limit length here, as display width is limited.
+	var tbTitle = descriptiveMetadata.title;
 	var titleLimit = 35;
-	if (tbTitle.length>titleLimit) {
-		tbTitle=tbTitle.substring(0,titleLimit)+"...";
+	if (tbTitle.length > titleLimit) {
+		tbTitle = tbTitle.substring(0, titleLimit) + "...";
 	}
 	var docTitle = '<a href="' + collectionURL + '">' + collectionTitle
-	+ '</a> > <b>' + tbTitle + '</b>';
-	
+			+ '</a> > <b>' + tbTitle + '</b>';
+
 	// author
-	// limit length here, as display width is limited.	
+	// limit length here, as display width is limited.
 	if (descriptiveMetadata.author && descriptiveMetadata.author != "") {
-		
-	  var tbAuthor=descriptiveMetadata.author+"";	// converts array to string
-	  var authorLimit = 20;		
-	  if (tbAuthor.length>authorLimit) {
-		tbAuthor=tbAuthor.substring(0,authorLimit)+"...";
-	  }
-	  docTitle += ' &nbsp;by ' + tbAuthor;
+
+		var tbAuthor = descriptiveMetadata.author + ""; // converts array to
+														// string
+		var authorLimit = 20;
+		if (tbAuthor.length > authorLimit) {
+			tbAuthor = tbAuthor.substring(0, authorLimit) + "...";
+		}
+		docTitle += ' &nbsp;by ' + tbAuthor;
 	}
-	
+
 	viewportComponents.pageTitlePanel.items.items[0].text = docTitle;
 
 	// We now have data in the store so we can setup the pageing toolbar.
@@ -148,6 +149,7 @@ function setupViewport() {
 				});
 
 	};
+
 	// Setup component behaviour
 	pagingTool.on('change', view.updateCurrentPage);
 	viewportComponents.pagingToolbar.add(pagingTool);
@@ -161,13 +163,18 @@ function setupViewport() {
 	});
 
 	// Add tabs
-	var aboutTab = setupTab('About', 'metadata');
+	var aboutTab = setupTab('About', 'metadata',
+			viewportComponents.rightTabPanel);
+	setupTab('Contents', 'logical_structure', viewportComponents.rightTabPanel);
 
 	if (data.useTranscriptions == 'Y') {
 
 		setupTab('Transcription (normalised)', 'transcription_normal',
-				'transcriptionNormalisedURL', true);
+				viewportComponents.rightTabPanel,
+				'transcriptionNormalisedURL', true);			
+		
 		setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+				viewportComponents.rightTabPanel,
 				'transcriptionDiplomaticURL', true);
 	}
 
@@ -189,16 +196,25 @@ function setupViewport() {
  * 
  * @param title
  * @param element -
- *            specifies the element that contains the content for this tab. If
- *            using urlAttribute to pull in content this will be the name given
- *            to the div that is created.
+ *            specifies the element that contains the content for this tab. Will
+ *            be created if it does not exist already.
+ * @param parent
+ *            the TabPanel object which this tab will be added to.
  * @param urlAttribute -
  *            page level attribute specifying URL.
  * @param displayLoadingMask -
  *            boolean, only works with urlAttribute (when it's an external
  *            resource tab)
  */
-function setupTab(title, element, urlAttribute, displayLoadingMask) {
+function setupTab(title, element, parent, urlAttribute, displayLoadingMask) {
+
+	if (!document.getElementById(element)) {
+		var div = document.createElement("div");
+		div.setAttribute("id", element);
+		div.setAttribute('width', '100%');
+		div.setAttribute('height', '100%');
+		document.body.appendChild(div);
+	}
 
 	var tab = Ext.create('Ext.panel.Panel', {
 		xtype : 'panel',
@@ -211,11 +227,6 @@ function setupTab(title, element, urlAttribute, displayLoadingMask) {
 	// This content is displayed in an iframe we create.
 	if (urlAttribute) {
 
-		var div = document.createElement("div");
-		div.setAttribute("id", element);
-		div.setAttribute('width', '100%');
-		div.setAttribute('height', '100%');
-
 		// Add iframe for content. Src will be set when content is loaded.
 		var iframe = document.createElement("iframe");
 		iframe.setAttribute('id', element + '_frame');
@@ -223,8 +234,8 @@ function setupTab(title, element, urlAttribute, displayLoadingMask) {
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
 		iframe.setAttribute('src', '/transcription?url='); // needed for HTML
-		// validation.
 
+		// validation.
 		div.appendChild(iframe);
 		document.body.appendChild(div);
 
@@ -234,7 +245,7 @@ function setupTab(title, element, urlAttribute, displayLoadingMask) {
 
 	}
 
-	viewportComponents.rightTabPanel.add(tab);
+	parent.add(tab);
 	return tab;
 }
 

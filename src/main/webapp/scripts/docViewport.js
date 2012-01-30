@@ -49,7 +49,7 @@ var viewportComponents = {
 	    
 	getRightTabPanel : function() {
 		return rightTabPanel;
-	},
+	}
 	
 	/*
 	contentsTree: new Ext.tree.TreePanel({
@@ -75,7 +75,7 @@ var viewportComponents = {
 	getContentsTree: function () {
 		return contentsTree;
 	},*/
-		
+		/*
 	leftTabPanel: new Ext.create('Ext.tab.Panel', {
 		xtype : 'tabpanel',
 		activeTab : 0,
@@ -97,7 +97,10 @@ var viewportComponents = {
 	   
 	getLeftTabPanel: function() {
 		return leftTabPanel;
-	}
+	}*/
+
+
+
 };
 
 /**
@@ -125,7 +128,7 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 						border : true
 					} ]
 				}, viewportComponents.rightTabPanel, 
-				   viewportComponents.leftTabPanel, {
+				{
 					xtype : 'container',
 					region : 'north',
 					el : 'north',
