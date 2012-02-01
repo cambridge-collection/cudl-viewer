@@ -10,6 +10,13 @@ ol#collections_carousel li {
 	font-style: normal;
 	list-style: none outside none;
 }
+ol#vcollections_carousel li {
+	margin: 4px;
+	height: 217px;
+	width: 550px;
+	font-style: normal;
+	list-style: none outside none;
+}
 
 .contibutors li {
 	padding: 5px;
@@ -152,18 +159,24 @@ ol#index_carousel li {
 .featured-item-list {
 	background: #eeeeee;
 	color: #000000;
-	margin-bottom: 15px;
-	height: 152px;
+	margin-bottom: 5px;
+	height: 62px;
 	padding: 14px;
 }
 
 .featured-item-list img {
-	margin-left: auto;
-	margin-right: auto;
+	float:left;
+	width:240px;
+	height:62px;
 }
 
-.featured-item-list h4 {
-	margin-left: 20px;
+.featured-item-list h4, .featured-item-list h4 a {
+	position:absolute;
+	margin-left: 5px;
+	margin-top: 15px;
+	color:#ffffff;
+    text-shadow: 0.1em 0.1em 0.2em black;
+	width:200px;
 }
 
 .foundations-link,.foundations-link a {

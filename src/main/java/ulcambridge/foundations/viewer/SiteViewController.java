@@ -1,21 +1,19 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.ResourceBundle;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.model.Properties;
+
 @Controller
 public class SiteViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	private ResourceBundle config = ResourceBundle.getBundle("cudl-global");
-	private	String showHoldingPage = config.getString("showHoldingPage");
+	private	String showHoldingPage = Properties.getString("showHoldingPage");
 	
 	// on path /
 	@RequestMapping(value = "/")

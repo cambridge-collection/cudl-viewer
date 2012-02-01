@@ -1,7 +1,6 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.Map;
-import java.util.ResourceBundle;
 
 import javax.validation.Valid;
 
@@ -16,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
+import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
 public class FormController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	protected final static ResourceBundle config = ResourceBundle
-			.getBundle("cudl-global");
-	protected final static String feedbackEmail = config
+
+	protected final static String feedbackEmail = Properties
 			.getString("feedbackEmail");
-	protected final static String feedbackSubject = config
+	protected final static String feedbackSubject = Properties
 			.getString("feedbackSubject");
-	protected final static String feedbackHost = config
+	protected final static String feedbackHost = Properties
 			.getString("feedbackHost");
 
 	@RequestMapping(method = RequestMethod.GET, value = "/feedbackform.html")

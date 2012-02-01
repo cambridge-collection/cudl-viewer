@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.model.Collection;
+
 /**
  * Controller for viewing a specific document or a specific page within a
  * document. Documents and pages are specified in the url requested.
@@ -45,12 +47,17 @@ public class DocumentViewController {
 
 		Collection docCollection = null;
 		Iterator<Collection> collectionIterator = CollectionFactory
-				.getCollections();
+				.getCollections().iterator();
 		while (collectionIterator.hasNext()) {
 			Collection collection = collectionIterator.next();
-			if (collection.getItems().contains(docId)) {
+			if (collection.getItemIds().contains(docId)) {
 				docCollection = collection;
-				break;
+
+				// Stop if this is an organisational collection, else keep
+				// looking
+				if (collection.getTitle().equals("organisation")) {
+					break;
+				} 
 			}
 		}
 
@@ -88,12 +95,17 @@ public class DocumentViewController {
 
 		Collection docCollection = null;
 		Iterator<Collection> collectionIterator = CollectionFactory
-				.getCollections();
+				.getCollections().iterator();
 		while (collectionIterator.hasNext()) {
 			Collection collection = collectionIterator.next();
-			if (collection.getItems().contains(docId)) {
+			if (collection.getItemIds().contains(docId)) {
 				docCollection = collection;
-				break;
+				
+				// Stop if this is an organisational collection, else keep
+				// looking
+				if (collection.getTitle().equals("organisation")) {
+					break;
+				} 
 			}
 		}
 		

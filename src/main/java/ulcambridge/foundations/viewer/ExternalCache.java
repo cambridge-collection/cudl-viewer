@@ -18,7 +18,6 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
@@ -28,18 +27,19 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.tidy.Tidy;
 
+import ulcambridge.foundations.viewer.model.Properties;
+
 public class ExternalCache {
 
-	static ResourceBundle config = ResourceBundle.getBundle("cudl-global");
-	static final String cachePath = config.getString("cachePath");
-	static final String cacheURL = config.getString("cacheURL");
+	static final String cachePath = Properties.getString("cachePath");
+	static final String cacheURL = Properties.getString("cacheURL");
 	
 	// holds ref to files that have been requested recently
 	static Hashtable<String, Date> cachedFiles = new Hashtable<String, Date>();
 
-	static final long cacheCheckTimeout = Long.parseLong(config.getString("cacheCheckTimeout").trim());
-	static final long cacheFileTimeout = Long.parseLong(config.getString("cacheFileTimeout").trim());
-	static final int externalConnectionTimeout = Integer.parseInt(config.getString("externalConnectionTimeout").trim());
+	static final long cacheCheckTimeout = Long.parseLong(Properties.getString("cacheCheckTimeout").trim());
+	static final long cacheFileTimeout = Long.parseLong(Properties.getString("cacheFileTimeout").trim());
+	static final int externalConnectionTimeout = Integer.parseInt(Properties.getString("externalConnectionTimeout").trim());
 	
 	public static boolean existsInCache(String url, String docId) {
 

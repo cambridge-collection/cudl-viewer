@@ -22,6 +22,23 @@
 <div class="grid_13">
 
 	<div class="grid_4">
+		<a href="/collections/treasures"> <img class="collectionImage"
+			src="/images/collectionsView/newton.jpg" alt="Newton" width="150"
+			height="225" /><br /> <br /> </a>
+	</div>
+
+	<h5>Treasures of the Library</h5>
+	<br /> Cambridge University Library holds the largest and most
+	important collection of the scientific works of Isaac Newton
+	(1642-1727). We present here an initial selection of Newton's
+	manuscripts, concentrating on his mathematical work in the 1660s. <br />
+	<br /> <a href="/collections/treasures">View collection</a>.<br />
+
+
+</div>
+<div class="grid_13">
+
+	<div class="grid_4">
 		<a href="/collections/newton"> <img class="collectionImage"
 			src="/images/collectionsView/newton.jpg" alt="Newton" width="150"
 			height="225" /><br /> <br /> </a>
@@ -53,6 +70,25 @@
 	<br />
 	<br /> <span class="foundations-link">Part of the <a
 		href="/about#foundations">Foundations of Faith</a>.</span>
+</div>
+<div class="grid_13">
+
+	<div class="grid_4">
+		<a href="/collections/newton"> <img class="collectionImage"
+			src="/images/collectionsView/newton.jpg" alt="Newton" width="150"
+			height="225" /><br /> <br /> </a>
+	</div>
+
+	<h5>Genizah Fragments</h5>
+	<br /> Cambridge University Library holds the largest and most
+	important collection of the scientific works of Isaac Newton
+	(1642-1727). We present here an initial selection of Newton's
+	manuscripts, concentrating on his mathematical work in the 1660s. <br />
+	<br /> <a href="/collections/genizah">View collection</a>.<br />
+	<br />
+	<br /> <span class="foundations-link">Part of the <a
+		href="/about#foundations">Foundations of Faith</a>.</span>
+
 </div>
 </section>
 

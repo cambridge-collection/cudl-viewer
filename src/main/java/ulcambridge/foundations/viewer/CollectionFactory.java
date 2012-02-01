@@ -1,60 +1,71 @@
 package ulcambridge.foundations.viewer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ResourceBundle;
+
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 public class CollectionFactory {
 
-	private final static ResourceBundle config = ResourceBundle
-			.getBundle("collections");
-
 	private static Hashtable<String, Collection> collections;
 
-	private static boolean collectionsInitalised = false;
-	
+	// load in collections from properties files.
+	private static boolean collectionsInitalised = initCollections();
+
 	/**
 	 * Initalise the collections hashtable from information in the collections
 	 * properties file.
 	 * 
-	 * @return hashtable of collectionID to collection object. 
+	 * @return hashtable of collectionID to collection object.
 	 */
-	private synchronized static void initCollections() {
+	private synchronized static boolean initCollections() {
 
 		collections = new Hashtable<String, Collection>();
 
 		// Get collection url and title
-		String[] collectionIds = config.getString("collections").split(
+		String[] collectionIds = Properties.getString("collections").split(
 				"\\s*,\\s*");
 		for (int i = 0; i < collectionIds.length; i++) {
-			
+
 			String collectionId = collectionIds[i];
-			List<String> collectionItems = Arrays.asList(config
+			List<String> collectionItemIds = Arrays.asList(Properties
 					.getString(collectionId + ".items").split("\\s*,\\s*"));
-			String collectionURL = config.getString(collectionId + ".url");
-			String collectionTitle = config.getString(collectionId + ".title");
-			String collectionHTML = config.getString(collectionId + ".html");
-			
+			List<Item> collectionItems = ItemFactory.getItems(collectionId);
+			String collectionTitle = Properties.getString(collectionId
+					+ ".title");
+			String collectionSummary = Properties.getString(collectionId
+					+ ".summary");
+			String collectionSponsors = Properties.getString(collectionId
+					+ ".sponsors");
+			String collectionType = Properties
+					.getString(collectionId + ".type");
+
 			Collection collection = new Collection(collectionId,
-					collectionTitle, collectionItems, collectionURL,
-					collectionHTML);
+					collectionTitle, collectionItemIds, collectionItems,
+					collectionSummary, collectionSponsors, collectionType);
 			collections.put(collectionId, collection);
 		}
-		
-		collectionsInitalised = true;
+
+		return true;
 
 	}
-	
+
 	public static Collection getCollectionFromId(String id) {
+
 		return collections.get(id);
 	}
-	
-	public static Iterator<Collection> getCollections() {
-		if (!collectionsInitalised) {
-			initCollections();
-		}
-		return collections.values().iterator();
+
+	public static List<Collection> getCollections() {
+
+		ArrayList<Collection> list = new ArrayList<Collection>(
+				collections.values());
+		Collections.sort(list);
+		return list;
 	}
+
 }
