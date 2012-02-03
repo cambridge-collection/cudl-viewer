@@ -176,7 +176,7 @@ ol#index_carousel li {
 	margin-top: 15px;
 	color:#ffffff;
     text-shadow: 0.1em 0.1em 0.2em black;
-	width:200px;
+	width:250px;
 }
 
 .foundations-link,.foundations-link a {
@@ -202,4 +202,20 @@ ol#index_carousel li {
 	border: 3px;
 	border-color: #000;
 	font-weight: bold;
+}
+
+.helpBanner {
+	margin-top:20px;
+}
+.helpBanner img {
+	display:inline;
+	margin-bottom: 0px;
+	margin-top: 6px;
+	height:10px;
+}
+.helpBanner a {
+	align:left;
+	font-size:1em;
+	text-decoration: none;
+	font-weight: bold; 
 }

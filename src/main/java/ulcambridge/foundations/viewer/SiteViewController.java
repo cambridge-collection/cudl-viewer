@@ -45,14 +45,14 @@ public class SiteViewController {
 		return modelAndView;
 	}
 	
-	// on path /feedback/
-	@RequestMapping(value = "/feedback")
-	public ModelAndView handleFeedbackRequest() {
+	// on path /help/
+	@RequestMapping(value = "/help")
+	public ModelAndView handleHelpRequest() {
 
-		ModelAndView modelAndView = new ModelAndView("jsp/feedback");
+		ModelAndView modelAndView = new ModelAndView("jsp/help");
 		return modelAndView;
-	}	
-
+	}
+	
 	// on path /terms/
 	@RequestMapping(value = "/terms")
 	public ModelAndView handleTermsRequest() {

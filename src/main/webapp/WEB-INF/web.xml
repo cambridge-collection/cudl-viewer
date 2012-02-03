@@ -110,6 +110,11 @@
 		<servlet-name>formcontroller</servlet-name>
 		<url-pattern>/feedbackform.html</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>formcontroller</servlet-name>
+		<url-pattern>/mailinglistform.html</url-pattern>
+	</servlet-mapping>	
 
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>

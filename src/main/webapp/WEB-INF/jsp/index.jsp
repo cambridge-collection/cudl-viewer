@@ -6,11 +6,15 @@
 	var index_carousel;
 	function init() {
 		index_carousel = new glow.widgets.Carousel("#index_carousel", {
-			loop : false,
+			loop : true,
 			size : 1,
 			step : 1,
 			theme : "light"
 		});
+		
+		// Goto a random item in the carousel
+		var randomnumber=Math.floor(Math.random()*(index_carousel._countRealItems));
+		index_carousel.moveTo(randomnumber, false);
 	}
 </script>
 
