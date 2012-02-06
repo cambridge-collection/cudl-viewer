@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"College Notebook",
                   "uniformTitle":"",
+                  "alternativeTitle":"",
                   "author":[
                   "Isaac Newton"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"http://www.youtube.com/v/eTVWQwwkkrU?version=3&hl=en_GB",
-                  "thumbnailurl":"/content/images/MS-ADD-04000-000-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"139",
-                  "thumbnailheight":"180",
+                  "mediaUrl":"http://www.youtube.com/v/eTVWQwwkkrU?version=3&hl=en_GB",
+                  "thumbnailUrl":"/content/MS-ADD-04000-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1664-01-01",
                   "dateCreatedEnd":"1665-01-01",
                   "dateCreatedDisplay":"c. 1664 - c. 1665",

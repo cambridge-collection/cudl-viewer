@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"Trinity College Notebook",
                   "uniformTitle":"",
+                  "alternativeTitle":"",
                   "author":[
                   "Isaac Newton"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-ADD-03996-000-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"139",
-                  "thumbnailheight":"180",
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-ADD-03996-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1661-01-01",
                   "dateCreatedEnd":"1665-01-01",
                   "dateCreatedDisplay":"c. 1661 - c. 1665",

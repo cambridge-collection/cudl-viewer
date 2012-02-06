@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"Elementary Mathematics",
                   "uniformTitle":"",
+                  "alternativeTitle":"",
                   "author":[
                   "Isaac Newton"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-ADD-03959-000-00003_files/8/0_0.jpg",
-                  "thumbnailwidth":"139",
-                  "thumbnailheight":"180",                  
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-ADD-03959-000-00003_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1700-01-01",
                   "dateCreatedEnd":"1700-01-01",
                   "dateCreatedDisplay":"c.1700",

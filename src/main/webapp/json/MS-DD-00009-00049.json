@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"El breve compendio de nuestra santa ley alçunna",
                   "uniformTitle":"ال بارابا كمبانديه دا نواشتر شنت لاي السنة كا اكبله ال انرد شبدر الفقي داللجمعه دا لش مسلماش دا كدراتا كا شا لمب بري دا رامنجه",
+                  "alternativeTitle":"",
                   "author":[
                   "Baray de Reminjo","Mancebo de Arévalo"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-DD-00009-00049-000-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"125",
-                  "thumbnailheight":"169",                  
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-DD-00009-00049-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1530-01-01",
                   "dateCreatedEnd":"1540-01-01",
                   "dateCreatedDisplay":"1530-1540 C.E.",

@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"Philosophiæ naturalis principia mathematica",
                   "uniformTitle":"Principia",
+                  "alternativeTitle":"",
                   "author":[
                   "Isaac Newton"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   "Londini"
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/PR-ADV-B-00039-00001-000-00009_files/8/0_0.jpg",
-                  "thumbnailwidth":"139",
-                  "thumbnailheight":"180",
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/PR-ADV-B-00039-00001-000-00009_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1687-01-01",
                   "dateCreatedEnd":"1687-01-01",
                   "dateCreatedDisplay":"1687",

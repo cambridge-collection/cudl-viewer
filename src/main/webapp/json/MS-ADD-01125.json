@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"(القران (اجزاء",
+                  "alternativeTitle":"",
                   "author":[
                   ""
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/images/thumbnails/Add1125thumb.jpg",
-                  "thumbnailwidth":"125",
-                  "thumbnailheight":"173",                  
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/images/thumbnails/Add1125thumb.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"0700-01-01",
                   "dateCreatedEnd":"0800-01-01",
                   "dateCreatedDisplay":"2nd century A.H. / 8th century C.E.",

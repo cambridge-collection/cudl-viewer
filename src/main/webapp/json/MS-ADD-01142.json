@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"القرآن (اجزاء)",
+                  "alternativeTitle":"",
                   "author":[
                   ""
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-ADD-01142-000-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"185",
-                  "thumbnailheight":"201",                  
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-ADD-01142-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"0900-01-01",
                   "dateCreatedEnd":"1100-01-01",
                   "dateCreatedDisplay":"4th-5th century A.H. / 10th-11th century C.E.",

@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"Sharḥ Alfīyah Ibn Mālik",
                   "uniformTitle":"شرح الفية ابن مالك",
+                  "alternativeTitle":"",
                   "author":[
                   "al-Makkūdī","Thomas Erpenius"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-MM-00006-00023-000-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"125",
-                  "thumbnailheight":"179",                  
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-MM-00006-00023-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1350-01-01",
                   "dateCreatedEnd":"1404-01-01",
                   "dateCreatedDisplay":"Before 1404 C.E.",

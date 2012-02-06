@@ -6,6 +6,7 @@
                   "ID":"DMD1",
                   "title":"Hydrostatics, Optics, Sound and Heat",
                   "uniformTitle":"",
+                  "alternativeTitle":"",
                   "author":[
                   "Isaac Newton"
                   ],
@@ -22,10 +23,9 @@
                   "publicationPlace":[
                   ""
                   ],
-                  "mediaurl":"",
-                  "thumbnailurl":"/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg",
-                  "thumbnailwidth":"139",
-                  "thumbnailheight":"180",
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-ADD-03970-001-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1672-01-01",
                   "dateCreatedEnd":"1706-01-01",
                   "dateCreatedDisplay":"c. 1672 - c. 1706",
