@@ -1,0 +1,91 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.1",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "author":[
+                  ""
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Part of a <em>ketubba</em> for Nāsiyya bat Moses ha-Kohen b. Aaron ha-Kohen (bride) and David <em>ha-Nasi</em> b. Daniel <em>ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov</em> (groom). Dated 23rd Shevaṭ 1393 (= 1082 CE), probably from Cairo. The dowry is over 1100 gold dinars. As the bride is from a prominent Karaite family, and the groom is a high-ranking Rabbanite, there are special clauses in the contract stating that the groom will not force the bride to compromise her Karaite principles, and the bride will join her husband in observing the Rabbanite feasts. Attested by the Bet Din and witnessed by Jekuthiel b. Moses, Nissim b. Maḥbūb, Solomon b. Isaac, Ezekiel ha-Kohen <em>he-Ḥaver</em> b. ʿEli <em>he-Ḥaver</em>, Hodaiah b. Josiah, Joseph b. Samuel, Joseph b. Eleazar, Ṣedaqa b. Muvḥar, Aaron b. Abraham, Nethaneel b. Yefet he-Ḥaver, Aaron the cantor b. Abraham, Hillel the cantor b. [...], Abraham b. Isaac.</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  "Cairo"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00001-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1082-01-01",
+                  "dateCreatedEnd":"1083-01-01",
+                  "dateCreatedDisplay":"23rd Shevaṭ 1393 (= 1082 C.E.)",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "heb","arc","jrb"
+                  ],
+                  "notes":[
+                  "Interlinear corrections are noted in the postscript to the deed","Legal document: ketubba"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.1",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 43.5 x 50; Vellum; 18 lines (recto; verso is blank)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00001-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00001-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00001-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00001-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.1",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

@@ -1,0 +1,91 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.9",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "author":[
+                  "Emmanuel b. Yeḥiʾel"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Part of a pre-nuptial agreement for [...] b. Barak[āt] b. Shelah ha-Levi al-Sukkarī (the sugar-maker) (bride) and [...] b. Peraḥya (groom). The document contains the dowry list and an approval of the groom for receiving it. Dated 13th Elul 1[...], in Fusṭāṭ. Issued under the authority of David the Nagid (Maymuni, 13th century). Written by Emmanuel b. Yeḥiʾel</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  "Fusṭāṭ"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00009-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1200-01-01",
+                  "dateCreatedEnd":"1300-01-01",
+                  "dateCreatedDisplay":"13th Elul 1[...]",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "arc","jrb","heb"
+                  ],
+                  "notes":[
+                  "Legal document"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.9",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 49.6 x 23.9; Vellum; 61 lines (recto; verso is blank)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00009-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00009-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00009-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00009-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.9",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

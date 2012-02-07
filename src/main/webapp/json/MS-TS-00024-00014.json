@@ -1,0 +1,91 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.14",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "author":[
+                  "Ḥalfon b. Manasseh ha-Levi"
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>A gift given by an old man to be collected after his death. Names: Eleazar Manṣūr al-Tarābulsī b. Solomon, Ṣedaqa b. ʿEli, Mawhūb al-Ḏahabī, Abū ʿImrān <em>ha-Parnas</em> בן מגאן, Abu l-Munā b. Raḥma, Abu l-Faraj al-Sibāḡ, Abū ʿImrān ha-Kohen, אלכצאבי ,נגא אלקצאב. Signed by Abraham b. Shemaiah <em>he-ḥaver</em>, Isaac b. Samuel the Spaniard, Nathaniel ha-levi b. Aaron ha-Levi, and Ḥalfon b. Manasseh ha-Levi, who also wrote the document</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00014-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1000-01-01",
+                  "dateCreatedEnd":"1600-01-01",
+                  "dateCreatedDisplay":"c.11th-16th Century C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "jrb","heb","arc"
+                  ],
+                  "notes":[
+                  "Legal document"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.14",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 55 x 28; Vellum; 54 lines (recto; verso is blank)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00014-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00014-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00014-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00014-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.14",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

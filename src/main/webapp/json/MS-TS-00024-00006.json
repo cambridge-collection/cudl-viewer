@@ -1,0 +1,91 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.6",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "author":[
+                  ""
+                  ],
+                  "contributor":[
+                  ""
+                  ],
+                  "abstract":"<p>Part of a letter, circa 1030 CE, from the Jewish community in Sicily, its court and elders (probably the principal community in Palermo), to the Jewish communities in Qayrawān and al-Mahdiyya, specifically addressing Elḥanan b. Ḥushiʾel and Jacob the Nagid b. Amram as heads of the community in Qayrawān, praising the achievements of Ḥayyim b. Jacob the Spaniard (known as Ḵalaf). The letter mentions other individuals including a certain Nathan, Abraham b. David b. Labrāṭ, Samuel b. Moses, Abu l-Faraj, who is on his way to Egypt, Moses b. Yaḥyā the perfumer, and ʿAmmar b. Joshua al-Ḥalabī (i.e. from Aleppo). Signed by Samuel b. Moses, David b. Levi, Samuel b. [...], Sahlān b. Joshua, Jose[ph] b. [...], [...] b. [...]el, Abraham b. Hayyim, Judah b. Elijah, Elijah b. Jonah, Elijah b. Abraham, [...] b. Jacob, Nissim b. Abraham, Mattithiah b. Jon[ah], [...] b. Jacob, Pappos b. Shabbethai, Shabbethai b. [...], [...] b. Judah, Isaac b. Isaac the cantor, Isaac b. [...].</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  "Sicily"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00006-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1030-01-01",
+                  "dateCreatedEnd":"1031-01-01",
+                  "dateCreatedDisplay":"c.1030 C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "heb"
+                  ],
+                  "notes":[
+                  "Ruled. Biblical verses (marked with supralinear diagonal strokes) and rhymed phrases precede the main text.","Letter"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.6",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 57.9 x 36.5; Vellum; 70 lines (recto), 5 lines (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00006-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00006-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00006-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00006-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.6",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   
