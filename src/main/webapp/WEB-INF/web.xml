@@ -116,6 +116,18 @@
 		<url-pattern>/mailinglistform.html</url-pattern>
 	</servlet-mapping>	
 
+    <!-- image proxy -->
+	<servlet>
+		<servlet-name>imageproxy</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>imageproxy</servlet-name>
+		<url-pattern>/imageproxy/*</url-pattern>
+	</servlet-mapping>
+	
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>
 		<extension>json</extension>

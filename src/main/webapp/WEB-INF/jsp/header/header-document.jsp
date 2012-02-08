@@ -30,6 +30,7 @@
 	var docId = '${docId}';
 	var collectionURL = '${collectionURL}';
 	var collectionTitle = '${collectionTitle}';
+	var proxyURL = '${proxyURL}';
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>

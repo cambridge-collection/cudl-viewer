@@ -94,7 +94,7 @@ var docView = function() {
 			if (viewer && data) {
 
 				// show image
-				viewer.openDzi(data.pages[pagenum - 1].displayImageURL);
+				viewer.openDzi(proxyURL+data.pages[pagenum - 1].displayImageURL);
 
 				// setup image download link
 				downloadImageLink = "/download/image%252Fjpg/document-image"

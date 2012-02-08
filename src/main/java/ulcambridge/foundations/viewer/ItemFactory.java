@@ -55,8 +55,15 @@ public class ItemFactory {
 					itemShelfLocator = descriptiveMetadata
 							.getString("shelfLocator");
 					itemAbstract = descriptiveMetadata.getString("abstract");
+
+					// Thumbnails
 					itemThumbnailURL = descriptiveMetadata
 							.getString("thumbnailUrl");
+					if (Properties.getString("useProxy").equals("true")) {
+						itemThumbnailURL = Properties.getString("imageServer")
+								+ descriptiveMetadata.getString("thumbnailUrl");
+					}
+
 					thumbnailOrientation = descriptiveMetadata
 							.getString("thumbnailOrientation");
 
@@ -105,11 +112,11 @@ public class ItemFactory {
 		}
 		return false;
 	}
-	
+
 	private static Dimension getWidthHeightImage(URL url) {
 
-	   ImageIcon icon = new ImageIcon(url);
-	   return new Dimension (icon.getIconWidth(), icon.getIconHeight());
+		ImageIcon icon = new ImageIcon(url);
+		return new Dimension(icon.getIconWidth(), icon.getIconHeight());
 
 	}
 }

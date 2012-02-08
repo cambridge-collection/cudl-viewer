@@ -11,8 +11,6 @@ public class Properties {
 	private final static ResourceBundle collectionConfig = ResourceBundle
 			.getBundle("collections");
 
-	private static String rootURL;
-
 	public static String getString(String key) {
 
 		// Check global properties
@@ -36,17 +34,6 @@ public class Properties {
 		}
 
 		return null;
-	}
-
-	public static void setRootURL(String url) {
-		rootURL = url;
-	}
-
-	/**
-	 * @return The root URL at which this application is running.
-	 */
-	public static String getRootURL() {
-		return "http://cudl.lib.cam.ac.uk";
 	}
 
 }

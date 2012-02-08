@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -61,11 +62,18 @@ public class DocumentViewController {
 			}
 		}
 
+		// Get proxyURL (if we are using a proxy)
+		String proxyURL="";
+		if (Properties.getString("useProxy").equals("true")) {
+			proxyURL=Properties.getString("proxyURL");
+	    }
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", 1); // defaults to first page.
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("requestURL", requestURL);
+		modelAndView.addObject("proxyURL", proxyURL);		
 		if (docCollection!=null) {
 			modelAndView.addObject("collectionURL", docCollection.getURL());
 			modelAndView.addObject("collectionTitle", docCollection.getTitle());
@@ -109,11 +117,18 @@ public class DocumentViewController {
 			}
 		}
 		
+		// Get proxyURL (if we are using a proxy)
+		String proxyURL="";
+		if (Properties.getString("useProxy").equals("true")) {
+			proxyURL=Properties.getString("proxyURL");
+	    }
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
 		modelAndView.addObject("page", page);
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("requestURL", requestURL);
+		modelAndView.addObject("proxyURL", proxyURL);
 		if (docCollection!=null) {
 			modelAndView.addObject("collectionURL", docCollection.getURL());
 			modelAndView.addObject("collectionTitle", docCollection.getTitle());

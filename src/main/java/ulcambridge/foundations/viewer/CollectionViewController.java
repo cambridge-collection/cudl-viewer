@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,7 +42,7 @@ public class CollectionViewController {
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"+collection.getType());
 		
 		modelAndView.addObject("collection", collection);
-		
+
 		return modelAndView;
 		
 	}
