@@ -14,7 +14,7 @@
 <div class="grid_19">
 	<div class="grid_5">
 		<img alt="Islamic Manuscripts" title="Islamic Manuscripts"
-			src="/images/index/Islamic200x200.jpg" height="200" width="200">
+			src="/images/index/news-islamic.jpg" height="200" width="200">
 	</div>
 
 	<div class="grid_11">
@@ -39,7 +39,7 @@
 		<img
 			alt="Illustration from a tenth century copy of the Perfection of Wisdom"
 			title="Illustration from a tenth century copy of the Perfection of Wisdom"
-			src="/images/index/Sanskrit200x200.jpg" height="200" width="200">
+			src="/images/index/news-sanskrit.jpg" height="200" width="200">
 	</div>
 
 	<div class="grid_11">
@@ -70,7 +70,7 @@
 <div class="grid_19">
 	<div class="grid_5">
 		<img alt="Introducing the Cambridge Digital Library"
-			src="/images/index/Newton200x200.jpg" height="200" width="200"
+			src="/images/index/news-newton.jpg" height="200" width="200"
 			title="Introducing the Cambridge Digital Library">
 	</div>
 

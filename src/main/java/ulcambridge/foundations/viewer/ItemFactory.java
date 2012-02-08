@@ -1,10 +1,14 @@
 package ulcambridge.foundations.viewer;
 
+import java.awt.Dimension;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,8 +21,6 @@ public class ItemFactory {
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
 	private static Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
-
-	// private static boolean itemsInitalised = false;
 
 	/**
 	 * Initalise the collections hashtable from information in the collections
@@ -39,8 +41,7 @@ public class ItemFactory {
 			String itemShelfLocator = "";
 			String itemAbstract = "";
 			String itemThumbnailURL = "";
-			int itemThumbnailWidth = 0;
-			int itemThumbnailHeight = 0;
+			String thumbnailOrientation = "";
 
 			if (itemId != null && !itemId.equals("")) {
 				try {
@@ -55,11 +56,9 @@ public class ItemFactory {
 							.getString("shelfLocator");
 					itemAbstract = descriptiveMetadata.getString("abstract");
 					itemThumbnailURL = descriptiveMetadata
-							.getString("thumbnailurl");
-					itemThumbnailWidth = descriptiveMetadata
-					.getInt("thumbnailwidth");
-					itemThumbnailHeight = descriptiveMetadata
-					.getInt("thumbnailheight");					
+							.getString("thumbnailUrl");
+					thumbnailOrientation = descriptiveMetadata
+							.getString("thumbnailOrientation");
 
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -68,8 +67,7 @@ public class ItemFactory {
 				}
 
 				Item item = new Item(itemId, itemTitle, itemShelfLocator,
-						itemAbstract, itemThumbnailURL, itemThumbnailWidth,
-						itemThumbnailHeight);
+						itemAbstract, itemThumbnailURL, thumbnailOrientation);
 
 				items.put(itemId, item);
 
@@ -106,5 +104,12 @@ public class ItemFactory {
 			return true;
 		}
 		return false;
+	}
+	
+	private static Dimension getWidthHeightImage(URL url) {
+
+	   ImageIcon icon = new ImageIcon(url);
+	   return new Dimension (icon.getIconWidth(), icon.getIconHeight());
+
 	}
 }

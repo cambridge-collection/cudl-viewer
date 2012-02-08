@@ -26,14 +26,22 @@
 
 <div class="grid_20">
 
-
 	<% 
 	   Iterator<Item> items = collection.getItems().iterator();
 	   
 	   while(items.hasNext()) {
 		   Item item = items.next();
-		   out.print("<div class='grid_9'><a href='/view/"+item.getId()+"/'><img class='bookSelectImage' "+
-				   "src='"+item.getThumbnailURL()+"' width='"+item.getThumbnailWidth()+"' height='"+item.getThumbnailHeight()+" "+
+		   
+			String imageDimensions = "";			
+
+			if (item.getThumbnailOrientation().equals("portrait")) {
+				imageDimensions += " width='140px'  height='185px'";
+			} else if (item.getThumbnailOrientation().equals("landscape")) {
+				imageDimensions += " width='185px' height='140px' ";
+			}
+			
+		   out.print("<div class='grid_9'><a href='/view/"+item.getId()+"/'><img class='collections_carousel_image' "+
+				   "src='"+item.getThumbnailURL()+"' "+imageDimensions+" "+
 				   "alt='"+item.getId()+"' > </a>\n ");
 		   out.print("<h5>"+item.getTitle()+" ("+item.getShelfLocator()+")</h5> " +
 				   item.getAbstractShort()+" ... <a href='/view/"+item.getId()+"/'>more</a> "+

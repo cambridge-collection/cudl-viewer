@@ -38,18 +38,9 @@ public class CollectionViewController {
 	public ModelAndView handleRequest(HttpServletResponse response, @PathVariable("collectionId") String collectionId,
 			HttpServletRequest request) {
 		
-		//TODO 
-		// Set attributes for the text, and html and images we want to read in.  
-		// change collections page to be a single template 
-		// think about collection type - virtual vs real collections
-		// also display for exhibitions
 		
-		// Find our what type of collection it is
-		//String collectionType = "organisation"; //TODO enum
-		
-						
 		Collection collection = CollectionFactory.getCollectionFromId(collectionId);
-				
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"+collection.getType());
 		
 		modelAndView.addObject("collection", collection);

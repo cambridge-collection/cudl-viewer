@@ -147,6 +147,7 @@ var docView = function() {
 				
 				var optionalMetadata = "";
 				optionalMetadata += view.getMetadataHTML("Uniform title: ", descriptiveMetadata.uniformTitle);
+				optionalMetadata += view.getMetadataHTML("Alternative title: ", descriptiveMetadata.alternativeTitle);
 				optionalMetadata += view.getMetadataHTML("Publisher: ", descriptiveMetadata.publisher);
 				optionalMetadata += view.getMetadataHTML("Publication place: ", descriptiveMetadata.publicationPlace);
 				optionalMetadata += view.getMetadataHTML("Extent: ", descriptiveMetadata.extent);
@@ -158,7 +159,7 @@ var docView = function() {
 						optionalMetadata);
 
 				var abstractText = "";
-				if (descriptiveMetadata.mediaurl) {
+				if (descriptiveMetadata.mediaUrl) {
 
 					var mediawidth = 280;
 					var mediaheight = 157;
@@ -167,9 +168,9 @@ var docView = function() {
 							+ "\" height=\""
 							+ mediaheight
 							+ "\"><param name=\"movie\" value=\""
-							+ descriptiveMetadata.mediaurl
+							+ descriptiveMetadata.mediaUrl
 							+ "\"></param><param name=\"allowFullScreen\" value=\"true\"></param><param name=\"allowscriptaccess\" value=\"always\"></param><embed src=\""
-							+ descriptiveMetadata.mediaurl
+							+ descriptiveMetadata.mediaUrl
 							+ "\" type=\"application/x-shockwave-flash\" width=\""
 							+ mediawidth
 							+ "\" height=\""

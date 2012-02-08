@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		<div class="grid_20">
-			<div class="grid_4"><img src="/images/index/Thornhill140.jpg" alt="Newton Portrait by Sir James Thornhill. Reproduced with the kind permission of the Master and Fellows, Trinity College, Cambridge" title="Newton Portrait by Sir James Thornhill. Reproduced with the kind permission of the Master and Fellows, Trinity College, Cambridge" /></div>
+			<div class="grid_4"><img src="/images/index/holdingpage-thornhill.jpg" alt="Newton Portrait by Sir James Thornhill. Reproduced with the kind permission of the Master and Fellows, Trinity College, Cambridge" title="Newton Portrait by Sir James Thornhill. Reproduced with the kind permission of the Master and Fellows, Trinity College, Cambridge" /></div>
 			<div class="grid_11">
 				<h4>Foundations of Science</h4>
 				<p>Cambridge University Library has very strong collections in
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="grid_20">
-			<div class="grid_4"><img src="/images/index/Buddha140.jpg" alt="Illustration of the Buddha from a tenth century copy of the Perfection of Wisdom" title="Illustration of the Buddha from a tenth century copy of the Perfection of Wisdom" /></div>
+			<div class="grid_4"><img src="/images/index/holdingpage-buddha.jpg" alt="Illustration of the Buddha from a tenth century copy of the Perfection of Wisdom" title="Illustration of the Buddha from a tenth century copy of the Perfection of Wisdom" /></div>
 			<div class="grid_11">
 				<h4>Foundations of Faith</h4>
 				<p>The Foundations of Faith Collection will include important

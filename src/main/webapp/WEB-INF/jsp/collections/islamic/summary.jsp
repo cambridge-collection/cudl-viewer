@@ -12,7 +12,7 @@
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
-		<img class="collectionImage" src="/images/collectionsView/islamic.jpg"
+		<img class="collectionOrganisationalImage" src="/images/collectionsView/islamic.jpg"
 			alt="Islamic Manuscripts" width="150" height="225" /><span
 			class="image-credit">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a

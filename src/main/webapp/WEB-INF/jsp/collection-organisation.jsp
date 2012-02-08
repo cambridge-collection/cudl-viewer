@@ -1,4 +1,5 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="ulcambridge.foundations.viewer.model.*, java.util.Iterator"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-browse.jsp" />
 <jsp:include page="header/nav-browse-collections.jsp" />
@@ -30,25 +31,32 @@
 	<% 
 	   Iterator<Item> items = collection.getItems().iterator();
 	   
-	   while(items.hasNext()) {
-		   Item item = items.next();
-		   out.print("<li><a href='/view/"+item.getId()+"/'><img class='bookSelectImage' "+
-				   "src='"+item.getThumbnailURL()+"' "+
-				   "alt='"+item.getId()+"' width='"+item.getThumbnailWidth()+"' height='"+item.getThumbnailHeight()+"'> </a>\n ");
-		   out.print("<h5>"+item.getTitle()+" ("+item.getShelfLocator()+")</h5> " +
-				   item.getAbstractShort()+" ... <a href='/view/"+item.getId()+"/'>more</a> "+
-				    "</li>\n\n");
-	   }
-	
-	%>
+	   while (items.hasNext()) {
+				Item item = items.next();
+				
+				String imageDimensions = "";
+				if (item.getThumbnailOrientation().equals("portrait")) {
+					imageDimensions += " width='140px' ";
+				} else if (item.getThumbnailOrientation().equals("landscape")) {
+					imageDimensions += " width='185px' ";
+				}
+
+				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image'><a href='/view/" + item.getId()
+						+ "/'><img " + "src='" + item.getThumbnailURL()+ "' " + "alt='"
+						+ item.getId() + "' "+imageDimensions
+						+ "></a></div> \n ");
+				out.print("<div class='collections_carousel_text'><h5>" + item.getTitle() + " ("
+						+ item.getShelfLocator() + ")</h5> "
+						+ item.getAbstractShort() + " ... <a href='/view/"
+						+ item.getId() + "/'>more</a> " + "</div><div class='clear'></div></div></li>\n\n");
+			}
+		%>
 	</ol>
 
 
 </div>
 
-<jsp:include page="<%=collection.getSponsors() %>" />
-
-</section>
+<jsp:include page="<%=collection.getSponsors() %>" /> </section>
 
 <jsp:include page="footer/footer.jsp" />
 

@@ -45,10 +45,13 @@ body {
 
 				<p>If you would like to receive details of any updates or
 					changes to this site, then join our mailing list. Our email service
-					will alert you when new material is added to this website. Just
-					fill in the form below (fields marked with a * are required).</p>
+					will alert you when new material is added to this website.</p>
 				<p>
-					<form:label path="name">Name:</form:label>
+					Just send an email to <a
+						href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">cudl-updates-subscribe@caret.cam.ac.uk</a> to subscribe.
+
+
+					<!--<form:label path="name">Name:</form:label>
 					<em>*</em>
 					<form:input path="name" />
 					<form:errors path="name" cssClass="error" />
@@ -61,8 +64,7 @@ body {
 				</p>
 
 				<input type="submit" name=submit value="Sign up">
-			</form:form>
-
+			</form:form>-->
 		</div>
 	</div>
 

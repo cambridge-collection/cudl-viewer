@@ -6,14 +6,23 @@ function toggleDiv(divid) {
 	}
 }
 
+/* Fancybox setup */
 $(document).ready(function() {
-$(".iframe").fancybox({
-	'width'				: '75%',
-	'height'			: '75%',
-	'autoScale'			: false,
-	'transitionIn'		: 'none',
-	'transitionOut'		: 'none',
-	'type'				: 'iframe',
-	'titleShow'			: false
-});
+	$(".iframe").fancybox({
+		'width' : '75%',
+		'height' : '75%',
+		'autoScale' : false,
+		'transitionIn' : 'none',
+		'transitionOut' : 'none',
+		'type' : 'iframe',
+		'titleShow' : false
+	});
+	
+	$("a#inline").fancybox({
+		'width' : '75%',
+		'height' : '75%',
+		'autoScale' : false,
+		'transitionIn' : 'none',
+		'transitionOut' : 'none'
+	});
 });

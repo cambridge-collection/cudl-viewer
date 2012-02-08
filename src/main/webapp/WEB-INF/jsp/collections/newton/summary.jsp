@@ -11,7 +11,7 @@
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
-		<img class="collectionImage" src="/images/collectionsView/newton.jpg"
+		<img class="collectionOrganisationalImage" src="/images/collectionsView/newton.jpg"
 			alt="Newton" width="150" height="225" /> <span class="image-credit">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
 				College, Cambridge.</a> </span>

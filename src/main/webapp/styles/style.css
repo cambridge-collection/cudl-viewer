@@ -3,19 +3,8 @@ html {
 	background: #ffffff url(/images/header/gradient.jpg) repeat-x;
 }
 
-ol#collections_carousel li {
-	margin: 4px;
-	height: 217px;
-	width: 350px;
-	font-style: normal;
-	list-style: none outside none;
-}
-ol#vcollections_carousel li {
-	margin: 4px;
-	height: 217px;
-	width: 550px;
-	font-style: normal;
-	list-style: none outside none;
+body {
+	background: none;
 }
 
 .contibutors li {
@@ -26,21 +15,8 @@ ol#vcollections_carousel li {
 	padding: 5px;
 }
 
-/*.grid_9 {
-	margin-left: 35px;
-}*/
-.bookSelectImage {
-	position: relative;
-	float: right;
-	padding: 10px;
-}
-
 .container {
 	background-color: #FFFFFF;
-}
-
-body {
-	background: none;
 }
 
 #libraryLogo {
@@ -54,51 +30,8 @@ body {
 
 .content {
 	background-color: #FFFFFF;
-	/*padding: 18px 0 0 0;*/
 }
 
-/*h3,h2,h1,h4 {
-	line-height: 18px;
-}*/
-
-/* credit text for images, small */
-.image-credit,.image-credit a {
-	font-size: 8px;
-	color: #999999;
-	vertical-align: top;
-	text-decoration: none;
-	border: 0px;
-	padding: 0px;
-}
-
-/* Header Styles */
-/*#localMasthead h1,#localMasthead h1 a,#localMasthead h2,#localMasthead h2 a
-	{
-	color: #333333;
-}*/
-
-/*#localMasthead {
-	height: 35px;
-}
-
-.grid_19 {
-	margin-left: 35px;
-}*/
-
-/* Banner Image */
-/*#localMasthead h2 {
-	display: inline;
-	vertical-align: top;
-	margin-left: 10px;
-	padding: 0px;
-}
-
-#localMasthead img {
-	display: inline;
-	vertical-align: top;
-	margin-top: -10px;
-	padding: 0px;
-}*/
 ol#index_carousel li {
 	position: relative;
 	float: left;
@@ -139,9 +72,64 @@ ol#index_carousel li {
 }
 
 .collectionImage {
-	margin-bottom: 0px;
-	margin-left: auto;
-	margin-right: 0px;
+	margin-left: 0px;
+	margin-right:14px;
+	float:left;
+}
+
+.collection {
+	position:relative;
+	background: #999; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cccccc'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ffffff,  #cccccc); /* for firefox 3.6+ */ 
+	padding:14px;
+	display:block;
+	height:150px;
+}
+
+.collection-science {
+	background:#ccd4ff;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ccd4ff'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ccd4ff)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ffffff,  #ccd4ff); /* for firefox 3.6+ */ 	
+}
+
+.collection-faith {
+	background:#fff4d0;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fff4d0'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fff4d0)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ffffff,  #fff4d0); /* for firefox 3.6+ */ 	
+}
+
+.featuredItem-text a {
+
+    text-decoration: none;
+}
+
+.featuredItem {
+	position:relative;
+    margin-left:18px;
+}
+	
+.foundations-link-faith,.foundations-link-faith a {
+	color: #8f7722;
+    position:absolute;
+	right: 4px;
+	bottom: 0px;
+	text-align:right; 
+	width:100%;  
+    text-decoration: none;
+}
+
+.foundations-link-science,.foundations-link-science a {
+	color: #324088;
+    position:absolute;
+	right: 4px;
+	bottom: 0px;
+	text-align:right; 
+	width:100%;   
+    text-decoration: none;	
 }
 
 .news {
@@ -179,10 +167,6 @@ ol#index_carousel li {
 	width:250px;
 }
 
-.foundations-link,.foundations-link a {
-	color: #900;
-}
-
 .arabic {
 	font-style: normal;
 	margin-left: auto;
@@ -218,4 +202,56 @@ ol#index_carousel li {
 	font-size:1em;
 	text-decoration: none;
 	font-weight: bold; 
+}
+
+.collectionOrganisationalImage {
+	margin-left: 14px;
+	margin-right:0px;
+	margin-bottom:0px;
+	float:right;
+}
+
+.collections_carousel {
+	position:relative;
+	display:block;
+}
+.collections_carousel_item {
+	width: 400px;
+	font-style: normal;	
+	position:relative;
+	display:block;
+}
+	
+ol#collections_carousel li {
+	list-style: none outside none;
+}
+
+/* Note the max height and width are set in jsp also */
+.collections_carousel_image img {
+	margin-left: 14px;
+	float:right;
+	border: 4px;
+}
+.collections_carousel_text {
+}
+
+ol#vcollections_carousel li {
+	margin: 4px;
+	height: 217px;
+	width: 550px;
+	font-style: normal;
+	list-style: none outside none;
+}
+
+/* credit text for images, small */
+.image-credit,.image-credit a {
+	font-size: 0.8em;
+	color: #999999;
+	vertical-align: top;
+	text-decoration: none;
+	border: 0px;
+	padding: 0px;
+}
+.clear {
+clear:both; 
 }

@@ -16,21 +16,19 @@ public class Item implements Comparable<Item> {
 	private String shelfLocator;
 	private String abstractText;
 	private String thumbnailURL;
-	private int thumbnailWidth;
-	private int thumbnailHeight;	
+	private String thumbnailOrientation;
 	private String abstractShort;
 
 	public Item(String itemId, String itemTitle, String shelfLocator,
-			String abstractText, String thumbnailURL, int thumbnailWidth,
-			int thumbnailHeight) {
+			String abstractText, String thumbnailURL,
+			String thumbnailOrientation) {
 
 		this.id = itemId;
 		this.title = itemTitle;
 		this.shelfLocator = shelfLocator;
 		this.abstractText = abstractText;
 		this.thumbnailURL = thumbnailURL;
-		this.thumbnailWidth = thumbnailWidth;
-		this.thumbnailHeight = thumbnailHeight;
+		this.thumbnailOrientation = thumbnailOrientation;
 
 		String abstractShort = abstractText;
 		abstractShort = abstractShort.replaceAll("\\<.*?>", ""); // remove tags
@@ -73,14 +71,10 @@ public class Item implements Comparable<Item> {
 	public String getThumbnailURL() {
 		return thumbnailURL;
 	}
-	
-	public int getThumbnailWidth() {
-		return thumbnailWidth;
+
+	public String getThumbnailOrientation() {
+		return thumbnailOrientation;
 	}
-	
-	public int getThumbnailHeight() {
-		return thumbnailHeight;
-	}	
 
 	public String getShelfLocator() {
 		return shelfLocator;
