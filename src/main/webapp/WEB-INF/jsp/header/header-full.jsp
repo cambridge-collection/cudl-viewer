@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page import="java.net.URLEncoder, java.util.Enumeration"%>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,23 @@
 <script src="/scripts/glow/1.7.7/widgets/widgets.js"
 	type="text/javascript"></script>
 <link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
+
+<%
+    // Redirect to home page if javascript is not enabled 
+	String redirectURL = "/";
+	String encodedRedirectURL = URLEncoder.encode(redirectURL, "UTF-8");
+	
+	// ensure we don't loop when displaying the nojavascript page.
+	if (!request.getRequestURI().toString().contains("nojavascript")) {
+%>     
+<NOSCRIPT>
+	<!--  no javascript redirect. -->
+	<META HTTP-EQUIV="refresh"
+		content="0; URL=/nojavascript?url=<%=encodedRedirectURL%>" />
+</NOSCRIPT>
+<%
+	}
+%>
 
 <script type="text/javascript">
 	// initalise page if function is available. 

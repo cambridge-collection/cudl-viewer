@@ -13,7 +13,7 @@
 
 			<div class="grid_11">
 				<h4>
-					No javascript found. 
+					Javascript required.
 				</h4>
 				<p>Javascript is required to view this page, please enable javascript and <a href="${requestURL}">try again</a>. </p>
 			</div>
