@@ -7,13 +7,107 @@
                   "title":"Genizah Manuscript T-S 24.15",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Recto: part of a <em>ketubba</em> for Joshua b. Samuel b. Judah <em>he-Ḥaver</em> (groom) and Sitt al-Ahl b. Yefet (bride). Witnessed by ʿEli ha-Kohen b. Ezekiel ha-Kohen <em>he-Ḥaver</em>, Eleazer ha-Kohen b. Solomon <em>ha-Roš</em> b. Joseph <em>ha-Ṣadiq</em> Gaʾon, Isaac b. Ḡālib the cantor, Ezekiel b. Nathan, Judah b. Solomon the scribe, Saʿadya b. Abraham, and Joseph ha-Levi b. Yefet, and attested by the Bet Din. Dated 1[.]36 (= 1125 CE) in Fusṭāṭ. Verso: two documents relating to the same couple: a gift given to the bride by her mother and a betrothal agreement in which the husband remarries his wife after divorcing her.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Joshua ben Samuel ben Judah he-Ḥaver",
+                     "displayForm":"Joshua ben Samuel ben Judah he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Sitt al-Ahl ben Yefet",
+                     "displayForm":"Sitt al-Ahl ben Yefet",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿEli ha-Kohen ben Ezekiel ha-Kohen he-Ḥaver",
+                     "displayForm":"ʿEli ha-Kohen ben Ezekiel ha-Kohen he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Eleazer ha-Kohen ben Solomon ha-Roš ben Joseph ha-Ṣadiq Gaʾon",
+                     "displayForm":"Eleazer ha-Kohen ben Solomon ha-Roš ben Joseph ha-Ṣadiq Gaʾon",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Isaac ben Ḡālib the cantor",
+                     "displayForm":"Isaac ben Ḡālib the cantor",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ezekiel ben Nathan",
+                     "displayForm":"Ezekiel ben Nathan",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Judah ben Solomon the scribe",
+                     "displayForm":"Judah ben Solomon the scribe",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Saʿadya ben Abraham",
+                     "displayForm":"Saʿadya ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Joseph ha-Levi ben Yefet",
+                     "displayForm":"Joseph ha-Levi ben Yefet",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto: part of a <em>ketubba</em> for Joshua ben Samuel ben Judah <em>he-Ḥaver</em> (groom) and Sitt al-Ahl ben Yefet (bride). Witnessed by ʿEli ha-Kohen ben Ezekiel ha-Kohen <em>he-Ḥaver</em>, Eleazer ha-Kohen ben Solomon <em>ha-Roš</em> ben Joseph <em>ha-Ṣadiq</em> Gaʾon, Isaac ben Ḡālib the cantor, Ezekiel ben Nathan, Judah ben Solomon the scribe, Saʿadya ben Abraham, and Joseph ha-Levi ben Yefet, and attested by the Bet Din. Dated 1[.]36 (= 1125 CE) in Fusṭāṭ. Verso: two documents relating to the same couple: a gift given to the bride by her mother and a betrothal agreement in which the husband remarries his wife after divorcing her.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -36,10 +130,13 @@
                   "arc","jrb","heb"
                   ],
                   "notes":[
-                  "Both recto and verso are in the hand of Ḥalfon b. Manasseh. The top part of this document is T-S 20.62 and the rest of this document is found in T-S 24.15.","Legal document: ketubba"
+                  "Both recto and verso are in the hand of Ḥalfon ben Manasseh. The top part of this document is T-S 20.62 and the rest of this document is found in T-S 24.15.","Legal document: ketubba"
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic; Judaeo-Arabic; Hebrew"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.15",

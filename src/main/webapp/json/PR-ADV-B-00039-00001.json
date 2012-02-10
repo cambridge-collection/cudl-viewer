@@ -7,12 +7,25 @@
                   "title":"Philosophiæ naturalis principia mathematica",
                   "uniformTitle":"Principia",
                   "alternativeTitle":"",
-                  "author":[
-                  "Isaac Newton"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Newton, Isaac, Sir, 1642-1727",
+                     "displayForm":"Isaac Newton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891",
+                     "displayForm":"Fifth Earl of Portsmouth",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>Newton's monumental <i>Philosophiæ Naturalis Principia Mathematica</i>, often shortened to <i>Principia</i>, was published in July 1687 and brought him international fame. In this three-part work, he lays out in mathematical terms his laws of motion and account of universal gravitation.</p> <br/> <p>Although he was able to provide a convincing description of the effects of gravitation, Newton failed to provide a sufficient explanation for why gravity occurred, so he sought to address this and other concerns by preparing a further edition. We have digitised Newton's own copy of the first edition. It is interleaved with blank pages so he had sufficient space for annotations and corrections for his second edition, which he eventually published in 1713.</p> <br/> <p>The book was severely damaged by fire and damp some time before it was given to the Library in 1872 as part of the Portsmouth collection.</p> <br/> <p>A BBC Radio 4 'In Our Time' discussion of Newton's laws of motion can be listened to <a href='http://www.bbc.co.uk/programmes/b009mvj0' target='_blank' >here</a> </p>",
                   "subject":[
                   "Celestial Mechanics - Early works to 1800","Mechanics - Early works to 1800"
@@ -39,7 +52,10 @@
                   "Much damaged by fire. T.p. defective, removing some of imprint.","With final errata leaf."
                   ],
                   "ownership":[
-                  "With MS. notes by the author; from the Portsmouth collection."
+                  "With MS. notes by the author; from the Portsmouth Collection, donated by the fifth Earl of Portsmouth, 1872."
+                  ],
+                  "languageString":[
+                  "Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"Adv.b.39.1",

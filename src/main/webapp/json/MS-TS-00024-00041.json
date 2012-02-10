@@ -1,0 +1,125 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.41",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"Daniel the Babylonian ben Saʿadya",
+                     "displayForm":"Daniel the Babylonian ben Saʿadya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Josiah ben Jesse",
+                     "displayForm":"Josiah ben Jesse",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto: part of a letter, dated Adar 1522 (= 1211 CE), from Daniel the Babylonian ben Saʿadya, regarding a stranded Nasi, perhaps Josiah ben Jesse. Greetings are sent to various people, including Hananeel, his brother Solomon (i.e. the sons of Samuel) and their sons, Abraham, Joseph and his son Isaac, Shemariah, David, Ezekiel, Yeḥiʾel and his son. Mentions Meir (perhaps the son of Baruch from France), Yefet, Elijah, Caleb ha-Kohen, Saʿadya and his sons, Elijah, who is from Alexandria, and Eleazar. A marginal note mentions a certain Judah. Verso: an ethical piece, probably from a homily</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00041-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1211-01-01",
+                  "dateCreatedEnd":"1212-01-01",
+                  "dateCreatedDisplay":"Adar 1522 (= 1211 C.E.)",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "heb","arc"
+                  ],
+                  "notes":[
+                  "Letter; ethics/homily"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew ; Aramaic"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.41",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 52.4 x 14.3; Paper; 61 lines (recto), 68 lines (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00041-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00041-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00041-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00041-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.41",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

@@ -1,0 +1,269 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.24",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"ʿEli ben Ḥusayn ben Moses the Maghrebi",
+                     "displayForm":"ʿEli ben Ḥusayn ben Moses the Maghrebi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Azhar ben Ḥusayn ben Moses the Maghrebi",
+                     "displayForm":"Azhar ben Ḥusayn ben Moses the Maghrebi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Azariah (ʿAzariyahu) ben Moses ben Azariah the Exilarch",
+                     "displayForm":"Azariah (ʿAzariyahu) ben Moses ben Azariah the Exilarch",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nathan ben Solomon",
+                     "displayForm":"Nathan ben Solomon",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿAyyāš ben Asad",
+                     "displayForm":"ʿAyyāš ben Asad",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿEli ha-Kohen ben Nissim ben Aaron",
+                     "displayForm":"ʿEli ha-Kohen ben Nissim ben Aaron",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Yaḥyā ben ʿImrān ben Mūs[ā] ha-Levi",
+                     "displayForm":"Yaḥyā ben ʿImrān ben Mūs[ā] ha-Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Mevasser ben Moses ben Ezra",
+                     "displayForm":"Mevasser ben Moses ben Ezra",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Raḥami[m] ben Saʿīd",
+                     "displayForm":"Raḥami[m] ben Saʿīd",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ibrahīm ben Mūsā Qardūsī",
+                     "displayForm":"Ibrahīm ben Mūsā Qardūsī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nahum ben Zadok",
+                     "displayForm":"Nahum ben Zadok",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Mevasser ben Nahum",
+                     "displayForm":"Mevasser ben Nahum",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nahum ben Israel",
+                     "displayForm":"Nahum ben Israel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿEli ben Samuel",
+                     "displayForm":"ʿEli ben Samuel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Eli ben Ḥarbiš",
+                     "displayForm":"Eli ben Ḥarbiš",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Isaac ben Abraham al-Ḥazām",
+                     "displayForm":"Isaac ben Abraham al-Ḥazām",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham ben Hillel ben Abraham",
+                     "displayForm":"Abraham ben Hillel ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ezra ben Isaac",
+                     "displayForm":"Ezra ben Isaac",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto: part of a deed of release, from ʿEli ben Ḥusayn ben Moses the Maghrebi, to his brother Azhar ben Ḥusayn ben Moses the Maghrebi. Witnessed by Samuel ben Mevasser ben Samuel ben [...], ʿEli ha-Kohen ben Nissim ben Aaron, Ḥusayn ben Harūn ben [...], ʿAyyāš ben Asad, Yaḥyā ben ʿImrān ben Mūs[ā] ha-Levi, ʿEli ben [...], Mevasser ben Moses ben Ezra, Raḥami[m] ben Saʿīd, Ibrahīm ben Mūsā Qardūsī, Nahum ben Zadok, Mevasser ben Nahum, Nahum ben Israel, ʿEli ben Samuel, Eli ben Ḥarbiš, Isaac ben Abraham al-Ḥazām, Abraham ben Hillel ben Abraham, Ezra ben Isaac. Attested in the court of Azariah (ʿAzariyahu) ben Moses ben Azariah the Exilarch. Verso: the name Nathan ben Solomon, on the edge of the verso; perhaps the owner of the book for which this document was subsequently used as a cover.</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00024-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1000-01-01",
+                  "dateCreatedEnd":"1600-01-01",
+                  "dateCreatedDisplay":"c.11th-16th Century C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "arc"
+                  ],
+                  "notes":[
+                  "Legal document"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.24",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 59.4 x 24.5; Vellum; 49 lines (recto), 1 line (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00024-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00024-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00024-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00024-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.24",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

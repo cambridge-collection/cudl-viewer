@@ -7,12 +7,34 @@
                   "title":"Sharḥ Alfīyah Ibn Mālik",
                   "uniformTitle":"شرح الفية ابن مالك",
                   "alternativeTitle":"",
-                  "author":[
-                  "al-Makkūdī","Thomas Erpenius"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Makkūdī, ʻAbd al-Raḥmān ibn ʻAlī, d. 1404 or 5",
+                     "displayForm":"al-Makkūdī",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/76180518",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Erpenius, Thomas, 1584-1624",
+                     "displayForm":"Thomas Erpenius",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/7443076",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Ibn Mālik, Muḥammad ibn ʻAbd Allāh, d. 1274",
+                     "displayForm":"Ibn Mālik",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/12537163",
+                     "type":"personal",
+                     "role":"oth"
+                     }],
                   "abstract":"<p>This manuscript contains al-Makkūdī (d. 1404)'s commentary on one of the most popular Arabic grammatical works, the Alfīyah of Ibn Malik (d. 1274). The exceptional importance of this manuscript resides in the fact that it has preserved <a href=''onclick='store.loadPage(36);return false;'> marginalia</a> and <a href=''onclick='store.loadPage(41);return false;'> commentaries</a> written by its owner, Thomas Erpenius, Dutch Orientalist and author of the first scientific grammar of Arabic written in Europe. The Arabic text of al-Makkūdī is interleaved with folios containing Erpenius annotations, which provide important information about the way Arabic was studied in Modern Europe, and also about <a href=''onclick='store.loadPage(21);return false;'>Erpenius' relationship with the Morisco Aḥmad ibn Qāsim al-Ḥājarī </a>, with whom he read al-Makkūdī's work.</p>",
                   "subject":[
                   "Language - Grammar - Early Works to 1800"
@@ -40,6 +62,9 @@
                   ],
                   "ownership":[
                   "Bought from the widow of Thomas Erpenius (1584-1624) in 1632."
+                  ],
+                  "languageString":[
+                  "Arabic and Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"Mm.6.23",

@@ -7,13 +7,107 @@
                   "title":"Genizah Manuscript T-S 24.13",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a Karaite <em>ketubba</em> for Faras bat Simḥa (bride) and Marzūq b. Yefet (groom). Dated [..]75 (= probably 1064 CE) in Fustāt. Hananiah b. Elnathan (Abu l-Tāhir Ibn al-Qatmānī) is the bride's representative. Witnessed by Abraham b. Joseph b. ʿAnan ha-Levi, ʿAllān b. Nahum, Eleazar b. Samuel b. Sahl the slave, [...] b. Ephraim, Saʿīd b. Raziʾel, Ṣedaqa b. Manasseh, Saul b. Abraham. On verso a colophon refers to the tractates <em>Nidda</em> and <em>Beraḵot</em>.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Faras bat Simḥa",
+                     "displayForm":"Faras bat Simḥa",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Marzūq ben Yefet",
+                     "displayForm":"Marzūq ben Yefet",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Hananiah ben Elnathan",
+                     "displayForm":"Hananiah ben Elnathan",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham ben Joseph ben ʿAnan ha-Levi",
+                     "displayForm":"Abraham ben Joseph ben ʿAnan ha-Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿAllān ben Nahum",
+                     "displayForm":"ʿAllān ben Nahum",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Eleazar ben Samuel ben Sahl the slave",
+                     "displayForm":"Eleazar ben Samuel ben Sahl the slave",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Saʿīd ben Raziʾel",
+                     "displayForm":"Saʿīd ben Raziʾel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ṣedaqa ben Manasseh",
+                     "displayForm":"Ṣedaqa ben Manasseh",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Saul ben Abraham",
+                     "displayForm":"Saul ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a Karaite <em>ketubba</em> for Faras bat Simḥa (bride) and Marzūq ben Yefet (groom). Dated [..]75 (= probably 1064 CE) in Fustāt. Hananiah ben Elnathan (Abu l-Tāhir Ibn al-Qatmānī) is the bride's representative. Witnessed by Abraham ben Joseph ben ʿAnan ha-Levi, ʿAllān ben Nahum, Eleazar ben Samuel ben Sahl the slave, [...] ben Ephraim, Saʿīd ben Raziʾel, Ṣedaqa ben Manasseh, Saul ben Abraham. On verso a colophon refers to the tractates <em>Nidda</em> and <em>Beraḵot</em>.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +134,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew; Judaeo-Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.13",

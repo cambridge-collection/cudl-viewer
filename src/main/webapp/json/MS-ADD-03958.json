@@ -7,12 +7,25 @@
                   "title":"Early Papers",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Isaac Newton"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Newton, Isaac, Sir, 1642-1727",
+                     "displayForm":"Isaac Newton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891",
+                     "displayForm":"Fifth Earl of Portsmouth",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>This set of papers documents some of Newton's early mathematical thinking, work that would develop into his theories of calculus. The texts include extracts he made from books he was reading and various notes and calculations - often on small scraps of paper he had to hand.<br/><br/></p><p>Transcriptions are available for parts of the papers, beginning on <a href='' onclick='store.loadPage(92);return false;'>folio 48v</a>.</p>",
                   "subject":[
                   "Science - Mathematics"
@@ -39,7 +52,10 @@
                   ""
                   ],
                   "ownership":[
-                  ""
+                  "From the Portsmouth Collection, donated by the fifth Earl of Portsmouth, 1872."
+                  ],
+                  "languageString":[
+                  "English and Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Add.3958",

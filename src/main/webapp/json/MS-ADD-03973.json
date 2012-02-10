@@ -7,12 +7,25 @@
                   "title":"Notes of experiments in chemistry and alchemy",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Isaac Newton"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Newton, Isaac, Sir, 1642-1727",
+                     "displayForm":"Isaac Newton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891",
+                     "displayForm":"Fifth Earl of Portsmouth",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>Notes of experiments, all in Newton's hand.</p> <br/> <p>A full description and transcription of this manuscript is available at <a target='_blank' href='http://webapp1.dlib.indiana.edu/newton/mss/intro/ALCH00109/'>The Chymistry of Isaac Newton</a> </p>",
                   "subject":[
                   "Chemistry - Early works to 1800","Alchemy - Early works to 1800"
@@ -39,7 +52,10 @@
                   ""
                   ],
                   "ownership":[
-                  ""
+                  "From the Portsmouth Collection, donated by the fifth Earl of Portsmouth, 1872."
+                  ],
+                  "languageString":[
+                  "English and Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Add.3973",

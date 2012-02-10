@@ -7,12 +7,16 @@
                   "title":"Hydrostatics, Optics, Sound and Heat",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Isaac Newton"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Newton, Isaac, Sir, 1642-1727",
+                     "displayForm":"Isaac Newton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"aut"
+                     }],
                   "abstract":"<p>This large accumulation of papers dates from about 1672-1706. It includes drafts of his book on Opticks and other miscellaneous writings. The Contents tab provides some navigation for these papers, as does <a href='http://janus.lib.cam.ac.uk/db/node.xsp?id=EAD%2FGBR%2F0012%2FMS%20Add.3958-4007%2FMS%20Add.3970' target='_blank'>the record in the Library’s archives catalogue</a>.<br/><br/></p><p>Transcriptions are available for a small selection of papers within this manuscript.</p>",
                   "subject":[
                   "Optics - Early works to 1800"
@@ -40,6 +44,9 @@
                   ],
                   "ownership":[
                   ""
+                  ],
+                  "languageString":[
+                  "English and Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Add.3970",

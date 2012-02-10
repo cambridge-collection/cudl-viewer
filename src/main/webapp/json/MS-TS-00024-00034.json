@@ -1,0 +1,125 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.34",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"Yešuʿa ben Joseph ben Raṣon Tinnīsī",
+                     "displayForm":"Yešuʿa ben Joseph ben Raṣon Tinnīsī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Sitt al-Kull ben Solomon ben Zechariah",
+                     "displayForm":"Sitt al-Kull ben Solomon ben Zechariah",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto: copy of a divorce settlement, dated 11th Adar I 4973 (= 1213 CE), from Alexandria, in which Yešuʿa ben Joseph ben Raṣon Tinnīsī (i.e. linen merchant), declares that he is bankrupt and thus unable to pay the second instalment, thirty dinars, that is still outstanding from the original marriage contract, to his wife, Sitt al-Kull ben Solomon ben Zechariah. The debt is divided into fifteen-dirham 'of good silver' monthly payments, but if he is unable to pay this amount, he must give half of his wage day-by-day instead. Other stipulations forbid Yešuʿa from leaving Alexandria for four years and from ever remarrying his first wife, and instruct him to sell his clothes and to give the proceeds to Sitt al-Kull. There is also a continuation of the text of the letter from the verso. Verso: letter, predating the legal document (i.e. prior to 1213 CE), from a certain Beraḵot, who appears to have written the legal document. The name of the recipient has been carefully rubbed out. There is also a continuation of the legal document from the recto.</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  "Alexandria"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00034-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1200-01-01",
+                  "dateCreatedEnd":"1214-01-01",
+                  "dateCreatedDisplay":"Recto: 11th Adar I 4973 (= 1213 C.E.). Verso: sometime before recto",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "jrb","heb"
+                  ],
+                  "notes":[
+                  "Paper has a distinct reddish hue.","Legal document; letter"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Judaeo-Arabic; Hebrew"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.34",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 59.5 x 13.1; Paper; 76 lines (recto), 62 lines (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00034-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00034-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00034-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00034-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.34",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

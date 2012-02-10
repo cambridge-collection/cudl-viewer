@@ -1,0 +1,116 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.51",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"Samuel ben Nathan",
+                     "displayForm":"Samuel ben Nathan",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"scr"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Letter in the hand of Samuel ben Nathan to a circuit judge. Nine persons mentioned by name were acting as a board of arbitration with a circuit judge sent from the capital presiding. The judge was advised by his superior to attempt a decision by law only if arbitration failed. Damira, dated c. 1150. Verso contains a <em>piyyuṭ</em>, fully vocalised</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  "Damira"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00051-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1150-01-01",
+                  "dateCreatedEnd":"1151-01-01",
+                  "dateCreatedDisplay":"1150 C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "jrb","heb"
+                  ],
+                  "notes":[
+                  "Letter; piyyuṭ"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Judaeo-Arabic; Hebrew (Tiberian vocalisation)"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.51",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 51 x 21; Paper; 20 lines (recto); 31 lines (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00051-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00051-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00051-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00051-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.51",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

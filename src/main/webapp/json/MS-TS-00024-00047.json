@@ -1,0 +1,134 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.47",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"Ḥalfon ben Nethanel, ha-Levi, abu Saʻīd, 12th cent.",
+                     "displayForm":"Ḥalfon ben Nethanel, ha-Levi",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/19620796",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Abraham he-Ḥaver ha-Gadol ha-Meʿulle ha-Sar ha-Meʿulle ben Samuel he-Ḥasid",
+                     "displayForm":"Abraham he-Ḥaver ha-Gadol ha-Meʿulle ha-Sar ha-Meʿulle ben Samuel he-Ḥasid",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Samuel ha-Nagid",
+                     "displayForm":"Samuel ha-Nagid",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>A letter from Ḥalfon ben Nethaneel ha-Levi sent to Abraham <em>he-Ḥaver ha-Gadol ha-Meʿulle ha-Sar ha-Meʿulle</em> ben Samuel <em>he-Ḥasid</em>. Samuel <em>ha-Nagid</em> is mentioned. Barely legible.</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00047-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1100-01-01",
+                  "dateCreatedEnd":"1200-01-01",
+                  "dateCreatedDisplay":"12th Century C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "heb","jrb"
+                  ],
+                  "notes":[
+                  "Letter"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew; Judaeo-Arabic"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.47",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 58 x 20.5; Paper; 49 lines + marginalia (recto); 43 lines + marginalia (verso)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00047-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00047-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00047-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00047-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.47",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

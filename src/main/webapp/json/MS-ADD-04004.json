@@ -7,12 +7,25 @@
                   "title":"Newton's Waste Book",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Isaac Newton"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Newton, Isaac, Sir, 1642-1727",
+                     "displayForm":"Isaac Newton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891",
+                     "displayForm":"Fifth Earl of Portsmouth",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/22146457",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>Much of Newton's important work on calculus is developed in this large notebook, which he began using in 1664 when he was away from Cambridge due to the plague. Newton inherited the book from his stepfather, Rev Barnabas Smith, who used it from about 1612 to record his own theological notes (see, for example, <a href='' onclick='store.loadPage(85);return false;'>his notes on adultery, in Latin</a>). Newton was not interested in his stepfather’s jottings: its value to him was the large number of blank pages, which he began filling with his mathematical and optical calculations. Although the bulk of his work in this manuscript dates from the mid-1660s, Newton continued to use into the 1680s and possibly even the 1690s. <br/><br/></p><p>The Waste Book is now in two parts and has a complex foliation (numbering).The original covers are detached, with the first part of the manuscript now bound in red leather and the second part without a binding. Our presentation of the manuscript starts with <a href='' onclick='store.loadPage(1);return false';>its original front cover</a> and then shows the <a href='' onclick='store.loadPage(3);return false;'>bound volume</a>. The second part of the Waste Book begins with <a href='' onclick='store.loadPage(402);return false;'>folio 192r</a>. At the end of our presentation of the manuscript are some <a href='' onclick='store.loadPage(928);return false;'>page</a> and <a href='' onclick='store.loadPage(930);return false;'>cover</a> fragments, the <a href='' onclick='store.loadPage(933);return false;'>original back cover</a>, and <a href='' onclick='store.loadPage(934);return false;'>a sheet of paper describing the foliation</a>.<br/><br/></p> <p>The manuscript was photographed in 2011. A transcription is being prepared and should be available in early 2012.</p>",
                   "subject":[
                   "Mathematics - Early works to 1800"
@@ -21,7 +34,7 @@
                   ""
                   ],
                   "publicationPlace":[
-                  ""
+                  "Woolsthorpe-by-Colsterworth"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-ADD-04004-002-00001_files/8/0_0.jpg",
@@ -39,7 +52,10 @@
                   ""
                   ],
                   "ownership":[
-                  ""
+                  "From the Portsmouth Collection, donated by the fifth Earl of Portsmouth, 1872."
+                  ],
+                  "languageString":[
+                  "English, Latin and Greek"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Add.4004",

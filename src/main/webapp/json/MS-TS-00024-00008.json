@@ -7,13 +7,62 @@
                   "title":"Genizah Manuscript T-S 24.8",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a <em>ketubba</em> for Ẓarīfā b. Yešuʿa b. Abraham (bride) and Obadiah b. Abraham b. Solomon. Date not preserved, but it must be later than 1187, due to the fact that the bride is obliged to wash herself in the ritual bath, following Maimonides' enactment on this issue. Witnessed by Eleazar ha-Kohen b. Moses and Elishah b. Hananiah ha-Levi.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Ẓarīfā ben Yešuʿa ben Abraham",
+                     "displayForm":"Ẓarīfā ben Yešuʿa ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Obadiah ben Abraham ben Solomon",
+                     "displayForm":"Obadiah ben Abraham ben Solomon",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Eleazar ha-Kohen ben Moses",
+                     "displayForm":"Eleazar ha-Kohen ben Moses",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Elishah ben Hananiah ha-Levi",
+                     "displayForm":"Elishah ben Hananiah ha-Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a <em>ketubba</em> for Ẓarīfā ben Yešuʿa ben Abraham (bride) and Obadiah ben Abraham ben Solomon. Date not preserved, but it must be later than 1187, due to the fact that the bride is obliged to wash herself in the ritual bath, following Maimonides' enactment on this issue. Witnessed by Eleazar ha-Kohen ben Moses and Elishah ben Hananiah ha-Levi.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +89,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic; Hebrew; Judaeo-Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.8",

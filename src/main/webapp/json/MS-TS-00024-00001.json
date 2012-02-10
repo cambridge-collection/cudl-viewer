@@ -7,13 +7,152 @@
                   "title":"Genizah Manuscript T-S 24.1",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a <em>ketubba</em> for Nāsiyya bat Moses ha-Kohen b. Aaron ha-Kohen (bride) and David <em>ha-Nasi</em> b. Daniel <em>ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov</em> (groom). Dated 23rd Shevaṭ 1393 (= 1082 CE), probably from Cairo. The dowry is over 1100 gold dinars. As the bride is from a prominent Karaite family, and the groom is a high-ranking Rabbanite, there are special clauses in the contract stating that the groom will not force the bride to compromise her Karaite principles, and the bride will join her husband in observing the Rabbanite feasts. Attested by the Bet Din and witnessed by Jekuthiel b. Moses, Nissim b. Maḥbūb, Solomon b. Isaac, Ezekiel ha-Kohen <em>he-Ḥaver</em> b. ʿEli <em>he-Ḥaver</em>, Hodaiah b. Josiah, Joseph b. Samuel, Joseph b. Eleazar, Ṣedaqa b. Muvḥar, Aaron b. Abraham, Nethaneel b. Yefet he-Ḥaver, Aaron the cantor b. Abraham, Hillel the cantor b. [...], Abraham b. Isaac.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen",
+                     "displayForm":"Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"David ha-Nasi ben Daniel ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov",
+                     "displayForm":"David ha-Nasi ben Daniel ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nissim ben Maḥbūb",
+                     "displayForm":"Nissim ben Maḥbūb",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Solomon ben Isaac",
+                     "displayForm":"Solomon ben Isaac",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Hodaiah ben Josiah",
+                     "displayForm":"Hodaiah ben Josiah",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ezekiel ha-Kohen he-Ḥaver ben ʿEli he-Ḥaver",
+                     "displayForm":"Ezekiel ha-Kohen he-Ḥaver ben ʿEli he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Joseph ben Samuel",
+                     "displayForm":"Joseph ben Samuel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Joseph ben Eleazar",
+                     "displayForm":"Joseph ben Eleazar",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ṣedaqa ben Muvḥar",
+                     "displayForm":"Ṣedaqa ben Muvḥar",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Aaron ben Abraham",
+                     "displayForm":"Aaron ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nethaneel ben Yefet he-Ḥaver",
+                     "displayForm":"Nethaneel ben Yefet he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Aaron the cantor ben Abraham",
+                     "displayForm":"Aaron the cantor ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Hillel the cantor ben [...]",
+                     "displayForm":"Hillel the cantor ben [...]",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham ben Isaac",
+                     "displayForm":"Abraham ben Isaac",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a <em>ketubba</em> for Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen (bride) and David <em>ha-Nasi</em> ben Daniel <em>ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov</em> (groom). Dated 23rd Shevaṭ 1393 (= 1082 CE), probably from Cairo. The dowry is over 1100 gold dinars. As the bride is from a prominent Karaite family, and the groom is a high-ranking Rabbanite, there are special clauses in the contract stating that the groom will not force the bride to compromise her Karaite principles, and the bride will join her husband in observing the Rabbanite feasts. Attested by the Bet Din and witnessed by Jekuthiel ben Moses, Nissim ben Maḥbūb, Solomon ben Isaac, Ezekiel ha-Kohen <em>he-Ḥaver</em> ben ʿEli <em>he-Ḥaver</em>, Hodaiah ben Josiah, Joseph ben Samuel, Joseph ben Eleazar, Ṣedaqa ben Muvḥar, Aaron ben Abraham, Nethaneel ben Yefet he-Ḥaver, Aaron the cantor ben Abraham, Hillel the cantor ben [...], Abraham ben Isaac.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +179,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew; Aramaic; Judaeo-Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.1",

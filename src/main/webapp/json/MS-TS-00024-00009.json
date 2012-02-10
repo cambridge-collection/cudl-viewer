@@ -7,13 +7,53 @@
                   "title":"Genizah Manuscript T-S 24.9",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Emmanuel b. Yeḥiʾel"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a pre-nuptial agreement for [...] b. Barak[āt] b. Shelah ha-Levi al-Sukkarī (the sugar-maker) (bride) and [...] b. Peraḥya (groom). The document contains the dowry list and an approval of the groom for receiving it. Dated 13th Elul 1[...], in Fusṭāṭ. Issued under the authority of David the Nagid (Maymuni, 13th century). Written by Emmanuel b. Yeḥiʾel</p>",
+                  "names":[
+                     {
+                     "fullForm":"Emmanuel ben Yeḥiʾel",
+                     "displayForm":"Emmanuel ben Yeḥiʾel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"scr"
+                     },
+                     {
+                     "fullForm":"Barak[āt] ben Shelah ha-Levi al-Sukkarī",
+                     "displayForm":"Barak[āt] ben Shelah ha-Levi al-Sukkarī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"David the Nagid (Maymuni, 13th century)",
+                     "displayForm":"David the Nagid (Maymuni, 13th century)",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a pre-nuptial agreement for [...] b. Barak[āt] ben Shelah ha-Levi al-Sukkarī (the sugar-maker) (bride) and [...] ben Peraḥya (groom). The document contains the dowry list and an approval of the groom for receiving it. Dated 13th Elul 1[...], in Fusṭāṭ. Issued under the authority of David the Nagid (Maymuni, 13th century). Written by Emmanuel ben Yeḥiʾel</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +80,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic; Judaeo-Arabic; Hebrew"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.9",

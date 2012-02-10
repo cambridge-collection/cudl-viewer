@@ -7,13 +7,98 @@
                   "title":"Genizah Manuscript T-S 24.11",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Paltiel b. Ephraim he-Ḥaver"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Recto: part of a deed of indemnity, dated Tuesday, 14th Elul 4762/1313 (= 1002 CE) in Fusṭāṭ. From the court of Shemariah b. Elḥanan, <em>ha-Rav ha-Roš</em>, who also signed. From Saʿīd b. Isaac to his brother Burayk. Witnessed by Paltiel b. Ephraim <em>he-Ḥaver</em> (who also wrote the document), Solomon ha-Levi b. David, Aaron b. Moses, Ḡālib b. Wahīb, with validation by Joshua b. [...] and Samuel b. Jacob. Verso: jottings.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Paltiel ben Ephraim he-Ḥaver",
+                     "displayForm":"Paltiel ben Ephraim he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Shemariah ben Elḥanan, ha-Rav ha-Roš",
+                     "displayForm":"Shemariah ben Elḥanan, ha-Rav ha-Roš",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Saʿīd ben Isaac",
+                     "displayForm":"Saʿīd ben Isaac",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Buraykben Isaac",
+                     "displayForm":"Burayk ben Isaac",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Solomon ha-Levi ben David",
+                     "displayForm":"Solomon ha-Levi ben David",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Aaron ben Moses",
+                     "displayForm":"Aaron ben Moses",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ḡālib ben Wahīb",
+                     "displayForm":"Ḡālib ben Wahīb",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Samuel ben Jacob",
+                     "displayForm":"Samuel ben Jacob",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto: part of a deed of indemnity, dated Tuesday, 14th Elul 4762/1313 (= 1002 CE) in Fusṭāṭ. From the court of Shemariah ben Elḥanan, <em>ha-Rav ha-Roš</em>, who also signed. From Saʿīd ben Isaac to his brother Burayk. Witnessed by Paltiel ben Ephraim <em>he-Ḥaver</em> (who also wrote the document), Solomon ha-Levi ben David, Aaron ben Moses, Ḡālib ben Wahīb, with validation by Joshua ben [...] and Samuel ben Jacob. Verso: jottings.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +125,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.11",

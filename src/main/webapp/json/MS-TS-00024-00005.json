@@ -7,12 +7,43 @@
                   "title":"Genizah Manuscript T-S 24.5",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Mevoraḵ '[the Nagid of] the Exile'",
+                     "displayForm":"Mevoraḵ '[the Nagid of] the Exile'",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Salāma the freedman",
+                     "displayForm":"Salāma the freedman",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>Part of a <em>ketubba</em> for Salāma the freedman (groom). Dated 1422 (= 1111 CE) in Fusṭāṭ and issued under the authority of Mevoraḵ '[the Nagid of] the Exile'.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
@@ -40,6 +71,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic; Hebrew; Judaeo-Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.5",

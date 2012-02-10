@@ -7,13 +7,125 @@
                   "title":"Genizah Manuscript T-S 24.14",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Ḥalfon b. Manasseh ha-Levi"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>A gift given by an old man to be collected after his death. Names: Eleazar Manṣūr al-Tarābulsī b. Solomon, Ṣedaqa b. ʿEli, Mawhūb al-Ḏahabī, Abū ʿImrān <em>ha-Parnas</em> בן מגאן, Abu l-Munā b. Raḥma, Abu l-Faraj al-Sibāḡ, Abū ʿImrān ha-Kohen, אלכצאבי ,נגא אלקצאב. Signed by Abraham b. Shemaiah <em>he-ḥaver</em>, Isaac b. Samuel the Spaniard, Nathaniel ha-levi b. Aaron ha-Levi, and Ḥalfon b. Manasseh ha-Levi, who also wrote the document</p>",
+                  "names":[
+                     {
+                     "fullForm":"Ḥalfon ben Manasseh ha-Levi",
+                     "displayForm":"Ḥalfon ben Manasseh ha-Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"scr"
+                     },
+                     {
+                     "fullForm":"Eleazar Manṣūr al-Tarābulsī ben Solomon",
+                     "displayForm":"Eleazar Manṣūr al-Tarābulsī ben Solomon",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ṣedaqa ben ʿEli",
+                     "displayForm":"Ṣedaqa ben ʿEli",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Mawhūb al-Ḏahabī",
+                     "displayForm":"Mawhūb al-Ḏahabī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abū ʿImrān ha-Parnas",
+                     "displayForm":"Abū ʿImrān ha-Parnas",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abu l-Munā ben Raḥma",
+                     "displayForm":"Abu l-Munā ben Raḥma",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abu l-Faraj al-Sibāḡ",
+                     "displayForm":"Abu l-Faraj al-Sibāḡ",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abū ʿImrān ha-Kohen",
+                     "displayForm":"Abū ʿImrān ha-Kohen",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham ben Shemaiah he-ḥaver",
+                     "displayForm":"Abraham ben Shemaiah he-ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Isaac ben Samuel the Spaniard",
+                     "displayForm":"Isaac ben Samuel the Spaniard",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nathaniel ha-levi ben Aaron ha-Levi",
+                     "displayForm":"Nathaniel ha-levi ben Aaron ha-Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>A gift given by an old man to be collected after his death. Names: Eleazar Manṣūr al-Tarābulsī ben Solomon, Ṣedaqa ben ʿEli, Mawhūb al-Ḏahabī, Abū ʿImrān <em>ha-Parnas</em> בן מגאן, Abu l-Munā ben Raḥma, Abu l-Faraj al-Sibāḡ, Abū ʿImrān ha-Kohen, אלכצאבי ,נגא אלקצאב. Signed by Abraham ben Shemaiah <em>he-ḥaver</em>, Isaac ben Samuel the Spaniard, Nathaniel ha-levi ben Aaron ha-Levi, and Ḥalfon ben Manasseh ha-Levi, who also wrote the document</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +152,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Judaeo-Arabic; Hebrew; Aramaic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.14",

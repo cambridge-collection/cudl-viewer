@@ -7,13 +7,44 @@
                   "title":"Genizah Manuscript T-S 24.10",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "ʿEli b. Amram he-Ḥaver"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Recto contains a <em>piyyuṭ</em> for Yom Kippur in the hand of ʿEli b. Amram <em>he-Ḥaver</em>. Verso contains his poem in honour of ʿEli b. Mevasser</p>",
+                  "names":[
+                     {
+                     "fullForm":"ʿEli ben Amram he-Ḥaver",
+                     "displayForm":"ʿEli ben Amram he-Ḥaver",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"scr"
+                     },
+                     {
+                     "fullForm":"ʿEli ben Mevasser",
+                     "displayForm":"ʿEli ben Mevasser",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Recto contains a <em>piyyuṭ</em> for Yom Kippur in the hand of ʿEli ben Amram <em>he-Ḥaver</em>. Verso contains his poem in honour of ʿEli ben Mevasser</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +71,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.10",

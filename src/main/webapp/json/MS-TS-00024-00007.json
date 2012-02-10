@@ -7,13 +7,44 @@
                   "title":"Genizah Manuscript T-S 24.7",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a Karaite <em>ketubba</em> for Sarah b. Isaiah b. Sahl al-ʿAnī (bride) to her cousin Solomon b. Mevasser b. Sahl al-ʿAnī (groom). Dated Sunday 12th of [...] 1315 (= 1003–4 CE), in Cairo.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Sarah ben Isaiah ben Sahl al-ʿAnī",
+                     "displayForm":"Sarah ben Isaiah ben Sahl al-ʿAnī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Solomon ben Mevasser ben Sahl al-ʿAnī",
+                     "displayForm":"Solomon ben Mevasser ben Sahl al-ʿAnī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a Karaite <em>ketubba</em> for Sarah ben Isaiah ben Sahl al-ʿAnī (bride) to her cousin Solomon ben Mevasser ben Sahl al-ʿAnī (groom). Dated Sunday 12th of [...] 1315 (= 1003–4 CE), in Cairo.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +71,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew (sporadic Tiberian vocalisation)"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.7",

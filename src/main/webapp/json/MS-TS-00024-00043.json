@@ -1,0 +1,152 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Genizah Manuscript T-S 24.43",
+                  "uniformTitle":"",
+                  "alternativeTitle":"",
+                  "names":[
+                     {
+                     "fullForm":"Solomon ha-Kohen ben Joseph",
+                     "displayForm":"Solomon ha-Kohen ben Joseph",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/98208869",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Yefet ben Ṭoviyya",
+                     "displayForm":"Yefet ben Ṭoviyya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"David ben Isaac ha-Nasi",
+                     "displayForm":"David ben Isaac ha-Nasi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Solomon ben Ḥakīm al-Fāsī",
+                     "displayForm":"Solomon ben Ḥakīm al-Fāsī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Muḥsin ben Ḥusayn",
+                     "displayForm":"Muḥsin ben Ḥusayn",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Letter (c. 1025 CE), written by the Gaʾon Solomon ha-Kohen ben Joseph, to the Jewish communities in Fusṭāṭ, and in particular to Yefet ben Ṭoviyya (known as al-Nīlī, the indigo merchant), David ben Isaac <em>ha-Nasi</em>, and Solomon ben Ḥakīm al-Fāsī, and also to the heads of the congregations, the elders of the Jerusalemite and Babylonian communities, in which the Gaʾon asks that the recipients hasten to obtain, on his behalf, an overdue letter confirming his office from the caliphal authorities in Egypt. It mentions the noble <em>ḥaver</em> Ṭoviyya, who has come from Jerusalem, and refers to the Jerusalem Talmud. The Gaʾon complains about intercommunal strife, particularly in respect of Muḥsin ben Ḥusayn, who is praying at home rather than at the synagogue.</p>",
+                  "subject":[
+                  "Cairo Genizah","Manuscripts, Hebrew"
+                  ],
+                  "publisher":[
+                  ""
+                  ],
+                  "publicationPlace":[
+                  ""
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/MS-TS-00024-00043-000-00001_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1025-01-01",
+                  "dateCreatedEnd":"1026-01-01",
+                  "dateCreatedDisplay":"c. 1025 C.E.",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "heb"
+                  ],
+                  "notes":[
+                  "Letter"
+                  ],
+                  "ownership":[
+                  "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew"
+                  ],
+                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "shelfLocator":"T-S 24.43",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"yes",
+                  "virtualCollections":[
+                  ""
+                  ],
+                  "extent":"1 leaf; 54.5 x 18.6; Paper; 50 lines (recto; verso is blank)"
+                  }],
+      
+               "organisationCollection":"genizah",
+              
+               "numberOfPages":"2",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[
+                  {
+                  "name":"1r",
+                  "physID":"PHYS-1",
+                  "displayImageURL":"/content/images/MS-TS-00024-00043-000-00001.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00043-000-00001.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  },
+                  {
+                  "name":"1v",
+                  "physID":"PHYS-2",
+                  "displayImageURL":"/content/images/MS-TS-00024-00043-000-00002.dzi",
+                  "downloadImageURL":"/content/images/MS-TS-00024-00043-000-00002.jpg",
+                  "transcriptionNormalisedURL":"",
+                  "transcriptionDiplomaticURL":"",
+                  "pageType":"text"
+                  }],
+               "logicalStructure":[   
+      {
+      "label":"Genizah Manuscript T-S 24.43",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"1r",
+      "startPageID":"LOGICAL-PAGE-1",
+      "startPagePosition":"1",
+      "children":[]
+      }]
+               }
+   

@@ -7,12 +7,52 @@
                   "title":"El breve compendio de nuestra santa ley alçunna",
                   "uniformTitle":"ال بارابا كمبانديه دا نواشتر شنت لاي السنة كا اكبله ال انرد شبدر الفقي داللجمعه دا لش مسلماش دا كدراتا كا شا لمب بري دا رامنجه",
                   "alternativeTitle":"",
-                  "author":[
-                  "Baray de Reminjo","Mancebo de Arévalo"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Baray de Reminjo",
+                     "displayForm":"Baray de Reminjo",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Mancebo de Arévalo",
+                     "displayForm":"Mancebo de Arévalo",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/60933980",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Engelbertus van Engelen",
+                     "displayForm":"Engelbertus van Engelen",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"Sike, Heinrich 1669-1713",
+                     "displayForm":"Henry Sike",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/34481460",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"George I, King of Great Britain, 1660-1727",
+                     "displayForm":"George I",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/190593",
+                     "type":"personal",
+                     "role":"fmo"
+                     }],
                   "abstract":"<p>This Aljamiado manuscript contains a compendium of Islamic law written by Baray de Reminjo with the help of a young scholar known as Mancebo de Arévalo. The treatise was composed in Spain in the third decade of the XVI century. A <a href=''onclick='store.loadPage(14);return false;'> Latin note</a> at the top of the first page states that the manuscript was given as a gift from Engelbertus van Engelen to Henry Sike in 1703.</p>",
                   "subject":[
                   "Moriscos","Islamic Law - Sources - Early Works to 1800"
@@ -40,6 +80,9 @@
                   ],
                   "ownership":[
                   "Donated as part of the Royal library of George I (1660-1727) in 1715"
+                  ],
+                  "languageString":[
+                  "Arabic and Spanish"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"Dd.9.49",

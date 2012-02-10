@@ -7,12 +7,25 @@
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"القرآن (اجزاء)",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Palmer, Edward Henry, 1840-1882",
+                     "displayForm":"E.H. Palmer",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/56683055",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"Tyrwhitt, E. E.",
+                     "displayForm":"E.E. Tyrwhitt",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"fmo"
+                     }],
                   "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the third century A.H. / ninth century C.E., containing verses from the Sura Ghāfir (سورة غافر). The script seems to correspond to the Abbasid Style D.I as described by F. Deroche.</p>",
                   "subject":[
                   "Koran"
@@ -40,6 +53,9 @@
                   ],
                   "ownership":[
                   "Bought from Professor E.H. Palmer and E.E. Tyrwhitt in 1878."
+                  ],
+                  "languageString":[
+                  "Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Add.1149",

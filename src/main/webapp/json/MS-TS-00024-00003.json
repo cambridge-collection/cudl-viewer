@@ -7,13 +7,53 @@
                   "title":"Genizah Manuscript T-S 24.3",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  "Ḥalfon b. Manasseh"
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a <em>ketubba</em> for a certain Malīḥa (bride) and Shemariah ha-Kohen b. Manasseh ha-Kohen (groom). Dated Monday 26th Adar II, 1426 (= 1115 CE) in Fusṭāṭ. Issued under the authority of Moses 'the Nagid of the Exile' (b. Mevoraḵ). In the hand of Ḥalfon b. Manasseh.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Ḥalfon ben Manasseh",
+                     "displayForm":"Ḥalfon ben Manasseh",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"scr"
+                     },
+                     {
+                     "fullForm":"Shemariah ha-Kohen ben Manasseh ha-Kohen",
+                     "displayForm":"Shemariah ha-Kohen ben Manasseh ha-Kohen",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Moses 'the Nagid of the Exile' (ben Mevoraḵ)",
+                     "displayForm":"Moses 'the Nagid of the Exile' (ben Mevoraḵ)",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a <em>ketubba</em> for a certain Malīḥa (bride) and Shemariah ha-Kohen ben Manasseh ha-Kohen (groom). Dated Monday 26th Adar II, 1426 (= 1115 CE) in Fusṭāṭ. Issued under the authority of Moses 'the Nagid of the Exile' (ben Mevoraḵ). In the hand of Ḥalfon ben Manasseh.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +80,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Aramaic; Hebrew; Judaeo-Arabic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.3",

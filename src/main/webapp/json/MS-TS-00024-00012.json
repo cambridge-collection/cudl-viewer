@@ -7,13 +7,80 @@
                   "title":"Genizah Manuscript T-S 24.12",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a <em>ketubba</em> for Dūra bat Solomon (bride) and Abraham Levi (groom). Dated [..]45 (= probably 1034 CE) in Fusṭāṭ. Witnessed by [...] b. Mevoraḵ (מברך), Ḵalaf b. Saʿadya, Nissim b. Maymun, Yefet ha-Levi b. Ṭoviyya, Ezra ha-Kohen b. Hillel.</p>",
+                  "names":[
+                     {
+                     "fullForm":"Dūra bat Solomon",
+                     "displayForm":"Dūra bat Solomon",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham Levi",
+                     "displayForm":"Abraham Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ḵalaf ben Saʿadya",
+                     "displayForm":"Ḵalaf ben Saʿadya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nissim ben Maymun",
+                     "displayForm":"Nissim ben Maymun",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Yefet ha-Levi ben Ṭoviyya",
+                     "displayForm":"Yefet ha-Levi ben Ṭoviyya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ezra ha-Kohen ben Hillel",
+                     "displayForm":"Ezra ha-Kohen ben Hillel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a <em>ketubba</em> for Dūra bat Solomon (bride) and Abraham Levi (groom). Dated [..]45 (= probably 1034 CE) in Fusṭāṭ. Witnessed by [...] ben Mevoraḵ (מברך), Ḵalaf ben Saʿadya, Nissim ben Maymun, Yefet ha-Levi ben Ṭoviyya, Ezra ha-Kohen ben Hillel.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +107,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Judaeo-Arabic; Aramaic"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.12",

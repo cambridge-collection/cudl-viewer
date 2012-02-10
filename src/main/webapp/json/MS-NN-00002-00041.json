@@ -7,12 +7,16 @@
                   "title":"Codex Bezae",
                   "uniformTitle":"Bible. N.T.",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
+                  "names":[
+                     {
+                     "fullForm":"Bèze, Théodore de, 1519-1605",
+                     "displayForm":"Theodore Beza",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/66463755",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
                   "abstract":"<p>Summary - REPLACE.</p>",
                   "subject":[
                   "Bible. N.T."
@@ -40,6 +44,9 @@
                   ],
                   "ownership":[
                   "Donated by Theodore Beza, 1581."
+                  ],
+                  "languageString":[
+                  "Greek and Latin"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"MS Nn.2.41",

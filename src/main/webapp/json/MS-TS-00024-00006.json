@@ -7,13 +7,179 @@
                   "title":"Genizah Manuscript T-S 24.6",
                   "uniformTitle":"",
                   "alternativeTitle":"",
-                  "author":[
-                  ""
-                  ],
-                  "contributor":[
-                  ""
-                  ],
-                  "abstract":"<p>Part of a letter, circa 1030 CE, from the Jewish community in Sicily, its court and elders (probably the principal community in Palermo), to the Jewish communities in Qayrawān and al-Mahdiyya, specifically addressing Elḥanan b. Ḥushiʾel and Jacob the Nagid b. Amram as heads of the community in Qayrawān, praising the achievements of Ḥayyim b. Jacob the Spaniard (known as Ḵalaf). The letter mentions other individuals including a certain Nathan, Abraham b. David b. Labrāṭ, Samuel b. Moses, Abu l-Faraj, who is on his way to Egypt, Moses b. Yaḥyā the perfumer, and ʿAmmar b. Joshua al-Ḥalabī (i.e. from Aleppo). Signed by Samuel b. Moses, David b. Levi, Samuel b. [...], Sahlān b. Joshua, Jose[ph] b. [...], [...] b. [...]el, Abraham b. Hayyim, Judah b. Elijah, Elijah b. Jonah, Elijah b. Abraham, [...] b. Jacob, Nissim b. Abraham, Mattithiah b. Jon[ah], [...] b. Jacob, Pappos b. Shabbethai, Shabbethai b. [...], [...] b. Judah, Isaac b. Isaac the cantor, Isaac b. [...].</p>",
+                  "names":[
+                     {
+                     "fullForm":"Elḥanan ben Ḥushiʾel",
+                     "displayForm":"Elḥanan ben Ḥushiʾel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Jacob the Nagid ben Amram",
+                     "displayForm":"Jacob the Nagid ben Amram",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Abraham ben David ben Labrāṭ",
+                     "displayForm":"Abraham ben David ben Labrāṭ",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Samuel ben Moses",
+                     "displayForm":"Samuel ben Moses",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abu l-Faraj",
+                     "displayForm":"Abu l-Faraj",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Moses ben Yaḥyā",
+                     "displayForm":"Moses ben Yaḥyā",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"ʿAmmar ben Joshua al-Ḥalabī",
+                     "displayForm":"ʿAmmar ben Joshua al-Ḥalabī",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"David ben Levi",
+                     "displayForm":"David ben Levi",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham ben Hayyim",
+                     "displayForm":"Abraham ben Hayyim",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Sahlān ben Joshua",
+                     "displayForm":"Sahlān ben Joshua",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Judah ben Elijah",
+                     "displayForm":"Judah ben Elijah",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Elijah ben Jonah",
+                     "displayForm":"Elijah ben Jonah",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Elijah ben Abraham",
+                     "displayForm":"Elijah ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Nissim ben Abraham",
+                     "displayForm":"Nissim ben Abraham",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Mattithiah ben Jon[ah]",
+                     "displayForm":"Mattithiah ben Jon[ah]",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Pappos ben Shabbethai",
+                     "displayForm":"Pappos ben Shabbethai",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Isaac ben Isaac the cantor",
+                     "displayForm":"Isaac ben Isaac the cantor",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
+                     }],
+                  "abstract":"<p>Part of a letter, circa 1030 CE, from the Jewish community in Sicily, its court and elders (probably the principal community in Palermo), to the Jewish communities in Qayrawān and al-Mahdiyya, specifically addressing Elḥanan ben Ḥushiʾel and Jacob the Nagid ben Amram as heads of the community in Qayrawān, praising the achievements of Ḥayyim b. Jacob the Spaniard (known as Ḵalaf). The letter mentions other individuals including a certain Nathan, Abraham ben David ben Labrāṭ, Samuel ben Moses, Abu l-Faraj, who is on his way to Egypt, Moses ben Yaḥyā the perfumer, and ʿAmmar ben Joshua al-Ḥalabī (i.e. from Aleppo). Signed by Samuel ben Moses, David ben Levi, Samuel ben [...], Sahlān ben Joshua, Jose[ph] ben [...], [...] ben [...]el, Abraham ben Hayyim, Judah ben Elijah, Elijah ben Jonah, Elijah ben Abraham, [...] ben Jacob, Nissim ben Abraham, Mattithiah ben Jon[ah], [...] ben Jacob, Pappos ben Shabbethai, Shabbethai ben [...], [...] ben Judah, Isaac ben Isaac the cantor, Isaac ben [...].</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -40,6 +206,9 @@
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
+                  ],
+                  "languageString":[
+                  "Hebrew"
                   ],
                   "physicalLocation":"Cambridge University Library, Cambridge, UK",
                   "shelfLocator":"T-S 24.6",
