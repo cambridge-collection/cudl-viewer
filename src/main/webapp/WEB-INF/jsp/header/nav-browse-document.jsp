@@ -11,9 +11,7 @@
 	</li>	
 	<li><a href="/about/" title="About"> About </a>
 	</li>
-	<li><a class="iframe" href="/feedbackform.html"
-		title="Feedback"> Feedback </a>
-	</li>
+	<li><a href="/help/" title="Help"> Help </a>
 </ul><!-- 
 <nav id="navSecondary" class="grid_20" style="width:100%; left:-8px;">
 <ul>
