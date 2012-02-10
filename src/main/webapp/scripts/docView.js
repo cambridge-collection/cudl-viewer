@@ -94,7 +94,8 @@ var docView = function() {
 			if (viewer && data) {
 
 				// show image
-				viewer.openDzi(proxyURL+data.pages[pagenum - 1].displayImageURL);
+				viewer.openDzi(proxyURL
+						+ data.pages[pagenum - 1].displayImageURL);
 
 				// setup image download link
 				downloadImageLink = "/download/image%252Fjpg/document-image"
@@ -112,12 +113,37 @@ var docView = function() {
 
 				view.populateElement(document.getElementById("metadata-title"),
 						descriptiveMetadata.title);
-				if (descriptiveMetadata.author
-						&& descriptiveMetadata.author != "") {
+
+				// author and people
+				var authors = new Array();
+				var fowners = new Array();
+				var donors = new Array();
+				var scribes = new Array();
+				var recipients = new Array();
+				var otherpeople = new Array();
+				if (descriptiveMetadata.names) {
+					for ( var i = 0; i < descriptiveMetadata.names.length; i++) {
+						var name = descriptiveMetadata.names[i];
+						if (name && name.role == "aut") {
+							authors.push(name.displayForm);
+						} else if (name && name.role == "fmo") {
+							fowners.push(name.displayForm);
+						} else if (name && name.role == "dnr") {
+							donors.push(name.displayForm);
+						} else if (name && name.role == "scr") {
+							scribes.push(name.displayForm);
+						} else if (name && name.role == "rcp") {
+							recipients.push(name.displayForm);
+						} else if (name && name.role == "oth") {
+							otherpeople.push(name.displayForm);
+						} 
+					}
+				}
+				if (authors.length > 0) {
 					view.populateElement(document
 							.getElementById("metadata-author"),
 							" by <span class='document-about-author'>"
-									+ descriptiveMetadata.author + "</span>");
+									+ authors + "</span>");
 				}
 				view.populateElement(document
 						.getElementById("metadata-display-rights"),
@@ -144,19 +170,35 @@ var docView = function() {
 						descriptiveMetadata.dateCreatedDisplay);
 
 				// optional metadata
-				
+
 				var optionalMetadata = "";
-				optionalMetadata += view.getMetadataHTML("Uniform title: ", descriptiveMetadata.uniformTitle);
-				optionalMetadata += view.getMetadataHTML("Alternative title: ", descriptiveMetadata.alternativeTitle);
-				optionalMetadata += view.getMetadataHTML("Publisher: ", descriptiveMetadata.publisher);
-				optionalMetadata += view.getMetadataHTML("Publication place: ", descriptiveMetadata.publicationPlace);
-				optionalMetadata += view.getMetadataHTML("Extent: ", descriptiveMetadata.extent);
-				optionalMetadata += view.getMetadataHTML("Notes: ", descriptiveMetadata.notes);
-				optionalMetadata += view.getMetadataHTML("Ownership: ", descriptiveMetadata.ownership);
-						
+				optionalMetadata += view.getMetadataHTML("Uniform title: ",
+						descriptiveMetadata.uniformTitle);
+				optionalMetadata += view.getMetadataHTML("Alternative title: ",
+						descriptiveMetadata.alternativeTitle);
+				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
+						fowners);
+				optionalMetadata += view.getMetadataHTML("Donor(s): ",
+						donors);
+				optionalMetadata += view.getMetadataHTML("Scribe(s): ",
+						scribes);	
+				optionalMetadata += view.getMetadataHTML("Recipient(s): ",
+						recipients);		
+				optionalMetadata += view.getMetadataHTML("Associated People: ",
+						otherpeople);					
+				optionalMetadata += view.getMetadataHTML("Publisher: ",
+						descriptiveMetadata.publisher);
+				optionalMetadata += view.getMetadataHTML("Publication place: ",
+						descriptiveMetadata.publicationPlace);
+				optionalMetadata += view.getMetadataHTML("Extent: ",
+						descriptiveMetadata.extent);
+				optionalMetadata += view.getMetadataHTML("Notes: ",
+						descriptiveMetadata.notes);
+				optionalMetadata += view.getMetadataHTML("Ownership: ",
+						descriptiveMetadata.ownership);
+
 				view.populateElement(document
-						.getElementById("metadata-optional"),
-						optionalMetadata);
+						.getElementById("metadata-optional"), optionalMetadata);
 
 				var abstractText = "";
 				if (descriptiveMetadata.mediaUrl) {
@@ -211,11 +253,11 @@ var docView = function() {
 			}
 
 		},
-		
-		getMetadataHTML : function (title, metadataItem) {
-			
-			if (metadataItem && metadataItem!="") {
-				return "<div>"+title + "<b>"+metadataItem+"</b></div>\n";
+
+		getMetadataHTML : function(title, metadataItem) {
+
+			if (metadataItem && metadataItem != "") {
+				return "<div>" + title + "<b>" + metadataItem + "</b></div>\n";
 			}
 			return "";
 		},

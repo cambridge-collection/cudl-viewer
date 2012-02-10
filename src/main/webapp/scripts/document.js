@@ -109,18 +109,26 @@ function setupViewport() {
 			+ '</a> > <b>' + tbTitle + '</b>';
 
 	// author
-	// limit length here, as display width is limited.
-	if (descriptiveMetadata.author && descriptiveMetadata.author != "") {
+	var tbAuthor = new Array();
+	if (descriptiveMetadata.names) {
+		for ( var i = 0; i < descriptiveMetadata.names.length; i++) {
+			var name = descriptiveMetadata.names[i];
+			if (name && name.role == "aut") {
+				tbAuthor.push(name.displayForm);
+			}
+		}
+	}
 
-		var tbAuthor = descriptiveMetadata.author + ""; // converts array to
-														// string
+	// limit length here, as display width is limited.
+	if (tbAuthor.length > 0) {
 		var authorLimit = 20;
+		tbAuthor = tbAuthor + ""; // converts to String
 		if (tbAuthor.length > authorLimit) {
 			tbAuthor = tbAuthor.substring(0, authorLimit) + "...";
 		}
 		docTitle += ' &nbsp;by ' + tbAuthor;
 	}
-
+	
 	viewportComponents.pageTitlePanel.items.items[0].text = docTitle;
 
 	// We now have data in the store so we can setup the pageing toolbar.
@@ -170,12 +178,12 @@ function setupViewport() {
 	if (data.useTranscriptions == 'Y') {
 
 		setupTab('Transcription (normalised)', 'transcription_normal',
-				viewportComponents.rightTabPanel,
-				'transcriptionNormalisedURL', true);			
-		
+				viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
+				true);
+
 		setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
-				viewportComponents.rightTabPanel,
-				'transcriptionDiplomaticURL', true);
+				viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
+				true);
 	}
 
 	viewportComponents.rightTabPanel.setActiveTab(0);
