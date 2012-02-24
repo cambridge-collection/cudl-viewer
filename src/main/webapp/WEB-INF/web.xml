@@ -128,6 +128,18 @@
 		<url-pattern>/imageproxy/*</url-pattern>
 	</servlet-mapping>
 	
+    <!-- image editor -->
+	<servlet>
+		<servlet-name>imageeditor</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>imageeditor</servlet-name>
+		<url-pattern>/imageeditor/*</url-pattern>
+	</servlet-mapping>	
+	
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>
 		<extension>json</extension>

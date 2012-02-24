@@ -114,6 +114,28 @@
 			<version>1.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.openimaj</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!--  openIMAJ -->
+		<dependency>
+			<groupId>org.openimaj</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0.5</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.openimaj</groupId>
+			<artifactId>image-processing</artifactId>
+			<version>1.0.5</version>
+			<scope>compile</scope>
+		</dependency>
+		
 		<!-- for JSON parsing in Java -->
 		<dependency>
 			<groupId>org.json</groupId>
@@ -185,6 +207,7 @@
 	</dependencies>
 
 
+
 	<!-- Repositories -->
 
 	<repositories>
@@ -200,6 +223,12 @@
 			<name>EBR External Release Repository</name>
 			<url>http://repository.springsource.com/maven/bundles/external</url>
 		</repository>
+
+		<repository>
+			<id>Octopussy OpenIMAJ maven repository</id>
+			<url>http://octopussy.ecs.soton.ac.uk/m2/releases</url>
+		</repository>
+
 
 	</repositories>
 	<!-- <distributionManagement> <repository> <uniqueVersion>false</uniqueVersion> 

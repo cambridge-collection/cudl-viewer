@@ -60,7 +60,7 @@ public class ItemFactory {
 					itemThumbnailURL = descriptiveMetadata
 							.getString("thumbnailUrl");
 					if (Properties.getString("useProxy").equals("true")) {
-						itemThumbnailURL = Properties.getString("imageServer")
+						itemThumbnailURL = Properties.getString("proxyURL")
 								+ descriptiveMetadata.getString("thumbnailUrl");
 					}
 
