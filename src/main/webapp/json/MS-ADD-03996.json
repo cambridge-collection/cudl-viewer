@@ -33,7 +33,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   "Cambridge"
                   ],
                   "mediaUrl":"",
@@ -57,7 +57,7 @@
                   "languageString":[
                   "English, Latin and Greek"
                   ],
-                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "physicalLocation":"Cambridge University Library",
                   "shelfLocator":"MS Add.3996",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",

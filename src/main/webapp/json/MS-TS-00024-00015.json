@@ -114,12 +114,12 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   "Fusṭāṭ"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00015-000-00001_files/8/0_0.jpg",
-                  "thumbnailOrientation":"portrait",
+                  "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1125-01-01",
                   "dateCreatedEnd":"1126-01-01",
                   "dateCreatedDisplay":"1[.]36 (=1125 CE)",
@@ -138,7 +138,7 @@
                   "languageString":[
                   "Aramaic; Judaeo-Arabic; Hebrew"
                   ],
-                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "physicalLocation":"Cambridge University Library",
                   "shelfLocator":"T-S 24.15",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",

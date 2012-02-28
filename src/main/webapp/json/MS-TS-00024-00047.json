@@ -60,7 +60,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -84,7 +84,7 @@
                   "languageString":[
                   "Hebrew; Judaeo-Arabic"
                   ],
-                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "physicalLocation":"Cambridge University Library",
                   "shelfLocator":"T-S 24.47",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",

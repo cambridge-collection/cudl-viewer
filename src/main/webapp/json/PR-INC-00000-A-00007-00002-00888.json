@@ -42,7 +42,7 @@
                   "publisher":[
                   "Anton Koberger, for Sebald Schreyer and Sebastian Kammermeister"
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   "Nuremberg"
                   ],
                   "mediaUrl":"",
@@ -66,7 +66,7 @@
                   "languageString":[
                   "Latin"
                   ],
-                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "physicalLocation":"Cambridge University Library",
                   "shelfLocator":"Inc.0.A.7.2[888]",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",

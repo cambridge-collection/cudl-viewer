@@ -33,7 +33,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -57,7 +57,7 @@
                   "languageString":[
                   "English and Latin"
                   ],
-                  "physicalLocation":"Cambridge University Library, Cambridge, UK",
+                  "physicalLocation":"Cambridge University Library",
                   "shelfLocator":"MS Add.3962",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
@@ -81,7 +81,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -110,7 +110,7 @@
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"",
-                  "manuscript":"no",
+                  "manuscript":"",
                   "virtualCollections":[
                   ""
                   ],
@@ -129,7 +129,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -158,7 +158,7 @@
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"",
-                  "manuscript":"no",
+                  "manuscript":"",
                   "virtualCollections":[
                   ""
                   ],
@@ -177,7 +177,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -206,7 +206,7 @@
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"",
-                  "manuscript":"no",
+                  "manuscript":"",
                   "virtualCollections":[
                   ""
                   ],
@@ -225,7 +225,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -254,7 +254,7 @@
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"",
-                  "manuscript":"no",
+                  "manuscript":"",
                   "virtualCollections":[
                   ""
                   ],
@@ -273,7 +273,7 @@
                   "publisher":[
                   ""
                   ],
-                  "publicationPlace":[
+                  "originPlace":[
                   ""
                   ],
                   "mediaUrl":"",
@@ -302,7 +302,7 @@
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
                   "type":"",
-                  "manuscript":"no",
+                  "manuscript":"",
                   "virtualCollections":[
                   ""
                   ],
