@@ -73,63 +73,71 @@ ol#index_carousel li {
 
 .collectionImage {
 	margin-left: 0px;
-	margin-right:14px;
-	float:left;
+	margin-right: 14px;
+	float: left;
 }
 
 .collection {
-	position:relative;
+	position: relative;
 	background: #999; /* for non-css3 browsers */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#cccccc'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#cccccc)); /* for webkit browsers */
-	background: -moz-linear-gradient(top,  #ffffff,  #cccccc); /* for firefox 3.6+ */ 
-	padding:14px;
-	display:block;
-	height:150px;
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#ffffff', endColorstr = '#cccccc' ); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#cccccc) ); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ffffff, #cccccc);
+	/* for firefox 3.6+ */
+	padding: 14px;
+	display: block;
+	height: 150px;
 }
 
 .collection-science {
-	background:#ccd4ff;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ccd4ff'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ccd4ff)); /* for webkit browsers */
-	background: -moz-linear-gradient(top,  #ffffff,  #ccd4ff); /* for firefox 3.6+ */ 	
+	background: #ccd4ff;
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#ffffff', endColorstr = '#ccd4ff' ); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#ccd4ff) ); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ffffff, #ccd4ff);
+	/* for firefox 3.6+ */
 }
 
 .collection-faith {
-	background:#fff4d0;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#fff4d0'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#fff4d0)); /* for webkit browsers */
-	background: -moz-linear-gradient(top,  #ffffff,  #fff4d0); /* for firefox 3.6+ */ 	
+	background: #fff4d0;
+	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
+		'#ffffff', endColorstr = '#fff4d0' ); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
+		to(#fff4d0) ); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ffffff, #fff4d0);
+	/* for firefox 3.6+ */
 }
 
 .featuredItem-text a {
-
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .featuredItem {
-	position:relative;
-    margin-left:18px;
+	position: relative;
+	margin-left: 18px;
 }
-	
+
 .foundations-link-faith,.foundations-link-faith a {
 	color: #8f7722;
-    position:absolute;
+	position: absolute;
 	right: 4px;
 	bottom: 0px;
-	text-align:right; 
-	width:100%;  
-    text-decoration: none;
+	text-align: right;
+	width: 100%;
+	text-decoration: none;
 }
 
 .foundations-link-science,.foundations-link-science a {
 	color: #324088;
-    position:absolute;
+	position: absolute;
 	right: 4px;
 	bottom: 0px;
-	text-align:right; 
-	width:100%;   
-    text-decoration: none;	
+	text-align: right;
+	width: 100%;
+	text-decoration: none;
 }
 
 .news {
@@ -153,35 +161,37 @@ ol#index_carousel li {
 }
 
 .featured-item-list img {
-	float:left;
-	width:240px;
-	height:62px;
+	float: left;
+	width: 240px;
+	height: 62px;
 }
 
-.featured-item-list h4, .featured-item-list h4 a {
-	position:absolute;
+.featured-item-list h4,.featured-item-list h4 a {
+	position: absolute;
 	margin-left: 5px;
 	margin-top: 15px;
-	color:#ffffff;
-    text-shadow: 0.1em 0.1em 0.2em black;
-	width:250px;
+	color: #ffffff;
+	text-shadow: 0.1em 0.1em 0.2em black;
+	width: 250px;
 }
 
 .arabic {
 	font-style: normal;
 	margin-left: auto;
 	margin-right: 0px;
-	text-align:right;
+	text-align: right;
 }
 
 #document-about-radio-link {
 	font-weight: bold;
 	color: #458be0;
 }
-#document-about-radio-link a {	
+
+#document-about-radio-link a {
 	font-weight: bold;
 	color: #458be0;
 }
+
 #document-about-radio-icon-div {
 	border: 3px;
 	border-color: #000;
@@ -189,39 +199,42 @@ ol#index_carousel li {
 }
 
 .helpBanner {
-	margin-top:20px;
+	margin-top: 20px;
 }
+
 .helpBanner img {
-	display:inline;
+	display: inline;
 	margin-bottom: 0px;
 	margin-top: 6px;
-	height:10px;
+	height: 10px;
 }
+
 .helpBanner a {
-	align:left;
-	font-size:1em;
+	align: left;
+	font-size: 1em;
 	text-decoration: none;
-	font-weight: bold; 
+	font-weight: bold;
 }
 
 .collectionOrganisationalImage {
 	margin-left: 14px;
-	margin-right:0px;
-	margin-bottom:0px;
-	float:right;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	float: right;
 }
 
 .collections_carousel {
-	position:relative;
-	display:block;
+	position: relative;
+	display: block;
 }
+
 .collections_carousel_item {
 	width: 400px;
-	font-style: normal;	
-	position:relative;
-	display:block;
+	font-style: normal;
+	position: relative;
+	display: block;
 }
-	
+
 ol#collections_carousel li {
 	list-style: none outside none;
 }
@@ -229,10 +242,12 @@ ol#collections_carousel li {
 /* Note the max height and width are set in jsp also */
 .collections_carousel_image img {
 	margin-left: 14px;
-	float:right;
+	float: right;
 	border: 4px;
 }
+
 .collections_carousel_text {
+	
 }
 
 ol#vcollections_carousel li {
@@ -252,6 +267,24 @@ ol#vcollections_carousel li {
 	border: 0px;
 	padding: 0px;
 }
+
+.search-result-snippet {
+	font-size: 0.8em;
+	color: #999999;
+}
+
+.search-result-imgcontainer {
+	width: 180px;
+	height: 180px;
+	background: #000000;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333;
+	display: table-cell;
+    vertical-align: middle;
+}
+
 .clear {
-clear:both; 
+	clear: both;
 }

@@ -136,7 +136,7 @@
 						<a href="/collections/genizah">Genizah Fragments</a>
 					</h4>
 
-					<p>Genizah Fragements.
+					<p>Genizah Fragments.
 					</p>
 				</div> <a href="/collections/genizah"><img 
 					src="/images/index/carousel-genizah.jpg" alt="Genizah Fragments"

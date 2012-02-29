@@ -99,6 +99,18 @@
 		<url-pattern>/download/*</url-pattern>
 	</servlet-mapping>
 
+    <!-- search editor -->
+	<servlet>
+		<servlet-name>search</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>search</servlet-name>
+		<url-pattern>/search/*</url-pattern>
+	</servlet-mapping>	
+	
 	<!-- formcontroller servlet -->
 	<servlet>
 		<servlet-name>formcontroller</servlet-name>

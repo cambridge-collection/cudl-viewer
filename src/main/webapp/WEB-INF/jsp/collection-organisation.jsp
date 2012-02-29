@@ -6,16 +6,17 @@
 
 <% Collection collection = (Collection) request.getAttribute( "collection" ); %>
 <script type="text/javascript">
-	/*	function pageinit() {
-	 var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
-	 loop : true,
-	 size : 3,
-	 step : 3,
+ function pageinit() {
+
+	/* var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
+	 loop : false,
+	 size : 5,
+	 step : 2,
 	 vertical : true,
-	 pageNav : true
-	 });
-	 }
-	 */
+	 pageNav : false
+	 }); */
+  }
+	
 </script>
 
 <div class="clear"></div>
@@ -30,9 +31,11 @@
 	<ol id="collections_carousel">
 	<% 
 	   Iterator<Item> items = collection.getItems().iterator();
+	   int itemNum = 0; 
 	   
 	   while (items.hasNext()) {
 				Item item = items.next();
+				itemNum++;
 				
 				String imageDimensions = "";
 				if (item.getThumbnailOrientation().equals("portrait")) {
@@ -41,7 +44,7 @@
 					imageDimensions += " width='185px' ";
 				}
 
-				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image'><a href='/view/" + item.getId()
+				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
 						+ "/'><img " + "src='" + item.getThumbnailURL()+ "' " + "alt='"
 						+ item.getId() + "' "+imageDimensions
 						+ "></a></div> \n ");

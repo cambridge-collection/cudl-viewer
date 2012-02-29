@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -21,12 +22,25 @@ public class ItemFactory {
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
 	private static Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
-
+	
+	// Forces the application to load the collection information on startup.  
+	public static boolean initalised = initAllItems();
+	
 	/**
 	 * Initalise the collections hashtable from information in the collections
 	 * properties file.
-	 * 
-	 * @return hashtable of collectionID to collection object.
+	 */
+	private synchronized static boolean initAllItems() {
+		String[] collections = Properties.getString("collections").trim().split(",");
+		for (int i=0; i<collections.length; i++) {
+			initItems(collections[i]);
+		}
+		return true;
+	}
+	
+	/**
+	 * Initalise the collections hashtable from information in the collections
+	 * properties file.
 	 */
 	private synchronized static void initItems(String collectionId) {
 
@@ -86,31 +100,36 @@ public class ItemFactory {
 	}
 
 	public static Item getItemFromId(String id, String collectionId) {
-		if (!itemsInitalised(collectionId)) {
-			initItems(collectionId);
-		}
 		Hashtable<String, Item> items = itemsInCollection.get(collectionId);
 		return items.get(id);
 	}
+	
+	/**
+	 * Returns the first matching item for that id in any collection. 
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public static Item getItemFromId(String id) {
+				
+		Enumeration<String> collections = itemsInCollection.keys();
+		while (collections.hasMoreElements()) {
+			Hashtable<String, Item> items = itemsInCollection.get(collections.nextElement());
+			Item item = items.get(id);
+			if (item!=null) {
+				return item;
+			}
+		}
+		return null;
+	}
+		
 
 	public static List<Item> getItems(String collectionId) {
-		if (!itemsInitalised(collectionId)) {
-			initItems(collectionId);
-		}
 		Hashtable<String, Item> items = itemsInCollection.get(collectionId);
 		ArrayList<Item> list = new ArrayList<Item>(items.values());
 		Collections.sort(list);
 
 		return list;
-	}
-
-	private static boolean itemsInitalised(String collectionId) {
-
-		if (itemsInCollection.get(collectionId) != null
-				&& itemsInCollection.get(collectionId).size() > 0) {
-			return true;
-		}
-		return false;
 	}
 
 	private static Dimension getWidthHeightImage(URL url) {
