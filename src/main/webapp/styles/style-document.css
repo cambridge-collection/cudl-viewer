@@ -52,7 +52,7 @@ h3,h2,h1,h4 {
 
 .addthis {
 	margin-left: auto;
-	width: 110px;
+	width: 130px;
 }
 
 #transcription_normal_frame {
@@ -257,3 +257,12 @@ table {
 /* Toolbar style */
 /*.x-toolbar-default{color:#ffffff;font-size:11px;line-height:15px;border-color:#ebe7e7;border-width:1px;border-style:solid;background-image:none;background-color:#2a2525;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #332e2e), color-stop(45%, #2b2626), color-stop(46%, #151313), color-stop(50%, #151313), color-stop(51%, #1d1a1a), color-stop(100%, #2a2525));background-image:-webkit-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-moz-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-o-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-ms-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);-moz-box-shadow:#453d3d 0 1px 0px 0 inset;-webkit-box-shadow:#453d3d 0 1px 0px 0 inset;-o-box-shadow:#453d3d 0 1px 0px 0 inset;box-shadow:#453d3d 0 1px 0px 0 inset}
 .x-toolbar-default{border:0}*/
+
+/* Style for the collapse of the panels, making button blue 
+  and hopefully more obvious */
+.x-layout-split-right {
+    background: url("/img/icon-mini-right.gif") no-repeat scroll left top transparent;
+}
+.x-splitter-collapsed .x-layout-split-right {
+    background: url("/img/icon-mini-left.gif") no-repeat scroll right top transparent;
+}

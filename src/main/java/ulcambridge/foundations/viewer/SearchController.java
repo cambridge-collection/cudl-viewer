@@ -2,7 +2,6 @@ package ulcambridge.foundations.viewer;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -45,9 +43,7 @@ public class SearchController {
 
 		// Read XML result into Model
 		SearchResultSet results = parseSearchResults(dom);		
-		
-		
-		
+
 		ModelAndView modelAndView = new ModelAndView("jsp/search");
 		modelAndView.addObject("results", results);
 		return modelAndView;
@@ -107,13 +103,7 @@ public class SearchController {
 		if (params != null && params.getLength() > 0) {
 			for (int i = 0; i < params.getLength(); i++) {
 				Element node = (Element) params.item(i);
-
-				System.out.println("Node Name: " + node.getNodeName());
-				System.out.println("Node Type: " + node.getNodeType());
-				System.out.println("Node local name: " + node.getLocalName());
-				System.out.println("Node Value: " + node.getNodeValue());
-				System.out.println("children: " + node.getChildNodes().getLength());
-				System.out.println("Attributes		"+node.getAttributes().getLength());		
+						
 				query = node.getAttribute("value");
 			}
 		}

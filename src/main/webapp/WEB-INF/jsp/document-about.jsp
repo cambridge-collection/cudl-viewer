@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="metadata" class="document-about">
-	<div style="height: 100%; overflow-y: auto;">
+	<div style="height: 100%; overflow-y: auto;overflow-x: hidden;">
 
 		<!-- AddThis Button BEGIN -->
 		<div class="addthis">
@@ -9,6 +9,8 @@
 					class="addthis_button_facebook"></a> <a
 					class="addthis_button_twitter"></a> <a
 					class="addthis_button_compact"></a>
+					<a
+				class="addthis_counter addthis_bubble_style"></a>
 			</div>
 			<script type="text/javascript"
 				src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ec62d915a6efb9f"></script>
@@ -21,14 +23,15 @@
 			<br /> <span class="document-about-title" id="metadata-title"></span>
 			<span id="metadata-author"></span> <br />
 			<div class="document-spacer"></div>
-			&nbsp;Part of the <a href="${collectionURL}">${collectionTitle}</a> Collection.
+			&nbsp;Part of the <a href="${collectionURL}">${collectionTitle}</a>
+			Collection.
 
 
 			<!-- Metadata -->
 			<br /> <br />
 
 			<div id="metadata-abstract"></div>
-<!-- 
+			<!-- 
 			<div class="grid_10" id="document-about-radio">
 				<div class="grid_1" id="document-about-radio-icon-div">
 					<a href="http://www.bbc.co.uk/radio4/" target="_blank"><img id="document-about-radio-icon" src="/images/general/BBCNewton86x48.jpg"
@@ -51,8 +54,8 @@
 							Physical location: <span id="metadata-physicalLocation"></span> <br />
 							Classmark: <span id="metadata-shelfLocation"></span> <br />
 							Subject: <span id="metadata-subject"></span> <br /> Date
-							Created: <span id="metadata-dateCreatedDisplay"></span>
-							<span id="metadata-optional"></span>							
+							Created: <span id="metadata-dateCreatedDisplay"></span> <span
+								id="metadata-optional"></span>
 						</div>
 					</div>
 					<div class="rbbot">

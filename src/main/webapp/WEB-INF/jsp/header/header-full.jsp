@@ -104,8 +104,8 @@
 		<div class="grid_4 helpBanner">
 
 			<a class="iframe" href="/feedbackform.html" title="Feedback"><img
-				src="/images/header/feedback-arrow.png" /> Feedback</a> <br /> <a
+				src="/images/header/feedback-arrow.png" alt="arrow"/> Feedback</a> <br /> <a
 				class="iframe" href="/mailinglistform.html" title="Keep me informed"><img
-				src="/images/header/feedback-arrow.png" /> Keep me informed</a><br />
+				src="/images/header/feedback-arrow.png" alt="arrow" /> Keep me informed</a><br />
 		</div>
 		<!-- end #localMasthead -->

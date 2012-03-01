@@ -85,18 +85,18 @@
 
 		<!--  3975  -->
 		<div class="featuredItem-text"><h5>
-			<a href="/view/MS-ADD-03975/10">Newton's Laboratory Notebook</a>
+			<a href="/view/MS-ADD-03975/21">Newton's Laboratory Notebook</a>
 		</h5></div>
-		<a href="/view/MS-ADD-03975/10"><img alt="MS-ADD-03975"
+		<a href="/view/MS-ADD-03975/21"><img alt="MS-ADD-03975"
 			src="/images/collectionsView/featured-newton.jpg" /> </a>
 	</div>
 	<div class="featuredItem">
 		<!--  PR-INC-00000-A-00007-00002-00888 -->
 		<div class="featuredItem-text"><h5>
-			<a href="/view/PR-INC-00000-A-00007-00002-00888/49">Nuremberg
+			<a href="/view/PR-INC-00000-A-00007-00002-00888/87">Nuremberg
 				Chronicle </a>
 		</h5></div>
-		<a href="/view/PR-INC-00000-A-00007-00002-00888/49"><img
+		<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
 			alt="PR-INC-00000-A-00007-00002-00888"
 			src="/images/collectionsView/featured-nuremberg.jpg" /> </a>
 

@@ -88,7 +88,9 @@ public class SearchResult {
 			if (node.getParentNode().getNodeName().equals("term")) {
 				return "<b>" + node.getNodeValue().replaceAll("<.*>", "") + "</b>";
 			}
-			return node.getNodeValue().replaceAll("<.*>", "");
+			// remove complete and partial tags as much as possible
+			String noCompleteTags = node.getNodeValue().replaceAll("<.*>", "");
+			return noCompleteTags.replaceAll("<\\w*|\\w*>", "");
 		}
 
 		NodeList children = node.getChildNodes();

@@ -120,6 +120,12 @@ ol#index_carousel li {
 	margin-left: 18px;
 }
 
+.featuredItem img {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333;
+}
+
 .foundations-link-faith,.foundations-link-faith a {
 	color: #8f7722;
 	position: absolute;
@@ -241,9 +247,26 @@ ol#collections_carousel li {
 
 /* Note the max height and width are set in jsp also */
 .collections_carousel_image img {
-	margin-left: 14px;
-	float: right;
-	border: 4px;
+	margin:auto;
+}
+
+.collections_carousel_image_box {
+	float: right;		
+	width: 180px;
+	height: 180px;
+	margin-left:14px;
+	background: #000000;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333;
+}
+
+.collections_carousel_image  {
+	display: table-cell;
+    vertical-align: middle;
+    width: 180px;
+    height: 180px;
 }
 
 .collections_carousel_text {

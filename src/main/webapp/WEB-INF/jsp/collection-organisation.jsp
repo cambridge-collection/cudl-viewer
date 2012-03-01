@@ -8,13 +8,13 @@
 <script type="text/javascript">
  function pageinit() {
 
-	/* var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
+	 var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
 	 loop : false,
-	 size : 5,
-	 step : 2,
+	 size : 4,
+	 step : 3,
 	 vertical : true,
 	 pageNav : false
-	 }); */
+	 }); 
   }
 	
 </script>
@@ -39,15 +39,16 @@
 				
 				String imageDimensions = "";
 				if (item.getThumbnailOrientation().equals("portrait")) {
-					imageDimensions += " width='140px' ";
+					imageDimensions += " style='height:100%' ";
 				} else if (item.getThumbnailOrientation().equals("landscape")) {
-					imageDimensions += " width='185px' ";
+					imageDimensions += " style='width:100%' ";
 				}
 
-				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
+				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
+				        + "<div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
 						+ "/'><img " + "src='" + item.getThumbnailURL()+ "' " + "alt='"
 						+ item.getId() + "' "+imageDimensions
-						+ "></a></div> \n ");
+						+ "></a></div></div> \n ");
 				out.print("<div class='collections_carousel_text'><h5>" + item.getTitle() + " ("
 						+ item.getShelfLocator() + ")</h5> "
 						+ item.getAbstractShort() + " ... <a href='/view/"
