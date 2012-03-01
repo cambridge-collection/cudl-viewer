@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript T-S 24.55",
+                  "title":"Genizah Manuscript",
                   "uniformTitle":"",
                   "alternativeTitle":"",
                   "names":[
@@ -35,7 +35,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Letter from Nathan ben Solomon b. <em>ha-Ḥazzan</em> ben Jair, written on behalf of his community to Moses Nagid ben Mevoraḵ in Fusṭāṭ regarding two matters of conflict between the two factions into which the community is divided, each with its own cantor: disagreement over the prayer for the Nagid and conflict over a particular synagogue custom.</p>",
+                  "abstract":"<p>Letter from Nathan ben Solomon ben <em>ha-Ḥazzan</em> ben Jair, written on behalf of his community to Moses Nagid ben Mevoraḵ in Fusṭāṭ regarding two matters of conflict between the two factions into which the community is divided, each with its own cantor: disagreement over the prayer for the Nagid and conflict over a particular synagogue custom.</p>",
                   "subject":[
                   "Cairo Genizah","Manuscripts, Hebrew"
                   ],
@@ -43,7 +43,7 @@
                   ""
                   ],
                   "originPlace":[
-                  ""
+                  "Fusṭāṭ"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00055-000-00001_files/8/0_0.jpg",
@@ -105,7 +105,7 @@
                   }],
                "logicalStructure":[   
       {
-      "label":"Genizah Manuscript T-S 24.55",
+      "label":"Genizah Manuscript",
       "descriptiveMetadataID":"DMD1",
       "startPage":"1r",
       "startPageID":"LOGICAL-PAGE-1",

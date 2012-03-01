@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript T-S 24.26",
+                  "title":"Genizah Manuscript",
                   "uniformTitle":"",
                   "alternativeTitle":"",
                   "names":[
@@ -70,7 +70,7 @@
                   ""
                   ],
                   "originPlace":[
-                  "Milīj"
+                  "Fusṭāṭ"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00026-000-00001_files/8/0_0.jpg",
@@ -132,7 +132,7 @@
                   }],
                "logicalStructure":[   
       {
-      "label":"Genizah Manuscript T-S 24.26",
+      "label":"Genizah Manuscript",
       "descriptiveMetadataID":"DMD1",
       "startPage":"1r",
       "startPageID":"LOGICAL-PAGE-1",

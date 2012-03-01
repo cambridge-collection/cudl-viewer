@@ -24,7 +24,7 @@
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/7443076",
                      "type":"personal",
-                     "role":"aut"
+                     "role":"ann"
                      },
                      {
                      "fullForm":"Ibn Mālik, Muḥammad ibn ʻAbd Allāh, d. 1274",
@@ -43,7 +43,7 @@
                   ""
                   ],
                   "originPlace":[
-                  ""
+                  "Middle East"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-MM-00006-00023-000-00001_files/8/0_0.jpg",

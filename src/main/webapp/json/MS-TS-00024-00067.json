@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript T-S 24.67",
+                  "title":"Genizah Manuscript",
                   "uniformTitle":"",
                   "alternativeTitle":"",
                   "names":[
@@ -132,7 +132,7 @@
                   }],
                "logicalStructure":[   
       {
-      "label":"Genizah Manuscript T-S 24.67",
+      "label":"Genizah Manuscript",
       "descriptiveMetadataID":"DMD1",
       "startPage":"1r",
       "startPageID":"LOGICAL-PAGE-1",
