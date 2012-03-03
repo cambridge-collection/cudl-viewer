@@ -1,0 +1,128 @@
+
+               {
+               
+               "descriptiveMetadata":[
+                  {
+                  "ID":"DMD1",
+                  "title":"Titi Lucretii Cari De rerum natura libri sex",
+                  "uniformTitle":"De rerum natura",
+                  "alternativeTitle":"Titi Lvcretii Cari De rervm natvra libri sex De rervm natvra libri sex De rerum natura libri sex On the nature of things",
+                  "names":[
+                     {
+                     "fullForm":"Lucretius Carus, Titus",
+                     "displayForm":"Lucretius",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/106388020",
+                     "type":"personal",
+                     "role":"aut"
+                     },
+                     {
+                     "fullForm":"Montaigne, Michel de, 1533-1592",
+                     "displayForm":"Michel de Montaigne",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/95153547",
+                     "type":"personal",
+                     "role":"ann"
+                     },
+                     {
+                     "fullForm":"Rouillé, Guillaume, 1518?-1589",
+                     "displayForm":"Guillaume Rouillé",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/100210128",
+                     "type":"personal",
+                     "role":"pbl"
+                     },
+                     {
+                     "fullForm":"Gaultier, Philippe, fl. 1562-1569",
+                     "displayForm":"Phillippe G. Rouillé",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/78669577",
+                     "type":"personal",
+                     "role":"pbl"
+                     },
+                     {
+                     "fullForm":"Lambin, Denys, 1520 or 21-1572",
+                     "displayForm":"Denys Lambin",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/89788393",
+                     "type":"personal",
+                     "role":"oth"
+                     }],
+                  "abstract":"<p>SUMMARY - Replace</p>",
+                  "subject":[
+                  "Philosophy, Ancient"
+                  ],
+                  "publisher":[
+                  "In Gulielmi Rouillij, et Philippi G. Rouillij nep[otes]. aedibus ..."
+                  ],
+                  "originPlace":[
+                  "Parisiis, et Lugduni habentur"
+                  ],
+                  "mediaUrl":"",
+                  "thumbnailUrl":"/content/images/PR-MONTAIGNE-00001-00004-00004_files/8/0_0.jpg",
+                  "thumbnailOrientation":"portrait",
+                  "dateCreatedStart":"1563-01-01",
+                  "dateCreatedEnd":"1563-12-31",
+                  "dateCreatedDisplay":"1563",
+                  "dateIssuedStart":"",
+                  "dateIssuedEnd":"",
+                  "dateIssuedDisplay":"",
+                  "languageCodes":[
+                  "lat"
+                  ],
+                  "notes":[
+                  "Title within ornamental border; date incorporated into border; decorative woodcut initials."
+                  ],
+                  "ownership":[
+                  "Montaigne's copy, with his ms. notes."
+                  ],
+                  "binding":[
+                  ""
+                  ],
+                  "support":[
+                  ""
+                  ],
+                  "script":[
+                  ""
+                  ],
+                  "decoration":[
+                  ""
+                  ],
+                  "languageString":[
+                  "Latin"
+                  ],
+                  "physicalLocation":"Cambridge University Library",
+                  "shelfLocator":"Montaigne.1.4.4",
+                  "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
+                  "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "type":"text",
+                  "manuscript":"no",
+                  "virtualCollections":[
+                  "treasure"
+                  ],
+                  "extent":"[24], 559, [1] p.; 4⁰"
+                  }],
+      
+               "organisationCollection":"montaigne",
+              
+               "numberOfPages":"0",
+               "useTranscriptions":"N",
+               
+               
+               "pages":[],
+               "logicalStructure":[   
+      {
+      "label":"Titi Lucretii Cari De rerum natura libri sex",
+      "descriptiveMetadataID":"DMD1",
+      "startPage":"",
+      "startPageID":"",
+      "startPagePosition":"",
+      "children":[]
+      }]
+               }
+   
