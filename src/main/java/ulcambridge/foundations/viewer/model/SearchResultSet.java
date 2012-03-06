@@ -13,34 +13,38 @@ import java.util.List;
 public class SearchResultSet {
 
 	private int totalDocs;
-	private float queryTime;
-	private String query;
 	private List<SearchResult> results;
+	private List <SearchResultFacet> facets;
+	private String spellingSuggestedTerm;
+	private float queryTime;	
 
-	public SearchResultSet(int totalDocs, float queryTime,
-			String query, List<SearchResult> results) {
+	public SearchResultSet(int totalDocs, String spellingSuggestedTerm, float queryTime,
+			List<SearchResult> results, List<SearchResultFacet> facets) {
 
 		this.totalDocs = totalDocs;
-		this.queryTime = queryTime;
-		this.query = query;
 		this.results = results;
+		this.facets = facets;
 
-	}
-
-	public String getSearchQuery() {
-		return query;
 	}
 
 	public int getNumberOfResults() {
 		return totalDocs;
 	}
-
-	public float getSearchTime() {
-		return queryTime;
-	}
 	
 	public List<SearchResult> getResults() {
 		return results;
 	}
+	
+	public List<SearchResultFacet> getFacets() {
+		return facets;
+	}
+
+	public String getSpellingSuggestedTerm() {
+		return spellingSuggestedTerm;
+	}
+
+	public float getQueryTime() {
+		return queryTime;
+	}	
 
 }

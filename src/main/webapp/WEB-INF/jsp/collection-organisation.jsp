@@ -46,7 +46,7 @@
 
 				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
 				        + "<div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
-						+ "/'><img " + "src='" + item.getThumbnailURL()+ "' " + "alt='"
+						+ "/'><img src='" + item.getThumbnailURL()+ "' " + "alt='"
 						+ item.getId() + "' "+imageDimensions
 						+ "></a></div></div> \n ");
 				out.print("<div class='collections_carousel_text'><h5>" + item.getTitle() + " ("
