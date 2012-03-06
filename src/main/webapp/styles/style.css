@@ -234,6 +234,15 @@ ol#index_carousel li {
 	display: block;
 }
 
+.grid_carousel ol {
+	width: 900px;
+}
+
+.grid_carousel ol li {
+	float: left;
+	width: 450px;;
+}
+
 .collections_carousel_item {
 	width: 400px;
 	font-style: normal;
@@ -247,14 +256,14 @@ ol#collections_carousel li {
 
 /* Note the max height and width are set in jsp also */
 .collections_carousel_image img {
-	margin:auto;
+	margin: auto;
 }
 
 .collections_carousel_image_box {
-	float: right;		
+	float: right;
 	width: 180px;
 	height: 180px;
-	margin-left:14px;
+	margin-left: 14px;
 	background: #000000;
 	padding: 5px;
 	border-style: solid;
@@ -262,15 +271,15 @@ ol#collections_carousel li {
 	border-color: #333;
 }
 
-.collections_carousel_image  {
+.collections_carousel_image {
 	display: table-cell;
-    vertical-align: middle;
-    width: 180px;
-    height: 180px;
+	vertical-align: middle;
+	width: 180px;
+	height: 180px;
 }
 
 .collections_carousel_text {
-	
+	padding: 5px;
 }
 
 ol#vcollections_carousel li {
@@ -279,6 +288,23 @@ ol#vcollections_carousel li {
 	width: 550px;
 	font-style: normal;
 	list-style: none outside none;
+}
+
+.virtual_collection_summary_image {
+	position: relative;
+	float: left;
+	height: 250px;
+	width: 230px;
+	width: 230px
+}
+
+.virtual_collection_summary {
+	position: relative;
+	background-color: #000;
+	margin: 5px;
+	height: 250px;
+	width: 920px;
+	margin-bottom: 18px;
 }
 
 /* credit text for images, small */
@@ -305,7 +331,7 @@ ol#vcollections_carousel li {
 	border-width: 1px;
 	border-color: #333;
 	display: table-cell;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .clear {
