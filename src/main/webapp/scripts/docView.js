@@ -133,10 +133,14 @@ var docView = function() {
 						} else if (name && name.role == "scr") {
 							scribes.push(name.displayForm);
 						} else if (name && name.role == "rcp") {
-							recipients.push(name.displayForm);
+							recipients.push(name.displayForm);						
+						} else if (name && name.role == "pbl") {
+							otherpeople.push(name.displayForm);
+						} else if (name && name.role == "ann") {
+							otherpeople.push(name.displayForm);
 						} else if (name && name.role == "oth") {
 							otherpeople.push(name.displayForm);
-						} 
+						}
 					}
 				}
 				if (authors.length > 0) {
@@ -174,7 +178,7 @@ var docView = function() {
 				var optionalMetadata = "";
 				optionalMetadata += view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
-				optionalMetadata += view.getMetadataHTML("Alternative title: ",
+				optionalMetadata += view.getMetadataHTML("Alternative title(s): ",
 						descriptiveMetadata.alternativeTitle);
 				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
 						fowners);
@@ -188,10 +192,18 @@ var docView = function() {
 						otherpeople);					
 				optionalMetadata += view.getMetadataHTML("Publisher: ",
 						descriptiveMetadata.publisher);
-				optionalMetadata += view.getMetadataHTML("Publication place: ",
-						descriptiveMetadata.publicationPlace);
+				optionalMetadata += view.getMetadataHTML("Origin place: ",
+						descriptiveMetadata.originPlace);				
 				optionalMetadata += view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
+				optionalMetadata += view.getMetadataHTML("Binding: ",
+						descriptiveMetadata.binding);				
+				optionalMetadata += view.getMetadataHTML("Support: ",
+						descriptiveMetadata.support);
+				optionalMetadata += view.getMetadataHTML("Script: ",
+						descriptiveMetadata.script);
+				optionalMetadata += view.getMetadataHTML("Decoration: ",
+						descriptiveMetadata.decoration);				
 				optionalMetadata += view.getMetadataHTML("Notes: ",
 						descriptiveMetadata.notes);
 				optionalMetadata += view.getMetadataHTML("Ownership: ",
