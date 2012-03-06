@@ -290,6 +290,14 @@ ol#vcollections_carousel li {
 	list-style: none outside none;
 }
 
+.faq ol {
+	list-style: circle outside none;
+}
+.faq ol li {
+	margin: 5px;
+}
+
+
 .virtual_collection_summary_image {
 	position: relative;
 	float: left;
