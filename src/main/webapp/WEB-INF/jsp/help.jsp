@@ -24,8 +24,8 @@
 							seeing as much of the manuscript as possible?</b> </a>
 				</li>
 				<li><a href="#socialmedia"><b>How do I share a book on
-							Facebook, Twitter, etc.</b> </a>
-				</li>			
+							Facebook, Twitter, etc.?</b> </a>
+				</li>
 				<li><a href="#tech"><b>What technologies are behind the
 							Cambridge Digital Library?</b> </a>
 				</li>
@@ -38,13 +38,13 @@
 				<li><a href="#languages"><b>Many of the books seem to
 							be in Latin or Greek, why is this?</b> </a>
 				</li>
-				<li><a href="#digitisation"><b>Why can't I see all books in
-							Cambridge University Library online?</b> </a>
+				<li><a href="#digitisation"><b>Why can't I see all
+							books in Cambridge University Library online?</b> </a>
 				</li>
 			</ol>
 		</div>
 		<div class="grid_11">
-		
+
 			<p>
 				<a name="mailinglist"><b>How can I find out when new content
 						is made available?</b> </a>
@@ -82,12 +82,12 @@
 
 			<p>
 				<a name="socialmedia"><b>How do I share a book on Facebook,
-						Twitter, etc.</b> </a>
+						Twitter, etc.?</b> </a>
 			</p>
 
 			<p>There are social media icons in the top right of the About
 				tab. Clicking on any of them will allow you to share the item with
-				others.</p>		
+				others.</p>
 			<p>
 				<a name="tech"><b>What technologies are behind the Cambridge
 						Digital Library?</b> </a>
@@ -105,8 +105,10 @@
 					href="http://www.bbc.co.uk/glow/" target="_blank">Glow</a>. Behind
 				the scenes we use <a href="http://xtf.cdlib.org/" target="_blank">XTF</a>
 				and <a href="http://www.goobi.org/" target="_blank">Goobi</a> for
-				digitising and indexing the data. The website was created by
-				Cambridge Digital Library and is written in Java.
+				digitising and indexing the data. The website was created by the
+				digital library team at Cambridge University Library and is written
+				in Java. You can find out more on our <a href="/contributors/">Contributors</a>
+				page.
 			</p>
 
 			<p>
@@ -125,8 +127,9 @@
 						manuscripts to download (for e-readers for example)?</b> </a>
 			</p>
 
-			<p>This is something which we would very much like to do, however this may
-				result in very large files, so may not be suitable for all books.</p>
+			<p>This is something which we would very much like to do, however
+				this may result in very large files, so may not be suitable for all
+				books.</p>
 
 			<p>
 				<a name="languages"><b>Many of the books seem to be in Latin
@@ -138,8 +141,8 @@
 				also used for more informal notes.</p>
 
 			<p>
-				<a name="digitisation"><b>Why can't I see all books in Cambridge
-						University Library online?</b> </a>
+				<a name="digitisation"><b>Why can't I see all books in
+						Cambridge University Library online?</b> </a>
 			</p>
 
 			<p>
@@ -149,8 +152,6 @@
 					href="http://www.lib.cam.ac.uk/eresources/" target="_blank">eresources@cambridge
 					website</a>.
 			<p>
-
-
 		</div>
 	</div>
 
