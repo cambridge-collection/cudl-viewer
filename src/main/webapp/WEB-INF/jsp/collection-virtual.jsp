@@ -59,8 +59,8 @@ function pageinit() {
 	%>
 </ol>
 
-
 </div>
+<div class="grid_20">&nbsp;</div>
 
 <jsp:include page="<%=collection.getSponsors() %>" /> </section>
 

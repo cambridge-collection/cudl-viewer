@@ -345,3 +345,22 @@ ol#vcollections_carousel li {
 .clear {
 	clear: both;
 }
+
+/* For pagination */
+.page_navigation, .alt_page_navigation {
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+.page_navigation a, .alt_page_navigation a {
+    background-color: #999;
+    color: white;
+    float: left;
+    font-size: 12px;
+    margin: 2px;
+    padding: 3px 5px;
+    text-decoration: none;
+}
+.active_page {
+    background-color: white !important;
+    color: black !important;
+}

@@ -7,7 +7,7 @@
 <% Collection collection = (Collection) request.getAttribute( "collection" ); %>
 <script type="text/javascript">
  function pageinit() {
-
+/*
 	 var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
 	 loop : false,
 	 size : 4,
@@ -15,7 +15,21 @@
 	 vertical : true,
 	 pageNav : false
 	 }); 
-  }
+	 */
+	 
+	 $(document).ready(function(){
+			$('#paging_container').pajinate({
+				items_per_page : 8,
+				num_age_links_to_display:10,
+				item_container_id:'.collections_carousel'
+			});
+		});
+	 
+//		nav_label_first:'<<',
+//		nav_label_prev:'<',
+//		nav_label_next:'>',
+//		nav_label_last:'>>'			
+ }
 	
 </script>
 
@@ -23,12 +37,12 @@
 
 <section id="content" class="grid_20 content">
 
-
 <jsp:include page="<%=collection.getSummary() %>" />
+			
+<div class="grid_9 container" id="paging_container">
 
-<div class="grid_9">
-
-	<ol id="collections_carousel">
+    <div class="page_navigation"></div>
+	<ol id="collections_carousel" class="collections_carousel">
 	<% 
 	   Iterator<Item> items = collection.getItems().iterator();
 	   int itemNum = 0; 
@@ -56,7 +70,7 @@
 			}
 		%>
 	</ol>
-
+    <div class="page_navigation"></div>
 
 </div>
 
