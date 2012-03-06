@@ -56,7 +56,7 @@ public class DocumentViewController {
 
 				// Stop if this is an organisational collection, else keep
 				// looking
-				if (collection.getTitle().equals("organisation")) {
+				if (collection.getTitle().startsWith("organisation")) {
 					break;
 				} 
 			}
@@ -111,7 +111,7 @@ public class DocumentViewController {
 				
 				// Stop if this is an organisational collection, else keep
 				// looking
-				if (collection.getTitle().equals("organisation")) {
+				if (collection.getTitle().startsWith("organisation")) {
 					break;
 				} 
 			}

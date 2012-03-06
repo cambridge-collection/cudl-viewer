@@ -39,6 +39,11 @@ public class ImageProxy {
 		String imagePath = (String) request
 				.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
+		// do nothing if image proxy is off in the properties file. 
+		if (!Properties.getString("useProxy").equals("true")) {
+			return null;
+		}
+		
 		URL url = new URL(Properties.getString("imageServer") + imagePath);
 
 		BufferedOutputStream out = new BufferedOutputStream(

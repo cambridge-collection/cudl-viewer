@@ -38,6 +38,11 @@ public class ImageEditor {
 	public ModelAndView handleViewRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
+		// do nothing if image server is not set in the properties file. 
+		if (Properties.getString("imageServer").trim().equals("")) {
+			return null;
+		}
+		
 		float bgColourR = 0.05f;
 		float bgColourG = 0.05f;
 		float bgColourB = 0.05f;
@@ -92,8 +97,9 @@ public class ImageEditor {
 				out.close();
 			}
 
-		} else {
+		} if (imagePath.endsWith("dzi")) {
 
+			// For dzi files. 
 			URL url = new URL(Properties.getString("imageServer") + imagePath);
 
 			BufferedOutputStream out = new BufferedOutputStream(
