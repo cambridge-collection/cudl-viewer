@@ -109,7 +109,7 @@
                   ""
                   ],
                   "originPlace":[
-                  "England"
+                  "England, London/Westminster"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-EE-00003-00059-000-00001_files/8/0_0.jpg",
@@ -153,7 +153,7 @@
                   "virtualCollections":[
                   "treasure"
                   ],
-                  "extent":"37 fols (35 missing), 279 x 193 mm (102-177-112 x 165 mm) 3 columns (2 on 36), 48 lines to full column (13-26 below miniatures), ruled in plummet, below top line, rubrics, catchwords, 2o fol. pur purchater (4)"
+                  "extent":"37 fols (35 missing), 279 x 193 mm (102-177-112 x 165 mm) 3 columns (2 on 36), 48 lines to full column (13-26 below miniatures), ruled in plummet, below top line, rubrics, catchwords, 2o fol. <it>pur purchater</it> (<a href='' onclick='store.loadPage(13);return false;'>4r</a>)"
                   }],
       
                "organisationCollection":"christian",
@@ -1163,7 +1163,7 @@
       "children":[]
       },   
       {
-      "label":"King Edward receives the hermit's letter, urging him to found a church for St Peter at Thorney.",
+      "label":"Edward receives the hermit's letter, urging him to found a church for St Peter at Thorney.",
       "descriptiveMetadataID":"",
       "startPage":"16r",
       "startPageID":"LOGICAL-PAGE-37",
