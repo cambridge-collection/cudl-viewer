@@ -20,12 +20,7 @@
 		<br />
 		<p>Cambridge University Library holds the largest and most
 			important collection of the scientific works of Isaac Newton
-			(1642-1727). We present here an initial selection of Newton's
-			manuscripts, concentrating on his mathematical work in the 1660s.
-			Over the next few months we will be adding further works until the
-			majority of our Newton Papers are available on this site.</p>
-
-		<p>Newton was closely associated with Cambridge. He came to the
+			(1642-1727). Newton was closely associated with Cambridge. He came to the
 			University as a student in 1661, graduating in 1665, and from 1669 to
 			1701 he held the Lucasian Chair of Mathematics. Under the regulations
 			for this Chair, Newton was required to deposit copies of his lectures
@@ -60,6 +55,12 @@
 			collection of scientific manuscripts from the Earl of Macclesfield,
 			which included a significant number of Isaac Newton's letters and
 			other papers.</p>
+			
+		<p>A number of videos explaining aspects of Newton's work and manuscripts
+		are available from the <a href="http://www.youtube.com/user/NewtonMSSProject" target="_blank">
+		Newton Project's YouTube site</a>, a selection of which
+		are presented alongside our manuscripts.</p>
+		
 		See also
 		<ul>
 			<li><a target="_blank"
