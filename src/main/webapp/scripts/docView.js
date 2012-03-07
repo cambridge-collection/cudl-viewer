@@ -155,24 +155,28 @@ var docView = function() {
 				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
+				
+				// update current page number display.
 				view.populateElement(document.getElementById("metadata-page"),
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document
 						.getElementById("metadata-page-toolbar"),
 						data.pages[pagenum - 1].name, true);
-				view.populateElement(document
-						.getElementById("metadata-subject"),
-						descriptiveMetadata.subject.join("; "));
-				view.populateElement(document
-						.getElementById("metadata-physicalLocation"),
-						descriptiveMetadata.physicalLocation);
-				view.populateElement(document
-						.getElementById("metadata-shelfLocation"),
-						descriptiveMetadata.shelfLocator);
-				view.populateElement(document
-						.getElementById("metadata-dateCreatedDisplay"),
-						descriptiveMetadata.dateCreatedDisplay);
+				
+				// update metadata
+				var basicMetadata = "";
+				basicMetadata += view.getMetadataHTML("Physical location: ",
+						descriptiveMetadata.physicalLocation);				
+				basicMetadata += view.getMetadataHTML("Classmark: ",
+						descriptiveMetadata.shelfLocator);				
+				basicMetadata += view.getMetadataHTML("Subject: ",
+						descriptiveMetadata.subject, "; ");
+				basicMetadata += view.getMetadataHTML("Date Created: ",
+						descriptiveMetadata.dateCreatedDisplay);				
 
+				view.populateElement(document
+						.getElementById("metadata-basic"), basicMetadata);
+				
 				// optional metadata
 
 				var optionalMetadata = "";
@@ -280,7 +284,7 @@ var docView = function() {
 				metadataItem = metadataItem.join(arraySeparator);
 			}
 			if (metadataItem && metadataItem != "") {
-				return "<div>" + title + "<b>" + metadataItem + "</b></div>\n";
+				return "<div><b>" + title + "</b>" + metadataItem + "</div>\n";
 			}
 			return "";
 		},

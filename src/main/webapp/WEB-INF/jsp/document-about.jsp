@@ -51,11 +51,8 @@
 					</div>
 					<div class="rbcontent">
 						<div class="document-about-doc">
-							Physical location: <span id="metadata-physicalLocation"></span> <br />
-							Classmark: <span id="metadata-shelfLocation"></span> <br />
-							Subject: <span id="metadata-subject"></span> <br /> Date
-							Created: <span id="metadata-dateCreatedDisplay"></span> <span
-								id="metadata-optional"></span>
+						    <span id="metadata-basic"></span>
+							<span id="metadata-optional"></span>
 						</div>
 					</div>
 					<div class="rbbot">
