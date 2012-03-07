@@ -28,6 +28,7 @@
 	var JSONURL = '/json/${docId}.json';
 	var pagenum = ${page};
 	var docId = '${docId}';
+	var docURL = '${docURL}';
 	var collectionURL = '${collectionURL}';
 	var collectionTitle = '${collectionTitle}';
 	var proxyURL = '${proxyURL}';

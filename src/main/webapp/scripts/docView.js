@@ -24,6 +24,16 @@ var downloadImageCheck = function() {
 	Ext.Msg.show(dloadMessage);
 };
 
+var bookmarkPage = function(title, url) {
+	Ext.Msg.show({
+		   title:'Bookmark Page',
+		   msg: 'The URL to bookmark for direct access to this page is: <br/>'+url,
+		   buttons: Ext.Msg.OK,
+		   fn: function() {return;}
+		});
+
+};
+
 var docView = function() {
 	return {
 
