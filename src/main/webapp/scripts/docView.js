@@ -162,7 +162,7 @@ var docView = function() {
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document
 						.getElementById("metadata-subject"),
-						descriptiveMetadata.subject);
+						descriptiveMetadata.subject.join("; "));
 				view.populateElement(document
 						.getElementById("metadata-physicalLocation"),
 						descriptiveMetadata.physicalLocation);
@@ -179,35 +179,35 @@ var docView = function() {
 				optionalMetadata += view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
 				optionalMetadata += view.getMetadataHTML("Alternative title(s): ",
-						descriptiveMetadata.alternativeTitle);
+						descriptiveMetadata.alternativeTitle, "; ");
 				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
-						fowners);
+						fowners,"; ");
 				optionalMetadata += view.getMetadataHTML("Donor(s): ",
-						donors);
+						donors, "; ");
 				optionalMetadata += view.getMetadataHTML("Scribe(s): ",
-						scribes);	
+						scribes, "; ");	
 				optionalMetadata += view.getMetadataHTML("Recipient(s): ",
-						recipients);		
+						recipients, "; ");		
 				optionalMetadata += view.getMetadataHTML("Associated People: ",
-						otherpeople);					
+						otherpeople, "; ");					
 				optionalMetadata += view.getMetadataHTML("Publisher: ",
-						descriptiveMetadata.publisher);
+						descriptiveMetadata.publisher, "; ");
 				optionalMetadata += view.getMetadataHTML("Origin place: ",
-						descriptiveMetadata.originPlace);				
+						descriptiveMetadata.originPlace, "; ");				
 				optionalMetadata += view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
-				optionalMetadata += view.getMetadataHTML("Binding: ",
-						descriptiveMetadata.binding);				
-				optionalMetadata += view.getMetadataHTML("Support: ",
-						descriptiveMetadata.support);
-				optionalMetadata += view.getMetadataHTML("Script: ",
-						descriptiveMetadata.script);
-				optionalMetadata += view.getMetadataHTML("Decoration: ",
-						descriptiveMetadata.decoration);				
-				optionalMetadata += view.getMetadataHTML("Notes: ",
-						descriptiveMetadata.notes);
-				optionalMetadata += view.getMetadataHTML("Ownership: ",
-						descriptiveMetadata.ownership);
+				optionalMetadata += "<p>"+view.getMetadataHTML("Binding: ",
+						descriptiveMetadata.binding,"</p><br/><p>")+"</p>";				
+				optionalMetadata += "<p>"+view.getMetadataHTML("Support: ",
+						descriptiveMetadata.support,"</p><br/><p>")+"</p>";		
+				optionalMetadata += "<p>"+view.getMetadataHTML("Script: ",
+						descriptiveMetadata.script,"</p><br/><p>")+"</p>";		
+				optionalMetadata += "<p>"+view.getMetadataHTML("Decoration: ",
+						descriptiveMetadata.decoration,"</p><br/><p>")+"</p>";						
+				optionalMetadata += "<p>"+view.getMetadataHTML("Notes: ",
+						descriptiveMetadata.notes,"</p><br/><p>")+"</p>";
+				optionalMetadata += "<p>"+view.getMetadataHTML("Ownership: ",
+						descriptiveMetadata.ownership,"</p><br/><p>")+"</p>";					
 
 				view.populateElement(document
 						.getElementById("metadata-optional"), optionalMetadata);
@@ -266,8 +266,19 @@ var docView = function() {
 
 		},
 
-		getMetadataHTML : function(title, metadataItem) {
+		/**
+		 * Converts the metadata item into HTML representation. 
+		 * @param title - Text for the label
+		 * @param metadataItem - Metadata item to display
+		 * @param arraySeparator - for arrays this is the text that will separate items. 
+		 * @returns
+		 */
+		getMetadataHTML : function(title, metadataItem, arraySeparator) {
 
+			
+			if (metadataItem instanceof Array && arraySeparator) {
+				metadataItem = metadataItem.join(arraySeparator);
+			}
 			if (metadataItem && metadataItem != "") {
 				return "<div>" + title + "<b>" + metadataItem + "</b></div>\n";
 			}
