@@ -116,6 +116,7 @@ var docView = function() {
 
 				// author and people
 				var authors = new Array();
+				var authorsfullform = new Array();
 				var fowners = new Array();
 				var donors = new Array();
 				var scribes = new Array();
@@ -126,20 +127,21 @@ var docView = function() {
 						var name = descriptiveMetadata.names[i];
 						if (name && name.role == "aut") {
 							authors.push(name.displayForm);
+							authorsfullform.push(name.fullForm);
 						} else if (name && name.role == "fmo") {
-							fowners.push(name.displayForm);
+							fowners.push(name.fullForm);
 						} else if (name && name.role == "dnr") {
-							donors.push(name.displayForm);
+							donors.push(name.fullForm);
 						} else if (name && name.role == "scr") {
-							scribes.push(name.displayForm);
+							scribes.push(name.fullForm);
 						} else if (name && name.role == "rcp") {
-							recipients.push(name.displayForm);						
+							recipients.push(name.fullForm);						
 						} else if (name && name.role == "pbl") {
-							otherpeople.push(name.displayForm);
+							otherpeople.push(name.fullForm);
 						} else if (name && name.role == "ann") {
-							otherpeople.push(name.displayForm);
+							otherpeople.push(name.fullForm);
 						} else if (name && name.role == "oth") {
-							otherpeople.push(name.displayForm);
+							otherpeople.push(name.fullForm);
 						}
 					}
 				}
@@ -147,7 +149,7 @@ var docView = function() {
 					view.populateElement(document
 							.getElementById("metadata-author"),
 							" by <span class='document-about-author'>"
-									+ authors + "</span>");
+									+ authors.join(", ") + "</span>");
 				}
 				view.populateElement(document
 						.getElementById("metadata-display-rights"),
@@ -184,6 +186,8 @@ var docView = function() {
 						descriptiveMetadata.uniformTitle);
 				optionalMetadata += view.getMetadataHTML("Alternative title(s): ",
 						descriptiveMetadata.alternativeTitle, "; ");
+				optionalMetadata += view.getMetadataHTML("Author(s): ",
+						authorsfullform, "; ");				
 				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
 						fowners,"; ");
 				optionalMetadata += view.getMetadataHTML("Donor(s): ",
