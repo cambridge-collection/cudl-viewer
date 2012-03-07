@@ -26,17 +26,25 @@ public class ExternalResourceController {
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	// on path /externalresource
+	// NOTE: Currently limited to RELATIVE URLS ONLY. 
 	@RequestMapping(value = "/externalresource")
 	public ModelAndView handleRequest(@RequestParam("url") String url,
 			@RequestParam("doc") String docId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 
 		// translate any relative url into an absolute value
-		if (!url.startsWith("http")) {
+		if (url.startsWith("/")) {
 
 			String baseURL = (request.getRequestURL().toString().replaceAll(
 					"/externalresource", ""));
 			url = baseURL + url;
+			
+		} else  {
+			// LIMIT TO INTERNAL URLS ONLY (if allowing external urls 
+			// need to limit which URLs these are as we don't want this to
+			// allow users to bypass IP restrictions).
+			
+		    return null;
 		}
 
 		// If the files doesn't exist in the cache, or has timed out, load file
