@@ -70,9 +70,11 @@
 			src="/images/collectionsView/collection-genizah.jpg" alt="Genizah"
 			width="150" height="150" /> </a>
 
-		<h5>Genizah Fragments</h5>
-		<br /> Text. <br /> <br /> <a href="/collections/genizah">View
-			collection</a>. <br />
+		<h5>The Cairo Genizah Collection</h5>
+		<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+		University Library is the world's largest and most important single
+		collection of medieval Jewish manuscripts.<br /> <br /> <a
+			href="/collections/genizah">View collection</a>. <br />
 		<div class="foundations-link-faith">
 			<a href="/about#foundations">Foundations of Faith</a>
 		</div>
@@ -84,18 +86,22 @@
 	<div class="featuredItem">
 
 		<!--  3975  -->
-		<div class="featuredItem-text"><h5>
-			<a href="/view/MS-ADD-03975/21">Newton's Laboratory Notebook</a>
-		</h5></div>
+		<div class="featuredItem-text">
+			<h5>
+				<a href="/view/MS-ADD-03975/21">Newton's Laboratory Notebook</a>
+			</h5>
+		</div>
 		<a href="/view/MS-ADD-03975/21"><img alt="MS-ADD-03975"
 			src="/images/collectionsView/featured-newton.jpg" /> </a>
 	</div>
 	<div class="featuredItem">
 		<!--  PR-INC-00000-A-00007-00002-00888 -->
-		<div class="featuredItem-text"><h5>
-			<a href="/view/PR-INC-00000-A-00007-00002-00888/87">Nuremberg
-				Chronicle </a>
-		</h5></div>
+		<div class="featuredItem-text">
+			<h5>
+				<a href="/view/PR-INC-00000-A-00007-00002-00888/87">Nuremberg
+					Chronicle </a>
+			</h5>
+		</div>
 		<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
 			alt="PR-INC-00000-A-00007-00002-00888"
 			src="/images/collectionsView/featured-nuremberg.jpg" /> </a>

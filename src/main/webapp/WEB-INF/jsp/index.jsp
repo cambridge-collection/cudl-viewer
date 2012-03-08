@@ -53,11 +53,11 @@
 			</div>
 
 			<div class="featured-item-list">
-				<a href="/collections/genizah"><img alt="Genizah Fragments"
-					title="Genizah Fragments" src="/images/index/slice-genizah.jpg"> </a>
+				<a href="/collections/genizah"><img alt="Cairo Genizah Collection"
+					title="Cairo Genizah Collection" src="/images/index/slice-genizah.jpg"> </a>
 					
 				<h4>
-					<a href="/collections/genizah">Genizah Fragments</a>
+					<a href="/collections/genizah">Cairo Genizah Collection</a>
 				</h4>
 			</div>
 
@@ -129,17 +129,25 @@
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
 					width="540" height="394" /> </a></li>
 
-			<!-- Genizah Fragments collection -->
+			<!-- The Cairo Genizah collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/collections/genizah">Genizah Fragments</a>
+						<a href="/collections/genizah">The Cairo Genizah Collection</a>
 					</h4>
 
-					<p>Genizah Fragments.
-					</p>
+					<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
+			University Library is the world's largest and most important single
+			collection of medieval Jewish manuscripts. For a thousand years, the
+			Jewish community of Fustat (Old Cairo), placed their left-over,
+			no-longer usable manuscripts in a storeroom (genizah) of the Ben Ezra
+			Synagogue, and in 1896–97 the Cambridge scholar, Dr Solomon
+			Schechter, arrived to examine it. He received permission from
+			the Jewish community of Egypt to take away what he wanted, so he
+			brought 193,000 manuscripts back to Cambridge, where they form the
+			Taylor-Schechter Cairo Genizah Collection.</p>
 				</div> <a href="/collections/genizah"><img 
-					src="/images/index/carousel-genizah.jpg" alt="Genizah Fragments"
+					src="/images/index/carousel-genizah.jpg" alt="The Cairo Genizah Collection"
 					width="540" height="394" /> </a></li>
 		</ol>
 	</div>
