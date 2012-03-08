@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Elementary Mathematics",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Newton, Isaac, Sir, 1642-1727",

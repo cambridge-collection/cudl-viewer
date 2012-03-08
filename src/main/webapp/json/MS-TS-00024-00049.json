@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Abiathar ha-Kohen",
@@ -58,7 +61,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00049-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1070-01-01",
-                  "dateCreatedEnd":"1071-01-01",
+                  "dateCreatedEnd":"1070-12-31",
                   "dateCreatedDisplay":"1070 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

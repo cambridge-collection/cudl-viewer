@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Nājiya, called Sitt Hiḏq",
@@ -49,7 +52,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00028-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1105-05-01",
-                  "dateCreatedEnd":"1105-06-01",
+                  "dateCreatedEnd":"1105-05-31",
                   "dateCreatedDisplay":"Iyyar 1416 (= May 1105 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

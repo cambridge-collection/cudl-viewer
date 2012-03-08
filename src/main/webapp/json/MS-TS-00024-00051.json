@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Samuel ben Nathan",
@@ -49,7 +52,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00051-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1150-01-01",
-                  "dateCreatedEnd":"1151-01-01",
+                  "dateCreatedEnd":"1150-12-31",
                   "dateCreatedDisplay":"1150 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

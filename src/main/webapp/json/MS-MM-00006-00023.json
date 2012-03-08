@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Sharḥ Alfīyah Ibn Mālik",
                   "uniformTitle":"شرح الفية ابن مالك",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Makkūdī, ʻAbd al-Raḥmān ibn ʻAlī, d. 1404 or 5",

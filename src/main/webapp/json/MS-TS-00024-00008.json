@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Ẓarīfā ben Yešuʿa ben Abraham",
@@ -76,7 +79,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00008-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1187-01-01",
-                  "dateCreatedEnd":"1600-01-01",
+                  "dateCreatedEnd":"1599-12-31",
                   "dateCreatedDisplay":"After 1187 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

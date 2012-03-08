@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"El breve compendio de nuestra santa ley alçunna",
                   "uniformTitle":"ال بارابا كمبانديه دا نواشتر شنت لاي السنة كا اكبله ال انرد شبدر الفقي داللجمعه دا لش مسلماش دا كدراتا كا شا لمب بري دا رامنجه",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Baray de Reminjo",

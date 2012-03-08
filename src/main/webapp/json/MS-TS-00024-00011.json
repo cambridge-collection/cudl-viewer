@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Paltiel ben Ephraim he-Ḥaver",
@@ -112,7 +115,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00011-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1002-01-01",
-                  "dateCreatedEnd":"1003-01-01",
+                  "dateCreatedEnd":"1002-12-31",
                   "dateCreatedDisplay":"Tuesday, 14th Elul 4762/1313 (= 1002 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

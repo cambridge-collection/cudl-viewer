@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen",
@@ -166,7 +169,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00001-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1082-01-01",
-                  "dateCreatedEnd":"1083-01-01",
+                  "dateCreatedEnd":"1082-12-31",
                   "dateCreatedDisplay":"23rd Shevaṭ 1393 (= 1082 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

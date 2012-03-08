@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Mevoraḵ '[the Nagid of] the Exile'",
@@ -58,7 +61,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00005-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1111-01-01",
-                  "dateCreatedEnd":"1112-01-01",
+                  "dateCreatedEnd":"1111-12-31",
                   "dateCreatedDisplay":"1422 (= 1111 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

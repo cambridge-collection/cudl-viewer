@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Jacob ha-Nasi ben Moses",
@@ -76,7 +79,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00019-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1200-01-01",
-                  "dateCreatedEnd":"1300-01-01",
+                  "dateCreatedEnd":"1299-12-31",
                   "dateCreatedDisplay":"Probably 13th Century C.E. or later",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Joshua ben Samuel ben Judah he-Ḥaver",
@@ -121,7 +124,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00015-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1125-01-01",
-                  "dateCreatedEnd":"1126-01-01",
+                  "dateCreatedEnd":"1125-12-31",
                   "dateCreatedDisplay":"1[.]36 (=1125 CE)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

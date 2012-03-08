@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān",
                   "uniformTitle":"القرآن",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"East India Company",
@@ -39,8 +42,8 @@
                   "mediaUrl":"",
                   "thumbnailUrl":"/images/thumbnails/Nn375thumb.jpg",
                   "thumbnailOrientation":"portrait",
-                  "dateCreatedStart":"0632-01-01",
-                  "dateCreatedEnd":"1618-01-01",
+                  "dateCreatedStart":"0900-01-01",
+                  "dateCreatedEnd":"1028-01-01",
                   "dateCreatedDisplay":"Undated but notes of ownership of A.H. 1028 and 1066 occur at the beginning.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

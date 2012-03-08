@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Trinity College Notebook",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Newton, Isaac, Sir, 1642-1727",
@@ -40,7 +43,7 @@
                   "thumbnailUrl":"/content/images/MS-ADD-03996-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1661-01-01",
-                  "dateCreatedEnd":"1665-01-01",
+                  "dateCreatedEnd":"1665-12-31",
                   "dateCreatedDisplay":"c. 1661 - c. 1665",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

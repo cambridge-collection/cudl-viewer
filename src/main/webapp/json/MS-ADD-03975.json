@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Laboratory Notebook",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Newton, Isaac, Sir, 1642-1727",
@@ -26,7 +29,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Notes on optics, precious stones, colours, temperatures, salts, medical matters, alchemy and other subjects, in English and Latin, c. 1669-c.1693.</p> <p>The last four pages are written in upside-down from the back, and so numbered in reverse order 344-341.</p> <br/> <p>A full description and transcription of this manuscript is available at <a target='_blank' href='http://webapp1.dlib.indiana.edu/newton/mss/intro/ALCH00110/'>The Chymistry of Isaac Newton</a> </p>",
+                  "abstract":"<p>Newton's notes on optics, precious stones, colours, temperatures, salts, medical matters, alchemy and other subjects, in English and Latin, c. 1669-c.1693.</p> <p>The last four pages are written in upside-down from the back, and so numbered in reverse order 344-341.</p> <br/> <p>A full description and transcription of this manuscript is available at <a target='_blank' href='http://webapp1.dlib.indiana.edu/newton/mss/intro/ALCH00110/'>The Chymistry of Isaac Newton</a> </p>",
                   "subject":[
                   "Chemistry - Early works to 1800","Optics - Early works to 1800","Alchemy - Early works to 1800"
                   ],
@@ -40,7 +43,7 @@
                   "thumbnailUrl":"/content/images/MS-ADD-03975-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1669-01-01",
-                  "dateCreatedEnd":"1693-01-01",
+                  "dateCreatedEnd":"1693-12-31",
                   "dateCreatedDisplay":"c.1669-c.1693",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

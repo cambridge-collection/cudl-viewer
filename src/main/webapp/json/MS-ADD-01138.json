@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"القرآن (اجزاء)",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Fragments of an Abbasid Qurʼān (probably third century A.H. / ninth century C.E.), containing verses from the <a href='' onclick='store.loadPage(10);return false;'>Sura al-Muʾminūn (سورة المؤمنون)</a>, the complete <a href='' onclick='store.loadPage(81);return false;'>Sura al-Nūr (سورة النور)</a>, and verses from the <a href='' onclick='store.loadPage(171);return false;'>Sura al-Furqān (سورة الفرقان)</a>. The script seems to correspond to the Abbasid Style D.I as described by F. Deroche.</p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/programmes/b0192yhn'>In Our Time - The Written World</a>'. </div> </div> </div>",
                   "subject":[
@@ -22,7 +25,7 @@
                   "thumbnailUrl":"/images/thumbnails/Add1138thumb.jpg",
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"0800-01-01",
-                  "dateCreatedEnd":"0900-01-01",
+                  "dateCreatedEnd":"0899-12-31",
                   "dateCreatedDisplay":"3rd century A.H./9th century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

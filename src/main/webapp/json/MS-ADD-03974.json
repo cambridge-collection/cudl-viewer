@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Miscellaneous notes on gems and other subjects",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Newton, Isaac, Sir, 1642-1727",
@@ -93,7 +96,10 @@
                   "ID":"DMD2",
                   "title":"Notes on magnetism",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>From unknown source. The observations (some of which are erroneous) do not seem to be Newton's, though here and there remarks upon them seem to be his. </p>",
                   "subject":[
@@ -153,7 +159,10 @@
                   "ID":"DMD3",
                   "title":"De natura acidorum",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Printed in Samuel Horsley, 'Isaaci Newtoni opera quae existant omnia', volume IV, pp.397-400. </p>",
                   "subject":[
@@ -213,7 +222,10 @@
                   "ID":"DMD4",
                   "title":"De Gemmis",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Notes, mostly from Berquen, Boethius, Tavernier and Boyle. Index of refraction in diamonds is given 41/100 on the authority of Halley. On p.3 is mentioned a very fragile and soft western Topaz which he found to have a specific gravity 4.27, though the sines of refraction were as 14 to 23 (could this be Baryte?). On p.7 he deduces from the cleavage that gems are crystallized like salts from juices which turn to stone. At the end are the gold and silver standards of different countries. </p>",
                   "subject":[
@@ -273,7 +285,10 @@
                   "ID":"DMD5",
                   "title":"De Gemmis",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Another version of parts of De Gemmis, with the addition of a passage on reasons for thinking that diamonds are coagulated from a fluid and fat substance. </p>",
                   "subject":[
@@ -333,7 +348,10 @@
                   "ID":"DMD6",
                   "title":"Of gems",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>English translation of De Gemmis. </p>",
                   "subject":[
@@ -393,7 +411,10 @@
                   "ID":"DMD7",
                   "title":"Of precious stones",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Another version of Of gems. </p>",
                   "subject":[
@@ -453,7 +474,10 @@
                   "ID":"DMD8",
                   "title":"Extracts from Berquen",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[],
                   "abstract":"<p>Louis de Berquen of Bruges (fl. 1450-1470) was the inventor of modern gem-cutting.</p>",
                   "subject":[

@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Joseph ha-Kohen (ben Solomon)",
@@ -85,7 +88,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00029-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1031-01-01",
-                  "dateCreatedEnd":"1032-01-01",
+                  "dateCreatedEnd":"1031-12-31",
                   "dateCreatedDisplay":"c. 1031 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

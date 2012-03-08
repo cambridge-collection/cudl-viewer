@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Hillel ben ʿEli",
@@ -93,8 +96,8 @@
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00044-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
-                  "dateCreatedStart":"1102-01-07",
-                  "dateCreatedEnd":"1102-01-09",
+                  "dateCreatedStart":"1102-07-01",
+                  "dateCreatedEnd":"1102-08-31",
                   "dateCreatedDisplay":"Av 1413/ July–August 1102",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

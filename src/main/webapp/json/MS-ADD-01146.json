@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"القرآت",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Palmer, Edward Henry, 1840-1882",
@@ -40,7 +43,7 @@
                   "thumbnailUrl":"/images/thumbnails/Add1146thumb.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"0700-01-01",
-                  "dateCreatedEnd":"0800-01-01",
+                  "dateCreatedEnd":"0799-12-31",
                   "dateCreatedDisplay":"2nd century A.H. / 8th century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

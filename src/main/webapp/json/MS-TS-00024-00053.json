@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Elhanan ben Shemariah, d. 1026",
@@ -58,7 +61,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00053-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1000-01-01",
-                  "dateCreatedEnd":"1026-01-01",
+                  "dateCreatedEnd":"1025-12-31",
                   "dateCreatedDisplay":"Early 11th Century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

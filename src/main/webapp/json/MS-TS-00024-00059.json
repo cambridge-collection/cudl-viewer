@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Nathan ben Abraham, 11th cent.",
@@ -48,8 +51,8 @@
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00059-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
-                  "dateCreatedStart":"1042-01-01",
-                  "dateCreatedEnd":"1043-01-01",
+                  "dateCreatedStart":"1043-01-01",
+                  "dateCreatedEnd":"1043-12-31",
                   "dateCreatedDisplay":"Probably 1043 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

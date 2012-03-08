@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Kuzayr ben Ḥusayn",
@@ -121,7 +124,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00035-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"0980-01-01",
-                  "dateCreatedEnd":"0981-01-01",
+                  "dateCreatedEnd":"0980-12-31",
                   "dateCreatedDisplay":"[47]40 (= 980 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

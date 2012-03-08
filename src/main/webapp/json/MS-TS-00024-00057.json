@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Schechter, S. (Solomon), 1847-1915",
@@ -40,7 +43,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00057-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1100-01-01",
-                  "dateCreatedEnd":"1200-01-01",
+                  "dateCreatedEnd":"1199-12-31",
                   "dateCreatedDisplay":"12th Century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

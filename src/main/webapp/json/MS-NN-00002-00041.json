@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Codex Bezae",
                   "uniformTitle":"Bible. N.T.",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Bèze, Théodore de, 1519-1605",
@@ -31,7 +34,7 @@
                   "thumbnailUrl":"/content/images/MS-NN-00002-00041-001-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"0400-01-01",
-                  "dateCreatedEnd":"0500-01-01",
+                  "dateCreatedEnd":"0499-12-31",
                   "dateCreatedDisplay":"5th Century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

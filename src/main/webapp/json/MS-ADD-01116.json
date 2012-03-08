@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"al-Qurʼān (ajzāʼ)",
                   "uniformTitle":"القرآن (اجزاء)",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Palmer, Edward Henry, 1840-1882",

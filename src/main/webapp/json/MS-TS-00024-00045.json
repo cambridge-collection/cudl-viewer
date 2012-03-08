@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Sitt al-Ḥusn the widow ben Moses ha-Kohen ha-Nasi ben Aaron ha-Kohen",
@@ -67,7 +70,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00045-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1050-01-01",
-                  "dateCreatedEnd":"1100-01-01",
+                  "dateCreatedEnd":"1099-12-31",
                   "dateCreatedDisplay":"Monday 12th (rest of date not preserved but c. late 11th century C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

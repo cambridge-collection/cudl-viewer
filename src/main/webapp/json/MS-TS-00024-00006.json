@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Elḥanan ben Ḥushiʾel",
@@ -193,7 +196,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00006-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1030-01-01",
-                  "dateCreatedEnd":"1031-01-01",
+                  "dateCreatedEnd":"1030-12-31",
                   "dateCreatedDisplay":"c.1030 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

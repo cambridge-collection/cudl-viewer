@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Abu ʿAmar",
@@ -85,7 +88,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00025-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1149-01-01",
-                  "dateCreatedEnd":"1166-01-01",
+                  "dateCreatedEnd":"1165-12-31",
                   "dateCreatedDisplay":"Recto: 1149 C.E. Verso: 1165 C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

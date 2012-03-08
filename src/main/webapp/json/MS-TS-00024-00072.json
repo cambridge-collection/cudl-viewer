@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Abū Zikrī ben Abū l-Faraj ben al-Rayyis",
@@ -58,7 +61,7 @@
                   "thumbnailUrl":"/content/images/MS-TS-00024-00072-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
                   "dateCreatedStart":"1000-01-01",
-                  "dateCreatedEnd":"1600-01-01",
+                  "dateCreatedEnd":"1599-12-31",
                   "dateCreatedDisplay":"c.11th-16th Century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",

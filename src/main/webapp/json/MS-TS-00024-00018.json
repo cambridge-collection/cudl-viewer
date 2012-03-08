@@ -6,7 +6,10 @@
                   "ID":"DMD1",
                   "title":"Genizah Manuscript",
                   "uniformTitle":"",
-                  "alternativeTitle":"",
+                  "alternativeTitle":[
+                  ""
+                  ],
+                  
                   "names":[
                      {
                      "fullForm":"Nahray ben Nissim",
@@ -111,8 +114,8 @@
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-TS-00024-00018-000-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
-                  "dateCreatedStart":"1055-01-07",
-                  "dateCreatedEnd":"1055-01-08",
+                  "dateCreatedStart":"1055-07-01",
+                  "dateCreatedEnd":"1055-07-31",
                   "dateCreatedDisplay":"Monday, 26th Tammuz 4815 (= July 1055 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
