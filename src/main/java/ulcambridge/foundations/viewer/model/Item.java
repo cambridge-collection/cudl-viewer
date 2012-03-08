@@ -1,5 +1,9 @@
 package ulcambridge.foundations.viewer.model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * This class contains a subset of the data in the JSON file for an item, which
  * we want to display at collection page level.
@@ -13,18 +17,22 @@ public class Item implements Comparable<Item> {
 	private int order;
 	private String id;
 	private String title;
+	private List<Person> people;
+	private List<Person> authors;		
 	private String shelfLocator;
 	private String abstractText;
 	private String thumbnailURL;
 	private String thumbnailOrientation;
 	private String abstractShort;
 
-	public Item(String itemId, String itemTitle, String shelfLocator,
+	public Item(String itemId, String itemTitle, List<Person> itemPeople, String shelfLocator,
 			String abstractText, String thumbnailURL,
 			String thumbnailOrientation) {
 
 		this.id = itemId;
 		this.title = itemTitle;
+		this.people = itemPeople;
+		this.authors = getPeopleByRole(itemPeople, "aut");
 		this.shelfLocator = shelfLocator;
 		this.abstractText = abstractText;
 		this.thumbnailURL = thumbnailURL;
@@ -55,6 +63,14 @@ public class Item implements Comparable<Item> {
 	public String getTitle() {
 		return title;
 	}
+	
+	public List<Person> getPeople() {
+		return people;
+	}	
+	
+	public List<Person> getAuthors() {
+		return authors;
+	}	
 
 	public String getAbstract() {
 		return abstractText;
@@ -89,6 +105,27 @@ public class Item implements Comparable<Item> {
 		}
 		return -1;
 		// return getId().compareTo(o.getId());
+	}
+	
+	/**
+	 * This method takes in a list of people and iterates through them to 
+	 * produce a List of just the authors (role=aut) from that list. 
+	 * 
+	 * @param people
+	 * @return
+	 */
+	private List<Person> getPeopleByRole(List<Person> people, String role) {
+		
+		ArrayList<Person> peopleWithRole = new ArrayList<Person>();
+		Iterator<Person> peopleIt = people.iterator();
+		while (peopleIt.hasNext()) {
+			Person person = peopleIt.next();		
+			if (role.equals(person.getRole())) {
+				peopleWithRole.add(person);
+			}
+		}
+		return peopleWithRole;
+		
 	}
 
 }
