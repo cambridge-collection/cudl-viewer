@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document: ketubba",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -18,7 +18,7 @@
                      "authorityURI":"",
                      "valueURI":"",
                      "type":"personal",
-                     "role":"dnr"
+                     "role":"oth"
                      },
                      {
                      "fullForm":"Salāma the freedman",
@@ -27,7 +27,7 @@
                      "authorityURI":"",
                      "valueURI":"",
                      "type":"personal",
-                     "role":"dnr"
+                     "role":"oth"
                      },
                      {
                      "fullForm":"Schechter, S. (Solomon), 1847-1915",
@@ -70,7 +70,7 @@
                   "arc","heb","jrb"
                   ],
                   "notes":[
-                  "Interlinear corrections.","Legal document: ketubba"
+                  "Interlinear corrections."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -79,7 +79,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -99,7 +99,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 33.1 x 51.6; Vellum; 13 lines (recto; verso is blank)"
+                  "extent":"1 leaf; 33.1 x 51.6; 13 lines (recto; verso is blank)"
                   }],
       
                "organisationCollection":"genizah",

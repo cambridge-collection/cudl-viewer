@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Astrology",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "jrb","ara"
                   ],
                   "notes":[
-                  "Astrology"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 59.2 x 12.5; Paper; 54 lines (recto); 50 lines (verso)"
+                  "extent":"1 leaf; 59.2 x 12.5; 54 lines (recto); 50 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

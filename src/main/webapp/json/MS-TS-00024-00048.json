@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Responsa",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "heb","arc"
                   ],
                   "notes":[
-                  "Verso is written upside-down in relation to recto","Responsa"
+                  "Verso is written upside-down in relation to recto"
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 57.7 x 21; Paper; 78 lines"
+                  "extent":"1 leaf; 57.7 x 21; 78 lines"
                   }],
       
                "organisationCollection":"genizah",

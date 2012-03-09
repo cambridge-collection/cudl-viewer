@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document: ketubba",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -106,7 +106,7 @@
                   "arc","jrb"
                   ],
                   "notes":[
-                  "The first four lines are widely spaced, forming a decorative introduction to the main body of text. Decorated with fleurs-de-lis.","Legal document: ketubba"
+                  "The first four lines are widely spaced, forming a decorative introduction to the main body of text. Decorated with fleurs-de-lis."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -115,7 +115,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -135,7 +135,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 54.7 x 28.2; Vellum; 19 lines (recto; verso is blank)"
+                  "extent":"1 leaf; 54.7 x 28.2; 19 lines (recto; verso is blank)"
                   }],
       
                "organisationCollection":"genizah",

@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -88,7 +88,7 @@
                   "heb","jrb"
                   ],
                   "notes":[
-                  "Eight vellum patches, taken from another document, were carefully sewn into this piece in order to repair it prior to this document being written.","Legal document"
+                  "Legal document","Eight vellum patches, taken from another document, were carefully sewn into this piece in order to repair it prior to this document being written."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -117,7 +117,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 53.3 x 29.8; Vellum; 60 lines (recto), 30 lines (verso)"
+                  "extent":"1 leaf; 53.3 x 29.8; 60 lines (recto), 30 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

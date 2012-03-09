@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Letter; ethics/homily",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -70,7 +70,7 @@
                   "heb","arc"
                   ],
                   "notes":[
-                  "Letter; ethics/homily"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -79,7 +79,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -99,7 +99,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 52.4 x 14.3; Paper; 61 lines (recto), 68 lines (verso)"
+                  "extent":"1 leaf; 52.4 x 14.3; 61 lines (recto), 68 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

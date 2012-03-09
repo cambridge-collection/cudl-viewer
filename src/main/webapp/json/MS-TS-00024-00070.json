@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -106,7 +106,7 @@
                   "arc","heb","ara"
                   ],
                   "notes":[
-                  "Some of the witnesses sign in a different colour of ink. Each of the signatories surround their names with smaller letters spelling out mottoes.","Legal document"
+                  "Some of the witnesses sign in a different colour of ink. Each of the signatories surround their names with smaller letters spelling out mottoes."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -115,7 +115,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -135,7 +135,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 48.1 x 19.5; Paper; 48 lines (recto), 16 lines (verso)"
+                  "extent":"1 leaf; 48.1 x 19.5; 48 lines (recto), 16 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Halaḵa",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "heb"
                   ],
                   "notes":[
-                  "Halaḵa"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 53 x 20; Paper; 66 lines (recto; verso is blank)"
+                  "extent":"1 leaf; 53 x 20; 66 lines (recto; verso is blank)"
                   }],
       
                "organisationCollection":"genizah",

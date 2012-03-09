@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Letter; poetry",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -70,7 +70,7 @@
                   "heb"
                   ],
                   "notes":[
-                  "Letter; poetry"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -79,7 +79,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -99,7 +99,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 59.5 x 18; Paper; 28 lines + marginalia (recto); various lines (verso)"
+                  "extent":"1 leaf; 59.5 x 18; 28 lines + marginalia (recto); various lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

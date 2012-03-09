@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document: ketubba",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "arc"
                   ],
                   "notes":[
-                  "Decorated with a border and complex heading of several lines of elaborate writing and geometric shapes, including stars of David and circles, in various coloured inks. The bride, Ḵibāʾ, may be the same individual mentioned in T-S 20.1.","Legal document: ketubba"
+                  "Decorated with a border and complex heading of several lines of elaborate writing and geometric shapes, including stars of David and circles, in various coloured inks. The bride, Ḵibāʾ, may be the same individual mentioned in T-S 20.1."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 53.5 x 28.3; Vellum; 35 lines (recto; verso is blank)"
+                  "extent":"1 leaf; 53.5 x 28.3; 35 lines (recto; verso is blank)"
                   }],
       
                "organisationCollection":"genizah",

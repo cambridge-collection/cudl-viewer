@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document: ketubba; liturgy",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "arc","heb"
                   ],
                   "notes":[
-                  "Legal document: ketubba; liturgy"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 12.7 x 50.5; Vellum; 12 lines (recto), 52 lines (verso)"
+                  "extent":"1 leaf; 12.7 x 50.5; 12 lines (recto), 52 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

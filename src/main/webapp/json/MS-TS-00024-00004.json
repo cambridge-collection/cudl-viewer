@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Palestinian Talmud",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "heb","arc"
                   ],
                   "notes":[
-                  "Palestinian Talmud"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"2 leaves (bifolium); 31.5 x 59 (27.5 one leaf); Vellum; 28 lines"
+                  "extent":"2 leaves (bifolium); 31.5 x 59 (27.5 one leaf); 28 lines"
                   }],
       
                "organisationCollection":"genizah",

@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Halaḵa; legal document: ketubba",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -133,7 +133,7 @@
                   "jrb","arc"
                   ],
                   "notes":[
-                  "Two fragments were cut from the much larger ketubba, and these were subsequently sewn together to produce the required length for the halakhic text, so most of the original ketubba is not preserved.","Halaḵa; legal document: ketubba"
+                  "Two fragments were cut from the much larger ketubba, and these were subsequently sewn together to produce the required length for the halakhic text, so most of the original ketubba is not preserved."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -142,7 +142,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -162,7 +162,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 50.7 x 13.2; Vellum; 74 lines (recto), 48 lines (verso)"
+                  "extent":"1 leaf; 50.7 x 13.2; 74 lines (recto), 48 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Alchemy",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "jrb"
                   ],
                   "notes":[
-                  "Divisions between chapters are signalled by a rough circle around a dot. It joins with T-S 20.20.","Alchemy"
+                  "Divisions between chapters are signalled by a rough circle around a dot. It joins with T-S 20.20."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 51 x 32; Paper; 48 lines (recto); 32 lines (verso)"
+                  "extent":"1 leaf; 51 x 32; 48 lines (recto); 32 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

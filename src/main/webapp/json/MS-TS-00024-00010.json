@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Poetry; piyyuṭ",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -70,7 +70,7 @@
                   "heb"
                   ],
                   "notes":[
-                  "Poetry; piyyuṭ"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -79,7 +79,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -99,7 +99,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 53 x 21.6; Paper; 38 lines (recto); 41 lines (verso); 2 columns (verso)"
+                  "extent":"1 leaf; 53 x 21.6; 38 lines (recto); 41 lines (verso); 2 columns (verso)"
                   }],
       
                "organisationCollection":"genizah",

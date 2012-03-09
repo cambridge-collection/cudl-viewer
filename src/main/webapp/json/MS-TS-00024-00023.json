@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Poetic letter; Bible",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -52,7 +52,7 @@
                   "heb"
                   ],
                   "notes":[
-                  "Poetic letter; Bible"
+                  ""
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -61,7 +61,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -81,7 +81,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 55.5 x 21; Paper; 32 lines in two columns + 6 lines (recto); 41 lines (verso)"
+                  "extent":"1 leaf; 55.5 x 21; 32 lines in two columns + 6 lines (recto); 41 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

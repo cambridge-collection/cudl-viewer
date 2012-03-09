@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document: ketubba",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -133,7 +133,7 @@
                   "arc","jrb","heb"
                   ],
                   "notes":[
-                  "Both recto and verso are in the hand of Ḥalfon ben Manasseh. The top part of this document is T-S 20.62 and the rest of this document is found in T-S 24.15.","Legal document: ketubba"
+                  "Both recto and verso are in the hand of Ḥalfon ben Manasseh. The top part of this document is T-S 20.62 and the rest of this document is found in T-S 24.15."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -142,7 +142,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -162,7 +162,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 26.8 x 49.0; Vellum; 15 lines (recto); 37 lines (verso)"
+                  "extent":"1 leaf; 26.8 x 49.0; 15 lines (recto); 37 lines (verso)"
                   }],
       
                "organisationCollection":"genizah",

@@ -4,7 +4,7 @@
                "descriptiveMetadata":[
                   {
                   "ID":"DMD1",
-                  "title":"Genizah Manuscript",
+                  "title":"Legal document",
                   "uniformTitle":"",
                   "alternativeTitle":[
                   ""
@@ -223,7 +223,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Vellum"
                   ],
                   "script":[
                   ""
@@ -243,7 +243,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 59.4 x 24.5; Vellum; 49 lines (recto), 1 line (verso)"
+                  "extent":"1 leaf; 59.4 x 24.5; 49 lines (recto), 1 line (verso)"
                   }],
       
                "organisationCollection":"genizah",
