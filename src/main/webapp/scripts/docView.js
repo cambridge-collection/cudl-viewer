@@ -183,7 +183,7 @@ var docView = function() {
 						descriptiveMetadata.shelfLocator);				
 				basicMetadata += view.getMetadataHTML("Subject: ",
 						descriptiveMetadata.subject, "; ");
-				basicMetadata += view.getMetadataHTML("Date Created: ",
+				basicMetadata += view.getMetadataHTML("Date created: ",
 						descriptiveMetadata.dateCreatedDisplay);				
 
 				view.populateElement(document
@@ -192,6 +192,9 @@ var docView = function() {
 				// optional metadata
 
 				var optionalMetadata = "";
+				
+				optionalMetadata += view.getMetadataHTML("Language(s): ",
+						descriptiveMetadata.languageString);
 				optionalMetadata += view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
 				optionalMetadata += view.getMetadataHTML("Alternative title(s): ",
