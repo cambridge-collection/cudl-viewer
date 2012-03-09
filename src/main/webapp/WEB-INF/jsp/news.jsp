@@ -13,6 +13,33 @@
 
 <div class="grid_19">
 	<div class="grid_5">
+		<img alt="Treasures" title="Treasures"
+			src="/images/index/news-treasures.jpg" height="200" width="200">
+	</div>
+
+	<div class="grid_11">
+		<span class="date">27/03/2012</span>
+		<h4>Treasures and Cairo Genizah Collections</h4>
+		<p>
+			The <a href="/collections/treasures">Treasures of the Library</a>
+			Collection brings together some of Cambridge University Libraries
+			most important manuscripts, including the <a
+				href="/view/PR-INC-00000-A-00007-00002-00888/">Nuremberg
+				Chronicle</a>, <a href="/view/MS-NN-00002-00041/">Codex Bezae</a> and <a
+				href="/view/MS-EE-00003-00059/">Life of St Edward the Confessor</a>.
+		</p>
+		<p>
+			Also included in this update is our initial selection from the
+			Taylor-Schechter <a href="/collections/genizah">Cairo Genizah
+				Collection</a>, the world's largest and most important single collection
+			of medieval Jewish manuscripts.
+		</p>
+	</div>
+
+</div>
+
+<div class="grid_19">
+	<div class="grid_5">
 		<img alt="Islamic Manuscripts" title="Islamic Manuscripts"
 			src="/images/index/news-islamic.jpg" height="200" width="200">
 	</div>
