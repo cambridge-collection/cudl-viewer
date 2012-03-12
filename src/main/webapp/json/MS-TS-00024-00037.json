@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Ḵalaf ben Isaac",
-                     "displayForm":"Ḵalaf ben Isaac",
+                     "fullForm":"Ḵalaf b. Isaac",
+                     "displayForm":"Ḵalaf b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Ḥalfon ben Nethanel, ha-Levi, abu Saʻīd, 12th cent.",
-                     "displayForm":"Ḥalfon ben Nethaneel ha-Levi",
+                     "fullForm":"Ḥalfon b. Nathaniel ha-Levi",
+                     "displayForm":"Ḥalfon b. Nathaniel ha-Levi",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/19620796",
@@ -47,7 +47,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Letter by Ḵalaf ben Isaac to Ḥalfon ben Nethaneel ha-Levi</p>",
+                  "abstract":"<p>Letter by Ḵalaf b. Isaac to Ḥalfon b. Nathaniel ha-Levi</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

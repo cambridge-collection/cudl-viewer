@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Samuel ben Ḥofni, d. 1013",
-                     "displayForm":"Samuel ben Ḥofni",
+                     "fullForm":"Samuel b. Ḥofni, d. 1013",
+                     "displayForm":"Samuel b. Ḥofni",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/18512564",
@@ -38,7 +38,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: a page from Samuel ben Ḥofni's <em>Kitāb al-Šurūṭ</em> (see also T-S Ar.49.51). Verso: a letter from Alexandria, written between the lines of an official Arabic document</p>",
+                  "abstract":"<p>Recto: a page from Samuel b. Ḥofni's <em>Kitāb al-Šurūṭ</em> (see also T-S Ar.49.51). Verso: a letter from Alexandria, written between the lines of an official Arabic document</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Kuzayr ben Ḥusayn",
-                     "displayForm":"Kuzayr ben Ḥusayn",
+                     "fullForm":"Kuzayr bat Ḥusayn",
+                     "displayForm":"Kuzayr bat Ḥusayn",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Amram ha-Levi ben Moses ha-Levi",
-                     "displayForm":"Amram ha-Levi ben Moses ha-Levi",
+                     "fullForm":"ʿAmram ha-Levi b. Moses ha-Levi",
+                     "displayForm":"ʿAmram ha-Levi b. Moses ha-Levi",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Solomon ben Abraham",
-                     "displayForm":"Solomon ben Abraham",
+                     "fullForm":"Solomon b. Abraham",
+                     "displayForm":"Solomon b. Abraham",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Caleb ben Joseph",
-                     "displayForm":"Caleb ben Joseph",
+                     "fullForm":"Caleb b. Joseph",
+                     "displayForm":"Caleb b. Joseph",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"ʿUmar ha-Levi ha-Parnas ben Mose[s]",
-                     "displayForm":"ʿUmar ha-Levi ha-Parnas ben Mose[s]",
+                     "fullForm":"ʿUmar ha-Levi ha-Parnas b. Mose[s]",
+                     "displayForm":"ʿUmar ha-Levi ha-Parnas b. Mose[s]",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -57,8 +57,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Isaac ben Ḥasan",
-                     "displayForm":"Isaac ben Ḥasan",
+                     "fullForm":"Isaac b. Ḥasan",
+                     "displayForm":"Isaac b. Ḥasan",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -66,8 +66,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Samuel ben Hillel",
-                     "displayForm":"Samuel ben Hillel",
+                     "fullForm":"Samuel b. Hillel",
+                     "displayForm":"Samuel b. Hillel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -75,8 +75,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Katīr ben Marzūq",
-                     "displayForm":"Katīr ben Marzūq",
+                     "fullForm":"Katīr b. Marzūq",
+                     "displayForm":"Katīr b. Marzūq",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -84,8 +84,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Menahem the scribe ben Solomon the cantor",
-                     "displayForm":"Menahem the scribe ben Solomon the cantor",
+                     "fullForm":"Menaḥem the Scribe b. Solomon the Cantor",
+                     "displayForm":"Menaḥem the Scribe b. Solomon the Cantor",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -110,7 +110,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: the end of a halakhic treatise on clean and unclean animals, meat preparation etc. Verso: part of a Palestinian <em>ketubba</em> for Kuzayr ben Ḥusayn (bride) and Ephraim ben [...] (groom). Dated [47]40 (= 980 CE). Amram ha-Levi ben Moses ha-Levi is the bride's representative. Witnessed by ʿUmar ha-Levi <em>ha-Parnas</em> ben Mose[s], Isaac ben Ḥasan, Samuel ben Hillel, Katīr ben Marzūq, Menahem the scribe ben Solomon the cantor. The dowry describes boundaries of property bordering grounds owned by [...] ben Jesse, Solomon ben Abraham, and Caleb ben Joseph.</p>",
+                  "abstract":"<p>Recto: the end of a halakhic treatise on clean and unclean animals, meat preparation etc. Verso: part of a Palestinian <em>ketubba</em> for Kuzayr bat Ḥusayn (bride) and Ephraim b. [...] (groom). Dated [47]40 (= 980 CE). ʿAmram ha-Levi b. Moses ha-Levi is the bride's representative. Witnessed by ʿUmar ha-Levi <em>ha-Parnas</em> b. Mose[s], Isaac b. Ḥasan, Samuel b. Hillel, Katīr b. Marzūq, Menaḥem the Scribe b. Solomon the Cantor. The dowry describes boundaries of property bordering grounds owned by [...] b. Jesse, Solomon b. Abraham, and Caleb b. Joseph.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

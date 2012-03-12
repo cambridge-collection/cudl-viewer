@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Daniel the Babylonian ben Saʿadya",
-                     "displayForm":"Daniel the Babylonian ben Saʿadya",
+                     "fullForm":"Daniel the Babylonian b. Saʿadya",
+                     "displayForm":"Daniel the Babylonian b. Saʿadya",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,13 +21,58 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Josiah ben Jesse",
-                     "displayForm":"Josiah ben Jesse",
+                     "fullForm":"Josiah b. Jesse",
+                     "displayForm":"Josiah b. Jesse",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
                      "type":"personal",
-                     "role":"aut"
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Ḥananel b. Samuel",
+                     "displayForm":"Ḥananel b. Samuel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Solomon b. Samuel",
+                     "displayForm":"Solomon b. Samuel",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Meir b. Baruḵ",
+                     "displayForm":"Meir b. Baruḵ",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Elʿazar b. Saʿadya",
+                     "displayForm":"Elʿazar b. Saʿadya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Elijah b. Saʿadya",
+                     "displayForm":"Elijah b. Saʿadya",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
                      },
                      {
                      "fullForm":"Schechter, S. (Solomon), 1847-1915",
@@ -47,7 +92,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: part of a letter, dated Adar 1522 (= 1211 CE), from Daniel the Babylonian ben Saʿadya, regarding a stranded Nasi, perhaps Josiah ben Jesse. Greetings are sent to various people, including Hananeel, his brother Solomon (i.e. the sons of Samuel) and their sons, Abraham, Joseph and his son Isaac, Shemariah, David, Ezekiel, Yeḥiʾel and his son. Mentions Meir (perhaps the son of Baruch from France), Yefet, Elijah, Caleb ha-Kohen, Saʿadya and his sons, Elijah, who is from Alexandria, and Eleazar. A marginal note mentions a certain Judah. Verso: an ethical piece, probably from a homily</p>",
+                  "abstract":"<p>Recto: part of a letter, dated Adar 1522 (= 1211 CE), from Daniel the Babylonian b. Saʿadya, regarding a stranded Nasi, perhaps Josiah b. Jesse. Greetings are sent to various people, including Ḥananel, his brother Solomon (i.e. the sons of Samuel) and their sons, Abraham, Joseph and his son Isaac, Šemarya, David, Ezekiel, Yeḥiʾel and his son. Mentions Meir (perhaps the son of Baruḵ from France), Yefet, Elijah, Caleb ha-Kohen, Saʿadya and his sons, Elijah, who is from Alexandria, and Elʿazar. A marginal note mentions a certain Judah. Verso: an ethical piece, probably from a homily</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

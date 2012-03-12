@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Joseph ha-Kohen (ben Solomon)",
-                     "displayForm":"Joseph ha-Kohen (ben Solomon)",
+                     "fullForm":"Joseph ha-Kohen (b. Solomon)",
+                     "displayForm":"Joseph ha-Kohen (b. Solomon)",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Ephraim 'the Ḥaver in the Great Sanhedrin' ben Shemariah",
-                     "displayForm":"Ephraim 'the Ḥaver in the Great Sanhedrin' ben Shemariah",
+                     "fullForm":"Ephraim 'the Ḥaver in the Great Sanhedrin' b. Šemariah",
+                     "displayForm":"Ephraim 'the Ḥaver in the Great Sanhedrin' b. Šemariah",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Abraham ben Solomon",
-                     "displayForm":"Abraham ben Solomon",
+                     "fullForm":"Abraham b. Solomon",
+                     "displayForm":"Abraham b. Solomon",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Judah the teacher ben Isaac",
-                     "displayForm":"Judah the teacher ben Isaac",
+                     "fullForm":"Judah the teacher b. Isaac",
+                     "displayForm":"Judah the teacher b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Judah ben Ḥayyān",
-                     "displayForm":"Judah ben Ḥayyān",
+                     "fullForm":"Judah b. Ḥayyān",
+                     "displayForm":"Judah b. Ḥayyān",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -74,7 +74,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: part of a letter (c. 1031 CE), from the two congregations of No-Amon (Alexandria), led by the Judge Joseph ha-Kohen (ben Solomon), to the Jerusalemite congregation in Fustāt, led by Ephraim 'the <em>Ḥaver</em> in the Great Sanhedrin' ben Shemariah, requesting urgent financial assistance for the ransoming of Byzantine Jews taken captive by pirates. The letter mentions the visit of the Gaʾon's son, Abraham ben Solomon, and refers to Barqa (Cyrenaica, on the Libyan coast), Judah the teacher ben Isaac, and Judah ben Ḥayyān. Verso contains the address, written in rhymed prose and closing with an <em>'alāma</em>, ברית שלום.</p>",
+                  "abstract":"<p>Recto: part of a letter (c. 1031 CE), from the two congregations of No-Amon (Alexandria), led by the Judge Joseph ha-Kohen (b. Solomon), to the Jerusalemite congregation in Fustāt, led by Ephraim 'the <em>Ḥaver</em> in the Great Sanhedrin' b. Šemariah, requesting urgent financial assistance for the ransoming of Byzantine Jews taken captive by pirates. The letter mentions the visit of the Gaʾon's son, Abraham b. Solomon, and refers to Barqa (Cyrenaica, on the Libyan coast), Judah the teacher b. Isaac, and Judah b. Ḥayyān. Verso contains the address, written in rhymed prose and closing with an <em>'alāma</em>, ברית שלום.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

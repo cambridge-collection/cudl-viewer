@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Ḵalaf ben Isaac",
-                     "displayForm":"Ḵalaf ben Isaac",
+                     "fullForm":"Ḵalaf b. Isaac",
+                     "displayForm":"Ḵalaf b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Ben Yijû, Abraham, 12th cent.",
-                     "displayForm":"Abraham ben Yiju",
+                     "fullForm":"Abraham b. Yijû",
+                     "displayForm":"Abraham b. Yiju",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/36784744",
@@ -47,7 +47,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>A lengthy letter from Ḵalaf ben Isaac to Abraham ben Yiju, middle of 12th c.</p>",
+                  "abstract":"<p>A lengthy letter from Ḵalaf b. Isaac to Abraham b. Yiju, middle of 12th c.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

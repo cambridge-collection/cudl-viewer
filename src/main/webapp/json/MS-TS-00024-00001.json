@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen",
-                     "displayForm":"Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen",
+                     "fullForm":"Nāsiyya bat Moses ha-Kohen b. Aaron ha-Kohen",
+                     "displayForm":"Nāsiyya bat Moses ha-Kohen b. Aaron ha-Kohen",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"David ha-Nasi ben Daniel ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov",
-                     "displayForm":"David ha-Nasi ben Daniel ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov",
+                     "fullForm":"David ha-Nasi b. Daniel ha-Nasi",
+                     "displayForm":"David ha-Nasi b. Daniel ha-Nasi",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Nissim ben Maḥbūb",
-                     "displayForm":"Nissim ben Maḥbūb",
+                     "fullForm":"Yequtiʾel b. Moses",
+                     "displayForm":"Yequtiʾel b. Moses",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Solomon ben Isaac",
-                     "displayForm":"Solomon ben Isaac",
+                     "fullForm":"Nissim b. Maḥbūb",
+                     "displayForm":"Nissim b. Maḥbūb",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Hodaiah ben Josiah",
-                     "displayForm":"Hodaiah ben Josiah",
+                     "fullForm":"Solomon b. Isaac",
+                     "displayForm":"Solomon b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -57,8 +57,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Ezekiel ha-Kohen he-Ḥaver ben ʿEli he-Ḥaver",
-                     "displayForm":"Ezekiel ha-Kohen he-Ḥaver ben ʿEli he-Ḥaver",
+                     "fullForm":"Hodaya b. Josiah",
+                     "displayForm":"Hodaya b. Josiah",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -66,8 +66,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Joseph ben Samuel",
-                     "displayForm":"Joseph ben Samuel",
+                     "fullForm":"Ezekiel ha-Kohen he-Ḥaver b. ʿEli he-Ḥaver",
+                     "displayForm":"Ezekiel ha-Kohen he-Ḥaver b. ʿEli he-Ḥaver",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -75,8 +75,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Joseph ben Eleazar",
-                     "displayForm":"Joseph ben Eleazar",
+                     "fullForm":"Joseph b. Samuel",
+                     "displayForm":"Joseph b. Samuel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -84,8 +84,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Ṣedaqa ben Muvḥar",
-                     "displayForm":"Ṣedaqa ben Muvḥar",
+                     "fullForm":"Joseph b. Elʿazar",
+                     "displayForm":"Joseph b. Elʿazar",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -93,8 +93,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Aaron ben Abraham",
-                     "displayForm":"Aaron ben Abraham",
+                     "fullForm":"Ṣedaqa b. Muvḥar",
+                     "displayForm":"Ṣedaqa b. Muvḥar",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -102,8 +102,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Nethaneel ben Yefet he-Ḥaver",
-                     "displayForm":"Nethaneel ben Yefet he-Ḥaver",
+                     "fullForm":"Aaron b. Abraham",
+                     "displayForm":"Aaron b. Abraham",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -111,8 +111,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Aaron the cantor ben Abraham",
-                     "displayForm":"Aaron the cantor ben Abraham",
+                     "fullForm":"Nathaniel b. Yefet he-Ḥaver",
+                     "displayForm":"Nathaniel b. Yefet he-Ḥaver",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -120,8 +120,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Hillel the cantor ben [...]",
-                     "displayForm":"Hillel the cantor ben [...]",
+                     "fullForm":"Aaron the Cantor b. Abraham",
+                     "displayForm":"Aaron the Cantor b. Abraham",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -129,8 +129,17 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Abraham ben Isaac",
-                     "displayForm":"Abraham ben Isaac",
+                     "fullForm":"Hillel the Cantor b. [...]",
+                     "displayForm":"Hillel the Cantor b. [...]",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"oth"
+                     },
+                     {
+                     "fullForm":"Abraham b. Isaac",
+                     "displayForm":"Abraham b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -155,7 +164,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a <em>ketubba</em> for Nāsiyya bat Moses ha-Kohen ben Aaron ha-Kohen (bride) and David <em>ha-Nasi</em> ben Daniel <em>ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov</em> (groom). Dated 23rd Shevaṭ 1393 (= 1082 CE), probably from Cairo. The dowry is over 1100 gold dinars. As the bride is from a prominent Karaite family, and the groom is a high-ranking Rabbanite, there are special clauses in the contract stating that the groom will not force the bride to compromise her Karaite principles, and the bride will join her husband in observing the Rabbanite feasts. Attested by the Bet Din and witnessed by Jekuthiel ben Moses, Nissim ben Maḥbūb, Solomon ben Isaac, Ezekiel ha-Kohen <em>he-Ḥaver</em> ben ʿEli <em>he-Ḥaver</em>, Hodaiah ben Josiah, Joseph ben Samuel, Joseph ben Eleazar, Ṣedaqa ben Muvḥar, Aaron ben Abraham, Nethaneel ben Yefet he-Ḥaver, Aaron the cantor ben Abraham, Hillel the cantor ben [...], Abraham ben Isaac.</p>",
+                  "abstract":"<p>Part of a <em>ketubba</em> for Nāsiyya bat Moses ha-Kohen b. Aaron ha-Kohen (bride) and David <em>ha-Nasi</em> b. Daniel <em>ha-Nasi Roš ha-Yešiva Geʾon Yaʿaqov</em> (groom). Dated 23rd Ševaṭ 1393 (= 1082 CE), probably from Cairo. The dowry is over 1100 gold dinars. As the bride is from a prominent Karaite family, and the groom is a high-ranking Rabbanite, there are special clauses in the contract stating that the groom will not force the bride to compromise her Karaite principles, and the bride will join her husband in observing the Rabbanite feasts. Attested by the Bet Din and witnessed by Yequtiʾel b. Moses, Nissim b. Maḥbūb, Solomon b. Isaac, Ezekiel ha-Kohen <em>he-Ḥaver</em> b. ʿEli <em>he-Ḥaver</em>, Hodaya b. Josiah, Joseph b. Samuel, Joseph b. Elʿazar, Ṣedaqa b. Muvḥar, Aaron b. Abraham, Nathaniel b. Yefet he-Ḥaver, Aaron the Cantor b. Abraham, Hillel the Cantor b. [...], Abraham b. Isaac.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],
@@ -170,7 +179,7 @@
                   "thumbnailOrientation":"landscape",
                   "dateCreatedStart":"1082-01-01",
                   "dateCreatedEnd":"1082-12-31",
-                  "dateCreatedDisplay":"23rd Shevaṭ 1393 (= 1082 C.E.)",
+                  "dateCreatedDisplay":"23rd Ševaṭ 1393 (= 1082 C.E.)",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",

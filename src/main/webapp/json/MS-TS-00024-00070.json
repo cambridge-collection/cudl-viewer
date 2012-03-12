@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Aaron ben [...]",
-                     "displayForm":"Aaron ben [...]",
+                     "fullForm":"Samuel 'the lesser'",
+                     "displayForm":"Samuel 'the lesser'",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"[...] ben Mevoraḵ",
-                     "displayForm":"[...] ben Mevoraḵ",
+                     "fullForm":"Yefet Kahana b. ʿElii",
+                     "displayForm":"Yefet Kahana b. ʿEli",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,35 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"[...] ben Samuel",
-                     "displayForm":"[...] ben Samuel",
-                     "authority":"",
-                     "authorityURI":"",
-                     "valueURI":"",
-                     "type":"personal",
-                     "role":"scr"
-                     },
-                     {
-                     "fullForm":"Samuel 'the lesser' (זעירא) ben [...], [...] ben Aaron",
-                     "displayForm":"Samuel 'the lesser' (זעירא) ben [...], [...] ben Aaron",
-                     "authority":"",
-                     "authorityURI":"",
-                     "valueURI":"",
-                     "type":"personal",
-                     "role":"oth"
-                     },
-                     {
-                     "fullForm":"Yefet the priest (כהנא) ben ʿEli",
-                     "displayForm":"Yefet the priest (כהנא) ben ʿEli",
-                     "authority":"",
-                     "authorityURI":"",
-                     "valueURI":"",
-                     "type":"personal",
-                     "role":"oth"
-                     },
-                     {
-                     "fullForm":"Joseph ben Ephraim",
-                     "displayForm":"Joseph ben Ephraim",
+                     "fullForm":"Joseph b. Ephraim",
+                     "displayForm":"Joseph b. Ephraim",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -83,7 +56,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: part of a deed of indemnity, from Aaron ben [...] to [...] ben Mevoraḵ the banker, regarding the inheritance of his grandmother Azīza. Written by [...] ben Samuel, and witnessed by Samuel 'the lesser' (זעירא) ben [...], [...] ben Aaron, Yefet the priest (כהנא) ben ʿEli, Joseph ben Ephraim. Verso: document in Arabic script, the address of which is at the bottom of recto.</p>",
+                  "abstract":"<p>Recto: part of a deed of indemnity, from Aaron b. [...] to [...] b. Mevoraḵ the Banker, regarding the inheritance of his grandmother Azīza. Written by [...] b. Samuel, and witnessed by Samuel 'the lesser' (זעירא) b. [...], [...] b. Aaron, Yefet Kahana b. ʿEli, and Joseph b. Ephraim. Verso: document in Arabic script, the address of which is at the bottom of recto.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

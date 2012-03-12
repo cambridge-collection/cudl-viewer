@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Elhanan ben Shemariah, d. 1026",
-                     "displayForm":"Elhanan ben Shemariah",
+                     "fullForm":"Elḥanan b. Šemarya, d. 1026",
+                     "displayForm":"Elḥanan b. Šemarya",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/14711687",
@@ -21,13 +21,22 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Sahlān ben Abraham, 11th cent.",
-                     "displayForm":"Sahlān ben Abraham ha-Mumḥe",
+                     "fullForm":"Sahlān b. Abraham",
+                     "displayForm":"Sahlān b. Abraham",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/27006516",
                      "type":"personal",
                      "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Saʿadya b. Judah",
+                     "displayForm":"Saʿadya b. Judah",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/27006516",
+                     "type":"personal",
+                     "role":"oth"
                      },
                      {
                      "fullForm":"Schechter, S. (Solomon), 1847-1915",
@@ -47,7 +56,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: a letter from Elhanan ben Shemariah to [Sahlān] ben Abraham <em>ha-Mumḥe</em>. Verso: various poems of praise, including one addressing Judah and his son Saʿadya</p>",
+                  "abstract":"<p>Recto: a letter from Elḥanan b. Šemarya to [Sahlān] b. Abraham <em>ha-Mumḥe</em>. Verso: various poems of praise, including one addressing Judah and his son Saʿadya</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

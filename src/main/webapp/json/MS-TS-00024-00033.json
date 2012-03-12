@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Samuel he-Ḥaver ben Solomon",
-                     "displayForm":"Samuel he-Ḥaver ben Solomon",
+                     "fullForm":"Samuel he-Ḥaver b. Solomon",
+                     "displayForm":"Samuel he-Ḥaver b. Solomon",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"rcp"
                      },
                      {
-                     "fullForm":"Yešuʿa ben Isaac",
-                     "displayForm":"Yešuʿa ben Isaac",
+                     "fullForm":"Yešuʿa b. Isaac",
+                     "displayForm":"Yešuʿa b. Isaac",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -47,7 +47,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a poorly preserved letter, perhaps from [...] ben Joseph, to Samuel <em>he-Ḥaver</em> ben Solomon, mentioning the good deeds of Yešuʿa ben Isaac.</p>",
+                  "abstract":"<p>Part of a poorly preserved letter, perhaps from [...] b. Joseph, to Samuel <em>he-Ḥaver</em> b. Solomon, mentioning the good deeds of Yešuʿa b. Isaac.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

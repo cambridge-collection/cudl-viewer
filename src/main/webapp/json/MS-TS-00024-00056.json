@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Daniel ben Azaria, 11th cent.",
-                     "displayForm":"Daniel ben Azaria",
+                     "fullForm":"Daniel b. ʿAzariah",
+                     "displayForm":"Daniel b. ʿAzariah",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/63952742",
@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Abraham ha-Kohen ben Isaac ibn Furāt",
-                     "displayForm":"Abraham ha-Kohen ben Isaac ibn Furāt",
+                     "fullForm":"Abraham ha-Kohen b. Isaac ibn Furāt",
+                     "displayForm":"Abraham ha-Kohen b. Isaac ibn Furāt",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -47,7 +47,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Letter from Daniel ben Azariah to Abraham ha-Kohen ben Isaac ibn Furāt.</p>",
+                  "abstract":"<p>Letter from Daniel b. ʿAzariah to Abraham ha-Kohen b. Isaac ibn Furāt.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Hillel ben Eli",
-                     "displayForm":"Hillel ben Eli",
+                     "fullForm":"Hillel b. ʿEli",
+                     "displayForm":"Hillel b. ʿEli",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/134240343",
@@ -21,8 +21,8 @@
                      "role":"scr"
                      },
                      {
-                     "fullForm":"Isaac ben Samuel",
-                     "displayForm":"Isaac ben Samuel",
+                     "fullForm":"Isaac b. Samuel",
+                     "displayForm":"Isaac b. Samuel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Naṣr al-Ḥalabī ben Hillel",
-                     "displayForm":"Naṣr al-Ḥalabī ben Hillel",
+                     "fullForm":"Naṣr al-Ḥalabī b. Hillel",
+                     "displayForm":"Naṣr al-Ḥalabī b. Hillel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Abraham h-Levi ben Yefet",
-                     "displayForm":"Abraham h-Levi ben Yefet",
+                     "fullForm":"Abraham ha-Levi b. Yefet",
+                     "displayForm":"Abraham ha-Levi b. Yefet",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -65,7 +65,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Bill of release from 1100, written by Hillel ben ʿEli, who signed the document together with Isaac ben Samuel. Naṣr al-Ḥalabī ben Hillel releases Abraham h-Levi ben Yefet from any claim.</p>",
+                  "abstract":"<p>Bill of release from 1100, written by Hillel b. ʿEli, who signed the document together with Isaac b. Samuel. Naṣr al-Ḥalabī b. Hillel releases Abraham ha-Levi b. Yefet from any claim.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

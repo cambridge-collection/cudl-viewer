@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Sitt al-Maʿālī d. Ḥesed",
-                     "displayForm":"Sitt al-Maʿālī d. Ḥesed",
+                     "fullForm":"Sitt al-Maʿālī bat Ḥesed",
+                     "displayForm":"Sitt al-Maʿālī bat Ḥesed",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Daniel ben Ṭahōr",
-                     "displayForm":"Daniel ben Ṭahōr",
+                     "fullForm":"Daniel b. Ṭahōr",
+                     "displayForm":"Daniel b. Ṭahōr",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Isaac ha-Levi ben Simḥa al-ʿAsāb",
-                     "displayForm":"Isaac ha-Levi ben Simḥa al-ʿAsāb",
+                     "fullForm":"Isaac ha-Levi b. Simḥa al-ʿAsāb",
+                     "displayForm":"Isaac ha-Levi b. Simḥa al-ʿAsāb",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Ezekiel ha-Kohen 'the Ḥaver in the Great Sanhedrin' ben Eli ha-Kohen he-Ḥaver",
-                     "displayForm":"Ezekiel ha-Kohen 'the Ḥaver in the Great Sanhedrin' ben Eli ha-Kohen he-Ḥaver",
+                     "fullForm":"Ezekiel ha-Kohen b. Eli ha-Kohen he-Ḥaver",
+                     "displayForm":"Ezekiel ha-Kohen b. Eli ha-Kohen he-Ḥaver",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Moses ben ʿAmram",
-                     "displayForm":"Moses ben ʿAmram",
+                     "fullForm":"Moses b. ʿAmram",
+                     "displayForm":"Moses b. ʿAmram",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -57,8 +57,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Isaac ben [Ḡā]lib the cantor",
-                     "displayForm":"Isaac ben [Ḡā]lib the cantor",
+                     "fullForm":"Isaac b. [Ḡā]lib the Cantor",
+                     "displayForm":"Isaac b. [Ḡā]lib the Cantor",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -83,7 +83,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a <em>ketubba</em> for Sitt al-Maʿālī d. Ḥesed the divorcee (bride) and Daniel ben Ṭahōr the elder (groom). Date not preserved, but probably early 12th century. Witnessed by Isaac ha-Levi ben Simḥa al-ʿAsāb, Ezekiel ha-Kohen 'the <em>Ḥaver</em> in the Great Sanhedrin' ben Eli ha-Kohen <em>he-Ḥaver</em>, [...] ben Nathan, [...] ben Hillel, Moses ben ʿAmram, Isaac ben [Ḡā]lib the cantor.</p>",
+                  "abstract":"<p>Part of a <em>ketubba</em> for Sitt al-Maʿālī bat Ḥesed the divorcee (bride) and Daniel b. Ṭahōr the elder (groom). Date not preserved, but probably early 12th century. Witnessed by Isaac ha-Levi b. Simḥa al-ʿAsāb, Ezekiel ha-Kohen 'the <em>Ḥaver</em> in the Great Sanhedrin' b. Eli ha-Kohen <em>he-Ḥaver</em>, [...] b. Nathan, [...] b. Hillel, Moses b. ʿAmram, Isaac b. [Ḡā]lib the Cantor.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

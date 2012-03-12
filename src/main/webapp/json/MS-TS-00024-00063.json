@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Jacob the Hebronite ben Isaac ben David Maʿaravi",
-                     "displayForm":"Jacob the Hebronite ben Isaac ben David Maʿaravi",
+                     "fullForm":"Jacob the Hebronite b. Isaac b. David Maʿaravi",
+                     "displayForm":"Jacob the Hebronite b. Isaac b. David Maʿaravi",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Joshua Nin ha-Negidim",
-                     "displayForm":"Joshua Nin ha-Negidim",
+                     "fullForm":"Joshua descendant of the Negidim",
+                     "displayForm":"Joshua descendant of the Negidim",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"rcp"
                      },
                      {
-                     "fullForm":"Obadiah Nin ha-Negidim",
-                     "displayForm":"Obadiah Nin ha-Negidim",
+                     "fullForm":"Obadiah descendant of the Negidim",
+                     "displayForm":"Obadiah descendant of the Negidim",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -56,7 +56,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>A letter by Jacob the Hebronite ben Isaac b. David <em>Maʿaravi</em> to Joshua <em>Nin ha-Negidim</em>, mentioning the death of Obadiah <em>Nin ha-Negidim</em>. The letter opens with four short biblical quotations; extensive rhymed blessings follow.</p>",
+                  "abstract":"<p>A letter by Jacob the Hebronite b. Isaac b. David <em>Maʿaravi</em> to Joshua, descendant of the Negidim, mentioning the death of Obadiah, descendant of the Negidim. The letter opens with four short biblical quotations; extensive rhymed blessings follow.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

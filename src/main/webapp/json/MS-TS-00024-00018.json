@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Nahray ben Nissim",
-                     "displayForm":"Nahray ben Nissim",
+                     "fullForm":"Nahray b. Nissim",
+                     "displayForm":"Nahray b. Nissim",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Israel ben Joseph Janūnī",
-                     "displayForm":"Israel ben Joseph Janūnī",
+                     "fullForm":"Israel b. Joseph Janūnī",
+                     "displayForm":"Israel b. Joseph Janūnī",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Manasseh ben David",
-                     "displayForm":"Manasseh ben David",
+                     "fullForm":"Manasseh b. David",
+                     "displayForm":"Manasseh b. David",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Eleazar ben Šerira",
-                     "displayForm":"Eleazar ben Šerira",
+                     "fullForm":"Elʿazar b. Šerira",
+                     "displayForm":"Elʿazar b. Šerira",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Šerira ben Samuel",
-                     "displayForm":"Šerira ben Samuel",
+                     "fullForm":"Šerira b. Samuel",
+                     "displayForm":"Šerira b. Samuel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -57,8 +57,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Ṣedaqa ben Ḥaḵmon",
-                     "displayForm":"Ṣedaqa ben Ḥaḵmon",
+                     "fullForm":"Ṣedaqa b. Ḥaḵmon",
+                     "displayForm":"Ṣedaqa b. Ḥaḵmon",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -66,8 +66,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Joseph ben ʿAmram ha-Zaqen he-Ḥasid",
-                     "displayForm":"Joseph ben ʿAmram ha-Zaqen he-Ḥasid",
+                     "fullForm":"Joseph b. ʿAmram",
+                     "displayForm":"Joseph b. ʿAmram",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -75,8 +75,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Isaac ben Dunaš ha-Levi",
-                     "displayForm":"Isaac ben Dunaš ha-Levi",
+                     "fullForm":"Isaac b. Dunaš ha-Levi",
+                     "displayForm":"Isaac b. Dunaš ha-Levi",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -101,7 +101,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Power of attorney from Israel ben Joseph Janūnī to Nahray ben Nissim to collect the debt owed by Manasseh ben David. Dated Monday, 26th Tammuz 4815 (= July 1055 CE), in Qayrawān. Signed by Eleazar ben Šerira, Šerira ben Samuel, Ṣedaqa ben Ḥaḵmon, Joseph ben ʿAmram <em>ha-Zaqen he-Ḥasid</em>, Isaac ben Dunaš ha-Levi.</p>",
+                  "abstract":"<p>Power of attorney from Israel b. Joseph Janūnī to Nahray b. Nissim to collect the debt owed by Manasseh b. David. Dated Monday, 26th Tammuz 4815 (= July 1055 CE), in Qayrawān. Signed by Elʿazar b. Šerira, Šerira b. Samuel, Ṣedaqa b. Ḥaḵmon, Joseph b. ʿAmram <em>ha-Zaqen he-Ḥasid</em>, Isaac b. Dunaš ha-Levi.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

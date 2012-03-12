@@ -21,8 +21,8 @@
                      "role":"aut"
                      },
                      {
-                     "fullForm":"Abraham from Malīj (Egypt)",
-                     "displayForm":"Abraham from Malīj (Egypt)",
+                     "fullForm":"Abraham from Malīj",
+                     "displayForm":"Abraham from Malīj",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"rcp"
                      },
                      {
-                     "fullForm":"Saʿadya ben Abraham",
-                     "displayForm":"Saʿadya ben Abraham",
+                     "fullForm":"Saʿadya b. Abraham",
+                     "displayForm":"Saʿadya b. Abraham",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Jacob ha-Levi ben Shiloh",
-                     "displayForm":"Jacob ha-Levi ben Shiloh",
+                     "fullForm":"Jacob ha-Levi b. Šilo",
+                     "displayForm":"Jacob ha-Levi b. Šilo",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -65,7 +65,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>A letter from Maṣliaḥ Gaʾon, in his own hand, to a certain Abraham from Malīj (Egypt), regarding a debt. It mentions Saʿadya ben Abraham and Jacob ha-Levi ben Shiloh</p>",
+                  "abstract":"<p>A letter from Maṣliaḥ Gaʾon, in his own hand, to a certain Abraham from Malīj (Egypt), regarding a debt. It mentions Saʿadya b. Abraham and Jacob ha-Levi b. Šilo</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

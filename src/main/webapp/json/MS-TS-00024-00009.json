@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Emmanuel ben Yeḥiʾel",
-                     "displayForm":"Emmanuel ben Yeḥiʾel",
+                     "fullForm":"Emmanuel b. Yeḥiʾel",
+                     "displayForm":"Emmanuel b. Yeḥiʾel",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"scr"
                      },
                      {
-                     "fullForm":"Barak[āt] ben Shelah ha-Levi al-Sukkarī",
-                     "displayForm":"Barak[āt] ben Shelah ha-Levi al-Sukkarī",
+                     "fullForm":"[...] bat Barak[āt] b. Šela ha-Levi al-Sukkarī",
+                     "displayForm":"[...] bat Barak[āt] b. Šela ha-Levi al-Sukkarī",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"David the Nagid (Maymuni, 13th century)",
-                     "displayForm":"David the Nagid (Maymuni, 13th century)",
+                     "fullForm":"David b. Maymun",
+                     "displayForm":"David b. Maymun",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -56,7 +56,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a pre-nuptial agreement for [...] b. Barak[āt] ben Shelah ha-Levi al-Sukkarī (the sugar-maker) (bride) and [...] ben Peraḥya (groom). The document contains the dowry list and an approval of the groom for receiving it. Dated 13th Elul 1[...], in Fusṭāṭ. Issued under the authority of David the Nagid (Maymuni, 13th century). Written by Emmanuel ben Yeḥiʾel</p>",
+                  "abstract":"<p>Part of a pre-nuptial agreement for [...] bat Barak[āt] b. Šela ha-Levi al-Sukkarī (the sugar-maker) (bride) and [...] b. Peraḥya (groom). The document contains the dowry list and an approval of the groom for receiving it. Dated 13th Elul 1[...], in Fusṭāṭ. Issued under the authority of David the Nagid (Maymuni, 13th c.). Written by Emmanuel b. Yeḥiʾel</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Jacob ha-Nasi ben Moses",
-                     "displayForm":"Jacob ha-Nasi ben Moses",
+                     "fullForm":"Jacob ha-Nasi b. Moses",
+                     "displayForm":"Jacob ha-Nasi b. Moses",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Abraham ben Solomon",
-                     "displayForm":"Abraham ben Solomon",
+                     "fullForm":"Abraham b. Solomon",
+                     "displayForm":"Abraham b. Solomon",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Najmiyya ben Abraham ben Zechariah",
-                     "displayForm":"Najmiyya ben Abraham ben Zechariah",
+                     "fullForm":"Najmiyya b. Abraham b. Zechariah",
+                     "displayForm":"Najmiyya b. Abraham b. Zechariah",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"David ben Abraham",
-                     "displayForm":"David ben Abraham",
+                     "fullForm":"David b. Abraham",
+                     "displayForm":"David b. Abraham",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -65,7 +65,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Recto: part of a power of attorney (c. 11th century CE) in Alexandria, in which Jacob <em>ha-Nasi</em> ben Moses (known as Baḡdādī), is appointed to represent the two little daughters of the deceased Abraham ben Solomon (known as Darʿī), by the deceased's widow, Najmiyya ben Abraham ben Zechariah. Verso: brief text in Judaeo-Arabic relating to the power of attorney, mentioning Jacob in his capacity as trustee, signed by [...] ben Isaac, and David ben Abraham. Probably 13th century or later</p>",
+                  "abstract":"<p>Recto: part of a power of attorney (c. 11th century CE) in Alexandria, in which Jacob <em>ha-Nasi</em> b. Moses (known as Baḡdādī), is appointed to represent the two little daughters of the deceased Abraham b. Solomon (known as Darʿī), by the deceased's widow, Najmiyya b. Abraham b. Zechariah. Verso: brief text in Judaeo-Arabic relating to the power of attorney, mentioning Jacob in his capacity as trustee, signed by [...] b. Isaac, and David b. Abraham. Probably 13th century or later</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],
@@ -88,7 +88,7 @@
                   "heb","jrb"
                   ],
                   "notes":[
-                  "Legal document","Eight vellum patches, taken from another document, were carefully sewn into this piece in order to repair it prior to this document being written."
+                  "Eight vellum patches, taken from another document, were carefully sewn into this piece in order to repair it prior to this document being written."
                   ],
                   "ownership":[
                   "Donated by Dr Solomon Schechter and his patron Dr Charles Taylor in 1898 as part of the Taylor-Schechter Genizah Collection"
@@ -97,7 +97,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""

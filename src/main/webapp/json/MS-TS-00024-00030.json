@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Simḥa ben [A]aron ha-Kohen",
-                     "displayForm":"Simḥa ben [A]aron ha-Kohen",
+                     "fullForm":"Simḥa b. Aaron ha-Kohen",
+                     "displayForm":"Simḥa b. Aaron ha-Kohen",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -21,8 +21,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Judah ben ʿImrān",
-                     "displayForm":"Judah ben ʿImrān",
+                     "fullForm":"Judah b. ʿImrān",
+                     "displayForm":"Judah b. ʿImrān",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Yaḥyā ben Nahum",
-                     "displayForm":"Yaḥyā ben Nahum",
+                     "fullForm":"Yaḥyā b. Nahum",
+                     "displayForm":"Yaḥyā b. Nahum",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Sāliḥ ben Ḥasan ha-Levi",
-                     "displayForm":"Sāliḥ ben Ḥasan ha-Levi",
+                     "fullForm":"Sāliḥ b. Ḥasan ha-Levi",
+                     "displayForm":"Sāliḥ b. Ḥasan ha-Levi",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -48,8 +48,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Abraham ben Pinḥa[s] ha-Kohen",
-                     "displayForm":"Abraham ben Pinḥa[s] ha-Kohen",
+                     "fullForm":"Abraham b. Pinḥas ha-Kohen",
+                     "displayForm":"Abraham b. Pinḥas ha-Kohen",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -57,8 +57,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Naʿaman ben ʿUmar",
-                     "displayForm":"Naʿaman ben ʿUmar",
+                     "fullForm":"Naʿaman b. ʿUmar",
+                     "displayForm":"Naʿaman b. ʿUmar",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -83,7 +83,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a <em>ketubba</em> for a certain David. Date and other details are not preserved. Witnessed by Simḥa ben [A]aron ha-Kohen, Judah ben ʿImrān, Yaḥyā ben Nahum, Sāliḥ ben Ḥasan ha-Levi, Abraham ben Pinḥa[s] ha-Kohen, Naʿaman ben ʿUmar.</p>",
+                  "abstract":"<p>Part of a <em>ketubba</em> for a certain David. Date and other details are not preserved. Witnessed by Simḥa b. [A]aron ha-Kohen, Judah b. ʿImrān, Yaḥyā b. Nahum, Sāliḥ b. Ḥasan ha-Levi, Abraham b. Pinḥa[s] ha-Kohen, Naʿaman b. ʿUmar.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

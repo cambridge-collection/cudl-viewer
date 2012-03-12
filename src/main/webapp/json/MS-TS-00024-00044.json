@@ -12,8 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Hillel ben ʿEli",
-                     "displayForm":"Hillel ben ʿEli",
+                     "fullForm":"Hillel b. ʿEli",
+                     "displayForm":"Hillel b. ʿEli",
                      "authority":"viaf",
                      "authorityURI":"http://viaf.org",
                      "valueURI":"http://viaf.org/viaf/134240343",
@@ -21,8 +21,8 @@
                      "role":"scr"
                      },
                      {
-                     "fullForm":"Abu Saʿīd Ḥalfon 'the blind teacher' ben Mevoraḵ,",
-                     "displayForm":"Abu Saʿīd Ḥalfon 'the blind teacher' ben Mevoraḵ,",
+                     "fullForm":"Abū Saʿīd Ḥalfon b. Mevoraḵ,",
+                     "displayForm":"Abū Saʿīd Ḥalfon b. Mevoraḵ,",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -30,8 +30,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Turfa d. Ṭayyib",
-                     "displayForm":"Turfa d. Ṭayyib",
+                     "fullForm":"Turfa bat Ṭayyib",
+                     "displayForm":"Turfa bat Ṭayyib",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -39,8 +39,8 @@
                      "role":"oth"
                      },
                      {
-                     "fullForm":"Abu l-Ḵayr",
-                     "displayForm":"Abu l-Ḵayr",
+                     "fullForm":"Abū l-Ḵayr",
+                     "displayForm":"Abū l-Ḵayr",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -83,7 +83,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>A mother buys her daughters half a house in Ḥarrānī Street for 51 dinars. Dated Av 1413/ July–August 1102. It mentions the names Abu Saʿīd Ḥalfon 'the blind teacher' ben Mevoraḵ, Turfa d. Ṭayyib, Abu l-Ḵayr, Ibn Qartāna, and Ṭayyib al-ʿAvlānī (אלעבלאני). Signed by […] ha-Levi ben Manasseh and Isaac the teacher ben […] Ḥayyim. Written by Hillel ben ʿEli</p>",
+                  "abstract":"<p>A mother buys her daughters half a house in Ḥarrānī Street for 51 dinars. Dated Av 1413/ July–August 1102. It mentions the names Abū Saʿīd Ḥalfon 'the blind teacher' b. Mevoraḵ, Turfa bat Ṭayyib, Abū l-Ḵayr, Ibn Qartāna, and Ṭayyib al-ʿAvlānī (אלעבלאני). Signed by […] ha-Levi b. Manasseh and Isaac the Teacher b. […] Ḥayyim. Written by Hillel b. ʿEli</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

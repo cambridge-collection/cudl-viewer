@@ -12,17 +12,8 @@
                   
                   "names":[
                      {
-                     "fullForm":"Yefet ben [...]",
-                     "displayForm":"Yefet ben [...]",
-                     "authority":"",
-                     "authorityURI":"",
-                     "valueURI":"",
-                     "type":"personal",
-                     "role":"oth"
-                     },
-                     {
-                     "fullForm":"Yaḥyā ben ʿAqiva",
-                     "displayForm":"Yaḥyā ben ʿAqiva",
+                     "fullForm":"Yaḥyā b. ʿAqiva",
+                     "displayForm":"Yaḥyā b. ʿAqiva",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
@@ -47,7 +38,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a <em>ketubba</em> for [...] ben Solomon (bride) and Yefet ben [...] (groom). Dated Friday [..]76 or [..]77 (c. 1065–6 CE), probably in Fusṭāṭ. Witnessed by Yefet ben [...] and Yaḥyā ben ʿAqiva (written over another signature).</p>",
+                  "abstract":"<p>Part of a <em>ketubba</em> for [...] bat Solomon (bride) and Yefet b. [...] (groom). Dated Friday [..]76 or [..]77 (c. 1065–6 CE), probably in Fusṭāṭ. Witnessed by Yefet b. [...] and Yaḥyā b. ʿAqiva (written over another signature).</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],

@@ -12,15 +12,42 @@
                   
                   "names":[
                      {
-                     "fullForm":"Maḍmūn ben Ḥasan",
-                     "displayForm":"Maḍmūn ben Ḥasan",
+                     "fullForm":"Maḍmūn b. Ḥasan",
+                     "displayForm":"Maḍmūn b. Ḥasan",
                      "authority":"",
                      "authorityURI":"",
                      "valueURI":"",
                      "type":"personal",
                      "role":"aut"
+                     },
+                     {
+                     "fullForm":"Abraham b. Yijû",
+                     "displayForm":"Abraham b. Yiju",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/36784744",
+                     "type":"personal",
+                     "role":"rcp"
+                     },
+                     {
+                     "fullForm":"Schechter, S. (Solomon), 1847-1915",
+                     "displayForm":"Solomon Schechter",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32795172",
+                     "type":"personal",
+                     "role":"dnr"
+                     },
+                     {
+                     "fullForm":"Taylor, Charles, 1840-1908",
+                     "displayForm":"Charles Taylor",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/51729236",
+                     "type":"personal",
+                     "role":"dnr"
                      }],
-                  "abstract":"<p>Part of a letter from Maḍmūn ben Ḥasan to Abraham ben Yiju. Verso contains the continuation of the letter, written upside-down in relation to the text on recto, followed immediately by a calendar for the year 1146–1149 CE in a different hand.</p>",
+                  "abstract":"<p>Part of a letter from Maḍmūn b. Ḥasan to Abraham b. Yiju. Verso contains the continuation of the letter, written inverted in relation to the text on recto, followed immediately by a calendar for the year 1146–1149 CE in a different hand.</p>",
                   "subject":[
                   "Cairo Genizah"
                   ],
