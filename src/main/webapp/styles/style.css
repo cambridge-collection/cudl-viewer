@@ -364,3 +364,15 @@ ol#vcollections_carousel li {
     background-color: white !important;
     color: black !important;
 }
+
+/* search */
+.searchform {
+	color: black;
+	background: #ffffff;
+	padding-bottom: 18px;
+}
+
+.searchform input,.searchform textarea {
+	border: 1px inset;
+	padding: 2px;
+}

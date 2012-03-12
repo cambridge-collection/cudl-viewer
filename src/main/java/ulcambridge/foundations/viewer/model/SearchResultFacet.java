@@ -16,6 +16,7 @@ import org.w3c.dom.NodeList;
 public class SearchResultFacet {
 
 	private List<String> groups;
+	private List<Integer> groupTotalDocs;
 	private String field;
 
 	public SearchResultFacet(Element facet) {
@@ -25,12 +26,16 @@ public class SearchResultFacet {
 		this.field = fullField.substring(fullField.indexOf("-")+1);
 		
 		this.groups = new ArrayList<String>();
+		this.groupTotalDocs = new ArrayList<Integer>();
 		NodeList groupNodes = facet.getChildNodes();
 		for (int i = 0; i < groupNodes.getLength(); i++) {
 			Node groupNode = groupNodes.item(i);
 			
 			if (groupNode.getNodeType() == Node.ELEMENT_NODE) {
 			  groups.add(((Element)groupNode).getAttribute("value").toString());
+			  String totalDocs = ((Element)groupNode).getAttribute("totalDocs").toString();
+			  groupTotalDocs.add(Integer.valueOf(totalDocs));
+			  
 			}
 		}
 	}
@@ -46,5 +51,9 @@ public class SearchResultFacet {
 	public List<String> getGroups() {
 		return groups;
 	}
+	
+	public List<Integer> getGroupTotalDocs() {
+		return groupTotalDocs;
+	}	
 
 }

@@ -116,24 +116,12 @@
 					Item item = ItemFactory.getItemFromId(result.getId());
 					if (item != null) {
 						// print out title
-						out.print("<div class='grid_7'><a href='/view/"
+						out.print("<div class='grid_4'><a href='/view/"
 								+ result.getId() + "'>" + result.getTitle()
 								+ " (" + item.getShelfLocator() + ")"
 								+ "</a><br/>");
-						out.print(item.getAbstractShort()
-								+ " ... <br/><br/>\n");
-
-						// print out snippets
-						List<String> snippets = result.getSnippets();
-						out.print("<div class='search-result-snippet'>");
-						for (int j = 0; j < snippets.size(); j++) {
-							out.print("..." + snippets.get(j)
-									+ "...\n<br/>");
-						}
-						out.print("</div>");
 
 						// print out image
-						out.print("</div><div class='grid_5'>");
 						out.print("<div class='search-result-imgcontainer'>");
 						out.print("<a href='/view/" + result.getId() + "'>");
 						if (item.getThumbnailOrientation().equals(

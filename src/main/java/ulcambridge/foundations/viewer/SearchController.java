@@ -8,13 +8,17 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.mail.EmailException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
@@ -22,6 +26,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import ulcambridge.foundations.viewer.forms.MailingListForm;
+import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Properties;
 import ulcambridge.foundations.viewer.model.SearchQuery;
 import ulcambridge.foundations.viewer.model.SearchResult;
@@ -38,21 +44,32 @@ import ulcambridge.foundations.viewer.model.SearchResultSet;
 public class SearchController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
+/*
+	@RequestMapping(method = RequestMethod.GET, value = "/search")
+	public ModelAndView showForm(SearchForm searchForm) {
+		ModelAndView modelAndView = new ModelAndView("jsp/search");
+		modelAndView.addObject("searchForm", searchForm);
+		return modelAndView;
+	}	
+	*/
+	@RequestMapping(method = RequestMethod.GET, value = "/search")
+	public ModelAndView processSubmit(@Valid SearchForm searchForm,
+			BindingResult result, Map model) throws MalformedURLException {
 
-	// on path /search/
-	@RequestMapping(value = "/search")
-	public ModelAndView handleViewRequest(@RequestParam("query") String query,
-			@RequestParam("facets") String facets,
-			@RequestParam("sort") String sort, HttpServletRequest request)
-			throws Exception {
+		if (result.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("jsp/search");
+			modelAndView.addObject("errors", result);
+			return modelAndView;
+		}
 
 		// Record Query
-		// expects facets specified as facet=subject:maths,date:1900 etc.
-		String[] facetArray = facets.split("\\s*,\\s*");
+		// expects facets specified as facet=subject||maths,date||1900 etc.
+		List<String> facetList = searchForm.getFacets();
 		Hashtable<String, String> facetQuery = new Hashtable<String, String>();
-		if (facets != null && facets.trim().length()>0) {
-			for (int i = 0; i < facetArray.length; i++) {
-				String[] facetTypeValue = facetArray[i].split("\\s*:\\s*");
+		
+		if (facetList != null) {
+			for (int i = 0; i < facetList.size(); i++) {
+				String[] facetTypeValue = facetList.get(i).split("\\s*\\|\\|\\s*");
 				for (int j = 0; j < facetTypeValue.length; j++) {
 					String facetType = facetTypeValue[0];
 					String facetValue = facetTypeValue[1];
@@ -60,15 +77,22 @@ public class SearchController {
 				}
 			}
 		}
-		SearchQuery searchQuery = new SearchQuery(query, facetQuery, sort);
+		
+		SearchQuery searchQuery = new SearchQuery(searchForm.getKeyword(), facetQuery);
 
 		// Request XTF keyword search (raw=1 to return XML)
 		Document dom = makeSearch(searchQuery);
 
 		// Read XML result into Model
 		SearchResultSet results = parseSearchResults(dom);
+		
+		// Set the page we want results to display on
+		String resultDisplayPage = "search"; // default
+		if (searchForm.getResultDisplay()!=null && searchForm.getResultDisplay().equals("grid") ) {
+			resultDisplayPage = "search-results-grid";				
+		}
 
-		ModelAndView modelAndView = new ModelAndView("jsp/search");
+		ModelAndView modelAndView = new ModelAndView("jsp/"+resultDisplayPage);
 		modelAndView.addObject("query", searchQuery);
 		modelAndView.addObject("results", results);
 		return modelAndView;

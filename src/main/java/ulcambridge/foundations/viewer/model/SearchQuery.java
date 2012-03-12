@@ -12,16 +12,14 @@ public class SearchQuery {
 
 	private String keyword;
 	private Map<String, String> facets;
-	private String sort;
 	
 	/**
 	 * Creates a new SearchQuery from the given Node.
 	 */
-	public SearchQuery(String keyword, Map map, String sort) {
+	public SearchQuery(String keyword, Map map) {
 
 		this.keyword = keyword;
 		this.facets = map;
-		this.sort = sort;
 	}
 	
 	public String getKeyword() {
@@ -30,10 +28,6 @@ public class SearchQuery {
 	
 	public Map<String, String> getFacets() {
 		return facets;
-	}
-
-	public String getSort() {
-		return sort;
 	}
 
 }

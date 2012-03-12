@@ -41,7 +41,7 @@ body {
 
 
 		<div class="mailinglistform">
-			<form:form method="post" commandName="mailingListForm">
+			<!--<form:form method="post" commandName="mailingListForm">-->
 
 				<p>If you would like to receive details of any updates or
 					changes to this site, then join our mailing list. Our email service
@@ -64,7 +64,8 @@ body {
 				</p>
 
 				<input type="submit" name=submit value="Sign up">
-			</form:form>-->
+			</form:form>
+			-->
 		</div>
 	</div>
 

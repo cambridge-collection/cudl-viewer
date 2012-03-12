@@ -13,6 +13,7 @@ public class SearchForm {
 
     @Size(max = 200)
     private String keyword;
+    private String resultDisplay;
     
     // facet format: subject=value 
     private List<String> facets;
@@ -32,5 +33,13 @@ public class SearchForm {
     public List<String> getFacets() {
         return facets;
     }
+
+	public void setResultDisplay(String resultDisplay) {
+		this.resultDisplay = resultDisplay;
+	}
+
+	public String getResultDisplay() {
+		return resultDisplay;
+	}
 
 }
