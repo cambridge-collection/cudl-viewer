@@ -137,18 +137,19 @@
 					</h4>
 
 					<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
-			University Library is the world's largest and most important single
-			collection of medieval Jewish manuscripts. For a thousand years, the
-			Jewish community of Fustat (Old Cairo), placed their left-over,
-			no-longer usable manuscripts in a storeroom (genizah) of the Ben Ezra
+						University Library is the world's largest and most important
+						single collection of medieval Jewish manuscripts.</p>
+						<p> For a thousand years, the
+			Jewish community of Fustat (Old Cairo), placed their worn-out books
+			and other writings in a storeroom (genizah) of the Ben Ezra
 			Synagogue, and in 1896–97 the Cambridge scholar, Dr Solomon
 			Schechter, arrived to examine it. He received permission from
-			the Jewish community of Egypt to take away what he wanted, so he
-			brought 193,000 manuscripts back to Cambridge, where they form the
-			Taylor-Schechter Cairo Genizah Collection.</p>
-				</div> <a href="/collections/genizah"><img 
-					src="/images/index/carousel-genizah.jpg" alt="The Cairo Genizah Collection"
-					width="540" height="394" /> </a></li>
+			the Jewish community of Egypt to take away what he liked, and he brought 193,000 manuscripts back to
+			Cambridge.</p>
+
+				</div> <a href="/collections/genizah"><img
+					src="/images/index/carousel-genizah.jpg"
+					alt="The Cairo Genizah Collection" width="540" height="394" /> </a></li>
 		</ol>
 	</div>
 
