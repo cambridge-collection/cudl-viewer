@@ -76,7 +76,10 @@
                   ""
                   ],
                   "decoration":[
-                  ""
+                  "Ills, 2 maps (woodcuts)"
+                  ],
+                  "layout":[
+                  "453 mm. (fol.)"
                   ],
                   "funding":[
                   ""
@@ -88,13 +91,13 @@
                   "shelfLocator":"Inc.0.A.7.2[888]",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "metadataRights":"",
+                  "metadataRights":"This metadata is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.",
                   "type":"text",
                   "manuscript":"no",
                   "virtualCollections":[
                   "treasure"
                   ],
-                  "extent":"[20], CCXCIX, [7] leaves : Ills, 2 maps (woodcuts), 453 mm. (fol.)"
+                  "extent":"[20], CCXCIX, [7] leaves"
                   }],
       
                "organisationCollection":"christian",

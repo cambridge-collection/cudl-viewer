@@ -150,6 +150,9 @@
                   "decoration":[
                   ""
                   ],
+                  "layout":[
+                  "2 fragments: fragment 1: 54.3 x 27.3, fragment 2: 15.9 x 7.8; 34 lines (recto), 4 lines (verso)"
+                  ],
                   "funding":[
                   "The digitisation of the Taylor-Schechter Cairo Genizah Collection has been sponsored by the <a href='http://www.jewishmanuscripts.org/' target='_blank'>Jewish Manuscript Preservation Society</a>, the <a href='http://www.genizah.org/' target='_blank'>Friedberg Genizah Project Inc.</a>, and the <a href='http://www.ahrc.ac.uk/Pages/default.aspx' target='_blank'>Arts and Humanities Research Council, UK</a>."
                   ],
@@ -166,7 +169,7 @@
                   "virtualCollections":[
                   ""
                   ],
-                  "extent":"1 leaf; 2 fragments: fragment 1: 54.3 x 27.3, fragment 2: 15.9 x 7.8; 34 lines (recto), 4 lines (verso)"
+                  "extent":"1 leaf"
                   }],
       
                "organisationCollection":"genizah",
