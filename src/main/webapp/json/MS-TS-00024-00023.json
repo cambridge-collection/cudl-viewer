@@ -69,6 +69,9 @@
                   "decoration":[
                   ""
                   ],
+                  "funding":[
+                  "The digitisation of the Taylor-Schechter Cairo Genizah Collection has been sponsored by the <a href='http://www.jewishmanuscripts.org/' target='_blank'>Jewish Manuscript Preservation Society</a>, the <a href='http://www.genizah.org/' target='_blank'>Friedberg Genizah Project Inc.</a>, and the <a href='http://www.ahrc.ac.uk/Pages/default.aspx' target='_blank'>Arts and Humanities Research Council, UK</a>."
+                  ],
                   "languageString":[
                   "Hebrew"
                   ],
@@ -76,6 +79,7 @@
                   "shelfLocator":"T-S 24.23",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "metadataRights":"This metadata is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[

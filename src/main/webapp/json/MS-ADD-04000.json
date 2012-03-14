@@ -69,6 +69,9 @@
                   "decoration":[
                   ""
                   ],
+                  "funding":[
+                  ""
+                  ],
                   "languageString":[
                   "English and Latin"
                   ],
@@ -76,6 +79,7 @@
                   "shelfLocator":"MS Add.4000",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "metadataRights":"",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[

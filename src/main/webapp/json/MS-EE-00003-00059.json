@@ -141,6 +141,9 @@
                   "decoration":[
                   "Forty-two framed drawings over all three text columns and twenty-two over two, some containing more than one scene, tinted in blue, green, red, pink and brown, many with inscriptions, some rubbed, with occasional details in gold (<a href='' onclick='store.loadPage(34);return false;'>14v</a>, <a href='' onclick='store.loadPage(44);return false;'>19v</a>, <a href='' onclick='store.loadPage(45);return false;'>20r</a>) and fictitious heraldry in battle scenes (<a href='' onclick='store.loadPage(15);return false;'>5r</a>, <a href='' onclick='store.loadPage(29);return false;'>12r</a>, <a href='' onclick='store.loadPage(30);return false;'>12v</a>, <a href='' onclick='store.loadPage(67);return false;'>31r</a>, <a href='' onclick='store.loadPage(70);return false;'>32v</a>, <a href='' onclick='store.loadPage(73);return false;'>34r</a>, <a href='' onclick='store.loadPage(74);return false;'>34v</a>).","Ornamental and minor initials: Opening ten-line initial A (should be C) in blue and gold, with red penwork flourishing, added 14th or 15th century C.E. (<a href='' onclick='store.loadPage(11);return false;'>3r</a>); alternating red and blue penwork flourished initials (2-3 lines).","Border decoration: A few bas-de-page drawings by main artists: heads of man and woman kissing below commentary on theme of chastity, faces rubbed out (<a href='' onclick='store.loadPage(11);return false;'>3r</a>) with illegible red caption in hand similar to or identical with some captions in pictures (e.g., <a href='' onclick='store.loadPage(65);return false;'>30r</a>, <a href='' onclick='store.loadPage(70);return false;'>32v</a>); vines and oak leaves tinted in green and brown (<a href='' onclick='store.loadPage(32);return false;'>13v</a>, <a href='' onclick='store.loadPage(34);return false;'>14v</a>, <a href='' onclick='store.loadPage(38);return false;'>16v</a>, <a href='' onclick='store.loadPage(45);return false;'>20r</a>) or only sketched out (<a href='' onclick='store.loadPage(75);return false;'>36r</a>); sketch of eagle's head (<a href='' onclick='store.loadPage(61);return false;'>28r</a>)."
                   ],
+                  "funding":[
+                  ""
+                  ],
                   "languageString":[
                   "French, Old (ca. 842-1300)"
                   ],
@@ -148,6 +151,7 @@
                   "shelfLocator":"MS Ee.3.59",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+                  "metadataRights":"",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[
