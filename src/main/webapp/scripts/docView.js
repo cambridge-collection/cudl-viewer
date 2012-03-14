@@ -164,6 +164,9 @@ var docView = function() {
 				view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
+				view.populateElement(document
+						.getElementById("metadata-funding"),
+						descriptiveMetadata.funding);										
 				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';

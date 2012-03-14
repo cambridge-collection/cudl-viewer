@@ -84,7 +84,7 @@
 					</div>
 				</div>
 			</div>
-			<!--  About the rights -->
+            <br /> <span id="metadata-funding"></span> <br />
 			<br /> <span id="metadata-display-rights"></span> <br />
 		</div>
 	</div>
