@@ -55,13 +55,58 @@
                      "valueURI":"http://viaf.org/viaf/89788393",
                      "type":"personal",
                      "role":"oth"
+                     },
+                     {
+                     "fullForm":"Espagnet, Jean d', 1564-ca. 1637",
+                     "displayForm":"Jean d'Espagnet",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/32035228",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"De Botton, Gilbert, 1935-2000",
+                     "displayForm":"Gilbert de Botton",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/63832648",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"Bagot, Charles, fl. 1764",
+                     "displayForm":"Charles Bagot",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"Bagot, Charles, fl. 1795",
+                     "displayForm":"Charles Bagot",
+                     "authority":"",
+                     "authorityURI":"",
+                     "valueURI":"",
+                     "type":"personal",
+                     "role":"fmo"
+                     },
+                     {
+                     "fullForm":"Eton College. Library",
+                     "displayForm":"Eton College Library",
+                     "authority":"viaf",
+                     "authorityURI":"http://viaf.org",
+                     "valueURI":"http://viaf.org/viaf/158913221",
+                     "type":"corporate",
+                     "role":"fmo"
                      }],
                   "abstract":"<p>SUMMARY - Replace</p>",
                   "subject":[
                   "Philosophy, Ancient"
                   ],
                   "publisher":[
-                  "In Gulielmi Rouillij, et Philippi G. Rouillij nep[otes]. aedibus ..."
+                  "In Gulielmi Rouillij, et Philippi G. Rouillij nep[otes]. aedibus, via Iacobæa sub Concordia ..."
                   ],
                   "originPlace":[
                   "Parisiis, et Lugduni habentur"
@@ -79,16 +124,16 @@
                   "lat"
                   ],
                   "notes":[
-                  "Title within ornamental border; date incorporated into border."
+                  "Signatures: ã4, ẽ4, ĩ2, A-Z4, Aa-Zz4, AAa-ZZz4, AAA4, *2.","Title within ornamental border; date incorporated into border."
                   ],
                   "ownership":[
-                  "The copy formerly owned by Michel de Montaigne (1533-1592) with his manuscript notes."
+                  "The copy formerly owned by Michel de Montaigne (1533-1592) with his manuscript notes. Manuscript inscription on <a href='' onclick='store.loadPage(9);return false;'>title page</a>: Montaigne. Extensive manuscript notes on [4] flyleaves at the <a href='' onclick='store.loadPage(2);return false;'>front</a> and [4] flyleaves at <a href='' onclick='store.loadPage(593);return false;'>end</a> of the volume, and manuscript notes throughout the text, in Montaigne's hand. Note at <a href='' onclick='store.loadPage(587);return false;'>end of text</a>: perlegi 16 Octob. 1564/31. Montaigne's inscription on <a href='' onclick='store.loadPage(9);return false;'>title page</a> overwritten with Despagnet. Purchased by Eton College from Hesketh & Ward, 1989. Subsequently owned by Gilbert de Botton, given to Cambridge University Library in 2008."
                   ],
                   "binding":[
-                  ""
+                  "Contemporary limp vellum binding, red spine label."
                   ],
                   "support":[
-                  ""
+                  "Paper"
                   ],
                   "script":[
                   ""
@@ -115,7 +160,7 @@
                   "virtualCollections":[
                   "treasure"
                   ],
-                  "extent":"[24], 559, [1] p.; 4⁰"
+                  "extent":"[24], 559, [1] p. ; 24 cm. (4⁰)."
                   }],
       
                "organisationCollection":"montaigne",
