@@ -220,6 +220,8 @@ var docView = function() {
 						descriptiveMetadata.originPlace, "; ");				
 				optionalMetadata += view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
+				optionalMetadata += view.getMetadataHTML("Layout: ",
+						descriptiveMetadata.layout);				
 				optionalMetadata += "<p>"+view.getMetadataHTML("Binding: ",
 						descriptiveMetadata.binding,"</p><br/><p>")+"</p>";				
 				optionalMetadata += "<p>"+view.getMetadataHTML("Support: ",
