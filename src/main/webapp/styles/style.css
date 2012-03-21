@@ -409,3 +409,41 @@ ol#vcollections_carousel li {
 	border: 1px inset;
 	padding: 2px;
 }
+
+#navPrimary form {
+    float: right;
+    height: 36px;
+    position: relative;
+}
+
+#navPrimary #search {
+    background: none repeat scroll 0 0 white;
+    color: #666666;
+    font-family: Georgia,'Times New Roman',serif;
+    font-size: 13px;
+    font-style: italic;
+    padding: 5px 5px;
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    width: 202px;
+    z-index: 2;
+}
+
+#navPrimary #submit {
+    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    right: 10px;
+    text-indent: -9999px;
+    top: 9px;
+    width: 16px;
+    z-index: 3;
+}
+
+#navPrimary input {
+    margin-right: 2px;
+}

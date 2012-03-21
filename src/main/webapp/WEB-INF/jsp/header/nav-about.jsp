@@ -7,5 +7,11 @@
 	<li><a href="/about/" title="About" class="active"> About </a></li>
 	<li><a href="/help/" title="Help"> Help </a></li>
 </ul>
+
+	<form class="grid_5 prefix_1 omega" action="/search">
+		<input id="search" type="text" value="" name="keyword" placeholder="Search"
+			autocomplete="off" /> <input id="submit" type="submit"
+			value="Search" />
+	</form>
 </nav>
 <!-- end #navPrimary -->

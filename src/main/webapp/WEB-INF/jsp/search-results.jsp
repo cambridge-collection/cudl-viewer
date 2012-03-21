@@ -3,7 +3,7 @@
 <%@ page
 	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav-unselected.jsp" />
+<jsp:include page="header/nav-search.jsp" />
 
 <script type="text/javascript">
  function pageinit() {
@@ -43,23 +43,6 @@
 
 <div class="grid_6">
 	<div class="box">
-		<form method="GET" action="?<%=query.getURLParameters()%>">
-			<input name="keyword" type="text" size="20"
-				value="<%=query.getKeyword()%>" />
-				 <input type="submit" name=submit
-				value="Search">
-		<%
-			Iterator<String> facetsUsedHidden = query.getFacets().keySet().iterator();
-			while (facetsUsedHidden.hasNext()) {
-				String facetName = facetsUsedHidden.next();
-				String facetValue = query.getFacets().get(facetName);
-		%>
-		          <input type="hidden" name="facet-<%=facetName %>" value="<%=facetValue %>">
-		<%  } %>
-				<span style="color:#ff0000"><%=resultSet.getError()%></span>
-		</form>
-		<br />
-
 		<%
 			Iterator<String> facetsUsed = query.getFacets().keySet().iterator();
 			while (facetsUsed.hasNext()) {
@@ -72,8 +55,11 @@
 		%></div>
 		<%
 			}
+			if (query.getFacets().size()>0) {
+				out.print("<br />");
+			}
 
-				out.print("<br /><b>" + resultsNum + "</b>"
+				out.print("<b>" + resultsNum + "</b>"
 						+ " results were returned.<br/><br/>");
 			
 		%>
@@ -181,7 +167,14 @@
 				}
 			}
 		}
+		
+		
+		if (resultsNum==0) {
+			out.print("<div>We couldn't find any items matching <b>"+query.getKeywordDisplay()+"</b>. Try <a href='/search'>browsing our items.</a></div>");
+		}
 	%>
+	
+	
 
 </ol>
 <div class='clear'></div><br/><div class="page_navigation"></div>

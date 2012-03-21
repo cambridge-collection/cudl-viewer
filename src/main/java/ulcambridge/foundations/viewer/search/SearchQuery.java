@@ -14,6 +14,7 @@ import java.util.Map;
 public class SearchQuery {
 
 	private String keyword;
+	private String keywordDisplay;
 	private Map<String, String> facets;
 
 	/**
@@ -21,13 +22,18 @@ public class SearchQuery {
 	 */
 	public SearchQuery(String keyword, Map<String, String> map) {
 
-		this.keyword = keyword;
+		this.keyword = keyword; 
+		this.keywordDisplay = keyword;
 		this.facets = map;
 	}
 
 	public String getKeyword() {
 		return keyword;
 	}
+	
+	public String getKeywordDisplay() {
+		return keywordDisplay;
+	}	
 
 	public Map<String, String> getFacets() {
 		return facets;
