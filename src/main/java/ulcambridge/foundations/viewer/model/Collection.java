@@ -24,7 +24,7 @@ public class Collection implements Comparable<Collection> {
 		this.title = collectionTitle;
 		this.itemIds = collectionItemIds;
 		this.items = collectionItems;
-		this.url = "/collections/"+collectionID;
+		this.url = "/collections/" + collectionID;
 		this.summary = collectionSummary;
 		this.sponsors = collectionSponsors;
 		this.type = collectionType;
@@ -80,4 +80,17 @@ public class Collection implements Comparable<Collection> {
 
 		// return getId().compareTo(o.getId());
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Collection) {
+			return this.id.equals(((Collection) o).id);
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return id.hashCode();
+	}	
 }

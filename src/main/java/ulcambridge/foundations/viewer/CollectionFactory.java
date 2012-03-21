@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 
 import ulcambridge.foundations.viewer.model.Collection;
@@ -57,15 +58,43 @@ public class CollectionFactory {
 
 	public static Collection getCollectionFromId(String id) {
 
-		return collections.get(id);
+		if (collectionsInitalised) {
+			return collections.get(id);
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the first collection with the given title or null
+	 * if no collections exist with that title. 
+	 * 
+	 * @param title
+	 * @return
+	 */
+	public static Collection getCollectionFromTitle(String title) {
+
+		if (collectionsInitalised) {
+			Iterator<Collection> c = CollectionFactory.getCollections().iterator();
+			
+			while (c.hasNext()) {
+				Collection collection = c.next();
+				if (collection.getTitle().equals(title)) {
+					return collection;
+				}
+			}
+		}
+		return null;
 	}
 
 	public static List<Collection> getCollections() {
 
-		ArrayList<Collection> list = new ArrayList<Collection>(
-				collections.values());
-		Collections.sort(list);
-		return list;
+		if (collectionsInitalised) {
+			ArrayList<Collection> list = new ArrayList<Collection>(
+					collections.values());
+			Collections.sort(list);
+			return list;
+		}
+		return null;
 	}
 
 }

@@ -1,10 +1,11 @@
-package ulcambridge.foundations.viewer.model;
+package ulcambridge.foundations.viewer.search;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 
 /**
  * Holds information for an individual search result. Item id can be used to
@@ -17,6 +18,7 @@ public class SearchResult {
 
 	private String title;
 	private String id;
+	private List<Facet> facets = new ArrayList<Facet>();
 	private List<String> snippets = new ArrayList<String>();
 
 	// TODO snippets
@@ -46,6 +48,11 @@ public class SearchResult {
 				else if (child.getNodeName().equals("fileID")) {
 					this.id = getValueInHTML(child);
 				}
+				
+				else if (child.getNodeName().startsWith("facet-")) {
+					Facet facet = new Facet(child.getNodeName().substring(6),getValueInHTML(child));
+					facets.add(facet);
+				}				
 			}
 
 			// SNIPPET Search Info
@@ -117,6 +124,10 @@ public class SearchResult {
 		return this.id;
 	}
 
+	public List<Facet> getFacets() {
+		return this.facets;
+	}
+	
 	public List<String> getSnippets() {
 		return this.snippets;
 	}

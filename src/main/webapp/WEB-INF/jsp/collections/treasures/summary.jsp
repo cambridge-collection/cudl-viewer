@@ -9,11 +9,8 @@
 	<div class="virtual_collection_summary">
 
 		<div class="grid_9">
-			<div class="grid_4">
-				<img src="/images/about/ColourAnneJarvisSmall.jpg" alt="Ann Jarvis"
-					width="150" height="225" />
-			</div>
-			<blockquote class="grid_4 omega print">
+
+			<blockquote class="grid_8 omega print">
 
 				Cambridge University Library contains evidence of some of the
 				greatest ideas and discoveries over two millennia." <br /> <br />

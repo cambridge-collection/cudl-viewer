@@ -16,7 +16,7 @@
 
 				
 	<bean id="search" 
-		class="ulcambridge.foundations.viewer.SearchController">
+		class="ulcambridge.foundations.viewer.search.SearchController">
 	</bean>
 	
 	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
