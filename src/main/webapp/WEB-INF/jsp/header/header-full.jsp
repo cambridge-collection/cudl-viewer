@@ -15,6 +15,8 @@
 	type="text/javascript"></script>
 <link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
 
+<link href="/styles/treestyler.css" rel="stylesheet" type="text/css" media="screen" />
+
 <%
     // Redirect to home page if javascript is not enabled 
 	String redirectURL = "/";

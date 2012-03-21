@@ -57,8 +57,7 @@
 		<%
 			}
 
-
-				out.print("<br/><b>" + resultsNum + "</b>"
+				out.print("<b>" + resultsNum + "</b>"
 						+ " results were returned.<br/><br/>");
 			
 		%>
@@ -66,8 +65,8 @@
 			if (resultsNum > 0) {
 		%>
 		<h5>Refine by:</h5>
-		<br />
-		<ul id="facets">
+
+		<ul id="tree">
 			<%
 				List<FacetGroup> facetGroups = resultSet.getFacets();
 
@@ -82,7 +81,7 @@
 								// Do not print out the facet for a field already faceting on
 								if (!query.getFacets().containsKey(field)) {
 									
-									out.println("<li><span>" + field + "</span><ul>");
+									out.println("<li>" + field + "<ul>");
 
 									for (int j = 0; j < facets.size(); j++) {
 										Facet facet = facets.get(j);
@@ -169,7 +168,6 @@
 
 
 </div>
-
 </section>
 
 <jsp:include page="footer/footer.jsp" />
