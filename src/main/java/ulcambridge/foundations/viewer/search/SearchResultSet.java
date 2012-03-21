@@ -39,7 +39,7 @@ public class SearchResultSet {
 	
 	public void addFacetGroup(int index, FacetGroup facet) {
 		if (index<0 || index>facets.size()-1) {
-			index = facets.size()-1;
+			index = 0;
 		}
 		facets.add(index, facet);
 	}

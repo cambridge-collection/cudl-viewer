@@ -280,6 +280,7 @@ public class SearchController {
 
 		// Now go through the collections found and make a facet
 		String field = "collection";
+		String fieldLabel = "Collection";
 		List<Facet> bands = new ArrayList<Facet>();
 
 		Enumeration<Collection> collectionsEnum = collectionsInResults.keys();
@@ -290,7 +291,7 @@ public class SearchController {
 			bands.add(facet);
 		}
 
-		return new FacetGroup(field, bands);
+		return new FacetGroup(field, fieldLabel, bands);
 
 	}
 
@@ -312,7 +313,7 @@ public class SearchController {
 			Iterator<Facet> facets = result.getFacets().iterator();
 			while (facets.hasNext()) {
 				Facet facet = facets.next();
-				String field = facet.getField(); // like "subject" or "date"
+				String field = facet.getField(); // like "subject" or "date"				
 
 				if (facetGroups.containsKey(field)) {
 					// add band to facetgroup if already in our set
@@ -328,7 +329,7 @@ public class SearchController {
 					ArrayList<Facet> facetObjs = new ArrayList<Facet>();
 					facetObjs.add(facet);
 					
-					FacetGroup group = new FacetGroup(field, facetObjs);
+					FacetGroup group = new FacetGroup(field, facet.getFieldLabel(), facetObjs);
 					facetGroups.put(field, group);
 				}
 

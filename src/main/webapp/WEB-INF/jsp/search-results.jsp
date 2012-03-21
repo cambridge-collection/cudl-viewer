@@ -5,6 +5,26 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-unselected.jsp" />
 
+<script type="text/javascript">
+ function pageinit() {
+	
+	 $(document).ready(function(){
+			$('#paging_container').pajinate({
+				items_per_page : 8,
+				num_age_links_to_display:10,
+				item_container_id:'.search_carousel'
+			});
+			if ($('#paging_container ol li').length<=8) {
+				$('.page_navigation').each(function() { $(this).hide(); });
+
+			}
+
+		});
+
+ }
+	
+</script>
+
 <div class="clear"></div>
 
 <%
@@ -46,18 +66,14 @@
 				String facetName = facetsUsed.next();
 				String facetValue = query.getFacets().get(facetName);
 		%>
-		<a href="?<%=query.getURLParametersWithoutFacet(facetName)%>&">X</a>
-		<%
-			out.print(facetName);
-		%>:
+		<div class="search-facet-selected"><a id="search-close" href="?<%=query.getURLParametersWithoutFacet(facetName)%>&"></a>
 		<%
 			out.print(facetValue);
-		%>
-		<br />
+		%></div>
 		<%
 			}
 
-				out.print("<b>" + resultsNum + "</b>"
+				out.print("<br /><b>" + resultsNum + "</b>"
 						+ " results were returned.<br/><br/>");
 			
 		%>
@@ -66,7 +82,7 @@
 		%>
 		<h5>Refine by:</h5>
 
-		<ul id="tree">
+		<ul id="tree" >
 			<%
 				List<FacetGroup> facetGroups = resultSet.getFacets();
 
@@ -75,13 +91,14 @@
 							for (int i = 0; i < facetGroups.size(); i++) {
 								FacetGroup facetGroup = (FacetGroup) facetGroups
 										.get(i);
+								String fieldLabel = facetGroup.getFieldLabel();
 								String field = facetGroup.getField();
 								List<Facet> facets = facetGroup.getFacets();
 
 								// Do not print out the facet for a field already faceting on
 								if (!query.getFacets().containsKey(field)) {
 									
-									out.println("<li>" + field + "<ul>");
+									out.println("<li>" + fieldLabel + "<ul>");
 
 									for (int j = 0; j < facets.size(); j++) {
 										Facet facet = facets.get(j);
@@ -102,12 +119,12 @@
 		<%
 			}
 		%>
-
+</div>
 	</div>
 
-</div>
-
-<div class="grid_13">
+<div class="grid_13 search_results" id="paging_container" >
+<div class="page_navigation"></div><div class='clear'></div>
+<ol id="search_carousel" class="search_carousel">
 	<%
 		List<SearchResult> results = resultSet.getResults();
 
@@ -120,7 +137,7 @@
 					Item item = ItemFactory.getItemFromId(result.getId());
 					if (item != null) {
 						// print out title
-						out.print("<div class='grid_7'><a href='/view/"
+						out.print("<li><div class='search_carousel_item'><div class='grid_7'><a href='/view/"
 								+ result.getId() + "'>" + result.getTitle()
 								+ " (" + item.getShelfLocator() + ")"
 								+ "</a><br/>");
@@ -159,16 +176,18 @@
 								+ item.getId() + " src='"
 								+ item.getThumbnailURL() + "'/>");
 
-						out.print("</a></div></div>\n\n");
+						out.print("</a></div></div></div>\n\n");
 					}
 				}
 			}
 		}
 	%>
 
-
+</ol>
+<div class='clear'></div><br/><div class="page_navigation"></div>
 </div>
 </section>
+
 
 <jsp:include page="footer/footer.jsp" />
 

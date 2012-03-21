@@ -10,6 +10,7 @@ package ulcambridge.foundations.viewer.search;
 public class Facet implements Comparable<Facet> {
 
 	private String field; // like "subject" or "date"
+	private String fieldLabel; // for display - like "Subject" or "Date".
 	private String band; // like "Algebra - Early works to 1800"
 	private int occurences = 1; // amount of times this facet appears in
 								// results.
@@ -17,6 +18,7 @@ public class Facet implements Comparable<Facet> {
 	public Facet(String field, String band) {
 
 		this.field = field;
+		this.fieldLabel = field.substring(0, 1).toUpperCase() + field.substring(1);
 		this.band = band;
 	}
 
@@ -30,6 +32,11 @@ public class Facet implements Comparable<Facet> {
 	public String getField() {
 		return field;
 	}
+	
+	public String getFieldLabel() {
+		return fieldLabel;
+	}
+
 
 	public String getBand() {
 		return band;

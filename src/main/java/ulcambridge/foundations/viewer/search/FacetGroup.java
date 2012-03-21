@@ -16,24 +16,32 @@ public class FacetGroup {
 
 	private List<Facet> facets = new ArrayList<Facet>();;
 	private String field;
+	private String fieldLabel;
 
 	/**
 	 * Facets are sorted after the group is created and on adding new 
 	 * facets. 
 	 * 
+	 * Facet groups MUST be all of the same field. 
+	 * 
 	 * @param field
 	 * @param facets
 	 */
-	public FacetGroup(String field, List<Facet> facets) {
+	public FacetGroup(String field, String fieldLabel, List<Facet> facets) {
 		
 		this.facets = facets;
 		this.field = field;
+		this.fieldLabel = fieldLabel;
 		Collections.sort(facets);
 	}
 
 	public String getField() {
 		return field;
 	}
+	
+	public String getFieldLabel() {
+		return fieldLabel;
+	}	
 
 	public int getNumBands() {
 		return facets.size();
