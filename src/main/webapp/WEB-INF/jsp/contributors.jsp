@@ -1,6 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav-about.jsp" />
+<jsp:include page="header/nav.jsp" >    
+   <jsp:param name="activeMenuIndex" value="3" />
+   <jsp:param name="displaySearch" value="true" />
+</jsp:include>	
 <jsp:include page="header/nav-about-submenu.jsp" >    
    <jsp:param name="activeSubmenu" value="1" />
 </jsp:include>	

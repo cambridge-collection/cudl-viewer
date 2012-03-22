@@ -2,7 +2,10 @@
 <%@ page isErrorPage="true"%>
 
 <jsp:include page="../header/header-full.jsp" />
-<jsp:include page="../header/nav-home.jsp" />
+<jsp:include page="../header/nav.jsp" >    
+   <jsp:param name="activeMenuIndex" value="0" />
+   <jsp:param name="displaySearch" value="true" />
+</jsp:include>	
 
 		<div class="clear"></div>
 

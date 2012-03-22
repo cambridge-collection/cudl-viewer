@@ -1,6 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav-home.jsp" />
+<jsp:include page="header/nav.jsp" >    
+   <jsp:param name="activeMenuIndex" value="0" />
+   <jsp:param name="displaySearch" value="true" />
+</jsp:include>	
 
 <script type="text/javascript">
 	var index_carousel;

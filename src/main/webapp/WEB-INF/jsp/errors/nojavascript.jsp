@@ -1,11 +1,13 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="../header/header-full.jsp" />
-<jsp:include page="../header/nav-about.jsp" />
+<jsp:include page="../header/nav.jsp" >    
+   <jsp:param name="activeMenuIndex" value="0" />
+   <jsp:param name="displaySearch" value="true" />
+</jsp:include>	
 
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-
 
 	<div class="grid_20" style="margin-bottom:18px;">
 
