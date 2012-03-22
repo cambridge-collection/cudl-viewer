@@ -45,7 +45,7 @@ body {
 
 				<p>We welcome all comments, feedback and suggestions. Please
 					tell us what you liked, disliked, would like to see improved, or if
-					you think something is not right. Fields marked with a * are
+					you think something is not right. Fields marked with an * are
 					required.</p>
 
 				<p>				

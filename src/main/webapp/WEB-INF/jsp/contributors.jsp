@@ -1,11 +1,13 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-about.jsp" />
+<jsp:include page="header/nav-about-submenu.jsp" >    
+   <jsp:param name="activeSubmenu" value="1" />
+</jsp:include>	
 
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-
 
 <div class="grid_19 contibutors">
 
@@ -23,8 +25,7 @@
 		International Digitisation Project, <b>The Polonsky Foundation</b> has
 		provided major funding towards the development of the digital
 		library's infrastructure and the digitisation of content for its
-		Foundations of Faith and Foundations of Science collections.
-		<br /> <br />
+		Foundations of Faith and Foundations of Science collections. <br /> <br />
 	</div>
 
 	<div class="grid_4">
@@ -38,7 +39,23 @@
 			target="_blank">Windows on Genius</a> project (<a
 			href="http://www.jisc.ac.uk/fundingopportunities/funding_calls/2010/09/grant1110.aspx"
 			target="_blank">JISC e-Content Programme 2011</a>). This project has
-		enabled the linking of Newton's facsimiles and transcriptions.<br />
+		enabled the linking of Newton's facsimiles and transcriptions. JISC is
+		also funding the <a target="_blank"
+			href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013/Board%20of%20Longitude.aspx">
+			Board of Longitude</a> project (<a target="_blank"
+			href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">JISC
+			Content Programme 2011-2013</a>) which is creating a substantial
+		collection related to 18th century science an technology.<br /> <br />
+	</div>
+
+	<div class="grid_4">&nbsp;</div>
+	<div class="grid_13">
+		The digitisation of the Taylor-Schechter Cairo Genizah Collection has
+		been sponsored by the <a href="http://www.jewishmanuscripts.org/"
+			target="_blank">Jewish Manuscript Preservation Society</a>, the <a
+			href="http://www.genizah.org/" target="_blank">Friedberg Genizah
+			Project Inc.</a>, and the <a href="http://www.ahrc.ac.uk/"
+			target="_blank">Arts and Humanities Research Council, UK</a>.<br />
 		<br /> <br />
 	</div>
 
@@ -100,6 +117,7 @@
 			<li>Grant Young, Project Manager</li>
 			<li>Jennie Fletcher, Lead Software Engineer</li>
 			<li>Huw Jones, Metadata Specialist</li>
+			<li>Andy Corrigan, Content Editor</li>
 			<li>Tony Stevenson, System Administration</li>
 		</ul>
 
@@ -107,6 +125,7 @@
 
 		<ul>
 			<li>Don Manning, Head of Imaging Services</li>
+			<li>Les Goody, Senior Photographer</li>
 			<li>Blazej Mikula, Foundations Project Imaging Technician</li>
 		</ul>
 
@@ -115,30 +134,53 @@
 		<ul>
 			<li>Alan Farrant, Head of Conservation</li>
 			<li>James Bloxham, Conservator</li>
+			<li>Lucy Cheng, Conservator</li>
 			<li>Deborah Farndell, Conservator</li>
 			<li>Ngaio Vince-Dewerse, Conservator</li>
 		</ul>
 
-		<h4>Newton Transcriptions</h4>
-
+		<h4>Newton Papers Collection</h4>
 
 		<ul>
+			<li>Adam Perkins, Curator of Scientific Manuscripts</li>
 			<li>Rob Iliffe, Editorial Director of the Newton Project and
 				Professor of Intellectual History and History of Science, University
-				of Sussex</li>
-			<li><a
-				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24"
-				target="_blank">Other members of the Newton Project team</a></li>
+				of Sussex and <a target="_blank"
+				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24">other
+					members of the Newton Project team</a> for the transcriptions.</li>
+
 		</ul>
-		
+
 		<h4>Islamic Manuscripts</h4>
 
-
 		<ul>
-			<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern Department</li>
-			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern Department</li>
-			<li>Ignacio Sanchez, Specialist Cataloguer </li>
-		</ul>		
+			<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
+				Department</li>
+			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
+				Department</li>
+			<li>Ignacio Sanchez, Specialist Cataloguer</li>
+		</ul>
+
+		<h4>Cairo Genizah Collection</h4>
+		<ul>
+			<li>Ben Outhwaite, Head of the Genizah Research Unit and <a
+				target="_blank"
+				href="http://www.lib.cam.ac.uk/Taylor-Schechter/Unit.html">other
+					members of the Genizah Research Unit team</a>.</li>
+		</ul>
+
+		<h4>Treasures of the Library Collection</h4>
+		<ul>
+			<li>Dr Patrick Zutshi, Keeper of Manuscripts and University
+				Archives Ed Potten, Head of Rare Books</li>
+			<li>Professor Paul Binski, Professor of the History of Medieval
+				Art, University of Cambridge</li>
+			<li>Professor David Parker, Edward Cadbury Professor of Theology
+				and Director of the Institute for Textual Scholarship and Electronic
+				Editing, University of Birmingham</li>
+
+		</ul>
+
 
 		<h4>Contact Details</h4>
 		<p>

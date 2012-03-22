@@ -2,7 +2,7 @@
 	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-browse.jsp" />
-<jsp:include page="header/nav-browse-collections.jsp" />
+<jsp:include page="header/nav-browse-submenu.jsp" />
 
 <%
 	Collection collection = (Collection) request

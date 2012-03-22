@@ -259,16 +259,17 @@ ol#search_carousel li {
 }
 
 .search-facet-selected {
-	background: #fff;
+	background: #ccc;
 	padding:3px;
-	width:230px;
-	margin:0px;
-	font-weight:bold;
+	width:233px;	
 	border-style: solid;
 	border-width: 1px;
 	border-color: #999;
 	position: relative;
 	margin-top:5px;
+	margin-bottom:5px;
+	float:left;
+	color:#333;
 }
 
 #search-close {
@@ -279,7 +280,7 @@ ol#search_carousel li {
     right: -4px;
     top: -4px;
     width: 13px;
-    z-index: 1103;
+    z-index: 3;
 }
 
 /* Note the max height and width are set in jsp also */
@@ -324,6 +325,16 @@ ol#vcollections_carousel li {
 
 .faq ol li {
 	margin: 5px;
+}
+
+.terms ol {
+	list-style: circle outside none;
+}
+
+.terms ol li {
+	margin-top: -5px;
+	margin-bottom: -5px;
+	margin-left: 15px;
 }
 
 .virtual_collection_summary_image {
@@ -398,17 +409,7 @@ ol#vcollections_carousel li {
 	color: black !important;
 }
 
-/* search */
-.searchform {
-	color: black;
-	background: #ffffff;
-	padding-bottom: 18px;
-}
-
-.searchform input,.searchform textarea {
-	border: 1px inset;
-	padding: 2px;
-}
+/* search on bar */
 
 #navPrimary form {
     float: right;
@@ -426,7 +427,7 @@ ol#vcollections_carousel li {
     position: absolute;
     top: 5px;
     right: 4px;
-    width: 202px;
+    width: 230px;
     z-index: 2;
 }
 
@@ -447,3 +448,44 @@ ol#vcollections_carousel li {
 #navPrimary input {
     margin-right: 2px;
 }
+
+/* Search box on search results page */
+.searchform form {
+    margin-left: auto;
+    margin-right: auto;
+    height: 36px;
+    position: relative;
+}
+
+.searchform #search {
+    background: none repeat scroll 0 0 white;
+    color: #666666;
+    font-family: Georgia,'Times New Roman',serif;
+    font-size: 13px;
+    font-style: italic;
+    padding: 5px 5px;
+    position: absolute;
+    top: 0px;
+    width: 230px;
+    z-index: 2;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #999;
+	font-weight:bold;
+   
+}
+
+.searchform #submit {
+    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    right: -10px;
+    text-indent: -9999px;
+    top: 5px;
+    width: 16px;
+    z-index: 3;
+}
+

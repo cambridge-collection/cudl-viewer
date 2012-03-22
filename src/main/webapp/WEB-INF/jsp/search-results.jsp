@@ -32,17 +32,33 @@
 			.getAttribute("results"));
 	SearchQuery query = ((SearchQuery) request.getAttribute("query"));
 
-	int resultsNum = 100; // This is the max number of results displayed
+	int resultsNum = 150; // This is the max number of results displayed
 
-	if (resultSet.getNumberOfResults() < 100) {
+	if (resultSet.getNumberOfResults() < resultsNum) {
 		resultsNum = resultSet.getNumberOfResults();
 	}
 %>
 
 <section id="content" class="grid_20 content searchform"> <!-- <h3 style="margin-left: 8px">Search</h3>  -->
 
-<div class="grid_6">
+<div class="grid_6 ">
 	<div class="box">
+
+	<form class="grid_5" action="/search">
+		<input id="search" type="text" value="<%=query.getKeywordDisplay() %>" name="keyword" placeholder="Search"
+			autocomplete="off" /> <input id="submit" type="submit"
+			value="Search" />
+
+		<%
+			Iterator<String> facetsUsedHidden = query.getFacets().keySet().iterator();
+			while (facetsUsedHidden.hasNext()) {
+				String facetName = facetsUsedHidden.next();
+				String facetValue = query.getFacets().get(facetName);
+		%>
+		          <input type="hidden" name="facet-<%=facetName %>" value="<%=facetValue %>">
+		<%  } %>
+		</form>
+		
 		<%
 			Iterator<String> facetsUsed = query.getFacets().keySet().iterator();
 			while (facetsUsed.hasNext()) {
@@ -55,11 +71,9 @@
 		%></div>
 		<%
 			}
-			if (query.getFacets().size()>0) {
-				out.print("<br />");
-			}
 
-				out.print("<b>" + resultsNum + "</b>"
+
+				out.print("<br /><br /><b>" + resultsNum + "</b>"
 						+ " results were returned.<br/><br/>");
 			
 		%>
