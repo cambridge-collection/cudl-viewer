@@ -93,9 +93,13 @@
 				The <a href="/view/MS-ADD-03996/">Trinity College Notebook</a>
 				featured on BBC Radio 4's '<a target="_blank"
 					href="http://www.bbc.co.uk/programmes/b0192yhn">In Our Time -
-					The Written World</a>', broadcast in January 2012.
+					The Written World</a>', broadcast in January 2012.<br /><br />
 			</div>
 		</div>
-		<br />
+		
+		<div class="box grid_8">
+		Want to view items by subject or date? <br/>
+		<a href="/search?facet-collection=Newton+Papers">Search the Newton Papers</a>
+		</div>
 	</div>
 </div>
