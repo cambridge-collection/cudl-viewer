@@ -13,9 +13,50 @@ function setupSeaDragon() {
 	Seadragon.Config.debugMode = true;
 	Seadragon.Config.maxZoomPixelRatio = 1;
 	Seadragon.Strings.Tooltips.Home = "Full Page View";
-
+	
 	viewer = new Seadragon.Viewer("doc");
 
+	// Setup forward and backward buttons
+	function fullscreenNextPage() {
+	    store.loadPage(pagenum+1);
+		view.pageSet = true;
+	}
+	
+	function fullscreenPrevPage() {
+	    store.loadPage(pagenum-1);
+		view.pageSet = true;
+	}	
+
+	var buttonNextPage = new Seadragon.Button(
+	    "Next Page",
+	    "/img/nextPage_rest.png",
+	    "/img/nextPage_grouphover.png",
+	    "/img/nextPage_hover.png",
+	    "/img/nextPage_hover.png",
+	    null,       // do nothing on initialpress
+	    fullscreenNextPage,     // go home on release
+	    null,       // no need to use clickthresholds
+	    null,       // do nothing on enter
+	    null       // do nothing on exit
+	);
+	
+	var buttonPrevPage = new Seadragon.Button(
+		    "Previous Page",
+		    "/img/prevPage_rest.png",
+		    "/img/prevPage_grouphover.png",
+		    "/img/prevPage_hover.png",
+		    "/img/prevPage_hover.png",
+		    null,       // do nothing on initialpress
+		    fullscreenPrevPage,     // go home on release
+		    null,       // no need to use clickthresholds
+		    null,       // do nothing on enter
+		    null       // do nothing on exit
+		);	
+
+	 var navBar = new Seadragon.ButtonGroup([buttonPrevPage, buttonNextPage]);
+
+	viewer.addControl(navBar.elmt,Seadragon.ControlAnchor.BOTTOM_LEFT);
+	
 	// FIXME remove the maximize button as it's causing problems
 	// viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
 

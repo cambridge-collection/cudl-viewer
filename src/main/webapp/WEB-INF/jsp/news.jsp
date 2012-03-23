@@ -21,7 +21,7 @@
 	</div>
 
 	<div class="grid_11">
-		<span class="date">27/03/2012</span>
+		<span class="date">29/03/2012</span>
 		<h4>Treasures and Cairo Genizah Collections</h4>
 		<p>
 			The <a href="/collections/treasures">Treasures of the Library</a>
