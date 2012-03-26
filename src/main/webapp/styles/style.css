@@ -272,7 +272,7 @@ ol#search_carousel li {
 	color:#333;
 }
 
-#search-close {
+.search-close {
     background: url("/img/search-close.png");
     cursor: pointer;
     height:  13px;

@@ -47,7 +47,7 @@
 				so that our collections can be much more accessible to students,
 				researchers and the wider public.</p>
 
-			<a href="" name="foundations"></a>
+			<a href="" id="foundations"></a>
 			<p>
 				We have called the first phase of our work on the Cambridge Digital
 				Library the <b>Foundations Project</b>, which runs from mid-2010 to

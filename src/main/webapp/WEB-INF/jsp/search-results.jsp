@@ -65,7 +65,7 @@
 				String facetName = facetsUsed.next();
 				String facetValue = query.getFacets().get(facetName);
 		%>
-		<div class="search-facet-selected"><a id="search-close" href="?<%=query.getURLParametersWithoutFacet(facetName)%>&"></a>
+		<div class="search-facet-selected"><a class="search-close" href="?<%=query.getURLParametersWithoutFacet(facetName)%>&amp;"></a>
 		<%
 			out.print(facetValue);
 		%></div>

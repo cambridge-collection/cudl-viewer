@@ -45,7 +45,7 @@ public class SearchQuery {
 			Iterator<String> facetIterator = facets.keySet().iterator();
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();
-				params += "&facet-" + URLEncoder.encode(facet, "UTF-8") + "="
+				params += "&amp;facet-" + URLEncoder.encode(facet, "UTF-8") + "="
 						+ URLEncoder.encode(facets.get(facet), "UTF-8");
 			}
 			return params;
@@ -62,7 +62,7 @@ public class SearchQuery {
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();
 				if (!facet.equals(facetName)) {
-					params += "&facet-" + URLEncoder.encode(facet, "UTF-8")
+					params += "&amp;facet-" + URLEncoder.encode(facet, "UTF-8")
 							+ "="
 							+ URLEncoder.encode(facets.get(facet), "UTF-8");
 				}
@@ -77,7 +77,7 @@ public class SearchQuery {
 	public String getURLParametersWithExtraFacet(String facetName,
 			String facetValue) {
 		try {
-			return getURLParameters() + "&facet-"
+			return getURLParameters() + "&amp;facet-"
 					+ URLEncoder.encode(facetName, "UTF-8") + "="
 					+ URLEncoder.encode(facetValue, "UTF-8");
 		} catch (UnsupportedEncodingException e) {

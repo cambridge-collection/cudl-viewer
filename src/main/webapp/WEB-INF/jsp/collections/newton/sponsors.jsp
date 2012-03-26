@@ -33,7 +33,7 @@
 
 	<div class="grid_4">&nbsp;</div>
 	<div class="grid_13">
-		<a name="trinity">Sir James Thornhill's Portrait of Isaac Newton
+		<a id="trinity">Sir James Thornhill's Portrait of Isaac Newton
 			reproduced with the kind permission of the Master and Fellows,
 			Trinity College, Cambridge.</a>
 	</div>

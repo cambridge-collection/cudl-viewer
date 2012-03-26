@@ -61,7 +61,7 @@
 					University Library Near and Middle Eastern Department </a>
 			</li>
 			<li><a target="_blank"
-				href="http://www.lib.cam.ac.uk/deptserv/neareastern/Faith_&__Fable.pdf"><i>Faith
+				href="http://www.lib.cam.ac.uk/deptserv/neareastern/Faith_%26__Fable.pdf"><i>Faith
 						and Fable: Islamic Manuscripts from Cambridge University Library</i>
 					(PDF, 2.5MB)</a>
 			</li>

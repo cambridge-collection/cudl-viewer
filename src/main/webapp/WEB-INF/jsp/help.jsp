@@ -40,18 +40,18 @@
 		<div class="grid_11">
 
 			<p>
-				<a name="mailinglist"><b>How can I find out when new content
+				<a id="mailinglist"><b>How can I find out when new content
 						is made available?</b> </a>
 			</p>
 
 			<p>
 				Subscribe to our mailing list by sending an email to <a
-					href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&amp;body=I would like to receive update news from Cambridge University Digital Library.">cudl-updates-subscribe@caret.cam.ac.uk</a>
+					href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&amp;body=I%20would%20like%20to%20receive%20update%20news%20from%20Cambridge%20University%20Digital%20Library.">cudl-updates-subscribe@caret.cam.ac.uk</a>
 				and we will do our best to keep you informed of updates.
 			</p>
 
 			<p>
-				<a name="links"><b>How do link to a specific page within a
+				<a id="links"><b>How do link to a specific page within a
 						book?</b> </a>
 			</p>
 
@@ -65,7 +65,7 @@
 
 
 			<p>
-				<a name="view"><b>How do I change page while seeing as much
+				<a id="view"><b>How do I change page while seeing as much
 						of the manuscript as possible?</b> </a>
 			</p>
 
@@ -77,7 +77,7 @@
 				it to cover the full screen.</p>
 
 			<p>
-				<a name="socialmedia"><b>How do I share a book on Facebook,
+				<a id="socialmedia"><b>How do I share a book on Facebook,
 						Twitter, etc.?</b> </a>
 			</p>
 
@@ -85,7 +85,7 @@
 				in the top right of the About tab. Clicking on these will allow you
 				to share the item with others.</p>
 			<p>
-				<a name="tech"><b>What technologies are behind the Cambridge
+				<a id="tech"><b>What technologies are behind the Cambridge
 						Digital Library?</b> </a>
 			</p>
 
@@ -109,7 +109,7 @@
 			</p>
 
 			<p>
-				<a name="standards"><b>What kind of standards do you use for
+				<a id="standards"><b>What kind of standards do you use for
 						data?</b> </a>
 			</p>
 			<p>
@@ -120,7 +120,7 @@
 			</p>
 
 			<p>
-				<a name="pdf"><b>Will you be offering whole pdfs of the
+				<a id="pdf"><b>Will you be offering whole pdfs of the
 						manuscripts to download (for e-readers for example)?</b> </a>
 			</p>
 
@@ -128,7 +128,7 @@
 				result in very large files, so may not be suitable for all books.</p>
 
 			<p>
-				<a name="digitisation"><b>Why can't I see all books in
+				<a id="digitisation"><b>Why can't I see all books in
 						Cambridge University Library online?</b> </a>
 			</p>
 
