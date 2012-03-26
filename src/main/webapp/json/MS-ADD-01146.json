@@ -29,7 +29,7 @@
                      "type":"personal",
                      "role":"fmo"
                      }],
-                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the second or third century A.H. / eighth or ninth century C.E., containing verses from <a href='' onclick='store.loadPage(1);return false;'>Sura al-Aḥzāb (سورة الأحزاب) </a> and <a href='' onclick='store.loadPage(3);return false;'> Sura Sabaʾ (سورة سبا). The script seems to correspond to the Abbasid Style F.I. as described by F. Deroche</a></p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' href='http://www.bbc.co.uk/programmes/b0192yhn'>In Our Time - The Written World</a>'. </div> </div> </div>",
+                  "abstract":"<p>Fragments of an Abbasid Qurʼān probably written in the second or third century A.H. / eighth or ninth century C.E., containing verses from <a href='' onclick='store.loadPage(1);return false;'>Sura al-Aḥzāb (سورة الأحزاب) </a> and <a href='' onclick='store.loadPage(3);return false;'> Sura Sabaʾ (سورة سبا)</a>. The script seems to correspond to the Abbasid Style F.I. as described by F. Deroche</a></p> <br/> <div class='grid_10' id='document-about-radio'> <div class='grid_1' id='document-about-radio-icon-div'> <a href='http://www.bbc.co.uk/programmes/b0192yhn' target='_blank' class='externalLink'><img id='document-about-radio-icon' src='/images/general/BBCQuran86x48.jpg' alt='Radio icon' title='Radio icon'/></a> </div> <div class='grid_7' id='document-about-radio-link'> Featured in BBC Radio 4's <br/>'<a target='_blank' class='externalLink' href='http://www.bbc.co.uk/programmes/b0192yhn'>In Our Time - The Written World</a>'. </div> </div> </div>",
                   "subject":[
                   "Koran"
                   ],
@@ -82,7 +82,7 @@
                   "shelfLocator":"MS Add.1146",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "metadataRights":"",
+                  "metadataRights":"This metadata is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[

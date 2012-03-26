@@ -29,7 +29,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Newton's notes on optics, precious stones, colours, temperatures, salts, medical matters, alchemy and other subjects, in English and Latin, c. 1669-c.1693.</p> <p>The last four pages are written in upside-down from the back, and so numbered in reverse order 344-341.</p> <br/> <p>A full description and transcription of this manuscript is available at <a target='_blank' href='http://webapp1.dlib.indiana.edu/newton/mss/intro/ALCH00110/'>The Chymistry of Isaac Newton</a> </p>",
+                  "abstract":"<p>Newton's notes on optics, precious stones, colours, temperatures, salts, medical matters, alchemy and other subjects, in English and Latin, c. 1669-c.1693.</p> <p>The last four pages are written in upside-down from the back, and so numbered in reverse order 344-341.</p> <br/> <p>A full description and transcription of this manuscript is available at <a target='_blank' class='externalLink' href='http://webapp1.dlib.indiana.edu/newton/mss/intro/ALCH00110/'>The Chymistry of Isaac Newton</a> </p>",
                   "subject":[
                   "Chemistry - Early works to 1800","Optics - Early works to 1800","Alchemy - Early works to 1800"
                   ],
@@ -82,7 +82,7 @@
                   "shelfLocator":"MS Add.3975",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "metadataRights":"",
+                  "metadataRights":"This metadata is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[
