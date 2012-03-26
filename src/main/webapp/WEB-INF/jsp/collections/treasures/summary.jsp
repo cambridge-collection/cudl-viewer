@@ -12,23 +12,33 @@
 
 			<blockquote class="grid_8 omega print">
 
-				Cambridge University Library contains evidence of some of the
-				greatest ideas and discoveries over two millennia." <br /> <br />
-				<cite>&mdash;Anne Jarvis, University Librarian</cite>
+				Knowing that I loved my books, he furnished me from mine own library
+				with volumes that I prize above my dukedom" <br /> <br /> <cite>&mdash;
+					Prospero, <i>The Tempest</i> (Act 1, Scene 2)</cite>
 
 			</blockquote>
 			<div class="grid_8">
 				<p>
-					<br />Cambridge University Library holds the largest and most
-					important collection of the scientific works of Isaac Newton
-					(1642-1727). Newton was closely associated with Cambridge. He came
-					to the University as a student in 1661, graduating in 1665, and
-					from 1669 to 1701 he held the Lucasian Chair of Mathematics. Under
-					the regulations for this Chair, Newton was required to deposit
-					copies of his lectures in the University Library. These, and some
-					correspondence relating to the University, were assigned the
-					classmarks Dd.4.18, Dd.9.46, Dd.9.67, Dd.9.68, and Mm.6.50.
+					An important goal of the Cambridge Digital Library is to
+					make available substantial collections, so that researchers,
+					teachers and life-long learners can explore a wide range of
+					resources and uncover their own treasures. We expect the
+					digitisation of our collections to enable interesting discoveries
+					to be made and to open up new avenues for research. As we develop
+					the digital library infrastructure we will look for ways of
+					capturing and publicising new information about items held within
+					the digital library.
 				</p>
+				<p>However, there are many items within the Library’s
+					collections that already deserve highlighting. This may be because
+					of their historical importance, uniqueness, beauty, fascinating
+					content, or perhaps their personal associations. In this special
+					collection within the Cambridge Digital Library we will draw
+					together books, manuscripts and other items from across our
+					collections that are especially significant. Many of them have been
+					displayed in Library exhibitions in the past – now they can be
+					accessed at any time, from anywhere in the world, and browsed cover
+					to cover.</p>
 			</div>
 		</div>
 		<div class="grid_10">

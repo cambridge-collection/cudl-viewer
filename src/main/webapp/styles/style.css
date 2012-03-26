@@ -79,12 +79,12 @@ ol#index_carousel li {
 
 .collection {
 	position: relative;
-	background: #999; /* for non-css3 browsers */
+	background: #fff; /* for non-css3 browsers */
 	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
-		'#ffffff', endColorstr = '#cccccc' ); /* for IE */
+		'#ffffff', endColorstr = '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#cccccc) ); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #cccccc);
+	background: -moz-linear-gradient(top, #ffffff, #ffffff);
 	/* for firefox 3.6+ */
 	padding: 14px;
 	display: block;
@@ -92,22 +92,22 @@ ol#index_carousel li {
 }
 
 .collection-science {
-	background: #ccd4ff;
+	background: #fff;
 	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
 		'#ffffff', endColorstr = '#ccd4ff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#ccd4ff) ); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #ccd4ff);
+		to(#fff) ); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ffffff, #fff);
 	/* for firefox 3.6+ */
 }
 
 .collection-faith {
-	background: #fff4d0;
+	background: #fff;
 	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
-		'#ffffff', endColorstr = '#fff4d0' ); /* for IE */
+		'#ffffff', endColorstr = '#fff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#fff4d0) ); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #fff4d0);
+		to(#fff) ); /* for webkit browsers */
+	background: -moz-linear-gradient(top, #ffffff, #fff);
 	/* for firefox 3.6+ */
 }
 
@@ -190,12 +190,12 @@ ol#index_carousel li {
 
 #document-about-radio-link {
 	font-weight: bold;
-	color: #458be0;
+	color: #333;
 }
 
 #document-about-radio-link a {
 	font-weight: bold;
-	color: #458be0;
+	color: #333;
 }
 
 #document-about-radio-icon-div {
@@ -286,6 +286,9 @@ ol#search_carousel li {
 /* Note the max height and width are set in jsp also */
 .collections_carousel_image img {
 	margin: auto;
+	text-decoration: none;
+    border: none;
+    outline: none;	
 }
 
 .collections_carousel_image_box {
@@ -488,4 +491,5 @@ ol#vcollections_carousel li {
     width: 16px;
     z-index: 3;
 }
+
 

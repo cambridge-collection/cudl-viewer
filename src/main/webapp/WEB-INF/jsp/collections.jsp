@@ -1,9 +1,10 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.ItemFactory"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp" >    
-   <jsp:param name="activeMenuIndex" value="1" />
-   <jsp:param name="displaySearch" value="true" />
-</jsp:include>	
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="1" />
+	<jsp:param name="displaySearch" value="true" />
+</jsp:include>
 
 <script type="text/javascript">
 	/*	function pageinit() {
@@ -31,10 +32,14 @@
 			alt="Treasures" width="150" height="150" /> </a>
 
 		<h5>Treasures of the Library</h5>
-		<br /> Text. <br /> <br /> <a href="/collections/treasures">View
+		<br /> In this special collection we draw together books, manuscripts
+		and other items of particular significance. Many of them have been
+		displayed in Library exhibitions in the past – now they can be
+		accessed at any time, from anywhere in the world, and browsed cover to
+		cover. <br /> <br /> <a href="/collections/treasures">View
 			collection</a>.<br />
 	</div>
-
+	<br/><hr/>
 	<div class="collection collection-science">
 
 		<a href="/collections/newton"> <img class="collectionImage"
@@ -51,6 +56,7 @@
 			<a href="/about#foundations">Foundations of Science</a>
 		</div>
 	</div>
+	<br/><hr/>	
 	<div class="collection collection-faith">
 
 		<a href="/collections/islamic"> <img class="collectionImage"
@@ -67,6 +73,7 @@
 			<a href="/about#foundations">Foundations of Faith</a>
 		</div>
 	</div>
+	<br/><hr/>	
 	<div class="collection collection-faith">
 
 		<a href="/collections/genizah"> <img class="collectionImage"
@@ -86,30 +93,68 @@
 
 <div class="grid_6">
 	<h4>Featured Items</h4>
-	<div class="featuredItem">
+	<div class="featuredItem grid_6">
 
 		<!--  3975  -->
 		<div class="featuredItem-text">
 			<h5>
-				<a href="/view/MS-ADD-03975/21">Newton's Laboratory Notebook</a>
+				<a href="/view/MS-ADD-03975/">Newton's Laboratory Notebook</a>
 			</h5>
 		</div>
-		<a href="/view/MS-ADD-03975/21"><img alt="MS-ADD-03975"
-			src="/images/collectionsView/featured-newton.jpg" /> </a>
+	<%
+		Item feat1 = ItemFactory
+				.getItemFromId("MS-ADD-03975");
+	%>		
+		<div style="float:left;"><div class="collections_carousel_image_box">
+		<div class="collections_carousel_image">
+			<a href="/view/MS-ADD-03975/"><img
+				alt="MS-ADD-03975"
+				src="<%=feat1.getThumbnailURL()%>" style="height:100%"/> </a>
+		</div></div></div>
 	</div>
-	<div class="featuredItem">
+	<%
+		Item feat2 = ItemFactory
+				.getItemFromId("PR-INC-00000-A-00007-00002-00888");
+	%>
+	<div class="featuredItem grid_6">
+	&nbsp;
+	</div>
+	<div class="featuredItem grid_6">
 		<!--  PR-INC-00000-A-00007-00002-00888 -->
 		<div class="featuredItem-text">
 			<h5>
-				<a href="/view/PR-INC-00000-A-00007-00002-00888/87">Nuremberg
+				<a href="/view/PR-INC-00000-A-00007-00002-00888/">Nuremberg
 					Chronicle </a>
 			</h5>
 		</div>
-		<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
-			alt="PR-INC-00000-A-00007-00002-00888"
-			src="/images/collectionsView/featured-nuremberg.jpg" /> </a>
-
+		<div style="float:left;"><div class="collections_carousel_image_box">
+		<div class="collections_carousel_image">
+			<a href="/view/PR-INC-00000-A-00007-00002-00888/"><img
+				alt="PR-INC-00000-A-00007-00002-00888"
+				src="<%=feat2.getThumbnailURL()%>" style="height:100%"/> </a>
+		</div></div></div>
 	</div>
+	<%
+		Item feat3 = ItemFactory
+				.getItemFromId("MS-EE-00003-00059");
+	%>
+	<div class="featuredItem grid_6">
+	&nbsp;
+	</div>
+	<div class="featuredItem grid_6">
+		<!--  MS-EE-00003-00059 -->
+		<div class="featuredItem-text">
+			<h5>
+				<a href="/view/MS-EE-00003-00059/">Life of St Edward the Confessor </a>
+			</h5>
+		</div>
+		<div style="float:left;"><div class="collections_carousel_image_box">
+		<div class="collections_carousel_image">
+			<a href="/view/MS-EE-00003-00059/"><img
+				alt="MS-EE-00003-00059"
+				src="<%=feat3.getThumbnailURL()%>" style="height:100%"/> </a>
+		</div></div></div>
+	</div>	
 
 </div>
 </section>

@@ -1,9 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp" >    
-   <jsp:param name="activeMenuIndex" value="0" />
-   <jsp:param name="displaySearch" value="true" />
-</jsp:include>	
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="0" />
+	<jsp:param name="displaySearch" value="true" />
+</jsp:include>
 
 <script type="text/javascript">
 	var index_carousel;
@@ -14,9 +14,10 @@
 			step : 1,
 			theme : "light"
 		});
-		
+
 		// Goto a random item in the carousel
-		var randomnumber=Math.floor(Math.random()*(index_carousel._countRealItems));
+		var randomnumber = Math.floor(Math.random()
+				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
 	}
 </script>
@@ -29,14 +30,15 @@
 		<div id="news" class="panel light">
 
 			<div class="featured-item-list">
-				<a href="/collections/treasures"><img alt="Treasures of the Library"
-					title="Treasures of the Library" src="/images/index/slice-treasures.jpg"> </a>
+				<a href="/collections/treasures"><img
+					alt="Treasures of the Library" title="Treasures of the Library"
+					src="/images/index/slice-treasures.jpg"> </a>
 
 				<h4>
 					<a href="/collections/treasures">Treasures of the Library</a>
 				</h4>
 			</div>
-			
+
 			<div class="featured-item-list">
 				<a href="/collections/newton"><img alt="Newton Papers"
 					title="Newton Papers" src="/images/index/slice-newton.jpg"> </a>
@@ -56,9 +58,10 @@
 			</div>
 
 			<div class="featured-item-list">
-				<a href="/collections/genizah"><img alt="Cairo Genizah Collection"
-					title="Cairo Genizah Collection" src="/images/index/slice-genizah.jpg"> </a>
-					
+				<a href="/collections/genizah"><img
+					alt="Cairo Genizah Collection" title="Cairo Genizah Collection"
+					src="/images/index/slice-genizah.jpg"> </a>
+
 				<h4>
 					<a href="/collections/genizah">Cairo Genizah Collection</a>
 				</h4>
@@ -80,12 +83,21 @@
 						<a href="/collections/treasures">Treasures of the Library</a>
 					</h4>
 
-					<p>Treasures.</p>
+					<p>Many items within the Library’s collections deserve to be
+						highlighted. This may be because of their historical importance,
+						uniqueness, beauty, fascinating content, or perhaps their personal
+						associations. In this special collection within the Cambridge
+						Digital Library we will draw together books, manuscripts and other
+						items from across our collections that are especially significant.
+						Many of them have been displayed in Library exhibitions in the
+						past – now they can be accessed at any time, from anywhere in the
+						world, and browsed cover to cover.</p>
 
 				</div> <a href="/collections/treasures"><img
-					src="/images/index/carousel-treasures.jpg" alt="Treasures of the Library"
-					width="540" height="394" /> </a></li>
-					
+					src="/images/index/carousel-treasures.jpg"
+					alt="Treasures of the Library" width="540" height="394" /> </a>
+			</li>
+
 			<!-- newton collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -107,7 +119,8 @@
 					</p>
 				</div> <a href="/collections/newton"><img id="newtonImage"
 					src="/images/index/carousel-newton.jpg" alt="Newton Papers"
-					width="540" height="394" /> </a></li>
+					width="540" height="394" /> </a>
+			</li>
 
 
 			<!-- islamic collection -->
@@ -130,7 +143,8 @@
 					</p>
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
-					width="540" height="394" /> </a></li>
+					width="540" height="394" /> </a>
+			</li>
 
 			<!-- The Cairo Genizah collection -->
 			<li>
@@ -142,17 +156,18 @@
 					<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
 						University Library is the world's largest and most important
 						single collection of medieval Jewish manuscripts.</p>
-						<p> For a thousand years, the
-			Jewish community of Fustat (Old Cairo), placed their worn-out books
-			and other writings in a storeroom (genizah) of the Ben Ezra
-			Synagogue, and in 1896–97 the Cambridge scholar, Dr Solomon
-			Schechter, arrived to examine it. He received permission from
-			the Jewish community of Egypt to take away what he liked, and he brought 193,000 manuscripts back to
-			Cambridge.</p>
+					<p>For a thousand years, the Jewish community of Fustat (Old
+						Cairo), placed their worn-out books and other writings in a
+						storeroom (genizah) of the Ben Ezra Synagogue, and in 1896–97 the
+						Cambridge scholar, Dr Solomon Schechter, arrived to examine it. He
+						received permission from the Jewish community of Egypt to take
+						away what he liked, and he brought 193,000 manuscripts back to
+						Cambridge.</p>
 
 				</div> <a href="/collections/genizah"><img
 					src="/images/index/carousel-genizah.jpg"
-					alt="The Cairo Genizah Collection" width="540" height="394" /> </a></li>
+					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
+			</li>
 		</ol>
 	</div>
 

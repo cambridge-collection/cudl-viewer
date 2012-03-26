@@ -1,12 +1,12 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp" >    
-   <jsp:param name="activeMenuIndex" value="3" />
-   <jsp:param name="displaySearch" value="true" />
-</jsp:include>	
-<jsp:include page="header/nav-about-submenu.jsp" >    
-   <jsp:param name="activeSubmenu" value="0" />
-</jsp:include>	
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="3" />
+	<jsp:param name="displaySearch" value="true" />
+</jsp:include>
+<jsp:include page="header/nav-about-submenu.jsp">
+	<jsp:param name="activeSubmenu" value="0" />
+</jsp:include>
 
 <div class="clear"></div>
 
@@ -46,8 +46,8 @@
 				digital formats, we are now building a substantial online resource
 				so that our collections can be much more accessible to students,
 				researchers and the wider public.</p>
-				
-				<a href="" name="foundations"></a>
+
+			<a href="" name="foundations"></a>
 			<p>
 				We have called the first phase of our work on the Cambridge Digital
 				Library the <b>Foundations Project</b>, which runs from mid-2010 to
@@ -59,46 +59,51 @@
 			</p>
 
 			<p>
-				<b>The Foundations of Faith Collection</b> will include important
+				<b>The Foundations of Faith Collections</b> will include important
 				works from many religious traditions, particularly Judaism, Islam,
 				Christianity and Buddhism. The Library's faith collections are
-				breathtaking. They include some of the earliest Qur'anic fragments
-				on parchment, the first known Qur'anic commentary written in
-				Persian, an important selection of devotional works and mystical
-				treatises and an outstanding collection of theological works
-				including the unique extant copy of the Kit&#257;b al-Tawh&#299;d by
-				al-M&#257;tur&#299;d&#299;.
+				breathtaking. They include <a href="/collections/islamic">some
+					of the earliest Qur'anic fragments on parchment</a>, the first known
+				Qur'anic commentary written in Persian, an important selection of
+				devotional works and mystical treatises and an outstanding
+				collection of theological works including the unique extant copy of
+				the Kit&#257;b al-Tawh&#299;d by al-M&#257;tur&#299;d&#299;.
 			</p>
-			<p>The Library has a collection of over 1000 manuscripts in
-				Hebrew covering a wide range of texts; Bibles, commentaries,
-				liturgy, philosophy, kabbalah, literature and legal documents. Most
-				of these are in codex form though there are also scrolls and
-				fragments; some date back to the earliest collections in the
-				Library. The oldest manuscript in the collection is a copy of the
-				Ten Commandments written on papyrus, and thought to date from the
-				2nd century B.C.  The Library also holds the world's largest and most
-				important collection of Jewish Genizah materials, including the
-				Taylor-Schechter Genizah Collection - 193,000 fragments of
-				manuscripts considered by many to be as significant as the Dead Sea
-				Scrolls.</p>
-			<p>Our Christian holdings include the Codex Bezae
-				Cantabrigiensis, one of the most important New Testament
-				manuscripts, the Moore Bede and the Book of Cerne. Among the
-				Library's substantial Sanskrit collection are some of the earliest
-				surviving Buddhist manuscripts.</p>
+			<p>
+				The Library has a collection of over 1000 manuscripts in Hebrew
+				covering a wide range of texts; Bibles, commentaries, liturgy,
+				philosophy, kabbalah, literature and legal documents. Most of these
+				are in codex form though there are also scrolls and fragments; some
+				date back to the earliest collections in the Library. The oldest
+				manuscript in the collection is a copy of the Ten Commandments
+				written on papyrus, and thought to date from the 2nd century B.C.
+				The Library also holds the world's largest and most important
+				collection of Jewish Genizah materials, including the <a
+					href="/collections/genizah">Taylor-Schechter Genizah Collection</a>
+				- 193,000 fragments of manuscripts considered by many to be as
+				significant as the Dead Sea Scrolls.
+			</p>
+			<p>
+				Our Christian holdings include the <a
+					href="/view/MS-NN-00002-00041/">Codex Bezae Cantabrigiensis</a>,
+				one of the most important New Testament manuscripts, the Moore Bede
+				and the Book of Cerne. Among the Library's substantial Sanskrit
+				collection are some of the earliest surviving Buddhist manuscripts.
+			</p>
 
 			<p>
 				<b>The Foundations of Science Collection</b> will focus on original
-				scientific manuscripts, beginning with the papers of Isaac Newton
-				and his contemporaries. Cambridge University Library has very strong
-				collections in the history of science. In addition to our Newton
-				collections, the Library holds the papers of, among many other
-				famous scientists, Charles Darwin, Lord Kelvin, Adam Sedgwick, J.J.
-				Thomson, Ernest Rutherford, James Clerk Maxwell and Sir George
-				Gabriel Stokes. The Library holds the archives of Cambridge's famous
-				Cavendish Laboratory and is also the repository of the Royal
-				Greenwich Observatory archives, which includes the papers of the
-				Astronomers Royal and the Board of Longitude.
+				scientific manuscripts, beginning with the papers of <a
+					href="/collections/newton">Isaac Newton</a> and his contemporaries.
+				Cambridge University Library has very strong collections in the
+				history of science. In addition to our Newton collections, the
+				Library holds the papers of, among many other famous scientists,
+				Charles Darwin, Lord Kelvin, Adam Sedgwick, J.J. Thomson, Ernest
+				Rutherford, James Clerk Maxwell and Sir George Gabriel Stokes. The
+				Library holds the archives of Cambridge's famous Cavendish
+				Laboratory and is also the repository of the Royal Greenwich
+				Observatory archives, which includes the papers of the Astronomers
+				Royal and the Board of Longitude.
 			</p>
 
 			<p>
@@ -121,7 +126,7 @@
 				and 2013, but hope you will find the selection of works we're
 				already included stimulating and the website easy to use. If you
 				have any questions or suggestions, please <a
-					href="mailto:foundations@lib.cam.ac.uk">let us know</a>.
+					class="iframe"  href="/feedbackform.html">let us know</a>.
 			</p>
 		</div>
 	</div>

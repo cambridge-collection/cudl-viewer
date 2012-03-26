@@ -119,7 +119,8 @@
 		<ul>
 			<li>Grant Young, Project Manager</li>
 			<li>Jennie Fletcher, Lead Software Engineer</li>
-			<li>Huw Jones, Metadata Specialist</li>
+			<li>Huw Jones, Metadata Specialist and Longitude Project Manager</li>
+			<li>Pete Johnston, Metadata Specialist</li>
 			<li>Andy Corrigan, Content Editor</li>
 			<li>Tony Stevenson, System Administration</li>
 		</ul>

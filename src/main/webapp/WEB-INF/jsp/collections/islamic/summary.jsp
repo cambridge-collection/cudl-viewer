@@ -44,7 +44,7 @@
 			funding for further digitisation.
 		</p>
 
-		<p>Our initial release includes several examples of Qur'anic
+		<p>Our online selection includes several examples of Qur'anic
 			manuscripts. The holy Qur'an is the most significant text in Islamic
 			civilisation. Continued reproduction of the unchanging Arabic text
 			led to the development of many differing calligraphic styles. A very

@@ -222,7 +222,7 @@
 				printed for your personal and non-commercial use and you may draw
 				the attention of others within your organisation to material posted
 				on the site. <b>Much of the Content on this site is available for
-				download and re-use. Where this is permitted we have provided
+				re-use. Where this is permitted we have provided
 				statements describing what is allowed. Unless explicitly
 					licensed or permitted by us, you may not:</b>
 			</p>
