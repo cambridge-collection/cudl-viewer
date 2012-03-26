@@ -7,7 +7,7 @@
                   "title":"Codex Bezae",
                   "uniformTitle":"Bible. N.T.",
                   "alternativeTitle":[
-                  ""
+                  "Codex Bezae Cantabrigiensis"
                   ],
                   
                   "names":[
@@ -20,7 +20,7 @@
                      "type":"personal",
                      "role":"dnr"
                      }],
-                  "abstract":"<p>Summary - REPLACE.</p>",
+                  "abstract":"<p>There are half-a-dozen ancient manuscripts which are the foundation of our understanding of the text of the New Testament writings. Among these stands the copy known since the sixteenth century as Codex Bezae Cantabrigiensis. Any manuscript which has survived from antiquity is a marvel for this reason alone, and as we explore its pages, we have a rare opportunity to explore a little of the written culture of late antique Christianity. Although in the past century some remarkable papyrus manuscripts have been recovered from the sands of Egypt, their discovery has in general served more to highlight the significance of the parchment manuscripts than to diminish it. </p> <br/> <p>Among this group, Codex Bezae occupies a unique place for several reasons. In the first place, as a bilingual manuscript, with a Greek text and a Latin version on facing pages, it provides a valuable insight into the reception of the Gospels and Acts in the western Christian tradition. The Latin version it contains is one of the small handful of manuscripts which are the most important witnesses to the development of a Latin version before Jerome's famous Vulgate of 382. Secondly, it provides a strikingly different form of text to that preserved in almost every other manuscript, and to the printed Greek text and the translations derived from it. These differences consist in the Gospels in frequent harmonisation of the text and in Acts in a free restyling of the text found best represented by Codex Vaticanus and reproduced in English translations.</p> <br/> <p>The manuscript is the work of a single scribe, one trained primarily to copy Latin texts. Its present contents are the Gospels of Matthew, John, Luke and Mark, a single page of the last verses of 3 John (in Latin only) and the Acts of the Apostles. The only book that is complete is the Gospel of Luke, since there are pages missing from all the others. It is possible that between Mark and 3 John the manuscript originally contained Revelation and the rest of the Epistles of John. The Gospels are in the so-called Western order, with the two who were apostles first, followed by the two who were companions of the apostles.</p> <br/> <p>The manuscript is best dated to the end of the fourth or the beginning of the fifth century. Many places have been proposed for its place of origin, including southern France, Africa, Egypt and Palestine. I have proposed Berytus (Beirut). There were a number of correctors and annotators working in the first centuries of its existence. The first strong evidence for the manuscript's history is replacement leaves for missing portions of Matthew, John and Mark. The style of writing and the use of blue ink provide a very strong case that these pages were written in Lyons in the ninth century. At this period Lyons was an important centre for the dissemination of ancient works in the west.</p> <br/> <p>It is probable that the Codex Bezae remained there, in the Monastery of St Irenaeus, until the sixteenth century. It was apparently taken over the Alps to the Council of Trent in 1546. Its textual significance was already recognised, since it was one of the manuscripts whose readings was cited in the first edition of the Greek New Testament to include such information, made by Robert Stephanus in Paris in 1550. Then after the sacking of Lyons in the religious wars it came into the hands of the Reformer Theodore de Bèze, Calvin’s successor at Geneva. The first part of its name is derived from the Latin form of his name, Beza. In 1581, Bezae presented the manuscript to Cambridge University. This is the origin of the second part of its name, Cantabrigiensis.</p> <br/> <p>A printed transcription of the manuscript (using a font imitating the shape of the characters) was published by the University Press in 1793. A more accurate transcription, with the corrections and annotations fully detailed, was made by F.H. Scrivener and published by Deighton Bell in 1864. A facsimile edition was published by the University Press in 1899.</p> <br/> <p>Of the many distinctive readings of the manuscript, the following deserve special mention:</p> <br/> <p>It is the oldest manuscript to contain the story of the adulterous woman (John 7.53-8.11). It is on Folios <a href='' onclick='store.loadPage(236);return false;'>133v to 135</a>.</p> <br/> <p>The genealogy of Jesus in Luke's Gospel is arranged in reverse order so as to conform more closely with that in Matthew. It is on Folios <a href='' onclick='store.loadPage(371);return false;'>195v to 197</a>.</p>. <br/> <p>There is a story about Jesus found in no other manuscript (the story of the man working on the Sabbath, placed after Luke 6.4). It is on <a href='' onclick='store.loadPage(391);return false;'>Folios 205v and 206</a>.</p>. <br/> <p>It is the oldest manuscript to contain the longer ending of Mark (16.9-20). The last pages of Mark are missing, so all that remains is the Greek text of verses 9-15. What follows is text supplied in the ninth century. It is on <a href='' onclick='store.loadPage(675);return false;'>Folio 347v</a>.</p>. <br/> <p>In Acts, when the angel delivers Peter from prison the detail is added that they go into the street down seven steps (Acts 12.10). It is on <a href='' onclick='store.loadPage(759);return false;'>Folios 463v-464</a>, eleven lines from the bottom of the page</p>. <br/> <div class='document-about-abstract-author '> <p>Professor David Parker</p> <p>Edward Cadbury Professor of Theology and Director of the Institute for Textual Scholarship and Electronic Editing</p> <p>University of Birmingham</p> <p>March, 2012</p> </div> <br/> <br/> <p>Editions:</p> <br/> <ul> <li><a href='http://www.worldcat.org/oclc/216318324' target='_blank'>T. Kipling, Codex Theodori Bezae (Cambridge, 1793)</a></a></li> <li><a href='http://www.worldcat.org/oclc/717724307' target='_blank'>F.H. Scrivener, Bezae Codex Cantabrigiensis (Cambridge, 1864)</a></a></li> <li><a href='http://www.worldcat.org/oclc/3221515' target='_blank'>P. Dujardin, Codex Bezae Cantabrigiensis (Cambridge, 1899)</a></a></li> </ul>",
                   "subject":[
                   "Bible. N.T."
                   ],
@@ -28,14 +28,14 @@
                   ""
                   ],
                   "originPlace":[
-                  "France"
+                  "Beirut"
                   ],
                   "mediaUrl":"",
                   "thumbnailUrl":"/content/images/MS-NN-00002-00041-001-00001_files/8/0_0.jpg",
                   "thumbnailOrientation":"portrait",
-                  "dateCreatedStart":"0400-01-01",
-                  "dateCreatedEnd":"0499-12-31",
-                  "dateCreatedDisplay":"5th Century C.E.",
+                  "dateCreatedStart":"0375-01-01",
+                  "dateCreatedEnd":"0425-12-31",
+                  "dateCreatedDisplay":"Late 4th/early 5th Century C.E.",
                   "dateIssuedStart":"",
                   "dateIssuedEnd":"",
                   "dateIssuedDisplay":"",
@@ -52,7 +52,7 @@
                   ""
                   ],
                   "support":[
-                  ""
+                  "Parchment"
                   ],
                   "script":[
                   ""
@@ -73,7 +73,7 @@
                   "shelfLocator":"MS Nn.2.41",
                   "displayImageRights":"Zooming image © Cambridge University Library, All rights reserved.",
                   "downloadImageRights":"Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
-                  "metadataRights":"",
+                  "metadataRights":"This metadata is licensed under a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.",
                   "type":"text",
                   "manuscript":"yes",
                   "virtualCollections":[
