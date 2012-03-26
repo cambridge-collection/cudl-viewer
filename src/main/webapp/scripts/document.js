@@ -32,7 +32,7 @@ function setupSeaDragon() {
 	    "/img/nextPage_rest.png",
 	    "/img/nextPage_grouphover.png",
 	    "/img/nextPage_hover.png",
-	    "/img/nextPage_hover.png",
+	    "/img/nextPage_pressed.png",
 	    null,       // do nothing on initialpress
 	    fullscreenNextPage,     // go home on release
 	    null,       // no need to use clickthresholds
@@ -45,7 +45,7 @@ function setupSeaDragon() {
 		    "/img/prevPage_rest.png",
 		    "/img/prevPage_grouphover.png",
 		    "/img/prevPage_hover.png",
-		    "/img/prevPage_hover.png",
+		    "/img/prevPage_pressed.png",
 		    null,       // do nothing on initialpress
 		    fullscreenPrevPage,     // go home on release
 		    null,       // no need to use clickthresholds
