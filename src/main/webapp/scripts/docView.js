@@ -26,11 +26,14 @@ var downloadImageCheck = function() {
 
 var bookmarkPage = function(title, url) {
 	Ext.Msg.show({
-		   title:'Bookmark Page',
-		   msg: 'The URL to bookmark for direct access to this page is: <br/>'+url,
-		   buttons: Ext.Msg.OK,
-		   fn: function() {return;}
-		});
+		title : 'Bookmark Page',
+		msg : 'The URL to bookmark for direct access to this page is: <br/>'
+				+ url,
+		buttons : Ext.Msg.OK,
+		fn : function() {
+			return;
+		}
+	});
 
 };
 
@@ -145,7 +148,7 @@ var docView = function() {
 						} else if (name && name.role == "scr") {
 							scribes.push(name.fullForm);
 						} else if (name && name.role == "rcp") {
-							recipients.push(name.fullForm);						
+							recipients.push(name.fullForm);
 						} else if (name && name.role == "pbl") {
 							otherpeople.push(name.fullForm);
 						} else if (name && name.role == "ann") {
@@ -166,74 +169,87 @@ var docView = function() {
 						descriptiveMetadata.displayImageRights);
 				view.populateElement(document
 						.getElementById("metadata-funding"),
-						descriptiveMetadata.funding);										
+						descriptiveMetadata.funding);
 				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
-				
+
 				// update current page number display.
 				view.populateElement(document.getElementById("metadata-page"),
 						data.pages[pagenum - 1].name, true);
 				view.populateElement(document
 						.getElementById("metadata-page-toolbar"),
 						data.pages[pagenum - 1].name, true);
-				
+
 				// update metadata
 				var basicMetadata = "";
 				basicMetadata += view.getMetadataHTML("Physical location: ",
-						descriptiveMetadata.physicalLocation);				
+						descriptiveMetadata.physicalLocation);
 				basicMetadata += view.getMetadataHTML("Classmark: ",
-						descriptiveMetadata.shelfLocator);				
+						descriptiveMetadata.shelfLocator);
 				basicMetadata += view.getMetadataHTML("Subject: ",
-						descriptiveMetadata.subject, "; ");
+						descriptiveMetadata.subject, "; ", true);
 				basicMetadata += view.getMetadataHTML("Date created: ",
-						descriptiveMetadata.dateCreatedDisplay);				
+						descriptiveMetadata.dateCreatedDisplay, null, true);
 
-				view.populateElement(document
-						.getElementById("metadata-basic"), basicMetadata);
-				
+				view.populateElement(document.getElementById("metadata-basic"),
+						basicMetadata);
+
 				// optional metadata
 
 				var optionalMetadata = "";
-				
+
 				optionalMetadata += view.getMetadataHTML("Language(s): ",
 						descriptiveMetadata.languageString);
 				optionalMetadata += view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
-				optionalMetadata += view.getMetadataHTML("Alternative title(s): ",
+				optionalMetadata += view.getMetadataHTML(
+						"Alternative title(s): ",
 						descriptiveMetadata.alternativeTitle, "; ");
 				optionalMetadata += view.getMetadataHTML("Author(s): ",
-						authorsfullform, "; ");				
+						authorsfullform, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
-						fowners,"; ");
-				optionalMetadata += view.getMetadataHTML("Donor(s): ",
-						donors, "; ");
+						fowners, "; ", true);
+				optionalMetadata += view.getMetadataHTML("Donor(s): ", donors,
+						"; ", true);
 				optionalMetadata += view.getMetadataHTML("Scribe(s): ",
-						scribes, "; ");	
+						scribes, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Recipient(s): ",
-						recipients, "; ");		
+						recipients, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Associated People: ",
-						otherpeople, "; ");					
+						otherpeople, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Publisher: ",
 						descriptiveMetadata.publisher, "; ");
 				optionalMetadata += view.getMetadataHTML("Origin place: ",
-						descriptiveMetadata.originPlace, "; ");				
+						descriptiveMetadata.originPlace, "; ");
 				optionalMetadata += view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
 				optionalMetadata += view.getMetadataHTML("Layout: ",
-						descriptiveMetadata.layout);				
-				optionalMetadata += "<p>"+view.getMetadataHTML("Binding: ",
-						descriptiveMetadata.binding,"</p><br/><p>")+"</p>";				
-				optionalMetadata += "<p>"+view.getMetadataHTML("Support: ",
-						descriptiveMetadata.support,"</p><br/><p>")+"</p>";		
-				optionalMetadata += "<p>"+view.getMetadataHTML("Script: ",
-						descriptiveMetadata.script,"</p><br/><p>")+"</p>";		
-				optionalMetadata += "<p>"+view.getMetadataHTML("Decoration: ",
-						descriptiveMetadata.decoration,"</p><br/><p>")+"</p>";						
-				optionalMetadata += "<p>"+view.getMetadataHTML("Notes: ",
-						descriptiveMetadata.notes,"</p><br/><p>")+"</p>";
-				optionalMetadata += "<p>"+view.getMetadataHTML("Ownership: ",
-						descriptiveMetadata.ownership,"</p><br/><p>")+"</p>";					
+						descriptiveMetadata.layout);
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Binding: ",
+								descriptiveMetadata.binding, "</p><br/><p>")
+						+ "</p>";
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Support: ",
+								descriptiveMetadata.support, "</p><br/><p>")
+						+ "</p>";
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Script: ",
+								descriptiveMetadata.script, "</p><br/><p>")
+						+ "</p>";
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Decoration: ",
+								descriptiveMetadata.decoration, "</p><br/><p>")
+						+ "</p>";
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Notes: ",
+								descriptiveMetadata.notes, "</p><br/><p>")
+						+ "</p>";
+				optionalMetadata += "<p>"
+						+ view.getMetadataHTML("Ownership: ",
+								descriptiveMetadata.ownership, "</p><br/><p>")
+						+ "</p>";
 
 				view.populateElement(document
 						.getElementById("metadata-optional"), optionalMetadata);
@@ -293,15 +309,41 @@ var docView = function() {
 		},
 
 		/**
-		 * Converts the metadata item into HTML representation. 
-		 * @param title - Text for the label
-		 * @param metadataItem - Metadata item to display
-		 * @param arraySeparator - for arrays this is the text that will separate items. 
+		 * Converts the metadata item into HTML representation.
+		 * 
+		 * @param title -
+		 *            Text for the label
+		 * @param metadataItem -
+		 *            Metadata item to display
+		 * @param arraySeparator -
+		 *            for arrays this is the text that will separate items.
+		 * @param searchLink -
+		 *            boolean. Makes text a link to the search with the word as
+		 *            a keyword.
 		 * @returns
 		 */
-		getMetadataHTML : function(title, metadataItem, arraySeparator) {
+		getMetadataHTML : function(title, metadataItem, arraySeparator,
+				searchLink) {
 
-			
+			if (searchLink) {
+
+				if (metadataItem instanceof Array) {
+					for ( var i = 0; i < metadataItem.length; i++) {
+						var singleMetadataItem = metadataItem[i];
+						var encodedMetadataItem = encodeURIComponent(singleMetadataItem);
+						metadataItem[i] = "<a class=\"cudlLink\" href='/search?keyword="
+								+ encodedMetadataItem
+								+ "'>"
+								+ singleMetadataItem + "</a>";
+					}
+				} else {
+					var encodedMetadataItem = encodeURIComponent(metadataItem);
+					metadataItem = "<a class=\"cudlLink\" href='/search?keyword="
+						+ encodedMetadataItem
+						+ "'>"
+						+ metadataItem + "</a>";
+				}
+			}
 			if (metadataItem instanceof Array && arraySeparator) {
 				metadataItem = metadataItem.join(arraySeparator);
 			}

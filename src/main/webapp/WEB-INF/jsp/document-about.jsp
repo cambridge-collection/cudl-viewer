@@ -23,7 +23,7 @@
 			<br /> <span class="document-about-title" id="metadata-title"></span>
 			<span id="metadata-author"></span> <br />
 			<div class="document-spacer"></div>
-			&nbsp;Part of the <a class="externalLink" href="${collectionURL}">${collectionTitle}</a>
+			&nbsp;Part of the <a class="cudlLink" href="${collectionURL}">${collectionTitle}</a>
 			Collection.
 
 

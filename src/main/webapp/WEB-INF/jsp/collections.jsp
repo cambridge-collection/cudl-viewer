@@ -91,7 +91,7 @@
 	</div>
 </div>
 
-<div class="grid_6">
+<div class="grid_6 box">
 	<h4>Featured Items</h4>
 	<div class="featuredItem grid_6">
 
@@ -136,24 +136,27 @@
 	</div>
 	<%
 		Item feat3 = ItemFactory
-				.getItemFromId("MS-EE-00003-00059");
+				.getItemFromId("MS-NN-00002-00041");
 	%>
 	<div class="featuredItem grid_6">
 	&nbsp;
 	</div>
 	<div class="featuredItem grid_6">
-		<!--  MS-EE-00003-00059 -->
+		<!--  MS-NN-00002-00041 -->
 		<div class="featuredItem-text">
 			<h5>
-				<a href="/view/MS-EE-00003-00059/">Life of St Edward the Confessor </a>
+				<a href="/view/MS-NN-00002-00041/">Codex Bezae</a>
 			</h5>
 		</div>
 		<div style="float:left;"><div class="collections_carousel_image_box">
 		<div class="collections_carousel_image">
-			<a href="/view/MS-EE-00003-00059/"><img
-				alt="MS-EE-00003-00059"
+			<a href="/view/MS-NN-00002-00041/"><img
+				alt="MS-NN-00002-00041"
 				src="<%=feat3.getThumbnailURL()%>" style="height:100%"/> </a>
 		</div></div></div>
+	</div>	
+	<div class="featuredItem grid_6">
+	&nbsp;
 	</div>	
 
 </div>

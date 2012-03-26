@@ -65,16 +65,6 @@ h3,h2,h1,h4 {
 	height: 100%;
 }
 
-#metadata-about a {
-	color: #5E2605;
-}
-#logical_structure  a {
-	color: #5E2605;
-}	
-
-#metadata-about a.externalLink {
-	color: #333;
-}
 
 /* overwrite the university style for the bottom margin as
  this is conflicting with the Ext Style, esp in ie */
@@ -140,6 +130,11 @@ table {
 .document-about-abstract-author {
 	margin-right: 0px;
 	margin-left: auto;
+	text-align:right;
+}
+
+.document-about-page a {
+	color:#333;
 }
 
 #metadata-about {
@@ -203,6 +198,26 @@ table {
 	font-weight: bold;
 }
 
+
+.document-about a {
+	color: #5E2605;
+}
+
+#logical_structure  a {
+	color: #5E2605;
+}	
+
+.document-about a.externalLink {
+	color: #333;
+}
+
+.document-about a.cudlLink {
+	color: #333;
+}
+
+.document-about .document-about-page a{
+	color: #333;
+}
 /*
 .x-panel-header-text-default {
 	color: #000000;
