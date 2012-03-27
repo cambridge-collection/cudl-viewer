@@ -210,8 +210,8 @@
 				out.println("Searching for <span class=\"search\">newton</span> Searches the metadata for 'newton'<br/>");
 				out.println("Searching for <span class=\"search\">isaac newton</span> Searches for 'isaac' AND 'newton'<br/>");
 				out.println("Searching for <span class=\"search\">\"isaac newton\"</span> Searches for the phrase 'isaac newton'<br/>");
-				out.println("Searching for <span class=\"search\">isaac*</span> Searches for 'isaac' followed by 0 or more characters.<br/>");
-				out.println("Searching for <span class=\"search\">isaac?</span> Searches for 'isaac' followed by a single character.<br/>");
+				out.println("The characters <b>?</b> and <b>*</b> can be used as wildcards in your search.<br />");
+				out.println("Use <b>?</b> to represent one unknown character and <b>*</b> to represent any number of unknown characters.<br/>");
 				out.println("</p></div>");
 			}
 		%>

@@ -141,28 +141,34 @@
 			</p>
 
 			<p>
-				<a id="searchexample"><b>What types of searches do you support?</b> </a>
+				<a id="searchexample"><b>What types of searches do you
+						support?</b> </a>
 			</p>
 
 			<div class="searchexample">
 
 				<div>
-					Searching for <span class="search">newton</span> Searches the
-					metadata for 'newton'<br /> Searching for <span class="search">isaac
-						newton</span> Searches for 'isaac' AND 'newton'<br /> Searching for <span
-						class="search">"isaac newton"</span> Searches for the phrase
-					'isaac newton'<br /> Searching for <span class="search">isaac*</span>
-					Searches for 'isaac' followed by 0 or more characters.<br />
-					Searching for <span class="search">isaac?</span> Searches for
-					'isaac' followed by a single character.<br />
+					<p>
+						Searching for <span class="search">newton</span> Searches the
+						metadata for 'newton'<br /> Searching for <span class="search">isaac
+							newton</span> Searches for 'isaac' AND 'newton'<br /> Searching for <span
+							class="search">"isaac newton"</span> Searches for the phrase
+						'isaac newton'<br /> The characters <b>?</b> and <b>*</b> can be
+						used as wildcards in your search.<br /> Use <b>?</b> to represent
+						one unknown character and <b>*</b> to represent any number of
+						unknown characters.
+					</p>
+					<p>
+						Try <a href="/search">searching our collections</a>.
+					</p>
 				</div>
+
 			</div>
 
-			<br />
-			<br />
+			<br /> 
 			<p>
-				Do you have any other questions? Please contact us using the <a
-					class="iframe" href="/feedbackform.html">Feedback form</a>
+				<b>Do you have any other questions? Please contact us using the
+					<a class="iframe" href="/feedbackform.html">Feedback form</a> </b>
 			</p>
 
 		</div>
