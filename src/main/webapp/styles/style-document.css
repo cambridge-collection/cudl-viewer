@@ -129,8 +129,9 @@ table {
 
 .document-about-abstract-author {
 	margin-right: 0px;
+	margin-top: 30px;
 	margin-left: auto;
-	text-align:right;
+	text-align:left;
 }
 
 .document-about-page a {

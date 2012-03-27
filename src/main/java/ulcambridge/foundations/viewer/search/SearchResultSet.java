@@ -26,6 +26,7 @@ public class SearchResultSet {
 		this.results = results;
 		this.facets = facets;
 		this.error = error;
+		this.spellingSuggestedTerm = spellingSuggestedTerm;
 
 	}
 

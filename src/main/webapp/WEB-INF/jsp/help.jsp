@@ -31,10 +31,10 @@
 							you use for data?</b> </a></li>
 				<li><a href="#pdf"><b>Will you be offering whole pdfs
 							of the manuscripts to download (for e-readers for example)?</b> </a></li>
-				<li><a href="#languages"><b>Many of the books seem to
-							be in Latin or Greek, why is this?</b> </a></li>
 				<li><a href="#digitisation"><b>Why can't I see all
 							books in Cambridge University Library online?</b> </a></li>
+				<li><a href="#searchexample"><b>What types of searches
+							do you support?</b> </a></li>
 			</ol>
 		</div>
 		<div class="grid_11">
@@ -65,8 +65,8 @@
 
 
 			<p>
-				<a id="view"><b>How do I change page while seeing as much
-						of the manuscript as possible?</b> </a>
+				<a id="view"><b>How do I change page while seeing as much of
+						the manuscript as possible?</b> </a>
 			</p>
 
 			<p>The right panel, which shows some information about the item
@@ -139,8 +139,31 @@
 					href="http://www.lib.cam.ac.uk/eresources/" target="_blank">eresources@cambridge
 					website</a>.
 			</p>
-<p>Do you have any other questions? Please contact us using the <a
-					class="iframe"  href="/feedbackform.html">Feedback form</a></p>
+
+			<p>
+				<a id="searchexample"><b>What types of searches do you support?</b> </a>
+			</p>
+
+			<div class="searchexample">
+
+				<div>
+					Searching for <span class="search">newton</span> Searches the
+					metadata for 'newton'<br /> Searching for <span class="search">isaac
+						newton</span> Searches for 'isaac' AND 'newton'<br /> Searching for <span
+						class="search">"isaac newton"</span> Searches for the phrase
+					'isaac newton'<br /> Searching for <span class="search">isaac*</span>
+					Searches for 'isaac' followed by 0 or more characters.<br />
+					Searching for <span class="search">isaac?</span> Searches for
+					'isaac' followed by a single character.<br />
+				</div>
+			</div>
+
+			<br />
+			<br />
+			<p>
+				Do you have any other questions? Please contact us using the <a
+					class="iframe" href="/feedbackform.html">Feedback form</a>
+			</p>
 
 		</div>
 	</div>

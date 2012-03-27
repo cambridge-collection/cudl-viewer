@@ -39,7 +39,25 @@ public class Item implements Comparable<Item> {
 		this.thumbnailOrientation = thumbnailOrientation;
 
 		String abstractShort = abstractText;
-		abstractShort = abstractShort.replaceAll("\\<.*?>", ""); // remove tags
+		
+		// remove video captions		
+		String[] captionParts = abstractShort.split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
+		if (captionParts.length>1) {
+
+		  abstractShort = captionParts[0];
+		  for (int i=1; i<captionParts.length; i++) {
+			  int captionEnd = captionParts[i].indexOf("</div>");
+			  if (captionEnd>-1) {
+			    abstractShort += captionParts[i].substring(captionEnd);
+			  } else {
+				abstractShort += captionParts[i];
+			  }
+		  }		  
+		}
+		
+		// remove all tags
+		abstractShort = abstractShort.replaceAll("\\<.*?>", ""); 
+		
 		// cut of next word after 120 characters
 		if (abstractShort.length() > 120) {
 			abstractShort = abstractShort.substring(0, 120 + abstractShort
