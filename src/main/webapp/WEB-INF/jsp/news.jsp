@@ -1,9 +1,9 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp" >    
-   <jsp:param name="activeMenuIndex" value="2" />
-   <jsp:param name="displaySearch" value="true" />
-</jsp:include>	
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="2" />
+	<jsp:param name="displaySearch" value="true" />
+</jsp:include>
 
 <div class="clear"></div>
 
@@ -22,20 +22,24 @@
 
 	<div class="grid_11">
 		<span class="date">29/03/2012</span>
-		<h4>Treasures and Cairo Genizah Collections</h4>
+		<h4>View the Library's treasures cover to cover</h4>
 		<p>
-			The <a href="/collections/treasures">Treasures of the Library</a>
-			Collection brings together some of Cambridge University Libraries
-			most important manuscripts, including the <a
-				href="/view/PR-INC-00000-A-00007-00002-00888/">Nuremberg
-				Chronicle</a>, <a href="/view/MS-NN-00002-00041/">Codex Bezae</a> and <a
-				href="/view/MS-EE-00003-00059/">Life of St Edward the Confessor</a>.
-		</p>
-		<p>
-			Also included in this update is our initial selection from the
-			Taylor-Schechter <a href="/collections/genizah">Cairo Genizah
-				Collection</a>, the world's largest and most important single collection
-			of medieval Jewish manuscripts.
+			We have added more items to the Islamic Manuscripts and Newton
+			collections - including several videos explaining Newton's work and
+			ideas - and have initiated two new collections: the <a
+				href="/collections/genizah">Cairo Genizah collection</a> and <a
+				href="/collections/treasures">Treasures of the Library</a>. Both
+			these collections will grow considerably over the the next few
+			months. The initial Genizah collection includes a selection of
+			seventy-two manuscripts, intended to show the wide range of material
+			in this fascinating collection. Among the Treasures we've added to
+			the Digital Library are the <i>Codex Bezae</i>, <i>Life of St
+				Edward the Confessor</i>, <i>Nuremberg Chronicle</i>, and Montaigne's
+			copy of <i>Titi Lucretii Cari De rerum natura libri sex</i>. The last
+			three works are featured in the current Library exhibition, <a
+				target="_blank" href="http://www.lib.cam.ac.uk/exhibitions/shelf_lives">Shelf
+				Lives</a> . Now you can view these treasures in great detail, from
+			cover to cover.
 		</p>
 	</div>
 
