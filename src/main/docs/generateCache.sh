@@ -1,5 +1,10 @@
 #!/usr/bin/perl
 
+#
+# Simple script to make a lot of requests to a specified URL to force the generation of a cache for all
+# the normalised and diplomatic transcriptions specified in the JSON data. 
+#
+
 use LWP::Simple;
 use URI::Escape;
 
