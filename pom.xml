@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
 	<artifactId>FoundationsViewer</artifactId>
-	<version>0.3.2-SNAPSHOT</version>
+	<version>0.4</version>
 	<packaging>war</packaging>
 
 	<name>Foundations Viewer</name>
@@ -17,9 +16,9 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</connection>
-		<developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</developerConnection>
-		<url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url>
+		<connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.4</connection>
+		<developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.4</developerConnection>
+		<url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/tags/FoundationsViewer-0.4</url>
 	</scm>
 
 	<build>
