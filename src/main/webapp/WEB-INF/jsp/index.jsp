@@ -138,7 +138,7 @@
 						contains more than 5,000 works.</p>
 
 					<p>
-						Our <a href="/collections/islamic">initial selection</a> includes
+						Our <a href="/collections/islamic">online selection</a> includes
 						several important early Qur'ans.
 					</p>
 				</div> <a href="/collections/islamic"><img
