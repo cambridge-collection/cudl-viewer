@@ -1,1 +1,40 @@
 Building Foundations Viewer
+
+FOR ALL DEPLOYMENTS YOU WILL NEED TO ENSURE
+
+cudl-global.properties 
+
+is on the classpath and specifies properties appropriate to where it is deployed. 
+For DEV and LIVE this is already setup and is in the tomcat/lib directory, 
+and under version control. 
+
+-----------------------------------
+To test locally run the command:
+
+mvn jetty:run 
+
+and you will be able to access the site on the URL 
+
+http://localhost:1111
+
+-----------------------------------
+To build into a war file use the command:
+
+mvn clean package
+
+which will create a war file in the target directory called FoundationsViewer.war
+this can be copied to the webapps directory of a tomcat to be deployed. 
+
+-----------------------------------
+DEPLOYING UPDATES TO DEV
+
+1. Build war file
+2. SSH into found-dev-pres01.lib.cam.ac.uk (you may need to go via a caret machine)
+3. Change user to 'digilib'
+4. Remove / archive existing war at /usr/local/tomcat/webapps/FoundationsViewer.war
+5. Check that the existing FoundationsViewer folder in the webapps directory has 
+been removed (removing the war file should do this).
+5. Copy your new war file to /usr/local/tomcat/webapps/FoundationsViewer.war
+6. Restart the tomcat as the user digilib (or as root using /etc/init.d/tomcat-viewer restart command)
+This should automatically deploy the new war file.  
+
