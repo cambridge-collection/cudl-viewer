@@ -28,11 +28,19 @@ public class FacetGroup {
 	 * @param facets
 	 */
 	public FacetGroup(String field, String fieldLabel, List<Facet> facets) {
-		
-		this.facets = facets;
-		this.field = field;
+				
+		this.field = field;  // This needs to be first
 		this.fieldLabel = fieldLabel;
-		Collections.sort(facets);
+		
+		for (int i=0; i<facets.size(); i++) {
+			Facet f = facets.get(i);
+			try { 
+				add(f);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	public String getField() {
@@ -71,18 +79,7 @@ public class FacetGroup {
 		}
 		return null;
 	}
-	
-	public Facet getFacetWithField(String field) {	
-		Iterator<Facet> facetIt = this.facets.iterator();
-		while (facetIt.hasNext()){
-			Facet facet = facetIt.next();
-			if (field!=null && field.equals(facet.getField())) {
-				return facet;
-			}
-		}
-		return null;
-	}	
-	
+
 	/**
 	 * Adds a new facet (band) if one does not already exist in this group
 	 * else adds one to the occurrences of that facet in this group. 

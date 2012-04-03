@@ -27,6 +27,7 @@ public class SearchResultSet {
 		this.facets = facets;
 		this.error = error;
 		this.spellingSuggestedTerm = spellingSuggestedTerm;
+		this.queryTime = queryTime;
 
 	}
 

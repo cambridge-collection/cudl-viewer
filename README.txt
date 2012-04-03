@@ -20,3 +20,4 @@ http://localhost:1111
 
 This application requires jdk 1.6+, maven 2.2.1+. 
 
+Further documentation can be found at: src/main/docs 

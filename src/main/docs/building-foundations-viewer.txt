@@ -18,6 +18,16 @@ and you will be able to access the site on the URL
 http://localhost:1111
 
 -----------------------------------
+
+If you use Eclipse as your IDE you can import the project 
+and on the command line run the following command:
+
+mvn eclipse:eclipse
+
+This will create a .project and .classpath files to setup this project 
+to work with Eclipse.  
+
+-----------------------------------
 To build into a war file use the command:
 
 mvn clean package

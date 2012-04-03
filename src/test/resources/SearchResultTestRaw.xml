@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossQueryResult queryTime="0.018" totalDocs="1" startDoc="1" endDoc="1">
+   <parameters>
+      <route>
+         <queryParser path="style/crossQuery/queryParser/default/queryParser.xsl"/>
+      </route>
+      <param name="keyword" value="newton notebook">
+         <token value="newton" isWord="yes">
+    </token>
+         <token value="notebook" isWord="yes">
+    </token>
+      </param>
+      <param name="f1-subject" value="Mathematics - Early works to 1800">
+         <token value="Mathematics" isWord="yes">
+    </token>
+         <token value="-" isWord="no">
+    </token>
+         <token value="Early" isWord="yes">
+    </token>
+         <token value="works" isWord="yes">
+    </token>
+         <token value="to" isWord="yes">
+    </token>
+         <token value="1800" isWord="yes">
+    </token>
+      </param>
+   </parameters>
+   <query indexPath="index" termLimit="1000" workLimit="1000000"
+          style="style/crossQuery/resultFormatter/default/resultFormatter.xsl"
+          startDoc="1"
+          maxDocs="10000">
+      <facet field="facet-subject"
+             select="*[1-5]|Mathematics - Early works to 1800|Mathematics - Early works to 1800::*|Mathematics - Early works to 1800[siblings]|Mathematics - Early works to 1800::**[singleton]::*"
+             sortGroupsBy="totalDocs"/>
+      <facet field="facet-date" select="*" sortGroupsBy="value"/>
+      <spellcheck/>
+      <and>
+         <or>
+            <and fields="title uniformTitle alternativeTitle dateCreatedStart dateCreatedEnd dateCreatedDisplay dateIssuedStart        dateIssuedEnd dateIssuedDisplay physicalLocation shelfLocator fullForm subject languageString publisher originPlace"
+                 slop="10"
+                 maxMetaSnippets="all"
+                 maxContext="60">
+               <term>newton</term>
+               <term>notebook</term>
+            </and>
+            <and field="text" maxSnippets="3" maxContext="60">
+               <term>newton</term>
+               <term>notebook</term>
+            </and>
+         </or>
+         <and maxSnippets="0">
+            <and field="facet-subject">
+               <term>Mathematics - Early works to 1800</term>
+            </and>
+         </and>
+      </and>
+   </query>
+   <docHit rank="1" path="default:mods/MS-ADD-04004/MS-ADD-04004.xml" score="100"
+           totalHits="1">
+      <meta>
+         <display>dynaxml</display>
+         <fileID>MS-ADD-04004</fileID>
+         <startPage>1</startPage>
+         <title>Newton's Waste Book</title>
+         <fullForm>Newton, Isaac, Sir, 1642-1727</fullForm>
+         <fullForm>Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891</fullForm>
+         <originPlace>Woolsthorpe-by-Colsterworth</originPlace>
+         <languageCode>eng</languageCode>
+         <languageCode>lat</languageCode>
+         <languageCode>gre</languageCode>
+         <languageString>English, Latin and Greek</languageString>
+         <physicalLocation>Cambridge University Library</physicalLocation>
+         <shelfLocator>MS Add.4004</shelfLocator>
+         <dateCreatedStart>1612-01-01</dateCreatedStart>
+         <dateCreatedEnd>1653-12-31</dateCreatedEnd>
+         <dateCreatedDisplay>c. 1612 - c. 1653</dateCreatedDisplay>
+         <type>text</type>
+         <sort-year>1612</sort-year>
+         <year>1612-1653</year>
+         <facet-date>1600s C.E.</facet-date>
+         <sort-title>newtons waste book</sort-title>
+         <facet-subject>Mathematics - Early works to 1800</facet-subject>
+         <browse-title>nn</browse-title>
+      </meta>
+      <snippet rank="1" score="100">
+         <hit>
+            <term>Newton's</term> important work on calculus is developed in this large <term>notebook</term>
+         </hit>,</snippet>
+   </docHit>
+   <facet field="facet-subject" totalGroups="1" totalDocs="1">
+      <group value="Mathematics - Early works to 1800" rank="1" totalSubGroups="0"
+             totalDocs="1"
+             startDoc="0"
+             endDoc="0"/>
+   </facet>
+   <facet field="facet-date" totalGroups="1" totalDocs="1">
+      <group value="1600s C.E." rank="1" totalSubGroups="0" totalDocs="1" startDoc="0"
+             endDoc="0"/>
+   </facet>
+</crossQueryResult>
