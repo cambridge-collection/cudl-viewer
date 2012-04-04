@@ -6,12 +6,9 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,16 +16,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a collection.
@@ -40,11 +32,22 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class SearchController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-
+	private Search search;
+	
+	/**
+	 * Constructor, set in search-servlet.xml.
+	 * 
+	 * @param search to use for queries. e.g. SearchXTF. 
+	 */
+	public SearchController(Search search) {
+		this.search = search;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
 	public ModelAndView processSearch(HttpServletRequest request,
 			HttpServletResponse response) throws MalformedURLException {
 
+		// Build SearchQuery object from the search parameters.
 		Enumeration<String> paramNames = request.getParameterNames();
 		String keywordQuery = "";
 		Hashtable<String, String> facetQuery = new Hashtable<String, String>();
@@ -61,49 +64,15 @@ public class SearchController {
 
 		SearchQuery searchQuery = new SearchQuery(keywordQuery, facetQuery);
 
-		// TODO properly separate which search terms are passed to which search.
-		// and combine the results properly.
+		// Perform XTF Search
+		SearchResultSet results = this.search.makeSearch(searchQuery);
 
-		// Request XTF keyword search (raw=1 to return XML)
-		Hashtable<String, String> xtfFacetQuery = new Hashtable<String, String>();
-		xtfFacetQuery.putAll(facetQuery);
-
-		if (xtfFacetQuery.containsKey("collection")) {
-			xtfFacetQuery.remove("collection");
-		}
-
-		Document dom = makeXTFSearch(searchQuery.getKeyword(), xtfFacetQuery);
-
-		// Read XML result into Model
-		SearchResultSet results = parseSearchResults(dom);
-
-		// apply collection facet
+		// Apply collection facet
 		if (facetQuery.containsKey("collection")) {
-
-			String title = facetQuery.get("collection");
-			Collection collection = CollectionFactory
-					.getCollectionFromTitle(title);
-			List<String> itemIds = collection.getItemIds();
-
-			ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
-
-			Iterator<SearchResult> resultIt = results.getResults().iterator();
-			while (resultIt.hasNext()) {
-				SearchResult result = resultIt.next();
-
-				if (itemIds.contains(result.getId())) {
-					refinedResults.add(result);
-				}
-			}
-
-			results = new SearchResultSet(refinedResults.size(),
-					results.getSpellingSuggestedTerm(), results.getQueryTime(),
-					refinedResults, results.getFacets(), "");
-
+			results = applyCollectionFacet(searchQuery, results);
 		}
 
-		// make sure all results are known about by the interface
-		// and not just for example in XTF.
+		// Remove any results that the viewer does not know about. 
 		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 		Iterator<SearchResult> resultIt = results.getResults().iterator();
 
@@ -113,17 +82,17 @@ public class SearchController {
 			if (item != null) {
 				refinedResults.add(result);
 			}
-		}
+		}		
 
-		// Build the facets from the results, not from the XTF summary. 
+		// Build the (SearchResultSet) facets from the results
 		List<FacetGroup> facets = getFacetsFromResults(refinedResults);
-		
+
 		results = new SearchResultSet(refinedResults.size(),
 				results.getSpellingSuggestedTerm(), results.getQueryTime(),
-				refinedResults, facets, "");
+				refinedResults, facets, results.getError());
 
 		// Add collection facet into search results
-		results.addFacetGroup(0,getCollectionFacet(results));
+		results.addFacetGroup(0, getCollectionFacet(results));
 
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("query", searchQuery);
@@ -131,107 +100,35 @@ public class SearchController {
 		return modelAndView;
 	}
 
-	// Request XTF keyword search (raw=1 to return XML)
-	// Read XML result into Model
-
-	private Document makeXTFSearch(String keyword, Map<String, String> facets)
-			throws MalformedURLException {
-
-		String xtfURL = Properties.getString("xtfURL");
-		String searchXTFURL = xtfURL + "search?raw=1";
-		
-		if (keyword!=null && keyword.equals("")) {
-			searchXTFURL += "&browse-all=yes";
-		} else {
-			searchXTFURL += "&keyword=" + keyword;
-		}
-		
-
-		Iterator<String> facetTypes = facets.keySet().iterator();
-		int facetCount = 0;
-		while (facetTypes.hasNext()) {
-			String facetType = facetTypes.next();
-			String facetValue = facets.get(facetType);
-			facetCount++;
-			searchXTFURL = searchXTFURL + ";f" + facetCount + "-" + facetType
-					+ "=" + facetValue;
-		}
-
-		// Read document from URL and put results in Document.
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-		try {
-
-			DocumentBuilder db = dbf.newDocumentBuilder();
-
-			Document dom = db.parse(searchXTFURL);
-
-			return dom;
-
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
-
-		return null;
-	}
-
 	/**
-	 * Parse the XML dom document and put the results into a list of
-	 * SearchResult objects.
-	 * 
-	 * @param dom
-	 * @return List of the search results
+	 * Refines the searchResults, removing any results from
+	 * the SearchResultSet that do not match the specified collection.  
+	 *  
+	 * @param facetName
+	 * @param results
+	 * @return
 	 */
-	private SearchResultSet parseSearchResults(Document dom) {
+	private SearchResultSet applyCollectionFacet(SearchQuery searchQuery, SearchResultSet results) {
 
-		// Check input - XTF may be down.
-		if (dom == null) {
-			return new SearchResultSet(0, "", 0f,
-					new ArrayList<SearchResult>(), new ArrayList<FacetGroup>(),
-					"A problem occurred making the search (xtf).");
-		}
+		String title = searchQuery.getFacets().get("collection");
+		Collection collection = CollectionFactory.getCollectionFromTitle(title);
+		List<String> itemIds = collection.getItemIds();
 
-		// Get the root element
-		Element docEle = dom.getDocumentElement();
-		ArrayList<SearchResult> results = new ArrayList<SearchResult>();
+		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 
-		// Catch any errors
-		if (!docEle.getNodeName().equals("crossQueryResult")) {
-			return new SearchResultSet(
-					0,
-					"",
-					0f,
-					new ArrayList<SearchResult>(),
-					new ArrayList<FacetGroup>(),
-					"Too many results, try a smaller range, eliminating wildcards, or making them more specific. ");
-		}
+		Iterator<SearchResult> resultIt = results.getResults().iterator();
+		while (resultIt.hasNext()) {
+			SearchResult result = resultIt.next();
 
-		// Add in all the (docHit) results into a List.
-		NodeList docHits = docEle.getElementsByTagName("docHit");
-		if (docHits != null) {
-			for (int i = 0; i < docHits.getLength(); i++) {
-
-				Node node = docHits.item(i);
-				SearchResult result = new SearchResult(node);
-				results.add(result);
+			if (itemIds.contains(result.getId())) {
+				refinedResults.add(result);
 			}
 		}
 
-		// Get general search result data
-		int totalDocs = Integer.parseInt(docEle.getAttribute("totalDocs"));
-		float queryTime = Float.parseFloat(docEle.getAttribute("queryTime"));
-		Element spelling = (Element) docEle.getElementsByTagName("spelling")
-				.item(0);
-		String suggestedTerm = "";
-		if (spelling != null) {
-			Element suggestion = (Element) spelling.getElementsByTagName(
-					"suggestion").item(0);
-			suggestedTerm = suggestion.getAttribute("suggestedTerm");
-		}
+		return new SearchResultSet(refinedResults.size(),
+				results.getSpellingSuggestedTerm(), results.getQueryTime(),
+				refinedResults, results.getFacets(), results.getError());
 
-		return new SearchResultSet(totalDocs, suggestedTerm, queryTime,
-				results, null, "");
 	}
 
 	/**
@@ -313,7 +210,7 @@ public class SearchController {
 			Iterator<Facet> facets = result.getFacets().iterator();
 			while (facets.hasNext()) {
 				Facet facet = facets.next();
-				String field = facet.getField(); // like "subject" or "date"				
+				String field = facet.getField(); // like "subject" or "date"
 
 				if (facetGroups.containsKey(field)) {
 					// add band to facetgroup if already in our set
@@ -328,15 +225,17 @@ public class SearchController {
 					// add facetgroup to our set
 					ArrayList<Facet> facetObjs = new ArrayList<Facet>();
 					facetObjs.add(facet);
-					
-					FacetGroup group = new FacetGroup(field, facet.getFieldLabel(), facetObjs);
+
+					FacetGroup group = new FacetGroup(field,
+							facet.getFieldLabel(), facetObjs);
 					facetGroups.put(field, group);
 				}
 
 			}
 		}
-		
+
 		return new ArrayList<FacetGroup>(facetGroups.values());
 
 	}
+	
 }

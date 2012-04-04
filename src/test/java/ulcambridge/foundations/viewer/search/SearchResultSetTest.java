@@ -47,7 +47,7 @@ public class SearchResultSetTest extends TestCase {
 
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
-			dom = (Element) db.parse("src/test/resources/SearchResultTestRaw.xml").getDocumentElement();;
+			dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();;
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -13,11 +13,20 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/mvc 
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-
-				
+	
+	<!-- default to XTF Search -->
 	<bean id="search" 
-		class="ulcambridge.foundations.viewer.search.SearchController">
+		class="ulcambridge.foundations.viewer.search.XTFSearch">		
 	</bean>
+					
+	<bean id="searchController" 
+		class="ulcambridge.foundations.viewer.search.SearchController">
+	  <constructor-arg type="ulcambridge.foundations.viewer.search.Search">
+	  <ref bean="search"/>
+	  </constructor-arg>
+	  	        
+	</bean>
+
 	
 	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
       <property name="locations">
