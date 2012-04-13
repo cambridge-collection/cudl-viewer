@@ -2,13 +2,11 @@ package ulcambridge.foundations.viewer.model;
 
 import java.util.ArrayList;
 
-import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Person;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import org.json.JSONObject;
 
 /**
  * Unit test for testing individual collections
@@ -53,7 +51,7 @@ public class CollectionTest extends TestCase {
 
 		Item item = new Item("Test-ID", "Test Title", people,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
-				"test thumbnail orientation");
+				"test thumbnail orientation", new JSONObject());
 
 		ArrayList<String> collectionIds = new ArrayList<String>();
 		collectionIds.add("Test-ID");

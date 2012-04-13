@@ -25,7 +25,7 @@
 
 
 <script type="text/javascript">
-	var JSONURL = '/json/${docId}.json';
+	var JSONURL = '${jsonURL}';
 	var pagenum = ${page};
 	var docId = '${docId}';
 	var docURL = '${docURL}';

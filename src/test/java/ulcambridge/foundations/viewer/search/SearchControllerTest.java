@@ -1,5 +1,11 @@
 package ulcambridge.foundations.viewer.search;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -9,13 +15,17 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
-import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.JSONReader;
 
 
 /**
@@ -75,6 +85,7 @@ public class SearchControllerTest extends TestCase {
 		assertEquals(q.getURLParameters(), "keyword=Elementary+Mathematics&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers");
 		assertEquals(q.getURLParametersWithExtraFacet("bob", "bobvalue"), "keyword=Elementary+Mathematics&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers&amp;facet-bob=bobvalue");
 		assertEquals(q.getURLParametersWithoutFacet("subject"), "keyword=Elementary+Mathematics&amp;facet-collection=Newton+Papers");
+	
 	}
 	
 	/**
@@ -128,5 +139,43 @@ public class SearchControllerTest extends TestCase {
 					results, facetGroups, "error");
 		}
 
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @author jennie
+	 * 
+	 */
+	private class TestableJSONReader extends JSONReader {
+
+		@Override
+		public JSONObject readJsonFromUrl(String url) throws IOException,
+		JSONException {
+			
+			InputStream is = new URL(url).openStream();
+			try {
+				BufferedReader rd = new BufferedReader(new InputStreamReader(is,
+						Charset.forName("UTF-8")));
+				String jsonText = readAll(rd);
+				JSONObject json = new JSONObject(jsonText);
+				return json;
+			} finally {
+				is.close();
+			}			
+		}
+
 	}	
+	
+	/**
+	 * 
+	 * 
+	 * @author jennie
+	 * 
+	 */
+	private class TestableItemFactory extends ItemFactory {
+	
+		protected JSONReader reader = new TestableJSONReader();		
+	}
+	
 }

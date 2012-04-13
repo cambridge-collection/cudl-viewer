@@ -2,6 +2,8 @@ package ulcambridge.foundations.viewer.model;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -50,7 +52,7 @@ public class ItemTest extends TestCase {
 
 		Item item = new Item("Test-ID", "Test Title", people,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
-				"test thumbnail orientation");
+				"test thumbnail orientation", new JSONObject());
 
 		Item item2 = new Item(
 				"Test-ID2",
@@ -58,7 +60,7 @@ public class ItemTest extends TestCase {
 				people,
 				"test shelfLocator",
 				"test abstract this is a longer abstract that will need to be shortened for display. <div class='videoCaption' > this is a video caption </div> this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display.",
-				"test thumbnail URL", "test thumbnail orientation");
+				"test thumbnail URL", "test thumbnail orientation", new JSONObject());
 
 		assertEquals(item.getId(), "Test-ID");
 		assertEquals(item.getAbstract(), "test abstract");

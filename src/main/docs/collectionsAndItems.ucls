@@ -1,0 +1,84 @@
+<class-diagram version="1.0.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.CollectionFactory" 
+    project="foundationsviewer" 
+    file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/CollectionFactory.java" binary="false">    
+    <position x="135" y="48" width="344" height="120"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class id="2" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.model.Collection" 
+    project="foundationsviewer" 
+    file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/model/Collection.java" binary="false">    
+    <position x="307" y="408" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class id="3" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.model.Item" 
+    project="foundationsviewer" file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/model/Item.java" 
+    binary="false">    
+    <position x="701" y="409" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <class id="4" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.ItemFactory" 
+    project="foundationsviewer" file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/ItemFactory.java" 
+    binary="false">    
+    <position x="699" y="103" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="false" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
+    </display>  
+  </class>  
+  <dependency id="5">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="6">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="7" name="itemFactory"/>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="9">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="10" name="collectionFactory"/>      
+      <multiplicity id="11" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="12">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="13" name="collections"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="16" name="items"/>      
+      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

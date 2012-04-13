@@ -31,15 +31,15 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class ExternalCache {
 
-	static final String cachePath = Properties.getString("cachePath");
-	static final String cacheURL = Properties.getString("cacheURL");
+	private static final String cachePath = Properties.getString("cachePath");
+	private static final String cacheURL = Properties.getString("cacheURL");
 	
 	// holds ref to files that have been requested recently
-	static Hashtable<String, Date> cachedFiles = new Hashtable<String, Date>();
+	private static Hashtable<String, Date> cachedFiles = new Hashtable<String, Date>();
 
-	static final long cacheCheckTimeout = Long.parseLong(Properties.getString("cacheCheckTimeout").trim());
-	static final long cacheFileTimeout = Long.parseLong(Properties.getString("cacheFileTimeout").trim());
-	static final int externalConnectionTimeout = Integer.parseInt(Properties.getString("externalConnectionTimeout").trim());
+	private static final long cacheCheckTimeout = Long.parseLong(Properties.getString("cacheCheckTimeout").trim());
+	private static final long cacheFileTimeout = Long.parseLong(Properties.getString("cacheFileTimeout").trim());
+	private static final int externalConnectionTimeout = Integer.parseInt(Properties.getString("externalConnectionTimeout").trim());
 	
 	public static boolean existsInCache(String url, String docId) {
 

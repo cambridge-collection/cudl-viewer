@@ -21,31 +21,32 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class ItemFactory {
 
+	// Only want one instance of itemFactory
+	private static final ItemFactory itemFactory = new ItemFactory();
+
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
-	private static Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
-
-	// Forces the application to load the collection information on startup.
-	public static boolean initalised = initAllItems();
+	private Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
+	protected JSONReader reader = new JSONReader();
 
 	/**
-	 * Initalise the collections hashtable from information in the collections
-	 * properties file.
+	 * Protected constructor.
 	 */
-	private synchronized static boolean initAllItems() {
+	protected ItemFactory() {
+
 		String[] collections = Properties.getString("collections").trim()
 				.split(",");
 		for (int i = 0; i < collections.length; i++) {
 			initItems(collections[i]);
 		}
-		return true;
+
 	}
 
 	/**
 	 * Initalise the collections hashtable from information in the collections
 	 * properties file.
 	 */
-	private synchronized static void initItems(String collectionId) {
+	private void initItems(String collectionId) {
 
 		Hashtable<String, Item> items = new Hashtable<String, Item>();
 
@@ -60,54 +61,71 @@ public class ItemFactory {
 			String itemAbstract = "";
 			String itemThumbnailURL = "";
 			String thumbnailOrientation = "";
+			JSONObject itemJson = null;
 
-			if (itemId != null && !itemId.equals("")) {
-				try {
-					JSONObject json = JSONReader.readJsonFromUrl(Properties
-							.getString("jsonURL") + itemId + ".json");
+			if (itemId == null || itemId.equals("")) {
+				throw new IllegalArgumentException("Invalid Item Id given.");
+			}
+			try {
+				itemJson = reader.readJsonFromUrl(Properties
+						.getString("jsonURL") + itemId + ".json");
 
-					JSONObject descriptiveMetadata = json.getJSONArray(
-							"descriptiveMetadata").getJSONObject(0);
+				JSONObject descriptiveMetadata = itemJson.getJSONArray(
+						"descriptiveMetadata").getJSONObject(0);
 
-					itemTitle = descriptiveMetadata.getString("title");
-					itemPeople = getPeopleFromJSON(descriptiveMetadata
-							.getJSONArray("names"));
-					itemShelfLocator = descriptiveMetadata
-							.getString("shelfLocator");
-					itemAbstract = descriptiveMetadata.getString("abstract");
+				itemTitle = descriptiveMetadata.getString("title");
+				itemPeople = getPeopleFromJSON(descriptiveMetadata
+						.getJSONArray("names"));
+				itemShelfLocator = descriptiveMetadata
+						.getString("shelfLocator");
+				itemAbstract = descriptiveMetadata.getString("abstract");
 
-					// Thumbnails
-					itemThumbnailURL = descriptiveMetadata
-							.getString("thumbnailUrl");
-					if (Properties.getString("useProxy").equals("true")) {
-						itemThumbnailURL = Properties.getString("proxyURL")
-								+ descriptiveMetadata.getString("thumbnailUrl");
-					}
-
-					thumbnailOrientation = descriptiveMetadata
-							.getString("thumbnailOrientation");
-
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (JSONException e) {
-					e.printStackTrace();
+				// Thumbnails
+				itemThumbnailURL = descriptiveMetadata
+						.getString("thumbnailUrl");
+				if (Properties.getString("useProxy").equals("true")) {
+					itemThumbnailURL = Properties.getString("proxyURL")
+							+ descriptiveMetadata.getString("thumbnailUrl");
 				}
 
-				Item item = new Item(itemId, itemTitle, itemPeople,
-						itemShelfLocator, itemAbstract, itemThumbnailURL,
-						thumbnailOrientation);
+				thumbnailOrientation = descriptiveMetadata
+						.getString("thumbnailOrientation");
 
-				items.put(itemId, item);
-
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
+
+			Item item = new Item(itemId, itemTitle, itemPeople,
+					itemShelfLocator, itemAbstract, itemThumbnailURL,
+					thumbnailOrientation, itemJson);
+
+			items.put(itemId, item);
+
 		}
 
 		itemsInCollection.put(collectionId, items);
 
 	}
 
+	private Dimension getWidthHeightImage(URL url) {
+
+		ImageIcon icon = new ImageIcon(url);
+		return new Dimension(icon.getIconWidth(), icon.getIconHeight());
+
+	}
+
+	/**
+	 * Get the item with the given id, which exists in the specified collection
+	 * 
+	 * @param id
+	 * @param collectionId
+	 * @return
+	 */
 	public static Item getItemFromId(String id, String collectionId) {
-		Hashtable<String, Item> items = itemsInCollection.get(collectionId);
+		Hashtable<String, Item> items = itemFactory.itemsInCollection
+				.get(collectionId);
 		return items.get(id);
 	}
 
@@ -119,10 +137,10 @@ public class ItemFactory {
 	 */
 	public static Item getItemFromId(String id) {
 
-		Enumeration<String> collections = itemsInCollection.keys();
+		Enumeration<String> collections = itemFactory.itemsInCollection.keys();
 		while (collections.hasMoreElements()) {
-			Hashtable<String, Item> items = itemsInCollection.get(collections
-					.nextElement());
+			Hashtable<String, Item> items = itemFactory.itemsInCollection
+					.get(collections.nextElement());
 			Item item = items.get(id);
 			if (item != null) {
 				return item;
@@ -131,15 +149,29 @@ public class ItemFactory {
 		return null;
 	}
 
-	public static List<Item> getItems(String collectionId) {
-		Hashtable<String, Item> items = itemsInCollection.get(collectionId);
+	/**
+	 * Returns a list of all items in the specified collection
+	 * 
+	 * @param collectionId
+	 * @return
+	 */
+	public static List<Item> getItemsFromCollectionId(String collectionId) {
+		Hashtable<String, Item> items = itemFactory.itemsInCollection
+				.get(collectionId);
 		ArrayList<Item> list = new ArrayList<Item>(items.values());
 		Collections.sort(list);
 
 		return list;
 	}
 
-	private static List<Person> getPeopleFromJSON(JSONArray names) {
+	/**
+	 * This method takes a JSONArray and creates Person objects for each JSON
+	 * object in it.
+	 * 
+	 * @param names
+	 * @return
+	 */
+	private List<Person> getPeopleFromJSON(JSONArray names) {
 
 		ArrayList<Person> people = new ArrayList<Person>();
 		try {
@@ -160,15 +192,8 @@ public class ItemFactory {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		return people;
-	}
-
-	private static Dimension getWidthHeightImage(URL url) {
-
-		ImageIcon icon = new ImageIcon(url);
-		return new Dimension(icon.getIconWidth(), icon.getIconHeight());
-
 	}
 
 }

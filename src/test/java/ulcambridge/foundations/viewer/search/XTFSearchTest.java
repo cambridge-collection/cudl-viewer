@@ -38,6 +38,10 @@ public class XTFSearchTest extends TestCase {
 	public void testSearchController() {
 
 		HashMap<String, String> facetMap = new HashMap<String, String>();
+		facetMap.put("subject", "test subject");
+		facetMap.put("date", "test date");		
+		facetMap.put("collection", "test collection");	
+		
 		SearchQuery q = new SearchQuery("keyword", facetMap);
 
 		XTFSearch s = new TestableXTFSearch();

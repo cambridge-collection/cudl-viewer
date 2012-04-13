@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 public class JSONReader {
 
-	private static String readAll(Reader rd) throws IOException {
+	protected String readAll(Reader rd) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		int cp;
 		while ((cp = rd.read()) != -1) {
@@ -22,7 +22,7 @@ public class JSONReader {
 		return sb.toString();
 	}
 
-	public static JSONObject readJsonFromUrl(String url) throws IOException,
+	public JSONObject readJsonFromUrl(String url) throws IOException,
 			JSONException {
 		InputStream is = new URL(url).openStream();
 		try {

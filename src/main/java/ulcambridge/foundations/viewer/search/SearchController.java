@@ -78,6 +78,7 @@ public class SearchController {
 
 		while (resultIt.hasNext()) {
 			SearchResult result = resultIt.next();
+			
 			Item item = ItemFactory.getItemFromId(result.getId());
 			if (item != null) {
 				refinedResults.add(result);

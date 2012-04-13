@@ -36,13 +36,6 @@ public class CollectionViewController {
 	public ModelAndView handleRequest(HttpServletResponse response, @PathVariable("collectionId") String collectionId,
 			HttpServletRequest request) {
 		
-		if (request.getParameter("R")!=null && request.getParameter("G")!=null &&
-				request.getParameter("B")!=null) {
-			request.getSession().setAttribute("bgColourR", request.getParameter("R"));
-			request.getSession().setAttribute("bgColourG", request.getParameter("G"));
-			request.getSession().setAttribute("bgColourB", request.getParameter("B"));
-		}
-		
 		Collection collection = CollectionFactory.getCollectionFromId(collectionId);
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"+collection.getType());

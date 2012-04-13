@@ -1,19 +1,25 @@
 package ulcambridge.foundations.viewer;
 
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -33,53 +39,7 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			HttpServletRequest request) {
 
-		String requestURL = request.getRequestURL().toString();
-		String docURL = requestURL;
-
-		if (docURL.lastIndexOf("/") == docURL.length() - 1) {
-			// cut off last character.
-			docURL = docURL.substring(0, docURL.length() - 1);
-		}
-
-		// check doc exists, if not return 404 page.
-		if (!docExists(docURL)) {
-			return new ModelAndView("jsp/errors/404");
-		}
-
-		Collection docCollection = null;
-		Iterator<Collection> collectionIterator = CollectionFactory
-				.getCollections().iterator();
-		while (collectionIterator.hasNext()) {
-			Collection collection = collectionIterator.next();
-			if (collection.getItemIds().contains(docId)) {
-				docCollection = collection;
-
-				// Stop if this is an organisational collection, else keep
-				// looking
-				if (collection.getTitle().startsWith("organisation")) {
-					break;
-				} 
-			}
-		}
-
-		// Get proxyURL (if we are using a proxy)
-		String proxyURL="";
-		if (Properties.getString("useProxy").equals("true")) {
-			proxyURL=Properties.getString("proxyURL");
-	    }
-		
-		ModelAndView modelAndView = new ModelAndView("jsp/document");
-		modelAndView.addObject("docId", docId);
-		modelAndView.addObject("page", 1); // defaults to first page.
-		modelAndView.addObject("docURL", docURL);
-		modelAndView.addObject("requestURL", requestURL);
-		modelAndView.addObject("proxyURL", proxyURL);		
-		if (docCollection!=null) {
-			modelAndView.addObject("collectionURL", docCollection.getURL());
-			modelAndView.addObject("collectionTitle", docCollection.getTitle());
-		}
-
-		return modelAndView;
+		return setupDocumentView(docId, "1", request);
 	}
 
 	// on path /view/{docId}/{page}
@@ -87,17 +47,48 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			@PathVariable("page") String page, HttpServletRequest request) {
 
+		return setupDocumentView(docId, page, request);
+	}
+
+	// on path /view/{docId}.json
+	@RequestMapping(value = "/{docId}.json")
+	public ModelAndView handleJSONRequest(@PathVariable("docId") String docId,
+			HttpServletResponse response) {
+
+		Item item = ItemFactory.getItemFromId(docId);
+		JSONObject json = item.getJSON();
+
+		// Write out JSON file.
+		response.setContentType("application/json");
+		try {
+			PrintStream out = new PrintStream(new BufferedOutputStream(
+					response.getOutputStream()));
+			out.print(json.toString());
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	private ModelAndView setupDocumentView(String docId, String page,
+			HttpServletRequest request) {
+
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
+
 		if (docURL.lastIndexOf("/") == docURL.length() - 1) {
 			// cut off last character.
 			docURL = docURL.substring(0, docURL.length() - 1);
 		}
-		// cut off the page part of the url.
-		docURL = docURL.substring(0, docURL.lastIndexOf("/"));
+
+		// JSON file needs to be a relative URL for Ajax.
+		String jsonURL =  "/view/"+ docId + ".json";
 
 		// check doc exists, if not return 404 page.
-		if (!docExists(docURL)) {
+		String jsonRootURL = Properties.getString("jsonURL");
+		if (!urlExists(jsonRootURL + docId + ".json")) {
 			return new ModelAndView("jsp/errors/404");
 		}
 
@@ -108,51 +99,46 @@ public class DocumentViewController {
 			Collection collection = collectionIterator.next();
 			if (collection.getItemIds().contains(docId)) {
 				docCollection = collection;
-				
+
 				// Stop if this is an organisational collection, else keep
 				// looking
 				if (collection.getTitle().startsWith("organisation")) {
 					break;
-				} 
+				}
 			}
 		}
-		
+
 		// Get proxyURL (if we are using a proxy)
-		String proxyURL="";
+		String proxyURL = "";
 		if (Properties.getString("useProxy").equals("true")) {
-			proxyURL=Properties.getString("proxyURL");
-	    }
-		
+			proxyURL = Properties.getString("proxyURL");
+		}
+
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
-		modelAndView.addObject("page", page);
+		modelAndView.addObject("page", 1); // defaults to first page.
 		modelAndView.addObject("docURL", docURL);
+		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("requestURL", requestURL);
 		modelAndView.addObject("proxyURL", proxyURL);
-		if (docCollection!=null) {
+		if (docCollection != null) {
 			modelAndView.addObject("collectionURL", docCollection.getURL());
 			modelAndView.addObject("collectionTitle", docCollection.getTitle());
 		}
+
 		return modelAndView;
 	}
 
 	/**
-	 * Checks to see if the document at the specified url exists on the file
-	 * system or not.
+	 * Checks to see if the specified URl exists
 	 * 
-	 * @param docURL
+	 * @param jsonURL
 	 * @return
 	 */
-	private boolean docExists(String docURL) {
-
-		String[] docURLParts = docURL.split("/");
-
-		// See if the json file is there.
-		String jsonURL = docURLParts[0] + "//" + docURLParts[2] + "/json/"
-				+ docURLParts[4] + ".json";
+	private boolean urlExists(String urlString) {
 
 		try {
-			URL url = new URL(jsonURL);
+			URL url = new URL(urlString);
 
 			if (((HttpURLConnection) url.openConnection()).getResponseCode() == 200) {
 				return true;
