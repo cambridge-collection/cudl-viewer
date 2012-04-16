@@ -328,22 +328,28 @@ var docView = function() {
 			if (searchLink) {
 
 				if (metadataItem instanceof Array) {
+					var metadataItemWithLink = new Array();
 					for ( var i = 0; i < metadataItem.length; i++) {
 						var singleMetadataItem = metadataItem[i];
 						var encodedMetadataItem = encodeURIComponent(singleMetadataItem);
-						metadataItem[i] = "<a class=\"cudlLink\" href='/search?keyword="
+						metadataItemWithLink[i] = "<a class=\"cudlLink\" href='/search?keyword="
 								+ encodedMetadataItem
 								+ "'>"
 								+ singleMetadataItem + "</a>";
 					}
+					
+					return "<div><b>" + title + "</b>" + metadataItemWithLink.join(arraySeparator) + "</div>\n";
 				} else {
 					var encodedMetadataItem = encodeURIComponent(metadataItem);
 					metadataItem = "<a class=\"cudlLink\" href='/search?keyword="
 						+ encodedMetadataItem
 						+ "'>"
 						+ metadataItem + "</a>";
+					return "<div><b>" + title + "</b>" + metadataItem + "</div>\n";
 				}
+				
 			}
+			
 			if (metadataItem instanceof Array && arraySeparator) {
 				metadataItem = metadataItem.join(arraySeparator);
 			}
