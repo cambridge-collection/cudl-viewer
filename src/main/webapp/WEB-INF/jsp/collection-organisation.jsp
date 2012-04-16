@@ -63,13 +63,13 @@
 
 				out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
 				        + "<div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
-						+ "/'><img src='" + item.getThumbnailURL()+ "' " + "alt='"
+						+ "/1'><img src='" + item.getThumbnailURL()+ "' " + "alt='"
 						+ item.getId() + "' "+imageDimensions
 						+ "></a></div></div> \n ");
 				out.print("<div class='collections_carousel_text'><h5>" + item.getTitle() + " ("
 						+ item.getShelfLocator() + ")</h5> "
 						+ item.getAbstractShort() + " ... <a href='/view/"
-						+ item.getId() + "/'>more</a> " + "</div><div class='clear'></div></div></li>\n\n");
+						+ item.getId() + "/1'>more</a> " + "</div><div class='clear'></div></div></li>\n\n");
 			}
 		%>
 	</ol>

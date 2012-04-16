@@ -92,17 +92,21 @@ var docView = function() {
 			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {					
 					pagenum = store.currentPage;	
 					
-					// update the URL for this page.
+					// update the URL for this page with pagenum
+					// does not change the URL if already correct. 
 					// supported in Chrome, Safari, FF4+, and IE10pp4+
 					try {
-					  window.history.pushState(docId+" page:"+pagenum, "Cambridge Digital Library", "/view/"+docId+"/"+pagenum);
+						var updatedURL = "/view/"+docId+"/"+pagenum;
+						if (window.location.pathname != updatedURL) {
+					      window.history.pushState(docId+" page:"+pagenum, "Cambridge Digital Library", updatedURL);
+						}
 					} catch (err) {
-						/* not supported */
+                        /* not supported */
 					}
 					
 			}
 
-			// This will cause this function to be called again as the toolbar
+			// loadPage will cause this function to be called again as the toolbar
 			// has changed.
 			if (!view.pageSet) {	
 				// default to page 1 if pagenum outside allowed range. 
