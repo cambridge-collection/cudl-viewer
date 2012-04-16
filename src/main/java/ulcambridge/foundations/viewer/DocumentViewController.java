@@ -39,14 +39,14 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			HttpServletRequest request) {
 
-		return setupDocumentView(docId, "1", request);
+		return setupDocumentView(docId, 1, request);
 	}
 
 	// on path /view/{docId}/{page}
 	@RequestMapping(value = "/{docId}/{page}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
-			@PathVariable("page") String page, HttpServletRequest request) {
-
+			@PathVariable("page") int page, HttpServletRequest request) {
+	
 		return setupDocumentView(docId, page, request);
 	}
 
@@ -60,19 +60,24 @@ public class DocumentViewController {
 
 		// Write out JSON file.
 		response.setContentType("application/json");
+		PrintStream out = null;
 		try {
-			PrintStream out = new PrintStream(new BufferedOutputStream(
+			out = new PrintStream(new BufferedOutputStream(
 					response.getOutputStream()));
 			out.print(json.toString());
-			out.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (Exception e) {}		
 		}
 
 		return null;
 	}
 
-	private ModelAndView setupDocumentView(String docId, String page,
+	private ModelAndView setupDocumentView(String docId, int page,
 			HttpServletRequest request) {
 
 		String requestURL = request.getRequestURL().toString();
@@ -116,7 +121,7 @@ public class DocumentViewController {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
 		modelAndView.addObject("docId", docId);
-		modelAndView.addObject("page", 1); // defaults to first page.
+		modelAndView.addObject("page", page); 
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("requestURL", requestURL);

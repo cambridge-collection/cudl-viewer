@@ -86,19 +86,29 @@ var docView = function() {
 		 * On a page turn the data, images etc for that page need to be
 		 * displayed.
 		 */
-		/* NOTE: ANY changes to the toolbar cause this top be called */
+		/* NOTE: ANY changes to the toolbar cause this to be called */
 		updateCurrentPage : function(toolbar, pageData, eOpts) {
-
-			// FIXME validate input
-
-			// Input page from next/back button etc.
-			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {
-				pagenum = store.currentPage;
+	
+			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {					
+					pagenum = store.currentPage;	
+					
+					// update the URL for this page.
+					// supported in Chrome, Safari, FF4+, and IE10pp4+
+					try {
+					  window.history.pushState(docId+" page:"+pagenum, "Cambridge Digital Library", "/view/"+docId+"/"+pagenum);
+					} catch (err) {
+						/* not supported */
+					}
+					
 			}
 
 			// This will cause this function to be called again as the toolbar
 			// has changed.
-			if (!view.pageSet) {
+			if (!view.pageSet) {	
+				// default to page 1 if pagenum outside allowed range. 
+				if (pagenum<0 || pagenum>store.totalCount) {
+					pagenum=1;
+				}				
 				store.loadPage(pagenum);
 				view.pageSet = true;
 				return;

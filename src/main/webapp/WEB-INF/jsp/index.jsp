@@ -7,7 +7,11 @@
 
 <script type="text/javascript">
 	var index_carousel;
+
 	function init() {
+		// display image carousel
+		document.getElementById("index_carousel_parent").style.display="block";	
+		
 		index_carousel = new glow.widgets.Carousel("#index_carousel", {
 			loop : true,
 			size : 1,
@@ -19,6 +23,7 @@
 		var randomnumber = Math.floor(Math.random()
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
+
 	}
 </script>
 
@@ -72,7 +77,7 @@
 		</div>
 	</div>
 
-	<div class="grid_13">
+	<div class="grid_13" id="index_carousel_parent" style="display:none;">
 
 		<ol id="index_carousel">
 
