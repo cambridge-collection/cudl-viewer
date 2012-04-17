@@ -1,15 +1,10 @@
 package ulcambridge.foundations.viewer.model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import ulcambridge.foundations.viewer.JSONReader;
 
 /**
  * This class contains a subset of the data in the JSON file for an item, which

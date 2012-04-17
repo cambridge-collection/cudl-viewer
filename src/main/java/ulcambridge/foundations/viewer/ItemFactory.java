@@ -21,25 +21,33 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class ItemFactory {
 
+	
 	// Only want one instance of itemFactory
-	private static final ItemFactory itemFactory = new ItemFactory();
-
+	private static ItemFactory itemFactory;
+	private static JSONReader reader;
+	
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
 	private Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
-	protected JSONReader reader = new JSONReader();
 
 	/**
 	 * Protected constructor.
 	 */
-	protected ItemFactory() {
-
+	private ItemFactory() {
+		
 		String[] collections = Properties.getString("collections").trim()
 				.split(",");
 		for (int i = 0; i < collections.length; i++) {
 			initItems(collections[i]);
 		}
 
+	}
+	
+	public static ItemFactory getItemFactory() {
+		if (itemFactory == null) {
+			itemFactory = new ItemFactory();
+		}
+		return itemFactory;
 	}
 
 	/**
@@ -124,7 +132,7 @@ public class ItemFactory {
 	 * @return
 	 */
 	public static Item getItemFromId(String id, String collectionId) {
-		Hashtable<String, Item> items = itemFactory.itemsInCollection
+		Hashtable<String, Item> items = getItemFactory().itemsInCollection
 				.get(collectionId);
 		return items.get(id);
 	}
@@ -137,9 +145,9 @@ public class ItemFactory {
 	 */
 	public static Item getItemFromId(String id) {
 
-		Enumeration<String> collections = itemFactory.itemsInCollection.keys();
+		Enumeration<String> collections = getItemFactory().itemsInCollection.keys();
 		while (collections.hasMoreElements()) {
-			Hashtable<String, Item> items = itemFactory.itemsInCollection
+			Hashtable<String, Item> items = getItemFactory().itemsInCollection
 					.get(collections.nextElement());
 			Item item = items.get(id);
 			if (item != null) {
@@ -156,7 +164,7 @@ public class ItemFactory {
 	 * @return
 	 */
 	public static List<Item> getItemsFromCollectionId(String collectionId) {
-		Hashtable<String, Item> items = itemFactory.itemsInCollection
+		Hashtable<String, Item> items = getItemFactory().itemsInCollection
 				.get(collectionId);
 		ArrayList<Item> list = new ArrayList<Item>(items.values());
 		Collections.sort(list);

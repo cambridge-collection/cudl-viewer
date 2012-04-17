@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 public class JSONReader {
 
-	protected String readAll(Reader rd) throws IOException {
+	private String readAll(Reader rd) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		int cp;
 		while ((cp = rd.read()) != -1) {
