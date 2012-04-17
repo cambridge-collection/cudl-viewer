@@ -24,7 +24,7 @@ public class ItemFactory {
 	
 	// Only want one instance of itemFactory
 	private static ItemFactory itemFactory;
-	private static JSONReader reader;
+	private static JSONReader reader = new JSONReader();
 	
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
