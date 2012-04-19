@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 
@@ -36,4 +37,24 @@ public class JSONReader {
 		}
 	}
 
+	/**
+	 * Checks to see if the specified URl exists
+	 * 
+	 * @param urlString
+	 * @return
+	 */
+	public boolean urlExists(String urlString) {
+
+		try {
+			URL url = new URL(urlString);
+
+			if (((HttpURLConnection) url.openConnection()).getResponseCode() == 200) {
+				return true;
+			}
+		} catch (Exception e) {
+			/* do nothing */
+		}
+		return false;
+
+	}
 }

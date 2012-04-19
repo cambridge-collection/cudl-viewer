@@ -2,6 +2,12 @@ package ulcambridge.foundations.viewer.model;
 
 import java.util.List;
 
+/**
+ * Object that represents a collection of items. 
+ * 
+ * @author jennie
+ *
+ */
 public class Collection implements Comparable<Collection> {
 
 	private static int orderCount = 1;

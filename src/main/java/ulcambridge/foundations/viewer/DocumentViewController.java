@@ -33,7 +33,8 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class DocumentViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-
+	private static JSONReader reader = new JSONReader();
+	
 	// on path /view/{docId}
 	@RequestMapping(value = "/{docId}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
@@ -93,7 +94,7 @@ public class DocumentViewController {
 
 		// check doc exists, if not return 404 page.
 		String jsonRootURL = Properties.getString("jsonURL");
-		if (!urlExists(jsonRootURL + docId + ".json")) {
+		if (!reader.urlExists(jsonRootURL + docId + ".json")) {
 			return new ModelAndView("jsp/errors/404");
 		}
 
@@ -134,24 +135,5 @@ public class DocumentViewController {
 		return modelAndView;
 	}
 
-	/**
-	 * Checks to see if the specified URl exists
-	 * 
-	 * @param jsonURL
-	 * @return
-	 */
-	private boolean urlExists(String urlString) {
 
-		try {
-			URL url = new URL(urlString);
-
-			if (((HttpURLConnection) url.openConnection()).getResponseCode() == 200) {
-				return true;
-			}
-		} catch (Exception e) {
-			/* do nothing */
-		}
-		return false;
-
-	}
 }
