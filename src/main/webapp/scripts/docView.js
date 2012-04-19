@@ -134,7 +134,7 @@ var docView = function() {
 
 				// setup metadata
 				// Find the ROOT descriptiveMetadata object.
-				var descriptiveMetadataID = data.logicalStructure[0].descriptiveMetadataID;
+				var descriptiveMetadataID = data.logicalStructures[0].descriptiveMetadataID;
 				var descriptiveMetadata = view.findDescriptiveMetadata(
 						descriptiveMetadataID, data);
 
@@ -183,7 +183,7 @@ var docView = function() {
 						descriptiveMetadata.displayImageRights);
 				view.populateElement(document
 						.getElementById("metadata-funding"),
-						descriptiveMetadata.funding);
+						descriptiveMetadata.fundings);
 				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
@@ -202,7 +202,7 @@ var docView = function() {
 				basicMetadata += view.getMetadataHTML("Classmark: ",
 						descriptiveMetadata.shelfLocator);
 				basicMetadata += view.getMetadataHTML("Subject: ",
-						descriptiveMetadata.subject, "; ", true);
+						descriptiveMetadata.subjects, "; ", true);
 				basicMetadata += view.getMetadataHTML("Date created: ",
 						descriptiveMetadata.dateCreatedDisplay, null, true);
 
@@ -214,12 +214,12 @@ var docView = function() {
 				var optionalMetadata = "";
 
 				optionalMetadata += view.getMetadataHTML("Language(s): ",
-						descriptiveMetadata.languageString);
+						descriptiveMetadata.languageStrings);
 				optionalMetadata += view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
 				optionalMetadata += view.getMetadataHTML(
 						"Alternative title(s): ",
-						descriptiveMetadata.alternativeTitle, "; ");
+						descriptiveMetadata.alternativeTitles, "; ");
 				optionalMetadata += view.getMetadataHTML("Author(s): ",
 						authorsfullform, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
@@ -233,28 +233,28 @@ var docView = function() {
 				optionalMetadata += view.getMetadataHTML("Associated People: ",
 						otherpeople, "; ", true);
 				optionalMetadata += view.getMetadataHTML("Publisher: ",
-						descriptiveMetadata.publisher, "; ");
+						descriptiveMetadata.publishers, "; ");
 				optionalMetadata += view.getMetadataHTML("Origin place: ",
-						descriptiveMetadata.originPlace, "; ");
+						descriptiveMetadata.originPlaces, "; ");
 				optionalMetadata += view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
 				optionalMetadata += view.getMetadataHTML("Layout: ",
-						descriptiveMetadata.layout);
+						descriptiveMetadata.layouts);
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Binding: ",
-								descriptiveMetadata.binding, "</p><br/><p>")
+								descriptiveMetadata.bindings, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Support: ",
-								descriptiveMetadata.support, "</p><br/><p>")
+								descriptiveMetadata.supports, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Script: ",
-								descriptiveMetadata.script, "</p><br/><p>")
+								descriptiveMetadata.scripts, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Decoration: ",
-								descriptiveMetadata.decoration, "</p><br/><p>")
+								descriptiveMetadata.decorations, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Notes: ",
@@ -262,7 +262,7 @@ var docView = function() {
 						+ "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Ownership: ",
-								descriptiveMetadata.ownership, "</p><br/><p>")
+								descriptiveMetadata.ownerships, "</p><br/><p>")
 						+ "</p>";
 
 				view.populateElement(document
@@ -298,13 +298,13 @@ var docView = function() {
 
 				// setup logical structure
 
-				var ls = view.buildLogicalStructure(
-						data.logicalStructure[0].children, 0);
+				var ls = view.buildLogicalStructures(
+						data.logicalStructures[0].children, 0);
 
 				// If no first level contents use the root element
 				// to prevent empty contents list.
 				if (ls == "") {
-					ls = view.buildLogicalStructure(data.logicalStructure, 0);
+					ls = view.buildLogicalStructures(data.logicalStructures, 0);
 				}
 
 				// only write out contents if the element is currently empty
@@ -373,7 +373,7 @@ var docView = function() {
 			return "";
 		},
 
-		buildLogicalStructure : function(logicalStructureElement, level) {
+		buildLogicalStructures : function(logicalStructureElement, level) {
 
 			// setup logical structure
 			var ls = "";
@@ -394,7 +394,7 @@ var docView = function() {
 
 				if (lsItem.children.length > 0) {
 					ls += view
-							.buildLogicalStructure(lsItem.children, level + 1);
+							.buildLogicalStructures(lsItem.children, level + 1);
 				}
 			}
 

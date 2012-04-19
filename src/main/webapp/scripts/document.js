@@ -137,7 +137,7 @@ function setupViewport() {
 	view = new docView();
 
 	// Find the ROOT descriptiveMetadata object.
-	var descriptiveMetadataID = data.logicalStructure[0].descriptiveMetadataID;
+	var descriptiveMetadataID = data.logicalStructures[0].descriptiveMetadataID;
 	var descriptiveMetadata = view.findDescriptiveMetadata(
 			descriptiveMetadataID, data);
 
@@ -203,7 +203,7 @@ function setupViewport() {
 			viewportComponents.rightTabPanel);
 	setupTab('Contents', 'logical_structure', viewportComponents.rightTabPanel);
 
-	if (data.useTranscriptions == 'Y') {
+	if (data.useTranscriptions == 'true') {
 
 		setupTab('Transcription (normalised)', 'transcription_normal',
 				viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',

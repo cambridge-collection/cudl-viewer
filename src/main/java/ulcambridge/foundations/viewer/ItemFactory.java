@@ -21,11 +21,10 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class ItemFactory {
 
-	
 	// Only want one instance of itemFactory
 	private static ItemFactory itemFactory;
 	private static JSONReader reader = new JSONReader();
-	
+
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
 	private Hashtable<String, Hashtable<String, Item>> itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();
@@ -34,7 +33,7 @@ public class ItemFactory {
 	 * Protected constructor.
 	 */
 	private ItemFactory() {
-		
+
 		String[] collections = Properties.getString("collections").trim()
 				.split(",");
 		for (int i = 0; i < collections.length; i++) {
@@ -42,7 +41,7 @@ public class ItemFactory {
 		}
 
 	}
-	
+
 	public static ItemFactory getItemFactory() {
 		if (itemFactory == null) {
 			itemFactory = new ItemFactory();
@@ -81,23 +80,39 @@ public class ItemFactory {
 				JSONObject descriptiveMetadata = itemJson.getJSONArray(
 						"descriptiveMetadata").getJSONObject(0);
 
+				// Should always have title
 				itemTitle = descriptiveMetadata.getString("title");
-				itemPeople = getPeopleFromJSON(descriptiveMetadata
-						.getJSONArray("names"));
-				itemShelfLocator = descriptiveMetadata
-						.getString("shelfLocator");
-				itemAbstract = descriptiveMetadata.getString("abstract");
 
-				// Thumbnails
-				itemThumbnailURL = descriptiveMetadata
-						.getString("thumbnailUrl");
-				if (Properties.getString("useProxy").equals("true")) {
-					itemThumbnailURL = Properties.getString("proxyURL")
-							+ descriptiveMetadata.getString("thumbnailUrl");
+				// Might have people, might not.
+				if (descriptiveMetadata.has("names")) {
+					itemPeople = getPeopleFromJSON(descriptiveMetadata
+							.getJSONArray("names"));
 				}
 
-				thumbnailOrientation = descriptiveMetadata
-						.getString("thumbnailOrientation");
+				// Might have shelf locator, might not.
+				if (descriptiveMetadata.has("shelfLocator")) {
+					itemShelfLocator = descriptiveMetadata
+							.getString("shelfLocator");
+				}
+
+				// Might have abstract, might not.
+				if (descriptiveMetadata.has("shelfLocator")) {
+					itemAbstract = descriptiveMetadata.getString("abstract");
+				}
+
+				// Might have Thumbnail image
+				if (descriptiveMetadata.has("thumbnailUrl")
+						&& descriptiveMetadata.has("thumbnailOrientation")) {
+					itemThumbnailURL = descriptiveMetadata
+							.getString("thumbnailUrl");
+					if (Properties.getString("useProxy").equals("true")) {
+						itemThumbnailURL = Properties.getString("proxyURL")
+								+ descriptiveMetadata.getString("thumbnailUrl");
+					}
+
+					thumbnailOrientation = descriptiveMetadata
+							.getString("thumbnailOrientation");
+				}
 
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -145,7 +160,8 @@ public class ItemFactory {
 	 */
 	public static Item getItemFromId(String id) {
 
-		Enumeration<String> collections = getItemFactory().itemsInCollection.keys();
+		Enumeration<String> collections = getItemFactory().itemsInCollection
+				.keys();
 		while (collections.hasMoreElements()) {
 			Hashtable<String, Item> items = getItemFactory().itemsInCollection
 					.get(collections.nextElement());
@@ -182,6 +198,11 @@ public class ItemFactory {
 	private List<Person> getPeopleFromJSON(JSONArray names) {
 
 		ArrayList<Person> people = new ArrayList<Person>();
+
+		if (names == null) {
+			return people;
+		}
+
 		try {
 			for (int i = 0; i < names.length(); i++) {
 				JSONObject personJSON = names.getJSONObject(i);
