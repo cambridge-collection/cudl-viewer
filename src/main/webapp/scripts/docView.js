@@ -88,31 +88,33 @@ var docView = function() {
 		 */
 		/* NOTE: ANY changes to the toolbar cause this to be called */
 		updateCurrentPage : function(toolbar, pageData, eOpts) {
-	
-			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {					
-					pagenum = store.currentPage;	
-					
-					// update the URL for this page with pagenum
-					// does not change the URL if already correct. 
-					// supported in Chrome, Safari, FF4+, and IE10pp4+
-					try {
-						var updatedURL = "/view/"+docId+"/"+pagenum;
-						if (window.location.pathname != updatedURL) {
-					      window.history.pushState(docId+" page:"+pagenum, "Cambridge Digital Library", updatedURL);
-						}
-					} catch (err) {
-                        /* not supported */
+
+			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {
+				pagenum = store.currentPage;
+
+				// update the URL for this page with pagenum
+				// does not change the URL if already correct.
+				// supported in Chrome, Safari, FF4+, and IE10pp4+
+				try {
+					var updatedURL = "/view/" + docId + "/" + pagenum;
+					if (window.location.pathname != updatedURL) {
+						window.history.pushState(docId + " page:" + pagenum,
+								"Cambridge Digital Library", updatedURL);
 					}
-					
+				} catch (err) {
+					/* not supported */
+				}
+
 			}
 
-			// loadPage will cause this function to be called again as the toolbar
+			// loadPage will cause this function to be called again as the
+			// toolbar
 			// has changed.
-			if (!view.pageSet) {	
-				// default to page 1 if pagenum outside allowed range. 
-				if (pagenum<0 || pagenum>store.totalCount) {
-					pagenum=1;
-				}				
+			if (!view.pageSet) {
+				// default to page 1 if pagenum outside allowed range.
+				if (pagenum < 0 || pagenum > store.totalCount) {
+					pagenum = 1;
+				}
 				store.loadPage(pagenum);
 				view.pageSet = true;
 				return;
@@ -253,9 +255,10 @@ var docView = function() {
 								descriptiveMetadata.scripts, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Decoration: ",
-								descriptiveMetadata.decorations, "</p><br/><p>")
-						+ "</p>";
+						+ view
+								.getMetadataHTML("Decoration: ",
+										descriptiveMetadata.decorations,
+										"</p><br/><p>") + "</p>";
 				optionalMetadata += "<p>"
 						+ view.getMetadataHTML("Notes: ",
 								descriptiveMetadata.notes, "</p><br/><p>")
@@ -298,18 +301,22 @@ var docView = function() {
 
 				// setup logical structure
 
-				var ls = view.buildLogicalStructures(
-						data.logicalStructures[0].children, 0);
-
-				// If no first level contents use the root element
-				// to prevent empty contents list.
-				if (ls == "") {
-					ls = view.buildLogicalStructures(data.logicalStructures, 0);
-				}
-
 				// only write out contents if the element is currently empty
 				// (the first time the page loads).
 				if (document.getElementById("logical_structure").children[0].innerHTML == "") {
+
+					var ls;
+					if (data.logicalStructures[0].children) {
+
+						ls = view.buildLogicalStructures(
+								data.logicalStructures[0].children, 0);
+
+						// If no first level contents use the root element
+						// to prevent empty contents list.
+					} else {
+						ls = view.buildLogicalStructures(
+								data.logicalStructures, 0);
+					}
 
 					view.populateElement(document
 							.getElementById("logical_structure"),
@@ -339,6 +346,7 @@ var docView = function() {
 		getMetadataHTML : function(title, metadataItem, arraySeparator,
 				searchLink) {
 
+			var item = "";
 			if (searchLink) {
 
 				if (metadataItem instanceof Array) {
@@ -351,25 +359,33 @@ var docView = function() {
 								+ "'>"
 								+ singleMetadataItem + "</a>";
 					}
-					
-					return "<div><b>" + title + "</b>" + metadataItemWithLink.join(arraySeparator) + "</div>\n";
+
+					if (metadataItemWithLink.length > 0) {
+						item = metadataItemWithLink.join(arraySeparator);
+					}
+
 				} else {
 					var encodedMetadataItem = encodeURIComponent(metadataItem);
 					metadataItem = "<a class=\"cudlLink\" href='/search?keyword="
-						+ encodedMetadataItem
-						+ "'>"
-						+ metadataItem + "</a>";
-					return "<div><b>" + title + "</b>" + metadataItem + "</div>\n";
+							+ encodedMetadataItem
+							+ "'>"
+							+ metadataItem
+							+ "</a>";
+
+					item = metadataItem;
 				}
-				
+
+			} else {
+
+				if (metadataItem instanceof Array && arraySeparator) {
+					item = metadataItem.join(arraySeparator);
+				}
 			}
-			
-			if (metadataItem instanceof Array && arraySeparator) {
-				metadataItem = metadataItem.join(arraySeparator);
+
+			if (item != "") {
+				return "<div><b>" + title + "</b>" + item + "</div>\n";
 			}
-			if (metadataItem && metadataItem != "") {
-				return "<div><b>" + title + "</b>" + metadataItem + "</div>\n";
-			}
+
 			return "";
 		},
 
@@ -392,9 +408,9 @@ var docView = function() {
 					ls += "</ul></li> ";
 				}
 
-				if (lsItem.children.length > 0) {
-					ls += view
-							.buildLogicalStructures(lsItem.children, level + 1);
+				if (lsItem.children && lsItem.children.length > 0) {
+					ls += view.buildLogicalStructures(lsItem.children,
+							level + 1);
 				}
 			}
 
