@@ -63,7 +63,7 @@ public class DocumentViewController {
 		PrintStream out = null;
 		try {
 			out = new PrintStream(new BufferedOutputStream(
-					response.getOutputStream()));
+					response.getOutputStream()), true, "UTF-8");
 			out.print(json.toString());
 			
 		} catch (IOException e) {
