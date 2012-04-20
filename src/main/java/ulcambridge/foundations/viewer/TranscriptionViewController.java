@@ -55,21 +55,12 @@ public class TranscriptionViewController {
 		}
 
 		// Only allow requests from transcription providers specified in the
-		// properties file.
-		boolean allowedURL = false;
-		String[] providers = Properties.getString("transcriptionProviders")
-				.split(",");
-		for (int i = 0; i < providers.length; i++) {
-			String provider = providers[i];
-			if (provider!=null && !provider.equals("") && url.startsWith(provider)) {
-				allowedURL = true;
-			}
-		}
-		if (!allowedURL) {
+		// properties file.		
+		if (!isAllowedURL(url)) {
 			return null;
 		}
 
-		String sourcePage = readContent(new URL(url));
+		String sourcePage = readContent(url);
 
 		// String fullRequestURL = request.getRequestURL().append("?" +
 		// request.getQueryString()).toString();
@@ -86,9 +77,9 @@ public class TranscriptionViewController {
 
 	}
 
-	private String readContent(URL url) throws IOException {
+	protected String readContent(String url) throws IOException {
 
-		URLConnection connection = (url).openConnection();
+		URLConnection connection = new URL(url).openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 				connection.getInputStream()));
 
@@ -108,6 +99,19 @@ public class TranscriptionViewController {
 
 		return input.toString();
 
+	}
+	
+	protected boolean isAllowedURL(String url) {
+
+		String[] providers = Properties.getString("transcriptionProviders")
+				.split(",");
+		for (int i = 0; i < providers.length; i++) {
+			String provider = providers[i];
+			if (provider!=null && !provider.equals("") && url.startsWith(provider)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	private String generateNewtonTranscriptionPage(String sourcePage,
