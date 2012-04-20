@@ -3,8 +3,6 @@ package ulcambridge.foundations.viewer;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;

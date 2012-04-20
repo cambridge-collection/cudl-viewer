@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.Map;
-
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -39,7 +37,7 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/feedbackform.html")
 	public ModelAndView processSubmit(@Valid FeedbackForm feedbackForm,
-			BindingResult result, Map model) throws EmailException {
+			BindingResult result) throws EmailException {
 
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("jsp/feedback");
@@ -75,7 +73,7 @@ public class FormController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/mailinglistform.html")
 	public ModelAndView processSubmit(@Valid MailingListForm mailingListForm,
-			BindingResult result, Map model) throws EmailException {
+			BindingResult result) throws EmailException {
 
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("jsp/mailinglist");

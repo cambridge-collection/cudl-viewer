@@ -15,9 +15,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 import javax.xml.transform.TransformerFactoryConfigurationError;
 
@@ -357,22 +354,5 @@ public class ExternalCache {
 
 		}
 
-	}
-
-	private static void printHeaders(URLConnection uc) {
-
-		Map headers = uc.getHeaderFields();
-		Iterator keys = headers.keySet().iterator();
-		System.out.println("HEADER");
-		while (keys.hasNext()) {
-			String key = (String) keys.next();
-			List<String> values = (List<String>) headers.get(key);
-			StringBuffer value = new StringBuffer();
-			for (int i = 0; i < values.size(); i++) {
-				value.append(values.get(i) + " , ");
-			}
-			System.out.println(key + ": " + value);
-		}
-		System.out.println("DONE");
 	}
 }

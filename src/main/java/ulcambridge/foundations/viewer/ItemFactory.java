@@ -1,15 +1,11 @@
 package ulcambridge.foundations.viewer;
 
-import java.awt.Dimension;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
-
-import javax.swing.ImageIcon;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -132,12 +128,14 @@ public class ItemFactory {
 
 	}
 
-	private Dimension getWidthHeightImage(URL url) {
-
-		ImageIcon icon = new ImageIcon(url);
-		return new Dimension(icon.getIconWidth(), icon.getIconHeight());
-
-	}
+	/*
+	 * private Dimension getWidthHeightImage(URL url) {
+	 * 
+	 * ImageIcon icon = new ImageIcon(url); return new
+	 * Dimension(icon.getIconWidth(), icon.getIconHeight());
+	 * 
+	 * }
+	 */
 
 	/**
 	 * Get the item with the given id, which exists in the specified collection

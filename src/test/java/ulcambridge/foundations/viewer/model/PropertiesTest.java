@@ -1,13 +1,8 @@
 package ulcambridge.foundations.viewer.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Person;
 
 /**
  * Unit test for testing properties object
