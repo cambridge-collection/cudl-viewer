@@ -109,7 +109,9 @@ function beforeTabShown(thisTab) {
 	if (urlAttribute) {
 
 		var url = encodeURIComponent(data.pages[pagenum - 1][urlAttribute + '']);
-
+		if (url=="undefined") {
+			url="";
+		}
 		cachedURL = "/externalresource?url="
 				+ encodeURIComponent("/transcription?url=" + url) + "&doc="
 				+ docId;
@@ -203,7 +205,7 @@ function setupViewport() {
 			viewportComponents.rightTabPanel);
 	setupTab('Contents', 'logical_structure', viewportComponents.rightTabPanel);
 
-	if (data.useTranscriptions == 'true') {
+	if (data.useTranscriptions) {
 
 		setupTab('Transcription (normalised)', 'transcription_normal',
 				viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
