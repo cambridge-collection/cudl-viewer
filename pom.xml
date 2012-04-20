@@ -24,12 +24,20 @@
 
 	<build>
 		<plugins>
+			<!-- Jetty plugin allows us to test locally using mvn jetty:run Note that 
+				the resources in /src/text/resources are pulled in which will not be available 
+				in war file. cudl-global.properties is used on the classpath to specify properties 
+				that vary depending on web container - DEV, BETA, LIVE etc. The version in 
+				main is used if it exists, see src/main/docs/building-foundations-viewer.txt -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jettyVersion}</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
+					<webAppConfig>
+						<extraClasspath>${basedir}/src/main/resources/;${basedir}/src/test/resources/</extraClasspath>
+					</webAppConfig>
 					<connectors>
 						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>1111</port>
