@@ -89,16 +89,16 @@ var docView = function() {
 		/* NOTE: ANY changes to the toolbar cause this to be called */
 		updateCurrentPage : function(toolbar, pageData, eOpts) {
 
-			if (view.pageSet || !pagenum || !view.isNumber(pagenum)) {
-				pagenum = store.currentPage;
+			if (cudl.view.pageSet || !cudl.pagenum || !cudl.view.isNumber(cudl.pagenum)) {
+				cudl.pagenum = cudl.store.currentPage;
 
 				// update the URL for this page with pagenum
 				// does not change the URL if already correct.
 				// supported in Chrome, Safari, FF4+, and IE10pp4+
 				try {
-					var updatedURL = "/view/" + docId + "/" + pagenum;
+					var updatedURL = "/view/" + cudl.docId + "/" + cudl.pagenum;
 					if (window.location.pathname != updatedURL) {
-						window.history.pushState(docId + " page:" + pagenum,
+						window.history.pushState(cudl.docId + " page:" + cudl.pagenum,
 								"Cambridge Digital Library", updatedURL);
 					}
 				} catch (err) {
@@ -110,37 +110,37 @@ var docView = function() {
 			// loadPage will cause this function to be called again as the
 			// toolbar
 			// has changed.
-			if (!view.pageSet) {
+			if (!cudl.view.pageSet) {
 				// default to page 1 if pagenum outside allowed range.
-				if (pagenum < 0 || pagenum > store.totalCount) {
-					pagenum = 1;
+				if (cudl.pagenum < 0 || cudl.pagenum > cudl.store.totalCount) {
+					cudl.pagenum = 1;
 				}
-				store.loadPage(pagenum);
-				view.pageSet = true;
+				cudl.store.loadPage(cudl.pagenum);
+				cudl.view.pageSet = true;
 				return;
 			}
 
-			if (viewer && data) {
+			if (cudl.viewer && cudl.data) {
 
 				// show image
-				viewer.openDzi(proxyURL
-						+ data.pages[pagenum - 1].displayImageURL);
+				cudl.viewer.openDzi(cudl.proxyURL
+						+ cudl.data.pages[cudl.pagenum - 1].displayImageURL);
 
 				// setup image download link
 				downloadImageLink = "/download/image%252Fjpg/document-image"
-						+ pagenum + ".jpg?path="
-						+ data.pages[pagenum - 1].downloadImageURL;
+						+ cudl.pagenum + ".jpg?path="
+						+ cudl.data.pages[cudl.pagenum - 1].downloadImageURL;
 
 				// setup transcription
 				beforeTabShown(viewportComponents.rightTabPanel.activeTab);
 
 				// setup metadata
 				// Find the ROOT descriptiveMetadata object.
-				var descriptiveMetadataID = data.logicalStructures[0].descriptiveMetadataID;
-				var descriptiveMetadata = view.findDescriptiveMetadata(
-						descriptiveMetadataID, data);
+				var descriptiveMetadataID = cudl.data.logicalStructures[0].descriptiveMetadataID;
+				var descriptiveMetadata = cudl.view.findDescriptiveMetadata(
+						descriptiveMetadataID, cudl.data);
 
-				view.populateElement(document.getElementById("metadata-title"),
+				cudl.view.populateElement(document.getElementById("metadata-title"),
 						descriptiveMetadata.title);
 
 				// author and people
@@ -151,6 +151,7 @@ var docView = function() {
 				var scribes = new Array();
 				var recipients = new Array();
 				var otherpeople = new Array();
+				var publishers = new Array();
 				if (descriptiveMetadata.names) {
 					for ( var i = 0; i < descriptiveMetadata.names.length; i++) {
 						var name = descriptiveMetadata.names[i];
@@ -166,24 +167,22 @@ var docView = function() {
 						} else if (name && name.role == "rcp") {
 							recipients.push(name.fullForm);
 						} else if (name && name.role == "pbl") {
-							otherpeople.push(name.fullForm);
-						} else if (name && name.role == "ann") {
-							otherpeople.push(name.fullForm);
-						} else if (name && name.role == "oth") {
+							publishers.push(name.fullForm);
+						} else {
 							otherpeople.push(name.fullForm);
 						}
 					}
 				}
 				if (authors.length > 0) {
-					view.populateElement(document
+					cudl.view.populateElement(document
 							.getElementById("metadata-author"),
 							" by <span class='document-about-author'>"
 									+ authors.join(", ") + "</span>");
 				}
-				view.populateElement(document
+				cudl.view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
-				view.populateElement(document
+				cudl.view.populateElement(document
 						.getElementById("metadata-funding"),
 						descriptiveMetadata.fundings);
 				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
@@ -191,84 +190,84 @@ var docView = function() {
 						+ '<br/><br/> Do you want to download this image?';
 
 				// update current page number display.
-				view.populateElement(document.getElementById("metadata-page"),
-						data.pages[pagenum - 1].name, true);
-				view.populateElement(document
+				cudl.view.populateElement(document.getElementById("metadata-page"),
+						cudl.data.pages[cudl.pagenum - 1].name, true);
+				cudl.view.populateElement(document
 						.getElementById("metadata-page-toolbar"),
-						data.pages[pagenum - 1].name, true);
+						cudl.data.pages[cudl.pagenum - 1].name, true);
 
 				// update metadata
 				var basicMetadata = "";
-				basicMetadata += view.getMetadataHTML("Physical location: ",
+				basicMetadata += cudl.view.getMetadataHTML("Physical location: ",
 						descriptiveMetadata.physicalLocation);
-				basicMetadata += view.getMetadataHTML("Classmark: ",
+				basicMetadata += cudl.view.getMetadataHTML("Classmark: ",
 						descriptiveMetadata.shelfLocator);
-				basicMetadata += view.getMetadataHTML("Subject: ",
+				basicMetadata += cudl.view.getMetadataHTML("Subject: ",
 						descriptiveMetadata.subjects, "; ", true);
-				basicMetadata += view.getMetadataHTML("Date created: ",
+				basicMetadata += cudl.view.getMetadataHTML("Date created: ",
 						descriptiveMetadata.dateCreatedDisplay, null, true);
 
-				view.populateElement(document.getElementById("metadata-basic"),
+				cudl.view.populateElement(document.getElementById("metadata-basic"),
 						basicMetadata);
 
 				// optional metadata
 
 				var optionalMetadata = "";
 
-				optionalMetadata += view.getMetadataHTML("Language(s): ",
+				optionalMetadata += cudl.view.getMetadataHTML("Language(s): ",
 						descriptiveMetadata.languageStrings);
-				optionalMetadata += view.getMetadataHTML("Uniform title: ",
+				optionalMetadata += cudl.view.getMetadataHTML("Uniform title: ",
 						descriptiveMetadata.uniformTitle);
-				optionalMetadata += view.getMetadataHTML(
+				optionalMetadata += cudl.view.getMetadataHTML(
 						"Alternative title(s): ",
 						descriptiveMetadata.alternativeTitles, "; ");
-				optionalMetadata += view.getMetadataHTML("Author(s): ",
+				optionalMetadata += cudl.view.getMetadataHTML("Author(s): ",
 						authorsfullform, "; ", true);
-				optionalMetadata += view.getMetadataHTML("Former Owner(s): ",
+				optionalMetadata += cudl.view.getMetadataHTML("Former Owner(s): ",
 						fowners, "; ", true);
-				optionalMetadata += view.getMetadataHTML("Donor(s): ", donors,
+				optionalMetadata += cudl.view.getMetadataHTML("Donor(s): ", donors,
 						"; ", true);
-				optionalMetadata += view.getMetadataHTML("Scribe(s): ",
+				optionalMetadata += cudl.view.getMetadataHTML("Scribe(s): ",
 						scribes, "; ", true);
-				optionalMetadata += view.getMetadataHTML("Recipient(s): ",
+				optionalMetadata += cudl.view.getMetadataHTML("Recipient(s): ",
 						recipients, "; ", true);
-				optionalMetadata += view.getMetadataHTML("Associated People: ",
+				optionalMetadata += cudl.view.getMetadataHTML("Associated People: ",
 						otherpeople, "; ", true);
-				optionalMetadata += view.getMetadataHTML("Publisher: ",
-						descriptiveMetadata.publishers, "; ");
-				optionalMetadata += view.getMetadataHTML("Origin place: ",
+				optionalMetadata += cudl.view.getMetadataHTML("Publisher: ",
+						publishers, "; ");
+				optionalMetadata += cudl.view.getMetadataHTML("Origin place: ",
 						descriptiveMetadata.originPlaces, "; ");
-				optionalMetadata += view.getMetadataHTML("Extent: ",
+				optionalMetadata += cudl.view.getMetadataHTML("Extent: ",
 						descriptiveMetadata.extent);
-				optionalMetadata += view.getMetadataHTML("Layout: ",
+				optionalMetadata += cudl.view.getMetadataHTML("Layout: ",
 						descriptiveMetadata.layouts);
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Binding: ",
+						+ cudl.view.getMetadataHTML("Binding: ",
 								descriptiveMetadata.bindings, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Support: ",
+						+ cudl.view.getMetadataHTML("Support: ",
 								descriptiveMetadata.supports, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Script: ",
+						+ cudl.view.getMetadataHTML("Script: ",
 								descriptiveMetadata.scripts, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
-						+ view
+						+ cudl.view
 								.getMetadataHTML("Decoration: ",
 										descriptiveMetadata.decorations,
 										"</p><br/><p>") + "</p>";
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Notes: ",
+						+ cudl.view.getMetadataHTML("Notes: ",
 								descriptiveMetadata.notes, "</p><br/><p>")
 						+ "</p>";
 				optionalMetadata += "<p>"
-						+ view.getMetadataHTML("Ownership: ",
+						+ cudl.view.getMetadataHTML("Ownership: ",
 								descriptiveMetadata.ownerships, "</p><br/><p>")
 						+ "</p>";
 
-				view.populateElement(document
+				cudl.view.populateElement(document
 						.getElementById("metadata-optional"), optionalMetadata);
 
 				var abstractText = "";
@@ -294,7 +293,7 @@ var docView = function() {
 				if (descriptiveMetadata.abstract) {
 					abstractText = abstractText + descriptiveMetadata.abstract;
 
-					view.populateElement(document
+					cudl.view.populateElement(document
 							.getElementById("metadata-abstract"), ""
 							+ abstractText + "<br />");
 				}
@@ -306,19 +305,19 @@ var docView = function() {
 				if (document.getElementById("logical_structure").children[0].innerHTML == "") {
 
 					var ls;
-					if (data.logicalStructures[0].children) {
+					if (cudl.data.logicalStructures[0].children) {
 
-						ls = view.buildLogicalStructures(
-								data.logicalStructures[0].children, 0);
+						ls = cudl.view.buildLogicalStructures(
+								cudl.data.logicalStructures[0].children, 0);
 
 						// If no first level contents use the root element
 						// to prevent empty contents list.
 					} else {
-						ls = view.buildLogicalStructures(
-								data.logicalStructures, 0);
+						ls = cudl.view.buildLogicalStructures(
+								cudl.data.logicalStructures, 0);
 					}
 
-					view.populateElement(document
+					cudl.view.populateElement(document
 							.getElementById("logical_structure"),
 							"<div style='height: 100%; overflow-y:auto;'><ul>"
 									+ ls + "</ul></div>", true);
@@ -399,7 +398,7 @@ var docView = function() {
 				for ( var j = 0; j < level; j++) {
 					ls += "<li><ul>";
 				}
-				ls += "<li><a href='' onclick='store.loadPage("
+				ls += "<li><a href='' onclick='cudl.store.loadPage("
 						+ lsItem.startPagePosition + ");return false;'>"
 						+ lsItem.label + "</a> (image "
 						+ lsItem.startPagePosition + ", page "
@@ -409,7 +408,7 @@ var docView = function() {
 				}
 
 				if (lsItem.children && lsItem.children.length > 0) {
-					ls += view.buildLogicalStructures(lsItem.children,
+					ls += cudl.view.buildLogicalStructures(lsItem.children,
 							level + 1);
 				}
 			}

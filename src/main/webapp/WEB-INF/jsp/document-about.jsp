@@ -69,9 +69,7 @@
 						<!--  about the page -->
 						<div class="document-about-page">
 							Current page/folio: <span id="metadata-page"></span> <br /> <br />
-							<b><a href=""
-								onclick="bookmarkPage('Cambridge Digital Library', docURL+'/'+pagenum); return false;">Bookmark
-									direct link to this page</a> </b> <br /> <b><a href=""
+							<b><b><a href=""
 								onclick="downloadImageCheck(); return false;">Download image
 									for this page</a> </b><br /> <b><a
 								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"

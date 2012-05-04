@@ -25,13 +25,17 @@
 
 
 <script type="text/javascript">
-	var JSONURL = '${jsonURL}';
-	var pagenum = ${page};
-	var docId = '${docId}';
-	var docURL = '${docURL}';
-	var collectionURL = '${collectionURL}';
-	var collectionTitle = '${collectionTitle}';
-	var proxyURL = '${proxyURL}';
+    var cudl = {};
+	cudl.JSONURL = '${jsonURL}';
+	cudl.pagenum = ${page};
+	cudl.docId = '${docId}';
+	cudl.docURL = '${docURL}';
+	cudl.proxyURL = '${proxyURL}';
+	
+	// Read in Attributes
+	cudl.collectionURL = '${collectionURL}';
+	cudl.collectionTitle = '${collectionTitle}';
+
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>

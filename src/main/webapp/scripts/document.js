@@ -1,12 +1,6 @@
 /**
  * Script to setup the document view page.
  */
-var viewer; // seadragon view
-var data;
-var store;
-var view; // viewport
-var currentPage;
-var currentTab = 0;
 
 function setupSeaDragon() {
 	Seadragon.Config.imagePath = "/img/";
@@ -14,20 +8,20 @@ function setupSeaDragon() {
 	Seadragon.Config.maxZoomPixelRatio = 1;
 	Seadragon.Strings.Tooltips.Home = "Full Page View";
 
-	viewer = new Seadragon.Viewer("doc");
+	cudl.viewer = new Seadragon.Viewer("doc");
 
 	// Setup forward and backward buttons
 	function fullscreenNextPage() {
-		if (pagenum + 1 <= store.totalCount) {
-			store.loadPage(pagenum + 1);
-			view.pageSet = true;
+		if (cudl.pagenum + 1 <= cudl.store.totalCount) {
+			cudl.store.loadPage(cudl.pagenum + 1);
+			cudl.view.pageSet = true;
 		}
 	}
 
 	function fullscreenPrevPage() {
-		if (pagenum - 1 > 0) {
-			store.loadPage(pagenum - 1);
-			view.pageSet = true;
+		if (cudl.pagenum - 1 > 0) {
+			cudl.store.loadPage(cudl.pagenum - 1);
+			cudl.view.pageSet = true;
 		}
 	}
 
@@ -57,7 +51,7 @@ function setupSeaDragon() {
 
 	var navBar = new Seadragon.ButtonGroup([ buttonPrevPage, buttonNextPage ]);
 
-	viewer.addControl(navBar.elmt, Seadragon.ControlAnchor.BOTTOM_LEFT);
+	cudl.viewer.addControl(navBar.elmt, Seadragon.ControlAnchor.BOTTOM_LEFT);
 
 	// FIXME remove the maximize button as it's causing problems
 	// viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
@@ -69,14 +63,14 @@ function loadData() {
 	var setupDone = false;
 	var docDataLoader = new docData();
 	docDataLoader.init();
-	store = docDataLoader.store;
+	cudl.store = docDataLoader.store;
 
 	docDataLoader.store.on('load', function(store, records, successful,
 			operation, eOpts) {
 
 		if (!setupDone) {
 			docDataLoader.dataLoaded = true;
-			data = docDataLoader.getData();
+			cudl.data = docDataLoader.getData();
 
 			// placing it here means the viewport should only be initalised once
 			// the data is loaded.
@@ -108,13 +102,13 @@ function beforeTabShown(thisTab) {
 	var urlAttribute = thisTab.urlAttribute;
 	if (urlAttribute) {
 
-		var url = encodeURIComponent(data.pages[pagenum - 1][urlAttribute + '']);
+		var url = encodeURIComponent(cudl.data.pages[cudl.pagenum - 1][urlAttribute + '']);
 		if (url=="undefined") {
 			url="";
 		}
 		cachedURL = "/externalresource?url="
 				+ encodeURIComponent("/transcription?url=" + url) + "&doc="
-				+ docId;
+				+ cudl.docId;
 
 		thisTab.el.dom.children[0].src = cachedURL;
 	}
@@ -136,12 +130,12 @@ function afterTabShown() {
  */
 function setupViewport() {
 
-	view = new docView();
+	cudl.view = new docView();
 
 	// Find the ROOT descriptiveMetadata object.
-	var descriptiveMetadataID = data.logicalStructures[0].descriptiveMetadataID;
-	var descriptiveMetadata = view.findDescriptiveMetadata(
-			descriptiveMetadataID, data);
+	var descriptiveMetadataID = cudl.data.logicalStructures[0].descriptiveMetadataID;
+	var descriptiveMetadata = cudl.view.findDescriptiveMetadata(
+			descriptiveMetadataID, cudl.data);
 
 	// set title
 	// limit length here, as display width is limited.
@@ -150,7 +144,7 @@ function setupViewport() {
 	if (tbTitle.length > titleLimit) {
 		tbTitle = tbTitle.substring(0, titleLimit) + "...";
 	}
-	var docTitle = '<a href="' + collectionURL + '">' + collectionTitle
+	var docTitle = '<a href="' + cudl.collectionURL + '">' + cudl.collectionTitle
 			+ '</a> > <b>' + tbTitle + '</b>';
 
 	// author
@@ -183,13 +177,13 @@ function setupViewport() {
 		width : 275,
 		inputItemWidth : 40,
 		beforePageText : 'Image',
-		store : store,
+		store : cudl.store,
 		margin : '0 0 0 0',
 		border : 0
 	});
 
 	// Setup component behaviour
-	pagingTool.on('change', view.updateCurrentPage);
+	pagingTool.on('change', cudl.view.updateCurrentPage);
 	viewportComponents.pagingToolbar.add(pagingTool);
 	viewportComponents.pagingToolbar
 			.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
@@ -205,7 +199,7 @@ function setupViewport() {
 			viewportComponents.rightTabPanel);
 	setupTab('Contents', 'logical_structure', viewportComponents.rightTabPanel);
 
-	if (data.useTranscriptions) {
+	if (cudl.data.useTranscriptions) {
 
 		setupTab('Transcription (normalised)', 'transcription_normal',
 				viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',

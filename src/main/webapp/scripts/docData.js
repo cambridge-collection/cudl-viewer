@@ -31,7 +31,7 @@ var docData = function() {
 						'transcriptionDiplomaticURL' ],
 				pageSize : 1, // items per page
 				proxy : new Ext.data.HttpProxy({
-					url : JSONURL,
+					url : cudl.JSONURL,
 					method : 'POST',
 					reader : this.jsonreader
 				})
