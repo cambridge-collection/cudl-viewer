@@ -2,7 +2,7 @@
  * Setup the components required by the viewport.
  */
 
-var viewportComponents = {
+cudl.viewportComponents = {
 	
 	pageTitlePanel: new Ext.Toolbar({
 		xtype : 'toolbar',
@@ -106,7 +106,7 @@ var viewportComponents = {
 /**
  * Setup the viewport itself
  */
-MyViewportUi = Ext.extend(Ext.Viewport,
+cudl.MyViewportUi = Ext.extend(Ext.Viewport,
 		{
 			layout : 'border',
 			margin : '0 0 0 0',					
@@ -121,13 +121,13 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					border : 0,
 					padding : 0,
 					width : 100,
-					items : [ viewportComponents.pageTitlePanel,
-					          viewportComponents.pagingToolbar , {
+					items : [ cudl.viewportComponents.pageTitlePanel,
+					          cudl.viewportComponents.pagingToolbar , {
 						el : 'center',
 						height : '90%',
 						border : true
 					} ]
-				}, viewportComponents.rightTabPanel, 
+				}, cudl.viewportComponents.rightTabPanel, 
 				{
 					xtype : 'container',
 					region : 'north',
@@ -145,12 +145,12 @@ MyViewportUi = Ext.extend(Ext.Viewport,
 					} ]
 				} */];
 
-				MyViewportUi.superclass.initComponent.call(this);
+				cudl.MyViewportUi.superclass.initComponent.call(this);
 			}
 		});
 
-MyViewport = Ext.extend(MyViewportUi, {
+cudl.MyViewport = Ext.extend(cudl.MyViewportUi, {
 	initComponent : function() {
-		MyViewport.superclass.initComponent.call(this);
+		cudl.MyViewport.superclass.initComponent.call(this);
 	}
 });

@@ -2,7 +2,7 @@
  * 
  * @returns object containing the JSON data
  */
-var docData = function() {
+cudl.docData = function() {
 	return {
 
 		dataLoaded : false,

@@ -1,30 +1,26 @@
 /**
  * Script to configure the ext viewport and data for the document view.
  */
-var downloadImageLink;
-var isMSIE = /* @cc_on!@ */0;
-var transcriptionNormalisedURL;
-var transcriptionDiplomaticURL;
 
-var downloadImage = function(answer) {
+cudl.downloadImageFunction = function(answer) {
 	if (answer == 'yes') {
-		window.open(downloadImageLink);
+		window.open(cudl.downloadImageLink);
 	} else {
 		return;
 	}
 };
 
-var dloadMessage = {
+cudl.downloadMessage = {
 	title : 'Image Licensing',
 	buttons : Ext.Msg.YESNO,
-	fn : downloadImage
+	fn : cudl.downloadImageFunction
 };
 
-var downloadImageCheck = function() {
-	Ext.Msg.show(dloadMessage);
+cudl.downloadImageCheck = function() {
+	Ext.Msg.show(cudl.downloadMessage);
 };
 
-var bookmarkPage = function(title, url) {
+cudl.bookmarkPage = function(title, url) {
 	Ext.Msg.show({
 		title : 'Bookmark Page',
 		msg : 'The URL to bookmark for direct access to this page is: <br/>'
@@ -37,7 +33,7 @@ var bookmarkPage = function(title, url) {
 
 };
 
-var docView = function() {
+cudl.docView = function() {
 	return {
 
 		pageSet : false,
@@ -127,12 +123,12 @@ var docView = function() {
 						+ cudl.data.pages[cudl.pagenum - 1].displayImageURL);
 
 				// setup image download link
-				downloadImageLink = "/download/image%252Fjpg/document-image"
+				cudl.downloadImageLink = "/download/image%252Fjpg/document-image"
 						+ cudl.pagenum + ".jpg?path="
 						+ cudl.data.pages[cudl.pagenum - 1].downloadImageURL;
 
 				// setup transcription
-				beforeTabShown(viewportComponents.rightTabPanel.activeTab);
+				cudl.beforeTabShown(cudl.viewportComponents.rightTabPanel.activeTab);
 
 				// setup metadata
 				// Find the ROOT descriptiveMetadata object.
@@ -185,7 +181,7 @@ var docView = function() {
 				cudl.view.populateElement(document
 						.getElementById("metadata-funding"),
 						descriptiveMetadata.fundings);
-				dloadMessage.msg = 'This image has the following copyright: <br/><br/>'
+				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
 

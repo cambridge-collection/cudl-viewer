@@ -70,7 +70,7 @@
 						<div class="document-about-page">
 							Current page/folio: <span id="metadata-page"></span> <br /> <br />
 							<b><b><a href=""
-								onclick="downloadImageCheck(); return false;">Download image
+								onclick="cudl.downloadImageCheck(); return false;">Download image
 									for this page</a> </b><br /> <b><a
 								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
 								target="_blank">Request reproduction rights to this image</a> </b>

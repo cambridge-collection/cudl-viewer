@@ -28,7 +28,7 @@
 						
 						<p style="color: #999999">
 							Message:<a style="color: #999999" href="javascript:;"
-								onmousedown="toggleDiv('errordiv');">
+								onmousedown="cudl.toggleDiv('errordiv');">
 								<%out.print(exception.toString());%>
 							</a>
 
@@ -52,7 +52,7 @@
 
 <script language="javascript">
 	// default to hide error if JS enabled. 
-	toggleDiv('errordiv');
+	cudl.toggleDiv('errordiv');
 </script>
 
 <jsp:include page="../footer/footer.jsp" />

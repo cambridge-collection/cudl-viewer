@@ -2,7 +2,7 @@
  * Script to setup the document view page.
  */
 
-function setupSeaDragon() {
+cudl.setupSeaDragon = function () {
 	Seadragon.Config.imagePath = "/img/";
 	Seadragon.Config.debugMode = true;
 	Seadragon.Config.maxZoomPixelRatio = 1;
@@ -58,10 +58,10 @@ function setupSeaDragon() {
 
 };
 
-function loadData() {
+cudl.loadData = function() {
 
 	var setupDone = false;
-	var docDataLoader = new docData();
+	var docDataLoader = new cudl.docData();
 	docDataLoader.init();
 	cudl.store = docDataLoader.store;
 
@@ -75,7 +75,7 @@ function loadData() {
 			// placing it here means the viewport should only be initalised once
 			// the data is loaded.
 
-			setupViewport();
+			cudl.setupViewport();
 			setupDone = true;
 
 		}
@@ -91,7 +91,7 @@ function loadData() {
  * @param tabs
  * @param thisTab
  */
-function beforeTabShown(thisTab) {
+cudl.beforeTabShown = function(thisTab) {
 
 	// mask this tab if required
 	if (thisTab.displayLoadingMask) {
@@ -115,22 +115,22 @@ function beforeTabShown(thisTab) {
 
 }
 
-function afterTabShown() {
+cudl.afterTabShown = function () {
 
 	// Unmask tab if required
-	if (viewportComponents.rightTabPanel.activeTab.el
-			&& viewportComponents.rightTabPanel.activeTab.el.unmask) {
+	if (cudl.viewportComponents.rightTabPanel.activeTab.el
+			&& cudl.viewportComponents.rightTabPanel.activeTab.el.unmask) {
 
-		viewportComponents.rightTabPanel.activeTab.el.unmask();
+		cudl.viewportComponents.rightTabPanel.activeTab.el.unmask();
 	}
 }
 
 /**
  * Should run only once.
  */
-function setupViewport() {
+cudl.setupViewport = function () {
 
-	cudl.view = new docView();
+	cudl.view = new cudl.docView();
 
 	// Find the ROOT descriptiveMetadata object.
 	var descriptiveMetadataID = cudl.data.logicalStructures[0].descriptiveMetadataID;
@@ -168,7 +168,7 @@ function setupViewport() {
 		docTitle += ' &nbsp;by ' + tbAuthor;
 	}
 
-	viewportComponents.pageTitlePanel.items.items[0].text = docTitle;
+	cudl.viewportComponents.pageTitlePanel.items.items[0].text = docTitle;
 
 	// We now have data in the store so we can setup the pageing toolbar.
 	var pagingTool = Ext.create('Ext.toolbar.Paging', {
@@ -184,38 +184,38 @@ function setupViewport() {
 
 	// Setup component behaviour
 	pagingTool.on('change', cudl.view.updateCurrentPage);
-	viewportComponents.pagingToolbar.add(pagingTool);
-	viewportComponents.pagingToolbar
+	cudl.viewportComponents.pagingToolbar.add(pagingTool);
+	cudl.viewportComponents.pagingToolbar
 			.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
-	viewportComponents.pagingToolbar.add('->');
-	viewportComponents.pagingToolbar.add({
+	cudl.viewportComponents.pagingToolbar.add('->');
+	cudl.viewportComponents.pagingToolbar.add({
 		tooltip : 'Download Image',
 		icon : '/img/icon-download-blue.gif',
-		handler : downloadImageCheck
+		handler : cudl.downloadImageCheck
 	});
 
 	// Add tabs
-	var aboutTab = setupTab('About', 'metadata',
-			viewportComponents.rightTabPanel);
-	setupTab('Contents', 'logical_structure', viewportComponents.rightTabPanel);
+	var aboutTab = cudl.setupTab('About', 'metadata',
+			cudl.viewportComponents.rightTabPanel);
+	cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
 
 	if (cudl.data.useTranscriptions) {
 
-		setupTab('Transcription (normalised)', 'transcription_normal',
-				viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
+		cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+				cudl.viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
 				true);
 
-		setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
-				viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
+		cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+				cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
 				true);
 	}
 
-	viewportComponents.rightTabPanel.setActiveTab(0);
+	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 
 	// Initialise viewport.
 	Ext.QuickTips.init();
 
-	var cmp1 = new MyViewport({
+	var cmp1 = new cudl.MyViewport({
 		renderTo : Ext.getBody()
 	});
 
@@ -238,7 +238,7 @@ function setupViewport() {
  *            boolean, only works with urlAttribute (when it's an external
  *            resource tab)
  */
-function setupTab(title, element, parent, urlAttribute, displayLoadingMask) {
+cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMask) {
 
 	if (!document.getElementById(element)) {
 		var div = document.createElement("div");
@@ -262,7 +262,7 @@ function setupTab(title, element, parent, urlAttribute, displayLoadingMask) {
 		// Add iframe for content. Src will be set when content is loaded.
 		var iframe = document.createElement("iframe");
 		iframe.setAttribute('id', element + '_frame');
-		iframe.setAttribute('onload', 'afterTabShown()');
+		iframe.setAttribute('onload', 'cudl.afterTabShown()');
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
 		iframe.setAttribute('src', '/transcription?url='); // needed for HTML
@@ -273,7 +273,7 @@ function setupTab(title, element, parent, urlAttribute, displayLoadingMask) {
 
 		tab.urlAttribute = urlAttribute;
 		tab.displayLoadingMask = displayLoadingMask;
-		tab.addListener('beforeshow', beforeTabShown);
+		tab.addListener('beforeshow', cudl.beforeTabShown);
 
 	}
 
@@ -284,7 +284,7 @@ function setupTab(title, element, parent, urlAttribute, displayLoadingMask) {
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {
 
-	loadData();
-	setupSeaDragon();
+	cudl.loadData();
+	cudl.setupSeaDragon();
 
 });
