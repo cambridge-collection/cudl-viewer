@@ -65,7 +65,6 @@ h3,h2,h1,h4 {
 	height: 100%;
 }
 
-
 /* overwrite the university style for the bottom margin as
  this is conflicting with the Ext Style, esp in ie */
 table {
@@ -101,9 +100,20 @@ table {
 	float: left;
 }
 
+.document-about-box {
+	background-color: #ffffff;
+	padding: 10px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 3px 3px 5px 6px #eeeeee;
+	-webkit-box-shadow: 3px 3px 5px 6px #eeeeee;
+	box-shadow: 3px 3px 5px 6px #eeeeee;
+}
+
 .document-about-title {
 	color: #333333;
 	line-height: 30px;
+	text-shadow: 0.1em 0.1em 0.2em #eeeeee;
 	font-family: Georgia, 'Times New Roman', serif;
 	font-weight: normal;
 	font-size: 30px;
@@ -131,11 +141,11 @@ table {
 	margin-right: 0px;
 	margin-top: 30px;
 	margin-left: auto;
-	text-align:left;
+	text-align: left;
 }
 
 .document-about-page a {
-	color:#333;
+	color: #333;
 }
 
 #metadata-about {
@@ -199,14 +209,13 @@ table {
 	font-weight: bold;
 }
 
-
 .document-about a {
 	color: #5E2605;
 }
 
 #logical_structure  a {
 	color: #5E2605;
-}	
+}
 
 .document-about a.externalLink {
 	color: #333;
@@ -216,7 +225,7 @@ table {
 	color: #333;
 }
 
-.document-about .document-about-page a{
+.document-about .document-about-page a {
 	color: #333;
 }
 /*

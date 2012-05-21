@@ -53,9 +53,6 @@ cudl.setupSeaDragon = function () {
 
 	cudl.viewer.addControl(navBar.elmt, Seadragon.ControlAnchor.BOTTOM_LEFT);
 
-	// FIXME remove the maximize button as it's causing problems
-	// viewer.getNavControl().removeChild(viewer.getNavControl().childNodes[3]);
-
 };
 
 cudl.loadData = function() {
@@ -139,7 +136,7 @@ cudl.setupViewport = function () {
 
 	// set title
 	// limit length here, as display width is limited.
-	var tbTitle = descriptiveMetadata.title;
+	var tbTitle = cudl.itemTitle;
 	var titleLimit = 35;
 	if (tbTitle.length > titleLimit) {
 		tbTitle = tbTitle.substring(0, titleLimit) + "...";
@@ -147,17 +144,9 @@ cudl.setupViewport = function () {
 	var docTitle = '<a href="' + cudl.collectionURL + '">' + cudl.collectionTitle
 			+ '</a> > <b>' + tbTitle + '</b>';
 
-	// author
-	var tbAuthor = new Array();
-	if (descriptiveMetadata.names) {
-		for ( var i = 0; i < descriptiveMetadata.names.length; i++) {
-			var name = descriptiveMetadata.names[i];
-			if (name && name.role == "aut") {
-				tbAuthor.push(name.displayForm);
-			}
-		}
-	}
 
+	tbAuthor = cudl.itemAuthors;
+	
 	// limit length here, as display width is limited.
 	if (tbAuthor.length > 0) {
 		var authorLimit = 20;
@@ -186,7 +175,7 @@ cudl.setupViewport = function () {
 	pagingTool.on('change', cudl.view.updateCurrentPage);
 	cudl.viewportComponents.pagingToolbar.add(pagingTool);
 	cudl.viewportComponents.pagingToolbar
-			.add('Page: <span id="metadata-page-toolbar">&nbsp;</span>');
+			.add('Page: <span id="metadata-pagenum-toolbar">&nbsp;</span>');
 	cudl.viewportComponents.pagingToolbar.add('->');
 	cudl.viewportComponents.pagingToolbar.add({
 		tooltip : 'Download Image',
@@ -281,10 +270,15 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 	return tab;
 }
 
+var store;
+
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {
 
 	cudl.loadData();
 	cudl.setupSeaDragon();
+	
+	// required for abstract
+	store = cudl.store; 
 
 });

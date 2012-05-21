@@ -5,8 +5,7 @@
 /* Avoid extra spaces in ie */
 
 #tree li {
-	float:left;
-	display:inline;
+
 }
 
 #tree, #tree ul, #tree li span{
@@ -27,8 +26,8 @@
 	position:relative;
 	width:100%;
 }
-#tree li {padding-left:3px;margin-right:3px}
-#tree li span{float:left;position:absolute;top:5px;left:-13px;width:13px;height:13px;cursor:auto;font-size:0;}
+#tree li {padding-left:20px;margin-right:10px}
+#tree li span{float:left;position:absolute;top:5px;left:0px;width:13px;height:13px;cursor:auto;font-size:0;}
 #tree li span, #tree li span.collapsed{background:url(/img/collapsed.gif) no-repeat 0 0;} 
 #tree li span.expanded{background:url(/img/expanded.gif) no-repeat 0 0;}
 

@@ -59,7 +59,7 @@ public class ItemFactory {
 
 			String itemId = itemIds[i];
 			String itemTitle = "";
-			List<Person> itemPeople = new ArrayList<Person>();
+			List<Person> itemAuthors = new ArrayList<Person>();
 			String itemShelfLocator = "";
 			String itemAbstract = "";
 			String itemThumbnailURL = "";
@@ -73,41 +73,42 @@ public class ItemFactory {
 				itemJson = reader.readJsonFromUrl(Properties
 						.getString("jsonURL") + itemId + ".json");
 
+				// Pull out the information we want in our Item object
 				JSONObject descriptiveMetadata = itemJson.getJSONArray(
 						"descriptiveMetadata").getJSONObject(0);
 
 				// Should always have title
-				itemTitle = descriptiveMetadata.getString("title");
+				itemTitle = descriptiveMetadata.getJSONObject("title").getString("displayForm");
 
-				// Might have people, might not.
-				if (descriptiveMetadata.has("names")) {
-					itemPeople = getPeopleFromJSON(descriptiveMetadata
-							.getJSONArray("names"));
+				// Might have authors, might not.
+				if (descriptiveMetadata.has("authors")) {
+					itemAuthors = getPeopleFromJSON(descriptiveMetadata
+							.getJSONObject("authors").getJSONArray("value"), "author");
 				}
 
 				// Might have shelf locator, might not.
 				if (descriptiveMetadata.has("shelfLocator")) {
 					itemShelfLocator = descriptiveMetadata
-							.getString("shelfLocator");
+							.getJSONObject("shelfLocator").getString("displayForm");
 				}
 
 				// Might have abstract, might not.
-				if (descriptiveMetadata.has("shelfLocator")) {
-					itemAbstract = descriptiveMetadata.getString("abstract");
+				if (descriptiveMetadata.has("abstract")) {
+					itemAbstract = descriptiveMetadata.getJSONObject("abstract").getString("displayForm");
 				}
 
 				// Might have Thumbnail image
 				if (descriptiveMetadata.has("thumbnailUrl")
 						&& descriptiveMetadata.has("thumbnailOrientation")) {
 					itemThumbnailURL = descriptiveMetadata
-							.getString("thumbnailUrl");
+							.getJSONObject("thumbnailUrl").getString("value");
 					if (Properties.getString("useProxy").equals("true")) {
 						itemThumbnailURL = Properties.getString("proxyURL")
-								+ descriptiveMetadata.getString("thumbnailUrl");
+								+ itemThumbnailURL;
 					}
 
 					thumbnailOrientation = descriptiveMetadata
-							.getString("thumbnailOrientation");
+							.getJSONObject("thumbnailOrientation").getString("value");
 				}
 
 			} catch (IOException e) {
@@ -116,7 +117,7 @@ public class ItemFactory {
 				e.printStackTrace();
 			}
 
-			Item item = new Item(itemId, itemTitle, itemPeople,
+			Item item = new Item(itemId, itemTitle, itemAuthors,
 					itemShelfLocator, itemAbstract, itemThumbnailURL,
 					thumbnailOrientation, itemJson);
 
@@ -193,30 +194,31 @@ public class ItemFactory {
 	 * @param names
 	 * @return
 	 */
-	private List<Person> getPeopleFromJSON(JSONArray names) {
+	private List<Person> getPeopleFromJSON(JSONArray json, String role) {
 
 		ArrayList<Person> people = new ArrayList<Person>();
 
-		if (names == null) {
+		if (json == null) {
 			return people;
 		}
 
 		try {
-			for (int i = 0; i < names.length(); i++) {
-				JSONObject personJSON = names.getJSONObject(i);
-				String fullForm = personJSON.getString("fullForm");
-				String displayForm = personJSON.getString("displayForm");
+			for (int i = 0; i < json.length(); i++) {
+				JSONObject personJSON = json.getJSONObject(i);
+				String authForm = personJSON.getString("authForm");
+				String shortForm = personJSON.getString("shortForm");
 				String authority = personJSON.getString("authority");
 				String authorityURI = personJSON.getString("authorityURI");
 				String valueURI = personJSON.getString("valueURI");
 				String type = personJSON.getString("type");
-				String role = personJSON.getString("role");
-				Person person = new Person(fullForm, displayForm, authority,
+				Person person = new Person(authForm, shortForm, authority,
 						authorityURI, valueURI, type, role);
 				people.add(person);
 			}
 
 		} catch (JSONException e) {
+
+			System.err.println("Error processing: "+json);			
 			e.printStackTrace();
 		}
 

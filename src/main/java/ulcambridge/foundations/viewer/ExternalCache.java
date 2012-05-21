@@ -176,6 +176,8 @@ public class ExternalCache {
 			Tidy tidy = new Tidy();
 			tidy.setQuiet(true);
 			tidy.setShowWarnings(false);
+			tidy.setXHTML(true);
+			
 			Document tidyDOM = tidy.parseDOM(uc.getInputStream(), null);
 
 			tidyDOM = cacheLinkedResourceAndUpdateRef("img", "src", tidyDOM,

@@ -35,29 +35,21 @@ public class ItemTest extends TestCase {
 	 * Tests the Item object
 	 */
 	public void testItem() {
-		Person p1 = new Person("Test Person 1, 2012", "Test Person 1",
-				"test authority ID", "test authority", "test value uri",
-				"test type", "test role");
-		Person p2 = new Person("Test Person 2, 2012", "Test Person 2",
-				"test authority ID", "test authority", "test value uri",
-				"test type", "test role");
 		Person aut = new Person("Test Person, 2012", "Test Person",
 				"test authority ID", "test authority", "test value uri",
 				"test type", "aut");
 
-		ArrayList<Person> people = new ArrayList<Person>();
-		people.add(p1);
-		people.add(p2);
-		people.add(aut);
+		ArrayList<Person> authors = new ArrayList<Person>();
+		authors.add(aut);
 
-		Item item = new Item("Test-ID", "Test Title", people,
+		Item item = new Item("Test-ID", "Test Title", authors,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
 				"test thumbnail orientation", new JSONObject());
 
 		Item item2 = new Item(
 				"Test-ID2",
 				"Test Title",
-				people,
+				authors,
 				"test shelfLocator",
 				"test abstract this is a longer abstract that will need to be shortened for display. <div class='videoCaption' > this is a video caption </div> this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display.",
 				"test thumbnail URL", "test thumbnail orientation", new JSONObject());
@@ -69,8 +61,7 @@ public class ItemTest extends TestCase {
 		assertEquals(item2.getAbstract().indexOf("this is a video caption")!=-1, true);
 		assertEquals(item2.getAbstractShort().indexOf("this is a video caption")!=-1, false);
 		
-		assertEquals(item.getAuthors().size(), 1); // one author (role = "aut")
-		assertEquals(item.getPeople().size(), 3);
+		assertEquals(item.getAuthors().size(), 1); 
 		assertEquals(item.getShelfLocator(), "test shelfLocator");
 		assertEquals(item.getThumbnailOrientation(),
 				"test thumbnail orientation");

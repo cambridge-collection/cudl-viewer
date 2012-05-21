@@ -8,19 +8,19 @@ package ulcambridge.foundations.viewer.model;
  */
 public class Person implements Comparable<Person> {
 
-	private String fullForm;
-	private String displayForm;
+	private String authForm;
+	private String shortForm;
 	private String authority;
 	private String authorityURI;
 	private String valueURI;
 	private String type;
 	private String role;
 
-	public Person(String fullForm, String displayForm, String authorityURI,
+	public Person(String authForm, String shortForm, String authorityURI,
 			String authority, String valueURI, String type, String role) {
 
-		this.fullForm = fullForm;
-		this.displayForm = displayForm;
+		this.authForm = authForm;
+		this.shortForm = shortForm;
 		this.authority = authority;
 		this.authorityURI = authorityURI;
 		this.valueURI = valueURI;
@@ -30,11 +30,11 @@ public class Person implements Comparable<Person> {
 	}
 
 	public String getFullForm() {
-		return fullForm;
+		return authForm;
 	}
 
 	public String getDisplayForm() {
-		return displayForm;
+		return shortForm;
 	}
 	
 	public String getAuthority() {
@@ -59,7 +59,7 @@ public class Person implements Comparable<Person> {
 	
 	@Override
 	public String toString() {
-		return displayForm;
+		return shortForm;
 	}
 
 	@Override

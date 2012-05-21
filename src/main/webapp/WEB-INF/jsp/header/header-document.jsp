@@ -15,17 +15,16 @@
 		content="0; URL=/nojavascript?url=<%=encodedRequestURL%>" />
 </NOSCRIPT>
 
-<title>Cambridge Digital Library - University of Cambridge</title>
-
 <jsp:include page="includes.jsp" />
 
 <link rel="stylesheet" type="text/css"
 	href="/scripts/extjs/resources/css/ext-partial-gray.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
+<link href="/styles/treestyler.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script type="text/javascript">
-    var cudl = {};
+
 	cudl.JSONURL = '${jsonURL}';
 	cudl.pagenum = ${page};
 	cudl.docId = '${docId}';
@@ -33,8 +32,12 @@
 	cudl.proxyURL = '${proxyURL}';
 	
 	// Read in Attributes
-	cudl.collectionURL = '${collectionURL}';
-	cudl.collectionTitle = '${collectionTitle}';
+	cudl.collectionURL = "${collectionURL}";
+	cudl.collectionTitle = "${collectionTitle}";	
+	cudl.itemTitle = "${itemTitle}";
+	cudl.itemAuthors = ${itemAuthors};
+	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}
+	cudl.itemAbstract = "${itemAbstract}";
 
 </script>
 
@@ -44,6 +47,8 @@
 <script type="text/javascript" src="/scripts/docView.js"></script>
 <script type="text/javascript" src="/scripts/seadragon-min.js"></script>
 <script type="text/javascript" src="/scripts/document.js"></script>
+
+<title>${itemTitle}</title>
 
 </head>
 <body>

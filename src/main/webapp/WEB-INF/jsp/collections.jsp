@@ -1,10 +1,16 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.ItemFactory"%>
+	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.ItemFactory, java.util.List"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
 	<jsp:param name="displaySearch" value="true" />
 </jsp:include>
+
+<% 
+
+List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
+
+%>
 
 <script type="text/javascript">
 	/*	function pageinit() {
@@ -93,72 +99,32 @@
 
 <div class="grid_6 box">
 	<h4>Featured Items</h4>
-	<div class="featuredItem grid_6">
+		<div class="featuredItem grid_6">
 
-		<!--  3975  -->
-		<div class="featuredItem-text">
-			<h5>
-				<a href="/view/MS-ADD-03975/">Newton's Laboratory Notebook</a>
-			</h5>
-		</div>
-	<%
-		Item feat1 = ItemFactory
-				.getItemFromId("MS-ADD-03975");
-	%>		
-		<div style="float:left;"><div class="collections_carousel_image_box">
-		<div class="collections_carousel_image">
-			<a href="/view/MS-ADD-03975/"><img
-				alt="MS-ADD-03975"
-				src="<%=feat1.getThumbnailURL()%>" style="height:100%"/> </a>
-		</div></div></div>
-	</div>
-	<%
-		Item feat2 = ItemFactory
-				.getItemFromId("PR-INC-00000-A-00007-00002-00888");
-	%>
-	<div class="featuredItem grid_6">
-	&nbsp;
-	</div>
-	<div class="featuredItem grid_6">
-		<!--  PR-INC-00000-A-00007-00002-00888 -->
-		<div class="featuredItem-text">
-			<h5>
-				<a href="/view/PR-INC-00000-A-00007-00002-00888/">Nuremberg
-					Chronicle </a>
-			</h5>
-		</div>
-		<div style="float:left;"><div class="collections_carousel_image_box">
-		<div class="collections_carousel_image">
-			<a href="/view/PR-INC-00000-A-00007-00002-00888/"><img
-				alt="PR-INC-00000-A-00007-00002-00888"
-				src="<%=feat2.getThumbnailURL()%>" style="height:100%"/> </a>
-		</div></div></div>
-	</div>
-	<%
-		Item feat3 = ItemFactory
-				.getItemFromId("MS-NN-00002-00041");
-	%>
-	<div class="featuredItem grid_6">
-	&nbsp;
-	</div>
-	<div class="featuredItem grid_6">
-		<!--  MS-NN-00002-00041 -->
-		<div class="featuredItem-text">
-			<h5>
-				<a href="/view/MS-NN-00002-00041/">Codex Bezae</a>
-			</h5>
-		</div>
-		<div style="float:left;"><div class="collections_carousel_image_box">
-		<div class="collections_carousel_image">
-			<a href="/view/MS-NN-00002-00041/"><img
-				alt="MS-NN-00002-00041"
-				src="<%=feat3.getThumbnailURL()%>" style="height:100%"/> </a>
-		</div></div></div>
-	</div>	
-	<div class="featuredItem grid_6">
-	&nbsp;
-	</div>	
+			<% 
+for (int i=0; i<featuredItems.size(); i++) { 
+	Item item = featuredItems.get(i);
+%>
+			<div class="featuredItem-text">
+				<h5>
+					<a href="/view/<%=item.getId() %>"><%=item.getTitle() %></a>
+				</h5>
+			</div>
 
+			<div style="float: left;">
+				<div class="collections_carousel_image_box">
+					<div class="collections_carousel_image">
+						<a href="/view/<%=item.getId() %>/"><img
+							alt="<%=item.getId() %>" src="<%=item.getThumbnailURL()%>"
+							style="height: 100%" /> </a>
+					</div>
+				</div>
+			</div>
+
+		<% 
+} 
+%>
+</div>
 </div>
 </section>
 

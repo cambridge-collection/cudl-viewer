@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a collection.
@@ -26,8 +30,15 @@ public class CollectionViewController {
 	// on path /collections/
 	@RequestMapping(value = "/")
 	public ModelAndView handleViewRequest(HttpServletResponse response) throws Exception {
-
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/collections");
+		ArrayList<Item> featuredItems = new ArrayList<Item> (); 
+		String[] itemIds = Properties.getString("collection.featuredItems").split("\\s*,\\s*");
+		for (int i=0; i<itemIds.length; i++) {
+		  String itemId = itemIds[i];
+		  featuredItems.add(ItemFactory.getItemFromId(itemId));
+		}
+		modelAndView.addObject("featuredItems", featuredItems);
 		return modelAndView;
 	}
 

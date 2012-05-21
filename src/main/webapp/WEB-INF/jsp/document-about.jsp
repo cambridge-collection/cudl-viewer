@@ -1,89 +1,76 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="metadata" class="document-about">
-	<div style="height: 100%; overflow-y: auto;overflow-x: hidden;">
+<div id="metadata" class="document-about box">
+	<div style="height: 100%; overflow-y: auto; overflow-x: hidden;">
 
 		<!-- AddThis Button BEGIN -->
-		<div class="addthis">
+		<!-- <div class="addthis">
 			<div class="addthis_toolbox addthis_default_style ">
 				<a class="addthis_button_email"></a><a
 					class="addthis_button_facebook"></a> <a
 					class="addthis_button_twitter"></a> <a
-					class="addthis_button_compact"></a>
-					<a
-				class="addthis_counter addthis_bubble_style"></a>
+					class="addthis_button_compact"></a> <a
+					class="addthis_counter addthis_bubble_style"></a>
 			</div>
 			<script type="text/javascript"
 				src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4ec62d915a6efb9f"></script>
-		</div>
+		</div> -->
 		<!-- AddThis Button END -->
 
 		<div id="metadata-about">
 
 			<!-- Title -->
-			<br /> <span class="document-about-title" id="metadata-title"></span>
-			<span id="metadata-author"></span> <br />
-			<div class="document-spacer"></div>
-			&nbsp;Part of the <a class="cudlLink" href="${collectionURL}">${collectionTitle}</a>
-			Collection.
+			<div class="document-about-box">
+				<span class="document-about-title" id="metadata-title"></span><br />
+				<span id="metadata-author"></span> <br />
+				<div class="document-spacer"></div>
+				Part of the <a class="cudlLink" href="${collectionURL}">${collectionTitle}</a>
+				Collection.
+		
+				<br/><br/>
+			    <!-- Abstract -->
+				<div id="metadata-abstract"></div>
+			</div>
 
+			<br />
 
-			<!-- Metadata -->
-			<br /> <br />
+			<!--  Metadata -->
+			<div class="document-about-box">
 
-			<div id="metadata-abstract"></div>
-			<!-- 
-			<div class="grid_10" id="document-about-radio">
-				<div class="grid_1" id="document-about-radio-icon-div">
-					<a href="http://www.bbc.co.uk/radio4/" target="_blank"><img id="document-about-radio-icon" src="/images/general/BBCNewton86x48.jpg"
-					alt="Radio icon" title="Radio icon"></a>
-				</div>
-				<div class="grid_7" id="document-about-radio-link">
-					Featured in BBC Radio 4's <br/>'<a target="_blank" href="http://www.bbc.co.uk/radio4/">The
-					Written World</a>'.
+				<ul id="tree">
+					<li>Book Information [${itemTitle}]
+						<ul>
+							<div id="metadata-book"></div>
+						</ul>
+					</li>
+					<li>Chapter Information [<em id="metadata-chapter-title"></em>]
+						<ul>
+							<div id="metadata-chapter"></div>
+						</ul></li>
+					<li>Page Information [<em id="metadata-pagenum"></em>]
+						<ul>
+							<div id="metadata-page"></div>
+						</ul></li>
+				</ul>
+
+			</div>
+
+			<br />
+
+			<!--  What can I do? -->
+			<div class="document-about-box">
+			<b>What can I do?</b>
+				<div class="document-about-page">
+					<a href="" onclick="cudl.downloadImageCheck(); return false;">Download
+							image for this page <img src="/img/icon-download-blue.gif" style="float:left; padding-right:3px"/></a> 
+<br /> <a
+						href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
+						target="_blank">Request reproduction rights to this image</a> 
+
 				</div>
 			</div>
- -->
-			<div style="width: 100%; height: 240px">
-				<!--  About the document -->
-				<div class="rbroundbox">
-					<div class="rbtop">
-						<div></div>
-					</div>
-					<div class="rbcontent">
-						<div class="document-about-doc">
-						    <span id="metadata-basic"></span>
-							<span id="metadata-optional"></span>
-						</div>
-					</div>
-					<div class="rbbot">
-						<div></div>
-					</div>
-				</div>
 
-				<!--  About the page -->
-				<div class="rbroundbox">
-					<div class="rbtop">
-						<div></div>
-					</div>
-					<div class="rbcontent">
-						<!--  about the page -->
-						<div class="document-about-page">
-							Current page/folio: <span id="metadata-page"></span> <br /> <br />
-							<b><b><a href=""
-								onclick="cudl.downloadImageCheck(); return false;">Download image
-									for this page</a> </b><br /> <b><a
-								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
-								target="_blank">Request reproduction rights to this image</a> </b>
-
-						</div>
-					</div>
-					<div class="rbbot">
-						<div></div>
-					</div>
-				</div>
-			</div>
-            <br /> <span id="metadata-funding"></span> <br />
-			<br /> <span id="metadata-display-rights"></span> <br />
+			<br /> <span id="metadata-funding"></span> <br /> <br /> <span
+				id="metadata-display-rights"></span> <br />
 		</div>
 	</div>
 </div>

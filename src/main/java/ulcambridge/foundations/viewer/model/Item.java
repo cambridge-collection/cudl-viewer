@@ -19,7 +19,6 @@ public class Item implements Comparable<Item> {
 	private int order;
 	private String id;
 	private String title;
-	private List<Person> people;
 	private List<Person> authors;
 	private String shelfLocator;
 	private String abstractText;
@@ -28,22 +27,24 @@ public class Item implements Comparable<Item> {
 	private String abstractShort;
 	private JSONObject json;
 
-	public Item(String itemId, String itemTitle, List<Person> itemPeople, String itemShelfLocator,
+	public Item(String itemId, String itemTitle, List<Person> authors, String itemShelfLocator,
 			String itemAbstract, String itemThumbnailURL,
 			String thumbnailOrientation, JSONObject itemJson) {
 
 		this.id = itemId;
 		this.json = itemJson;
 		this.title = itemTitle;
-		this.people = itemPeople;
-		this.authors = getPeopleByRole(itemPeople, "aut");
 		this.shelfLocator = itemShelfLocator;
 		this.abstractText = itemAbstract;
 		this.thumbnailURL = itemThumbnailURL;
 		this.thumbnailOrientation = thumbnailOrientation;
 
+		// Setup people
+		this.authors = authors;
+		
+		// Make short abstract
 		String abstractShort = abstractText;
-
+		
 		// remove video captions
 		String[] captionParts = abstractShort
 				.split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
@@ -75,6 +76,22 @@ public class Item implements Comparable<Item> {
 
 	}
 
+	public List<String> getAuthorNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		for (int i=0; i<authors.size(); i++) {
+			names.add(authors.get(i).getDisplayForm());
+		}
+		return names;
+	}
+	
+	public List<String> getAuthorNamesFullForm() {
+		ArrayList<String> names = new ArrayList<String>();
+		for (int i=0; i<authors.size(); i++) {
+			names.add(authors.get(i).getFullForm());
+		}
+		return names;		
+	}	
+	
 	public int getOrder() {
 		return order;
 	}
@@ -85,10 +102,6 @@ public class Item implements Comparable<Item> {
 
 	public String getTitle() {
 		return title;
-	}
-
-	public List<Person> getPeople() {
-		return people;
 	}
 
 	public List<Person> getAuthors() {

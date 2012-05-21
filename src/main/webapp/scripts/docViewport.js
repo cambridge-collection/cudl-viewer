@@ -40,6 +40,7 @@ cudl.viewportComponents = {
 		region : 'east',
 		split : true, // enable resizing
 		width : '50%',
+		maxWidth: 550,
 		title : 'More about this item',
 		collapsed : false,
 		collapsible : true,

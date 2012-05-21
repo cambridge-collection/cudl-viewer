@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -97,8 +98,7 @@ public class DocumentViewController {
 		}
 
 		Collection docCollection = null;
-		Iterator<Collection> collectionIterator = CollectionFactory
-				.getCollections().iterator();
+		Iterator<Collection> collectionIterator = CollectionFactory.getCollections().iterator();
 		while (collectionIterator.hasNext()) {
 			Collection collection = collectionIterator.next();
 			if (collection.getItemIds().contains(docId)) {
@@ -129,7 +129,15 @@ public class DocumentViewController {
 			modelAndView.addObject("collectionURL", docCollection.getURL());
 			modelAndView.addObject("collectionTitle", docCollection.getTitle());
 		}
-
+		
+		Item item = ItemFactory.getItemFromId(docId);
+		modelAndView.addObject("itemTitle", item.getTitle());
+		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
+		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
+		modelAndView.addObject("itemAbstract", item.getAbstract());
+		
+		//test
+		modelAndView.addObject("item", new JSONObject(item));
 		return modelAndView;
 	}
 

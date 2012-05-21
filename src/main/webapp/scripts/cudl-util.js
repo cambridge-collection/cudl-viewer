@@ -1,3 +1,5 @@
+var cudl = {};
+
 cudl.toggleDiv = function (divid) {
 	if (document.getElementById(divid).style.display == 'none') {
 		document.getElementById(divid).style.display = 'block';
@@ -14,9 +16,11 @@ this.treestyler = function(){
 		this.listItem = function(li){
 			if(li.getElementsByTagName("ul").length > 0){
 				var ul = li.getElementsByTagName("ul")[0];
-				ul.style.display = "none";
+				if (!ul.style.display) {
+					ul.style.display = "none";
+				}
 				var span = document.createElement("span");
-				span.className = "collapsed";
+				span.className = (ul.style.display == "none") ? "collapsed" : "expanded";
 				span.onclick = function(){
 					ul.style.display = (ul.style.display == "none") ? "block" : "none";
 					this.className = (ul.style.display == "none") ? "collapsed" : "expanded";
