@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="/scripts/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
 	
-<script src="/scripts/cudl-util.js"	type="text/javascript"></script>
+<script src="/scripts/cudl.js"	type="text/javascript"></script>
 
 <link rel="stylesheet" href="/styles/uoc.min.css">
 <!--[if lt IE 9]>

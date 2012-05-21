@@ -58,7 +58,7 @@
 
 			<!--  What can I do? -->
 			<div class="document-about-box">
-			<b>What can I do?</b>
+			<b>What can I do with this image?</b><br/><br/>
 				<div class="document-about-page">
 					<a href="" onclick="cudl.downloadImageCheck(); return false;">Download
 							image for this page <img src="/img/icon-download-blue.gif" style="float:left; padding-right:3px"/></a> 

@@ -42,11 +42,11 @@
 </script>
 
 <script type="text/javascript" src="/scripts/extjs/ext-all.js"></script>
-<script type="text/javascript" src="/scripts/docData.js"></script>
-<script type="text/javascript" src="/scripts/docViewport.js"></script>
-<script type="text/javascript" src="/scripts/docView.js"></script>
+<script type="text/javascript" src="/scripts/cudl-docData.js"></script>
+<script type="text/javascript" src="/scripts/cudl-docViewport.js"></script>
+<script type="text/javascript" src="/scripts/cudl-docView.js"></script>
 <script type="text/javascript" src="/scripts/seadragon-min.js"></script>
-<script type="text/javascript" src="/scripts/document.js"></script>
+<script type="text/javascript" src="/scripts/cudl-document.js"></script>
 
 <title>${itemTitle}</title>
 
