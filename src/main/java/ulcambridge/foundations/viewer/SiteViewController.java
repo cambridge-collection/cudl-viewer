@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer;
 
+import java.util.ArrayList;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
@@ -26,6 +29,14 @@ public class SiteViewController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/index");
+		ArrayList<Item> featuredItems = new ArrayList<Item> (); 
+		String[] itemIds = Properties.getString("collection.featuredItems").split("\\s*,\\s*");
+		for (int i=0; i<itemIds.length; i++) {
+		  String itemId = itemIds[i];
+		  featuredItems.add(ItemFactory.getItemFromId(itemId));
+		}
+		modelAndView.addObject("featuredItems", featuredItems);
+
 		return modelAndView;
 	}
 

@@ -32,6 +32,11 @@ body {
 	background-color: #FFFFFF;
 }
 
+#index_carousel_parent {
+	height:400px;
+	
+}
+
 ol#index_carousel li {
 	position: relative;
 	float: left;
@@ -150,7 +155,7 @@ ol#index_carousel li {
 	background: #eeeeee;
 	color: #000000;
 	margin-bottom: 15px;
-	padding: 4px;
+	padding: 25px;
 }
 
 .news img {
@@ -161,15 +166,17 @@ ol#index_carousel li {
 .featured-item-list {
 	background: #eeeeee;
 	color: #000000;
-	margin-bottom: 5px;
+	margin-bottom: 2px;
 	height: 62px;
-	padding: 14px;
+	width: 240px;
+	padding: 0px;
 }
 
 .featured-item-list img {
 	float: left;
 	width: 240px;
 	height: 62px;
+	margin-bottom: 2px;
 }
 
 .featured-item-list h4,.featured-item-list h4 a {
@@ -465,6 +472,39 @@ ol#vcollections_carousel li {
 }
 
 #navPrimary input {
+    margin-right: 2px;
+}
+
+/* search on other page */
+.search #search {
+    background: none repeat scroll 0 0 white;
+    color: #666666;
+    font-family: Georgia,'Times New Roman',serif;
+    font-size: 13px;
+    font-style: italic;
+    padding: 5px 5px;
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    width: 230px;
+    z-index: 2;
+}
+
+.search #submit {
+    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    right: 10px;
+    text-indent: -9999px;
+    top: 9px;
+    width: 16px;
+    z-index: 3;
+}
+
+.search input {
     margin-right: 2px;
 }
 

@@ -28,7 +28,7 @@ List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-<h3 style="margin-left: 8px;">Our Collections</h3>
+<h3 style="margin-left: 8px;">Browse Collections</h3>
 
 <div class="grid_13">
 
@@ -91,6 +91,70 @@ List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
 		University Library is the world's largest and most important single
 		collection of medieval Jewish manuscripts.<br /> <br /> <a
 			href="/collections/genizah">View collection</a>. <br />
+		<div class="foundations-link-faith">
+			<a href="/about#foundations">Foundations of Faith</a>
+		</div>
+	</div>
+	<br/><hr/>	
+	<div class="collection collection-faith">
+
+		<a href="/collections/christian"> <img class="collectionImage"
+			src="/images/collectionsView/collection-christian.jpg" alt="Christian"
+			width="150" height="150" /> </a>
+
+		<h5>Christian Manuscripts</h5>
+		<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+		University Library is the world's largest and most important single
+		collection of medieval Jewish manuscripts.<br /> <br /> <a
+			href="/collections/christian">View collection</a>. <br />
+		<div class="foundations-link-faith">
+			<a href="/about#foundations">Foundations of Faith</a>
+		</div>
+	</div>
+	<br/><hr/>	
+	<div class="collection collection-faith">
+
+		<a href="/collections/hebrew"> <img class="collectionImage"
+			src="/images/collectionsView/collection-hebrew.jpg" alt="Hebrew"
+			width="150" height="150" /> </a>
+
+		<h5>Hebrew Collection</h5>
+		<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+		University Library is the world's largest and most important single
+		collection of medieval Jewish manuscripts.<br /> <br /> <a
+			href="/collections/hebrew">View collection</a>. <br />
+		<div class="foundations-link-faith">
+			<a href="/about#foundations">Foundations of Faith</a>
+		</div>
+	</div>
+	<br/><hr/>	
+	<div class="collection collection-faith">
+
+		<a href="/collections/sanskrit"> <img class="collectionImage"
+			src="/images/collectionsView/collection-sanskrit.jpg" alt="Sanskrit"
+			width="150" height="150" /> </a>
+
+		<h5>Sanskrit Manuscripts</h5>
+		<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+		University Library is the world's largest and most important single
+		collection of medieval Jewish manuscripts.<br /> <br /> <a
+			href="/collections/sanskrit">View collection</a>. <br />
+		<div class="foundations-link-faith">
+			<a href="/about#foundations">Foundations of Faith</a>
+		</div>
+	</div>
+	<br/><hr/>	
+	<div class="collection collection-faith">
+
+		<a href="/collections/spanishpamphlets"> <img class="collectionImage"
+			src="/images/collectionsView/collection-spanishpamphlets.jpg" alt="Spanish Pamphlets"
+			width="150" height="150" /> </a>
+
+		<h5>Spanish Pamphlets</h5>
+		<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+		University Library is the world's largest and most important single
+		collection of medieval Jewish manuscripts.<br /> <br /> <a
+			href="/collections/spanishpamphlets">View collection</a>. <br />
 		<div class="foundations-link-faith">
 			<a href="/about#foundations">Foundations of Faith</a>
 		</div>

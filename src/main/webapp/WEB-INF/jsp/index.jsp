@@ -1,17 +1,23 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.ItemFactory,java.util.List"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
-	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="displaySearch" value="false" />
 </jsp:include>
+
+<%
+	List<Item> featuredItems = (List<Item>) request
+			.getAttribute("featuredItems");
+%>
 
 <script type="text/javascript">
 	var index_carousel;
 
 	function init() {
 		// display image carousel
-		document.getElementById("index_carousel_parent").style.display="block";	
-		
+		document.getElementById("index_carousel_parent").style.display = "block";
+
 		index_carousel = new glow.widgets.Carousel("#index_carousel", {
 			loop : true,
 			size : 1,
@@ -23,7 +29,6 @@
 		var randomnumber = Math.floor(Math.random()
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
-
 	}
 </script>
 
@@ -32,7 +37,24 @@
 	<!-- side panel -->
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-		<div id="news" class="panel light">
+		<div class="grid_6">
+			<h4>Search</h4>
+		</div>
+		<div class="searchform box">
+
+			<form class="grid_5" action="/search">
+				<input class="search" type="text" value="" name="keyword"
+					placeholder="Search" autocomplete="off" /> <input id="submit"
+					type="submit" value="Search" />
+
+			</form>
+		</div>
+
+		<div class="grid_6">
+			<h4>Browse Collections</h4>
+		</div>
+
+		<div id="news" class="box">
 
 			<div class="featured-item-list">
 				<a href="/collections/treasures"><img
@@ -72,12 +94,52 @@
 				</h4>
 			</div>
 
+			<div class="featured-item-list">
+				<a href="/collections/christian"><img
+					alt="Christian Manuscripts" title="Christian Manuscripts"
+					src="/images/index/slice-christian.jpg"> </a>
+
+				<h4>
+					<a href="/collections/christian">Christian Manuscripts</a>
+				</h4>
+			</div>
+
+			<div class="featured-item-list">
+				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
+					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
+				</a>
+
+				<h4>
+					<a href="/collections/hebrew">Hebrew Manuscripts</a>
+				</h4>
+			</div>
+
+			<div class="featured-item-list">
+				<a href="/collections/sanskrit"><img alt="Sanskrit Manuscripts"
+					title="Sanskrit Manuscripts" src="/images/index/slice-sanskrit.jpg">
+				</a>
+
+				<h4>
+					<a href="/collections/sanskrit">Sanskrit Manuscripts</a>
+				</h4>
+			</div>
+
+			<div class="featured-item-list">
+				<a href="/collections/spanishpamphlets"><img
+					alt="Spanish Pamphlets" title="Spanish Pamphlets"
+					src="/images/index/slice-spanishpamphlets.jpg"> </a>
+
+				<h4>
+					<a href="/collections/spanishpamphlets">Spanish Pamphlets</a>
+				</h4>
+			</div>
+
 			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
 		</div>
 	</div>
 
-	<div class="grid_13" id="index_carousel_parent" style="display:none;">
+	<div class="grid_13" id="index_carousel_parent" style="display: none;">
 
 		<ol id="index_carousel">
 
@@ -174,6 +236,41 @@
 					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
 			</li>
 		</ol>
+	</div>
+
+	<!-- items featured at the bottom of the page -->
+	<div class="grid_13">
+		<div class="grid_13">
+			<br />
+			<h4>Featured Items</h4>
+		</div>
+
+		<div class="grid_13" style="padding-left: 15px">
+			<%
+				for (int i = 0; i < featuredItems.size(); i++) {
+					Item item = featuredItems.get(i);
+			%>
+			<div class="grid_4">
+				<div class="featuredItem-text">
+					<h5>
+						<a href="/view/<%=item.getId()%>"><%=item.getTitle()%></a>
+					</h5>
+				</div>
+
+				<div>
+					<div class="collections_carousel_image_box">
+						<div class="collections_carousel_image">
+							<a href="/view/<%=item.getId()%>/"><img
+								alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
+								style="height: 100%" /> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%
+				}
+			%>
+		</div>
 	</div>
 
 </div>

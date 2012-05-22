@@ -24,10 +24,9 @@
 	margin-top:1px;
 	background:#eee;
 	position:relative;
-	width:100%;
 }
 #tree li {padding-left:20px;margin-right:10px}
-#tree li span{float:left;position:absolute;top:5px;left:0px;width:13px;height:13px;cursor:auto;font-size:0;}
+#tree li span{float:left;position:absolute;top:6px;left:2px;width:13px;height:13px;cursor:auto;font-size:0;}
 #tree li span, #tree li span.collapsed{background:url(/img/collapsed.gif) no-repeat 0 0;} 
 #tree li span.expanded{background:url(/img/expanded.gif) no-repeat 0 0;}
 

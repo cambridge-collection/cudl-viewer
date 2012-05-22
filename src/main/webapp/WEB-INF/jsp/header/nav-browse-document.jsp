@@ -14,12 +14,5 @@
 	<li><a href="/help/" title="Help"> Help </a>
 </ul>
 
-<!-- 
-<nav id="navSecondary" class="grid_20" style="width:100%; left:-8px;">
-<ul>
-	<li><a href="/collections/newton" title="Newton Papers" class="active"> Newton Papers </a>
-	</li>
-</ul>
-</nav> -->
 </nav>
 <!-- end #navPrimary -->

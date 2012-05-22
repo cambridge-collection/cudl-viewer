@@ -135,7 +135,9 @@ public class XTFSearch implements Search {
 
 				Node node = docHits.item(i);
 				SearchResult result = new SearchResult(node);
-				results.add(result);
+				if (result!=null && result.getId()!=null) {
+				  results.add(result);
+				}
 			}
 		}
 
