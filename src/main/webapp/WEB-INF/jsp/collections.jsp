@@ -28,7 +28,7 @@ List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-<h3 style="margin-left: 8px;">Browse Collections</h3>
+<h3 style="margin-left: 8px;">Our Collections</h3>
 
 <div class="grid_13">
 

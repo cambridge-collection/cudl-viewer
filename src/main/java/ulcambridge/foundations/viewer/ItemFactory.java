@@ -101,14 +101,14 @@ public class ItemFactory {
 				if (descriptiveMetadata.has("thumbnailUrl")
 						&& descriptiveMetadata.has("thumbnailOrientation")) {
 					itemThumbnailURL = descriptiveMetadata
-							.getJSONObject("thumbnailUrl").getString("value");
+							.getString("thumbnailUrl");
 					if (Properties.getString("useProxy").equals("true")) {
 						itemThumbnailURL = Properties.getString("proxyURL")
 								+ itemThumbnailURL;
 					}
 
 					thumbnailOrientation = descriptiveMetadata
-							.getJSONObject("thumbnailOrientation").getString("value");
+							.getString("thumbnailOrientation");
 				}
 
 			} catch (IOException e) {

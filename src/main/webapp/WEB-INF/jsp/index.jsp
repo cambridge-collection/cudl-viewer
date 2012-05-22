@@ -38,7 +38,7 @@
 	<div class="grid_6" style="margin-bottom: 18px;">
 
 		<div class="grid_6">
-			<h4>Search</h4>
+			<h3>Find a book</h3>
 		</div>
 		<div class="searchform box">
 
@@ -51,7 +51,7 @@
 		</div>
 
 		<div class="grid_6">
-			<h4>Browse Collections</h4>
+			<h3>Explore our collections</h3>
 		</div>
 
 		<div id="news" class="box">
@@ -242,7 +242,7 @@
 	<div class="grid_13">
 		<div class="grid_13">
 			<br />
-			<h4>Featured Items</h4>
+			<h3>Featured items</h3>
 		</div>
 
 		<div class="grid_13" style="padding-left: 15px">

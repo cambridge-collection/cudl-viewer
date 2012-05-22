@@ -12,11 +12,13 @@
 	   while(collectionIterator.hasNext()) {
 		   Collection collection = collectionIterator.next();
 		   
-	      out.print("<li><a href='"+collection.getURL()+"' title='"+collection.getTitle()+"' ");
+	      
 	      if (selectedCollection.equals(collection)) {
+	    	  out.print("<li><a href='"+collection.getURL()+"' title='"+collection.getTitle()+"' ");
 	    	  out.print(" class='active' ");
+	    	  out.print(">"+collection.getTitle()+"</a></li>\n");	      
 	      }
-	      out.print(">"+collection.getTitle()+"</a></li>\n");	      
+	      
 	   }
     %>
 
