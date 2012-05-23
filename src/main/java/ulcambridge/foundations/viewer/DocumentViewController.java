@@ -131,6 +131,7 @@ public class DocumentViewController {
 		}
 		
 		Item item = ItemFactory.getItemFromId(docId);
+		System.out.println("docId: "+docId);
 		modelAndView.addObject("itemTitle", item.getTitle());
 		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
 		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
