@@ -16,7 +16,7 @@
 
 	function init() {
 		// display image carousel
-		document.getElementById("index_carousel_parent").style.display = "block";
+		document.getElementById("index_carousel").style.display = "block";
 
 		index_carousel = new glow.widgets.Carousel("#index_carousel", {
 			loop : true,
@@ -139,9 +139,9 @@
 		</div>
 	</div>
 
-	<div class="grid_13" id="index_carousel_parent" style="display: none;">
+	<div class="grid_13" id="index_carousel_parent">
 
-		<ol id="index_carousel">
+		<ol id="index_carousel" style="display: none;">
 
 			<!-- treasures collection -->
 			<li>

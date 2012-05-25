@@ -90,7 +90,7 @@ public class CollectionViewController {
 
 		JSONArray jsonArray = new JSONArray();
 
-		for (int i = startIndex; i < endIndex; i++) {
+		for (int i = startIndex; i <= endIndex; i++) {
 			Item item = items.get(i);
 			jsonArray.add(item.getSimplifiedJSON());
 		}

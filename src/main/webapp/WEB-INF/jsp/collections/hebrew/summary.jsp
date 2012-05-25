@@ -1,6 +1,12 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*"%>
+<%
+	Collection collection = (Collection) request
+			.getAttribute("collection");
+%>
+
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Newton Papers</h3>
+	<h3 style="margin-left: 8px"><%=collection.getTitle() %></h3>
 	<blockquote class="grid_5 omega print">
 
 		Plato is my friend,<br /> Aristotle is my friend,<br /> but my
