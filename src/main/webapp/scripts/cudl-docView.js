@@ -344,7 +344,7 @@ cudl.docView = function() {
 		 */
 		getLogicalStructureArray : function(pageNumber, logicalStructuresArray) {
 
-			var lsArray = new Array();
+			var lsArray = new Array();			
 			for ( var i = 0; i < logicalStructuresArray.length; i++) {
 				var ls = logicalStructuresArray[i];
 
@@ -370,11 +370,11 @@ cudl.docView = function() {
 		 */
 		getDescriptiveMetadataArray : function(pageNumber,
 				logicalStructuresArray, descriptiveMetadataArray) {
-
-			var metadataArray = new Array();
+			
+			var metadataArray = new Array(); 	
 			for ( var i = 0; i < descriptiveMetadataArray.length; i++) {
-				var dm = descriptiveMetadataArray[i];
-
+				var dm = descriptiveMetadataArray[i];				
+				
 				for ( var j = 0; j < logicalStructuresArray.length; j++) {
 					var ls = logicalStructuresArray[j];
 

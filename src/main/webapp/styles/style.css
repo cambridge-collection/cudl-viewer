@@ -116,6 +116,9 @@ ol#index_carousel li {
 	/* for firefox 3.6+ */
 }
 
+.featuredItem-text {
+	width:200px;
+}
 .featuredItem-text a {
 	text-decoration: none;
 }

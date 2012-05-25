@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.JSONArray;
 
 /**
  * This class contains a subset of the data in the JSON file for an item, which
@@ -25,11 +27,13 @@ public class Item implements Comparable<Item> {
 	private String thumbnailURL;
 	private String thumbnailOrientation;
 	private String abstractShort;
-	private JSONObject json;
+	private JSONObject json; // used for document view
+	private JSONObject simplejson; // used for collection view
 
-	public Item(String itemId, String itemTitle, List<Person> authors, String itemShelfLocator,
-			String itemAbstract, String itemThumbnailURL,
-			String thumbnailOrientation, JSONObject itemJson) {
+	public Item(String itemId, String itemTitle, List<Person> authors,
+			String itemShelfLocator, String itemAbstract,
+			String itemThumbnailURL, String thumbnailOrientation,
+			JSONObject itemJson) {
 
 		this.id = itemId;
 		this.json = itemJson;
@@ -38,13 +42,11 @@ public class Item implements Comparable<Item> {
 		this.abstractText = itemAbstract;
 		this.thumbnailURL = itemThumbnailURL;
 		this.thumbnailOrientation = thumbnailOrientation;
-
-		// Setup people
 		this.authors = authors;
-		
+
 		// Make short abstract
 		String abstractShort = abstractText;
-		
+
 		// remove video captions
 		String[] captionParts = abstractShort
 				.split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
@@ -71,6 +73,24 @@ public class Item implements Comparable<Item> {
 		}
 		this.abstractShort = abstractShort;
 
+		// Make simple JSON
+		try {
+			simplejson = new JSONObject();
+			simplejson.append("id", itemId);
+			simplejson.append("title", itemTitle);
+			simplejson.append("shelfLocator", itemShelfLocator);
+			simplejson.append("abstractText", itemAbstract);
+			simplejson.append("abstractShort", abstractShort);			
+			simplejson.append("thumbnailURL", itemThumbnailURL);
+			simplejson.append("thumbnailOrientation", thumbnailOrientation);
+			JSONArray authorJSON = new JSONArray();
+			authorJSON.addAll(authors);
+			simplejson.append("authors", authorJSON);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
 		orderCount++;
 		this.order = orderCount;
 
@@ -78,20 +98,20 @@ public class Item implements Comparable<Item> {
 
 	public List<String> getAuthorNames() {
 		ArrayList<String> names = new ArrayList<String>();
-		for (int i=0; i<authors.size(); i++) {
+		for (int i = 0; i < authors.size(); i++) {
 			names.add(authors.get(i).getDisplayForm());
 		}
 		return names;
 	}
-	
+
 	public List<String> getAuthorNamesFullForm() {
 		ArrayList<String> names = new ArrayList<String>();
-		for (int i=0; i<authors.size(); i++) {
+		for (int i = 0; i < authors.size(); i++) {
 			names.add(authors.get(i).getFullForm());
 		}
-		return names;		
-	}	
-	
+		return names;
+	}
+
 	public int getOrder() {
 		return order;
 	}
@@ -131,9 +151,13 @@ public class Item implements Comparable<Item> {
 	public String getShelfLocator() {
 		return shelfLocator;
 	}
-	
+
 	public JSONObject getJSON() {
 		return json;
+	}
+
+	public JSONObject getSimplifiedJSON() {
+		return simplejson;
 	}
 
 	@Override

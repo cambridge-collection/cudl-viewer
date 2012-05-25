@@ -205,13 +205,13 @@ public class ItemFactory {
 		try {
 			for (int i = 0; i < json.length(); i++) {
 				JSONObject personJSON = json.getJSONObject(i);
-				String authForm = personJSON.getString("authForm");
+				String fullForm = personJSON.getString("fullForm");
 				String shortForm = personJSON.getString("shortForm");
 				String authority = personJSON.getString("authority");
 				String authorityURI = personJSON.getString("authorityURI");
 				String valueURI = personJSON.getString("valueURI");
 				String type = personJSON.getString("type");
-				Person person = new Person(authForm, shortForm, authority,
+				Person person = new Person(fullForm, shortForm, authority,
 						authorityURI, valueURI, type, role);
 				people.add(person);
 			}

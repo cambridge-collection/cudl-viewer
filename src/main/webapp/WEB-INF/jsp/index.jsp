@@ -245,7 +245,7 @@
 			<h3>Featured items</h3>
 		</div>
 
-		<div class="grid_13" style="padding-left: 15px">
+		<div class="grid_13" >
 			<%
 				for (int i = 0; i < featuredItems.size(); i++) {
 					Item item = featuredItems.get(i);
