@@ -144,7 +144,7 @@ List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
 		</div>
 	</div>
 	<br/><hr/>	
-	<div class="collection collection-faith">
+	<div class="collection">
 
 		<a href="/collections/spanishpamphlets"> <img class="collectionImage"
 			src="/images/collectionsView/collection-spanishpamphlets.jpg" alt="Spanish Pamphlets"
@@ -155,9 +155,6 @@ List<Item> featuredItems = (List<Item>)request.getAttribute("featuredItems");
 		University Library is the world's largest and most important single
 		collection of medieval Jewish manuscripts.<br /> <br /> <a
 			href="/collections/spanishpamphlets">View collection</a>. <br />
-		<div class="foundations-link-faith">
-			<a href="/about#foundations">Foundations of Faith</a>
-		</div>
 	</div>
 </div>
 

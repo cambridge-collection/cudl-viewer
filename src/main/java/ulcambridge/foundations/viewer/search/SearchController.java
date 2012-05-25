@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer.search;
 
+import java.io.BufferedOutputStream;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -12,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
@@ -33,16 +37,17 @@ public class SearchController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private Search search;
-	
+
 	/**
 	 * Constructor, set in search-servlet.xml.
 	 * 
-	 * @param search to use for queries. e.g. SearchXTF. 
+	 * @param search
+	 *            to use for queries. e.g. SearchXTF.
 	 */
 	public SearchController(Search search) {
 		this.search = search;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
 	public ModelAndView processSearch(HttpServletRequest request,
 			HttpServletResponse response) throws MalformedURLException {
@@ -72,18 +77,18 @@ public class SearchController {
 			results = applyCollectionFacet(searchQuery, results);
 		}
 
-		// Remove any results that the viewer does not know about. 
+		// Remove any results that the viewer does not know about.
 		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 		Iterator<SearchResult> resultIt = results.getResults().iterator();
 
 		while (resultIt.hasNext()) {
 			SearchResult result = resultIt.next();
-			
+
 			Item item = ItemFactory.getItemFromId(result.getId());
 			if (item != null) {
 				refinedResults.add(result);
 			}
-		}		
+		}
 
 		// Build the (SearchResultSet) facets from the results
 		List<FacetGroup> facets = getFacetsFromResults(refinedResults);
@@ -98,18 +103,73 @@ public class SearchController {
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("query", searchQuery);
 		modelAndView.addObject("results", results);
+		request.getSession().setAttribute("search-results", results);
 		return modelAndView;
 	}
 
+	// on path /search/JSON?start=<startIndex>&end=<endIndex>
+	// Must have made previous search and have that value stored in the session.
+	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
+	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
+			@RequestParam("start") int startIndex,
+			@RequestParam("end") int endIndex, HttpServletRequest request) {
+
+		SearchResultSet results = (SearchResultSet) request.getSession()
+				.getAttribute("search-results");
+
+		// Put chosen search results into an array.
+		JSONArray jsonArray = new JSONArray();
+
+		if (results != null) {
+			
+			List<SearchResult> searchResults = results.getResults();
+			
+			if (startIndex < 0) {
+				startIndex = 0;
+			} else if (endIndex >= searchResults.size()) {
+				endIndex = searchResults.size(); // if end Index is too large cap at max
+												// size
+			}
+			
+			for (int i=startIndex; i<endIndex; i++) {
+				SearchResult searchResult = searchResults.get(i);				
+				Item item = ItemFactory.getItemFromId(searchResult.getId());
+				jsonArray.add(item.getSimplifiedJSON());
+			}
+		}
+
+		// Write out JSON file.
+		response.setContentType("application/json");
+		PrintStream out = null;
+
+		try {
+			out = new PrintStream(new BufferedOutputStream(
+					response.getOutputStream()), true, "UTF-8");
+
+			out.print(jsonArray);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (Exception e) {
+			}
+		}
+		return null;
+
+	}
+
 	/**
-	 * Refines the searchResults, removing any results from
-	 * the SearchResultSet that do not match the specified collection.  
-	 *  
+	 * Refines the searchResults, removing any results from the SearchResultSet
+	 * that do not match the specified collection.
+	 * 
 	 * @param facetName
 	 * @param results
 	 * @return
 	 */
-	private SearchResultSet applyCollectionFacet(SearchQuery searchQuery, SearchResultSet results) {
+	private SearchResultSet applyCollectionFacet(SearchQuery searchQuery,
+			SearchResultSet results) {
 
 		String title = searchQuery.getFacets().get("collection");
 		Collection collection = CollectionFactory.getCollectionFromTitle(title);
@@ -238,5 +298,5 @@ public class SearchController {
 		return new ArrayList<FacetGroup>(facetGroups.values());
 
 	}
-	
+
 }

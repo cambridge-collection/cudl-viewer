@@ -5,40 +5,165 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-search.jsp" />
 
-<script type="text/javascript">
-	function pageinit() {
-
-		$(document).ready(function() {
-			$('#paging_container').pajinate({
-				items_per_page : 8,
-				num_age_links_to_display : 10,
-				item_container_id : '.search_carousel'
-			});
-			if ($('#paging_container ol li').length <= 8) {
-				$('.page_navigation').each(function() {
-					$(this).hide();
-				});
-
-			}
-
-		});
-
-	}
-</script>
-
-<div class="clear"></div>
-
 <%
 	SearchResultSet resultSet = ((SearchResultSet) request
 			.getAttribute("results"));
 	SearchQuery query = ((SearchQuery) request.getAttribute("query"));
-
-	int resultsNum = 150; // This is the max number of results displayed
-
-	if (resultSet.getNumberOfResults() < resultsNum) {
-		resultsNum = resultSet.getNumberOfResults();
-	}
 %>
+
+<!--  script for ajax pagination -->
+<script type="text/javascript">
+
+var viewPage = function(pageNum) {
+	 if (window.history.replaceState) {
+		 window.history.replaceState(pageNum, "Cambridge Digital Library",
+				 "#"+pageNum);
+	 } else if (window.location){
+		 window.location.hash = pageNum;
+	 }
+	 return false;
+};
+
+function pageinit() {
+	
+  var pageLimit = 20;
+  var numResults = <%=resultSet.getNumberOfResults()%>;
+  var Paging = $(".pagination").paging(
+	numResults,
+	{
+
+		format : "[< (q-) ncnnnnnn (-p) >]",
+		perpage : pageLimit,
+		lapping : 0,
+		page : 1,
+		onSelect : function(page) {
+
+	        $.ajax({
+                "url": '/search/JSON?start=' + this.slice[0] + '&end=' + this.slice[1],
+                "success": function(data) {
+                	
+                      // content replace					                   
+				      var container = document.getElementById("collections_carousel");
+				      
+				      // Remove all children
+				      container.innerHTML = '';
+
+				      // add in the results
+				      for (var i=0; i<data.length; i++) {
+				    	  var item = data[i];
+				    	  var imageDimensions = "";
+						  if (item.thumbnailOrientation=="portrait") {
+							imageDimensions = " style='height:100%' ";
+						  } else if (item.thumbnailOrientation=="landscape") {
+							imageDimensions = " style='width:100%' ";
+						  }
+							
+				    	  var itemDiv = document.createElement('div');
+				    	  itemDiv.setAttribute("class", "collections_carousel_item");
+				    	  itemDiv.innerHTML= "<div class='collections_carousel_image_box'>"+
+				        "<div class='collections_carousel_image'>"+
+				        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
+				        imageDimensions+ " > </a></div></div> "+
+				        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+				        " </div><div class='clear'></div>";
+	           	        container.appendChild(itemDiv);
+			 
+				      
+				      }	                        
+                }
+            });
+		
+
+			return false; 
+		},
+
+		onFormat : function(type) {
+
+			switch (type) {
+
+			case 'block':
+
+				if (!this.active)
+					return '<span class="disabled">'
+							+ this.value + '</span>';
+				else if (this.value != this.page)
+					return '<em><a href="" onclick="viewPage('+ this.value + '); return false;">'
+							+ this.value + '</a></em>';
+				return '<span class="current">'
+						+ this.value + '</span>';
+						
+			case 'right':
+			case 'left':
+
+				if (!this.active) {
+					return '';
+				}
+				return '<a href="" onclick="viewPage('+ this.value + '); return false;">' + this.value + '</a>';
+				
+			case 'next':
+
+				if (this.active)
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next">Next ></a>';
+				return '<span class="disabled">Next ></span>';
+
+			case 'prev':
+
+				if (this.active)
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev">< Prev</a>';
+				return '<span class="disabled">< Prev</span>';
+
+			case 'first':
+
+				if (this.active)
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="first">|<</a>';
+				return '<span class="disabled">|<</span>';
+
+			case 'last':
+
+				if (this.active)
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="last">>|</a>';
+				return '<span class="disabled">>|</span>';
+
+			case "leap":
+
+				if (this.active)
+					return "...";
+				return "";
+
+			case 'fill':
+
+				if (this.active)
+					return "...";
+				return "";
+			}
+		}
+	});
+  
+    // Handle updating the Page selected from the hash part of the URL
+	$(window).hashchange(function() {
+
+		if (window.location.hash)
+			Paging.setPage(window.location.hash.substr(1));
+		else
+			Paging.setPage(1); // we dropped the initial page selection and need to run it manually
+	});
+
+	$(window).hashchange();
+	
+	
+	// Show the pagination toolbars if enough elements are present
+	if ((numResults/pageLimit)>1) {
+		$(".toppagination")[0].style.display="block";
+		$(".toppagination")[1].style.display="block";
+	} else {
+		$(".toppagination")[0].style.display="none";
+		$(".toppagination")[1].style.display="none";		
+	}
+	
+
+}
+</script>
+<div class="clear"></div>
 
 <section id="content" class="grid_20 content"> <!-- <h3 style="margin-left: 8px">Search</h3>  -->
 
@@ -87,11 +212,11 @@
 						+ resultSet.getSpellingSuggestedTerm() + "\">"
 						+ resultSet.getSpellingSuggestedTerm() + "</a> ?");
 			}
-			out.println("<br /><br /><b>" + resultsNum + "</b>"
+			out.println("<br /><br /><b>" + resultSet.getNumberOfResults() + "</b>"
 					+ " results were returned.<br/><br/>");
 		%>
 		<%
-			if (resultsNum > 0) {
+			if (resultSet.getNumberOfResults() > 0) {
 		%>
 		<h5>Refine by:</h5>
 
@@ -134,73 +259,21 @@
 	</div>
 </div>
 
-<div class="grid_13 search_results" id="paging_container">
-	<div class="page_navigation"></div>
-	<div class='clear'></div>
-	<ol id="search_carousel" class="search_carousel">
+	<div class="grid_13 container" id="pagination_container">
+
+		<div class="pagination toppagination"></div>
+		<!-- start of list -->
+		<div id="collections_carousel" class="collections_carousel">
+		</div>
+		<!-- end of list -->
+		<div class="pagination toppagination"></div>
+
+
 		<%
 			List<SearchResult> results = resultSet.getResults();
 
-			if (results != null) {
-
-				for (int i = 0; i < resultsNum; i++) {
-					SearchResult result = (SearchResult) results.get(i);
-
-					if (result != null) {
-						Item item = ItemFactory.getItemFromId(result.getId());
-						if (item != null) {
-							// print out title
-							out.print("<li><div class='search_carousel_item'><div class='grid_7'><a href='/view/"
-									+ result.getId()
-									+ "'>"
-									+ result.getTitle()
-									+ " ("
-									+ item.getShelfLocator()
-									+ ")"
-									+ "</a><br/>");
-							out.print(item
-									.getAuthors()
-									.toString()
-									.substring(
-											1,
-											item.getAuthors().toString()
-													.length() - 1)
-									+ "<br/><br/>");
-							out.print(item.getAbstractShort()
-									+ " ... <br/><br/>\n");
-
-							// print out snippets
-							//List<String> snippets = result.getSnippets();
-							//out.print("<div class='search-result-snippet'>");
-							//for (int j = 0; j < snippets.size(); j++) {
-							//	out.print("..." + snippets.get(j)
-							//			+ "...\n<br/>");
-							//}
-							//out.print("</div>");
-
-							// print out image
-							out.print("</div><div class='grid_5'>");
-							out.print("<div class='search-result-imgcontainer'>");
-							out.print("<a href='/view/" + result.getId() + "'>");
-							if (item.getThumbnailOrientation().equals(
-									"landscape")) {
-
-								out.print("<img style='width:100%;margin:auto;' ");
-							} else {
-								out.print("<img style='height:100%;margin:auto;' ");
-							}
-							out.println(" alt=" + item.getId() + " title="
-									+ item.getId() + " src='"
-									+ item.getThumbnailURL() + "'/>");
-
-							out.print("</a></div></div></div>\n\n");
-						}
-					}
-				}
-			}
-
 			// No results were returned. So print out some help.
-			if (resultsNum == 0) {
+			if (resultSet.getNumberOfResults() == 0) {
 				out.println("<p class=\"box\">We couldn't find any items matching <b>"
 						+ query.getKeywordDisplay() + "</b></p>");
 				out.println("<p class=\"box\">Try <a href='/search'>browsing our items.</a></p>");
@@ -215,14 +288,10 @@
 				out.println("</p></div>");
 			}
 		%>
-
-
-
-	</ol>
-	<div class='clear'></div>
-	<br />
-	<div class="page_navigation"></div>
 </div>
+ 
+
+
 </section>
 
 

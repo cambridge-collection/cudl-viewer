@@ -84,13 +84,13 @@ public class CollectionViewController {
 		if (startIndex < 0) {
 			startIndex = 0;
 		} else if (endIndex >= items.size()) {
-			endIndex = items.size() - 1; // if end Index is too large cap at max
+			endIndex = items.size(); // if end Index is too large cap at max
 											// size
 		}
 
 		JSONArray jsonArray = new JSONArray();
 
-		for (int i = startIndex; i <= endIndex; i++) {
+		for (int i = startIndex; i < endIndex; i++) {
 			Item item = items.get(i);
 			jsonArray.add(item.getSimplifiedJSON());
 		}

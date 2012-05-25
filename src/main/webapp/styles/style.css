@@ -270,7 +270,7 @@ ol#index_carousel li {
 }
 
 .collections_carousel_item {
-	width: 400px;
+	width: 100%;
 	font-style: normal;
 	position: relative;
 	display: block;
