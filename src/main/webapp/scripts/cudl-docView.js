@@ -401,7 +401,7 @@ cudl.docView = function() {
 						+ lsItem.startPagePosition + ");return false;'>"
 						+ lsItem.label + "</a> (image "
 						+ lsItem.startPagePosition + ", page "
-						+ lsItem.startPage + ")</li>";
+						+ lsItem.startPageLabel + ")</li>";
 				for ( var j = 0; j < level; j++) {
 					ls += "</ul></li> ";
 				}
