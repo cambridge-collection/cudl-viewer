@@ -316,19 +316,28 @@ cudl.docView = function() {
 
 					var jsonObject = descriptiveMetadata[key];
 
+					// If there are 3 levels, (such as origin place) handle this case. 
+					if (!jsonObject.label && jsonObject.value && jsonObject.value instanceof Array) {
+					  for (var i=0; i<jsonObject.value.length; i++) {
+					    var value = jsonObject.value[0];
+						metadata += cudl.view.getHTMLFromDescriptiveMetadata(jsonObject.value[i]);
+					  }
+					}
+					
 					if (jsonObject.display == true && jsonObject.label) {
 
+						// prioritise displayForm at top level. 
 						if (jsonObject.displayForm) {
 
 							metadata += cudl.view.getMetadataHTML(
 									jsonObject.label, jsonObject.displayForm);
 
-							// value is an array
+						// then display value (if an array)
 						} else if (jsonObject.value
 								&& jsonObject.value instanceof Array) {
 
-							metadata += cudl.view.getMetadataHTML(
-									jsonObject.label, jsonObject.value, "; ");
+						    	metadata += cudl.view.getMetadataHTML(
+										jsonObject.label, jsonObject.value, "; ");						     
 						}
 
 					}
