@@ -1,8 +1,10 @@
 package ulcambridge.foundations.viewer.search;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -33,7 +35,7 @@ public class XTFSearch implements Search {
 		return parseSearchResults(getDocument(searchXTFURL));
 
 	}
-	
+
 	protected Document getDocument(String url) {
 
 		// Read document from URL and put results in Document.
@@ -51,7 +53,7 @@ public class XTFSearch implements Search {
 		}
 
 		return null;
-	}	
+	}
 
 	protected String buildQueryURL(String keyword, Map<String, String> facets) {
 
@@ -128,17 +130,57 @@ public class XTFSearch implements Search {
 					"Too many results, try a smaller range, eliminating wildcards, or making them more specific. ");
 		}
 
-		// Add in all the (docHit) results into a List.
+		// Add in all the (docHit) results into a Hashtable by Item Number
 		NodeList docHits = docEle.getElementsByTagName("docHit");
+		Hashtable<String, SearchResult> docHitsByItem = new Hashtable<String, SearchResult>();
 		if (docHits != null) {
 			for (int i = 0; i < docHits.getLength(); i++) {
 
-				Node node = docHits.item(i);
-				SearchResult result = new SearchResult(node);
-				if (result!=null && result.getId()!=null) {
-				  results.add(result);
+				Element node = (Element) docHits.item(i);
+				Element meta = (Element) node.getElementsByTagName("meta")
+						.item(0);
+
+				Element itemIdElement = (Element) meta.getElementsByTagName(
+						"fileID").item(0);
+
+				// Sometimes results may appear without any metadata, ignore
+				// these.
+				if (itemIdElement != null) {
+					String itemId = itemIdElement.getTextContent();
+					SearchResult result = docHitsByItem.get(itemId);
+					if (result == null) {
+						result = new SearchResult(node);
+						docHitsByItem.put(itemId, result);
+					} else {
+						List<String> snippetList = new ArrayList<String>();
+
+						NodeList snippetNodes = node
+								.getElementsByTagName("snippet");
+						Integer startPage = new Integer(meta
+								.getElementsByTagName("startPage").item(0)
+								.getTextContent());
+						for (int j = 0; j < snippetNodes.getLength(); j++) {
+							Element snippetNode = (Element) snippetNodes
+									.item(j);
+							if (snippetNode != null) {
+								snippetList.add(getValueInHTML(snippetNode));
+							}
+						}
+
+						if (result != null && result.getId() != null) {
+							result.insertSnippets(startPage, snippetList);
+							docHitsByItem.put(itemId, result);
+						}
+					}
 				}
 			}
+
+			results = new ArrayList<SearchResult>(docHitsByItem.values());
+			// ensure results are in the right order by score.
+			if (results.size() > 0) {
+				Collections.sort(results);
+			}
+
 		}
 
 		// Get general search result data
@@ -155,6 +197,35 @@ public class XTFSearch implements Search {
 
 		return new SearchResultSet(totalDocs, suggestedTerm, queryTime,
 				results, null, "");
+	}
+
+	private String getValueInHTML(Node node) {
+
+		if (node.getNodeType() == Node.TEXT_NODE) {
+			// if this is a snippet, bold the matching word(s).
+			if (node.getParentNode().getNodeName().equals("term")) {
+				return "<b>" + node.getNodeValue().replaceAll("<.*>", "")
+						+ "</b>";
+			}
+			// remove complete and partial tags as much as possible
+			String noCompleteTags = node.getNodeValue().replaceAll("<.*>", "");
+			return noCompleteTags.replaceAll("<\\w*|\\w*>", "");
+		}
+
+		NodeList children = node.getChildNodes();
+		StringBuffer textValue = new StringBuffer();
+		if (node.getNodeValue() == null && children != null) {
+
+			for (int i = 0; i < children.getLength(); i++) {
+				Node child = children.item(i);
+				textValue.append(getValueInHTML(child));
+			}
+
+			return textValue.toString();
+		}
+
+		return "";
+
 	}
 
 }

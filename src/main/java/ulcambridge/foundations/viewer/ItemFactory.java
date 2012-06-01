@@ -78,23 +78,26 @@ public class ItemFactory {
 						"descriptiveMetadata").getJSONObject(0);
 
 				// Should always have title
-				itemTitle = descriptiveMetadata.getJSONObject("title").getString("displayForm");
+				itemTitle = descriptiveMetadata.getJSONObject("title")
+						.getString("displayForm");
 
 				// Might have authors, might not.
 				if (descriptiveMetadata.has("authors")) {
 					itemAuthors = getPeopleFromJSON(descriptiveMetadata
-							.getJSONObject("authors").getJSONArray("value"), "author");
+							.getJSONObject("authors").getJSONArray("value"),
+							"author");
 				}
 
 				// Might have shelf locator, might not.
 				if (descriptiveMetadata.has("shelfLocator")) {
-					itemShelfLocator = descriptiveMetadata
-							.getJSONObject("shelfLocator").getString("displayForm");
+					itemShelfLocator = descriptiveMetadata.getJSONObject(
+							"shelfLocator").getString("displayForm");
 				}
 
 				// Might have abstract, might not.
 				if (descriptiveMetadata.has("abstract")) {
-					itemAbstract = descriptiveMetadata.getJSONObject("abstract").getString("displayForm");
+					itemAbstract = descriptiveMetadata
+							.getJSONObject("abstract").getString("displayForm");
 				}
 
 				// Might have Thumbnail image
@@ -202,14 +205,21 @@ public class ItemFactory {
 			return people;
 		}
 
+		String authority = null;
+		String authorityURI = null;
+		String valueURI = null;
 		try {
 			for (int i = 0; i < json.length(); i++) {
 				JSONObject personJSON = json.getJSONObject(i);
 				String fullForm = personJSON.getString("fullForm");
 				String shortForm = personJSON.getString("shortForm");
-				String authority = personJSON.getString("authority");
-				String authorityURI = personJSON.getString("authorityURI");
-				String valueURI = personJSON.getString("valueURI");
+				try {
+					authority = personJSON.getString("authority");
+					authorityURI = personJSON.getString("authorityURI");
+					valueURI = personJSON.getString("valueURI");
+				} catch (JSONException e) { 
+					/* ignore if not present */
+				}
 				String type = personJSON.getString("type");
 				Person person = new Person(fullForm, shortForm, authority,
 						authorityURI, valueURI, type, role);
@@ -218,7 +228,7 @@ public class ItemFactory {
 
 		} catch (JSONException e) {
 
-			System.err.println("Error processing: "+json);			
+			System.err.println("Error processing: " + json);
 			e.printStackTrace();
 		}
 

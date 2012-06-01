@@ -39,7 +39,7 @@ function pageinit() {
 		onSelect : function(page) {
 
 	        $.ajax({
-                "url": '/search/JSON?start=' + this.slice[0] + '&end=' + this.slice[1],
+                "url": '/search/JSON?start=' + this.slice[0] + '&end=' + this.slice[1] +'&<%=request.getQueryString()%>',
                 "success": function(data) {
                 	
                       // content replace					                   
@@ -50,7 +50,8 @@ function pageinit() {
 
 				      // add in the results
 				      for (var i=0; i<data.length; i++) {
-				    	  var item = data[i];
+				    	  var result = data[i];
+				    	  var item = result.item;
 				    	  var imageDimensions = "";
 						  if (item.thumbnailOrientation=="portrait") {
 							imageDimensions = " style='height:100%' ";
@@ -65,7 +66,16 @@ function pageinit() {
 				        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
 				        imageDimensions+ " > </a></div></div> "+
 				        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
-				        " </div><div class='clear'></div>";
+				        " </div><br/><div>";
+				        
+					      for (var j=0; j<result.snippets.length; j++) {		
+					    	  
+					      	  var snippet = result.snippets[j];
+					    	  itemDiv.innerHTML+= "<div>"+snippet.snippetStrings[0]
+					    	  +" <a href='/view/" +item.id+ "/"+snippet.startPage+"'>Go >> </a></div>";
+					      }
+					      
+					    itemDiv.innerHTML+="</div><div class='clear'></div>";
 	           	        container.appendChild(itemDiv);
 			 
 				      

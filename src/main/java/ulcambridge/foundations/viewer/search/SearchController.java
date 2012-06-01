@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -107,15 +108,22 @@ public class SearchController {
 		return modelAndView;
 	}
 
-	// on path /search/JSON?start=<startIndex>&end=<endIndex>
+	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
 	// Must have made previous search and have that value stored in the session.
+	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
 	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
 			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request) {
+			@RequestParam("end") int endIndex, HttpServletRequest request) throws MalformedURLException {
 
 		SearchResultSet results = (SearchResultSet) request.getSession()
 				.getAttribute("search-results");
+		
+		// If session has timed out make search again. 
+		if (results==null) {
+			ModelAndView search = processSearch(request,response);
+			results = (SearchResultSet) search.getModel().get("results");
+		}
 
 		// Put chosen search results into an array.
 		JSONArray jsonArray = new JSONArray();
@@ -134,7 +142,29 @@ public class SearchController {
 			for (int i=startIndex; i<endIndex; i++) {
 				SearchResult searchResult = searchResults.get(i);				
 				Item item = ItemFactory.getItemFromId(searchResult.getId());
-				jsonArray.add(item.getSimplifiedJSON());
+				
+				// Make a JSON object that contains information about the matching 
+				// item and information about the result snippets and pages that match. 
+				JSONObject itemJSON = new JSONObject();
+				itemJSON.put("item", item.getSimplifiedJSON());
+				
+				// Make an array for the snippets.
+				JSONArray resultsArray = new JSONArray();
+				Hashtable<Integer, List<String>> snippets = searchResult.getSnippets();
+				Enumeration<Integer> keys = snippets.keys();
+				while (keys.hasMoreElements()) {
+					Integer startPage = keys.nextElement();
+					JSONObject snippetJSON = new JSONObject();
+					snippetJSON.put("startPage", startPage);
+					JSONArray snippetArray = new JSONArray();
+					snippetArray.addAll(snippets.get(startPage));
+					snippetJSON.put("snippetStrings", snippetArray);
+					
+					resultsArray.add(snippetJSON);
+				}
+				
+				itemJSON.put("snippets", resultsArray);
+				jsonArray.add(itemJSON);
 			}
 		}
 

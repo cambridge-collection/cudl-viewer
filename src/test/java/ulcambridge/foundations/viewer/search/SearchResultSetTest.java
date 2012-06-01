@@ -55,7 +55,7 @@ public class SearchResultSetTest extends TestCase {
 		
 		// Get first result
 		NodeList docHits = dom.getElementsByTagName("docHit");
-		Node node = docHits.item(0);
+		Element node = (Element) docHits.item(0);
 		
 		SearchResult result = new SearchResult(node);
 		ArrayList<SearchResult> results = new ArrayList<SearchResult> ();

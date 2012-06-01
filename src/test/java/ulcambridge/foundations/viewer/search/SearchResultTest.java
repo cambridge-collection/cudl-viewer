@@ -53,7 +53,7 @@ public class SearchResultTest extends TestCase {
 		
 		// Get first result
 		NodeList docHits = dom.getElementsByTagName("docHit");
-		Node node = docHits.item(0);
+		Element node = (Element) docHits.item(0);
 		
 		SearchResult result = new SearchResult(node);
 

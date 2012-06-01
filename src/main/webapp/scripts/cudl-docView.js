@@ -316,7 +316,9 @@ cudl.docView = function() {
 
 					var jsonObject = descriptiveMetadata[key];
 
-					// If there are 3 levels, (such as origin place) handle this case. 
+					// Handle case where there is no label at the top level, but there exists an 
+					// array of objects under value that may have labels, display values or arrays of 
+					// value strings to display.  
 					if (!jsonObject.label && jsonObject.value && jsonObject.value instanceof Array) {
 					  for (var i=0; i<jsonObject.value.length; i++) {
 					    var value = jsonObject.value[0];
