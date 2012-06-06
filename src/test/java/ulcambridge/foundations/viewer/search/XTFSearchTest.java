@@ -48,14 +48,17 @@ public class XTFSearchTest extends TestCase {
 		SearchResultSet r = s.makeSearch(q);
 
 		// Expect one result
-		assertEquals(r.getNumberOfResults(), 1);
-		assertEquals(r.getResults().size(), 1);
-		assertEquals(r.getSpellingSuggestedTerm(), "");
-		assertEquals(r.getQueryTime(), 0.018f);
-		assertEquals(r.getError(), "");
-		assertEquals(r.getResults().get(0).getId(), "MS-ADD-04004");
-		assertEquals(r.getResults().get(0).getSnippets().keys().nextElement().toString(), "MS-ADD-04004");
-		assertEquals(r.getResults().get(0).getSnippets().size(), 1);
+		assertEquals(1, r.getNumberOfResults());
+		assertEquals(1, r.getResults().size());
+		assertEquals("", r.getSpellingSuggestedTerm());
+		assertEquals(0.018f, r.getQueryTime());
+		assertEquals("", r.getError());
+		assertEquals("MS-ADD-04004", r.getResults().get(0).getId());
+		
+		// Snippets is a Hashtable of pagenumber  -> List<String> snippets. 
+		assertEquals(new Integer(1), r.getResults().get(0).getSnippets().keys().nextElement());
+	    assertEquals(1, r.getResults().get(0).getSnippets().get(new Integer(1)).size());
+		assertEquals(1, r.getResults().get(0).getSnippets().size());
 
 	}
 
