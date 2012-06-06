@@ -1,28 +1,28 @@
-<class-diagram version="1.0.7" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.0.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.Facet" 
     project="foundationsviewer" file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/Facet.java" 
     binary="false">    
-    <position x="105" y="473" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
+    <position height="-1" width="-1" x="105" y="473"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="2" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.FacetGroup" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/FacetGroup.java" binary="false">    
-    <position x="106" y="158" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
+    <position height="-1" width="-1" x="106" y="158"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <interface id="3" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.Search" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/Search.java" binary="false">    
-    <position x="872" y="78" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+    <position height="-1" width="-1" x="872" y="78"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
@@ -30,109 +30,110 @@
   <class id="4" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.XTFSearch" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/XTFSearch.java" binary="false">    
-    <position x="876" y="236" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+    <position height="-1" width="-1" x="887" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
+      <operations public="true" package="false" protected="false" private="false"/>    
     </display>  
   </class>  
   <class id="5" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.SearchResult" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/SearchResult.java" binary="false">    
-    <position x="363" y="472" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+    <position height="-1" width="-1" x="363" y="472"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
+      <operations public="true" package="true" protected="true" private="false"/>    
     </display>  
   </class>  
   <class id="6" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.SearchResultSet" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/SearchResultSet.java" binary="false">    
-    <position x="456" y="162" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
+    <position height="-1" width="-1" x="456" y="162"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="7" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.SearchQuery" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/SearchQuery.java" binary="false">    
-    <position x="720" y="473" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true"/>      
+    <position height="-1" width="-1" x="720" y="473"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false"/>      
       <operations public="true" package="true" protected="true" private="true"/>    
     </display>  
   </class>  
   <class id="8" corner="BOTTOM_RIGHT" language="java" name="ulcambridge.foundations.viewer.search.SearchController" 
     project="foundationsviewer" 
     file="/foundationsviewer/src/main/java/ulcambridge/foundations/viewer/search/SearchController.java" binary="false">    
-    <position x="872" y="-66" width="-1" height="-1"/>    
-    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+    <position height="-1" width="-1" x="872" y="-66"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
-      <operations public="true" package="true" protected="true" private="true"/>    
+      <operations public="true" package="true" protected="true" private="false"/>    
     </display>  
   </class>  
-  <dependency id="9">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
-  <association id="10">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="11" name="search"/>      
-      <multiplicity id="12" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
+  <association id="9">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="14" name="results"/>      
-      <multiplicity id="15" minimum="0" maximum="2147483647"/>    
+      <attribute id="10" name="results"/>      
+      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="16">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
-  </dependency>  
-  <association id="17">    
+  <association id="12">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="13" name="facets"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="15">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="18" name="facets"/>      
-      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+      <attribute id="16" name="facets"/>      
+      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="20">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <realization id="21">    
+  <realization id="18">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
-  <association id="22">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="23" name="facets"/>      
-      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
+  <association id="19">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="20" name="search"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="26" name="facets"/>      
-      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="28">    
+  <dependency id="22">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  
-  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+  <association id="23">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="24" name="facets"/>      
+      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="28">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+    visibility="true">    
     <attributes public="true" package="true" protected="true" private="true"/>    
     <operations public="true" package="true" protected="true" private="true"/>  
   </classifier-display>  
