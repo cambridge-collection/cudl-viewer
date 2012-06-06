@@ -54,6 +54,7 @@ public class XTFSearchTest extends TestCase {
 		assertEquals(r.getQueryTime(), 0.018f);
 		assertEquals(r.getError(), "");
 		assertEquals(r.getResults().get(0).getId(), "MS-ADD-04004");
+		assertEquals(r.getResults().get(0).getSnippets().keys().nextElement().toString(), "MS-ADD-04004");
 		assertEquals(r.getResults().get(0).getSnippets().size(), 1);
 
 	}
