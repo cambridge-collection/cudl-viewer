@@ -308,23 +308,49 @@ cudl.docView = function() {
 			return "";
 		},
 
-		getHTMLFromDescriptiveMetadata : function(descriptiveMetadata) {
-			var metadata = "";
 
+		/**
+		 * Used to go through each element in a single descriptiveMetadata item and look for 
+		 * suitable candidates to display.  These are put into an array for sorting. 
+		 */
+		getArrayFromDescriptiveMetadata : function(descriptiveMetadata) {
+
+			var metadataArray = new Array();
 			for ( var key in descriptiveMetadata) {
-				if (descriptiveMetadata.hasOwnProperty(key)) {
-
+				if (descriptiveMetadata.hasOwnProperty(key) ) {					
 					var jsonObject = descriptiveMetadata[key];
-
+					
 					// Handle case where there is no label at the top level, but there exists an 
 					// array of objects under value that may have labels, display values or arrays of 
 					// value strings to display.  
 					if (!jsonObject.label && jsonObject.value && jsonObject.value instanceof Array) {
 					  for (var i=0; i<jsonObject.value.length; i++) {
 					    var value = jsonObject.value[0];
-						metadata += cudl.view.getHTMLFromDescriptiveMetadata(jsonObject.value[i]);
+					    metadataArray = metadataArray.concat(cudl.view.getArrayFromDescriptiveMetadata(jsonObject.value[i]));
 					  }
 					}
+					
+				
+					if (jsonObject.seq) {
+						 metadataArray.push(jsonObject);
+					}
+				}
+			}
+			return metadataArray;
+		},
+		
+		/**
+		 * Generates HTML for the descriptiveMetadata item supplied.  Showing only those 
+		 * with display = true and a label.  Ordered by seq. 
+		 */
+		getHTMLFromDescriptiveMetadata : function(descriptiveMetadata) {
+			var metadata = "";
+
+			var metadataArray = cudl.view.getArrayFromDescriptiveMetadata(descriptiveMetadata);
+			metadataArray = metadataArray.sort(function (a,b) {if (a.seq && b.seq) {return a.seq-b.seq;}});
+			
+			for (var i=0; i<metadataArray.length; i++) {
+				var jsonObject = metadataArray[i];
 					
 					if (jsonObject.display == true && jsonObject.label) {
 
@@ -343,7 +369,7 @@ cudl.docView = function() {
 						}
 
 					}
-				}
+				
 			}
 
 			return metadata;
