@@ -150,6 +150,16 @@
 		<extension>dzi</extension>
 		<mime-type>text/xml</mime-type>
 	</mime-mapping>
+	
+	<mime-mapping>
+		<extension>ttf</extension>
+		<mime-type>application/octet-stream</mime-type>
+	</mime-mapping>	
+	
+	<mime-mapping>
+		<extension>eot</extension>
+		<mime-type>application/octet-stream</mime-type>
+	</mime-mapping>		
 
 	<error-page>
 		<error-code>404</error-code>

@@ -37,19 +37,6 @@
 			<div class="document-about-box">
 
 				<ul id="tree">
-					<li>Book Information [${itemTitle}]
-						<ul>
-							<div id="metadata-book"></div>
-						</ul>
-					</li>
-					<li>Chapter Information [<em id="metadata-chapter-title"></em>]
-						<ul>
-							<div id="metadata-chapter"></div>
-						</ul></li>
-					<li>Page Information [<em id="metadata-pagenum"></em>]
-						<ul>
-							<div id="metadata-page"></div>
-						</ul></li>
 				</ul>
 
 			</div>

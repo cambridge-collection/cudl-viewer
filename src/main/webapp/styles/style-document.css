@@ -6,6 +6,36 @@ table {
 	margin-bottom: 0px;
 }
 
+@font-face
+{
+font-family: CharisSIL;
+font-weight: normal;
+src: url('/styles/fonts/CharisSIL-R.ttf'),
+     url('/styles/fonts/CharisSIL-R.eot'); /* IE9 */
+}
+@font-face
+{
+font-family: CharisSIL;
+font-weight: bold;
+src: url('/styles/fonts/CharisSIL-B.ttf'),
+     url('/styles/fonts/CharisSIL-B.eot'); /* IE9 */
+}
+@font-face
+{
+font-family: CharisSIL;
+font-style: italic
+src: url('/styles/fonts/CharisSIL-I.ttf'),
+     url('/styles/fonts/CharisSIL-I.eot'); /* IE9 */
+}
+@font-face
+{
+font-family: CharisSIL;
+font-weight: bold;
+font-style: italic
+src: url('/styles/fonts/CharisSIL-BI.ttf'),
+     url('/styles/fonts/CharisSIL-BI.eot'); /* IE9 */
+}
+
 #globalMasthead {
 	background: none repeat scroll 0 0 transparent;
 	background-color: #ffffff;
@@ -28,7 +58,7 @@ h3,h2,h1,h4 {
 	font-size: 32px;
 	letter-spacing: -1px;
 	line-height: 45px;
-	font-family: Georgia, 'Times New Roman', serif;
+	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
 	font-weight: normal;
 }
 
@@ -85,6 +115,7 @@ table {
 	margin-right: 15px;
 	font-size: 12px;
 	color: #000;
+	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
 	/*list-style: disc outside none;*/
 	list-style: none;
 }
@@ -114,7 +145,7 @@ table {
 	color: #333333;
 	line-height: 30px;
 	text-shadow: 0.1em 0.1em 0.2em #eeeeee;
-	font-family: Georgia, 'Times New Roman', serif;
+	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
 	font-weight: normal;
 	font-size: 30px;
 	margin-bottom: 10px;
@@ -122,7 +153,7 @@ table {
 
 .document-about-author {
 	color: #333333;
-	font-family: Georgia, 'Times New Roman', serif;
+	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
 	font-weight: normal;
 	font-size: 20px;
 	line-height: 22px;
@@ -131,7 +162,7 @@ table {
 
 .document-about {
 	color: #333333;
-	font-family: Georgia, 'Times New Roman', serif;
+	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
 	font-weight: normal;
 	font-size: 14px;
 	padding: 15px;
@@ -228,6 +259,10 @@ table {
 .document-about .document-about-page a {
 	color: #333;
 }
+
+
+
+
 /*
 .x-panel-header-text-default {
 	color: #000000;
@@ -307,4 +342,9 @@ table {
 .x-splitter-collapsed .x-layout-split-right {
 	background: url("/img/icon-mini-left.gif") no-repeat scroll right top
 		transparent;
+}
+
+/* Toolbar font */
+.x-toolbar .x-toolbar-text {
+	font-family: CharisSIL, tahoma, arial, verdana, sans-serif
 }

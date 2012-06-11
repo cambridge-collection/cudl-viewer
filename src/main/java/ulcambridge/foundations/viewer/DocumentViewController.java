@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +54,7 @@ public class DocumentViewController {
 	// on path /view/{docId}.json
 	@RequestMapping(value = "/{docId}.json")
 	public ModelAndView handleJSONRequest(@PathVariable("docId") String docId,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws JSONException {
 
 		Item item = ItemFactory.getItemFromId(docId);
 		JSONObject json = item.getJSON();
@@ -64,7 +65,8 @@ public class DocumentViewController {
 		try {
 			out = new PrintStream(new BufferedOutputStream(
 					response.getOutputStream()), true, "UTF-8");
-			out.print(json.toString());
+			out.print(json.toString(1));
+			out.flush();
 			
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -37,7 +37,6 @@
 	cudl.itemTitle = "${itemTitle}";
 	cudl.itemAuthors = ${itemAuthors};
 	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}
-	cudl.itemAbstract = "${itemAbstract}";
 
 </script>
 

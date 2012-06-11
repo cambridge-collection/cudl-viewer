@@ -153,33 +153,21 @@ cudl.docView = function() {
 				}
 
 				// Should always have a root element.
-				cudl.view.populateElement(document
-						.getElementById("metadata-book"), cudl.view
-						.getHTMLFromDescriptiveMetadata(metadataArray[0]));
 
-				if (metadataArray.length > 1) {
-					cudl.view.populateElement(document
-							.getElementById("metadata-chapter"), cudl.view
-							.getHTMLFromDescriptiveMetadata(metadataArray[1]),
-							true);
-					cudl.view.populateElement(document
-					.getElementById("metadata-chapter-title"), metadataArray[1].title.displayForm, true);
-				} else {
-					cudl.view.populateElement(document
-							.getElementById("metadata-chapter"), "", true);
-					cudl.view.populateElement(document
-							.getElementById("metadata-chapter-title"), "", true);					
-				}
 
-				if (metadataArray.length > 2) {
-					cudl.view.populateElement(document
-							.getElementById("metadata-page"), cudl.view
-							.getHTMLFromDescriptiveMetadata(metadataArray[2]),
-							true);
-				} else {
-					cudl.view.populateElement(document
-							.getElementById("metadata-page"), "", true);
+				// display chapter and page information 
+				document.getElementById("tree").innerHTML="";				
+				for (var i=0; i<metadataArray.length; i++) {
+				  var li = document.createElement('li');
+				  var label = "Section Information: ";
+				  if (i==0) { label = "Book Information: ";}
+				  li.innerHTML=label+metadataArray[i].title.displayForm+
+				  "<ul><div>"+cudl.view.getHTMLFromDescriptiveMetadata(metadataArray[i])+"</div></ul>";
+				  document.getElementById("tree").appendChild(li);
 				}
+				
+				treestyler();
+
 			
 				// Set data that is displayed in the page outside the metadata
 				// section
@@ -208,16 +196,14 @@ cudl.docView = function() {
 
 				// update current page number display.
 				cudl.view.populateElement(document
-						.getElementById("metadata-pagenum"),
-						cudl.data.pages[cudl.pagenum - 1].label, true);
-				cudl.view.populateElement(document
 						.getElementById("metadata-pagenum-toolbar"),
 						cudl.data.pages[cudl.pagenum - 1].label, true);
 
-				if (cudl.itemAbstract) {
+				
+				if (descriptiveMetadata.abstract) {
 					cudl.view.populateElement(document
 							.getElementById("metadata-abstract"), ""
-							+ cudl.itemAbstract + "<br />");
+							+ descriptiveMetadata.abstract.displayForm + "<br />");
 				}
 
 				// setup logical structure
