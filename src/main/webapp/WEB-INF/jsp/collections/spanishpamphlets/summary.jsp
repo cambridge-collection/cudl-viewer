@@ -9,10 +9,7 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle() %></h3>
 	<blockquote class="grid_5 omega print">
 
-		Plato is my friend,<br /> Aristotle is my friend,<br /> but my
-		greatest friend is truth." <br /> <br /> <cite>&mdash;Sir
-			Isaac Newton <br />(<a href="/view/MS-ADD-03996/179">MS
-				Add.3996, 88r</a>)</cite>
+This is the contagion, the wretched contagion, that comes down from literature to the common people." <br /> <br /> <cite>&mdash;Ramón del Valle-Inclán, Los cuernos de don Friolera (1921)</cite>
 
 	</blockquote>
 	<br /> <br />

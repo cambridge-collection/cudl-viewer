@@ -6,6 +6,11 @@ table {
 	margin-bottom: 0px;
 }
 
+/* We don't want the gradient background on this page */
+html {
+	background: #eeeeee;
+}
+
 @font-face
 {
 font-family: CharisSIL;
@@ -179,11 +184,6 @@ table {
 	color: #333;
 }
 
-#metadata-about {
-	max-width: 500px;
-	min-width: 300px;
-}
-
 /* Rounded Boxes */
 .rbroundbox {
 	background: url(/images/general/cornernt.gif) repeat;
@@ -223,7 +223,7 @@ table {
 
 #metadata-rights,#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page,#metadata-abstract
 	{
-	max-width: 500px;
+	max-width: 450px;
 	margin: 5px;
 }
 

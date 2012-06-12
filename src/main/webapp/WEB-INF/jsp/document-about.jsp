@@ -16,7 +16,7 @@
 		</div> -->
 		<!-- AddThis Button END -->
 
-		<div id="metadata-about">
+		<div id="metadata-about" style="display:none">
 
 			<!-- Title -->
 			<div class="document-about-box">

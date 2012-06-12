@@ -275,6 +275,10 @@ var store;
 // This runs when the page has viewport has loaded.
 Ext.onReady(function() {
 
+	// Display Loading mask. 
+	cudl.loadMask = new Ext.LoadMask(Ext.getBody(), {msg:"Please wait..."});
+	cudl.loadMask.show();
+	
 	cudl.loadData();
 	cudl.setupSeaDragon();
 	

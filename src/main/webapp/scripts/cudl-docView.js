@@ -163,7 +163,14 @@ cudl.docView = function() {
 				  if (i==0) { label = "Book Information: ";}
 				  li.innerHTML=label+metadataArray[i].title.displayForm+
 				  "<ul><div>"+cudl.view.getHTMLFromDescriptiveMetadata(metadataArray[i])+"</div></ul>";
-				  document.getElementById("tree").appendChild(li);
+				  
+				  var tree = document.getElementById("tree");
+				  
+				  // update the tree depending on what has changed since the last page viewed.
+				  
+				  if (tree.children.length<=i) { tree.appendChild(li); }
+				  //else if (tree.children.length>i-1 ) { tree.removeChild(li); }
+				  
 				}
 				
 				treestyler();
@@ -231,9 +238,13 @@ cudl.docView = function() {
 									+ ls + "</ul></div>", true);
 
 				}
-
+				
+				
 			}
-
+			
+			// document has loaded. Display the content and remove the mask. 			
+			cudl.loadMask.hide();
+			document.getElementById('metadata-about').style.display='inline';
 		},
 
 		addSearchLink : function(text) {

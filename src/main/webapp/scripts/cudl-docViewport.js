@@ -115,17 +115,21 @@ cudl.MyViewportUi = Ext.extend(Ext.Viewport,
 			padding : 0,			
 			initComponent : function() {
 				this.items = [ {
-					layout : 'anchor',
-					region : 'center',
+					layout: {
+			            type: 'vbox',
+			            align: 'stretch'
+			        },					
+					region : 'center',					
 					border : false,
 					margin : '0 0 0 0',					
 					border : 0,
-					padding : 0,
-					width : 100,
+					padding : 0,					
+					width : '100%',
+					height : '100%',
 					items : [ cudl.viewportComponents.pageTitlePanel,
 					          cudl.viewportComponents.pagingToolbar , {
-						el : 'center',
-						height : '90%',
+						el : 'seadragonImage',
+						flex:1,
 						border : true
 					} ]
 				}, cudl.viewportComponents.rightTabPanel, 
