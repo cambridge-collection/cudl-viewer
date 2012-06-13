@@ -71,6 +71,17 @@ ol#index_carousel li {
 	height: 370px;
 }
 
+/* Text for downtime message on main page */
+.warning {
+	border-color: #ffaaaa;
+	text-align: center;
+    border-style:solid;
+    border-width:1px;
+	margin-top:24px;
+	background-color: #ffeeee; 
+}
+
+
 .footer a:link,.footer a:visited,.footer a:active {
 	color: #FFFFFF;
 	text-decoration: underline;

@@ -47,7 +47,7 @@
 				<a href="/view/MS-ADD-03975/21"><img src="/img/blank.gif"
 					style="width: 100%; height: 100%;"
 					alt="Newton's Laboratory Notebook"
-					title="Newton's Laboratorycollections/genizah Notebook" /> </a>
+					title="Newton's Laboratory Notebook" /> </a>
 			</div>
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/featured-nuremberg.jpg');">

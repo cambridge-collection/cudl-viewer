@@ -36,6 +36,7 @@ public class SiteViewController {
 		  featuredItems.add(ItemFactory.getItemFromId(itemId));
 		}
 		modelAndView.addObject("featuredItems", featuredItems);
+		modelAndView.addObject("downtimeWarning", Properties.getString("downtimeWarning"));
 
 		return modelAndView;
 	}

@@ -9,6 +9,8 @@
 <%
 	List<Item> featuredItems = (List<Item>) request
 			.getAttribute("featuredItems");
+	String downtimeWarning = (String) request
+			.getAttribute("downtimeWarning");
 %>
 
 <script type="text/javascript">
@@ -31,6 +33,8 @@
 		index_carousel.moveTo(randomnumber, false);
 	}
 </script>
+
+<%=downtimeWarning%>
 
 <div id="content" class="grid_20 content">
 
