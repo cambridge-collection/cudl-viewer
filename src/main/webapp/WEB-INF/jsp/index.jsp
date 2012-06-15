@@ -3,7 +3,7 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
-	<jsp:param name="displaySearch" value="false" />
+	<jsp:param name="displaySearch" value="true" />
 </jsp:include>
 
 <%
@@ -41,18 +41,7 @@
 	<!-- side panel -->
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-		<div class="grid_6">
-			<h3>Find a book</h3>
-		</div>
-		<div class="searchform box">
 
-			<form class="grid_5" action="/search">
-				<input class="search" type="text" value="" name="keyword"
-					placeholder="Search" autocomplete="off" /> <input id="submit"
-					type="submit" value="Search" />
-
-			</form>
-		</div>
 
 		<div class="grid_6">
 			<h3>Explore our collections</h3>
@@ -245,35 +234,32 @@
 	<!-- items featured at the bottom of the page -->
 	<div class="grid_13">
 		<div class="grid_13">
-			<br />
+
 			<h3>Featured items</h3>
 		</div>
 
-		<div class="grid_13" >
-			<%
-				for (int i = 0; i < featuredItems.size(); i++) {
-					Item item = featuredItems.get(i);
-			%>
-			<div class="grid_4">
-				<div class="featuredItem-text">
-					<h5>
-						<a href="/view/<%=item.getId()%>"><%=item.getTitle()%></a>
-					</h5>
+		<div class="grid_16">
+			<div class="grid_13">
+				<div class="grid_4">
+					<a href="/view/MS-ADD-03975/21"> <img
+						title="Newton's Laboratory Notebook" height="150" width="150"
+						alt="Newton's Laboratory Notebook"
+						src="/images/collectionsView/featured-newton.jpg">
+					</a>
 				</div>
-
-				<div>
-					<div class="collections_carousel_image_box">
-						<div class="collections_carousel_image">
-							<a href="/view/<%=item.getId()%>/"><img
-								alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
-								style="height: 100%" /> </a>
-						</div>
-					</div>
+				<div class="grid_4">
+					<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
+						src="/images/collectionsView/featured-nuremberg.jpg" height="150"
+						width="150" alt="Nuremberg Chronicle" title="Nuremberg Chronicle" />
+					</a>
+				</div>
+				<div class="grid_4">
+					<a href="/view/MS-EE-00003-00059/70"><img
+						src="/images/collectionsView/featured-edward.jpg" height="150"
+						width="150" alt="Life of St Edward the Confessor"
+						title="Life of St Edward the Confessor" /> </a>
 				</div>
 			</div>
-			<%
-				}
-			%>
 		</div>
 	</div>
 

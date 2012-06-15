@@ -9,18 +9,13 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle() %></h3>
 	<blockquote class="grid_5 omega print">
 
-		Plato is my friend,<br /> Aristotle is my friend,<br /> but my
-		greatest friend is truth." <br /> <br /> <cite>&mdash;Sir
-			Isaac Newton <br />(<a href="/view/MS-ADD-03996/179">MS
-				Add.3996, 88r</a>)</cite>
+		Hebrew Quote." <br /> <br /> <cite>&mdash;Someone <br /></cite>
 
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
-		<img class="collectionOrganisationalImage" src="/images/collectionsView/newton.jpg"
-			alt="Newton" width="150" height="225" /> <span class="image-credit">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
-				College, Cambridge.</a> </span>
+		<img class="collectionOrganisationalImage" src="/images/collectionsView/hebrew.jpg"
+			alt="MS-ADD-00431" width="150" height="225" /> 
 	</div>
 	<div class="grid_9">
 		<br />
