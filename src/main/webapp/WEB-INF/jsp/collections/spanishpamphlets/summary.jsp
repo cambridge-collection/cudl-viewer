@@ -14,10 +14,8 @@ This is the contagion, the wretched contagion, that comes down from literature t
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
-		<img class="collectionOrganisationalImage" src="/images/collectionsView/newton.jpg"
-			alt="Newton" width="150" height="225" /> <span class="image-credit">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
-				College, Cambridge.</a> </span>
+		<img class="collectionOrganisationalImage" src="/images/collectionsView/spanishpamphlets.jpg"
+			alt="Newton" width="150" height="225" /> 
 	</div>
 	<div class="grid_9">
 		<br />
