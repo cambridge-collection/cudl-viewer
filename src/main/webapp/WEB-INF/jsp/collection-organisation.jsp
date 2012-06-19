@@ -28,6 +28,7 @@ function pageinit() {
   var pageLimit = 8;
   var numResults = <%=collection.getItems().size()%>;
 	  
+  // initalise paging. 
   var Paging = $(".pagination").paging(
 	numResults,
 	{

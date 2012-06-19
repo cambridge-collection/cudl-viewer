@@ -63,9 +63,9 @@ public class SearchResult implements Comparable<SearchResult> {
 			this.snippets = new Hashtable<Integer, List<String>>();
 			List<String> snippetList = new ArrayList<String>();
 
-			List<Node> snippetNodes = getNodes("snippet", metaAndSnippets);
-			for (int i = 0; i < snippetNodes.size(); i++) {
-				Node snippetNode = snippetNodes.get(i);
+			NodeList snippetNodes = node.getElementsByTagName("snippet");
+			for (int i = 0; i < snippetNodes.getLength(); i++) {
+				Node snippetNode = snippetNodes.item(i);
 				if (snippetNode != null) {
 
 					snippetList.add(getValueInHTML(snippetNode));

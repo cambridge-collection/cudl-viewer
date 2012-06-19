@@ -28,6 +28,28 @@ function pageinit() {
 	
   var pageLimit = 20;
   var numResults = <%=resultSet.getNumberOfResults()%>;
+  
+  // Setup spinner. 
+  var opts = {
+		  lines: 13, // The number of lines to draw
+		  length: 7, // The length of each line
+		  width: 4, // The line thickness
+		  radius: 10, // The radius of the inner circle
+		  rotate: 0, // The rotation offset
+		  color: '#000', // #rgb or #rrggbb
+		  speed: 1, // Rounds per second
+		  trail: 60, // Afterglow percentage
+		  shadow: false, // Whether to render a shadow
+		  hwaccel: false, // Whether to use hardware acceleration
+		  className: 'spinner', // The CSS class to assign to the spinner
+		  zIndex: 2e9, // The z-index (defaults to 2000000000)
+		  top: 'auto', // Top position relative to parent in px
+		  left: 'auto' // Left position relative to parent in px
+		};
+		var target = document.getElementById('content');
+		var spinner = new Spinner(opts);
+		
+  // Setup pagination
   var Paging = $(".pagination").paging(
 	numResults,
 	{
@@ -38,10 +60,14 @@ function pageinit() {
 		page : 1,
 		onSelect : function(page) {
 
+			spinner.spin(target);				   	
+			
 	        $.ajax({
                 "url": '/search/JSON?start=' + this.slice[0] + '&end=' + this.slice[1] +'&<%=request.getQueryString()%>',
                 "success": function(data) {
                 	
+                	  spinner.stop();
+
                       // content replace					                   
 				      var container = document.getElementById("collections_carousel");
 				      
@@ -61,25 +87,41 @@ function pageinit() {
 							
 				    	  var itemDiv = document.createElement('div');
 				    	  itemDiv.setAttribute("class", "collections_carousel_item");
-				    	  itemDiv.innerHTML= "<div class='collections_carousel_image_box'>"+
+				    	  var itemText = "<div class='collections_carousel_image_box'>"+
 				        "<div class='collections_carousel_image'>"+
 				        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
 				        imageDimensions+ " > </a></div></div> "+
-				        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
-				        " </div><br/><div>";
+				        "<div class='collections_carousel_text grid_8'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+				        " ... <br/><br/><ul>";
 				        
-					      for (var j=0; j<result.snippets.length; j++) {		
+					    for (var j=0; j<result.snippets.length; j++) {		
 					    	  
-					      	  var snippet = result.snippets[j];
-					    	  itemDiv.innerHTML+= "<div>"+snippet.snippetStrings[0]
-					    	  +" <a href='/view/" +item.id+ "/"+snippet.startPage+"'>Go >> </a></div>";
-					      }
+					    	var snippet = result.snippets[j];
+					    	
+					    	// Strip tags. 
+					    	var snippetWithTags = snippet.snippetStrings[0];
+					    	var stripTags = document.createElement("div");
+					    	stripTags.innerHTML = snippetWithTags;
+					    	var snippetWithoutTags = stripTags.textContent || stripTags.innerText || "";
+					    	
+					    	if (snippetWithoutTags!="" && snippetWithoutTags!="undefined") {
+					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetWithoutTags
+					    	  +"</a></li>"; 
+					    	}
+					    	
+					    }
 					      
-					    itemDiv.innerHTML+="</div><div class='clear'></div>";
+					    itemText+="</ul></div><div class='clear'></div>";
+					    itemDiv.innerHTML = itemText;
 	           	        container.appendChild(itemDiv);
 			 
+				      }	     
 				      
-				      }	                        
+	           	       $('.collections_carousel_text').truncate({  
+	           	    	    max_length: 240,  
+		           	        more: "more",  
+		           	        less: "hide"
+		           	    }); 
                 }
             });
 		
