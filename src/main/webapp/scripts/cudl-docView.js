@@ -211,14 +211,14 @@ cudl.docView = function() {
 
 				cudl.view.populateElement(document
 						.getElementById("metadata-display-rights"),
-						descriptiveMetadata.displayImageRights.value);
+						descriptiveMetadata.displayImageRights);
 				if (descriptiveMetadata.fundings) {
 					cudl.view.populateElement(document
 							.getElementById("metadata-funding"),
 							descriptiveMetadata.fundings.value);
 				}
 				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
-						+ descriptiveMetadata.downloadImageRights.value
+						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
 
 				// update current page number display.
