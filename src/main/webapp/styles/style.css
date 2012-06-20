@@ -348,7 +348,14 @@ ol#search_carousel li {
 }
 
 .collections_carousel_text {
-	padding: 5px;
+	padding: 5px;	
+}
+
+.morelink a:link, .morelink a:visited, .morelink a:active {
+	color:#3a6c8f;
+}
+.lesslink a:link, .morelink a:visited, .morelink a:active {
+	color:#3a6c8f;
 }
 
 ol#vcollections_carousel li {
