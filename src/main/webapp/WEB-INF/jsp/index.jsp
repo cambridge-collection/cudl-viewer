@@ -41,12 +41,6 @@
 	<!-- side panel -->
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-
-
-		<div class="grid_6">
-			<h3>Explore our collections</h3>
-		</div>
-
 		<div id="news" class="box">
 
 			<div class="featured-item-list">
@@ -173,7 +167,7 @@
 						make most of our Newton papers available on this site.</p>
 
 					<p>
-						This first release features some of Newton's most important work
+						This collection features some of Newton's most important work
 						from the 1660s, including his <a href="/collections/newton">college
 							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
 					</p>
@@ -232,38 +226,36 @@
 	</div>
 
 	<!-- items featured at the bottom of the page -->
-	<div class="grid_13">
-		<div class="grid_13">
 
-			<h3>Featured items</h3>
-		</div>
+	
 
-		<div class="grid_16">
-			<div class="grid_13">
-				<div class="grid_4">
+				<div style="width:203px; float:left;margin-left: 8px;">
 					<a href="/view/MS-ADD-03975/21"> <img
-						title="Newton's Laboratory Notebook" height="150" width="150"
+						title="Newton's Laboratory Notebook" height="200" width="200"
 						alt="Newton's Laboratory Notebook"
 						src="/images/collectionsView/featured-newton.jpg">
 					</a>
 				</div>
-				<div class="grid_4">
-					<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
-						src="/images/collectionsView/featured-nuremberg.jpg" height="150"
-						width="150" alt="Nuremberg Chronicle" title="Nuremberg Chronicle" />
+				<div style="width:203px; float:left;">
+					<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img style="margin-right:auto;margin-left:auto"
+						src="/images/collectionsView/featured-nuremberg.jpg" height="200"
+						width="200" alt="Nuremberg Chronicle" title="Nuremberg Chronicle" />
 					</a>
 				</div>
-				<div class="grid_4">
-					<a href="/view/MS-EE-00003-00059/70"><img
-						src="/images/collectionsView/featured-edward.jpg" height="150"
-						width="150" alt="Life of St Edward the Confessor"
+				<div style="width:203px; float:left;" >
+					<a href="/view/MS-EE-00003-00059/70"><img style="margin-right:auto;margin-left:auto"
+						src="/images/collectionsView/featured-edward.jpg" height="200"
+						width="200" alt="Life of St Edward the Confessor"
 						title="Life of St Edward the Confessor" /> </a>
 				</div>
-			</div>
-		</div>
-	</div>
+	
+	
 
 </div>
 
+<!-- cookie notice -->
+<div style="display:none"><div id="cookienotice">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div></div>
+
 <jsp:include page="footer/footer.jsp" />
+
 

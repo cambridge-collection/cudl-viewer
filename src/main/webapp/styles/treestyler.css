@@ -38,6 +38,6 @@
 #tree li li span{left:0px;}
 
 /* third level */
-#tree li li li a{padding-left:84px;}
-#tree li li li span{left:56px;}
+#tree li li li a{padding-left:0px;margin-right:10px}
+#tree li li li span{left:0px;}
 
