@@ -11,7 +11,7 @@
 		जलाद्रक्षेत्तैलाद्रक्षेद्रक्षेच्छिथिलबन्धनात् | मूर्खहस्ते न मां
 		दद्यादिति वदति पुस्तकम् || <br /> <br /> Save me from water, protect
 		me from oil and from loose binding, And do not give me into the hands
-		of fools!” says the manuscript. <br /> <br />
+		of fools!” says the manuscript. <br /><br />  <cite>&mdash; Anonymous apotropaic verse frequently found at the end of manuscripts <br /></cite>
 
 	</blockquote>
 	<br /> <br />
@@ -60,7 +60,7 @@
 		<p>It is a wealth of cultural and historical information on South
 			Asia of great potential significance for contemporary scholarship,
 			which will be gradually made available through the Digital Library.</p>
-		<br /> <br />
+		<br /> 
 	</div>
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
