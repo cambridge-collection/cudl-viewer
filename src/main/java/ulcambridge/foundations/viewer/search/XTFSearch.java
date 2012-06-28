@@ -156,9 +156,14 @@ public class XTFSearch implements Search {
 
 						NodeList snippetNodes = node
 								.getElementsByTagName("snippet");
-						Integer startPage = new Integer(meta
+												
+						Integer startPage=1; // default
+						try {
+						    startPage = new Integer(meta
 								.getElementsByTagName("startPage").item(0)
-								.getTextContent());
+								.getTextContent());						
+						} catch (Exception e) { /* ignore, use default value */}
+						
 						for (int j = 0; j < snippetNodes.getLength(); j++) {
 							Element snippetNode = (Element) snippetNodes
 									.item(j);
