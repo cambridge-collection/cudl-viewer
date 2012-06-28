@@ -8,8 +8,11 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_5 omega print">
-
-		Hebrew Quote." <br /> <br /> <cite>&mdash;Someone <br /></cite>
+	
+		Are there words enough in all of song
+		to praise the pen? Who else could bear
+		the burden of bringing back the past
+		and preserving it then as though with myrrh?" <br /> <br /> <cite>&mdash; Shem Tov Ardutiel <br /></cite>
 
 	</blockquote>
 	<br /> <br />
