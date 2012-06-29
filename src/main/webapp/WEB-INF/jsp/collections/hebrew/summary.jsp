@@ -12,7 +12,7 @@
 		Are there words enough in all of song
 		to praise the pen? Who else could bear
 		the burden of bringing back the past
-		and preserving it then as though with myrrh?" <br /> <br /> <cite>&mdash; Shem Tov Ardutiel <br /></cite>
+		and preserving it then as though with myrrh?" <br /> <br /> <cite>&mdash; Shem Tov Ardutiel <br />(Trans. Peter Cole, The Dream of the Poem)</cite>
 
 	</blockquote>
 	<br /> <br />
