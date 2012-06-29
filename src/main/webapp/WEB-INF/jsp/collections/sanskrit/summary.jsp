@@ -11,7 +11,10 @@
 		जलाद्रक्षेत्तैलाद्रक्षेद्रक्षेच्छिथिलबन्धनात् | मूर्खहस्ते न मां
 		दद्यादिति वदति पुस्तकम् || <br /> <br /> Save me from water, protect
 		me from oil and from loose binding, And do not give me into the hands
-		of fools!” says the manuscript. <br /><br />  <cite>&mdash; Anonymous apotropaic verse frequently found at the end of manuscripts <br /></cite>
+		of fools!” says the manuscript. <br />
+		<br /> <cite>&mdash; Anonymous apotropaic verse frequently
+			found at the end of manuscripts <br />
+		</cite>
 
 	</blockquote>
 	<br /> <br />
@@ -27,7 +30,7 @@
 			to acquire Sanskrit manuscripts collected in Nepal and India on the
 			initiative of the Cambridge Sanskritist Edward B. Cowell and his
 			successor Cecil Bendall. The collaboration of other scholars such as
-			William Rhys-Davids, Georg Bühler, Martin Haug, as well as of other
+			William Rhys-Davids and Georg Bühler, as well as of other
 			professionals, enriched the collections with manuscripts hailing from
 			different regions of the South Asian subcontinent and written in a
 			wide range of languages, from Middle Indian (Pali and Prakrit) to
@@ -35,12 +38,15 @@
 
 		<p>While the greatest part of collection had thus been constituted
 			by 1900, the acquisitions continued through donation or purchase
-			throughout the 20th century. However, despite an early effort by
-			Bendall, who in 1883 published a catalogue of Buddhist Sanskrit
-			manuscripts in the University Library including 248 items, until now
-			the collections have remained uncatalogued and therefore scarcely
-			accessible to the scholars of pre-modern South Asia and virtually
-			unknown to the general public.</p>
+			throughout the 20th century. However, despite early efforts—in 1883
+			Bendall published a catalogue of Buddhist Sanskrit manuscripts in the
+			University Library including 248 items, and in 1906 basic
+			descriptions of the uncatalogued manuscripts were recorded on paper
+			index cards by Louis de la Vallée Poussin and Caroline Mary
+			Ridding—until now the collections have remained uncatalogued and
+			therefore scarcely accessible to the scholars of premodern South Asia
+			and virtually unknown to the general public.</p>
+
 		<p>Now the AHRC-funded project “The intellectual and religious
 			traditions of South Asia as seen through the Sanskrit manuscript
 			collections of the University Library, Cambridge” has begun a
@@ -49,18 +55,20 @@
 			Pali, Tamil and other ancient and medieval South Asian languages,
 			produced during a time span of more than 1000 years, and written in
 			over a dozen scripts and on different writing materials, such as
-			paper, palm-leaf and birch-bark.</p>
+			paper, palm leaf and birch bark.</p>
+
 		<p>Along with doctrinal, exegetical and ritual works issued from
-			the many religious traditions of South Asia - from the Vedic religion
+			the many religious traditions of South Asia—from the Vedic religion
 			to devotional Hinduism and Tantrism, from Theravāda to Mahāyāna and
-			Tantric Buddhism, to Jainism - the Library’s holdings also include
+			Tantric Buddhism, to Jainism—the Library’s holdings also include
 			texts on a variety of “secular” topics, ranging from works of poetry
 			and drama to treatises on philosophy, mathematics, grammar,
 			astronomy, law, eroticism, medicine, archery, horse breeding, etc.</p>
+
 		<p>It is a wealth of cultural and historical information on South
 			Asia of great potential significance for contemporary scholarship,
 			which will be gradually made available through the Digital Library.</p>
-		<br /> 
+		<br />
 	</div>
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
