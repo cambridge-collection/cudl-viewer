@@ -9,33 +9,41 @@ cudl.toggleDiv = function (divid) {
 }
 
 // Styles expandable trees
-this.treestyler = function(){
+cudl.treestyler = function(){
 	var tree = document.getElementById("tree");
 	if(tree){
 
-		this.listItem = function(li){
+		cudl.treestyler.listItem = function(li){
 			if(li.getElementsByTagName("ul").length > 0){
 				var ul = li.getElementsByTagName("ul")[0];
 				if (!ul.style.display) {
 					ul.style.display = "none";
 				}
 				var span = document.createElement("span");
+				span.title = "treespan";
 				span.className = (ul.style.display == "none") ? "collapsed" : "expanded";
 				span.onclick = function(){
 					ul.style.display = (ul.style.display == "none") ? "block" : "none";
 					this.className = (ul.style.display == "none") ? "collapsed" : "expanded";
+					cudl.treestyler.expand[ul.id] = (ul.style.display != "none");
 				};
-				li.appendChild(span);
+
+				if (li.getElementsByTagName("span").length==0) {
+				  li.appendChild(span);
+				}
 			};
 		};
 		
 		var items = tree.getElementsByTagName("li");
 		for(var i=0;i<items.length;i++){
-			listItem(items[i]);
+			cudl.treestyler.listItem(items[i]);
 		};
 		
 	};	
 };
+
+// Stores state of expand / collapse on tree
+cudl.treestyler.expand = {};
 
 /* Fancybox setup */
 $(document).ready(function() {
@@ -58,6 +66,6 @@ $(document).ready(function() {
 	});	
 	
 	// setup any expandable trees
-	treestyler();
+	cudl.treestyler();
 });
 

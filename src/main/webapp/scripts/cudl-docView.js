@@ -137,64 +137,47 @@ cudl.docView = function() {
 				
 				// Get an array of metadata for all the descriptive metadata that 
 				// applies to the currently viewed page.
-				
-				// TODO only do once. 
-				var allLSArray = cudl.view.flatten(cudl.data.logicalStructures);
-				var lsArray = cudl.view.getLSArrayForPageViewed(cudl.pagenum, allLSArray);
-				
-				var metadataArray = cudl.view.getDescriptiveMetadataArray(
-						cudl.pagenum, lsArray, cudl.data.descriptiveMetadata);							
-				
-				var descriptiveMetadata = metadataArray[0];
-				
-				// Write out first element, as this will always exist and should not change.
-				var tree = document.getElementById("tree");
-				if (tree.children.length==0) {	
+				var lsArray = cudl.view.getLSArrayForPageViewed(cudl.pagenum, cudl.data.logicalStructures);				
+				var descriptiveMetadata = cudl.view.getDescriptiveMetadataForThisPage(lsArray[0]);							
 
-					  var li = document.createElement('li');
-					  li.innerHTML="Book Information: <em>"+metadataArray[0].title.displayForm+"</em>"+
-					  "<ul><div>"+cudl.view.getHTMLFromDescriptiveMetadata(metadataArray[0])+"</div></ul>";
-					  li.id = metadataArray[0].ID;
-					  
-					  tree.appendChild(li); 
-				}
 				
 				// For the remaining items, replace the text or add/remove list items 
 				// as needed. Note this is done to ensure that items already expanded 
 				// keep their state.
-				for (var i=1; i< metadataArray.length; i++) {
-						
-					var metadataItem = metadataArray[i];
+				// nodeID represents this nodes position in the hierarchy. "0" for root, "0-0" for first child,
+				// "0-1" for second child, "0-0-0" for first grandchild etc. 
+				
+				cudl.makeTree = function (tree, descriptiveMetadata, nodeID) {
+					
+					// find out if we want this node expanded or collapsed
+					var style = "display:none";
+					if (cudl.treestyler.expand[nodeID]) {
+						style = "display:inline";
+					}					
+					
+					// Make this node
 					var li = document.createElement('li');
+					li.innerHTML="  &nbsp;<em>"+descriptiveMetadata.title.displayForm+"</em>"+
+					"<ul id="+nodeID+" style='"+style+"'><div>"+cudl.view.getHTMLFromDescriptiveMetadata(descriptiveMetadata)+"</div></ul>" ;
+					li.id = descriptiveMetadata.ID;	
 					
-					li.innerHTML="Section Information: <em>"+metadataArray[i].title.displayForm+"</em>"+
-					"<ul><div>"+cudl.view.getHTMLFromDescriptiveMetadata(metadataArray[i])+"</div></ul>";
-					li.id = metadataArray[i].ID;					  
+					tree.appendChild(li);
 					
-					if (tree.children.length<=i) {
-					  // tree is less than the metadata we need to display
-					  // add item to tree. 
-					  tree.appendChild(li); 
-					} else {
-					  // tree has enough (or more than enough) items already.
-					  // So change the existing item in tree
-				      // Note this is done to ensure that items already expanded 
-					  // keep their state.
-
-					  // change section info title <em>
-					  tree.children[i].children[0].innerHTML = li.children[0].innerHTML; 
-					  // change the body <ul>
-					  tree.children[i].children[1].innerHTML = li.children[1].innerHTML; 
-					}
+					// Recursive call
+					for (var i=0; i< descriptiveMetadata.children.length; i++) {
+ 						
+						var metadataItem = descriptiveMetadata.children[i];						
+						cudl.makeTree(li, metadataItem, nodeID+"-"+i);
+					}	
+					
 				}
 				
-				// hide any unused metadata sections in tree (from previous page views). 
-				for (var i=metadataArray.length; i<tree.children.length; i++) {
-				  tree.removeChild(tree.children[i]);					
-				}
-					 
+				document.getElementById("tree").innerHTML="";
+				tree = cudl.makeTree(document.getElementById("tree"), descriptiveMetadata, "0");
+				
 				// style tree. Add expand/collapse css etc. 
-				treestyler();		    
+				cudl.treestyler();	
+				
 			
 				// Set data that is displayed in the page outside the metadata
 				// section
@@ -399,7 +382,7 @@ cudl.docView = function() {
 		 * Flatten array so that any child elements (.children array) 
 		 * appear on the top level of the array. 
 		 * Returns a single level array of json objects. 
-		 */
+		 *//*
 		flatten : function (jsonArray) {
 			
 			var lsArray = new Array();			
@@ -414,24 +397,41 @@ cudl.docView = function() {
 			}
 			return lsArray;			
 			
-		}, 
+		}, */
 		
 		/**
 		 * Returns an array of logical structures for that apply to the
 		 * page given. Always includes ROOT logical structure.
-		 * Takes in a 'flat' array of logical structures and a page number. 		 
+		 * Takes in an array of logical structures and a page number. 		 
 		 */
-		getLSArrayForPageViewed : function(pageNumber, logicalStructuresArray) {
+		getLSArrayForPageViewed : function(pageNumber, logicalStructures) {
 
 			var lsArray = new Array();			
-			for ( var i = 0; i < logicalStructuresArray.length; i++) {
-				var ls = logicalStructuresArray[i];
+			for ( var i = 0; i < logicalStructures.length; i++) {
+				var ls = logicalStructures[i];
 
+				
+				
 				if (ls.startPagePosition <= pageNumber
 						&& ls.endPagePosition >= pageNumber) {
 
-					cudl.data.descriptiveMetadata[ls.descriptiveMetadataID]
-					lsArray.push(ls);
+					//cudl.data.descriptiveMetadata[ls.descriptiveMetadataID]
+					
+					var item = {
+						 "descriptiveMetadataID":ls.descriptiveMetadataID,
+						 "label":ls.label,
+						 "startPageID":ls.startPageID,
+						 "startPageLabel":ls.startPageLabel,
+						 "startPagePosition":ls.startPagePosition,
+						 "endPagePosition":ls.endPagePosition,
+						 "children":[]
+					}
+					
+					if (ls.children) {
+						item.children = item.children.concat(cudl.view.getLSArrayForPageViewed(pageNumber, ls.children));
+					}
+					
+					lsArray.push(item);
 				}
 				
 			}
@@ -440,26 +440,26 @@ cudl.docView = function() {
 		},
 
 		/**
-		 * Returns an array of metadata ids for the descriptiveMetadata sections
-		 * that apply to the page given. Always includes ROOT
-		 * descriptiveMetadata for this item.
+		 * Returns ROOT descriptiveMetadata for this item, plus any 
+		 * children descriptiveMetadata sections that correspond to the
+		 * logical structure given.
 		 */
-		getDescriptiveMetadataArray : function(pageNumber,
-				logicalStructuresArray, descriptiveMetadataArray) {
+		getDescriptiveMetadataForThisPage : function(
+				logicalStructures) {
 			
-			var metadataArray = new Array(); 	
-			for ( var i = 0; i < descriptiveMetadataArray.length; i++) {
-				var dm = descriptiveMetadataArray[i];				
-				
-				for ( var j = 0; j < logicalStructuresArray.length; j++) {
-					var ls = logicalStructuresArray[j];
+							
+			var metadataItem = cudl.view.findDescriptiveMetadata(logicalStructures.descriptiveMetadataID, cudl.data);
+			metadataItem.children = [];
+			
+			if (logicalStructures.children.length>0) {
+				for ( var i = 0; i < logicalStructures.children.length; i++) {
 
-					if (dm.ID == ls.descriptiveMetadataID) {
-						metadataArray.push(dm);
-					}
+					var lsItem = logicalStructures.children[i];
+					metadataItem.children.push(cudl.view.getDescriptiveMetadataForThisPage(lsItem));
 				}
 			}
-			return metadataArray;
+						
+			return metadataItem;
 
 		},
 
