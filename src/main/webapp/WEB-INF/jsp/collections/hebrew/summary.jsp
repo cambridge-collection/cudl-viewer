@@ -9,8 +9,8 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_6 omega print" style="font-size: 18px;">
 
-		Are there words enough in all of song <br />&nbsp;&nbsp;&nbsp;&nbsp;to praise the
-		pen? Who else could bear <br />the burden of bringing back the past <br />&nbsp;&nbsp;&nbsp;&nbsp;and
+		Are there words enough in all of song <br />&nbsp;&nbsp;to praise the
+		pen? Who else could bear <br />the burden of bringing back the past <br />&nbsp;&nbsp;and
 		preserving it then as though with myrrh?" <br /> <cite>&mdash;
 			Shem Tov Ardutiel <br />(Trans. Peter Cole, The Dream of the Poem)
 		</cite>
@@ -31,7 +31,7 @@
 			halakhic, liturgical, poetic, philosophical, kabbalistic and
 			scientific manuscripts. Chief among the treasures are the famous Nash
 			Papyrus, one of the earliest known manuscripts containing the words
-			of the Hebrew Bible and an artefact that continues to excite debate,
+			of the Hebrew Bible and an artefact that continues to excite debate 
 			more than a hundred years after its discovery, and the Cambridge
 			Mishnah, one of only three complete manuscript codices of this
 			central text of Jewish law.</p>
