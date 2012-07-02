@@ -152,7 +152,10 @@ function pageinit() {
 	});
 
     // Read in # value from session cookie 
-    viewPage(cudl.getCookie('<%=collection.getId()%>_pageNum'));
+    var cookiePageNum = cudl.getCookie('<%=collection.getId()%>_pageNum');
+    if (cookiePageNum) {
+      viewPage(cookiePageNum);
+    }
   
     // Handle updating the Page selected from the hash part of the URL
 	$(window).hashchange(function() {

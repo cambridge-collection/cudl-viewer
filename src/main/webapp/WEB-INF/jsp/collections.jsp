@@ -116,9 +116,9 @@
 			</a>
 
 			<h5>Hebrew Collection</h5>
-			<br /> The volumes in the Hebrew Manuscripts Collection at Cambridge
-			University Library have been acquired throughout the Library’s
-			history from its foundation in the 15th century. <br /> <br /> <a
+			<br /> For over five hundred years Cambridge University has been
+			building up one of the world’s most important collections of Hebrew
+			manuscripts. <br /> <br /> <a
 				href="/collections/hebrew">View collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>

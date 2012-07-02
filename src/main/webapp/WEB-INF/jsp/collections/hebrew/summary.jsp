@@ -7,22 +7,34 @@
 
 <div class="grid_10">
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
-	<blockquote class="grid_5 omega print">
-	
-		Are there words enough in all of song
-		to praise the pen? Who else could bear
-		the burden of bringing back the past
-		and preserving it then as though with myrrh?" <br /> <br /> <cite>&mdash; Shem Tov Ardutiel <br />(Trans. Peter Cole, The Dream of the Poem)</cite>
+	<blockquote class="grid_6 omega print" style="font-size: 18px;">
+
+		Are there words enough in all of song <br />&nbsp;&nbsp;&nbsp;&nbsp;to praise the
+		pen? Who else could bear <br />the burden of bringing back the past <br />&nbsp;&nbsp;&nbsp;&nbsp;and
+		preserving it then as though with myrrh?" <br /> <cite>&mdash;
+			Shem Tov Ardutiel <br />(Trans. Peter Cole, The Dream of the Poem)
+		</cite>
 
 	</blockquote>
 	<br /> <br />
-	<div class="grid_4">
+	<div class="grid_3 right">
 		<img class="collectionOrganisationalImage"
 			src="/images/collectionsView/hebrew.jpg" alt="MS-ADD-00431"
 			width="150" height="225" />
 	</div>
 	<div class="grid_9">
 		<br />
+		<p>For over five hundred years Cambridge University has been
+			building up one of the world’s most important collections of Hebrew
+			manuscripts. The University Library holds significant numbers of
+			Bibles and biblical and talmudic commentaries, along with important
+			halakhic, liturgical, poetic, philosophical, kabbalistic and
+			scientific manuscripts. Chief among the treasures are the famous Nash
+			Papyrus, one of the earliest known manuscripts containing the words
+			of the Hebrew Bible and an artefact that continues to excite debate,
+			more than a hundred years after its discovery, and the Cambridge
+			Mishnah, one of only three complete manuscript codices of this
+			central text of Jewish law.</p>
 		<p>The volumes in the Hebrew Manuscripts Collection at Cambridge
 			University Library have been acquired throughout the Library’s
 			history from its foundation in the 15th century. The acquisition of
