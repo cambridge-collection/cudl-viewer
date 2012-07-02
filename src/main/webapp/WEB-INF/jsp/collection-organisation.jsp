@@ -12,7 +12,7 @@
 			.getAttribute("collection");
 %>
 <script type="text/javascript">
-
+	
 var viewPage = function(pageNum) {
 	 if (window.history.replaceState) {
 		 window.history.replaceState(pageNum, "Cambridge Digital Library",
@@ -20,6 +20,8 @@ var viewPage = function(pageNum) {
 	 } else if (window.location){
 		 window.location.hash = pageNum;
 	 }
+	 
+	 cudl.setCookie('<%=collection.getId()%>_pageNum',''+pageNum)
 	 return false;
 };
 
@@ -149,6 +151,9 @@ function pageinit() {
 		}
 	});
 
+    // Read in # value from session cookie 
+    viewPage(cudl.getCookie('<%=collection.getId()%>_pageNum'));
+  
     // Handle updating the Page selected from the hash part of the URL
 	$(window).hashchange(function() {
 
