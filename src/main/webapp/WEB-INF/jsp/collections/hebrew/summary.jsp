@@ -7,20 +7,21 @@
 
 <div class="grid_10">
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
-	<blockquote class="grid_6 omega print" style="font-size: 18px;">
+	<blockquote class="grid_6 omega print">
 
-		Are there words enough in all of song <br />&nbsp;&nbsp;to praise the
-		pen? Who else could bear <br />the burden of bringing back the past <br />&nbsp;&nbsp;and
-		preserving it then as though with myrrh?" <br /> <cite>&mdash;
+		Are there words enough in all of song to praise the pen?<br/><br/>
+
+היש מספיק בכל שירה ומזמור <br/>
+להלל עט" <br /><br /> <cite>&mdash;
 			Shem Tov Ardutiel <br />(Trans. Peter Cole, The Dream of the Poem)
 		</cite>
 
 	</blockquote>
 	<br /> <br />
 	<div class="grid_3 right">
-		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/hebrew.jpg" alt="MS-ADD-00431"
-			width="150" height="225" />
+		<a href="/view/MS-DD-00010-00068/80"><img class="collectionOrganisationalImage"
+			src="/images/collectionsView/hebrew.jpg" alt="MS-DD-00010-00068"
+			width="150" height="225" /></a>
 	</div>
 	<div class="grid_9">
 		<br />
