@@ -37,7 +37,7 @@
 			central text of Jewish law.</p>
 		<p>The volumes in the Hebrew Manuscripts Collection at Cambridge
 			University Library have been acquired throughout the Library’s
-			history from its foundation in the 15th century. The acquisition of
+			history from its foundation in the fifteenth century. The acquisition of
 			the first Hebrew manuscripts probably originated from local
 			pre-expulsion Jewish communities; later, Christian clerics gave an
 			impetus to the study of Hebrew for scholarly purposes. A sounder
@@ -45,7 +45,7 @@
 			century after the Regius Professorship in Hebrew was founded in 1540
 			and many significant manuscript collections came from Cambridge
 			scholars who collected texts for their own use.</p>
-		<p>At present there are over 1000 manuscripts in Hebrew in the
+		<p>At present there are over 1,000 manuscripts in Hebrew in the
 			collection covering a wide range of texts; Bibles, commentaries,
 			liturgy, philosophy, kabbalah, literature and legal documents. Our
 			initial online collection shows a small selection of the most
@@ -62,27 +62,27 @@
 			Selden, the jurist and scholar and a name more often associated with
 			the Bodleian. He was responsible for the acquisition of the
 			collection from the London bookseller George Thomason in 1648.</p>
-		<p>More manuscripts and books came to the Library in the 17th
+		<p>More manuscripts and books came to the Library in the seventeenth
 			century from the collections of the scholars Richard Holdsworth
 			(Master of Emmanuel College), Henry Lucas and Edmund Castell
 			(1606-1685), the compiler of the ‘Lexicon Heptaglotton’ who left 19
 			Hebrew manuscripts to the Library. The acquisition by the Library of
 			the Royal Collection of George I in 1715 brought with it a small
-			number of Hebrew volumes including a 14th-century Bible from Spain.</p>
-		<p>In the early 19th century the missionary, Claudius Buchanan
+			number of Hebrew volumes including a fourteenth-century Bible from Spain.</p>
+		<p>In the early nineteenth century the missionary, Claudius Buchanan
 			(1766-1815), presented 21 Hebrew manuscripts, some relating to Jewish
-			communities in South India. During the late 19th century, especially
+			communities in South India. During the late nineteenth century, especially
 			from 1867 to 1889, when Henry Bradshaw, followed by the Bible scholar
 			William Robertson Smith, held the post of Librarian, the collections
 			of Hebrew manuscripts were greatly increased.</p>
 		<p>Under the influence of the Dr Solomon Schiller-Szinessy, who
-			exercised a formative influence on 19th-century Hebrew studies in
+			exercised a formative influence on nineteenth-century Hebrew studies in
 			Cambridge, many manuscripts were purchased during this time from
 			dealers in Continental Europe such as Samuel Schonblum, Fischl
 			Hirsch, Lipschutz and others.</p>
 		<p>The oldest manuscript in the collection is the famous Nash
 			Papyrus, a liturgical manuscript containing the Ten Commandments,
-			which is thought to date from the 2nd century BCE.</p>
+			which is thought to date from the second century BCE.</p>
 		<p>Catalogues of the Hebrew manuscript collections have been made
 			over the years by several scholars including Solomon
 			Schiller-Szinessy and Herbert Loewe (1882-1940). In 1975
