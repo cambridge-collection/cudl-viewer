@@ -71,7 +71,7 @@
 			the post of Librarian was held by Henry Bradshaw and the Bible
 			scholar William Robertson Smith, the collections of Hebrew
 			manuscripts were greatly increased.</p>
-		<p>Under the influence of the Dr Solomon Schiller-Szinessy, who
+		<p>Under the influence of Dr Solomon Schiller-Szinessy, who
 			exercised a formative influence on 19th-century Hebrew studies in
 			Cambridge, many manuscripts were purchased from dealers in
 			Continental Europe such as Samuel Schonblum, Fischl Hirsch and
