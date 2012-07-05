@@ -9,7 +9,8 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_6 omega print">
 
-		<div class="right-aligned-language">היש מספיק בכל שירה ומזמור <br /> להלל עט
+		<div class="right-aligned-language">
+			היש מספיק בכל שירה ומזמור <br /> להלל עט
 		</div>
 		<br /> Are there words enough in all of song / to praise the pen? "<br />
 		<br /> <cite>&mdash; Shem Tov Ardutiel <br />(Trans. Peter
@@ -37,21 +38,20 @@
 			more than a hundred years after its discovery, and the Cambridge
 			Mishnah, one of only three complete manuscript codices of this
 			central text of Jewish law.</p>
-		<p>The acquisition of the first Hebrew manuscripts probably
-			originated from local pre-expulsion Jewish communities; later,
-			Christian clerics gave an impetus to the study of Hebrew for
-			scholarly purposes. A sounder basis for Hebrew study grew in the
-			University from the 16th century, after the Regius Professorship in
-			Hebrew was founded in 1540, and many significant manuscript
-			collections came from Cambridge scholars who collected texts for
-			their own use.</p>
+		<p>The first Hebrew manuscripts were probably acquired from local
+			pre-expulsion Jewish communities; later, Christian clerics gave an
+			impetus to the study of Hebrew for scholarly purposes. A sounder
+			basis for Hebrew study grew in the University from the 16th century,
+			after the Regius Professorship in Hebrew was founded in 1540, and
+			many significant manuscript collections came from Cambridge scholars
+			who collected texts for their own use.</p>
 		<p>Notable collectors from early times include the Arabist,
-			Abraham Whelock (who was the first Professor of Arabic before being
-			appointed University Librarian in 1629) whose efforts brought about
-			significant additions to both the Arabic and Hebrew collections,
-			including the transfer to Cambridge of the Dutch orientalist Thomas
-			van Erpe’s (Erpenius) collection, which contained thirteen Hebrew
-			manuscripts and one written in Judaeo-Arabic.</p>
+			Abraham Whelock (who was the first Professor of Arabic before his
+			appointment as University Librarian in 1629) whose efforts brought
+			about significant additions to both the Arabic and Hebrew
+			collections, including the transfer to Cambridge of the Dutch
+			orientalist Thomas van Erpe’s (Erpenius) collection, which contained
+			thirteen Hebrew manuscripts and one written in Judaeo-Arabic.</p>
 		<p>A second important collection was that of Isaac Faraji (Pragi)
 			whose collection of ten Hebrew manuscripts was purchased by John
 			Selden, the jurist and scholar and a name more often associated with
