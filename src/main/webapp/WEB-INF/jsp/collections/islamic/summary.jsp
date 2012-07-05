@@ -2,11 +2,11 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Islamic Manuscripts</h3>
 	<blockquote class="grid_5 omega print">
-		<div class="arabic">
+		<div class="right-aligned-language">
 			أديـن بدين الحــــب أنّى توجـهـت <br /> ركـائـبه
 		</div>
 		<br />I embrace the religion of love wherever its caravans head" <br />
-		<br /> <cite><span class="arabic">(ابن عربي (٥٥٨-٦٣٨ هـ</span>
+		<br /> <cite><span class="right-aligned-language">(ابن عربي (٥٥٨-٦٣٨ هـ</span>
 			<br />Ibn ʿArabī (1165-1240 C.E.)<br /> </cite>
 
 	</blockquote>
