@@ -9,9 +9,7 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_6 omega print">
 
-		<div class="right-aligned-language">
-			היש מספיק בכל שירה ומזמור <br /> להלל עט
-		</div>
+		<div class="right-aligned-language">היש מספיק בכל שירה ומזמור<br />להלל עט</div>
 		<br /> Are there words enough in all of song / to praise the pen? "<br />
 		<br /> <cite>&mdash; Shem Tov Ardutiel <br />(Trans. Peter
 			Cole, The Dream of the Poem)
