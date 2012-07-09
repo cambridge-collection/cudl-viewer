@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="metadata" class="document-about box">
-	<div style="height: 100%; overflow-y: auto; overflow-x: hidden;">
+	<div style="height: 100%; overflow-y: auto; overflow-x: auto;">
 
 		<!-- AddThis Button BEGIN -->
 		<!-- <div class="addthis">
