@@ -21,6 +21,7 @@ public class Item implements Comparable<Item> {
 	private int order;
 	private String id;
 	private String title;
+	private String fullTitle;
 	private List<Person> authors;
 	private String shelfLocator;
 	private String abstractText;
@@ -38,6 +39,7 @@ public class Item implements Comparable<Item> {
 		this.id = itemId;
 		this.json = itemJson;
 		this.title = itemTitle;
+		this.fullTitle = itemTitle;
 		this.shelfLocator = itemShelfLocator;
 		this.abstractText = itemAbstract;
 		this.thumbnailURL = itemThumbnailURL;
@@ -66,25 +68,32 @@ public class Item implements Comparable<Item> {
 		// remove all tags
 		abstractShort = abstractShort.replaceAll("\\<.*?>", "");
 
-		// cut of next word after 120 characters
+		// cut of next word after 120 characters in the abstract
 		if (abstractShort.length() > 120) {
 			abstractShort = abstractShort.substring(0, 120 + abstractShort
 					.substring(120).indexOf(" "));
 		}
 		this.abstractShort = abstractShort;
-
+		
+		
+		// cut of next word after 120 characters in the title
+		if (title.length() > 120) {
+			this.title = title.substring(0, 120 + title
+					.substring(120).indexOf(" "))+ "...";
+		}
+		
 		// Make simple JSON
 		try {
 			simplejson = new JSONObject();
-			simplejson.append("id", itemId);
-			simplejson.append("title", itemTitle);
-			simplejson.append("shelfLocator", itemShelfLocator);
-			simplejson.append("abstractText", itemAbstract);
-			simplejson.append("abstractShort", abstractShort);			
-			simplejson.append("thumbnailURL", itemThumbnailURL);
-			simplejson.append("thumbnailOrientation", thumbnailOrientation);
+			simplejson.append("id", this.getId());
+			simplejson.append("title", this.getTitle());
+			simplejson.append("shelfLocator", this.getShelfLocator());
+			simplejson.append("abstractText", this.getAbstract());
+			simplejson.append("abstractShort", this.getAbstractShort());			
+			simplejson.append("thumbnailURL", this.getThumbnailURL());
+			simplejson.append("thumbnailOrientation", this.getThumbnailOrientation());
 			JSONArray authorJSON = new JSONArray();
-			authorJSON.addAll(authors);
+			authorJSON.addAll(this.getAuthors());
 			simplejson.append("authors", authorJSON);
 			
 		} catch (JSONException e) {
@@ -122,6 +131,10 @@ public class Item implements Comparable<Item> {
 
 	public String getTitle() {
 		return title;
+	}
+	
+	public String getTitleFullform() {
+		return fullTitle;
 	}
 
 	public List<Person> getAuthors() {
