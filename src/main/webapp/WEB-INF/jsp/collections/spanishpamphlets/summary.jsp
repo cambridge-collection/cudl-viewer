@@ -31,7 +31,7 @@ This is the contagion, the wretched contagion, that comes down from literature t
 		
 		<div class="box grid_8">
 		Want to view items by subject or date? <br/>
-		<a href="/search?facet-collection=Newton+Papers">Search the Newton Papers</a>
+		<a href="/search?facet-collection=Spanish+Pamphlets">Search Spanish Pamphlets</a>
 		</div>
 	</div>
 </div>
