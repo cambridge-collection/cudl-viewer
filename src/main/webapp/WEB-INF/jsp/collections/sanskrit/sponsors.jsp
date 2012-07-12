@@ -19,7 +19,7 @@
 		<img src="/images/collectionsView/ahrc-logo.jpg" title="AHRC" />
 	</div>
 	<div class="grid_13">
-		<b>Arts and Humanities Research Council</b><br />
+		Content of this collection has been funded by the <b><a href="http://www.ahrc.ac.uk">Arts and Humanities Research Council</a></b>.<br />
 		<br />
 	</div>
 

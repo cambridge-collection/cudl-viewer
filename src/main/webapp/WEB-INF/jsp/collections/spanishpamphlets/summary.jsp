@@ -14,8 +14,8 @@ This is the contagion, the wretched contagion, that comes down from literature t
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
-		<img class="collectionOrganisationalImage" src="/images/collectionsView/spanishpamphlets.jpg"
-			alt="Newton" width="150" height="225" /> 
+		<a href="/view/PR-F180-B-00008-00001-00030"><img class="collectionOrganisationalImage" src="/images/collectionsView/spanishpamphlets.jpg"
+			alt="Newton" width="150" height="225" /></a> 
 	</div>
 	<div class="grid_9">
 		<br />
