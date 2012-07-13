@@ -173,7 +173,7 @@ cudl.docView = function() {
 				};
 				
 				document.getElementById("tree").innerHTML="";
-				tree = cudl.makeTree(document.getElementById("tree"), descriptiveMetadata, "0");
+				var tree = cudl.makeTree(document.getElementById("tree"), descriptiveMetadata, "0");
 				
 				// style tree. Add expand/collapse css etc. 
 				cudl.treestyler();	
