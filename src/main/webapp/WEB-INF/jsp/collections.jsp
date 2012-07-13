@@ -32,7 +32,7 @@
 			cover to cover. <br /> <br /> <a href="/collections/treasures">View
 				collection</a>.<br />
 		</div>
-		<br />
+		<br /> 		
 		<hr />
 		<div class="collection collection-science">
 
@@ -89,6 +89,7 @@
 			</div>
 		</div>
 		<br />
+<!--		
 		<hr />
 		<div class="collection collection-faith">
 
@@ -125,6 +126,7 @@
 			</div>
 		</div>
 		<br />
+-->		
 		<hr />
 		<div class="collection collection-faith">
 
@@ -132,7 +134,7 @@
 				src="/images/collectionsView/collection-sanskrit.jpg" alt="Sanskrit"
 				width="150" height="150" />
 			</a>
-
+ 
 			<h5>Sanskrit Manuscripts</h5>
 			<br /> The University Library hosts important collections of South
 			Asian manuscripts, comprising almost 2,000 works in different
@@ -146,17 +148,17 @@
 		<hr />
 		<div class="collection">
 
-			<a href="/collections/spanishpamphlets"> <img
+			<a href="/collections/spanishchapbooks"> <img
 				class="collectionImage"
-				src="/images/collectionsView/collection-spanishpamphlets.jpg"
+				src="/images/collectionsView/collection-spanishchapbooks.jpg"
 				alt="Spanish Pamphlets" width="150" height="150" />
 			</a>
 
-			<h5>Spanish Pamphlets</h5>
+			<h5>Spanish Chapbooks</h5>
 			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
 			University Library is the world's largest and most important single
 			collection of medieval Jewish manuscripts.<br /> <br /> <a
-				href="/collections/spanishpamphlets">View collection</a>. <br />
+				href="/collections/spanishchapbooks">View collection</a>. <br />
 		</div>
 	</div>
 

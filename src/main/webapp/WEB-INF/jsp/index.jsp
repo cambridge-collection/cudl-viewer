@@ -41,7 +41,7 @@
 	<!-- side panel -->
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-		<div id="news" class="box">
+		<div id="featuredCollections">
 
 			<div class="featured-item-list">
 				<a href="/collections/treasures"><img
@@ -82,26 +82,6 @@
 			</div>
 
 			<div class="featured-item-list">
-				<a href="/collections/christian"><img
-					alt="Christian Manuscripts" title="Christian Manuscripts"
-					src="/images/index/slice-christian.jpg"> </a>
-
-				<h4>
-					<a href="/collections/christian">Christian Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
-					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/hebrew">Hebrew Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
 				<a href="/collections/sanskrit"><img alt="Sanskrit Manuscripts"
 					title="Sanskrit Manuscripts" src="/images/index/slice-sanskrit.jpg">
 				</a>
@@ -112,12 +92,12 @@
 			</div>
 
 			<div class="featured-item-list">
-				<a href="/collections/spanishpamphlets"><img
-					alt="Spanish Pamphlets" title="Spanish Pamphlets"
-					src="/images/index/slice-spanishpamphlets.jpg"> </a>
+				<a href="/collections/spanishchapbooks"><img
+					alt="Spanish Chapbooks" title="Spanish Chapbooks"
+					src="/images/index/slice-spanishchapbooks.jpg"> </a>
 
 				<h4>
-					<a href="/collections/spanishpamphlets">Spanish Pamphlets</a>
+					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
 
@@ -225,31 +205,6 @@
 		</ol>
 	</div>
 
-	<!-- items featured at the bottom of the page -->
-
-	
-
-				<div style="width:203px; float:left;margin-left: 8px;">
-					<a href="/view/MS-ADD-03975/21"> <img
-						title="Newton's Laboratory Notebook" height="200" width="200"
-						alt="Newton's Laboratory Notebook"
-						src="/images/collectionsView/featured-newton.jpg">
-					</a>
-				</div>
-				<div style="width:203px; float:left;">
-					<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img style="margin-right:auto;margin-left:auto"
-						src="/images/collectionsView/featured-nuremberg.jpg" height="200"
-						width="200" alt="Nuremberg Chronicle" title="Nuremberg Chronicle" />
-					</a>
-				</div>
-				<div style="width:203px; float:left;" >
-					<a href="/view/MS-EE-00003-00059/70"><img style="margin-right:auto;margin-left:auto"
-						src="/images/collectionsView/featured-edward.jpg" height="200"
-						width="200" alt="Life of St Edward the Confessor"
-						title="Life of St Edward the Confessor" /> </a>
-				</div>
-	
-	
 
 </div>
 

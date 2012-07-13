@@ -14,5 +14,11 @@
 	<li><a href="/help/" title="Help"> Help </a>
 </ul>
 
+	<form class="grid_5 prefix_1 omega" action="/search">
+		<input id="search" type="text" value="" name="keyword" placeholder="Search"
+			autocomplete="off" /> <input id="submit" type="submit"
+			value="Search" />
+	</form>	
+
 </nav>
 <!-- end #navPrimary -->

@@ -170,7 +170,7 @@ cudl.docView = function() {
 						cudl.makeTree(li, metadataItem, nodeID+"-"+i);
 					}	
 					
-				}
+				};
 				
 				document.getElementById("tree").innerHTML="";
 				tree = cudl.makeTree(document.getElementById("tree"), descriptiveMetadata, "0");

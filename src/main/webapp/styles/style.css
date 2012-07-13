@@ -165,14 +165,13 @@ ol#index_carousel li {
 	text-decoration: none;
 }
 
-.news {
-	background: #eeeeee;
+#featuredCollections {
+	background: #ffffff;
 	color: #000000;
-	margin-bottom: 15px;
-	padding: 25px;
+	float:right;
 }
 
-.news img {
+#featuredCollections img {
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -180,7 +179,7 @@ ol#index_carousel li {
 .featured-item-list {
 	background: #eeeeee;
 	color: #000000;
-	margin-bottom: 2px;
+	margin-bottom: 0px;
 	height: 62px;
 	width: 240px;
 	padding: 0px;
@@ -190,7 +189,7 @@ ol#index_carousel li {
 	float: left;
 	width: 240px;
 	height: 62px;
-	margin-bottom: 2px;
+	margin-bottom: 0px;
 }
 
 .featured-item-list h4,.featured-item-list h4 a {
