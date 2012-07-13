@@ -73,7 +73,7 @@ cudl.setCookie = function (c_name,value)
 {
 var c_value=escape(value);
 document.cookie=c_name + "=" + c_value;
-}
+};
 
 cudl.getCookie = function (c_name)
 {
@@ -88,4 +88,4 @@ for (i=0;i<ARRcookies.length;i++)
     return unescape(y);
     }
   }
-}
+};
