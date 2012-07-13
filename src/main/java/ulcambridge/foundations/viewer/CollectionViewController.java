@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,7 +77,7 @@ public class CollectionViewController {
 	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
 			@PathVariable("collectionId") String collectionId,
 			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request) {
+			@RequestParam("end") int endIndex, HttpServletRequest request) throws JSONException {
 
 		Collection collection = CollectionFactory
 				.getCollectionFromId(collectionId);
@@ -95,6 +97,18 @@ public class CollectionViewController {
 			jsonArray.add(item.getSimplifiedJSON());
 		}
 
+		
+	    // build the request object
+		JSONObject dataRequest = new JSONObject();
+		dataRequest.put("start",startIndex);
+		dataRequest.put("end",endIndex);
+		dataRequest.put("collectionId",collectionId);
+		
+		// build the final returned JSON data
+		JSONObject data = new JSONObject();
+		data.put("request", dataRequest);
+		data.put("items", jsonArray);
+		
 		// Write out JSON file.
 		response.setContentType("application/json");
 		PrintStream out = null;
@@ -102,7 +116,7 @@ public class CollectionViewController {
 		try {
 			out = new PrintStream(new BufferedOutputStream(
 					response.getOutputStream()), true, "UTF-8");
-			out.print(jsonArray.toString());
+			out.print(data.toString());
 
 		} catch (Exception e) {
 			e.printStackTrace();

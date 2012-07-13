@@ -13,6 +13,8 @@
 %>
 <script type="text/javascript">
 	
+var currentSlice;
+
 var viewPage = function(pageNum) {
 	 if (window.history.replaceState) {
 		 window.history.replaceState(pageNum, "Cambridge Digital Library",
@@ -21,7 +23,8 @@ var viewPage = function(pageNum) {
 		 window.location.hash = pageNum;
 	 }
 	 
-	 cudl.setCookie('<%=collection.getId()%>_pageNum',''+pageNum)
+	 cudl.setCookie('<%=collection.getId()%>_pageNum',''+pageNum);
+	 
 	 return false;
 };
 
@@ -29,7 +32,7 @@ function pageinit() {
  
   var pageLimit = 8;
   var numResults = <%=collection.getItems().size()%>;
-	  
+
   // initalise paging. 
   var Paging = $(".pagination").paging(
 	numResults,
@@ -40,45 +43,51 @@ function pageinit() {
 		lapping : 0,
 		page : 1,
 		onSelect : function(page) {
-
+		
+			currentSlice =  this.slice;
+			
 	        $.ajax({
                 "url": '<%=collection.getURL()%>/itemJSON?start=' + this.slice[0] + '&end=' + this.slice[1],
                 "success": function(data) {
                        // Spinner.stop();
                       
                       // hide content
-                      //cont.slice(prev[0], prev[1]).css('display','none');
+                      // cont.slice(prev[0], prev[1]).css('display','none');
+                      
+                      // This ensures that asynchronous requests don;t mean that you see a different
+                      // page to the last one you requested because the order of the ajax response 
+                      // was different to the order it was requested. 
+                      if (currentSlice[0]==data.request.start && currentSlice[1]==data.request.end) {
 
-                      // content replace					                   
-			          //    var data = this.slice;
-				      var container = document.getElementById("collections_carousel");
-				      
-				      // Remove all children
-				      container.innerHTML = '';
-
-				      // add in the results
-				      for (var i=0; i<data.length; i++) {
-				    	  var item = data[i];
-				    	  var imageDimensions = "";
-						  if (item.thumbnailOrientation=="portrait") {
-							imageDimensions = " style='height:100%' ";
-						  } else if (item.thumbnailOrientation=="landscape") {
-							imageDimensions = " style='width:100%' ";
-						  }
-							
-				    	  var itemDiv = document.createElement('div');
-				    	  itemDiv.setAttribute("class", "collections_carousel_item");
-				    	  itemDiv.innerHTML= "<div class='collections_carousel_image_box'>"+
-				        "<div class='collections_carousel_image'>"+
-				        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
-				        imageDimensions+ " > </a></div></div> "+
-				        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
-				        " ... <a href='/view/" +item.id+ "'>more</a></div><div class='clear'></div>";
-	           	        container.appendChild(itemDiv);
-			 
-				      
-				      }
-				      
+	                      // content replace					                   
+				          //    var data = this.slice;
+					      var container = document.getElementById("collections_carousel");
+					      
+					      // Remove all children
+					      container.innerHTML = '';
+	
+					      // add in the results
+					      for (var i=0; i<data.items.length; i++) {
+					    	  var item = data.items[i];
+					    	  var imageDimensions = "";
+							  if (item.thumbnailOrientation=="portrait") {
+								imageDimensions = " style='height:100%' ";
+							  } else if (item.thumbnailOrientation=="landscape") {
+								imageDimensions = " style='width:100%' ";
+							  }
+								
+					    	  var itemDiv = document.createElement('div');
+					    	  itemDiv.setAttribute("class", "collections_carousel_item");
+					    	  itemDiv.innerHTML= "<div class='collections_carousel_image_box'>"+
+					        "<div class='collections_carousel_image'>"+
+					        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
+					        imageDimensions+ " > </a></div></div> "+
+					        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+					        " ... <a href='/view/" +item.id+ "'>more</a></div><div class='clear'></div>";
+		           	        container.appendChild(itemDiv);
+				 					      
+					        }
+                      }     
 				      // show items									      
 						//cont.slice(data[0], data[1]).fadeIn("fast");
 						//prev = data;					                        
