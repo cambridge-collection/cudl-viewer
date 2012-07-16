@@ -195,11 +195,7 @@ cudl.docView = function() {
 				cudl.view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
-				if (descriptiveMetadata.fundings) {
-					cudl.view.populateElement(document
-							.getElementById("metadata-funding"),
-							descriptiveMetadata.fundings.value);
-				}
+
 				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';

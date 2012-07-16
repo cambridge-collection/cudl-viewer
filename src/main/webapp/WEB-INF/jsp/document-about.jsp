@@ -56,7 +56,7 @@
 				</div>
 			</div>
 
-			<br /> <span id="metadata-funding"></span> <br /> <br /> <span
+			<br /> <br /> <br /> <span
 				id="metadata-display-rights"></span> <br />
 		</div>
 	</div>
