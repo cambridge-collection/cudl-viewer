@@ -32,7 +32,7 @@
 			cover to cover. <br /> <br /> <a href="/collections/treasures">View
 				collection</a>.<br />
 		</div>
-		<br /> 		
+		<br />
 		<hr />
 		<div class="collection collection-science">
 
@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<br />
-<!--		
+		<!--		
 		<hr />
 		<div class="collection collection-faith">
 
@@ -126,7 +126,7 @@
 			</div>
 		</div>
 		<br />
--->		
+-->
 		<hr />
 		<div class="collection collection-faith">
 
@@ -134,12 +134,12 @@
 				src="/images/collectionsView/collection-sanskrit.jpg" alt="Sanskrit"
 				width="150" height="150" />
 			</a>
- 
+
 			<h5>Sanskrit Manuscripts</h5>
-			<br /> The University Library hosts important collections of South
-			Asian manuscripts, comprising almost 2,000 works in different
-			languages.<br /> <br /> <a
-				href="/collections/sanskrit">View collection</a>. <br />
+			<br /> A wealth of cultural and historical information on South Asia
+			of great potential significance for contemporary scholarship, which
+			will be gradually made available through the Digital Library.<br />
+			<br /> <a href="/collections/sanskrit">View collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
@@ -155,10 +155,10 @@
 			</a>
 
 			<h5>Spanish Chapbooks</h5>
-			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
-			University Library is the world's largest and most important single
-			collection of medieval Jewish manuscripts.<br /> <br /> <a
-				href="/collections/spanishchapbooks">View collection</a>. <br />
+			<br />These predecessors of the yellow press provide a fascinating
+			bird’s eye view of popular culture from the eighteenth century
+			onwards.<br /> <br /> <a href="/collections/spanishchapbooks">View
+				collection</a>. <br />
 		</div>
 	</div>
 

@@ -19,9 +19,9 @@
 	</blockquote>
 	<br /> <br />
 	<div class="grid_3 right">
-		<img class="collectionOrganisationalImage"
+		<a href="/view/MS-ADD-01277/4"><img class="collectionOrganisationalImage"
 			src="/images/collectionsView/sanskrit.jpg"
-			alt="Aparimitāyudhāraṇīsūtra" width="150" height="225" />
+			alt="Aparimitāyudhāraṇīsūtra" width="150" height="225" /></a>
 	</div>
 	<div class="grid_9">
 		<p>The history of South Asian studies at the University of Cambridge goes hand in hand with the history of its collections of South Asian manuscripts. In the late 19th century the Library began to acquire Sanskrit manuscripts collected in Nepal and India on the initiative of the Cambridge Sanskritist Edward B. Cowell and his successor Cecil Bendall. The collaboration of other scholars such as William Rhys-Davids and Georg Bühler, as well as of other professionals, enriched the collections with manuscripts hailing from different regions of the South Asian subcontinent and written in a wide range of languages, from Middle Indian (Pali and Prakrit) to Dravidian (such as Tamil and Malayalam).</p>

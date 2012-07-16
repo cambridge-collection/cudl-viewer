@@ -5,7 +5,15 @@
 
 <head>
 
-<title>Cambridge Digital Library - University of Cambridge</title>
+<%
+  // title can be specified in a param when you include this jsp. 
+  if (request.getParameter("title")!=null) {
+%>
+  <title><%=request.getParameter("title")%></title>
+<% } else { %>
+  <title>Cambridge Digital Library - University of Cambridge</title>
+<% } %>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <jsp:include page="includes.jsp" />

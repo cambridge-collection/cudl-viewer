@@ -20,7 +20,7 @@ cudl.treestyler = function(){
 					ul.style.display = "none";
 				}
 				var span = document.createElement("span");
-				span.title = "treespan";
+				span.title = "Click to expand/collapse";
 				span.className = (ul.style.display == "none") ? "collapsed" : "expanded";
 				span.onclick = function(){
 					ul.style.display = (ul.style.display == "none") ? "block" : "none";
@@ -102,5 +102,5 @@ cudl.acceptCookies = function () {
 	cudl.setCookie("cudlcookies", "true", 183);
 	cudl.displayCookieNotice ();
 	return false;
-}
+};
 

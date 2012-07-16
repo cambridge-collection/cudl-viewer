@@ -35,7 +35,7 @@
 
 			<!--  Metadata -->
 			<div class="document-about-box">
-
+               <b>Expand for detailed description</b><br/><br/>
 				<ul id="tree">
 				</ul>
 

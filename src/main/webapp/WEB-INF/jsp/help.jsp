@@ -170,7 +170,6 @@
 					<a id="cookies"><b>How are cookies are used on this site?</b> </a>
 				</p>
 
-
 				<p>We use cookies to provide the essential functionality use in the
 				Cambridge Digital Library website, to store your preferences and to
 				monitor usage statistics, so we can improve performance.</p>
