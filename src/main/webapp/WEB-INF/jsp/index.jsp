@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	var index_carousel;
 
-	function init() {
+	function pageinit() {
 		// display image carousel
 		document.getElementById("index_carousel").style.display = "block";
 
@@ -32,6 +32,7 @@
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
 	}
+	
 </script>
 
 <%=downtimeWarning%>
