@@ -44,12 +44,15 @@
 			funding for further digitisation.
 		</p>
 
-		<p>Our online selection includes several examples of Qur'anic
-			manuscripts. The holy Qur'an is the most significant text in Islamic
-			civilisation. Continued reproduction of the unchanging Arabic text
-			led to the development of many differing calligraphic styles. A very
-			rich heritage of manuscript copies of the Qur'an survives and the
-			library has an impressive collection.</p>
+		<p>In this selection, we present several examples of Qur'anic
+		manuscripts, including a <a href="/view/MS-NN-00003-00075">complete and beautifully illustrated Qur'an</a>
+		and a number of very early fragments dating back to the first centuries
+		of the Islamic calendar (e.g. <a href="/view/MS-ADD-01116/">Add. 1116</a>). From the rich literature encompassing
+		the Islamic tradition we have chosen the only extant copy of <a href="/view/MS-ADD-03651/">Kitāb al-tawḥīd</a>,
+		the famous theological work by by al-Maturidi, alongside works on science (e.g. <a href="/view/MS-QQ-00054/">Qq. 54</a>)
+		and some richly illustrated examples of Persian Literature.</p>
+			
+			
 
 		See also
 		<ul>
