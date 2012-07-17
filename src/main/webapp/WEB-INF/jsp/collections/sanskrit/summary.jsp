@@ -7,7 +7,7 @@
 
 <div class="grid_10">
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
-	<blockquote class="grid_6 omega print" style="font-size: 20px;">
+	<blockquote class="grid_6 omega print" style="font-size: 18px;">
 		जलाद्रक्षेत्तैलाद्रक्षेद्रक्षेच्छिथिलबन्धनात् |<br/> मूर्खहस्ते न मां
 		दद्यादिति वदति पुस्तकम् || <br /> <br /> 'Save me from water, protect
 		me from oil and from loose binding, <br/>And do not give me into the hands

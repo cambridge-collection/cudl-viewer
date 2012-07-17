@@ -233,7 +233,7 @@
 					</h4>
 
 					<p>Cambridge University Library has an
-						impressive and rich collection of what a French colleague has
+						impressive and rich collection of what have been 
 						termed ‘no-books’. Usually referred to in English as chapbooks,
 						and in Spanish as sueltos, or pliegos sueltos (loose leaves or
 						folded loose leaves), these predecessors of the yellow press
