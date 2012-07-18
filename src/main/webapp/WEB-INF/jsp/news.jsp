@@ -16,6 +16,27 @@
 
 <div class="grid_19">
 	<div class="grid_5">
+		<img alt="Launch of Sanskrit and Spanish Chapbook Collections" title="Launch of Sanskrit and Spanish Chapbook Collections"
+			src="/images/index/news-sanskritandspanishchapbooks.jpg" height="200" width="200">
+	</div>
+
+	<div class="grid_11">
+		<span class="date">19/07/2012</span>
+		<h4>Launch of Sanskrit and Spanish Chapbook Collections</h4>
+		<p>
+			We have added more items to the Islamic Manuscripts and Newton
+			collections - and have initiated two new collections: the <a
+				href="/collections/sanskrit">Sanskrit Manuscripts</a> and <a
+				href="/collections/spanishchapbooks">Spanish Chapbooks</a>. Both
+			these collections will grow over the the next few
+			months.
+		</p>
+	</div>
+
+</div>
+
+<div class="grid_19">
+	<div class="grid_5">
 		<img alt="Treasures" title="Treasures"
 			src="/images/index/news-treasures.jpg" height="200" width="200">
 	</div>

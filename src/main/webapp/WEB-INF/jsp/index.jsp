@@ -252,12 +252,6 @@
 
 </div>
 
-<!-- cookie notice -->
-<div style="display: none">
-	<div id="cookienotice">Lorem ipsum dolor sit amet, consectetur
-		adipiscing elit.</div>
-</div>
-
 <jsp:include page="footer/footer.jsp" />
 
 
