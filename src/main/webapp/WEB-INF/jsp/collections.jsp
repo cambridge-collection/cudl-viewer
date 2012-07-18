@@ -176,12 +176,20 @@
 				</h5>
 			</div>
 
+<% 
+		  String imageDimensions = "";
+		  if (item.getThumbnailOrientation().trim().equals("portrait")) {
+			imageDimensions = " style='height:100%' ";
+		  } else if (item.getThumbnailOrientation().trim().equals("landscape")) {
+				imageDimensions = " style='width:100%' ";
+		  }
+%>
 			<div style="float: left;">
 				<div class="collections_carousel_image_box">
 					<div class="collections_carousel_image">
 						<a href="/view/<%=item.getId()%>/"><img
 							alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
-							style="height: 100%" /> </a>
+						    <%=imageDimensions %> /> </a>
 					</div>
 				</div>
 			</div>
