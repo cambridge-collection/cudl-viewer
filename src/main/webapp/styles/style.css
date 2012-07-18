@@ -319,7 +319,7 @@ ol#search_carousel li {
 }
 
 .search-facet-selected {
-	background: #ccc;
+	background: #4376bb;
 	padding:3px;
 	width:233px;	
 	border-style: solid;
@@ -329,17 +329,17 @@ ol#search_carousel li {
 	margin-top:5px;
 	margin-bottom:5px;
 	float:left;
-	color:#333;
+	color:#ffffff;
 }
 
 .search-close {
     background: url("/img/search-close.png");
     cursor: pointer;
-    height:  13px;
+    height:  19px;
     position: absolute;
-    right: -4px;
-    top: -4px;
-    width: 13px;
+    right: -6px;
+    top: -6px;
+    width: 19px;
     z-index: 3;
 }
 
