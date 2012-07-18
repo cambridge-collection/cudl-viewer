@@ -170,9 +170,9 @@
 					<a id="cookies"><b>How are cookies are used on this site?</b> </a>
 				</p>
 
-				<p>We use cookies to provide the essential functionality use in the
-				Cambridge Digital Library website, to store your preferences and to
-				monitor usage statistics, so we can improve performance.</p>
+				<p>We use cookies to provide the essential functionality use in
+					the Cambridge Digital Library website, to store your preferences
+					and to monitor usage statistics, so we can improve performance.</p>
 
 				<p>1. Essential Cookies</p>
 				<p>These cookies are essential for the running of our website.
@@ -196,6 +196,13 @@
 					with cookies from these websites. Cambridge Digital Library does
 					not control the dissemination of these cookies and you should check
 					the relevant third party's website for more information. <br />
+				</p>
+				<p>If you wish to restrict or block web browser cookies which
+					are set on your device then you can do this through changing your
+					browser settings; the Help function within your browser should tell
+					you how. Alternatively, you may wish to visit <a href="http://www.aboutcookies.org">www.aboutcookies.org</a>,
+					which contains comprehensive information on how to do this on a
+					wide variety of desktop browsers.</p>
 				<p>
 					<b>Do you have any other questions? Please contact us using the
 						<a class="iframe" href="/feedbackform.html">Feedback form</a>

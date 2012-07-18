@@ -136,9 +136,8 @@
 			</a>
 
 			<h5>Sanskrit Manuscripts</h5>
-			<br /> A wealth of cultural and historical information on South Asia
-			of great potential significance for contemporary scholarship, which
-			will be gradually made available through the Digital Library.<br />
+			<br /> A taste of the substantial catalogue and online collection of
+			Sanskrit manuscripts the Library will be making available in 2013-14.<br />
 			<br /> <a href="/collections/sanskrit">View collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>
@@ -155,10 +154,10 @@
 			</a>
 
 			<h5>Spanish Chapbooks</h5>
-			<br />These predecessors of the yellow press provide a fascinating
-			bird’s eye view of popular culture from the eighteenth century
-			onwards.<br /> <br /> <a href="/collections/spanishchapbooks">View
-				collection</a>. <br />
+			<br />A small sample of this fascinating popular literature from the
+			eighteenth and nineteenth centuries. During 2013-14 eight thousand
+			chapbooks will be added to the Digital Library.<br /> <br /> <a
+				href="/collections/spanishchapbooks">View collection</a>. <br />
 		</div>
 	</div>
 
@@ -176,20 +175,21 @@
 				</h5>
 			</div>
 
-<% 
-		  String imageDimensions = "";
-		  if (item.getThumbnailOrientation().trim().equals("portrait")) {
-			imageDimensions = " style='height:100%' ";
-		  } else if (item.getThumbnailOrientation().trim().equals("landscape")) {
-				imageDimensions = " style='width:100%' ";
-		  }
-%>
+			<%
+				String imageDimensions = "";
+					if (item.getThumbnailOrientation().trim().equals("portrait")) {
+						imageDimensions = " style='height:100%' ";
+					} else if (item.getThumbnailOrientation().trim()
+							.equals("landscape")) {
+						imageDimensions = " style='width:100%' ";
+					}
+			%>
 			<div style="float: left;">
 				<div class="collections_carousel_image_box">
 					<div class="collections_carousel_image">
 						<a href="/view/<%=item.getId()%>/"><img
 							alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
-						    <%=imageDimensions %> /> </a>
+							<%=imageDimensions%> /> </a>
 					</div>
 				</div>
 			</div>

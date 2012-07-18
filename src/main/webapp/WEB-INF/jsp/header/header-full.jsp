@@ -62,7 +62,7 @@
 
 		<!-- cookie notice -->
 		<div id="cookienotice" class="grid_20">
-			<div class="grid_16">By continuing to use the site, you agree to the use of cookies. You can find out more in our <a href="/help#cookies" onclick="cudl.acceptCookies();return true;">help section</a>.</div>
+			<div class="grid_16">By continuing to use the site you agree to the use of cookies. You can find out more in our <a href="/help#cookies" onclick="cudl.acceptCookies();return true;">help section</a>.</div>
 			<form class="grid_3 right">
 				<input class="right" type="submit" value="Accept Cookies" onclick="return cudl.acceptCookies();"/>
 			</form>

@@ -173,7 +173,7 @@
 
 					<p>
 						Our <a href="/collections/islamic">online selection</a> includes
-						several important early Qur'ans.
+						some important early Qur'ans and several richly illuminated works.
 					</p>
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
@@ -210,16 +210,18 @@
 						<a href="/collections/sanskrit">Sanskrit Manuscripts</a>
 					</h4>
 
-					<p>The AHRC-funded project “The intellectual and religious
-						traditions of South Asia as seen through the Sanskrit manuscript
-						collections of the University Library, Cambridge” has begun a
-						systematic investigation aiming to produce a full catalogue of the
+					<p>
+						The AHRC-funded project “The intellectual and religious traditions
+						of South Asia as seen through the Sanskrit manuscript collections
+						of the University Library, Cambridge” has begun a systematic
+						investigation aiming to produce a full catalogue of the
 						manuscripts and to digitise a substantial proportion of them.
 						These comprise more than 1,600 works in Sanskrit, Prakrit, Pali,
 						Tamil and other ancient and medieval South Asian languages,
-						produced over a time-span of more than 1,000 years, and written in
-						over a dozen scripts and on different writing materials, such as
-						paper, palm leaf and birch bark.</p>
+						produced over a time-span of more than 1,000 years. We present an
+						<a href="/collections/sanskrit">initial selection</a> from the
+						collection to demonstrate its richness.
+					</p>
 				</div> <a href="/collections/sanskrit"><img
 					src="/images/index/carousel-sanskrit.jpg"
 					alt="Sanskrit Manuscripts" width="540" height="394" /> </a>
@@ -232,16 +234,16 @@
 						<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 					</h4>
 
-					<p>Cambridge University Library has an
-						impressive and rich collection of what have been 
-						termed ‘no-books’. Usually referred to in English as chapbooks,
-						and in Spanish as sueltos, or pliegos sueltos (loose leaves or
-						folded loose leaves), these predecessors of the yellow press
-						provide a fascinating bird’s eye view of popular culture from the
-						eighteenth century onwards. They show us, among other things,
-						versions of how forms of wrongdoing (of different kinds, and of
-						different degrees of severity) were perceived, or were presented
-						to the populace as constructed forms of wrongdoing.</p>
+					<p>Cambridge University Library has an impressive and rich
+						collection of what have been termed ‘no-books’. Usually referred
+						to in English as chapbooks, and in Spanish as sueltos, or pliegos
+						sueltos (loose leaves or folded loose leaves), these predecessors
+						of the yellow press provide a fascinating bird’s eye view of
+						popular culture from the eighteenth century onwards. They show us,
+						among other things, versions of how forms of wrongdoing (of
+						different kinds, and of different degrees of severity) were
+						perceived, or were presented to the populace as constructed forms
+						of wrongdoing.</p>
 				</div> <a href="/collections/spanishchapbooks"><img
 					src="/images/index/carousel-spanishchapbooks.jpg"
 					alt="Spanish Chapbooks" width="540" height="394" /> </a>

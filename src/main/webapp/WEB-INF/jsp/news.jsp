@@ -28,8 +28,7 @@
 			collections - and have initiated two new collections: the <a
 				href="/collections/sanskrit">Sanskrit Manuscripts</a> and <a
 				href="/collections/spanishchapbooks">Spanish Chapbooks</a>. Both
-			these collections will grow over the the next few
-			months.
+			these collections will grow over the next two years.
 		</p>
 	</div>
 
