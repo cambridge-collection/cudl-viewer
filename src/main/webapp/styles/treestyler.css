@@ -31,7 +31,7 @@
 	position:relative;
 }
 #tree li {padding-left:10px;padding-right:10px;padding-top:4px;padding-bottom:10px}
-#tree li span{float:left;position:absolute;top:3px;left:0px;width:26px;height:26px;cursor:auto;font-size:0;margin:2px;}
+#tree li span{float:left;position:absolute;top:3px;left:0px;width:26px;height:26px;cursor:pointer;font-size:0;margin:2px;}
 #tree li span, #tree li span.collapsed{background:url(/img/collapsed.gif) no-repeat 0 0;} 
 #tree li span.expanded{background:url(/img/expanded.gif) no-repeat 0 0;}
 
