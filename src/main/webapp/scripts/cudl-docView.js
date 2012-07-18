@@ -157,7 +157,7 @@ cudl.docView = function() {
 					
 					// Make this node
 					var li = document.createElement('li');
-					li.innerHTML="  &nbsp;<em>"+descriptiveMetadata.title.displayForm+"</em>"+
+					li.innerHTML="  &nbsp;<strong>"+descriptiveMetadata.title.displayForm+"</strong>"+
 					"<ul id="+nodeID+" style='"+style+"'><div>"+cudl.view.getHTMLFromDescriptiveMetadata(descriptiveMetadata)+"</div></ul>" ;
 					li.id = descriptiveMetadata.ID;	
 					
@@ -200,6 +200,10 @@ cudl.docView = function() {
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
 
+				cudl.view.populateElement(document
+						.getElementById("metadata-download-rights"),
+						descriptiveMetadata.downloadImageRights);
+				
 				// update current page number display.
 				cudl.view.populateElement(document
 						.getElementById("metadata-pagenum-toolbar"),

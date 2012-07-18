@@ -272,7 +272,7 @@ function pageinit() {
 		%>
 		<h5>Refine by:</h5>
 
-		<ul id="tree">
+		<ul id="tree" style="margin-left: 0px;">
 			<%
 				List<FacetGroup> facetGroups = resultSet.getFacets();
 
@@ -287,7 +287,7 @@ function pageinit() {
 							// Do not print out the facet for a field already faceting on
 							if (!query.getFacets().containsKey(field)) {
 
-								out.println("<li>" + fieldLabel + "<ul>");
+								out.println("<li><strong>" + fieldLabel + "</strong><ul  style=\"margin-left: 0px;\">");
 
 								for (int j = 0; j < facets.size(); j++) {
 									Facet facet = facets.get(j);

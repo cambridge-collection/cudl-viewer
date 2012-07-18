@@ -43,7 +43,7 @@ function pageinit() {
 	numResults,
 	{
 
-		format : "[< (q-) ncnnnn (-p) >]",
+		format : "[< (q-) ncn (-p) >]",
 		perpage : pageLimit,
 		lapping : 0,
 		page : 1,

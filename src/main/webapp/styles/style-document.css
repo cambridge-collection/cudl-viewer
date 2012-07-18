@@ -146,6 +146,22 @@ table {
 	box-shadow: 3px 3px 5px 6px #eeeeee;
 }
 
+#document-about-exhibition {
+	margin-left:-14px;
+	margin-right:0px;
+	width:504px;
+	background-color: #ffffff;
+    padding: 10px;	
+}
+
+#document-about-radio {
+	margin-left:-14px;
+	margin-right:0px;
+	width:504px;
+	background-color: #ffffff;
+    padding: 10px;	
+}
+
 .document-about-title {
 	color: #333333;
 	line-height: 30px;
@@ -229,6 +245,11 @@ table {
 
 #metadata-rights {
 	float: left;
+}
+
+.rights-statement {
+	font-size: 12px;
+	color:#999999;
 }
 
 .document-spacer {
