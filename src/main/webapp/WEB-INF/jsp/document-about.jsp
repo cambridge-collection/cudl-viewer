@@ -47,8 +47,7 @@
 				<div class="document-about-page">
 					<a href="" onclick="cudl.downloadImageCheck(); return false;">
 						<img src="/img/icon-download-blue.png"
-						style="float: left; padding-right: 3px" /> Download image
-					</a> <span id="metadata-download-rights" class="rights-statement"></span>
+						style="float: left; padding-right: 3px" /> Download image</a> <span id="metadata-download-rights" class="rights-statement"></span>
 
 
 					<br />
