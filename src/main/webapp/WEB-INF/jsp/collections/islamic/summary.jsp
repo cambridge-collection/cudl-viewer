@@ -46,12 +46,11 @@
 
 		<p>In this selection, we present several examples of Qur'anic
 		manuscripts, including a <a href="/view/MS-NN-00003-00075">complete and beautifully illustrated Qur'an</a>
-		and a number of very early fragments dating back to the first centuries
-		of the Islamic calendar (e.g. <a href="/view/MS-ADD-01116/">Add. 1116</a>). From the rich literature encompassing
+		and a number of very <a href="/view/MS-ADD-01116/">early fragments</a> dating back to the first centuries
+		of the Islamic calendar. From the rich literature encompassing
 		the Islamic tradition we have chosen the only extant copy of <a href="/view/MS-ADD-03651/">Kitāb al-tawḥīd</a>,
-		the famous theological work by by al-Maturidi, alongside works on science (e.g. <a href="/view/MS-QQ-00054/">Qq. 54</a>,
-		<a href="/view/MS-GG-00005-00029/">Gg.5.29</a>)
-		and some richly illustrated examples of Persian Literature.</p>
+		the famous theological work by by al-Maturidi, alongside works on <a href="/view/MS-QQ-00054/">science</a>
+		and some richly illustrated examples of <a href="/view/MS-ADD-00269/">Persian Literature</a>.</p>
 			
 			
 
