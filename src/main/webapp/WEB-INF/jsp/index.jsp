@@ -100,6 +100,26 @@
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
+			
+			<div class="featured-item-list">
+				<a href="/collections/hebrew"><img
+					alt="Hebrew Manuscripts" title="Hebrew Manuscripts"
+					src="/images/index/slice-hebrew.jpg"> </a>
+
+				<h4>
+					<a href="/collections/hebrew">Hebrew Manuscripts</a>
+				</h4>
+			</div>
+			
+			<div class="featured-item-list">
+				<a href="/collections/christian"><img
+					alt="Christian Manuscripts" title="Christian Manuscripts"
+					src="/images/index/slice-christian.jpg"> </a>
+
+				<h4>
+					<a href="/collections/christian">Christian Manuscripts</a>
+				</h4>
+			</div>
 
 			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
