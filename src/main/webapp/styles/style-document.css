@@ -157,7 +157,7 @@ table {
 #document-about-radio {
 	margin-left:-14px;
 	margin-right:0px;
-	width:504px;
+	width:550px;
 	background-color: #ffffff;
     padding: 10px;	
 }
@@ -197,7 +197,11 @@ table {
 }
 
 .document-about-page a {
-	color: #333;
+	color: #333;	
+}
+
+.document-about-box {
+    max-width:550px;
 }
 
 /* Rounded Boxes */
@@ -237,6 +241,9 @@ table {
 	float: left;
 }
 
+#metadata {
+	background:#ffffff;
+}
 #metadata-rights,#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page,#metadata-abstract
 	{
 	max-width: 450px;

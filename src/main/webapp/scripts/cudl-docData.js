@@ -19,14 +19,14 @@ cudl.docData = function() {
 				root : 'pages',
 				totalProperty : 'numberOfPages'
 			},
-					[ 'name', 'displayImageURL', 'downloadImageURL',
+					[ 'label', 'displayImageURL', 'downloadImageURL',
 							'transcriptionNormalisedURL',
 							'transcriptionDiplomaticURL' ]);
-
+		    
 			this.store = Ext.create('Ext.data.Store', {
 				id : 'pageStore',
 				autoLoad : false,
-				fields : [ 'name', 'displayImageURL', 'downloadImageURL',
+				fields : [ 'label', 'displayImageURL', 'downloadImageURL',
 						'transcriptionNormalisedURL',
 						'transcriptionDiplomaticURL' ],
 				pageSize : 1, // items per page

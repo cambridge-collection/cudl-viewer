@@ -40,7 +40,6 @@ cudl.viewportComponents = {
 		region : 'east',
 		split : true, // enable resizing
 		width : '50%',
-		maxWidth: 550,
 		title : 'More about this item',
 		collapsed : false,
 		collapsible : true,
@@ -52,56 +51,6 @@ cudl.viewportComponents = {
 		return rightTabPanel;
 	}
 	
-	/*
-	contentsTree: new Ext.tree.TreePanel({
-	    renderTo: Ext.getBody(),
-	    title: 'Sections',
-	    width: 200,
-	    height: 250,
-	    userArrows: true,
-	    animate: true,
-	    autoScroll: true,
-	    dataUrl: 'tree-nodes.php',
-	    root: {
-	        nodeType: 'async',
-	        text: 'Root Node'
-	    },
-	    listeners: {
-	        render: function() {
-	            this.getRootNode().expand();
-	        }
-	    }
-	   }),
-	
-	getContentsTree: function () {
-		return contentsTree;
-	},*/
-		/*
-	leftTabPanel: new Ext.create('Ext.tab.Panel', {
-		xtype : 'tabpanel',
-		activeTab : 0,
-		width : 250,
-		height : 250,
-		defaults:{ autoScroll:true },
-		region : 'west',
-		collapsed : true,
-		collapsible : true,
-		title : 'Contents',
-		split:true,
-		items : [{
-			xtype : 'panel',
-			title : 'Sections',
-			autoScroll:true,
-			el : 'logical_structure'
-		}]
-	   }),
-	   
-	getLeftTabPanel: function() {
-		return leftTabPanel;
-	}*/
-
-
-
 };
 
 /**
@@ -125,7 +74,6 @@ cudl.MyViewportUi = Ext.extend(Ext.Viewport,
 					border : 0,
 					padding : 0,					
 					width : '100%',
-					height : '100%',
 					items : [ cudl.viewportComponents.pageTitlePanel,
 					          cudl.viewportComponents.pagingToolbar , {
 						el : 'seadragonImage',

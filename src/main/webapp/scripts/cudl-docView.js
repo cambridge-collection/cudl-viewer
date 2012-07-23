@@ -220,8 +220,9 @@ cudl.docView = function() {
 
 				// only write out contents if the element is currently empty
 				// (the first time the page loads).
-				if (document.getElementById("logical_structure").children[0].innerHTML == "") {
 
+				if (document.getElementById("logical_structure")) {
+					
 					var ls;
 					if (cudl.data.logicalStructures[0].children) {
 
@@ -235,10 +236,10 @@ cudl.docView = function() {
 								cudl.data.logicalStructures, 0);
 					}
 
-					cudl.view.populateElement(document
-							.getElementById("logical_structure"),
-							"<div style='height: 100%; overflow-y:auto;'><ul>"
-									+ ls + "</ul></div>", true);
+					var lsDiv = document.getElementById("logical_structure");
+					
+					lsDiv.innerHTML="<div style='height: 100%; overflow-y:auto;'><ul>"
+									+ ls + "</ul></div>";
 
 				}
 				

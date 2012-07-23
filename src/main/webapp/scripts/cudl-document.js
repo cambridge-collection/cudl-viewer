@@ -94,6 +94,11 @@ cudl.beforeTabShown = function(thisTab) {
 	if (thisTab.displayLoadingMask) {
 		thisTab.el.mask("Loading...", "x-mask-loading");
 	}
+	
+	// show tab if hidden
+	if (thisTab.el.dom.style.display=='none') {
+		thisTab.el.dom.style.display='inline';
+	}
 
 	// Update the URL if this tab contains external resources
 	var urlAttribute = thisTab.urlAttribute;
@@ -198,10 +203,64 @@ cudl.setupViewport = function () {
 				cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
 				true);
 	}
+	
+	/*
+	cudl.setupTab('Thumbnails', 'thumbnails', cudl.viewportComponents.rightTabPanel);
+	
+	Ext.Loader.setConfig({enabled: true});
+
+	Ext.Loader.setPath('Ext.ux.DataView', '/scripts/extjs/ux/DataView/');
+	
+	// Setup Thumbnails
+	Ext.require([
+	             'Ext.data.*',
+	             'Ext.util.*',
+	             'Ext.view.View',
+	             'Ext.ux.DataView.DragSelector',
+	             'Ext.ux.DataView.LabelEditor'
+	         ]);
+	
+	Ext.define('Image', {
+	    extend: 'Ext.data.Model',
+	    fields: [
+	        { name:'src', type:'string' },
+	        { name:'caption', type:'string' }
+	    ]
+	});
+
+	Ext.create('Ext.data.Store', {
+	    id:'imagesStore',
+	    model: 'Image',
+	    data: [
+	        { src:'http://www.sencha.com/img/20110215-feat-drawing.png', caption:'Drawing & Charts' },
+	        { src:'http://www.sencha.com/img/20110215-feat-data.png', caption:'Advanced Data' },
+	        { src:'http://www.sencha.com/img/20110215-feat-html5.png', caption:'Overhauled Theme' },
+	        { src:'http://www.sencha.com/img/20110215-feat-perf.png', caption:'Performance Tuned' }
+	    ]
+	});
+
+	var imageTpl = new Ext.XTemplate(
+	    '<tpl for=".">',
+	        '<div style="margin-bottom: 10px;" class="thumb-wrap">',
+	          '<img src="/imageproxy{downloadImageURL}" width="100px"/>',
+	          '<br/><span>{label}</span>',
+	        '</div>',
+	    '</tpl>'
+	);
+
+	Ext.create('Ext.view.View', {
+	    store: Ext.data.StoreManager.lookup('pageStore'),
+	    tpl: imageTpl,
+	    itemSelector: 'div.thumb-wrap',
+	    emptyText: 'No images available',
+	    renderTo: 'thumbnails'
+	});
+	*/
 
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
-
+	
 	// Initialise viewport.
+
 	Ext.QuickTips.init();
 
 	var cmp1 = new cudl.MyViewport({
@@ -209,7 +268,7 @@ cudl.setupViewport = function () {
 	});
 
 	cmp1.show();
-
+	
 }
 
 /**
@@ -231,10 +290,13 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 
 	if (!document.getElementById(element)) {
 		var div = document.createElement("div");
+		div.style.display='none';
 		div.setAttribute("id", element);
 		div.setAttribute('width', '100%');
 		div.setAttribute('height', '100%');
 		document.body.appendChild(div);
+	} else {
+		document.getElementById(element).style.display='none';
 	}
 
 	var tab = Ext.create('Ext.panel.Panel', {
@@ -254,7 +316,7 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 		iframe.setAttribute('onload', 'cudl.afterTabShown()');
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('src', '/transcription?url='); // needed for HTML
+		iframe.setAttribute('src', '/transcription?url='); // needed for validation of HTML
 
 		// validation.
 		div.appendChild(iframe);

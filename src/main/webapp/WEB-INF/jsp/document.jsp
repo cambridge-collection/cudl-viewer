@@ -7,7 +7,4 @@
 <div id="seadragonImage"><div id="doc" style="height:100%;width:100%"></div></div>
 <jsp:include page="document-about.jsp" />
 
-
-<div id="logical_structure"></div>
-
 <jsp:include page="footer/footer-document.jsp" />
