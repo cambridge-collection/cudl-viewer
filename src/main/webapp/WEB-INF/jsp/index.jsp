@@ -31,6 +31,14 @@
 		var randomnumber = Math.floor(Math.random()
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
+		
+		// generate random featuredItem banner
+		var bannerItems = ["MS-II-00006-00032", "MS-NN-00003-00074"];
+		
+		var randomitem = Math.floor(Math.random()
+				* (bannerItems.length));
+		var bannerItem = bannerItems[randomitem];
+		document.getElementById(bannerItem).style.display="inline";
 	}
 </script>
 
@@ -270,6 +278,11 @@
 			</li>
 		</ol>
 	</div>
+	<!--  featured items -->
+	 <ol>
+	   <li><div id="MS-II-00006-00032" class="grid_13" style="display:none;height:96px"><a href="/view/MS-II-00006-00032/1"><img src="images/index/banner-bookofdeer.jpg"/></a></div></li>	   
+	   <li><div id="MS-NN-00003-00074" class="grid_13" style="display:none;height:96px"><a href="/view/MS-NN-00003-00074/1"><img src="images/index/banner-islamicitem.jpg"/></a></div></li>
+	 </ol>
 
 
 </div>
