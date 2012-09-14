@@ -108,10 +108,11 @@ cudl.beforeTabShown = function(thisTab) {
 		if (url=="undefined") {
 			url="";
 		}
-		cachedURL = "/externalresource?url="
-				+ encodeURIComponent("/transcription?url=" + url) + "&doc="
-				+ cudl.docId;
-
+		//cachedURL = "/externalresource?url="
+		//		+ encodeURIComponent("/transcription?url=" + url) + "&doc="
+		//		+ cudl.docId;
+		cachedURL = "/transcription?url=" + url +"&doc="	+ cudl.docId;
+			
 		thisTab.el.dom.children[0].src = cachedURL;
 	}
 
