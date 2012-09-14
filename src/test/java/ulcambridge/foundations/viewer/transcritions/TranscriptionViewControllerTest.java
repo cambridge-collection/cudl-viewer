@@ -1,4 +1,4 @@
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.transcritions;
 
 import java.io.IOException;
 
