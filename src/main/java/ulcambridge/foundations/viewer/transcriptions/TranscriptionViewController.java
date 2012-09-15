@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
- * Reads in the URL specified by the newtonDoc parameter and filters the content
- * to only display what we want.
+ * Caches, formats and displays the Transcription. 
  * 
  * @author jennie
  * 
@@ -31,15 +31,14 @@ public class TranscriptionViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
+	
 	// on path /transcription
-	// passed url parameter which is url from the json data for this page.
+	// formats and caches the transcription for display. 
 	@RequestMapping(value = "/transcription")
 	public ModelAndView handleRequest(@RequestParam("url") String url,
-			@RequestParam("doc")  String doc, HttpServletRequest request, HttpServletResponse response)
+			@RequestParam("doc")  String docId, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-
-		// no url param or empty url - so no transcription available for this
-		// page.
+		
 		if (url == null || url.trim().equals("")) {
 
 			String page = "<html><head>"
@@ -48,6 +47,49 @@ public class TranscriptionViewController {
 
 			writePage(response, page);
 			return null;
+		}
+		
+		// format transcription 
+		String urlEncoded = URLEncoder.encode(url, "UTF-8");
+		String transcriptionformatURL=URLEncoder.encode("/transcriptionformatter?url="+urlEncoded,"UTF-8");
+
+		
+		//response.sendRedirect("/transcriptionformatter?url="+urlEncoded);
+		
+		// cache transcription
+		response.sendRedirect("/cache?url="+transcriptionformatURL+"&doc="+docId);
+		
+		return null;
+		
+	}
+	
+	// on path /transcriptionformatter
+	// passed url parameter which is url from the json data for this page.
+	// produces formatted version of the transcription page at that url. 
+	@RequestMapping(value = "/transcriptionformatter")
+	public ModelAndView handleRequest(@RequestParam("url") String url,
+		   HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+
+		String transcriptionPage = getFormattedContent(url,request, response);
+		writePage(response, transcriptionPage);
+		
+		return null;
+
+	}
+	
+	protected String getFormattedContent(String url,
+			   HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// no url param or empty url - so no transcription available for this
+		// page.
+		if (url == null || url.trim().equals("")) {
+
+			String page = "<html><head>"
+					+ "<link href=\"styles/style-transcription.css\" rel=\"stylesheet\" type=\"text/css\" />\n"
+					+ "</head><body><div class=\"transcription\"> No transcription available for this image. </div></body></html>";
+
+			return page;
 		}
 
 		// relative url should be translated into a absolute url.
@@ -74,10 +116,7 @@ public class TranscriptionViewController {
 			transcriptionPage = sourcePage;
 		}
 		
-		writePage(response, transcriptionPage);
-		
-		return null;
-
+		return transcriptionPage;
 	}
 
 	protected String readContent(String url) throws IOException {

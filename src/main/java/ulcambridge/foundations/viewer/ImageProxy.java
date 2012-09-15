@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,7 +49,10 @@ public class ImageProxy {
 
 		BufferedOutputStream out = new BufferedOutputStream(
 				response.getOutputStream());
-		InputStream is = null;
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	    response.setContentType(connection.getContentType());
+	    InputStream is = connection.getInputStream();
+	    
 		try {
 			is = url.openStream();
 			byte[] byteChunk = new byte[4096];

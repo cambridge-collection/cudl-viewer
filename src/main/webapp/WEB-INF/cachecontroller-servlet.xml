@@ -16,7 +16,7 @@
 
 				
 	<bean id="extResourceView" 
-		class="ulcambridge.foundations.viewer.ExternalResourceController">
+		class="ulcambridge.foundations.viewer.transcriptions.CacheController">
 	</bean>
 	
 	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">

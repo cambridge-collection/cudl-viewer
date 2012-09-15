@@ -1,4 +1,4 @@
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.transcriptions;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -115,6 +115,7 @@ public class ExternalCache {
 	}
 
 	public static void loadIntoCache(String url, String docId) {
+		
 		URL site;
 		try {
 			site = new URL(url);
@@ -128,16 +129,16 @@ public class ExternalCache {
 					if (connection.getContentType().toLowerCase()
 							.startsWith("text/html")) {
 
-						loadPageIntoCache(url, connection, docId);
+						loadPageIntoCache(url, docId);
 
 					} else if (connection.getContentType().toLowerCase()
 							.startsWith("text/css")) {
 
-						loadCSSIntoCache(url, connection, docId);
+						loadCSSIntoCache(url, docId);
 
 					} else {
 
-						loadResourceIntoCache(url, connection, docId);
+						loadResourceIntoCache(url, docId);
 					}
 				} else {
 					throw new IOException("Problems retrieving url :" + url
@@ -156,7 +157,7 @@ public class ExternalCache {
 	// resources include images (jpg, png, gif) and js/css used by this page
 	// resources must be referred to with 'href=' or 'src='
 	private static void loadPageIntoCache(String url,
-			HttpURLConnection connection, String docId) {
+			String docId) {
 
 		// request URL
 		try {
@@ -177,6 +178,7 @@ public class ExternalCache {
 			tidy.setQuiet(true);
 			tidy.setShowWarnings(false);
 			tidy.setXHTML(true);
+			tidy.setCharEncoding(org.w3c.tidy.Configuration.UTF8);
 			
 			Document tidyDOM = tidy.parseDOM(uc.getInputStream(), null);
 
@@ -218,7 +220,7 @@ public class ExternalCache {
 	}
 
 	private static Document cacheLinkedResourceAndUpdateRef(String elementName,
-			String attributeName, Document dom, String baseURL, String docId) {
+			String attributeName, Document dom, String baseURL, String docId) throws MalformedURLException {
 
 		NodeList css = dom.getElementsByTagName(elementName);
 		for (int i = 0; i < css.getLength(); i++) {
@@ -228,7 +230,7 @@ public class ExternalCache {
 				String linkSRC = href.getNodeValue();
 				if (!linkSRC.startsWith("http")) {
 					// make any relative links absolute
-					linkSRC = baseURL + "/" + linkSRC;
+					linkSRC = new URL(new URL(baseURL), linkSRC).toString();
 				}
 				// rewrite link to local resource
 				href.setNodeValue(getCachedItemFilename(linkSRC));
@@ -241,7 +243,7 @@ public class ExternalCache {
 	}
 
 	private static void loadCSSIntoCache(String url,
-			HttpURLConnection connection, String docId) {
+			String docId) {
 		//System.out.println("loading into cache: " + url);
 
 		try {
@@ -313,7 +315,7 @@ public class ExternalCache {
 	}
 
 	private static void loadResourceIntoCache(String url,
-			HttpURLConnection connection, String docId) {
+			String docId) {
 
 		//System.out.println("loading into cache: " + url);
 

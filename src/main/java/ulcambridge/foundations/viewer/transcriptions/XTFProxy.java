@@ -3,8 +3,8 @@ package ulcambridge.foundations.viewer.transcriptions;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +13,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * This class forwards any requests to /xtf to the xtf URL specified in the 
@@ -47,9 +48,12 @@ public class XTFProxy {
 
 		BufferedOutputStream out = new BufferedOutputStream(
 				response.getOutputStream());
-		InputStream is = null;
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	    response.setContentType(connection.getContentType());
+	    InputStream is = connection.getInputStream();
+	    
 		try {
-			is = url.openStream();
+			
 			byte[] byteChunk = new byte[4096];
 
 			int n;

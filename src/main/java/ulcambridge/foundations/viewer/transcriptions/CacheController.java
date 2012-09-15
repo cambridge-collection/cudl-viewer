@@ -1,4 +1,4 @@
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.transcriptions;
 
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 /**
  * Reads in the URL specified from cache if available, otherwise caches the
  * resource and then provides a link to the cached version.
@@ -21,13 +22,13 @@ import org.springframework.web.servlet.ModelAndView;
  * 
  */
 @Controller
-public class ExternalResourceController {
+public class CacheController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	// on path /externalresource
+	// on path /cache
 	// NOTE: Currently limited to RELATIVE URLS ONLY. 
-	@RequestMapping(value = "/externalresource")
+	@RequestMapping(value = "/cache")
 	public ModelAndView handleRequest(@RequestParam("url") String url,
 			@RequestParam("doc") String docId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
@@ -36,7 +37,7 @@ public class ExternalResourceController {
 		if (url.startsWith("/")) {
 
 			String baseURL = (request.getRequestURL().toString().replaceAll(
-					"/externalresource", ""));
+					"/cache", ""));
 			url = baseURL + url;
 			
 		} else  {

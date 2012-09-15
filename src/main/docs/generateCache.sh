@@ -39,14 +39,18 @@ if (!($ARGV[1] =~ m/http.*/)) {
   foreach $line (split("\n", $jsonhtml)) {
 
       # cache normaised/diplomatic  transcriptions
-      if ($line =~ m/transcriptionNormalisedURL\":\"(.*)\"/ || 
-          $line =~ m/transcriptionDiplomaticURL\":\"(.*)\"/) {
+      if ($line =~ m/.*\"transcriptionNormalisedURL\":.*\"(.*)\",*/ || 
+          $line =~ m/.*\"transcriptionDiplomaticURL\":.*\"(.*)\",*/) {
 
-        $url = $1;	
-        $urlParam = "/transcription?url=".uri_escape($url);
-        $html = get($cacheBaseURL."/externalresource?url=".uri_escape($urlParam)."&doc=$docId");
+        $url = $1;
+        $urlParam = "/transcription?url=".uri_escape($url)."&doc=$docId";
+        print "request: ".$cacheBaseURL.$urlParam."\n";
 
-        print "request: ".$cacheBaseURL."/externalresource?url=".uri_escape($urlParam)."&doc=$docId\n";
+        $html = get($cacheBaseURL.$urlParam);
+                        
+#        $html = get($cacheBaseURL."/cache?url=".uri_escape($urlParam)."&doc=$docId");
+
+#        print "request: ".$cacheBaseURL."/cache?url=".uri_escape($urlParam)."&doc=$docId\n";
 
         unless (length($html)) {
 	   warn "FAILED: Unable to load page for '$url'\n";
