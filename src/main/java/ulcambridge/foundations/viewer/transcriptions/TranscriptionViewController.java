@@ -57,7 +57,7 @@ public class TranscriptionViewController {
 		//response.sendRedirect("/transcriptionformatter?url="+urlEncoded);
 		
 		// cache transcription
-		response.sendRedirect("/cache?url="+transcriptionformatURL+"&doc="+docId);
+		response.sendRedirect("/transcriptioncache?url="+transcriptionformatURL+"&doc="+docId);
 		
 		return null;
 		

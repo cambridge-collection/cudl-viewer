@@ -72,7 +72,7 @@
 
 	<servlet-mapping>
 		<servlet-name>cachecontroller</servlet-name>
-		<url-pattern>/cache</url-pattern>
+		<url-pattern>/transcriptioncache</url-pattern>
 	</servlet-mapping>
 	
 	<!-- transcriptioncontroller servlet -->

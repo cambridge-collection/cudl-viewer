@@ -26,9 +26,9 @@ public class CacheController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	// on path /cache
+	// on path /transcriptioncache
 	// NOTE: Currently limited to RELATIVE URLS ONLY. 
-	@RequestMapping(value = "/cache")
+	@RequestMapping(value = "/transcriptioncache")
 	public ModelAndView handleRequest(@RequestParam("url") String url,
 			@RequestParam("doc") String docId, HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
@@ -37,7 +37,7 @@ public class CacheController {
 		if (url.startsWith("/")) {
 
 			String baseURL = (request.getRequestURL().toString().replaceAll(
-					"/cache", ""));
+					"/transcriptioncache", ""));
 			url = baseURL + url;
 			
 		} else  {

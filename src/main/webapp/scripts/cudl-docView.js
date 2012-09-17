@@ -231,10 +231,11 @@ cudl.docView = function() {
 
 						// If no first level contents use the root element
 						// to prevent empty contents list.
-					} else {
-						ls = cudl.view.buildLogicalStructures(
-								cudl.data.logicalStructures, 0);
-					}
+					} 
+					//else {
+					//	ls = cudl.view.buildLogicalStructures(
+					//			cudl.data.logicalStructures, 0);
+					//}
 
 					var lsDiv = document.getElementById("logical_structure");
 					
@@ -490,7 +491,7 @@ cudl.docView = function() {
 			}
 
 			return ls;
-		}
+		}		
 
 	};
 

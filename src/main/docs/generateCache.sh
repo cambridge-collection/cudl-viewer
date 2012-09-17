@@ -9,7 +9,7 @@ use LWP::Simple;
 use URI::Escape;
 
 if (!($ARGV[0] =~ m/http.*/)) {
-                  print "first parameter should be a JSON URL to cache external resources e.g.http://cudl-dev.lib.cam.ac.uk/json/MS-ADD-03958.json \n";
+                  print "first parameter should be a JSON URL to cache external resources e.g.http://cudl-dev.lib.cam.ac.uk/xtf/json/MS-ADD-03958.json \n";
                   exit 0;
 }
 
@@ -48,9 +48,9 @@ if (!($ARGV[1] =~ m/http.*/)) {
 
         $html = get($cacheBaseURL.$urlParam);
                         
-#        $html = get($cacheBaseURL."/cache?url=".uri_escape($urlParam)."&doc=$docId");
+#        $html = get($cacheBaseURL."/transcriptioncache?url=".uri_escape($urlParam)."&doc=$docId");
 
-#        print "request: ".$cacheBaseURL."/cache?url=".uri_escape($urlParam)."&doc=$docId\n";
+#        print "request: ".$cacheBaseURL."/transcriptioncache?url=".uri_escape($urlParam)."&doc=$docId\n";
 
         unless (length($html)) {
 	   warn "FAILED: Unable to load page for '$url'\n";

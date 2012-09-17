@@ -192,8 +192,11 @@ cudl.setupViewport = function () {
 	// Add tabs
 	var aboutTab = cudl.setupTab('About', 'metadata',
 			cudl.viewportComponents.rightTabPanel);
-	cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
-
+	
+	// Show Contents tab only if there are any children defined 
+	if (cudl.data.logicalStructures[0].children) {
+	   cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
+	}
 	if (cudl.data.useTranscriptions) {
 
 		cudl.setupTab('Transcription (normalised)', 'transcription_normal',
@@ -317,7 +320,7 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 		iframe.setAttribute('onload', 'cudl.afterTabShown()');
 		iframe.setAttribute('width', '100%');
 		iframe.setAttribute('height', '100%');
-		iframe.setAttribute('src', '/transcription?url='); // needed for validation of HTML
+		iframe.setAttribute('src', '/transcription?url=&doc='); // needed for validation of HTML
 
 		// validation.
 		div.appendChild(iframe);
