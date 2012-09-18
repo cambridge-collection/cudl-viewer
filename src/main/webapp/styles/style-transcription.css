@@ -17,6 +17,18 @@ body {
 .transcription-credit {
 	text-align: right;
 	color:#999999;
+    font-family: Verdana,Tahoma,Geneva,sans-serif;
+    font-size:12px;	
+    font-weight:normal;    
+}
+.transcription-credit a, .transcription-credit a:link, 
+.transcription-credit a:visited, .transcription-credit a:hover, 
+.transcription-credit a:active {
+	text-align: right;
+	color:#0000ff;
+    font-family: Verdana,Tahoma,Geneva,sans-serif;
+    font-size:12px;	    
+    font-weight:normal;	  
 }
 
 html {
