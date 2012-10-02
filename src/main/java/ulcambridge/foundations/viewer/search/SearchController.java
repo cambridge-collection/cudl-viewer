@@ -16,6 +16,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,9 @@ public class SearchController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private Search search;
-
+	private CollectionFactory collectionFactory;
+	private ItemFactory itemFactory;
+	
 	/**
 	 * Constructor, set in search-servlet.xml.
 	 * 
@@ -48,6 +51,16 @@ public class SearchController {
 	public SearchController(Search search) {
 		this.search = search;
 	}
+	
+	@Autowired
+	public void setCollectionFactory(CollectionFactory factory) {
+		this.collectionFactory = factory;
+	}
+	
+	@Autowired
+	public void setItemFactory(ItemFactory factory) {
+		this.itemFactory = factory;
+	}		
 
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
 	public ModelAndView processSearch(HttpServletRequest request,
@@ -85,7 +98,7 @@ public class SearchController {
 		while (resultIt.hasNext()) {
 			SearchResult result = resultIt.next();
 
-			Item item = ItemFactory.getItemFromId(result.getId());
+			Item item = itemFactory.getItemFromId(result.getId());
 			if (item != null) {
 				refinedResults.add(result);
 			}
@@ -141,7 +154,7 @@ public class SearchController {
 			
 			for (int i=startIndex; i<endIndex; i++) {
 				SearchResult searchResult = searchResults.get(i);				
-				Item item = ItemFactory.getItemFromId(searchResult.getId());
+				Item item = itemFactory.getItemFromId(searchResult.getId());
 				
 				// Make a JSON object that contains information about the matching 
 				// item and information about the result snippets and pages that match. 
@@ -202,7 +215,7 @@ public class SearchController {
 			SearchResultSet results) {
 
 		String title = searchQuery.getFacets().get("collection");
-		Collection collection = CollectionFactory.getCollectionFromTitle(title);
+		Collection collection = collectionFactory.getCollectionFromTitle(title);
 		List<String> itemIds = collection.getItemIds();
 
 		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
@@ -236,7 +249,7 @@ public class SearchController {
 		// Go through all the collections and see if there are any
 		// results that match ids in these collections.
 
-		Iterator<Collection> allCollectionsIterator = CollectionFactory
+		Iterator<Collection> allCollectionsIterator = collectionFactory
 				.getCollections().iterator();
 		while (allCollectionsIterator.hasNext()) {
 

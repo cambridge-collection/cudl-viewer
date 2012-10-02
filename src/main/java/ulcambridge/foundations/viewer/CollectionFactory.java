@@ -1,57 +1,43 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ulcambridge.foundations.viewer.dao.CollectionsDAO;
 import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
 
 public class CollectionFactory {
 
-	private static final CollectionFactory collectionFactory = new CollectionFactory();
-
-	private Hashtable<String, Collection> collections;
-
-	/**
-	 * Protected constructor.
-	 */
-	protected CollectionFactory() {
+	private static Hashtable<String, Collection> collections;
+	private CollectionsDAO collectionsDAO;
+	
+	@Autowired
+	public void setCollectionsDAO(CollectionsDAO dao) {
+		collectionsDAO = dao;
+		//this.collectionsDAO = new CollectionsDBDAO();
+	}
+	
+	public synchronized void init() {
+		
 			collections = new Hashtable<String, Collection>();
-
-			// Get collection url and title
-			String[] collectionIds = Properties.getString("collections").split(
-					"\\s*,\\s*");
-			for (int i = 0; i < collectionIds.length; i++) {
-
-				String collectionId = collectionIds[i];
-				List<String> collectionItemIds = Arrays.asList(Properties
-						.getString(collectionId + ".items").split("\\s*,\\s*"));
-
-				List<Item> collectionItems = ItemFactory.getItemsFromCollectionId(collectionId);
-				String collectionTitle = Properties.getString(collectionId
-						+ ".title");
-				String collectionSummary = Properties.getString(collectionId
-						+ ".summary");
-				String collectionSponsors = Properties.getString(collectionId
-						+ ".sponsors");
-				String collectionType = Properties.getString(collectionId
-						+ ".type");
-
-				Collection collection = new Collection(collectionId,
-						collectionTitle, collectionItemIds, collectionItems,
-						collectionSummary, collectionSponsors, collectionType);
-				collections.put(collectionId, collection);
+			
+			List<String> collectionIds = collectionsDAO.getCollectionIds();
+			for (int i = 0; i < collectionIds.size(); i++) {
+				String collectionId = collectionIds.get(i);
+				collections.put(collectionId, collectionsDAO.getCollection(collectionId));
 			}
+			
 	}
 
-	public static Collection getCollectionFromId(String id) {
+	public Collection getCollectionFromId(String id) {
 
-		return collectionFactory.collections.get(id);
+		if (collections==null) {init();}
+		return collections.get(id);
 
 	}
 
@@ -62,8 +48,9 @@ public class CollectionFactory {
 	 * @param title
 	 * @return
 	 */
-	public static Collection getCollectionFromTitle(String title) {
+	public Collection getCollectionFromTitle(String title) {
 
+		if (collections==null) {init();}
 		Iterator<Collection> c = getCollections().iterator();
 
 		while (c.hasNext()) {
@@ -76,10 +63,11 @@ public class CollectionFactory {
 		return null;
 	}
 
-	public static List<Collection> getCollections() {
+	public List<Collection> getCollections() {
 
+		if (collections==null) {init();}	
 		ArrayList<Collection> list = new ArrayList<Collection>(
-				collectionFactory.collections.values());
+				collections.values());
 		Collections.sort(list);
 		return list;
 

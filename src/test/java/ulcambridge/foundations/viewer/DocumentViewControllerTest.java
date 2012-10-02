@@ -11,6 +11,10 @@ import org.json.JSONObject;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.CollectionsDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsMockDAO;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDAO;
+
 /**
  * Unit test for simple App.
  */
@@ -38,23 +42,37 @@ public class DocumentViewControllerTest extends TestCase {
 	public void testDocumentViewController() throws Throwable {
 		
 		JSONReader reader = new MockJSONReader();
-		junitx.util.PrivateAccessor.setField(ItemFactory.class, "reader",
-				reader);
-		junitx.util.PrivateAccessor.setField(DocumentViewController.class, "reader",
-				reader);		
+		
+		ItemsJSONDAO jsondao = new ItemsJSONDAO();
+		jsondao.setJSONReader(reader);
+		
+		CollectionsDAO collectionsdao = new CollectionsMockDAO();
+				
+		ItemFactory itemFactory = new ItemFactory();
+		itemFactory.setCollectionsDAO(collectionsdao);
+		itemFactory.setItemsDAO(jsondao);		
 		
 		MockHttpServletRequest req = new MockHttpServletRequest();
-		req.setRequestURI("/view/MS-ADD-03961");
+		req.setRequestURI("/view/MS-ADD-04004");
 		req.setProtocol("http");
 		req.setServerName("testurl.testingisthebest.com");
 		req.setServerPort(8080);
 
-		DocumentViewController c = new DocumentViewController();
-		ModelAndView mDoc = c.handleRequest("MS-ADD-03961", req);	
+		DocumentViewController c = new DocumentViewController();	
+		
+		// inject the mock dao 
+		CollectionFactory collectionFactory = new CollectionFactory();
+		collectionFactory.setCollectionsDAO(collectionsdao);
+		
+		// inject the factories
+		c.setCollectionFactory(collectionFactory);	
+		c.setItemFactory(itemFactory);
+		
+		ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);	
 
-		assertEquals("MS-ADD-03961", mDoc.getModelMap().get("docId"));
+		assertEquals("MS-ADD-04004", mDoc.getModelMap().get("docId"));
 		assertEquals(1, mDoc.getModelMap().get("page"));
-		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-03961", mDoc.getModelMap().get("docURL"));
+		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
 		
 	}
 	

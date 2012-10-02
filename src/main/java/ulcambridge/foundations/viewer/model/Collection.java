@@ -15,21 +15,19 @@ public class Collection implements Comparable<Collection> {
 	private String id;
 	private String title;
 	private List<String> itemIds;
-	private List<Item> items;
 	private String url;
 	private String summary;
 	private String sponsors;
 	private String type;
 
 	public Collection(String collectionID, String collectionTitle,
-			List<String> collectionItemIds, List<Item> collectionItems,
+			List<String> collectionItemIds, 
 			String collectionSummary, String collectionSponsors,
 			String collectionType) {
 
 		this.id = collectionID;
 		this.title = collectionTitle;
 		this.itemIds = collectionItemIds;
-		this.items = collectionItems;
 		this.url = "/collections/" + collectionID;
 		this.summary = collectionSummary;
 		this.sponsors = collectionSponsors;
@@ -53,10 +51,6 @@ public class Collection implements Comparable<Collection> {
 
 	public List<String> getItemIds() {
 		return itemIds;
-	}
-
-	public List<Item> getItems() {
-		return items;
 	}
 
 	public String getURL() {

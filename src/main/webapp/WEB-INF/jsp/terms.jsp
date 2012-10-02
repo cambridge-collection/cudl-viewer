@@ -5,7 +5,7 @@
 	<jsp:param name="displaySearch" value="true" />
 </jsp:include>
 <jsp:include page="header/nav-about-submenu.jsp">
-	<jsp:param name="activeSubmenu" value="2" />
+	<jsp:param name="activeSubmenu" value="3" />
 </jsp:include>
 
 <div class="clear"></div>

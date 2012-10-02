@@ -5,7 +5,8 @@
 <ul>
 
 	<% 
-	Collection selectedCollection = (Collection) request.getAttribute( "collection" );
+/*	
+    Collection selectedCollection = (Collection) request.getAttribute( "collection" );
 	
 	Iterator<Collection> collectionIterator = CollectionFactory.getCollections().iterator();
 
@@ -19,7 +20,7 @@
 	    	  out.print(">"+collection.getTitle()+"</a></li>\n");	      
 	      }
 	      
-	   }
+	   } */
     %>
 
 </ul>

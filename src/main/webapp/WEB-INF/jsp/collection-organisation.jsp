@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator"%>
+	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
 	
 
 <%
@@ -36,7 +36,7 @@ var viewPage = function(pageNum) {
 function pageinit() {
  
   var pageLimit = 8;
-  var numResults = <%=collection.getItems().size()%>;
+  var numResults = <%=collection.getItemIds().size()%>;
 
   // initalise paging. 
   var Paging = $(".pagination").paging(

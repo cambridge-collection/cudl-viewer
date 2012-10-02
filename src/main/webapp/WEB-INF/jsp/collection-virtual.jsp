@@ -1,9 +1,12 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator"%>
+	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
 	
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
+
+    List<Item> items = (List<Item>) request
+             .getAttribute("items");
 %>	
 <jsp:include page="header/header-full.jsp" >
 	<jsp:param name="title" value="<%=collection.getTitle()%>" />
@@ -38,11 +41,11 @@ function pageinit() {
 
 <ol id="collections_carousel">
 	<%
-	   Iterator<Item> items = collection.getItems().iterator();
+	   Iterator<Item> itemIterator = items.iterator();
 	   int itemNum = 0; 
 	   
-		while (items.hasNext()) {
-			Item item = items.next();
+		while (itemIterator.hasNext()) {
+			Item item = itemIterator.next();
 			itemNum++;			
 
 			String imageDimensions = "";

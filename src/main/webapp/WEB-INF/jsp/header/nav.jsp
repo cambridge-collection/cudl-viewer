@@ -9,7 +9,7 @@ boolean displaySearch = request.getParameter("displaySearch").toString().equals(
 <ul>
 	<li class="first"><a href="/" title="Home" <% if (activeIndex==0) { %>class="active" <% } %>> Home </a></li>
 	<li><a href="/collections/" title="Browse" <% if (activeIndex==1) { %>class="active" <% } %>> Browse </a></li>
-	<li><a href="/news/" title="News" <% if (activeIndex==2) { %>class="active" <% } %>> News </a></li>
+	<li><a href="/mylibrary/" title="My Library" <% if (activeIndex==2) { %>class="active" <% } %>> My Library </a></li>
 	<li><a href="/about/" title="About" <% if (activeIndex==3) { %>class="active" <% } %>> About </a></li>
 	<li><a href="/help/" title="Help" <% if (activeIndex==4) { %>class="active" <% } %>> Help </a></li>
 </ul>

@@ -59,14 +59,13 @@ public class CollectionTest extends TestCase {
 		collectionItems.add(item);
 
 		Collection c = new Collection("collectionID", "collectionTitle",
-				collectionIds, collectionItems, "collectionSummary",
+				collectionIds, "collectionSummary",
 				"collectionSponsors", "collectionType");
 
 		Collection c2 = new Collection(
 				"collectionID2",
 				"collectionTitle2",
 				collectionIds,
-				collectionItems,
 				"collectionSummary",
 				"collectionSponsors2", "collectionType2");
 
@@ -77,7 +76,6 @@ public class CollectionTest extends TestCase {
 		assertEquals(c.getType(), "collectionType");
 		assertEquals(c.getURL(), "/collections/collectionID");
 		assertEquals(c.getItemIds(), collectionIds);
-		assertEquals(c.getItems(), collectionItems);
 		assertEquals(c.compareTo(c2) < 0, true);
 		assertEquals(c2.compareTo(c) > 0, true);
 		assertEquals(c.compareTo(c), 0);

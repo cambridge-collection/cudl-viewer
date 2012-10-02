@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,12 @@ public class SiteViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private	String showHoldingPage = Properties.getString("showHoldingPage");
+	private ItemFactory itemFactory;
+	
+	@Autowired
+	public void setItemFactory(ItemFactory factory) {
+		this.itemFactory = factory;
+	}	
 	
 	// on path /
 	@RequestMapping(value = "/")
@@ -33,7 +40,7 @@ public class SiteViewController {
 		String[] itemIds = Properties.getString("collection.featuredItems").split("\\s*,\\s*");
 		for (int i=0; i<itemIds.length; i++) {
 		  String itemId = itemIds[i];
-		  featuredItems.add(ItemFactory.getItemFromId(itemId));
+		  featuredItems.add(itemFactory.getItemFromId(itemId));
 		}
 		modelAndView.addObject("featuredItems", featuredItems);
 		modelAndView.addObject("downtimeWarning", Properties.getString("downtimeWarning"));
@@ -49,6 +56,14 @@ public class SiteViewController {
 		return modelAndView;
 	}
 
+	// on path /mylibrary/
+	@RequestMapping(value = "/mylibrary")
+	public ModelAndView handleMyLibraryRequest() {
+
+		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
+		return modelAndView;
+	}
+	
 	// on path /about/
 	@RequestMapping(value = "/about")
 	public ModelAndView handleAboutRequest() {

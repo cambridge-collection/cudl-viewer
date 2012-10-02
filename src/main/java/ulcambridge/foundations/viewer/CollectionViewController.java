@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,19 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class CollectionViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-
+	private CollectionFactory collectionFactory;
+	private ItemFactory itemFactory;
+	
+	@Autowired
+	public void setCollectionFactory(CollectionFactory factory) {
+		this.collectionFactory = factory;
+	}
+	
+	@Autowired
+	public void setItemFactory(ItemFactory factory) {
+		this.itemFactory = factory;
+	}
+	
 	// on path /collections/
 	@RequestMapping(value = "/")
 	public ModelAndView handleViewRequest(HttpServletResponse response)
@@ -45,7 +58,7 @@ public class CollectionViewController {
 				.split("\\s*,\\s*");
 		for (int i = 0; i < itemIds.length; i++) {
 			String itemId = itemIds[i];
-			featuredItems.add(ItemFactory.getItemFromId(itemId));
+			featuredItems.add(itemFactory.getItemFromId(itemId));
 		}
 		modelAndView.addObject("featuredItems", featuredItems);
 		return modelAndView;
@@ -57,14 +70,22 @@ public class CollectionViewController {
 			@PathVariable("collectionId") String collectionId,
 			HttpServletRequest request) {
 
-		Collection collection = CollectionFactory
+		Collection collection = collectionFactory
 				.getCollectionFromId(collectionId);
 
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"
 				+ collection.getType());
 
+		List<String> itemIds = collection.getItemIds();
+		List<Item> items = new ArrayList<Item>();		
+		for (int i = 0; i < itemIds.size(); i++) {
+			String itemId = itemIds.get(i);
+			items.add(itemFactory.getItemFromId(itemId));
+		}
+		
 		modelAndView.addObject("collection", collection);
-
+		modelAndView.addObject("items", items);
+		
 		return modelAndView;
 
 	}
@@ -79,10 +100,16 @@ public class CollectionViewController {
 			@RequestParam("start") int startIndex,
 			@RequestParam("end") int endIndex, HttpServletRequest request) throws JSONException {
 
-		Collection collection = CollectionFactory
+		Collection collection = collectionFactory
 				.getCollectionFromId(collectionId);
-		List<Item> items = collection.getItems();
-
+		
+		List<String> ids = collection.getItemIds();
+		List<Item> items = new ArrayList<Item>();
+		
+		for (int i=0; i<ids.size(); i++) {
+		  items.add(itemFactory.getItemFromId(ids.get(i)));
+		}
+		
 		if (startIndex < 0) {
 			startIndex = 0;
 		} else if (endIndex >= items.size()) {

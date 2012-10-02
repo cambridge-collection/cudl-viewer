@@ -303,6 +303,17 @@ ol#index_carousel li {
 	width: 450px;;
 }
 
+.matrix_carousel ol {
+	width: 800px;
+	margin-left: 70px;
+	margin-bottom: 18px;
+}
+
+.matrix_carousel ol li {
+	float: left;
+	width: 180px;;
+}
+
 .collections_carousel_item {
 	width: 100%;
 	font-style: normal;

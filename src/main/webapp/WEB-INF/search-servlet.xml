@@ -18,12 +18,15 @@
 	<bean id="search" 
 		class="ulcambridge.foundations.viewer.search.XTFSearch">		
 	</bean>
+	
+	<import resource="datasource/collectionsFactory.xml" />	
 					
 	<bean id="searchController" 
 		class="ulcambridge.foundations.viewer.search.SearchController">
 	  <constructor-arg type="ulcambridge.foundations.viewer.search.Search">
 	  <ref bean="search"/>
 	  </constructor-arg>
+	  <property name="collectionFactory" ref="collectionFactory" />
 	  	        
 	</bean>
 
@@ -44,6 +47,9 @@
     	</property>
 		
 	</bean>
+	
+
+
 
 	<mvc:annotation-driven />
 

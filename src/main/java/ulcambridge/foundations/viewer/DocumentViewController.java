@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,19 @@ public class DocumentViewController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private static JSONReader reader = new JSONReader();
 	
+	private CollectionFactory collectionFactory;
+	private ItemFactory itemFactory;
+	
+	@Autowired
+	public void setCollectionFactory(CollectionFactory factory) {
+		this.collectionFactory = factory;
+	}
+	
+	@Autowired
+	public void setItemFactory(ItemFactory factory) {
+		this.itemFactory = factory;
+	}	
+	
 	// on path /view/{docId}
 	@RequestMapping(value = "/{docId}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
@@ -56,7 +70,7 @@ public class DocumentViewController {
 	public ModelAndView handleJSONRequest(@PathVariable("docId") String docId,
 			HttpServletResponse response) throws JSONException {
 
-		Item item = ItemFactory.getItemFromId(docId);
+		Item item = itemFactory.getItemFromId(docId);
 		JSONObject json = item.getJSON();
 
 		// Write out JSON file.
@@ -100,7 +114,7 @@ public class DocumentViewController {
 		}
 
 		Collection docCollection = null;
-		Iterator<Collection> collectionIterator = CollectionFactory.getCollections().iterator();
+		Iterator<Collection> collectionIterator = collectionFactory.getCollections().iterator();
 		while (collectionIterator.hasNext()) {
 			Collection collection = collectionIterator.next();
 			if (collection.getItemIds().contains(docId)) {
@@ -132,7 +146,7 @@ public class DocumentViewController {
 			modelAndView.addObject("collectionTitle", docCollection.getTitle());
 		}
 		
-		Item item = ItemFactory.getItemFromId(docId);
+		Item item = itemFactory.getItemFromId(docId);
 		modelAndView.addObject("itemTitle", item.getTitle());
 		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
 		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));

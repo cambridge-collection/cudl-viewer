@@ -17,7 +17,10 @@
         http://www.springframework.org/schema/util 
         http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
+    <import resource="datasource/itemsFactory.xml" />
+
 	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
+		<property name="itemFactory" ref="itemFactory" />
 	</bean>
 
 	<util:properties id="globalproperties" location="classpath:cudl-global.properties" 

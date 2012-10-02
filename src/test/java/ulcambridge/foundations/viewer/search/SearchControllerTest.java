@@ -16,11 +16,14 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
+import ulcambridge.foundations.viewer.dao.CollectionsDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsMockDAO;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDAO;
 
 /**
  * Unit test
@@ -50,8 +53,15 @@ public class SearchControllerTest extends TestCase {
 	public void testSearchController() throws Throwable {
 
 		JSONReader reader = new MockJSONReader();
-		junitx.util.PrivateAccessor.setField(ItemFactory.class, "reader",
-				reader);
+		
+		ItemsJSONDAO jsondao = new ItemsJSONDAO();
+		jsondao.setJSONReader(reader);
+		
+		CollectionsDAO collectionsdao = new CollectionsMockDAO();
+				
+		ItemFactory itemFactory = new ItemFactory();
+		itemFactory.setCollectionsDAO(collectionsdao);
+		itemFactory.setItemsDAO(jsondao);	
 
 		MockHttpServletRequest req = new MockHttpServletRequest();
 		req.addParameter("keyword", "Elementary Mathematics");
@@ -61,12 +71,16 @@ public class SearchControllerTest extends TestCase {
 		MockHttpServletResponse res = new MockHttpServletResponse();
 
 		SearchController c = new SearchController(new MockSearch());
-		ModelAndView m = null;
-		try {
-			m = c.processSearch(req, res);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		// inject the mock dao 
+		CollectionFactory collectionFactory = new CollectionFactory();
+		collectionFactory.setCollectionsDAO(collectionsdao);
+		
+		// inject the factories
+		c.setCollectionFactory(collectionFactory);	
+		c.setItemFactory(itemFactory);
+
+		ModelAndView m = c.processSearch(req, res);
 
 		SearchQuery q = (SearchQuery) m.getModelMap().get("query");
 		SearchResultSet r = (SearchResultSet) m.getModelMap().get("results");

@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+ 
+ 	<import resource="collectionsFactory.xml" />
+ 	
+ 	<bean id="JSONReader" class="ulcambridge.foundations.viewer.JSONReader">
+	</bean>
+	
+	<bean id="itemsDAO" class="ulcambridge.foundations.viewer.dao.ItemsJSONDAO">
+	  <property name="JSONReader" ref="JSONReader" />
+	</bean>
+	
+  	<bean id="itemFactory" class="ulcambridge.foundations.viewer.ItemFactory">
+		<property name="itemsDAO" ref="itemsDAO" />
+		<property name="collectionsDAO" ref="collectionsDAO" />
+	</bean>
+	
+</beans>
