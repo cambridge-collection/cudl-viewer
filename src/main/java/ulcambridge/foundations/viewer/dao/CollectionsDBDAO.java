@@ -52,7 +52,7 @@ public class CollectionsDBDAO implements CollectionsDAO {
 
 	private List<String> getItemIds(String collectionId) {
 
-		String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? ORDER BY itemorder";
+		String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? AND visible=true ORDER BY itemorder";
 
 		return (List<String>) jdbcTemplate.query(query, new Object[] { collectionId },
 			new RowMapper<String>() {

@@ -9,7 +9,6 @@ div.pagination {
 	padding:6px;
 	margin:9px;
 	text-align:center;
-
 }
 
 div.pagination a {
@@ -27,7 +26,7 @@ div.pagination a:hover, div.pagination a:active {
 	background-color: #cccccc;
 }
 div.pagination span.current {
-	padding: 4px 8px 4px 8px;
+	padding: 4px 4px 4px 4px;
 	margin-right: 2px;
 	border: 1px solid #333333;
 	font-weight: bold;
@@ -35,8 +34,8 @@ div.pagination span.current {
 	color: #FFF;
 }
 div.pagination span.disabled {
-	padding: 4px 8px 4px 8px;
-	margin-right: 2px;
+	padding: 4px 4px 4px 4px;
+	margin-right: 5px;
 	border: 1px solid #f3f3f3;
 	color: #ccc;
 }
