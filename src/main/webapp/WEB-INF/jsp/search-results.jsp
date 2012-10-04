@@ -8,7 +8,7 @@
 <%
 	SearchResultSet resultSet = ((SearchResultSet) request
 			.getAttribute("results"));
-	SearchQuery query = ((SearchQuery) request.getAttribute("query"));
+	SearchQuery query = ((SearchQuery) request.getAttribute("query"));	
 %>
 
 <!--  script for ajax pagination -->
@@ -240,6 +240,7 @@ function pageinit() {
 			<%
 				}
 			%>
+			<input type="hidden" name="fileID" value="<%=query.getFileID() %>">
 		</form>
 
 		<%
@@ -257,7 +258,15 @@ function pageinit() {
 		</div>
 		<%
 			}
-
+			if (query.getFileID()!=null && query.getFileID().trim().length()>0 ) {
+			%>
+			<div class="search-facet-selected"><a class="search-close"
+				href="?<%=query.getURLParameters().replace("fileID="+query.getFileID(), "fileID=")%>&amp;"></a>
+			<%
+				out.print("File ID: "+query.getFileID());
+			%>	</div>		
+           <%
+			}
 			if (resultSet.getSpellingSuggestedTerm() != null
 					&& !resultSet.getSpellingSuggestedTerm().equals("")) {
 				out.println("Did you mean <a href=\"/search?keyword="

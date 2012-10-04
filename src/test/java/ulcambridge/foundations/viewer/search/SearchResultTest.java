@@ -55,7 +55,8 @@ public class SearchResultTest extends TestCase {
 		NodeList docHits = dom.getElementsByTagName("docHit");
 		Element node = (Element) docHits.item(0);
 		
-		SearchResult result = new SearchResult(node);
+		XTFSearch xtfSearch = new XTFSearch();		
+		SearchResult result = xtfSearch.createSearchResult(node);		
 
 		assertEquals(result.getId(), "MS-ADD-04004");
 		assertEquals(result.getTitle(), "Newton's Waste Book");		

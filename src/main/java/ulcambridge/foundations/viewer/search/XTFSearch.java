@@ -78,7 +78,6 @@ public class XTFSearch implements Search {
 					+ "=" + facetValue;
 		}
 
-		System.out.println("request: "+searchXTFURL);
 		return searchXTFURL;
 	}
 
@@ -149,14 +148,14 @@ public class XTFSearch implements Search {
 				// Sometimes results may appear without any metadata, ignore
 				// these.
 				if (itemIdElement != null) {
-					String itemId = itemIdElement.getTextContent();
-					itemId = itemId.replaceAll("<.*>",""); // remove tags
+					String itemId = itemIdElement.getNodeValue();//.getTextContent();
+					itemId = getValueInText(itemIdElement);
+
 					itemId = itemId.replaceAll("\\s+",""); // remove whitespace
-					
-					System.out.println("itemid: "+itemId);
+
 					SearchResult result = docHitsByItem.get(itemId);
 					if (result == null) {
-						result = new SearchResult(node);
+						result = createSearchResult(node);
 						docHitsByItem.put(itemId, result);
 					} else {
 						List<String> snippetList = new ArrayList<String>();
@@ -168,7 +167,7 @@ public class XTFSearch implements Search {
 						try {
 						    startPage = new Integer(meta
 								.getElementsByTagName("startPage").item(0)
-								.getTextContent());						
+								.getNodeValue()); //.getTextContent());						
 						} catch (Exception e) { /* ignore, use default value */}
 						
 						for (int j = 0; j < snippetNodes.getLength(); j++) {
@@ -210,8 +209,101 @@ public class XTFSearch implements Search {
 		return new SearchResultSet(totalDocs, suggestedTerm, queryTime,
 				results, null, "");
 	}
+	
 
-	private String getValueInHTML(Node node) {
+	/**
+	 * Creates a new SearchResult from the given Node.
+	 */
+	public SearchResult createSearchResult(Element node) {
+
+		String title = "";
+		String id = "";
+		int score = -1;
+		List<Facet> facets = new ArrayList<Facet>();
+		Hashtable<Integer, List<String>> snippets = new Hashtable<Integer, List<String>>();
+		
+		// look at all the child tags
+		if (node.getNodeName().equals("docHit")) {
+
+			NodeList metaAndSnippets = node.getChildNodes();
+
+			// META Search Info.
+			Element meta = (Element) node.getElementsByTagName("meta").item(0);
+
+			title = getValueInHTML(meta.getElementsByTagName("title")
+					.item(0));
+			id = getValueInText(meta.getElementsByTagName("fileID")
+					.item(0));
+
+			id = id.replaceAll("\\s+",""); // remove whitespace			
+			score = Integer.parseInt(node.getAttribute("score"));
+
+			Integer startPage = new Integer(meta
+					.getElementsByTagName("startPage").item(0).getFirstChild().getNodeValue());
+
+			NodeList children = meta.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
+				Node child = children.item(i);
+				if (child.getNodeName().startsWith("facet-")) {
+					Facet facet = new Facet(child.getNodeName().substring(6),
+							getValueInHTML(child));
+					facets.add(facet);
+				}
+			}
+
+			// SNIPPET Search Info
+			snippets = new Hashtable<Integer, List<String>>();
+			List<String> snippetList = new ArrayList<String>();
+
+			NodeList snippetNodes = node.getElementsByTagName("snippet");
+			for (int i = 0; i < snippetNodes.getLength(); i++) {
+				Node snippetNode = snippetNodes.item(i);
+				if (snippetNode != null) {
+
+					snippetList.add(getValueInHTML(snippetNode));
+				}
+			}
+			snippets.put(startPage, snippetList);
+		}
+		
+		return new SearchResult (title, id, facets, score, snippets);
+		
+	}
+	
+	/** 
+	 * Return a flat string with just the text value of a specified node (and any sub-nodes). 
+	 *  
+	 * @param node
+	 * @return
+	 */
+	public  String getValueInText(Node node) {
+
+		if (node.getNodeType() == Node.TEXT_NODE) {
+			if (node.getParentNode().getNodeName().equals("term")) {
+				return node.getNodeValue().replaceAll("<.*>", "");
+			}
+			// remove complete and partial tags as much as possible
+			String noCompleteTags = node.getNodeValue().replaceAll("<.*>", "");
+			return noCompleteTags.replaceAll("<\\w*|\\w*>", "");
+		}
+
+		NodeList children = node.getChildNodes();
+		StringBuffer textValue = new StringBuffer();
+		if (node.getNodeValue() == null && children != null) {
+
+			for (int i = 0; i < children.getLength(); i++) {
+				Node child = children.item(i);
+				textValue.append(getValueInText(child));
+			}
+
+			return textValue.toString();
+		}
+
+		return "";
+
+	}
+
+	public String getValueInHTML(Node node) {
 
 		if (node.getNodeType() == Node.TEXT_NODE) {
 			// if this is a snippet, bold the matching word(s).
@@ -239,5 +331,7 @@ public class XTFSearch implements Search {
 		return "";
 
 	}
+	
+	
 
 }

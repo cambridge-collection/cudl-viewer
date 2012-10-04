@@ -57,7 +57,8 @@ public class SearchResultSetTest extends TestCase {
 		NodeList docHits = dom.getElementsByTagName("docHit");
 		Element node = (Element) docHits.item(0);
 		
-		SearchResult result = new SearchResult(node);
+		XTFSearch xtfSearch = new XTFSearch();		
+		SearchResult result = xtfSearch.createSearchResult(node);
 		ArrayList<SearchResult> results = new ArrayList<SearchResult> ();
 		results.add(result);
 		

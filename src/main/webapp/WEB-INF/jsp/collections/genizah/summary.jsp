@@ -14,7 +14,16 @@
 		<img class="collectionOrganisationalImage"
 			src="/images/collectionsView/genizah.jpg" alt="Genizah Fragments"
 			width="150" height="225" />
+	<br/>				
 	</div>
+
+	<div class="grid_8"> &nbsp;</div>
+	
+	<div class="grid_8 box">
+	<div><a href="/search?facet-collection=The+Cairo+Genizah+Collection&fileID=TS">View all items in the Taylor-Schechter Collection</a></div>
+	<div><a href="/search?facet-collection=The+Cairo+Genizah+Collection&fileID=MOSSERI">View all items in the Mosseri Collection</a></div>
+	</div>
+	
 	<div class="grid_9">
 		<br />
 		<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
