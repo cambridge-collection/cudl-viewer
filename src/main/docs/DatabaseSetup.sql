@@ -5,7 +5,8 @@ title varchar(255) NOT NULL,
 summaryurl varchar(255) NOT NULL,
 sponsorsurl varchar(255) NOT NULL,
 type varchar(255) NOT NULL,
-collectionorder int NOT NULL UNIQUE AUTO_INCREMENT,
+collectionorder int UNIQUE NOT NULL,
+parentcollectionid varchar (255),
 PRIMARY KEY (collectionid)
 );
 
