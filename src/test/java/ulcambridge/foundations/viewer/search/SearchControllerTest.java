@@ -95,13 +95,13 @@ public class SearchControllerTest extends TestCase {
 		assertEquals("Elementary Mathematics", q.getKeyword());
 		assertEquals(2, q.getFacets().size());
 		assertEquals(
-				"keyword=Elementary+Mathematics&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers",
+				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers",
 				q.getURLParameters());
 		assertEquals(
-				"keyword=Elementary+Mathematics&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers&amp;facet-bob=bobvalue",
+				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers&amp;facet-bob=bobvalue",
 				q.getURLParametersWithExtraFacet("bob", "bobvalue"));
 		assertEquals(
-				"keyword=Elementary+Mathematics&amp;facet-collection=Newton+Papers",
+				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-collection=Newton+Papers",
 				q.getURLParametersWithoutFacet("subject"));
 
 	}

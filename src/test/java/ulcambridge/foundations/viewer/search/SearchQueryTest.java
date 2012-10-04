@@ -43,9 +43,9 @@ public class SearchQueryTest extends TestCase {
 		assertEquals(q.getKeywordDisplay(), "keyword");
 		assertEquals(q.getFacets().size(), 2);
 		assertEquals(q.getFacets(), facetMap);
-		assertEquals(q.getURLParameters(), "keyword=keyword&amp;facet-subject=test+subject&amp;facet-date=test+date");
-		assertEquals(q.getURLParametersWithExtraFacet("bob", "bobvalue"), "keyword=keyword&amp;facet-subject=test+subject&amp;facet-date=test+date&amp;facet-bob=bobvalue");
-		assertEquals(q.getURLParametersWithoutFacet("subject"), "keyword=keyword&amp;facet-date=test+date");
+		assertEquals(q.getURLParameters(), "keyword=keyword&amp;fileID=&amp;facet-subject=test+subject&amp;facet-date=test+date");
+		assertEquals(q.getURLParametersWithExtraFacet("bob", "bobvalue"), "keyword=keyword&amp;fileID=&amp;facet-subject=test+subject&amp;facet-date=test+date&amp;facet-bob=bobvalue");
+		assertEquals(q.getURLParametersWithoutFacet("subject"), "keyword=keyword&amp;fileID=&amp;facet-date=test+date");
 
 	}
 }
