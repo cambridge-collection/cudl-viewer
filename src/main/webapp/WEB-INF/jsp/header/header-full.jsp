@@ -126,7 +126,8 @@
 			</hgroup>
 		</header>
 		<div class="grid_4 helpBanner">
-
+			<a class="iframe" href="/login" title="Login"><img
+				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Login </font></a> <br />
 			<a class="iframe" href="/feedbackform.html" title="Feedback"><img
 				src="/images/header/feedback-arrow.png" alt="arrow" /> Feedback</a> <br />
 			<a class="iframe" href="/mailinglistform.html"

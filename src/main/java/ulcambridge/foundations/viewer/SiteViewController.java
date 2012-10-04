@@ -61,6 +61,7 @@ public class SiteViewController {
 	public ModelAndView handleMyLibraryRequest() {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
+		modelAndView.addObject("itemFactory", itemFactory);
 		return modelAndView;
 	}
 	

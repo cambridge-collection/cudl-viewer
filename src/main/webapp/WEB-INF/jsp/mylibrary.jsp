@@ -8,6 +8,11 @@
 
 <div class="clear"></div>
 
+<%
+	ItemFactory itemFactory = (ItemFactory) request
+			.getAttribute("itemFactory");
+%>
+
 <script type="text/javascript">
 	/*
 	function pageinit() {
@@ -36,18 +41,19 @@
 				<ol id="collections_carousel">
 					<%
 						Set<Item> s = new TreeSet<Item>();
-						s.add(ItemFactory.getItemFromId("MS-ADD-03996"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-04000"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-00875"));
-						s.add(ItemFactory.getItemFromId("MS-MOSSERI-IV-00227"));
-						s.add(ItemFactory.getItemFromId("PR-F180-B-00008-00001-00100"));
-						s.add(ItemFactory.getItemFromId("PR-MONTAIGNE-00001-00004-00004"));
-						s.add(ItemFactory.getItemFromId("PR-INC-00000-A-00007-00002-00888"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-03988"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-03989"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-03987"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-03970"));
-						s.add(ItemFactory.getItemFromId("MS-ADD-03958"));
+					    
+						s.add(itemFactory.getItemFromId("MS-ADD-03996"));
+						s.add(itemFactory.getItemFromId("MS-ADD-04000"));
+						s.add(itemFactory.getItemFromId("MS-ADD-00875"));
+						s.add(itemFactory.getItemFromId("MS-MOSSERI-IV-00227"));
+						s.add(itemFactory.getItemFromId("PR-F180-B-00008-00001-00100"));
+						s.add(itemFactory.getItemFromId("PR-MONTAIGNE-00001-00004-00004"));
+						s.add(itemFactory.getItemFromId("PR-INC-00000-A-00007-00002-00888"));
+						s.add(itemFactory.getItemFromId("MS-ADD-03988"));
+						s.add(itemFactory.getItemFromId("MS-ADD-03989"));
+						s.add(itemFactory.getItemFromId("MS-ADD-03987"));
+						s.add(itemFactory.getItemFromId("MS-ADD-03970"));
+						s.add(itemFactory.getItemFromId("MS-ADD-03958"));
 
 						Iterator<Item> items = s.iterator();
 
