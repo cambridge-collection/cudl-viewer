@@ -44,6 +44,8 @@ public class SearchResult implements Comparable<SearchResult> {
 					.item(0));
 			this.id = getValueInHTML(meta.getElementsByTagName("fileID")
 					.item(0));
+			this.id = this.id.replaceAll("<.*>",""); // remove tags
+			this.id = this.id.replaceAll("\\s+",""); // remove whitespace			
 			this.score = Integer.parseInt(node.getAttribute("score"));
 
 			Integer startPage = new Integer(meta

@@ -29,7 +29,7 @@ public class XTFSearch implements Search {
 				.getFacets());
 
 		// Construct the URL we are going to use to query XTF
-		String searchXTFURL = buildQueryURL(searchQuery.getKeyword(), facets);
+		String searchXTFURL = buildQueryURL(searchQuery.getKeyword(), searchQuery.getFileID(), facets);
 
 		// parse search results into a SearchResultSet
 		return parseSearchResults(getDocument(searchXTFURL));
@@ -55,7 +55,7 @@ public class XTFSearch implements Search {
 		return null;
 	}
 
-	protected String buildQueryURL(String keyword, Map<String, String> facets) {
+	protected String buildQueryURL(String keyword, String fileID, Map<String, String> facets) {
 
 		String xtfURL = Properties.getString("xtfURL");
 		String searchXTFURL = xtfURL + "search?raw=1";
@@ -66,6 +66,8 @@ public class XTFSearch implements Search {
 			searchXTFURL += "&keyword=" + keyword;
 		}
 
+		searchXTFURL += "&fileID=" + fileID;
+		
 		Iterator<String> facetTypes = facets.keySet().iterator();
 		int facetCount = 0;
 		while (facetTypes.hasNext()) {
@@ -76,6 +78,7 @@ public class XTFSearch implements Search {
 					+ "=" + facetValue;
 		}
 
+		System.out.println("request: "+searchXTFURL);
 		return searchXTFURL;
 	}
 
@@ -147,6 +150,10 @@ public class XTFSearch implements Search {
 				// these.
 				if (itemIdElement != null) {
 					String itemId = itemIdElement.getTextContent();
+					itemId = itemId.replaceAll("<.*>",""); // remove tags
+					itemId = itemId.replaceAll("\\s+",""); // remove whitespace
+					
+					System.out.println("itemid: "+itemId);
 					SearchResult result = docHitsByItem.get(itemId);
 					if (result == null) {
 						result = new SearchResult(node);
@@ -173,7 +180,7 @@ public class XTFSearch implements Search {
 						}
 
 						if (result != null && result.getId() != null) {
-							result.insertSnippets(startPage, snippetList);
+							result.insertSnippets(startPage, snippetList);							
 							docHitsByItem.put(itemId, result);
 						}
 					}

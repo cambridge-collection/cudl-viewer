@@ -69,19 +69,22 @@ public class SearchController {
 		// Build SearchQuery object from the search parameters.
 		Enumeration<String> paramNames = request.getParameterNames();
 		String keywordQuery = "";
+		String fileIDQuery = "";
 		Hashtable<String, String> facetQuery = new Hashtable<String, String>();
 
 		while (paramNames.hasMoreElements()) {
 			String paramName = paramNames.nextElement();
 			if (paramName != null && paramName.equals("keyword")) {
 				keywordQuery = request.getParameter(paramName);
+			} if (paramName != null && paramName.equals("fileID")) {
+				fileIDQuery = request.getParameter(paramName);
 			} else if (paramName != null && paramName.matches("^facet-.+$")) {
 				facetQuery.put(paramName.substring(6),
 						request.getParameter(paramName));
 			}
 		}
 
-		SearchQuery searchQuery = new SearchQuery(keywordQuery, facetQuery);
+		SearchQuery searchQuery = new SearchQuery(keywordQuery, fileIDQuery, facetQuery);
 
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchQuery);
@@ -99,6 +102,7 @@ public class SearchController {
 			SearchResult result = resultIt.next();
 
 			Item item = itemFactory.getItemFromId(result.getId());
+			System.out.println("found one: "+result.getId());
 			if (item != null) {
 				refinedResults.add(result);
 			}

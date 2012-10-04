@@ -42,7 +42,7 @@ public class XTFSearchTest extends TestCase {
 		facetMap.put("date", "test date");		
 		facetMap.put("collection", "test collection");	
 		
-		SearchQuery q = new SearchQuery("keyword", facetMap);
+		SearchQuery q = new SearchQuery("keyword", "", facetMap);
 
 		XTFSearch s = new TestableXTFSearch();
 		SearchResultSet r = s.makeSearch(q);

@@ -14,15 +14,17 @@ import java.util.Map;
 public class SearchQuery {
 
 	private String keyword;
+	private String fileID;
 	private String keywordDisplay;
 	private Map<String, String> facets;
 
 	/**
 	 * Creates a new SearchQuery from the given Node.
 	 */
-	public SearchQuery(String keyword, Map<String, String> map) {
+	public SearchQuery(String keyword, String fileID, Map<String, String> map) {
 
 		this.keyword = keyword; 
+		this.fileID = fileID;
 		this.keywordDisplay = keyword;
 		this.facets = map;
 	}
@@ -30,6 +32,10 @@ public class SearchQuery {
 	public String getKeyword() {
 		return keyword;
 	}
+	
+	public String getFileID() {
+		return fileID;
+	}	
 	
 	public String getKeywordDisplay() {
 		return keywordDisplay;
@@ -42,6 +48,7 @@ public class SearchQuery {
 	public String getURLParameters() {
 		try {
 			String params = "keyword=" + URLEncoder.encode(keyword, "UTF-8");
+			params += "&amp;fileID=" + URLEncoder.encode(fileID, "UTF-8");
 			Iterator<String> facetIterator = facets.keySet().iterator();
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();
@@ -58,6 +65,7 @@ public class SearchQuery {
 	public String getURLParametersWithoutFacet(String facetName) {
 		try {
 			String params = "keyword=" + URLEncoder.encode(keyword, "UTF-8");
+			params += "&amp;fileID=" + URLEncoder.encode(fileID, "UTF-8");			
 			Iterator<String> facetIterator = facets.keySet().iterator();
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();

@@ -37,7 +37,7 @@ public class SearchQueryTest extends TestCase {
 		facetMap.put("subject", "test subject");
 		facetMap.put("date", "test date");
 		
-		SearchQuery q = new SearchQuery("keyword", facetMap);
+		SearchQuery q = new SearchQuery("keyword", "", facetMap);
 
 		assertEquals(q.getKeyword(), "keyword");
 		assertEquals(q.getKeywordDisplay(), "keyword");
