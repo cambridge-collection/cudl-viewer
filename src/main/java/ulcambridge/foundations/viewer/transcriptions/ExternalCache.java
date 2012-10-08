@@ -1,12 +1,14 @@
 package ulcambridge.foundations.viewer.transcriptions;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -30,28 +32,31 @@ public class ExternalCache {
 
 	private static final String cachePath = Properties.getString("cachePath");
 	private static final String cacheURL = Properties.getString("cacheURL");
-	
+
 	// holds ref to files that have been requested recently
 	private static Hashtable<String, Date> cachedFiles = new Hashtable<String, Date>();
 
-	private static final long cacheCheckTimeout = Long.parseLong(Properties.getString("cacheCheckTimeout").trim());
-	private static final long cacheFileTimeout = Long.parseLong(Properties.getString("cacheFileTimeout").trim());
-	private static final int externalConnectionTimeout = Integer.parseInt(Properties.getString("externalConnectionTimeout").trim());
-	
+	private static final long cacheCheckTimeout = Long.parseLong(Properties
+			.getString("cacheCheckTimeout").trim());
+	private static final long cacheFileTimeout = Long.parseLong(Properties
+			.getString("cacheFileTimeout").trim());
+	private static final int externalConnectionTimeout = Integer
+			.parseInt(Properties.getString("externalConnectionTimeout").trim());
+
 	public static boolean existsInCache(String url, String docId) {
 
 		// look for corresponding file in memory (from last check on disk).
 		String filename = getCachedItemFilename(url);
-		if (cachedFiles.containsKey(docId+filename)) {
-			Date dateFileChecked = cachedFiles.get(docId+filename);
-			
+		if (cachedFiles.containsKey(docId + filename)) {
+			Date dateFileChecked = cachedFiles.get(docId + filename);
+
 			if (dateFileChecked.getTime() + cacheCheckTimeout > (new Date())
 					.getTime()) {
 				// file is in hashtable, so recently been found on file system.
 				return true;
 			} else {
 				// file is timed out in hashtable, checking disk
-				cachedFiles.remove(docId+filename);
+				cachedFiles.remove(docId + filename);
 			}
 		}
 
@@ -64,8 +69,8 @@ public class ExternalCache {
 			// Check if the file is older than the allowed File timeout.
 			if (file.lastModified() + cacheFileTimeout < (new Date()).getTime()) {
 
-				// File which has timed out is considered not in the cache 
-				// to prompt it to be reloaded. 
+				// File which has timed out is considered not in the cache
+				// to prompt it to be reloaded.
 				return false;
 			}
 
@@ -77,7 +82,7 @@ public class ExternalCache {
 	}
 
 	// This returns the local url to pull the item from the cache.
-	// does not guarantee this file exists. 
+	// does not guarantee this file exists.
 	public static String getCachedItemFilename(String url) {
 
 		MessageDigest digest;
@@ -115,12 +120,12 @@ public class ExternalCache {
 	}
 
 	public static void loadIntoCache(String url, String docId) {
-		
+
 		URL site;
 		try {
 			site = new URL(url);
 			URLConnection uc = site.openConnection();
-			uc.setConnectTimeout(externalConnectionTimeout);  			
+			uc.setConnectTimeout(externalConnectionTimeout);
 
 			if (uc instanceof HttpURLConnection) {
 				HttpURLConnection connection = (HttpURLConnection) uc;
@@ -156,12 +161,11 @@ public class ExternalCache {
 	// in.
 	// resources include images (jpg, png, gif) and js/css used by this page
 	// resources must be referred to with 'href=' or 'src='
-	private static void loadPageIntoCache(String url,
-			String docId) {
+	private static void loadPageIntoCache(String url, String docId) {
 
 		// request URL
 		try {
-			//System.out.println("loading PAGE into cache: " + url);
+			// System.out.println("loading PAGE into cache: " + url);
 
 			URL site = new URL(url);
 			String baseURL = site.getProtocol()
@@ -179,7 +183,7 @@ public class ExternalCache {
 			tidy.setShowWarnings(false);
 			tidy.setXHTML(true);
 			tidy.setCharEncoding(org.w3c.tidy.Configuration.UTF8);
-			
+
 			Document tidyDOM = tidy.parseDOM(uc.getInputStream(), null);
 
 			tidyDOM = cacheLinkedResourceAndUpdateRef("img", "src", tidyDOM,
@@ -220,7 +224,8 @@ public class ExternalCache {
 	}
 
 	private static Document cacheLinkedResourceAndUpdateRef(String elementName,
-			String attributeName, Document dom, String baseURL, String docId) throws MalformedURLException {
+			String attributeName, Document dom, String baseURL, String docId)
+			throws MalformedURLException {
 
 		NodeList css = dom.getElementsByTagName(elementName);
 		for (int i = 0; i < css.getLength(); i++) {
@@ -234,7 +239,7 @@ public class ExternalCache {
 				}
 				// rewrite link to local resource
 				href.setNodeValue(getCachedItemFilename(linkSRC));
-				if (!existsInCache(linkSRC,  docId)) {
+				if (!existsInCache(linkSRC, docId)) {
 					loadIntoCache(linkSRC, docId);
 				}
 			}
@@ -263,7 +268,8 @@ public class ExternalCache {
 
 			BufferedReader is = new BufferedReader(new InputStreamReader(
 					uc.getInputStream()));
-			FileWriter out = new FileWriter(file);
+			Writer out = new BufferedWriter(new OutputStreamWriter(
+				    new FileOutputStream(file), "UTF-8"));
 
 			String strLine;
 			while ((strLine = is.readLine()) != null) {
@@ -314,10 +320,9 @@ public class ExternalCache {
 		}
 	}
 
-	private static void loadResourceIntoCache(String url,
-			String docId) {
+	private static void loadResourceIntoCache(String url, String docId) {
 
-		//System.out.println("loading into cache: " + url);
+		// System.out.println("loading into cache: " + url);
 
 		try {
 			String filename = getCachedItemFilename(url);

@@ -18,6 +18,9 @@ public class NewtonTranscriptionFormatter implements TranscriptionFormatter {
 		// FIXME - temporary until sussex has the appropriate feed setup.
 		sourcePage = sourcePage.replaceAll("\"/mainui", "\"" + baseURL
 				+ "/mainui");
+		
+		// Bit hacky - but we read it in in UTF-8. 
+		sourcePage = sourcePage.replaceAll("charset\\=ISO-8859-1", "charset\\=UTF-8");		
 
 		// replace any links to the view (diplomatic or normal)
 		// thisURL = thisURL.replaceAll("&view=\\w", "");
