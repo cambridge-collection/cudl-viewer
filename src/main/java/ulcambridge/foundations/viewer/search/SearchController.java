@@ -102,7 +102,6 @@ public class SearchController {
 			SearchResult result = resultIt.next();
 
 			Item item = itemFactory.getItemFromId(result.getId());
-			System.out.println("found one: "+result.getId());
 			if (item != null) {
 				refinedResults.add(result);
 			}
