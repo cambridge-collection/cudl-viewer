@@ -197,14 +197,16 @@ cudl.setupViewport = function () {
 	if (cudl.data.logicalStructures[0].children) {
 	   cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
 	}
-	if (cudl.data.useTranscriptions) {
-
-		cudl.setupTab('Transcription (normalised)', 'transcription_normal',
-				cudl.viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
-				true);
+	if (cudl.data.useDiplomaticTranscriptions) {
 
 		cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
 				cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
+				true);
+	}		
+	if (cudl.data.useNormalisedTranscriptions) {
+	
+		cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+				cudl.viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
 				true);
 	}
 	
