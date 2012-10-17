@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -20,6 +21,8 @@ public class ItemFactory {
 	private static Hashtable<String, Hashtable<String, Item>> itemsInCollection;
 	private CollectionsDAO collectionsDAO;
 	private ItemsDAO itemsDAO;	
+	private Calendar lastInit;
+	private int INIT_TIMEOUT = 60000; // in milliseconds
 
 	@Autowired
 	public void setCollectionsDAO(CollectionsDAO dao) {
@@ -33,6 +36,15 @@ public class ItemFactory {
 
 	public synchronized void init() {
 		
+		// do not run again if it has already run in the last 1 minute
+		Calendar now = Calendar.getInstance();
+		if (lastInit!=null) {			
+			if (lastInit.getTimeInMillis()+INIT_TIMEOUT>now.getTimeInMillis()) {
+				return;
+			}
+		}
+		lastInit = now;
+				
 		itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();	
 		
 		List<String> collectionIds = collectionsDAO.getCollectionIds();
@@ -64,12 +76,15 @@ public class ItemFactory {
 
 			Item item = itemsDAO.getItem(itemId);
 
-			items.put(itemId, item);
+			if (item!=null) {
+			  items.put(itemId, item);
+			}
 
 		}
 
-		itemsInCollection.put(collectionId, items);
-
+		if (!items.isEmpty()) {
+		  itemsInCollection.put(collectionId, items);
+		}
 	}
 
 	/*
@@ -90,7 +105,7 @@ public class ItemFactory {
 	 */
 	public Item getItemFromId(String id) {
 
-		if (itemsInCollection==null) {init();}
+		if (itemsInCollection==null || itemsInCollection.isEmpty()) {init();}
 		
 		Enumeration<String> collections = itemsInCollection
 				.keys();
@@ -113,7 +128,7 @@ public class ItemFactory {
 	 */
 	public List<Item> getItemsFromCollectionId(String collectionId) {
 		
-		if (itemsInCollection==null) {init();}
+		if (itemsInCollection==null || itemsInCollection.isEmpty()) {init();}
 		
 		Hashtable<String, Item> items = itemsInCollection
 				.get(collectionId);

@@ -86,9 +86,11 @@ public class ItemsJSONDAO implements ItemsDAO {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());			
+			return null;
 		} catch (JSONException e) {
-			e.printStackTrace();
+			System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+			return null;
 		}
 
 		Item item = new Item(itemId, itemTitle, itemAuthors, itemShelfLocator,

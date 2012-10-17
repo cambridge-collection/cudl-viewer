@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -15,28 +16,43 @@ public class CollectionFactory {
 
 	private static Hashtable<String, Collection> collections;
 	private CollectionsDAO collectionsDAO;
-	
+	private Calendar lastInit;
+	private int INIT_TIMEOUT = 60000; // in milliseconds
+
 	@Autowired
 	public void setCollectionsDAO(CollectionsDAO dao) {
 		collectionsDAO = dao;
-		//this.collectionsDAO = new CollectionsDBDAO();
+		// this.collectionsDAO = new CollectionsDBDAO();
 	}
-	
+
 	public synchronized void init() {
-		
-			collections = new Hashtable<String, Collection>();
-			
-			List<String> collectionIds = collectionsDAO.getCollectionIds();
-			for (int i = 0; i < collectionIds.size(); i++) {
-				String collectionId = collectionIds.get(i);
-				collections.put(collectionId, collectionsDAO.getCollection(collectionId));
+
+		// do not run again if it has already run in the last 1 minute
+		Calendar now = Calendar.getInstance();
+		if (lastInit != null) {		
+			if (lastInit.getTimeInMillis() + INIT_TIMEOUT > now
+					.getTimeInMillis()) {
+				return;
 			}
-			
+		}
+		lastInit = now;
+
+		collections = new Hashtable<String, Collection>();
+
+		List<String> collectionIds = collectionsDAO.getCollectionIds();
+		for (int i = 0; i < collectionIds.size(); i++) {
+			String collectionId = collectionIds.get(i);
+			collections.put(collectionId,
+					collectionsDAO.getCollection(collectionId));
+		}
+
 	}
 
 	public Collection getCollectionFromId(String id) {
 
-		if (collections==null) {init();}
+		if (collections == null || collections.isEmpty()) {
+			init();
+		}
 		return collections.get(id);
 
 	}
@@ -50,7 +66,9 @@ public class CollectionFactory {
 	 */
 	public Collection getCollectionFromTitle(String title) {
 
-		if (collections==null) {init();}
+		if (collections == null || collections.isEmpty()) {
+			init();
+		}
 		Iterator<Collection> c = getCollections().iterator();
 
 		while (c.hasNext()) {
@@ -65,7 +83,9 @@ public class CollectionFactory {
 
 	public List<Collection> getCollections() {
 
-		if (collections==null) {init();}	
+		if (collections == null || collections.isEmpty()) {
+			init();
+		}
 		ArrayList<Collection> list = new ArrayList<Collection>(
 				collections.values());
 		Collections.sort(list);
