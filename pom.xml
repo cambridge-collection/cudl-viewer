@@ -173,6 +173,12 @@
 			<version>1.5.11</version>
 		</dependency>
 
+		<dependency>
+			<groupId>net.tanesha.recaptcha4j</groupId>
+			<artifactId>recaptcha4j</artifactId>
+			<version>0.0.7</version>
+		</dependency>
+
 		<!-- openID -->
 		<dependency>
 			<groupId>org.openid4java</groupId>

@@ -1,5 +1,8 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
+<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -48,21 +51,32 @@ body {
 					you think something is not right. Fields marked with an * are
 					required.</p>
 
-				<p>				
-					<form:label path="name">Name:</form:label> <em>*</em><form:input path="name" />
-					<form:errors path="name" cssClass="error"/>
+				<p>
+					<form:label path="name">Name:</form:label>
+					<em>*</em>
+					<form:input path="name" />
+					<form:errors path="name" cssClass="error" />
 				</p>
 				<p>
-					<form:label path="email">E-Mail:</form:label> <em>*</em><form:input path="email"
-						name="email" size="30" />
-					<form:errors path="email" cssClass="error"/>
+					<form:label path="email">E-Mail:</form:label>
+					<em>*</em>
+					<form:input path="email" name="email" size="30" />
+					<form:errors path="email" cssClass="error" />
 				</p>
 				<p>
 
-					<form:label path="comment">Your comment:</form:label> <em>*</em>
+					<form:label path="comment">Your comment:</form:label>
+					<em>*</em>
 					<form:textarea path="comment" name="comment" cols="50" rows="4"></form:textarea>
-					<form:errors path="comment" cssClass="error"/>						
+					<form:errors path="comment" cssClass="error" />
 				</p>
+
+				<%
+					ReCaptcha c = ReCaptchaFactory.newReCaptcha(
+								"6Lfp19cSAAAAACCDpTi_8O1znKcR8boRacNb0NjC",
+								"6Lfp19cSAAAAACgXgRVTbk1m11OdFS8sttohEMDv", false);
+						out.print(c.createRecaptchaHtml(null, null));
+				%>
 
 				<input type="submit" name=submit value="Send Feedback">
 			</form:form>
