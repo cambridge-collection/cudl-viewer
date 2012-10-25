@@ -47,6 +47,7 @@
 
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -70,6 +71,7 @@
 					<packagingExcludes>WEB-INF/classes/cudl-global.properties</packagingExcludes>
 				</configuration>
 			</plugin>
+
 		</plugins>
 
 	</build>
@@ -179,19 +181,6 @@
 			<version>0.0.7</version>
 		</dependency>
 
-		<!-- openID -->
-		<dependency>
-			<groupId>org.openid4java</groupId>
-			<artifactId>openid4java-consumer</artifactId>
-			<!--artifactId>openid4java-server</artifactId -->
-			<!--artifactId>openid4java-infocard</artifactId -->
-			<!--artifactId>openid4java-xri</artifactId -->
-			<!--artifactId>openid4java</artifactId -->
-			<!--artifactId>openid4java-full</artifactId -->
-			<version>0.9.6</version>
-			<type>pom</type>
-		</dependency>
-
 		<!-- MySQL database driver -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -208,6 +197,21 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>org.springframework.core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-openid</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>

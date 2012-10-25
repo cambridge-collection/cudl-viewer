@@ -2,7 +2,6 @@
 <%@ page import="java.net.URLEncoder,java.util.Enumeration"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <%
@@ -18,13 +17,17 @@
 
 <jsp:include page="includes.jsp" />
 
-<script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
-<script src="/scripts/glow/1.7.7/widgets/widgets.js"
-	type="text/javascript"></script>
-<link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
-
-<link href="/styles/treestyler.css" rel="stylesheet" type="text/css"
-	media="screen" />
+<!-- Simple OpenID Selector -->
+<link type="text/css" rel="stylesheet" href="/styles/openid.css" />
+<script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="/scripts/openid/openid-jquery.js"></script>
+<script type="text/javascript" src="/scripts/openid/openid-en.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+			openid.init('openid_identifier');
+			//openid.setDemoMode(true); //Stops form submission for client javascript-only test purposes
+			});
+</script>
 
 <%
 	// If no javascript enabled, display no javascript page with link to homepage. 
@@ -125,14 +128,5 @@
 
 			</hgroup>
 		</header>
-		<div class="grid_4 helpBanner">
-			<a href="/login/" title="Login"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Login </font></a> <br />
-			<a class="iframe" href="/feedbackform.html" title="Feedback"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /> Feedback</a> <br />
-			<a class="iframe" href="/mailinglistform.html"
-				title="Keep me informed"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /> Keep me
-				informed</a><br />
-		</div>
+
 		<!-- end #localMasthead -->

@@ -8,24 +8,47 @@
 	<description>
     </description>
 
-  <filter>  
-     <filter-name>encodingFilter</filter-name>  
-     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
-     <init-param>  
-        <param-name>encoding</param-name>  
-        <param-value>UTF-8</param-value>  
-     </init-param>  
-     <init-param>  
-        <param-name>forceEncoding</param-name>  
-        <param-value>true</param-value>  
-     </init-param>  
-  </filter>  
-  <filter-mapping>  
-     <filter-name>encodingFilter</filter-name>  
-     <url-pattern>/*</url-pattern>  
-   </filter-mapping> 
-   
-   
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		/WEB-INF/security/spring-security.xml
+		/WEB-INF/applicationContext.xml
+		</param-value>
+	</context-param>
+
+
+
 	<!-- sitecontroller servlet -->
 	<servlet>
 		<servlet-name>siteviewcontroller</servlet-name>
@@ -50,14 +73,14 @@
 		<servlet-name>documentviewcontroller</servlet-name>
 		<url-pattern>/view/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- collection viewcontroller servlet -->
 	<servlet>
 		<servlet-name>collectionviewcontroller</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>collectionviewcontroller</servlet-name>
 		<url-pattern>/collections/*</url-pattern>
@@ -74,7 +97,7 @@
 		<servlet-name>cachecontroller</servlet-name>
 		<url-pattern>/transcriptioncache</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- transcriptioncontroller servlet -->
 	<servlet>
 		<servlet-name>transcriptioncontroller</servlet-name>
@@ -86,11 +109,11 @@
 		<servlet-name>transcriptioncontroller</servlet-name>
 		<url-pattern>/transcription</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>transcriptioncontroller</servlet-name>
 		<url-pattern>/transcriptionformatter</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 
 	<!-- downloadcontroller servlet -->
 	<servlet>
@@ -104,7 +127,7 @@
 		<url-pattern>/download/*</url-pattern>
 	</servlet-mapping>
 
-    <!-- search editor -->
+	<!-- search editor -->
 	<servlet>
 		<servlet-name>search</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -114,8 +137,8 @@
 	<servlet-mapping>
 		<servlet-name>search</servlet-name>
 		<url-pattern>/search/*</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- formcontroller servlet -->
 	<servlet>
 		<servlet-name>formcontroller</servlet-name>
@@ -127,13 +150,13 @@
 		<servlet-name>formcontroller</servlet-name>
 		<url-pattern>/feedbackform.html</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>formcontroller</servlet-name>
 		<url-pattern>/mailinglistform.html</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 
-    <!-- image proxy -->
+	<!-- image proxy -->
 	<servlet>
 		<servlet-name>imageproxy</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -144,8 +167,8 @@
 		<servlet-name>imageproxy</servlet-name>
 		<url-pattern>/imageproxy/*</url-pattern>
 	</servlet-mapping>
-	
-    <!-- xtf proxy -->
+
+	<!-- xtf proxy -->
 	<servlet>
 		<servlet-name>xtfproxy</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -155,8 +178,8 @@
 	<servlet-mapping>
 		<servlet-name>xtfproxy</servlet-name>
 		<url-pattern>/xtf/*</url-pattern>
-	</servlet-mapping>	
-	
+	</servlet-mapping>
+
 	<!-- mime types are required or the mvc:resources fails to ignore them -->
 	<mime-mapping>
 		<extension>json</extension>
@@ -167,37 +190,37 @@
 		<extension>dzi</extension>
 		<mime-type>text/xml</mime-type>
 	</mime-mapping>
-	
+
 	<mime-mapping>
 		<extension>ttf</extension>
 		<mime-type>application/octet-stream</mime-type>
-	</mime-mapping>	
-	
+	</mime-mapping>
+
 	<mime-mapping>
 		<extension>eot</extension>
 		<mime-type>application/octet-stream</mime-type>
-	</mime-mapping>		
+	</mime-mapping>
 
 	<error-page>
 		<error-code>404</error-code>
 		<location>/errors/404.html</location>
 	</error-page>
-	
+
 	<error-page>
 		<error-code>400</error-code>
 		<location>/errors/404.html</location>
-	</error-page>	
-	
+	</error-page>
+
 	<error-page>
 		<error-code>500</error-code>
 		<location>/errors/500.html</location>
 	</error-page>
-	
+
 	<jsp-config>
-      <taglib>
-        <taglib-uri>/spring</taglib-uri>
-        <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
-      </taglib>
-    </jsp-config>
-	
+		<taglib>
+			<taglib-uri>/spring</taglib-uri>
+			<taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
 </web-app>   
