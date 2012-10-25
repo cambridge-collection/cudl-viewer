@@ -44,6 +44,10 @@
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
+					<jvmArgs>
+						<jvmArg>-Xms512m </jvmArg>
+						<jvmArg>-Xmx1024m </jvmArg>
+					</jvmArgs>
 
 				</configuration>
 			</plugin>
