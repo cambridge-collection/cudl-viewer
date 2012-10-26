@@ -13,7 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import ulcambridge.foundations.viewer.model.Collection;
 
-public class CollectionsDBDAO implements CollectionsDAO {
+public class CollectionsDBDao implements CollectionsDao {
 
 	private JdbcTemplate jdbcTemplate;
 

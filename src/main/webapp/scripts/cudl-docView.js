@@ -244,8 +244,17 @@ cudl.docView = function() {
 
 				}
 				
+				// set bookmark URL for this page
+				var bookmarkLink = document.getElementById("bookmarkLink");
+				console.debug(descriptiveMetadata);
+				console.debug(cudl);
+				
+				var dziURL = cudl.proxyURL+cudl.data.pages[cudl.pagenum - 1].displayImageURL;
+				var thumbnailURL = dziURL.replace(".dzi","_files/8/0_0.jpg"); // build the thumbnail url for this page
+				bookmarkLink.href="/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);				
 				
 			}
+							
 			
 			// document has loaded. Display the content and remove the mask. 			
 			cudl.loadMask.hide();

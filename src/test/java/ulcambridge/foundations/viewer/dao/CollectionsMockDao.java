@@ -10,7 +10,7 @@ import ulcambridge.foundations.viewer.model.Collection;
  * 
  * @author jennie
  */
-public class CollectionsMockDAO implements CollectionsDAO {
+public class CollectionsMockDao implements CollectionsDao {
 
 	public List<String> getCollectionIds() {
 

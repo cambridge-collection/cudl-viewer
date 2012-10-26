@@ -8,9 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.dao.CollectionsDAO;
-import ulcambridge.foundations.viewer.dao.CollectionsMockDAO;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
 
 public class SiteViewControllerTest extends TestCase {
 
@@ -19,14 +19,14 @@ public class SiteViewControllerTest extends TestCase {
 
 		JSONReader reader = new MockJSONReader();
 		
-		ItemsJSONDAO jsondao = new ItemsJSONDAO();
+		ItemsJSONDao jsondao = new ItemsJSONDao();
 		jsondao.setJSONReader(reader);
 		
-		CollectionsDAO collectionsdao = new CollectionsMockDAO();
+		CollectionsDao collectionsdao = new CollectionsMockDao();
 				
 		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setCollectionsDAO(collectionsdao);
-		itemFactory.setItemsDAO(jsondao);	
+		itemFactory.setCollectionsDao(collectionsdao);
+		itemFactory.setItemsDao(jsondao);	
 
 		c.setItemFactory(itemFactory);		
 		

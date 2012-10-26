@@ -8,13 +8,13 @@
  	<bean id="JSONReader" class="ulcambridge.foundations.viewer.JSONReader">
 	</bean>
 	
-	<bean id="itemsDAO" class="ulcambridge.foundations.viewer.dao.ItemsJSONDAO">
+	<bean id="itemsDao" class="ulcambridge.foundations.viewer.dao.ItemsJSONDao">
 	  <property name="JSONReader" ref="JSONReader" />
 	</bean>
 	
   	<bean id="itemFactory" class="ulcambridge.foundations.viewer.ItemFactory">
-		<property name="itemsDAO" ref="itemsDAO" />
-		<property name="collectionsDAO" ref="collectionsDAO" />
+		<property name="itemsDao" ref="itemsDao" />
+		<property name="collectionsDao" ref="collectionsDao" />
 	</bean>
 	
 </beans>

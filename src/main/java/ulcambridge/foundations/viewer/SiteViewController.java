@@ -86,15 +86,6 @@ public class SiteViewController {
 		return modelAndView;
 	}
 
-	// on path /mylibrary/
-	@RequestMapping(value = "/mylibrary")
-	public ModelAndView handleMyLibraryRequest() {
-
-		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
-		modelAndView.addObject("itemFactory", itemFactory);
-		return modelAndView;
-	}
-	
 	// on path /about/
 	@RequestMapping(value = "/about")
 	public ModelAndView handleAboutRequest() {

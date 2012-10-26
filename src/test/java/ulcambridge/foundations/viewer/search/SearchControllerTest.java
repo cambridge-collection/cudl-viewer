@@ -21,9 +21,9 @@ import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
-import ulcambridge.foundations.viewer.dao.CollectionsDAO;
-import ulcambridge.foundations.viewer.dao.CollectionsMockDAO;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
 
 /**
  * Unit test
@@ -54,14 +54,14 @@ public class SearchControllerTest extends TestCase {
 
 		JSONReader reader = new MockJSONReader();
 		
-		ItemsJSONDAO jsondao = new ItemsJSONDAO();
+		ItemsJSONDao jsondao = new ItemsJSONDao();
 		jsondao.setJSONReader(reader);
 		
-		CollectionsDAO collectionsdao = new CollectionsMockDAO();
+		CollectionsDao collectionsdao = new CollectionsMockDao();
 				
 		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setCollectionsDAO(collectionsdao);
-		itemFactory.setItemsDAO(jsondao);	
+		itemFactory.setCollectionsDao(collectionsdao);
+		itemFactory.setItemsDao(jsondao);	
 
 		MockHttpServletRequest req = new MockHttpServletRequest();
 		req.addParameter("keyword", "Elementary Mathematics");
@@ -74,7 +74,7 @@ public class SearchControllerTest extends TestCase {
 		
 		// inject the mock dao 
 		CollectionFactory collectionFactory = new CollectionFactory();
-		collectionFactory.setCollectionsDAO(collectionsdao);
+		collectionFactory.setCollectionsDao(collectionsdao);
 		
 		// inject the factories
 		c.setCollectionFactory(collectionFactory);	

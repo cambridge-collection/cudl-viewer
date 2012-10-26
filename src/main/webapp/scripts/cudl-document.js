@@ -262,7 +262,7 @@ cudl.setupViewport = function () {
 	    renderTo: 'thumbnails'
 	});
 	*/
-
+	
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 	
 	// Initialise viewport.

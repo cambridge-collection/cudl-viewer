@@ -14,7 +14,7 @@ import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
-public class ItemsJSONDAO implements ItemsDAO {
+public class ItemsJSONDao implements ItemsDao {
 
 	private JSONReader reader;
 

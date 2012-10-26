@@ -31,13 +31,14 @@ FOREIGN KEY (collectionid) REFERENCES collections(collectionid)
 
 CREATE TABLE bookmarks
 (
-userid varchar(255) NOT NULL,
+username varchar(255) NOT NULL,
 itemid varchar(255) NOT NULL,
 page int NOT NULL,
-PRIMARY KEY (userid,itemid,page),
-FOREIGN KEY (itemid) REFERENCES items(itemid)
+thumbnailURL varchar(255) NOT NULL,
+PRIMARY KEY (username,itemid,page),
+FOREIGN KEY (itemid) REFERENCES items(itemid),
+FOREIGN KEY (username) REFERENCES users(username)
 );
-
 create table users(
       username varchar(250) not null primary key,
       password varchar(250) not null,

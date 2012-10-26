@@ -9,20 +9,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ulcambridge.foundations.viewer.dao.CollectionsDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionFactory {
 
 	private static Hashtable<String, Collection> collections;
-	private CollectionsDAO collectionsDAO;
+	private CollectionsDao collectionsDao;
 	private Calendar lastInit;
 	private int INIT_TIMEOUT = 60000; // in milliseconds
 
 	@Autowired
-	public void setCollectionsDAO(CollectionsDAO dao) {
-		collectionsDAO = dao;
-		// this.collectionsDAO = new CollectionsDBDAO();
+	public void setCollectionsDao(CollectionsDao dao) {
+		collectionsDao = dao;
 	}
 
 	public synchronized void init() {
@@ -39,11 +38,11 @@ public class CollectionFactory {
 
 		collections = new Hashtable<String, Collection>();
 
-		List<String> collectionIds = collectionsDAO.getCollectionIds();
+		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
 			String collectionId = collectionIds.get(i);
 			collections.put(collectionId,
-					collectionsDAO.getCollection(collectionId));
+					collectionsDao.getCollection(collectionId));
 		}
 
 	}

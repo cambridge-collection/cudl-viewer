@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.authentication;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,16 +38,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      *
      * @see org.springframework.security.core.userdetails.UserDetailsService#loadUserByUsername(java.lang.String)
      */
-    //@Override
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException,
             DataAccessException {
     	
-        User user = userDao.getByUsername(username);
+        User user = userDao.getActiveUserByUsername(username);
 
         if (user == null) {
             //throw new UsernameNotFoundException("User not found: " + username);
-        	userDao.createNewUser(username);
-        	user = userDao.getByUsername(username);
+        	userDao.createOpenIdUser(username);
+        	user = userDao.getActiveUserByUsername(username);
         } 
         
         return makeUser(user);

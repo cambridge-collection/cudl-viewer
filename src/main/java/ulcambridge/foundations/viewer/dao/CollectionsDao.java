@@ -5,7 +5,7 @@ import java.util.List;
 import ulcambridge.foundations.viewer.model.Collection;
 
 
-public interface CollectionsDAO {
+public interface CollectionsDao {
 	
 	public List<String> getCollectionIds();
 	public Collection getCollection(String collectionId);

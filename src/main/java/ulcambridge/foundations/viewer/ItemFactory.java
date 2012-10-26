@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ulcambridge.foundations.viewer.dao.CollectionsDAO;
-import ulcambridge.foundations.viewer.dao.ItemsDAO;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 
@@ -19,19 +19,19 @@ public class ItemFactory {
 	// Stores a hashtable of all the items in a collection indexed by
 	// CollectionId
 	private static Hashtable<String, Hashtable<String, Item>> itemsInCollection;
-	private CollectionsDAO collectionsDAO;
-	private ItemsDAO itemsDAO;	
+	private CollectionsDao collectionsDao;
+	private ItemsDao itemsDao;	
 	private Calendar lastInit;
 	private int INIT_TIMEOUT = 60000; // in milliseconds
 
 	@Autowired
-	public void setCollectionsDAO(CollectionsDAO dao) {
-		collectionsDAO = dao;
+	public void setCollectionsDao(CollectionsDao dao) {
+		collectionsDao = dao;
 	}
 	
 	@Autowired
-	public void setItemsDAO(ItemsDAO dao) {
-		itemsDAO = dao;
+	public void setItemsDao(ItemsDao dao) {
+		itemsDao = dao;
 	}	
 
 	public synchronized void init() {
@@ -47,7 +47,7 @@ public class ItemFactory {
 				
 		itemsInCollection = new Hashtable<String, Hashtable<String, Item>>();	
 		
-		List<String> collectionIds = collectionsDAO.getCollectionIds();
+		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
 			String collectionId = collectionIds.get(i);
 			initItems(collectionId);
@@ -63,7 +63,7 @@ public class ItemFactory {
 
 		Hashtable<String, Item> items = new Hashtable<String, Item>();
 
-		Collection collection = collectionsDAO.getCollection(collectionId);
+		Collection collection = collectionsDao.getCollection(collectionId);
 		List<String> itemIds = collection.getItemIds();  
 				
 		for (int i = 0; i < itemIds.size(); i++) {
@@ -74,7 +74,7 @@ public class ItemFactory {
 				throw new IllegalArgumentException("Invalid Item Id given.");
 			}
 
-			Item item = itemsDAO.getItem(itemId);
+			Item item = itemsDao.getItem(itemId);
 
 			if (item!=null) {
 			  items.put(itemId, item);

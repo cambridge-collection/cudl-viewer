@@ -17,16 +17,16 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-	<bean id="collectionsDAO" class="ulcambridge.foundations.viewer.dao.CollectionsDBDAO">
+	<bean id="collectionsDao" class="ulcambridge.foundations.viewer.dao.CollectionsDBDao">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- Alternative collection dao FOR USE IN TESTING ONLY -->
-	<!-- <bean id="collectionsDAO" class="ulcambridge.foundations.viewer.dao.CollectionsFileDAO"> 
+	<!-- <bean id="collectionsDao" class="ulcambridge.foundations.viewer.dao.CollectionsFileDao"> 
 		</bean> -->
 
 	<bean id="collectionFactory" class="ulcambridge.foundations.viewer.CollectionFactory">
-		<property name="collectionsDAO" ref="collectionsDAO" />
+		<property name="collectionsDao" ref="collectionsDao" />
 	</bean>
 
 </beans>
