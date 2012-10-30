@@ -50,8 +50,8 @@ public class SiteViewController {
 		return modelAndView;
 	}
 	
-	// on path /login/
-	@RequestMapping(value = "/login")
+	// on path /auth/login/
+	@RequestMapping(value = "/auth/login")
 	public ModelAndView handleLoginRequest(@RequestParam(value="error", required=false) boolean error, 
 			ModelMap model) {
 
@@ -65,6 +65,17 @@ public class SiteViewController {
 		ModelAndView modelAndView = new ModelAndView("jsp/login");
 		return modelAndView;
 	}	
+	
+	// on path /auth/logout/
+	@RequestMapping(value = "/auth/logout")
+	public ModelAndView handleLogoutRequest(@RequestParam(value="error", required=false) boolean error, 
+			ModelMap model) {
+
+		model.put("error", "You have logged out.");
+		
+		ModelAndView modelAndView = new ModelAndView("jsp/login");
+		return modelAndView;
+	}		
 
 	/**
 	 * Handles and retrieves the denied JSP page. This is shown whenever a regular user
@@ -72,7 +83,8 @@ public class SiteViewController {
 	 * 
 	 * @return the name of the JSP page
 	 */
-	@RequestMapping(value = "/denied", method = RequestMethod.GET)
+	// on path /auth/denied/
+	@RequestMapping(value = "/auth/denied", method = RequestMethod.GET)
  	public String getDeniedPage() {
 
 		return "jsp/accessdenied";

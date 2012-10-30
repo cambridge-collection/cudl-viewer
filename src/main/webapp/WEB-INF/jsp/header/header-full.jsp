@@ -126,8 +126,14 @@
 			</hgroup>
 		</header>
 		<div class="grid_4 helpBanner">
-			<a href="/login/" title="Login"><img
+		  <%  if (request.getParameter("loggedin")!=null && 
+				  request.getParameter("loggedin").equals("true")) { %>
+			<a href="/auth/logout/" title="Logout"><img
+				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Logout </font></a> <br />
+				<% } else { %>	  
+			<a href="/auth/login/" title="Login"><img
 				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Login </font></a> <br />
+				<% } %>
 			<a class="iframe" href="/feedbackform.html" title="Feedback"><img
 				src="/images/header/feedback-arrow.png" alt="arrow" /> Feedback</a> <br />
 			<a class="iframe" href="/mailinglistform.html"

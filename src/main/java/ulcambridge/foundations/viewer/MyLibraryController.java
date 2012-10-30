@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class MyLibraryController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
+		modelAndView.addObject("username", principal.getName());
 		modelAndView.addObject("items", items);
 		modelAndView.addObject("bookmarks", bookmarks);
 		return modelAndView;
@@ -64,19 +66,21 @@ public class MyLibraryController {
 			@RequestParam("page") int page, Principal principal, 
 			@RequestParam("thumbnailURL") String thumbnailURL) {
 
-		// User user =
-		// (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		// String username = user.getUsername(); //get logged in username
-
-		// OpenIDAuthenticationToken token =
-		// (OpenIDAuthenticationToken)SecurityContextHolder.getContext().getAuthentication();
-		// token.get
-		// List<OpenIDAttribute> attributes = token.getAttributes();
-
-		Bookmark bookmark = new Bookmark(principal.getName(), itemId, page, thumbnailURL);
+		Bookmark bookmark = new Bookmark(principal.getName(), itemId, page, thumbnailURL, new Date());
 		bookmarkDao.add(bookmark);
 
 		return "redirect:/mylibrary/";
 	}
+	
+	// on path /mylibrary/deletebookmark
+	@RequestMapping(value = "/deletebookmark/*")
+	public String handleDeleteBookmarkRequest(
+			@RequestParam("itemId") String itemId,
+			@RequestParam("page") int page, Principal principal) {
+
+		bookmarkDao.delete(principal.getName(), itemId, page);
+
+		return "redirect:/mylibrary/";
+	}	
 
 }

@@ -59,8 +59,8 @@
 						id="metadata-display-rights" class="rights-statement"></span>
 						
 					<br />
-					<br /> <a id="bookmarkLink"
-						href="/mylibrary/addbookmark/?itemId=MS-ADD-03996&page=1&thumbnailURL=%2Fcontent%2Fimages%2FMS-ADD-03996-000-00001_files%2F8%2F0_0.jpg"><img src="/img/icon-reproduction-blue.png"
+					<br /> <a id="bookmarkLink" onclick="cudl.bookmarkImageCheck(); return false;"
+						href="/mylibrary/addbookmark/?itemId=MS-ADD-03996&page=1&thumbnailURL=%2Fcontent%2Fimages%2FMS-ADD-03996-000-00001_files%2F8%2F0_0.jpg"><img src="/img/icon-bookmark-blue.png"
 						style="float: left; padding-right: 3px" />
 						Bookmark this image</a> 					
 

@@ -150,7 +150,7 @@
 				alt="Christian" width="150" height="150" />
 			</a>
 
-			<h5>Christian Manuscripts</h5>
+			<h5>Christian Works</h5>
 			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
 			University Library is the world's largest and most important single
 			collection of medieval Jewish manuscripts.<br /> <br /> <a

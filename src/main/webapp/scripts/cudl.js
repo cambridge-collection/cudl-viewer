@@ -46,8 +46,10 @@ cudl.treestyler = function(){
 cudl.treestyler.expand = {};
 
 /* Fancybox setup */
+
 $(document).ready(function() {
-	$(".iframe").fancybox({
+	try {	
+ 	  $(".iframe").fancybox({
 		'width' : '75%',
 		'height' : '75%',
 		'autoScale' : false,
@@ -55,16 +57,18 @@ $(document).ready(function() {
 		'transitionOut' : 'none',
 		'type' : 'iframe',
 		'titleShow' : false
-	});
+	  });
 	
-	$("a#inline").fancybox({
+	  $("a#inline").fancybox({
 		'width' : '75%',
 		'height' : '75%',
 		'autoScale' : false,
 		'transitionIn' : 'none',
 		'transitionOut' : 'none'
-	});	
-	
+	  });	
+	} catch (exception) {
+		/* ignore, fancybox not always present */
+	}
 	// setup any expandable trees
 	cudl.treestyler();
 });

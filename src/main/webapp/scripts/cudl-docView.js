@@ -2,6 +2,7 @@
  * Script to configure the ext viewport and data for the document view.
  */
 
+// download image
 cudl.downloadImageFunction = function(answer) {
 	if (answer == 'yes') {
 		window.open(cudl.downloadImageLink);
@@ -20,17 +21,22 @@ cudl.downloadImageCheck = function() {
 	Ext.Msg.show(cudl.downloadMessage);
 };
 
-cudl.bookmarkPage = function(title, url) {
-	Ext.Msg.show({
-		title : 'Bookmark Page',
-		msg : 'The URL to bookmark for direct access to this page is: <br/>'
-				+ url,
-		buttons : Ext.Msg.OK,
-		fn : function() {
-			return;
-		}
-	});
+// bookmarking
+cudl.bookmarkImageFunction = function(answer) {
+	if (answer == 'ok') {
+		window.open(document.getElementById("bookmarkLink").href);
+	} else {
+		return;
+	}
+};
 
+cudl.bookmarkImageCheck = function() {
+	Ext.Msg.show({
+		   title:'Create Bookmark',
+		   msg: 'Do you want to create a bookmark for this page in \'My Library\'?',
+		   buttons: Ext.Msg.OKCANCEL,
+		   fn: cudl.bookmarkImageFunction
+		});
 };
 
 cudl.docView = function() {
@@ -246,8 +252,6 @@ cudl.docView = function() {
 				
 				// set bookmark URL for this page
 				var bookmarkLink = document.getElementById("bookmarkLink");
-				console.debug(descriptiveMetadata);
-				console.debug(cudl);
 				
 				var dziURL = cudl.proxyURL+cudl.data.pages[cudl.pagenum - 1].displayImageURL;
 				var thumbnailURL = dziURL.replace(".dzi","_files/8/0_0.jpg"); // build the thumbnail url for this page

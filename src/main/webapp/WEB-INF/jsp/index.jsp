@@ -121,11 +121,11 @@
 			
 			<div class="featured-item-list">
 				<a href="/collections/christian"><img
-					alt="Christian Manuscripts" title="Christian Manuscripts"
+					alt="Christian Works" title="Christian Works"
 					src="/images/index/slice-christian.jpg"> </a>
 
 				<h4>
-					<a href="/collections/christian">Christian Manuscripts</a>
+					<a href="/collections/christian">Christian Works</a>
 				</h4>
 			</div>
 
@@ -276,6 +276,50 @@
 					src="/images/index/carousel-spanishchapbooks.jpg"
 					alt="Spanish Chapbooks" width="540" height="394" /> </a>
 			</li>
+			
+			<!-- Hebrew Manuscripts -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/hebrew">Hebrew Manuscripts</a>
+					</h4>
+
+					<p>Many items within the Library’s collections deserve to be
+						highlighted. This may be because of their historical importance,
+						uniqueness, beauty, fascinating content, or perhaps their personal
+						associations. In this special collection within the Cambridge
+						Digital Library we will draw together books, manuscripts and other
+						items from across our collections that are especially significant.
+						Many of them have been displayed in Library exhibitions in the
+						past – now they can be accessed at any time, from anywhere in the
+						world, and browsed cover to cover.</p>
+
+				</div> <a href="/collections/hebrew"><img
+					src="/images/index/carousel-hebrew.jpg"
+					alt="Hebrew Manuscripts" width="540" height="394" /> </a>
+			</li>
+			
+			<!-- christian works -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/christian">Christian Works</a>
+					</h4>
+
+					<p>Many items within the Library’s collections deserve to be
+						highlighted. This may be because of their historical importance,
+						uniqueness, beauty, fascinating content, or perhaps their personal
+						associations. In this special collection within the Cambridge
+						Digital Library we will draw together books, manuscripts and other
+						items from across our collections that are especially significant.
+						Many of them have been displayed in Library exhibitions in the
+						past – now they can be accessed at any time, from anywhere in the
+						world, and browsed cover to cover.</p>
+
+				</div> <a href="/collections/christian"><img
+					src="/images/index/carousel-christian.jpg"
+					alt="Christian Works" width="540" height="394" /> </a>
+			</li>				
 		</ol>
 	</div>
 	<!--  featured items -->

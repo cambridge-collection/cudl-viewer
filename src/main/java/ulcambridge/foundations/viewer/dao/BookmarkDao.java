@@ -8,5 +8,5 @@ public interface BookmarkDao {
 
 	public List<Bookmark> getByUsername(String username);
 	public void add(Bookmark bookmark);
-	public void delete(Bookmark bookmark);
+	public void delete(String username, String itemId, int page);
 }

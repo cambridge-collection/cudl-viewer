@@ -67,7 +67,7 @@
 			centuries, even today..</p>
 
 		Want to view items by subject or date? <br /> <a
-			href="/search?facet-collection=Christian+Manuscripts">Search the
-			Christian Manuscripts</a> <br /> <br />
+			href="/search?facet-collection=Christian+Works">Search the
+			Christian Works</a> <br /> <br />
 	</div>
 </div>

@@ -35,6 +35,7 @@ username varchar(255) NOT NULL,
 itemid varchar(255) NOT NULL,
 page int NOT NULL,
 thumbnailURL varchar(255) NOT NULL,
+dateadded DATETIME NOT NULL,
 PRIMARY KEY (username,itemid,page),
 FOREIGN KEY (itemid) REFERENCES items(itemid),
 FOREIGN KEY (username) REFERENCES users(username)
