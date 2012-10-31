@@ -76,102 +76,123 @@
 			</div>
 		</div>
 
-			<h4>Foundations Project Management Group</h4>
+		<h4>Foundations Project Management Group</h4>
 
-			<ul>
-			    <li>John Norman, Director - Information Technologies and Applied Research in Educational Technologies</li>
-				<li>Patricia Killiard, Head of Electronic Services and Systems</li>
-				<li>Jill Whitelock, Head of Special Collections</li>
-				<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
-				<li>Grant Young, Digitisation and Digital Preservation Manager</li>
-			</ul>
+		<ul>
+			<li>John Norman, Director - Information Technologies and Applied
+				Research in Educational Technologies</li>
+			<li>Patricia Killiard, Head of Electronic Services and Systems</li>
+			<li>Jill Whitelock, Head of Special Collections</li>
+			<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
+			<li>Grant Young, Digitisation and Digital Preservation Manager</li>
+		</ul>
 
-			<h4>Development Team</h4>
+		<h4>Development Team</h4>
 
-			<ul>
-				<li>Grant Young, Project Manager</li>
-				<li>Jennie Fletcher, Lead Software Engineer</li>
-				<li>Huw Jones, Metadata Specialist and Longitude Project
-					Manager</li>
-				<li>Pete Johnston, Metadata Specialist</li>
-				<li>Andy Corrigan, Content Editor</li>
-				<li>Tony Stevenson, System Administration</li>
-			</ul>
+		<ul>
+			<li>Grant Young, Project Manager</li>
+			<li>Jennie Fletcher, Lead Software Engineer</li>
+			<li>Huw Jones, Metadata Specialist and Longitude Project Manager</li>
+			<li>Pete Johnston, Metadata Specialist</li>
+			<li>Andy Corrigan, Content Editor</li>
+			<li>Tony Stevenson, System Administration</li>
+		</ul>
 
-			<h4>Digitisation Team</h4>
+		<h4>Digitisation Team</h4>
 
-			<ul>
-				<li>Don Manning, Head of Imaging Services</li>
-				<li>Les Goody, Senior Photographer</li>
-				<li>Blazej Mikula, Foundations Project Imaging Technician</li>
-			</ul>
+		<ul>
+			<li>Don Manning, Head of Imaging Services</li>
+			<li>Les Goody, Senior Photographer</li>
+			<li>Blazej Mikula, Foundations Project Imaging Technician</li>
+		</ul>
 
-			<h4>Conservation Team</h4>
+		<h4>Conservation Team</h4>
 
-			<ul>
-				<li>Alan Farrant, Head of Conservation</li>
-				<li>James Bloxham, Conservator</li>
-				<li>Lucy Cheng, Conservator</li>
-				<li>Deborah Farndell, Conservator</li>
-				<li>Ngaio Vince-Dewerse, Conservator</li>
-			</ul>
+		<ul>
+			<li>Alan Farrant, Head of Conservation</li>
+			<li>James Bloxam, Conservator</li>
+			<li>Lucy Cheng, Conservator</li>
+			<li>Deborah Farndell, Conservator</li>
+			<li>Ngaio Vince-Dewerse, Conservator</li>
+		</ul>
 
-			<h4>Newton Papers Collection</h4>
+		<h4>Newton Papers Collection</h4>
 
-			<ul>
-				<li>Adam Perkins, Curator of Scientific Manuscripts</li>
-				<li>Rob Iliffe, Editorial Director of the Newton Project and
-					Professor of Intellectual History and History of Science,
-					University of Sussex and <a target="_blank"
-					href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24">other
-						members of the Newton Project team</a> for the transcriptions.
-				</li>
+		<ul>
+			<li>Adam Perkins, Curator of Scientific Manuscripts</li>
+			<li>Rob Iliffe, Editorial Director of the Newton Project and
+				Professor of Intellectual History and History of Science, University
+				of Sussex and <a target="_blank"
+				href="http://www.newtonproject.sussex.ac.uk/prism.php?id=24">other
+					members of the Newton Project team</a> for the transcriptions.
+			</li>
 
-			</ul>
+		</ul>
 
-			<h4>Islamic Manuscripts</h4>
+		<h4>Islamic Manuscripts</h4>
 
-			<ul>
-				<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
-					Department</li>
-				<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
-					Department</li>
-				<li>Ignacio Sanchez, Specialist Cataloguer</li>
-			</ul>
+		<ul>
+			<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
+				Department</li>
+			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
+				Department</li>
+			<li>Ignacio Sanchez, Specialist Cataloguer</li>
+		</ul>
 
-			<h4>Cairo Genizah Collection</h4>
-			<ul>
-				<li>Ben Outhwaite, Head of the Genizah Research Unit and <a
-					target="_blank"
-					href="http://www.lib.cam.ac.uk/Taylor-Schechter/Unit.html">other
-						members of the Genizah Research Unit team</a>.
-				</li>
-			</ul>
+		<h4>Cairo Genizah Collection</h4>
+		<ul>
+			<li>Ben Outhwaite, Head of the Genizah Research Unit and <a
+				target="_blank"
+				href="http://www.lib.cam.ac.uk/Taylor-Schechter/Unit.html">other
+					members of the Genizah Research Unit team</a>.
+			</li>
+		</ul>
 
-			<h4>Sanskrit Manuscripts</h4>
-			<ul>
-				<li>Dr Vincenzo Vergiani, Principal Investigator and Lecturer in Sanskrit, University of Cambridge</li>
-				<li>Dr Daniele Cuneo, Research Associate</li>
-				<li>Dr Camillo Formigatti, Research Associate</li>
-			</ul>
-			
-			<h4>Spanish Chapbooks</h4>
-			<ul>
-				<li>Professor Alison Sinclair, Principal Investigator and Professor of Modern Spanish Literature and Intellectual History, University of Cambridge</li>
-				<li>Sonia Morcillo-García, Hispanic Specialist Cataloguer</li>
-			</ul>
-			
-			<h4>Treasures of the Library Collection</h4>
-			<ul>
-				<li>Dr Patrick Zutshi, Keeper of Manuscripts and University
-					Archives Ed Potten, Head of Rare Books</li>
-				<li>Professor Paul Binski, Professor of the History of Medieval
-					Art, University of Cambridge</li>
-				<li>Professor David Parker, Edward Cadbury Professor of
-					Theology and Director of the Institute for Textual Scholarship and
-					Electronic Editing, University of Birmingham</li>
+		<h4>Sanskrit Manuscripts</h4>
+		<ul>
+			<li>Dr Vincenzo Vergiani, Principal Investigator and Lecturer in
+				Sanskrit, University of Cambridge</li>
+			<li>Dr Daniele Cuneo, Research Associate</li>
+			<li>Dr Camillo Formigatti, Research Associate</li>
+		</ul>
 
-			</ul>
+		<h4>Spanish Chapbooks</h4>
+		<ul>
+			<li>Professor Alison Sinclair, Principal Investigator and
+				Professor of Modern Spanish Literature and Intellectual History,
+				University of Cambridge</li>
+			<li>Sonia Morcillo-García, Hispanic Specialist Cataloguer</li>
+		</ul>
+
+		<h4>Treasures of the Library Collection</h4>
+		<ul>
+			<li>Dr Patrick Zutshi, Keeper of Manuscripts and University
+				Archives</li>
+			<li>Ed Potten, Head of Rare Books</li>
+			<li>Professor Paul Binski, Professor of the History of Medieval
+				Art, University of Cambridge</li>
+			<li>Professor David Parker, Edward Cadbury Professor of Theology
+				and Director of the Institute for Textual Scholarship and Electronic
+				Editing, University of Birmingham</li>
+
+		</ul>
+
+		<h4>Hebrew Manuscripts</h4>
+		<ul>
+			<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
+				Department, Cambridge University Library</li>
+			<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
+
+		</ul>
+
+		<h4>Christian Works</h4>
+		<ul>
+			<li>Dr Patrick Zutshi, Keeper of Manuscripts and University
+				Archives</li>
+			<li>Ed Potten, Head of Rare Books</li>
+			<li>Jayne Ringrose, Cambridge University Library</li>
+
+		</ul>
 
 		<div class="grid_14">
 			<h4>Advisors - Foundations of Faith Collection</h4>
