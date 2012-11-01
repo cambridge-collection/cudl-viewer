@@ -57,7 +57,7 @@ public class SiteViewController {
 
 		if (error == true) {
 			// Assign an error message
-			model.put("error", "You have entered an invalid credentials!");
+			model.put("error", "<br />Login failed, invalid username or password. Please try again.");
 		} else {
 			model.put("error", "");
 		}
@@ -71,9 +71,8 @@ public class SiteViewController {
 	public ModelAndView handleLogoutRequest(@RequestParam(value="error", required=false) boolean error, 
 			ModelMap model) {
 
-		model.put("error", "You have logged out.");
-		
-		ModelAndView modelAndView = new ModelAndView("jsp/login");
+        ModelAndView modelAndView = new ModelAndView("jsp/login");
+		model.put("error", "<br />You have logged out.");
 		return modelAndView;
 	}		
 

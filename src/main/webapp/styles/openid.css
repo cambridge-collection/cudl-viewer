@@ -67,3 +67,14 @@ a.openid_large_btn:focus {
 .openid_selected {
 	border: 4px solid #DDD;
 }
+
+#openid_username {
+	border: 4px solid #DDD;
+}
+#openid_submit {
+	color: #44f;
+}
+
+#error {
+	color: #f44;
+}

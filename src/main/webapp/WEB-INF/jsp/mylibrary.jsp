@@ -102,7 +102,7 @@ function checkRemove() {
 								+ "'>more</a> "
 								+ "</div>"
 								+ "<a onclick='return checkRemove()' style='float:right' href='/mylibrary/deletebookmark/?itemId="
-								+ item.getId() + "&page=" + pageNum + "'>remove</a>"
+								+ item.getId() + "&page=" + pageNum + "&redirect=true'>remove</a>"
 								+ "<div class='clear'></div></div></li>\n\n");
 					}
 

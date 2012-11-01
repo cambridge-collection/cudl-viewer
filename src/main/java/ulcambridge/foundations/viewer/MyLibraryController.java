@@ -1,10 +1,13 @@
 package ulcambridge.foundations.viewer;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -62,25 +65,49 @@ public class MyLibraryController {
 	// on path /mylibrary/addbookmark
 	@RequestMapping(value = "/addbookmark/*")
 	public String handleAddBookmarkRequest(
+			HttpServletResponse response,
 			@RequestParam("itemId") String itemId,
 			@RequestParam("page") int page, Principal principal, 
-			@RequestParam("thumbnailURL") String thumbnailURL) {
-
+			@RequestParam("thumbnailURL") String thumbnailURL, 
+			@RequestParam(value="redirect", required=false) boolean redirect) {
+		
 		Bookmark bookmark = new Bookmark(principal.getName(), itemId, page, thumbnailURL, new Date());
-		bookmarkDao.add(bookmark);
-
-		return "redirect:/mylibrary/";
+		bookmarkDao.add(bookmark);		
+		
+        if (redirect) {
+		    return "redirect:/mylibrary/";
+        } else {
+        	try {
+        		response.setContentType("application/json");
+				response.getWriter().write("{\"bookmarkcreated\":true}");
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
+        	return null;
+        }
 	}
 	
 	// on path /mylibrary/deletebookmark
 	@RequestMapping(value = "/deletebookmark/*")
 	public String handleDeleteBookmarkRequest(
+			HttpServletResponse response,
 			@RequestParam("itemId") String itemId,
-			@RequestParam("page") int page, Principal principal) {
+			@RequestParam("page") int page, Principal principal,
+			@RequestParam(value="redirect", required=false) boolean redirect) {
 
 		bookmarkDao.delete(principal.getName(), itemId, page);
 
-		return "redirect:/mylibrary/";
+        if (redirect) {
+		    return "redirect:/mylibrary/";
+        } else {
+        	try {
+				response.getWriter().write("{\"bookmarkdeleted\":true}");
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
+        	return null;
+        }
+    
 	}	
 
 }

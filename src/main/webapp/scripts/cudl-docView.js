@@ -24,7 +24,44 @@ cudl.downloadImageCheck = function() {
 // bookmarking
 cudl.bookmarkImageFunction = function(answer) {
 	if (answer == 'ok') {
-		window.open(document.getElementById("bookmarkLink").href);
+		//window.open(document.getElementById("bookmarkLink").href);
+		Ext.Ajax.request({
+			   url: document.getElementById("bookmarkLink").href,
+			   success: function(response, opts) {
+				   
+				   // Note this may be a redirection if the user is not 
+				   // already logged in or the session has timed out
+				   // so we need to check the response (as will still return a
+				   // 200 response code). 
+				   var bookmarkcreated = false;
+				   try {
+					   var json = Ext.decode( response.responseText );					   
+					   bookmarkcreated = json.bookmarkcreated; 
+				   } catch (ex) { console.debug(ex); }
+
+				   
+				   if (bookmarkcreated) {
+					  Ext.Msg.show({
+						   title:'Bookmark created.',
+						   msg: 'Bookmark created',
+						   buttons: Ext.Msg.OK
+						});
+			        } else {
+					  Ext.Msg.show({
+						   title:'Please login',
+						   msg: 'To create a bookmark please <a href="'+document.getElementById("bookmarkLink").href+'&redirect=true">login</a>. ',
+						   buttons: Ext.Msg.OK
+						});
+			        }
+			   },
+			   failure: function(response, opts) {
+					Ext.Msg.show({
+						   title:'Problem creating bookmark',
+						   msg: 'There was a problem creating the bookmark you requested.',
+						   buttons: Ext.Msg.OK
+						});
+			   }
+			});
 	} else {
 		return;
 	}
