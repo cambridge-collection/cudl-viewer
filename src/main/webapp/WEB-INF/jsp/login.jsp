@@ -31,7 +31,7 @@
 
 	<section id="content" class="grid_20 content ">
 		<h3>My Library</h3>
-		<div id="error">${error}</div>
+		<div id="error">${error}</div><br/>
 		<div class="grid_18">
 			Login to create or view your collection of bookmarks. <br /> <br />
 		</div>
@@ -76,7 +76,7 @@
 			<div class="grid_10">
 
 				<div class="grid_9">
-					<br />or login with
+					<br />OR login with
 				</div>
 				<div class="grid_9">
 					<a class="google openid_large_btn"

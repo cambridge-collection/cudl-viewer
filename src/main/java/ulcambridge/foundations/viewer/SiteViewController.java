@@ -57,7 +57,7 @@ public class SiteViewController {
 
 		if (error == true) {
 			// Assign an error message
-			model.put("error", "<br />Login failed, invalid username or password. Please try again.");
+			model.put("error", "Invalid username or password. Please try again.");
 		} else {
 			model.put("error", "");
 		}
@@ -72,7 +72,7 @@ public class SiteViewController {
 			ModelMap model) {
 
         ModelAndView modelAndView = new ModelAndView("jsp/login");
-		model.put("error", "<br />You have logged out.");
+		model.put("error", "You have logged out.");
 		return modelAndView;
 	}		
 

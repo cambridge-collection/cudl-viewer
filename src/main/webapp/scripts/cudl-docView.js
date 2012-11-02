@@ -46,6 +46,12 @@ cudl.bookmarkImageFunction = function(answer) {
 						   msg: 'Bookmark created',
 						   buttons: Ext.Msg.OK
 						});
+				   } else if (!bookmarkcreated && json.error) {
+							  Ext.Msg.show({
+							   title:'Problem creating bookmark',
+							   msg: 'There was a problem creating the bookmark you requested: '+json.error,
+							   buttons: Ext.Msg.OK
+							});					  
 			        } else {
 					  Ext.Msg.show({
 						   title:'Please login',

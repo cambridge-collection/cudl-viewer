@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
+import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
 import ulcambridge.foundations.viewer.model.Item;
 
@@ -48,11 +49,11 @@ public class MyLibraryController {
 
 		// Get a list of Items that represent these bookmarks.
 		List<Item> items = new ArrayList<Item>();
-		
+
 		while (bookmarksIt.hasNext()) {
 			Bookmark bookmark = bookmarksIt.next();
 			Item item = itemFactory.getItemFromId(bookmark.getItemId());
-			items.add(item);			
+			items.add(item);
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
@@ -64,50 +65,61 @@ public class MyLibraryController {
 
 	// on path /mylibrary/addbookmark
 	@RequestMapping(value = "/addbookmark/*")
-	public String handleAddBookmarkRequest(
-			HttpServletResponse response,
-			@RequestParam("itemId") String itemId,
-			@RequestParam("page") int page, Principal principal, 
-			@RequestParam("thumbnailURL") String thumbnailURL, 
-			@RequestParam(value="redirect", required=false) boolean redirect) {
-		
-		Bookmark bookmark = new Bookmark(principal.getName(), itemId, page, thumbnailURL, new Date());
-		bookmarkDao.add(bookmark);		
-		
-        if (redirect) {
-		    return "redirect:/mylibrary/";
-        } else {
-        	try {
-        		response.setContentType("application/json");
-				response.getWriter().write("{\"bookmarkcreated\":true}");
-			} catch (IOException e) {				
-				e.printStackTrace();
-			}
-        	return null;
-        }
-	}
-	
-	// on path /mylibrary/deletebookmark
-	@RequestMapping(value = "/deletebookmark/*")
-	public String handleDeleteBookmarkRequest(
-			HttpServletResponse response,
+	public String handleAddBookmarkRequest(HttpServletResponse response,
 			@RequestParam("itemId") String itemId,
 			@RequestParam("page") int page, Principal principal,
-			@RequestParam(value="redirect", required=false) boolean redirect) {
+			@RequestParam("thumbnailURL") String thumbnailURL,
+			@RequestParam(value = "redirect", required = false) boolean redirect) {
+
+		Bookmark bookmark = new Bookmark(principal.getName(), itemId, page,
+				thumbnailURL, new Date());
+		String error = null;
+
+		try {
+			bookmarkDao.add(bookmark);
+		} catch (TooManyBookmarksException e1) {
+			error = e1.getMessage();
+		}
+
+		if (redirect) {
+			return "redirect:/mylibrary/";
+		}
+
+		// Write JSON response.
+		String json = "{\"bookmarkcreated\":true}";
+		if (error!=null) {
+			json = "{\"bookmarkcreated\":false, \"error\":\""+error+"\"}";
+		}
+		try {			
+			response.setContentType("application/json");
+			response.getWriter().write(json);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	// on path /mylibrary/deletebookmark
+	@RequestMapping(value = "/deletebookmark/*")
+	public String handleDeleteBookmarkRequest(HttpServletResponse response,
+			@RequestParam("itemId") String itemId,
+			@RequestParam("page") int page, Principal principal,
+			@RequestParam(value = "redirect", required = false) boolean redirect) {
 
 		bookmarkDao.delete(principal.getName(), itemId, page);
 
-        if (redirect) {
-		    return "redirect:/mylibrary/";
-        } else {
-        	try {
+		if (redirect) {
+			return "redirect:/mylibrary/";
+		} else {
+			try {
 				response.getWriter().write("{\"bookmarkdeleted\":true}");
-			} catch (IOException e) {				
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
-        	return null;
-        }
-    
-	}	
+			return null;
+		}
+
+	}
 
 }

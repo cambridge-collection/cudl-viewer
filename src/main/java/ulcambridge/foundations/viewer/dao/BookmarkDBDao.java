@@ -2,7 +2,6 @@ package ulcambridge.foundations.viewer.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -11,11 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
 
 public class BookmarkDBDao implements BookmarkDao {
 
 	private JdbcTemplate jdbcTemplate;
+	private int bookmarkLimit = 500; // could make this read from a properties
+										// file.
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -36,7 +38,7 @@ public class BookmarkDBDao implements BookmarkDao {
 											.getString("itemid"), resultSet
 											.getInt("page"), resultSet
 											.getString("thumbnailURL"),
-											resultSet.getDate("dateadded"));
+									resultSet.getDate("dateadded"));
 						}
 					});
 
@@ -61,7 +63,7 @@ public class BookmarkDBDao implements BookmarkDao {
 											.getString("itemid"), resultSet
 											.getInt("page"), resultSet
 											.getString("thumbnailURL"),
-											resultSet.getDate("dateadded"));
+									resultSet.getDate("dateadded"));
 						}
 					});
 
@@ -76,11 +78,32 @@ public class BookmarkDBDao implements BookmarkDao {
 		return false;
 	}
 
+	private int getNumberOfBookmarks(String username) {
+
+		String query = "SELECT count(*) as count FROM bookmarks where username = ?";
+
+		Integer count = (Integer) jdbcTemplate.queryForObject(query,
+				new Object[] { username }, new RowMapper<Integer>() {
+					public Integer mapRow(ResultSet resultSet, int rowNum)
+							throws SQLException {
+						return new Integer(resultSet.getInt("count"));
+					}
+				});
+
+		return count.intValue();
+
+	}
+
 	/**
 	 * Adds a bookmark to the database if it doesn't exist already.
 	 */
-	public void add(Bookmark bookmark) {
+	public void add(Bookmark bookmark) throws TooManyBookmarksException {
 
+		// Check if the user has reached the limit for bookmarks he is allowed to add.
+		if (getNumberOfBookmarks(bookmark.getUsername())>=this.bookmarkLimit) {
+			throw new TooManyBookmarksException("You have reached the limit on the amount of bookmarks allowed.");
+		}
+		
 		// Check to see if bookmark exists
 		if (!exists(bookmark)) {
 			
@@ -96,8 +119,7 @@ public class BookmarkDBDao implements BookmarkDao {
 	public void delete(String username, String itemId, int page) {
 
 		String sql = "DELETE FROM bookmarks where username = ? AND itemid = ? AND page = ?";
-		jdbcTemplate.update(sql, new Object[] {username,
-					itemId, page });
+		jdbcTemplate.update(sql, new Object[] { username, itemId, page });
 
 	}
 

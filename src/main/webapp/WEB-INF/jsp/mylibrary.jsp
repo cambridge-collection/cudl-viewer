@@ -42,7 +42,7 @@ function checkRemove() {
 
 		<div class="grid_9">
 			<h3>My Library</h3>
-			Create your own collection my bookmarking any page within Cambridge
+			Create your own collection by bookmarking any page within Cambridge
 			Digital Library, and it will appear here. <br /> <br />
 			<jsp:include page="mylibrary-help.jsp" />
 		</div>
