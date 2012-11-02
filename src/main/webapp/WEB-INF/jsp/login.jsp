@@ -4,8 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <jsp:include page="header/header-login.jsp" />
-<jsp:include page="header/nav-search.jsp">
-	<jsp:param name="activeMenuIndex" value="3" />
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="2" />
 	<jsp:param name="displaySearch" value="true" />
 </jsp:include>
 
