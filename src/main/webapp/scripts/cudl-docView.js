@@ -37,7 +37,7 @@ cudl.bookmarkImageFunction = function(answer) {
 				   try {
 					   var json = Ext.decode( response.responseText );					   
 					   bookmarkcreated = json.bookmarkcreated; 
-				   } catch (ex) { console.debug(ex); }
+				   } catch (ex) {  }
 
 				   
 				   if (bookmarkcreated) {
