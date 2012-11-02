@@ -8,9 +8,9 @@
 
 <%
 	List<Item> featuredItems = (List<Item>) request
-			.getAttribute("featuredItems");
+	.getAttribute("featuredItems");
 	String downtimeWarning = (String) request
-			.getAttribute("downtimeWarning");
+	.getAttribute("downtimeWarning");
 %>
 
 <script type="text/javascript">
@@ -31,14 +31,13 @@
 		var randomnumber = Math.floor(Math.random()
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
-		
+
 		// generate random featuredItem banner
-		var bannerItems = ["MS-II-00006-00032", "MS-NN-00003-00074"];
-		
-		var randomitem = Math.floor(Math.random()
-				* (bannerItems.length));
+		var bannerItems = [ "MS-II-00006-00032", "MS-NN-00003-00074" ];
+
+		var randomitem = Math.floor(Math.random() * (bannerItems.length));
 		var bannerItem = bannerItems[randomitem];
-		document.getElementById(bannerItem).style.display="inline";
+		document.getElementById(bannerItem).style.display = "inline";
 	}
 </script>
 
@@ -108,21 +107,21 @@
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
-			
+
 			<div class="featured-item-list">
-				<a href="/collections/hebrew"><img
-					alt="Hebrew Manuscripts" title="Hebrew Manuscripts"
-					src="/images/index/slice-hebrew.jpg"> </a>
+				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
+					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
+				</a>
 
 				<h4>
 					<a href="/collections/hebrew">Hebrew Manuscripts</a>
 				</h4>
 			</div>
-			
+
 			<div class="featured-item-list">
-				<a href="/collections/christian"><img
-					alt="Christian Works" title="Christian Works"
-					src="/images/index/slice-christian.jpg"> </a>
+				<a href="/collections/christian"><img alt="Christian Works"
+					title="Christian Works" src="/images/index/slice-christian.jpg">
+				</a>
 
 				<h4>
 					<a href="/collections/christian">Christian Works</a>
@@ -192,17 +191,19 @@
 						<a href="/collections/islamic">Islamic Manuscripts</a>
 					</h4>
 
-					<p>Cambridge University Library has released the first items in
-						its Foundations of Faith collection: a selection of Islamic
-						manuscripts from its Near and Middle Eastern Department. The
-						Library's collection of Islamic manuscripts began in the 1630s and
-						has since grown substantially in its size and diversity. It now
-						contains more than 5,000 works.</p>
-
 					<p>
-						Our <a href="/collections/islamic">online selection</a> includes
-						some important early Qur'ans and several richly illuminated works.
+						Islamic manuscripts were first added to the Library’s collections
+						in the 1630s and since then, the holdings have grown substantially
+						both in size and diversity. A number of our religious and literary
+						texts, outstanding for their content, rarity, and historical
+						value, have been added to the Library’s ‘Foundations of Faith’
+						collection; many of these examples also have beautiful illuminated
+						pages. Our <a href="/collections/islamic">online selection</a> 
+						also includes examples of some of the earliest existing Qur'anic
+						fragments which are known to date from the first centuries of the
+						Hijra.
 					</p>
+
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
 					width="540" height="394" /> </a>
@@ -276,7 +277,7 @@
 					src="/images/index/carousel-spanishchapbooks.jpg"
 					alt="Spanish Chapbooks" width="540" height="394" /> </a>
 			</li>
-			
+
 			<!-- Hebrew Manuscripts -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -295,10 +296,10 @@
 						world, and browsed cover to cover.</p>
 
 				</div> <a href="/collections/hebrew"><img
-					src="/images/index/carousel-hebrew.jpg"
-					alt="Hebrew Manuscripts" width="540" height="394" /> </a>
+					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
+					width="540" height="394" /> </a>
 			</li>
-			
+
 			<!-- christian works -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -317,16 +318,24 @@
 						world, and browsed cover to cover.</p>
 
 				</div> <a href="/collections/christian"><img
-					src="/images/index/carousel-christian.jpg"
-					alt="Christian Works" width="540" height="394" /> </a>
-			</li>				
+					src="/images/index/carousel-christian.jpg" alt="Christian Works"
+					width="540" height="394" /> </a>
+			</li>
 		</ol>
 	</div>
 	<!--  featured items -->
-	 <ol>
-	   <li><div id="MS-II-00006-00032" class="grid_13" style="display:none;height:96px"><a href="/view/MS-II-00006-00032/1"><img src="images/index/banner-bookofdeer.jpg"/></a></div></li>	   
-	   <li><div id="MS-NN-00003-00074" class="grid_13" style="display:none;height:96px"><a href="/view/MS-NN-00003-00074/1"><img src="images/index/banner-islamicitem.jpg"/></a></div></li>
-	 </ol>
+	<ol>
+		<li><div id="MS-II-00006-00032" class="grid_13"
+				style="display: none; height: 96px">
+				<a href="/view/MS-II-00006-00032/1"><img
+					src="images/index/banner-bookofdeer.jpg" /></a>
+			</div></li>
+		<li><div id="MS-NN-00003-00074" class="grid_13"
+				style="display: none; height: 96px">
+				<a href="/view/MS-NN-00003-00074/1"><img
+					src="images/index/banner-islamicitem.jpg" /></a>
+			</div></li>
+	</ol>
 
 
 </div>
