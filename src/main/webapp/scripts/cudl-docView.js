@@ -37,7 +37,13 @@ cudl.bookmarkImageFunction = function(answer) {
 				   try {
 					   var json = Ext.decode( response.responseText );					   
 					   bookmarkcreated = json.bookmarkcreated; 
-				   } catch (ex) {  }
+				   } catch (ex) { 
+						Ext.Msg.show({
+						   title:'Please login',
+						   msg: 'To create a bookmark please <a href="'+document.getElementById("bookmarkLink").href+'&redirect=true">login</a>. ',
+						   buttons: Ext.Msg.OK
+						});					   
+				   }
 
 				   
 				   if (bookmarkcreated) {
@@ -47,18 +53,12 @@ cudl.bookmarkImageFunction = function(answer) {
 						   buttons: Ext.Msg.OK
 						});
 				   } else if (!bookmarkcreated && json.error) {
-							  Ext.Msg.show({
-							   title:'Problem creating bookmark',
-							   msg: 'There was a problem creating the bookmark you requested: '+json.error,
-							   buttons: Ext.Msg.OK
-							});					  
-			        } else {
-					  Ext.Msg.show({
-						   title:'Please login',
-						   msg: 'To create a bookmark please <a href="'+document.getElementById("bookmarkLink").href+'&redirect=true">login</a>. ',
+						Ext.Msg.show({
+						   title:'Problem creating bookmark',
+						   msg: 'There was a problem creating the bookmark you requested: '+json.error,
 						   buttons: Ext.Msg.OK
-						});
-			        }
+						});					  
+			        } 
 			   },
 			   failure: function(response, opts) {
 					Ext.Msg.show({
