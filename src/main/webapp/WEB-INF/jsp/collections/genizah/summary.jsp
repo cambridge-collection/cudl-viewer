@@ -13,17 +13,22 @@
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
 			src="/images/collectionsView/genizah.jpg" alt="Genizah Fragments"
-			width="150" height="225" />
-	<br/>				
+			width="150" height="225" /> <br />
 	</div>
 
-	<div class="grid_8"> &nbsp;</div>
-	
+	<div class="grid_8">&nbsp;</div>
+
 	<div class="grid_8 box">
-	<div><a href="/search?facet-collection=Cairo+Genizah&fileID=TS">View only items in the Taylor-Schechter Collection</a></div>
-	<div><a href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI">View only items in the Mosseri Collection</a></div>
+		<div>
+			<a href="/search?facet-collection=Cairo+Genizah&fileID=TS">View
+				only items in the Taylor-Schechter Collection</a>
+		</div>
+		<div>
+			<a href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI">View
+				only items in the Mosseri Collection</a>
+		</div>
 	</div>
-	
+
 	<div class="grid_9">
 		<br />
 		<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
@@ -58,12 +63,26 @@
 			produced by the Jewish communities of the Near East can now be found
 			in the Genizah Collection, and it presents an unparalleled insight
 			into the medieval Jewish world.</p>
-		<p>At the moment, only a selection of manuscripts from the T-S
-			‘Glass’ series is online on this site, but eventually Cambridge
-			Digital Library will present images and descriptions of all the
-			Taylor-Schechter Collection, the Genizah items found in the Library’s
-			Or. and Add. Collections, and the 7000 items in the Jacques Mosseri
-			Genizah Collection.</p>
+		<p>Alongside the T-S Collection, Cambridge University Library is
+			also now the home of the Jacques Mosseri Genizah Collection.
+			Assembled by the successful Cairene businessman, Jacques (Jack)
+			Mosseri in the first decade of the twentieth century, these
+			manuscripts were intended to remain in Egypt as part of the Jewish
+			community’s cultural heritage. However, after Mosseri’s premature
+			death in 1934 and his family’s subsequent departure from Egypt, his
+			eponymous collection disappeared from scholarly view until the 1970s,
+			when it was microfilmed by a team from the Jewish National and
+			University Library. Following recent discussions with members of the
+			Mosseri family, in 2006 this 7000-fragment collection came to
+			Cambridge University Library on a 20-year loan. During its stay in
+			Cambridge, the Mosseri Collection will be conserved and digitised,
+			and a new, detailed catalogue produced.</p>
+		<p>At the moment, only a selection of several thousand manuscripts
+			from the Taylor-Schechter and Jacques Mosseri Collections are
+			available online at this site, but eventually Cambridge Digital
+			Library will present images and descriptions of every manuscript, as
+			well as the Genizah items found in the Library's Or. and Add.
+			Collections.</p>
 		<p>
 			The <a href="http://www.lib.cam.ac.uk/Taylor-Schechter/"
 				target="_blank">Genizah Research Unit</a> at Cambridge University

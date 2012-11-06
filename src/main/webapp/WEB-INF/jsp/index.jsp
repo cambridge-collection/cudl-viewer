@@ -285,15 +285,16 @@
 						<a href="/collections/hebrew">Hebrew Manuscripts</a>
 					</h4>
 
-					<p>Many items within the Library’s collections deserve to be
-						highlighted. This may be because of their historical importance,
-						uniqueness, beauty, fascinating content, or perhaps their personal
-						associations. In this special collection within the Cambridge
-						Digital Library we will draw together books, manuscripts and other
-						items from across our collections that are especially significant.
-						Many of them have been displayed in Library exhibitions in the
-						past – now they can be accessed at any time, from anywhere in the
-						world, and browsed cover to cover.</p>
+					<p>Cambridge University Library holds one of the world’s
+						foremost collections of Hebrew manuscripts, on account of the
+						University’s long interest in the literature of Judaism. Chief
+						among them are the famous Nash Papyrus, one of the earliest known
+						artefacts containing the words of the Hebrew Bible, and the
+						Cambridge Mishnah, a complete codex of this work copied in
+						fifteenth-century Byzantium. With 1000 items acquired over more
+						than 500 years, the Collection ranges wide from Samaritan Hebrew
+						Bibles to important compositions of halakha and exegesis, through
+						to manuscripts of philosophical, kabbalistic and scientific works.</p>
 
 				</div> <a href="/collections/hebrew"><img
 					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
