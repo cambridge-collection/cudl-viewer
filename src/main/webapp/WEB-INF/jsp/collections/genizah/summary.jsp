@@ -81,7 +81,7 @@
 			from the Taylor-Schechter and Jacques Mosseri Collections are
 			available online at this site, but eventually Cambridge Digital
 			Library will present images and descriptions of every manuscript, as
-			well as the Genizah items found in the Library's Or. and Add.
+			well as the Genizah items found in the Library’s Or. and Add.
 			Collections.</p>
 		<p>
 			The <a href="http://www.lib.cam.ac.uk/Taylor-Schechter/"
