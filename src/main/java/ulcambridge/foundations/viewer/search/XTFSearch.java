@@ -31,9 +31,16 @@ public class XTFSearch implements Search {
 		// Construct the URL we are going to use to query XTF
 		String searchXTFURL = buildQueryURL(searchQuery.getKeyword(), searchQuery.getFileID(), facets);
 
-		// parse search results into a SearchResultSet
+		// if the query URL is null return empty result set. 
+		if (searchXTFURL==null) {			
+			return new SearchResultSet(0, "", 0f,
+					new ArrayList<SearchResult>(), new ArrayList<FacetGroup>(),
+					"A problem occurred making the search (xtf).");	  
+		}
+		
+		// parse search results into a SearchResultSet		
 		return parseSearchResults(getDocument(searchXTFURL));
-
+	
 	}
 
 	protected Document getDocument(String url) {
@@ -60,8 +67,10 @@ public class XTFSearch implements Search {
 		String xtfURL = Properties.getString("xtfURL");
 		String searchXTFURL = xtfURL + "search?raw=1";
 
+		// check for empty search box. 
 		if (keyword != null && keyword.equals("")) {
-			searchXTFURL += "&browse-all=yes";
+			//searchXTFURL += "&browse-all=yes";
+			return null;
 		} else {
 			searchXTFURL += "&keyword=" + keyword;
 		}
