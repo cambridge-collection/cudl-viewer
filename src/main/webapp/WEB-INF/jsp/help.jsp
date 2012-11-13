@@ -19,7 +19,7 @@
 				<ol>
 					<li><a href="#mailinglist"><b>How can I find out when
 								new content is made available?</b> </a></li>
-					<li><a href="#links"><b>How do link to a specific page
+					<li><a href="#links"><b>How do I link to a specific page
 								within a book?</b> </a></li>
 					<li><a href="#view"><b>How do I change page while
 								seeing as much of the manuscript as possible?</b> </a></li>
@@ -53,7 +53,7 @@
 				</p>
 
 				<p>
-					<a id="links"><b>How do link to a specific page within a
+					<a id="links"><b>How do I link to a specific page within a
 							book?</b> </a>
 				</p>
 
@@ -84,8 +84,8 @@
 				</p>
 
 				<p>When you are looking at an item there are social media icons
-					in the top right of the About tab. Clicking on these will allow you
-					to share the item with others.</p>
+					at the bottom of the About tab. Clicking on these will allow you
+					to share the item or page with others.</p>
 				<p>
 					<a id="tech"><b>What technologies are behind the Cambridge
 							Digital Library?</b> </a>
