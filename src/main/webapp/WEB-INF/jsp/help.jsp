@@ -93,7 +93,7 @@
 
 				<p>
 					We aim to use primarily open source technologies, and to avoid the
-					use of plugins to make the accessible to as many people as
+					use of plugins to make the site accessible to as many people as
 					possible. For the website we use a collection of JavaScript
 					libraries including <a
 						href="http://gallery.expression.microsoft.com/SeadragonAjax"
@@ -107,7 +107,7 @@
 					digitising and indexing the data. The website was created by the
 					digital library team at Cambridge University Library and is written
 					in Java. You can find out more by contacting the Development Team
-					(see our <a href="/contributors/">Contributors Page</a>). page.
+					(see our <a href="/contributors/">Contributors Page</a> for details on how to do this).
 				</p>
 
 				<p>
