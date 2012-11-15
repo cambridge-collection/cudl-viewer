@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<br />
-				
+
 		<hr />
 		<div class="collection collection-faith">
 
@@ -124,7 +124,7 @@
 		</div>
 		<br />
 		<hr />
-		
+
 		<div class="collection collection-faith">
 
 			<a href="/collections/hebrew"> <img class="collectionImage"
@@ -135,15 +135,15 @@
 			<h5>Hebrew Collection</h5>
 			<br /> For over five hundred years Cambridge University has been
 			building up one of the world’s most important collections of Hebrew
-			manuscripts. <br /> <br /> <a
-				href="/collections/hebrew">View collection</a>. <br />
+			manuscripts. <br /> <br /> <a href="/collections/hebrew">View
+				collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
 		</div>
 		<br />
 		<hr />
-        <div class="collection collection-faith">
+		<div class="collection collection-faith">
 
 			<a href="/collections/christian"> <img class="collectionImage"
 				src="/images/collectionsView/collection-christian.jpg"
@@ -151,17 +151,17 @@
 			</a>
 
 			<h5>Christian Works</h5>
-			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
-			University Library is the world's largest and most important single
-			collection of medieval Jewish manuscripts.<br /> <br /> <a
+			<br /> A selection of some of our finest Christian manuscripts and
+			early printed books, from the Bible to the liturgy, spanning over
+			1000 years of worship and debate.<br /> <br /> <a
 				href="/collections/christian">View collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
 		</div>
-		
-		
-				
+
+
+
 	</div>
 
 	<div class="grid_6 box">

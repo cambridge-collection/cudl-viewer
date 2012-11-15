@@ -308,15 +308,17 @@
 						<a href="/collections/christian">Christian Works</a>
 					</h4>
 
-					<p>Many items within the Library’s collections deserve to be
-						highlighted. This may be because of their historical importance,
-						uniqueness, beauty, fascinating content, or perhaps their personal
-						associations. In this special collection within the Cambridge
-						Digital Library we will draw together books, manuscripts and other
-						items from across our collections that are especially significant.
-						Many of them have been displayed in Library exhibitions in the
-						past – now they can be accessed at any time, from anywhere in the
-						world, and browsed cover to cover.</p>
+					<p>A selection of some of our finest Christian manuscripts and
+						early printed books, from the Bible to the liturgy, spanning over
+						1000 years of worship and debate. From the early bilingual New
+						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex Bezae</a> to the tenth-century pocket
+						Gospel Book the <a href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a beautifully illuminated
+						sixteenth-century <a href="/view/MS-NN-00004-00001/1">book of services and ceremonies</a> commissioned for
+						a Cistercian abbot in Northern Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life of St
+						Edward the Confessor</a> produced for royalty in
+						mid-thirteenth-century England, the collection includes works of
+						scripture, theology and liturgy, reflecting both Church ceremonial
+						and private devotion.</p>
 
 				</div> <a href="/collections/christian"><img
 					src="/images/index/carousel-christian.jpg" alt="Christian Works"
