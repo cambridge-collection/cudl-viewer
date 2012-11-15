@@ -157,7 +157,7 @@ public class XTFSearch implements Search {
 				// Sometimes results may appear without any metadata, ignore
 				// these.
 				if (itemIdElement != null) {
-					String itemId = itemIdElement.getNodeValue();//.getTextContent();
+					String itemId = itemIdElement.getTextContent();
 					itemId = getValueInText(itemIdElement);
 
 					itemId = itemId.replaceAll("\\s+",""); // remove whitespace
@@ -171,12 +171,13 @@ public class XTFSearch implements Search {
 
 						NodeList snippetNodes = node
 								.getElementsByTagName("snippet");
-												
+						
 						Integer startPage=1; // default
-						try {
-						    startPage = new Integer(meta
-								.getElementsByTagName("startPage").item(0)
-								.getNodeValue()); //.getTextContent());						
+						try {							
+						    startPage = new Integer(node
+								.getElementsByTagName("startPage")
+								.item(0).getTextContent()
+								); 						
 						} catch (Exception e) { /* ignore, use default value */}
 						
 						for (int j = 0; j < snippetNodes.getLength(); j++) {
@@ -244,12 +245,13 @@ public class XTFSearch implements Search {
 			id = getValueInText(meta.getElementsByTagName("fileID")
 					.item(0));
 
-			id = id.replaceAll("\\s+",""); // remove whitespace			
+			id = id.replaceAll("\\s+",""); // remove whitespace
+
 			score = Integer.parseInt(node.getAttribute("score"));
 
 			Integer startPage = new Integer(meta
-					.getElementsByTagName("startPage").item(0).getFirstChild().getNodeValue());
-
+					.getElementsByTagName("startPage").item(0).getFirstChild().getTextContent());
+			
 			NodeList children = meta.getChildNodes();
 			for (int i = 0; i < children.getLength(); i++) {
 				Node child = children.item(i);
