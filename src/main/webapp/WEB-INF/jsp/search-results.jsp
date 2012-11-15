@@ -99,13 +99,10 @@ function pageinit() {
 					    	var snippet = result.snippets[j];
 					    	
 					    	// Strip tags. 
-					    	var snippetWithTags = snippet.snippetStrings[0];
-					    	var stripTags = document.createElement("div");
-					    	stripTags.innerHTML = snippetWithTags;
-					    	var snippetWithoutTags = stripTags.textContent || stripTags.innerText || "";
-					    	
-					    	if (snippetWithoutTags!="" && snippetWithoutTags!="undefined") {
-					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetWithoutTags.trim()
+					    	var snippetValue = snippet.snippetStrings[0];
+					    						    	
+					    	if (snippetValue!="" && snippetValue!="undefined") {
+					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetValue.trim()
 					    	  +"</a> <font style='color:#999999'>"+snippet.startPageLabel+"</font></li>"; 
 					    	}
 					    	

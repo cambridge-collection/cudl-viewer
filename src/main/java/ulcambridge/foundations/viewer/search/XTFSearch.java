@@ -303,6 +303,15 @@ public class XTFSearch implements Search {
 
 	}
 
+	/**
+	 * Strips out the tags from node and flattens content.  
+	 * Where a value appears in <hit><term> tags this is translated into <b> html. 
+	 * 
+	 * Recursive. 
+	 * 
+	 * @param node
+	 * @return
+	 */
 	public String getValueInHTML(Node node) {
 
 		if (node.getNodeType() == Node.TEXT_NODE) {
