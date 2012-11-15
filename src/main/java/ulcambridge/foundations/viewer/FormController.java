@@ -74,7 +74,7 @@ public class FormController {
 		MultiPartEmail email = new MultiPartEmail();
 		email.setHostName(feedbackHost);
 		email.addTo(feedbackEmail);
-		email.setFrom(feedbackEmail);
+		email.setFrom(feedbackForm.getEmail());
 		email.setSubject(feedbackSubject);
 		email.setMsg("Feedback from the user '" + feedbackForm.getName()
 				+ "' (" + feedbackForm.getEmail() + "):\n\n"
