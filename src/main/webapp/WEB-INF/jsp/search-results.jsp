@@ -105,8 +105,8 @@ function pageinit() {
 					    	var snippetWithoutTags = stripTags.textContent || stripTags.innerText || "";
 					    	
 					    	if (snippetWithoutTags!="" && snippetWithoutTags!="undefined") {
-					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetWithoutTags
-					    	  +"</a></li>"; 
+					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetWithoutTags.trim()
+					    	  +"</a> <font style='color:#999999'>"+snippet.startPageLabel+"</font></li>"; 
 					    	}
 					    	
 					    }

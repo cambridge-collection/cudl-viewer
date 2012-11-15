@@ -166,14 +166,15 @@ public class SearchController {
 				
 				// Make an array for the snippets.
 				JSONArray resultsArray = new JSONArray();
-				Hashtable<Integer, List<String>> snippets = searchResult.getSnippets();
-				Enumeration<Integer> keys = snippets.keys();
-				while (keys.hasMoreElements()) {
-					Integer startPage = keys.nextElement();
+				List<DocHit> docHits = searchResult.getDocHits();
+				
+				for (int j=0;j<docHits.size();j++) {
+					DocHit docHit = docHits.get(j);
 					JSONObject snippetJSON = new JSONObject();
-					snippetJSON.put("startPage", startPage);
+					snippetJSON.put("startPage",  docHit.getStartPage());
+					snippetJSON.put("startPageLabel", docHit.getStartPageLabel());
 					JSONArray snippetArray = new JSONArray();
-					snippetArray.addAll(snippets.get(startPage));
+					snippetArray.add(docHit.getSnippetHTML());
 					snippetJSON.put("snippetStrings", snippetArray);
 					
 					resultsArray.add(snippetJSON);

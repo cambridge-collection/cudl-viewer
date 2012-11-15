@@ -167,10 +167,9 @@ public class XTFSearch implements Search {
 						result = createSearchResult(node);
 						docHitsByItem.put(itemId, result);
 					} else {
-						List<String> snippetList = new ArrayList<String>();
-
-						NodeList snippetNodes = node
-								.getElementsByTagName("snippet");
+						// Note: only using first snippet in DocHit. 
+						Element snippetNode = (Element) node
+								.getElementsByTagName("snippet").item(0);
 						
 						Integer startPage=1; // default
 						try {							
@@ -180,16 +179,12 @@ public class XTFSearch implements Search {
 								); 						
 						} catch (Exception e) { /* ignore, use default value */}
 						
-						for (int j = 0; j < snippetNodes.getLength(); j++) {
-							Element snippetNode = (Element) snippetNodes
-									.item(j);
-							if (snippetNode != null) {
-								snippetList.add(getValueInHTML(snippetNode));
-							}
-						}
-
+						String startPageLabel = node.getElementsByTagName("startPageLabel").item(0).getTextContent();
+								
+						DocHit docHit = new DocHit(startPage, startPageLabel, getValueInHTML(snippetNode));
+						
 						if (result != null && result.getId() != null) {
-							result.insertSnippets(startPage, snippetList);							
+							result.insertDocHit(docHit);							
 							docHitsByItem.put(itemId, result);
 						}
 					}
@@ -230,12 +225,10 @@ public class XTFSearch implements Search {
 		String id = "";
 		int score = -1;
 		List<Facet> facets = new ArrayList<Facet>();
-		Hashtable<Integer, List<String>> snippets = new Hashtable<Integer, List<String>>();
+		List<DocHit> docHits = new ArrayList<DocHit>();
 		
 		// look at all the child tags
 		if (node.getNodeName().equals("docHit")) {
-
-			NodeList metaAndSnippets = node.getChildNodes();
 
 			// META Search Info.
 			Element meta = (Element) node.getElementsByTagName("meta").item(0);
@@ -263,21 +256,17 @@ public class XTFSearch implements Search {
 			}
 
 			// SNIPPET Search Info
-			snippets = new Hashtable<Integer, List<String>>();
-			List<String> snippetList = new ArrayList<String>();
-
-			NodeList snippetNodes = node.getElementsByTagName("snippet");
-			for (int i = 0; i < snippetNodes.getLength(); i++) {
-				Node snippetNode = snippetNodes.item(i);
-				if (snippetNode != null) {
-
-					snippetList.add(getValueInHTML(snippetNode));
-				}
-			}
-			snippets.put(startPage, snippetList);
+			// Note: only taking first snippet from any dochit.  
+			
+			Element snippetNode = (Element) node.getElementsByTagName("snippet").item(0);
+			String startPageLabel = node.getElementsByTagName("startPageLabel").item(0).getTextContent();
+			
+			DocHit docHit = new DocHit(startPage, startPageLabel, getValueInHTML(snippetNode));
+							
+			docHits.add(docHit);
 		}
 		
-		return new SearchResult (title, id, facets, score, snippets);
+		return new SearchResult (title, id, facets, score, docHits);
 		
 	}
 	

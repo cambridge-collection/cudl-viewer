@@ -18,18 +18,17 @@ public class SearchResult implements Comparable<SearchResult> {
 	private List<Facet> facets = new ArrayList<Facet>();
 	private int score; // how relevant is this result, used for ordering.
 
-	// Hashtable containing the page numbers and the matching
-	// snippets that appear on that page.
-	private Hashtable<Integer, List<String>> snippets = new Hashtable<Integer, List<String>>();
+	// DocHits for all the matches found for this item. 
+	private List<DocHit> docHits = new ArrayList<DocHit>();
 
 	public SearchResult(String title, String id, List<Facet> facets, int score,
-			Hashtable<Integer, List<String>> snippets) {
+			List<DocHit> docHits) {
 		
 		this.title = title;
 		this.id = id;
 		this.score = score;
 		this.facets = facets;
-		this.snippets = snippets;
+		this.docHits = docHits;
 
 	}
 
@@ -45,16 +44,12 @@ public class SearchResult implements Comparable<SearchResult> {
 		return this.facets;
 	}
 
-	/**
-	 * @return Returns a Hashtable of Page numbers and a List of snippets that
-	 *         occur on that page.
-	 */
-	public Hashtable<Integer, List<String>> getSnippets() {
-		return this.snippets;
+	public List<DocHit> getDocHits() {
+		return this.docHits;
 	}
 
-	public void insertSnippets(Integer pageNumber, List<String> snippets) {
-		this.snippets.put(pageNumber, snippets);
+	public void insertDocHit(DocHit docHit) {
+		this.docHits.add(docHit);
 	}
 
 	/**
