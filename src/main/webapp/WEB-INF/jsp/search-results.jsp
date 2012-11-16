@@ -102,8 +102,12 @@ function pageinit() {
 					    	var snippetValue = snippet.snippetStrings[0];
 					    						    	
 					    	if (snippetValue!="" && snippetValue!="undefined") {
+					          var snippetLabel = "";
+					          // FIXME Temporary hack to hide page label if the match 
+					          // is on the first page as this will be a match for the whole item. 
+					          if (snippet.startPage!=1) { snippetLabel = snippet.startPageLabel; }
 					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetValue.trim()
-					    	  +"</a> <font style='color:#999999'>"+snippet.startPageLabel+"</font></li>"; 
+					    	  +"</a> <font style='color:#999999'>"+snippetLabel+"</font></li>"; 
 					    	}
 					    	
 					    }
