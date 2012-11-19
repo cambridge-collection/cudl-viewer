@@ -30,6 +30,8 @@
 
 		<p>Now the AHRC-funded project “<a target="_blank" href="http://sanskrit.lib.cam.ac.uk">The intellectual and religious traditions of South Asia as seen through the Sanskrit manuscript collections of the University Library, Cambridge</a>” has begun a systematic investigation aiming to produce a full catalogue of the manuscripts and to digitise a substantial proportion of them. These comprise more than 1,600 works in Sanskrit, Prakrit, Pali, Tamil and other ancient and medieval South Asian languages, produced over a time-span of more than 1,000 years, and written in over a dozen scripts and on different writing materials, such as paper, palm leaf and birch bark.</p>
 
+		<p>The project has provided <a target="_blank" href="http://sanskrit.lib.cam.ac.uk/materials/conventions">further information on the conventions used in these manuscript descriptions</a>.</p> 
+
 		<p>Along with doctrinal, exegetical and ritual works issued from the many religious traditions of South Asia—from the Vedic religion to devotional Hinduism and Tantrism, from Theravāda to Mahāyāna and Tantric Buddhism, to Jainism—the Library’s holdings also include texts on a variety of “secular” topics, ranging from works of poetry and drama to treatises on philosophy, mathematics, grammar, astronomy, law, eroticism, medicine, archery, horse breeding, etc.</p>
 
 		<p>There is, in other words, a wealth here of cultural and historical information on South Asia of great potential significance for contemporary scholarship, which will be gradually made available through the Digital Library.</p>
