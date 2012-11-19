@@ -67,6 +67,36 @@
 					<a href="/collections/newton">Newton Papers</a>
 				</h4>
 			</div>
+			
+			<div class="featured-item-list">
+				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
+					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
+				</a>
+
+				<h4>
+					<a href="/collections/hebrew">Hebrew Manuscripts</a>
+				</h4>
+			</div>			
+			
+			<div class="featured-item-list">
+				<a href="/collections/genizah"><img
+					alt="Cairo Genizah Collection" title="Cairo Genizah Collection"
+					src="/images/index/slice-genizah.jpg"> </a>
+
+				<h4>
+					<a href="/collections/genizah">Cairo Genizah Collection</a>
+				</h4>
+			</div>		
+			
+			<div class="featured-item-list">
+				<a href="/collections/christian"><img alt="Christian Works"
+					title="Christian Works" src="/images/index/slice-christian.jpg">
+				</a>
+
+				<h4>
+					<a href="/collections/christian">Christian Works</a>
+				</h4>
+			</div>				
 
 			<div class="featured-item-list">
 				<a href="/collections/islamic"><img alt="Islamic Manuscripts"
@@ -75,16 +105,6 @@
 
 				<h4>
 					<a href="/collections/islamic">Islamic Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/genizah"><img
-					alt="Cairo Genizah Collection" title="Cairo Genizah Collection"
-					src="/images/index/slice-genizah.jpg"> </a>
-
-				<h4>
-					<a href="/collections/genizah">Cairo Genizah Collection</a>
 				</h4>
 			</div>
 
@@ -105,26 +125,6 @@
 
 				<h4>
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
-					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/hebrew">Hebrew Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/christian"><img alt="Christian Works"
-					title="Christian Works" src="/images/index/slice-christian.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/christian">Christian Works</a>
 				</h4>
 			</div>
 
@@ -184,6 +184,76 @@
 			</li>
 
 
+			<!-- Hebrew Manuscripts -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/hebrew">Hebrew Manuscripts</a>
+					</h4>
+
+					<p>Cambridge University Library holds one of the world’s
+						foremost collections of Hebrew manuscripts, on account of the
+						University’s long interest in the literature of Judaism. Chief
+						among them are the famous Nash Papyrus, one of the earliest known
+						artefacts containing the words of the Hebrew Bible, and the
+						Cambridge Mishnah, a complete codex of this work copied in
+						fifteenth-century Byzantium. With 1000 items acquired over more
+						than 500 years, the Collection ranges wide from Samaritan Hebrew
+						Bibles to important compositions of halakha and exegesis, through
+						to manuscripts of philosophical, kabbalistic and scientific works.</p>
+
+				</div> <a href="/collections/hebrew"><img
+					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
+					width="540" height="394" /> </a>
+			</li>
+			
+			<!-- The Cairo Genizah collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/genizah">The Cairo Genizah Collection</a>
+					</h4>
+
+					<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
+						University Library is the world's largest and most important
+						single collection of medieval Jewish manuscripts.</p>
+					<p>For a thousand years, the Jewish community of Fustat (Old
+						Cairo), placed their worn-out books and other writings in a
+						storeroom (genizah) of the Ben Ezra Synagogue, and in 1896–97 the
+						Cambridge scholar, Dr Solomon Schechter, arrived to examine it. He
+						received permission from the Jewish community of Egypt to take
+						away what he liked, and he brought 193,000 manuscripts back to
+						Cambridge.</p>
+
+				</div> <a href="/collections/genizah"><img
+					src="/images/index/carousel-genizah.jpg"
+					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
+			</li>			
+			
+			<!-- christian works -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/christian">Christian Works</a>
+					</h4>
+
+					<p>A selection of some of our finest Christian manuscripts and
+						early printed books, from the Bible to the liturgy, spanning over
+						1000 years of worship and debate. From the early bilingual New
+						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex Bezae</a> to the tenth-century pocket
+						Gospel Book the <a href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a beautifully illuminated
+						sixteenth-century <a href="/view/MS-NN-00004-00001/1">book of services and ceremonies</a> commissioned for
+						a Cistercian abbot in Northern Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life of St
+						Edward the Confessor</a> produced for royalty in
+						mid-thirteenth-century England, the collection includes works of
+						scripture, theology and liturgy, reflecting both Church ceremonial
+						and private devotion.</p>
+
+				</div> <a href="/collections/christian"><img
+					src="/images/index/carousel-christian.jpg" alt="Christian Works"
+					width="540" height="394" /> </a>
+			</li>
+						
 			<!-- islamic collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -207,29 +277,6 @@
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
 					width="540" height="394" /> </a>
-			</li>
-
-			<!-- The Cairo Genizah collection -->
-			<li>
-				<div class="panel" style="overflow: auto;">
-					<h4>
-						<a href="/collections/genizah">The Cairo Genizah Collection</a>
-					</h4>
-
-					<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
-						University Library is the world's largest and most important
-						single collection of medieval Jewish manuscripts.</p>
-					<p>For a thousand years, the Jewish community of Fustat (Old
-						Cairo), placed their worn-out books and other writings in a
-						storeroom (genizah) of the Ben Ezra Synagogue, and in 1896–97 the
-						Cambridge scholar, Dr Solomon Schechter, arrived to examine it. He
-						received permission from the Jewish community of Egypt to take
-						away what he liked, and he brought 193,000 manuscripts back to
-						Cambridge.</p>
-
-				</div> <a href="/collections/genizah"><img
-					src="/images/index/carousel-genizah.jpg"
-					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
 			</li>
 
 			<!-- The Sanskrit collection -->
@@ -277,53 +324,7 @@
 					src="/images/index/carousel-spanishchapbooks.jpg"
 					alt="Spanish Chapbooks" width="540" height="394" /> </a>
 			</li>
-
-			<!-- Hebrew Manuscripts -->
-			<li>
-				<div class="panel" style="overflow: auto;">
-					<h4>
-						<a href="/collections/hebrew">Hebrew Manuscripts</a>
-					</h4>
-
-					<p>Cambridge University Library holds one of the world’s
-						foremost collections of Hebrew manuscripts, on account of the
-						University’s long interest in the literature of Judaism. Chief
-						among them are the famous Nash Papyrus, one of the earliest known
-						artefacts containing the words of the Hebrew Bible, and the
-						Cambridge Mishnah, a complete codex of this work copied in
-						fifteenth-century Byzantium. With 1000 items acquired over more
-						than 500 years, the Collection ranges wide from Samaritan Hebrew
-						Bibles to important compositions of halakha and exegesis, through
-						to manuscripts of philosophical, kabbalistic and scientific works.</p>
-
-				</div> <a href="/collections/hebrew"><img
-					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
-					width="540" height="394" /> </a>
-			</li>
-
-			<!-- christian works -->
-			<li>
-				<div class="panel" style="overflow: auto;">
-					<h4>
-						<a href="/collections/christian">Christian Works</a>
-					</h4>
-
-					<p>A selection of some of our finest Christian manuscripts and
-						early printed books, from the Bible to the liturgy, spanning over
-						1000 years of worship and debate. From the early bilingual New
-						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex Bezae</a> to the tenth-century pocket
-						Gospel Book the <a href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a beautifully illuminated
-						sixteenth-century <a href="/view/MS-NN-00004-00001/1">book of services and ceremonies</a> commissioned for
-						a Cistercian abbot in Northern Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life of St
-						Edward the Confessor</a> produced for royalty in
-						mid-thirteenth-century England, the collection includes works of
-						scripture, theology and liturgy, reflecting both Church ceremonial
-						and private devotion.</p>
-
-				</div> <a href="/collections/christian"><img
-					src="/images/index/carousel-christian.jpg" alt="Christian Works"
-					width="540" height="394" /> </a>
-			</li>
+			
 		</ol>
 	</div>
 	<!--  featured items -->
