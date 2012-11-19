@@ -19,12 +19,44 @@
 
 	<div class="grid_19">
 		<div class="grid_5">
+			<img alt="Build your own Digital Library with our Bookmarking tool"
+				title="Build your own Digital Library with our Bookmarking tool"
+				src="/images/index/news-christian.jpg"
+				height="200" width="200">
+		</div>
+
+		<div class="grid_11">
+			<span class="date">Nov. 2012</span>
+			<h4>Build your own Digital Library with our Bookmarking tool</h4>
+			<p>
+				This release sees new bookmarking functionality which allows you to
+				build your own digital collection within the Cambridge Digital
+				Library. This is the first of many planned features for personal
+				interaction with our material. We have also released some exciting
+				new content, including two brand-new collections. Our initial
+				selection of Christian Works includes a fully-transcribed
+				presentation of the 4th century Biblical text the <a
+					href="/view/MS-NN-00002-00041/1">Codex Bezae</a>, along with the
+				earliest known Scottish manuscript, the <a
+					href="/view/MS-II-00006-00032/1">Book of Deer</a>. Among our Hebrew
+				manuscripts is the <a href="/view/MS-OR-00233/1">Nash
+					Papyrus</a>, a second-century BCE fragment containing the text of the
+				Ten Commandments. We have added important material to our Sanskrit
+				and Islamic collections, and our Treasures collection now includes
+				Henry VIII's personal copy of Erasmus' translation of Plutarch. We
+				have also added over 3,000 new Genizah fragments, more than trebling
+				the number of items available.
+			</p>
+		</div>
+		
+		<hr/>
+
+		<div class="grid_5">
 			<img alt="Launch of Sanskrit and Spanish Chapbook Collections"
 				title="Launch of Sanskrit and Spanish Chapbook Collections"
 				src="/images/index/news-sanskritandspanishchapbooks.jpg"
 				height="200" width="200">
 		</div>
-
 		<div class="grid_11">
 			<span class="date">19/07/2012</span>
 			<h4>Launch of Sanskrit and Spanish Chapbook Collections</h4>
@@ -33,14 +65,15 @@
 				collections - and have initiated two new collections: the <a
 					href="/collections/sanskrit">Sanskrit Manuscripts</a> and <a
 					href="/collections/spanishchapbooks">Spanish Chapbooks</a>. Both
-				these collections will grow over the next two years. We are also continuing to improve functionality, 
-				allowing you to search within transcribed manuscripts, displaying more
-				information about each document and making bookmarking an individual
-				page easier.
+				these collections will grow over the next two years. We are also
+				continuing to improve functionality, allowing you to search within
+				transcribed manuscripts, displaying more information about each
+				document and making bookmarking an individual page easier.
 			</p>
 		</div>
-
 	</div>
+	
+   <hr/>
 
 	<div class="grid_19">
 		<div class="grid_5">
@@ -74,6 +107,8 @@
 
 	</div>
 
+<hr/>
+
 	<div class="grid_19">
 		<div class="grid_5">
 			<img alt="Islamic Manuscripts" title="Islamic Manuscripts"
@@ -96,6 +131,8 @@
 		</div>
 
 	</div>
+	
+<hr/>	
 
 	<div class="grid_19">
 		<div class="grid_5">
@@ -127,8 +164,9 @@
 				information about these projects.
 			</p>
 		</div>
-
 	</div>
+	
+<hr/>	
 
 	<div class="grid_19">
 		<div class="grid_5">
