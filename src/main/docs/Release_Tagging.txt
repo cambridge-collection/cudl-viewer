@@ -1,0 +1,35 @@
+Tagging procedure for a new release:
+
+Update Database (if new content):
+
+  Dump the items, itemsincollection and collections tables
+  (these will be loaded in during the release). 
+
+    dump item tables from dev:
+
+	mysqldump -u viewerdevuser -p --host=found-dom01.lib.cam.ac.uk viewerdev items itemsincollection collections > Desktop/db_<RELEASE>.sql
+
+    Loading into live:
+    
+    When you are performing the release, you can then update the data using the command:
+    (NOTE THIS WILL DESTROY EXISTING TABLES - BACKUP FIRST!)
+
+	mysql -u viewerliveuser -p --host=found-dom01.lib.cam.ac.uk viewerlive < Desktop/db_<RELEASE>.sql
+
+XTF: 
+
+  Need to manually tag these using the command (note svn tags cannot be changed after they are created). 
+
+  svn copy https://source.caret.cam.ac.uk/svn/projects/ul-foundations/xtf/trunk \
+      https://source.caret.cam.ac.uk/svn/projects/ul-foundations/xtf/tags/<TAG_NUMBER> -m "Release <TAG_NUMBER>"
+
+
+Viewer:
+
+  Use the following command, that prompts you for a version number.  
+  Also it will create a tag in SVN and it will update the pom to the new version for you. 
+
+  mvn release:prepare
+
+
+  
