@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,16 +74,9 @@ public class CollectionViewController {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"
 				+ collection.getType());
-
-		List<String> itemIds = collection.getItemIds();
-		List<Item> items = new ArrayList<Item>();		
-		for (int i = 0; i < itemIds.size(); i++) {
-			String itemId = itemIds.get(i);
-			items.add(itemFactory.getItemFromId(itemId));
-		}
 		
 		modelAndView.addObject("collection", collection);
-		modelAndView.addObject("items", items);
+		modelAndView.addObject("itemFactory", itemFactory);
 		
 		return modelAndView;
 
@@ -98,32 +90,31 @@ public class CollectionViewController {
 	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
 			@PathVariable("collectionId") String collectionId,
 			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request) throws JSONException {
+			@RequestParam("end") int endIndex, HttpServletRequest request) throws Exception {
 
 		Collection collection = collectionFactory
 				.getCollectionFromId(collectionId);
 		
 		List<String> ids = collection.getItemIds();
 		List<Item> items = new ArrayList<Item>();
-		
-		for (int i=0; i<ids.size(); i++) {
-		  items.add(itemFactory.getItemFromId(ids.get(i)));
-		}
-		
+				
 		if (startIndex < 0) {
 			startIndex = 0;
-		} else if (endIndex >= items.size()) {
-			endIndex = items.size(); // if end Index is too large cap at max
+		} else if (endIndex >= ids.size()) {
+			endIndex = ids.size(); // if end Index is too large cap at max
 											// size
 		}
+		
+		for (int i=startIndex; i<endIndex; i++) {
+		   items.add(itemFactory.getItemFromId(ids.get(i)));
+		}		
 
 		JSONArray jsonArray = new JSONArray();
 
-		for (int i = startIndex; i < endIndex; i++) {
+		for (int i = 0; i < items.size(); i++) {
 			Item item = items.get(i);
 			jsonArray.add(item.getSimplifiedJSON());
 		}
-
 		
 	    // build the request object
 		JSONObject dataRequest = new JSONObject();

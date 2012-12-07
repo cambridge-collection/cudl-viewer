@@ -1,12 +1,21 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
+	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
 	
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 
-    List<Item> items = (List<Item>) request
-             .getAttribute("items");
+    ItemFactory factory = (ItemFactory) request
+             .getAttribute("itemFactory");
+
+	Iterator<String> ids = collection.getItemIds().iterator();
+	List<Item> items = new ArrayList<Item> ();
+		
+	while(ids.hasNext()) {
+		String id = ids.next();
+		Item item = factory.getItemFromId(id);
+		items.add(item);	
+	}
 %>	
 <jsp:include page="header/header-full.jsp" >
 	<jsp:param name="title" value="<%=collection.getTitle()%>" />

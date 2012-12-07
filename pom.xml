@@ -44,10 +44,6 @@
 							<maxIdleTime>60000</maxIdleTime>
 						</connector>
 					</connectors>
-					<jvmArgs>
-						<jvmArg>-Xms512m </jvmArg>
-						<jvmArg>-Xmx1024m </jvmArg>
-					</jvmArgs>
 
 				</configuration>
 			</plugin>
@@ -61,11 +57,7 @@
 					<additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
 					<additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>					
 					<server>tomcat-development-server</server>
-					<port>1111</port>
-					<jvmArgs>
-						<jvmArg>-Xms512m </jvmArg>
-						<jvmArg>-Xmx1024m </jvmArg>
-					</jvmArgs>					
+					<port>1111</port>				
 				</configuration>
 			</plugin>
 
