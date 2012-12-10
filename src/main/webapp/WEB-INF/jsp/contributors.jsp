@@ -141,10 +141,12 @@
 
 		<h4>Cairo Genizah Collection</h4>
 		<ul>
-			<li>Ben Outhwaite, Head of the Genizah Research Unit and <a
+			<li>Ben Outhwaite, Head of the Genizah Research Unit, <a
 				target="_blank"
-				href="http://www.lib.cam.ac.uk/Taylor-Schechter/Unit.html">other
-					members of the Genizah Research Unit team</a>.
+				href="http://www.lib.cam.ac.uk/Taylor-Schechter/Unit.html">
+					members of the Genizah Research Unit team</a> and <a target="_blank"
+				href="http://www.lib.cam.ac.uk/Taylor-Schechter/contributors.html">other
+					contributors</a>.
 			</li>
 		</ul>
 
