@@ -20,11 +20,11 @@
 
 	<div class="grid_8 box">
 		<div>
-			<a href="/search?facet-collection=Cairo+Genizah&fileID=TS">View
+			<a href="/search?facet-collection=Cairo+Genizah&fileID=TS&keyword=genizah">View
 				only items in the Taylor-Schechter Collection</a>
 		</div>
 		<div>
-			<a href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI">View
+			<a href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI&keyword=genizah">View
 				only items in the Mosseri Collection</a>
 		</div>
 	</div>
