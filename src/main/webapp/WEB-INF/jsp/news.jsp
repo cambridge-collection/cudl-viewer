@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="grid_11">
-			<span class="date">Nov. 2012</span>
+			<span class="date">12/12/2012</span>
 			<h4>Build your own Digital Library with our Bookmarking tool</h4>
 			<p>
 				This release sees new bookmarking functionality which allows you to
