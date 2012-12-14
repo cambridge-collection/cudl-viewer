@@ -159,6 +159,30 @@
 				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
 		</div>
+		<br />
+		<hr />
+		<div class="collection collection-science">
+
+			<a href="/collections/longitude"> <img class="collectionImage"
+				src="/images/collectionsView/collection-islamic.jpg"
+				alt="Board of Longitude" width="150" height="150" />
+			</a>
+
+			<h5>Board of Longitude</h5>
+			<br />Cambridge University Library holds the entire archive of the
+			Board of Longitude, the state organization established in the
+			eighteenth century to evaluate methods for finding ships’ position
+			and to encourage a host of projects in instrument design,
+			clock-making, mapping and voyaging. Our initial selection includes
+			the Board’s confirmed minutes and papers from the astonishing Pacific
+			and Antarctic voyage of James Cook in 1772-1775.<br /> <br /> <a
+				href="/collections/longitude">View collection</a>. <br />
+			<div class="foundations-link-science">
+				<a href="/about#foundations">Foundations of Science</a>
+			</div>
+		</div>
+
+
 
 
 
