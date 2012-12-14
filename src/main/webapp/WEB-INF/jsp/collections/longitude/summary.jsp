@@ -2,8 +2,13 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Board of Longitude</h3>
 	<blockquote class="grid_5 omega print">
-		<br />Quote" <br />
-		<br /> <cite>person<br /> </cite>
+		It is well known by all that are acquainted with the Art of
+			Navigation, that nothing is so much wanted and desired at Sea, as the
+			Discovery of the Longitude, for the Safety and Quickness of Voyages,
+			the Preservation of Ships and the Lives of Men" <br />
+		<br /> <cite>An Act for Providing
+			a Publick Reward for such Person or Persons as shall Discover the
+			Longitude at Sea, 1714<br /> </cite>
 
 	</blockquote>
 	<br /> <br />
@@ -18,13 +23,6 @@
 	</div>
 	<div class="grid_9">
 		<br />
-		<p>“It is well known by all that are acquainted with the Art of
-			Navigation, that nothing is so much wanted and desired at Sea, as the
-			Discovery of the Longitude, for the Safety and Quickness of Voyages,
-			the Preservation of Ships and the Lives of Men” (An Act for Providing
-			a Publick Reward for such Person or Persons as shall Discover the
-			Longitude at Sea, 1714)</p>
-
 		<p>The archives of the Royal Observatory, Greenwich, held in
 			Cambridge University Library, include the complete run of the papers
 			of the Board of Longitude through the eighteenth century until its
