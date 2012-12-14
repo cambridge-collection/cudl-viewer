@@ -127,6 +127,16 @@
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
+			
+			<div class="featured-item-list">
+				<a href="/collections/longitude"><img
+					alt="Board of Longitude" title="Board of Longitude"
+					src="/images/index/slice-islamic.jpg"> </a>
+
+				<h4>
+					<a href="/collections/longitude">Board of Longitude</a>
+				</h4>
+			</div>			
 
 			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
