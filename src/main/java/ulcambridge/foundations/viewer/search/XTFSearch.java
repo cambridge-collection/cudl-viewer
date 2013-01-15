@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer.search;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
@@ -67,15 +69,18 @@ public class XTFSearch implements Search {
 		String xtfURL = Properties.getString("xtfURL");
 		String searchXTFURL = xtfURL + "search?raw=1";
 
+		try {
+			
+		
 		// check for empty search box. 
 		if (keyword != null && keyword.equals("")) {
 			//searchXTFURL += "&browse-all=yes";
 			return null;
 		} else {
-			searchXTFURL += "&keyword=" + keyword;
+				searchXTFURL += "&keyword=" + URLEncoder.encode(keyword, "UTF-8");
 		}
 
-		searchXTFURL += "&fileID=" + fileID;
+		searchXTFURL += "&fileID=" + URLEncoder.encode(fileID, "UTF-8");
 		
 		Iterator<String> facetTypes = facets.keySet().iterator();
 		int facetCount = 0;
@@ -87,6 +92,11 @@ public class XTFSearch implements Search {
 					+ "=" + facetValue;
 		}
 
+		} catch (UnsupportedEncodingException e) {
+
+			e.printStackTrace();
+		}
+		System.out.println(searchXTFURL);
 		return searchXTFURL;
 	}
 

@@ -309,8 +309,20 @@ cudl.docView = function() {
 		},
 
 		addSearchLink : function(text) {
-			var encodedText = encodeURIComponent(text);
-			return "<a class=\"cudlLink\" href='/search?keyword=" + encodedText
+				
+			var linkText = text;
+			
+			// manually escape the special search characters ? and *.
+			if (linkText.indexOf("?")!=-1){
+				linkText = linkText.replace("?", "\\?");
+				}
+	        if (linkText.indexOf("*")!=-1){
+				linkText = linkText.replace("*", "\\*");
+				}				
+			
+			linkText = encodeURIComponent(linkText);
+			
+			return "<a class=\"cudlLink\" href='/search?keyword=" + linkText
 					+ "'>" + text + "</a>";
 		},
 
