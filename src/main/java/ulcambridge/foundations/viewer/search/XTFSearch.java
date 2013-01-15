@@ -252,6 +252,8 @@ public class XTFSearch implements Search {
 
 			score = Integer.parseInt(node.getAttribute("score"));
 
+			//System.out.println(node.getAttribute("score"));
+			//System.out.println(meta.getElementsByTagName("fileID").item(0).getTextContent());
 			Integer startPage = new Integer(meta
 					.getElementsByTagName("startPage").item(0).getFirstChild().getTextContent());
 			
