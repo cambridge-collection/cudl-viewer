@@ -96,7 +96,7 @@ public class XTFSearch implements Search {
 
 			e.printStackTrace();
 		}
-		System.out.println(searchXTFURL);
+		//System.out.println(searchXTFURL);
 		return searchXTFURL;
 	}
 
