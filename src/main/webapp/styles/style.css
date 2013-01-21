@@ -45,6 +45,7 @@ ol#index_carousel li {
 	list-style: none outside none;
 }
 
+
 #index_carousel .panel {
 	background: url("../images/index/grey.png") repeat scroll 0 0
 		transparent;
@@ -69,6 +70,34 @@ ol#index_carousel li {
 ol#index_carousel li {
 	height: 370px;
 }
+
+/* Set the prev button to be absolutely positioned to the left of the carousel */
+#index_carousel_parent #leftarrow {
+        background: transparent url(/images/index/left-arrow-down.png) top left repeat-y;
+        left: 5px;
+        top:305px;
+        position:absolute;
+        float:left;
+        height:62px;
+        width:62px;
+}
+
+/* Set the next button to be absolutely positioned to the right of the carousel */
+#index_carousel_parent #rightarrow {
+        background: transparent url(/images/index/right-arrow-down.png) top left repeat-y;
+        left: 472px;
+        top:305px;
+        position:absolute;
+        float:left;
+        height:62px;
+        width:62px;
+}
+
+/* place dots in the middle */
+#index_carousel_parent .pageNav {
+	   padding-left:240px;
+}
+
 
 #cookienotice {
     background: #eeeeee;
@@ -127,7 +156,6 @@ ol#index_carousel li {
 	/* for firefox 3.6+ */
 	padding: 14px;
 	display: block;
-	height: 150px;
 }
 
 .collection-science {
