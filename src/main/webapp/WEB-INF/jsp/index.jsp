@@ -25,7 +25,7 @@
 			size : 1,
 			step : 1,
 			theme : "light",
-			pageNav: true
+			pageNav : true
 
 		});
 
@@ -35,11 +35,14 @@
 		index_carousel.moveTo(randomnumber, false);
 
 		// auto-scroll through items until the carousel is clicked. 
-		var intervalId = window.setInterval(function(){index_carousel.next();},5000);		 
-		document.getElementById("index_carousel_parent").addEventListener("click", function(event) {	
-			window.clearInterval(intervalId);
-		});
-			
+		var intervalId = window.setInterval(function() {
+			index_carousel.next();
+		}, 5000);
+		document.getElementById("index_carousel_parent").addEventListener(
+				"click", function(event) {
+					window.clearInterval(intervalId);
+				});
+
 	}
 </script>
 
@@ -47,15 +50,13 @@
 
 <div id="content" class="grid_20 content">
 
-<!-- side panel -->
+	<!-- side panel -->
 
-<div id="featuredCollectionsHeader" >
-  
-</div>
+	<div id="featuredCollectionsHeader"></div>
 
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-		<div id="featuredCollections">           
+		<div id="featuredCollections">
 
 			<div class="featured-item-list">
 				<a href="/collections/treasures"><img
@@ -74,17 +75,17 @@
 					<a href="/collections/newton">Newton Papers</a>
 				</h4>
 			</div>
-			
+
 			<div class="featured-item-list">
-				<a href="/collections/longitude"><img
-					alt="Board of Longitude" title="Board of Longitude"
-					src="/images/index/slice-longitude.jpg"> </a>
+				<a href="/collections/longitude"><img alt="Board of Longitude"
+					title="Board of Longitude" src="/images/index/slice-longitude.jpg">
+				</a>
 
 				<h4>
 					<a href="/collections/longitude">Board of Longitude</a>
 				</h4>
-			</div>	
-						
+			</div>
+
 			<div class="featured-item-list">
 				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
 					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
@@ -93,8 +94,8 @@
 				<h4>
 					<a href="/collections/hebrew">Hebrew Manuscripts</a>
 				</h4>
-			</div>			
-			
+			</div>
+
 			<div class="featured-item-list">
 				<a href="/collections/genizah"><img
 					alt="Cairo Genizah Collection" title="Cairo Genizah Collection"
@@ -103,8 +104,8 @@
 				<h4>
 					<a href="/collections/genizah">Cairo Genizah Collection</a>
 				</h4>
-			</div>		
-			
+			</div>
+
 			<div class="featured-item-list">
 				<a href="/collections/christian"><img alt="Christian Works"
 					title="Christian Works" src="/images/index/slice-christian.jpg">
@@ -113,7 +114,7 @@
 				<h4>
 					<a href="/collections/christian">Christian Works</a>
 				</h4>
-			</div>				
+			</div>
 
 			<div class="featured-item-list">
 				<a href="/collections/islamic"><img alt="Islamic Manuscripts"
@@ -144,7 +145,7 @@
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
-				
+
 
 			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
@@ -152,7 +153,7 @@
 	</div>
 
 	<div class="grid_13" id="index_carousel_parent">
-           
+
 		<ol id="index_carousel" style="display: none;">
 
 			<!-- treasures collection -->
@@ -201,6 +202,27 @@
 					width="540" height="394" /> </a>
 			</li>
 
+			<!-- newton collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/longitude">Board of Longitude</a>
+					</h4>
+
+					<p>The papers of the Board of Longitude held in Cambridge
+						University Library include remarkable and invaluable details of a
+						vast range of maritime, astronomical and navigational activities
+						between the mid-eighteenth and the early nineteenth centuries. Our
+						<a href="/collections/longitude/">initial selection</a> includes the Board’s confirmed minutes and
+						papers from the astonishing Pacific and Antarctic voyage of James
+						Cook in 1772-1775.</p>
+
+
+				</div> <a href="/collections/longitude"><img
+					src="/images/index/carousel-longitude.jpg" alt="Board of Longitude"
+					width="540" height="394" /> </a>
+			</li>
+
 
 			<!-- Hebrew Manuscripts -->
 			<li>
@@ -224,7 +246,7 @@
 					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
 					width="540" height="394" /> </a>
 			</li>
-			
+
 			<!-- The Cairo Genizah collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -246,8 +268,8 @@
 				</div> <a href="/collections/genizah"><img
 					src="/images/index/carousel-genizah.jpg"
 					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
-			</li>			
-			
+			</li>
+
 			<!-- christian works -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -255,23 +277,28 @@
 						<a href="/collections/christian">Christian Works</a>
 					</h4>
 
-					<p>A selection of some of our finest Christian manuscripts and
-						early printed books, from the Bible to the liturgy, spanning over
-						1000 years of worship and debate. From the early bilingual New
-						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex Bezae</a> to the tenth-century pocket
-						Gospel Book the <a href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a beautifully illuminated
-						sixteenth-century <a href="/view/MS-NN-00004-00001/1">book of services and ceremonies</a> commissioned for
-						a Cistercian abbot in Northern Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life of St
-						Edward the Confessor</a> produced for royalty in
+					<p>
+						A selection of some of our finest Christian manuscripts and early
+						printed books, from the Bible to the liturgy, spanning over 1000
+						years of worship and debate. From the early bilingual New
+						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex
+							Bezae</a> to the tenth-century pocket Gospel Book the <a
+							href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a
+						beautifully illuminated sixteenth-century <a
+							href="/view/MS-NN-00004-00001/1">book of services and
+							ceremonies</a> commissioned for a Cistercian abbot in Northern
+						Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life
+							of St Edward the Confessor</a> produced for royalty in
 						mid-thirteenth-century England, the collection includes works of
 						scripture, theology and liturgy, reflecting both Church ceremonial
-						and private devotion.</p>
+						and private devotion.
+					</p>
 
 				</div> <a href="/collections/christian"><img
 					src="/images/index/carousel-christian.jpg" alt="Christian Works"
 					width="540" height="394" /> </a>
 			</li>
-						
+
 			<!-- islamic collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -342,28 +369,32 @@
 					src="/images/index/carousel-spanishchapbooks.jpg"
 					alt="Spanish Chapbooks" width="540" height="394" /> </a>
 			</li>
-			
+
 		</ol>
 
 	</div>
 	<!--  news -->
 	<div class="grid_13">
-	<h4>Latest News</h4>
-			<div class="grid_3">
-			<a href="/news"><img alt="Build your own Digital Library with our Bookmarking tool"
+		<h4>Latest News</h4>
+		<div class="grid_3">
+			<a href="/news"><img
+				alt="Build your own Digital Library with our Bookmarking tool"
 				title="Build your own Digital Library with our Bookmarking tool"
-				src="/images/index/news-christian.jpg"
-				height="100" width="100"></a>
+				src="/images/index/news-christian.jpg" height="100" width="100"></a>
 		</div>
 
 		<div class="grid_9">
 			<span class="date">12/12/2012</span>
-			<h4><a href="/news">Build your own Digital Library with our Bookmarking tool</a></h4>			
+			<h4>
+				<a href="/news">Build your own Digital Library with our
+					Bookmarking tool</a>
+			</h4>
 			<p></p>
-			<br/><br/>
-			</div>
+			<br />
+			<br />
+		</div>
 	</div>
-	
+
 
 
 </div>
