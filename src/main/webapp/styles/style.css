@@ -33,14 +33,13 @@ body {
 }
 
 #index_carousel_parent {
-	height:400px;
-	
+	height:400px;	
 }
 
 ol#index_carousel li {
 	position: relative;
 	float: left;
-	margin: 4px;
+	margin: 0px;
 	/*height: 390px;*/
 	width: 540px;
 	list-style: none outside none;
@@ -189,10 +188,18 @@ ol#index_carousel li {
 	text-decoration: none;
 }
 
+
 #featuredCollections {
 	background: #ffffff;
 	color: #000000;
 	float:right;
+}
+
+#featuredCollectionsHeader {
+	background: #ffffff;
+	color: #000000;
+    width: 240px;
+    padding-left:40px;
 }
 
 #featuredCollections img {

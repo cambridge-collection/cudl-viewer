@@ -24,7 +24,9 @@
 			loop : true,
 			size : 1,
 			step : 1,
-			theme : "light"
+			theme : "light",
+			pageNav: true
+
 		});
 
 		// Goto a random item in the carousel
@@ -32,12 +34,12 @@
 				* (index_carousel._countRealItems));
 		index_carousel.moveTo(randomnumber, false);
 
-		// generate random featuredItem banner
-		var bannerItems = [ "MS-II-00006-00032", "MS-NN-00003-00074" ];
-
-		var randomitem = Math.floor(Math.random() * (bannerItems.length));
-		var bannerItem = bannerItems[randomitem];
-		document.getElementById(bannerItem).style.display = "inline";
+		// auto-scroll through items until the carousel is clicked. 
+		var intervalId = window.setInterval(function(){index_carousel.next();},5000);		 
+		document.getElementById("index_carousel_parent").addEventListener("click", function(event) {	
+			window.clearInterval(intervalId);
+		});
+			
 	}
 </script>
 
@@ -45,10 +47,15 @@
 
 <div id="content" class="grid_20 content">
 
-	<!-- side panel -->
+<!-- side panel -->
+
+<div id="featuredCollectionsHeader" >
+  
+</div>
+
 	<div class="grid_6" style="margin-bottom: 18px;">
 
-		<div id="featuredCollections">
+		<div id="featuredCollections">           
 
 			<div class="featured-item-list">
 				<a href="/collections/treasures"><img
@@ -68,6 +75,16 @@
 				</h4>
 			</div>
 			
+			<div class="featured-item-list">
+				<a href="/collections/longitude"><img
+					alt="Board of Longitude" title="Board of Longitude"
+					src="/images/index/slice-longitude.jpg"> </a>
+
+				<h4>
+					<a href="/collections/longitude">Board of Longitude</a>
+				</h4>
+			</div>	
+						
 			<div class="featured-item-list">
 				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
 					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
@@ -127,16 +144,7 @@
 					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
 				</h4>
 			</div>
-			
-			<div class="featured-item-list">
-				<a href="/collections/longitude"><img
-					alt="Board of Longitude" title="Board of Longitude"
-					src="/images/index/slice-islamic.jpg"> </a>
-
-				<h4>
-					<a href="/collections/longitude">Board of Longitude</a>
-				</h4>
-			</div>			
+				
 
 			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
 
@@ -144,7 +152,7 @@
 	</div>
 
 	<div class="grid_13" id="index_carousel_parent">
-
+           
 		<ol id="index_carousel" style="display: none;">
 
 			<!-- treasures collection -->
@@ -336,23 +344,30 @@
 			</li>
 			
 		</ol>
+
 	</div>
-	<!--  featured items -->
-	<ol>
-		<li><div id="MS-II-00006-00032" class="grid_13"
-				style="display: none; height: 96px">
-				<a href="/view/MS-II-00006-00032/1"><img
-					src="images/index/banner-bookofdeer.jpg" /></a>
-			</div></li>
-		<li><div id="MS-NN-00003-00074" class="grid_13"
-				style="display: none; height: 96px">
-				<a href="/view/MS-NN-00003-00074/1"><img
-					src="images/index/banner-islamicitem.jpg" /></a>
-			</div></li>
-	</ol>
+	<!--  news -->
+	<div class="grid_13">
+	<h4>Latest News</h4>
+			<div class="grid_3">
+			<a href="/news"><img alt="Build your own Digital Library with our Bookmarking tool"
+				title="Build your own Digital Library with our Bookmarking tool"
+				src="/images/index/news-christian.jpg"
+				height="100" width="100"></a>
+		</div>
+
+		<div class="grid_9">
+			<span class="date">12/12/2012</span>
+			<h4><a href="/news">Build your own Digital Library with our Bookmarking tool</a></h4>			
+			<p></p>
+			<br/><br/>
+			</div>
+	</div>
+	
 
 
 </div>
+
 
 <jsp:include page="footer/footer.jsp" />
 

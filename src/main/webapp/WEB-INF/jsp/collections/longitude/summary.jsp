@@ -14,11 +14,8 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/islamic.jpg" alt="Islamic Manuscripts"
-			width="150" height="225" /><span class="image-credit">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-			href="/view/MS-NN-00003-00075/8">Detail from MS Nn.3.75</a>
-		</span>
+			src="/images/collectionsView/longitude.jpg" alt="Board of Longitude"
+			width="150" height="225" />
 
 	</div>
 	<div class="grid_9">

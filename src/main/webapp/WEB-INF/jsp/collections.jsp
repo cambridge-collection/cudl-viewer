@@ -164,7 +164,7 @@
 		<div class="collection collection-science">
 
 			<a href="/collections/longitude"> <img class="collectionImage"
-				src="/images/collectionsView/collection-islamic.jpg"
+				src="/images/collectionsView/collection-longitude.jpg"
 				alt="Board of Longitude" width="150" height="150" />
 			</a>
 
