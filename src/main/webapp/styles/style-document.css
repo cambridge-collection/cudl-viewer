@@ -11,6 +11,11 @@ html {
 	background: #eeeeee;
 }
 
+/* Ext overrides the spacing for p tags, so putting it back */
+p {
+    margin-bottom: 15px;
+}
+
 @font-face
 {
 font-family: CharisSIL;
