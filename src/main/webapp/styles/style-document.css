@@ -167,6 +167,11 @@ table {
     padding: 10px;	
 }
 
+.nmm_icon {
+	margin-bottom:-5px;
+	display: inline;
+}
+
 .document-about-title {
 	color: #333333;
 	line-height: 30px;
