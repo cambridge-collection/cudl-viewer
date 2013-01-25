@@ -27,14 +27,21 @@ public class JSONReader {
 			JSONException {
 		InputStream is = new URL(url).openStream();
 		try {
+		    is = new URL(url).openStream();
+		
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is,
 					Charset.forName("UTF-8")));
 			String jsonText = readAll(rd);
 			JSONObject json = new JSONObject(jsonText);
 			return json;
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
 		} finally {
 			is.close();
-		}
+		}		
+		
+		return null;
 	}
 
 	/**
