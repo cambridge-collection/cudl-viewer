@@ -17,12 +17,44 @@
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
+
+
 	<div class="grid_19">
+		<div class="grid_5">
+			<img
+				alt="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				title="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				src="/images/index/news-longitude.jpg" height="200" width="200">
+		</div>
+
+		<div class="grid_11">
+			<span class="date">01/02/2013</span>
+			<h4>Logbook of Captain Cook's astonishing Pacific and Antarctic
+				voyage now online</h4>
+			<p>
+				In this release we are presenting an <a
+					href="/collections/longitude">initial selection</a> of our
+				Longitude collection, including papers from the astonishing Pacific
+				and Antarctic voyage of James Cook in 1772-1775. The digitised
+				archive of the Board of Longitude, the majority of which will be
+				released in July 2013, is a major resource for the history of
+				science, and throws a vivid light on the role of the British state
+				in encouraging invention and discovery, on the energetic culture of
+				technical ingenuity in the long eighteenth century, and on many
+				aspects of exploration and maritime travel in the Pacific Ocean and
+				the Arctic. We are also releasing eighteen further <a
+					href="/collections/newton">Newton
+				manuscripts</a>, including correspondence with major figures such as
+				Halley and Flamsteed.
+			</p>
+		</div>
+
+		<hr />
+
 		<div class="grid_5">
 			<img alt="Build your own Digital Library with our Bookmarking tool"
 				title="Build your own Digital Library with our Bookmarking tool"
-				src="/images/index/news-christian.jpg"
-				height="200" width="200">
+				src="/images/index/news-christian.jpg" height="200" width="200">
 		</div>
 
 		<div class="grid_11">
@@ -39,17 +71,17 @@
 					href="/view/MS-NN-00002-00041/1">Codex Bezae</a>, along with the
 				earliest known Scottish manuscript, the <a
 					href="/view/MS-II-00006-00032/1">Book of Deer</a>. Among our Hebrew
-				manuscripts is the <a href="/view/MS-OR-00233/1">Nash
-					Papyrus</a>, a second-century BCE fragment containing the text of the
-				Ten Commandments. We have added important material to our Sanskrit
-				and Islamic collections, and our Treasures collection now includes
-				Henry VIII's personal copy of Erasmus' translation of Plutarch. We
-				have also added over 3,000 new Genizah fragments, more than trebling
-				the number of items available.
+				manuscripts is the <a href="/view/MS-OR-00233/1">Nash Papyrus</a>, a
+				second-century BCE fragment containing the text of the Ten
+				Commandments. We have added important material to our Sanskrit and
+				Islamic collections, and our Treasures collection now includes Henry
+				VIII's personal copy of Erasmus' translation of Plutarch. We have
+				also added over 3,000 new Genizah fragments, more than trebling the
+				number of items available.
 			</p>
 		</div>
-		
-		<hr/>
+
+		<hr />
 
 		<div class="grid_5">
 			<img alt="Launch of Sanskrit and Spanish Chapbook Collections"
@@ -72,8 +104,8 @@
 			</p>
 		</div>
 	</div>
-	
-   <hr/>
+
+	<hr />
 
 	<div class="grid_19">
 		<div class="grid_5">
@@ -107,7 +139,7 @@
 
 	</div>
 
-<hr/>
+	<hr />
 
 	<div class="grid_19">
 		<div class="grid_5">
@@ -131,8 +163,8 @@
 		</div>
 
 	</div>
-	
-<hr/>	
+
+	<hr />
 
 	<div class="grid_19">
 		<div class="grid_5">
@@ -165,8 +197,8 @@
 			</p>
 		</div>
 	</div>
-	
-<hr/>	
+
+	<hr />
 
 	<div class="grid_19">
 		<div class="grid_5">

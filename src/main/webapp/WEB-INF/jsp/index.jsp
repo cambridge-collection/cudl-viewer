@@ -377,17 +377,18 @@
 	<div class="grid_13">
 		<h4>Latest News</h4>
 		<div class="grid_3">
-			<a href="/news"><img
-				alt="Build your own Digital Library with our Bookmarking tool"
-				title="Build your own Digital Library with our Bookmarking tool"
-				src="/images/index/news-christian.jpg" height="100" width="100"></a>
+			<a href="/news">
+			<img
+				alt="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				title="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				src="/images/index/news-longitude.jpg" height="100" width="100"></a>
 		</div>
 
 		<div class="grid_9">
-			<span class="date">12/12/2012</span>
+			<span class="date">01/02/2013</span>
 			<h4>
-				<a href="/news">Build your own Digital Library with our
-					Bookmarking tool</a>
+				<a href="/news">Logbook of Captain Cook's astonishing Pacific and Antarctic
+				voyage now online</a>
 			</h4>
 			<p></p>
 			<br />
