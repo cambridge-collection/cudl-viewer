@@ -22,14 +22,14 @@
 	<div class="grid_19">
 		<div class="grid_5">
 			<img
-				alt="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				alt="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
 				title="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
 				src="/images/index/news-longitude.jpg" height="200" width="200">
 		</div>
 
 		<div class="grid_11">
 			<span class="date">01/02/2013</span>
-			<h4>Logbook of Captain Cook's astonishing Pacific and Antarctic
+			<h4>Log book of Captain Cook's astonishing Pacific and Antarctic
 				voyage now online</h4>
 			<p>
 				In this release we are presenting an <a

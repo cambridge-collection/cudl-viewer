@@ -379,15 +379,15 @@
 		<div class="grid_3">
 			<a href="/news">
 			<img
-				alt="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
-				title="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				alt="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
+				title="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
 				src="/images/index/news-longitude.jpg" height="100" width="100"></a>
 		</div>
 
 		<div class="grid_9">
 			<span class="date">01/02/2013</span>
 			<h4>
-				<a href="/news">Logbook of Captain Cook's astonishing Pacific and Antarctic
+				<a href="/news">Log book of Captain Cook's astonishing Pacific and Antarctic
 				voyage now online</a>
 			</h4>
 			<p></p>
