@@ -45,8 +45,8 @@
 					target="_blank">JISC e-Content Programme 2011</a>). This project
 				has enabled the linking of Newton's facsimiles and transcriptions.
 				JISC is also funding the <a target="_blank"
-					href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013/Board%20of%20Longitude.aspx">
-					Board of Longitude</a> project (<a target="_blank"
+					href="/collections/longitude">
+					Board of Longitude Collection</a> (<a target="_blank"
 					href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">JISC
 					Content Programme 2011-2013</a>) which is creating a substantial
 				collection related to 18th century science an technology.<br /> <br />
@@ -194,6 +194,16 @@
 			<li>Ed Potten, Head of Rare Books</li>
 			<li>Jayne Ringrose, Cambridge University Library</li>
 
+		</ul>
+
+		<h4>Board of Longitude Collection</h4>
+		<ul>
+			<li>Simon Schaffer, Professor of the History and Philosophy of
+				Science, University of Cambridge</li>
+			<li>Lucinda Blaser, Digital Project Manager, Royal Museums
+				Greenwich</li>
+			<li>Richard Dunn, Senior Curator and Head of Science and
+				Technology, Royal Museums Greenwich</li>
 		</ul>
 
 		<div class="grid_14">

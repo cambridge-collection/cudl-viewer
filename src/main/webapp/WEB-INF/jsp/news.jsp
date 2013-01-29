@@ -12,14 +12,11 @@
 
 <section id="content" class="grid_20 content">
 
-
-	<div class="grid_19">
+	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
-
-
-	<div class="grid_19">
+	<div class="grid_14">
 		<div class="grid_5">
 			<img
 				alt="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
@@ -27,7 +24,7 @@
 				src="/images/index/news-longitude.jpg" height="200" width="200">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">01/02/2013</span>
 			<h4>Log book of Captain Cook's astonishing Pacific and Antarctic
 				voyage now online</h4>
@@ -43,9 +40,8 @@
 				technical ingenuity in the long eighteenth century, and on many
 				aspects of exploration and maritime travel in the Pacific Ocean and
 				the Arctic. We are also releasing eighteen further <a
-					href="/collections/newton">Newton
-				manuscripts</a>, including correspondence with major figures such as
-				Halley and Flamsteed.
+					href="/collections/newton">Newton manuscripts</a>, including
+				correspondence with major figures such as Halley and Flamsteed.
 			</p>
 		</div>
 
@@ -57,7 +53,7 @@
 				src="/images/index/news-christian.jpg" height="200" width="200">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">12/12/2012</span>
 			<h4>Build your own Digital Library with our Bookmarking tool</h4>
 			<p>
@@ -89,7 +85,7 @@
 				src="/images/index/news-sanskritandspanishchapbooks.jpg"
 				height="200" width="200">
 		</div>
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">19/07/2012</span>
 			<h4>Launch of Sanskrit and Spanish Chapbook Collections</h4>
 			<p>
@@ -103,17 +99,16 @@
 				document and making bookmarking an individual page easier.
 			</p>
 		</div>
-	</div>
 
-	<hr />
 
-	<div class="grid_19">
+		<hr />
+
 		<div class="grid_5">
 			<img alt="Treasures" title="Treasures"
 				src="/images/index/news-treasures.jpg" height="200" width="200">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">29/03/2012</span>
 			<h4>View the Library's treasures cover to cover</h4>
 			<p>
@@ -137,17 +132,16 @@
 			</p>
 		</div>
 
-	</div>
 
-	<hr />
 
-	<div class="grid_19">
+		<hr />
+
 		<div class="grid_5">
 			<img alt="Islamic Manuscripts" title="Islamic Manuscripts"
 				src="/images/index/news-islamic.jpg" height="200" width="200">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">20/12/2012</span>
 			<h4>Islamic Manuscripts</h4>
 			<p>
@@ -162,11 +156,10 @@
 			</p>
 		</div>
 
-	</div>
 
-	<hr />
 
-	<div class="grid_19">
+		<hr />
+
 		<div class="grid_5">
 			<img
 				alt="Illustration from a tenth century copy of the Perfection of Wisdom"
@@ -174,7 +167,7 @@
 				src="/images/index/news-sanskrit.jpg" height="200" width="200">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">07/11/2011</span>
 			<h4>Upcoming Collections</h4>
 			<p>
@@ -196,18 +189,17 @@
 				information about these projects.
 			</p>
 		</div>
-	</div>
 
-	<hr />
 
-	<div class="grid_19">
+		<hr />
+
 		<div class="grid_5">
 			<img alt="Introducing the Cambridge Digital Library"
 				src="/images/index/news-newton.jpg" height="200" width="200"
 				title="Introducing the Cambridge Digital Library">
 		</div>
 
-		<div class="grid_11">
+		<div class="grid_8">
 			<span class="date">07/11/2011</span>
 			<h4>Introducing the Cambridge Digital Library</h4>
 			<p>
@@ -221,6 +213,27 @@
 
 		</div>
 	</div>
+	<div class="grid_5">
+
+		<!-- twitter feed -->
+		<a class="twitter-timeline" href="https://twitter.com/CamDigLib"
+			data-widget-id="296241481885294593">Tweets by @CamDigLib</a>
+		<script>
+			!function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "//platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, "script", "twitter-wjs");
+		</script>
+		<!-- end of twitter feed -->
+
+	</div>
+
+
 
 </section>
 

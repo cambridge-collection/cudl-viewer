@@ -12,5 +12,12 @@
 		library's infrastructure and the digitisation of the Board of Longitude
 		manuscripts. <br /> <br />
 	</div>
+	<br />
+	<div class="grid_4">
+		<img src="/images/jisc.gif" title="JISC" />
+	</div>
+	<div class="grid_13">
+		Content of this collection has been funded by <a target="_blank" href="http://www.jisc.ac.uk/">JISC</a>. <br /> <br />
+	</div>
 
 </div>
