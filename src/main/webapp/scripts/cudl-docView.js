@@ -261,8 +261,8 @@ cudl.docView = function() {
 				
 				if (descriptiveMetadata.abstract) {
 					cudl.view.populateElement(document
-							.getElementById("metadata-abstract"), ""
-							+ descriptiveMetadata.abstract.displayForm + "<br />");
+							.getElementById("metadata-abstract"), cudl.view.expandAfterFirstParagraph(""
+							+ descriptiveMetadata.abstract.displayForm));
 				}
 
 				// setup logical structure
@@ -508,7 +508,31 @@ cudl.docView = function() {
 			return lsArray;
 
 		},
+		
+		/**
+		 * Truncates the text supplied after the first paragraph and replaces with a
+		 * link to 'show more'. Does nothing if there is less than two paragraphs. 
+		 * The show more link causes the expandAbstract function to be called. 
+		 */
+		expandAfterFirstParagraph : function(html) {
+			var startParagraphIndex = html.indexOf("<p");
+			var endParagraphIndex = html.indexOf("</p>");
+			if (startParagraphIndex!=-1 && endParagraphIndex!=-1 && html.substring(endParagraphIndex, html.length-1).indexOf("<p")!=-1) {
+			     var output = html.substring(startParagraphIndex, endParagraphIndex);
+			     output +=" ... <a href='#' onclick='return cudl.view.expandAbstract()'>show more</a></p>";
+			     return output;
+			}
+			return html;
+		},
 
+		expandAbstract : function() {
+			var metaAbstract = document.getElementById("metadata-abstract");
+			var lsArray = cudl.view.getLSArrayForPageViewed(cudl.pagenum, cudl.data.logicalStructures);	
+			var metadata = cudl.view.getDescriptiveMetadataForThisPage(lsArray[0]);
+			cudl.view.populateElement(metaAbstract,metadata.abstract.displayForm, true);
+			return false;
+		},
+		
 		/**
 		 * Returns ROOT descriptiveMetadata for this item, plus any 
 		 * children descriptiveMetadata sections that correspond to the
