@@ -37,7 +37,7 @@
 				released in July 2013, is a major resource for the history of
 				science, and throws a vivid light on the role of the British state
 				in encouraging invention and discovery, on the energetic culture of
-				technical ingenuity in the long eighteenth century, and on many
+				technical ingenuity in the eighteenth century, and on many
 				aspects of exploration and maritime travel in the Pacific Ocean and
 				the Arctic. We are also releasing eighteen further <a
 					href="/collections/newton">Newton manuscripts</a>, including
