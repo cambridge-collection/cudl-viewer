@@ -88,6 +88,9 @@
 			during the later eighteenth and early nineteenth century voyages,
 			including reports by Wales, George Vancouver, Matthew Flinders and
 			related Pacific and Arctic expeditions.</p>
+			
+			<p>The 'splash' icons found in the descriptions are links to relevant items
+			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
 	</div>
 	
 	<!-- 
