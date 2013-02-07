@@ -20,7 +20,7 @@
 	</div>
 	<div class="grid_9">
 		<br />
-		<p>The archives of the Royal Observatory, Greenwich, held in
+		<p>The archives of the Royal Greenwich Observatory, held in
 			Cambridge University Library, include the complete run of the papers
 			of the Board of Longitude through the eighteenth century until its
 			abolition in 1828. These papers throw a vivid light on the role of
@@ -70,7 +70,7 @@
 			<a href="https://longitude.blog.lib.cam.ac.uk/">https://longitude.blog.lib.cam.ac.uk/</a></p>
 
 		<p>The papers of the Board of Longitude were systematically
-			gathered and catalogued at the Royal Observatory, Greenwich, and
+			gathered and catalogued at the Royal Greenwich Observatory, and
 			passed to the University Library Cambridge when the Observatory’s
 			papers were transferred there in 1990. This is an initial selection
 			of these papers prior to a larger release in July 2013. This
