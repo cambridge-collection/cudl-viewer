@@ -1,5 +1,11 @@
 Tagging procedure for a new release:
 
+Configuration files
+
+   Check files in https://source.caret.cam.ac.uk/svn/projects/ul-foundations/tomcat-lib/pres-viewer-dev
+   and https://source.caret.cam.ac.uk/svn/projects/ul-foundations/tomcat-lib/pres-viewer-live
+   for any changes.
+   
 Update Database (if new content):
 
   Dump the items, itemsincollection and collections tables
@@ -21,8 +27,12 @@ XTF:
   Need to manually tag these using the command (note svn tags cannot be changed after they are created). 
 
   svn copy https://source.caret.cam.ac.uk/svn/projects/ul-foundations/xtf/trunk \
-      https://source.caret.cam.ac.uk/svn/projects/ul-foundations/xtf/tags/<TAG_NUMBER> -m "Release <TAG_NUMBER>"
+      https://source.caret.cam.ac.uk/svn/projects/ul-foundations/xtf/tags/<TAG_NUMBER> -m "Release <TAG_NUMBER> <date>"
 
+Tag data and json:
+   
+   svn copy https://source.caret.cam.ac.uk/svn/projects/ul-foundations/data-xtf/trunk/ \
+      https://source.caret.cam.ac.uk/svn/projects/ul-foundations/data-xtf/tags/<TAG_NUMBER> -m "Release <TAG_NUMBER> <date>"      
 
 Viewer:
 
