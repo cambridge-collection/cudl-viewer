@@ -528,10 +528,21 @@ cudl.docView = function() {
 		expandAbstract : function() {
 			var metaAbstract = document.getElementById("metadata-abstract");
 			var lsArray = cudl.view.getLSArrayForPageViewed(cudl.pagenum, cudl.data.logicalStructures);	
-			var metadata = cudl.view.getDescriptiveMetadataForThisPage(lsArray[0]);
-			cudl.view.populateElement(metaAbstract,metadata.abstract.displayForm, true);
+			var metadata = cudl.view.getDescriptiveMetadataForThisPage(lsArray[0]);			
+			cudl.view.populateElement(metaAbstract,metadata.abstract.displayForm
+					+" <p><a href='#' onclick='return cudl.view.hideAbstract()'>show less</a></p>", true);
+			
 			return false;
 		},
+		
+		hideAbstract : function() {
+			var metaAbstract = document.getElementById("metadata-abstract");
+			var lsArray = cudl.view.getLSArrayForPageViewed(cudl.pagenum, cudl.data.logicalStructures);	
+			var metadata = cudl.view.getDescriptiveMetadataForThisPage(lsArray[0]);			
+			cudl.view.populateElement(metaAbstract,cudl.view.expandAfterFirstParagraph(metadata.abstract.displayForm), true);
+			
+			return false;
+		},		
 		
 		/**
 		 * Returns ROOT descriptiveMetadata for this item, plus any 

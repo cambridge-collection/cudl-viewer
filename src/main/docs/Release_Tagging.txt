@@ -34,6 +34,9 @@ Tag data and json:
    svn copy https://source.caret.cam.ac.uk/svn/projects/ul-foundations/data-xtf/trunk/ \
       https://source.caret.cam.ac.uk/svn/projects/ul-foundations/data-xtf/tags/<TAG_NUMBER> -m "Release <TAG_NUMBER> <date>"      
 
+   Note: switching to a new tag can be done using:
+   svn switch https://source.caret.cam.ac.uk/svn/projects/ul-foundations/data-xtf/tags/<version>
+   
 Viewer:
 
   Use the following command, that prompts you for a version number.  
