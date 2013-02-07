@@ -73,8 +73,10 @@
 			worship and debate and reflecting both Church ceremonial and private
 			devotion.</p>
 
+<!-- 
 		Want to view items by subject or date? <br /> <a
 			href="/search?facet-collection=Christian+Works">Search the
 			Christian Works</a> <br /> <br />
+-->			
 	</div>
 </div>

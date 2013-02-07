@@ -97,9 +97,11 @@
 			</div>
 		</div>
 		
+		<!-- 
 		<div class="box grid_8">
 		Want to view items by subject or date? <br/>
 		<a href="/search?facet-collection=Newton+Papers">Search the Newton Papers</a>
 		</div>
+		-->
 	</div>
 </div>

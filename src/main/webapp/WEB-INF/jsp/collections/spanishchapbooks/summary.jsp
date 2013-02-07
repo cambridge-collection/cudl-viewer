@@ -38,11 +38,12 @@
 		<p>An exhibition of this material, alongside analogous popular material drawn from the Library's collection of English chapbooks and broadsides, opens in April 2013. Its narrative will follow a type of life-cycle of wrongdoing, from education about how to know right from wrong, through the challenges that arise as we grow up, and characteristically become involved in family frictions, and then illustrating the sorts of actions of violence and excess that can result. A final section will focus upon the representation of retribution, whether divine or otherwise. </p>
 
 
-
+<!-- 
 		<div class="box grid_8">
 			Want to view items by subject or date? <br /> <a
 				href="/search?facet-collection=Spanish+Chapbooks">Search Spanish
 				Chapbooks</a>
 		</div>
+-->
 	</div>
 </div>

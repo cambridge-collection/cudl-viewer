@@ -37,9 +37,12 @@
 		<p>There is, in other words, a wealth here of cultural and historical information on South Asia of great potential significance for contemporary scholarship, which will be gradually made available through the Digital Library.</p>
 		<br />
 	</div>
+	
+	<!-- 
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
 			href="/search?facet-collection=Sanskrit+Manuscripts">Search the
 			Sanskrit Manuscripts</a>
 	</div>
+	-->
 </div>

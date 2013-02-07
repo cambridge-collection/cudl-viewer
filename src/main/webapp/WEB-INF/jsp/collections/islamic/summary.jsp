@@ -87,8 +87,10 @@
 		
 	</div>
 	
+	<!-- 
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
 			href="/search?facet-collection=Islamic+Manuscripts">Search the Islamic Manuscripts</a>
 	</div>
+	-->
 </div>
