@@ -152,8 +152,6 @@ public class DocumentViewController {
 		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
 		modelAndView.addObject("itemAbstract", item.getAbstract());
 		
-		//test
-		modelAndView.addObject("item", new JSONObject(item));
 		return modelAndView;
 	}
 
