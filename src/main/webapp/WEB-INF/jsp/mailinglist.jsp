@@ -43,15 +43,20 @@ body {
 		<div class="mailinglistform">
 			<!--<form:form method="post" commandName="mailingListForm">-->
 
-				<p>If you would like to receive details of updates or
-					changes to this site, then join our mailing list. Our email service
-					will alert you when new material is added or significant changes made.</p>
-				<p>
-					Just send an email to <a
-						href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">cudl-updates-subscribe@caret.cam.ac.uk</a> to subscribe.
+			<p>If you would like to receive details of updates or changes to
+				this site, then join our mailing list. Our email service will alert
+				you when new material is added or significant changes made.</p>
+			<p>
+				Just send an email to <a
+					href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">cudl-updates-subscribe@caret.cam.ac.uk</a>
+				to subscribe.
+			<p>
+				You can also follow us on twitter <a
+					href="https://twitter.com/CamDigLib" target="_blank">@CamDigLib</a>.
 
 
-					<!--<form:label path="name">Name:</form:label>
+
+				<!--<form:label path="name">Name:</form:label>
 					<em>*</em>
 					<form:input path="name" />
 					<form:errors path="name" cssClass="error" />
