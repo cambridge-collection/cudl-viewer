@@ -122,8 +122,9 @@ public class TranscriptionViewController {
 	protected String readContent(String url) throws IOException {
 
 		URLConnection connection = new URL(url).openConnection();
+		
 		BufferedReader in = new BufferedReader(new InputStreamReader(
-				connection.getInputStream()));
+				connection.getInputStream(),  "UTF-8"));
 
 		String inputLine;
 		StringBuffer input = new StringBuffer();
