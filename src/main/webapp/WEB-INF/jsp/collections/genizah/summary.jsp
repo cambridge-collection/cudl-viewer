@@ -20,11 +20,13 @@
 
 	<div class="grid_8 box">
 		<div>
-			<a href="/search?facet-collection=Cairo+Genizah&fileID=TS&keyword=genizah">View
+			<a
+				href="/search?facet-collection=Cairo+Genizah&fileID=TS&keyword=genizah">View
 				only items in the Taylor-Schechter Collection</a>
 		</div>
 		<div>
-			<a href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI&keyword=genizah">View
+			<a
+				href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI&keyword=genizah">View
 				only items in the Mosseri Collection</a>
 		</div>
 	</div>
@@ -77,12 +79,13 @@
 			Cambridge University Library on a 20-year loan. During its stay in
 			Cambridge, the Mosseri Collection will be conserved and digitised,
 			and a new, detailed catalogue produced.</p>
-		<p>At the moment, only a selection of several thousand manuscripts
-			from the Taylor-Schechter and Jacques Mosseri Collections are
-			available online at this site, but eventually Cambridge Digital
-			Library will present images and descriptions of every manuscript, as
-			well as the Genizah items found in the Library’s Or. and Add.
-			Collections.</p>
+		<p>At the moment, nearly 12,000 manuscripts from across the
+			Taylor-Schechter, CUL Or. and Jacques Mosseri Collections are
+			available online, including a substantial number of documents
+			(letters and legal deeds) and liturgical texts (the fruits of a joint
+			project with Ben Gurion University). More manuscripts will be added
+			on a regular basis, until the entire Cambridge Genizah Collection is
+			online.</p>
 		<p>
 			The <a href="http://www.lib.cam.ac.uk/Taylor-Schechter/"
 				target="_blank">Genizah Research Unit</a> at Cambridge University
@@ -90,7 +93,7 @@
 			of the Genizah Collection.
 		</p>
 		<br />
-<!-- 
+		<!-- 
 		<div class="box">
 			Want to view items by date? <br /> <a
 				href="/search?facet-collection=The+Cairo+Genizah+Collection">Search
