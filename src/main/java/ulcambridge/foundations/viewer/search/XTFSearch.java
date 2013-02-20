@@ -26,12 +26,9 @@ public class XTFSearch implements Search {
 	@Override
 	public SearchResultSet makeSearch(SearchQuery searchQuery) {
 
-		// Remove unsupported facets
-		Map<String, String> facets = removeUnsupportedFacets(searchQuery
-				.getFacets());
-
 		// Construct the URL we are going to use to query XTF
-		String searchXTFURL = buildQueryURL(searchQuery.getKeyword(), searchQuery.getFileID(), facets);
+		String searchXTFURL = buildQueryURL(searchQuery.getKeyword(), searchQuery.getFileID(), searchQuery
+				.getFacets());
 
 		// if the query URL is null return empty result set. 
 		if (searchXTFURL==null) {			
@@ -98,26 +95,6 @@ public class XTFSearch implements Search {
 		}
 		//System.out.println(searchXTFURL);
 		return searchXTFURL;
-	}
-
-	/**
-	 * collection facet is not supported by XTF so remove from our query.
-	 * 
-	 * @param facets
-	 * @return
-	 */
-	protected Map<String, String> removeUnsupportedFacets(
-			Map<String, String> facets) {
-
-		// Request XTF keyword search (raw=1 to return XML)
-		Hashtable<String, String> xtfFacetQuery = new Hashtable<String, String>();
-		xtfFacetQuery.putAll(facets);
-
-		if (xtfFacetQuery.containsKey("collection")) {
-			xtfFacetQuery.remove("collection");
-		}
-
-		return xtfFacetQuery;
 	}
 
 	/**

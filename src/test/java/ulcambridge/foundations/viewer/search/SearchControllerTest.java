@@ -77,7 +77,6 @@ public class SearchControllerTest extends TestCase {
 		collectionFactory.setCollectionsDao(collectionsdao);
 		
 		// inject the factories
-		c.setCollectionFactory(collectionFactory);	
 		c.setItemFactory(itemFactory);
 
 		ModelAndView m = c.processSearch(req, res);

@@ -39,7 +39,6 @@ public class SearchController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 	private Search search;
-	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;
 	
 	/**
@@ -51,12 +50,7 @@ public class SearchController {
 	public SearchController(Search search) {
 		this.search = search;
 	}
-	
-	@Autowired
-	public void setCollectionFactory(CollectionFactory factory) {
-		this.collectionFactory = factory;
-	}
-	
+		
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
@@ -89,11 +83,6 @@ public class SearchController {
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchQuery);
 
-		// Apply collection facet
-		if (facetQuery.containsKey("collection")) {
-			results = applyCollectionFacet(searchQuery, results);
-		}
-
 		// Remove any results that the viewer does not know about.
 		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 		Iterator<SearchResult> resultIt = results.getResults().iterator();
@@ -113,9 +102,6 @@ public class SearchController {
 		results = new SearchResultSet(refinedResults.size(),
 				results.getSpellingSuggestedTerm(), results.getQueryTime(),
 				refinedResults, facets, results.getError());
-
-		// Add collection facet into search results
-		results.addFacetGroup(0, getCollectionFacet(results));
 
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("query", searchQuery);
@@ -204,99 +190,6 @@ public class SearchController {
 			}
 		}
 		return null;
-
-	}
-
-	/**
-	 * Refines the searchResults, removing any results from the SearchResultSet
-	 * that do not match the specified collection.
-	 * 
-	 * @param facetName
-	 * @param results
-	 * @return
-	 */
-	private SearchResultSet applyCollectionFacet(SearchQuery searchQuery,
-			SearchResultSet results) {
-
-		String title = searchQuery.getFacets().get("collection");
-		Collection collection = collectionFactory.getCollectionFromTitle(title);
-		List<String> itemIds = collection.getItemIds();
-
-		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
-
-		Iterator<SearchResult> resultIt = results.getResults().iterator();
-		while (resultIt.hasNext()) {
-			SearchResult result = resultIt.next();
-
-			if (itemIds.contains(result.getId())) {
-				refinedResults.add(result);
-			}
-		}
-
-		return new SearchResultSet(refinedResults.size(),
-				results.getSpellingSuggestedTerm(), results.getQueryTime(),
-				refinedResults, results.getFacets(), results.getError());
-
-	}
-
-	/**
-	 * Make a new collection Facet containing those collections that exist in
-	 * the results
-	 * 
-	 * @param results
-	 * @return
-	 */
-	private FacetGroup getCollectionFacet(SearchResultSet results) {
-
-		Hashtable<Collection, Integer> collectionsInResults = new Hashtable<Collection, Integer>();
-
-		// Go through all the collections and see if there are any
-		// results that match ids in these collections.
-
-		Iterator<Collection> allCollectionsIterator = collectionFactory
-				.getCollections().iterator();
-		while (allCollectionsIterator.hasNext()) {
-
-			Collection collection = allCollectionsIterator.next();
-			List<String> itemIds = collection.getItemIds();
-
-			// Go through all the search results looking for a match for this
-			// collection
-			Iterator<SearchResult> searchResultIterator = results.getResults()
-					.iterator();
-			while (searchResultIterator.hasNext()) {
-				SearchResult result = searchResultIterator.next();
-				if (itemIds.contains(result.getId())) {
-
-					// Found item in this collection
-					if (!collectionsInResults.containsKey(collection)) {
-						collectionsInResults
-								.put(collection, Integer.valueOf(1));
-					} else {
-						int count = collectionsInResults.get(collection)
-								.intValue();
-						count++;
-						collectionsInResults.put(collection,
-								Integer.valueOf(count)); // overwrites.
-					}
-				}
-			}
-		}
-
-		// Now go through the collections found and make a facet
-		String field = "collection";
-		String fieldLabel = "Collection";
-		List<Facet> bands = new ArrayList<Facet>();
-
-		Enumeration<Collection> collectionsEnum = collectionsInResults.keys();
-		while (collectionsEnum.hasMoreElements()) {
-			Collection collection = collectionsEnum.nextElement();
-			Integer count = collectionsInResults.get(collection);
-			Facet facet = new Facet(field, collection.getTitle(), count);
-			bands.add(facet);
-		}
-
-		return new FacetGroup(field, fieldLabel, bands);
 
 	}
 

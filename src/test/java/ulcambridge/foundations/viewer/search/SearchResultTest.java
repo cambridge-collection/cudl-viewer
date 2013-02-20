@@ -60,7 +60,7 @@ public class SearchResultTest extends TestCase {
 
 		assertEquals(result.getId(), "MS-ADD-04004");
 		assertEquals(result.getTitle(), "Newton's Waste Book");		
-		assertEquals(result.getFacets().size(), 2);	
+		assertEquals(result.getFacets().size(), 4);	
 		assertEquals(result.getDocHits().size(), 1);	
 	}
 }

@@ -51,7 +51,6 @@ public class XTFSearchTest extends TestCase {
 		assertEquals(1, r.getNumberOfResults());
 		assertEquals(1, r.getResults().size());
 		assertEquals("", r.getSpellingSuggestedTerm());
-		assertEquals(0.018f, r.getQueryTime());
 		assertEquals("", r.getError());
 		assertEquals("MS-ADD-04004", r.getResults().get(0).getId());
 		

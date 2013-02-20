@@ -27,7 +27,6 @@
 	  <constructor-arg type="ulcambridge.foundations.viewer.search.Search">
 	  <ref bean="search"/>
 	  </constructor-arg>
-	  <property name="collectionFactory" ref="collectionFactory" />
 	  <property name="itemFactory" ref="itemFactory" />	  	        
 	</bean>
 
