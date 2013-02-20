@@ -12,6 +12,7 @@ div.pagination {
 }
 
 div.pagination a {
+	font-size: 80%;
 	padding: 4px 4px 4px 4px;
 	margin-right: 2px;
 	border: 1px solid #999999;
