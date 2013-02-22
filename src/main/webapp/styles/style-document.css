@@ -116,9 +116,8 @@ table {
 	border: 0;
 }
 
-/* Left Panel */
-#logical_structure li { /*text-decoration:underline;*/
-	font-style: normal;
+/* Contents Panel */
+#logical_structure li { 
 	margin-top: 15px;
 	margin-bottom: 15px;
 	margin-left: 15px;
@@ -133,6 +132,17 @@ table {
 #logical_structure li ul li {
 	padding-left: 10px;
 	list-style: none;
+}
+
+/* bold the first level links */
+#logical_structure ul li a{
+	color: #5E2605;	
+	font-weight: bold;
+}
+
+#logical_structure ul li ul li a{
+	color: #5E2605;
+	font-weight: normal;
 }
 
 /* Right Panel */
@@ -279,10 +289,6 @@ table {
 }
 
 .document-about a {
-	color: #5E2605;
-}
-
-#logical_structure  a {
 	color: #5E2605;
 }
 
