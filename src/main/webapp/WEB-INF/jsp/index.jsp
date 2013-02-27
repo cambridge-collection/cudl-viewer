@@ -379,16 +379,16 @@
 		<div class="grid_3">
 			<a href="/news">
 			<img
-				alt="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
-				title="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
-				src="/images/index/news-longitude.jpg" height="100" width="100"></a>
+				alt="Maimonides fragments and Newton's dispute with Flamsteed released"
+				title="Maimonides fragments and Newton's dispute with Flamsteed released"
+				src="/images/index/news-maimonides.jpg" height="100" width="100"></a>
 		</div>
 
 		<div class="grid_9">
-			<span class="date">01/02/2013</span>
+			<span class="date">28/02/2013</span>
 			<h4>
-				<a href="/news">Log book of Captain Cook's astonishing Pacific and Antarctic
-				voyage now online</a>
+				<a href="/news">Maimonides fragments and Newton's dispute with Flamsteed
+				released</a>
 			</h4>
 			<p></p>
 			<br />

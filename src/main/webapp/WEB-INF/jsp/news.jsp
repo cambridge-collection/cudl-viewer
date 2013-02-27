@@ -19,6 +19,43 @@
 	<div class="grid_14">
 		<div class="grid_5">
 			<img
+				alt="Maimonides fragments and Newton's dispute with Flamsteed released"
+				title="Maimonides fragments and Newton's dispute with Flamsteed released"
+				src="/images/index/news-maimonides.jpg" height="200" width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">28/02/2013</span>
+			<h4>Maimonides fragments and Newton's dispute with Flamsteed
+				released</h4>
+			<p>
+				In this release we are publishing a further 8,000 Genizah fragments,
+				bringing our overall total to 12,000 available on the site. The <a
+					href="/collections/genizah">Cairo Genizah Collection</a> at
+				Cambridge University Library is the world's largest and most
+				important single collection of medieval Jewish manuscripts, and this
+				selection includes three autograph texts by the greatest Jewish
+				thinker of the Middle Ages, Moses Maimonides.
+			</p>
+			<p>
+				We are also releasing three Newton manuscripts - including <a
+					href="/view/MS-ADD-04006">MS Add.4006</a>, which contains Newton's
+				correspondence with John Flamsteed, the first Astronomer Royal. The
+				correspondence touches on the dispute between Flamsteed and the
+				Royal Society (of which Newton was the President) over the
+				publication of Flamsteed's observations. Newton required real
+				observations of the Moon's place for his theoretical work, and
+				Flamsteed, who was the holder of those observations, resented
+				Newton's imperious demands. In 1712 publication went ahead without
+				Flamsteed’s agreement, incensing the Astronomer Royal who referred
+				to this as a 'villainous outrage'.
+			</p>
+		</div>
+
+		<hr />
+
+		<div class="grid_5">
+			<img
 				alt="Log book of Captain Cook's astonishing Pacific and Antarctic voyage now online"
 				title="Logbook of Captain Cook's astonishing Pacific and Antarctic voyage now online"
 				src="/images/index/news-longitude.jpg" height="200" width="200">
@@ -37,9 +74,9 @@
 				released in July 2013, is a major resource for the history of
 				science, and throws a vivid light on the role of the British state
 				in encouraging invention and discovery, on the energetic culture of
-				technical ingenuity in the eighteenth century, and on many
-				aspects of exploration and maritime travel in the Pacific Ocean and
-				the Arctic. We are also releasing eighteen further <a
+				technical ingenuity in the eighteenth century, and on many aspects
+				of exploration and maritime travel in the Pacific Ocean and the
+				Arctic. We are also releasing eighteen further <a
 					href="/collections/newton">Newton manuscripts</a>, including
 				correspondence with major figures such as Halley and Flamsteed.
 			</p>

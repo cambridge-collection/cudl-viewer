@@ -9,6 +9,14 @@ cudl.setupSeaDragon = function () {
 	Seadragon.Strings.Tooltips.Home = "Full Page View";
 
 	cudl.viewer = new Seadragon.Viewer("doc");
+	/*		
+	cudl.viewer = new OpenSeadragon.Viewer({
+		id:"doc",
+        debugMode: true,
+        prefixUrl: "/img/",
+        maxZoomPixelRatio: 1
+    });
+*/
 
 	// Setup forward and backward buttons
 	function fullscreenNextPage() {
