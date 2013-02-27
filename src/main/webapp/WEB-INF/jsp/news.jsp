@@ -35,7 +35,10 @@
 				Cambridge University Library is the world's largest and most
 				important single collection of medieval Jewish manuscripts, and this
 				selection includes three autograph texts by the greatest Jewish
-				thinker of the Middle Ages, Moses Maimonides.
+				thinker of the Middle Ages, Moses Maimonides (<a
+					href="/view/MS-TS-AS-00111-00164">T-S AS 111.164</a>, <a
+					href="/view/MS-TS-AS-00149-00089">T-S AS 149.89</a> and <a
+					href="/view/MS-MOSSERI-VIII-00024-00001">Mosseri VIII.24.1</a>)
 			</p>
 			<p>
 				We are also releasing three Newton manuscripts - including <a
