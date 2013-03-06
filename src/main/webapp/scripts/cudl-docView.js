@@ -82,6 +82,14 @@ cudl.bookmarkImageCheck = function() {
 		});
 };
 
+cudl.linkImageCheck = function() {
+	Ext.Msg.show({
+		   title:'The link for this page is',
+		   msg: window.location.protocol+"//"+window.location.host+"/view/"+ cudl.docId + "/" + cudl.pagenum,
+		   buttons: Ext.Msg.OK
+		});
+};
+
 cudl.docView = function() {
 	return {
 

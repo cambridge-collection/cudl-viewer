@@ -192,6 +192,11 @@ cudl.setupViewport = function () {
 			.add('Page: <span id="metadata-pagenum-toolbar">&nbsp;</span>');
 	cudl.viewportComponents.pagingToolbar.add('->');
 	cudl.viewportComponents.pagingToolbar.add({
+		tooltip : 'Page Link',
+		icon : '/img/icon-link.png',		
+		handler : cudl.linkImageCheck
+	});		
+	cudl.viewportComponents.pagingToolbar.add({
 		tooltip : 'Bookmark Image',
 		icon : '/img/icon-bookmark-blue.png',
 		handler : cudl.bookmarkImageCheck
