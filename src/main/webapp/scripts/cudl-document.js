@@ -288,6 +288,52 @@ cudl.setupViewport = function () {
 
 	cmp1.show();
 	
+	// setup logical structure
+
+	cudl.buildLogicalStructures = function(logicalStructureElement, level) {
+		
+		var ls = "";
+
+		for ( var i = 0; i < logicalStructureElement.length; i++) {
+			var lsItem = logicalStructureElement[i];
+			for ( var j = 0; j < level; j++) {
+				ls += "<li><ul>";
+			}
+			ls += "<li><a href='' onclick='cudl.store.loadPage("
+					+ lsItem.startPagePosition + ");return false;'>"
+					+ lsItem.label + "</a> (image "
+					+ lsItem.startPagePosition + ", page "
+					+ lsItem.startPageLabel + ")</li>";
+			for ( var j = 0; j < level; j++) {
+				ls += "</ul></li> ";
+			}
+
+			if (lsItem.children && lsItem.children.length > 0) {
+				ls += cudl.buildLogicalStructures(lsItem.children,
+						level + 1);
+			}
+		}
+
+		return ls;
+	}	
+
+	
+	if (document.getElementById("logical_structure")) {
+		
+		var ls;
+		if (cudl.data.logicalStructures[0].children) {
+
+			ls = cudl.buildLogicalStructures(
+					cudl.data.logicalStructures[0].children, 0);
+		} 
+
+		var lsDiv = document.getElementById("logical_structure");
+		
+		lsDiv.innerHTML="<div style='height: 100%; overflow-y:auto;'><ul>"
+						+ ls + "</ul></div>";
+
+	}
+	
 }
 
 /**
