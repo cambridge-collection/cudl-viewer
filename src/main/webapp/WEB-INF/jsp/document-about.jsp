@@ -42,14 +42,24 @@
 						target="_blank"><img src="/img/icon-reproduction-blue.png"
 						style="float: left; padding-right: 3px" /> Request reproduction
 						rights to this image</a> <span id="metadata-display-rights"
-						class="rights-statement"></span> <br /> <br /> <a
+						class="rights-statement"></span> 
+						
+					<br /> <br /> <a
 						id="bookmarkLink"
 						onclick="cudl.bookmarkImageCheck(); return false;"
-						href="/mylibrary/addbookmark/?itemId=MS-ADD-03996&page=1&thumbnailURL=%2Fcontent%2Fimages%2FMS-ADD-03996-000-00001_files%2F8%2F0_0.jpg"><img
+						href=""><img
 						src="/img/icon-bookmark-blue.png"
 						style="float: left; padding-right: 3px" /> Bookmark this image</a> <br />
 
 					<br /><br />  
+			
+					<a href="" onclick="cudl.linkImageCheck(); return false;">
+						<img src="/img/icon-link.png"
+						style="float: left; padding-right: 3px" /> Share the link to this image
+					</a>
+
+					<br /><br /> <br />   
+										
 					<!-- AddThis Button BEGIN -->
 					<div>
 						<div class="grid_5">
