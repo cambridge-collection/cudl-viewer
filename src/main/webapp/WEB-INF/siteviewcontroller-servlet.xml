@@ -18,8 +18,10 @@
         http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
     <import resource="datasource/itemsFactory.xml" />
-
+    <import resource="datasource/collectionsFactory.xml" />
+ 
 	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
+		<property name="collectionFactory" ref="collectionFactory" />
 		<property name="itemFactory" ref="itemFactory" />
 	</bean>
 

@@ -3,9 +3,11 @@ package ulcambridge.foundations.viewer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +20,7 @@ public class CollectionFactory {
 	private CollectionsDao collectionsDao;
 	private Calendar lastInit;
 	private int INIT_TIMEOUT = 60000; // in milliseconds
+	private HashSet<String> allItemIds = new HashSet<String>(); // list of items in any collection
 
 	@Autowired
 	public void setCollectionsDao(CollectionsDao dao) {
@@ -41,10 +44,11 @@ public class CollectionFactory {
 		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
 			String collectionId = collectionIds.get(i);
-			collections.put(collectionId,
-					collectionsDao.getCollection(collectionId));
+			Collection collection = collectionsDao.getCollection(collectionId);
+			collections.put(collectionId,collection);
+			allItemIds.addAll(collection.getItemIds());
 		}
-
+		
 	}
 
 	public Collection getCollectionFromId(String id) {
@@ -92,4 +96,10 @@ public class CollectionFactory {
 
 	}
 
+	public Set<String> getAllItemIds() {
+		if (collections == null || collections.isEmpty()) {
+			init();
+		}		
+		return allItemIds;
+	}
 }

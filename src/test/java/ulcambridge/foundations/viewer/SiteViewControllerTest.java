@@ -21,14 +21,16 @@ public class SiteViewControllerTest extends TestCase {
 		
 		ItemsJSONDao jsondao = new ItemsJSONDao();
 		jsondao.setJSONReader(reader);
-		
-		CollectionsDao collectionsdao = new CollectionsMockDao();
 				
 		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setCollectionsDao(collectionsdao);
 		itemFactory.setItemsDao(jsondao);	
+		
+		CollectionFactory collectionFactory = new CollectionFactory();
+		CollectionsDao collectionsdao = new CollectionsMockDao();
+		collectionFactory.setCollectionsDao(collectionsdao);	
 
-		c.setItemFactory(itemFactory);		
+		c.setItemFactory(itemFactory);
+		c.setCollectionFactory(collectionFactory);		
 		
 		ModelAndView modelAndView = c.handleRequest();
 		assertTrue(modelAndView!=null);

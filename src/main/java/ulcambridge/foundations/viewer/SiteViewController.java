@@ -2,7 +2,7 @@ package ulcambridge.foundations.viewer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
@@ -25,10 +24,16 @@ public class SiteViewController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private String showHoldingPage = Properties.getString("showHoldingPage");
 	private ItemFactory itemFactory;
+	private CollectionFactory collectionFactory;
 
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
+	}
+
+	@Autowired
+	public void setCollectionFactory(CollectionFactory factory) {
+		this.collectionFactory = factory;
 	}
 
 	// on path /
@@ -42,16 +47,15 @@ public class SiteViewController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/index");
-		ArrayList<Item> featuredItems = new ArrayList<Item>();
-		String[] itemIds = Properties.getString("collection.featuredItems")
-				.split("\\s*,\\s*");
-		for (int i = 0; i < itemIds.length; i++) {
-			String itemId = itemIds[i];
-			featuredItems.add(itemFactory.getItemFromId(itemId));
-		}
-		modelAndView.addObject("featuredItems", featuredItems);
+
 		modelAndView.addObject("downtimeWarning",
 				Properties.getString("downtimeWarning"));
+
+		DecimalFormat formatter = new DecimalFormat("###,###,###");
+
+		modelAndView
+				.addObject("itemCount", formatter.format(this.collectionFactory
+						.getAllItemIds().size()));
 
 		return modelAndView;
 	}

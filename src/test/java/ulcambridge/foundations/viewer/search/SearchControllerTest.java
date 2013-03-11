@@ -60,7 +60,6 @@ public class SearchControllerTest extends TestCase {
 		CollectionsDao collectionsdao = new CollectionsMockDao();
 				
 		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setCollectionsDao(collectionsdao);
 		itemFactory.setItemsDao(jsondao);	
 
 		MockHttpServletRequest req = new MockHttpServletRequest();

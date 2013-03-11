@@ -14,7 +14,6 @@
 	
   	<bean id="itemFactory" class="ulcambridge.foundations.viewer.ItemFactory">
 		<property name="itemsDao" ref="itemsDao" />
-		<property name="collectionsDao" ref="collectionsDao" />
 	</bean>
 	
 </beans>
