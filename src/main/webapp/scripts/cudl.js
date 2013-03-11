@@ -97,14 +97,15 @@ cudl.getCookie = function (name)
 };
 
 cudl.displayCookieNotice = function () {
-	  if (cudl.getCookie("cudlcookies")) {
-		document.getElementById("cookienotice").style.display="none";
+
+	  if (!cudl.getCookie("cudlcookies")) {	
+		document.getElementById("cookienotice").style.display="inline";
 	  } 
 	};
 	
 cudl.acceptCookies = function () {
 	cudl.setCookie("cudlcookies", "true", 183);
-	cudl.displayCookieNotice ();
+	document.getElementById("cookienotice").style.display="none";
 	return false;
 };
 

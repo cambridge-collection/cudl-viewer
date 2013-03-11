@@ -33,7 +33,8 @@ body {
 }
 
 #index_carousel_parent {
-	height:400px;	
+	padding-top: 0px;
+	height: 400px;
 }
 
 ol#index_carousel li {
@@ -41,10 +42,9 @@ ol#index_carousel li {
 	float: left;
 	margin: 0px;
 	/*height: 390px;*/
-	width: 540px;
+	width: 944px;
 	list-style: none outside none;
 }
-
 
 #index_carousel .panel {
 	background: url("../images/index/grey.png") repeat scroll 0 0
@@ -73,70 +73,99 @@ ol#index_carousel li {
 
 /* Set the prev button to be absolutely positioned to the left of the carousel */
 #index_carousel_parent #leftarrow {
-        background: transparent url(/images/index/left-arrow-down.png) top left repeat-y;
-        left: 5px;
-        top:305px;
-        position:absolute;
-        float:left;
-        height:62px;
-        width:62px;
+	background: transparent url(/images/index/left-arrow-down.png) top left
+		repeat-y;
+	left: 5px;
+	top: 305px;
+	position: absolute;
+	float: left;
+	height: 62px;
+	width: 62px;
 }
 
 /* Set the next button to be absolutely positioned to the right of the carousel */
 #index_carousel_parent #rightarrow {
-        background: transparent url(/images/index/right-arrow-down.png) top left repeat-y;
-        left: 472px;
-        top:305px;
-        position:absolute;
-        float:left;
-        height:62px;
-        width:62px;
+	background: transparent url(/images/index/right-arrow-down.png) top left
+		repeat-y;
+	left: 876px;
+	top: 305px;
+	position: absolute;
+	float: left;
+	height: 62px;
+	width: 62px;
 }
 
 /* place dots in the middle */
 #index_carousel_parent .pageNav {
-	   padding-left:240px;
+	padding-left: 240px;
 }
-
 
 #cookienotice {
-    background: #eeeeee;
-    color: #333333;
-    padding:8px 0 8px 0;
-    opacity: 0.8;
-    position: fixed;
-    bottom: 0;
-    height:30px;
-    z-index: 100;
-    border-style:solid;
-    border-width:1px;
-    border-color: #333333;
+	background: #eeeeee;
+	color: #333333;
+	padding: 8px 0 8px 0;
+	opacity: 0.8;
+	position: fixed;
+	bottom: 0;
+	height: 30px;
+	display: none;
+	z-index: 100;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333333;
 }
 
-#cookienotice input{
-    background: #333333;	
+#cookienotice input {
+	background: #333333;
 	border-color: #ffffff;
 	text-align: center;
-    border-style:solid;
-    border-width:1px;
-    padding:4px;
-    color:#ffffff;
+	border-style: solid;
+	border-width: 1px;
+	padding: 4px;
+	color: #ffffff;
 }
 
 /* Text for downtime message on main page */
 .warning {
 	border-color: #ffaaaa;
 	text-align: center;
-    border-style:solid;
-    border-width:1px;
-	margin-top:24px;
-	background-color: #ffeeee; 
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 24px;
+	background-color: #ffeeee;
 }
-
 
 .footer a:link,.footer a:visited,.footer a:active {
 	color: #FFFFFF;
 	text-decoration: underline;
+}
+
+.fade img {
+	opacity: 1.0;
+	position:relative;
+
+}
+
+.fade:hover img {
+	opacity: 0.8;
+	position:relative;	
+}
+
+.fade span {	
+	display: none;
+}
+
+.fade:hover span {
+	z-index: 10;
+	width: 118px;
+	display: block;
+	padding:5px;
+	position: absolute;
+	color: #eee;
+	bottom:18px;	
+    left:0px;
+	background: #333;
+	float:left;
 }
 
 .collectionImage {
@@ -148,8 +177,8 @@ ol#index_carousel li {
 .collection {
 	position: relative;
 	background: #fff; /* for non-css3 browsers */
-	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
-		'#ffffff', endColorstr = '#ffffff' ); /* for IE */
+	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
+		'#ffffff', endColorstr=  '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
@@ -160,8 +189,8 @@ ol#index_carousel li {
 
 .collection-science {
 	background: #fff;
-	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
-		'#ffffff', endColorstr = '#ccd4ff' ); /* for IE */
+	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
+		'#ffffff', endColorstr=  '#ccd4ff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#fff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #fff);
@@ -170,8 +199,8 @@ ol#index_carousel li {
 
 .collection-faith {
 	background: #fff;
-	filter: progid : DXImageTransform.Microsoft.gradient ( startColorstr =
-		'#ffffff', endColorstr = '#ffffff' ); /* for IE */
+	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
+		'#ffffff', endColorstr=  '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
@@ -179,8 +208,9 @@ ol#index_carousel li {
 }
 
 .featuredItem-text {
-	width:200px;
+	width: 200px;
 }
+
 .featuredItem-text a {
 	text-decoration: none;
 }
@@ -214,50 +244,6 @@ ol#index_carousel li {
 	text-align: right;
 	width: 200px;
 	text-decoration: none;
-}
-
-
-#featuredCollections {
-	background: #ffffff;
-	color: #000000;
-	float:right;
-}
-
-#featuredCollectionsHeader {
-	background: #ffffff;
-	color: #000000;
-    width: 240px;
-    padding-left:40px;
-}
-
-#featuredCollections img {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.featured-item-list {
-	background: #eeeeee;
-	color: #000000;
-	margin-bottom: 0px;
-	height: 62px;
-	width: 240px;
-	padding: 0px;
-}
-
-.featured-item-list img {
-	float: left;
-	width: 240px;
-	height: 62px;
-	margin-bottom: 0px;
-}
-
-.featured-item-list h4,.featured-item-list h4 a {
-	position: absolute;
-	margin-left: 5px;
-	margin-top: 15px;
-	color: #ffffff;
-	text-shadow: 0.1em 0.1em 0.2em black;
-	width: 250px;
 }
 
 .right-aligned-language {
@@ -366,35 +352,35 @@ ol#search_carousel li {
 
 .search-facet-selected {
 	background: #4376bb;
-	padding:3px;
-	width:233px;	
+	padding: 3px;
+	width: 233px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #999;
 	position: relative;
-	margin-top:5px;
-	margin-bottom:5px;
-	float:left;
-	color:#ffffff;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	float: left;
+	color: #ffffff;
 }
 
 .search-close {
-    background: url("/img/search-close.png");
-    cursor: pointer;
-    height:  19px;
-    position: absolute;
-    right: -6px;
-    top: -6px;
-    width: 19px;
-    z-index: 3;
+	background: url("/img/search-close.png");
+	cursor: pointer;
+	height: 19px;
+	position: absolute;
+	right: -6px;
+	top: -6px;
+	width: 19px;
+	z-index: 3;
 }
 
 /* Note the max height and width are set in jsp also */
 .collections_carousel_image img {
 	margin: auto;
 	text-decoration: none;
-    border: none;
-    outline: none;	
+	border: none;
+	outline: none;
 }
 
 .collections_carousel_image_box {
@@ -417,14 +403,15 @@ ol#search_carousel li {
 }
 
 .collections_carousel_text {
-	padding: 5px;	
+	padding: 5px;
 }
 
-.morelink a:link, .morelink a:visited, .morelink a:active {
-	color:#3a6c8f;
+.morelink a:link,.morelink a:visited,.morelink a:active {
+	color: #3a6c8f;
 }
-.lesslink a:link, .morelink a:visited, .morelink a:active {
-	color:#3a6c8f;
+
+.lesslink a:link,.morelink a:visited,.morelink a:active {
+	color: #3a6c8f;
 }
 
 ol#vcollections_carousel li {
@@ -496,8 +483,8 @@ ol#vcollections_carousel li {
 }
 
 .search_results .page_navigation {
-	margin:0px;
-	float:right;
+	margin: 0px;
+	float: right;
 }
 
 .clear {
@@ -526,133 +513,134 @@ ol#vcollections_carousel li {
 }
 
 /* search on bar */
-
 #navPrimary form {
-    float: right;
-    height: 36px;
-    position: relative;
+	float: right;
+	height: 36px;
+	position: relative;
 }
 
 #navPrimary #search {
-    background: none repeat scroll 0 0 white;
-    color: #666666;
-    font-family: Georgia,'Times New Roman',serif;
-    font-size: 13px;
-    font-style: italic;
-    padding: 5px 5px;
-    position: absolute;
-    top: 5px;
-    right: 4px;
-    width: 230px;
-    z-index: 2;
+	background: none repeat scroll 0 0 white;
+	color: #666666;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-style: italic;
+	padding: 5px 5px;
+	position: absolute;
+	top: 5px;
+	right: 4px;
+	width: 230px;
+	z-index: 2;
 }
 
 #navPrimary #submit {
-    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
-    cursor: pointer;
-    display: inline-block;
-    height: 16px;
-    overflow: hidden;
-    position: absolute;
-    right: 10px;
-    text-indent: -9999px;
-    top: 9px;
-    width: 16px;
-    z-index: 3;
+	background: url("../img/sprite.png") no-repeat scroll -768px -17px
+		transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	right: 10px;
+	text-indent: -9999px;
+	top: 9px;
+	width: 16px;
+	z-index: 3;
 }
 
 #navPrimary input {
-    margin-right: 2px;
+	margin-right: 2px;
 }
 
 /* search on other page */
 .search #search {
-    background: none repeat scroll 0 0 white;
-    color: #666666;
-    font-family: Georgia,'Times New Roman',serif;
-    font-size: 13px;
-    font-style: italic;
-    padding: 5px 5px;
-    position: absolute;
-    top: 5px;
-    right: 4px;
-    width: 230px;
-    z-index: 2;
+	background: none repeat scroll 0 0 white;
+	color: #666666;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-style: italic;
+	padding: 5px 5px;
+	position: absolute;
+	top: 5px;
+	right: 4px;
+	width: 230px;
+	z-index: 2;
 }
 
 .search #submit {
-    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
-    cursor: pointer;
-    display: inline-block;
-    height: 16px;
-    overflow: hidden;
-    position: absolute;
-    right: 10px;
-    text-indent: -9999px;
-    top: 9px;
-    width: 16px;
-    z-index: 3;
+	background: url("../img/sprite.png") no-repeat scroll -768px -17px
+		transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	right: 10px;
+	text-indent: -9999px;
+	top: 9px;
+	width: 16px;
+	z-index: 3;
 }
 
 .search input {
-    margin-right: 2px;
+	margin-right: 2px;
 }
 
 /* Search box on search results page */
 .searchform form {
-    margin-left: auto;
-    margin-right: auto;
-    height: 36px;
-    position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	height: 36px;
+	position: relative;
 }
 
 /* search on search results page */
 .searchform .search {
-    background: none repeat scroll 0 0 white;
-    color: #666666;
-    font-family: Georgia,'Times New Roman',serif;
-    font-size: 13px;
-    font-style: italic;
-    padding: 5px 5px;
-    position: absolute;
-    top: 0px;
-    width: 230px;
-    z-index: 2;
+	background: none repeat scroll 0 0 white;
+	color: #666666;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-style: italic;
+	padding: 5px 5px;
+	position: absolute;
+	top: 0px;
+	width: 230px;
+	z-index: 2;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #999;
-	font-weight:bold;   
+	font-weight: bold;
 }
 
 /* search style text - for examples on search results page */
 .searchexample .search {
-    background: none repeat scroll 0 0 white;
-    color: #666666;
-    font-family: Georgia,'Times New Roman',serif;
-    font-size: 13px;
-    font-style: italic;
-    padding: 3px 3px;
+	background: none repeat scroll 0 0 white;
+	color: #666666;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-style: italic;
+	padding: 3px 3px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #ccc;
-	font-weight:bold;   
+	font-weight: bold;
 }
+
 .searchexample {
 	line-height: 25px;
 }
 
 .searchform #submit {
-    background: url("../img/sprite.png") no-repeat scroll -768px -17px transparent;
-    cursor: pointer;
-    display: inline-block;
-    height: 16px;
-    overflow: hidden;
-    position: absolute;
-    right: -10px;
-    text-indent: -9999px;
-    top: 5px;
-    width: 16px;
-    z-index: 3;
+	background: url("../img/sprite.png") no-repeat scroll -768px -17px
+		transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	right: -10px;
+	text-indent: -9999px;
+	top: 5px;
+	width: 16px;
+	z-index: 3;
 }
-
-

@@ -7,10 +7,9 @@
 </jsp:include>
 
 <%
-	List<Item> featuredItems = (List<Item>) request
-	.getAttribute("featuredItems");
 	String downtimeWarning = (String) request
-	.getAttribute("downtimeWarning");
+			.getAttribute("downtimeWarning");
+	String itemCount = (String) request.getAttribute("itemCount");
 %>
 
 <script type="text/javascript">
@@ -37,122 +36,24 @@
 		// auto-scroll through items until the carousel is clicked. 
 		var intervalId = window.setInterval(function() {
 			index_carousel.next();
-		}, 5000);
+		}, 7000);
 		document.getElementById("index_carousel_parent").addEventListener(
 				"click", function(event) {
 					window.clearInterval(intervalId);
 				});
 
+		$(".collection_gallery").fancybox();
 	}
 </script>
 
 <%=downtimeWarning%>
 
-<div id="content" class="grid_20 content">
+<div id="content" class="grid_20">
 
 	<!-- side panel -->
 
-	<div id="featuredCollectionsHeader"></div>
 
-	<div class="grid_6" style="margin-bottom: 18px;">
-
-		<div id="featuredCollections">
-
-			<div class="featured-item-list">
-				<a href="/collections/treasures"><img
-					alt="Treasures of the Library" title="Treasures of the Library"
-					src="/images/index/slice-treasures.jpg"> </a>
-
-				<h4>
-					<a href="/collections/treasures">Treasures of the Library</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/newton"><img alt="Newton Papers"
-					title="Newton Papers" src="/images/index/slice-newton.jpg"> </a>
-				<h4>
-					<a href="/collections/newton">Newton Papers</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/longitude"><img alt="Board of Longitude"
-					title="Board of Longitude" src="/images/index/slice-longitude.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/longitude">Board of Longitude</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/hebrew"><img alt="Hebrew Manuscripts"
-					title="Hebrew Manuscripts" src="/images/index/slice-hebrew.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/hebrew">Hebrew Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/genizah"><img
-					alt="Cairo Genizah Collection" title="Cairo Genizah Collection"
-					src="/images/index/slice-genizah.jpg"> </a>
-
-				<h4>
-					<a href="/collections/genizah">Cairo Genizah Collection</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/christian"><img alt="Christian Works"
-					title="Christian Works" src="/images/index/slice-christian.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/christian">Christian Works</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/islamic"><img alt="Islamic Manuscripts"
-					title="Islamic Manuscripts" src="/images/index/slice-islamic.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/islamic">Islamic Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/sanskrit"><img alt="Sanskrit Manuscripts"
-					title="Sanskrit Manuscripts" src="/images/index/slice-sanskrit.jpg">
-				</a>
-
-				<h4>
-					<a href="/collections/sanskrit">Sanskrit Manuscripts</a>
-				</h4>
-			</div>
-
-			<div class="featured-item-list">
-				<a href="/collections/spanishchapbooks"><img
-					alt="Spanish Chapbooks" title="Spanish Chapbooks"
-					src="/images/index/slice-spanishchapbooks.jpg"> </a>
-
-				<h4>
-					<a href="/collections/spanishchapbooks">Spanish Chapbooks</a>
-				</h4>
-			</div>
-
-
-			<!-- <a href="" onclick="index_carousel.moveTo(1,true);return false;">Islamic Manuscripts</a> -->
-
-		</div>
-	</div>
-
-	<div class="grid_13" id="index_carousel_parent">
+	<div id="index_carousel_parent">
 
 		<ol id="index_carousel" style="display: none;">
 
@@ -175,7 +76,7 @@
 
 				</div> <a href="/collections/treasures"><img
 					src="/images/index/carousel-treasures.jpg"
-					alt="Treasures of the Library" width="540" height="394" /> </a>
+					alt="Treasures of the Library" width="944" height="394" /> </a>
 			</li>
 
 			<!-- newton collection -->
@@ -199,7 +100,7 @@
 					</p>
 				</div> <a href="/collections/newton"><img id="newtonImage"
 					src="/images/index/carousel-newton.jpg" alt="Newton Papers"
-					width="540" height="394" /> </a>
+					width="944" height="394" /> </a>
 			</li>
 
 			<!-- newton collection -->
@@ -209,18 +110,20 @@
 						<a href="/collections/longitude">Board of Longitude</a>
 					</h4>
 
-					<p>The papers of the Board of Longitude held in Cambridge
-						University Library include remarkable and invaluable details of a
-						vast range of maritime, astronomical and navigational activities
-						between the mid-eighteenth and the early nineteenth centuries. Our
-						<a href="/collections/longitude/">initial selection</a> includes the Board’s confirmed minutes and
-						papers from the astonishing Pacific and Antarctic voyage of James
-						Cook in 1772-1775.</p>
+					<p>
+						The papers of the Board of Longitude held in Cambridge University
+						Library include remarkable and invaluable details of a vast range
+						of maritime, astronomical and navigational activities between the
+						mid-eighteenth and the early nineteenth centuries. Our <a
+							href="/collections/longitude/">initial selection</a> includes the
+						Board’s confirmed minutes and papers from the astonishing Pacific
+						and Antarctic voyage of James Cook in 1772-1775.
+					</p>
 
 
 				</div> <a href="/collections/longitude"><img
 					src="/images/index/carousel-longitude.jpg" alt="Board of Longitude"
-					width="540" height="394" /> </a>
+					width="944" height="394" /> </a>
 			</li>
 
 
@@ -244,7 +147,7 @@
 
 				</div> <a href="/collections/hebrew"><img
 					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
-					width="540" height="394" /> </a>
+					width="944" height="394" /> </a>
 			</li>
 
 			<!-- The Cairo Genizah collection -->
@@ -267,7 +170,7 @@
 
 				</div> <a href="/collections/genizah"><img
 					src="/images/index/carousel-genizah.jpg"
-					alt="The Cairo Genizah Collection" width="540" height="394" /> </a>
+					alt="The Cairo Genizah Collection" width="944" height="394" /> </a>
 			</li>
 
 			<!-- christian works -->
@@ -296,7 +199,7 @@
 
 				</div> <a href="/collections/christian"><img
 					src="/images/index/carousel-christian.jpg" alt="Christian Works"
-					width="540" height="394" /> </a>
+					width="944" height="394" /> </a>
 			</li>
 
 			<!-- islamic collection -->
@@ -321,7 +224,7 @@
 
 				</div> <a href="/collections/islamic"><img
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
-					width="540" height="394" /> </a>
+					width="944" height="394" /> </a>
 			</li>
 
 			<!-- The Sanskrit collection -->
@@ -345,7 +248,7 @@
 					</p>
 				</div> <a href="/collections/sanskrit"><img
 					src="/images/index/carousel-sanskrit.jpg"
-					alt="Sanskrit Manuscripts" width="540" height="394" /> </a>
+					alt="Sanskrit Manuscripts" width="944" height="394" /> </a>
 			</li>
 
 			<!-- The Spanish Chapbooks -->
@@ -367,34 +270,136 @@
 						of wrongdoing.</p>
 				</div> <a href="/collections/spanishchapbooks"><img
 					src="/images/index/carousel-spanishchapbooks.jpg"
-					alt="Spanish Chapbooks" width="540" height="394" /> </a>
+					alt="Spanish Chapbooks" width="944" height="394" /> </a>
 			</li>
 
 		</ol>
 
 	</div>
-	<!--  news -->
-	<div class="grid_13">
-		<h4>Latest News</h4>
-		<div class="grid_3">
-			<a href="/news">
-			<img
-				alt="Maimonides fragments and Newton's dispute with Flamsteed released"
-				title="Maimonides fragments and Newton's dispute with Flamsteed released"
-				src="/images/index/news-maimonides.jpg" height="100" width="100"></a>
+
+	<div class="grid_10" style="margin-bottom: 18px;">
+
+		<h4>Featured Collections</h4>
+
+		<div class="fade grid_3">
+			<a href="/collections/treasures"><img
+				src="/images/collectionsView/collection-treasures.jpg"
+				height="128px" width="128px" /><span>Treasures of the
+					Library</span></a>
 		</div>
 
-		<div class="grid_9">
-			<span class="date">28/02/2013</span>
-			<h4>
-				<a href="/news">Maimonides fragments and Newton's dispute with Flamsteed
-				released</a>
-			</h4>
-			<p></p>
-			<br />
-			<br />
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/newton"> <img
+				src="/images/collectionsView/collection-newton.jpg" height="128px"
+				width="128px" /> <span>Newton Papers</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/longitude"> <img
+				src="/images/collectionsView/collection-longitude.jpg"
+				height="128px" width="128px"/>
+				<span>Board of Longitude</span>
+			</a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/islamic"><img
+				src="/images/collectionsView/collection-islamic.jpg" height="128px"
+				width="128px"/><span>Islamic Manuscripts</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/genizah"> <img
+				src="/images/collectionsView/collection-genizah.jpg" height="128px"
+				width="128px"/><span>Cairo Genizah Collection</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/sanskrit"> <img
+				src="/images/collectionsView/collection-sanskrit.jpg" height="128px"
+				width="128px"/><span>Sandskrit Manuscripts</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/spanishchapbooks"> <img
+				src="/images/collectionsView/collection-spanishchapbooks.jpg"
+				height="128px" width="128px"/><span>Spanish Chapbooks</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/hebrew"> <img
+				src="/images/collectionsView/collection-hebrew.jpg" height="128px"
+				width="128px"/><span>Hebrew Manuscripts</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/christian"> <img
+				src="/images/collectionsView/collection-christian.jpg"
+				height="128px" width="128px"/>
+				<span>Christian Works</span>
+			</a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/darwinhooker"><img
+				src="/images/collectionsView/collection-darwinhooker.jpg"
+				height="128px" width="128px"/> <span>Darwin Hooker</span></a>
+		</div>
+		<div class="fade grid_3">
+			<a class="fade" href="/collections/"><img
+				src="/images/collectionsView/collection-viewall.jpg" height="128px"
+				width="128px"/> <span>View all collections</span></a>
 		</div>
 	</div>
+
+
+	<div class="grid_9" style="margin-bottom: 18px;">
+
+		<h4>Search</h4>
+		<div class="searchform box">
+			<form class="grid_5" action="/search">
+				<input class="search" type="text" autocomplete="off"
+					placeholder="Search" name="keyword" value=""> <input
+					id="submit" type="submit" value="Search"> <input
+					type="hidden" value="" name="fileID">
+			</form>
+			<br /> <br /> <b><%=itemCount%></b> books and manuscripts now
+			online.
+
+		</div>
+
+
+		<!--  news -->
+		<div>
+			<h4>Latest News</h4>
+			<div class="grid_3">
+				<a href="/news"> <img
+					alt="Maimonides fragments and Newton's dispute with Flamsteed released"
+					title="Maimonides fragments and Newton's dispute with Flamsteed released"
+					src="/images/index/news-maimonides.jpg" height="100" width="100"></a>
+			</div>
+
+			<div>
+				<span class="date">28/02/2013</span>
+				<h5>
+					<a href="/news">Maimonides fragments and Newton's dispute with
+						Flamsteed released</a>
+				</h5>
+
+			</div>
+		</div>
+
+		<!-- twitter feed -->
+		<a class="twitter-timeline" href="https://twitter.com/CamDigLib"
+			data-widget-id="309321526665154560">Tweets by @CamDigLib</a>
+		<script>
+			!function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (!d.getElementById(id)) {
+					js = d.createElement(s);
+					js.id = id;
+					js.src = "//platform.twitter.com/widgets.js";
+					fjs.parentNode.insertBefore(js, fjs);
+				}
+			}(document, "script", "twitter-wjs");
+		</script>
+
+		<!-- end of twitter feed -->
+	</div>
+
+
 
 
 
@@ -402,5 +407,3 @@
 
 
 <jsp:include page="footer/footer.jsp" />
-
-
