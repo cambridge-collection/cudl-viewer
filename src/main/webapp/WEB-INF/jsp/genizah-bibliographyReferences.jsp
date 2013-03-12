@@ -17,13 +17,33 @@
 		} );
 	} );
 </script>
+<style>
+dl {
+    margin-bottom:50px;
+}
+ 
+dl dt {
+    background:#5f9be3;
+    color:#fff;
+    float:left;
+    font-weight:bold;
+    margin-right:10px;
+    padding:5px; 
+    width:100px;
+}
+ 
+dl dd {
+    margin:2px 0;
+    padding:5px 0;
+}
+</style>
 </head>
 <jsp:include page="genizah-bodyStart.jsp" />
 <jsp:include page="header/nav-search.jsp" />
 
 
 <%
-	List<BibliographyReferenceList> resultSet = ((List<BibliographyReferenceList>) request.getAttribute("bibliographyReferences"));
+	BibliographyReferenceList bibRefList = ((BibliographyReferenceList) request.getAttribute("bibliographyReferences"));
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
@@ -37,38 +57,47 @@
 
 		<%
 			// No results were returned. So print out some help.
-			if (resultSet.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any bibliography entries matching "
+			if (bibRefList.getBibliographyReferences().size() == 0) {
+				out.println("<p class=\"box\">We couldn't find any references for title with identifier "
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
-				out.println("<table id=\"referenceTable\">");
-				out.println("<thead><tr>");
-				out.println("<th>Reference Title</th>");
-				out.println("<th>Year</th>");
-				out.println("<th>Volume</th>");
-				out.println("<th>References</th>");
-				out.println("<th>Authors</th>");
-				out.println("</tr></thead><tbody>");
-				for (BibliographyReferenceList bibliographyReference : resultSet) {
-					BibliographyEntry bibliographyEntry = bibliographyReference.getBibligraphyEntry();
-					out.println("<tr>");
-					out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
-					out.println("<td>" + bibliographyEntry.getYear() + "</td>");
-					out.println("<td>" + bibliographyEntry.getVolume() + "</td>");
-					out.println("<td>" + bibliographyReference.getBibliographyReferences().size() +"</td>");
-					out.println("<td>");
-					List<String> authors = bibliographyEntry.getAuthors();
-					for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {
-						String author = authors.get(authorIndex);
-						out.println(author);
-						if (authorIndex < authors.size() - 1) {
-							out.println(":");
-						}
+				BibliographyEntry entry = bibRefList.getBibligraphyEntry();
+				out.println("<div class=\"bibEntryDetails\">");
+				out.println("Fragments referred to by :");
+				out.println("<dl>");
+				out.println("<dt>Title</dt><dd>" + entry.getTitle() + "</dd>");
+				out.println("<dt>Authors</dt><dd>");
+				List<String> authors = entry.getAuthors();
+				for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {
+					String author = authors.get(authorIndex);
+					out.println(author);
+					if (authorIndex < authors.size() - 1) {
+						out.println(";");
 					}
 				}
-				out.println("</td>");
-				out.println("</tr>");
+				out.println("</dd>");
+				out.println("<dt>Year</dt><dd>" + entry.getYear() + "</dd>");
+				if (entry.getVolume() != null) {
+					out.println("<dt>Volume</dt><dd>" + entry.getVolume() + "</dd>");
+				}
+				out.println("</dl></div>");
+				
+				out.println("<table id=\"referenceTable\">");
+				out.println("<thead><tr>");
+				out.println("<th>Classmark</th>");
+				out.println("<th>RefType</th>");
+				out.println("</tr></thead><tbody>");
+				for (BibliographyReferences reference : bibRefList.getBibliographyReferences()) {
+					Fragment fragment = reference.getFragment();
+					String classmark = fragment.getClassmark();
+					String label = fragment.getLabel();
+					
+					out.println("<tr>");
+					out.println("<td>" + fragment.getLabel() + "</td>");
+					out.println("<td>" + reference.getTypeReadableForm() + "</td>");
+					out.println("</tr>");
+				}
 				out.println("</tbody></table>");
 			}
 		%>

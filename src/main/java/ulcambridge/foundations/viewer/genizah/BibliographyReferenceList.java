@@ -18,14 +18,14 @@ public class BibliographyReferenceList {
 	/**
 	 * Reference from a bibliography entry, with type.
 	 */
-	private final List<FragmentReferences> bibliographyReferences;
+	private final List<BibliographyReferences> bibliographyReferences;
 	
-	public BibliographyReferenceList(BibliographyEntry bibligraphyEntry, List<FragmentReferences> references) {
+	public BibliographyReferenceList(BibliographyEntry bibligraphyEntry, List<BibliographyReferences> references) {
 		this.bibliographyEntry = bibligraphyEntry;
 		this.bibliographyReferences = references;
 	}
 	
-	public List<FragmentReferences> getBibliographyReferences() {
+	public List<BibliographyReferences> getBibliographyReferences() {
 		return bibliographyReferences;
 	}
 	

@@ -17,11 +17,11 @@ public class GenizahQuery {
 		this.queryType = queryType;
 	}
 	
-	public boolean isAuthorQuery() {
+	public boolean isAuthor() {
 		return queryType.equals("AUTHOR");
 	}
 	
-	public boolean isKeywordQuery() {
+	public boolean isKeyword() {
 		return queryType.equals("KEYWORD");
 	}
 	
@@ -29,16 +29,17 @@ public class GenizahQuery {
 		return queryType.equals("CLASSMARK");
 	}
 	
-	public boolean isClassmarkQueryOld() {
-		return queryType.equals("CLASSMARK-OLD");
-	}
-	
 	public String getQueryString() {
 		return queryString;
 	}
-
-	public boolean isBibliographByKeywordQuery() {
-		return queryType.equals("BIBKEY");
+	
+	public boolean isTitleIdQuery() {
+		return queryType.equals("TITLEID");
 	}
+	
+	public boolean isClassmarkIdQuery() {
+		return queryType.equals("CLASSMARKID");
+	}
+
 
 }

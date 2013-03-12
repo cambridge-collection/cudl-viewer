@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -34,78 +33,73 @@ public class GenizahDBDaoTest {
 	}
 	
 	@Test
-	public void byAuthor() {
-		GenizahDao dao = getDaoSource();
-		List<AuthorBibliography> authorBib = dao.getTitlesByAuthor("Out");
-		Assert.assertTrue(authorBib.size() > 0);
-		AuthorBibliography autBib0 = authorBib.get(0);
-		Assert.assertTrue(autBib0.getBibliography().size() > 0);
-		for (AuthorBibliography autBib : authorBib) {
-			for (BibliographyEntry bibEntry : autBib.getBibliography()) {
-				System.out.print(bibEntry.getTitle() + "\t|");
-				for (String author : bibEntry.getAuthors()) {
-					System.out.print(author + "|");
-				}
-				System.out.println();
-			}
-		}
-	}
-	
-	@Test
-	public void byKeyword() {
-		GenizahDao dao = getDaoSource();
-		List<BibliographyEntry> bib = dao.getTitlesByKeyword("Bible");
-		Assert.assertTrue(bib.size() > 0);
-		for (BibliographyEntry bibEntry : bib) {
-			System.out.print(bibEntry.getTitle() + "\t|");
-			for (String author : bibEntry.getAuthors()) {
-				System.out.print(author + "|");
-			}
-			System.out.println();
-		}
-	}
-	
-	@Test
-	public void byClassmark() {
-		GenizahDao dao = getDaoSource();
-		List<Fragment> fragments = dao.getFragmentsByClassmark("T-S 12.192");
-		Assert.assertTrue(fragments.size() == 1);
-	}
-	
-	@Test
 	public void fragmentBiblioByClassmark() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentReferenceList> fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.170");
-		Assert.assertTrue(fragmentRefs.size() == 1);
-		for (FragmentReferenceList fragmentBib : fragmentRefs) {
-			for (FragmentReferences ref : fragmentBib.getBibliographyReferences()) {
-				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeReadableForm());
-			}
+		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.170");
+		for (FragmentReferences ref : fragmentRefs.getFragmentReferences()) {
+			System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
 		}
 	}
 	
 	@Test
 	public void fragmentBiblioByClassmark_WildcardAtEnd() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentReferenceList> fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.17*");
-		Assert.assertTrue(fragmentRefs.size() > 1);
-		for (FragmentReferenceList fragmentBib : fragmentRefs) {
-			for (FragmentReferences ref : fragmentBib.getBibliographyReferences()) {
-				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
-			}
+		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.17*");
+		for (FragmentReferences ref : fragmentRefs.getFragmentReferences()) {
+			System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
 		}
 	}
 	
 	@Test
-	public void biblioFragmentByKeyword() {
+	public void authorSearch() {
 		GenizahDao dao = getDaoSource();
-		List<BibliographyReferenceList> bibRefList = dao.getBibliographyReferencesByKeyword("*Bird*");
-		Assert.assertTrue(bibRefList.size() == 1);
-		for (BibliographyReferenceList bibRef : bibRefList) {
-			System.out.println(bibRef.getBibligraphyEntry().getTitle());
-			for (FragmentReferences ref : bibRef.getBibliographyReferences()) {
-				System.out.println(ref.getTypeReadableForm());
-			}
+		List<BibliographySearchResult> results = dao.authorSearch("Outh");
+		for (BibliographySearchResult result : results) {
+			BibliographyEntry entry = result.getBibliographyEntry();
+			System.out.println(entry.getTitle() + "\t" + entry.getYear()
+					+ "\t" + entry.getAuthors().size() +  " Authors " );
+		}
+	}
+	
+	@Test
+	public void keywordSearch() {
+		GenizahDao dao = getDaoSource();
+		List<BibliographySearchResult> results = dao.keywordSearch("*Bird*");
+		for (BibliographySearchResult result : results) {
+			BibliographyEntry entry = result.getBibliographyEntry();
+			System.out.println(entry.getTitle() + "\t" + entry.getYear()
+					+ "\t" + entry.getAuthors().size() +  " Authors " 
+					+ "\t" + result.getRefCount() + " Refs");
+		}
+	}
+	
+	@Test
+	public void classmarkSearch() {
+		GenizahDao dao = getDaoSource();
+		List<FragmentSearchResult> results = dao.classmarkSearch("T-S Ar.54.9*");
+		for (FragmentSearchResult result : results) {
+			Fragment fragment = result.getFragment();
+			System.out.println(fragment.getLabel() + "\t" + result.getRefCount());
+		}
+	}
+	
+	@Test
+	public void getBibRefsByTitleId() {
+		GenizahDao dao = getDaoSource();
+		BibliographyReferenceList refList = dao.getBibliographyReferencesByTitleId(2907);
+		System.out.println(refList.getBibligraphyEntry().getTitle());
+		for (BibliographyReferences ref : refList.getBibliographyReferences()) {
+			System.out.println(ref.getTypeReadableForm() + "\t" + ref.getFragment().getLabel());
+		}
+	}
+	
+	@Test
+	public void getFragRefsByClassmarkId() {
+		GenizahDao dao = getDaoSource();
+		FragmentReferenceList refList = dao.getFragmentReferencesByClassmark("MS-TS-AR-00054-00009");
+		System.out.println(refList.getFragment().getLabel());
+		for (FragmentReferences ref : refList.getFragmentReferences()) {
+			System.out.println(ref.getTypeReadableForm() + "\t" + ref.getEntry().getTitle());
 		}
 	}
 

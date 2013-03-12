@@ -56,30 +56,29 @@ public class GenizahController {
 		GenizahQuery query = new GenizahQuery(queryString, queryType);
 		
 		ModelAndView modelAndView = null;
-		if (query.isAuthorQuery()) {
-			List<AuthorBibliography> titles = dataSource.getTitlesByAuthor(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-byAuthor");
+		if (query.isClassmarkQuery()) {
+			List<FragmentSearchResult> fragmentResults = dataSource.classmarkSearch(queryString);
+			modelAndView = new ModelAndView("jsp/genizah-fragmentResults");
+			modelAndView.addObject("fragmentResults", fragmentResults);
+			modelAndView.addObject("itemFactory", itemFactory);
+		} else if (query.isAuthor()) {
+			List<BibliographySearchResult> titles = dataSource.authorSearch(queryString);
+			modelAndView = new ModelAndView("jsp/genizah-bibliographyResults");
 			modelAndView.addObject("titles", titles);
-		} else if (query.isKeywordQuery()) {
-			List<BibliographyEntry> titles = dataSource.getTitlesByKeyword(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-byKeyword");
+		} else if (query.isKeyword()) {
+			List<BibliographySearchResult> titles = dataSource.keywordSearch(queryString);
+			modelAndView = new ModelAndView("jsp/genizah-bibliographyResults");
 			modelAndView.addObject("titles", titles);
-		} else if (query.isClassmarkQuery()) {
-			List<FragmentReferenceList> fragmentReferences = dataSource.getFragmentReferencesByClassmark(queryString);
+		} else if (query.isClassmarkIdQuery()) {
+			FragmentReferenceList fragmentReferences = dataSource.getFragmentReferencesByClassmark(queryString);
 			modelAndView = new ModelAndView("jsp/genizah-fragmentReferences");
 			modelAndView.addObject("fragmentReferences", fragmentReferences);
-			modelAndView.addObject("itemFactory", itemFactory);
-		} else if (query.isBibliographByKeywordQuery()) {
-			List<BibliographyReferenceList> bibliographyReferences = dataSource.getBibliographyReferencesByKeyword(queryString);
+		} else if (query.isTitleIdQuery()) {
+			int id = Integer.parseInt(queryString);	// TODO : error handling!
+			BibliographyReferenceList bibliographyReferences = dataSource.getBibliographyReferencesByTitleId(id);
 			modelAndView = new ModelAndView("jsp/genizah-bibliographyReferences");
 			modelAndView.addObject("bibliographyReferences", bibliographyReferences);
 			modelAndView.addObject("itemFactory", itemFactory);
-		} else if (query.isClassmarkQueryOld()) {
-			List<Fragment> fragments = dataSource.getFragmentsByClassmark(queryString);
-			// TODO : switch to different view if there is only one fragment?
-			modelAndView = new ModelAndView("jsp/genizah-byClassmark");
-			modelAndView.addObject("itemFactory", itemFactory);
-			modelAndView.addObject("fragments", fragments);
 		} else {
 			modelAndView = new ModelAndView("jsp/genizah-Landing");
 		}

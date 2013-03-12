@@ -10,16 +10,14 @@ import java.util.List;
  */
 public interface GenizahDao {
 	
-	public List<AuthorBibliography> getTitlesByAuthor(String author);
+	public List<BibliographySearchResult> authorSearch(String author);
 	
-	public List<BibliographyEntry> getTitlesByKeyword(String keyword);
+	public List<BibliographySearchResult> keywordSearch(String keyword);
 	
-	public List<Fragment> getFragmentsByClassmark(String classmark);
-	
-	public List<FragmentReferenceList> getFragmentReferencesByClassmark(String classmark);
-	
-	public List<BibliographyReferenceList> getBibliographyReferencesByAuthor(String queryString);
-	
-	public List<BibliographyReferenceList> getBibliographyReferencesByKeyword(String queryString);
+	public List<FragmentSearchResult> classmarkSearch(String classmark);
 
+	public FragmentReferenceList getFragmentReferencesByClassmark(String classmark);
+	
+	public BibliographyReferenceList getBibliographyReferencesByTitleId(int id);
+	
 }

@@ -19,20 +19,20 @@ public class FragmentReferenceList {
 	/**
 	 * Reference from a bibliography entry, with type.
 	 */
-	private final List<FragmentReferences> bibliographyReferences;
+	private final List<FragmentReferences> fragmentReferences;
 	
-	public FragmentReferenceList(Fragment fragment, List<FragmentReferences> bibliographyReferences) {
+	public FragmentReferenceList(Fragment fragment, List<FragmentReferences> fragmentReferences) {
 		this.fragment = fragment;
-		this.bibliographyReferences = bibliographyReferences;
+		this.fragmentReferences = fragmentReferences;
 	}
 	
-	public List<FragmentReferences> getBibliographyReferences() {
-		return bibliographyReferences;
+	public List<FragmentReferences> getFragmentReferences() {
+		return fragmentReferences;
 	}
 	
 	public List<BibliographyEntry> getBibliography() {
 		List<BibliographyEntry> entries = new ArrayList<BibliographyEntry>();
-		for (FragmentReferences reference : this.bibliographyReferences) {
+		for (FragmentReferences reference : this.fragmentReferences) {
 			BibliographyEntry entry = reference.getEntry();
 			if (!entries.contains(entry)) {
 				entries.add(entry);

@@ -8,19 +8,27 @@
 				 ulcambridge.foundations.viewer.model.Item,
 				 ulcambridge.foundations.viewer.genizah.*
 				 "%>
-<jsp:include page="header/header-full.jsp" />
+<jsp:include page="header/genizah-header.jsp" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#resultsTable').dataTable( {
+				"sPaginationType": "full_numbers"
+		} );
+	} );
+</script>
+</head>
+<jsp:include page="genizah-bodyStart.jsp" />
 <jsp:include page="header/nav-search.jsp" />
 
-<link rel="stylesheet" href="/styles/genizah.css"/>
-
 <%
-	List<Fragment> resultSet = ((List<Fragment>) request.getAttribute("fragments"));
+	List<FragmentSearchResult> resultSet = ((List<FragmentSearchResult>) request.getAttribute("fragmentResults"));
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
 
 <div class="clear"></div>
 <jsp:include page="genizah-Search.jsp">
+	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
 	<jsp:param name="checkedOption" value="CLASSMARK"/>
 </jsp:include>
 <section id="content" class="grid_20 content">
@@ -31,39 +39,25 @@
 				out.println("<p class=\"box\">We couldn't find any items matching <b>"
 						+ query.getQueryString() + "</b></p>");
 			} else {
-				out.println("<table>");
+				out.println("<table id=\"resultsTable\"><thead>");
 				out.println("<tr>");
 				out.println("<th>Classmark</th>");
-				out.println("<th>Title</th>");
-				out.println("<th>Abstract</th>");
-				out.println("</tr>");
+				out.println("<th>References To Fragment</th>");
+				out.println("<th>Link To Reference List</th>");
+				out.println("</tr></thead><tbody>");
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
-				for (Fragment fragment : resultSet) {
+				for (FragmentSearchResult fragmentResult : resultSet) {
+					Fragment fragment = fragmentResult.getFragment();
+					String label = fragment.getLabel();
 					String classmark = fragment.getClassmark();
 					out.println("<tr>");
-					
-					
-					Item item = null;
-					if (itemFactory != null) {
-						item = itemFactory.getItemFromId(classmark);
-					}
-					if (item == null) {
-						out.println("<td>" + fragment.getLabel() + "</td>");
-						out.println("<td class=\"emptyRow\">" + "NOT FOUND" + "</td>");	
-					} else {
-						out.println("<td><a href=\"" + fragmentBaseURL + classmark + "\">");
-						out.println(fragment.getLabel() + "</a></td>");
-						out.println("<td>" + item.getTitle() + "</td>");
-						String itemAbstract = item.getAbstract();
-						if (itemAbstract.equals("")) {
-							out.println("<td class=\"emptyCell\"></td>");
-						} else {
-							out.println("<td>" + itemAbstract + "</td>");
-						}
-					}
+					out.println("<td>" + label + "</td>");
+					out.println("<td>" + fragmentResult.getRefCount() + "</td>");
+					String url = "/genizah?query=" + classmark + "&queryType=CLASSMARKID";
+					out.println("<td><a href=\"" + url + "\">RefList</a></td>");
 					out.println("</tr>");
 				}
-				out.println("</table>");
+				out.println("</tbody></table>");
 			}
 		%>
 </section>
