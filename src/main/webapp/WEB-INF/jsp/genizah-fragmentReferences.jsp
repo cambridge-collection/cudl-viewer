@@ -8,17 +8,19 @@
 				 ulcambridge.foundations.viewer.model.Item,
 				 ulcambridge.foundations.viewer.genizah.*
 				 "%>
-<jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav-search.jsp" />
 
+<jsp:include page="header/genizah-header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#referenceTable").dataTable();
+		$('#referenceTable').dataTable(( {
+				"sPaginationType": "full_numbers"
+		} );
 	} );
 </script>
+</head>
+<jsp:include page="genizah-bodyStart.jsp" />
+<jsp:include page="header/nav-search.jsp" />
 
-
-<!--   <link rel="stylesheet" href="/styles/genizah.css"/> -->
 
 <%
 	List<FragmentBibliography> resultSet = ((List<FragmentBibliography>) request.getAttribute("fragmentReferences"));
@@ -27,7 +29,6 @@
 %>
 
 <!--   <div class="clear"></div> -->
-<section id="content" class="grid_20 content">
 
 	<jsp:include page="genizah-Search.jsp">
 		<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
@@ -69,11 +70,11 @@
 					out.println("</div>");
 					
 					out.println("<table id=\"referenceTable\">");
-					out.println("<tr>");
+					out.println("<thead><tr>");
 					out.println("<th>RefType</th>");
 					out.println("<th>Reference Title</th>");
 					out.println("<th>Authors</th>");
-					out.println("</tr>");
+					out.println("</tr></thead><tbody>");
 					for (Reference reference : fragmentReference.getBibliographyReferences()) {
 						BibliographyEntry bibliographyEntry = reference.getEntry();
 						out.println("<tr>");
@@ -92,11 +93,10 @@
 						out.println("</td>");
 						out.println("</tr>");
 					}
-					out.println("</table>");
+					out.println("</tbody></table>");
 				}
 			}
 		%>
-</section>
 <script type="text/javascript">
 	//$("table").find("tr:odd").css("background-color", "#bbbbff");
 	//$(document).ready(function() {
