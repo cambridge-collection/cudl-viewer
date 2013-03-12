@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+						
+	<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+      <property name="locations" value="classpath:cudl-global.properties" />
+    </bean>
+    
+    <bean id="gnDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://found-dom01.lib.cam.ac.uk:3306/genizahbibdev" />
+		<property name="username" value="genbibdevuser" />
+		<property name="password" value="resuvedbibneg" />
+		<!-- 
+		<property name="driverClassName" value="${gnJdbc.driver}" />
+		<property name="url" value=" ${gnJdbc.url}" />
+		<property name="username" value="${gnJdbc.user}" />
+		<property name="password" value="${gnJdbc.password}" />
+		-->
+	</bean>
+	
+	<bean id="gnDao" class="ulcambridge.foundations.viewer.genizah.GenizahDBDao">
+		<property name="dataSource" ref="gnDataSource"/>
+	</bean>
+	
+	<bean id="genizahController" 
+		class="ulcambridge.foundations.viewer.genizah.GenizahController">
+	  <constructor-arg type="ulcambridge.foundations.viewer.genizah.GenizahDao">
+	  	<ref bean="gnDao"/>
+	  </constructor-arg>
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+    	<property name="prefix"><value>/WEB-INF/</value></property>
+    	<property name="suffix"><value>.jsp</value></property>
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+    	<property name="exposedContextBeanNames">
+       	 	<list><value>globalproperties</value></list>
+    	</property>
+		
+	</bean>
+
+	<mvc:annotation-driven />
+
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	
+</beans>
