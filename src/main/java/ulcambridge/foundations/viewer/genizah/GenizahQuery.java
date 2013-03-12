@@ -29,6 +29,10 @@ public class GenizahQuery {
 		return queryType.equals("CLASSMARK");
 	}
 	
+	public boolean isClassmarkQueryOld() {
+		return queryType.equals("CLASSMARK-OLD");
+	}
+	
 	public String getQueryString() {
 		return queryString;
 	}
