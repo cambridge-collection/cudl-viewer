@@ -16,12 +16,7 @@
 <%
 	List<Fragment> resultSet = ((List<Fragment>) request.getAttribute("fragments"));
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
-	//ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
-	ItemFactory itemFactory = new ItemFactory();
-	itemFactory.init();
-	ItemsJSONDao itemsDao = new ItemsJSONDao();
-	itemsDao.setJSONReader(new JSONReader());
-	itemFactory.setItemsDao(itemsDao);
+	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
 
 <div class="clear"></div>
@@ -36,6 +31,11 @@
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table>");
+				out.println("<tr>");
+				out.println("<th>Classmark</th>");
+				out.println("<th>Title</th>");
+				out.println("<th>Abstract</th>");
+				out.println("</tr>");
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
 				for (Fragment fragment : resultSet) {
 					String classmark = fragment.getClassmark();
@@ -48,9 +48,15 @@
 						item = itemFactory.getItemFromId(classmark);
 					}
 					if (item == null) {
-						out.println("<td>" + "NOT FOUND" + "</td>");	
+						out.println("<td class=\"emptyRow\">" + "NOT FOUND" + "</td>");	
 					} else {
 						out.println("<td>" + item.getTitle() + "</td>");
+						String itemAbstract = item.getAbstract();
+						if (itemAbstract.equals("")) {
+							out.println("<td class=\"emptyCell\"></td>");
+						} else {
+							out.println("<td>" + itemAbstract + "</td>");
+						}
 					}
 					out.println("</tr>");
 				}

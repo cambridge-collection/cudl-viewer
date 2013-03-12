@@ -8,10 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import ulcambridge.foundations.viewer.ItemFactory;
 
 /**
  * Main controller for the Genizah fragment bibliography.
@@ -24,9 +27,15 @@ public class GenizahController {
 
 	protected final Log logger = LogFactory.getLog(getClass());	
 	private GenizahDao dataSource;
+	private ItemFactory itemFactory;
 	
 	public GenizahController(GenizahDao dataSource) {
 		this.dataSource = dataSource;
+	}
+
+	@Autowired
+	public void setItemFactory(ItemFactory factory) {
+		this.itemFactory = factory;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="/genizah")
@@ -59,6 +68,7 @@ public class GenizahController {
 			List<Fragment> fragments = dataSource.getFragmentsByClassmark(queryString);
 			// TODO : switch to different view if there is only one fragment?
 			modelAndView = new ModelAndView("jsp/genizah-byClassmark");
+			request.setAttribute("itemFactory", itemFactory);
 			modelAndView.addObject("fragments", fragments);
 		} else {
 			modelAndView = new ModelAndView("jsp/genizah-Landing");

@@ -43,6 +43,7 @@
 	  <constructor-arg type="ulcambridge.foundations.viewer.genizah.GenizahDao">
 	  	<ref bean="gnDao"/>
 	  </constructor-arg>
+	  <property name="itemFactory" ref="itemFactory"/>
 	</bean>
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
