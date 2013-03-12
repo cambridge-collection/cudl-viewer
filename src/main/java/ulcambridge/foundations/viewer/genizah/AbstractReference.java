@@ -3,21 +3,20 @@ package ulcambridge.foundations.viewer.genizah;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Reference to a fragment in a bibliography entry.
- * 
- * @author gilleain
- *
- */
-public class Reference {
+public class AbstractReference {
 	
 	private final List<RefType> referenceTypes;
 	
-	private final BibliographyEntry entry;
-	
-	public Reference(String typeString, BibliographyEntry entry) {
-		this.entry = entry;
+	public AbstractReference(String typeString) {
 		this.referenceTypes = new ArrayList<RefType>();
+		parseReferenceTypeString(typeString);
+	}
+	
+	public AbstractReference(List<RefType> referenceTypes) {
+		this.referenceTypes = referenceTypes;
+	}
+	
+	public void parseReferenceTypeString(String typeString) {
 		if (typeString.contains(" ")) {	// multiple types
 			String[] parts = typeString.split(" ");
 			for (String part : parts) {
@@ -54,8 +53,4 @@ public class Reference {
 		return referenceTypes;
 	}
 
-	public BibliographyEntry getEntry() {
-		return entry;
-	}
-	
 }

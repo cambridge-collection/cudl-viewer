@@ -65,12 +65,12 @@ public class GenizahController {
 			modelAndView = new ModelAndView("jsp/genizah-byKeyword");
 			modelAndView.addObject("titles", titles);
 		} else if (query.isClassmarkQuery()) {
-			List<FragmentReferences> fragmentReferences = dataSource.getFragmentReferences(queryString);
+			List<FragmentReferenceList> fragmentReferences = dataSource.getFragmentReferences(queryString);
 			modelAndView = new ModelAndView("jsp/genizah-fragmentReferences");
 			modelAndView.addObject("fragmentReferences", fragmentReferences);
 			modelAndView.addObject("itemFactory", itemFactory);
 		} else if (query.isBibliographByKeywordQuery()) {
-			List<BibliographyReferences> bibliographyReferences = dataSource.getBibliographyReferencesByKeyword(queryString);
+			List<BibliographyReferenceList> bibliographyReferences = dataSource.getBibliographyReferencesByKeyword(queryString);
 			modelAndView = new ModelAndView("jsp/genizah-bibliographyReferences");
 			modelAndView.addObject("bibliographyReferences", bibliographyReferences);
 			modelAndView.addObject("itemFactory", itemFactory);

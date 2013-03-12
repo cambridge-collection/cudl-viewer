@@ -75,10 +75,10 @@ public class GenizahDBDaoTest {
 	@Test
 	public void fragmentBiblioByClassmark() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentReferences> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.170");
+		List<FragmentReferenceList> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.170");
 		Assert.assertTrue(fragmentRefs.size() == 1);
-		for (FragmentReferences fragmentBib : fragmentRefs) {
-			for (Reference ref : fragmentBib.getBibliographyReferences()) {
+		for (FragmentReferenceList fragmentBib : fragmentRefs) {
+			for (FragmentReferences ref : fragmentBib.getBibliographyReferences()) {
 				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeReadableForm());
 			}
 		}
@@ -87,10 +87,10 @@ public class GenizahDBDaoTest {
 	@Test
 	public void fragmentBiblioByClassmark_WildcardAtEnd() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentReferences> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.17*");
+		List<FragmentReferenceList> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.17*");
 		Assert.assertTrue(fragmentRefs.size() > 1);
-		for (FragmentReferences fragmentBib : fragmentRefs) {
-			for (Reference ref : fragmentBib.getBibliographyReferences()) {
+		for (FragmentReferenceList fragmentBib : fragmentRefs) {
+			for (FragmentReferences ref : fragmentBib.getBibliographyReferences()) {
 				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
 			}
 		}
@@ -99,11 +99,11 @@ public class GenizahDBDaoTest {
 	@Test
 	public void biblioFragmentByKeyword() {
 		GenizahDao dao = getDaoSource();
-		List<BibliographyReferences> bibRefList = dao.getBibliographyReferencesByKeyword("*Bird*");
+		List<BibliographyReferenceList> bibRefList = dao.getBibliographyReferencesByKeyword("*Bird*");
 		Assert.assertTrue(bibRefList.size() == 1);
-		for (BibliographyReferences bibRef : bibRefList) {
+		for (BibliographyReferenceList bibRef : bibRefList) {
 			System.out.println(bibRef.getBibligraphyEntry().getTitle());
-			for (Reference ref : bibRef.getBibliographyReferences()) {
+			for (FragmentReferences ref : bibRef.getBibliographyReferences()) {
 				System.out.println(ref.getTypeReadableForm());
 			}
 		}

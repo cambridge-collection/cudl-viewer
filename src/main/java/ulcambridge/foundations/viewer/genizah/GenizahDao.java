@@ -16,10 +16,10 @@ public interface GenizahDao {
 	
 	public List<Fragment> getFragmentsByClassmark(String classmark);
 	
-	public List<FragmentReferences> getFragmentReferences(String classmark);
+	public List<FragmentReferenceList> getFragmentReferences(String classmark);
 	
-	public List<BibliographyReferences> getBibliographyReferencesByAuthor(String queryString);
+	public List<BibliographyReferenceList> getBibliographyReferencesByAuthor(String queryString);
 	
-	public List<BibliographyReferences> getBibliographyReferencesByKeyword(String queryString);
+	public List<BibliographyReferenceList> getBibliographyReferencesByKeyword(String queryString);
 
 }

@@ -1,36 +1,26 @@
 package ulcambridge.foundations.viewer.genizah;
 
-import java.util.List;
 
 /**
- * Model class to represent all fragments referenced by a single bibliography entry.
+ * References from a bibliography entry to a fragment.
  * 
  * @author gilleain
  *
  */
-public class BibliographyReferences {
+public class BibliographyReferences extends AbstractReference {
 	
 	/**
-	 * The bibliography entry that is referencing.
+	 * The fragment referred to by the bibliography entry.
 	 */
-	private final BibliographyEntry bibliographyEntry;
+	private final Fragment fragment;
 	
-	/**
-	 * Reference from a bibliography entry, with type.
-	 */
-	private final List<Reference> bibliographyReferences;
-	
-	public BibliographyReferences(BibliographyEntry bibligraphyEntry, List<Reference> references) {
-		this.bibliographyEntry = bibligraphyEntry;
-		this.bibliographyReferences = references;
+	public BibliographyReferences(String typeString, Fragment fragment) {
+		super(typeString);
+		this.fragment = fragment;
 	}
-	
-	public List<Reference> getBibliographyReferences() {
-		return bibliographyReferences;
-	}
-	
-	public BibliographyEntry getBibligraphyEntry() {
-		return bibliographyEntry;
+
+	public Fragment getFragment() {
+		return fragment;
 	}
 	
 }

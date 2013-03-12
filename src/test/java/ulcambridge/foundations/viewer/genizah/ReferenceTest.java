@@ -12,21 +12,21 @@ public class ReferenceTest {
 	@Test
 	public void parseSingleRefTypeTest() {
 		String singleRefType = "m";
-		Reference ref = new Reference(singleRefType, getEntry());
+		FragmentReferences ref = new FragmentReferences(singleRefType, getEntry());
 		System.out.println(ref.getTypeReadableForm());
 	}
 	
 	@Test
 	public void parseMultipleRefTypeTest() {
 		String multipleRefType = "m tx";
-		Reference ref = new Reference(multipleRefType, getEntry());
+		FragmentReferences ref = new FragmentReferences(multipleRefType, getEntry());
 		System.out.println(ref.getTypeReadableForm());
 	}
 	
 	@Test
 	public void parseUnkRefTypeTest() {
 		String unkRefType = "a";
-		Reference ref = new Reference(unkRefType, getEntry());
+		FragmentReferences ref = new FragmentReferences(unkRefType, getEntry());
 		System.out.println(ref.getTypeReadableForm());
 	}
 

@@ -23,7 +23,7 @@
 
 
 <%
-	List<FragmentReferences> resultSet = ((List<FragmentReferences>) request.getAttribute("fragmentReferences"));
+	List<FragmentReferenceList> resultSet = ((List<FragmentReferenceList>) request.getAttribute("fragmentReferences"));
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
@@ -42,7 +42,7 @@
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
-				for (FragmentReferences fragmentReference : resultSet) {
+				for (FragmentReferenceList fragmentReference : resultSet) {
 					Fragment fragment = fragmentReference.getFragment(); 
 					String classmark = fragment.getClassmark();
 					String label = fragment.getLabel();
@@ -76,7 +76,7 @@
 					out.println("<th>Year</th>");
 					out.println("<th>Authors</th>");
 					out.println("</tr></thead><tbody>");
-					for (Reference reference : fragmentReference.getBibliographyReferences()) {
+					for (FragmentReferences reference : fragmentReference.getBibliographyReferences()) {
 						BibliographyEntry bibliographyEntry = reference.getEntry();
 						out.println("<tr>");
 						out.println("<td>" + reference.getTypeReadableForm() + "</td>");

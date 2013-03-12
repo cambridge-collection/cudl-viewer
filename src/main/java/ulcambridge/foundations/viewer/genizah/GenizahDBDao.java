@@ -156,7 +156,7 @@ public class GenizahDBDao implements GenizahDao {
 	}
 	
 	@Override
-	public List<BibliographyReferences> getBibliographyReferencesByKeyword(String queryString) {
+	public List<BibliographyReferenceList> getBibliographyReferencesByKeyword(String queryString) {
 		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, " + bibliographyColumnNames + 
 					   "FROM Bibliograph JOIN Reference ON Reference.Title = Bibliograph.ID " +
 					   "JOIN Fragment ON Fragment.ID = Reference.Fragment " +
@@ -164,12 +164,12 @@ public class GenizahDBDao implements GenizahDao {
 		String convertedQueryString = convertWildcards(queryString);
 //		String convertedQueryString = queryString + "%";
 		
-		final List<BibliographyReferences> bibliographyReferences = jdbcTemplate.query(
+		final List<BibliographyReferenceList> bibliographyReferences = jdbcTemplate.query(
 				query,
 				new Object[] { convertedQueryString },
-				new ResultSetExtractor<List<BibliographyReferences>>() {
+				new ResultSetExtractor<List<BibliographyReferenceList>>() {
 					@Override
-					public List<BibliographyReferences> extractData(ResultSet resultSet)
+					public List<BibliographyReferenceList> extractData(ResultSet resultSet)
 							throws SQLException, DataAccessException {
 						Map<Integer, Map<String, List<String>>> fragmentReferenceMap = 
 								new HashMap<Integer, Map<String, List<String>>>();
@@ -208,24 +208,24 @@ public class GenizahDBDao implements GenizahDao {
 								referenceLookup.put(biblioId, entry);
 							}
 						}
-						List<BibliographyReferences> bibliographyReferences = new ArrayList<BibliographyReferences>();
+						List<BibliographyReferenceList> bibliographyReferences = new ArrayList<BibliographyReferenceList>();
 						for (int biblioId : referenceLookup.keySet()) {
 							BibliographyEntry entry = referenceLookup.get(biblioId);
 							Map<String, List<String>> fragmentMap = fragmentReferenceMap.get(biblioId);
-							List<Reference> references = new ArrayList<Reference>();
+							List<FragmentReferences> references = new ArrayList<FragmentReferences>();
 							for (String fragmentKey : fragmentMap.keySet()) {
 								for (String refType : fragmentMap.get(fragmentKey)) {
-									references.add(new Reference(refType, entry));
+									references.add(new FragmentReferences(refType, entry));
 								}
 							}
-							bibliographyReferences.add(new BibliographyReferences(entry, references));
+							bibliographyReferences.add(new BibliographyReferenceList(entry, references));
 						}
 						return bibliographyReferences;
 					}
 				}
 		);
 		
-		for (BibliographyReferences bibliographyReferenceList : bibliographyReferences) {
+		for (BibliographyReferenceList bibliographyReferenceList : bibliographyReferences) {
 			fillBibliographyAuthors(bibliographyReferenceList.getBibligraphyEntry());
 		}
 		
@@ -233,23 +233,23 @@ public class GenizahDBDao implements GenizahDao {
 	}
 	
 	@Override
-	public List<BibliographyReferences> getBibliographyReferencesByAuthor(String queryString) {
+	public List<BibliographyReferenceList> getBibliographyReferencesByAuthor(String queryString) {
 		return null;
 	}
 
 	@Override
-	public List<FragmentReferences> getFragmentReferences(String classmarkQueryString) {
+	public List<FragmentReferenceList> getFragmentReferences(String classmarkQueryString) {
 		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, C6, " + bibliographyColumnNames +
 						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
 						"JOIN Bibliograph ON Reference.Title = Bibliograph.ID " +
 						"WHERE LB LIKE ?";
 		String convertedQueryString = convertWildcards(classmarkQueryString);
-		final List<FragmentReferences> fragmentBibliographies = jdbcTemplate.query(
+		final List<FragmentReferenceList> fragmentBibliographies = jdbcTemplate.query(
 				query,
 				new Object[] { convertedQueryString },
-				new ResultSetExtractor<List<FragmentReferences>>() {
+				new ResultSetExtractor<List<FragmentReferenceList>>() {
 					@Override
-					public List<FragmentReferences> extractData(ResultSet resultSet)
+					public List<FragmentReferenceList> extractData(ResultSet resultSet)
 							throws SQLException, DataAccessException {
 						Map<String, Map<Integer, List<String>>> fragmentReferenceMap = 
 								new HashMap<String, Map<Integer, List<String>>>();
@@ -289,18 +289,18 @@ public class GenizahDBDao implements GenizahDao {
 								referenceLookup.put(biblioId, entry);
 							}
 						}
-						List<FragmentReferences> fragmentBibliographies = new ArrayList<FragmentReferences>();
+						List<FragmentReferenceList> fragmentBibliographies = new ArrayList<FragmentReferenceList>();
 						for (String fragmentKey : fragmentReferenceMap.keySet()) {
 							Fragment fragment = fragmentLookup.get(fragmentKey);
 							Map<Integer, List<String>> referenceMap = fragmentReferenceMap.get(fragmentKey);
-							List<Reference> references = new ArrayList<Reference>();
+							List<FragmentReferences> references = new ArrayList<FragmentReferences>();
 							for (int biblioId : referenceMap.keySet()) {
 								BibliographyEntry entry = referenceLookup.get(biblioId);
 								for (String refType : referenceMap.get(biblioId)) {
-									references.add(new Reference(refType, entry));
+									references.add(new FragmentReferences(refType, entry));
 								}
 							}
-							fragmentBibliographies.add(new FragmentReferences(fragment, references));
+							fragmentBibliographies.add(new FragmentReferenceList(fragment, references));
 						}
 						return fragmentBibliographies;
 					}
@@ -309,7 +309,7 @@ public class GenizahDBDao implements GenizahDao {
 		
 		// TODO : annoying to have to do this, need to re-work this!
 		List<BibliographyEntry> uniqueBibliography = new ArrayList<BibliographyEntry>();
-		for (FragmentReferences fragmentBibliography : fragmentBibliographies) {
+		for (FragmentReferenceList fragmentBibliography : fragmentBibliographies) {
 			List<BibliographyEntry> bibliography = fragmentBibliography.getBibliography();
 			for (BibliographyEntry bibEntry : bibliography) {
 				if (!uniqueBibliography.contains(bibEntry)) {

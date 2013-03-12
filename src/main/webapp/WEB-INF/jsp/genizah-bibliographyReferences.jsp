@@ -23,7 +23,7 @@
 
 
 <%
-	List<BibliographyReferences> resultSet = ((List<BibliographyReferences>) request.getAttribute("bibliographyReferences"));
+	List<BibliographyReferenceList> resultSet = ((List<BibliographyReferenceList>) request.getAttribute("bibliographyReferences"));
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
@@ -50,7 +50,7 @@
 				out.println("<th>References</th>");
 				out.println("<th>Authors</th>");
 				out.println("</tr></thead><tbody>");
-				for (BibliographyReferences bibliographyReference : resultSet) {
+				for (BibliographyReferenceList bibliographyReference : resultSet) {
 					BibliographyEntry bibliographyEntry = bibliographyReference.getBibligraphyEntry();
 					out.println("<tr>");
 					out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
