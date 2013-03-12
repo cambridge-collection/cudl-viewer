@@ -32,7 +32,7 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<AuthorBibliography> getTitlesByAuthor(String author) {
-		String query = "SELECT Author, TI FROM Author LEFT JOIN Bibliograph " +
+		String query = "SELECT Author, DA, DO, ET, M1, PB, PY, TI FROM Author LEFT JOIN Bibliograph " +
 					   "ON Author.Title = Bibliograph.ID WHERE Author LIKE ?"; 
 
 		String percentWrappedString = "%" + author + "%";
@@ -56,7 +56,9 @@ public class GenizahDBDao implements GenizahDao {
 								bibliography = new ArrayList<BibliographyEntry>();
 								authorMap.put(author, bibliography);
 							}
-							bibliography.add(new BibliographyEntry(title));
+							BibliographyEntry entry = new BibliographyEntry(title);
+							fillBibliographyEntry(resultSet, entry);
+							bibliography.add(entry);
 						}
 						List<AuthorBibliography> authorBibliographies = new ArrayList<AuthorBibliography>();
 						for (String authorKey : authorMap.keySet()) {
@@ -71,17 +73,28 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<BibliographyEntry> getTitlesByKeyword(String keyword) {
-		String query = "SELECT TI FROM Bibliograph WHERE TI LIKE ?";
+		String query = "SELECT DA, DO, ET, M1, PB, PY, TI FROM Bibliograph WHERE TI LIKE ?";
 
 		String percentWrappedString = "%" + keyword + "%";
 		return jdbcTemplate.query(query, new Object[] { percentWrappedString },
 				new RowMapper<BibliographyEntry>() {
 					public BibliographyEntry mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-						return new BibliographyEntry(
+						BibliographyEntry entry = new BibliographyEntry(
 								resultSet.getString("TI")
 					    );
+						fillBibliographyEntry(resultSet, entry);
+						return entry;
 					}
 				});
+	}
+	
+	private void fillBibliographyEntry(ResultSet resultSet, BibliographyEntry entry) throws SQLException {
+		entry.setDate(resultSet.getString("DA"));
+		entry.setDoi(resultSet.getString("DO"));
+		entry.setEdition(resultSet.getString("ET"));
+		entry.setNumber(resultSet.getString("M1"));
+		entry.setPublisher(resultSet.getString("PB"));
+		entry.setYear(resultSet.getString("PY"));
 	}
 
 	@Override

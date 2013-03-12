@@ -12,10 +12,14 @@
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 %>
 
+<%!
+	public String output(String value) { return (value == null)? "?" : value; }
+%>
+
 <div class="clear"></div>
 
 <section id="content" class="grid_20 content">
-	<div class="grid_13 container" id="pagination_container">
+	<div>
 
 		<%
 			// No results were returned. So print out some help.
@@ -29,7 +33,13 @@
 					for (BibliographyEntry bibliographyEntry : bibliography.getBibliography()) {
 						out.println("<tr>");
 						out.println("<td>" + author + "</td>");
-						out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getTitle()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getDate()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getDoi()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getEdition()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getNumber()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getPublisher()) + "</td>");
+						out.println("<td>" + output(bibliographyEntry.getYear()) + "</td>");
 						out.println("</tr>");
 					}
 				}
