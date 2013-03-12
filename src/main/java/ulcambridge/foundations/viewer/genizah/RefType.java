@@ -15,6 +15,7 @@ public enum RefType {
 	xt("full text with translation"),
 	ty("partial translation, no text"),
 	tx("full translation, no text"),
+	E("addendum"),
 	u("unknown");
 	
 	private String readableForm;
