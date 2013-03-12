@@ -65,7 +65,7 @@ public class GenizahController {
 			modelAndView = new ModelAndView("jsp/genizah-byKeyword");
 			modelAndView.addObject("titles", titles);
 		} else if (query.isClassmarkQuery()) {
-			List<FragmentReferenceList> fragmentReferences = dataSource.getFragmentReferences(queryString);
+			List<FragmentReferenceList> fragmentReferences = dataSource.getFragmentReferencesByClassmark(queryString);
 			modelAndView = new ModelAndView("jsp/genizah-fragmentReferences");
 			modelAndView.addObject("fragmentReferences", fragmentReferences);
 			modelAndView.addObject("itemFactory", itemFactory);

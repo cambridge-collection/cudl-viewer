@@ -238,7 +238,7 @@ public class GenizahDBDao implements GenizahDao {
 	}
 
 	@Override
-	public List<FragmentReferenceList> getFragmentReferences(String classmarkQueryString) {
+	public List<FragmentReferenceList> getFragmentReferencesByClassmark(String classmarkQueryString) {
 		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, C6, " + bibliographyColumnNames +
 						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
 						"JOIN Bibliograph ON Reference.Title = Bibliograph.ID " +

@@ -16,7 +16,7 @@ public interface GenizahDao {
 	
 	public List<Fragment> getFragmentsByClassmark(String classmark);
 	
-	public List<FragmentReferenceList> getFragmentReferences(String classmark);
+	public List<FragmentReferenceList> getFragmentReferencesByClassmark(String classmark);
 	
 	public List<BibliographyReferenceList> getBibliographyReferencesByAuthor(String queryString);
 	
