@@ -5,7 +5,7 @@
 <jsp:include page="header/genizah-header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#keywordsTable').dataTable(( {
+		$('#keywordsTable').dataTable( {
 				"sPaginationType": "full_numbers"
 		} );
 	} );
@@ -28,7 +28,7 @@
 		<%
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any items matching <b>"
+				out.println("<p class=\"box\">We couldn't find any titles containing <b>"
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table id=\"keywordsTable\">");
@@ -51,10 +51,11 @@
 					}
 					out.println("</td>");
 					String title = bibliographyEntry.getTitle();
-					int subStringIndex = title.indexOf(queryString);
+					int subStringIndex = title.toLowerCase().indexOf(queryString.toLowerCase());
 					if (subStringIndex > -1) {
-						out.println("<td>" + title.substring(0, subStringIndex));
-						out.println("<span class=\"searchTermHighlight\">" + queryString + "</span>");
+						out.print("<td>" + title.substring(0, subStringIndex));
+						//out.println("<span class=\"searchTermHighlight\">" + queryString + "</span>");
+						out.print("<span class=\"searchTermHighlight\">" + queryString + "</span>");
 						out.println(title.substring(subStringIndex + queryString.length()) + "</td>");
 					} else {
 						out.println("<td>" + title + "</td>");	// essentially, a bug...
@@ -66,10 +67,6 @@
 			}
 		%>
 </section>
-
-<script type="text/javascript">
-	$("tr:odd").css("background-color", "#bbbbff");
-</script>
 
 <jsp:include page="footer/footer.jsp" />
 

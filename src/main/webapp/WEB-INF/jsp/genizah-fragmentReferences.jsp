@@ -12,7 +12,7 @@
 <jsp:include page="header/genizah-header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#referenceTable').dataTable(( {
+		$('#referenceTable').dataTable( {
 				"sPaginationType": "full_numbers"
 		} );
 	} );
@@ -38,7 +38,7 @@
 		<%
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any items matching <b>"
+				out.println("<p class=\"box\">We couldn't find any fragments with identifier "
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
@@ -73,6 +73,7 @@
 					out.println("<thead><tr>");
 					out.println("<th>RefType</th>");
 					out.println("<th>Reference Title</th>");
+					out.println("<th>Year</th>");
 					out.println("<th>Authors</th>");
 					out.println("</tr></thead><tbody>");
 					for (Reference reference : fragmentReference.getBibliographyReferences()) {
@@ -80,14 +81,14 @@
 						out.println("<tr>");
 						out.println("<td>" + reference.getTypeReadableForm() + "</td>");
 						out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
-						
+						out.println("<td>" + bibliographyEntry.getYear() + "</td>");
 						out.println("<td>");
 						List<String> authors = bibliographyEntry.getAuthors();
 						for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {
 							String author = authors.get(authorIndex);
 							out.println(author);
 							if (authorIndex < authors.size() - 1) {
-								out.println(",");
+								out.println(":");
 							}
 						}
 						out.println("</td>");
@@ -97,13 +98,6 @@
 				}
 			}
 		%>
-<script type="text/javascript">
-	//$("table").find("tr:odd").css("background-color", "#bbbbff");
-	//$(document).ready(function() {
-	//	$("#referenceTable").dataTable();
-	//}
-</script>
-
 <jsp:include page="footer/footer.jsp" />
 
 

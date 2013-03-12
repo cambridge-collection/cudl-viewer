@@ -46,7 +46,7 @@
 		<%
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any items matching <b>"
+				out.println("<p class=\"box\">We couldn't find any authors matching <b>"
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table id=\"authorsTable\">");
@@ -74,7 +74,7 @@
 								out.println(author);
 							}
 							if (authorIndex < authors.size() - 1) {
-								out.println(",");
+								out.println("|");
 							}
 						}
 						out.println("</td>");
@@ -97,9 +97,6 @@
 			}
 		%>
 	</div>
-	<script type="text/javascript">
-		$("tr:odd").css("background-color", "#bbbbff");
-	</script>
 </section>
 
 <jsp:include page="footer/footer.jsp" />

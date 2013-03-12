@@ -27,3 +27,7 @@ div.fragmentDetails {
 div.fragmentLabel {
 	font-weight : bold;
 }
+
+div.dataTables_filter {
+	background-color: light-gray;
+}
