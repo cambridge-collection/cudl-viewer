@@ -80,11 +80,15 @@
 						out.println("<tr>");
 						List<String> authors = bibliographyEntry.getAuthors();
 						out.println("<td>");
-						for (String author : authors) {
+						for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {
+							String author = authors.get(authorIndex);
 							if (author.equals(searchAuthor)) {
-								out.println("<span class=\"searchTermHighlight\">" + author + "</span>,");
+								out.println("<span class=\"searchTermHighlight\">" + author + "</span>");
 							} else {
-								out.println(author + ",");
+								out.println(author);
+							}
+							if (authorIndex < authors.size() - 1) {
+								out.println(",");
 							}
 						}
 						out.println("</td>");

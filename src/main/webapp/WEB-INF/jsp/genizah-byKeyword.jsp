@@ -29,8 +29,12 @@
 					out.println("<tr>");
 					List<String> authors = bibliographyEntry.getAuthors();
 					out.println("<td>");
-					for (String author : authors) {
-						out.println(author + ",");
+					for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {
+						if (authorIndex < authors.size() - 1) {
+							out.println(authors.get(authorIndex) + ",");
+						} else {
+							out.println(authors.get(authorIndex));
+						}
 					}
 					out.println("</td>");
 					String title = bibliographyEntry.getTitle();
