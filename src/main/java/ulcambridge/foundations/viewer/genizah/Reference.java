@@ -11,27 +11,6 @@ import java.util.List;
  */
 public class Reference {
 	
-	public enum RefType {
-		m("mention"),
-		y("partial text"),
-		x("full text"),
-		yt("partial text with translation"),
-		xt("full text with translation"),
-		ty("partial translation, no text"),
-		tx("full translation, no text"),
-		u("unknown");
-		
-		private String readableForm;
-		
-		private RefType(String readableForm) {
-			this.readableForm = readableForm;
-		}
-		
-		public String getReadableForm() {
-			return readableForm;
-		}
-	}
-	
 	private final List<RefType> referenceTypes;
 	
 	private final BibliographyEntry entry;

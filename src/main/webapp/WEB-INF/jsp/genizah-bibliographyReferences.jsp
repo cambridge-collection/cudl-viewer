@@ -38,7 +38,7 @@
 		<%
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any authors with name "
+				out.println("<p class=\"box\">We couldn't find any bibliography entries matching "
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
