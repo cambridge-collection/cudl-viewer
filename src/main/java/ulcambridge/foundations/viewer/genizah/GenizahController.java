@@ -69,6 +69,11 @@ public class GenizahController {
 			modelAndView = new ModelAndView("jsp/genizah-fragmentReferences");
 			modelAndView.addObject("fragmentReferences", fragmentReferences);
 			modelAndView.addObject("itemFactory", itemFactory);
+		} else if (query.isBibliographByKeywordQuery()) {
+			List<BibliographyReferences> bibliographyReferences = dataSource.getBibliographyReferencesByKeyword(queryString);
+			modelAndView = new ModelAndView("jsp/genizah-bibliographyReferences");
+			modelAndView.addObject("bibliographyReferences", bibliographyReferences);
+			modelAndView.addObject("itemFactory", itemFactory);
 		} else if (query.isClassmarkQueryOld()) {
 			List<Fragment> fragments = dataSource.getFragmentsByClassmark(queryString);
 			// TODO : switch to different view if there is only one fragment?

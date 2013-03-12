@@ -19,6 +19,7 @@ public class BibliographyEntry {
 	private String publisher;	// PB column
 	private String year;		// PY column
 	private String title;		// TI column
+	private String volume;		// VL column
 	
 	private List<String> authors;
 
@@ -104,4 +105,11 @@ public class BibliographyEntry {
 		this.title = title;
 	}
 
+	public void setVolume(String volume) {
+		this.volume = volume;
+	}
+	
+	public String getVolume() {
+		return volume;
+	}
 }

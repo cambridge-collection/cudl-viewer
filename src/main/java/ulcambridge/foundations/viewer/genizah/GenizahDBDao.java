@@ -25,6 +25,8 @@ public class GenizahDBDao implements GenizahDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
+	private static final String bibliographyColumnNames = "DA, DO, ET, M1, PB, PY, TI, VL ";
+	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -36,7 +38,8 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<AuthorBibliography> getTitlesByAuthor(String author) {
-		String query = "SELECT Author, Bibliograph.ID, DA, DO, ET, M1, PB, PY, TI FROM Author " +
+		String query = "SELECT Author, Bibliograph.ID," + bibliographyColumnNames + 
+					   "FROM Author " +
 					   "LEFT JOIN Bibliograph " +
 					   "ON Author.Title = Bibliograph.ID WHERE Author LIKE ?"; 
 
@@ -133,6 +136,7 @@ public class GenizahDBDao implements GenizahDao {
 		entry.setNumber(resultSet.getString("M1"));
 		entry.setPublisher(resultSet.getString("PB"));
 		entry.setYear(resultSet.getString("PY"));
+		entry.setVolume(resultSet.getString("VL"));
 	}
 
 	@Override
@@ -150,12 +154,95 @@ public class GenizahDBDao implements GenizahDao {
 					}
 				});
 	}
+	
+	@Override
+	public List<BibliographyReferences> getBibliographyReferencesByKeyword(String queryString) {
+		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, " + bibliographyColumnNames + 
+					   "FROM Bibliograph JOIN Reference ON Reference.Title = Bibliograph.ID " +
+					   "JOIN Fragment ON Fragment.ID = Reference.Fragment " +
+					   "WHERE TI LIKE ?";
+		String convertedQueryString = convertWildcards(queryString);
+//		String convertedQueryString = queryString + "%";
+		
+		final List<BibliographyReferences> bibliographyReferences = jdbcTemplate.query(
+				query,
+				new Object[] { convertedQueryString },
+				new ResultSetExtractor<List<BibliographyReferences>>() {
+					@Override
+					public List<BibliographyReferences> extractData(ResultSet resultSet)
+							throws SQLException, DataAccessException {
+						Map<Integer, Map<String, List<String>>> fragmentReferenceMap = 
+								new HashMap<Integer, Map<String, List<String>>>();
+						// TODO : use fragment as a key directly in the fragmentMap (add equals/hashcode to Fragment)
+						Map<String, Fragment> fragmentLookup = new HashMap<String, Fragment>();
+						Map<Integer, BibliographyEntry> referenceLookup = new HashMap<Integer, BibliographyEntry>();
+						while (resultSet.next()) {
+							String label = resultSet.getString("LB");
+							String classmark = resultSet.getString("Classmark");
+							int biblioId = resultSet.getInt("ID");
+							String title = resultSet.getString("TI");
+							String refType = resultSet.getString("C4");		// m, x, tx, etc
+							Map<String, List<String>> references;
+							if (fragmentReferenceMap.containsKey(biblioId)) {
+								references = fragmentReferenceMap.get(biblioId);
+								List<String> refTypes;
+								if (references.containsKey(label)) {
+									refTypes = references.get(label); 
+								} else {
+									refTypes = new ArrayList<String>();
+									references.put(label, refTypes);
+								}
+								refTypes.add(refType);
+							} else {
+								references = new HashMap<String, List<String>>();
+								List<String> refTypes = new ArrayList<String>();
+								refTypes.add(refType);
+								references.put(label, refTypes);
+								fragmentReferenceMap.put(biblioId, references);
+								fragmentLookup.put(label, new Fragment(label, classmark));
+							}
+							// add a new referring work to the lookup
+							if (!referenceLookup.containsKey(biblioId)) {
+								BibliographyEntry entry = new BibliographyEntry(biblioId, title);
+								fillBibliographyEntry(resultSet, entry);
+								referenceLookup.put(biblioId, entry);
+							}
+						}
+						List<BibliographyReferences> bibliographyReferences = new ArrayList<BibliographyReferences>();
+						for (int biblioId : referenceLookup.keySet()) {
+							BibliographyEntry entry = referenceLookup.get(biblioId);
+							Map<String, List<String>> fragmentMap = fragmentReferenceMap.get(biblioId);
+							List<Reference> references = new ArrayList<Reference>();
+							for (String fragmentKey : fragmentMap.keySet()) {
+								for (String refType : fragmentMap.get(fragmentKey)) {
+									references.add(new Reference(refType, entry));
+								}
+							}
+							bibliographyReferences.add(new BibliographyReferences(entry, references));
+						}
+						return bibliographyReferences;
+					}
+				}
+		);
+		
+		for (BibliographyReferences bibliographyReferenceList : bibliographyReferences) {
+			fillBibliographyAuthors(bibliographyReferenceList.getBibligraphyEntry());
+		}
+		
+		return bibliographyReferences;
+	}
+	
+	@Override
+	public List<BibliographyReferences> getBibliographyReferencesByAuthor(String queryString) {
+		return null;
+	}
 
 	@Override
 	public List<FragmentReferences> getFragmentReferences(String classmarkQueryString) {
-		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, TI, DA, DO, ET, M1, PB, PY " +
+		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, C6, " + bibliographyColumnNames +
 						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
-						"JOIN Bibliograph on Reference.Title = Bibliograph.ID where LB LIKE ?";
+						"JOIN Bibliograph ON Reference.Title = Bibliograph.ID " +
+						"WHERE LB LIKE ?";
 		String convertedQueryString = convertWildcards(classmarkQueryString);
 		final List<FragmentReferences> fragmentBibliographies = jdbcTemplate.query(
 				query,
@@ -175,6 +262,7 @@ public class GenizahDBDao implements GenizahDao {
 							int biblioId = resultSet.getInt("ID");
 							String title = resultSet.getString("TI");
 							String refType = resultSet.getString("C4");		// m, x, tx, etc
+							String refPosition = resultSet.getString("C6"); // location in text
 							Map<Integer, List<String>> references;
 							if (fragmentReferenceMap.containsKey(label)) {
 								references = fragmentReferenceMap.get(label);

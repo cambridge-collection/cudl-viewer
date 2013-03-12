@@ -37,4 +37,8 @@ public class GenizahQuery {
 		return queryString;
 	}
 
+	public boolean isBibliographByKeywordQuery() {
+		return queryType.equals("BIBKEY");
+	}
+
 }

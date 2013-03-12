@@ -95,5 +95,18 @@ public class GenizahDBDaoTest {
 			}
 		}
 	}
+	
+	@Test
+	public void biblioFragmentByKeyword() {
+		GenizahDao dao = getDaoSource();
+		List<BibliographyReferences> bibRefList = dao.getBibliographyReferencesByKeyword("*Bird*");
+		Assert.assertTrue(bibRefList.size() == 1);
+		for (BibliographyReferences bibRef : bibRefList) {
+			System.out.println(bibRef.getBibligraphyEntry().getTitle());
+			for (Reference ref : bibRef.getBibliographyReferences()) {
+				System.out.println(ref.getTypeReadableForm());
+			}
+		}
+	}
 
 }
