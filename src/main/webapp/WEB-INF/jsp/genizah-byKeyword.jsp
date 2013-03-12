@@ -1,10 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page import="java.util.*,
-				 java.net.URLEncoder,
-				 ulcambridge.foundations.viewer.genizah.*"%>
+<%@ page import="java.util.*,ulcambridge.foundations.viewer.genizah.*"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-search.jsp" />
+
+<link rel="stylesheet" href="/styles/genizah.css"/>
 
 <%
 	List<BibliographyEntry> resultSet = ((List<BibliographyEntry>) request.getAttribute("titles"));
@@ -12,7 +12,7 @@
 %>
 
 <div class="clear"></div>
-
+<jsp:include page="genizah-Search.jsp" />
 <section id="content" class="grid_20 content">
 	<div class="grid_13 container" id="pagination_container">
 
@@ -23,9 +23,20 @@
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table>");
+				String queryString = query.getQueryString();
 				for (BibliographyEntry bibliographyEntry : resultSet) {
 					out.println("<tr>");
-					out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
+					List<String> authors = bibliographyEntry.getAuthors();
+					out.println("<td>");
+					for (String author : authors) {
+						out.println(author + ",");
+					}
+					out.println("</td>");
+					String title = bibliographyEntry.getTitle();
+					int subStringIndex = title.indexOf(queryString);
+					out.println("<td>" + title.substring(0, subStringIndex));
+					out.println("<span class=\"searchTermHighlight\">" + queryString + "</span>");
+					out.println(title.substring(subStringIndex + queryString.length()) + "</td>");
 					out.println("</tr>");
 				}
 				out.println("</table>");

@@ -6,6 +6,8 @@
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-search.jsp" />
 
+<link rel="stylesheet" href="/styles/genizah.css"/>
+
 <%
 	List<AuthorBibliography> resultSet = 
 		((List<AuthorBibliography>) request.getAttribute("titles"));
@@ -48,6 +50,8 @@
 
 <div class="clear"></div>
 
+<jsp:include page="genizah-Search.jsp" />
+
 <section id="content" class="grid_20 content">
 	<div class="pagination"></div>
 	<div>
@@ -60,7 +64,7 @@
 			} else {
 				out.println("<table>");
 				out.println("<tr>");
-				out.println("<th>Author</th>");
+				out.println("<th>Authors</th>");
 				out.println("<th>Title</th>");
 				out.println("<th>Year</th>");
 				out.println("<th>Publisher</th>");
@@ -69,10 +73,19 @@
 				out.println("<th>DOI</th>");
 				out.println("<th>Edition</th>");
 				for (AuthorBibliography bibliography : resultSet) {
-					String author = bibliography.getAuthor();
+					String searchAuthor = bibliography.getSearchAuthor();
 					for (BibliographyEntry bibliographyEntry : bibliography.getBibliography()) {
 						out.println("<tr>");
-						out.println("<td>" + author + "</td>");
+						List<String> authors = bibliographyEntry.getAuthors();
+						out.println("<td>");
+						for (String author : authors) {
+							if (author.equals(searchAuthor)) {
+								out.println("<span class=\"searchTermHighlight\">" + author + "</span>,");
+							} else {
+								out.println(author + ",");
+							}
+						}
+						out.println("</td>");
 						out.println("<td>" + output(bibliographyEntry.getTitle(), 45) + "</td>");
 						out.println("<td>" + output(bibliographyEntry.getYear()) + "</td>");
 						out.println("<td>" + output(bibliographyEntry.getPublisher(), 25) + "</td>");

@@ -1,0 +1,19 @@
+.searchTermHighlight {
+	font-weight : bold;
+}
+
+#searchControls {
+	border : 1px solid;
+	background-color : light-grey;
+	margin : 5px;
+}
+
+#searchForm * {
+	border : 0px none;
+	padding : 5px;
+	layout : block;
+}
+
+#searchForm input {
+	border : 1px solid grey;
+}

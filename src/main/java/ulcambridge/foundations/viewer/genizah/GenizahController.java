@@ -61,8 +61,7 @@ public class GenizahController {
 			modelAndView = new ModelAndView("jsp/genizah-byClassmark");
 			modelAndView.addObject("fragments", fragments);
 		} else {
-			// possibly throw an exception, as queryType is malformed...
-			return null;	//?
+			modelAndView = new ModelAndView("jsp/genizah-Landing");
 		}
 		
 		if (modelAndView != null) {

@@ -8,11 +8,20 @@ package ulcambridge.foundations.viewer.genizah;
  */
 public class Fragment {
 	
+	/**
+	 * The 'LB' field in the Fragment table.
+	 */
+	private final String label;
+	
+	/**
+	 * The classmark identifier generated from the label.
+	 */
 	private final String classmark;
 	
 	private final int titleID;
 	
-	public Fragment(String classmark, int titleID) {
+	public Fragment(int titleID, String label, String classmark) {
+		this.label = label;
 		this.classmark = classmark;
 		this.titleID = titleID;
 	}
@@ -21,8 +30,12 @@ public class Fragment {
 		return classmark;
 	}
 
-	public int getTitleID() {
+	public int getTitleId() {
 		return titleID;
+	}
+	
+	public String getLabel() {
+		return label;
 	}
 
 }
