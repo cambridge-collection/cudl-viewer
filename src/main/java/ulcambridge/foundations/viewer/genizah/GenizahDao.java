@@ -16,6 +16,6 @@ public interface GenizahDao {
 	
 	public List<Fragment> getFragmentsByClassmark(String classmark);
 	
-	public List<FragmentBibliography> getFragmentReferences(String classmark);
+	public List<FragmentReferences> getFragmentReferences(String classmark);
 
 }

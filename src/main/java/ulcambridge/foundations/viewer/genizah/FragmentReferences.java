@@ -9,7 +9,7 @@ import java.util.List;
  * @author gilleain
  *
  */
-public class FragmentBibliography {
+public class FragmentReferences {
 	
 	/**
 	 * The fragment referenced.
@@ -21,7 +21,7 @@ public class FragmentBibliography {
 	 */
 	private final List<Reference> bibliographyReferences;
 	
-	public FragmentBibliography(Fragment fragment, List<Reference> bibliographyReferences) {
+	public FragmentReferences(Fragment fragment, List<Reference> bibliographyReferences) {
 		this.fragment = fragment;
 		this.bibliographyReferences = bibliographyReferences;
 	}

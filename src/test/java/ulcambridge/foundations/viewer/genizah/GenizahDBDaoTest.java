@@ -75,9 +75,9 @@ public class GenizahDBDaoTest {
 	@Test
 	public void fragmentBiblioByClassmark() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentBibliography> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.170");
+		List<FragmentReferences> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.170");
 		Assert.assertTrue(fragmentRefs.size() == 1);
-		for (FragmentBibliography fragmentBib : fragmentRefs) {
+		for (FragmentReferences fragmentBib : fragmentRefs) {
 			for (Reference ref : fragmentBib.getBibliographyReferences()) {
 				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeReadableForm());
 			}
@@ -87,9 +87,9 @@ public class GenizahDBDaoTest {
 	@Test
 	public void fragmentBiblioByClassmark_WildcardAtEnd() {
 		GenizahDao dao = getDaoSource();
-		List<FragmentBibliography> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.17*");
+		List<FragmentReferences> fragmentRefs = dao.getFragmentReferences("T-S Ar.37.17*");
 		Assert.assertTrue(fragmentRefs.size() > 1);
-		for (FragmentBibliography fragmentBib : fragmentRefs) {
+		for (FragmentReferences fragmentBib : fragmentRefs) {
 			for (Reference ref : fragmentBib.getBibliographyReferences()) {
 				System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
 			}

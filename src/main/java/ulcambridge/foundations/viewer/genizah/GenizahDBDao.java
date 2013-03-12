@@ -152,17 +152,17 @@ public class GenizahDBDao implements GenizahDao {
 	}
 
 	@Override
-	public List<FragmentBibliography> getFragmentReferences(String classmarkQueryString) {
+	public List<FragmentReferences> getFragmentReferences(String classmarkQueryString) {
 		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, TI, DA, DO, ET, M1, PB, PY " +
 						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
 						"JOIN Bibliograph on Reference.Title = Bibliograph.ID where LB LIKE ?";
 		String convertedQueryString = convertWildcards(classmarkQueryString);
-		final List<FragmentBibliography> fragmentBibliographies = jdbcTemplate.query(
+		final List<FragmentReferences> fragmentBibliographies = jdbcTemplate.query(
 				query,
 				new Object[] { convertedQueryString },
-				new ResultSetExtractor<List<FragmentBibliography>>() {
+				new ResultSetExtractor<List<FragmentReferences>>() {
 					@Override
-					public List<FragmentBibliography> extractData(ResultSet resultSet)
+					public List<FragmentReferences> extractData(ResultSet resultSet)
 							throws SQLException, DataAccessException {
 						Map<String, Map<Integer, List<String>>> fragmentReferenceMap = 
 								new HashMap<String, Map<Integer, List<String>>>();
@@ -201,7 +201,7 @@ public class GenizahDBDao implements GenizahDao {
 								referenceLookup.put(biblioId, entry);
 							}
 						}
-						List<FragmentBibliography> fragmentBibliographies = new ArrayList<FragmentBibliography>();
+						List<FragmentReferences> fragmentBibliographies = new ArrayList<FragmentReferences>();
 						for (String fragmentKey : fragmentReferenceMap.keySet()) {
 							Fragment fragment = fragmentLookup.get(fragmentKey);
 							Map<Integer, List<String>> referenceMap = fragmentReferenceMap.get(fragmentKey);
@@ -212,7 +212,7 @@ public class GenizahDBDao implements GenizahDao {
 									references.add(new Reference(refType, entry));
 								}
 							}
-							fragmentBibliographies.add(new FragmentBibliography(fragment, references));
+							fragmentBibliographies.add(new FragmentReferences(fragment, references));
 						}
 						return fragmentBibliographies;
 					}
@@ -221,7 +221,7 @@ public class GenizahDBDao implements GenizahDao {
 		
 		// TODO : annoying to have to do this, need to re-work this!
 		List<BibliographyEntry> uniqueBibliography = new ArrayList<BibliographyEntry>();
-		for (FragmentBibliography fragmentBibliography : fragmentBibliographies) {
+		for (FragmentReferences fragmentBibliography : fragmentBibliographies) {
 			List<BibliographyEntry> bibliography = fragmentBibliography.getBibliography();
 			for (BibliographyEntry bibEntry : bibliography) {
 				if (!uniqueBibliography.contains(bibEntry)) {
