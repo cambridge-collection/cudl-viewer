@@ -147,4 +147,80 @@ public class GenizahDBDao implements GenizahDao {
 				});
 	}
 
+	@Override
+	public List<FragmentBibliography> getFragmentReferences(String classmark) {
+		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, TI, DA, DO, ET, M1, PB, PY " +
+						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
+						"JOIN Bibliograph on Reference.Title = Bibliograph.ID where LB LIKE ?";
+		String percentTerminatedString = classmark + "%";
+		final List<FragmentBibliography> fragmentBibliographies = jdbcTemplate.query(
+				query,
+				new Object[] { percentTerminatedString },
+				new ResultSetExtractor<List<FragmentBibliography>>() {
+					@Override
+					public List<FragmentBibliography> extractData(ResultSet resultSet)
+							throws SQLException, DataAccessException {
+						Map<String, Map<Integer, List<String>>> fragmentReferenceMap = 
+								new HashMap<String, Map<Integer, List<String>>>();
+						// TODO : use fragment as a key directly in the fragmentMap (add equals/hashcode to Fragment)
+						Map<String, Fragment> fragmentLookup = new HashMap<String, Fragment>();
+						Map<Integer, BibliographyEntry> referenceLookup = new HashMap<Integer, BibliographyEntry>();
+						while (resultSet.next()) {
+							String label = resultSet.getString("LB");
+							String classmark = resultSet.getString("Classmark");
+							int biblioId = resultSet.getInt("ID");
+							String title = resultSet.getString("TI");
+							String refType = resultSet.getString("C4");		// m, x, tx, etc
+							Map<Integer, List<String>> references;
+							if (fragmentReferenceMap.containsKey(label)) {
+								references = fragmentReferenceMap.get(label);
+								List<String> refTypes;
+								if (references.containsKey(biblioId)) {
+									refTypes = references.get(biblioId); 
+								} else {
+									refTypes = new ArrayList<String>();
+									references.put(biblioId, refTypes);
+								}
+								refTypes.add(refType);
+							} else {
+								references = new HashMap<Integer, List<String>>();
+								List<String> refTypes = new ArrayList<String>();
+								refTypes.add(refType);
+								references.put(biblioId, refTypes);
+								fragmentReferenceMap.put(label, references);
+								fragmentLookup.put(label, new Fragment(label, classmark));
+							}
+							// add a new referring work to the lookup
+							if (!referenceLookup.containsKey(biblioId)) {
+								BibliographyEntry entry = new BibliographyEntry(biblioId, title);
+								fillBibliographyEntry(resultSet, entry);
+								referenceLookup.put(biblioId, entry);
+							}
+						}
+						List<FragmentBibliography> fragmentBibliographies = new ArrayList<FragmentBibliography>();
+						for (String fragmentKey : fragmentReferenceMap.keySet()) {
+							Fragment fragment = fragmentLookup.get(fragmentKey);
+							Map<Integer, List<String>> referenceMap = fragmentReferenceMap.get(fragmentKey);
+							List<Reference> references = new ArrayList<Reference>();
+							for (int biblioId : referenceMap.keySet()) {
+								BibliographyEntry entry = referenceLookup.get(biblioId);
+								for (String refType : referenceMap.get(biblioId)) {
+									references.add(new Reference(refType, entry));
+								}
+							}
+							fragmentBibliographies.add(new FragmentBibliography(fragment, references));
+						}
+						return fragmentBibliographies;
+					}
+				}
+		);
+		for (FragmentBibliography fragmentBibliography : fragmentBibliographies) {
+			for (final BibliographyEntry bibEntry : fragmentBibliography.getBibliography()) {
+				fillBibliographyAuthors(bibEntry);
+			}
+		}
+		
+		return fragmentBibliographies;
+	}
+
 }

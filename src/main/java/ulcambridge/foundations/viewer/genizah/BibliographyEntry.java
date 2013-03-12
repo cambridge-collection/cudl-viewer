@@ -28,6 +28,14 @@ public class BibliographyEntry {
 		this.authors = new ArrayList<String>();
 	}
 	
+	public boolean equals(Object other) {
+		if (other != null && other instanceof BibliographyEntry) {
+			BibliographyEntry o = (BibliographyEntry) other;
+			return this.id == o.id;	// fairly crude equality measure!
+		}
+		return false;
+	}
+	
 	public List<String> getAuthors() {
 		return authors;
 	}
