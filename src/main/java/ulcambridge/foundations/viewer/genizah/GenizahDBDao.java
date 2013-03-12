@@ -32,7 +32,8 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<AuthorBibliography> getTitlesByAuthor(String author) {
-		String query = "SELECT Author, DA, DO, ET, M1, PB, PY, TI FROM Author LEFT JOIN Bibliograph " +
+		String query = "SELECT Author, DA, DO, ET, M1, PB, PY, TI FROM Author " +
+					   "LEFT JOIN Bibliograph " +
 					   "ON Author.Title = Bibliograph.ID WHERE Author LIKE ?"; 
 
 		String percentWrappedString = "%" + author + "%";
