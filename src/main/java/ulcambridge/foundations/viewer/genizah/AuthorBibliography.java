@@ -10,17 +10,27 @@ import java.util.List;
  */
 public class AuthorBibliography {
 	
-	private final String author;
+	/**
+	 * The author searched for, among all the other authors.
+	 */
+	private final String searchAuthor;
 	
+	/**
+	 * Information on the books.
+	 */
 	private final List<BibliographyEntry> bibliography;
 	
-	public AuthorBibliography(String author, List<BibliographyEntry> bibliography) {
-		this.author = author;
+	/**
+	 * @param searchAuthor
+	 * @param bibliography
+	 */
+	public AuthorBibliography(String searchAuthor, List<BibliographyEntry> bibliography) {
+		this.searchAuthor = searchAuthor;
 		this.bibliography = bibliography;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getSearchAuthor() {
+		return searchAuthor;
 	}
 
 	public List<BibliographyEntry> getBibliography() {

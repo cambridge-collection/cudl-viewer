@@ -32,13 +32,13 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<AuthorBibliography> getTitlesByAuthor(String author) {
-		String query = "SELECT Author, DA, DO, ET, M1, PB, PY, TI FROM Author " +
+		String query = "SELECT Author, Bibliograph.ID, DA, DO, ET, M1, PB, PY, TI FROM Author " +
 					   "LEFT JOIN Bibliograph " +
 					   "ON Author.Title = Bibliograph.ID WHERE Author LIKE ?"; 
 
 		String percentWrappedString = "%" + author + "%";
 		
-		return jdbcTemplate.query(
+		final List<AuthorBibliography> authorBibliographies = jdbcTemplate.query(
 				query,
 				new Object[] { percentWrappedString },
 				new ResultSetExtractor<List<AuthorBibliography>>() {
@@ -50,6 +50,7 @@ public class GenizahDBDao implements GenizahDao {
 						while (resultSet.next()) {
 							String author = resultSet.getString("Author");
 							String title = resultSet.getString("TI");
+							int id = resultSet.getInt("ID");
 							List<BibliographyEntry> bibliography;
 							if (authorMap.containsKey(author)) {
 								bibliography = authorMap.get(author);
@@ -57,7 +58,7 @@ public class GenizahDBDao implements GenizahDao {
 								bibliography = new ArrayList<BibliographyEntry>();
 								authorMap.put(author, bibliography);
 							}
-							BibliographyEntry entry = new BibliographyEntry(title);
+							BibliographyEntry entry = new BibliographyEntry(id, title);
 							fillBibliographyEntry(resultSet, entry);
 							bibliography.add(entry);
 						}
@@ -70,23 +71,55 @@ public class GenizahDBDao implements GenizahDao {
 				}
 		);
 		
+		for (AuthorBibliography authorBibliography : authorBibliographies) {
+			for (final BibliographyEntry bibEntry : authorBibliography.getBibliography()) {
+				fillBibliographyAuthors(bibEntry);
+			}
+		}
+		
+		return authorBibliographies;
+		
+	}
+	
+	private void fillBibliographyAuthors(final BibliographyEntry bibEntry) {
+		String authorQuery = "SELECT Author from Author WHERE Title = " + bibEntry.getId();
+		jdbcTemplate.query(authorQuery, new ResultSetExtractor<Object>() {
+
+			@Override
+			public Object extractData(ResultSet resultSet) 
+					throws SQLException, DataAccessException {
+				while (resultSet.next()) {
+					String author = resultSet.getString("Author");
+					bibEntry.addAuthor(author);
+				}
+				// don't care about the return, as we are adding data to an existing object
+				return null;
+			}
+			
+		});
 	}
 
 	@Override
 	public List<BibliographyEntry> getTitlesByKeyword(String keyword) {
-		String query = "SELECT DA, DO, ET, M1, PB, PY, TI FROM Bibliograph WHERE TI LIKE ?";
+		String query = "SELECT ID, DA, DO, ET, M1, PB, PY, TI FROM Bibliograph WHERE TI LIKE ?";
 
 		String percentWrappedString = "%" + keyword + "%";
-		return jdbcTemplate.query(query, new Object[] { percentWrappedString },
+		List<BibliographyEntry> bibEntries = jdbcTemplate.query(
+				query, new Object[] { percentWrappedString },
 				new RowMapper<BibliographyEntry>() {
 					public BibliographyEntry mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 						BibliographyEntry entry = new BibliographyEntry(
+								resultSet.getInt("ID"),
 								resultSet.getString("TI")
 					    );
 						fillBibliographyEntry(resultSet, entry);
 						return entry;
 					}
 				});
+		for (final BibliographyEntry bibEntry : bibEntries) {
+			fillBibliographyAuthors(bibEntry);
+		}
+		return bibEntries;
 	}
 	
 	private void fillBibliographyEntry(ResultSet resultSet, BibliographyEntry entry) throws SQLException {

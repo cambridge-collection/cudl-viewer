@@ -18,6 +18,12 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
+	public GenizahDao getDaoSource() {
+		GenizahDBDao dao = new GenizahDBDao();
+		dao.setDataSource(getDataSource());
+		return dao;
+	}
+	
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
@@ -29,29 +35,41 @@ public class GenizahDBDaoTest {
 	
 	@Test
 	public void byAuthor() {
-		GenizahDBDao dao = new GenizahDBDao();
-		dao.setDataSource(getDataSource());
+		GenizahDao dao = getDaoSource();
 		List<AuthorBibliography> authorBib = dao.getTitlesByAuthor("Out");
 		Assert.assertTrue(authorBib.size() > 0);
 		AuthorBibliography autBib0 = authorBib.get(0);
 		Assert.assertTrue(autBib0.getBibliography().size() > 0);
+		for (AuthorBibliography autBib : authorBib) {
+			for (BibliographyEntry bibEntry : autBib.getBibliography()) {
+				System.out.print(bibEntry.getTitle() + "\t|");
+				for (String author : bibEntry.getAuthors()) {
+					System.out.print(author + "|");
+				}
+				System.out.println();
+			}
+		}
 	}
 	
 	@Test
 	public void byKeyword() {
-		GenizahDBDao dao = new GenizahDBDao();
-		dao.setDataSource(getDataSource());
-		List<BibliographyEntry> bib = dao.getTitlesByKeyword("Greek");
+		GenizahDao dao = getDaoSource();
+		List<BibliographyEntry> bib = dao.getTitlesByKeyword("Bible");
 		Assert.assertTrue(bib.size() > 0);
+		for (BibliographyEntry bibEntry : bib) {
+			System.out.print(bibEntry.getTitle() + "\t|");
+			for (String author : bibEntry.getAuthors()) {
+				System.out.print(author + "|");
+			}
+			System.out.println();
+		}
 	}
 	
 	@Test
 	public void byClassmark() {
-		GenizahDBDao dao = new GenizahDBDao();
-		dao.setDataSource(getDataSource());
+		GenizahDao dao = getDaoSource();
 		List<Fragment> fragments = dao.getFragmentsByClassmark("T-S 12.192");
 		Assert.assertTrue(fragments.size() == 1);
 	}
 
 }
-

@@ -1,5 +1,8 @@
 package ulcambridge.foundations.viewer.genizah;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Model object representing the data in the Bibliograph table.
  * 
@@ -8,6 +11,7 @@ package ulcambridge.foundations.viewer.genizah;
  */
 public class BibliographyEntry {
 	
+	private int id;
 	private String date;		// DA column
 	private String doi;			// DO column
 	private String edition;		// ET column
@@ -15,9 +19,25 @@ public class BibliographyEntry {
 	private String publisher;	// PB column
 	private String year;		// PY column
 	private String title;		// TI column
+	
+	private List<String> authors;
 
-	public BibliographyEntry(String title) {
+	public BibliographyEntry(int id, String title) {
+		this.id = id;
 		this.title = title;
+		this.authors = new ArrayList<String>();
+	}
+	
+	public List<String> getAuthors() {
+		return authors;
+	}
+	
+	public void addAuthor(String author) {
+		this.authors.add(author);
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	public String getTitle() {
