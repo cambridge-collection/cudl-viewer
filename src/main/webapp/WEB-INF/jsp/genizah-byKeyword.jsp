@@ -35,9 +35,13 @@
 					out.println("</td>");
 					String title = bibliographyEntry.getTitle();
 					int subStringIndex = title.indexOf(queryString);
-					out.println("<td>" + title.substring(0, subStringIndex));
-					out.println("<span class=\"searchTermHighlight\">" + queryString + "</span>");
-					out.println(title.substring(subStringIndex + queryString.length()) + "</td>");
+					if (subStringIndex > -1) {
+						out.println("<td>" + title.substring(0, subStringIndex));
+						out.println("<span class=\"searchTermHighlight\">" + queryString + "</span>");
+						out.println(title.substring(subStringIndex + queryString.length()) + "</td>");
+					} else {
+						out.println("<td>" + title + "</td>");	// essentially, a bug...
+					}
 					out.println("</tr>");
 				}
 				out.println("</table>");

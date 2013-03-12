@@ -133,14 +133,13 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public List<Fragment> getFragmentsByClassmark(String classmark) {
-		String query = "SELECT LB, Title, Classmark FROM Fragment WHERE LB LIKE ?";
+		String query = "SELECT LB, Classmark FROM Fragment WHERE LB LIKE ?";
 
 		String percentTerminatedString = classmark + "%";
 		return jdbcTemplate.query(query, new Object[] { percentTerminatedString },
 				new RowMapper<Fragment>() {
 					public Fragment mapRow(ResultSet resultSet, int rowNum) throws SQLException {
 						return new Fragment(
-								resultSet.getInt("Title"),
 								resultSet.getString("LB"),
 								resultSet.getString("Classmark")
 					    );
