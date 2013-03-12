@@ -13,6 +13,7 @@
 
 <div class="clear"></div>
 <jsp:include page="genizah-Search.jsp">
+	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
 	<jsp:param name="checkedOption" value="KEYWORD"/>
 </jsp:include>
 
@@ -24,6 +25,11 @@
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table>");
+				out.println("<tr>");
+				out.println("<th>Authors</th>");
+				out.println("<th>Title</th>");
+				out.println("<th>Year</th>");
+				out.println("</tr>");
 				String queryString = query.getQueryString();
 				for (BibliographyEntry bibliographyEntry : resultSet) {
 					out.println("<tr>");
@@ -46,12 +52,17 @@
 					} else {
 						out.println("<td>" + title + "</td>");	// essentially, a bug...
 					}
+					out.println("<td>" + bibliographyEntry.getYear() + "</td>");
 					out.println("</tr>");
 				}
 				out.println("</table>");
 			}
 		%>
 </section>
+
+<script type="text/javascript">
+	$("tr:odd").css("background-color", "#bbbbff");
+</script>
 
 <jsp:include page="footer/footer.jsp" />
 

@@ -29,6 +29,10 @@ public class GenizahDBDao implements GenizahDao {
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+	
+	private String convertWildcards(String queryString) {
+		return queryString.replace("*", "%");
+	}
 
 	@Override
 	public List<AuthorBibliography> getTitlesByAuthor(String author) {
@@ -148,14 +152,14 @@ public class GenizahDBDao implements GenizahDao {
 	}
 
 	@Override
-	public List<FragmentBibliography> getFragmentReferences(String classmark) {
+	public List<FragmentBibliography> getFragmentReferences(String classmarkQueryString) {
 		String query = "SELECT LB, Classmark, Bibliograph.ID, C4, TI, DA, DO, ET, M1, PB, PY " +
 						"FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
 						"JOIN Bibliograph on Reference.Title = Bibliograph.ID where LB LIKE ?";
-		String percentTerminatedString = classmark + "%";
+		String convertedQueryString = convertWildcards(classmarkQueryString);
 		final List<FragmentBibliography> fragmentBibliographies = jdbcTemplate.query(
 				query,
-				new Object[] { percentTerminatedString },
+				new Object[] { convertedQueryString },
 				new ResultSetExtractor<List<FragmentBibliography>>() {
 					@Override
 					public List<FragmentBibliography> extractData(ResultSet resultSet)
@@ -214,10 +218,20 @@ public class GenizahDBDao implements GenizahDao {
 					}
 				}
 		);
+		
+		// TODO : annoying to have to do this, need to re-work this!
+		List<BibliographyEntry> uniqueBibliography = new ArrayList<BibliographyEntry>();
 		for (FragmentBibliography fragmentBibliography : fragmentBibliographies) {
-			for (final BibliographyEntry bibEntry : fragmentBibliography.getBibliography()) {
-				fillBibliographyAuthors(bibEntry);
+			List<BibliographyEntry> bibliography = fragmentBibliography.getBibliography();
+			for (BibliographyEntry bibEntry : bibliography) {
+				if (!uniqueBibliography.contains(bibEntry)) {
+					uniqueBibliography.add(bibEntry);
+				}
 			}
+		}
+		
+		for (final BibliographyEntry bibEntry : uniqueBibliography) {
+			fillBibliographyAuthors(bibEntry);
 		}
 		
 		return fragmentBibliographies;

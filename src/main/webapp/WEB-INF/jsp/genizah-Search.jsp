@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
-<% String checkedOption = request.getParameter("checkedOption"); %>
+<% 
+	String queryString = request.getParameter("queryString");
+	String checkedOption = request.getParameter("checkedOption"); 
+%>
 
 <div id="searchControls">
-	<!--   <b><%=checkedOption %></b> -->
 	<form action="genizah" id="searchForm">
-		Query : <input type="text" name="query"/><br/>
+		Query : <input type="text" name="query" value="<%=queryString%>"/><br/>
 		<input type="radio" name="queryType" value="AUTHOR" 
 				<%=checkedOption.equals("AUTHOR")? "checked" : "" %>/> Author<br/>
 		<input type="radio" name="queryType" value="KEYWORD"

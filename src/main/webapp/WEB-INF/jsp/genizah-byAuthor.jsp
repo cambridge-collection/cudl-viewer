@@ -51,6 +51,7 @@
 <div class="clear"></div>
 
 <jsp:include page="genizah-Search.jsp">
+	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
 	<jsp:param name="checkedOption" value="AUTHOR"/>
 </jsp:include>
 
@@ -111,6 +112,9 @@
 			}
 		%>
 	</div>
+	<script type="text/javascript">
+		$("tr:odd").css("background-color", "#bbbbff");
+	</script>
 </section>
 
 <jsp:include page="footer/footer.jsp" />

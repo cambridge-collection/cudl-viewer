@@ -1,5 +1,5 @@
 .searchTermHighlight {
-	font-weight : bold;
+	font-weight : italic;
 }
 
 #searchControls {
@@ -16,4 +16,14 @@
 
 #searchForm input {
 	border : 1px solid grey;
+}
+
+div.fragmentDetails {
+	border : 1px solid grey;
+	padding : 5px;
+	background-color : light-gray;
+}
+
+div.fragmentLabel {
+	font-weight : bold;
 }
