@@ -50,7 +50,9 @@
 
 <div class="clear"></div>
 
-<jsp:include page="genizah-Search.jsp" />
+<jsp:include page="genizah-Search.jsp">
+	<jsp:param name="checkedOption" value="AUTHOR"/>
+</jsp:include>
 
 <section id="content" class="grid_20 content">
 	<div class="pagination"></div>

@@ -68,7 +68,7 @@ public class GenizahController {
 			List<Fragment> fragments = dataSource.getFragmentsByClassmark(queryString);
 			// TODO : switch to different view if there is only one fragment?
 			modelAndView = new ModelAndView("jsp/genizah-byClassmark");
-			request.setAttribute("itemFactory", itemFactory);
+			modelAndView.addObject("itemFactory", itemFactory);
 			modelAndView.addObject("fragments", fragments);
 		} else {
 			modelAndView = new ModelAndView("jsp/genizah-Landing");

@@ -20,9 +20,10 @@
 %>
 
 <div class="clear"></div>
-<jsp:include page="genizah-Search.jsp" />
+<jsp:include page="genizah-Search.jsp">
+	<jsp:param name="checkedOption" value="CLASSMARK"/>
+</jsp:include>
 <section id="content" class="grid_20 content">
-	<div class="grid_13 container" id="pagination_container">
 
 		<%
 			// No results were returned. So print out some help.
@@ -40,16 +41,18 @@
 				for (Fragment fragment : resultSet) {
 					String classmark = fragment.getClassmark();
 					out.println("<tr>");
-					out.println("<td><a href=\"" + fragmentBaseURL + classmark + "\">");
-					out.println(fragment.getLabel() + "</a></td>");
+					
 					
 					Item item = null;
 					if (itemFactory != null) {
 						item = itemFactory.getItemFromId(classmark);
 					}
 					if (item == null) {
+						out.println("<td>" + fragment.getLabel() + "</td>");
 						out.println("<td class=\"emptyRow\">" + "NOT FOUND" + "</td>");	
 					} else {
+						out.println("<td><a href=\"" + fragmentBaseURL + classmark + "\">");
+						out.println(fragment.getLabel() + "</a></td>");
 						out.println("<td>" + item.getTitle() + "</td>");
 						String itemAbstract = item.getAbstract();
 						if (itemAbstract.equals("")) {
@@ -63,7 +66,6 @@
 				out.println("</table>");
 			}
 		%>
-</div>
 </section>
 
 <jsp:include page="footer/footer.jsp" />

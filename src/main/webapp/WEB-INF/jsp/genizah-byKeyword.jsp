@@ -12,10 +12,11 @@
 %>
 
 <div class="clear"></div>
-<jsp:include page="genizah-Search.jsp" />
-<section id="content" class="grid_20 content">
-	<div class="grid_13 container" id="pagination_container">
+<jsp:include page="genizah-Search.jsp">
+	<jsp:param name="checkedOption" value="KEYWORD"/>
+</jsp:include>
 
+<section id="content" class="grid_20 content">
 		<%
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
@@ -42,7 +43,6 @@
 				out.println("</table>");
 			}
 		%>
-</div>
 </section>
 
 <jsp:include page="footer/footer.jsp" />
