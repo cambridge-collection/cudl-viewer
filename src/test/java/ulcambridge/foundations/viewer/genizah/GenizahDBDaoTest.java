@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.junit.Test;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-public class GenizahDBDaoTest {
+public class GenizahDBDaoTest extends TestCase {
 	
 	static {
 		try {
@@ -15,6 +18,17 @@ public class GenizahDBDaoTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public GenizahDBDaoTest(String testName) {
+		super(testName);
+	}
+	
+	/**
+	 * @return the suite of tests being tested
+	 */
+	public static Test suite() {
+		return new TestSuite(GenizahDBDaoTest.class);
 	}
 	
 	public GenizahDao getDaoSource() {
@@ -32,7 +46,6 @@ public class GenizahDBDaoTest {
 		return dataSource;
 	}
 	
-	@Test
 	public void fragmentBiblioByClassmark() {
 		GenizahDao dao = getDaoSource();
 		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.170");
@@ -41,7 +54,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void fragmentBiblioByClassmark_WildcardAtEnd() {
 		GenizahDao dao = getDaoSource();
 		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.17*");
@@ -50,7 +62,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void authorSearch() {
 		GenizahDao dao = getDaoSource();
 		List<BibliographySearchResult> results = dao.authorSearch("Outh");
@@ -61,7 +72,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void keywordSearch() {
 		GenizahDao dao = getDaoSource();
 		List<BibliographySearchResult> results = dao.keywordSearch("*Bird*");
@@ -73,7 +83,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void classmarkSearch() {
 		GenizahDao dao = getDaoSource();
 		List<FragmentSearchResult> results = dao.classmarkSearch("T-S Ar.54.9*");
@@ -83,7 +92,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void getBibRefsByTitleId() {
 		GenizahDao dao = getDaoSource();
 		BibliographyReferenceList refList = dao.getBibliographyReferencesByTitleId(2907);
@@ -93,7 +101,6 @@ public class GenizahDBDaoTest {
 		}
 	}
 	
-	@Test
 	public void getFragRefsByClassmarkId() {
 		GenizahDao dao = getDaoSource();
 		FragmentReferenceList refList = dao.getFragmentReferencesByClassmark("MS-TS-AR-00054-00009");
