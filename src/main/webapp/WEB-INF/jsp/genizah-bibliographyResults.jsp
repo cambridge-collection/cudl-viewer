@@ -22,9 +22,11 @@
 	GenizahQuery query = ((GenizahQuery) request.getAttribute("query"));
 %>
 
+<div class="clear"></div>
+
 <jsp:include page="genizah-Search.jsp">
 	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
-	<jsp:param name="checkedOption" value="AUTHOR"/>
+	<jsp:param name="checkedOption" value="<%=query.getQueryType()%>"/>
 </jsp:include>
 
 <section id="content" class="grid_20 content">

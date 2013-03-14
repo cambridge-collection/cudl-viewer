@@ -48,7 +48,7 @@ dl dd {
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
 %>
 
-<!--   <div class="clear"></div> -->
+<div class="clear"></div>
 
 	<jsp:include page="genizah-Search.jsp">
 		<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>

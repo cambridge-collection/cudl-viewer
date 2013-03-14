@@ -17,6 +17,10 @@ public class GenizahQuery {
 		this.queryType = queryType;
 	}
 	
+	public String getQueryType() {
+		return queryType;
+	}
+	
 	public boolean isAuthor() {
 		return queryType.equals("AUTHOR");
 	}
