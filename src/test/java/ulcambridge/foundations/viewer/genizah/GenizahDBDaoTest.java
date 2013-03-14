@@ -46,68 +46,59 @@ public class GenizahDBDaoTest extends TestCase {
 		return dataSource;
 	}
 	
-	public void fragmentBiblioByClassmark() {
+	public void testFragmentBiblioByClassmark() {
 		GenizahDao dao = getDaoSource();
-		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.170");
-		for (FragmentReferences ref : fragmentRefs.getFragmentReferences()) {
-			System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
-		}
+		FragmentReferenceList fragmentRefs = 
+				dao.getFragmentReferencesByClassmark("MS-TS-AR-00054-00093");
+		assertNotNull(fragmentRefs);
+		List<FragmentReferences> refs = fragmentRefs.getFragmentReferences(); 
+		assertTrue(refs.size() > 0);
+		assertNotNull(refs.get(0).getEntry());
+		assertNotNull(refs.get(0).getEntry().getTitle());
+		assertNotNull(refs.get(0).getTypeList());
 	}
 	
-	public void fragmentBiblioByClassmark_WildcardAtEnd() {
+	public void testAuthorSearch() {
 		GenizahDao dao = getDaoSource();
-		FragmentReferenceList fragmentRefs = dao.getFragmentReferencesByClassmark("T-S Ar.37.17*");
-		for (FragmentReferences ref : fragmentRefs.getFragmentReferences()) {
-			System.out.println(ref.getEntry().getTitle() + "\t" + ref.getTypeList());
-		}
+		List<BibliographySearchResult> results = dao.authorSearch("Outh*");
+		assertNotNull(results);
+		assertTrue(results.size() > 0);
+		assertNotNull(results.get(0).getBibliographyEntry());
+		assertNotNull(results.get(0).getBibliographyEntry().getTitle());
 	}
 	
-	public void authorSearch() {
-		GenizahDao dao = getDaoSource();
-		List<BibliographySearchResult> results = dao.authorSearch("Outh");
-		for (BibliographySearchResult result : results) {
-			BibliographyEntry entry = result.getBibliographyEntry();
-			System.out.println(entry.getTitle() + "\t" + entry.getYear()
-					+ "\t" + entry.getAuthors().size() +  " Authors " );
-		}
-	}
-	
-	public void keywordSearch() {
+	public void testKeywordSearch() {
 		GenizahDao dao = getDaoSource();
 		List<BibliographySearchResult> results = dao.keywordSearch("*Bird*");
-		for (BibliographySearchResult result : results) {
-			BibliographyEntry entry = result.getBibliographyEntry();
-			System.out.println(entry.getTitle() + "\t" + entry.getYear()
-					+ "\t" + entry.getAuthors().size() +  " Authors " 
-					+ "\t" + result.getRefCount() + " Refs");
-		}
+		assertNotNull(results);
+		assertTrue(results.size() > 0);
+		assertNotNull(results.get(0).getBibliographyEntry());
+		assertNotNull(results.get(0).getBibliographyEntry().getTitle());
 	}
 	
-	public void classmarkSearch() {
+	public void testClassmarkSearch() {
 		GenizahDao dao = getDaoSource();
 		List<FragmentSearchResult> results = dao.classmarkSearch("T-S Ar.54.9*");
-		for (FragmentSearchResult result : results) {
-			Fragment fragment = result.getFragment();
-			System.out.println(fragment.getLabel() + "\t" + result.getRefCount());
-		}
+		assertNotNull(results);
+		assertTrue(results.size() > 0);
+		assertNotNull(results.get(0).getFragment());
+		assertNotNull(results.get(0).getFragment().getLabel());
 	}
 	
-	public void getBibRefsByTitleId() {
+	public void testGetBibRefsByTitleId() {
 		GenizahDao dao = getDaoSource();
 		BibliographyReferenceList refList = dao.getBibliographyReferencesByTitleId(2907);
-		System.out.println(refList.getBibligraphyEntry().getTitle());
-		for (BibliographyReferences ref : refList.getBibliographyReferences()) {
-			System.out.println(ref.getTypeReadableForm() + "\t" + ref.getFragment().getLabel());
-		}
+		assertNotNull(refList);
+		assertNotNull(refList.getBibligraphyEntry());
+		assertNotNull(refList.getBibliographyReferences());
 	}
 	
-	public void getFragRefsByClassmarkId() {
+	public void testGetFragRefsByClassmarkId() {
 		GenizahDao dao = getDaoSource();
 		FragmentReferenceList refList = dao.getFragmentReferencesByClassmark("MS-TS-AR-00054-00009");
-		System.out.println(refList.getFragment().getLabel());
-		for (FragmentReferences ref : refList.getFragmentReferences()) {
-			System.out.println(ref.getTypeReadableForm() + "\t" + ref.getEntry().getTitle());
-		}
+		assertNotNull(refList);
+		assertNotNull(refList.getFragment());
+		assertNotNull(refList.getFragmentReferences());
 	}
 
 }
