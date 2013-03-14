@@ -3,6 +3,8 @@ package ulcambridge.foundations.viewer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
@@ -56,6 +59,11 @@ public class SiteViewController {
 		modelAndView
 				.addObject("itemCount", formatter.format(this.collectionFactory
 						.getAllItemIds().size()));
+		
+		List<Collection> allCollections = this.collectionFactory.getCollections();		
+		//Collections.shuffle(allCollections); // shuffle to randomise collection order.  
+		Collections.sort(allCollections); // order collections by collectionid.
+		modelAndView.addObject("allCollections", allCollections);		
 
 		return modelAndView;
 	}

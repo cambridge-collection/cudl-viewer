@@ -140,32 +140,44 @@ ol#index_carousel li {
 	text-decoration: underline;
 }
 
-.fade img {
+.featuredcollection img {
 	opacity: 1.0;
-	position:relative;
-
+	position: relative;
+	margin-bottom: 58px;
+	border-style: solid;
+	border-top-width:4px;
+	border-left-width:4px;
+	border-right-width:4px;
+	border-bottom-width:0px;
+	border-color: #fff;
 }
 
-.fade:hover img {
-	opacity: 0.8;
-	position:relative;	
+.featuredcollection:hover img {
+	border-color: #333;
 }
 
-.fade span {	
-	display: none;
+.featuredcollection:hover .featuredcollectionlabel {
+	border-color: #333;
 }
 
-.fade:hover span {
+.featuredcollection .featuredcollectionlabel {
 	z-index: 10;
 	width: 118px;
 	display: block;
-	padding:5px;
+	padding: 5px;
 	position: absolute;
 	color: #eee;
-	bottom:18px;	
-    left:0px;
+	bottom: 8px;
+	height: 40px;
+	left: 0px;
 	background: #333;
-	float:left;
+	float: left;
+	border-style: solid;
+	border-top-width:0px;
+	border-left-width:4px;
+	border-right-width:4px;
+	border-bottom-width:4px;
+	border-color: #fff;
 }
 
 .collectionImage {
@@ -177,8 +189,9 @@ ol#index_carousel li {
 .collection {
 	position: relative;
 	background: #fff; /* for non-css3 browsers */
-	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
-		'#ffffff', endColorstr=  '#ffffff' ); /* for IE */
+	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+		 
+		'#ffffff', endColorstr=   '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
@@ -189,8 +202,9 @@ ol#index_carousel li {
 
 .collection-science {
 	background: #fff;
-	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
-		'#ffffff', endColorstr=  '#ccd4ff' ); /* for IE */
+	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+		 
+		'#ffffff', endColorstr=   '#ccd4ff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#fff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #fff);
@@ -199,8 +213,9 @@ ol#index_carousel li {
 
 .collection-faith {
 	background: #fff;
-	filter: progid:  DXImageTransform.Microsoft.gradient(  startColorstr= 
-		'#ffffff', endColorstr=  '#ffffff' ); /* for IE */
+	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+		 
+		'#ffffff', endColorstr=   '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);

@@ -1,5 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.ItemFactory,java.util.List"%>
+	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
@@ -10,6 +10,7 @@
 	String downtimeWarning = (String) request
 			.getAttribute("downtimeWarning");
 	String itemCount = (String) request.getAttribute("itemCount");
+	List<Collection> allCollections = (List<Collection>) request.getAttribute("allCollections");
 %>
 
 <script type="text/javascript">
@@ -281,67 +282,19 @@
 
 		<h4>Featured Collections</h4>
 
-		<div class="fade grid_3">
-			<a href="/collections/treasures"><img
-				src="/images/collectionsView/collection-treasures.jpg"
-				height="128px" width="128px" /><span>Treasures of the
-					Library</span></a>
-		</div>
+<% for (int i=0; i<9; i++) { 
+       Collection c = allCollections.get(i);
+%>
 
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/newton"> <img
-				src="/images/collectionsView/collection-newton.jpg" height="128px"
-				width="128px" /> <span>Newton Papers</span></a>
+		<div class="featuredcollection grid_3">
+			<a href="<%=c.getURL()%>"><img
+				src="/images/collectionsView/collection-<%=c.getId()%>.jpg"
+				height="128px" width="128px" /> <span
+				class="featuredcollectionlabel"><%=c.getTitle()%></span></a>
 		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/longitude"> <img
-				src="/images/collectionsView/collection-longitude.jpg"
-				height="128px" width="128px"/>
-				<span>Board of Longitude</span>
-			</a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/islamic"><img
-				src="/images/collectionsView/collection-islamic.jpg" height="128px"
-				width="128px"/><span>Islamic Manuscripts</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/genizah"> <img
-				src="/images/collectionsView/collection-genizah.jpg" height="128px"
-				width="128px"/><span>Cairo Genizah Collection</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/sanskrit"> <img
-				src="/images/collectionsView/collection-sanskrit.jpg" height="128px"
-				width="128px"/><span>Sandskrit Manuscripts</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/spanishchapbooks"> <img
-				src="/images/collectionsView/collection-spanishchapbooks.jpg"
-				height="128px" width="128px"/><span>Spanish Chapbooks</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/hebrew"> <img
-				src="/images/collectionsView/collection-hebrew.jpg" height="128px"
-				width="128px"/><span>Hebrew Manuscripts</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/christian"> <img
-				src="/images/collectionsView/collection-christian.jpg"
-				height="128px" width="128px"/>
-				<span>Christian Works</span>
-			</a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/darwinhooker"><img
-				src="/images/collectionsView/collection-darwinhooker.jpg"
-				height="128px" width="128px"/> <span>Darwin Hooker</span></a>
-		</div>
-		<div class="fade grid_3">
-			<a class="fade" href="/collections/"><img
-				src="/images/collectionsView/collection-viewall.jpg" height="128px"
-				width="128px"/> <span>View all collections</span></a>
-		</div>
+<% } %>
+
+		<div class="grid_9"><br/><a class="right" href="/collections/">View all collections ></a></div> 
 	</div>
 
 
