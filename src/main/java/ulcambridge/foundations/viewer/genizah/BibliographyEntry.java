@@ -19,6 +19,8 @@ public class BibliographyEntry {
 	private String publisher;	// PB column
 	private String year;		// PY column
 	private String title;		// TI column
+	private String type;		// TY column	XXX : could be an enum?
+	private String startPage;	// SP column
 	private String volume;		// VL column
 	
 	private List<String> authors;
@@ -112,4 +114,21 @@ public class BibliographyEntry {
 	public String getVolume() {
 		return volume;
 	}
+
+	public void setStartPage(String startPage) {
+		this.startPage = startPage;
+	}
+	
+	public String getStartPage() {
+		return this.startPage;
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 }

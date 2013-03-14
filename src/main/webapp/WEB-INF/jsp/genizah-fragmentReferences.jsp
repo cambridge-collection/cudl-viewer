@@ -73,8 +73,8 @@
 
 				out.println("<table id=\"referenceTable\">");
 				out.println("<thead><tr>");
-				out.println("<th>RefType</th>");
-				out.println("<th>RefPosition</th>");
+				out.println("<th>Reference Type</th>");
+				out.println("<th>Reference Position</th>");
 				out.println("<th>Authors</th>");
 				out.println("<th>Reference Title</th>");
 				out.println("<th>Year</th>");

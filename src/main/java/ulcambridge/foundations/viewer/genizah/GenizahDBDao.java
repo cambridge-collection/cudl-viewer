@@ -25,7 +25,7 @@ public class GenizahDBDao implements GenizahDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	private static final String bibliographyColumnNames = "DA, DO, ET, M1, PB, PY, TI, VL ";
+	private static final String bibliographyColumnNames = "DA, DO, ET, M1, PB, PY, TI, TY, SP, VL ";
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -248,6 +248,8 @@ public class GenizahDBDao implements GenizahDao {
 		entry.setNumber(resultSet.getString("M1"));
 		entry.setPublisher(resultSet.getString("PB"));
 		entry.setYear(resultSet.getString("PY"));
+		entry.setStartPage(resultSet.getString("SP"));
+		entry.setType(resultSet.getString("TY"));
 		entry.setVolume(resultSet.getString("VL"));
 	}
 	

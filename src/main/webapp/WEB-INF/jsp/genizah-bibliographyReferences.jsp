@@ -77,17 +77,29 @@ dl dd {
 					}
 				}
 				out.println("</dd>");
-				out.println("<dt>Year</dt><dd>" + entry.getYear() + "</dd>");
+				out.println("<dt>Type</dt><dd>" + entry.getType() + "</dd>");
+				if (entry.getYear() != null) {
+					out.println("<dt>Year</dt><dd>" + entry.getYear() + "</dd>");
+				}
 				if (entry.getVolume() != null) {
 					out.println("<dt>Volume</dt><dd>" + entry.getVolume() + "</dd>");
+				}
+				if (entry.getEdition() != null) {
+					out.println("<dt>Edition</dt><dd>" + entry.getEdition() + "</dd>");
+				}
+				if (entry.getNumber() != null) {
+					out.println("<dt>Number</dt><dd>" + entry.getNumber() + "</dd>");
+				}
+				if (entry.getStartPage() != null) {
+					out.println("<dt>Start Page</dt><dd>" + entry.getStartPage() + "</dd>");
 				}
 				out.println("</dl></div>");
 				
 				out.println("<table id=\"referenceTable\">");
 				out.println("<thead><tr>");
 				out.println("<th>Classmark</th>");
-				out.println("<th>RefType</th>");
-				out.println("<th>RefPosition</th>");
+				out.println("<th>Reference Type</th>");
+				out.println("<th>Reference Position</th>");
 				out.println("</tr></thead><tbody>");
 				for (BibliographyReferences reference : bibRefList.getBibliographyReferences()) {
 					Fragment fragment = reference.getFragment();

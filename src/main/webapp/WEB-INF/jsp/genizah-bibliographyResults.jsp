@@ -43,6 +43,7 @@
 				out.println("<thead><tr>");
 				out.println("<th>Authors</th>");
 				out.println("<th>Title</th>");
+				out.println("<th>Type</th>");
 				out.println("<th>Year</th>");
 				//out.println("<th>Publisher</th>");
 				//out.println("<th>Number</th>");
@@ -70,6 +71,7 @@
 					}
 					out.println("</td>");
 					out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
+					out.println("<td>" + bibliographyEntry.getType() + "</td>");
 					out.println("<td>" + bibliographyEntry.getYear() + "</td>");
 					//out.println("<td>" + bibliographyEntry.getPublisher() + "</td>");
 					//out.println("<td>" + bibliographyEntry.getNumber() + "</td>");
