@@ -108,7 +108,7 @@ public class GenizahDBDao implements GenizahDao {
 							  bibliographyColumnNames  + 
 							  "FROM Bibliograph JOIN Reference " +
 							  "ON Bibliograph.ID = Reference.Title " + 
-							  "WHERE TI LIKE ?";
+							  "WHERE TI LIKE ? GROUP BY Bibliograph.ID";
 		String percentWrappedString = convertWildcards(keyword);
 		
 		final List<BibliographySearchResult> results = jdbcTemplate.query(
