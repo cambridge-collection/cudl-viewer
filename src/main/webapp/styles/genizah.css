@@ -1,11 +1,49 @@
+div.dataTables_filter {
+	background-color: rgb(180, 180, 180);
+}
+
+div.dataTables_filter input {
+	background-color: rgb(100, 100, 100);
+}
+
+div#referenceTable_length {
+	padding : 2px;
+	border : 1px solid black;
+	font-weight : bold;
+}
+
+/*
+div#referenceTable_length select {
+	color : white;
+}
+*/
+
+div.dataTables_info {
+	padding : 2px;
+}
+
+div.dataTables_paginate {
+	padding : 2px;
+}
+
+div.dataTables_wrapper {
+	background-color: rgb(200, 200, 200);
+	border : solid 1px black;
+	color : rgb(0, 0, 0);
+	margin-top : 10px;
+	margin-bottom : 10px;
+}
+
 .searchTermHighlight {
 	font-weight : italic;
 }
 
-#searchControls {
+#searchForm {
 	border : 1px solid;
 	background-color : light-grey;
-	margin : 5px;
+	padding : 5px;
+	margin-top : 5px;
+	margin-bottom : 5px;
 }
 
 #searchForm * {
@@ -15,10 +53,11 @@
 }
 
 #searchForm input {
-	border : 1px solid grey;
+	border  : 1px solid grey;
+	padding : 5px;
 }
 
-div.fragmentDetails {
+div.fragmentDetails, div.bibEntryDetails {
 	border : 1px solid grey;
 	padding : 5px;
 	background-color : light-gray;
@@ -33,11 +72,11 @@ div.dataTables_filter {
 }
 
 dl {
-    margin-bottom:50px;
+    margin: 5px;
 }
  
 dl dt {
-    background:#5f9be3;
+    background:#444444;
     color:#fff;
     float:left;
     font-weight:bold;

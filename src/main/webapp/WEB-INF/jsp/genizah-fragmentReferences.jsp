@@ -19,7 +19,6 @@
 </script>
 </head>
 <jsp:include page="genizah-bodyStart.jsp" />
-<jsp:include page="header/nav-search.jsp" />
 
 
 <%
@@ -45,15 +44,22 @@
 				Fragment fragment = fragmentReference.getFragment();
 				String classmark = fragment.getClassmark();
 				String label = fragment.getLabel();
-				out.println("<div style=\"border: solid 1px gray\" class=\"fragmentDetails\">");
-				out.println("<div class=\"fragmentLabel\">Fragment : " + label+ "</div>");
+				
+				out.println("<div class=\"fragmentDetails\">");
+				out.println("Bibliography entries referencing fragment:");
+				out.println("<dl>");
+				out.println("<dt>Classmark</dt><dd>" + label+ "</dd>");
+				out.println("<dt>ID</dt><dd>" + classmark + "</dd>");
+				out.println("</dl>");
+				out.println("</div>");
 
+
+				// show any available data from CUDL
+				/*
 				Item item = null;
 				if (itemFactory != null) {
 					item = itemFactory.getItemFromId(classmark);
 				}
-
-				// show any available data from CUDL
 				if (item == null) {
 					out.println("(Not in collection)");
 				} else {
@@ -69,7 +75,7 @@
 								+ itemAbstract + "</div>");
 					}
 				}
-				out.println("</div>");
+				*/
 
 				out.println("<table id=\"referenceTable\">");
 				out.println("<thead><tr>");
@@ -102,7 +108,7 @@
 				out.println("</tbody></table>");
 			}
 		%>
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="genizah-footer.jsp" />
 
 
 

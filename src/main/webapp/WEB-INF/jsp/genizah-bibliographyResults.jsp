@@ -14,7 +14,6 @@
 </script>
 </head>
 <jsp:include page="genizah-bodyStart.jsp" />
-<jsp:include page="header/nav-search.jsp" />
 
 <%
 	List<BibliographySearchResult> titles = 
@@ -89,7 +88,7 @@
 	</div>
 </section>
 
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="genizah-footer.jsp" />
 
 
 

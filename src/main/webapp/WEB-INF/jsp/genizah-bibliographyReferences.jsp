@@ -17,29 +17,8 @@
 		} );
 	} );
 </script>
-<style>
-dl {
-    margin-bottom:50px;
-}
- 
-dl dt {
-    background:#5f9be3;
-    color:#fff;
-    float:left;
-    font-weight:bold;
-    margin-right:10px;
-    padding:5px; 
-    width:100px;
-}
- 
-dl dd {
-    margin:2px 0;
-    padding:5px 0;
-}
-</style>
 </head>
 <jsp:include page="genizah-bodyStart.jsp" />
-<jsp:include page="header/nav-search.jsp" />
 
 
 <%
@@ -115,7 +94,7 @@ dl dd {
 				out.println("</tbody></table>");
 			}
 		%>
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="genizah-footer.jsp" />
 
 
 

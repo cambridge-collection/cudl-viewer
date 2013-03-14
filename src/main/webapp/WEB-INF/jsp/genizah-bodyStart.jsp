@@ -26,26 +26,9 @@
 			<hgroup>
 
 				<h1>
-					<a href="/" title="Cambridge Digital Library ">Cambridge
-						Digital Library</a>
+					<a href="/" title="Genizah Bibliography">Genizah Bibliography</a>
 				</h1>
 
 			</hgroup>
 		</header>
-		<div class="grid_4 helpBanner">
-		  <%  if (request.getParameter("loggedin")!=null && 
-				  request.getParameter("loggedin").equals("true")) { %>
-			<a href="/auth/logout/" title="Logout"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Logout </font></a> <br />
-				<% } else { %>	  
-			<a href="/auth/login/" title="Login"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /><font color="#3333FF"> Login </font></a> <br />
-				<% } %>
-			<a class="iframe" href="/feedbackform.html" title="Feedback"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /> Feedback</a> <br />
-			<a class="iframe" href="/mailinglistform.html"
-				title="Keep me informed"><img
-				src="/images/header/feedback-arrow.png" alt="arrow" /> Keep me
-				informed</a><br />
-		</div>
 		<!-- end #localMasthead -->
