@@ -49,11 +49,12 @@ public class GenizahMockDao implements GenizahDao {
 		String label = "TS 1";
 		String refType = "m";
 		String title = "Title";
+		String refPos = "150";
 		
 		Fragment fragment = new Fragment(label, classmark);
 		List<FragmentReferences> fragmentReferences = new ArrayList<FragmentReferences>();
 		BibliographyEntry entry = new BibliographyEntry(id, title);
-		fragmentReferences.add(new FragmentReferences(refType, entry));
+		fragmentReferences.add(new FragmentReferences(refType, refPos, entry));
 		return new FragmentReferenceList(fragment, fragmentReferences);
 	}
 
@@ -63,11 +64,12 @@ public class GenizahMockDao implements GenizahDao {
 		String refType = "m";
 		String label = "TS 1";
 		String classmark = "MS01";
+		String refPos = "150";
 		
 		BibliographyEntry entry = new BibliographyEntry(id, title);
 		List<BibliographyReferences> bibliographyReferences = new ArrayList<BibliographyReferences>();
 		Fragment fragment = new Fragment(label, classmark);
-		bibliographyReferences.add(new BibliographyReferences(refType, fragment));
+		bibliographyReferences.add(new BibliographyReferences(refType, refPos, fragment));
 		return new BibliographyReferenceList(entry, bibliographyReferences);
 	}
 

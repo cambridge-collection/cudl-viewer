@@ -87,6 +87,7 @@ dl dd {
 				out.println("<thead><tr>");
 				out.println("<th>Classmark</th>");
 				out.println("<th>RefType</th>");
+				out.println("<th>RefPosition</th>");
 				out.println("</tr></thead><tbody>");
 				for (BibliographyReferences reference : bibRefList.getBibliographyReferences()) {
 					Fragment fragment = reference.getFragment();
@@ -96,6 +97,7 @@ dl dd {
 					out.println("<tr>");
 					out.println("<td>" + fragment.getLabel() + "</td>");
 					out.println("<td>" + reference.getTypeReadableForm() + "</td>");
+					out.println("<td>" + reference.getPosition() + "</td>");
 					out.println("</tr>");
 				}
 				out.println("</tbody></table>");

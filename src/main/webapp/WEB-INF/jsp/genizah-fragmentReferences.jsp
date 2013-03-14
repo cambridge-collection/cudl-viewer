@@ -74,6 +74,7 @@
 				out.println("<table id=\"referenceTable\">");
 				out.println("<thead><tr>");
 				out.println("<th>RefType</th>");
+				out.println("<th>RefPosition</th>");
 				out.println("<th>Authors</th>");
 				out.println("<th>Reference Title</th>");
 				out.println("<th>Year</th>");
@@ -83,6 +84,7 @@
 					BibliographyEntry bibliographyEntry = reference.getEntry();
 					out.println("<tr>");
 					out.println("<td>" + reference.getTypeReadableForm() + "</td>");
+					out.println("<td>" + reference.getPosition() + "</td>");
 					out.println("<td>");
 					List<String> authors = bibliographyEntry.getAuthors();
 					for (int authorIndex = 0; authorIndex < authors.size(); authorIndex++) {

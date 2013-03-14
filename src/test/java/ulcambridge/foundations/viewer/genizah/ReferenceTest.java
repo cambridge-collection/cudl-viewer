@@ -25,19 +25,22 @@ public class ReferenceTest extends TestCase {
 	
 	public void testParseSingleRefTypeTest() {
 		String singleRefType = "m";
-		FragmentReferences ref = new FragmentReferences(singleRefType, getEntry());
+		String refPos = "150";
+		FragmentReferences ref = new FragmentReferences(singleRefType, refPos, getEntry());
 		assertEquals("mention", ref.getTypeReadableForm());
 	}
 	
 	public void testParseMultipleRefTypeTest() {
 		String multipleRefType = "m tx";
-		FragmentReferences ref = new FragmentReferences(multipleRefType, getEntry());
+		String refPos = "150";
+		FragmentReferences ref = new FragmentReferences(multipleRefType, refPos, getEntry());
 		assertEquals("mention|full translation, no text", ref.getTypeReadableForm());
 	}
 	
 	public void testParseUnkRefTypeTest() {
 		String unkRefType = "a";
-		FragmentReferences ref = new FragmentReferences(unkRefType, getEntry());
+		String refPos = "150";
+		FragmentReferences ref = new FragmentReferences(unkRefType, refPos, getEntry());
 		assertEquals("unknown", ref.getTypeReadableForm());
 	}
 

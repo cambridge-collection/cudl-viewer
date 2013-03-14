@@ -14,8 +14,8 @@ public class FragmentReferences extends AbstractReference {
 	 */
 	private final BibliographyEntry entry;
 	
-	public FragmentReferences(String typeString, BibliographyEntry entry) {
-		super(typeString);
+	public FragmentReferences(String typeString, String position, BibliographyEntry entry) {
+		super(typeString, position);
 		this.entry = entry;
 	}
 

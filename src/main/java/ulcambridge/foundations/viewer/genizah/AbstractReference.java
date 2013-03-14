@@ -7,13 +7,20 @@ public class AbstractReference {
 	
 	private final List<RefType> referenceTypes;
 	
-	public AbstractReference(String typeString) {
-		this.referenceTypes = new ArrayList<RefType>();
+	private final String position;
+	
+	public AbstractReference(String typeString, String position) {
+		this(new ArrayList<RefType>(), position);
 		parseReferenceTypeString(typeString);
 	}
 	
-	public AbstractReference(List<RefType> referenceTypes) {
+	public AbstractReference(List<RefType> referenceTypes, String position) {
 		this.referenceTypes = referenceTypes;
+		this.position = position;
+	}
+	
+	public String getPosition() {
+		return this.position;
 	}
 	
 	public void parseReferenceTypeString(String typeString) {

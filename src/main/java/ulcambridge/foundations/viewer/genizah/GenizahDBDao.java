@@ -161,7 +161,7 @@ public class GenizahDBDao implements GenizahDao {
 
 	@Override
 	public BibliographyReferenceList getBibliographyReferencesByTitleId(final int id) {
-		String query = "SELECT LB, Classmark, C4 " +
+		String query = "SELECT LB, Classmark, C4, C6 " +
 					   "FROM Reference JOIN Fragment ON Reference.Fragment = Fragment.ID " +
 					   "WHERE Title = ?";
 		
@@ -176,8 +176,9 @@ public class GenizahDBDao implements GenizahDao {
 						String label = resultSet.getString("LB");
 						String classmark = resultSet.getString("Classmark");
 						String refType = resultSet.getString("C4");
+						String refPosition = resultSet.getString("C6"); // location in text
 						return new BibliographyReferences(
-								refType, new Fragment(label, classmark));
+								refType, refPosition, new Fragment(label, classmark));
 					}
 				}
 			);
@@ -279,7 +280,7 @@ public class GenizahDBDao implements GenizahDao {
 							BibliographyEntry entry = new BibliographyEntry(biblioId, title);
 							fillBibliographyEntry(resultSet, entry);
 							fillBibliographyAuthors(entry);
-							fragRefs.add(new FragmentReferences(refType, entry));
+							fragRefs.add(new FragmentReferences(refType, refPosition, entry));
 						}
 						return new FragmentReferenceList(fragment, fragRefs);
 					}
