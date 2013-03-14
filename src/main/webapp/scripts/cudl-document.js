@@ -217,15 +217,51 @@ cudl.setupViewport = function () {
 	}
 	if (cudl.data.useDiplomaticTranscriptions) {
 
-		cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
-				cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
-				true);
+	    // if this attribute is present, the transcription does not change on page change.  
+		if (cudl.data.allTranscriptionDiplomaticURL) {
+			
+			cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+					cudl.viewportComponents.rightTabPanel);
+			
+			// Create iframe and set target to be the transcription URL. 
+			var iframe = document.createElement("iframe");
+			iframe.setAttribute('id', 'transcription_diplomatic_frame');
+			iframe.setAttribute('width', '100%');
+			iframe.setAttribute('height', '100%');
+			iframe.setAttribute('src', cudl.data.allTranscriptionDiplomaticURL); 
+            document.getElementById('transcription_diplomatic').appendChild(iframe);
+					
+			
+		} else {
+
+			// This tab changes src when the page changes. 
+			cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+					cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
+					true);
+		}
 	}		
 	if (cudl.data.useNormalisedTranscriptions) {
 	
-		cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+	    // if this attribute is present, the transcription does not change on page change.  
+		if (cudl.data.allTranscriptionNormalisedURL) {
+			
+			cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+					cudl.viewportComponents.rightTabPanel);
+			
+			// Create iframe and set target to be the transcription URL. 
+			var iframe = document.createElement("iframe");
+			iframe.setAttribute('id', 'transcription_normal_frame');
+			iframe.setAttribute('width', '100%');
+			iframe.setAttribute('height', '100%');
+			iframe.setAttribute('src', cudl.data.allTranscriptionNormalisedURL); 
+            document.getElementById('transcription_normal').appendChild(iframe);
+								
+		} else {
+		
+		  cudl.setupTab('Transcription (normalised)', 'transcription_normal',
 				cudl.viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
 				true);
+		}
 	}
 	
 	/*
