@@ -34,6 +34,9 @@
 <section id="content" class="grid_20">
 
 		<%
+			//String rootURL = "/bibliographies/genizah";
+			String rootURL = "/genizah";
+			
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {
 				out.println("<p class=\"box\">We couldn't find any items matching <b>"
@@ -53,7 +56,7 @@
 					out.println("<tr>");
 					out.println("<td>" + label + "</td>");
 					out.println("<td>" + fragmentResult.getRefCount() + "</td>");
-					String url = "/genizah?query=" + classmark + "&queryType=CLASSMARKID";
+					String url = rootURL + "?query=" + classmark + "&queryType=CLASSMARKID";
 					out.println("<td><a href=\"" + url + "\">RefList</a></td>");
 					out.println("</tr>");
 				}

@@ -36,10 +36,15 @@ public class GenizahDBDao implements GenizahDao {
 		return queryString.replace("*", "%");
 	}
 	
+	private String addWildcards(String queryString) {
+		return queryString = "%" + queryString + "%";
+	}
+	
 	@Override
 	public List<BibliographySearchResult> authorSearch(String author) {
 		String authorQuery = "SELECT Author, Title FROM Author WHERE Author LIKE ?";
-		String percentWrappedString = convertWildcards(author);
+//		String percentWrappedString = convertWildcards(author);
+		String percentWrappedString = addWildcards(author);
 		
 		final Map<String, List<Integer>> authorTitleMap = jdbcTemplate.query(
 				authorQuery,
@@ -109,7 +114,8 @@ public class GenizahDBDao implements GenizahDao {
 							  "FROM Bibliograph JOIN Reference " +
 							  "ON Bibliograph.ID = Reference.Title " + 
 							  "WHERE TI LIKE ? GROUP BY Bibliograph.ID";
-		String percentWrappedString = convertWildcards(keyword);
+//		String percentWrappedString = convertWildcards(keyword);
+		String percentWrappedString = addWildcards(keyword);
 		
 		final List<BibliographySearchResult> results = jdbcTemplate.query(
 				bibInfoQuery,

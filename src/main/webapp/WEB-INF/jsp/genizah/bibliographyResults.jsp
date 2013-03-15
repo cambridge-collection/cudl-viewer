@@ -33,9 +33,12 @@
 	<div>
 
 		<%
+			//String rootURL = "/bibliographies/genizah";
+			String rootURL = "/genizah";
+			
 			// No results were returned. So print out some help.
 			if (titles.size() == 0) {
-				out.println("<p class=\"box\">We couldn't find any authors matching <b>"
+				out.println("<p class=\"box\">We couldn't find any items matching <b>"
 						+ query.getQueryString() + "</b></p>");
 			} else {
 				out.println("<table id=\"authorsTable\">");
@@ -78,7 +81,7 @@
 					int refCount = bibliographySearchResult.getRefCount();
 					out.println("<td>" + refCount + "</td>");
 					int id = bibliographyEntry.getId();
-					String url = "/genizah?query=" + id + "&queryType=TITLEID";
+					String url = rootURL + "?query=" + id + "&queryType=TITLEID";
 					out.println("<td><a href=\"" + url + "\">RefList</a></td>");
 					out.println("</tr>");
 				}
