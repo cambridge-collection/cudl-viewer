@@ -16,10 +16,13 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<jsp:include page="includes.jsp" />
+<link rel="icon" type="image/png" href="/img/favicon.png">
 
+<!-- JQuery -->
+<script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="/scripts/dataTables/js/jquery.dataTables.min.js"></script>	
 
+<link rel="stylesheet" href="/styles/uoc.min.css">
 <link rel="stylesheet" type="text/css" href="/scripts/dataTables/css/jquery.dataTables.css" media="screen" />
 <link rel="stylesheet" href="/styles/genizah.css" type="text/css"/>	
 

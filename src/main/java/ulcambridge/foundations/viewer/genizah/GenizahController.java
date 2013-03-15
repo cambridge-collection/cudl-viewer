@@ -58,29 +58,29 @@ public class GenizahController {
 		ModelAndView modelAndView = null;
 		if (query.isClassmarkQuery()) {
 			List<FragmentSearchResult> fragmentResults = dataSource.classmarkSearch(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-fragmentResults");
+			modelAndView = new ModelAndView("jsp/genizah/fragmentResults");
 			modelAndView.addObject("fragmentResults", fragmentResults);
 			modelAndView.addObject("itemFactory", itemFactory);
 		} else if (query.isAuthor()) {
 			List<BibliographySearchResult> titles = dataSource.authorSearch(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-bibliographyResults");
+			modelAndView = new ModelAndView("jsp/genizah/bibliographyResults");
 			modelAndView.addObject("titles", titles);
 		} else if (query.isKeyword()) {
 			List<BibliographySearchResult> titles = dataSource.keywordSearch(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-bibliographyResults");
+			modelAndView = new ModelAndView("jsp/genizah/bibliographyResults");
 			modelAndView.addObject("titles", titles);
 		} else if (query.isClassmarkIdQuery()) {
 			FragmentReferenceList fragmentReferences = dataSource.getFragmentReferencesByClassmark(queryString);
-			modelAndView = new ModelAndView("jsp/genizah-fragmentReferences");
+			modelAndView = new ModelAndView("jsp/genizah/fragmentReferences");
 			modelAndView.addObject("fragmentReferences", fragmentReferences);
 		} else if (query.isTitleIdQuery()) {
 			int id = Integer.parseInt(queryString);	// TODO : error handling!
 			BibliographyReferenceList bibliographyReferences = dataSource.getBibliographyReferencesByTitleId(id);
-			modelAndView = new ModelAndView("jsp/genizah-bibliographyReferences");
+			modelAndView = new ModelAndView("jsp/genizah/bibliographyReferences");
 			modelAndView.addObject("bibliographyReferences", bibliographyReferences);
 			modelAndView.addObject("itemFactory", itemFactory);
 		} else {
-			modelAndView = new ModelAndView("jsp/genizah-Landing");
+			modelAndView = new ModelAndView("jsp/genizah/landingPage");
 		}
 		
 		if (modelAndView != null) {

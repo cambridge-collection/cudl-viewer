@@ -4,7 +4,7 @@
 				 java.net.URLEncoder,
 				 ulcambridge.foundations.viewer.genizah.*"%>
 
-<jsp:include page="header/genizah-header.jsp" />
+<jsp:include page="header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#authorsTable').dataTable( {
@@ -13,7 +13,7 @@
 	} );
 </script>
 </head>
-<jsp:include page="genizah-bodyStart.jsp" />
+<jsp:include page="bodyStart.jsp" />
 
 <%
 	List<BibliographySearchResult> titles = 
@@ -23,7 +23,7 @@
 
 <div class="clear"></div>
 
-<jsp:include page="genizah-Search.jsp">
+<jsp:include page="searchForm.jsp">
 	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
 	<jsp:param name="checkedOption" value="<%=query.getQueryType()%>"/>
 </jsp:include>
@@ -88,7 +88,7 @@
 	</div>
 </section>
 
-<jsp:include page="genizah-footer.jsp" />
+<jsp:include page="footer.jsp" />
 
 
 

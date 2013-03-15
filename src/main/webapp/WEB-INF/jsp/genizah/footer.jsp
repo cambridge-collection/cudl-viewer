@@ -8,7 +8,7 @@
 
 </div>
 
-<jsp:include page="footer/analytics.jsp" />
+<jsp:include page="../footer/analytics.jsp" />
   
 </body>
 
