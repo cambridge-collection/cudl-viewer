@@ -43,7 +43,7 @@
 			} else {
 				String fragmentBaseURL = "http://cudl.lib.cam.ac.uk/view/";
 				BibliographyEntry entry = bibRefList.getBibligraphyEntry();
-				out.println("<div class=\"bibEntryDetails\">");
+				out.println("<div class=\"grid_10 bibEntryDetails\">");
 				out.println("Fragments referred to by :");
 				out.println("<dl>");
 				out.println("<dt>Title</dt><dd>" + entry.getTitle() + "</dd>");
