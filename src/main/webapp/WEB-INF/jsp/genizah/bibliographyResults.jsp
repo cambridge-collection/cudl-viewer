@@ -28,7 +28,7 @@
 	<jsp:param name="checkedOption" value="<%=query.getQueryType()%>"/>
 </jsp:include>
 
-<section id="content" class="grid_20 content">
+<section id="content" class="grid_20">
 	<div class="pagination"></div>
 	<div>
 

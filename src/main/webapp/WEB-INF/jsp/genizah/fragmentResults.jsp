@@ -30,7 +30,7 @@
 	<jsp:param name="queryString" value="<%=query.getQueryString()%>"/>
 	<jsp:param name="checkedOption" value="CLASSMARK"/>
 </jsp:include>
-<section id="content" class="grid_20 content">
+<section id="content" class="grid_20">
 
 		<%
 			// No results were returned. So print out some help.
