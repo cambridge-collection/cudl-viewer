@@ -25,8 +25,6 @@
 
 <link href="/styles/treestyler.css" rel="stylesheet" type="text/css"
 	media="screen" />
-	
-<link rel="stylesheet" href="/styles/genizah.css" type="text/css"/>	
 
 <%
 	// If no javascript enabled, display no javascript page with link to homepage. 
