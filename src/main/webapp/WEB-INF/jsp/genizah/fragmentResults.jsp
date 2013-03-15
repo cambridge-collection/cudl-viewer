@@ -12,7 +12,8 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#resultsTable').dataTable( {
-				"sPaginationType": "full_numbers"
+				"sPaginationType": "full_numbers",
+				"aoColumnDefs" : [{"sType" : "classmark", "aTargets" : [0]}]
 		} );
 	} );
 </script>
