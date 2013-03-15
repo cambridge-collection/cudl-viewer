@@ -45,7 +45,7 @@
 				String classmark = fragment.getClassmark();
 				String label = fragment.getLabel();
 				
-				out.println("<div class=\"fragmentDetails\">");
+				out.println("<div class=\"grid_10 fragmentDetails\">");
 				out.println("Bibliography entries referencing fragment:");
 				out.println("<dl>");
 				out.println("<dt>Classmark</dt><dd>" + label+ "</dd>");
