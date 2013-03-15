@@ -280,9 +280,9 @@
 
 	<div class="grid_10" style="margin-bottom: 18px;">
 
-		<h4>Featured Collections</h4>
+		<h4>Collections</h4>
 
-<% for (int i=0; i<9; i++) { 
+<% for (int i=0; i<allCollections.size(); i++) { 
        Collection c = allCollections.get(i);
 %>
 
