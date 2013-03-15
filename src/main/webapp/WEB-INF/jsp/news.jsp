@@ -253,25 +253,6 @@
 
 		</div>
 	</div>
-	<div class="grid_5">
-
-		<!-- twitter feed -->
-		<a class="twitter-timeline" href="https://twitter.com/CamDigLib"
-			data-widget-id="296241481885294593">Tweets by @CamDigLib</a>
-		<script>
-			!function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (!d.getElementById(id)) {
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "//platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js, fjs);
-				}
-			}(document, "script", "twitter-wjs");
-		</script>
-		<!-- end of twitter feed -->
-
-	</div>
 
 
 
