@@ -21,7 +21,8 @@
 <!-- JQuery -->
 <script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="/scripts/dataTables/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="/scripts/genizah.js"></script>	
+<script type="text/javascript" src="/scripts/cudl.js"></script>
+<script type="text/javascript" src="/scripts/genizah.js"></script>
 
 <link rel="stylesheet" href="/styles/uoc.min.css">
 <link rel="stylesheet" type="text/css" href="/scripts/dataTables/css/jquery.dataTables.css" media="screen" />
