@@ -44,7 +44,9 @@ public class GenizahDBDao implements GenizahDao {
 	
 	@Override
 	public List<BibliographySearchResult> authorSearch(String author) {
-		String authorQuery = "SELECT Author, Title FROM Author WHERE Author LIKE ?";
+		// XXX - note that the "Tag = AU" means that the author is not the editor 
+		String authorQuery = "SELECT Author, Title FROM Author " +
+							 "WHERE Tag = \"AU\" AND Author LIKE ?";
 //		String percentWrappedString = convertWildcards(author);
 		String percentWrappedString = addWildcards(author);
 		
@@ -213,7 +215,9 @@ public class GenizahDBDao implements GenizahDao {
 	}
 	
 	private void fillBibliographyAuthors(final BibliographyEntry bibEntry) {
-		String authorQuery = "SELECT Author from Author WHERE Title = " + bibEntry.getId();
+		// XXX - note that the "Tag = AU" means that the author is not the editor 
+		String authorQuery = "SELECT Author from Author " +
+							 "WHERE Tag = \"AU\" AND Title = " + bibEntry.getId();
 		jdbcTemplate.query(authorQuery, new ResultSetExtractor<Object>() {
 
 			@Override
