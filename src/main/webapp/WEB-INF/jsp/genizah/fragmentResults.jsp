@@ -34,8 +34,8 @@
 <section id="content" class="grid_20">
 
 		<%
-			//String rootURL = "/bibliographies/genizah";
-			String rootURL = "/genizah";
+			String rootURL = "/bibliographies/genizah";
+			//String rootURL = "/genizah";
 			
 			// No results were returned. So print out some help.
 			if (resultSet.size() == 0) {

@@ -198,7 +198,7 @@
 
 	<servlet-mapping>
 		<servlet-name>genizahcontroller</servlet-name>
-		<url-pattern>/genizah</url-pattern>
+		<url-pattern>/bibliographies/genizah</url-pattern>
 	</servlet-mapping>
 	
 

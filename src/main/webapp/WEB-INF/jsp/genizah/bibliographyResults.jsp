@@ -33,8 +33,8 @@
 	<div>
 
 		<%
-			//String rootURL = "/bibliographies/genizah";
-			String rootURL = "/genizah";
+			String rootURL = "/bibliographies/genizah";
+			//String rootURL = "/genizah";
 			
 			// No results were returned. So print out some help.
 			if (titles.size() == 0) {

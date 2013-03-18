@@ -38,7 +38,7 @@ public class GenizahController {
 		this.itemFactory = factory;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value="/genizah")
+	@RequestMapping(method = RequestMethod.GET, value="/bibliographies/genizah")
 	public ModelAndView processSearch(HttpServletRequest request,
 									  HttpServletResponse response) {
 		@SuppressWarnings("unchecked")
