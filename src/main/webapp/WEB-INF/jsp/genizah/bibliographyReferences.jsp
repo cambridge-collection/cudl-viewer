@@ -57,7 +57,10 @@
 					}
 				}
 				out.println("</dd>");
-				out.println("<dt>Type</dt><dd>" + entry.getType() + "</dd>");
+				
+				// XXX - 'type' field is not currently useful!
+				//out.println("<dt>Type</dt><dd>" + entry.getType() + "</dd>");
+				
 				if (entry.getYear() != null) {
 					out.println("<dt>Year</dt><dd>" + entry.getYear() + "</dd>");
 				}
@@ -73,6 +76,50 @@
 				if (entry.getStartPage() != null) {
 					out.println("<dt>Start Page</dt><dd>" + entry.getStartPage() + "</dd>");
 				}
+				if (entry.getPublisher() != null) {
+					out.println("<dt>Publisher</dt><dd>" + entry.getPublisher() + "</dd>");
+				}
+				if (entry.getDate() != null) {
+					out.println("<dt>Date</dt><dd>" + entry.getDate() + "</dd>");
+				}
+				if (entry.getPlacePublished() != null) {
+					out.println("<dt>Place Published</dt><dd>" + entry.getPlacePublished() + "</dd>");
+				}
+				if (entry.getDoi() != null) {
+					out.println("<dt>DOI</dt><dd>" + entry.getDoi() + "</dd>");
+				}
+				if (entry.getNumberVols() != null) {
+					out.println("<dt>Number of Vols</dt><dd>" + entry.getNumberVols() + "</dd>");
+				}
+				if (entry.getOriginalPublisher() != null) {
+					out.println("<dt>Original Publisher</dt><dd>" + entry.getOriginalPublisher() + "</dd>");
+				}
+				if (entry.getResearchNotes() != null) {
+					out.println("<dt>Research Notes</dt><dd>" + entry.getResearchNotes() + "</dd>");
+				}
+				if (entry.getReprintEdition() != null) {
+					out.println("<dt>Reprint Edition</dt><dd>" + entry.getReprintEdition() + "</dd>");
+				}
+				if (entry.getIsbn() != null) {
+					out.println("<dt>ISBN</dt><dd>" + entry.getIsbn() + "</dd>");
+				}
+				
+				/* XXX - short title is almost always identical to title!
+				if (entry.getShortTitle() != null) {
+					out.println("<dt>Short Title</dt><dd>" + entry.getShortTitle() + "</dd>");
+				}
+				*/
+				
+				if (entry.getSvCol() != null) {
+					out.println("<dt>SV?</dt><dd>" + entry.getSvCol() + "</dd>");
+				}
+				if (entry.getSecondaryTitle() != null) {
+					out.println("<dt>Secondary Title</dt><dd>" + entry.getSecondaryTitle() + "</dd>");
+				}
+				if (entry.getTranslatedTitle() != null) {
+					out.println("<dt>Translated Title</dt><dd>" + entry.getTranslatedTitle() + "</dd>");
+				}
+
 				out.println("</dl></div>");
 				
 				out.println("<table id=\"referenceTable\">");

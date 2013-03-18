@@ -25,7 +25,9 @@ public class GenizahDBDao implements GenizahDao {
 	
 	private JdbcTemplate jdbcTemplate;
 	
-	private static final String bibliographyColumnNames = "DA, DO, ET, M1, PB, PY, TI, TY, SP, VL ";
+	private static final String bibliographyColumnNames = 
+			"CY, DA, DO, ET, M1, NV, OP, PB, PY, RN, RP, " +
+			"SN, SP, ST, SV, T2, TI, TT, TY, VL ";
 	
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
@@ -252,9 +254,18 @@ public class GenizahDBDao implements GenizahDao {
 		entry.setDoi(resultSet.getString("DO"));
 		entry.setEdition(resultSet.getString("ET"));
 		entry.setNumber(resultSet.getString("M1"));
+		entry.setNumberVols(resultSet.getString("NV"));
+		entry.setOriginalPublisher(resultSet.getString("OP"));
 		entry.setPublisher(resultSet.getString("PB"));
 		entry.setYear(resultSet.getString("PY"));
+		entry.setResearchNotes(resultSet.getString("RN"));
+		entry.setReprintEdition(resultSet.getString("RP"));
+		entry.setIsbn(resultSet.getString("SN"));
 		entry.setStartPage(resultSet.getString("SP"));
+		entry.setShortTitle(resultSet.getString("ST"));
+		entry.setSvCol(resultSet.getString("SV"));
+		entry.setSecondaryTitle(resultSet.getString("T2"));
+		entry.setTranslatedTitle(resultSet.getString("TT"));
 		entry.setType(resultSet.getString("TY"));
 		entry.setVolume(resultSet.getString("VL"));
 	}

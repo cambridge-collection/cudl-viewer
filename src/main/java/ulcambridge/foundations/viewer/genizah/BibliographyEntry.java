@@ -12,16 +12,26 @@ import java.util.List;
 public class BibliographyEntry {
 	
 	private int id;
-	private String date;		// DA column
-	private String doi;			// DO column
-	private String edition;		// ET column
-	private String number;		// M1 column
-	private String publisher;	// PB column
-	private String year;		// PY column
-	private String title;		// TI column
-	private String type;		// TY column	XXX : could be an enum?
-	private String startPage;	// SP column
-	private String volume;		// VL column
+	private String placePublished;		// CY column
+	private String date;				// DA column
+	private String doi;					// DO column
+	private String edition;				// ET column
+	private String number;				// M1 column
+	private String numberVols;			// NV column
+	private String originalPublisher;	// OP column
+	private String publisher;			// PB column
+	private String year;				// PY column
+	private String researchNotes;		// RN column
+	private String reprintEdition;		// RP column
+	private String isbn;				// SN column
+	private String startPage;			// SP column
+	private String shortTitle;			// ST column
+	private String svCol;				// SV column    XXX ???
+	private String secondaryTitle;		// T2 column    XXX ???
+	private String title;				// TI column
+	private String translatedTitle;		// TT column
+	private String type;				// TY column	XXX : could be an enum?
+	private String volume;				// VL column
 	
 	private List<String> authors;
 
@@ -129,6 +139,86 @@ public class BibliographyEntry {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getPlacePublished() {
+		return placePublished;
+	}
+
+	public void setPlacePublished(String placePublished) {
+		this.placePublished = placePublished;
+	}
+
+	public String getNumberVols() {
+		return numberVols;
+	}
+
+	public void setNumberVols(String numberVols) {
+		this.numberVols = numberVols;
+	}
+
+	public String getOriginalPublisher() {
+		return originalPublisher;
+	}
+
+	public void setOriginalPublisher(String originalPublisher) {
+		this.originalPublisher = originalPublisher;
+	}
+
+	public String getResearchNotes() {
+		return researchNotes;
+	}
+
+	public void setResearchNotes(String researchNotes) {
+		this.researchNotes = researchNotes;
+	}
+
+	public String getReprintEdition() {
+		return reprintEdition;
+	}
+
+	public void setReprintEdition(String reprintEdition) {
+		this.reprintEdition = reprintEdition;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getShortTitle() {
+		return shortTitle;
+	}
+
+	public void setShortTitle(String shortTitle) {
+		this.shortTitle = shortTitle;
+	}
+
+	public String getSvCol() {
+		return svCol;
+	}
+
+	public void setSvCol(String svCol) {
+		this.svCol = svCol;
+	}
+
+	public String getSecondaryTitle() {
+		return secondaryTitle;
+	}
+
+	public void setSecondaryTitle(String secondaryTitle) {
+		this.secondaryTitle = secondaryTitle;
+	}
+
+	public String getTranslatedTitle() {
+		return translatedTitle;
+	}
+
+	public void setTranslatedTitle(String translatedTitle) {
+		this.translatedTitle = translatedTitle;
 	}
 
 }
