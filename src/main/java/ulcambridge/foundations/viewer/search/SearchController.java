@@ -106,15 +106,6 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
 	public ModelAndView advancedSearch(@Valid @ModelAttribute SearchForm searchInput,
 			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
-
-		// Read searchForm from session. 
-		SearchForm searchForm = (SearchForm) session.getAttribute("searchForm");
-
-	    // add input from the form stored in the session.
-		// Note this will mean form doesn't reset by default until end of session. 
-		if (searchForm!=null) { 
-			searchInput.setValuesFrom(searchForm);
-		}
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
 		return modelAndView;
@@ -133,9 +124,6 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
 	public ModelAndView processAdvancedSearch(@ModelAttribute @Valid SearchForm searchForm,
 			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
-
-		// Store query in session. 
-		session.setAttribute("searchForm", searchForm);
 		
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchForm);
@@ -169,7 +157,6 @@ public class SearchController {
 	}
 
 	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
-	// Must have made previous search and have that value stored in the session.
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
 	public ModelAndView handleItemsAjaxRequest(@Valid SearchForm searchForm,
@@ -177,9 +164,6 @@ public class SearchController {
 			@RequestParam("start") int startIndex,
 			@RequestParam("end") int endIndex, HttpServletRequest request)
 			throws MalformedURLException {
-
-		// SearchResultSet results = (SearchResultSet) request.getSession()
-		// .getAttribute("search-results");
 
 		// If session has timed out make search again.
 		// if (results == null) {

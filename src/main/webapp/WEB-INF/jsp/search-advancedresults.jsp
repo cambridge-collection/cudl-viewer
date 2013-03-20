@@ -236,7 +236,7 @@ function pageinit() {
         </ul>
 
 		<form class="grid_5" action="/search">
-		            <a href="/search/advanced/query">< Change Query</a>
+		            <a href="/search/advanced/query?<%=SearchUtil.getURLParameters(form)%>">< Change Query</a>
 			
 			<input type="hidden" name="fileID" value="<%=form.getFileID() %>">
 
