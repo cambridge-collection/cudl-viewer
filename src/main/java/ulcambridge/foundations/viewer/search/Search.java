@@ -1,7 +1,9 @@
 package ulcambridge.foundations.viewer.search;
 
+import ulcambridge.foundations.viewer.forms.SearchForm;
+
 public interface Search {
 
-	public SearchResultSet makeSearch(SearchQuery searchQuery);
+	public SearchResultSet makeSearch(SearchForm searchForm);
 
 }

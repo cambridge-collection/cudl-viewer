@@ -34,6 +34,8 @@ body {
 
 #index_carousel_parent {
 	padding-top: 0px;
+    border-style:solid;
+    border-top:2px solid #999;
 	height: 400px;
 }
 
@@ -365,6 +367,22 @@ ol#search_carousel li {
 	list-style: none outside none;
 }
 
+.altsearchlink {
+	font-color:#ff0000;
+	float:right;
+	position:absolute;
+	margin-top:30px;
+	right:-20px;	
+}
+
+.altsearchlink input[type="submit"]
+{
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 .search-facet-selected {
 	background: #4376bb;
 	padding: 3px;
@@ -605,7 +623,6 @@ ol#vcollections_carousel li {
 .searchform form {
 	margin-left: auto;
 	margin-right: auto;
-	height: 36px;
 	position: relative;
 }
 
@@ -658,4 +675,24 @@ ol#vcollections_carousel li {
 	top: 5px;
 	width: 16px;
 	z-index: 3;
+}
+
+/* advancd search query page */
+
+.advancedsearchform {
+
+	position: relative;
+}
+
+.advancedsearchform input{
+	background:#fff;
+	padding: 5px 5px;
+	margin: 5px;
+	color: #666666;
+	font-family: Georgia, 'Times New Roman', serif;
+	z-index: 2;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #999;
+	font-weight: bold;
 }

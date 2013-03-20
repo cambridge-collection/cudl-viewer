@@ -4,13 +4,14 @@ import java.io.BufferedOutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,14 +19,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
-import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Item;
 
 /**
@@ -40,7 +42,7 @@ public class SearchController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private Search search;
 	private ItemFactory itemFactory;
-	
+
 	/**
 	 * Constructor, set in search-servlet.xml.
 	 * 
@@ -50,38 +52,19 @@ public class SearchController {
 	public SearchController(Search search) {
 		this.search = search;
 	}
-		
+
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
-	}		
+	}
 
+	// on /search path
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
-	public ModelAndView processSearch(HttpServletRequest request,
-			HttpServletResponse response) throws MalformedURLException {
-
-		// Build SearchQuery object from the search parameters.
-		Enumeration<String> paramNames = request.getParameterNames();
-		String keywordQuery = "";
-		String fileIDQuery = "";
-		Hashtable<String, String> facetQuery = new Hashtable<String, String>();
-
-		while (paramNames.hasMoreElements()) {
-			String paramName = paramNames.nextElement();
-			if (paramName != null && paramName.equals("keyword")) {
-				keywordQuery = request.getParameter(paramName);
-			} if (paramName != null && paramName.equals("fileID")) {
-				fileIDQuery = request.getParameter(paramName);
-			} else if (paramName != null && paramName.matches("^facet-.+$")) {
-				facetQuery.put(paramName.substring(6),
-						request.getParameter(paramName));
-			}
-		}
-
-		SearchQuery searchQuery = new SearchQuery(keywordQuery, fileIDQuery, facetQuery);
+	public ModelAndView processSearch(@Valid SearchForm searchForm,
+			BindingResult bindingResult) throws MalformedURLException {
 
 		// Perform XTF Search
-		SearchResultSet results = this.search.makeSearch(searchQuery);
+		SearchResultSet results = this.search.makeSearch(searchForm);
 
 		// Remove any results that the viewer does not know about.
 		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
@@ -104,9 +87,84 @@ public class SearchController {
 				refinedResults, facets, results.getError());
 
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
-		modelAndView.addObject("query", searchQuery);
+		modelAndView.addObject("form", searchForm);
 		modelAndView.addObject("results", results);
-		request.getSession().setAttribute("search-results", results);
+		
+		return modelAndView;
+	}
+
+	/**
+	 * Advanced Search Query Page
+	 * 
+	 * /search/advanced/query
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws MalformedURLException
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
+	public ModelAndView advancedSearch(@Valid @ModelAttribute SearchForm searchInput,
+			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
+
+		// Read searchForm from session. 
+		SearchForm searchForm = (SearchForm) session.getAttribute("searchForm");
+
+	    // add input from the form stored in the session.
+		// Note this will mean form doesn't reset by default until end of session. 
+		if (searchForm!=null) { 
+			searchInput.setValuesFrom(searchForm);
+		}
+		
+		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
+		return modelAndView;
+	}
+
+	/**
+	 * Advanced Search Results Page Performs search and displays results.
+	 * 
+	 * on /search/advanced/results path
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws MalformedURLException
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
+	public ModelAndView processAdvancedSearch(@ModelAttribute @Valid SearchForm searchForm,
+			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
+
+		// Store query in session. 
+		session.setAttribute("searchForm", searchForm);
+		
+		// Perform XTF Search
+		SearchResultSet results = this.search.makeSearch(searchForm);
+
+		// Remove any results that the viewer does not know about.
+		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
+		Iterator<SearchResult> resultIt = results.getResults().iterator();
+
+		while (resultIt.hasNext()) {
+			SearchResult result = resultIt.next();
+
+			Item item = itemFactory.getItemFromId(result.getId());
+			if (item != null) {
+				refinedResults.add(result);
+			}
+		}
+
+		// Build the (SearchResultSet) facets from the results
+		List<FacetGroup> facets = getFacetsFromResults(refinedResults);
+
+		results = new SearchResultSet(refinedResults.size(),
+				results.getSpellingSuggestedTerm(), results.getQueryTime(),
+				refinedResults, facets, results.getError());
+
+		ModelAndView modelAndView = new ModelAndView(
+				"jsp/search-advancedresults");
+		modelAndView.addObject("form", searchForm);
+		modelAndView.addObject("results", results);
+
 		return modelAndView;
 	}
 
@@ -114,58 +172,64 @@ public class SearchController {
 	// Must have made previous search and have that value stored in the session.
 	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
-	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
+	public ModelAndView handleItemsAjaxRequest(@Valid SearchForm searchForm,
+			BindingResult bindingResult, HttpServletResponse response,
 			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request) throws MalformedURLException {
+			@RequestParam("end") int endIndex, HttpServletRequest request)
+			throws MalformedURLException {
 
-		SearchResultSet results = (SearchResultSet) request.getSession()
-				.getAttribute("search-results");
-		
-		// If session has timed out make search again. 
-		if (results==null) {
-			ModelAndView search = processSearch(request,response);
-			results = (SearchResultSet) search.getModel().get("results");
-		}
+		// SearchResultSet results = (SearchResultSet) request.getSession()
+		// .getAttribute("search-results");
+
+		// If session has timed out make search again.
+		// if (results == null) {
+		ModelAndView search = processSearch(searchForm, bindingResult);
+		SearchResultSet results = (SearchResultSet) search.getModel().get(
+				"results");
+		// }
 
 		// Put chosen search results into an array.
 		JSONArray jsonArray = new JSONArray();
 
 		if (results != null) {
-			
+
 			List<SearchResult> searchResults = results.getResults();
-			
+
 			if (startIndex < 0) {
 				startIndex = 0;
 			} else if (endIndex >= searchResults.size()) {
-				endIndex = searchResults.size(); // if end Index is too large cap at max
-												// size
+				endIndex = searchResults.size(); // if end Index is too large
+													// cap at max
+													// size
 			}
-			
-			for (int i=startIndex; i<endIndex; i++) {
-				SearchResult searchResult = searchResults.get(i);				
+
+			for (int i = startIndex; i < endIndex; i++) {
+				SearchResult searchResult = searchResults.get(i);
 				Item item = itemFactory.getItemFromId(searchResult.getId());
-				
-				// Make a JSON object that contains information about the matching 
-				// item and information about the result snippets and pages that match. 
+
+				// Make a JSON object that contains information about the
+				// matching item and information about the result snippets 
+				// and pages that match.
 				JSONObject itemJSON = new JSONObject();
 				itemJSON.put("item", item.getSimplifiedJSON());
-				
+
 				// Make an array for the snippets.
 				JSONArray resultsArray = new JSONArray();
 				List<DocHit> docHits = searchResult.getDocHits();
-				
-				for (int j=0;j<docHits.size();j++) {
+
+				for (int j = 0; j < docHits.size(); j++) {
 					DocHit docHit = docHits.get(j);
 					JSONObject snippetJSON = new JSONObject();
-					snippetJSON.put("startPage",  docHit.getStartPage());
-					snippetJSON.put("startPageLabel", docHit.getStartPageLabel());
+					snippetJSON.put("startPage", docHit.getStartPage());
+					snippetJSON.put("startPageLabel",
+							docHit.getStartPageLabel());
 					JSONArray snippetArray = new JSONArray();
 					snippetArray.add(docHit.getSnippetHTML());
 					snippetJSON.put("snippetStrings", snippetArray);
-					
+
 					resultsArray.add(snippetJSON);
 				}
-				
+
 				itemJSON.put("snippets", resultsArray);
 				jsonArray.add(itemJSON);
 			}

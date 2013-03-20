@@ -11,6 +11,8 @@ import junit.framework.TestSuite;
 
 import org.w3c.dom.Document;
 
+import ulcambridge.foundations.viewer.forms.SearchForm;
+
 /**
  * Unit test
  */
@@ -42,10 +44,14 @@ public class XTFSearchTest extends TestCase {
 		facetMap.put("date", "test date");		
 		facetMap.put("collection", "test collection");	
 		
-		SearchQuery q = new SearchQuery("keyword", "", facetMap);
+		SearchForm form = new SearchForm();
+		form.setKeyword("keyword");
+		form.setFacetSubject("test subject");
+		form.setFacetDate("test date");
+		form.setFacetCollection("test collection");
 
 		XTFSearch s = new TestableXTFSearch();
-		SearchResultSet r = s.makeSearch(q);
+		SearchResultSet r = s.makeSearch(form);
 
 		// Expect one result
 		assertEquals(1, r.getNumberOfResults());

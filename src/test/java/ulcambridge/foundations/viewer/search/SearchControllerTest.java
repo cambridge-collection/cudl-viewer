@@ -12,8 +12,8 @@ import junit.framework.TestSuite;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -24,6 +24,7 @@ import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
 import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
+import ulcambridge.foundations.viewer.forms.SearchForm;
 
 /**
  * Unit test
@@ -61,13 +62,11 @@ public class SearchControllerTest extends TestCase {
 				
 		ItemFactory itemFactory = new ItemFactory();
 		itemFactory.setItemsDao(jsondao);	
-
-		MockHttpServletRequest req = new MockHttpServletRequest();
-		req.addParameter("keyword", "Elementary Mathematics");
-		req.addParameter("facet-collection", "Newton Papers");
-		req.addParameter("facet-subject", "Algebra - Early works to 1800");
-
-		MockHttpServletResponse res = new MockHttpServletResponse();
+		
+		SearchForm form = new SearchForm();
+		form.setKeyword("Elementary Mathematics");
+		form.setFacetCollection("Newton Papers");
+		form.setFacetSubject("Algebra - Early works to 1800");
 
 		SearchController c = new SearchController(new MockSearch());
 		
@@ -78,9 +77,8 @@ public class SearchControllerTest extends TestCase {
 		// inject the factories
 		c.setItemFactory(itemFactory);
 
-		ModelAndView m = c.processSearch(req, res);
-
-		SearchQuery q = (SearchQuery) m.getModelMap().get("query");
+		ModelAndView m = c.processSearch(form, null);
+		
 		SearchResultSet r = (SearchResultSet) m.getModelMap().get("results");
 
 		// Expect one result
@@ -90,18 +88,9 @@ public class SearchControllerTest extends TestCase {
 		assertEquals(3, r.getFacets().size());
 		assertEquals(2.3f, r.getQueryTime());
 		assertEquals("error", r.getError());
-		assertEquals("Elementary Mathematics", q.getKeyword());
-		assertEquals(2, q.getFacets().size());
-		assertEquals(
-				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers",
-				q.getURLParameters());
-		assertEquals(
-				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-subject=Algebra+-+Early+works+to+1800&amp;facet-collection=Newton+Papers&amp;facet-bob=bobvalue",
-				q.getURLParametersWithExtraFacet("bob", "bobvalue"));
-		assertEquals(
-				"keyword=Elementary+Mathematics&amp;fileID=&amp;facet-collection=Newton+Papers",
-				q.getURLParametersWithoutFacet("subject"));
-
+		assertEquals("Elementary Mathematics", form.getKeyword());
+		assertEquals(2, form.getFacets().size());		
+		
 	}
 
 	/**
@@ -114,7 +103,7 @@ public class SearchControllerTest extends TestCase {
 	private class MockSearch implements Search {
 
 		@Override
-		public SearchResultSet makeSearch(SearchQuery searchQuery) {
+		public SearchResultSet makeSearch(SearchForm searchForm) {
 
 			// Read document from File
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

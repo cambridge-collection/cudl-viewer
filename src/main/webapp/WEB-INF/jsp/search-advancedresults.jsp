@@ -221,30 +221,26 @@ function pageinit() {
 <section id="content" class="grid_20 content"> <!-- <h3 style="margin-left: 8px">Search</h3>  -->
 
 <div class="grid_6 ">
+		<h4>Advanced Search</h4>
 	<div class="searchform box">
 
-		<form:form commandName="searchForm" class="grid_5" action="/search" method="GET">
-		
-			<form:input path="keyword" class="search" type="text" value="<%=form.getKeyword()%>" name="keyword"
-				placeholder="Search" autocomplete="off" /> 
-			<input id="submit" type="submit" value="Search" />
-			
-            <a href="/search/advanced/query" class="altsearchlink">advanced</a>
-			<%
+		<form class="grid_5" action="/search">
+		            <a href="/search/advanced/query">< Change Query</a>
+			<%/*
 				Iterator<String> facetsUsedHidden = form.getFacets().keySet()
 						.iterator();
 				while (facetsUsedHidden.hasNext()) {
 					String facetName = facetsUsedHidden.next();
-					String facetValue =form.getFacets().get(facetName);
+					String facetValue = query.getFacets().get(facetName);
 			%>
-			<input path="<%=facetName%>" type="hidden" name="facet-<%=facetName%>"
-				value="<%=facetValue%>" />
+			<input type="hidden" name="facet-<%=facetName%>"
+				value="<%=facetValue%>">
 			<%
 				}
-			%>
-			<form:input path="fileID" type="hidden" name="fileID" value="<%=form.getFileID() %>"/>
+			*/%>
+			<input type="hidden" name="fileID" value="<%=form.getFileID() %>">
 
-		</form:form>
+		</form>
 
 		<%
 			Iterator<String> facetsUsed = form.getFacets().keySet().iterator();
@@ -253,11 +249,13 @@ function pageinit() {
 				String facetValue = form.getFacets().get(facetName);
 		%>
 		<div class="search-facet-selected">
+		    <form action="/search/advanced/results">
 			<a class="search-close"
 				href="?<%=SearchUtil.getURLParametersWithoutFacet(form,facetName)%>&amp;"></a>
 			<%
 				out.print(facetValue);
 			%>
+			</form>
 		</div>
 		<%
 			}
