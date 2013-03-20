@@ -453,6 +453,8 @@ public class XTFSearch implements Search {
 	 */
 	public String getValueInHTML(Node node) {
 
+		if (node==null) return "";
+		
 		if (node.getNodeType() == Node.TEXT_NODE) {
 			// if this is a snippet, bold the matching word(s).
 			if (node.getParentNode().getNodeName().equals("term")) {

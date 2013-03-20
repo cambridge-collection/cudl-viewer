@@ -224,20 +224,20 @@ function pageinit() {
 		<h4>Advanced Search</h4>
 	<div class="searchform box">
 
+        <ul>
+        <% if (!form.getKeyword().isEmpty()) { out.println("<li>Keyword: <b>" + form.getKeyword() +"</b></li>"); } %>
+        <% if (!form.getFullText().isEmpty()) { out.println("<li>Full Text: <b>" + form.getFullText() +"</b></li>"); } %>
+        <% if (!form.getExcludeText().isEmpty()) { out.println("<li>Exclude Text: <b>" + form.getExcludeText() +"</b></li>"); } %>       
+        <% if (!form.getFileID().isEmpty()) { out.println("<li>File ID: <b>" + form.getFileID() +"</b></li>"); } %>
+        <% if (!form.getTitle().isEmpty()) { out.println("<li>Title: <b>" + form.getTitle() +"</b></li>"); } %>
+        <% if (!form.getAuthor().isEmpty()) { out.println("<li>Author: <b>" + form.getAuthor() +"</b></li>"); } %>
+        <% if (!form.getSubject().isEmpty()) { out.println("<li>Subject: <b>" + form.getSubject() +"</b></li>"); } %>
+        <% if (form.getYearStart()!=0 && form.getYearEnd()!=0) { out.println("<li>Year: <b>" + form.getYearStart() +"</b> to <b>" + form.getYearEnd() +"</b></li>"); } %>
+        </ul>
+
 		<form class="grid_5" action="/search">
 		            <a href="/search/advanced/query">< Change Query</a>
-			<%/*
-				Iterator<String> facetsUsedHidden = form.getFacets().keySet()
-						.iterator();
-				while (facetsUsedHidden.hasNext()) {
-					String facetName = facetsUsedHidden.next();
-					String facetValue = query.getFacets().get(facetName);
-			%>
-			<input type="hidden" name="facet-<%=facetName%>"
-				value="<%=facetValue%>">
-			<%
-				}
-			*/%>
+			
 			<input type="hidden" name="fileID" value="<%=form.getFileID() %>">
 
 		</form>
@@ -257,15 +257,6 @@ function pageinit() {
 			%>
 			</form>
 		</div>
-		<%
-			}
-			if (form.getFileID()!=null && form.getFileID().trim().length()>0 ) {
-			%>
-			<div class="search-facet-selected"><a class="search-close"
-				href="?<%=SearchUtil.getURLParameters(form).replace("fileID="+form.getFileID(), "fileID=")%>&amp;"></a>
-			<%
-				out.print("File ID: "+form.getFileID());
-			%>	</div>		
            <%
 			}
 			if (resultSet.getSpellingSuggestedTerm() != null

@@ -230,6 +230,7 @@ function pageinit() {
 			<input id="submit" type="submit" value="Search" />
 			
             <a href="/search/advanced/query" class="altsearchlink">advanced</a>
+            <br/><br/>
 			<%
 				Iterator<String> facetsUsedHidden = form.getFacets().keySet()
 						.iterator();
@@ -245,6 +246,7 @@ function pageinit() {
 			<form:input path="fileID" type="hidden" name="fileID" value="<%=form.getFileID() %>"/>
 
 		</form:form>
+		<br/><br/>
 
 		<%
 			Iterator<String> facetsUsed = form.getFacets().keySet().iterator();

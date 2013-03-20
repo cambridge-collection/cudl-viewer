@@ -60,7 +60,7 @@
 					  <br /><br /> 
 					  <input id="submit" type="submit" value="Submit" />  					  
 					  <input id="reset" type="reset" value="Reset" /> 
-					  <a href="/search"	class="altsearchlink">back to simple search&nbsp;</a>
+					  <a href="/search"	class="altsearchlink">back to simple search</a>
 				</div>
 			</form:form>
 

@@ -17,7 +17,16 @@ public class SearchUtil {
 	public static String getURLParameters(SearchForm searchForm) {
 		try {
 			String params = "keyword=" + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
+			params += "&amp;fullText=" + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
+			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
+			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
 			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
+			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
+			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
+			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
+			params += "&amp;yearStart=" + searchForm.getYearStart();
+			params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			
 			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();
@@ -39,8 +48,18 @@ public class SearchUtil {
 
 	public static String getURLParametersWithoutFacet(SearchForm searchForm, String facetName) {
 		try {
+
 			String params = "keyword=" + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
-			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");			
+			params += "&amp;fullText=" + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
+			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
+			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
+			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
+			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
+			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
+			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
+			params += "&amp;yearStart=" + searchForm.getYearStart();
+			params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			
 			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
 			while (facetIterator.hasNext()) {
 				String facet = facetIterator.next().toString();

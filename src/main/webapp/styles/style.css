@@ -370,9 +370,6 @@ ol#search_carousel li {
 .altsearchlink {
 	font-color:#ff0000;
 	float:right;
-	position:absolute;
-	margin-top:30px;
-	right:-20px;	
 }
 
 .altsearchlink input[type="submit"]
@@ -624,6 +621,7 @@ ol#vcollections_carousel li {
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
+	width: 240px;
 }
 
 /* search on search results page */
@@ -634,7 +632,6 @@ ol#vcollections_carousel li {
 	font-size: 13px;
 	font-style: italic;
 	padding: 5px 5px;
-	position: absolute;
 	top: 0px;
 	width: 230px;
 	z-index: 2;
@@ -670,7 +667,7 @@ ol#vcollections_carousel li {
 	height: 16px;
 	overflow: hidden;
 	position: absolute;
-	right: -10px;
+	right: 5px;
 	text-indent: -9999px;
 	top: 5px;
 	width: 16px;
