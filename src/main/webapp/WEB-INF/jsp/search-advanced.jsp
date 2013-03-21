@@ -31,9 +31,9 @@
 					<br /><br />
 				</div>
 				<div class="grid_6">
-					<form:radiobutton path="textJoin" class="search" type="radio" value="and" name="textJoin" /> 
+					<form:radiobutton path="textJoin" class="radiobutton" type="radio" value="and" name="textJoin" /> 
 				    All of these words<br /> 
-					<form:radiobutton path="textJoin" class="search" type="radio" value="or" name="textJoin" />
+					<form:radiobutton path="textJoin" class="radiobutton" type="radio" value="or" name="textJoin" />
 					Any of these words 
 					<br /><br />
 				</div>

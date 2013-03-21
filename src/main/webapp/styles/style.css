@@ -693,3 +693,8 @@ ol#vcollections_carousel li {
 	border-color: #999;
 	font-weight: bold;
 }
+
+.advancedsearchform .radiobutton {
+	 background-color: transparent;
+	 border-width: 0px;
+}
