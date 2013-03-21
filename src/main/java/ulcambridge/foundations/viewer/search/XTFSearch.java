@@ -111,12 +111,12 @@ public class XTFSearch implements Search {
 			}
 			if (searchForm.getAuthor() != null) {
 
-				searchXTFURL += "&name="
+				searchXTFURL += "&nameFullForm="
 						+ URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
 			}
 			if (searchForm.getSubject() != null) {
 
-				searchXTFURL += "&subject="
+				searchXTFURL += "&subjectFullForm="
 						+ URLEncoder.encode(searchForm.getSubject(), "UTF-8");
 			}
 			if (searchForm.getYearStart() != 0) {
