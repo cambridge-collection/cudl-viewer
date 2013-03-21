@@ -27,7 +27,7 @@
 			articulate a theory of how all living things have evolved from a
 			common ancestor. The single largest category of material in the
 			Darwin archive, however, is not his experiment notes or theoretical
-			notebooks but letters: more than 9000 of the 15,000 letters Darwin is
+			notebooks but letters: more than 9,000 of the 15,000 letters Darwin is
 			known to have written and received in his lifetime are in the
 			Cambridge collection. It was largely through letters that Darwin
 			gathered the data that first allowed him to develop his theories, and
@@ -35,7 +35,7 @@
 			letters that he honed his ideas and built strategic relationships
 			with colleagues and supporters: they are an integral part of Darwin's
 			scientific legacy.</p>
-		<p>Darwin corresponded with around 2000 people from all around the
+		<p>Darwin corresponded with around 2,000 people from all around the
 			world and all walks of life. His correspondents included other
 			leading scientists and thinkers, such as the geologist Charles Lyell,
 			the philosopher Herbert Spencer, the zoologist Thomas Henry Huxley,
@@ -43,7 +43,7 @@
 			Russel Wallace. No single set of letters was more important to
 			Darwin, however, or is more important now, than those exchanged with
 			his closest friend, the botanist Joseph Dalton Hooker (1817-1911). At
-			around 10% of Darwin's surviving correspondence, the 1400 letters
+			around 10% of Darwin's surviving correspondence, the 1,200 letters
 			published here provide a structure within which all the other letters
 			can be explored. They are a connecting thread that spans forty years
 			of Darwin's mature working life from 1843 until his death in 1882.
@@ -90,7 +90,7 @@
 			would all too clearly understand his grief. Those letters are amongst
 			the most poignant in the collection.</p>
 		<p>Of the many hundreds of letters that passed between Darwin and
-			Hooker, over 1400 are still known to survive, and all but a handful
+			Hooker, over 1,200 are still known to survive, and all but a handful
 			are in the Cambridge Darwin archive. Darwin's son Francis
 			incorporated many extracts in two published editions of his father's
 			letters, in 1888 and 1902, the second of which he dedicated to Hooker
@@ -106,7 +106,7 @@
 		<p>The Cambridge Digital Library, and the Darwin Correspondence
 			Project, are very pleased to be able to publish images of almost the
 			entire correspondence between Charles Darwin and Joseph Hooker,
-			together with transcriptions of more than 1000 of their letters.
+			together with transcriptions of more than 1,000 of their letters.
 			These are being published simultaneously through CUDL and on the
 			Darwin Correspondence Project website.</p>
 		<p>It is because of the vital importance of the letters to a full
@@ -157,7 +157,7 @@
 		<!-- 
 		<div class="box grid_8">
 		Want to view items by subject or date? <br/>
-		<a href="/search?facet-collection=Newton+Papers">Search the Newton Papers</a>
+		<a href="/search?facet-collection=Darwin-Hooker+Letters">Search the Darwin-Hooker Letters</a>
 		</div>
 		-->
 	</div>
