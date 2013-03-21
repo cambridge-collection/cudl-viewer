@@ -12,15 +12,16 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/newton.jpg" alt="Newton" width="150"
-			height="225" /> <span class="image-credit">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
-				College, Cambridge.</a>
-		</span>
+			src="/images/collectionsView/darwinhooker-darwin.jpg" alt="Darwin" width="150"
+			height="225" /><span class="image-credit right">Charles Darwin</span> 
 	</div>
 	<div class="grid_9">
 		<br />
-
+	<div style="float:right">
+		<img class="collectionOrganisationalImage"
+			src="/images/collectionsView/darwinhooker-hooker.jpg" alt="Darwin" width="150"
+			height="225" /><br/><span class="image-credit right">Joseph Hooker</span>
+	</div>
 		<p>Cambridge University Library houses the world's largest and
 			most significant collection of the personal papers of Charles Robert
 			Darwin (1809-1882), the British naturalist who was the first fully to
