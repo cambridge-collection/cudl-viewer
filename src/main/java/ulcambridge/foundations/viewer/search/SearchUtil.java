@@ -24,8 +24,11 @@ public class SearchUtil {
 			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
 			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
 			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
-			params += "&amp;yearStart=" + searchForm.getYearStart();
-			params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			
+			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
+				params += "&amp;yearStart=" + searchForm.getYearStart();
+				params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			}			
 			
 			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
 			while (facetIterator.hasNext()) {
@@ -57,8 +60,11 @@ public class SearchUtil {
 			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
 			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
 			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
-			params += "&amp;yearStart=" + searchForm.getYearStart();
-			params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			
+			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
+				params += "&amp;yearStart=" + searchForm.getYearStart();
+				params += "&amp;yearEnd=" + searchForm.getYearEnd();
+			}	
 			
 			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
 			while (facetIterator.hasNext()) {

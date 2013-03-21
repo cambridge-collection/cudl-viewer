@@ -278,8 +278,11 @@ function pageinit() {
 						+ resultSet.getSpellingSuggestedTerm() + "\">"
 						+ resultSet.getSpellingSuggestedTerm() + "</a> ?");
 			}
-			out.println("<div class=\"grid_5\"><br /><b>" + resultSet.getNumberOfResults() + "</b>"
+			
+			if (form.getKeyword()!=null && !form.getKeyword().equals("")) {
+			  out.println("<div class=\"grid_5\"><br /><b>" + resultSet.getNumberOfResults() + "</b>"
 					+ " results were returned.<br/><br/></div>");
+			}
 		%>
 		<%
 			if (resultSet.getNumberOfResults() > 0) {
@@ -340,9 +343,11 @@ function pageinit() {
 
 			// No results were returned. So print out some help.
 			if (resultSet.getNumberOfResults() == 0) {
-				out.println("<p class=\"box\">We couldn't find any items matching <b>"
+				if (form.getKeyword()!=null && !form.getKeyword().equals("")) {
+					out.println("<p class=\"box\">We couldn't find any items matching <b>"				
 						+ form.getKeyword() + "</b></p>");
-
+				}
+				
 				out.println("<div class=\"searchexample\">");
 				out.println("<h5>Example Searches</h5><br/><p>");
 				out.println("Searching for <span class=\"search\">newton</span> Searches the metadata for 'newton'<br/>");

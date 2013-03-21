@@ -119,12 +119,12 @@ public class XTFSearch implements Search {
 				searchXTFURL += "&subjectFullForm="
 						+ URLEncoder.encode(searchForm.getSubject(), "UTF-8");
 			}
-			if (searchForm.getYearStart() != 0) {
+			if (searchForm.getYearStart() != null) {
 
 				searchXTFURL += "&year="
 						+ searchForm.getYearStart();
 			}
-			if (searchForm.getYearEnd() != 0) {
+			if (searchForm.getYearEnd() != null) {
 
 				searchXTFURL += "&year-max="
 						+ searchForm.getYearEnd();

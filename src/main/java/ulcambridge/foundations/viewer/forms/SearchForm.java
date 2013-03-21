@@ -21,8 +21,8 @@ public class SearchForm {
 	private String title = "";
 	private String author = "";
 	private String subject = "";
-	private int yearStart = 0;
-	private int yearEnd = 0;
+	private Integer yearStart = null;
+	private Integer yearEnd = null;
 	
 	// Search Facets
 	private Map<String, String> facets = new Hashtable<String,String>();
@@ -97,19 +97,19 @@ public class SearchForm {
 		this.subject = subject;
 	}
 
-	public int getYearStart() {
+	public Integer getYearStart() {
 		return yearStart;
 	}
 
-	public void setYearStart(int yearStart) {
+	public void setYearStart(Integer yearStart) {
 		this.yearStart = yearStart;
 	}
 
-	public int getYearEnd() {
+	public Integer getYearEnd() {
 		return yearEnd;
 	}
 
-	public void setYearEnd(int yearEnd) {
+	public void setYearEnd(Integer yearEnd) {
 		this.yearEnd = yearEnd;
 	}
 

@@ -232,7 +232,7 @@ function pageinit() {
         <% if (!form.getTitle().isEmpty()) { out.println("<li>Title: <b>" + form.getTitle() +"</b></li>"); } %>
         <% if (!form.getAuthor().isEmpty()) { out.println("<li>Author: <b>" + form.getAuthor() +"</b></li>"); } %>
         <% if (!form.getSubject().isEmpty()) { out.println("<li>Subject: <b>" + form.getSubject() +"</b></li>"); } %>
-        <% if (form.getYearStart()!=0 && form.getYearEnd()!=0) { out.println("<li>Year: <b>" + form.getYearStart() +"</b> to <b>" + form.getYearEnd() +"</b></li>"); } %>
+        <% if (form.getYearStart()!=null && form.getYearEnd()!=null) { out.println("<li>Year: <b>" + form.getYearStart() +"</b> to <b>" + form.getYearEnd() +"</b></li>"); } %>
         </ul>
 
 		<form class="grid_5" action="/search">
