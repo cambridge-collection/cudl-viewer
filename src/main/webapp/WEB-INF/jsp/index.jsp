@@ -104,51 +104,30 @@
 					width="944" height="394" /> </a>
 			</li>
 
-			<!-- newton collection -->
+			<!-- darwin-hooker collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/collections/longitude">Board of Longitude</a>
+						<a href="/collections/darwinhooker">Darwin-Hooker Letters</a>
 					</h4>
 
+					<p>No single set of letters was more important to Darwin than
+						those exchanged with his closest friend, the botanist Joseph
+						Dalton Hooker.</p>
 					<p>
-						The papers of the Board of Longitude held in Cambridge University
-						Library include remarkable and invaluable details of a vast range
-						of maritime, astronomical and navigational activities between the
-						mid-eighteenth and the early nineteenth centuries. Our <a
-							href="/collections/longitude/">initial selection</a> includes the
-						Board’s confirmed minutes and papers from the astonishing Pacific
-						and Antarctic voyage of James Cook in 1772-1775.
+						The <a href="/collections/darwinhooker">1,200 letters</a>
+						published here are a connecting thread that spans forty years of
+						Darwin's mature working life from 1843 until his death in 1882.
+						They bring into sharp focus every aspect of Darwin's scientific
+						work throughout that period, and illuminate the mutual friendships
+						he and Hooker shared with other scientists, but they also provide
+						a window of unparalleled intimacy into the personal lives of the
+						two men.
 					</p>
 
-
-				</div> <a href="/collections/longitude"><img
-					src="/images/index/carousel-longitude.jpg" alt="Board of Longitude"
-					width="944" height="394" /> </a>
-			</li>
-
-
-			<!-- Hebrew Manuscripts -->
-			<li>
-				<div class="panel" style="overflow: auto;">
-					<h4>
-						<a href="/collections/hebrew">Hebrew Manuscripts</a>
-					</h4>
-
-					<p>Cambridge University Library holds one of the world’s
-						foremost collections of Hebrew manuscripts, on account of the
-						University’s long interest in the literature of Judaism. Chief
-						among them are the famous Nash Papyrus, one of the earliest known
-						artefacts containing the words of the Hebrew Bible, and the
-						Cambridge Mishnah, a complete codex of this work copied in
-						fifteenth-century Byzantium. With 1000 items acquired over more
-						than 500 years, the Collection ranges wide from Samaritan Hebrew
-						Bibles to important compositions of halakha and exegesis, through
-						to manuscripts of philosophical, kabbalistic and scientific works.</p>
-
-				</div> <a href="/collections/hebrew"><img
-					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
-					width="944" height="394" /> </a>
+				</div> <a href="/collections/darwinhooker"><img id="darwinhookerImage"
+					src="/images/index/carousel-darwinhooker.jpg"
+					alt="Darwin-Hooker Letters" width="944" height="394" /> </a>
 			</li>
 
 			<!-- The Cairo Genizah collection -->
@@ -174,32 +153,26 @@
 					alt="The Cairo Genizah Collection" width="944" height="394" /> </a>
 			</li>
 
-			<!-- christian works -->
+			<!-- Hebrew Manuscripts -->
 			<li>
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/collections/christian">Christian Works</a>
+						<a href="/collections/hebrew">Hebrew Manuscripts</a>
 					</h4>
 
-					<p>
-						A selection of some of our finest Christian manuscripts and early
-						printed books, from the Bible to the liturgy, spanning over 1000
-						years of worship and debate. From the early bilingual New
-						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex
-							Bezae</a> to the tenth-century pocket Gospel Book the <a
-							href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a
-						beautifully illuminated sixteenth-century <a
-							href="/view/MS-NN-00004-00001/1">book of services and
-							ceremonies</a> commissioned for a Cistercian abbot in Northern
-						Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life
-							of St Edward the Confessor</a> produced for royalty in
-						mid-thirteenth-century England, the collection includes works of
-						scripture, theology and liturgy, reflecting both Church ceremonial
-						and private devotion.
-					</p>
+					<p>Cambridge University Library holds one of the world’s
+						foremost collections of Hebrew manuscripts, on account of the
+						University’s long interest in the literature of Judaism. Chief
+						among them are the famous Nash Papyrus, one of the earliest known
+						artefacts containing the words of the Hebrew Bible, and the
+						Cambridge Mishnah, a complete codex of this work copied in
+						fifteenth-century Byzantium. With 1000 items acquired over more
+						than 500 years, the Collection ranges wide from Samaritan Hebrew
+						Bibles to important compositions of halakha and exegesis, through
+						to manuscripts of philosophical, kabbalistic and scientific works.</p>
 
-				</div> <a href="/collections/christian"><img
-					src="/images/index/carousel-christian.jpg" alt="Christian Works"
+				</div> <a href="/collections/hebrew"><img
+					src="/images/index/carousel-hebrew.jpg" alt="Hebrew Manuscripts"
 					width="944" height="394" /> </a>
 			</li>
 
@@ -227,6 +200,35 @@
 					src="/images/index/carousel-islamic.jpg" alt="Islamic Manuscripts"
 					width="944" height="394" /> </a>
 			</li>
+			
+			<!-- christian works -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/christian">Christian Works</a>
+					</h4>
+
+					<p>
+						A selection of some of our finest Christian manuscripts and early
+						printed books, from the Bible to the liturgy, spanning over 1000
+						years of worship and debate. From the early bilingual New
+						Testament known as the <a href="/view/MS-NN-00002-00041/1">Codex
+							Bezae</a> to the tenth-century pocket Gospel Book the <a
+							href="/view/MS-II-00006-00032/1">Book of Deer</a>, and from a
+						beautifully illuminated sixteenth-century <a
+							href="/view/MS-NN-00004-00001/1">book of services and
+							ceremonies</a> commissioned for a Cistercian abbot in Northern
+						Flanders to a sumptuous <a href="/view/MS-EE-00003-00059/1">Life
+							of St Edward the Confessor</a> produced for royalty in
+						mid-thirteenth-century England, the collection includes works of
+						scripture, theology and liturgy, reflecting both Church ceremonial
+						and private devotion.
+					</p>
+
+				</div> <a href="/collections/christian"><img
+					src="/images/index/carousel-christian.jpg" alt="Christian Works"
+					width="944" height="394" /> </a>
+			</li>			
 
 			<!-- The Sanskrit collection -->
 			<li>
@@ -274,6 +276,28 @@
 					alt="Spanish Chapbooks" width="944" height="394" /> </a>
 			</li>
 
+			<!-- longitude collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/longitude">Board of Longitude</a>
+					</h4>
+
+					<p>
+						The papers of the Board of Longitude held in Cambridge University
+						Library include remarkable and invaluable details of a vast range
+						of maritime, astronomical and navigational activities between the
+						mid-eighteenth and the early nineteenth centuries. Our <a
+							href="/collections/longitude/">initial selection</a> includes the
+						Board’s confirmed minutes and papers from the astonishing Pacific
+						and Antarctic voyage of James Cook in 1772-1775.
+					</p>
+
+
+				</div> <a href="/collections/longitude"><img
+					src="/images/index/carousel-longitude.jpg" alt="Board of Longitude"
+					width="944" height="394" /> </a>
+			</li>
 		</ol>
 
 	</div>
@@ -282,9 +306,10 @@
 
 		<h4>Collections</h4>
 
-<% for (int i=0; i<allCollections.size(); i++) { 
-       Collection c = allCollections.get(i);
-%>
+		<%
+			for (int i=0; i<allCollections.size(); i++) { 
+				       Collection c = allCollections.get(i);
+		%>
 
 		<div class="featuredcollection grid_3">
 			<a href="<%=c.getURL()%>"><img
@@ -292,9 +317,14 @@
 				height="128px" width="128px" /> <span
 				class="featuredcollectionlabel"><%=c.getTitle()%></span></a>
 		</div>
-<% } %>
+		<%
+			}
+		%>
 
-		<div class="grid_9"><br/><a class="right" href="/collections/">View all collections ></a></div> 
+		<div class="grid_9">
+			<br /> <a class="right" href="/collections/">View all
+				collections ></a>
+		</div>
 	</div>
 
 

@@ -55,22 +55,58 @@
 		<hr />
 		<div class="collection collection-science">
 
-			<a href="/collections/longitude"> <img class="collectionImage"
-				src="/images/collectionsView/collection-longitude.jpg"
-				alt="Board of Longitude" width="150" height="150" />
+			<a href="/collections/darwinhooker"> <img class="collectionImage"
+				src="/images/collectionsView/collection-darwinhooker.jpg"
+				alt="Darwin-Hooker Letters" width="150" height="150" />
 			</a>
 
-			<h5>Board of Longitude</h5>
-			<br />Cambridge University Library holds the entire archive of the
-			Board of Longitude, the state organization established in the
-			eighteenth century to evaluate methods for finding ships’ position
-			and to encourage a host of projects in instrument design,
-			clock-making, mapping and voyaging. Our initial selection includes
-			the Board’s confirmed minutes and papers from the astonishing Pacific
-			and Antarctic voyage of James Cook in 1772-1775.<br /> <br /> <a
-				href="/collections/longitude">View collection</a>. <br />
+			<h5>Darwin-Hooker Letters</h5>
+			<br /> These letters are a connecting thread that spans forty years
+			of Darwin's mature working life from 1843 until his death in 1882.
+			They bring into sharp focus every aspect of Darwin's scientific work
+			throughout that period, and illuminate the mutual friendships he and
+			Hooker shared with other scientists, but they also provide a window
+			of unparalleled intimacy into the personal lives of the two men. <br />
+			<br /> <a href="/collections/darwinhooker">View collection</a>. <br />
 			<div class="foundations-link-science">
 				<a href="/about#foundations">Foundations of Science</a>
+			</div>
+		</div>
+		<br />
+		<hr />
+		<div class="collection collection-faith">
+
+			<a href="/collections/genizah"> <img class="collectionImage"
+				src="/images/collectionsView/collection-genizah.jpg" alt="Genizah"
+				width="150" height="150" />
+			</a>
+
+			<h5>The Cairo Genizah Collection</h5>
+			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
+			University Library is the world's largest and most important single
+			collection of medieval Jewish manuscripts.<br /> <br /> <a
+				href="/collections/genizah">View collection</a>. <br />
+			<div class="foundations-link-faith">
+				<a href="/about#foundations">Foundations of Faith</a>
+			</div>
+		</div>
+		<br />
+		<hr />
+
+		<div class="collection collection-faith">
+
+			<a href="/collections/hebrew"> <img class="collectionImage"
+				src="/images/collectionsView/collection-hebrew.jpg" alt="Hebrew"
+				width="150" height="150" />
+			</a>
+
+			<h5>Hebrew Collection</h5>
+			<br /> For over five hundred years Cambridge University has been
+			building up one of the world’s most important collections of Hebrew
+			manuscripts. <br /> <br /> <a href="/collections/hebrew">View
+				collection</a>. <br />
+			<div class="foundations-link-faith">
+				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
 		</div>
 		<br />
@@ -95,25 +131,26 @@
 		</div>
 		<br />
 		<hr />
+
 		<div class="collection collection-faith">
 
-			<a href="/collections/genizah"> <img class="collectionImage"
-				src="/images/collectionsView/collection-genizah.jpg" alt="Genizah"
-				width="150" height="150" />
+			<a href="/collections/christian"> <img class="collectionImage"
+				src="/images/collectionsView/collection-christian.jpg"
+				alt="Christian" width="150" height="150" />
 			</a>
 
-			<h5>The Cairo Genizah Collection</h5>
-			<br /> The Taylor-Schechter Cairo Genizah Collection at Cambridge
-			University Library is the world's largest and most important single
-			collection of medieval Jewish manuscripts.<br /> <br /> <a
-				href="/collections/genizah">View collection</a>. <br />
+			<h5>Christian Works</h5>
+			<br /> A selection of some of our finest Christian manuscripts and
+			early printed books, from the Bible to the liturgy, spanning over
+			1000 years of worship and debate.<br /> <br /> <a
+				href="/collections/christian">View collection</a>. <br />
 			<div class="foundations-link-faith">
 				<a href="/about#foundations">Foundations of Faith</a>
 			</div>
 		</div>
 		<br />
-
 		<hr />
+
 		<div class="collection collection-faith">
 
 			<a href="/collections/sanskrit"> <img class="collectionImage"
@@ -131,6 +168,7 @@
 		</div>
 		<br />
 		<hr />
+
 		<div class="collection">
 
 			<a href="/collections/spanishchapbooks"> <img
@@ -148,38 +186,24 @@
 		<br />
 		<hr />
 
-		<div class="collection collection-faith">
+		<div class="collection collection-science">
 
-			<a href="/collections/hebrew"> <img class="collectionImage"
-				src="/images/collectionsView/collection-hebrew.jpg" alt="Hebrew"
-				width="150" height="150" />
+			<a href="/collections/longitude"> <img class="collectionImage"
+				src="/images/collectionsView/collection-longitude.jpg"
+				alt="Board of Longitude" width="150" height="150" />
 			</a>
 
-			<h5>Hebrew Collection</h5>
-			<br /> For over five hundred years Cambridge University has been
-			building up one of the world’s most important collections of Hebrew
-			manuscripts. <br /> <br /> <a href="/collections/hebrew">View
-				collection</a>. <br />
-			<div class="foundations-link-faith">
-				<a href="/about#foundations">Foundations of Faith</a>
-			</div>
-		</div>
-		<br />
-		<hr />
-		<div class="collection collection-faith">
-
-			<a href="/collections/christian"> <img class="collectionImage"
-				src="/images/collectionsView/collection-christian.jpg"
-				alt="Christian" width="150" height="150" />
-			</a>
-
-			<h5>Christian Works</h5>
-			<br /> A selection of some of our finest Christian manuscripts and
-			early printed books, from the Bible to the liturgy, spanning over
-			1000 years of worship and debate.<br /> <br /> <a
-				href="/collections/christian">View collection</a>. <br />
-			<div class="foundations-link-faith">
-				<a href="/about#foundations">Foundations of Faith</a>
+			<h5>Board of Longitude</h5>
+			<br />Cambridge University Library holds the entire archive of the
+			Board of Longitude, the state organization established in the
+			eighteenth century to evaluate methods for finding ships’ position
+			and to encourage a host of projects in instrument design,
+			clock-making, mapping and voyaging. Our initial selection includes
+			the Board’s confirmed minutes and papers from the astonishing Pacific
+			and Antarctic voyage of James Cook in 1772-1775.<br /> <br /> <a
+				href="/collections/longitude">View collection</a>. <br />
+			<div class="foundations-link-science">
+				<a href="/about#foundations">Foundations of Science</a>
 			</div>
 		</div>
 		<br />
