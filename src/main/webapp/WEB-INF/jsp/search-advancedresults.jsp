@@ -106,7 +106,7 @@ function pageinit() {
 					          // FIXME Temporary hack to hide page label if the match 
 					          // is on the first page as this will be a match for the whole item. 
 					          if (snippet.startPage!=1) { snippetLabel = snippet.startPageLabel; }
-					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetValue.trim()
+					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetValue
 					    	  +"</a> <font style='color:#999999'>"+snippetLabel+"</font></li>"; 
 					    	}
 					    	
