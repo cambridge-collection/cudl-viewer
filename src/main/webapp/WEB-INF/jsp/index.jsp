@@ -38,10 +38,19 @@
 		var intervalId = window.setInterval(function() {
 			index_carousel.next();
 		}, 7000);
-		document.getElementById("index_carousel_parent").addEventListener(
+		
+		// Need to check for addEventListener as is not supported in ie8. 
+		if (document.getElementById("index_carousel_parent").addEventListener) {
+			document.getElementById("index_carousel_parent").addEventListener(
 				"click", function(event) {
 					window.clearInterval(intervalId);
 				});
+		} else {
+			document.getElementById("index_carousel_parent").attachEvent(
+					"onclick", function(event) {
+						window.clearInterval(intervalId);
+					});
+		}
 
 		$(".collection_gallery").fancybox();
 	}
