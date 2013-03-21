@@ -36,9 +36,18 @@ public class SearchUtilTest extends TestCase {
 		form.setFacetSubject("test subject");
 		form.setFacetDate("test date");
 
-		assertEquals(SearchUtil.getURLParameters(form), "keyword=keyword&amp;fileID=&amp;facetDate=test+date&amp;facetSubject=test+subject");
-		assertEquals(SearchUtil.getURLParametersWithExtraFacet(form, "bob", "bobvalue"), "keyword=keyword&amp;fileID=&amp;facetDate=test+date&amp;facetSubject=test+subject&amp;facetBob=bobvalue");
-		assertEquals(SearchUtil.getURLParametersWithoutFacet(form, "subject"), "keyword=keyword&amp;fileID=&amp;facetDate=test+date");
-
+		assertEquals(SearchUtil.getURLParameters(form).contains("keyword=keyword"),true);
+		assertEquals(SearchUtil.getURLParameters(form).contains("facetDate=test+date"),true);
+		assertEquals(SearchUtil.getURLParameters(form).contains("facetSubject=test+subject"),true);
+		
+		assertEquals(SearchUtil.getURLParametersWithExtraFacet(form, "bob", "bobvalue").contains("facetBob=bobvalue"), true);
+		assertEquals(SearchUtil.getURLParametersWithExtraFacet(form, "bob", "bobvalue").contains("keyword=keyword"),true);
+		assertEquals(SearchUtil.getURLParametersWithExtraFacet(form, "bob", "bobvalue").contains("facetDate=test+date"),true);
+		assertEquals(SearchUtil.getURLParametersWithExtraFacet(form, "bob", "bobvalue").contains("facetSubject=test+subject"),true);
+		
+		assertEquals(SearchUtil.getURLParametersWithoutFacet(form, "subject").contains("keyword=keyword"),true);
+		assertEquals(SearchUtil.getURLParametersWithoutFacet(form, "subject").contains("facetDate=test+date"),true);
+		assertEquals(SearchUtil.getURLParametersWithoutFacet(form, "subject").contains("acetSubject=test+subject"),false);
+			
 	}
 }
