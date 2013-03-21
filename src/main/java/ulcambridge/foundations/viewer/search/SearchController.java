@@ -208,7 +208,7 @@ public class SearchController {
 					snippetJSON.put("startPageLabel",
 							docHit.getStartPageLabel());
 					JSONArray snippetArray = new JSONArray();
-					snippetArray.add(docHit.getSnippetHTML());
+					snippetArray.add(docHit.getSnippetHTML().trim());
 					snippetJSON.put("snippetStrings", snippetArray);
 
 					resultsArray.add(snippetJSON);
