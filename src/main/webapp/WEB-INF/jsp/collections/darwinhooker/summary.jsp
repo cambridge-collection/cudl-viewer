@@ -17,7 +17,7 @@
 	</div>
 	<div class="grid_9">
 		<br />
-	<div style="float:right">
+	<div class="grid_4 right">
 		<img class="collectionOrganisationalImage"
 			src="/images/collectionsView/darwinhooker-hooker.jpg" alt="Darwin" width="150"
 			height="225" /><br/><span class="image-credit right">Joseph Hooker</span>
