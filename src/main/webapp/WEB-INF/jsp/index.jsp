@@ -89,30 +89,6 @@
 					alt="Treasures of the Library" width="944" height="394" /> </a>
 			</li>
 
-			<!-- newton collection -->
-			<li>
-				<div class="panel" style="overflow: auto;">
-					<h4>
-						<a href="/collections/newton">Newton Papers</a>
-					</h4>
-
-					<p>Cambridge University Library is pleased to present the first
-						items in its Foundations of Science collection: a selection from
-						the Papers of Sir Isaac Newton. The Library holds the most
-						important and substantial collection of Newton's scientific and
-						mathematical manuscripts and over the next few months we intend to
-						make most of our Newton papers available on this site.</p>
-
-					<p>
-						This collection features some of Newton's most important work from
-						the 1660s, including his <a href="/collections/newton">college
-							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
-					</p>
-				</div> <a href="/collections/newton"><img id="newtonImage"
-					src="/images/index/carousel-newton.jpg" alt="Newton Papers"
-					width="944" height="394" /> </a>
-			</li>
-
 			<!-- darwin-hooker collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -139,6 +115,30 @@
 					alt="Darwin-Hooker Letters" width="944" height="394" /> </a>
 			</li>
 
+            <!-- newton collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/newton">Newton Papers</a>
+					</h4>
+
+					<p>Cambridge University Library is pleased to present the first
+						items in its Foundations of Science collection: a selection from
+						the Papers of Sir Isaac Newton. The Library holds the most
+						important and substantial collection of Newton's scientific and
+						mathematical manuscripts and over the next few months we intend to
+						make most of our Newton papers available on this site.</p>
+
+					<p>
+						This collection features some of Newton's most important work from
+						the 1660s, including his <a href="/collections/newton">college
+							notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
+					</p>
+				</div> <a href="/collections/newton"><img id="newtonImage"
+					src="/images/index/carousel-newton.jpg" alt="Newton Papers"
+					width="944" height="394" /> </a>
+			</li>
+			
 			<!-- The Cairo Genizah collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">

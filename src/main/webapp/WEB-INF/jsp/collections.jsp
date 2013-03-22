@@ -34,25 +34,7 @@
 		</div>
 		<br />
 		<hr />
-		<div class="collection collection-science">
 
-			<a href="/collections/newton"> <img class="collectionImage"
-				src="/images/collectionsView/collection-newton.jpg" alt="Newton"
-				width="150" height="150" />
-			</a>
-
-			<h5>Newton Papers</h5>
-			<br /> Cambridge University Library holds the largest and most
-			important collection of the scientific works of Isaac Newton
-			(1642-1727). We present here an initial selection of Newton's
-			manuscripts, concentrating on his mathematical work in the 1660s. <br />
-			<br /> <a href="/collections/newton">View collection</a>. <br />
-			<div class="foundations-link-science">
-				<a href="/about#foundations">Foundations of Science</a>
-			</div>
-		</div>
-		<br />
-		<hr />
 		<div class="collection collection-science">
 
 			<a href="/collections/darwinhooker"> <img class="collectionImage"
@@ -74,6 +56,26 @@
 		</div>
 		<br />
 		<hr />
+				<div class="collection collection-science">
+
+			<a href="/collections/newton"> <img class="collectionImage"
+				src="/images/collectionsView/collection-newton.jpg" alt="Newton"
+				width="150" height="150" />
+			</a>
+
+			<h5>Newton Papers</h5>
+			<br /> Cambridge University Library holds the largest and most
+			important collection of the scientific works of Isaac Newton
+			(1642-1727). We present here an initial selection of Newton's
+			manuscripts, concentrating on his mathematical work in the 1660s. <br />
+			<br /> <a href="/collections/newton">View collection</a>. <br />
+			<div class="foundations-link-science">
+				<a href="/about#foundations">Foundations of Science</a>
+			</div>
+		</div>
+		<br />
+		<hr />
+		
 		<div class="collection collection-faith">
 
 			<a href="/collections/genizah"> <img class="collectionImage"
