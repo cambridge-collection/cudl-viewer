@@ -47,4 +47,21 @@
 			</p>
 		</div>
 	</div>
+	<div class="grid_18">
+		<div class="grid_4">
+		    <br/>
+			<img src="/images/collectionsView/cup-logo.jpg" title="CUP" />
+		</div>
+		<div class="grid_13">
+			<p>
+				The <a href="http://www.cambridge.org/" target="_blank">Cambridge
+					University Press</a>, in partnership with the Darwin Correspondence
+					Project, is publishing the definitive edition of letters written by
+					and to Charles Darwin. These are published in chronological order
+					in <i>The correspondence of Charles Darwin</i> (F. Burkhardt, et al.
+					eds, Cambridge University Press 1985-). When complete the edition
+					will comprise approximately thirty volumes. 
+			</p>
+		</div>
+	</div>
 </div>
