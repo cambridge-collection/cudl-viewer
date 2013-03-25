@@ -143,6 +143,8 @@
 					Library</a></li>
 			<li><a target="_blank" href="http://darwin-online.org.uk/">Darwin
 					Online</a></li>
+			<li><a target="_blank" href="http://darwin.amnh.org/">Darwin
+					Manuscripts Project</a></li>
 			<li><a target="_blank"
 				href="http://www.kew.org/heritage/people/hooker_j.html">Kew: Sir
 					Joseph Dalton Hooker</a></li>
