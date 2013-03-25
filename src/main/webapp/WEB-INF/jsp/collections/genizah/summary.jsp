@@ -93,12 +93,10 @@
 			of the Genizah Collection.
 		</p>
 		<br />
-		<!-- 
+		 
 		<div class="box">
-			Want to view items by date? <br /> <a
-				href="/search?facet-collection=The+Cairo+Genizah+Collection">Search
-				The Cairo Genizah Collection</a>
+			Search the <a href="/bibliographies/genizah">Genizah Bibliography</a> by author, keyword or classmark. 
 		</div>
--->
+
 	</div>
 </div>
