@@ -1,5 +1,4 @@
-/* setup different colour header */
-
+/* setup header */
 
 #localMasthead {
     background: url("/images/bibliographies/genizahbibbanner.jpg") repeat-x scroll 50% 0 transparent;
@@ -16,6 +15,14 @@
 #localMasthead h2, #localMasthead h2 a {
     color: #eee;
     margin-left:8px;
+}
+
+#libraryLogo {
+    background: url("/images/header/ULLogowhite.gif") no-repeat scroll right top transparent;
+    float: right;
+    height: 42px;
+    margin-top: 3px;
+    width: 130px;
 }
 
 /* end of header */

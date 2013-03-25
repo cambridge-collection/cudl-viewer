@@ -39,4 +39,4 @@
 			</hgroup>
 		</header>
 		<!-- end #localMasthead -->
-		<jsp:include page="../header/nav-blank.jsp" />
+		<jsp:include page="nav.jsp" />
