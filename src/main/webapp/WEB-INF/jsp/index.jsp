@@ -358,16 +358,18 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Maimonides fragments and Newton's dispute with Flamsteed released"
-					title="Maimonides fragments and Newton's dispute with Flamsteed released"
-					src="/images/index/news-maimonides.jpg" height="100" width="100"></a>
+					alt="Browse 1,200 letters between Charles Darwin and his close friend
+				Joseph Hooker"
+					title="Browse 1,200 letters between Charles Darwin and his close friend
+				Joseph Hooker"
+					src="/images/index/news-darwinhooker.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">28/02/2013</span>
+				<span class="date">27/03/2013</span>
 				<h5>
-					<a href="/news">Maimonides fragments and Newton's dispute with
-						Flamsteed released</a>
+					<a href="/news">Browse 1,200 letters between Charles Darwin and his close friend
+				Joseph Hooker</a>
 				</h5>
 
 			</div>

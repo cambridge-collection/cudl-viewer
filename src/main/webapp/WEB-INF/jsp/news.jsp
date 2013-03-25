@@ -17,6 +17,31 @@
 	</div>
 
 	<div class="grid_14">
+
+		<div class="grid_5">
+			<img
+				alt="Darwin Hooker Letters"
+				title="Darwin Hooker Letters"
+				src="/images/index/news-darwinhooker.jpg" height="200" width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">27/03/2013</span>
+			<h4>Browse 1,200 letters between Charles Darwin and his close friend
+				Joseph Hooker</h4>
+			<p>
+				These <a href="/collections/darwinhooker">letters</a> are a
+				connecting thread that spans forty years of Darwin's mature working
+				life from 1843 until his death in 1882. They bring into sharp focus
+				every aspect of Darwin's scientific work throughout that period, and
+				illuminate the mutual friendships he and Hooker shared with other
+				scientists, but they also provide a window of unparalleled intimacy
+				into the personal lives of the two men.
+			</p>
+			
+		</div>
+
+		<hr />
 		<div class="grid_5">
 			<img
 				alt="Maimonides fragments and Newton's dispute with Flamsteed released"
