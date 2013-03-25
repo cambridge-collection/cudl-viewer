@@ -5,8 +5,8 @@
 
 		At last gleams of light have come, & I am almost convinced (quite
 		contrary to opinion I started with) that species are not (it is like
-		confessing a murder) immutable." <br /> <br /> <cite>&mdash; Charles
-			Darwin to Joseph Dalton Hooker, 11 January 1844 </cite>
+		confessing a murder) immutable." <br /> <br /> <cite>&mdash; <a href="/view/MS-DAR-00114-00003/4">Charles
+			Darwin to Joseph Dalton Hooker, 11 January 1844</a></cite>
 
 	</blockquote>
 	<br /> <br />
@@ -59,7 +59,7 @@
 			written out his first coherent account of the main elements of his
 			species theory, and within a few months Hooker was admitted into the
 			small and select group of those with whom Darwin felt able to discuss
-			his emerging ideas. In perhaps his most famous letter of all, Darwin
+			his emerging ideas. In perhaps his most <a href="/view/MS-DAR-00114-00003/4">famous letter of all</a>, Darwin
 			wrote to Hooker in January 1844 of his growing conviction that
 			species "are not ... immutable" - an admission he likened, half
 			jokingly, to "confessing a murder". When Alfred Russel Wallace
@@ -83,10 +83,10 @@
 			global networks of well-informed correspondents.</p>
 		<p>Hooker was a frequent visitor to Darwin at his home in Downe,
 			Kent, and became a great favourite of Darwin's children. The two men
-			shared their experience of childbirth, Darwin advocating the use of
-			chloroform which he thought as "composing to oneself as well as to
+			shared their experience of childbirth, Darwin <a href="/view/MS-DAR-00114-00121/1">advocating the use of
+			chloroform</a> which he thought as "composing to oneself as well as to
 			the patient". It was to Darwin that Hooker wrote just an hour after
-			the death of his six year-old daughter, Maria, knowing that his
+			the <a href="/view/MS-DAR-00101-00159/1">death of his six year-old daughter, Maria</a>, knowing that his
 			friend, who had lost both a ten year-old daughter and a baby son,
 			would all too clearly understand his grief. Those letters are amongst
 			the most poignant in the collection.</p>
