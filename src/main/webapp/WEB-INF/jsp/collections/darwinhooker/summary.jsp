@@ -55,7 +55,7 @@
 		<p>Their correspondence began in 1843 when Hooker, just returned
 			from James Clark Ross's Antarctic expedition, and already an admirer
 			of the older man, was approached about working on Darwin's collection
-			of plants from the Beagle voyage. Just the previous year Darwin had
+			of plants from the <i>Beagle</i> voyage. Just the previous year Darwin had
 			written out his first coherent account of the main elements of his
 			species theory, and within a few months Hooker was admitted into the
 			small and select group of those with whom Darwin felt able to discuss
@@ -70,11 +70,11 @@
 			through descent" by means of the mechanism Darwin called "natural
 			selection".</p>
 		<p>It was also to Hooker that Darwin, writing furiously in the
-			succeeding months, sent batches of the manuscript of On the Origin of
-			Species, for comment, and Hooker continued to be a sounding board for
+			succeeding months, sent batches of the manuscript of <i>On the Origin of
+			Species</i> for comment, and Hooker continued to be a sounding board for
 			successive publications.</p>
 		<p>Much of the most important experimental work conducted by
-			Darwin after the publication of Origin, was on variation and
+			Darwin after the publication of <i>Origin</i> was on variation and
 			adaptation in plants, in particular the mechanisms by which various
 			plants are nourished, reproduce, and colonise. Hooker, who after ten
 			years as assistant director of the Royal Botanic Gardens, Kew,
@@ -82,8 +82,8 @@
 			provide Darwin with exotic species, and to help him build vital
 			global networks of well-informed correspondents.</p>
 		<p>Hooker was a frequent visitor to Darwin at his home in Downe,
-			Kent, and became a great favourite of Darwin's children. The two men
-			shared their experience of childbirth, Darwin <a href="/view/MS-DAR-00114-00121/1">advocating the use of
+			Kent, and became a great favourite of Darwin's children. The two men shared their
+			experience of attending the birth of their children: Darwin <a href="/view/MS-DAR-00114-00121/1">advocated the use of
 			chloroform</a> which he thought as "composing to oneself as well as to
 			the patient". It was to Darwin that Hooker wrote just an hour after
 			the <a href="/view/MS-DAR-00101-00159/1">death of his six year-old daughter, Maria</a>, knowing that his
@@ -104,12 +104,13 @@
 			with the bulk of the Darwin archive, following transfer of ownership
 			from the Darwin family, supported by funding from The Pilgrim Trust.
 		</p>
-		<p>The Cambridge Digital Library, and the Darwin Correspondence
-			Project, are very pleased to be able to publish images of almost the
+		<p>The Cambridge Digital Library, and the <a target="_blank" href="http://www.darwinproject.ac.uk/">
+			Darwin Correspondence Project</a>, are very pleased to be able to publish images of almost the
 			entire correspondence between Charles Darwin and Joseph Hooker,
 			together with transcriptions of more than 1,000 of their letters.
 			These are being published simultaneously through CUDL and on the
-			Darwin Correspondence Project website.</p>
+			<a target="_blank" href="http://www.darwinproject.ac.uk/">The
+			Darwin Correspondence Project website</a>.</p>
 		<p>It is because of the vital importance of the letters to a full
 			understanding of Darwin’s life and work that the University Library
 			is host to the Darwin Correspondence Project. The Project exists to
@@ -120,8 +121,10 @@
 			readers of all ages an engaging and accessible route into his
 			published writings.</p>
 		<p>Transcripts of Darwin's letters are normally made available
-			online four years after publication in The Correspondence of Charles
-			Darwin. We are grateful to Cambridge University Press for allowing us
+			online four years after publication in <a target="_blank" href="
+			http://www.darwinproject.ac.uk/the-correspondence"><i>The Correspondence of Charles
+			Darwin</i></a>. We are grateful to <a target="_blank" href="http://www.cambridge.org/gb/knowledge/series/series_display/item5692679/?site_locale=en_GB">
+			Cambridge University Press</a> for allowing us
 			to make available here all the texts of the Darwin-Hooker
 			correspondence so far published.</p>
 		<p>We are also grateful to the Darwin family for permission to
@@ -134,7 +137,7 @@
 		See also
 		<ul>
 			<li><a target="_blank" href="http://www.darwinproject.ac.uk/">The
-					Darwin Project</a></li>
+					Darwin Correspondence Project</a></li>
 			<li><a target="_blank"
 				href="http://www.lib.cam.ac.uk/deptserv/manuscripts/darwin.html">Darwin
 					Papers </a></li>
