@@ -68,4 +68,19 @@
 			</p>
 		</div>
 	</div>
+	<div class="grid_18">
+		<br />
+		<div class="grid_4">
+			
+			&nbsp;
+			<!--<ul><li style="float: right" >&nbsp;</li></ul>-->
+		</div>
+		<div class="grid_13">
+			<p>Both portraits are from the Darwin Papers. The Darwin image is
+				a detail from an 1849 lithograph by Thomas Herbert Maguire (DAR
+				219.12:4). The Hooker photograph is by an unknown photographer,
+				c.1870 (DAR 257:114).</p>
+		</div>
+	</div>
+
 </div>

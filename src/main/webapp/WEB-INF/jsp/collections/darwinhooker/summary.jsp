@@ -149,9 +149,8 @@
 			<li><a target="_blank" href="http://darwin.amnh.org/">Darwin
 					Manuscripts Project</a></li>
 			<li><a target="_blank"
-				href="http://www.kew.org/heritage/people/hooker_j.html">Kew: Sir
-					Joseph Dalton Hooker</a></li>
-			<li><a target="_blank" href="http://www.jdhooker.org.uk/">jdhooker.org.uk</a>
+				href="http://www.kew.org/heritage/people/hooker_j.html">Sir Joseph Dalton Hooker (Kew)</a></li>
+			<li><a target="_blank" href="http://www.jdhooker.org.uk/">Joseph Dalton Hooker Website</a>
 			</li>
 			<li><a target="_blank"
 				href="http://www.nhm.ac.uk/research-curation/scientific-resources/collections/library-collections/wallace-letters-online/index.html">Wallace
