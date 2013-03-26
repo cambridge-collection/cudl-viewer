@@ -31,6 +31,8 @@
 				Foundations of Faith and Foundations of Science collections. <br />
 				<br />
 			</div>
+		</div>
+		<div class="grid_18">
 
 			<div class="grid_4">
 				<img src="/images/jisc.gif" title="JISC" />
@@ -45,25 +47,27 @@
 					target="_blank">JISC e-Content Programme 2011</a>). This project
 				has enabled the linking of Newton's facsimiles and transcriptions.
 				JISC is also funding the <a target="_blank"
-					href="/collections/longitude">
-					Board of Longitude Collection</a> (<a target="_blank"
+					href="/collections/longitude"> Board of Longitude Collection</a> (<a
+					target="_blank"
 					href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">JISC
 					Content Programme 2011-2013</a>) which is creating a substantial
 				collection related to 18th century science an technology.<br /> <br />
 			</div>
-
+		</div>
+		<div class="grid_18">
 			<div class="grid_4">&nbsp;</div>
 			<div class="grid_13">
 				The digitisation of the Taylor-Schechter Cairo Genizah Collection
-				has been sponsored by the <a
+				has been sponsored by the <b><a
 					href="http://www.jewishmanuscripts.org/" target="_blank">Jewish
-					Manuscript Preservation Society</a>, the <a
+					Manuscript Preservation Society</a></b>, the <b><a
 					href="http://www.genizah.org/" target="_blank">Friedberg
-					Genizah Project Inc.</a>, and the <a href="http://www.ahrc.ac.uk/"
-					target="_blank">Arts and Humanities Research Council, UK</a>.<br />
+					Genizah Project Inc.</a></b>, and the <b><a href="http://www.ahrc.ac.uk/"
+					target="_blank">Arts and Humanities Research Council, UK</a></b>.<br />
 				<br /> <br />
 			</div>
-
+		</div>
+		<div class="grid_18">
 			<div class="grid_4">
 				<img src="/images/collectionsView/ahrc-logo.jpg" title="AHRC" />
 			</div>
@@ -71,9 +75,22 @@
 				The cataloguing and digitisation of the <a
 					href="/collections/sanskrit">Sanskrit Collection</a> and <a
 					href="/collections/spanishchapbooks">Spanish Chapbooks</a> have
-				been funded by the Arts and Humanities Research Council, UK.<br />
-				<br />
+				been funded by the <b><a href="http://www.ahrc.ac.uk/"
+					target="_blank">Arts and Humanities Research Council</a></b>, UK.<br />
+				<br /> <br />
 			</div>
+		</div>
+		<div class="grid_18">
+			<div class="grid_4">
+				<img src="/images/collectionsView/nsf-logo.gif"
+					title="Polonsky Foundation" />
+			</div>
+			<div class="grid_13">
+				The digitisation of the Darwin-Hooker letters has been funded
+				through a grant to the Darwin Correspondence Project from the
+				<b><a href="http://www.nsf.gov/" target="_blank">National Science Foundation</a></b>. <br /> <br />
+			</div>
+
 		</div>
 
 		<h4>Foundations Project Management Group</h4>
@@ -205,6 +222,14 @@
 			<li>Richard Dunn, Senior Curator and Head of Science and
 				Technology, Royal Museums Greenwich</li>
 		</ul>
+		
+		<h4>Darwin-Hooker Collection</h4>
+		<ul>
+			<li>Professor Jim Secord, Director, Darwin Correspondence Project</li>
+			<li>Dr Alison Pearn, Associate Director, Darwin Correspondence Project</li>
+		</ul>		
+		
+		
 
 		<div class="grid_14">
 			<h4>Advisors - Foundations of Faith Collection</h4>
