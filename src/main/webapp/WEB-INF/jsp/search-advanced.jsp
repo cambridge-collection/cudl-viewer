@@ -1,11 +1,12 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page
-	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory"%>
+	import="ulcambridge.foundations.viewer.forms.*"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav-search.jsp" />
 
 <div class="clear"></div>
+<% SearchForm form = (SearchForm)request.getAttribute("form");%>
 
 <section id="content" class="grid_20 content">
 	<h4 style="margin-left: 8px">Advanced Search</h4>
@@ -60,9 +61,21 @@
 					  <br /><br /> 
 					  <input id="submit" type="submit" value="Submit" />  					  
 					  <input id="reset" type="reset" value="Reset" /> 
-					  <a href="/search"	class="altsearchlink">back to simple search</a>
+					  		
 				</div>
 			</form:form>
+			
+		<div class="altsearchlink grid_17">
+		<form:form commandName="searchForm" action="/search" method="GET">
+
+                <input type="hidden" value="<%=form.getKeyword()%>" name="keyword"	/> 
+
+				<input class="altsearchlink" type="submit" value="back to simple search"/>
+				
+            <br/><br/>
+		</form:form>	
+		</div>					  
+
 
 		</div>
 	</div>

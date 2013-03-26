@@ -228,9 +228,6 @@ function pageinit() {
 			<form:input path="keyword" class="search" type="text" value="<%=form.getKeyword()%>" name="keyword"
 				placeholder="Search" autocomplete="off" /> 
 			<input id="submit" type="submit" value="Search" />
-			
-            <a href="/search/advanced/query" class="altsearchlink">advanced</a>
-            <br/><br/>
 			<%
 				Iterator<String> facetsUsedHidden = form.getFacets().keySet()
 						.iterator();
@@ -246,6 +243,16 @@ function pageinit() {
 			<form:input path="fileID" type="hidden" name="fileID" value="<%=form.getFileID() %>"/>
 
 		</form:form>
+		<div class="altsearchlink grid_5">
+		<form:form commandName="searchForm" action="/search/advanced/query" method="GET">
+            	
+                <input type="hidden" value="<%=form.getKeyword()%>" name="keyword"	/> 
+				
+				<input class="altsearchlink" type="submit" value="advanced"/>
+				
+            <br/><br/>
+		</form:form>	
+		</div>
 		<br/><br/>
 
 		<%

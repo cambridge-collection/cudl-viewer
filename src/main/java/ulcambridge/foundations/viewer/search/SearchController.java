@@ -104,10 +104,11 @@ public class SearchController {
 	 * @throws MalformedURLException
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
-	public ModelAndView advancedSearch(@Valid @ModelAttribute SearchForm searchInput,
+	public ModelAndView advancedSearch(@Valid @ModelAttribute SearchForm searchForm,
 			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
+		modelAndView.addObject("form", searchForm);
 		return modelAndView;
 	}
 

@@ -367,18 +367,16 @@ ol#search_carousel li {
 	list-style: none outside none;
 }
 
-.altsearchlink {
-	font-color:#ff0000;
-	float:right;
-}
-
 .altsearchlink input[type="submit"]
 {
   background: transparent;
   text-decoration: underline;
   cursor: pointer;
+  border: none;
+  float:right;
+  margin-right:5px;
+  font-color:#ff0000;
 }
-
 
 .search-facet-selected {
 	background: #4376bb;
