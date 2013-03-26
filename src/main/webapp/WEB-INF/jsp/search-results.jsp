@@ -275,7 +275,7 @@ function pageinit() {
 			<div class="search-facet-selected"><a class="search-close"
 				href="?<%=SearchUtil.getURLParameters(form).replace("fileID="+form.getFileID(), "fileID=")%>&amp;"></a>
 			<%
-				out.print("File ID: "+form.getFileID());
+				out.print("CUDL ID: "+form.getFileID());
 			%>	</div>		
            <%
 			}

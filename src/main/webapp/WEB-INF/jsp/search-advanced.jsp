@@ -41,7 +41,7 @@
 				<div class="grid_17">
 				
 
-					<form:label path="fileID">File ID</form:label>
+					<form:label path="fileID">CUDL ID</form:label>
 					<form:input path="fileID" type="text" size="35" value="" name="fileID" /> <br />
 					<br />					
 					<h5>Metadata</h5>

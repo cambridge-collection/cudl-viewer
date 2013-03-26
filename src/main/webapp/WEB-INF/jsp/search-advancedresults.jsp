@@ -228,7 +228,7 @@ function pageinit() {
         <% if (!form.getKeyword().isEmpty()) { out.println("<li>Keyword: <b>" + form.getKeyword() +"</b></li>"); } %>
         <% if (!form.getFullText().isEmpty()) { out.println("<li>Full Text: <b>" + form.getFullText() +"</b></li>"); } %>
         <% if (!form.getExcludeText().isEmpty()) { out.println("<li>Exclude Text: <b>" + form.getExcludeText() +"</b></li>"); } %>       
-        <% if (!form.getFileID().isEmpty()) { out.println("<li>File ID: <b>" + form.getFileID() +"</b></li>"); } %>
+        <% if (!form.getFileID().isEmpty()) { out.println("<li>CUDL ID: <b>" + form.getFileID() +"</b></li>"); } %>
         <% if (!form.getTitle().isEmpty()) { out.println("<li>Title: <b>" + form.getTitle() +"</b></li>"); } %>
         <% if (!form.getAuthor().isEmpty()) { out.println("<li>Author: <b>" + form.getAuthor() +"</b></li>"); } %>
         <% if (!form.getSubject().isEmpty()) { out.println("<li>Subject: <b>" + form.getSubject() +"</b></li>"); } %>
@@ -327,8 +327,7 @@ function pageinit() {
 
 			// No results were returned. So print out some help.
 			if (resultSet.getNumberOfResults() == 0) {
-				out.println("<p class=\"box\">We couldn't find any items matching <b>"
-						+ form.getKeyword() + "</b></p>");
+				out.println("<p class=\"box\">We couldn't find any items your query.</p>");
 
 				out.println("<div class=\"searchexample\">");
 				out.println("<h5>Example Searches</h5><br/><p>");
