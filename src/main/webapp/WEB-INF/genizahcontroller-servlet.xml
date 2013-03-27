@@ -22,16 +22,10 @@
 
     <bean id="gnDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://found-dom01.lib.cam.ac.uk:3306/genizahbibdev" />
-		<property name="username" value="genbibdevuser" />
-		<property name="password" value="resuvedbibneg" />
-		<!-- 
-		<property name="driverClassName" value="${gnJdbc.driver}" />
-		<property name="url" value=" ${gnJdbc.url}" />
-		<property name="username" value="${gnJdbc.user}" />
-		<property name="password" value="${gnJdbc.password}" />
-		-->
+		<property name="driverClassName" value="${gn.jdbc.driver}" />
+		<property name="url" value=" ${gn.jdbc.url}" />
+		<property name="username" value="${gn.jdbc.user}" />
+		<property name="password" value="${gn.jdbc.password}" />
 	</bean>
 	
 	<bean id="gnDao" class="ulcambridge.foundations.viewer.genizah.GenizahDBDao">
