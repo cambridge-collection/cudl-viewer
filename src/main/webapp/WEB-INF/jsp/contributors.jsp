@@ -107,10 +107,12 @@
 		<h4>Development Team</h4>
 
 		<ul>
-			<li>Grant Young, Project Manager</li>
-			<li>Jennie Fletcher, Lead Software Engineer</li>
-			<li>Huw Jones, Metadata Specialist and Longitude Project Manager</li>
+			<li>Grant Young, Project Manager</li>		
+			<li>Huw Jones, Metadata Specialist and Longitude Project Manager</li>			
 			<li>Pete Johnston, Metadata Specialist</li>
+			<li>Jennie Fletcher, Lead Software Engineer</li>
+			<li>Gilleain Torrance, Senior Software Engineer</li>
+			<li>Chris Stokoe, Senior Research Associate in Text Mining</li>				
 			<li>Andy Corrigan, Content Editor</li>
 			<li>Tony Stevenson, System Administration</li>
 		</ul>
