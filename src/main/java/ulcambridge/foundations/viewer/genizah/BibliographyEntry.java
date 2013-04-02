@@ -34,11 +34,14 @@ public class BibliographyEntry {
 	private String volume;				// VL column
 	
 	private List<String> authors;
+	
+	private List<String> editors;		// a special type of author
 
 	public BibliographyEntry(int id, String title) {
 		this.id = id;
 		this.title = title;
 		this.authors = new ArrayList<String>();
+		this.editors = new ArrayList<String>();
 	}
 	
 	public boolean equals(Object other) {
@@ -55,6 +58,14 @@ public class BibliographyEntry {
 	
 	public void addAuthor(String author) {
 		this.authors.add(author);
+	}
+	
+	public List<String> getEditors() {
+		return editors;
+	}
+
+	public void addEditor(String editor) {
+		this.editors.add(editor);
 	}
 	
 	public int getId() {

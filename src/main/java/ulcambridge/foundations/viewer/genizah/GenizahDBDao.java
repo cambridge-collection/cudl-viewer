@@ -215,23 +215,28 @@ public class GenizahDBDao implements GenizahDao {
 	}
 	
 	private void fillBibliographyAuthors(final BibliographyEntry bibEntry) {
-		// XXX - note that the "Tag = AU" means that the author is not the editor 
-		String authorQuery = "SELECT Author from Author " +
-							 "WHERE Tag = \"AU\" AND Title = " + bibEntry.getId();
-		jdbcTemplate.query(authorQuery, new ResultSetExtractor<Object>() {
-
-			@Override
-			public Object extractData(ResultSet resultSet) 
-					throws SQLException, DataAccessException {
-				while (resultSet.next()) {
-					String author = resultSet.getString("Author");
-					bibEntry.addAuthor(author);
+		String authorQuery = "SELECT Author, Tag from Author " +
+							 "WHERE Title = " + bibEntry.getId();
+			jdbcTemplate.query(authorQuery, new ResultSetExtractor<Object>() {
+				
+				@Override
+				public Object extractData(ResultSet resultSet) 
+						throws SQLException, DataAccessException {
+					while (resultSet.next()) {
+						String author = resultSet.getString("Author");
+						String tag = resultSet.getString("Tag");
+						if (tag.equals("AU")) {
+							bibEntry.addAuthor(author);
+						} else {
+							bibEntry.addEditor(author);
+						}
+					}
+					// don't care about the return, as we are adding data to an existing object
+					return null;
 				}
-				// don't care about the return, as we are adding data to an existing object
-				return null;
-			}
-			
-		});
+				
+			});
+		
 	}
 	
 	private void fillBibliographyRefCount(final BibliographySearchResult bibResult) {

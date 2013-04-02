@@ -58,6 +58,19 @@
 				}
 				out.println("</dd>");
 				
+				List<String> editors = entry.getEditors();
+				if (editors.size() > 0) {
+					out.println("<dt>Editors</dt><dd>");
+					for (int editorIndex = 0; editorIndex < editors.size(); editorIndex++) {
+						String editor = editors.get(editorIndex);
+						out.println(editor);
+						if (editorIndex < editors.size() - 1) {
+							out.println(";");
+						}
+					}
+					out.println("</dd>");
+				}
+				
 				// XXX - 'type' field is not currently useful!
 				//out.println("<dt>Type</dt><dd>" + entry.getType() + "</dd>");
 				
