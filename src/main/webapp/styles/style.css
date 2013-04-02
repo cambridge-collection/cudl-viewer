@@ -34,8 +34,8 @@ body {
 
 #index_carousel_parent {
 	padding-top: 0px;
-    border-style:solid;
-    border-top:2px solid #999;
+	border-style: solid;
+	border-top: 2px solid #999;
 	height: 400px;
 }
 
@@ -147,10 +147,10 @@ ol#index_carousel li {
 	position: relative;
 	margin-bottom: 58px;
 	border-style: solid;
-	border-top-width:4px;
-	border-left-width:4px;
-	border-right-width:4px;
-	border-bottom-width:0px;
+	border-top-width: 4px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 0px;
 	border-color: #fff;
 }
 
@@ -175,10 +175,10 @@ ol#index_carousel li {
 	background: #333;
 	float: left;
 	border-style: solid;
-	border-top-width:0px;
-	border-left-width:4px;
-	border-right-width:4px;
-	border-bottom-width:4px;
+	border-top-width: 0px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 4px;
 	border-color: #fff;
 }
 
@@ -191,9 +191,10 @@ ol#index_carousel li {
 .collection {
 	position: relative;
 	background: #fff; /* for non-css3 browsers */
-	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
+		
 		 
-		'#ffffff', endColorstr=   '#ffffff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
@@ -204,9 +205,10 @@ ol#index_carousel li {
 
 .collection-science {
 	background: #fff;
-	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
+		
 		 
-		'#ffffff', endColorstr=   '#ccd4ff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ccd4ff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#fff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #fff);
@@ -215,9 +217,10 @@ ol#index_carousel li {
 
 .collection-faith {
 	background: #fff;
-	filter: progid:   DXImageTransform.Microsoft.gradient(   startColorstr=
+	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
+		
 		 
-		'#ffffff', endColorstr=   '#ffffff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ffffff' ); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
 		to(#ffffff) ); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
@@ -367,15 +370,14 @@ ol#search_carousel li {
 	list-style: none outside none;
 }
 
-.altsearchlink input[type="submit"]
-{
-  background: transparent;
-  text-decoration: underline;
-  cursor: pointer;
-  border: none;
-  float:right;
-  margin-right:5px;
-  font-color:#ff0000;
+.altsearchlink input[type="submit"] {
+	background: transparent;
+	text-decoration: underline;
+	cursor: pointer;
+	border: none;
+	float: right;
+	margin-right: 5px;
+	font-color: #ff0000;
 }
 
 .search-facet-selected {
@@ -673,14 +675,12 @@ ol#vcollections_carousel li {
 }
 
 /* advancd search query page */
-
 .advancedsearchform {
-
 	position: relative;
 }
 
-.advancedsearchform input{
-	background:#fff;
+.advancedsearchform input {
+	background: #fff;
 	padding: 5px 5px;
 	margin: 5px;
 	color: #666666;
@@ -692,7 +692,14 @@ ol#vcollections_carousel li {
 	font-weight: bold;
 }
 
+.advancedsearchform label {
+	margin-top: 8px;
+	margin-left: auto;
+	margin-right: 0px;
+	display: inline-block;
+}
+
 .advancedsearchform .radiobutton {
-	 background-color: transparent;
-	 border-width: 0px;
+	background-color: transparent;
+	border-width: 0px;
 }
