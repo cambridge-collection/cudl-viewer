@@ -6,7 +6,7 @@ cudl.setupSeaDragon = function () {
 	Seadragon.Config.imagePath = "/img/";
 	Seadragon.Config.debugMode = true;
 	Seadragon.Config.maxZoomPixelRatio = 1;
-	Seadragon.Strings.Tooltips.Home = "Full Page View";
+	Seadragon.Strings.Tooltips.Home = "Reset View";
 
 	cudl.viewer = new Seadragon.Viewer("doc");
 	/*		
