@@ -25,6 +25,10 @@
 	FragmentReferenceList fragmentReference = (FragmentReferenceList) request.getAttribute("fragmentReferences");
 	GenizahQuery query = (GenizahQuery) request.getAttribute("query");
 	ItemFactory itemFactory = (ItemFactory) request.getAttribute("itemFactory");
+	String columnList = request.getParameter("cols");
+	if (columnList == null) {
+		columnList = "TI,T2,PY,VL";
+	}
 %>
 
 	<div class="clear"></div>
@@ -76,17 +80,19 @@
 					}
 				}
 				*/
+				
+				String[] colTwoLetterIDs = columnList.split(",");
 
 				out.println("<table id=\"referenceTable\">");
 				out.println("<thead><tr>");
 				out.println("<th>Reference Type</th>");
 				out.println("<th>Reference Position</th>");
 				out.println("<th>Authors</th>");
-				out.println("<th>Reference Title</th>");
-				out.println("<th>Year</th>");
+				for (String colTwoLetterID : colTwoLetterIDs) {
+					out.println("<th>" + BibliographyEntry.getName(colTwoLetterID) + "</th>");	
+				}
 				out.println("</tr></thead><tbody>");
-				for (FragmentReferences reference : fragmentReference
-						.getFragmentReferences()) {
+				for (FragmentReferences reference : fragmentReference.getFragmentReferences()) {
 					BibliographyEntry bibliographyEntry = reference.getEntry();
 					out.println("<tr>");
 					out.println("<td>" + reference.getTypeReadableForm() + "</td>");
@@ -101,8 +107,9 @@
 						}
 					}
 					out.println("</td>");
-					out.println("<td>" + bibliographyEntry.getTitle() + "</td>");
-					out.println("<td>" + bibliographyEntry.getYear() + "</td>");
+					for (String colTwoLetterID : colTwoLetterIDs) {
+						out.println("<td>" + bibliographyEntry.getValue(colTwoLetterID) + "</td>");	
+					}
 					out.println("</tr>");
 				}
 				out.println("</tbody></table>");

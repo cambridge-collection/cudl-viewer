@@ -259,6 +259,7 @@ public class GenizahDBDao implements GenizahDao {
 	}
 	
 	private void fillBibliographyEntry(ResultSet resultSet, BibliographyEntry entry) throws SQLException {
+		entry.setPlacePublished(resultSet.getString("CY"));
 		entry.setDate(resultSet.getString("DA"));
 		entry.setDoi(resultSet.getString("DO"));
 		entry.setEdition(resultSet.getString("ET"));
@@ -273,7 +274,7 @@ public class GenizahDBDao implements GenizahDao {
 		entry.setStartPage(resultSet.getString("SP"));
 		entry.setShortTitle(resultSet.getString("ST"));
 		entry.setSvCol(resultSet.getString("SV"));
-		entry.setSecondaryTitle(resultSet.getString("T2"));
+		entry.setJournal(resultSet.getString("T2"));
 		entry.setTranslatedTitle(resultSet.getString("TT"));
 		entry.setType(resultSet.getString("TY"));
 		entry.setVolume(resultSet.getString("VL"));
