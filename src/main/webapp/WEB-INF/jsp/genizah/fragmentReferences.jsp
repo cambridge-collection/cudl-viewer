@@ -89,7 +89,12 @@
 				out.println("<th>Reference Position</th>");
 				out.println("<th>Authors</th>");
 				for (String colTwoLetterID : colTwoLetterIDs) {
-					out.println("<th>" + BibliographyEntry.getName(colTwoLetterID) + "</th>");	
+					try {
+						String tagName = BibliographyEntry.getName(colTwoLetterID);
+						out.println("<th>" + tagName + "</th>");
+					} catch (IllegalArgumentException iae) {
+						// swallow, for now
+					}
 				}
 				out.println("</tr></thead><tbody>");
 				for (FragmentReferences reference : fragmentReference.getFragmentReferences()) {
@@ -108,7 +113,13 @@
 					}
 					out.println("</td>");
 					for (String colTwoLetterID : colTwoLetterIDs) {
-						out.println("<td>" + bibliographyEntry.getValue(colTwoLetterID) + "</td>");	
+						try {
+							String tagValue = bibliographyEntry.getValue(colTwoLetterID);
+							out.println("<td>" + tagValue + "</td>");
+						} catch (IllegalArgumentException iae) {
+							// swallow for now
+						}
+						
 					}
 					out.println("</tr>");
 				}

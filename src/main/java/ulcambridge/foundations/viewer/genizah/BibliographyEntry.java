@@ -36,13 +36,6 @@ public class BibliographyEntry {
 	private List<String> authors;
 	
 	private List<String> editors;		// a special type of author
-	
-	public static final String[] fieldNames = new String[] {
-		"Place Published", "Date", "DOI", "Edition", "Number", "Number of Volumes",
-		"Original Publisher", "Publisher", "Year", "Research Notes", "Reprint Edition", "ISBN", 
-		"Start Page", "Short Title", "SV", "Journal", "Title", 
-		"Translated Title", "Type", "Volume"
-	};
 
 	public BibliographyEntry(int id, String title) {
 		this.id = id;
@@ -66,58 +59,48 @@ public class BibliographyEntry {
 	 * @return
 	 */
 	public static String getName(String twoLetterID) {
-		switch (twoLetterID) {
-			case "CY" : return fieldNames[0];
-			case "DA" : return fieldNames[1];
-			case "DO" : return fieldNames[2];
-			case "ET" : return fieldNames[3];
-			case "M1" : return fieldNames[4];
-			case "NV" : return fieldNames[5];
-			case "OP" : return fieldNames[6];
-			case "PB" : return fieldNames[7];
-			case "PY" : return fieldNames[8];
-			case "RN" : return fieldNames[9];
-			case "RP" : return fieldNames[10];
-			case "SN" : return fieldNames[11];
-			case "SP" : return fieldNames[12];
-			case "ST" : return fieldNames[13];
-			case "SV" : return fieldNames[14];
-			case "T2" : return fieldNames[15];
-			case "TI" : return fieldNames[16];
-			case "TT" : return fieldNames[17];
-			case "TY" : return fieldNames[18];
-			case "VL" : return fieldNames[19];
-			default : return "Unkown";
+		RisTag tag = RisTag.valueOf(RisTag.class, twoLetterID);
+		if (tag != null) {
+			return tag.getReadableForm();
+		} else {
+			return "Unknown";
 		}
 	}
 	
 	public String[] getFieldNames() {
-		return fieldNames;
+		int numberOfNames = RisTag.values().length;
+		String[] tagNames = new String[numberOfNames];
+		for (int index = 0; index < numberOfNames; index++) {
+			tagNames[index] = RisTag.values()[index].getReadableForm();
+		}
+		return tagNames;
 	}
 	
 	public String getValue(String twoLetterID) {
-		switch (twoLetterID) {
-			case "CY" : return getPlacePublished();
-			case "DA" : return getDate();
-			case "DO" : return getDoi();
-			case "ET" : return getEdition();
-			case "M1" : return getNumber();
-			case "NV" : return getNumberVols();
-			case "OP" : return getOriginalPublisher();
-			case "PB" : return getPublisher();
-			case "PY" : return getYear();
-			case "RN" : return getResearchNotes();
-			case "RP" : return getReprintEdition();
-			case "SN" : return getIsbn();
-			case "SP" : return getStartPage();
-			case "ST" : return getShortTitle();
-			case "SV" : return getSvCol();
-			case "T2" : return getJournal();
-			case "TI" : return getTitle();
-			case "TT" : return getTranslatedTitle();
-			case "TY" : return getType();
-			case "VL" : return getVolume();
-			default : return "Unkown";
+		RisTag tag = RisTag.valueOf(RisTag.class, twoLetterID);
+		if (tag == null) return "?";
+		switch (tag) {
+			case CY : return getPlacePublished();
+			case DA : return getDate();
+			case DO : return getDoi();
+			case ET : return getEdition();
+			case M1 : return getNumber();
+			case NV : return getNumberVols();
+			case OP : return getOriginalPublisher();
+			case PB : return getPublisher();
+			case PY : return getYear();
+			case RN : return getResearchNotes();
+			case RP : return getReprintEdition();
+			case SN : return getIsbn();
+			case SP : return getStartPage();
+			case ST : return getShortTitle();
+			case SV : return getSvCol();
+			case T2 : return getJournal();
+			case TI : return getTitle();
+			case TT : return getTranslatedTitle();
+			case TY : return getType();
+			case VL : return getVolume();
+			default : return "Unknown";
 		}
 	}
 	
