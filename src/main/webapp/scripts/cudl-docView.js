@@ -178,7 +178,7 @@ cudl.docView = function() {
 			if (cudl.viewer && cudl.data) {
 
 				// show image
-				cudl.viewer.openDzi(cudl.proxyURL
+				cudl.viewer.openTileSource(cudl.proxyURL
 						+ cudl.data.pages[cudl.pagenum - 1].displayImageURL);
 
 				// setup image download link
