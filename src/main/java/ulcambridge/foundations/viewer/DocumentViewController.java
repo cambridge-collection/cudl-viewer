@@ -3,7 +3,9 @@ package ulcambridge.foundations.viewer;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -113,19 +115,27 @@ public class DocumentViewController {
 			return new ModelAndView("jsp/errors/404");
 		}
 
-		Collection docCollection = null;
+		
+		List<Collection> docCollections = new ArrayList<Collection>();
+		Collection organisationalCollection = null; 
+				
 		Iterator<Collection> collectionIterator = collectionFactory.getCollections().iterator();
 		while (collectionIterator.hasNext()) {
 			Collection collection = collectionIterator.next();
 			if (collection.getItemIds().contains(docId)) {
-				docCollection = collection;
-
+				docCollections.add(collection);
 				// Stop if this is an organisational collection, else keep
 				// looking
-				if (collection.getTitle().startsWith("organisation")) {
-					break;
-				}
+				if (collection.getType().startsWith("organisation")) {
+					organisationalCollection = collection;	
+				}				
 			}
+		}
+		
+		// If the item is not in any organisational collection set 
+		// the first item in the collections list as it's organisational collection. 
+		if (organisationalCollection == null && docCollections.size()>0 ) { 
+			organisationalCollection = docCollections.get(0);
 		}
 
 		// Get proxyURL (if we are using a proxy)
@@ -141,10 +151,8 @@ public class DocumentViewController {
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("requestURL", requestURL);
 		modelAndView.addObject("proxyURL", proxyURL);
-		if (docCollection != null) {
-			modelAndView.addObject("collectionURL", docCollection.getURL());
-			modelAndView.addObject("collectionTitle", docCollection.getTitle());
-		}
+		modelAndView.addObject("organisationalCollection", organisationalCollection);
+		modelAndView.addObject("collections", docCollections);
 		
 		Item item = itemFactory.getItemFromId(docId);
 		modelAndView.addObject("itemTitle", item.getTitle());

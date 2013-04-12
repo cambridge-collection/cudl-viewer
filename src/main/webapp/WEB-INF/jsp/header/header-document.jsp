@@ -1,5 +1,5 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.net.URLEncoder"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
+import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 <!DOCTYPE html>
 
 <html>
@@ -8,6 +8,7 @@
 <%
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
+	Collection collection = (Collection) request.getAttribute("organisationalCollection");
 %>
 <NOSCRIPT>
 	<!--  no javascript redirect. -->
@@ -32,8 +33,8 @@
 	cudl.proxyURL = '${proxyURL}';
 	
 	// Read in Attributes
-	cudl.collectionURL = "${collectionURL}";
-	cudl.collectionTitle = "${collectionTitle}";	
+	cudl.collectionURL = "<%=collection.getURL()%>";
+	cudl.collectionTitle = "<%=collection.getTitle()%>";	
 	cudl.itemTitle = "${itemTitle}";
 	cudl.itemAuthors = ${itemAuthors};
 	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}

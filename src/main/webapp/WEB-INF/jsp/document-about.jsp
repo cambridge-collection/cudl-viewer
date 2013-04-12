@@ -1,4 +1,9 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.List"%>
+
+<% 
+	List<Collection> collections = (List<Collection>) request.getAttribute("collections");
+%>
 <div id="metadata" class="document-about box">
 	<div style="height: 100%; overflow-y: auto; overflow-x: auto;">
 
@@ -9,8 +14,13 @@
 				<span class="document-about-title" id="metadata-title"></span><br />
 				<span id="metadata-author"></span> <br />
 				<div class="document-spacer"></div>
-				Part of the <a class="cudlLink" href="${collectionURL}">${collectionTitle}</a>
-				Collection. <br /> <br />
+				<% for (int i=0; i<collections.size(); i++) { 
+					Collection collection = collections.get(i);
+				%>
+				Part of the <a class="cudlLink" href="<%=collection.getURL()%>"><%=collection.getTitle()%></a>
+				Collection. <br />
+				<% } %>
+				<br /> 
 				<!-- Abstract -->
 				<div id="metadata-abstract"></div>
 			</div>
