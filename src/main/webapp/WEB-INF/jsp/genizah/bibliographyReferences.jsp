@@ -126,8 +126,8 @@
 				if (entry.getSvCol() != null) {
 					out.println("<dt>SV?</dt><dd>" + entry.getSvCol() + "</dd>");
 				}
-				if (entry.getSecondaryTitle() != null) {
-					out.println("<dt>Secondary Title</dt><dd>" + entry.getSecondaryTitle() + "</dd>");
+				if (entry.getJournal() != null) {
+					out.println("<dt>Journal</dt><dd>" + entry.getJournal() + "</dd>");
 				}
 				if (entry.getTranslatedTitle() != null) {
 					out.println("<dt>Translated Title</dt><dd>" + entry.getTranslatedTitle() + "</dd>");
