@@ -273,6 +273,16 @@ cudl.docView = function() {
 							+ descriptiveMetadata.abstract.displayForm));
 				}
 				
+				if (descriptiveMetadata.relatedResources) {
+					var displayReleatedResources = descriptiveMetadata.relatedResources.label+": ";
+					for (var i=0; i<descriptiveMetadata.relatedResources.value.length; i++) {
+						var thisResource = descriptiveMetadata.relatedResources.value[i];
+						displayReleatedResources+= "<a href='"+thisResource.resourceUrl+"' target='_blank' class='externalLink'>"+thisResource.resourceTitle+"</a>";
+					}
+					cudl.view.populateElement(document
+							.getElementById("metadata-relatedresources"),displayReleatedResources );
+				}
+				
 				// set bookmark URL for this page
 				var bookmarkLink = document.getElementById("bookmarkLink");
 				

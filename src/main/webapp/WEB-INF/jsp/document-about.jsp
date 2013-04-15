@@ -23,6 +23,7 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.L
 				<br /> 
 				<!-- Abstract -->
 				<div id="metadata-abstract"></div>
+				<div id="metadata-relatedresources"></div>
 			</div>
 
 			<br />
