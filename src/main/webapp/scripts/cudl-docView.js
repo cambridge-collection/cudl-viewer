@@ -278,6 +278,7 @@ cudl.docView = function() {
 					for (var i=0; i<descriptiveMetadata.relatedResources.value.length; i++) {
 						var thisResource = descriptiveMetadata.relatedResources.value[i];
 						displayReleatedResources+= "<a href='"+thisResource.resourceUrl+"' target='_blank' class='externalLink'>"+thisResource.resourceTitle+"</a>";
+						if (i>0 && i+1<descriptiveMetadata.relatedResources.value.length) { displayReleatedResources+=", "; }
 					}
 					cudl.view.populateElement(document
 							.getElementById("metadata-relatedresources"),displayReleatedResources );
