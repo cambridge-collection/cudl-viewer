@@ -1,3 +1,11 @@
+/* 
+temporary until next release 
+hide the exhibition links until exhibition site is live. 
+*/
+#metadata-relatedresources {
+	display:none;
+}
+
 /* Main Page */
 
 /* overwrite the university style for the bottom margin as
