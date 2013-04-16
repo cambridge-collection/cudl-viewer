@@ -11,7 +11,7 @@
 		Under the leadership of Dr Leonard Polonsky and as part of its
 		International Digitisation Project, <b>The Polonsky Foundation</b> has
 		provided major funding towards the development of the digital
-		library's infrastructure and the digitisation of a number of important works. <br />
+		library's infrastructure. <br />
 		<br />
 	</div>
 	<br /><br />
