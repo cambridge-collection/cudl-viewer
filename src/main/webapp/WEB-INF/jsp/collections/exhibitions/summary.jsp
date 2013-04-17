@@ -52,27 +52,27 @@
 		</div>
 		<div class="grid_10">
 			<div class="virtual_collection_summary_image"
-				style="background: url('/images/collectionsView/featured-newton.jpg');">
-				<a href="/view/MS-ADD-03975/21"><img src="/img/blank.gif"
+				style="background: url('/images/collectionsView/exhibition1.jpg');">
+				<a href="/view/PR-01886-00012-00019/1"><img src="/img/blank.gif"
 					style="width: 100%; height: 100%;"
-					alt="Newton's Laboratory Notebook"
-					title="Newton's Laboratory Notebook" /> </a>
+					alt="The broad and narrow way"
+					title="The broad and narrow way" /> </a>
 			</div>
 			<div class="virtual_collection_summary_image"
-				style="background: url('/images/collectionsView/featured-nuremberg.jpg');">
-				<a href="/view/PR-INC-00000-A-00007-00002-00888/87"><img
+				style="background: url('/images/collectionsView/exhibition2.jpg');">
+				<a href="/view/PR-01890-00011-00067/27"><img
 					src="/img/blank.gif" style="width: 100%; height: 100%;"
-					alt="Nuremberg Chronicle" title="Nuremberg Chronicle" /> </a>
+					alt="The book of bosh" title="The book of bosh" /> </a>
 			</div>
 			<div class="virtual_collection_summary_image"
-				style="background: url('/images/collectionsView/featured-edward.jpg');">
-				<a href="/view/MS-EE-00003-00059/70"><img src="/img/blank.gif"
+				style="background: url('/images/collectionsView/exhibition3.jpg');">
+				<a href="/view/PR-A-01871-01039/3"><img src="/img/blank.gif"
 					style="width: 100%; height: 100%;"
-					alt="Life of St Edward the Confessor"
-					title="Life of St Edward the Confessor" /> </a>
+					alt="Dick Turpin : quadrille"
+					title="Dick Turpin : quadrille" /> </a>
 			</div>
 			<div class="virtual_collection_summary_image"
-				style="background: url('/images/collectionsView/featured-montaigne.jpg');">
+				style="background: url('/images/collectionsView/exhibition4.jpg');">
 				<a href="/view/PR-MONTAIGNE-00001-00004-00004/9"><img
 					src="/img/blank.gif" style="width: 100%; height: 100%;"
 					alt="Titi Lucretii Cari De rerum natura libri sex "

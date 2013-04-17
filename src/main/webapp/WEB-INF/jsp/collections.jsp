@@ -56,7 +56,7 @@
 		</div>
 		<br />
 		<hr />
-				<div class="collection collection-science">
+		<div class="collection collection-science">
 
 			<a href="/collections/newton"> <img class="collectionImage"
 				src="/images/collectionsView/collection-newton.jpg" alt="Newton"
@@ -75,7 +75,7 @@
 		</div>
 		<br />
 		<hr />
-		
+
 		<div class="collection collection-faith">
 
 			<a href="/collections/genizah"> <img class="collectionImage"
@@ -207,6 +207,26 @@
 			<div class="foundations-link-science">
 				<a href="/about#foundations">Foundations of Science</a>
 			</div>
+		</div>
+		<br />
+		<hr />
+
+		<div class="collection">
+
+			<a href="/collections/exhibitions"> <img class="collectionImage"
+				src="/images/collectionsView/collection-exhibitions.jpg"
+				alt="Exhibition Items" width="150" height="150" />
+			</a>
+
+			<h5>Exhibition Items</h5>
+			<br />The Library holds regular exhibitions, usually organised
+			around a particular theme or collection. Depending on the chosen
+			theme, the exhibition cases might contain anything from irreplaceable
+			works of world importance to newspapers or printed ephemera. They
+			demonstrate the breadth of the Library's holdings and often yield
+			surprises.<br /> <br /> <a href="/collections/exhibitions">View
+				collection</a>. <br />
+
 		</div>
 		<br />
 
