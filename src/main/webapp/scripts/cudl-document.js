@@ -3,19 +3,21 @@
  */
 
 cudl.setupSeaDragon = function () {
+	Seadragon.Config.imagePath = "/img/";
+	Seadragon.Config.debugMode = true;
+	Seadragon.Config.maxZoomPixelRatio = 1;
+	Seadragon.Strings.Tooltips.Home = "Reset View";
 
-	//OpenSeadragon.setString("Tooltips.Home", "Reset View");
-	
-	cudl.viewer = new OpenSeadragon({
+	cudl.viewer = new Seadragon.Viewer("doc");
+	/*		
+	cudl.viewer = new OpenSeadragon.Viewer({
 		id:"doc",
-        prefixUrl: "/img/",     
-        maxZoomPixelRatio: 1,
-        minPixelRatio :0.3,
-        debugMode:  false, 
-        showNavigator: false,
-        navControlPosition: 'BOTTOM_RIGHT'
-    });	
-	
+        debugMode: true,
+        prefixUrl: "/img/",
+        maxZoomPixelRatio: 1
+    });
+*/
+
 	// Setup forward and backward buttons
 	function fullscreenNextPage() {
 		if (cudl.pagenum + 1 <= cudl.store.totalCount) {
@@ -31,31 +33,33 @@ cudl.setupSeaDragon = function () {
 		}
 	}
 
-	var buttonNextPage = new OpenSeadragon.Button(
-			{  
-			   tooltip:"Next Page",
-			   srcRest:"/img/nextPage_rest.png", 
-			   srcGroup:"/img/nextPage_grouphover.png",
-			   srcHover:"/img/nextPage_hover.png", 
-			   srcDown:"/img/nextPage_pressed.png"
-			}
+	var buttonNextPage = new Seadragon.Button("Next Page",
+			"/img/nextPage_rest.png", "/img/nextPage_grouphover.png",
+			"/img/nextPage_hover.png", "/img/nextPage_pressed.png", null, // do
+																			// nothing
+																			// on
+																			// initialpress
+			fullscreenNextPage, // go home on release
+			null, // no need to use clickthresholds
+			null, // do nothing on enter
+			null // do nothing on exit
 	);
-	buttonNextPage.addHandler("onClick", fullscreenNextPage);
 
-	var buttonPrevPage = new OpenSeadragon.Button(
-			{
-		       tooltip:"Previous Page",
-			   srcRest:"/img/prevPage_rest.png", 
-			   srcGroup:"/img/prevPage_grouphover.png",
-			   srcHover:"/img/prevPage_hover.png", 
-			   srcDown:"/img/prevPage_pressed.png"
-			}
+	var buttonPrevPage = new Seadragon.Button("Previous Page",
+			"/img/prevPage_rest.png", "/img/prevPage_grouphover.png",
+			"/img/prevPage_hover.png", "/img/prevPage_pressed.png", null, // do
+																			// nothing
+																			// on
+																			// initialpress
+			fullscreenPrevPage, // go home on release
+			null, // no need to use clickthresholds
+			null, // do nothing on enter
+			null // do nothing on exit
 	);
-	buttonPrevPage.addHandler("onClick", fullscreenPrevPage);
-	
-	var navBar = new OpenSeadragon.ButtonGroup({buttons:[buttonPrevPage,buttonNextPage], config:{}});
 
-	cudl.viewer.addControl(navBar.element, OpenSeadragon.ControlAnchor.BOTTOM_LEFT);
+	var navBar = new Seadragon.ButtonGroup([ buttonPrevPage, buttonNextPage ]);
+
+	cudl.viewer.addControl(navBar.elmt, Seadragon.ControlAnchor.BOTTOM_LEFT);
 
 };
 
@@ -370,17 +374,7 @@ cudl.setupViewport = function () {
 						+ ls + "</ul></div>";
 
 	}
-	
-	// add event on changing the size of the window to set width and height 
-	// of doc back to 100% (openseadragon sets them to fixed values after fullscreen).
-	cudl.viewportComponents.rightTabPanel.addListener("resize",function () {
-		document.getElementById("doc").style.width="100%";
-		document.getElementById("doc").style.height="100%";
-	});
-	cudl.viewportComponents.rightTabPanel.addListener("collapse",function () {
-		document.getElementById("doc").style.width="100%";
-		document.getElementById("doc").style.height="100%";
-	});	
+
 }
 
 /**

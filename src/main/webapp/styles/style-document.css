@@ -98,17 +98,6 @@ h3,h2,h1,h4 {
 	color: white;
 }
 
-#seadragonToolbarDiv {
-    z-index:5;
-}
-#seadragonToolbarParent {
-	position:absolute;
-	right:0px;
-	width:170px;
-	bottom:0px;
-	height:40px;
-}
-
 .addthis {
 	margin-left: auto;
 	width: 130px;

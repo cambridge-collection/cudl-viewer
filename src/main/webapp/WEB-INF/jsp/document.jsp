@@ -4,12 +4,7 @@
 <jsp:include page="header/header-document.jsp" />
 
 
-<div id="seadragonImage" >   
-	<div id="docparent" style="height: 100%; width: 100%">		
-		<div id="doc" style="height: 100%; width: 100%"></div>
-	</div>		
-</div>
-
+<div id="seadragonImage"><div id="doc" style="height:100%;width:100%"></div></div>
 <jsp:include page="document-about.jsp" />
 
 <jsp:include page="footer/footer-document.jsp" />
