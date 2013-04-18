@@ -358,19 +358,19 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Browse 1,200 letters between Charles Darwin and his close friend
-				Joseph Hooker"
-					title="Browse 1,200 letters between Charles Darwin and his close friend
-				Joseph Hooker"
-					src="/images/index/news-darwinhooker.jpg" height="100" width="100"></a>
+					alt="Virtual exhibits"
+					title="Virtual exhibits"
+					src="/images/index/news-exhibitions.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">27/03/2013</span>
+				<span class="date">19/04/2013</span>
 				<h5>
-					<a href="/news">Browse 1,200 letters between Charles Darwin and his close friend
-				Joseph Hooker</a>
-				</h5>
+					<a href="/news">Virtual exhibits</a></h5>
+<p>
+				We have created a <a href="/collections/exhibitions">new collection</a> to gather together items being featured in Library exhibitions.
+			</p>					
+				
 
 			</div>
 		</div>

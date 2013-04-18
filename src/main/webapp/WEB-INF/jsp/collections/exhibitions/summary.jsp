@@ -73,10 +73,10 @@
 			</div>
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/exhibition4.jpg');">
-				<a href="/view/PR-MONTAIGNE-00001-00004-00004/9"><img
+				<a href="/view/PR-CCD-00007-00025-00008/4"><img
 					src="/img/blank.gif" style="width: 100%; height: 100%;"
-					alt="Titi Lucretii Cari De rerum natura libri sex "
-					title="Titi Lucretii Cari De rerum natura libri sex " /> </a>
+					alt="The youth's moral pilot"
+					title="The youth's moral pilot" /> </a>
 			</div>
 		</div>
 

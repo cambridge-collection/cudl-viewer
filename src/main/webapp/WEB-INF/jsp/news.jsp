@@ -19,16 +19,36 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
-			<img
-				alt="Darwin Hooker Letters"
-				title="Darwin Hooker Letters"
+			<img alt="Virtual exhibits" title="Virtual exhibits"
+				src="/images/index/news-exhibitions.jpg" height="200" width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">19/04/2013</span>
+			<h4>Virtual exhibits</h4>
+			<p>
+				We have created a new collection to gather together items being
+				featured in Library exhibitions. The <a href="/collections/exhibitions">initial
+					selection</a> provides a sneak preview of Spanish and English pamphlets
+				appearing in our 'Wrongdoing' exhibition, which opens to the public
+				on 30th April. These items will also feature in an accompanying
+				exhibition website and we will link them to that site once it is
+				launched later this month.
+			</p>
+
+		</div>
+
+		<hr />
+
+		<div class="grid_5">
+			<img alt="Darwin Hooker Letters" title="Darwin Hooker Letters"
 				src="/images/index/news-darwinhooker.jpg" height="200" width="200">
 		</div>
 
 		<div class="grid_8">
 			<span class="date">27/03/2013</span>
-			<h4>Browse 1,200 letters between Charles Darwin and his close friend
-				Joseph Hooker</h4>
+			<h4>Browse 1,200 letters between Charles Darwin and his close
+				friend Joseph Hooker</h4>
 			<p>
 				These <a href="/collections/darwinhooker">letters</a> are a
 				connecting thread that spans forty years of Darwin's mature working
@@ -38,7 +58,7 @@
 				scientists, but they also provide a window of unparalleled intimacy
 				into the personal lives of the two men.
 			</p>
-			
+
 		</div>
 
 		<hr />
