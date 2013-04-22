@@ -10,7 +10,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
@@ -63,14 +62,14 @@ public class SearchResultSetTest extends TestCase {
 		results.add(result);
 		
 		// Build facet list
-		Facet f = new Facet("field", "band");
-		Facet f2 = new Facet("field", "band2", 10);
+		Facet f = new Facet("field", "band", 3, 1);
+		Facet f2 = new Facet("field", "band2", 2, 2);
 
 		ArrayList<Facet> facets = new ArrayList<Facet>();
 		facets.add(f);
 		facets.add(f2);	
 		
-		FacetGroup g = new FacetGroup("field", "fieldLabel", facets);
+		FacetGroup g = new FacetGroup("field", facets, 5);
 	
 		ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup> ();
 		facetGroups.add(g);
@@ -86,14 +85,14 @@ public class SearchResultSetTest extends TestCase {
 		assertEquals(r.getFacets().size(), 1);
 		
 		// Build second facet list
-		Facet f3 = new Facet("field2", "band3", 50);
-		Facet f4 = new Facet("field2", "band4", 1);
+		Facet f3 = new Facet("field2", "band3", 50, 3);
+		Facet f4 = new Facet("field2", "band4", 1, 4);
 
 		ArrayList<Facet> facets2 = new ArrayList<Facet>();
 		facets2.add(f3);
 		facets2.add(f4);
 		
-		FacetGroup g2 = new FacetGroup("field2", "fieldLabel2", facets2);		
+		FacetGroup g2 = new FacetGroup("field2", facets2, 51);		
 		
 		r.addFacetGroup(0, g2);
 		assertEquals(r.getFacets().size(),2);

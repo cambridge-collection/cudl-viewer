@@ -89,25 +89,19 @@ function pageinit() {
 				    	  itemDiv.setAttribute("class", "collections_carousel_item");
 				    	  var itemText = "<div class='collections_carousel_image_box'>"+
 				        "<div class='collections_carousel_image'>"+
-				        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
+				        "<a href='/view/" +item.id+ "/"+result.startPage+"'><img src='" +result.thumbnailURL+ "' alt='" +item.id+ "' "+
 				        imageDimensions+ " > </a></div></div> "+
-				        "<div class='collections_carousel_text grid_8'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+				        "<div class='collections_carousel_text grid_8'><h5>" +item.title+ " <font style='color:#999'>(" +item.shelfLocator+ " Page: "+result.startPageLabel+")</font></h5> "+item.abstractShort+
 				        " ... <br/><br/><ul>";
 				        
 					    for (var j=0; j<result.snippets.length; j++) {		
 					    	  
 					    	var snippet = result.snippets[j];
-					    	
-					    	// Strip tags. 
-					    	var snippetValue = snippet.snippetStrings[0];
 					    						    	
-					    	if (snippetValue!="" && snippetValue!="undefined") {
+					    	if (snippet!="" && snippet!="undefined") {
 					          var snippetLabel = "";
-					          // FIXME Temporary hack to hide page label if the match 
-					          // is on the first page as this will be a match for the whole item. 
-					          if (snippet.startPage!=1) { snippetLabel = snippet.startPageLabel; }
-					    	  itemText += "<li><a href='/view/" +item.id+ "/"+snippet.startPage+"'>"+snippetValue
-					    	  +"</a> <font style='color:#999999'>"+snippetLabel+"</font></li>"; 
+					    	  itemText += "<li><a href='/view/" +item.id+ "/"+result.startPage+"'>"+snippet
+					    	  +"</a> </li>"; 
 					    	}
 					    	
 					    }

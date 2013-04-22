@@ -8,7 +8,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
@@ -44,7 +43,7 @@ public class SearchResultTest extends TestCase {
 
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
-			dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();;
+			dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,9 +57,10 @@ public class SearchResultTest extends TestCase {
 		XTFSearch xtfSearch = new XTFSearch();		
 		SearchResult result = xtfSearch.createSearchResult(node);		
 
-		assertEquals(result.getId(), "MS-ADD-04004");
+		assertEquals(result.getFileId(), "MS-ADD-04004");
 		assertEquals(result.getTitle(), "Newton's Waste Book");		
-		assertEquals(result.getFacets().size(), 4);	
-		assertEquals(result.getDocHits().size(), 1);	
+		assertEquals(result.getStartPage(), 1);
+		assertEquals(result.getStartPageLabel(), "front cover");
+		assertEquals(result.getSnippets().size(), 1);
 	}
 }

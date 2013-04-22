@@ -33,14 +33,14 @@ public class FacetGroupTest extends TestCase {
 	public void testFacetGroup() {
 
 		// Note a facet group should contain all the same field
-		Facet f = new Facet("field", "band");
-		Facet f2 = new Facet("field", "band2", 10);
+		Facet f = new Facet("field", "band", 3, 1);
+		Facet f2 = new Facet("field", "band2", 2, 2);
 
 		ArrayList<Facet> facets = new ArrayList<Facet>();
 		facets.add(f);
 		facets.add(f2);
 		
-		FacetGroup g = new FacetGroup("field", "fieldLabel", facets);
+		FacetGroup g = new FacetGroup("field", facets, 5);
 		
 		assertEquals(g.getFacets().size(), 2);
 		assertEquals(g.getFacets().contains(f), true);
@@ -48,25 +48,9 @@ public class FacetGroupTest extends TestCase {
 		assertEquals(g.getField(), "field");
 		assertEquals(g.getBands().size(), 2);
 		assertEquals(g.getFacetWithBand("band2"), f2);
-		assertEquals(g.getFieldLabel(), "fieldLabel");
+		assertEquals(g.getFieldLabel(), "Field");
 		assertEquals(g.getNumBands(), 2);
 		
-		Facet f3 = new Facet("field", "band3", 5);
-		try {
-			g.add(f3);
-		} catch (Exception e) { 
-			e.printStackTrace();
-		}
-		assertEquals(g.getFacets().size(), 3);
-		
-		// Test rejection
-		Facet f4 = new Facet("field_different", "band3", 5);
-		try {
-			g.add(f4);
-		} catch (Exception e) { 
-			// expecting exception
-		}
-		assertEquals(g.getFacets().size(), 3);
 		
 	}
 }

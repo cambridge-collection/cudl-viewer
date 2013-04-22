@@ -58,11 +58,8 @@ public class XTFSearchTest extends TestCase {
 		assertEquals(1, r.getResults().size());
 		assertEquals("", r.getSpellingSuggestedTerm());
 		assertEquals("", r.getError());
-		assertEquals("MS-ADD-04004", r.getResults().get(0).getId());
-		
-		// Snippets is a Hashtable of pagenumber  -> List<String> snippets. 
-		assertEquals(1, r.getResults().get(0).getDocHits().get(0).getStartPage());
-		assertEquals(1, r.getResults().get(0).getDocHits().size());
+		assertEquals("MS-ADD-04004", r.getResults().get(0).getFileId());
+		assertEquals(1, r.getResults().get(0).getSnippets().size());
 
 	}
 

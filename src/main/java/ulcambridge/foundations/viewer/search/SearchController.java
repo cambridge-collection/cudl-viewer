@@ -3,9 +3,6 @@ package ulcambridge.foundations.viewer.search;
 import java.io.BufferedOutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +12,7 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a collection.
@@ -67,7 +66,7 @@ public class SearchController {
 		SearchResultSet results = this.search.makeSearch(searchForm);
 
 		// Remove any results that the viewer does not know about.
-		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
+		/*ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 		Iterator<SearchResult> resultIt = results.getResults().iterator();
 
 		while (resultIt.hasNext()) {
@@ -85,7 +84,8 @@ public class SearchController {
 		results = new SearchResultSet(refinedResults.size(),
 				results.getSpellingSuggestedTerm(), results.getQueryTime(),
 				refinedResults, facets, results.getError());
-
+*/
+		
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("form", searchForm);
 		modelAndView.addObject("results", results);
@@ -130,7 +130,7 @@ public class SearchController {
 		SearchResultSet results = this.search.makeSearch(searchForm);
 
 		// Remove any results that the viewer does not know about.
-		ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
+		/*ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
 		Iterator<SearchResult> resultIt = results.getResults().iterator();
 
 		while (resultIt.hasNext()) {
@@ -148,7 +148,8 @@ public class SearchController {
 		results = new SearchResultSet(refinedResults.size(),
 				results.getSpellingSuggestedTerm(), results.getQueryTime(),
 				refinedResults, facets, results.getError());
-
+*/
+		
 		ModelAndView modelAndView = new ModelAndView(
 				"jsp/search-advancedresults");
 		modelAndView.addObject("form", searchForm);
@@ -190,32 +191,44 @@ public class SearchController {
 
 			for (int i = startIndex; i < endIndex; i++) {
 				SearchResult searchResult = searchResults.get(i);
-				Item item = itemFactory.getItemFromId(searchResult.getId());
+				Item item = itemFactory.getItemFromId(searchResult.getFileId());
 
 				// Make a JSON object that contains information about the
 				// matching item and information about the result snippets 
 				// and pages that match.
 				JSONObject itemJSON = new JSONObject();
-				itemJSON.put("item", item.getSimplifiedJSON());
-
+				itemJSON.put("item", item.getSimplifiedJSON());				
+				itemJSON.put("startPage", searchResult.getStartPage());
+				itemJSON.put("startPageLabel", searchResult.getStartPageLabel());
+				
 				// Make an array for the snippets.
 				JSONArray resultsArray = new JSONArray();
-				List<DocHit> docHits = searchResult.getDocHits();
 
-				for (int j = 0; j < docHits.size(); j++) {
-					DocHit docHit = docHits.get(j);
-					JSONObject snippetJSON = new JSONObject();
-					snippetJSON.put("startPage", docHit.getStartPage());
-					snippetJSON.put("startPageLabel",
-							docHit.getStartPageLabel());
-					JSONArray snippetArray = new JSONArray();
-					snippetArray.add(docHit.getSnippetHTML().trim());
-					snippetJSON.put("snippetStrings", snippetArray);
-
-					resultsArray.add(snippetJSON);
+				for (String snippet: searchResult.getSnippets()) {				  
+					resultsArray.add(snippet.trim());				 
 				}
-
-				itemJSON.put("snippets", resultsArray);
+				
+				itemJSON.put("snippets", resultsArray);			
+				
+				// Page Thumbnails
+				String pageThumbnail = "";
+				org.json.JSONObject page = null;
+				try {
+					page = (org.json.JSONObject) item.getJSON().getJSONArray("pages").get(searchResult.getStartPage()-1);
+				
+				  if (page!=null && page.get("displayImageURL")!=null)  {
+					// FIXME super hacky way to get the page thumbnail URL until we can read it from json.
+					pageThumbnail = page.get("displayImageURL").toString().replace(".dzi", "_files/8/0_0.jpg");
+				  	
+				  	if (Properties.getString("useProxy").equals("true")) {
+				  		pageThumbnail = Properties.getString("proxyURL")
+								+ pageThumbnail;
+					}
+				  }
+				} catch (JSONException e) {	e.printStackTrace(); }	
+				itemJSON.put("thumbnailURL", pageThumbnail);
+				// End Page Thumbnails
+				
 				jsonArray.add(itemJSON);
 			}
 		}
@@ -249,6 +262,7 @@ public class SearchController {
 	 * @param results
 	 * @return
 	 */
+	/*
 	private List<FacetGroup> getFacetsFromResults(List<SearchResult> results) {
 
 		Hashtable<String, FacetGroup> facetGroups = new Hashtable<String, FacetGroup>();
@@ -286,6 +300,6 @@ public class SearchController {
 
 		return new ArrayList<FacetGroup>(facetGroups.values());
 
-	}
+	}*/
 
 }

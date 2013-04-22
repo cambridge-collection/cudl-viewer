@@ -12,8 +12,6 @@ import junit.framework.TestSuite;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -85,11 +83,9 @@ public class SearchControllerTest extends TestCase {
 		assertEquals(1, r.getNumberOfResults());
 		assertEquals(1, r.getResults().size());
 		assertEquals("spellingSuggestedTerm", r.getSpellingSuggestedTerm());
-		assertEquals(3, r.getFacets().size());
 		assertEquals(2.3f, r.getQueryTime());
 		assertEquals("error", r.getError());
 		assertEquals("Elementary Mathematics", form.getKeyword());
-		assertEquals(2, form.getFacets().size());		
 		
 	}
 
@@ -131,14 +127,14 @@ public class SearchControllerTest extends TestCase {
 			results.add(result);
 
 			// Build facet list
-			Facet f = new Facet("field", "band");
-			Facet f2 = new Facet("field", "band2", 10);
+			Facet f = new Facet("field", "band", 3, 1);
+			Facet f2 = new Facet("field", "band2", 2, 2);
 
 			ArrayList<Facet> facets = new ArrayList<Facet>();
 			facets.add(f);
 			facets.add(f2);
 
-			FacetGroup g = new FacetGroup("field", "fieldLabel", facets);
+			FacetGroup g = new FacetGroup("field", facets, 5);
 
 			ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup>();
 			facetGroups.add(g);

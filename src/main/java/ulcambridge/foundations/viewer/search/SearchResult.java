@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -14,21 +12,25 @@ import java.util.List;
 public class SearchResult implements Comparable<SearchResult> {
 
 	private String title;
-	private String id;
-	private List<Facet> facets = new ArrayList<Facet>();
+	private String fileId;
+	private int startPage;
+	private String startPageLabel;
+	private List<String> snippets;
 	private int score; // how relevant is this result, used for ordering.
 
-	// DocHits for all the matches found for this item. 
-	private List<DocHit> docHits = new ArrayList<DocHit>();
+	// DocHits for all the matches found for this item.
+	// private List<DocHit> docHits = new ArrayList<DocHit>();
 
-	public SearchResult(String title, String id, List<Facet> facets, int score,
-			List<DocHit> docHits) {
-		
+	public SearchResult(String title, String fileId, int startPage,
+			String startPageLabel, List<String> snippets,
+			int score) {
+
 		this.title = title;
-		this.id = id;
-		this.score = score;
-		this.facets = facets;
-		this.docHits = docHits;
+		this.fileId = fileId;
+		this.startPage = startPage;
+		this.startPageLabel = startPageLabel;		
+		this.snippets = snippets;
+		this.score = score;		
 
 	}
 
@@ -36,21 +38,6 @@ public class SearchResult implements Comparable<SearchResult> {
 		return this.title;
 	}
 
-	public String getId() {
-		return this.id;
-	}
-
-	public List<Facet> getFacets() {
-		return this.facets;
-	}
-
-	public List<DocHit> getDocHits() {
-		return this.docHits;
-	}
-
-	public void insertDocHit(DocHit docHit) {
-		this.docHits.add(docHit);
-	}
 
 	/**
 	 * Highest score should appear first.
@@ -61,6 +48,23 @@ public class SearchResult implements Comparable<SearchResult> {
 
 	}
 
+	public String getFileId() {
+		return fileId;
+	}
+
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public String getStartPageLabel() {
+		return startPageLabel;
+	}
+
+	public List<String> getSnippets() {
+		return snippets;
+	}
+	
+	
 	/**
 	 * Search Results are considered the same if they have the same ID. So are
 	 * about the same book. There should be only one SearchResult object per
@@ -77,3 +81,4 @@ public class SearchResult implements Comparable<SearchResult> {
 	 */
 
 }
+

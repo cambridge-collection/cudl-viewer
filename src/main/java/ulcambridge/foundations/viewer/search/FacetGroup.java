@@ -1,7 +1,6 @@
 package ulcambridge.foundations.viewer.search;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,32 +13,25 @@ import java.util.List;
  */
 public class FacetGroup {
 
-	private List<Facet> facets = new ArrayList<Facet>();;
+	private List<Facet> facets;
 	private String field;
 	private String fieldLabel;
+	private int occurences;
 
 	/**
-	 * Facets are sorted after the group is created and on adding new 
-	 * facets. 
+	 * Facets are sorted after the group is created 
 	 * 
 	 * Facet groups MUST be all of the same field. 
 	 * 
 	 * @param field
 	 * @param facets
 	 */
-	public FacetGroup(String field, String fieldLabel, List<Facet> facets) {
+	public FacetGroup(String field, List<Facet> facets, int occurances) {
 				
-		this.field = field;  // This needs to be first
-		this.fieldLabel = fieldLabel;
-		
-		for (int i=0; i<facets.size(); i++) {
-			Facet f = facets.get(i);
-			try { 
-				add(f);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		this.field = field;  
+		this.fieldLabel = field.substring(0, 1).toUpperCase() + field.substring(1);
+		this.occurences = occurances;
+		this.facets = facets;
 
 	}
 
@@ -49,7 +41,11 @@ public class FacetGroup {
 	
 	public String getFieldLabel() {
 		return fieldLabel;
-	}	
+	}
+	
+	public int getOccurances() {
+		return this.occurences;		
+	}
 
 	public int getNumBands() {
 		return facets.size();
@@ -85,7 +81,7 @@ public class FacetGroup {
 	 * else adds one to the occurrences of that facet in this group. 
 	 * 
 	 * @param band
-	 */
+	 *//*
 	public void add(Facet newFacet) throws Exception {
 		
 		if (!newFacet.getField().equals(this.field)) {
@@ -104,6 +100,6 @@ public class FacetGroup {
 		}
 		Collections.sort(facets);
 
-	}
+	}*/
 
 }
