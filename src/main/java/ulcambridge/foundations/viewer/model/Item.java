@@ -45,6 +45,12 @@ public class Item implements Comparable<Item> {
 		this.thumbnailURL = itemThumbnailURL;
 		this.thumbnailOrientation = thumbnailOrientation;
 		this.authors = authors;
+		
+		// default to placeholder image
+		if (thumbnailURL == null ||thumbnailURL.equals("")) {
+			this.thumbnailURL = "/images/collectionsView/no-thumbnail.jpg";
+			this.thumbnailOrientation =	"landscape";
+		}
 
 		// Make short abstract
 		String abstractShort = abstractText;
