@@ -9,6 +9,13 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
 	Collection collection = (Collection) request.getAttribute("organisationalCollection");
+	String collectionURL = "";
+	String collectionTitle = "";
+	
+	if (collection!=null) {
+		collectionURL = collection.getURL();
+		collectionTitle = collection.getTitle();
+	}
 %>
 <NOSCRIPT>
 	<!--  no javascript redirect. -->
@@ -33,8 +40,8 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 	cudl.proxyURL = '${proxyURL}';
 	
 	// Read in Attributes
-	cudl.collectionURL = "<%=collection.getURL()%>";
-	cudl.collectionTitle = "<%=collection.getTitle()%>";	
+	cudl.collectionURL = "<%=collectionURL%>";
+	cudl.collectionTitle = "<%=collectionTitle%>";	
 	cudl.itemTitle = "${itemTitle}";
 	cudl.itemAuthors = ${itemAuthors};
 	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}
