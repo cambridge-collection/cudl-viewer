@@ -176,16 +176,18 @@ cudl.docView = function() {
 			}
 
 			if (cudl.viewer && cudl.data) {
-
+				
 				// show image
 				if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
 			  	  cudl.viewer.openDzi(cudl.proxyURL
 						+ cudl.data.pages[cudl.pagenum - 1].displayImageURL);
-			    }
+			    } else {
 
-				// display page number message
-				cudl.viewer.showMessage("No image available for page: "+cudl.data.pages[cudl.pagenum - 1].label, 1);
+				  // display page number message
+				  cudl.viewer.showMessage("No image available for page: "+cudl.data.pages[cudl.pagenum - 1].label, 1);
 						
+			    }
+				
 				// setup image download link
 				cudl.downloadImageLink = "/download/image%252Fjpg/document-image"
 						+ cudl.pagenum
