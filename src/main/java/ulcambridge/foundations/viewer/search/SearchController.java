@@ -59,32 +59,10 @@ public class SearchController {
 
 	// on /search path
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
-	public ModelAndView processSearch(@Valid SearchForm searchForm,
-			BindingResult bindingResult) throws MalformedURLException {
-
+	public ModelAndView processSearch(@Valid SearchForm searchForm) throws MalformedURLException {
+		
 		// Perform XTF Search
-		SearchResultSet results = this.search.makeSearch(searchForm);
-
-		// Remove any results that the viewer does not know about.
-		/*ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
-		Iterator<SearchResult> resultIt = results.getResults().iterator();
-
-		while (resultIt.hasNext()) {
-			SearchResult result = resultIt.next();
-
-			Item item = itemFactory.getItemFromId(result.getId());
-			if (item != null) {
-				refinedResults.add(result);
-			}
-		}
-
-		// Build the (SearchResultSet) facets from the results
-		List<FacetGroup> facets = getFacetsFromResults(refinedResults);
-
-		results = new SearchResultSet(refinedResults.size(),
-				results.getSpellingSuggestedTerm(), results.getQueryTime(),
-				refinedResults, facets, results.getError());
-*/
+		SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
 		
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("form", searchForm);
@@ -124,31 +102,10 @@ public class SearchController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
 	public ModelAndView processAdvancedSearch(@ModelAttribute @Valid SearchForm searchForm,
-			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
+			 BindingResult bindingResult, HttpSession session) throws MalformedURLException {
 		
 		// Perform XTF Search
-		SearchResultSet results = this.search.makeSearch(searchForm);
-
-		// Remove any results that the viewer does not know about.
-		/*ArrayList<SearchResult> refinedResults = new ArrayList<SearchResult>();
-		Iterator<SearchResult> resultIt = results.getResults().iterator();
-
-		while (resultIt.hasNext()) {
-			SearchResult result = resultIt.next();
-
-			Item item = itemFactory.getItemFromId(result.getId());
-			if (item != null) {
-				refinedResults.add(result);
-			}
-		}
-
-		// Build the (SearchResultSet) facets from the results
-		List<FacetGroup> facets = getFacetsFromResults(refinedResults);
-
-		results = new SearchResultSet(refinedResults.size(),
-				results.getSpellingSuggestedTerm(), results.getQueryTime(),
-				refinedResults, facets, results.getError());
-*/
+		SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
 		
 		ModelAndView modelAndView = new ModelAndView(
 				"jsp/search-advancedresults");
@@ -167,12 +124,7 @@ public class SearchController {
 			@RequestParam("end") int endIndex, HttpServletRequest request)
 			throws MalformedURLException {
 
-		// If session has timed out make search again.
-		// if (results == null) {
-		ModelAndView search = processSearch(searchForm, bindingResult);
-		SearchResultSet results = (SearchResultSet) search.getModel().get(
-				"results");
-		// }
+		SearchResultSet results = this.search.makeSearch(searchForm, startIndex, endIndex);
 
 		// Put chosen search results into an array.
 		JSONArray jsonArray = new JSONArray();
@@ -181,15 +133,7 @@ public class SearchController {
 
 			List<SearchResult> searchResults = results.getResults();
 
-			if (startIndex < 0) {
-				startIndex = 0;
-			} else if (endIndex >= searchResults.size()) {
-				endIndex = searchResults.size(); // if end Index is too large
-													// cap at max
-													// size
-			}
-
-			for (int i = startIndex; i < endIndex; i++) {
+			for (int i = 0; i < searchResults.size(); i++) {
 				SearchResult searchResult = searchResults.get(i);
 				Item item = itemFactory.getItemFromId(searchResult.getFileId());
 
@@ -254,52 +198,5 @@ public class SearchController {
 		return null;
 
 	}
-
-	/**
-	 * Make a list of facetgroups from the facets that exist in the list of
-	 * search results.
-	 * 
-	 * @param results
-	 * @return
-	 */
-	/*
-	private List<FacetGroup> getFacetsFromResults(List<SearchResult> results) {
-
-		Hashtable<String, FacetGroup> facetGroups = new Hashtable<String, FacetGroup>();
-
-		Iterator<SearchResult> searchResultIterator = results.iterator();
-		while (searchResultIterator.hasNext()) {
-
-			SearchResult result = searchResultIterator.next();
-			Iterator<Facet> facets = result.getFacets().iterator();
-			while (facets.hasNext()) {
-				Facet facet = facets.next();
-				String field = facet.getField(); // like "subject" or "date"
-
-				if (facetGroups.containsKey(field)) {
-					// add band to facetgroup if already in our set
-					FacetGroup group = facetGroups.get(field);
-					try {
-						group.add(facet);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
-				} else {
-					// add facetgroup to our set
-					ArrayList<Facet> facetObjs = new ArrayList<Facet>();
-					facetObjs.add(facet);
-
-					FacetGroup group = new FacetGroup(field,
-							facet.getFieldLabel(), facetObjs);
-					facetGroups.put(field, group);
-				}
-
-			}
-		}
-
-		return new ArrayList<FacetGroup>(facetGroups.values());
-
-	}*/
 
 }

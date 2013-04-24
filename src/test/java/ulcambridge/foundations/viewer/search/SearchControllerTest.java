@@ -75,7 +75,7 @@ public class SearchControllerTest extends TestCase {
 		// inject the factories
 		c.setItemFactory(itemFactory);
 
-		ModelAndView m = c.processSearch(form, null);
+		ModelAndView m = c.processSearch(form);
 		
 		SearchResultSet r = (SearchResultSet) m.getModelMap().get("results");
 
@@ -100,6 +100,10 @@ public class SearchControllerTest extends TestCase {
 
 		@Override
 		public SearchResultSet makeSearch(SearchForm searchForm) {
+			return makeSearch(searchForm, 1, 1);
+		}
+		@Override
+		public SearchResultSet makeSearch(SearchForm searchForm, int start, int end) {
 
 			// Read document from File
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

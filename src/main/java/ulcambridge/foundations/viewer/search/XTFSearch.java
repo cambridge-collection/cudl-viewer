@@ -19,13 +19,25 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class XTFSearch implements Search {
 
-	// Request XTF keyword search (raw=1 to return XML)
-	// Read XML result into Model
+	/**
+	 * Returns the 'maxDocs' number of results starting at the first one. 
+	 * Maxdocs is specified inside XTF configuration. 
+	 */	
 	@Override
 	public SearchResultSet makeSearch(SearchForm searchForm) {
+		return makeSearch(searchForm, 1, 1);
+	}
+	
+	/**
+	 * Request XTF keyword search (raw=1 to return XML)
+	 * Returns the 'maxDocs' number of results starting at the specified start. 
+	 * Maxdocs is specified inside XTF configuration. 
+	 */		
+	@Override
+	public SearchResultSet makeSearch(SearchForm searchForm, int start, int end) {
 
 		// Construct the URL we are going to use to query XTF
-		String searchXTFURL = buildQueryURL(searchForm);
+		String searchXTFURL = buildQueryURL(searchForm, start, end);
 
 		// if the query URL is null return empty result set.
 		if (searchXTFURL == null) {
@@ -58,10 +70,10 @@ public class XTFSearch implements Search {
 		return null;
 	}
 
-	protected String buildQueryURL(SearchForm searchForm) {
+	protected String buildQueryURL(SearchForm searchForm, int start, int end) {
 
 		String xtfURL = Properties.getString("xtfURL");
-		String searchXTFURL = xtfURL + "search?raw=1&smode=advanced";
+		String searchXTFURL = xtfURL + "search?raw=1&smode=advanced&startDoc="+start;
 
 		try {
 
