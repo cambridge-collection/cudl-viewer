@@ -23,9 +23,10 @@
 						<form:label class="right" path="keyword">Keywords</form:label>
 					</div>
 					<div class="grid_13">
-						<form:input path="keyword" size="45" type="text" value=""
-							name="keyword" placeholder="Search" />
-						<br /> <br />
+						<span class="hint--right"
+							data-hint="Search keywords in metadata or transcriptions"><form:input
+								path="keyword" size="45" type="text" value="" name="keyword"
+								placeholder="Search" /></span> <br /> <br />
 					</div>
 				</div>
 
@@ -34,21 +35,21 @@
 						<form:label class="right" path="fullText">Full Text</form:label>
 					</div>
 					<div class="grid_8">
-						<form:input path="fullText" type="text" size="45" value=""
-							name="fullText" />
+						<span class="hint--right" data-hint="Search transcription data"><form:input
+								path="fullText" type="text" size="45" value="" name="fullText" /></span>
 						<br />
 						<form:label path="excludeText"> &nbsp; excluding </form:label>
-						<form:input path="excludeText" type="text" size="35" value=""
-							name="excludeText" />
-						<br /> <br />
+						<span class="hint--right"
+							data-hint="Exclude transcription results that mention these words"><form:input
+								path="excludeText" type="text" size="35" value=""
+								name="excludeText" /></span> <br /> <br />
 					</div>
 					<div class="grid_6">
-						<form:radiobutton path="textJoin" class="radiobutton" type="radio"
-							value="and" name="textJoin" />
-						All of these words<br />
-						<form:radiobutton path="textJoin" class="radiobutton" type="radio"
-							value="or" name="textJoin" />
-						Any of these words <br /> <br />
+						<span class="hint--right" data-hint="Applies to full text search"><form:radiobutton
+								path="textJoin" class="radiobutton" type="radio" value="and"
+								name="textJoin" /> All of these words<br /> <form:radiobutton
+								path="textJoin" class="radiobutton" type="radio" value="or"
+								name="textJoin" /> Any of these words </span><br /> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -57,14 +58,15 @@
 					</div>
 					<div class="grid_14">
 
-						<form:input path="fileID" type="text" size="35" value=""
-							name="fileID" />
-						<br /> <br />
+						<span class="hint--right" data-hint="e.g. MS-ADD-03996"><form:input
+								path="fileID" type="text" size="35" value="" name="fileID" /></span> <br />
+						<br />
 					</div>
 				</div>
 				<div class="grid_17">
 					<div class="grid_16">
-						<h5>Metadata</h5><br/>
+						<h5>Metadata</h5>
+						<br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -72,8 +74,9 @@
 						<form:label class="right" path="title">Title</form:label>
 					</div>
 					<div class="grid_14">
-						<form:input path="title" type="text" value="" name="title" />
-						<br />
+						<span class="hint--right"
+							data-hint="Search for titles that includes these words, e.g. Letter"><form:input
+								path="title" type="text" value="" name="title" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -81,8 +84,9 @@
 						<form:label class="right" path="author">Author</form:label>
 					</div>
 					<div class="grid_14">
-						<form:input path="author" type="text" value="" name="author" />
-						<br />
+						<span class="hint--right"
+							data-hint="Search for items by this person, e.g. Darwin"><form:input
+								path="author" type="text" value="" name="author" /> <br /></span>
 					</div>
 				</div>
 				<div class="grid_17">
@@ -90,8 +94,8 @@
 						<form:label class="right" path="subject">Subject</form:label>
 					</div>
 					<div class="grid_14">
-						<form:input path="subject" type="text" value="" name="subject" />
-						<br />
+						<span class="hint--right" data-hint="Search for items about this subject, e.g. Mathematics"><form:input
+								path="subject" type="text" value="" name="subject" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -99,9 +103,11 @@
 						<form:label class="right" path="yearStart">Year</form:label>
 					</div>
 					<div class="grid_14">
+						<span class="hint--right" data-hint="Limit results to this range of years">
 						<form:input path="yearStart" type="text" value="" name="yearStart" />
 						<form:label path="yearEnd"> to </form:label>
 						<form:input path="yearEnd" type="text" value="" name="yearEnd" />
+						</span>
 						<br /> <br />
 					</div>
 				</div>
