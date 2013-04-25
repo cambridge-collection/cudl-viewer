@@ -221,11 +221,13 @@ function pageinit() {
         <ul>
         <% if (!form.getKeyword().isEmpty()) { out.println("<li>Keyword: <b>" + form.getKeyword() +"</b></li>"); } %>
         <% if (!form.getFullText().isEmpty()) { out.println("<li>Full Text: <b>" + form.getFullText() +"</b></li>"); } %>
-        <% if (!form.getExcludeText().isEmpty()) { out.println("<li>Exclude Text: <b>" + form.getExcludeText() +"</b></li>"); } %>       
+        <% if (!form.getExcludeText().isEmpty()) { out.println("<li>Exclude Text: <b>" + form.getExcludeText() +"</b></li>"); } %>
+        <% if (!form.getShelfLocator().isEmpty()) { out.println("<li>Classmark: <b>" + form.getShelfLocator() +"</b></li>"); } %>       
         <% if (!form.getFileID().isEmpty()) { out.println("<li>CUDL ID: <b>" + form.getFileID() +"</b></li>"); } %>
         <% if (!form.getTitle().isEmpty()) { out.println("<li>Title: <b>" + form.getTitle() +"</b></li>"); } %>
         <% if (!form.getAuthor().isEmpty()) { out.println("<li>Author: <b>" + form.getAuthor() +"</b></li>"); } %>
         <% if (!form.getSubject().isEmpty()) { out.println("<li>Subject: <b>" + form.getSubject() +"</b></li>"); } %>
+        <% if (!form.getLocation().isEmpty()) { out.println("<li>Location: <b>" + form.getLocation() +"</b></li>"); } %>
         <% if (form.getYearStart()!=null && form.getYearEnd()!=null) { out.println("<li>Year: <b>" + form.getYearStart() +"</b> to <b>" + form.getYearEnd() +"</b></li>"); } %>
         </ul>
 

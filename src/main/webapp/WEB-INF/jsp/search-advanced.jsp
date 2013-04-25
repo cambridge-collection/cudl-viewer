@@ -52,6 +52,19 @@
 								name="textJoin" /> Any of these words </span><br /> <br />
 					</div>
 				</div>
+				
+				<div class="grid_17">
+					<div class="grid_2">
+						<form:label class="right" path="shelfLocator">Classmark</form:label>
+					</div>
+					<div class="grid_14">
+
+						<span class="hint--right" data-hint="e.g. MS Add.3996"><form:input
+								path="shelfLocator" type="text" size="35" value="" name="shelfLocator" /></span>
+						<br /> <br />
+					</div>
+				</div>
+								
 				<div class="grid_17">
 					<div class="grid_2">
 						<form:label class="right" path="fileID">CUDL ID</form:label>
@@ -63,6 +76,7 @@
 						<br />
 					</div>
 				</div>
+				
 				<div class="grid_17">
 					<div class="grid_16">
 						<h5>Metadata</h5>
@@ -94,8 +108,19 @@
 						<form:label class="right" path="subject">Subject</form:label>
 					</div>
 					<div class="grid_14">
-						<span class="hint--right" data-hint="Search for items about this subject, e.g. Mathematics"><form:input
+						<span class="hint--right"
+							data-hint="Search for items about this subject, e.g. Mathematics"><form:input
 								path="subject" type="text" value="" name="subject" /></span> <br />
+					</div>
+				</div>
+				<div class="grid_17">
+					<div class="grid_2">
+						<form:label class="right" path="location">Location</form:label>
+					</div>
+					<div class="grid_14">
+						<span class="hint--right"
+							data-hint="Search for items related to a specific place, e.g. London"><form:input
+								path="location" type="text" value="" name="location" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -103,12 +128,12 @@
 						<form:label class="right" path="yearStart">Year</form:label>
 					</div>
 					<div class="grid_14">
-						<span class="hint--right" data-hint="Limit results to this range of years">
-						<form:input path="yearStart" type="text" value="" name="yearStart" />
-						<form:label path="yearEnd"> to </form:label>
-						<form:input path="yearEnd" type="text" value="" name="yearEnd" />
-						</span>
-						<br /> <br />
+						<span class="hint--right"
+							data-hint="Limit results to this range of years"> <form:input
+								path="yearStart" type="text" value="" name="yearStart" /> <form:label
+								path="yearEnd"> to </form:label> <form:input path="yearEnd"
+								type="text" value="" name="yearEnd" />
+						</span> <br /> <br />
 					</div>
 				</div>
 				<div class="grid_17">

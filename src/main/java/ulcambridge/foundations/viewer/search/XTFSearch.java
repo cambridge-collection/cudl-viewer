@@ -112,6 +112,13 @@ public class XTFSearch implements Search {
 				searchXTFURL += "&fileID="
 						+ URLEncoder.encode(searchForm.getFileID(), "UTF-8");
 			}
+			
+			// Classmark
+			if (searchForm.getShelfLocator() != null) {
+
+				searchXTFURL += "&shelfLocator="
+						+ URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
+			}
 
 			// Metadata
 			if (searchForm.getTitle() != null) {
@@ -129,6 +136,11 @@ public class XTFSearch implements Search {
 				searchXTFURL += "&subjectFullForm="
 						+ URLEncoder.encode(searchForm.getSubject(), "UTF-8");
 			}
+			if (searchForm.getLocation() != null) {
+
+				searchXTFURL += "&placeFullForm="
+						+ URLEncoder.encode(searchForm.getLocation(), "UTF-8");
+			}			
 			if (searchForm.getYearStart() != null) {
 
 				searchXTFURL += "&year=" + searchForm.getYearStart();

@@ -15,12 +15,14 @@ public class SearchForm {
 	private String fullText = "";
 	private String excludeText = "";
 	private String textJoin = "and";
+	private String shelfLocator = "";
 	private String fileID = "";
 
 	// Metadata
 	private String title = "";
 	private String author = "";
 	private String subject = "";
+	private String location = "";	
 	private Integer yearStart = null;
 	private Integer yearEnd = null;
 	
@@ -63,6 +65,14 @@ public class SearchForm {
 		this.textJoin = textJoin;
 	}
 	
+	public String getShelfLocator() {
+		return shelfLocator;
+	}
+
+	public void setShelfLocator(String shelfLocator) {
+		this.shelfLocator = shelfLocator;
+	}
+	
 	public String getFileID() {
 		return fileID;
 	}
@@ -97,6 +107,14 @@ public class SearchForm {
 		this.subject = subject;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
 	public Integer getYearStart() {
 		return yearStart;
 	}
@@ -160,10 +178,12 @@ public class SearchForm {
 		this.fullText = input.fullText;
 		this.excludeText = input.excludeText;
 		this.fileID = input.fileID;
+		this.shelfLocator = input.shelfLocator;
 		
 		this.title = input.title;
 		this.author = input.author;
 		this.subject = input.subject;
+		this.location = input.location;
 		this.yearStart = input.yearStart;
 		this.yearEnd = input.yearEnd;
 		
