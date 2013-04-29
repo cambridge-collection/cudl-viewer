@@ -61,28 +61,11 @@
 
 						<span class="hint--right" data-hint="e.g. MS Add.3996"><form:input
 								path="shelfLocator" type="text" size="35" value="" name="shelfLocator" /></span>
-						<br /> <br />
+						<br /> 
 					</div>
 				</div>
-								
-				<div class="grid_17">
-					<div class="grid_2">
-						<form:label class="right" path="fileID">CUDL ID</form:label>
-					</div>
-					<div class="grid_14">
-
-						<span class="hint--right" data-hint="e.g. MS-ADD-03996"><form:input
-								path="fileID" type="text" size="35" value="" name="fileID" /></span> <br />
-						<br />
-					</div>
-				</div>
+			
 				
-				<div class="grid_17">
-					<div class="grid_16">
-						<h5>Metadata</h5>
-						<br />
-					</div>
-				</div>
 				<div class="grid_17">
 					<div class="grid_2">
 						<form:label class="right" path="title">Title</form:label>
@@ -90,7 +73,7 @@
 					<div class="grid_14">
 						<span class="hint--right"
 							data-hint="Search for titles that includes these words, e.g. Letter"><form:input
-								path="title" type="text" value="" name="title" /></span> <br />
+								path="title" type="text" size="35" value="" name="title" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -100,7 +83,7 @@
 					<div class="grid_14">
 						<span class="hint--right"
 							data-hint="Search for items by this person, e.g. Darwin"><form:input
-								path="author" type="text" value="" name="author" /> <br /></span>
+								path="author" type="text" size="35" value="" name="author" /> <br /></span>
 					</div>
 				</div>
 				<div class="grid_17">
@@ -110,7 +93,7 @@
 					<div class="grid_14">
 						<span class="hint--right"
 							data-hint="Search for items about this subject, e.g. Mathematics"><form:input
-								path="subject" type="text" value="" name="subject" /></span> <br />
+								path="subject" type="text" size="35" value="" name="subject" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">
@@ -120,7 +103,7 @@
 					<div class="grid_14">
 						<span class="hint--right"
 							data-hint="Search for items related to a specific place, e.g. London"><form:input
-								path="location" type="text" value="" name="location" /></span> <br />
+								path="location" type="text" size="35" value="" name="location" /></span> <br />
 					</div>
 				</div>
 				<div class="grid_17">

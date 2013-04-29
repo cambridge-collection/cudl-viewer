@@ -116,8 +116,12 @@ public class XTFSearch implements Search {
 			// Classmark
 			if (searchForm.getShelfLocator() != null) {
 
-				searchXTFURL += "&shelfLocator="
-						+ URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
+				// remove all punctuation and run a search-shelfLocator
+				// search (for full and partial classmark match)
+				String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
+				
+				searchXTFURL += "&search-shelfLocator="
+						+ URLEncoder.encode(sLoc, "UTF-8");
 			}
 
 			// Metadata
