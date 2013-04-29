@@ -158,19 +158,31 @@ public class SearchController {
 				String pageThumbnail = "";
 				org.json.JSONObject page = null;
 				try {
-					page = (org.json.JSONObject) item.getJSON().getJSONArray("pages").get(searchResult.getStartPage()-1);
+				  page = (org.json.JSONObject) item.getJSON().getJSONArray("pages").get(searchResult.getStartPage()-1);
+			    } catch (JSONException e) {	e.printStackTrace(); }	
 				
-				  if (page!=null && page.get("displayImageURL")!=null)  {
-					// FIXME super hacky way to get the page thumbnail URL until we can read it from json.
-					pageThumbnail = page.get("displayImageURL").toString().replace(".dzi", "_files/8/0_0.jpg");
+				try {
+					if (page!=null && page.get("displayImageURL")!=null)  {
+					
+					  // FIXME super hacky way to get the page thumbnail URL until we can read it from json.
+				      pageThumbnail = page.get("displayImageURL").toString().replace(".dzi", "_files/8/0_0.jpg");
+					  
+					  if (Properties.getString("useProxy").equals("true")) {
+						  pageThumbnail = Properties.getString("proxyURL")
+									+ pageThumbnail;
+					  }
+						
+					}					
+				} catch (JSONException e) {
+					
+					// displayImageURL not found, which throws an exception. 
+	 				pageThumbnail = "/images/collectionsView/no-thumbnail.jpg";	 				
+					
+				}
+								  
 				  	
-				  	if (Properties.getString("useProxy").equals("true")) {
-				  		pageThumbnail = Properties.getString("proxyURL")
-								+ pageThumbnail;
-					}
-				  }
-				} catch (JSONException e) {	e.printStackTrace(); }	
-				itemJSON.put("thumbnailURL", pageThumbnail);
+				//} catch (JSONException e) {	e.printStackTrace(); }	
+				itemJSON.put("pageThumbnailURL", pageThumbnail);
 				// End Page Thumbnails
 				
 				jsonArray.add(itemJSON);

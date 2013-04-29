@@ -89,7 +89,7 @@ function pageinit() {
 				    	itemDiv.setAttribute("class", "collections_carousel_item");
 				    	var itemText = "<div class='collections_carousel_image_box'>"+
 				        "<div class='collections_carousel_image'>"+
-				        "<a href='/view/" +item.id+ "/"+result.startPage+"'><img src='" +result.thumbnailURL+ "' alt='" +item.id+ "' "+
+				        "<a href='/view/" +item.id+ "/"+result.startPage+"'><img src='" +result.pageThumbnailURL+ "' alt='" +item.id+ "' "+
 				        imageDimensions+ " > </a></div></div> "+
 				        "<div class='collections_carousel_text grid_8'><h5>" +item.title+ " <font style='color:#999'>(" +item.shelfLocator+ " Page: "+result.startPageLabel+")</font></h5> "+item.abstractShort+
 				        " ... <br/><br/><ul>";
