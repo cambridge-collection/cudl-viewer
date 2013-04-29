@@ -128,7 +128,12 @@
 				</div>
 			</form:form>
 
-			<div class="altsearchlink grid_17">
+           <div class="grid_16" style="color:#999">
+             <br/>The characters <b>?</b> and <b>*</b> can be used as wildcards in your search.<br/>
+             Use <b>?</b> to represent one unknown character and <b>*</b> to represent any number of unknown characters.
+           </div>
+
+			<div class="altsearchlink grid_4 right">
 				<form:form commandName="searchForm" action="/search" method="GET">
 
 					<input type="hidden" value="<%=form.getKeyword()%>" name="keyword" />
