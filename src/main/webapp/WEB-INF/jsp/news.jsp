@@ -28,7 +28,7 @@
 			<span class="date">1/05/2013</span>
 			<h4>Page-by-page searching</h4>
 			<p>
-				Fundamental changes have been made to the <a href="/search">search functionality</a>,
+				Fundamental changes have been made to the <a href="/search?keyword=illustration">search functionality</a>,
 				giving clearer page-by-page results with thumbnail images. <br />
 				<br />The Virtual Exhibitions site is now live at <a
 					href="https://exhibitions.lib.cam.ac.uk/" target="_blank">https://exhibitions.lib.cam.ac.uk/</a>
