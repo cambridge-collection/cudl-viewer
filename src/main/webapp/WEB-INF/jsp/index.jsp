@@ -358,20 +358,19 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Virtual exhibits"
-					title="Virtual exhibits"
-					src="/images/index/news-exhibitions.jpg" height="100" width="100"></a>
+					alt="Page-by-page searching"
+					title="Page-by-page searching"
+					src="/images/index/news-searchpagebypage.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">19/04/2013</span>
+				<span class="date">1/05/2013</span>
 				<h5>
-					<a href="/news">Virtual exhibits</a></h5>
+					<a href="/news">Page-by-page searching</a></h5>
 <p>
-				We have created a <a href="/collections/exhibitions">new collection</a> to gather together items being featured in Library exhibitions.
+				Fundamental changes have been made to the search functionality, giving clearer page-by-page results with thumbnail images. 
 			</p>					
 				
-
 			</div>
 		</div>
 

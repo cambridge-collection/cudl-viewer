@@ -87,7 +87,7 @@ function pageinit() {
 					        "<div class='collections_carousel_image'>"+
 					        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
 					        imageDimensions+ " > </a></div></div> "+
-					        "<div class='collections_carousel_text'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+					        "<div class='collections_carousel_text word-wrap-200'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
 					        " ... <a href='/view/" +item.id+ "'>more</a></div><div class='clear'></div>";
 		           	        container.appendChild(itemDiv);
 				 					      

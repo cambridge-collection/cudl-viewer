@@ -19,6 +19,28 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
+			<img alt="Page-by-page searching" title="Page-by-page searching"
+				src="/images/index/news-searchpagebypage.jpg" height="200"
+				width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">1/05/2013</span>
+			<h4>Page-by-page searching</h4>
+			<p>
+				Fundamental changes have been made to the <a href="/search">search functionality</a>,
+				giving clearer page-by-page results with thumbnail images. <br />
+				<br />The Virtual Exhibitions site is now live at <a
+					href="https://exhibitions.lib.cam.ac.uk/" target="_blank">https://exhibitions.lib.cam.ac.uk/</a>
+				and links have been added to relevant items to integrate with the
+				Digital Library.
+			</p>
+
+		</div>
+
+		<hr />
+
+		<div class="grid_5">
 			<img alt="Virtual exhibits" title="Virtual exhibits"
 				src="/images/index/news-exhibitions.jpg" height="200" width="200">
 		</div>
@@ -28,12 +50,13 @@
 			<h4>Virtual exhibits</h4>
 			<p>
 				We have created a new collection to gather together items being
-				featured in Library exhibitions. The <a href="/collections/exhibitions">initial
-					selection</a> provides a sneak preview of Spanish and English pamphlets
-				appearing in our 'Wrongdoing' exhibition, which opens to the public
-				on 30th April. These items will also feature in an accompanying
-				exhibition website and we will link them to that site once it is
-				launched later this month.
+				featured in Library exhibitions. The <a
+					href="/collections/exhibitions">initial selection</a> provides a
+				sneak preview of Spanish and English pamphlets appearing in our
+				'Wrongdoing' exhibition, which opens to the public on 30th April.
+				These items will also feature in an accompanying exhibition website
+				and we will link them to that site once it is launched later this
+				month.
 			</p>
 
 		</div>

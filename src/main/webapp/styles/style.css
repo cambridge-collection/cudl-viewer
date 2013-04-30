@@ -434,6 +434,9 @@ ol#search_carousel li {
 
 .collections_carousel_text {
 	padding: 5px;
+}
+
+.word-wrap-200 {
 	word-wrap: break-word;
 	width:200px;
 }
