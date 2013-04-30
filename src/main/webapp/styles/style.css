@@ -434,6 +434,8 @@ ol#search_carousel li {
 
 .collections_carousel_text {
 	padding: 5px;
+	word-wrap: break-word;
+	width:200px;
 }
 
 .morelink a:link,.morelink a:visited,.morelink a:active {

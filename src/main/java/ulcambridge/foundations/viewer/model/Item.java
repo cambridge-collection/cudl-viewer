@@ -3,6 +3,8 @@ package ulcambridge.foundations.viewer.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,34 +55,7 @@ public class Item implements Comparable<Item> {
 		}
 
 		// Make short abstract
-		String abstractShort = abstractText;
-
-		// remove video captions
-		String[] captionParts = abstractShort
-				.split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
-		if (captionParts.length > 1) {
-
-			abstractShort = captionParts[0];
-			for (int i = 1; i < captionParts.length; i++) {
-				int captionEnd = captionParts[i].indexOf("</div>");
-				if (captionEnd > -1) {
-					abstractShort += captionParts[i].substring(captionEnd);
-				} else {
-					abstractShort += captionParts[i];
-				}
-			}
-		}
-
-		// remove all tags
-		abstractShort = abstractShort.replaceAll("\\<.*?>", "");
-
-		// cut of next word after 120 characters in the abstract
-		if (abstractShort.length() > 120) {
-			abstractShort = abstractShort.substring(0, 120 + abstractShort
-					.substring(120).indexOf(" "));
-		}
-		this.abstractShort = abstractShort;
-		
+		this.abstractShort = makeShortAbstract(itemAbstract);
 		
 		// cut of next word after 120 characters in the title
 		if (title.length() > 120) {
@@ -209,6 +184,62 @@ public class Item implements Comparable<Item> {
 		}
 		return peopleWithRole;
 
+	}
+	
+	private String makeShortAbstract(String fullAbstract) {
+		
+		String abstractShort = fullAbstract;
+		
+		// remove video captions
+		String[] captionParts = abstractShort
+				.split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
+		if (captionParts.length > 1) {
+
+			abstractShort = captionParts[0];
+			for (int i = 1; i < captionParts.length; i++) {
+				int captionEnd = captionParts[i].indexOf("</div>");
+				if (captionEnd > -1) {
+					abstractShort += captionParts[i].substring(captionEnd);
+				} else {
+					abstractShort += captionParts[i];
+				}
+			}
+		}
+
+		// remove all tags
+		abstractShort = abstractShort.replaceAll("\\<.*?>", "");
+
+		// cut of next word after 120 characters in the abstract
+		if (abstractShort.length() > 120) {
+			abstractShort = abstractShort.substring(0, 120 + abstractShort
+					.substring(120).indexOf(" "));
+		}
+		
+		return abstractShort;
+	}
+	
+	
+	/**
+	 * Returns the truncated version of the input if any words contained
+	 * in the input are more than specified length. Used in wrapping. 
+	 *  
+	 * @param input
+	 * @param length
+	 * @return
+	 */
+	private String truncateLongWords(String input, int length) {
+		
+		// if there's a word that is more than 25 characters long add hyphen to it.
+		// for wrapping
+		Pattern pattern = Pattern.compile("[\\S]{"+length+",}");
+		Matcher matcher = pattern.matcher(input);
+				
+		if(matcher.find()){
+			int index = matcher.start();
+			return input.substring(0, index+length);
+		}
+		
+		return input;
 	}
 
 }
