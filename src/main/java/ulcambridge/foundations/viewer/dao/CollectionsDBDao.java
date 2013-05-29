@@ -7,7 +7,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -37,7 +36,7 @@ public class CollectionsDBDao implements CollectionsDao {
 
 	public Collection getCollection(String collectionId) {
 
-		String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder FROM collections WHERE collectionid = ? ORDER BY collectionorder";
+		String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid FROM collections WHERE collectionid = ? ORDER BY collectionorder";
 
 		return (Collection) jdbcTemplate.queryForObject(query, new Object[] { collectionId }, 
 				new RowMapper<Collection>() {
@@ -45,7 +44,7 @@ public class CollectionsDBDao implements CollectionsDao {
 						return new Collection(resultSet.getString("collectionid"),
 								resultSet.getString("title"), getItemIds(resultSet.getString("collectionid")),
 								resultSet.getString("summaryurl"), resultSet.getString("sponsorsurl"), 
-								resultSet.getString("type"));
+								resultSet.getString("type"), resultSet.getString("parentcollectionid"));
 					}
 				});
 	}	

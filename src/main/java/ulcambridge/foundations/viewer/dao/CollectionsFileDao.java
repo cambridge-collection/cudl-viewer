@@ -26,9 +26,10 @@ public class CollectionsFileDao implements CollectionsDao {
 		String collectionSponsors = Properties.getString(collectionId
 				+ ".sponsors");
 		String collectionType = Properties.getString(collectionId + ".type");
-
+		String collectionParentId = Properties.getString(collectionId + ".parentId");
+		
 		return new Collection(collectionId, collectionTitle, collectionItemIds,
-				collectionSummary, collectionSponsors, collectionType);
+				collectionSummary, collectionSponsors, collectionType, collectionParentId);
 
 	}
 

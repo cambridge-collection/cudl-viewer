@@ -17,6 +17,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 public class CollectionFactory {
 
 	private static Hashtable<String, Collection> collections;
+	private ArrayList<Collection> rootCollections = new ArrayList<Collection>();
 	private CollectionsDao collectionsDao;
 	private Calendar lastInit;
 	private int INIT_TIMEOUT = 60000; // in milliseconds
@@ -48,7 +49,19 @@ public class CollectionFactory {
 			collections.put(collectionId,collection);
 			allItemIds.addAll(collection.getItemIds());
 		}
-		
+			
+		// Setup the list of root collections used on the homescreen. 
+		Iterator<Collection> iter = collections.values().iterator();		
+		while (iter.hasNext()) {
+			Collection c = iter.next();
+			String parentId = c.getParentCollectionId();
+			
+			if (parentId==null || parentId.length()==0) {
+				rootCollections.add(c);
+			}
+		}
+		Collections.sort(rootCollections);
+				
 	}
 
 	public Collection getCollectionFromId(String id) {
@@ -96,6 +109,12 @@ public class CollectionFactory {
 
 	}
 
+	public List<Collection> getRootCollections() {
+
+        return rootCollections;
+
+	}
+	
 	public Set<String> getAllItemIds() {
 		if (collections == null || collections.isEmpty()) {
 			init();

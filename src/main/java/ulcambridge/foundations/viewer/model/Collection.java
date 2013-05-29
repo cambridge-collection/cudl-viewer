@@ -19,19 +19,21 @@ public class Collection implements Comparable<Collection> {
 	private String summary;
 	private String sponsors;
 	private String type;
+	private String parentCollectionId;
 
-	public Collection(String collectionID, String collectionTitle,
+	public Collection(String collectionId, String collectionTitle,
 			List<String> collectionItemIds, 
 			String collectionSummary, String collectionSponsors,
-			String collectionType) {
+			String collectionType, String parentCollectionId) {
 
-		this.id = collectionID;
+		this.id = collectionId;
 		this.title = collectionTitle;
 		this.itemIds = collectionItemIds;
-		this.url = "/collections/" + collectionID;
+		this.url = "/collections/" + collectionId;
 		this.summary = collectionSummary;
 		this.sponsors = collectionSponsors;
 		this.type = collectionType;
+		this.parentCollectionId = parentCollectionId;
 
 		orderCount++;
 		this.order = orderCount;
@@ -68,6 +70,11 @@ public class Collection implements Comparable<Collection> {
 	public String getType() {
 		return type;
 	}
+	
+	public String getParentCollectionId() {
+		return parentCollectionId;
+	}
+
 
 	@Override
 	public int compareTo(Collection o) {

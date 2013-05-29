@@ -10,7 +10,7 @@
 	String downtimeWarning = (String) request
 			.getAttribute("downtimeWarning");
 	String itemCount = (String) request.getAttribute("itemCount");
-	List<Collection> allCollections = (List<Collection>) request.getAttribute("allCollections");
+	List<Collection> rootCollections = (List<Collection>) request.getAttribute("rootCollections");
 %>
 
 <script type="text/javascript">
@@ -316,8 +316,8 @@
 		<h4>Collections</h4>
 
 		<%
-			for (int i=0; i<allCollections.size(); i++) { 
-				       Collection c = allCollections.get(i);
+			for (int i=0; i<rootCollections.size(); i++) { 
+				       Collection c = rootCollections.get(i);
 		%>
 
 		<div class="featuredcollection grid_3">
@@ -332,7 +332,7 @@
 
 		<div class="grid_9">
 			<br /> <a class="right" href="/collections/">View all
-				collections ></a>
+				collections &gt;</a>
 		</div>
 	</div>
 

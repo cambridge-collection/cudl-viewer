@@ -60,10 +60,9 @@ public class SiteViewController {
 				.addObject("itemCount", formatter.format(this.collectionFactory
 						.getAllItemIds().size()));
 		
-		List<Collection> allCollections = this.collectionFactory.getCollections();		
+		List<Collection> rootCollections = this.collectionFactory.getRootCollections();		
 		//Collections.shuffle(allCollections); // shuffle to randomise collection order.  
-		Collections.sort(allCollections); // order collections by collectionid.
-		modelAndView.addObject("allCollections", allCollections);		
+		modelAndView.addObject("rootCollections", rootCollections);		
 
 		return modelAndView;
 	}

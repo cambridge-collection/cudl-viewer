@@ -60,14 +60,14 @@ public class CollectionTest extends TestCase {
 
 		Collection c = new Collection("collectionID", "collectionTitle",
 				collectionIds, "collectionSummary",
-				"collectionSponsors", "collectionType");
+				"collectionSponsors", "collectionType", "");
 
 		Collection c2 = new Collection(
 				"collectionID2",
 				"collectionTitle2",
 				collectionIds,
 				"collectionSummary",
-				"collectionSponsors2", "collectionType2");
+				"collectionSponsors2", "collectionType2", "");
 
 		assertEquals(c.getId(), "collectionID");
 		assertEquals(c.getSponsors(), "collectionSponsors");
