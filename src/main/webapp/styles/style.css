@@ -182,6 +182,26 @@ ol#index_carousel li {
 	border-color: #fff;
 }
 
+.featuredcollection .featuredcollectionlabellong {
+	z-index: 10;
+	width: 118px;
+	display: block;
+	padding: 5px;
+	position: absolute;
+	color: #eee;
+	bottom: 8px;
+	height: 60px;
+	left: 0px;
+	background: #333;
+	float: left;
+	border-style: solid;
+	border-top-width: 0px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 4px;
+	border-color: #fff;
+}
+
 .collectionImage {
 	margin-left: 0px;
 	margin-right: 14px;

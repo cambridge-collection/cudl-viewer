@@ -35,17 +35,17 @@ public class CollectionViewController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;
-	
+
 	@Autowired
 	public void setCollectionFactory(CollectionFactory factory) {
 		this.collectionFactory = factory;
 	}
-	
+
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
 	}
-	
+
 	// on path /collections/
 	@RequestMapping(value = "/")
 	public ModelAndView handleViewRequest(HttpServletResponse response)
@@ -74,9 +74,18 @@ public class CollectionViewController {
 
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"
 				+ collection.getType());
-		
+
 		modelAndView.addObject("collection", collection);
 		modelAndView.addObject("itemFactory", itemFactory);
+
+		// append a list of this collections subcollections if this is a parent. 
+		if (collection.getType().equals("parent")) {
+
+			List<Collection> subCollections = this.collectionFactory
+					.getSubCollections(collection);
+			modelAndView.addObject("subCollections", subCollections);
+
+		}
 		
 		return modelAndView;
 
@@ -90,24 +99,25 @@ public class CollectionViewController {
 	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
 			@PathVariable("collectionId") String collectionId,
 			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request) throws Exception {
+			@RequestParam("end") int endIndex, HttpServletRequest request)
+			throws Exception {
 
 		Collection collection = collectionFactory
 				.getCollectionFromId(collectionId);
-		
+
 		List<String> ids = collection.getItemIds();
 		List<Item> items = new ArrayList<Item>();
-				
+
 		if (startIndex < 0) {
 			startIndex = 0;
 		} else if (endIndex >= ids.size()) {
 			endIndex = ids.size(); // if end Index is too large cap at max
-											// size
+									// size
 		}
-		
-		for (int i=startIndex; i<endIndex; i++) {
-		   items.add(itemFactory.getItemFromId(ids.get(i)));
-		}		
+
+		for (int i = startIndex; i < endIndex; i++) {
+			items.add(itemFactory.getItemFromId(ids.get(i)));
+		}
 
 		JSONArray jsonArray = new JSONArray();
 
@@ -115,18 +125,18 @@ public class CollectionViewController {
 			Item item = items.get(i);
 			jsonArray.add(item.getSimplifiedJSON());
 		}
-		
-	    // build the request object
+
+		// build the request object
 		JSONObject dataRequest = new JSONObject();
-		dataRequest.put("start",startIndex);
-		dataRequest.put("end",endIndex);
-		dataRequest.put("collectionId",collectionId);
-		
+		dataRequest.put("start", startIndex);
+		dataRequest.put("end", endIndex);
+		dataRequest.put("collectionId", collectionId);
+
 		// build the final returned JSON data
 		JSONObject data = new JSONObject();
 		data.put("request", dataRequest);
 		data.put("items", jsonArray);
-		
+
 		// Write out JSON file.
 		response.setContentType("application/json");
 		PrintStream out = null;

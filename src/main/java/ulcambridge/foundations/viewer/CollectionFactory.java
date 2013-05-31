@@ -115,10 +115,28 @@ public class CollectionFactory {
 
 	}
 	
+	public List<Collection> getSubCollections(Collection collection) {
+		
+		List<Collection> output = new ArrayList<Collection>();		
+		Iterator<Collection> iter = collections.values().iterator();		
+		while (iter.hasNext()) {
+			Collection c = iter.next();
+			String parentId = c.getParentCollectionId();
+			
+			if (parentId!=null && parentId.equals(collection.getId())) {
+				output.add(c);
+			}
+		}
+		Collections.sort(output);		
+		return output;
+	}
+	
 	public Set<String> getAllItemIds() {
 		if (collections == null || collections.isEmpty()) {
 			init();
 		}		
 		return allItemIds;
 	}
+
+
 }
