@@ -27,7 +27,7 @@
 			
 	</div>
 	<div class="grid_11 right">
-         <iframe width="510" height="315" src="http://www.youtube.com/embed/videoseries?list=PL49D9939209E5BAEC&showinfo=1" frameborder="0" allowfullscreen></iframe>
+         <iframe width="510" height="315" src="http://www.youtube.com/embed/videoseries?list=PL49D9939209E5BAEC&showinfo=1&modestbranding=1" frameborder="0" allowfullscreen></iframe>
     </div>  
     <div class="grid_19"> 
     <h4>Board of Longitude Collections</h4>                    
