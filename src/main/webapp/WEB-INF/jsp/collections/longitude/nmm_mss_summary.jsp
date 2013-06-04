@@ -2,13 +2,8 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">National Maritime Museum Manuscripts</h3>
 	<blockquote class="grid_5 omega print">
-		It is well known by all that are acquainted with the Art of
-			Navigation, that nothing is so much wanted and desired at Sea, as the
-			Discovery of the Longitude, for the Safety and Quickness of Voyages,
-			the Preservation of Ships and the Lives of Men" <br />
-		<br /> <cite>An Act for Providing
-			a Publick Reward for such Person or Persons as shall Discover the
-			Longitude at Sea, 1714<br /> </cite>
+		My friend Irwin's machine proves a mere bauble, not in the least useful for the purpose intended" <br />
+		<br /> <cite>Nevil Maskelyne, 1763<br /> </cite>
 
 	</blockquote>
 	<br /> <br />

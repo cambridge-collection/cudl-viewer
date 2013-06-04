@@ -2,13 +2,8 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">National Maritime Museum Print Works</h3>
 	<blockquote class="grid_5 omega print">
-		It is well known by all that are acquainted with the Art of
-			Navigation, that nothing is so much wanted and desired at Sea, as the
-			Discovery of the Longitude, for the Safety and Quickness of Voyages,
-			the Preservation of Ships and the Lives of Men" <br />
-		<br /> <cite>An Act for Providing
-			a Publick Reward for such Person or Persons as shall Discover the
-			Longitude at Sea, 1714<br /> </cite>
+		Mr. Arnold was a pompous man, and because he made large Machines it must be right, and the fools followed him in his Blunders" <br />
+		<br /> <cite>Thomas Earnshaw, 1805<br /> </cite>
 
 	</blockquote>
 	<br /> <br />
