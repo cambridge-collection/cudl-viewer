@@ -2,13 +2,8 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Papers of John Pond</h3>
 	<blockquote class="grid_5 omega print">
-		It is well known by all that are acquainted with the Art of
-			Navigation, that nothing is so much wanted and desired at Sea, as the
-			Discovery of the Longitude, for the Safety and Quickness of Voyages,
-			the Preservation of Ships and the Lives of Men" <br />
-		<br /> <cite>An Act for Providing
-			a Publick Reward for such Person or Persons as shall Discover the
-			Longitude at Sea, 1714<br /> </cite>
+		Business connected with chronometers, which (necessarily) is daily and peremptory, will always prevail over that which is general and confidential. I will not trouble you with an account of the various ways in which the chronometer business teazed Mr Pond, the Astronomer Royal" <br />
+		<br /> <cite>George Airy, 1836<br /> </cite>
 
 	</blockquote>
 	<br /> <br />
