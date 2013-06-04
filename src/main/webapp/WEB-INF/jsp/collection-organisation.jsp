@@ -1,19 +1,39 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
-	
+	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory, ulcambridge.foundations.viewer.CollectionFactory"%>
+
 
 <%
 	Collection collection = (Collection) request
-			.getAttribute("collection");
+	.getAttribute("collection");
+ 
+    CollectionFactory collectionFactory = (CollectionFactory) request
+    .getAttribute("collectionFactory");
 %>
-	
-<jsp:include page="header/header-full.jsp" >
+
+<jsp:include page="header/header-full.jsp">
 	<jsp:param name="title" value="<%=collection.getTitle()%>" />
-</jsp:include>	
+</jsp:include>
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
 	<jsp:param name="displaySearch" value="true" />
 </jsp:include>
+
+<%
+  // If this collection has a parent show it in secondary navigation
+  if (collection.getParentCollectionId()!=null && collection.getParentCollectionId().length()>0)  {
+		
+    Collection parentCollection = collectionFactory.getCollectionFromId(collection.getParentCollectionId());
+%>
+<nav id="navSecondary" class="grid_20">
+	<ul>
+		<li><a class="active" title="<%=parentCollection.getTitle()%>"
+			href="<%=parentCollection.getURL()%>"> <%=parentCollection.getTitle()%></a></li>
+	</ul>
+</nav>
+<%
+  }
+%>
+
 <jsp:include page="header/nav-browse-submenu.jsp" />
 
 <script type="text/javascript">
@@ -203,8 +223,7 @@ function pageinit() {
 
 		<div class="pagination toppagination"></div>
 		<!-- start of list -->
-		<div id="collections_carousel" class="collections_carousel">
-		</div>
+		<div id="collections_carousel" class="collections_carousel"></div>
 		<!-- end of list -->
 		<div class="pagination toppagination"></div>
 

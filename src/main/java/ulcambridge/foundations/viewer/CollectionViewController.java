@@ -77,6 +77,7 @@ public class CollectionViewController {
 
 		modelAndView.addObject("collection", collection);
 		modelAndView.addObject("itemFactory", itemFactory);
+		modelAndView.addObject("collectionFactory", collectionFactory);
 
 		// append a list of this collections subcollections if this is a parent. 
 		if (collection.getType().equals("parent")) {
