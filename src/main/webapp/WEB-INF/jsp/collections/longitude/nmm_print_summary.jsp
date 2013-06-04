@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Board of Longitude</h3>
+	<h3 style="margin-left: 8px">National Maritime Museum Print Works</h3>
 	<blockquote class="grid_5 omega print">
 		It is well known by all that are acquainted with the Art of
 			Navigation, that nothing is so much wanted and desired at Sea, as the
@@ -14,81 +14,18 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="Board of Longitude"
+			src="/images/collectionsView/longitude.jpg" alt="National Maritime Museum Print Works"
 			width="150" height="225" />
 
 	</div>
 	<div class="grid_9">
 		<br />
-		<p>The archives of the Royal Greenwich Observatory, held in
-			Cambridge University Library, include the complete run of the papers
-			of the Board of Longitude through the eighteenth century until its
-			abolition in 1828. These papers throw a vivid light on the role of
-			the British state in encouraging invention and discovery, on the
-			energetic culture of technical ingenuity in the long eighteenth
-			century, and on many aspects of exploration and maritime travel in
-			the Pacific Ocean and the Arctic.</p>
+		<p>These printed works chosen to complement the archives of the Board of Longitude and related material comprise two groups: books printed on behalf of the Board; and a group of works related to its activities and to some of the disputes in which it became embroiled.</p>
+		
+		<p>The Board of Longitude became a publisher of navigational and mathematical texts from 1767, following the decision to produce the astronomical tables needed to support the lunar distance method. Thereafter, publication grew to become its principal area of expenditure. The first publications were the <i>Nautical Almanac</i> and the <i>Tables Requisite</i>, the former published annually (and thus being the source of the bulk of the Board's spending on publications), the latter published only as needed, since it contained information that changed very slowly; its third edition appeared only in 1802. Between 1767 and 1828, the Board published around thirty different titles. These split into several key categories. By far the largest group was of mathematical and navigational tables, including the <i>Nautical Almanac</i>, the <a href="/view/PR-PBC-00619/1"><i>Sexcentenary Table</i> (1779)</a> by Jean Bernoulli and Michael Taylor's <a href="/view/PR-PBG-00878/1"><i>Sexagesimal Table</i> (1780)</a>. The second group comprised accounts of production techniques or descriptions of specific instruments or machines, including <i>The Principles of Mr Harrison's Time-Keeper</i> (1767), John Bird's <a href="/view/PR-PBG-00632/1"><i>A Method of dividing Astronomical Instruments</i> (1767)</a>, Jesse Ramsden's <a href="/view/PR-PBG-00968/1"><i>Description of an Engine for dividing Astronomical Instruments</i> (1777)</a> and <a href="/view/PR-PBC-01354/1">descriptions of the timekeepers made by John Arnold and Thomas Earnshaw</a>, the latter having to be re-published with Earnshaw's scurrilous comments about Arnold and the watchmaking trade removed. The third group of texts dealt with astronomical theory, notably <a href="/view/PR-PBG-00353/1"><i>Theoria lunae juxta systema Newtonianum</i> (1767)</a> by Tobias Mayer, detailing his theory of lunar motion. The Board also published results of the voyages and expeditions in which it was involved through the appointment of astronomers, including William Wales (ed.), <a href="/view/PR-PBC-04091/1"><i>The Original Astronomical Observations, made in the course of a Voyage towards the South Pole</i> (1777)</a> and Edward Sabine, <a href="/view/PR-PBG-00866/1"><location page='PBG0866'><i>An Account of Experiments to determine the Figure of the Earth</i> (1825)</a>. Lastly, there were a few works that the Board felt compelled to publish following attacks from critics such as Thomas Mudge. These included Nevil Maskelyne's <a href="/view/PR-PBG-00798/1"><i> An Answer to a Pamphlet, entitled "A Narrative of Facts," lately published by T. Mudge, Junior</i> (1792)</a>.</p>
+		
+		<p>The second group of printed works largely stems from disputes in which the work of the Board became entangled. This includes works relating to John Harrison's grievances with his treatment by the Commissioners, particularly from the 1760s onwards, and his ongoing attempts to secure full payment as set out in the Longitude Act of 1714. There is also <a href="/view/PR-PBG-01740/1">a French translation of <i>The Principles of Mr Harrison's Time-Keeper</i></a>. A number of other works relate to the claims by Thomas Mudge and his son, which were finally resolved in Parliament in the 1790s, and a number that arose from the Arnold-Earnshaw dispute at the turn of the 19th century. This last group includes works by <a href="/view/PR-PBC-01354/1">William Dalrymple and Joseph Banks</a>, supporters of John Arnold, both of whom vehemently defended Arnold and themselves from the savage criticisms of Thomas Earnshaw. Many of these were aired once more in Earnshaw's 1808 work, <a href="/view/PR-PBD-06067/1"><i>Longitude: An Appeal to the Public</i>.</p>
 
-		<p>In July 1714, an act of parliament established a large prize
-			for discovery of longitude, the determination of position at sea east
-			or west from a fixed meridian line. The prize varied according to the
-			accuracy of the method proposed: as much as £20,000 would be awarded
-			for a method accurate to within 30 nautical miles, provided a ship
-			could show the method worked to this accuracy. Further sums could be
-			allotted for related inventions and experiments.</p>
-
-		<p>A group of commissioners was nominated to administer this
-			scheme, including representatives from the Admiralty, the Royal
-			Society, the Royal Observatory, the universities, and members of
-			parliament. The first meeting recorded in the Board’s minutes took
-			place in 1737, prompted by an initial trial of a sea clock made by a
-			Humberside artisan John Harrison. Much subsequent work of the Board
-			focused on Harrison’s case, as well as the development of a
-			different, astronomical, method for determination of marine
-			longitude, observation of the distance between the Moon and select
-			stars and the computation of an almanac predicting lunar and stellar
-			positions with high accuracy. From the 1770s, the Board’s function
-			changed and expanded: its members discussed the improvement of clock
-			design, the performance of a range of navigational and astronomical
-			instruments, and a wide range of schemes for maritime calculations,
-			magnetic methods, and the manufacture of better sea charts. A large
-			range of technical projects of variable practicality was sent to the
-			Board for their judgment. It also played a major role in plans for
-			voyages by James Cook and his successors into the Pacific in the
-			1770s and into the Arctic in the opening decades of the nineteenth
-			century. In 1828 many of the Board’s functions were transferred to
-			other bodies and it was abolished.</p>
-
-		<p>A project funded by AHRC based at Cambridge University and the
-			National Maritime Museum, Greenwich, is studying and analyzing these
-			papers and their significance. For an introduction to the project
-			watch this special video on the history of the Board:
-			<a href="http://www.youtube.com/watch?v=t61ZJuKPUoI">http://www.youtube.com/watch?v=t61ZJuKPUoI</a> and read the project blog:
-			<a href="http://blogs.rmg.co.uk/longitude/">http://blogs.rmg.co.uk/longitude/</a> . Digitisation, metadata creation
-			and the production of contextual resources have been funded by JISC -
-			the project blog can be found at:
-			<a href="https://longitude.blog.lib.cam.ac.uk/">https://longitude.blog.lib.cam.ac.uk/</a></p>
-
-		<p>The papers of the Board of Longitude were systematically
-			gathered and catalogued at the Royal Greenwich Observatory, and
-			passed to the University Library Cambridge when the Observatory’s
-			papers were transferred there in 1990. This is an initial selection
-			of these papers prior to a larger release in July 2013. This
-			selection includes the confirmed minutes (RGO 14/5) of the Board from
-			1737 until 1779, which include details of dramatic debates about
-			Harrison’s claims, the development of the lunar method, expeditions
-			into the Pacific ocean, and a wide range of other instrumental,
-			maritime and astronomical schemes. Selected here also is the log book
-			kept by the astronomer William Wales (RGO 14/58) during the
-			celebrated Pacific voyage under the command of James Cook in
-			1772-1775, the first voyage to cross the Antarctic circle, as well as
-			visiting Tahiti, Fiji, Vanuatu and many other Oceanic islands.
-			Accompanying this log book is a remarkable collection of letters (RGO
-			14/68) about astronomical and navigational observations performed
-			during the later eighteenth and early nineteenth century voyages,
-			including reports by Wales, George Vancouver, Matthew Flinders and
-			related Pacific and Arctic expeditions.</p>
-			
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
 	</div>
@@ -96,8 +33,8 @@
 	<!-- 
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
-			href="/search?facet-collection=Board+of+Longitude">Search the
-			Board of Longitude</a>
+			href="/search?facet-collection=National+Maritime+Museum+Print+Works">Search the
+			National Maritime Museum Print Works</a>
 	</div>
 	-->
 </div>

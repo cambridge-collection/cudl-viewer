@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Board of Longitude</h3>
+	<h3 style="margin-left: 8px">National Maritime Museum Manuscripts</h3>
 	<blockquote class="grid_5 omega print">
 		It is well known by all that are acquainted with the Art of
 			Navigation, that nothing is so much wanted and desired at Sea, as the
@@ -14,80 +14,24 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="Board of Longitude"
+			src="/images/collectionsView/longitude.jpg" alt="National Maritime Museum Manuscripts"
 			width="150" height="225" />
 
 	</div>
 	<div class="grid_9">
 		<br />
-		<p>The archives of the Royal Greenwich Observatory, held in
-			Cambridge University Library, include the complete run of the papers
-			of the Board of Longitude through the eighteenth century until its
-			abolition in 1828. These papers throw a vivid light on the role of
-			the British state in encouraging invention and discovery, on the
-			energetic culture of technical ingenuity in the long eighteenth
-			century, and on many aspects of exploration and maritime travel in
-			the Pacific Ocean and the Arctic.</p>
+		<p>These manuscripts from the National Maritime Museum complement those from the Board of Longitude archive, either adding further official documentation relating to the activities of the Commissioners for the Longitude or less formal items that shed additional light on those activities. <a href="/view/MS-BGN/1">The papers of William Wildman, Viscount Barrington</a>, for example, provide an interesting counterpoint to the official minutes of the Board of Longitude during its crucial deliberations in the 1760s.</p>
 
-		<p>In July 1714, an act of parliament established a large prize
-			for discovery of longitude, the determination of position at sea east
-			or west from a fixed meridian line. The prize varied according to the
-			accuracy of the method proposed: as much as £20,000 would be awarded
-			for a method accurate to within 30 nautical miles, provided a ship
-			could show the method worked to this accuracy. Further sums could be
-			allotted for related inventions and experiments.</p>
+		<p>The official documents include certificates from the Commissioners for the Longitude authorising payment from the Navy Board to individuals being given rewards or sums of money to help them participate in official trials. These include payments to <a href="/view/MS-ADM-A-02528/1">John Harrison in 1761</a> and <a href="/view/MS-ADM-A-02539/1">1762</a>, the latter at the same time as a payment to Christopher Irwin, who received <a href="/view/MS-ADM-A-02551/1">further payment the following year</a>, as well as the <a href="/view/MS-ADM-A-02572/1">rewards to Tobias Mayer and Leonhard Euler in 1765</a> for their part in making the lunar distance method practicable, and to <a href="/view/MS-ADM-A-02869/1">Ralph Walker in 1795</a>  for his <a href='http://collections.rmg.co.uk/collections/objects/42475.html' target='_blank'>compass</a>. For the latter, there is also a <a href="/view/MS-PLT-00073-00002/1">written set of instructions</a> for the compass.</p>
 
-		<p>A group of commissioners was nominated to administer this
-			scheme, including representatives from the Admiralty, the Royal
-			Society, the Royal Observatory, the universities, and members of
-			parliament. The first meeting recorded in the Board’s minutes took
-			place in 1737, prompted by an initial trial of a sea clock made by a
-			Humberside artisan John Harrison. Much subsequent work of the Board
-			focused on Harrison’s case, as well as the development of a
-			different, astronomical, method for determination of marine
-			longitude, observation of the distance between the Moon and select
-			stars and the computation of an almanac predicting lunar and stellar
-			positions with high accuracy. From the 1770s, the Board’s function
-			changed and expanded: its members discussed the improvement of clock
-			design, the performance of a range of navigational and astronomical
-			instruments, and a wide range of schemes for maritime calculations,
-			magnetic methods, and the manufacture of better sea charts. A large
-			range of technical projects of variable practicality was sent to the
-			Board for their judgment. It also played a major role in plans for
-			voyages by James Cook and his successors into the Pacific in the
-			1770s and into the Arctic in the opening decades of the nineteenth
-			century. In 1828 many of the Board’s functions were transferred to
-			other bodies and it was abolished.</p>
+		<p>There are several lieutenants' logs covering the sea trials of <a href='http://collections.rmg.co.uk/collections/objects/79139.html' target='_blank'>H1</a> in 1736 (including <a href="/view/MS-ADM-L-C-00082/1">the log of Captain Proctor</a>, who appears to have noted longitude by the sea clock), and the Barbados trials of 1763-64 in <a href="/view/MS-ADM-L-P-00331/1">HMS Princess Louisa</a> and <a href="/view/MS-ADM-L-T-00022/1">HMS Tarter</a>. In addition, there are three journals from voyages of exploration: James Cook's journals from <a href="/view/MS-JOD-00019/1">HMS Endeavour in 1768-71</a> and <a href="/view/MS-JOD-00020/1">HMS Resolution in 1772-75</a>, the latter complemented by <a href="/view/MS-JOD-00056/1">Lieutenant Richard Pickersgill's journal from the same voyage</a>. A group of <a href="/view/MS-POR-H-00008/1">copies of letters from Portsmouth dockyard</a> also document some of the preparations for the 1761 trial of <a href='http://collections.rmg.co.uk/collections/objects/79142.html' target='_blank'>H4</a> to Jamaica.</p>
 
-		<p>A project funded by AHRC based at Cambridge University and the
-			National Maritime Museum, Greenwich, is studying and analyzing these
-			papers and their significance. For an introduction to the project
-			watch this special video on the history of the Board:
-			<a href="http://www.youtube.com/watch?v=t61ZJuKPUoI">http://www.youtube.com/watch?v=t61ZJuKPUoI</a> and read the project blog:
-			<a href="http://blogs.rmg.co.uk/longitude/">http://blogs.rmg.co.uk/longitude/</a> . Digitisation, metadata creation
-			and the production of contextual resources have been funded by JISC -
-			the project blog can be found at:
-			<a href="https://longitude.blog.lib.cam.ac.uk/">https://longitude.blog.lib.cam.ac.uk/</a></p>
-
-		<p>The papers of the Board of Longitude were systematically
-			gathered and catalogued at the Royal Greenwich Observatory, and
-			passed to the University Library Cambridge when the Observatory’s
-			papers were transferred there in 1990. This is an initial selection
-			of these papers prior to a larger release in July 2013. This
-			selection includes the confirmed minutes (RGO 14/5) of the Board from
-			1737 until 1779, which include details of dramatic debates about
-			Harrison’s claims, the development of the lunar method, expeditions
-			into the Pacific ocean, and a wide range of other instrumental,
-			maritime and astronomical schemes. Selected here also is the log book
-			kept by the astronomer William Wales (RGO 14/58) during the
-			celebrated Pacific voyage under the command of James Cook in
-			1772-1775, the first voyage to cross the Antarctic circle, as well as
-			visiting Tahiti, Fiji, Vanuatu and many other Oceanic islands.
-			Accompanying this log book is a remarkable collection of letters (RGO
-			14/68) about astronomical and navigational observations performed
-			during the later eighteenth and early nineteenth century voyages,
-			including reports by Wales, George Vancouver, Matthew Flinders and
-			related Pacific and Arctic expeditions.</p>
+		<p> There are two other large groups of manuscripts in the selection. The first is of <a href="/view/MS-REG-00009-00037/1">manuscripts, including letters and memorandum books, belonging to Nevil Maskelyne</a>. These include letters written from Barbados during the sea trials of 1763-64 and many letters to or from other astronomers.
+			Other related documents include <a href="/view/MS-REG-00009-00225/1">a letter from Maskelyne to a bookseller</a> in 1770 concerning the Board's publications, and letters from Maskelyne to the Earl of Sandwich. The second large group is of papers from George Fisher, who was appointed as astronomer to two Arctic voyages, in 1818 and 1821-23. The selection includes <a href="/view/MS-FIS-00001/1">a copy of a journal kept by one of the lieutenants on George Vancouver's expedition in 1793</a>, records of meteorological and other observations taken during the Arctic voyages, such as those in <a href="/view/MS-FIS-00007/1">FIS/7</a>, and a number of volumes relating to his <a href="/view/MS-FIS-00020/1">subsequent work on chronometers</a>. There are also a number of navigational workbooks and records of lunar observations by <a href="/view/MS-FIS-00023/1">Fisher</a> and also <a href="/view/MS-FIS-00003/1">John Franklin</a>.</p>
+		
+		<p>John Harrison is also well represented, in <a href="/view/MS-SAN-F-00002/1">a copy of the 1770 edition of <i>The Case of Mr. John Harrison, With accompanying notes by the Earl of Sandwich</i></a>, the <a href="/view/MS-ZAA-00883/1">original manuscript of Harrison's final work</a>, <i>A Description Concerning Such Mechanism</i>, and two drawings by Harrison, one of the <a href="/view/MS-ZAA-00881/1">turret clock escapement for Trinity College, Cambridge</a>, the other showing <a href="/view/MS-ZAA-00882/1">a part of Harrison's third timekeeper</a>, (<a href=' http://collections.rmg.co.uk/collections/objects/79141.html' target='_blank'>H3</a>).</p> 
+		
+		<p>The remaining manuscripts include: <a href="/view/MS-NVT-00005/1">a 1726 manuscript on finding longitude</a> by Robert Wright, said to have been sent to Sir Isaac Newton; <a href="/view/MS-MSS-00079-00130-00002/1">a 1734 scheme by William Whiston</a>for finding longitude from eclipses of Jupiter's satellites; <a href="/view/MS-G-00298-00001-00003/1">examples of preprinted forms for the lunar distance method</a> that have been completed; <a href="/view/MS-HMN/1">examples illustrating the navigation carried out on an East India Company vessel</a> at the beginning of the 19th century; letters from Andrew Mackay, a navigation teacher from Aberdeen who corresponded with Nevil Maskelyne. There is also <a href="/view/MS-MKY-00006/1">a draft of his subsequently printed work</a>, <i>The theory and practice of finding the longitude at sea or on land</i> (1793).</p>
 			
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
@@ -96,8 +40,8 @@
 	<!-- 
 	<div class="box grid_8">
 		Want to view items by subject or date? <br /> <a
-			href="/search?facet-collection=Board+of+Longitude">Search the
-			Board of Longitude</a>
+			href="/search?facet-collection=National+Maritime+Museum+Manuscripts">Search the
+			National Maritime Museum Manuscripts</a>
 	</div>
 	-->
 </div>
