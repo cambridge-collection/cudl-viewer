@@ -2,13 +2,8 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Papers of Nevil Maskelyne</h3>
 	<blockquote class="grid_5 omega print">
-		It is well known by all that are acquainted with the Art of
-			Navigation, that nothing is so much wanted and desired at Sea, as the
-			Discovery of the Longitude, for the Safety and Quickness of Voyages,
-			the Preservation of Ships and the Lives of Men" <br />
-		<br /> <cite>An Act for Providing
-			a Publick Reward for such Person or Persons as shall Discover the
-			Longitude at Sea, 1714<br /> </cite>
+		With the help of a proper nautical almanack, all the difficult part of the calculations by the lunar method might be taken away, and the remaining part to be done at sea might be practiced on board of every ship, if the persons belonging to it would give proper attention to it; but the calculations would be always somewhat conciser in the method by the watch than in that by the Moon" <br />
+		<br /> <cite>Nevil Maskelyne, 1765<br /> </cite>
 
 	</blockquote>
 	<br /> <br />
