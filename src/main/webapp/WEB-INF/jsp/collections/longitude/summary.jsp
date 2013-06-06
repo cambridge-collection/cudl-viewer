@@ -18,13 +18,12 @@
 			century, and on many aspects of exploration and maritime travel in
 			the Pacific Ocean and the Arctic.</p>
 
-		<p>In July 1714, an act of parliament established a large prize
-			for discovery of longitude, the determination of position at sea east
-			or west from a fixed meridian line. The prize varied according to the
-			accuracy of the method proposed: as much as £20,000 would be awarded
-			for a method accurate to within 30 nautical miles, provided a ship
-			could show the method worked to this accuracy. Further sums could be
-			allotted for related inventions and experiments.</p>
+		<p>This project, a partnership between <a href="http://www.lib.cam.ac.uk">Cambridge University Library</a>,
+			the <a href="http://www1.rmg.co.uk/">National Maritime Museum</a> and the AHRC-funded <a href="http://blogs.rmg.co.uk/longitude/">Board of Longitude Project</a>,
+			presents fully digitised versions of the complete archive and associated materials,
+			alongside detailed metadata, contextual essays, video, educational resources and
+			hundreds of links through to relevant objects in the National Maritime Museum's 
+			online collections.</p>
 
 	</div>
 	<div class="grid_11 right">
