@@ -25,6 +25,10 @@
 
 		<p>From 1829, after the Board of Longitude had disappeared, responsibility for much management of the clock system began to pass to the Navy’s Hydrographer, Francis Beaufort. He proved adept at accounts of clock design, keen on an expansion of the naval stock of chronometers either through premiums from the Observatory or by purchases from private owners, and devoted strenuous attention to the trials of marine chronometers conducted at Pond’s Greenwich observatory. Much of <a href="/view/MS-RGO-00005-00233/1">RGO 5/233</a> is preoccupied with the fraught business of these trials. Strict rules governed clockmakers’ conduct during the trials and the conditions under which the clocks were to be tested (<a href="/view/MS-RGO-00005-00233/1">RGO 5/233:225</a>). The manufacturers were acutely aware of the advantage to their repute of a successful Greenwich test. Testimony from these archives shows how, during this period, the Observatory was systematically passing responsibility for maintenance and repair to the clock trade itself, which played such a crucial role in the production and management of the global system of marine longitude.</p>
 			
+		<p>Simon Schaffer<br/>
+			History and Philosophy of Science<br/>
+		University of Cambridge</p>
+			
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
 	</div>

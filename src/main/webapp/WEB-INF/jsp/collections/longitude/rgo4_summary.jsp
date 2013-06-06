@@ -24,6 +24,10 @@
 		<p>Several volumes deal with <a href="/view/MS-RGO-00004-00311/1">trials of Harrison's</a> and other timekeepers, including those by Larcum Kendall, John Arnold, Thomas Earnshaw and Thomas Mudge. Some of the trials took place <a href="/view/MS-RGO-00004-00154/1">on sea voyages</a>, others at <a href="/view/MS-RGO-00004-00153/1">Greenwich</a>. There are also <a href="/view/MS-RGO-00004-00152/1">notes taken during the famous 'discovery' of Harrison's H4</a> before a committee of the Board of Longitude. Extracts from a number of East India Company ships' journals, provide evidence on the use of lunar distances at sea. In addition there are <a href="/view/MS-RGO-00004-00185/1">observations of</a> and <a href="/view/MS-RGO-00004-00187/1">some correspondence with</a> the astronomers appointed by the Board of Longitude to carry out longitude and other observations on Naval voyages of exploration. There is further correspondence with astronomers, mathematicians and other colleagues, and on various methods, <a href="/view/MS-RGO-00004-00288/1">books</a> and <a href="/view/MS-RGO-00004-00219/1">instruments</a>.</p>
 
 		<p>The difficulties that occurred between the Harrisons and the Board of Longitude, and the accusations made against Maskelyne personally, are hinted at by the collection of <a href="/view/MS-RGO-00004-00310/1">extracts from the Minutes of the Board</a>, which focus closely on interactions with Harrison. Maskelyne's roles, <a href="/view/MS-RGO-00004-00320/1">as an expert who carried out observations against which other longitude methods were tested</a> and as a member of the Board that adjudicated them, left him open to criticism by those hoping to receive rewards. The papers here are testament to Maskelyne's close involvement with and painstaking work on both astronomical and timekeeping methods.</p>
+		
+		<p>Rebekah Higgitt<br/>
+			Royal Museums Greenwich</p>
+			
 			
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>

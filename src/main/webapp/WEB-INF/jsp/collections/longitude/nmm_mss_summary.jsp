@@ -27,7 +27,10 @@
 		<p>John Harrison is also well represented, in <a href="/view/MS-SAN-F-00002/1">a copy of the 1770 edition of <i>The Case of Mr. John Harrison, With accompanying notes by the Earl of Sandwich</i></a>, the <a href="/view/MS-ZAA-00883/1">original manuscript of Harrison's final work</a>, <i>A Description Concerning Such Mechanism</i>, and two drawings by Harrison, one of the <a href="/view/MS-ZAA-00881/1">turret clock escapement for Trinity College, Cambridge</a>, the other showing <a href="/view/MS-ZAA-00882/1">a part of Harrison's third timekeeper</a>, (<a href=' http://collections.rmg.co.uk/collections/objects/79141.html' target='_blank'>H3</a>).</p> 
 		
 		<p>The remaining manuscripts include: <a href="/view/MS-NVT-00005/1">a 1726 manuscript on finding longitude</a> by Robert Wright, said to have been sent to Sir Isaac Newton; <a href="/view/MS-MSS-00079-00130-00002/1">a 1734 scheme by William Whiston</a>for finding longitude from eclipses of Jupiter's satellites; <a href="/view/MS-G-00298-00001-00003/1">examples of preprinted forms for the lunar distance method</a> that have been completed; <a href="/view/MS-HMN/1">examples illustrating the navigation carried out on an East India Company vessel</a> at the beginning of the 19th century; letters from Andrew Mackay, a navigation teacher from Aberdeen who corresponded with Nevil Maskelyne. There is also <a href="/view/MS-MKY-00006/1">a draft of his subsequently printed work</a>, <i>The theory and practice of finding the longitude at sea or on land</i> (1793).</p>
-			
+		
+		<p>Richard Dunn<br/>
+			Royal Museums Greenwich</p>
+		
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
 	</div>

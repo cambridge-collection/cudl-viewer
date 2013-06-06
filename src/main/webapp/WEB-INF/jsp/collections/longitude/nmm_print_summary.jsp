@@ -21,6 +21,9 @@
 		
 		<p>The second group of printed works largely stems from disputes in which the work of the Board became entangled. This includes works relating to John Harrison's grievances with his treatment by the Commissioners, particularly from the 1760s onwards, and his ongoing attempts to secure full payment as set out in the Longitude Act of 1714. There is also <a href="/view/PR-PBG-01740/1">a French translation of <i>The Principles of Mr Harrison's Time-Keeper</i></a>. A number of other works relate to the claims by Thomas Mudge and his son, which were finally resolved in Parliament in the 1790s, and a number that arose from the Arnold-Earnshaw dispute at the turn of the 19th century. This last group includes works by <a href="/view/PR-PBC-01354/1">William Dalrymple and Joseph Banks</a>, supporters of John Arnold, both of whom vehemently defended Arnold and themselves from the savage criticisms of Thomas Earnshaw. Many of these were aired once more in Earnshaw's 1808 work, <a href="/view/PR-PBD-06067/1"><i>Longitude: An Appeal to the Public</i>.</p>
 
+		<p>Richard Dunn<br/>
+			Royal Museums Greenwich</p>
+
 			<p>The 'splash' icons found in the descriptions are links to relevant items
 			in the <a href="http://www.collections.rmg.co.uk/">online collections of the Royal Museums Greenwich</a>.</p>
 	</div>
