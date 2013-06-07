@@ -9,7 +9,7 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="Papers of Nevil Maskelyne"
+			src="/images/collectionsView/rgo4.jpg" alt="Papers of Nevil Maskelyne"
 			width="150" height="225" />
 
 	</div>

@@ -1,8 +1,12 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List"%>
+	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List,ulcambridge.foundations.viewer.ItemFactory"%>
 <%
 	List<Collection> subCollections = (List<Collection>) request
 			.getAttribute("subCollections");
+
+    // Proxy url is used for local installations.  Not used on dev or live. 
+    String proxyURL = (String) request.getAttribute("proxyURL");
+    if (proxyURL==null) { proxyURL = ""; }
 %>
 <div class="grid_20">
 	<h3 style="margin-left: 8px">Board of Longitude</h3>
@@ -37,8 +41,8 @@
 		</div>
 		<div class="grid_4 right">
 			<h4>Essays</h4>
-			<img src="/images/collectionsView/collection-longitude-essays.jpg"
-				height="165px" width="165px" />
+			<a href="/collections/longitudeessays"><img src="/images/collectionsView/collection-longitude-essays.jpg"
+				height="165px" width="165px" /></a>
 			<div>
 				In July 1714, an act of parliament established a large prize for
 				discovery of longitude, the determination of position at sea east or
@@ -49,6 +53,11 @@
 		<%
 			for (int i = 0; i < subCollections.size(); i++) {
 				Collection c = subCollections.get(i);
+				
+				// skip the essays sub collection, that's displayed separately. 
+				if (c.getId().equals("longitudeessays")) {
+					continue;
+				}
 		%>
 
 		<div class="featuredcollection grid_3">
@@ -74,7 +83,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/203"> <img
 							style="width: 100%"
-							src="/imageproxy/content/images/MS-RGO-00014-00058-000-00204_files/8/0_0.jpg"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00204_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>
@@ -85,7 +94,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/309"> <img
 							style="height: 100%"
-							src="/imageproxy/content/images/MS-RGO-00014-00058-000-00310_files/8/0_0.jpg"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00252_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>
@@ -102,7 +111,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/251"> <img
 							style="height: 100%"
-							src="/imageproxy/content/images/MS-RGO-00014-00058-000-00252_files/8/0_0.jpg"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00252_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>
@@ -114,7 +123,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/24"> <img
 							style="height: 100%"
-							src="/imageproxy/content/images/MS-RGO-00014-00058-000-00025_files/8/0_0.jpg"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00025_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>
