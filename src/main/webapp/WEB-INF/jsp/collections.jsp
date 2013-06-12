@@ -234,9 +234,7 @@
 				Board of Longitude, the state organization established in the
 				eighteenth century to evaluate methods for finding ships’ position
 				and to encourage a host of projects in instrument design,
-				clock-making, mapping and voyaging. Our initial selection includes
-				the Board’s confirmed minutes and papers from the astonishing
-				Pacific and Antarctic voyage of James Cook in 1772-1775.<br /> <br />
+				clock-making, mapping and voyaging.<br /> <br />
 				<a href="/collections/longitude">View collection</a>.<br />
 				<div class="foundations-link-science">
 					<a href="/about#foundations">Foundations of Science<br /> <br /></a>
