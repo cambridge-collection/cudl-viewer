@@ -16,31 +16,20 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionFactory {
 
-	private static Hashtable<String, Collection> collections;
-	private ArrayList<Collection> rootCollections = new ArrayList<Collection>();
+	private static Hashtable<String, Collection> collections  = new Hashtable<String, Collection>();
+	private static ArrayList<Collection> rootCollections = new ArrayList<Collection>();
+	private static boolean initalised = false;
 	private CollectionsDao collectionsDao;
-	private Calendar lastInit;
-	private int INIT_TIMEOUT = 60000; // in milliseconds
-	private HashSet<String> allItemIds = new HashSet<String>(); // list of items in any collection
+
+	private static HashSet<String> allItemIds = new HashSet<String>(); // list of items in any collection
 
 	@Autowired
 	public void setCollectionsDao(CollectionsDao dao) {
 		collectionsDao = dao;
+		if (!initalised) init();
 	}
-
-	public synchronized void init() {
-
-		// do not run again if it has already run in the last 1 minute
-		Calendar now = Calendar.getInstance();
-		if (lastInit != null) {		
-			if (lastInit.getTimeInMillis() + INIT_TIMEOUT > now
-					.getTimeInMillis()) {
-				return;
-			}
-		}
-		lastInit = now;
-
-		collections = new Hashtable<String, Collection>();
+	
+	public void init() {
 
 		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
@@ -55,20 +44,17 @@ public class CollectionFactory {
 		while (iter.hasNext()) {
 			Collection c = iter.next();
 			String parentId = c.getParentCollectionId();
-			
+
 			if (parentId==null || parentId.length()==0) {
 				rootCollections.add(c);
 			}
 		}
 		Collections.sort(rootCollections);
-				
+		initalised = true;
 	}
 
 	public Collection getCollectionFromId(String id) {
 
-		if (collections == null || collections.isEmpty()) {
-			init();
-		}
 		return collections.get(id);
 
 	}
@@ -82,9 +68,6 @@ public class CollectionFactory {
 	 */
 	public Collection getCollectionFromTitle(String title) {
 
-		if (collections == null || collections.isEmpty()) {
-			init();
-		}
 		Iterator<Collection> c = getCollections().iterator();
 
 		while (c.hasNext()) {
@@ -99,9 +82,6 @@ public class CollectionFactory {
 
 	public List<Collection> getCollections() {
 
-		if (collections == null || collections.isEmpty()) {
-			init();
-		}
 		ArrayList<Collection> list = new ArrayList<Collection>(
 				collections.values());
 		Collections.sort(list);
@@ -132,9 +112,7 @@ public class CollectionFactory {
 	}
 	
 	public Set<String> getAllItemIds() {
-		if (collections == null || collections.isEmpty()) {
-			init();
-		}		
+	
 		return allItemIds;
 	}
 
