@@ -764,3 +764,36 @@ ol#vcollections_carousel li {
 	background-color: transparent;
 	border-width: 0px;
 }
+
+/* longitude collection page */
+.longitudecollectionessays img{
+	padding-top: 4px;
+	height:174px;
+	width:174px;
+}
+
+.longitudecollectionschools img{
+	height:174px;
+	width:174px;
+}
+.longitudecollectionschools div{
+	margin-top:-20px;
+}
+
+.longitudecollectionstories img{
+	height:174px;
+	width:174px;
+}
+.longitudecollectionstories div{
+	margin-top:-20px;
+}
+
+.longitudefeaturedItemsBox {
+	height: 500px;
+	width: 450px;
+	background: none repeat scroll 0 0 #333333;
+	overflow: hidden;
+    padding: 18px 16px 9px;
+    margin-bottom: 18px;
+}
+

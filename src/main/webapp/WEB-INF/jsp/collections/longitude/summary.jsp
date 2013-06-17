@@ -39,10 +39,9 @@
 		<div class="grid_15">
 			<h4>Board of Longitude Collections</h4>
 		</div>
-		<div class="grid_4 right">
-			<h4>Essays</h4>
-			<a href="/collections/longitudeessays"><img src="/images/collectionsView/collection-longitude-essays.jpg"
-				height="165px" width="165px" /></a>
+		<div class="grid_4 right longitudecollectionessays">
+			<h4>&nbsp;</h4>
+			<a href="/collections/longitudeessays"><img src="/images/collectionsView/collection-longitude-essays.jpg" /></a>
 			<div>
 				In July 1714, an act of parliament established a large prize for
 				discovery of longitude, the determination of position at sea east or
@@ -77,7 +76,7 @@
 		<div class="grid_10">
 			<h4>Featured Items</h4>
 		</div>
-		<div class="grid_10 box" style="background: #333; height: 500px">
+		<div class="grid_10 longitudefeaturedItemsBox">
 			<div class="grid_5">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
@@ -137,15 +136,17 @@
 			</div>
 		</div>
 
-		<div class="grid_4 right">
-			<h4>Educational Resources</h4>
-			<img src="/images/collectionsView/collection-longitude-educationalresources.jpg"
-				height="165px" width="165px" />
-			<div>In July 1714, an act of parliament established a large
-				prize for discovery of longitude, the determination of position at
-				sea east or west from a fixed meridian line.</div>
+		<div class="grid_4 right longitudecollectionstories">			
+		   <img src="/images/collectionsView/collection-longitude-stories.jpg" />
+		   <div>Stories from the archive <br/><br/></div>
 
 		</div>
+		
+		
+		<div class="grid_4 right longitudecollectionschools">			
+			<img src="/images/collectionsView/collection-longitude-schools.jpg" />
+			<div>Ideas for teaching the Board of Longitude <br/><br/></div>
+		</div>		
 
 	</div>
 
