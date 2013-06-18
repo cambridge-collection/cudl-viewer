@@ -20,25 +20,27 @@ import org.json.simple.JSONArray;
 public class Item implements Comparable<Item> {
 
 	private static int orderCount = 1;
-	private int order;
-	private String id;
-	private String title;
-	private String fullTitle;
-	private List<Person> authors;
-	private String shelfLocator;
-	private String abstractText;
-	private String thumbnailURL;
-	private String thumbnailOrientation;
-	private String abstractShort;
-	private JSONObject json; // used for document view
-	private JSONObject simplejson; // used for collection view
+	protected int order;	
+	protected String id;
+	protected String type;
+	protected String title;
+	protected String fullTitle;
+	protected List<Person> authors;
+	protected String shelfLocator;
+	protected String abstractText;
+	protected String thumbnailURL;
+	protected String thumbnailOrientation;
+	protected String abstractShort;
+	protected JSONObject json; // used for document view
+	protected JSONObject simplejson; // used for collection view
 
-	public Item(String itemId, String itemTitle, List<Person> authors,
+	public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
 			String itemShelfLocator, String itemAbstract,
 			String itemThumbnailURL, String thumbnailOrientation,
 			JSONObject itemJson) {
 
 		this.id = itemId;
+		this.type = itemType;
 		this.json = itemJson;
 		this.title = itemTitle;
 		this.fullTitle = itemTitle;
@@ -109,7 +111,11 @@ public class Item implements Comparable<Item> {
 	public String getId() {
 		return id;
 	}
-
+	
+	public String getType() {
+		return type;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

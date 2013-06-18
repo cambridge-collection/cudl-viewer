@@ -100,6 +100,10 @@ function pageinit() {
 							  } else if (item.thumbnailOrientation=="landscape") {
 								imageDimensions = " style='width:100%' ";
 							  }
+							  var shelfLocator = "";
+							  if (item.shelfLocator != "") { 
+								  shelfLocator = " (" +item.shelfLocator+ ") ";
+							  }
 								
 					    	  var itemDiv = document.createElement('div');
 					    	  itemDiv.setAttribute("class", "collections_carousel_item");
@@ -107,7 +111,7 @@ function pageinit() {
 					        "<div class='collections_carousel_image'>"+
 					        "<a href='/view/" +item.id+ "'><img src='" +item.thumbnailURL+ "' alt='" +item.id+ "' "+
 					        imageDimensions+ " > </a></div></div> "+
-					        "<div class='collections_carousel_text word-wrap-200'><h5>" +item.title+ " (" +item.shelfLocator+ ")</h5> "+item.abstractShort+
+					        "<div class='collections_carousel_text word-wrap-200'><h5>" +item.title+ shelfLocator+"</h5> "+item.abstractShort+
 					        " ... <a href='/view/" +item.id+ "'>more</a></div><div class='clear'></div>";
 		           	        container.appendChild(itemDiv);
 				 					      

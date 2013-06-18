@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -56,7 +57,7 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			HttpServletRequest request) {
 
-		return setupDocumentView(docId, 1, request);
+		return handleRequest(docId, 1, request);
 	}
 
 	// on path /view/{docId}/{page}
@@ -64,7 +65,17 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			@PathVariable("page") int page, HttpServletRequest request) {
 	
-		return setupDocumentView(docId, page, request);
+		// Show a different view based on the itemType for this item.  
+		Item item = itemFactory.getItemFromId(docId);
+		String itemType = item.getType();
+		
+		if (itemType.equals("essay")) {
+			return setupEssayView((EssayItem) item, page, request);
+		} else {
+			// default to document view. 
+			return setupDocumentView(item, page, request);
+		}		
+		
 	}
 
 	// on path /view/{docId}.json
@@ -95,9 +106,22 @@ public class DocumentViewController {
 		return null;
 	}
 
-	private ModelAndView setupDocumentView(String docId, int page,
+	/**
+	 * View for displaying documents or manuscripts. 
+	 * 
+	 * @param docId
+	 * @param page
+	 * @param request
+	 * @return
+	 */
+	private ModelAndView setupDocumentView(Item item, int page,
 			HttpServletRequest request) {
 
+		// check doc exists, if not return 404 page.
+		if (item == null) {
+			return new ModelAndView("jsp/errors/404");
+		}	
+		
 		String requestURL = request.getRequestURL().toString();
 		String docURL = requestURL;
 
@@ -107,45 +131,21 @@ public class DocumentViewController {
 		}
 
 		// JSON file needs to be a relative URL for Ajax.
-		String jsonURL =  "/view/"+ docId + ".json";
+		String jsonURL =  "/view/"+ item.getId() + ".json";
 
-		// check doc exists, if not return 404 page.
-		String jsonRootURL = Properties.getString("jsonURL");
-		if (!reader.urlExists(jsonRootURL + docId + ".json")) {
-			return new ModelAndView("jsp/errors/404");
-		}
-
+		List<Collection> docCollections = getCollection(item.getId());
+		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 		
-		List<Collection> docCollections = new ArrayList<Collection>();
-		Collection organisationalCollection = null; 
-				
-		Iterator<Collection> collectionIterator = collectionFactory.getCollections().iterator();
-		while (collectionIterator.hasNext()) {
-			Collection collection = collectionIterator.next();
-			if (collection.getItemIds().contains(docId)) {
-				docCollections.add(collection);
-				// Stop if this is an organisational collection, else keep
-				// looking
-				if (collection.getType().startsWith("organisation")) {
-					organisationalCollection = collection;	
-				}				
-			}
-		}
-		
-		// If the item is not in any organisational collection set 
-		// the first item in the collections list as it's organisational collection. 
-		if (organisationalCollection == null && docCollections.size()>0 ) { 
-			organisationalCollection = docCollections.get(0);
-		}
-
 		// Get proxyURL (if we are using a proxy)
 		String proxyURL = "";
 		if (Properties.getString("useProxy").equals("true")) {
 			proxyURL = Properties.getString("proxyURL");
 		}
 
-		ModelAndView modelAndView = new ModelAndView("jsp/document");
-		modelAndView.addObject("docId", docId);
+		// forward to the correct location based on type of item
+		ModelAndView modelAndView =  new ModelAndView("jsp/document");
+		
+		modelAndView.addObject("docId", item.getId());
 		modelAndView.addObject("page", page); 
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("jsonURL", jsonURL);
@@ -153,15 +153,114 @@ public class DocumentViewController {
 		modelAndView.addObject("proxyURL", proxyURL);
 		modelAndView.addObject("organisationalCollection", organisationalCollection);
 		modelAndView.addObject("collections", docCollections);
-		
-		Item item = itemFactory.getItemFromId(docId);
+
 		modelAndView.addObject("itemTitle", item.getTitle());
 		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
 		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
 		modelAndView.addObject("itemAbstract", item.getAbstract());
 		
+		modelAndView.addObject("itemFactory", itemFactory);
+		
 		return modelAndView;
 	}
 
+	/**
+	 * View for displaying essay data. 
+	 * 
+	 * @param docId
+	 * @param page
+	 * @param request
+	 * @return
+	 */
+	private ModelAndView setupEssayView(EssayItem item, int page,
+			HttpServletRequest request) {
+
+		if (item == null) {
+			return new ModelAndView("jsp/errors/404");
+		}		
+		
+		List<Collection> docCollections = getCollection(item.getId());
+		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
+	
+
+		// Get proxyURL (if we are using a proxy)
+		String proxyURL = "";
+		if (Properties.getString("useProxy").equals("true")) {
+			proxyURL = Properties.getString("proxyURL");
+		}
+
+		// forward to the correct location based on type of item
+		ModelAndView modelAndView = new ModelAndView("jsp/essay");
+		
+		modelAndView.addObject("docId", item.getId());
+		modelAndView.addObject("proxyURL", proxyURL);
+		modelAndView.addObject("organisationalCollection", organisationalCollection);
+		modelAndView.addObject("collections", docCollections);
+
+		modelAndView.addObject("itemTitle", item.getTitle());
+		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
+		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
+		modelAndView.addObject("itemAbstract", item.getAbstract());
+		
+		modelAndView.addObject("itemFactory", itemFactory);
+		modelAndView.addObject("content", item.getContent());
+		modelAndView.addObject("relatedItems", item.getItemReferences());
+		
+		return modelAndView;
+	}
+	
+	/**
+	 * Get a list of collections that this item is in.
+	 * 
+	 * @param docId
+	 * @return
+	 */
+	private List<Collection> getCollection(String docId) {
+		
+		List<Collection> docCollections = new ArrayList<Collection>();
+		
+				
+		Iterator<Collection> collectionIterator = collectionFactory.getCollections().iterator();
+		while (collectionIterator.hasNext()) {
+			Collection thisCollection = collectionIterator.next();
+			if (thisCollection.getItemIds().contains(docId)) {
+				docCollections.add(thisCollection);		
+			}
+		}
+		
+		return docCollections;
+	}
+
+	/**
+	 * Get the collection from this list we want to appear in the breadcrumb trail.
+	 * 
+	 * @param collections
+	 * @return
+	 */
+	private Collection getBreadcrumbCollection(List<Collection> collections) {	
+		
+		Collection collection = null; 
+		
+		Iterator<Collection> collectionIterator = collections.iterator();
+		while (collectionIterator.hasNext()) {
+				
+			Collection thisCollection = collectionIterator.next();
+			
+			// Stop if this is an organisational collection, else keep
+			// looking
+			if (thisCollection.getType().startsWith("organisation")) {
+				collection = thisCollection;	
+			}		
+			
+		}
+		
+		// If the item is not in any organisational collection set 
+		// the first item in the collections list as it's organisational collection. 
+		if (collection == null && collections.size()>0 ) { 
+			collection = collections.get(0);
+		}
+		
+		return collection;
+	}
 
 }

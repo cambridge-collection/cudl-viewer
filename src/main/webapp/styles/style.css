@@ -797,3 +797,8 @@ ol#vcollections_carousel li {
     margin-bottom: 18px;
 }
 
+/* essay display page */
+.essaytext img {
+    display: inline;
+    margin-bottom: 0px;	
+}

@@ -84,8 +84,33 @@
 				<br />
 			</div>
 		</div>
-
 		<hr />
+
+		<div class="collection collection-science">
+			<div class="grid_4">
+				<a href="/collections/longitude"> <img class="collectionImage"
+					src="/images/collectionsView/collection-longitude.jpg"
+					alt="Board of Longitude" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Board of Longitude</h5>
+				<br /> Cambridge University Library holds the entire archive of the
+				Board of Longitude, the state organization established in the
+				eighteenth century to evaluate methods for finding ships’ position
+				and to encourage a host of projects in instrument design,
+				clock-making, mapping and voyaging.<br /> <br />
+				<a href="/collections/longitude">View collection</a>.<br />
+				<div class="foundations-link-science">
+					<a href="/about#foundations">Foundations of Science<br /> <br /></a>
+				</div>
+				<br />
+				<br />
+
+			</div>
+		</div>
+		<hr />
+		
 
 		<div class="collection collection-faith">
 			<div class="grid_4">
@@ -219,32 +244,6 @@
 			</div>
 		</div>
 		<br />
-		<hr />
-
-		<div class="collection collection-science">
-			<div class="grid_4">
-				<a href="/collections/longitude"> <img class="collectionImage"
-					src="/images/collectionsView/collection-longitude.jpg"
-					alt="Board of Longitude" width="150" height="150" />
-				</a>
-			</div>
-			<div class="grid_8">
-				<h5>Board of Longitude</h5>
-				<br /> Cambridge University Library holds the entire archive of the
-				Board of Longitude, the state organization established in the
-				eighteenth century to evaluate methods for finding ships’ position
-				and to encourage a host of projects in instrument design,
-				clock-making, mapping and voyaging.<br /> <br />
-				<a href="/collections/longitude">View collection</a>.<br />
-				<div class="foundations-link-science">
-					<a href="/about#foundations">Foundations of Science<br /> <br /></a>
-				</div>
-				<br />
-				<br />
-
-			</div>
-		</div>
-
 		<hr />
 
 		<div class="collection">

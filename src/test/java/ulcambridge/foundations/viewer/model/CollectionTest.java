@@ -49,7 +49,7 @@ public class CollectionTest extends TestCase {
 		people.add(p2);
 		people.add(aut);
 
-		Item item = new Item("Test-ID", "Test Title", people,
+		Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
 				"test thumbnail orientation", new JSONObject());
 

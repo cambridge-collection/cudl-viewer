@@ -42,12 +42,13 @@ public class ItemTest extends TestCase {
 		ArrayList<Person> authors = new ArrayList<Person>();
 		authors.add(aut);
 
-		Item item = new Item("Test-ID", "Test Title", authors,
+		Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
 				"test thumbnail orientation", new JSONObject());
 
 		Item item2 = new Item(
 				"Test-ID2",
+				"bookormanuscript",
 				"Test Title",
 				authors,
 				"test shelfLocator",
