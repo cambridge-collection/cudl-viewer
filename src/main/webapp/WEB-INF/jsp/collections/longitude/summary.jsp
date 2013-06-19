@@ -4,9 +4,11 @@
 	List<Collection> subCollections = (List<Collection>) request
 			.getAttribute("subCollections");
 
-    // Proxy url is used for local installations.  Not used on dev or live. 
-    String proxyURL = (String) request.getAttribute("proxyURL");
-    if (proxyURL==null) { proxyURL = ""; }
+	// Proxy url is used for local installations.  Not used on dev or live. 
+	String proxyURL = (String) request.getAttribute("proxyURL");
+	if (proxyURL == null) {
+		proxyURL = "";
+	}
 %>
 <div class="grid_20">
 	<h3 style="margin-left: 8px">Board of Longitude</h3>
@@ -14,20 +16,25 @@
 	<div class="grid_8">
 		<br />
 		<p>The archives of the Royal Greenwich Observatory, held in
-			Cambridge University Library, include the complete run of the survivinh papers
-			of the Board of Longitude through the eighteenth century until its
-			abolition in 1828. These papers throw a vivid light on the role of
-			the British state in encouraging invention and discovery, on the
-			energetic culture of technical ingenuity in the long eighteenth
-			century, and on many aspects of exploration and maritime travel in
-			the Pacific Ocean and the Arctic.</p>
+			Cambridge University Library, include the complete run of the
+			survivinh papers of the Board of Longitude through the eighteenth
+			century until its abolition in 1828. These papers throw a vivid light
+			on the role of the British state in encouraging invention and
+			discovery, on the energetic culture of technical ingenuity in the
+			long eighteenth century, and on many aspects of exploration and
+			maritime travel in the Pacific Ocean and the Arctic.</p>
 
-		<p>This project, a partnership between <a href="http://www.lib.cam.ac.uk">Cambridge University Library</a>,
-			the <a href="http://www1.rmg.co.uk/">National Maritime Museum</a> and the AHRC-funded <a href="http://blogs.rmg.co.uk/longitude/">Board of Longitude Project</a>,
-			presents fully digitised versions of the complete archive and associated materials,
-			alongside detailed metadata, contextual essays, video, educational resources and
-			hundreds of links through to relevant objects in the National Maritime Museum's 
-			online collections.</p>
+		<p>
+			This project, a partnership between <a
+				href="http://www.lib.cam.ac.uk">Cambridge University Library</a>,
+			the <a href="http://www1.rmg.co.uk/">National Maritime Museum</a> and
+			the AHRC-funded <a href="http://blogs.rmg.co.uk/longitude/">Board
+				of Longitude Project</a>, presents fully digitised versions of the
+			complete archive and associated materials, alongside detailed
+			metadata, contextual essays, video, educational resources and
+			hundreds of links through to relevant objects in the National
+			Maritime Museum's online collections.
+		</p>
 
 	</div>
 	<div class="grid_11 right">
@@ -41,18 +48,20 @@
 		</div>
 		<div class="grid_4 right longitudecollectionessays">
 			<h4>&nbsp;</h4>
-			<a href="/collections/longitudeessays"><img src="/images/collectionsView/collection-longitude-essays.jpg" /></a>
+			<a href="/collections/longitudeessays"><img
+				src="/images/collectionsView/collection-longitude-essays.jpg" /></a>
 			<div>
-				In July 1714, an act of parliament established a large prize for
-				discovery of longitude, the determination of position at sea east or
-				west from a fixed meridian line.<br /> <br />
+				This collection of essays provide a rich contextual background to
+				the Longitude material. Covering a wide range of subject matter,
+				they are intended as both a guide and a map to the collection.<br />
+				<br />
 			</div>
 
 		</div>
 		<%
 			for (int i = 0; i < subCollections.size(); i++) {
 				Collection c = subCollections.get(i);
-				
+
 				// skip the essays sub collection, that's displayed separately. 
 				if (c.getId().equals("longitudeessays")) {
 					continue;
@@ -100,10 +109,12 @@
 				</div>
 			</div>
 			<div class="grid_5">
-				<font color="#fff">Log book of HMS 'Resolution'<br/>Map of Easter Island<br/><br/></font>
+				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
+					Easter Island<br /> <br /></font>
 			</div>
 			<div class="grid_4">
-				<font color="#fff">Log book of HMS 'Resolution'<br/>Map of the Norfolk Islands<br/><br/></font>
+				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
+					the Norfolk Islands<br /> <br /></font>
 			</div>
 			<div class="grid_5">
 				<div class="parent_featured_item_image_box">
@@ -129,24 +140,30 @@
 				</div>
 			</div>
 			<div class="grid_5">
-				<font color="#fff">Log book of HMS 'Resolution'<br/>Map of the Isles of the Friendly People<br/><br/></font>
+				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
+					the Isles of the Friendly People<br /> <br /></font>
 			</div>
 			<div class="grid_4">
-				<font color="#fff">Log book of HMS 'Resolution'<br/>Wales reports sightings of whales , penguins<br/><br/></font>
+				<font color="#fff">Log book of HMS 'Resolution'<br />Wales
+					reports sightings of whales , penguins<br /> <br /></font>
 			</div>
 		</div>
 
-		<div class="grid_4 right longitudecollectionstories">			
-		   <img src="/images/collectionsView/collection-longitude-stories.jpg" />
-		   <div>Stories from the archive <br/><br/></div>
+		<div class="grid_4 right longitudecollectionstories">
+			<img src="/images/collectionsView/collection-longitude-stories.jpg" />
+			<div>
+				Stories from the archive <br /> <br />
+			</div>
 
 		</div>
-		
-		
-		<div class="grid_4 right longitudecollectionschools">			
+
+
+		<div class="grid_4 right longitudecollectionschools">
 			<img src="/images/collectionsView/collection-longitude-schools.jpg" />
-			<div>Ideas for teaching the Board of Longitude <br/><br/></div>
-		</div>		
+			<div>
+				Ideas for teaching the Board of Longitude <br /> <br />
+			</div>
+		</div>
 
 	</div>
 
