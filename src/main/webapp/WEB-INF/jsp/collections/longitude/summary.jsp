@@ -14,7 +14,7 @@
 	<div class="grid_8">
 		<br />
 		<p>The archives of the Royal Greenwich Observatory, held in
-			Cambridge University Library, include the complete run of the papers
+			Cambridge University Library, include the complete run of the survivinh papers
 			of the Board of Longitude through the eighteenth century until its
 			abolition in 1828. These papers throw a vivid light on the role of
 			the British state in encouraging invention and discovery, on the
