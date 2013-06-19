@@ -189,6 +189,12 @@ public class DocumentViewController {
 			proxyURL = Properties.getString("proxyURL");
 		}
 
+		// Get parent collection if there is one. 
+		Collection parent = null;
+		if (organisationalCollection.getParentCollectionId() != null) {
+			parent = collectionFactory.getCollectionFromId(organisationalCollection.getParentCollectionId());
+		}
+		
 		// forward to the correct location based on type of item
 		ModelAndView modelAndView = new ModelAndView("jsp/essay");
 		
@@ -205,6 +211,7 @@ public class DocumentViewController {
 		modelAndView.addObject("itemFactory", itemFactory);
 		modelAndView.addObject("content", item.getContent());
 		modelAndView.addObject("relatedItems", item.getItemReferences());
+		modelAndView.addObject("parentCollection", parent);
 		
 		return modelAndView;
 	}
