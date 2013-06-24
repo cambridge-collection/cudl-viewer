@@ -123,17 +123,28 @@ cudl.beforeTabShown = function(thisTab) {
 			
 		thisTab.el.dom.children[0].src = cachedURL;
 	}
-
 }
 
 cudl.afterTabShown = function () {
 
+    var activeTab = cudl.viewportComponents.rightTabPanel.activeTab.el;
+	
+	// Horrible Hack for Chrome bug Issue 236043: iframe in a div has incorrect height
+	// https://code.google.com/p/chromium/issues/detail?id=236043	
+	if (activeTab.id == "transcription_normal") {
+		document.getElementById("transcription_normal_frame").style.height = activeTab.dom.style.height;	
+	} else 
+	if (activeTab.id == "transcription_diplomatic") {
+		document.getElementById("transcription_diplomatic_frame").style.height = activeTab.dom.style.height;	
+	}	
+	// end of hack. 
+	
 	// Unmask tab if required
-	if (cudl.viewportComponents.rightTabPanel.activeTab.el
-			&& cudl.viewportComponents.rightTabPanel.activeTab.el.unmask) {
-
-		cudl.viewportComponents.rightTabPanel.activeTab.el.unmask();
+	if (activeTab && activeTab.unmask) {
+		
+		activeTab.unmask();
 	}
+	
 }
 
 /**
@@ -226,8 +237,6 @@ cudl.setupViewport = function () {
 			// Create iframe and set target to be the transcription URL. 
 			var iframe = document.createElement("iframe");
 			iframe.setAttribute('id', 'transcription_diplomatic_frame');
-			iframe.setAttribute('width', '100%');
-			iframe.setAttribute('height', '100%');
 			iframe.setAttribute('src', cudl.data.allTranscriptionDiplomaticURL); 
             document.getElementById('transcription_diplomatic').appendChild(iframe);
 					
@@ -251,8 +260,6 @@ cudl.setupViewport = function () {
 			// Create iframe and set target to be the transcription URL. 
 			var iframe = document.createElement("iframe");
 			iframe.setAttribute('id', 'transcription_normal_frame');
-			iframe.setAttribute('width', '100%');
-			iframe.setAttribute('height', '100%');
 			iframe.setAttribute('src', cudl.data.allTranscriptionNormalisedURL); 
             document.getElementById('transcription_normal').appendChild(iframe);
 								
@@ -397,9 +404,7 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 	if (!document.getElementById(element)) {
 		var div = document.createElement("div");
 		div.style.display='none';
-		div.setAttribute("id", element);
-		div.setAttribute('width', '100%');
-		div.setAttribute('height', '100%');
+		div.setAttribute("id", element);	
 		document.body.appendChild(div);
 	} else {
 		document.getElementById(element).style.display='none';
@@ -420,8 +425,6 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 		var iframe = document.createElement("iframe");
 		iframe.setAttribute('id', element + '_frame');
 		iframe.setAttribute('onload', 'cudl.afterTabShown()');
-		iframe.setAttribute('width', '100%');
-		iframe.setAttribute('height', '100%');
 		iframe.setAttribute('src', '/transcription?url=&doc='); // needed for validation of HTML
 
 		// validation.
