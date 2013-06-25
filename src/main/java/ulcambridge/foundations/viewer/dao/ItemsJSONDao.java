@@ -196,19 +196,23 @@ public class ItemsJSONDao implements ItemsDao {
 		String authority = null;
 		String authorityURI = null;
 		String valueURI = null;
+		String fullForm = null;
+		String type = null;
 		try {
 			for (int i = 0; i < json.length(); i++) {
 				JSONObject personJSON = json.getJSONObject(i);
-				String fullForm = personJSON.getString("fullForm");
+				
 				String shortForm = personJSON.getString("shortForm");
 				try {
+					fullForm = personJSON.getString("fullForm");
 					authority = personJSON.getString("authority");
 					authorityURI = personJSON.getString("authorityURI");
 					valueURI = personJSON.getString("valueURI");
+					type = personJSON.getString("type");
 				} catch (JSONException e) {
 					/* ignore if not present */
 				}
-				String type = personJSON.getString("type");
+				
 				Person person = new Person(fullForm, shortForm, authority,
 						authorityURI, valueURI, type, role);
 				people.add(person);
