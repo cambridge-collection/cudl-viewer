@@ -14,11 +14,34 @@
 
 		<security:intercept-url pattern="/auth/login/"
 			access="permitAll" />
-		<security:intercept-url pattern="/admin/**"
+		<security:intercept-url pattern="/auth/denied/"
+			access="permitAll" />		
+			
+        <!--  restrict entire site -->						
+		<!-- <security:intercept-url pattern="/"
 			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/view/**"
+			access="hasRole('ROLE_ADMIN')" />	
+		<security:intercept-url pattern="/collections/**"
+			access="hasRole('ROLE_ADMIN')" />		
 		<security:intercept-url pattern="/mylibrary/**"
-			access="hasRole('ROLE_USER')" />
-
+			access="hasRole('ROLE_ADMIN')" />	
+		<security:intercept-url pattern="/help/**"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/about/**"
+			access="hasRole('ROLE_ADMIN')" />	
+		<security:intercept-url pattern="/news/**"
+			access="hasRole('ROLE_ADMIN')" />			
+		<security:intercept-url pattern="/contributors/**"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/terms/**"
+			access="hasRole('ROLE_ADMIN')" />			
+		<security:intercept-url pattern="/search**"
+			access="hasRole('ROLE_ADMIN')" /> -->	 
+			
+		<security:intercept-url pattern="/mylibrary/**"
+			access="hasRole('ROLE_USER')" /> 	
+						
 		<!-- Adding the openid-login tag activates Spring Security's support for 
 			OpenID -->
 		<security:openid-login login-page="/auth/login/"
