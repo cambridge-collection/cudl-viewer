@@ -206,6 +206,19 @@ ol#index_carousel li {
 	border-color: #333;
 }
 
+/* disabled collection */
+.featuredcollectiondisabled {
+	opacity:0.5;	
+}
+
+.featuredcollectiondisabled:hover .featuredcollectionlabellong {
+	border-color: #FFF;	
+}
+
+.featuredcollectiondisabled:hover img {
+	border-color: #FFF;	
+}
+
 .collectionImage {
 	margin-left: 0px;
 	margin-right: 14px;

@@ -66,6 +66,11 @@
 				if (c.getId().equals("longitudeessays")) {
 					continue;
 				}
+
+				// skip the nmm print sub collection, that's displayed separately. 
+				if (c.getId().equals("nmm_print")) {
+					continue;
+				}
 		%>
 
 		<div class="featuredcollection grid_3">
@@ -78,18 +83,21 @@
 			}
 		%>
 
+		<!--  disabled nmm print collection -->
+		<div class="featuredcollection featuredcollectiondisabled grid_3">
+			<img width="128px" height="128px"
+				src="/images/collectionsView/collection-longitude-nmm_print.jpg">
+			<span class="featuredcollectionlabellong">National Maritime
+				Museum Print Works</span>
+
+		</div>
+
 		<div class="grid_4 box"
 			style="height: 545px; border-style: solid; border-color: #FFFFFF; border-left-width: 4px;">
-			These collections contain:<br/><br/>
-			
-162 volumes<br/>
-48,596 images<br/><br/>
-
-1337 people<br/>
-777 places<br/><br/>
- 
- ... more to do. 
-			</div>
+			These collections contain:<br /> <br /> 162 volumes<br /> 48,596
+			images<br /> <br /> 1337 people<br /> 777 places<br /> <br />
+			... more to do.
+		</div>
 
 		<div class="grid_10">
 			<h4>Featured Items</h4>
