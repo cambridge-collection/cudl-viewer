@@ -9,7 +9,7 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="National Maritime Museum Print Works"
+			src="/images/collectionsView/nmm_print.jpg" alt="National Maritime Museum Print Works"
 			width="150" height="225" />
 
 	</div>

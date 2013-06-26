@@ -9,7 +9,7 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="Papers of the Board of Longitude"
+			src="/images/collectionsView/rgo14.jpg" alt="Papers of the Board of Longitude"
 			width="150" height="225" />
 
 	</div>

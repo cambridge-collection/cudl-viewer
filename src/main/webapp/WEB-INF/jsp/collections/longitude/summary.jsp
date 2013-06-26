@@ -79,8 +79,17 @@
 		%>
 
 		<div class="grid_4 box"
-			style="height: 545px; border-style: solid; border-color: #FFFFFF; border-left-width: 4px;">Some
-			Collection Statistics</div>
+			style="height: 545px; border-style: solid; border-color: #FFFFFF; border-left-width: 4px;">
+			These collections contain:<br/><br/>
+			
+162 volumes<br/>
+48,596 images<br/><br/>
+
+1337 people<br/>
+777 places<br/><br/>
+ 
+ ... more to do. 
+			</div>
 
 		<div class="grid_10">
 			<h4>Featured Items</h4>
@@ -100,10 +109,10 @@
 			<div class="grid_4">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00058/309"> <img
-							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00252_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00058">
+						<a href="/view/MS-RGO-00014-00053/543"> <img
+							style="width: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00053-000-00543_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00053">
 						</a>
 					</div>
 				</div>
@@ -113,16 +122,16 @@
 					Easter Island<br /> <br /></font>
 			</div>
 			<div class="grid_4">
-				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
-					the Norfolk Islands<br /> <br /></font>
+				<font color="#fff">Illustrations of the system of the world <br />
+					<br /></font>
 			</div>
 			<div class="grid_5">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00058/251"> <img
+						<a href="/view/MS-RGO-00014-00038/391"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00252_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00058">
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00038-000-00391_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00038">
 						</a>
 					</div>
 				</div>
@@ -131,21 +140,21 @@
 			<div class="grid_4">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00058/24"> <img
+						<a href="/view/MS-RGO-00014-00067/90"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00025_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00058">
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00067-000-00090_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00067">
 						</a>
 					</div>
 				</div>
 			</div>
 			<div class="grid_5">
-				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
-					the Isles of the Friendly People<br /> <br /></font>
+				<font color="#fff">Joseph Bonasera's scheme for an instrument
+					entitled the longitude horizon<br /> <br />
+				</font>
 			</div>
 			<div class="grid_4">
-				<font color="#fff">Log book of HMS 'Resolution'<br />Wales
-					reports sightings of whales , penguins<br /> <br /></font>
+				<font color="#fff">Computations of lunar distance<br /> <br /></font>
 			</div>
 		</div>
 

@@ -9,7 +9,7 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/longitude.jpg" alt="Papers of John Pond"
+			src="/images/collectionsView/rgo5.jpg" alt="Papers of John Pond"
 			width="150" height="225" />
 
 	</div>
