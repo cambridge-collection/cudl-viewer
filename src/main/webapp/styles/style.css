@@ -283,6 +283,29 @@ ol#index_carousel li {
 	border-color: #333;
 }
 
+/** related item - used on essay page */
+.relatedItem {
+	width: 192px;
+	margin-bottom:8px;
+	border-width:2px;
+	border-color: #eee;
+	border-style: solid;
+	padding:4px;
+}
+	
+.relatedItem a {
+	text-decoration: none;
+	position: relative;
+}
+
+.relatedItem img {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #333;
+
+}
+
+
 .foundations-link-faith,.foundations-link-faith a {
 	color: #8f7722;
 	position: absolute;
@@ -486,7 +509,6 @@ ol#search_carousel li {
 	float: right;
 	width: 180px;
 	height: 180px;
-	margin-left: 14px;
 	background: #000000;
 	padding: 5px;
 	border-style: solid;
