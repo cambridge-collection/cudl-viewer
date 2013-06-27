@@ -21,9 +21,11 @@ public class SearchUtil {
 			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
 			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
 			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
+			params += "&amp;shelfLocator=" + URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
 			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
 			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
 			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
+			params += "&amp;location=" + URLEncoder.encode(searchForm.getLocation(), "UTF-8");
 			
 			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
 				params += "&amp;yearStart=" + searchForm.getYearStart();
@@ -57,9 +59,11 @@ public class SearchUtil {
 			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
 			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
 			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
+			params += "&amp;shelfLocator=" + URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
 			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
 			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
 			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
+			params += "&amp;location=" + URLEncoder.encode(searchForm.getLocation(), "UTF-8");
 			
 			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
 				params += "&amp;yearStart=" + searchForm.getYearStart();
