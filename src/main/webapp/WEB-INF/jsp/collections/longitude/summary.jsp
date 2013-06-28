@@ -39,71 +39,144 @@
 	</div>
 	<div class="grid_11 right">
 		<iframe width="510" height="345"
-			src="http://www.youtube.com/embed/videoseries?list=PL49D9939209E5BAEC&showinfo=1&modestbranding=1"
+			src="http://www.youtube.com/embed/videoseries?list=PL49D9939209E5BAEC&showinfo=1&modestbranding=1&rel=0"
 			frameborder="0" allowfullscreen></iframe>
 	</div>
-	<div class="grid_20">
-		<div class="grid_15">
-			<h4>Board of Longitude Collections</h4>
-		</div>
-		<div class="grid_4 right longitudecollectionessays">
-			<h4>&nbsp;</h4>
-			<a href="/collections/longitudeessays"><img
-				src="/images/collectionsView/collection-longitude-essays.jpg" /></a>
-			<div>
-				This collection of essays provide a rich contextual background to
-				the Longitude material. Covering a wide range of subject matter,
-				they are intended as both a guide and a map to the collection.<br />
-				<br />
-			</div>
 
-		</div>
+	<div class="grid_20">
+		<h4>Board of Longitude Collections</h4>
+	</div>
+	<div class="grid_20" style="margin-left: -4px; margin-bottom: 18px">
 		<%
 			for (int i = 0; i < subCollections.size(); i++) {
 				Collection c = subCollections.get(i);
 
-				// skip the essays sub collection, that's displayed separately. 
-				if (c.getId().equals("longitudeessays")) {
-					continue;
-				}
-
 				// skip the nmm print sub collection, that's displayed separately. 
 				if (c.getId().equals("nmm_print")) {
-					continue;
+		%>
+		<!--  disabled nmm print collection -->
+		<div
+			class="longitudefeaturedcollection longitudefeaturedcollectiondisabled grid_3">
+			<img width="128px" height="128px"
+				src="/images/collectionsView/collection-longitude-nmm_print.jpg">
+			<span class="featuredcollectionlabel">National Maritime Museum
+				Print Works</span>
+
+		</div>
+		<%
+			continue;
 				}
 		%>
 
-		<div class="featuredcollection grid_3">
+		<div class="longitudefeaturedcollection grid_3">
 			<a href="<%=c.getURL()%>"><img
 				src="/images/collectionsView/collection-longitude-<%=c.getId()%>.jpg"
 				height="128px" width="128px" /> <span
-				class="featuredcollectionlabellong"><%=c.getTitle()%></span></a>
+				class="featuredcollectionlabel"><%=c.getTitle()%></span></a>
 		</div>
 		<%
 			}
 		%>
 
-		<!--  disabled nmm print collection -->
-		<div class="featuredcollection featuredcollectiondisabled grid_3">
-			<img width="128px" height="128px"
-				src="/images/collectionsView/collection-longitude-nmm_print.jpg">
-			<span class="featuredcollectionlabellong">National Maritime
-				Museum Print Works</span>
+	</div>
 
-		</div>
+	<div class="grid_5">
+		<h4>Collection statistics</h4>
+	</div>
+
+	<div class="grid_14">
+		<h4>Featured Items</h4>
+	</div>
+
+	<div>
 
 		<div class="grid_4 box"
 			style="height: 545px; border-style: solid; border-color: #FFFFFF; border-left-width: 4px;">
-			These collections contain:<br /> <br /> 162 volumes<br /> 48,596
-			images<br /> <br /> 1337 people<br /> 777 places<br /> <br />
-			... more to do.
+
+			<!--  summary -->
+			<div class="longitudestatisticstitle">Board of Longitude
+				Collection</div>
+			<div class="longitudestatistics">
+				<ul>
+					<li>48,596 images</li>
+					<li>162 volumes</li>
+					<li>304 ships</li>
+					<li>1337 people</li>
+					<li>777 places</li>
+				</ul>
+			</div>
+
+			<!-- Ships -->
+			<div class="longitudestatisticstitle">Ships mentioned most</div>
+			<div class="longitudestatistics">
+				<ol>
+					<li><a
+						href="/search?keyword=HMS+Investigator&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+							Investigator, survey sloop</a></li>
+					<li><a
+						href="/search?keyword=Daedalus&facetCollection=Papers+of+the+Board+of+Longitude">Daedalus,
+							store ship</a></li>
+					<li><a
+						href="/search?keyword=HMS+Providence&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+							Providence, sloop</a></li>
+					<li><a
+						href="/search?keyword=HMS+Hecla&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+							Hecla, bomb vessel</a></li>
+					<li><a
+						href="/search?keyword=HMS+Discovery&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+							Discovery</a></li>
+				</ol>
+			</div>
+
+			<!-- Places -->
+			<div class="longitudestatisticstitle">Places mentioned most</div>
+			<div class="longitudestatistics">
+				<ol>
+					<li><a
+						href="/search/advanced/results?location=London&facetCollection=Papers+of+the+Board+of+Longitude">London</a></li>
+					<li><a
+						href="/search/advanced/results?location=Greenwich&facetCollection=Papers+of+the+Board+of+Longitude">Greenwich</a></li>
+					<li><a
+						href="/search/advanced/results?location=Portsmouth&facetCollection=Papers+of+the+Board+of+Longitude">Portsmouth</a></li>
+					<li><a
+						href="/search/advanced/results?location=Cape+Town&facetCollection=Papers+of+the+Board+of+Longitude">Cape
+							Town</a></li>
+					<li><a
+						href="/search/advanced/results?location=Australia&facetCollection=Papers+of+the+Board+of+Longitude">Australia</a></li>
+
+				</ol>
+			</div>
+
+
+			<!--  People mentioned -->
+			<div class="longitudestatisticstitle">People mentioned most</div>
+			<div class="longitudestatistics">
+				<ol>
+					<li><a
+						href="/search?keyword=Sir+John+Barrow&facetCollection=Papers+of+the+Board+of+Longitude">Sir
+							John Barrow</a></li>
+					<li><a
+						href="/search?keyword=Thomas+Young&facetCollection=Papers+of+the+Board+of+Longitude">Thomas
+							Young</a></li>
+					<li><a
+						href="/search?keyword=John+Croker&facetCollection=Papers+of+the+Board+of+Longitude">John
+							Croker</a></li>
+					<li><a
+						href="/search?keyword=Nevil+Maskelyne&facetCollection=Papers+of+the+Board+of+Longitude">Nevil
+							Maskelyne</a></li>
+					<li><a
+						href="/search?keyword=Thomas+Taylor&facetCollection=Papers+of+the+Board+of+Longitude">Thomas
+							Taylor</a></li>
+
+				</ol>
+			</div>
+
+
 		</div>
 
-		<div class="grid_10">
-			<h4>Featured Items</h4>
-		</div>
-		<div class="grid_10 longitudefeaturedItemsBox">
-			<div class="grid_5">
+
+		<div class="grid_14 longitudefeaturedItemsBox">
+			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/203"> <img
@@ -114,7 +187,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="grid_4">
+			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00053/543"> <img
@@ -125,15 +198,45 @@
 					</div>
 				</div>
 			</div>
-			<div class="grid_5">
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00038/391"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00038-000-00391_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00038">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="longitudefeatureditem">
 				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
 					Easter Island<br /> <br /></font>
 			</div>
-			<div class="grid_4">
+			<div class="longitudefeatureditem">
 				<font color="#fff">Illustrations of the system of the world <br />
-					<br /></font>
+					<br />
+				</font>
 			</div>
-			<div class="grid_5">
+			<div class="longitudefeatureditem">
+				<font color="#fff">Joseph Bonasera's scheme for an instrument
+					entitled the longitude horizon<br /> <br />
+				</font>
+			</div>
+
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00067/90"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00067-000-00090_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00067">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00038/391"> <img
@@ -145,7 +248,7 @@
 				</div>
 			</div>
 
-			<div class="grid_4">
+			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00067/90"> <img
@@ -156,33 +259,45 @@
 					</div>
 				</div>
 			</div>
-			<div class="grid_5">
+			<div class="longitudefeatureditem">
+				<font color="#fff">Computations of lunar distance<br /> <br /></font>
+			</div>
+
+			<div class="longitudefeatureditem">
 				<font color="#fff">Joseph Bonasera's scheme for an instrument
 					entitled the longitude horizon<br /> <br />
 				</font>
 			</div>
-			<div class="grid_4">
+			<div class="longitudefeatureditem">
 				<font color="#fff">Computations of lunar distance<br /> <br /></font>
 			</div>
 		</div>
-
-		<div class="grid_4 right longitudecollectionstories">
-			<img src="/images/collectionsView/collection-longitude-stories.jpg" />
-			<div>
-				Stories from the archive <br /> <br />
-			</div>
-
-		</div>
-
-
-		<div class="grid_4 right longitudecollectionschools">
-			<img src="/images/collectionsView/collection-longitude-schools.jpg" />
-			<div>
-				Ideas for teaching the Board of Longitude <br /> <br />
-			</div>
-		</div>
-
 	</div>
 
+	<div class="grid_20">
+
+		<div class="grid_9">
+			<div class="grid_4">
+				<img src="/images/collectionsView/collection-longitude-stories.jpg" />
+			</div>
+			<div class="grid_4">
+				Section with example stories and links. <br /> <br /> Lorem ipsum
+				dolor sit amet, consectetur adipiscing elit. In ac sagittis arcu.
+				Praesent ut felis massa. Pellentesque libero erat.
+			</div>
+		</div>
+
+		<div class="grid_10 right">
+			<div class="grid_4">
+			<img src="/images/collectionsView/collection-longitude-schools.jpg" />
+			</div>
+			<div class="grid_5">
+				Section with example ideas for teaching the Board of Longitude and
+				links. <br /> <br /> Lorem ipsum
+				dolor sit amet, consectetur adipiscing elit. In ac sagittis arcu.
+				Praesent ut felis massa. Pellentesque libero erat.
+			</div>
+		</div>
+	</div>
 
 </div>

@@ -182,43 +182,6 @@ ol#index_carousel li {
 	border-color: #fff;
 }
 
-.featuredcollection .featuredcollectionlabellong {
-	z-index: 10;
-	width: 118px;
-	display: block;
-	padding: 5px;
-	position: absolute;
-	color: #eee;
-	bottom: 8px;
-	height: 60px;
-	left: 0px;
-	background: #333;
-	float: left;
-	border-style: solid;
-	border-top-width: 0px;
-	border-left-width: 4px;
-	border-right-width: 4px;
-	border-bottom-width: 4px;
-	border-color: #fff;
-}
-
-.featuredcollection:hover .featuredcollectionlabellong {
-	border-color: #333;
-}
-
-/* disabled collection */
-.featuredcollectiondisabled {
-	opacity:0.5;	
-}
-
-.featuredcollectiondisabled:hover .featuredcollectionlabellong {
-	border-color: #FFF;	
-}
-
-.featuredcollectiondisabled:hover img {
-	border-color: #FFF;	
-}
-
 .collectionImage {
 	margin-left: 0px;
 	margin-right: 14px;
@@ -801,31 +764,10 @@ ol#vcollections_carousel li {
 }
 
 /* longitude collection page */
-.longitudecollectionessays img{
-	padding-top: 4px;
-	height:174px;
-	width:174px;
-}
-
-.longitudecollectionschools img{
-	height:174px;
-	width:174px;
-}
-.longitudecollectionschools div{
-	margin-top:-20px;
-}
-
-.longitudecollectionstories img{
-	height:174px;
-	width:174px;
-}
-.longitudecollectionstories div{
-	margin-top:-20px;
-}
 
 .longitudefeaturedItemsBox {
-	height: 500px;
-	width: 450px;
+	height: 546px;
+	width: 666px;
 	background: none repeat scroll 0 0 #333333;
 	overflow: hidden;
     padding: 18px 16px 9px;
@@ -836,4 +778,103 @@ ol#vcollections_carousel li {
 .essaytext img {
     display: inline;
     margin-bottom: 0px;	
+}
+
+.longitudestatistics {
+	margin-bottom:8px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ccc;
+	color:#666;
+	margin-bottom: 15px;
+}
+.longitudestatistics a{
+	color:#666;
+}
+
+.longitudestatistics ul{
+    margin-bottom: 0px;
+}
+.longitudestatistics ol {
+    margin-bottom: 0px;
+    padding-left: 25px;
+}
+
+.longitudestatisticstitle{
+	text-align:left;
+	margin-bottom:0px;
+	padding-left:8px;
+	color:#fff;
+	background-color:#ccc;
+	border-color: #ccc;
+	font-weight: bold;
+	margin-bottom: 0px;
+}
+
+.longitudefeaturedcollection {
+	margin-right:15px;
+	margin-left:14px;
+}
+
+/* longitude sub collections */
+.longitudefeaturedcollection img {
+	opacity: 1.0;
+	position: relative;
+	margin-bottom: 58px;
+	border-style: solid;
+	border-top-width: 4px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 0px;
+	border-color: #fff;
+}
+
+.longitudefeaturedcollection:hover img {
+	border-color: #333;
+}
+
+.longitudefeaturedcollection .featuredcollectionlabel {
+	z-index: 10;
+	width: 118px;
+	display: block;
+	padding: 5px;
+	position: absolute;
+	color: #eee;
+	bottom: 8px;
+	height: 60px;
+	left: 0px;
+	background: #333;
+	float: left;
+	border-style: solid;
+	border-top-width: 0px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 4px;
+	border-color: #fff;
+}
+
+.longitudefeaturedcollection:hover .featuredcollectionlabel {
+	border-color: #333;
+}
+
+/* longitude disabled collection */
+.longitudefeaturedcollectiondisabled:hover .featuredcollectionlabel {
+	border-color: #FFF;	
+}
+
+.longitudefeaturedcollectiondisabled {
+	opacity:0.5;	
+}
+
+.longitudefeaturedcollectiondisabled:hover img {
+	border-color: #FFF;	
+}
+
+.longitudefeatureditem {
+	width: 205px;
+    display: inline;
+    float: left;
+    margin-left: 8px;
+    margin-right: 8px;
+    position: relative;	
 }
