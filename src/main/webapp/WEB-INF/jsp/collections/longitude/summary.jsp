@@ -80,7 +80,7 @@
 
 	</div>
 
-	<div class="grid_5">
+	<div class="grid_5" style="width:210px">
 		<h4>Collection statistics</h4>
 	</div>
 
