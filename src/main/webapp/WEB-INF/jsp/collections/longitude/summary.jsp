@@ -239,10 +239,10 @@
 			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00038/391"> <img
+						<a href="/view/MS-ADM-L-C-00082/100"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00038-000-00391_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00038">
+							src="<%=proxyURL%>/content/images/MS-ADM-L-C-00082-000-00100_files/8/0_0.jpg"
+							alt="MS-ADM-L-C-00082">
 						</a>
 					</div>
 				</div>
@@ -251,10 +251,10 @@
 			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00067/90"> <img
+						<a href="/view/MS-SAN-F-00004/1"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00067-000-00090_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00067">
+							src="<%=proxyURL%>/content/images/MS-SAN-F-00004-000-00001_files/8/0_0.jpg"
+							alt="MS-SAN-F-00004">
 						</a>
 					</div>
 				</div>
@@ -264,12 +264,12 @@
 			</div>
 
 			<div class="longitudefeatureditem">
-				<font color="#fff">Joseph Bonasera's scheme for an instrument
-					entitled the longitude horizon<br /> <br />
+				<font color="#fff">Captain Proctor's log showing longitudes
+					from H1 on its first official sea trial, 1736<br /> <br />
 				</font>
 			</div>
 			<div class="longitudefeatureditem">
-				<font color="#fff">Computations of lunar distance<br /> <br /></font>
+				<font color="#fff">Letter to the Earl of Sandwich about timekeepers including K1<br /> <br /></font>
 			</div>
 		</div>
 	</div>
@@ -289,13 +289,13 @@
 
 		<div class="grid_10 right">
 			<div class="grid_4">
-			<img src="/images/collectionsView/collection-longitude-schools.jpg" />
+				<img src="/images/collectionsView/collection-longitude-schools.jpg" />
 			</div>
 			<div class="grid_5">
 				Section with example ideas for teaching the Board of Longitude and
-				links. <br /> <br /> Lorem ipsum
-				dolor sit amet, consectetur adipiscing elit. In ac sagittis arcu.
-				Praesent ut felis massa. Pellentesque libero erat.
+				links. <br /> <br /> Lorem ipsum dolor sit amet, consectetur
+				adipiscing elit. In ac sagittis arcu. Praesent ut felis massa.
+				Pellentesque libero erat.
 			</div>
 		</div>
 	</div>
