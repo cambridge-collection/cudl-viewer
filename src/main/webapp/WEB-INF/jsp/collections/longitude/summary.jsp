@@ -80,7 +80,7 @@
 
 	</div>
 
-	<div class="grid_5" style="width:210px">
+	<div class="grid_5" style="width: 210px">
 		<h4>Collection statistics</h4>
 	</div>
 
@@ -251,8 +251,7 @@
 			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-SAN-F-00004/1"> <img
-							style="height: 100%"
+						<a href="/view/MS-SAN-F-00004/1"> <img style="height: 100%"
 							src="<%=proxyURL%>/content/images/MS-SAN-F-00004-000-00001_files/8/0_0.jpg"
 							alt="MS-SAN-F-00004">
 						</a>
@@ -269,7 +268,9 @@
 				</font>
 			</div>
 			<div class="longitudefeatureditem">
-				<font color="#fff">Letter to the Earl of Sandwich about timekeepers including K1<br /> <br /></font>
+				<font color="#fff">Letter to the Earl of Sandwich about
+					timekeepers including K1<br /> <br />
+				</font>
 			</div>
 		</div>
 	</div>
@@ -277,26 +278,17 @@
 	<div class="grid_20">
 
 		<div class="grid_9">
-			<div class="grid_4">
-				<img src="/images/collectionsView/collection-longitude-stories.jpg" />
-			</div>
-			<div class="grid_4">
-				Section with example stories and links. <br /> <br /> Lorem ipsum
-				dolor sit amet, consectetur adipiscing elit. In ac sagittis arcu.
-				Praesent ut felis massa. Pellentesque libero erat.
-			</div>
+			<img
+				src="/images/collectionsView/collection-longitude-archivestories.jpg"
+				width="454px" height="150px" />
+
 		</div>
 
 		<div class="grid_10 right">
-			<div class="grid_4">
-				<img src="/images/collectionsView/collection-longitude-schools.jpg" />
-			</div>
-			<div class="grid_5">
-				Section with example ideas for teaching the Board of Longitude and
-				links. <br /> <br /> Lorem ipsum dolor sit amet, consectetur
-				adipiscing elit. In ac sagittis arcu. Praesent ut felis massa.
-				Pellentesque libero erat.
-			</div>
+			<img
+				src="/images/collectionsView/collection-longitude-educationalresources.jpg"
+				width="454px" height="150px" />
+
 		</div>
 	</div>
 
