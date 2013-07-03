@@ -764,6 +764,10 @@ ol#vcollections_carousel li {
 }
 
 /* longitude collection page */
+.nmm_icon {
+	margin-bottom: 0px;
+	display:inline;
+}
 
 .longitudefeaturedItemsBox {
 	height: 546px;
@@ -775,7 +779,6 @@ ol#vcollections_carousel li {
 }
 
 /* essay display page */
-
 .longitudestatistics {
 	margin-bottom:8px;
 	border-style: solid;
@@ -818,7 +821,7 @@ ol#vcollections_carousel li {
 	position: relative;
 	margin-bottom: 58px;
 	border-style: solid;
-	border-top-width: 4px;
+	border-top-width: 4px;essaymetadata
 	border-left-width: 4px;
 	border-right-width: 4px;
 	border-bottom-width: 0px;
@@ -873,4 +876,10 @@ ol#vcollections_carousel li {
     margin-left: 8px;
     margin-right: 8px;
     position: relative;	
+}
+
+.longitudeessaymetadata {
+	background: none repeat scroll 0 0 #DBE8F1;
+	line-height: 200%;
+	padding:15px;
 }

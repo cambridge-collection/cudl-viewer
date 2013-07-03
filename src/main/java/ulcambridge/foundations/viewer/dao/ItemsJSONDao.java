@@ -147,7 +147,12 @@ public class ItemsJSONDao implements ItemsDao {
 	private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
 		
 		String content = "";
-		List<String> relatedItems = null;
+		List<String> relatedItems = new ArrayList<String>();
+		List<String> associatedPeople = new ArrayList<String>();
+		List<String> associatedPlaces = new ArrayList<String>();
+		List<String> associatedOrganisations = new ArrayList<String>();
+		List<String> associatedSubjects = new ArrayList<String>();
+		JSONObject descriptiveMetadata = null;
 		
 		try {
 			
@@ -157,7 +162,7 @@ public class ItemsJSONDao implements ItemsDao {
 			// Get essay content
 			content = page0.getString("content");
 			
-			JSONObject descriptiveMetadata = itemJson.getJSONArray(
+			descriptiveMetadata = itemJson.getJSONArray(
 					"descriptiveMetadata").getJSONObject(0);
 			
 			// Get list of related items
@@ -168,14 +173,46 @@ public class ItemsJSONDao implements ItemsDao {
 				relatedItems.add(itemRef.getString("ID"));
 			}
 			
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}			
+			
 
+		try { 
+			// Associated people			
+			associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
+					.getJSONObject("associated").getJSONArray("value"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}			
+			
+		try { 		
+			// Associated Places
+			associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
+					.getJSONObject("places").getJSONArray("value"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}				
+
+		try { 			
+			// Associated Organisations
+			associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
+					.getJSONObject("associatedCorps").getJSONArray("value"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}					
+			
+		try {
+			// Associated Subjects
+			associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
+					.getJSONObject("subjects").getJSONArray("value"));				
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
 		return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
 			 parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(), 
-			 content, relatedItems);
+			 content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects);
 	}
 
 	/**
@@ -212,7 +249,7 @@ public class ItemsJSONDao implements ItemsDao {
 				} catch (JSONException e) {
 					/* ignore if not present */
 				}
-				
+				new ArrayList<String>();
 				Person person = new Person(fullForm, shortForm, authority,
 						authorityURI, valueURI, type, role);
 				people.add(person);
@@ -226,5 +263,42 @@ public class ItemsJSONDao implements ItemsDao {
 
 		return people;
 	}
+	
+	/**
+	 * This method takes a JSONArray and returns a list of the displayForm for
+	 * each visible item. 
+	 * 
+	 * @param json
+	 * @return
+	 */
+	private List<String> getDisplayFormFromJSON(JSONArray json) {
+
+		ArrayList<String> displayForms = new ArrayList<String>();
+
+		if (json == null) {
+			return displayForms;
+		}
+
+		try {
+			for (int i = 0; i < json.length(); i++) {
+				JSONObject objectJSON = json.getJSONObject(i);
+				
+				if (objectJSON.getString("display")!=null 
+						&& objectJSON.getString("display").equals("true")) {
+					
+					String displayForm = objectJSON.getString("displayForm");
+					displayForms.add(displayForm);
+				}							
+			}
+
+		} catch (JSONException e) {
+
+			System.err.println("Error processing: " + json);
+			e.printStackTrace();
+		}
+
+		return displayForms;
+	}
+	
 
 }

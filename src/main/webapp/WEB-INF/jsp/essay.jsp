@@ -19,6 +19,9 @@
 			.getAttribute("relatedItems");
 	ItemFactory itemFactory = (ItemFactory) request
 			.getAttribute("itemFactory");
+	
+	EssayItem essayItem = (EssayItem) request
+			.getAttribute("essayItem");	
 %>
 <nav id="navSecondary" class="grid_20">
 	<ul>
@@ -50,6 +53,49 @@
 			<h3 style="margin-left: 8px"><%=itemTitle%></h3>
 			<div class="grid_12 essaytext">
 				<img class="left" src="<%=itemThumbnailURL%>"/><%=content%>
+			</div>
+			<div class="grid_12 longitudeessaymetadata">
+			    
+			    <%  if (essayItem.getAssociatedPeople()!=null 
+			           && essayItem.getAssociatedPeople().size()>0) { %>			    				    
+			      <strong>Associated People</strong>: <% 
+			      for (String person: essayItem.getAssociatedPeople()) { %> 
+			          <a href="/search?keyword=<%=person %>"><%=person %></a>;&nbsp;			          
+			    <% 
+			        
+			      }
+			    }
+			    
+			    if (essayItem.getAssociatedOrganisations()!=null 
+			           && essayItem.getAssociatedOrganisations().size()>0) { %>		
+			      <br/><br/>	    
+			      <strong>Organisations</strong>: <% 
+			      for (String organisation: essayItem.getAssociatedOrganisations()) { %> 
+			          <a href="/search?keyword=<%=organisation %>"><%=organisation %></a>;&nbsp;			          
+			      <%
+			      }
+			    }
+			    
+			    if (essayItem.getAssociatedSubjects()!=null 
+			           && essayItem.getAssociatedSubjects().size()>0) { %>	
+			    <br/><br/>		   
+			    <strong>Subjects</strong>:  <% 
+			    for (String subject: essayItem.getAssociatedSubjects()) { %> 
+			          <a href="/search/advanced/results?subject=<%=subject %>"><%=subject %></a>;&nbsp;		          
+			    <% 
+			      } 
+			    }
+			    
+			    if (essayItem.getAssociatedPlaces()!=null 
+			           && essayItem.getAssociatedPlaces().size()>0) { %>	
+                <br/><br/>			           			    
+			    <strong>Places</strong>:  <% 
+			    for (String place: essayItem.getAssociatedPlaces()) { %> 
+			          <a href="/search/advanced/results?location=<%=place %>"><%=place %></a>;&nbsp;		          
+			    <% 
+			      }
+			    }
+			    %>  
 			</div>
 		</div>
 

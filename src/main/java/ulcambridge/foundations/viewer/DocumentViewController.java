@@ -215,6 +215,7 @@ public class DocumentViewController {
 		modelAndView.addObject("relatedItems", item.getItemReferences());
 		modelAndView.addObject("parentCollection", parent);
 		
+		modelAndView.addObject("essayItem", item);
 		return modelAndView;
 	}
 	
