@@ -207,6 +207,8 @@ public class DocumentViewController {
 		modelAndView.addObject("itemAuthors", new JSONArray(item.getAuthorNames()));
 		modelAndView.addObject("itemAuthorsFullform", new JSONArray(item.getAuthorNamesFullForm()));
 		modelAndView.addObject("itemAbstract", item.getAbstract());
+		modelAndView.addObject("itemThumbnailURL", item.getThumbnailURL());
+		modelAndView.addObject("itemThumbnailOrientation", item.getThumbnailOrientation());
 		
 		modelAndView.addObject("itemFactory", itemFactory);
 		modelAndView.addObject("content", item.getContent());

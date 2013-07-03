@@ -13,6 +13,8 @@
 			.getAttribute("parentCollection");
 	String itemTitle = (String) request.getAttribute("itemTitle");
 	String content = (String) request.getAttribute("content");
+	String itemThumbnailURL = (String) request.getAttribute("itemThumbnailURL");
+	String itemThumbnailOrientation = (String) request.getAttribute("itemThumbnailOrientation");
 	List<String> relatedItems = (List<String>) request
 			.getAttribute("relatedItems");
 	ItemFactory itemFactory = (ItemFactory) request
@@ -47,7 +49,7 @@
 
 			<h3 style="margin-left: 8px"><%=itemTitle%></h3>
 			<div class="grid_12 essaytext">
-				<%=content%>
+				<img class="left" src="<%=itemThumbnailURL%>"/><%=content%>
 			</div>
 		</div>
 
