@@ -117,10 +117,10 @@
 						href="/search?keyword=Daedalus&facetCollection=Papers+of+the+Board+of+Longitude">Daedalus,
 							store ship</a></li>
 					<li><a
-						href="/search?keyword=HMS+Providence&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=Providence&facetCollection=Papers+of+the+Board+of+Longitude">HMS
 							Providence, sloop</a></li>
 					<li><a
-						href="/search?keyword=HMS+Hecla&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=Hecla&facetCollection=Papers+of+the+Board+of+Longitude">HMS
 							Hecla, bomb vessel</a></li>
 					<li><a
 						href="/search?keyword=HMS+Discovery&facetCollection=Papers+of+the+Board+of+Longitude">HMS
