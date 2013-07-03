@@ -84,6 +84,8 @@ function pageinit() {
 						  } else if (item.thumbnailOrientation=="landscape") {
 							imageDimensions = " style='width:100%' ";
 						  }
+						  var title = item.title;
+						  if (result.itemType=="essay") {title = "Essay: "+title;}
 							
 				    	  var itemDiv = document.createElement('div');
 				    	  itemDiv.setAttribute("class", "collections_carousel_item");
@@ -91,7 +93,7 @@ function pageinit() {
 				        "<div class='collections_carousel_image'>"+
 				        "<a href='/view/" +item.id+ "/"+result.startPage+"'><img src='" +result.pageThumbnailURL+ "' alt='" +item.id+ "' "+
 				        imageDimensions+ " > </a></div></div> "+
-				        "<div class='collections_carousel_text grid_8'><h5>" +item.title+ " <font style='color:#999'>(" +item.shelfLocator+ " Page: "+result.startPageLabel+")</font></h5> "+item.abstractShort+
+				        "<div class='collections_carousel_text grid_8'><h5>" +title+ " <font style='color:#999'>(" +item.shelfLocator+ " Page: "+result.startPageLabel+")</font></h5> "+item.abstractShort+
 				        " ... <br/><br/><ul>";
 				        
 					    for (var j=0; j<result.snippets.length; j++) {		

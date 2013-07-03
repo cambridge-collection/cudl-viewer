@@ -177,38 +177,29 @@ public class ItemsJSONDao implements ItemsDao {
 			e.printStackTrace();
 		}			
 			
-
 		try { 
 			// Associated people			
 			associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
 					.getJSONObject("associated").getJSONArray("value"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}			
+		} catch (JSONException e) { /* not always present */ }		
 			
 		try { 		
 			// Associated Places
 			associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
 					.getJSONObject("places").getJSONArray("value"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}				
+		} catch (JSONException e) { /* not always present */ }				
 
 		try { 			
 			// Associated Organisations
 			associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
 					.getJSONObject("associatedCorps").getJSONArray("value"));
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}					
+		} catch (JSONException e) { /* not always present */ }		
 			
 		try {
 			// Associated Subjects
 			associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
 					.getJSONObject("subjects").getJSONArray("value"));				
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		} catch (JSONException e) { /* not always present */ }		
 		
 		return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
 			 parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(), 

@@ -57,7 +57,6 @@ public class XTFSearch implements Search {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
 		try {
-
 			DocumentBuilder db = dbf.newDocumentBuilder();
 
 			return db.parse(url);
@@ -312,7 +311,10 @@ public class XTFSearch implements Search {
 		int startPage = 0;
 		String startPageLabel = "";
 		List<String> snippets = new ArrayList<String>();
-
+		String itemType = "bookormanuscript"; // default		
+		String thumbnailURL = null;		
+		String thumbnailOrientation = null;
+		
 		// look at all the child tags
 		if (node.getNodeName().equals("docHit")) {
 
@@ -339,11 +341,24 @@ public class XTFSearch implements Search {
 				String snippet = getValueInHTML(snippetNode);
 				snippets.add(snippet);
 			}
+			
+			// itemType
+			if (node.getElementsByTagName("itemType").item(0)!=null) {
+				itemType = getValueInText(node.getElementsByTagName("itemType").item(0));
+			}
+			
+			// Thumbnail
+			if (node.getElementsByTagName("thumbnailUrl").item(0)!=null) {
+				thumbnailURL = getValueInText(node.getElementsByTagName("thumbnailUrl").item(0));
+			}	
+			if (node.getElementsByTagName("thumbnailOrientation").item(0)!=null) {
+				thumbnailOrientation = getValueInText(node.getElementsByTagName("thumbnailOrientation").item(0));
+			}
 
 		}
 
 		return new SearchResult(title, id, startPage, startPageLabel,
-				snippets, score);
+				snippets, score, itemType, thumbnailURL, thumbnailOrientation);
 
 	}
 

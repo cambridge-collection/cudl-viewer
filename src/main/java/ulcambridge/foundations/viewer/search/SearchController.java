@@ -59,15 +59,16 @@ public class SearchController {
 
 	// on /search path
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
-	public ModelAndView processSearch(@Valid SearchForm searchForm) throws MalformedURLException {
-		
+	public ModelAndView processSearch(@Valid SearchForm searchForm)
+			throws MalformedURLException {
+
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
-		
+
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("form", searchForm);
 		modelAndView.addObject("results", results);
-		
+
 		return modelAndView;
 	}
 
@@ -82,9 +83,11 @@ public class SearchController {
 	 * @throws MalformedURLException
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
-	public ModelAndView advancedSearch(@Valid @ModelAttribute SearchForm searchForm,
-			BindingResult bindingResult, HttpSession session) throws MalformedURLException {
-		
+	public ModelAndView advancedSearch(
+			@Valid @ModelAttribute SearchForm searchForm,
+			BindingResult bindingResult, HttpSession session)
+			throws MalformedURLException {
+
 		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
 		modelAndView.addObject("form", searchForm);
 		return modelAndView;
@@ -101,12 +104,14 @@ public class SearchController {
 	 * @throws MalformedURLException
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
-	public ModelAndView processAdvancedSearch(@ModelAttribute @Valid SearchForm searchForm,
-			 BindingResult bindingResult, HttpSession session) throws MalformedURLException {
-		
+	public ModelAndView processAdvancedSearch(
+			@ModelAttribute @Valid SearchForm searchForm,
+			BindingResult bindingResult, HttpSession session)
+			throws MalformedURLException {
+
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
-		
+
 		ModelAndView modelAndView = new ModelAndView(
 				"jsp/search-advancedresults");
 		modelAndView.addObject("form", searchForm);
@@ -124,7 +129,8 @@ public class SearchController {
 			@RequestParam("end") int endIndex, HttpServletRequest request)
 			throws MalformedURLException {
 
-		SearchResultSet results = this.search.makeSearch(searchForm, startIndex, endIndex);
+		SearchResultSet results = this.search.makeSearch(searchForm,
+				startIndex, endIndex);
 
 		// Put chosen search results into an array.
 		JSONArray jsonArray = new JSONArray();
@@ -138,53 +144,70 @@ public class SearchController {
 				Item item = itemFactory.getItemFromId(searchResult.getFileId());
 
 				// Make a JSON object that contains information about the
-				// matching item and information about the result snippets 
+				// matching item and information about the result snippets
 				// and pages that match.
 				JSONObject itemJSON = new JSONObject();
-				itemJSON.put("item", item.getSimplifiedJSON());				
+				itemJSON.put("item", item.getSimplifiedJSON());
 				itemJSON.put("startPage", searchResult.getStartPage());
 				itemJSON.put("startPageLabel", searchResult.getStartPageLabel());
-				
+				itemJSON.put("itemType", searchResult.getType());
+
 				// Make an array for the snippets.
 				JSONArray resultsArray = new JSONArray();
 
-				for (String snippet: searchResult.getSnippets()) {				  
-					resultsArray.add(snippet.trim());				 
+				for (String snippet : searchResult.getSnippets()) {
+					resultsArray.add(snippet.trim());
 				}
-				
-				itemJSON.put("snippets", resultsArray);			
-				
-				// Page Thumbnails
-				String pageThumbnail = "";
-				org.json.JSONObject page = null;
-				try {
-				  page = (org.json.JSONObject) item.getJSON().getJSONArray("pages").get(searchResult.getStartPage()-1);
-			    } catch (JSONException e) {	e.printStackTrace(); }	
-				
-				try {
-					if (page!=null && page.get("displayImageURL")!=null)  {
+
+				itemJSON.put("snippets", resultsArray);
+
+				// Page Thumbnails.  Use specified thumbnail if possible. 
+				if (searchResult.getThumbnailURL() != null) {
 					
-					  // FIXME super hacky way to get the page thumbnail URL until we can read it from json.
-				      pageThumbnail = page.get("displayImageURL").toString().replace(".dzi", "_files/8/0_0.jpg");
-					  
-					  if (Properties.getString("useProxy").equals("true")) {
-						  pageThumbnail = Properties.getString("proxyURL")
-									+ pageThumbnail;
-					  }
-						
+					String pageThumbnail = searchResult.getThumbnailURL();
+					if (Properties.getString("useProxy").equals("true")) {
+						pageThumbnail = Properties
+								.getString("proxyURL") + pageThumbnail;
 					}					
-				} catch (JSONException e) {
+					itemJSON.put("pageThumbnailURL", pageThumbnail);
 					
-					// displayImageURL not found, which throws an exception. 
-	 				pageThumbnail = "/images/collectionsView/no-thumbnail.jpg";	 				
-					
-				}
-								  
-				  	
-				//} catch (JSONException e) {	e.printStackTrace(); }	
-				itemJSON.put("pageThumbnailURL", pageThumbnail);
-				// End Page Thumbnails
-				
+				} else {
+					String pageThumbnail = "";
+					org.json.JSONObject page = null;
+					try {
+						page = (org.json.JSONObject) item.getJSON()
+								.getJSONArray("pages")
+								.get(searchResult.getStartPage() - 1);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+
+					try {
+						if (page != null && page.get("displayImageURL") != null) {
+
+							// FIXME super hacky way to get the page thumbnail
+							// URL until we can read it from json.
+							pageThumbnail = page.get("displayImageURL")
+									.toString()
+									.replace(".dzi", "_files/8/0_0.jpg");
+
+							if (Properties.getString("useProxy").equals("true")) {
+								pageThumbnail = Properties
+										.getString("proxyURL") + pageThumbnail;
+							}
+
+						}
+					} catch (JSONException e) {
+
+						// displayImageURL not found, which throws an exception.
+						pageThumbnail = "/images/collectionsView/no-thumbnail.jpg";
+
+					}
+
+					itemJSON.put("pageThumbnailURL", pageThumbnail);
+
+				}// End Page Thumbnails
+
 				jsonArray.add(itemJSON);
 			}
 		}

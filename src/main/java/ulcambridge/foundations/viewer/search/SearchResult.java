@@ -12,9 +12,12 @@ import java.util.List;
 public class SearchResult implements Comparable<SearchResult> {
 
 	private String title;
+	private String type;
 	private String fileId;
 	private int startPage;
 	private String startPageLabel;
+	private String thumbnailURL;
+	private String thumbnailOrientation;
 	private List<String> snippets;
 	private int score; // how relevant is this result, used for ordering.
 
@@ -23,7 +26,7 @@ public class SearchResult implements Comparable<SearchResult> {
 
 	public SearchResult(String title, String fileId, int startPage,
 			String startPageLabel, List<String> snippets,
-			int score) {
+			int score, String type, String thumbnailURL, String thumbnailOrientation) {
 
 		this.title = title;
 		this.fileId = fileId;
@@ -31,7 +34,9 @@ public class SearchResult implements Comparable<SearchResult> {
 		this.startPageLabel = startPageLabel;		
 		this.snippets = snippets;
 		this.score = score;		
-
+		this.type = type;
+		this.thumbnailURL = thumbnailURL;
+		this.thumbnailOrientation = thumbnailOrientation;
 	}
 
 	public String getTitle() {
@@ -64,6 +69,17 @@ public class SearchResult implements Comparable<SearchResult> {
 		return snippets;
 	}
 	
+	public String getType() {
+		return type;
+	}
+	
+	public String getThumbnailURL() {
+		return thumbnailURL;
+	}
+	
+	public String getThumbnailOrientation() {
+		return thumbnailOrientation;
+	}
 	
 	/**
 	 * Search Results are considered the same if they have the same ID. So are
