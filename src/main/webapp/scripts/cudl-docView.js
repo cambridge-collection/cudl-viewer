@@ -259,6 +259,8 @@ cudl.docView = function() {
 				cudl.view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
+				
+				document.getElementById("metadata-rights-link").href=descriptiveMetadata.imageReproPageURL;
 
 				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
