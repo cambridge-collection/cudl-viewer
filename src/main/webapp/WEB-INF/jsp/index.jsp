@@ -358,17 +358,18 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Page-by-page searching"
-					title="Page-by-page searching"
-					src="/images/index/news-searchpagebypage.jpg" height="100" width="100"></a>
+					alt="Board of Longitude"
+					title="Board of Longitude"
+					src="/images/index/news-boardoflongitude-small.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">1/05/2013</span>
+				<span class="date">18/07/2013</span>
 				<h5>
-					<a href="/news">Page-by-page searching</a></h5>
+					<a href="/news">50,000 more images for Board of Longitude Collection</a></h5>
 <p>
-				Fundamental changes have been made to the search functionality, giving clearer page-by-page results with thumbnail images. 
+				Videos, Essays, hundreds more volumes and teaching resources have been 
+				added to the <a href="/collections/longitude">Board of Longitude Collection</a>. 
 			</p>					
 				
 			</div>

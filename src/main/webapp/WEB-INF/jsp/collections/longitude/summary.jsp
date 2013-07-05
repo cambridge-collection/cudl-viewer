@@ -278,14 +278,14 @@
 	<div class="grid_20">
 
 		<div class="grid_9">
-			<a href="http://www.rmg.co.uk/boardoflongitude"><img
+			<a href="http://www.rmg.co.uk/boardoflongitude" target="_blank"><img
 				src="/images/collectionsView/collection-longitude-archivestories.jpg"
 				width="454px" height="150px" /></a>
 
 		</div>
 
 		<div class="grid_10 right">
-			<a href="http://www.rmg.co.uk/boardoflongitude/schools"><img
+			<a href="http://www.rmg.co.uk/boardoflongitude/schools" target="_blank"><img
 				src="/images/collectionsView/collection-longitude-educationalresources.jpg"
 				width="454px" height="150px" /></a>
 

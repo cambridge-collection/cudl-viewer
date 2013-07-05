@@ -19,6 +19,25 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
+			<img alt="Board of Longitude" title="Board of Longitude"
+				src="/images/index/news-boardoflongitude.jpg" height="200"
+				width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">18/07/2013</span>
+			<h4>50,000 more images for the Board of Longitude Collection</h4>
+			<p>
+				Videos, Essays, hundreds more volumes and teaching resources have been 
+				added to the <a href="/collections/longitude">Board of Longitude Collection</a>.  
+			</p>
+
+		</div>
+
+		<hr />
+		
+		
+		<div class="grid_5">
 			<img alt="Page-by-page searching" title="Page-by-page searching"
 				src="/images/index/news-searchpagebypage.jpg" height="200"
 				width="200">
