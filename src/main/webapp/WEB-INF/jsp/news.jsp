@@ -26,17 +26,27 @@
 
 		<div class="grid_8">
 			<span class="date">18/07/2013</span>
-			<h4>50,000 more images for the Board of Longitude Collection</h4>
+			<h4>Launch of the Board of Longitude Collection</h4>
 			<p>
-				Videos, Essays, hundreds more volumes and teaching resources have been 
-				added to the <a href="/collections/longitude">Board of Longitude Collection</a>.  
+				With the official launch of our Jisc-funded <a
+					href="/collections/longitude">Board of Longitude</a> project, we
+				are releasing the full digitised archive of the Board and
+				accompanying material, comprising almost 50,000 images. These papers
+				throw a vivid light on the role of the British state in encouraging
+				invention and discovery, on the energetic culture of technical
+				ingenuity in the long eighteenth century, and on many aspects of
+				exploration and maritime travel in the Pacific Ocean and the Arctic.
+				The digitised material is supported by a detailed framework of
+				metadata, summaries, essays, videos and educational resources to
+				create a rich and exciting resource for researchers, teachers,
+				students and the general public.
 			</p>
 
 		</div>
 
 		<hr />
-		
-		
+
+
 		<div class="grid_5">
 			<img alt="Page-by-page searching" title="Page-by-page searching"
 				src="/images/index/news-searchpagebypage.jpg" height="200"
@@ -47,9 +57,10 @@
 			<span class="date">1/05/2013</span>
 			<h4>Page-by-page searching</h4>
 			<p>
-				Fundamental changes have been made to the <a href="/search?keyword=illustration">search functionality</a>,
-				giving clearer page-by-page results with thumbnail images. <br />
-				<br />The Virtual Exhibitions site is now live at <a
+				Fundamental changes have been made to the <a
+					href="/search?keyword=illustration">search functionality</a>,
+				giving clearer page-by-page results with thumbnail images. <br /> <br />The
+				Virtual Exhibitions site is now live at <a
 					href="https://exhibitions.lib.cam.ac.uk/" target="_blank">https://exhibitions.lib.cam.ac.uk/</a>
 				and links have been added to relevant items to integrate with the
 				Digital Library.

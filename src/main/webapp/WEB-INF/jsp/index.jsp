@@ -366,10 +366,10 @@
 			<div>
 				<span class="date">18/07/2013</span>
 				<h5>
-					<a href="/news">50,000 more images for Board of Longitude Collection</a></h5>
-<p>
-				Videos, Essays, hundreds more volumes and teaching resources have been 
-				added to the <a href="/collections/longitude">Board of Longitude Collection</a>. 
+					<a href="/news">Launch of the Board of Longitude Collection</a></h5>
+            <p>
+				We are releasing the <a href="/collections/longitude">full digitised archive</a> of the Board and
+				accompanying material, comprising almost 50,000 images. 
 			</p>					
 				
 			</div>

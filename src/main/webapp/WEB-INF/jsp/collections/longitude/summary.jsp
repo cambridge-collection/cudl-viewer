@@ -9,7 +9,9 @@
 	if (proxyURL == null) {
 		proxyURL = "";
 	}
+	
 %>
+
 <div class="grid_20">
 	<h3 style="margin-left: 8px">Board of Longitude</h3>
 
@@ -39,7 +41,7 @@
 	</div>
 	<div class="grid_11 right">
 		<iframe width="510" height="345"
-			src="http://www.youtube.com/embed/videoseries?list=PL49D9939209E5BAEC&showinfo=1&modestbranding=1&rel=0"
+			src="//www.youtube.com/embed/Ey_jsHOZH2Q?list=PLBO5xEgOdGVLTZ_ErwnA9AyvNZ4PP1Jlz&showinfo=1&modestbranding=1&rel=0"
 			frameborder="0" allowfullscreen></iframe>
 	</div>
 
@@ -111,19 +113,19 @@
 			<div class="longitudestatistics">
 				<ol>
 					<li><a
-						href="/search?keyword=HMS+Investigator&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=HMS+Investigator">HMS
 							Investigator, survey sloop</a></li>
 					<li><a
-						href="/search?keyword=Daedalus&facetCollection=Papers+of+the+Board+of+Longitude">Daedalus,
+						href="/search?keyword=Daedalus">Daedalus,
 							store ship</a></li>
 					<li><a
-						href="/search?keyword=Providence&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=Providence">HMS
 							Providence, sloop</a></li>
 					<li><a
-						href="/search?keyword=Hecla&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=Hecla">HMS
 							Hecla, bomb vessel</a></li>
 					<li><a
-						href="/search?keyword=HMS+Discovery&facetCollection=Papers+of+the+Board+of+Longitude">HMS
+						href="/search?keyword=HMS+Discovery">HMS
 							Discovery</a></li>
 				</ol>
 			</div>
@@ -133,16 +135,16 @@
 			<div class="longitudestatistics">
 				<ol>
 					<li><a
-						href="/search/advanced/results?location=London&facetCollection=Papers+of+the+Board+of+Longitude">London</a></li>
+						href="/search/advanced/results?location=London">London</a></li>
 					<li><a
-						href="/search/advanced/results?location=Greenwich&facetCollection=Papers+of+the+Board+of+Longitude">Greenwich</a></li>
+						href="/search/advanced/results?location=Greenwich">Greenwich</a></li>
 					<li><a
-						href="/search/advanced/results?location=Portsmouth&facetCollection=Papers+of+the+Board+of+Longitude">Portsmouth</a></li>
+						href="/search/advanced/results?location=Portsmouth">Portsmouth</a></li>
 					<li><a
-						href="/search/advanced/results?location=Cape+Town&facetCollection=Papers+of+the+Board+of+Longitude">Cape
+						href="/search/advanced/results?location=Cape+Town">Cape
 							Town</a></li>
 					<li><a
-						href="/search/advanced/results?location=Australia&facetCollection=Papers+of+the+Board+of+Longitude">Australia</a></li>
+						href="/search/advanced/results?location=Australia">Australia</a></li>
 
 				</ol>
 			</div>
@@ -153,19 +155,19 @@
 			<div class="longitudestatistics">
 				<ol>
 					<li><a
-						href="/search?keyword=Sir+John+Barrow&facetCollection=Papers+of+the+Board+of+Longitude">Sir
+						href="/search?keyword=Sir+John+Barrow">Sir
 							John Barrow</a></li>
 					<li><a
-						href="/search?keyword=Thomas+Young&facetCollection=Papers+of+the+Board+of+Longitude">Thomas
+						href="/search?keyword=Thomas+Young">Thomas
 							Young</a></li>
 					<li><a
-						href="/search?keyword=John+Croker&facetCollection=Papers+of+the+Board+of+Longitude">John
+						href="/search?keyword=John+Croker">John
 							Croker</a></li>
 					<li><a
-						href="/search?keyword=Nevil+Maskelyne&facetCollection=Papers+of+the+Board+of+Longitude">Nevil
+						href="/search?keyword=Nevil+Maskelyne">Nevil
 							Maskelyne</a></li>
 					<li><a
-						href="/search?keyword=Thomas+Taylor&facetCollection=Papers+of+the+Board+of+Longitude">Thomas
+						href="/search?keyword=Thomas+Taylor">Thomas
 							Taylor</a></li>
 
 				</ol>
@@ -179,98 +181,94 @@
 			<div class="longitudefeatureditem">
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00058/203"> <img
-							style="width: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00204_files/8/0_0.jpg"
+						<a href="/view/MS-RGO-00014-00051/358"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00051-000-00359_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00051">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00024/451"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00024-000-00451_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00024">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00039/83"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00039-000-00083_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00083">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="longitudefeatureditem">
+				<p>Matthew Flinders on the naming of Australia<br /> <br /></p>
+			</div>
+			<div class="longitudefeatureditem">
+				<p>Captain Bligh on the loss of his timekeeper to mutineers <br />
+					<br />
+				</p>
+			</div>
+			<div class="longitudefeatureditem">
+				<p>Drawings of globe instruments including a movable compass<br /> <br />
+				</p>
+			</div>
+
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-MM-00006-00048/368"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-MM-00006-00048-000-00368_files/8/0_0.jpg"
+							alt="MS-MM-00006-00368">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00044/197"> <img
+							style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00044-000-00197_files/8/0_0.jpg"
+							alt="MS-RGO-00014-00197">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="longitudefeatureditem">
+				<div class="parent_featured_item_image_box">
+					<div class="parent_featured_item_image">
+						<a href="/view/MS-RGO-00014-00058/255"> <img style="height: 100%"
+							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00256_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>
 				</div>
 			</div>
 			<div class="longitudefeatureditem">
-				<div class="parent_featured_item_image_box">
-					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00053/543"> <img
-							style="width: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00053-000-00543_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00053">
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="longitudefeatureditem">
-				<div class="parent_featured_item_image_box">
-					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00038/391"> <img
-							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00038-000-00391_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00038">
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="longitudefeatureditem">
-				<font color="#fff">Log book of HMS 'Resolution'<br />Map of
-					Easter Island<br /> <br /></font>
-			</div>
-			<div class="longitudefeatureditem">
-				<font color="#fff">Illustrations of the system of the world <br />
-					<br />
-				</font>
-			</div>
-			<div class="longitudefeatureditem">
-				<font color="#fff">Joseph Bonasera's scheme for an instrument
-					entitled the longitude horizon<br /> <br />
-				</font>
+				<p>William Gooch's sketch of a 'Chief of Ohitahoo'<br /> <br /></p>
 			</div>
 
 			<div class="longitudefeatureditem">
-				<div class="parent_featured_item_image_box">
-					<div class="parent_featured_item_image">
-						<a href="/view/MS-RGO-00014-00067/90"> <img
-							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00067-000-00090_files/8/0_0.jpg"
-							alt="MS-RGO-00014-00067">
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="longitudefeatureditem">
-				<div class="parent_featured_item_image_box">
-					<div class="parent_featured_item_image">
-						<a href="/view/MS-ADM-L-C-00082/100"> <img
-							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-ADM-L-C-00082-000-00100_files/8/0_0.jpg"
-							alt="MS-ADM-L-C-00082">
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="longitudefeatureditem">
-				<div class="parent_featured_item_image_box">
-					<div class="parent_featured_item_image">
-						<a href="/view/MS-SAN-F-00004/1"> <img style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-SAN-F-00004-000-00001_files/8/0_0.jpg"
-							alt="MS-SAN-F-00004">
-						</a>
-					</div>
-				</div>
+				<p>Lieutenant Couch's Callista<br /> <br />
+				</p>
 			</div>
 			<div class="longitudefeatureditem">
-				<font color="#fff">Computations of lunar distance<br /> <br /></font>
-			</div>
-
-			<div class="longitudefeatureditem">
-				<font color="#fff">Captain Proctor's log showing longitudes
-					from H1 on its first official sea trial, 1736<br /> <br />
-				</font>
-			</div>
-			<div class="longitudefeatureditem">
-				<font color="#fff">Letter to the Earl of Sandwich about
-					timekeepers including K1<br /> <br />
-				</font>
+				<p>First map of Palliser's Islands from Cook's Second Voyage<br /> <br />
+				</p>
 			</div>
 		</div>
 	</div>
