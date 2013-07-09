@@ -2,8 +2,8 @@
 <div class="grid_10">
 	<h3 style="margin-left: 8px">Longitude Essays</h3>
 	<blockquote class="grid_5 omega print">
-		The Papers of the Board of Longitude … will probably form one of the most curious collections of the results of scientific enterprise, both normal and abnormal, which exists" <br />
-		<br /> <cite>George Airy, Astronomer Royal, 1858<br /> </cite>
+		Here are several ways of finding the Longitude; some of them certainly will be right, tho' they have never appeared in any publication" <br />
+		<br /> <cite><a href="/view/MS-RGO-00014-00040/89">Richard Judson, clerk of Beverley in Yorkshire, 15 May 1805</a><br /> </cite>
 
 	</blockquote>
 	<br /> <br />
