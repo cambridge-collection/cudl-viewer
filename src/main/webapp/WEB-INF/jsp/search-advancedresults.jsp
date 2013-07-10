@@ -114,11 +114,13 @@ function pageinit() {
 			 
 				      }	     
 				      
+	           	       /*
 	           	       $('.collections_carousel_text').truncate({  
 	           	    	    max_length: 260,  
 		           	        more: "view more",  
 		           	        less: "hide"
 		           	    }); 
+	           	       */ 
                 }
             });
 		
