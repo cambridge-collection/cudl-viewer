@@ -9,12 +9,20 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
 	Collection collection = (Collection) request.getAttribute("organisationalCollection");
+	Collection parentCollection = (Collection) request.getAttribute("parentCollection");
 	String collectionURL = "";
 	String collectionTitle = "";
+	String parentCollectionURL = "";
+	String parentCollectionTitle = "";
 	
 	if (collection!=null) {
 		collectionURL = collection.getURL();
 		collectionTitle = collection.getTitle();
+	}
+	
+	if (parentCollection!=null) {
+		parentCollectionURL = parentCollection.getURL();
+		parentCollectionTitle = parentCollection.getTitle();
 	}
 %>
 <NOSCRIPT>
@@ -42,9 +50,11 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 	// Read in Attributes
 	cudl.collectionURL = "<%=collectionURL%>";
 	cudl.collectionTitle = "<%=collectionTitle%>";	
+	cudl.parentCollectionURL = "<%=parentCollectionURL%>";
+	cudl.parentCollectionTitle = "<%=parentCollectionTitle%>";	
 	cudl.itemTitle = "${itemTitle}";
 	cudl.itemAuthors = ${itemAuthors};
-	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}
+	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}	
 
 </script>
 

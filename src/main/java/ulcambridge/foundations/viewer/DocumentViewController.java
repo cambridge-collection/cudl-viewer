@@ -161,6 +161,13 @@ public class DocumentViewController {
 		
 		modelAndView.addObject("itemFactory", itemFactory);
 		
+		// Get parent collection if there is one. 
+		Collection parent = null;
+		if (organisationalCollection.getParentCollectionId() != null) {
+			parent = collectionFactory.getCollectionFromId(organisationalCollection.getParentCollectionId());
+		}
+		modelAndView.addObject("parentCollection", parent);
+		
 		return modelAndView;
 	}
 

@@ -166,7 +166,11 @@ cudl.setupViewport = function () {
 	if (tbTitle.length > titleLimit) {
 		tbTitle = tbTitle.substring(0, titleLimit) + "...";
 	}
-	var docTitle = '<a href="' + cudl.collectionURL + '">' + cudl.collectionTitle
+	var docTitle = '';
+	if (cudl.parentCollectionTitle && cudl.parentCollectionURL) {
+		docTitle += '<a href="' + cudl.parentCollectionURL + '">'+ cudl.parentCollectionTitle+ '</a> > '; 
+	}
+	docTitle += '<a href="' + cudl.collectionURL + '">' + cudl.collectionTitle
 			+ '</a> > <b>' + tbTitle + '</b>';
 
 
