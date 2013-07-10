@@ -369,7 +369,7 @@
 					<a href="/news">Launch of the Board of Longitude Collection</a></h5>
             <p>
 				We are releasing the <a href="/collections/longitude">full digitised archive</a> of the Board and
-				accompanying material, comprising almost 50,000 images. 
+				accompanying material. 
 			</p>					
 				
 			</div>

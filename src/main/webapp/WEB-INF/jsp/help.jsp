@@ -106,7 +106,7 @@
 						href="http://www.goobi.org/" target="_blank">Goobi</a> for
 					digitising and indexing the data. The website was created by the
 					digital library team at Cambridge University Library and is written
-					in Java. You can find out more by contacting the Development Team
+					in Java. You can find out more by contacting the Digital Library Team
 					(see our <a href="/contributors/">Contributors Page</a> for details on how to do this).
 				</p>
 

@@ -9,10 +9,10 @@
 		title="Privacy"> Privacy </a>
 	</li>
 	<li><a
-		href="http://www.cam.ac.uk/site/"
+		href="http://www.cam.ac.uk/about-this-site/accessibility"
 		title="Accessibility"> Accessibility </a>
 	</li>
-	<li><a href="/terms/" title="Terms & Conditions"> Terms &
+	<li><a href="/terms/" title="Terms & Conditions"> Terms &amp;
 			Conditions </a>
 	</li>
 </ul>

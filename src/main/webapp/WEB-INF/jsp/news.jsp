@@ -31,15 +31,14 @@
 				With the official launch of our Jisc-funded <a
 					href="/collections/longitude">Board of Longitude</a> project, we
 				are releasing the full digitised archive of the Board and
-				accompanying material, comprising almost 50,000 images. These papers
-				throw a vivid light on the role of the British state in encouraging
-				invention and discovery, on the energetic culture of technical
-				ingenuity in the long eighteenth century, and on many aspects of
-				exploration and maritime travel in the Pacific Ocean and the Arctic.
-				The digitised material is supported by a detailed framework of
-				metadata, summaries, essays, videos and educational resources to
-				create a rich and exciting resource for researchers, teachers,
-				students and the general public.
+				accompanying material. These papers throw a vivid light on the role
+				of the British state in encouraging invention and discovery, on the
+				energetic culture of technical ingenuity in the long eighteenth
+				century, and on many aspects of exploration and maritime travel in
+				the Pacific Ocean and the Arctic. The digitised material is
+				supported by a detailed framework of metadata, summaries, essays,
+				videos and educational resources to create a rich and exciting
+				resource for researchers, teachers, students and the general public.
 			</p>
 
 		</div>

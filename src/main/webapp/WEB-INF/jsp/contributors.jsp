@@ -38,20 +38,21 @@
 				<img src="/images/jisc.gif" title="JISC" />
 			</div>
 			<div class="grid_13">
-				<b>JISC</b> (Joint Information Systems Committee) awarded a grant to
-				Cambridge University Library and the Newton Project at the
-				University of Sussex for the <a
+				<b>Jisc</b> awarded a grant to Cambridge University Library and the
+				Newton Project at the University of Sussex for the <a
 					href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/econtent11/windows.aspx"
 					target="_blank">Windows on Genius</a> project (<a
 					href="http://www.jisc.ac.uk/fundingopportunities/funding_calls/2010/09/grant1110.aspx"
-					target="_blank">JISC e-Content Programme 2011</a>). This project
+					target="_blank">Jisc e-Content Programme 2011</a>). This project
 				has enabled the linking of Newton's facsimiles and transcriptions.
-				JISC is also funding the <a target="_blank"
+				Jisc also funded the <a target="_blank"
 					href="/collections/longitude"> Board of Longitude Collection</a> (<a
 					target="_blank"
 					href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">JISC
-					Content Programme 2011-2013</a>) which is creating a substantial
-				collection related to 18th century science an technology.<br /> <br />
+					Content Programme 2011-2013</a>) a collaboration with the National
+				Maritime Museum and Department of History and Philosophy of Science
+				at Cambridge. This project created a substantial collection related
+				to 18th century science an technology.<br /> <br />
 			</div>
 		</div>
 		<div class="grid_18">
@@ -60,11 +61,11 @@
 				The digitisation of the Taylor-Schechter Cairo Genizah Collection
 				has been sponsored by the <b><a
 					href="http://www.jewishmanuscripts.org/" target="_blank">Jewish
-					Manuscript Preservation Society</a></b>, the <b><a
+						Manuscript Preservation Society</a></b>, the <b><a
 					href="http://www.genizah.org/" target="_blank">Friedberg
-					Genizah Project Inc.</a></b>, and the <b><a href="http://www.ahrc.ac.uk/"
-					target="_blank">Arts and Humanities Research Council, UK</a></b>.<br />
-				<br /> <br />
+						Genizah Project Inc.</a></b>, and the <b><a
+					href="http://www.ahrc.ac.uk/" target="_blank">Arts and
+						Humanities Research Council, UK</a></b>.<br /> <br /> <br />
 			</div>
 		</div>
 		<div class="grid_18">
@@ -87,34 +88,23 @@
 			</div>
 			<div class="grid_13">
 				The digitisation of the Darwin-Hooker letters has been funded
-				through a grant to the Darwin Correspondence Project from the
-				<b><a href="http://www.nsf.gov/" target="_blank">National Science Foundation</a></b>. <br /> <br />
+				through a grant to the Darwin Correspondence Project from the <b><a
+					href="http://www.nsf.gov/" target="_blank">National Science
+						Foundation</a></b>. <br /> <br />
 			</div>
 
 		</div>
 
-		<h4>Foundations Project Management Group</h4>
+		<h4>Digital Library Team</h4>
 
 		<ul>
-			<li>John Norman, Director - Information Technologies and Applied
-				Research in Educational Technologies</li>
-			<li>Patricia Killiard, Head of Electronic Services and Systems</li>
-			<li>Jill Whitelock, Head of Special Collections</li>
-			<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
-			<li>Grant Young, Digitisation and Digital Preservation Manager</li>
-		</ul>
-
-		<h4>Development Team</h4>
-
-		<ul>
-			<li>Grant Young, Project Manager</li>		
-			<li>Huw Jones, Metadata Specialist and Longitude Project Manager</li>			
+			<li>Grant Young, Head of Digital Content Programme</li>
+			<li>Huw Jones, Project Manager and Metadata Specialist</li>
 			<li>Pete Johnston, Metadata Specialist</li>
 			<li>Jennie Fletcher, Lead Software Engineer</li>
 			<li>Gilleain Torrance, Senior Software Engineer</li>
-			<li>Chris Stokoe, Senior Research Associate in Text Mining</li>				
+			<li>Chris Stokoe, Senior Research Associate in Text Mining</li>
 			<li>Andy Corrigan, Content Editor</li>
-			<li>Tony Stevenson, System Administration</li>
 		</ul>
 
 		<h4>Digitisation Team</h4>
@@ -122,13 +112,19 @@
 		<ul>
 			<li>Don Manning, Head of Imaging Services</li>
 			<li>Les Goody, Senior Photographer</li>
-			<li>Blazej Mikula, Foundations Project Imaging Technician</li>
+			<li>Maciej Pawlikowski, Senior Photographer</li>
+			<li>Nancy Buck, Photographer</li>
+			<li>Annie Casciano, Photographer</li>
+			<li>Rachel Johnson, Photographer</li>
+			<li>Blazej Mikula, Photographer</li>
+			<li>Mark Scudder, Photographer</li>
 		</ul>
 
 		<h4>Conservation Team</h4>
 
 		<ul>
-			<li>Alan Farrant, Head of Conservation</li>
+			<li>James Bloxam, Head of Conservation</li>
+			<li>Alan Farrant, Former Head of Conservation</li>
 			<li>James Bloxam, Conservator</li>
 			<li>Lucy Cheng, Conservator</li>
 			<li>Deborah Farndell, Conservator</li>
@@ -195,7 +191,6 @@
 			<li>Professor David Parker, Edward Cadbury Professor of Theology
 				and Director of the Institute for Textual Scholarship and Electronic
 				Editing, University of Birmingham</li>
-
 		</ul>
 
 		<h4>Hebrew Manuscripts</h4>
@@ -224,68 +219,25 @@
 			<li>Richard Dunn, Senior Curator and Head of Science and
 				Technology, Royal Museums Greenwich</li>
 		</ul>
-		
+
 		<h4>Darwin-Hooker Collection</h4>
 		<ul>
-			<li>Professor Jim Secord, Director, Darwin Correspondence Project</li>
-			<li>Dr Alison Pearn, Associate Director, Darwin Correspondence Project</li>
-		</ul>		
-		
-		
+			<li>Professor Jim Secord, Director, Darwin Correspondence
+				Project</li>
+			<li>Dr Alison Pearn, Associate Director, Darwin Correspondence
+				Project</li>
+		</ul>
 
-		<div class="grid_14">
-			<h4>Advisors - Foundations of Faith Collection</h4>
-			<ul>
-				<li>James Aitken, Lecturer in Hebrew, Old Testament and Second
-					Temple Studies, University of Cambridge</li>
-				<li>Catherine Ansorge, Joint-Head of Near and Middle Eastern
-					Department, Cambridge University Library</li>
-				<li>James Coakley, Affiliated Lecturer in Divinity, and
-					Manuscripts Specialist, Cambridge University Library</li>
-				<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
-					Department, Cambridge University Library</li>
+		<h4>Contact Details</h4>
+		<p>
+			Cambridge Digital Library<br /> Cambridge University Library<br /> West
+			Road<br /> Cambridge<br /> United Kingdom<br /> CB3 9DR<br />
+			Email: <a href="mailto:foundations@lib.cam.ac.uk">foundations@lib.cam.ac.uk</a><br />
+		</p>
 
-				<li>David Instone-Brewer, Senior Research Fellow in Rabbinics
-					and the New Testament, Tyndale House</li>
-				<li>Geoffrey Khan, Professor of Semitic Philology and Chairman
-					of the Faculty of Asian and Middle Eastern Studies, University of
-					Cambridge</li>
-				<li>Peter Meadows, Manuscripts Curator, Cambridge University
-					Library</li>
-				<li>Ben Outhwaite, Head of the Genizah Research Unit</li>
-				<li>Richard Rex, Reader in Reformation History, University of
-					Cambridge</li>
-				<li>Tony Street, Assistant Director of Research in Islamic
-					Studies, University of Cambridge</li>
-			</ul>
-
-			<h4>Advisors - Foundations of Science Collection</h4>
-
-			<ul>
-				<li>Rob Iliffe, Professor of Intellectual History and History
-					of Science, University of Sussex, and Editorial Director of the
-					Newton Project</li>
-				<li>Adam Perkins, Curator of Scientific Manuscripts, Cambridge
-					University Library</li>
-				<li>Ed Potten, Head of Rare Books, Cambridge University Library</li>
-				<li>Simon Schaffer, Professor of the History and Philosophy of
-					Science, University of Cambridge, and Director of the Board of
-					Longitude Project</li>
-				<li>Jim Secord, Professor of the History and Philosophy of
-					Science, University of Cambridge, and Director of the Darwin
-					Correspondence Project</li>
-			</ul>
-
-			<h4>Contact Details</h4>
-			<p>
-				Foundations Project<br /> Cambridge University Library<br /> West
-				Road<br /> Cambridge<br /> United Kingdom<br /> CB3 9DR<br />
-				Email: <a href="mailto:foundations@lib.cam.ac.uk">foundations@lib.cam.ac.uk</a><br />
-			</p>
-
-			<br /> <br />
-		</div>
+		<br /> <br />
 	</div>
+
 </section>
 
 <jsp:include page="footer/footer.jsp" />

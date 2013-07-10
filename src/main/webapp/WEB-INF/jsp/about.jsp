@@ -48,18 +48,16 @@
 					researchers and the wider public.</p>
 
 				<a href="" id="foundations"></a>
-				<p>
-					We have called the first phase of our work on the Cambridge Digital
-					Library the <b>Foundations Project</b>, which runs from mid-2010 to
-					early-2014 and has been made possible through a lead gift of
-					&pound;1.5m by Dr Leonard Polonsky. This generous support will
-					enable the Library to develop its technical infrastructure and
-					create significant content in the areas of faith and science - two
-					areas of particular strength within our collections.
-				</p>
+				<p>The first phase of our work on the Cambridge Digital Library,
+					which runs from mid-2010 to early-2014 and has been made possible
+					through a lead gift of &pound;1.5m by Dr Leonard Polonsky. This
+					generous support will enable the Library to develop its technical
+					infrastructure and create significant content in the areas of faith
+					and science - two areas of particular strength within our
+					collections.</p>
 
 				<p>
-					<b>The Foundations of Faith Collections</b> will include important
+					<b>The Foundations of Faith Collections</b> includes important
 					works from many religious traditions, particularly Judaism, Islam,
 					Christianity and Buddhism. The Library's faith collections are
 					breathtaking. They include <a href="/collections/islamic">some
@@ -75,13 +73,13 @@
 					philosophy, kabbalah, literature and legal documents. Most of these
 					are in codex form though there are also scrolls and fragments; some
 					date back to the earliest collections in the Library. The oldest
-					manuscript in the collection is a copy of the Ten Commandments
-					written on papyrus, and thought to date from the 2nd century B.C.
-					The Library also holds the world's largest and most important
-					collection of Jewish Genizah materials, including the <a
-						href="/collections/genizah">Taylor-Schechter Genizah
-						Collection</a> - 193,000 fragments of manuscripts considered by many
-					to be as significant as the Dead Sea Scrolls.
+					manuscript in the collection is a copy of the <a
+						href="/view/MS-OR-00233/1">Ten Commandments written on papyrus</a>,
+					and thought to date from the 2nd century B.C. The Library also
+					holds the world's largest and most important collection of Jewish
+					Genizah materials, including the <a href="/collections/genizah">Taylor-Schechter
+						Genizah Collection</a> - 193,000 fragments of manuscripts considered
+					by many to be as significant as the Dead Sea Scrolls.
 				</p>
 				<p>
 					Our Christian holdings include the <a
@@ -93,40 +91,45 @@
 				</p>
 
 				<p>
-					<b>The Foundations of Science Collection</b> will focus on original
+					<b>The Foundations of Science Collection</b> focuses on original
 					scientific manuscripts, beginning with the papers of <a
 						href="/collections/newton">Isaac Newton</a> and his
 					contemporaries. Cambridge University Library has very strong
 					collections in the history of science. In addition to our Newton
 					collections, the Library holds the papers of, among many other
-					famous scientists, Charles Darwin, Lord Kelvin, Adam Sedgwick, J.J.
-					Thomson, Ernest Rutherford, James Clerk Maxwell and Sir George
-					Gabriel Stokes. The Library holds the archives of Cambridge's
-					famous Cavendish Laboratory and is also the repository of the Royal
-					Greenwich Observatory archives, which includes the papers of the
-					Astronomers Royal and the Board of Longitude.
+					famous scientists, <a href="/collections/darwinhooker">Charles
+						Darwin</a>, Lord Kelvin, Adam Sedgwick, J.J. Thomson, Ernest
+					Rutherford, James Clerk Maxwell and Sir George Gabriel Stokes. The
+					Library holds the archives of Cambridge's famous Cavendish
+					Laboratory and is also the repository of the Royal Greenwich
+					Observatory archives, which includes the papers of the Astronomers
+					Royal and the <a href="/collections/longitude">Board of
+						Longitude</a>.
 				</p>
 
 				<p>
 					In addition to our major collections relating to faith and science,
-					we intend to make other treasures from the Library available within
-					the Cambridge Digital Library. Wherever possible we will seek to
+					are making other treasures from the Library available within the
+					Cambridge Digital Library. Wherever possible we will seek to
 					enhance our digital collections by aligning them with scholarly
 					research. Our initial release of content, the Newton Papers, is a
-					good example. We have collaborated with the <a
+					good example. We collaborated with the <a
 						href="http://www.newtonproject.sussex.ac.uk/" target="_blank">Newton
 						Project</a> to provide transcriptions alongside our images of Newton's
-					manuscripts.  Our Sanskrit Collection and Spanish Chapbooks are also
-					being developed as part of major AHRC-funded research projects.
+					manuscripts. Our <a href="/collections/sanskrit">Sanskrit
+						Collection</a> and <a href="/collections/spanishchapbooks">Spanish
+						Chapbooks</a> are also being developed as part of major AHRC-funded
+					research projects and our <a href="/collections/longitude">Board
+						of Longitude collection</a> has been significantly enriched through a
+					collaboration with a major AHRC project.
 				</p>
 				<p>Another goal is to make content from the Digital Library
 					freely available for use within teaching and research. Copyright
-					and licensing will not always permit this, but where it does we
-					hope to provide good quality images and texts for download and
-					reuse.</p>
+					and licensing will not always permit this, but where it does are
+					providing good quality images and texts for download and reuse.</p>
 				<p>
 					We have plans to add much more content and functionality during
-					2012 and 2013, but hope you will find the selection of works we're
+					2013 and 2014, but hope you will find the collections we've
 					already included stimulating and the website easy to use. If you
 					have any questions or suggestions, please <a class="iframe"
 						href="/feedbackform.html">let us know</a>.
