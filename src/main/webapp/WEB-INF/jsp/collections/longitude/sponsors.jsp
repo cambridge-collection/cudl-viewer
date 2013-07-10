@@ -26,7 +26,7 @@
 	</div>
 	<div class="grid_13">
 	<br />
-		Includes content contributed by the <a target="_blank" href="http://www1.rmg.co.uk/">National Maritime Museum, Royal Museums Greenwich</a>. <br /> <br />
+		Includes content contributed by the <a target="_blank" href="http://www.rmg.co.uk/">National Maritime Museum, Royal Museums Greenwich</a>. <br /> <br />
 	</div>
 
 </div>
