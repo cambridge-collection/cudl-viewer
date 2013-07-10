@@ -35,7 +35,51 @@
 					collection</a>.<br /> <br />
 			</div>
 		</div>
+		<hr />
 
+		<div class="collection collection-science">
+			<div class="grid_4">
+				<a href="/collections/longitude"> <img class="collectionImage"
+					src="/images/collectionsView/collection-longitude.jpg"
+					alt="Board of Longitude" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Board of Longitude</h5>
+				<br /> Cambridge University Library holds the entire archive of the
+				Board of Longitude, the state organization established in the
+				eighteenth century to evaluate methods for finding ships’ position
+				and to encourage a host of projects in instrument design,
+				clock-making, mapping and voyaging.<br /> <br /> <a
+					href="/collections/longitude">View collection</a>.<br />
+				<div class="foundations-link-science">
+					<a href="/about#foundations">Foundations of Science<br /> <br /></a>
+				</div>
+				<br /> <br />
+
+			</div>
+		</div>
+		<hr />
+		<div class="collection collection-science">
+			<div class="grid_4">
+				<a href="/collections/newton"> <img class="collectionImage"
+					src="/images/collectionsView/collection-newton.jpg" alt="Newton"
+					width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Newton Papers</h5>
+				<br /> Cambridge University Library holds the largest and most
+				important collection of the scientific works of Isaac Newton
+				(1642-1727). We present here an initial selection of Newton's
+				manuscripts, concentrating on his mathematical work in the 1660s. <br />
+				<br /> <a href="/collections/newton">View collection</a>. <br />
+				<div class="foundations-link-science">
+					<a href="/about#foundations">Foundations of Science</a>
+				</div>
+				<br />
+			</div>
+		</div>
 		<hr />
 
 		<div class="collection collection-science">
@@ -61,56 +105,7 @@
 				<br />
 			</div>
 		</div>
-
 		<hr />
-
-		<div class="collection collection-science">
-			<div class="grid_4">
-				<a href="/collections/newton"> <img class="collectionImage"
-					src="/images/collectionsView/collection-newton.jpg" alt="Newton"
-					width="150" height="150" />
-				</a>
-			</div>
-			<div class="grid_8">
-				<h5>Newton Papers</h5>
-				<br /> Cambridge University Library holds the largest and most
-				important collection of the scientific works of Isaac Newton
-				(1642-1727). We present here an initial selection of Newton's
-				manuscripts, concentrating on his mathematical work in the 1660s. <br />
-				<br /> <a href="/collections/newton">View collection</a>. <br />
-				<div class="foundations-link-science">
-					<a href="/about#foundations">Foundations of Science</a>
-				</div>
-				<br />
-			</div>
-		</div>
-		<hr />
-
-		<div class="collection collection-science">
-			<div class="grid_4">
-				<a href="/collections/longitude"> <img class="collectionImage"
-					src="/images/collectionsView/collection-longitude.jpg"
-					alt="Board of Longitude" width="150" height="150" />
-				</a>
-			</div>
-			<div class="grid_8">
-				<h5>Board of Longitude</h5>
-				<br /> Cambridge University Library holds the entire archive of the
-				Board of Longitude, the state organization established in the
-				eighteenth century to evaluate methods for finding ships’ position
-				and to encourage a host of projects in instrument design,
-				clock-making, mapping and voyaging.<br /> <br />
-				<a href="/collections/longitude">View collection</a>.<br />
-				<div class="foundations-link-science">
-					<a href="/about#foundations">Foundations of Science<br /> <br /></a>
-				</div>
-				<br />
-				<br />
-
-			</div>
-		</div>
-		<hr />
-		
 
 		<div class="collection collection-faith">
 			<div class="grid_4">
@@ -128,8 +123,7 @@
 				<div class="foundations-link-faith">
 					<a href="/about#foundations">Foundations of Faith</a>
 				</div>
-				<br />
-				<br />
+				<br /> <br />
 			</div>
 		</div>
 
@@ -151,8 +145,7 @@
 				<div class="foundations-link-faith">
 					<a href="/about#foundations">Foundations of Faith</a>
 				</div>
-				<br />
-				<br />
+				<br /> <br />
 			</div>
 		</div>
 
@@ -197,8 +190,7 @@
 				<div class="foundations-link-faith">
 					<a href="/about#foundations">Foundations of Faith</a>
 				</div>
-				<br />
-				<br />
+				<br /> <br />
 			</div>
 		</div>
 
@@ -220,8 +212,7 @@
 				<div class="foundations-link-faith">
 					<a href="/about#foundations">Foundations of Faith</a>
 				</div>
-				<br />
-				<br />
+				<br /> <br />
 			</div>
 		</div>
 
@@ -261,8 +252,7 @@
 				irreplaceable works of world importance to newspapers or printed
 				ephemera. They demonstrate the breadth of the Library's holdings and
 				often yield surprises.<br /> <br /> <a
-					href="/collections/exhibitions">View collection</a>. <br />
-				<br />
+					href="/collections/exhibitions">View collection</a>. <br /> <br />
 
 			</div>
 		</div>
