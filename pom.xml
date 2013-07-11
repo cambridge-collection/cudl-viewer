@@ -3,7 +3,7 @@
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
 	<artifactId>FoundationsViewer</artifactId>
-	<version>production-2013052201</version>
+	<version>0.14.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Foundations Viewer</name>
