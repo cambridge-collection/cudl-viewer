@@ -35,7 +35,7 @@
 		<div class="grid_18">
 
 			<div class="grid_4">
-				<img src="/images/jisc.gif" title="JISC" />
+		        <img src="/images/jisc.gif" title="Jisc" />
 			</div>
 			<div class="grid_13">
 				<b>Jisc</b> awarded a grant to Cambridge University Library and the
