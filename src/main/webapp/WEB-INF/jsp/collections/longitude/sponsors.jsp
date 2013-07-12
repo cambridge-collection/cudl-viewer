@@ -16,7 +16,7 @@
 		<img src="/images/jisc.gif" title="JISC" />
 	</div>
 	<div class="grid_13">
-		Content of this collection has been funded by Jisc as part of its <a target="_blank" href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">Content Programme 2011-13</a>. <br /> <br /> <br /> <br />
+		Content of this collection has been funded by Jisc as part of its <a target="_blank" href="http://www.jisc.ac.uk/whatwedo/programmes/digitisation/content2011_2013.aspx">Content Programme 2011-13</a>. <br /> <br /> <br /> <br /><br />		
 	</div>
 	
 	<br />
