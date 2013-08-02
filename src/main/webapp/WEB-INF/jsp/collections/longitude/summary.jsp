@@ -52,23 +52,7 @@
 		<%
 			for (int i = 0; i < subCollections.size(); i++) {
 				Collection c = subCollections.get(i);
-
-				// skip the nmm print sub collection, that's displayed separately. 
-				if (c.getId().equals("nmm_print")) {
-		%>
-		<!--  disabled nmm print collection -->
-		<div
-			class="longitudefeaturedcollection longitudefeaturedcollectiondisabled grid_3">
-			<img width="128px" height="128px"
-				src="/images/collectionsView/collection-longitude-nmm_print.jpg">
-			<span class="featuredcollectionlabel">National Maritime Museum
-				Print Works</span>
-
-		</div>
-		<%
-			continue;
-				}
-		%>
+		%>		
 
 		<div class="longitudefeaturedcollection grid_3">
 			<a href="<%=c.getURL()%>"><img
