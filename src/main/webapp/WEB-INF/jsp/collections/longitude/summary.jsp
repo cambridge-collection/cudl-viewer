@@ -84,8 +84,8 @@
 				Collection</div>
 			<div class="longitudestatistics">
 				<ul>
-					<li>48,596 images</li>
-					<li>162 volumes</li>
+					<li>63,697 images</li>
+					<li>242 volumes</li>
 					<li>304 ships</li>
 					<li>1337 people</li>
 					<li>777 places</li>
