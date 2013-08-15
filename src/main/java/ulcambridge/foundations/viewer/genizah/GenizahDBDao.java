@@ -149,7 +149,7 @@ public class GenizahDBDao implements GenizahDao {
 	public List<FragmentSearchResult> classmarkSearch(String classmark) {
 		String query = "SELECT LB, Classmark, count(*) as RefCount " +
 					   "FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
-					   "WHERE trim(LB) LIKE ? GROUP BY Classmark";
+					   "WHERE LB LIKE ? GROUP BY Classmark";
 		String percentWrappedString = convertWildcards(classmark);
 		
 		return jdbcTemplate.query(
