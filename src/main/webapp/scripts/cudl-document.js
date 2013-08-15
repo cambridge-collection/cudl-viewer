@@ -230,6 +230,8 @@ cudl.setupViewport = function () {
 	if (cudl.data.logicalStructures[0].children) {
 	   cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
 	}
+	
+	// Setup diplomatic transcription tab
 	if (cudl.data.useDiplomaticTranscriptions) {
 
 	    // if this attribute is present, the transcription does not change on page change.  
@@ -253,6 +255,8 @@ cudl.setupViewport = function () {
 					true);
 		}
 	}		
+	
+	// Setup normalised transcription tab	
 	if (cudl.data.useNormalisedTranscriptions) {
 	
 	    // if this attribute is present, the transcription does not change on page change.  
@@ -274,9 +278,12 @@ cudl.setupViewport = function () {
 				true);
 		}
 	}
-	
-	/*
-	cudl.setupTab('Thumbnails', 'thumbnails', cudl.viewportComponents.rightTabPanel);
+
+	// Setup Thumbnail Tab.
+	var thumbnailTab = cudl.setupTab('Thumbnails', 'thumbnailTab', cudl.viewportComponents.rightTabPanel);	
+		
+	// add tuhmbnail div to Thumbnails Tab
+	document.getElementById('thumbnailTab').innerHTML='<div id="images-view"><div id="thumbnails"></div></div>';
 	
 	Ext.Loader.setConfig({enabled: true});
 
@@ -290,43 +297,43 @@ cudl.setupViewport = function () {
 	             'Ext.ux.DataView.DragSelector',
 	             'Ext.ux.DataView.LabelEditor'
 	         ]);
+
+	cudl.thumbnailsSetup = false;
+	cudl.setupThumbnailTab = function() { 
+		
+		var imageTpl = new Ext.XTemplate(
+			    '<tpl for=".">',
+			        '<div style="margin-bottom: 10px;" class="thumb-wrap">',
+			          '<img src="/imageproxy{downloadImageURL}" width="100px" height="150px"/>',
+			          '<span>{label}</span>',
+			        '</div>',
+			    '</tpl>'
+			);
+		
+		if (!cudl.thumbnailsSetup) {
+		  Ext.create('Ext.view.View', {
+		    store: Ext.data.StoreManager.lookup('pageStore'),
+		    tpl: imageTpl,
+		    itemSelector: 'div.thumb-wrap',
+		    emptyText: 'No images available',
+		    renderTo: 'thumbnails',
+	        listeners: {
+	                selectionchange: function(dv, nodes ){
+	   
+	                   if (nodes.length>0) {
+
+	                     cudl.pagenum = nodes[0].data.sequence; 
+	                     cudl.store.loadPage(cudl.pagenum);
 	
-	Ext.define('Image', {
-	    extend: 'Ext.data.Model',
-	    fields: [
-	        { name:'src', type:'string' },
-	        { name:'caption', type:'string' }
-	    ]
-	});
-
-	Ext.create('Ext.data.Store', {
-	    id:'imagesStore',
-	    model: 'Image',
-	    data: [
-	        { src:'http://www.sencha.com/img/20110215-feat-drawing.png', caption:'Drawing & Charts' },
-	        { src:'http://www.sencha.com/img/20110215-feat-data.png', caption:'Advanced Data' },
-	        { src:'http://www.sencha.com/img/20110215-feat-html5.png', caption:'Overhauled Theme' },
-	        { src:'http://www.sencha.com/img/20110215-feat-perf.png', caption:'Performance Tuned' }
-	    ]
-	});
-
-	var imageTpl = new Ext.XTemplate(
-	    '<tpl for=".">',
-	        '<div style="margin-bottom: 10px;" class="thumb-wrap">',
-	          '<img src="/imageproxy{downloadImageURL}" width="100px"/>',
-	          '<br/><span>{label}</span>',
-	        '</div>',
-	    '</tpl>'
-	);
-
-	Ext.create('Ext.view.View', {
-	    store: Ext.data.StoreManager.lookup('pageStore'),
-	    tpl: imageTpl,
-	    itemSelector: 'div.thumb-wrap',
-	    emptyText: 'No images available',
-	    renderTo: 'thumbnails'
-	});
-	*/
+	                   }
+	                }
+	            }
+		  });
+		  cudl.thumbnailsSetup = true;
+		}
+	}
+	
+	thumbnailTab.addListener('beforeshow', cudl.setupThumbnailTab);
 	
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 	

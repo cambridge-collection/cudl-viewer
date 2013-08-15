@@ -36,6 +36,7 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 <link rel="stylesheet" type="text/css"
 	href="/scripts/extjs/resources/css/ext-partial-gray.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
+<link rel="stylesheet" type="text/css" href="/styles/style-document-thumbnails.css" />
 
 <link href="/styles/treestyler.css" rel="stylesheet" type="text/css" media="screen" />
 
