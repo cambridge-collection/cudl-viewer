@@ -43,9 +43,12 @@
 			digitised manuscripts through the Foundations project and will seek
 			funding for further digitisation.
 		</p>
-
-		<p>In this selection, we present several examples of Qur'anic
-		manuscripts, including a <a href="/view/MS-NN-00003-00075">complete and beautifully illustrated Qur'an</a>
+		
+		
+		<p>In this selection, we present the full collection of our earliest Qur'anic manuscripts copied during the first four Centuries of Islam. With a grant awarded by <a target="_blank" href="http://www.islamicmanuscript.org/">The Islamic Manuscript Association</a> in 2012 we were able to enrich the content description of each fragment. The style of writing commonly known as “Kufic” has been classified into distinct palaeographic styles. The Suras are clearly indicated and searchable by name and numbering, which will guide the reader through the text. Amongst this collection is a portion of the <a href="/view/MS-ADD-01116/">earliest Qur`an</a> for which an evident terminus ante quem exists. This Qur`an was made an endowment (waqf) by Amajur the Governor of Damascus in 876 AD/ 262 AH.</p>
+		
+		
+		<p>From the wider collection of Islamic manuscripts we have included a <a href="/view/MS-NN-00003-00075">complete and beautifully illustrated Qur'an</a>
 		and a number of very <a href="/view/MS-ADD-01116/">early fragments</a> dating back to the first centuries
 		of the Islamic calendar. From the rich literature encompassing
 		the Islamic tradition we have chosen the only extant copy of <a href="/view/MS-ADD-03651/">Kitāb al-tawḥīd</a>,
