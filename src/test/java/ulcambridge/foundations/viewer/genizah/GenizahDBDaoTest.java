@@ -102,5 +102,14 @@ public class GenizahDBDaoTest extends TestCase {
 		assertNotNull(refList.getFragment());
 		assertNotNull(refList.getFragmentReferences());
 	}
+	
+	public void testClassmarkBug_FOUNDVIEW_151() {
+		GenizahDao dao = getDaoSource();
+		List<FragmentSearchResult> results = dao.classmarkSearch("T-S 24.74");
+		assertNotNull(results);
+		assertTrue(results.size() > 0);
+		assertNotNull(results.get(0).getFragment());
+		assertNotNull(results.get(0).getFragment().getLabel());
+	}
 
 }
