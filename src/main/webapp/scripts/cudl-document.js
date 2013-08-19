@@ -281,9 +281,6 @@ cudl.setupViewport = function () {
 
 	// Setup Thumbnail Tab.
 	var thumbnailTab = cudl.setupTab('Thumbnails', 'thumbnailTab', cudl.viewportComponents.rightTabPanel);	
-		
-	// add tuhmbnail div to Thumbnails Tab
-	document.getElementById('thumbnailTab').innerHTML='<div id="images-view"><div id="thumbnails"></div></div>';
 	
 	Ext.Loader.setConfig({enabled: true});
 
@@ -301,18 +298,73 @@ cudl.setupViewport = function () {
 	cudl.thumbnailsSetup = false;
 	cudl.setupThumbnailTab = function() { 
 		
+	  if (!cudl.thumbnailsSetup) {
+		  
+		var setNumberItems = function () {
+			
+		  var pageHeaderHeight = 120;
+		  var thumbnailItemHeight = 175;
+		  var thumbnailItemWidth = 130;
+			
+		  var tabWidth = parseInt(document.getElementById("rightTabPanel").style.width);
+		  var tabHeight = parseInt(document.getElementById("rightTabPanel").style.height)-pageHeaderHeight; 
+		  var numItemInRow =  Math.floor(tabWidth/thumbnailItemWidth);
+		  var numRows =  Math.floor(tabHeight/thumbnailItemHeight);
+      			  		  
+		  Ext.data.StoreManager.lookup('thumbStore').pageSize=numItemInRow*numRows;
+
+		};
+		
+		setNumberItems();
+		
+	 	var thumbnailPanel =  new Ext.Panel({
+		    id: 'thumbnailPanel',
+		    layout: 'absolute',
+		    x: 0, 
+		    y: 0,
+			border : 0, 	 		    
+ 			padding : '0 0 0 0',
+		    html: "<div id=\"images-view\"><div id=\"thumbnails\"></div></div>",
+		    items: [new Ext.Toolbar({
+	 			xtype : 'toolbar',
+	 			id : 'thumbnailToolbar',
+	 			height : 26,
+				width: '100%', 			
+	 			padding : 0,				
+				border : 0, 	 			
+	 			autoShow : true,
+	 			margin : '5 5 5 5', 
+	 			items: [ Ext.create('Ext.toolbar.Paging', {
+					xtype : 'pagingtoolbar',
+					padding : 0,
+					inputItemWidth : 40,
+					width: 450,
+					beforePageText : 'Page',
+					store : Ext.data.StoreManager.lookup('thumbStore'),
+					margin : '0 0 0 0',
+					border : 0, 
+					displayInfo: true, 
+					listeners: {
+						beforeChange: function(tb, params) { setNumberItems() }
+					}
+	 			})]	    
+	 	 	   })]
+	 	 	 });		
+		  
+	 	// Note height=150px for portrait, width=120px for landscape. 
 		var imageTpl = new Ext.XTemplate(
 			    '<tpl for=".">',
-			        '<div style="margin-bottom: 10px;" class="thumb-wrap">',
-			          '<img src="/imageproxy{downloadImageURL}" width="100px" height="150px"/>',
+			        '<div class="thumb-wrap">',
+			          '<img src="/imageproxy{downloadImageURL}" height="150px"/>',
 			          '<span>{label}</span>',
 			        '</div>',
 			    '</tpl>'
 			);
-		
-		if (!cudl.thumbnailsSetup) {
-		  Ext.create('Ext.view.View', {
-		    store: Ext.data.StoreManager.lookup('pageStore'),
+		 
+		  thumbnailTab.add( thumbnailPanel);
+			
+		  var thumbnailView = Ext.create('Ext.view.View', {
+		    store: Ext.data.StoreManager.lookup('thumbStore'),
 		    tpl: imageTpl,
 		    itemSelector: 'div.thumb-wrap',
 		    emptyText: 'No images available',
@@ -329,12 +381,15 @@ cudl.setupViewport = function () {
 	                }
 	            }
 		  });
+			  
 		  cudl.thumbnailsSetup = true;
+		 
 		}
+	
 	}
 	
 	thumbnailTab.addListener('beforeshow', cudl.setupThumbnailTab);
-	
+	 
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 	
 	// Initialise viewport.

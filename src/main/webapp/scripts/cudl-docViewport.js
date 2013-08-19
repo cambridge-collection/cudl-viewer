@@ -35,6 +35,7 @@ cudl.viewportComponents = {
 
 	/* Setup the tab panel for the document information */
 	rightTabPanel: Ext.create('Ext.tab.Panel', {
+		id: 'rightTabPanel',		
 		xtype : 'tabpanel',
 		activeTab : 0,
 		region : 'east',
@@ -49,8 +50,8 @@ cudl.viewportComponents = {
 	    
 	getRightTabPanel : function() {
 		return rightTabPanel;
-	}
-	
+	}	    
+ 	 	    
 };
 
 /**

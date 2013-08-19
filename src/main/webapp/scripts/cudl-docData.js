@@ -11,6 +11,8 @@ cudl.docData = function() {
 		jsonreader : null,
 
 		store : null,
+		
+		thumbnailStore : null,		
 
 		init : function() {
 
@@ -36,11 +38,26 @@ cudl.docData = function() {
 					reader : this.jsonreader
 				})
 			});
+			
+			this.thumbnailStore = Ext.create('Ext.data.Store', {
+				id : 'thumbStore',
+				autoLoad : false,
+				fields : [ 'label', 'sequence', 'displayImageURL', 'downloadImageURL',
+						'transcriptionNormalisedURL',
+						'transcriptionDiplomaticURL' ],
+				pageSize : 8, // items per page
+				proxy : new Ext.data.HttpProxy({
+					url : cudl.JSONTHUMBURL,
+					method : 'POST',
+					reader : this.jsonreader
+				})
+			});			
 
 		},
 
 		load : function() {
 			this.store.load();
+			this.thumbnailStore.load();
 		},
 
 		getData : function() {

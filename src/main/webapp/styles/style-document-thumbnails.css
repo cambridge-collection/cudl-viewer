@@ -22,13 +22,14 @@
     margin: 4px;
     margin-right: 0;
     padding: 5px;
+    max-width: 130px;
 }
 #images-view .thumb-wrap span {
-    
+    margin-top: -16px;
     display: block;
     overflow: hidden;
     text-align: center;
-    width: 86px; /* for ie to ensure that the text is centered */
+    width: 110px; /* for ie to ensure that the text is centered */
 }
 
 #images-view .x-item-over{
@@ -71,3 +72,13 @@
     position:relative;
     overflow:hidden;
 }
+
+#thumbnailToolbar {
+	margin-top: -50px;
+}
+
+#thumbnails {
+	margin-top: 30px;
+}
+
+	

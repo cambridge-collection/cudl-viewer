@@ -43,6 +43,7 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 <script type="text/javascript">
 
 	cudl.JSONURL = '${jsonURL}';
+	cudl.JSONTHUMBURL = '${jsonThumbnailsURL}';
 	cudl.pagenum = ${page};
 	cudl.docId = '${docId}';
 	cudl.docURL = '${docURL}';
