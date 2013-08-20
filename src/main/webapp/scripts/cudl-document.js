@@ -283,7 +283,6 @@ cudl.setupViewport = function () {
 	var thumbnailTab = cudl.setupTab('Thumbnails', 'thumbnailTab', cudl.viewportComponents.rightTabPanel);	
 	
 	Ext.Loader.setConfig({enabled: true});
-
 	Ext.Loader.setPath('Ext.ux.DataView', '/scripts/extjs/ux/DataView/');
 	
 	// Setup Thumbnails
@@ -295,13 +294,8 @@ cudl.setupViewport = function () {
 	             'Ext.ux.DataView.LabelEditor'
 	         ]);
 
-	cudl.thumbnailsSetup = false;
-	cudl.setupThumbnailTab = function() { 
+	var setNumberItems = function () {
 		
-	  if (!cudl.thumbnailsSetup) {
-		  
-		var setNumberItems = function () {
-			
 		  var pageHeaderHeight = 120;
 		  var thumbnailItemHeight = 175;
 		  var thumbnailItemWidth = 130;
@@ -310,25 +304,29 @@ cudl.setupViewport = function () {
 		  var tabHeight = parseInt(document.getElementById("rightTabPanel").style.height)-pageHeaderHeight; 
 		  var numItemInRow =  Math.floor(tabWidth/thumbnailItemWidth);
 		  var numRows =  Math.floor(tabHeight/thumbnailItemHeight);
-      			  		  
-		  Ext.data.StoreManager.lookup('thumbStore').pageSize=numItemInRow*numRows;
-
-		};
+		  
+		  if (numItemInRow*numRows>0 && 
+				  Ext.data.StoreManager.lookup('thumbStore').pageSize != numItemInRow*numRows) {
+		    Ext.data.StoreManager.lookup('thumbStore').pageSize=numItemInRow*numRows;
+		    return true;
+	      }
+		  
+		  return false;
+	};
 		
-		setNumberItems();
-		
-	 	var thumbnailPanel =  new Ext.Panel({
-		    id: 'thumbnailPanel',
-		    layout: 'absolute',
-		    x: 0, 
-		    y: 0,
-			border : 0, 	 		    
- 			padding : '0 0 0 0',
-		    html: "<div id=\"images-view\"><div id=\"thumbnails\"></div></div>",
-		    items: [new Ext.Toolbar({
-	 			xtype : 'toolbar',
-	 			id : 'thumbnailToolbar',
-	 			height : 26,
+	var thumbnailPanel =  new Ext.Panel({
+	      id: 'images-view',
+		  layout: 'absolute',
+		  x: 0, 
+		  y: 0,
+		  border : 0, 
+		  height:'100%', 
+ 		  padding : '0 0 0 0',
+		  html: "<div id=\"thumbnails\" width='100%' height='100%'></div>",
+		  items: [new Ext.Toolbar({
+	 	  xtype : 'toolbar',
+	 	  id : 'thumbnailToolbar',
+	   	  height : 26,
 				width: '100%', 			
 	 			padding : 0,				
 				border : 0, 	 			
@@ -348,47 +346,66 @@ cudl.setupViewport = function () {
 						beforeChange: function(tb, params) { setNumberItems() }
 					}
 	 			})]	    
-	 	 	   })]
-	 	 	 });		
-		  
+	 	    })]
+	 	 });	
+		
 	 	// Note height=150px for portrait, width=120px for landscape. 
 		var imageTpl = new Ext.XTemplate(
-			    '<tpl for=".">',
-			        '<div class="thumb-wrap">',
-			          '<img src="/imageproxy{downloadImageURL}" height="150px"/>',
-			          '<span>{label}</span>',
-			        '</div>',
-			    '</tpl>'
-			);
-		 
-		  thumbnailTab.add( thumbnailPanel);
-			
-		  var thumbnailView = Ext.create('Ext.view.View', {
-		    store: Ext.data.StoreManager.lookup('thumbStore'),
-		    tpl: imageTpl,
-		    itemSelector: 'div.thumb-wrap',
-		    emptyText: 'No images available',
-		    renderTo: 'thumbnails',
-	        listeners: {
-	                selectionchange: function(dv, nodes ){
-	   
-	                   if (nodes.length>0) {
+		    '<tpl for=".">',
+		        '<div class="thumb-wrap">',
+		          '<img src="/imageproxy{downloadImageURL}" height="150px"/>',
+		          '<span>{label}</span>',
+		        '</div>',
+		    '</tpl>'
+		);		
+		
+	    cudl.thumbnailsSetup = false;
+	    cudl.thumbnailView = null;
+	    cudl.thumbnailPageNumber = 1;
+	
+	    cudl.setupThumbnailTab = function() { 
+		
+		    setNumberItems();
+		
+	        if (!cudl.thumbnailsSetup) {
+		
+		        thumbnailTab.add( thumbnailPanel);
 
-	                     cudl.pagenum = nodes[0].data.sequence; 
-	                     cudl.store.loadPage(cudl.pagenum);
-	
-	                   }
-	                }
-	            }
-		  });
-			  
-		  cudl.thumbnailsSetup = true;
+		        cudl.thumbnailView = Ext.create('Ext.view.View', {
+			       store: Ext.data.StoreManager.lookup('thumbStore'),
+			       tpl: imageTpl,
+			       itemSelector: 'div.thumb-wrap',
+			       emptyText: 'No images available',
+			       renderTo: 'thumbnails',		
+			       hidden: true,
+		           listeners: {
+		              selectionchange: function(dv, nodes ){
+		   
+		                 if (nodes.length>0) {
+
+		                     cudl.pagenum = nodes[0].data.sequence; 
+		                     cudl.store.loadPage(cudl.pagenum);
+		
+		                 }
+		               }
+		            }
+			     });
+			 
+		         Ext.data.StoreManager.lookup('thumbStore').loadPage(cudl.thumbnailPageNumber);
+		         cudl.thumbnailView.setVisible(true);
+		         cudl.thumbnailsSetup = true;
 		 
-		}
-	
-	}
+		    } // End of Thumbnail Tab setup. 	  
+	    }
 	
 	thumbnailTab.addListener('beforeshow', cudl.setupThumbnailTab);
+	thumbnailTab.addListener('resize', function(dv, height, width, nodes ){
+		   
+		if (setNumberItems()) {
+		  Ext.data.StoreManager.lookup('thumbStore').loadPage(cudl.thumbnailPageNumber);
+		}
+   
+     });
 	 
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 	
