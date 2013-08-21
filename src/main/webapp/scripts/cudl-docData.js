@@ -44,7 +44,7 @@ cudl.docData = function() {
 				autoLoad : false,
 				fields : [ 'label', 'sequence', 'displayImageURL', 'downloadImageURL',
 						'transcriptionNormalisedURL',
-						'transcriptionDiplomaticURL' ],
+						'transcriptionDiplomaticURL', 'thumbnailImageURL', 'thumbnailImageOrientation' ],
 				pageSize : 8, // items per page
 				proxy : new Ext.data.HttpProxy({
 					url : cudl.JSONTHUMBURL,

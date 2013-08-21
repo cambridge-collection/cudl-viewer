@@ -297,9 +297,10 @@ cudl.setupViewport = function () {
 	var setNumberItems = function () {
 		
 		  var pageHeaderHeight = 120;
-		  var thumbnailItemHeight = 175;
-		  var thumbnailItemWidth = 130;
+		  var thumbnailItemHeight = 165;
+		  var thumbnailItemWidth = 165;
 			
+		  
 		  var tabWidth = parseInt(document.getElementById("rightTabPanel").style.width);
 		  var tabHeight = parseInt(document.getElementById("rightTabPanel").style.height)-pageHeaderHeight; 
 		  var numItemInRow =  Math.floor(tabWidth/thumbnailItemWidth);
@@ -352,10 +353,18 @@ cudl.setupViewport = function () {
 	 	// Note height=150px for portrait, width=120px for landscape. 
 		var imageTpl = new Ext.XTemplate(
 		    '<tpl for=".">',
+		      '<tpl if="thumbnailImageOrientation == '+"'portrait'"+'">',
 		        '<div class="thumb-wrap">',
-		          '<img src="/imageproxy{downloadImageURL}" height="150px"/>',
+		          '<img src="'+cudl.proxyURL+'{thumbnailImageURL}" height="145px"/>',
 		          '<span>{label}</span>',
 		        '</div>',
+		      '</tpl>',		  
+		      '<tpl if="thumbnailImageOrientation == '+"'landscape'"+'">',
+		        '<div class="thumb-wrap">',
+		          '<img src="'+cudl.proxyURL+'{thumbnailImageURL}" width="145px"/>',
+		          '<span>{label}</span>',
+		        '</div>',
+		      '</tpl>',			      
 		    '</tpl>'
 		);		
 		
