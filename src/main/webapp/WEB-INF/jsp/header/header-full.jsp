@@ -27,23 +27,6 @@
 <link href="/styles/treestyler.css" rel="stylesheet" type="text/css"
 	media="screen" />
 
-<%
-	// If no javascript enabled, display no javascript page with link to homepage. 
-	String redirectURL = "/";
-	String encodedRedirectURL = URLEncoder.encode(redirectURL, "UTF-8");
-
-	// ensure we don't loop when displaying the nojavascript page.
-	if (!request.getRequestURI().toString().contains("nojavascript")) {
-%>
-<NOSCRIPT>
-	<!--  no javascript redirect. -->
-	<META HTTP-EQUIV="refresh"
-		content="0; URL=/nojavascript?url=<%=encodedRedirectURL%>" />
-</NOSCRIPT>
-<%
-	}
-%>
-
 <script type="text/javascript">
 	// initalise page if function is available. 
 	function init() {

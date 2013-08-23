@@ -5,6 +5,18 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<%!
+public String prepareForMetaTag(String input) {
+	
+	// replacing double quotes with single quotes 
+	String output = input.replaceAll("\"", "'");
+	
+	// remove [ or ]
+	output = output.replaceAll("\\[|\\]", "");
+	
+	return output;	
+}
+%>
 <%
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
@@ -24,12 +36,22 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 		parentCollectionURL = parentCollection.getURL();
 		parentCollectionTitle = parentCollection.getTitle();
 	}
+	
+	// For use in meta tags and to aid search. 
+	String metaItemAbstract = prepareForMetaTag(request.getAttribute("itemAbstract").toString());
+	String metaItemTitle = prepareForMetaTag(request.getAttribute("itemTitle").toString());
+	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
+	
+	
 %>
-<NOSCRIPT>
-	<!--  no javascript redirect. -->
-	<META HTTP-EQUIV="refresh"
-		content="0; URL=/nojavascript?url=<%=encodedRequestURL%>" />
-</NOSCRIPT>
+
+<!--  google webmaster tools -->
+<meta name="google-site-verification" content="FnLk7ALqNV0pIE7sbtHGY7D2V6cTtQVRQvYFFv5SZIU" />
+
+<!-- page metadata tags -->
+<meta name="description" content="<%=metaItemAbstract%>">
+<meta name="keywords" content="<%=metaItemTitle%>, <%=collectionTitle%>">
+<meta name="author" content="<%=metaItemAuthors%>">
 
 <jsp:include page="includes.jsp" />
 
@@ -71,6 +93,16 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 
 </head>
 <body>
+
+<!--  hidden section for the search engines to index -->
+<div style="display:none">
+  <h1><%=metaItemTitle%></h1>
+  <h2><%=metaItemAuthors%></h2>
+  <h2><%=collectionTitle%></h2>  
+  <p><%=metaItemAbstract%></p>
+</div>
+
+
 	<div id="north">
  
 		<header id="globalMasthead" style="width:100%; height:45px">        

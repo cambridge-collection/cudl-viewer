@@ -24,6 +24,11 @@
 
 <jsp:include page="analytics.jsp" />
   
+<noscript>
+  <!-- message to display when javascript is disabled --> 
+  <div id="noscript-warning"><jsp:include page="../errors/nojavascript.jsp" /></div>
+</noscript>
+  
 </body>
 
 </html>

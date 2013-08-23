@@ -7,6 +7,21 @@ body {
 	background: none;
 }
 
+#noscript-warning {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;	
+	background:#fff;
+	z-index:2000;
+	vertical-align: middle;
+}
+#noscript-warning p {
+	text-align:center;
+	vertical-align: middle;
+}
+
 .contibutors li {
 	padding: 5px;
 }
