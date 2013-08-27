@@ -16,6 +16,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import ulcambridge.foundations.viewer.model.Properties;
+
 public class ClassmarkConverterTest extends TestCase {
 	
 	public ClassmarkConverterTest(String testName) {
@@ -35,9 +37,11 @@ public class ClassmarkConverterTest extends TestCase {
 	
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/gzh");
-		dataSource.setUsername("root");
+		
+		dataSource.setDriverClassName(Properties.getString("gn.jdbc.driver"));
+		dataSource.setUrl(Properties.getString("gn.jdbc.url"));
+		dataSource.setUsername(Properties.getString("gn.jdbc.user"));
+		dataSource.setPassword(Properties.getString("gn.jdbc.password"));
 		return dataSource;
 	}
 	
@@ -64,7 +68,7 @@ public class ClassmarkConverterTest extends TestCase {
 		for (String label : labelClassmarkMap.keySet()) {
 			String dbClassmark = labelClassmarkMap.get(label);
 			String newClassmark = ClassmarkConverter.toNormal(label);
-			System.out.println(label + "\t" + dbClassmark + "\t" + newClassmark);
+			//System.out.println(label + "\t" + dbClassmark + "\t" + newClassmark);
 		}
 	}
 	
