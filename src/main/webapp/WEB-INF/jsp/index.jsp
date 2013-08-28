@@ -358,18 +358,18 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Board of Longitude"
-					title="Board of Longitude"
-					src="/images/index/news-boardoflongitude-small.jpg" height="100" width="100"></a>
+					alt="Early Qur'anic manuscripts and Thumbnail View"
+					title="Early Qur'anic manuscripts and Thumbnail View"
+					src="/images/index/news-thumbnails-small.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">18/07/2013</span>
+				<span class="date">29/08/2013</span>
 				<h5>
-					<a href="/news">Launch of the Board of Longitude Collection</a></h5>
+					<a href="/news">Early Qur'anic manuscripts and Thumbnail View</a></h5>
             <p>
-				We are releasing the <a href="/collections/longitude">full digitised archive</a> of the Board and
-				accompanying material. 
+				A collection of our <a href="/collections/islamic">earliest Qur'anic manuscripts</a> 
+				released, and a new "Thumbnails" tab is available when viewing any item.
 			</p>					
 				
 			</div>

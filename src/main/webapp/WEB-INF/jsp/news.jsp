@@ -19,6 +19,35 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
+			<img alt="Early Qur'anic manuscripts and Thumbnail View"
+				title="Early Qur'anic manuscripts and Thumbnail View"
+				src="/images/index/news-thumbnails.jpg" height="200" width="200">
+		</div>
+
+		<div class="grid_8">
+			<span class="date">29/08/2013</span>
+			<h4>Early Qur'anic manuscripts and Thumbnail View</h4>
+			<p>
+				In this release, we present the full collection of our <a
+					href="/collections/islamic">earliest Qur'anic manuscripts</a>
+				copied during the first four Centuries of Islam, including a portion
+				of the <a href="/view/MS-ADD-01116">earliest Qu'ran</a> for which we
+				have an evident terminus ante quem.
+			</p>
+			<p>
+				We have added <a href="/collections/nmm_print">15,000 pages of
+					material</a> from the National Maritime Museum's print holdings to our
+				Board of Longitude Collection.
+			</p>
+			<p>And we have introduced new functionality to allow you to
+				quickly scan through manuscripts - simply click on the "Thumbnails"
+				tab on the right hand side of the screen when viewing any item.</p>
+
+		</div>
+
+		<hr />
+
+		<div class="grid_5">
 			<img alt="Board of Longitude" title="Board of Longitude"
 				src="/images/index/news-boardoflongitude.jpg" height="200"
 				width="200">
