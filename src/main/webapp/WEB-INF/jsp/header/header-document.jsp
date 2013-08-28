@@ -42,7 +42,7 @@ public String prepareForMetaTag(String input) {
 	String metaItemAbstract = prepareForMetaTag(request.getAttribute("itemAbstract").toString());
 	String metaItemTitle = prepareForMetaTag(request.getAttribute("itemTitle").toString());
 	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
-	String metaRequestURL = requestURL.replaceFirst(request.getAttribute("docId")+"/"+".*$", request.getAttribute("docId")+"/");
+	String metaRequestURL = requestURL.replaceFirst(request.getAttribute("docId")+"/"+".*$", request.getAttribute("docId").toString());
 	
 %>
 
