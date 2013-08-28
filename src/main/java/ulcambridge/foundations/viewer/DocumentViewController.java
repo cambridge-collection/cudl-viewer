@@ -186,28 +186,20 @@ public class DocumentViewController {
 
 		// forward to the correct location based on type of item
 		ModelAndView modelAndView = new ModelAndView("jsp/document");
-
-		modelAndView.addObject("docId", item.getId());
-		modelAndView.addObject("page", page);
+		
+		/** URLs **/
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
-
-		modelAndView.addObject("requestURL", requestURL);
+		modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
+		modelAndView.addObject("requestURL", requestURL);		
 		modelAndView.addObject("proxyURL", proxyURL);
+		
+		/** Collection information **/
 		modelAndView.addObject("organisationalCollection",
 				organisationalCollection);
 		modelAndView.addObject("collections", docCollections);
-
-		modelAndView.addObject("itemTitle", item.getTitle());
-		modelAndView.addObject("itemAuthors",
-				new JSONArray(item.getAuthorNames()));
-		modelAndView.addObject("itemAuthorsFullform",
-				new JSONArray(item.getAuthorNamesFullForm()));
-		modelAndView.addObject("itemAbstract", item.getAbstract());
-
-		modelAndView.addObject("itemFactory", itemFactory);
-
+		
 		// Get parent collection if there is one.
 		Collection parent = null;
 		if (organisationalCollection.getParentCollectionId() != null) {
@@ -216,6 +208,20 @@ public class DocumentViewController {
 							.getParentCollectionId());
 		}
 		modelAndView.addObject("parentCollection", parent);
+		
+		/** Item Information **/
+		modelAndView.addObject("docId", item.getId());
+		modelAndView.addObject("itemTitle", item.getTitle());
+		modelAndView.addObject("itemAuthors",
+				new JSONArray(item.getAuthorNames()));
+		modelAndView.addObject("itemAuthorsFullform",
+				new JSONArray(item.getAuthorNamesFullForm()));
+		modelAndView.addObject("itemAbstract", item.getAbstract());
+
+		modelAndView.addObject("itemFactory", itemFactory);
+				
+		/** Page Information **/
+		modelAndView.addObject("page", page);
 
 		return modelAndView;
 	}

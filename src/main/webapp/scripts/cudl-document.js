@@ -279,14 +279,16 @@ cudl.setupViewport = function () {
 		}
 	}
 
-	// Setup Thumbnail Tab.
-	var thumbnailTab = cudl.setupTab('Thumbnails', 'thumbnailTab', cudl.viewportComponents.rightTabPanel);	
+	// Setup Thumbnail Tab if this document has images
+	if (cudl.data.descriptiveMetadata[0].thumbnailUrl) {
+		
+	  var thumbnailTab = cudl.setupTab('Thumbnails', 'thumbnailTab', cudl.viewportComponents.rightTabPanel);	
 	
-	Ext.Loader.setConfig({enabled: true});
-	Ext.Loader.setPath('Ext.ux.DataView', '/scripts/extjs/ux/DataView/');
+	  Ext.Loader.setConfig({enabled: true});
+	  Ext.Loader.setPath('Ext.ux.DataView', '/scripts/extjs/ux/DataView/');
 	
-	// Setup Thumbnails
-	Ext.require([
+	  // Setup Thumbnails
+	  Ext.require([
 	             'Ext.data.*',
 	             'Ext.util.*',
 	             'Ext.view.View',
@@ -294,7 +296,7 @@ cudl.setupViewport = function () {
 	             'Ext.ux.DataView.LabelEditor'
 	         ]);
 
-	var setNumberItems = function () {
+	  var setNumberItems = function () {
 		
 		  var pageHeaderHeight = 120;
 		  var thumbnailItemHeight = 165;
@@ -313,9 +315,9 @@ cudl.setupViewport = function () {
 	      }
 		  
 		  return false;
-	};
+	  };
 		
-	var thumbnailPanel =  new Ext.Panel({
+	  var thumbnailPanel =  new Ext.Panel({
 	      id: 'images-view',
 		  layout: 'absolute',
 		  x: 0, 
@@ -407,14 +409,15 @@ cudl.setupViewport = function () {
 		    } // End of Thumbnail Tab setup. 	  
 	    }
 	
-	thumbnailTab.addListener('beforeshow', cudl.setupThumbnailTab);
-	thumbnailTab.addListener('resize', function(dv, height, width, nodes ){
+	  thumbnailTab.addListener('beforeshow', cudl.setupThumbnailTab);
+	  thumbnailTab.addListener('resize', function(dv, height, width, nodes ){
 		   
 		if (setNumberItems()) {
 		  Ext.data.StoreManager.lookup('thumbStore').loadPage(cudl.thumbnailPageNumber);
 		}
    
-     });
+       });
+	}
 	 
 	cudl.viewportComponents.rightTabPanel.setActiveTab(0);
 	
