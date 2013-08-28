@@ -3,9 +3,10 @@ package ulcambridge.foundations.viewer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -59,10 +60,12 @@ public class SiteViewController {
 		modelAndView
 				.addObject("itemCount", formatter.format(this.collectionFactory
 						.getAllItemIds().size()));
-		
-		List<Collection> rootCollections = this.collectionFactory.getRootCollections();		
-		//Collections.shuffle(allCollections); // shuffle to randomise collection order.  
-		modelAndView.addObject("rootCollections", rootCollections);		
+
+		List<Collection> rootCollections = this.collectionFactory
+				.getRootCollections();
+		// Collections.shuffle(allCollections); // shuffle to randomise
+		// collection order.
+		modelAndView.addObject("rootCollections", rootCollections);
 
 		return modelAndView;
 	}
@@ -177,15 +180,48 @@ public class SiteViewController {
 
 	// on path /robots.txt
 	@RequestMapping(value = "/robots.txt")
-	public ModelAndView handleRobots(HttpServletResponse response)
+	public ModelAndView handleRobots(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
+		String baseURL = String.format("%s://%s:%d/",request.getScheme(),  request.getServerName(), request.getServerPort());
+		
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		out.println(Properties.getString("robots.useragent"));
 		out.println(Properties.getString("robots.disallow"));
+		out.println("Sitemap: "+baseURL+"sitemap.xml");
 		out.close();
 		return null;
 	}
 
+	// on path /sitemap.xml
+	@RequestMapping(value = "/sitemap.xml")	
+	public ModelAndView handleSiteMap(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		response.setContentType("application/xml");
+		PrintWriter out = response.getWriter();
+		out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		out.println("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" ");
+		out.println("xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" ");
+		out.println("xmlns:video=\"http://www.google.com/schemas/sitemap-video/1.1\"> ");
+
+		Set<String> ids = collectionFactory.getAllItemIds();
+        
+		for (String itemId : ids) {
+
+			String itemBaseURL = String.format("%s://%s:%d/view/",request.getScheme(),  request.getServerName(), request.getServerPort());			
+			
+			out.println("<url><loc>");
+            out.print(itemBaseURL+itemId);
+            out.println("</loc>");
+			out.println("</url>");
+			
+		}
+		out.println("</urlset>");
+
+		out.flush();
+		out.close();
+		return null;
+	}
 }
