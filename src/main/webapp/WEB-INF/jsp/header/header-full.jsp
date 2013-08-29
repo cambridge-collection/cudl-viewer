@@ -16,6 +16,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+<!--  google webmaster tools -->
+<meta name="google-site-verification" content="FnLk7ALqNV0pIE7sbtHGY7D2V6cTtQVRQvYFFv5SZIU" />
+
 <jsp:include page="includes.jsp" />
 
 <script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
