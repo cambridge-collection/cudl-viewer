@@ -44,8 +44,8 @@ public class NewtonTranscriptionFormatter implements TranscriptionFormatter {
 
 			output.append("</head><body><div class=\"transcription\">\n");
 			// Add link to Newton Project
-			output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='"
-					+ sourceURL + "'>Newton Project</a></div>");
+			output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='"+
+			"http://www.newtonproject.sussex.ac.uk'>Newton Project</a></div>");
 			// output.append("<div class=\"transcription-credit\">Transcription by the <a target='_blank' href='http://www.newtonproject.sussex.ac.uk/'>Newton Project</a></div>");
 
 		}
