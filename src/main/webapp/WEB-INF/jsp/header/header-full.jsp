@@ -16,8 +16,9 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<!--  google webmaster tools -->
+<!--  webmaster tools -->
 <meta name="google-site-verification" content="FnLk7ALqNV0pIE7sbtHGY7D2V6cTtQVRQvYFFv5SZIU" />
+<meta name="msvalidate.01" content="632A3A08C4128B19D71DAD306677682D" />
 
 <jsp:include page="includes.jsp" />
 
