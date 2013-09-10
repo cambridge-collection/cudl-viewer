@@ -66,6 +66,9 @@ public class DocumentViewController {
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			@PathVariable("page") int page, HttpServletRequest request) {
 
+		// force docID to uppercase
+		docId = docId.toUpperCase();
+		
 		// Show a different view based on the itemType for this item.
 		Item item = itemFactory.getItemFromId(docId);
 		String itemType = item.getType();
@@ -88,6 +91,9 @@ public class DocumentViewController {
 			@RequestParam(value = "limit", required = false) Integer limit,
 			HttpServletResponse response) throws JSONException {
 
+		// force docID to uppercase
+		docId = docId.toUpperCase();
+		
 		Item item = itemFactory.getItemFromId(docId);
 		JSONObject json = new JSONObject(item.getJSON(),
 				JSONObject.getNames(item.getJSON()));
@@ -116,6 +122,9 @@ public class DocumentViewController {
 	public ModelAndView handleJSONRequest(@PathVariable("docId") String docId,
 			HttpServletResponse response) throws JSONException {
 
+		// force docID to uppercase
+		docId = docId.toUpperCase();
+		
 		Item item = itemFactory.getItemFromId(docId);
 		JSONObject json = item.getJSON();
 
