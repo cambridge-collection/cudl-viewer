@@ -38,12 +38,15 @@ public String prepareForMetaTag(String input) {
 		parentCollectionTitle = parentCollection.getTitle();
 	}
 	
-	// For use in meta tags and to aid search. 
+	// For use in meta tags and to aid search.
+	String itemTitle = request.getAttribute("itemTitle").toString();
+	String pageLabel = request.getAttribute("pageLabel").toString();
 	String metaItemAbstract = prepareForMetaTag(request.getAttribute("itemAbstract").toString());
-	String metaItemTitle = prepareForMetaTag(request.getAttribute("itemTitle").toString());
 	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
 	String metaRequestURL = requestURL.replaceFirst(request.getAttribute("docId")+"/"+".*$", request.getAttribute("docId").toString());
-	
+	metaRequestURL += "/" + page;
+	String title = collectionTitle + " " + itemTitle + " " + pageLabel;
+	String metaTitle = prepareForMetaTag(title);
 %>
 
 <!--  webmaster tools -->
@@ -51,12 +54,30 @@ public String prepareForMetaTag(String input) {
 <meta name="msvalidate.01" content="632A3A08C4128B19D71DAD306677682D" />
 
 <!-- page metadata tags -->
-<title><%=collectionTitle%> : ${itemTitle} ${pageLabel}</title>
+<title><%=title%></title>
+<meta property="og:type" content="website" />
+<meta property="twitter:card" content="photo" />
+<!-- Page URI -->
 <meta property="schema:url" content="<%=metaRequestURL%>" />
-<meta property="schema:name" content="<%=collectionTitle%> : <%=metaItemTitle%>" />
-<meta name="description" property="schema:description" content="<%=metaItemAbstract%>" />
-<meta name="keywords" property="schema:keywords" content="<%=metaItemAuthors%>" />
-<meta property="schema:thumbnailUrl" content="<%=thumbnailURL%>" /> 
+<meta property="og:url" content="<%=metaRequestURL%>" />
+<link rel="canonical" href="<%=metaRequestURL%>" />
+<!-- Page Title -->
+<meta property="schema:name rdfs:label dcterms:title" content="<%=metaTitle%>" />
+<meta property="og:title" content="<%=metaTitle%>" />
+<meta property="twitter:title" content="<%=metaTitle%>" />
+<!-- Page Description? We don't have one -->
+<!-- Page Keywords? We don't have any -->
+<!-- Image URI (Download Image) -->
+<!-- Let's not expose download images here just yet -->
+<!-- Image URI (Thumbnail) -->
+<meta property="schema:image" content="<%=thumbnailURL%>" />
+<meta property="og:image" content="<%=thumbnailURL%>" />
+<meta property="twitter:image" content="<%=thumbnailURL%>" />
+<meta property="schema:thumbnailUrl" content="<%=thumbnailURL%>" />
+
+<meta property="og:site_name" content="Cambridge Digital Library?" />
+<meta property="twitter:creator" content="@camdiglib" />
+<meta property="twitter:site" content="@camdiglib" />
 
 <jsp:include page="includes.jsp" />
 
@@ -97,7 +118,7 @@ public String prepareForMetaTag(String input) {
 
 <!--  hidden section for the search engines to index -->
 <div style="display:none">
-  <h1><%=metaItemTitle%></h1>
+  <h1><%=metaTitle%></h1>
   <h2><%=metaItemAuthors%></h2>
   <h2><%=collectionTitle%></h2>  
   <p><%=metaItemAbstract%></p>

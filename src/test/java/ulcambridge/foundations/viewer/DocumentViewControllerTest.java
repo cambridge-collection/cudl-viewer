@@ -70,7 +70,7 @@ public class DocumentViewControllerTest extends TestCase {
 		ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);	
 
 		assertEquals("MS-ADD-04004", mDoc.getModelMap().get("docId"));
-		assertEquals(1, mDoc.getModelMap().get("page"));
+		assertEquals(0, mDoc.getModelMap().get("page"));
 		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
 		
 	}
