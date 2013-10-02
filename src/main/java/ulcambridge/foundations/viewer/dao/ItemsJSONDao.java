@@ -79,6 +79,7 @@ public class ItemsJSONDao implements ItemsDao {
 		String itemAbstract = "";
 		String itemThumbnailURL = "";
 		String thumbnailOrientation = "";
+		List<String> pageLabels = new ArrayList<String>();
 			
 		try {
 			
@@ -111,11 +112,16 @@ public class ItemsJSONDao implements ItemsDao {
 			
 			// if not see if we have content (used in essay objects)
 			// - NOTE reads content from page 0 only. 
-			JSONObject page0 = itemJson.getJSONArray(
-					"pages").getJSONObject(0);
+			JSONArray pages = itemJson.getJSONArray("pages");
+			JSONObject page0 = pages.getJSONObject(0);
 			
 			if (itemAbstract.equals("") && page0.has("content")) {
 				itemAbstract = page0.getString("content");
+			}
+			
+			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
+				JSONObject page = pages.getJSONObject(pageIndex);
+				pageLabels.add(page.getString("label"));
 			}
 
 			// Might have Thumbnail image
@@ -138,7 +144,7 @@ public class ItemsJSONDao implements ItemsDao {
 		}	
 		
 		Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
-				itemAbstract, itemThumbnailURL, thumbnailOrientation, itemJson);
+				itemAbstract, itemThumbnailURL, thumbnailOrientation, pageLabels, itemJson);
 
 		return item;
 
@@ -153,11 +159,17 @@ public class ItemsJSONDao implements ItemsDao {
 		List<String> associatedOrganisations = new ArrayList<String>();
 		List<String> associatedSubjects = new ArrayList<String>();
 		JSONObject descriptiveMetadata = null;
+		List<String> pageLabels = new ArrayList<String>();
 		
 		try {
 			
-			JSONObject page0 = itemJson.getJSONArray(
-					"pages").getJSONObject(0);
+			JSONArray pages = itemJson.getJSONArray("pages");
+			JSONObject page0 = pages.getJSONObject(0);
+			
+			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
+				JSONObject page = pages.getJSONObject(pageIndex);
+				pageLabels.add(page.getString("label"));
+			}
 			
 			// Get essay content
 			content = page0.getString("content");
@@ -203,7 +215,8 @@ public class ItemsJSONDao implements ItemsDao {
 		
 		return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
 			 parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(), 
-			 content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects);
+			 content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects, 
+			 pageLabels);
 	}
 
 	/**

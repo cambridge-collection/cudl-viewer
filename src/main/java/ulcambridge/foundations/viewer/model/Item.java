@@ -31,12 +31,13 @@ public class Item implements Comparable<Item> {
 	protected String thumbnailURL;
 	protected String thumbnailOrientation;
 	protected String abstractShort;
+	protected List<String> pageLabels;
 	protected JSONObject json; // used for document view
 	protected JSONObject simplejson; // used for collection view
 
 	public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
 			String itemShelfLocator, String itemAbstract,
-			String itemThumbnailURL, String thumbnailOrientation,
+			String itemThumbnailURL, String thumbnailOrientation, List<String> pageLabels,
 			JSONObject itemJson) {
 
 		this.id = itemId;
@@ -65,6 +66,8 @@ public class Item implements Comparable<Item> {
 					.substring(120).indexOf(" "))+ "...";
 		}
 		
+		this.pageLabels = pageLabels;
+		
 		// Make simple JSON
 		try {
 			simplejson = new JSONObject();
@@ -86,6 +89,10 @@ public class Item implements Comparable<Item> {
 		orderCount++;
 		this.order = orderCount;
 
+	}
+	
+	public List<String> getPageLabels() {
+		return pageLabels;
 	}
 
 	public List<String> getAuthorNames() {

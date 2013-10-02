@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -48,10 +49,12 @@ public class CollectionTest extends TestCase {
 		people.add(p1);
 		people.add(p2);
 		people.add(aut);
+		
+		List<String> pageLabels = new ArrayList<String>();
 
 		Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
-				"test thumbnail orientation", new JSONObject());
+				"test thumbnail orientation", pageLabels, new JSONObject());
 
 		ArrayList<String> collectionIds = new ArrayList<String>();
 		collectionIds.add("Test-ID");

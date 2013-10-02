@@ -57,8 +57,8 @@ public class DocumentViewController {
 	@RequestMapping(value = "/{docId}")
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			HttpServletRequest request) {
-
-		return handleRequest(docId, 1, request);
+		// '0' is special page value indicating the item-level view
+		return handleRequest(docId, 0, request);
 	}
 
 	// on path /view/{docId}/{page}
@@ -193,8 +193,14 @@ public class DocumentViewController {
 			proxyURL = Properties.getString("proxyURL");
 		}
 
-		// forward to the correct location based on type of item
-		ModelAndView modelAndView = new ModelAndView("jsp/document");
+		// forward to the correct location based on type of item 
+		// and page number, where page=0 is the item-level metadata
+		ModelAndView modelAndView;
+		if (page == 0) {
+			modelAndView = new ModelAndView("jsp/document");
+		} else {
+			modelAndView = new ModelAndView("jsp/page");
+		}
 		
 		/** URLs **/
 		modelAndView.addObject("docURL", docURL);
@@ -231,6 +237,16 @@ public class DocumentViewController {
 				
 		/** Page Information **/
 		modelAndView.addObject("page", page);
+		
+		// get the page label, if not at the item-page
+		if (page > 0) {
+			List<String> pageLabels = item.getPageLabels();  
+			String label = "";
+			if (pageLabels.size() > page - 1) {
+				label = pageLabels.get(page - 1);
+			}
+			modelAndView.addObject("pageLabel", label);
+		}
 
 		return modelAndView;
 	}
@@ -268,7 +284,13 @@ public class DocumentViewController {
 		}
 
 		// forward to the correct location based on type of item
-		ModelAndView modelAndView = new ModelAndView("jsp/essay");
+		// and page number, where page=0 is the item-level metadata
+		ModelAndView modelAndView;
+		if (page == 0) {
+			modelAndView = new ModelAndView("jsp/essay");
+		} else {
+			modelAndView = new ModelAndView("jsp/essay-page");
+		}
 
 		modelAndView.addObject("docId", item.getId());
 		modelAndView.addObject("proxyURL", proxyURL);
