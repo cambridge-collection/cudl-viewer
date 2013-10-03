@@ -43,8 +43,8 @@ public String prepareForMetaTag(String input) {
 	String pageLabel = request.getAttribute("pageLabel").toString();
 	String metaItemAbstract = prepareForMetaTag(request.getAttribute("itemAbstract").toString());
 	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
-	String metaRequestURL = requestURL.replaceFirst(request.getAttribute("docId")+"/"+".*$", request.getAttribute("docId").toString());
-	metaRequestURL += "/" + page;
+	String docId = request.getAttribute("docId").toString();
+	String metaRequestURL = requestURL.replaceFirst(docId +"/"+".*$", docId) + "/" + request.getAttribute("page");
 	String title = collectionTitle + " " + itemTitle + " " + pageLabel;
 	String metaTitle = prepareForMetaTag(title);
 %>
