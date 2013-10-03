@@ -283,14 +283,7 @@ public class DocumentViewController {
 							.getParentCollectionId());
 		}
 
-		// forward to the correct location based on type of item
-		// and page number, where page=0 is the item-level metadata
-		ModelAndView modelAndView;
-		if (page == 0) {
-			modelAndView = new ModelAndView("jsp/essay");
-		} else {
-			modelAndView = new ModelAndView("jsp/essay-page");
-		}
+		ModelAndView modelAndView = new ModelAndView("jsp/essay");
 
 		modelAndView.addObject("docId", item.getId());
 		modelAndView.addObject("proxyURL", proxyURL);
