@@ -56,15 +56,26 @@ public String prepareForMetaTag(String input) {
 <title><%=title%></title>
 <meta property="og:type" content="website" />
 <meta property="twitter:card" content="summary" />
+
 <!-- Item URI -->
 <meta property="schema:url" content="<%=metaRequestURL%>" />
 <meta property="og:url" content="<%=metaRequestURL%>" />
 <link rel="canonical" href="<%=metaRequestURL%>" />
+
 <!-- Item Title -->
 <meta property="schema:name rdfs:label dcterms:title" content="<%=metaTitle%>" />
 <meta property="og:title" content="<%=metaTitle%>" />
 <meta property="twitter:title" content="<%=metaTitle%>" />
 <meta name="keywords" property="schema:keywords" content="<%=metaItemAuthors%>" />
+
+<!-- Item Description -->
+<meta property="schema:description rdfs:comment dcterms:description" content="<%=metaItemAbstract%>" />
+<meta property="og:description" content="<%=metaItemAbstract%>" />
+<meta property="twitter:description" content="<%=metaItemAbstract%>" />
+<meta name="description" content="<%=metaItemAbstract%>" />
+<meta property="schema:keywords" content="<%=metaItemAbstract%>" />
+<meta name="keywords" content="<%=metaItemAbstract%>" />
+
 <!-- Image URI (Thumbnail) -->
 <meta property="schema:image" content="<%=thumbnailURL%>" />
 <meta property="og:image" content="<%=thumbnailURL%>" />

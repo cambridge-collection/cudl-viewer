@@ -65,10 +65,7 @@ public String prepareForMetaTag(String input) {
 <meta property="schema:name rdfs:label dcterms:title" content="<%=metaTitle%>" />
 <meta property="og:title" content="<%=metaTitle%>" />
 <meta property="twitter:title" content="<%=metaTitle%>" />
-<!-- Page Description? We don't have one -->
-<!-- Page Keywords? We don't have any -->
-<!-- Image URI (Download Image) -->
-<!-- Let's not expose download images here just yet -->
+
 <!-- Image URI (Thumbnail) -->
 <meta property="schema:image" content="<%=thumbnailURL%>" />
 <meta property="og:image" content="<%=thumbnailURL%>" />
