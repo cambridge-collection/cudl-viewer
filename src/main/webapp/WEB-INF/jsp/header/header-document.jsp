@@ -40,7 +40,11 @@ public String prepareForMetaTag(String input) {
 	
 	// For use in meta tags and to aid search.
 	String itemTitle = request.getAttribute("itemTitle").toString();
-	String metaItemAbstract = prepareForMetaTag(request.getAttribute("itemAbstract").toString());
+	Object itemAbstract = request.getAttribute("itemAbstract");
+	String metaItemAbstract = "";
+	if (itemAbstract != null) {
+		metaItemAbstract = prepareForMetaTag(itemAbstract.toString());
+	}
 	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
 	String docId = request.getAttribute("docId").toString();
 	String metaRequestURL = requestURL.replaceFirst(docId +"/"+".*$", docId);
@@ -69,12 +73,14 @@ public String prepareForMetaTag(String input) {
 <meta name="keywords" property="schema:keywords" content="<%=metaItemAuthors%>" />
 
 <!-- Item Description -->
+<% if (itemAbstract != null) { %>
 <meta property="schema:description rdfs:comment dcterms:description" content="<%=metaItemAbstract%>" />
 <meta property="og:description" content="<%=metaItemAbstract%>" />
 <meta property="twitter:description" content="<%=metaItemAbstract%>" />
 <meta name="description" content="<%=metaItemAbstract%>" />
 <meta property="schema:keywords" content="<%=metaItemAbstract%>" />
 <meta name="keywords" content="<%=metaItemAbstract%>" />
+<% } %>
 
 <!-- Image URI (Thumbnail) -->
 <meta property="schema:image" content="<%=thumbnailURL%>" />
