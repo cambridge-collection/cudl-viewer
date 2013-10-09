@@ -12,7 +12,7 @@ PRIMARY KEY (collectionid)
 
 CREATE TABLE items
 (
-itemid varchar(255) NOT NULL
+itemid varchar(255) NOT NULL,
 PRIMARY KEY (itemid)
 );
 
@@ -28,6 +28,10 @@ FOREIGN KEY (itemid) REFERENCES items(itemid),
 FOREIGN KEY (collectionid) REFERENCES collections(collectionid)
 );
 
+create table users(
+      username varchar(250) not null primary key,
+      password varchar(250) not null,
+      enabled boolean not null);
 
 CREATE TABLE bookmarks
 (
@@ -40,10 +44,6 @@ PRIMARY KEY (username,itemid,page),
 FOREIGN KEY (itemid) REFERENCES items(itemid),
 FOREIGN KEY (username) REFERENCES users(username)
 );
-create table users(
-      username varchar(250) not null primary key,
-      password varchar(250) not null,
-      enabled boolean not null);
 
 create table authorities (
       username varchar(250) not null,

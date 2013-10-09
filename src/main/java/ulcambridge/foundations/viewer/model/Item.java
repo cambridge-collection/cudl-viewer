@@ -32,12 +32,14 @@ public class Item implements Comparable<Item> {
 	protected String thumbnailOrientation;
 	protected String abstractShort;
 	protected List<String> pageLabels;
+	protected List<String> pageThumbnailURLs;
 	protected JSONObject json; // used for document view
 	protected JSONObject simplejson; // used for collection view
 
 	public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
 			String itemShelfLocator, String itemAbstract,
-			String itemThumbnailURL, String thumbnailOrientation, List<String> pageLabels,
+			String itemThumbnailURL, String thumbnailOrientation, 
+			List<String> pageLabels, List<String> pageThumbnailURLs,
 			JSONObject itemJson) {
 
 		this.id = itemId;
@@ -67,6 +69,7 @@ public class Item implements Comparable<Item> {
 		}
 		
 		this.pageLabels = pageLabels;
+		this.pageThumbnailURLs = pageThumbnailURLs;
 		
 		// Make simple JSON
 		try {
@@ -89,6 +92,10 @@ public class Item implements Comparable<Item> {
 		orderCount++;
 		this.order = orderCount;
 
+	}
+	
+	public List<String> getPageThumbnailURLs() {
+		return pageThumbnailURLs;
 	}
 	
 	public List<String> getPageLabels() {

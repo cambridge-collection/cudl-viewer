@@ -25,10 +25,12 @@ public class EssayItem extends Item {
 			String itemThumbnailURL, String thumbnailOrientation,
 			JSONObject itemJson, String content, List<String> itemReferences,
 			List<String> people, List<String> places,
-			List<String> organisations, List<String> subjects, List<String> pageLabels) {
+			List<String> organisations, List<String> subjects, 
+			List<String> pageLabels, List<String> pageThumbnailURLs) {
 
 		super(itemId, itemType, itemTitle, authors, itemShelfLocator,
-				itemAbstract, itemThumbnailURL, thumbnailOrientation, pageLabels, itemJson);
+				itemAbstract, itemThumbnailURL, thumbnailOrientation, 
+				pageLabels, pageThumbnailURLs, itemJson);
 
 		this.content = content;
 		this.itemReferences = itemReferences;

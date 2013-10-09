@@ -80,6 +80,7 @@ public class ItemsJSONDao implements ItemsDao {
 		String itemThumbnailURL = "";
 		String thumbnailOrientation = "";
 		List<String> pageLabels = new ArrayList<String>();
+		List<String> pageThumbnailURLs = new ArrayList<String>();
 			
 		try {
 			
@@ -122,6 +123,7 @@ public class ItemsJSONDao implements ItemsDao {
 			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
 				JSONObject page = pages.getJSONObject(pageIndex);
 				pageLabels.add(page.getString("label"));
+				pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
 			}
 
 			// Might have Thumbnail image
@@ -144,7 +146,8 @@ public class ItemsJSONDao implements ItemsDao {
 		}	
 		
 		Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
-				itemAbstract, itemThumbnailURL, thumbnailOrientation, pageLabels, itemJson);
+				itemAbstract, itemThumbnailURL, thumbnailOrientation, 
+				pageLabels, pageThumbnailURLs, itemJson);
 
 		return item;
 
@@ -160,6 +163,7 @@ public class ItemsJSONDao implements ItemsDao {
 		List<String> associatedSubjects = new ArrayList<String>();
 		JSONObject descriptiveMetadata = null;
 		List<String> pageLabels = new ArrayList<String>();
+		List<String> pageThumbnailURLs = new ArrayList<String>();
 		
 		try {
 			
@@ -216,7 +220,7 @@ public class ItemsJSONDao implements ItemsDao {
 		return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
 			 parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(), 
 			 content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects, 
-			 pageLabels);
+			 pageLabels, pageThumbnailURLs);
 	}
 
 	/**

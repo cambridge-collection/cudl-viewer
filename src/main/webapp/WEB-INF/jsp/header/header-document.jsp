@@ -44,7 +44,7 @@ public String prepareForMetaTag(String input) {
 	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
 	String docId = request.getAttribute("docId").toString();
 	String metaRequestURL = requestURL.replaceFirst(docId +"/"+".*$", docId);
-	String title = collectionTitle + " " + itemTitle;
+	String title = collectionTitle + " : " + itemTitle;
 	String metaTitle = prepareForMetaTag(title);
 %>
 

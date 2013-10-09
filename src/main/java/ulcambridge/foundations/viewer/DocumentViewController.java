@@ -200,13 +200,13 @@ public class DocumentViewController {
 			modelAndView = new ModelAndView("jsp/document");
 		} else {
 			modelAndView = new ModelAndView("jsp/page");
+			
 		}
 		
 		/** URLs **/
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
-		modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
 		modelAndView.addObject("requestURL", requestURL);		
 		modelAndView.addObject("proxyURL", proxyURL);
 		
@@ -246,6 +246,15 @@ public class DocumentViewController {
 				label = pageLabels.get(page - 1);
 			}
 			modelAndView.addObject("pageLabel", label);
+			
+			List<String> thumbnailURLs = item.getPageThumbnailURLs();
+			String thumbnailURL = "";
+			if (thumbnailURLs.size() > page - 1) {
+				thumbnailURL = thumbnailURLs.get(page - 1);
+			}
+			modelAndView.addObject("thumbnailURL", thumbnailURL);
+		} else {
+			modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
 		}
 
 		return modelAndView;

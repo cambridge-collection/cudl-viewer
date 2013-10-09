@@ -44,10 +44,11 @@ public class ItemTest extends TestCase {
 		authors.add(aut);
 		
 		List<String> pageLabels = new ArrayList<String>();
+		List<String> pageThumbnailURLs = new ArrayList<String>();
 
 		Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
-				"test thumbnail orientation", pageLabels, new JSONObject());
+				"test thumbnail orientation", pageLabels, pageThumbnailURLs, new JSONObject());
 
 		Item item2 = new Item(
 				"Test-ID2",
@@ -56,7 +57,8 @@ public class ItemTest extends TestCase {
 				authors,
 				"test shelfLocator",
 				"test abstract this is a longer abstract that will need to be shortened for display. <div class='videoCaption' > this is a video caption </div> this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display.",
-				"test thumbnail URL", "test thumbnail orientation", pageLabels, new JSONObject());
+				"test thumbnail URL", "test thumbnail orientation", 
+				pageLabels, pageThumbnailURLs, new JSONObject());
 
 		assertEquals(item.getId(), "Test-ID");
 		assertEquals(item.getAbstract(), "test abstract");

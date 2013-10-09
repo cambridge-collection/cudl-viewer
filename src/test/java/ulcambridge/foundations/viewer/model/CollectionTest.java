@@ -51,10 +51,12 @@ public class CollectionTest extends TestCase {
 		people.add(aut);
 		
 		List<String> pageLabels = new ArrayList<String>();
+		List<String> pageThumbnailURLs = new ArrayList<String>();
 
 		Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
 				"test shelfLocator", "test abstract", "test thumbnail URL",
-				"test thumbnail orientation", pageLabels, new JSONObject());
+				"test thumbnail orientation", 
+				pageLabels, pageThumbnailURLs, new JSONObject());
 
 		ArrayList<String> collectionIds = new ArrayList<String>();
 		collectionIds.add("Test-ID");
