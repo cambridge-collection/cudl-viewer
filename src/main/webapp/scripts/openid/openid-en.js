@@ -14,6 +14,10 @@ var providers_large = {
 		name : 'Yahoo',
 		url : 'http://me.yahoo.com/'
 	},
+	CUDLIdp : {
+		name : 'CUDLIdp',
+		url : 'http://localhost/openid/user/'
+	},	
 	aol : {
 		name : 'AOL',
 		label : 'Enter your AOL screenname.',

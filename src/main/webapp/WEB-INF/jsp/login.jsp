@@ -32,68 +32,42 @@
 
 	<section id="content" class="grid_20 content ">
 		<h3>My Library</h3>
+
 		<div id="error">${error}</div>
-		<br />
 		<div class="grid_18">
-			Login to create or view your collection of bookmarks. <br /> <br />
+			Sign in to create or view your collection of bookmarks. <br /> <br />
 		</div>
-		<div class="grid_7 box" style="height: 230px">
-			<h4>Create a new account</h4>
+		<div class="grid_8 box">
 
 			<div style="width: 190px">
-				<div
-					style="background-color: #333; color: #fff; padding: 5px; width: 180px">
-					<a style="color: #fff; text-decoration: none"
-						href="https://www.myopenid.com/signup" target="_blank">Create
-						new account ></a>
-				</div>
-				<div style="color: #333; font-size: 9px; float: right">uses
-					MyOpenID (opens a new window).</div>
-			</div>
-		</div>
-		<div class="grid_11 box">
-			<h4>Use an existing account</h4>
-
-			<form id="myopenid_form" method="post"
-				onsubmit="return onSumbitMyOpenId()"
-				action="/j_spring_openid_security_check">
-				<input type="hidden" value="verify" name="action"> <input
-					type="hidden" name="openid_identifier" value="">
-				<div
-					style="border: 1px; background-color: #fff; padding: 5px; width: 500px">
-					<fieldset>
-						<div class="grid_4" style="padding: 5px;">
-							MyOpenID username:<input id="openid_username" type="text"
-								value="" name="openid_username" style="">
-						</div>
-						<div class="grid_6">
-							<br />
-							<div
-								style="background-color: #333; color: #fff; padding: 5px; width: 180px">
-								<input type="submit" value="Login >" style="color: #fff;">
-							</div>
-						</div>
-					</fieldset>
-				</div>
-			</form>
-			<div class="grid_10">
 				<form id="openid_form" method="post"
 					action="/j_spring_openid_security_check">
-					<div class="grid_9">
-						<br />OR login with
+
+				<div
+					style="background-color: #333; color: #fff; padding: 5px; width: 180px">
+
+					<a style="color: #fff; text-decoration: none"
+						href="javascript:openid.signin('CUDLIdp')" >Sign in ></a>
+	
+				</div>
+				
+					<div class="grid_7">
+						<br />Alternatively you can use
 					</div>
-					<div class="grid_9">
+					<div class="grid_8">
 						<a class="google openid_large_btn"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: 0px 0px"
 							href="javascript:openid.signin('google');"
 							title="log in with Google"></a> <a class="yahoo openid_large_btn"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -100px 0px"
 							href="javascript:openid.signin('yahoo');"
-							title="log in with Yahoo"></a> <a class="openid openid_large_btn"
+							title="log in with Yahoo"></a>
+							 <a class="openid openid_large_btn"
 							onclick="showOrHideOpenId()"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -400px 0px"
 							href="javascript:openid.signin('openid');"
 							title="log in with OpenID"></a>
+							
 					</div>
 					<div class="grid_9">
 						<div id="openid_input_area" style="display: none;">
@@ -109,7 +83,7 @@
 					</div>
 				</form>
 			</div>
-
 		</div>
+
 </div>
 <jsp:include page="footer/footer.jsp" />
