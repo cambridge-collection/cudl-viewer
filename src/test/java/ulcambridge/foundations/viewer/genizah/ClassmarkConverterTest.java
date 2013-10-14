@@ -45,32 +45,32 @@ public class ClassmarkConverterTest extends TestCase {
 		return dataSource;
 	}
 	
-	public void testDB() {
-		JdbcTemplate jdbcTemplate = getJDBCSource();
-		final Map<String, String> labelClassmarkMap = jdbcTemplate.query(
-				"SELECT LB, Classmark FROM Fragment", 
-				new ResultSetExtractor<Map<String, String>>() {
-
-					@Override
-					public Map<String, String> extractData(ResultSet resultSet)
-							throws SQLException, DataAccessException {
-						Map<String, String> map = new HashMap<String, String>();
-						while (resultSet.next()) {
-							String label = resultSet.getString("LB");
-							String classmark = resultSet.getString("Classmark");
-							map.put(label, classmark);
-						}
-						return map;
-					}
-					
-				}
-		);
-		for (String label : labelClassmarkMap.keySet()) {
-			String dbClassmark = labelClassmarkMap.get(label);
-			String newClassmark = ClassmarkConverter.toNormal(label);
-			//System.out.println(label + "\t" + dbClassmark + "\t" + newClassmark);
-		}
-	}
+//	public void testDB() {
+//		JdbcTemplate jdbcTemplate = getJDBCSource();
+//		final Map<String, String> labelClassmarkMap = jdbcTemplate.query(
+//				"SELECT LB, Classmark FROM Fragment", 
+//				new ResultSetExtractor<Map<String, String>>() {
+//
+//					@Override
+//					public Map<String, String> extractData(ResultSet resultSet)
+//							throws SQLException, DataAccessException {
+//						Map<String, String> map = new HashMap<String, String>();
+//						while (resultSet.next()) {
+//							String label = resultSet.getString("LB");
+//							String classmark = resultSet.getString("Classmark");
+//							map.put(label, classmark);
+//						}
+//						return map;
+//					}
+//					
+//				}
+//		);
+//		for (String label : labelClassmarkMap.keySet()) {
+//			String dbClassmark = labelClassmarkMap.get(label);
+//			String newClassmark = ClassmarkConverter.toNormal(label);
+//			//System.out.println(label + "\t" + dbClassmark + "\t" + newClassmark);
+//		}
+//	}
 	
 	public void testToNormal() {
 		String nonNormal = "T-S 24.74";
