@@ -123,7 +123,11 @@ public class ItemsJSONDao implements ItemsDao {
 			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
 				JSONObject page = pages.getJSONObject(pageIndex);
 				pageLabels.add(page.getString("label"));
-				pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
+				if (page.has("thumbnailImageURL")) {
+					pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
+				} else {
+					pageThumbnailURLs.add("");
+				}
 			}
 
 			// Might have Thumbnail image
