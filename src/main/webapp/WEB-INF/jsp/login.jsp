@@ -32,28 +32,17 @@
 
 	<section id="content" class="grid_20 content ">
 		<h3>My Library</h3>
-
 		<div id="error">${error}</div>
+		<br />
 		<div class="grid_18">
-			Sign in to create or view your collection of bookmarks. <br /> <br />
+			Login to create or view your collection of bookmarks. <br /> <br />
 		</div>
-		<div class="grid_8 box">
+		<div class="grid_10 box">
+			<h4>You can login with any of the following:</h4>
 
-			<div style="width: 190px">
+			<div class="grid_9">
 				<form id="openid_form" method="post"
 					action="/j_spring_openid_security_check">
-
-				<div
-					style="background-color: #333; color: #fff; padding: 5px; width: 180px">
-
-					<a style="color: #fff; text-decoration: none"
-						href="javascript:openid.signin('CUDLIdp')" >Sign in ></a>
-	
-				</div>
-				
-					<div class="grid_7">
-						<br />Alternatively you can use
-					</div>
 					<div class="grid_8">
 						<a class="google openid_large_btn"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: 0px 0px"
@@ -61,15 +50,13 @@
 							title="log in with Google"></a> <a class="yahoo openid_large_btn"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -100px 0px"
 							href="javascript:openid.signin('yahoo');"
-							title="log in with Yahoo"></a>
-							 <a class="openid openid_large_btn"
+							title="log in with Yahoo"></a> <a class="openid openid_large_btn"
 							onclick="showOrHideOpenId()"
 							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -400px 0px"
 							href="javascript:openid.signin('openid');"
 							title="log in with OpenID"></a>
-							
 					</div>
-					<div class="grid_9">
+					<div class="grid_8">
 						<div id="openid_input_area" style="display: none;">
 
 							<input type="hidden" value="verify" name="action">
@@ -83,7 +70,7 @@
 					</div>
 				</form>
 			</div>
-		</div>
 
+		</div>
 </div>
 <jsp:include page="footer/footer.jsp" />
