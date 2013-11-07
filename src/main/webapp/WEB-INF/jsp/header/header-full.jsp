@@ -17,8 +17,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <!--  webmaster tools -->
-<meta name="google-site-verification" content="FnLk7ALqNV0pIE7sbtHGY7D2V6cTtQVRQvYFFv5SZIU" />
-<meta name="msvalidate.01" content="632A3A08C4128B19D71DAD306677682D" />
+<meta name="google-site-verification" content="asuuZDOIgJTwOZ0EfnrFe1hQ2A7q6uukh5ebEsciiNg" />
+<meta name="msvalidate.01" content="EF9291052C3CCD9E1AC12147B69C52C2" />
 
 <jsp:include page="includes.jsp" />
 
