@@ -360,18 +360,17 @@
 				<a href="/news"> <img
 					alt="Early Qur'anic manuscripts and Thumbnail View"
 					title="Early Qur'anic manuscripts and Thumbnail View"
-					src="/images/index/news-thumbnails-small.jpg" height="100" width="100"></a>
+					src="/images/index/news-calendar-small.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">29/08/2013</span>
+				<span class="date">06/11/2013</span>
 				<h5>
-					<a href="/news">Early Qur'anic manuscripts and Thumbnail View</a></h5>
+					<a href="/news">Over 15,800 items from the Cairo Genizah now online...</a></h5>
             <p>
-				A collection of our <a href="/collections/islamic">earliest Qur'anic manuscripts</a> 
-				released, and a new "Thumbnails" tab is available when viewing any item.
+				We have made available an additional 4000 manuscripts from the <a href="/collections/genizah">Cairo Genizah</a> 
+				including the first known copy of the <a href="http://cudl.lib.cam.ac.uk/view/MS-TS-00010-K-00006/1">'Damascus Document'</a> from the Dead Sea Scrolls
 			</p>					
-				
 			</div>
 		</div>
 

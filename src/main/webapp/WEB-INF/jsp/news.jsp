@@ -19,6 +19,23 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
+                        <img alt="Over 15,800 items from the Cairo Genizah now online..."
+                                title="Over 15,800 items from the Cairo Genizah now online..."
+                                src="/images/index/news-calendar.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">06/11/2013</span>
+                        <h4>Over 15,800 items from the Cairo Genizah now online...</h4>
+                        <p>
+                        	The most recent update to the <a
+                                        href="/collections/genizah">Genizah Collection</a> on Cambridge Digital Library contains an additional 4000 items encompassing both the discovery of the fragments themselves, and some of the earliest written pieces in the Collection.
+			</p>
+                </div>
+
+                <hr />
+
+		<div class="grid_5">
 			<img alt="Early Qur'anic manuscripts and Thumbnail View"
 				title="Early Qur'anic manuscripts and Thumbnail View"
 				src="/images/index/news-thumbnails.jpg" height="200" width="200">
