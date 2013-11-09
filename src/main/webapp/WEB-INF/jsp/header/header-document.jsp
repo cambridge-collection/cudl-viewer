@@ -20,7 +20,7 @@ public String prepareForMetaTag(String input) {
 <%
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
-	String thumbnailURL = request.getAttribute("thumbnailURL").toString();
+	String thumbnailURL = requestURL.replaceFirst("/view" + ".*$", request.getAttribute("thumbnailURL").toString());
 	Collection collection = (Collection) request.getAttribute("organisationalCollection");
 	Collection parentCollection = (Collection) request.getAttribute("parentCollection");
 	String collectionURL = "";
@@ -79,10 +79,10 @@ public String prepareForMetaTag(String input) {
 <% } %>
 
 <!-- Image URI (Thumbnail) -->
-<meta property="schema:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
-<meta property="og:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
-<meta property="twitter:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
-<meta property="schema:thumbnailUrl" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
+<meta property="schema:image" content="<%=thumbnailURL%>" />
+<meta property="og:image" content="<%=thumbnailURL%>" />
+<meta property="twitter:image" content="<%=thumbnailURL%>" />
+<meta property="schema:thumbnailUrl" content="<%=thumbnailURL%>" />
 
 <meta property="og:site_name" content="Cambridge Digital Library" />
 <meta property="twitter:creator" content="@camdiglib" />
