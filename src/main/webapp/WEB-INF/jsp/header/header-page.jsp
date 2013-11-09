@@ -67,12 +67,12 @@ public String prepareForMetaTag(String input) {
 <meta property="twitter:title" content="<%=metaTitle%>" />
 
 <!-- Image URI (Thumbnail) -->
-<meta property="schema:image" content="<%=thumbnailURL%>" />
-<meta property="og:image" content="<%=thumbnailURL%>" />
-<meta property="twitter:image" content="<%=thumbnailURL%>" />
-<meta property="schema:thumbnailUrl" content="<%=thumbnailURL%>" />
+<meta property="schema:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
+<meta property="og:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
+<meta property="twitter:image" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
+<meta property="schema:thumbnailUrl" content="http://cudl.lib.cam.ac.uk<%=thumbnailURL%>" />
 
-<meta property="og:site_name" content="Cambridge Digital Library?" />
+<meta property="og:site_name" content="Cambridge Digital Library" />
 <meta property="twitter:creator" content="@camdiglib" />
 <meta property="twitter:site" content="@camdiglib" />
 

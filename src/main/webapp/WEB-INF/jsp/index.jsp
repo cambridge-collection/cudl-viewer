@@ -358,8 +358,8 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Early Qur'anic manuscripts and Thumbnail View"
-					title="Early Qur'anic manuscripts and Thumbnail View"
+					alt="An illuminated calendar from the Cairo Genizah"
+					title="An illuminated calendar from the Cairo Genizah"
 					src="/images/index/news-calendar-small.jpg" height="100" width="100"></a>
 			</div>
 
