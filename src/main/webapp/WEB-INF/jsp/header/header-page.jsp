@@ -49,10 +49,6 @@ public String prepareForMetaTag(String input) {
 	String metaTitle = prepareForMetaTag(title);
 %>
 
-<!--  webmaster tools -->
-<meta name="google-site-verification" content="FnLk7ALqNV0pIE7sbtHGY7D2V6cTtQVRQvYFFv5SZIU" />
-<meta name="msvalidate.01" content="632A3A08C4128B19D71DAD306677682D" />
-
 <!-- page metadata tags -->
 <title><%=title%></title>
 <meta property="og:type" content="website" />
