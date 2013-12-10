@@ -367,7 +367,7 @@
 				<span class="date">11/12/2013</span>
 				<h5>
 					<a href="/news">December Update</a></h5>
-         				<p>The December update to the Digital Library includes two important additions to our <a href="/collections/christian">Christian Works </a> collection as well as a number of new manuscripts in our <a href="/collections/sanskrit">Sanskrit </a> collection. Of particular interest is <a href="/view/MS-II-00001-00033"> Ii.1.33 </a> which contains homilies in Old English for many different feasts and saints, including St Æthelthryth who founded Ely Abbey.
+         				<p>The December update to the Digital Library includes two important additions to our <a href="/collections/christian">Christian Works </a> collection as well as a number of new manuscripts in our <a href="/collections/sanskrit">Sanskrit </a> collection. 
 
 			</p>			
 			</div>
