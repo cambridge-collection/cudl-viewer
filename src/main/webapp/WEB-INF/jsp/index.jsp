@@ -358,19 +358,18 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="An illuminated calendar from the Cairo Genizah"
-					title="An illuminated calendar from the Cairo Genizah"
-					src="/images/index/news-calendar-small.jpg" height="100" width="100"></a>
+					alt="Page of English Homilies"
+					title="December Update"
+					src="/images/index/news-december.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">06/11/2013</span>
+				<span class="date">11/12/2013</span>
 				<h5>
-					<a href="/news">Over 15,800 items from the Cairo Genizah now online...</a></h5>
-            <p>
-				We have made available an additional 4000 manuscripts from the <a href="/collections/genizah">Cairo Genizah</a> 
-				including the first known copy of the <a href="http://cudl.lib.cam.ac.uk/view/MS-TS-00010-K-00006/1">'Damascus Document'</a> from the Dead Sea Scrolls
-			</p>					
+					<a href="/news">December Update</a></h5>
+         				<p>The December update to the Digital Library includes two important additions to our <a href="/collections/christian">Christian Works </a> collection as well as a number of new manuscripts in our <a href="/collections/sanskrit">Sanskrit </a> collection. Of particular interest is <a href="/view/MS-II-00001-00033"> Ii.1.33 </a> which contains homilies in Old English for many different feasts and saints, including St Æthelthryth who founded Ely Abbey.
+
+			</p>			
 			</div>
 		</div>
 

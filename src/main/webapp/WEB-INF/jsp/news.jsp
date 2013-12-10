@@ -19,6 +19,22 @@
 	<div class="grid_14">
 
 		<div class="grid_5">
+                        <img alt="Old English Homilies"
+                                title="December Update"
+                                src="/images/index/news-december.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">11/12/2013</span>
+                        <h4>December Update</h4>
+                	<p>The December update to the Digital Library includes two important additions to our Christian Manuscripts collection. <a href='/view/MS-HH-00001-00010'>Hh.1.10</a> is a copy of Ælfric's <i>Grammar and Glossary</i> produced in Exeter about the time of the Norman Conquest. It is written in Old English and contains a copy of one of the earliest Latin grammars written in the vernacular. <a href='/view/MS-II-00001-00033'>Ii.1.33</a>, also by Ælfric, was copied about a century after the Norman Conquest and contains homilies in Old English for many different feasts and saints, including St Æthelthryth who founded Ely Abbey. Both manuscripts were donated to the University Library in 1574 by Matthew Parker.</p>
+
+<p>We are also releasing a number of new manuscripts in our Sanskrit collection, including <a href="/view/MS-ADD-01395">a 14th century copy of the <i>Pañcarakṣā</i></a> with covers decorated with representations of the five Buddhas of directions and the five goddesses of protection.</p>
+		</div>
+
+                <hr />
+
+		<div class="grid_5">
                         <img alt="Over 15,800 items from the Cairo Genizah now online..."
                                 title="Over 15,800 items from the Cairo Genizah now online..."
                                 src="/images/index/news-calendar.jpg" height="200" width="200">
