@@ -10,7 +10,18 @@
 		International Digitisation Project, The Polonsky Foundation has
 		provided major funding towards the development of the digital
 		library's infrastructure and the digitisation of the Islamic
-		manuscripts. <br /> <br />
+		manuscripts. 
 	</div>
 
 </div>
+<div class="grid_19">
+        <br />
+        <div class="grid_4">
+                <img src="/images/ima.png" title="Islamic Manuscript Association" />
+        </div>
+        <div class="grid_13">
+                Content descriptions for the early Qur`anic fragments have been funded by the <a href="http://www.islamicmanuscript.org/">The Islamic Manuscript Association</a>. <br /> <br />
+        </div>
+
+</div>
+
