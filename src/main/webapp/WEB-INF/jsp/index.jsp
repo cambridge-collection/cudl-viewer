@@ -358,17 +358,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Page of English Homilies"
-					title="December Update"
-					src="/images/index/news-december.jpg" height="100" width="100"></a>
+					alt="Polychrome charm against lightning - MS Add.1577"
+					title="January Update"
+					src="/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">11/12/2013</span>
+				<span class="date">29/01/2014</span>
 				<h5>
-					<a href="/news">December Update</a></h5>
-         				<p>The December update to the Digital Library includes two important additions to our <a href="/collections/christian">Christian Works </a> collection as well as a number of new manuscripts in our <a href="/collections/sanskrit">Sanskrit </a> collection. 
-
+					<a href="/news">January Update</a></h5>
+         				<p>Our January release includes works spanning three continents and many centuries.
 			</p>			
 			</div>
 		</div>
