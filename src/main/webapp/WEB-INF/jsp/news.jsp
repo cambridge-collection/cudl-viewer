@@ -17,9 +17,9 @@
 	</div>
 
 	 <div class="grid_5">
-                        <img alt="Old English Homilies"
+                        <img alt="Polychrome charm against lightning - MS Add.1577"
                                 title="December Update"
-                                src="/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="200" width="200">
+                                src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="200" width="200">
                 </div>
 
                 <div class="grid_8">
@@ -32,8 +32,7 @@
 
 <p>Two Hebrew items are included in this update. The first was something of a bestseller among fourteenth and fifteenth-century Jewish doctors. Nathan ben Joel Falaquera's compendium of medical knowledge, <a href="/view/MS-ADD-00628">Balm for the Body</a>, aimed to condense the medical knowledge of the ancient and Islamic worlds and present it in an easily accessible manner to a European Jewish audience. Our copy was a prestigious edition, adorned with illuminated headings and fine pen and ink drawings. The second Hebrew item, from Italy, also belonged to a popular genre, this time of the eighteenth century: a <a href="/view/MS-ADD-00431">map of the holy places of Jerusalem</a>, along with other significant burial sites in the Land of Israel, all drawn schematically. It shows real artistic skill and is one of the finest examples of this type of folk art.</p>
 
-
-<p>Finally, we have added forty eight manuscripts to our Sanskrit collections, including thirteen with images. Particular highlights include a <a href="/view/MS-ADD-01577">polychrome charm against lightning</a> and a seventeenth century copy of the <a href="/view/MS-OR-02258">Pañcarakṣā or “Five Protections”</a></p>
+<p>Finally, we have added forty five manuscripts to our Sanskrit collections, including twelve with images. Particular highlights include a <a href="/view/MS-ADD-01577">polychrome charm against lightning</a> and a twelfth century illuminated copy of the <a href="/view/MS-OR-00142-00001">Vasudhāradhāraṇī</a>, one of the earliest extant manuscripts of this text</p>
 		</div>
 
                 <hr />

@@ -360,7 +360,7 @@
 				<a href="/news"> <img
 					alt="Polychrome charm against lightning - MS Add.1577"
 					title="January Update"
-					src="/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="100" width="100"></a>
+					src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
