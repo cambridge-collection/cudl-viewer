@@ -17,28 +17,47 @@
 	</div>
 
 	 <div class="grid_5">
-                        <img alt="Polychrome charm against lightning - MS Add.1577"
-                                title="December Update"
-                                src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="200" width="200">
+                        <img alt="Greek Manuscript - Ff.1.24"
+                                title="February Update"
+                                src="/images/index/news-february14.jpg" height="200" width="200">
                 </div>
 
                 <div class="grid_8">
-                        <span class="date">29/01/2014</span>
-                        <h4>January Update</h4>
+                        <span class="date">27/02/2014</span>
+                        <h4>February Update</h4>
                 
-			<p>Our January release includes works spanning three continents and many centuries. <a href="/view/MS-GG-00001-00001">MS G.1.1</a> is a fourteenth century compendium containing literary, historical, grammatical, scientific, astronomical, theological, pastoral and devotional texts written in three languages. It is beautifully illustrated with magnificent <a href="/view/MS-GG-00001-00001/821">initials</a>, <a href="/view/MS-GG-00001-00001/988">diagrams</a> and <a href="/view/MS-GG-00001-00001/829">miniatures</a>.</p>
+			<p>A major highlight of our February release is <a href="/view/MS-FF-00001-00024">Ff.1.24</a>, a Greek manuscript probably made in Constantinople in the tenth century. Owned and <a href="/view/MS-FF-00001-00024/55">extensively annotated</a> by Robert Grosseteste, consulted by Frances Bacon, and given to the Library by Archbishop Matthew Parker, this fascinating manuscript offers an insight into the working habits and library of one of the major intellectuals figure of the thirteenth century, and casts light on the tradition of Greek scholarship and transmission of Greek texts in the Medieval West.</p>
 
-<p><a href="/view/MS-ADD-09597-00002-00018">MS Add 9597/2/18</a> is an important addition to our collection of Isaac Newton’s manuscripts. It includes correspondence with major figures such as Edmund Halley, as well as <a href="/view/MS-ADD-09597-00002-00018/262">Newton’s own notes on the Leibnitz controversy</a>.</p>
+<p>We are also adding fourteen manuscripts to our <a href="/collections/sanskrit">Sanskrit Collection</a>, including <a href="/view/MS-ADD-01644/2">Add.1644</a> and <a href="/view/MS-ADD-01647/2">Add.1647</a>, two beautifully illuminated thirteenth century copies of the Pañcarakṣā or “Five Protections”.</a>
 
-<p>Two Hebrew items are included in this update. The first was something of a bestseller among fourteenth and fifteenth-century Jewish doctors. Nathan ben Joel Falaquera's compendium of medical knowledge, <a href="/view/MS-ADD-00628">Balm for the Body</a>, aimed to condense the medical knowledge of the ancient and Islamic worlds and present it in an easily accessible manner to a European Jewish audience. Our copy was a prestigious edition, adorned with illuminated headings and fine pen and ink drawings. The second Hebrew item, from Italy, also belonged to a popular genre, this time of the eighteenth century: a <a href="/view/MS-ADD-00431">map of the holy places of Jerusalem</a>, along with other significant burial sites in the Land of Israel, all drawn schematically. It shows real artistic skill and is one of the finest examples of this type of folk art.</p>
-
-<p>Finally, we have added forty five manuscripts to our Sanskrit collections, including twelve with images. Particular highlights include a <a href="/view/MS-ADD-01577">polychrome charm against lightning</a> and a twelfth century illuminated copy of the <a href="/view/MS-OR-00142-00001">Vasudhāradhāraṇī</a>, one of the earliest extant manuscripts of this text</p>
+<p>And we are releasing nearly five hundred additional fragments in our <a href="/collections/genizah">Cairo Genizah Collection</a>, bringing the total number online to over sixteen thousand. Of particular interest is <a href="/view/MS-TS-00006-J-00007-00003/1">T-S 6J7.3</a>, a letter from a man to his father, probably written after King Louis IX's Crusade was launched against Egypt. The writer refers to sudden announcements by the Muslim authorities of restrictions imposed on Christians and Jews, requiring them to wear distinctive clothing in the street on pain of forfeiture of life and property. Also included is <a href="/view/MS-TS-NS-00098-00073/2">T-S NS 98.73</a>, a handy (quite literally) guide for calendar calculations using the fingers.
+</p>
 		</div>
 
                 <hr />
 
 
 	<div class="grid_14">
+		 <div class="grid_5">
+                        <img alt="Polychrome charm against lightning - MS Add.1577"
+                                title="January Update"
+                                src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">29/01/2014</span>
+                        <h4>January Update</h4>
+
+                        <p>Our January release includes works spanning three continents and many centuries. <a href="/view/MS-GG-00001-00001">MS G.1.1</a> is a fourteenth century compendium containing literary, historical, grammatical, scientific, astronomical, theological, pastoral and devotional texts written in three languages. It is beautifully illustrated with magnificent <a href="/view/MS-GG-00001-00001/821">initials</a>, <a href="/view/MS-GG-00001-00001/988">diagrams</a> and <a href="/view/MS-GG-00001-00001/829">miniatures</a>.</p>
+
+<p><a href="/view/MS-ADD-09597-00002-00018">MS Add 9597/2/18</a> is an important addition to our collection of Isaac Newton’s manuscripts. It includes correspondence with major figures such as Edmund Halley, as well as <a href="/view/MS-ADD-09597-00002-00018/262">Newton’s own notes on the Leibnitz controversy</a>.</p>
+
+<p>Two Hebrew items are included in this update. The first was something of a bestseller among fourteenth and fifteenth-century Jewish doctors. Nathan ben Joel Falaquera's compendium of medical knowledge, <a href="/view/MS-ADD-00628">Balm for the Body</a>, aimed to condense the medical knowledge of the ancient and Islamic worlds and present it in an easily accessible manner to a European Jewish audience. Our copy was a prestigious edition, adorned with illuminated headings and fine pen and ink drawings. The second Hebrew item, from Italy, also belonged to a popular genre, this time of the eighteenth century: a <a href="/view/MS-ADD-00431">map of the holy places of Jerusalem</a>, along with other significant burial sites in the Land of Israel, all drawn schematically. It shows real artistic skill and is one of the finest examples of this type of folk art.</p>
+
+<p>Finally, we have added forty five manuscripts to our Sanskrit collections, including twelve with images. Particular highlights include a <a href="/view/MS-ADD-01577">polychrome charm against lightning</a> and a twelfth century illuminated copy of the <a href="/view/MS-OR-00142-00001">Vasudhāradhāraṇī</a>, one of the earliest extant manuscripts of this text</p>
+                </div>
+
+                <hr />
 
 		<div class="grid_5">
                         <img alt="Old English Homilies"

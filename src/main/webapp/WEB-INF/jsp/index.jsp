@@ -358,16 +358,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Polychrome charm against lightning - MS Add.1577"
-					title="January Update"
-					src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="100" width="100"></a>
+					alt="Greek Manuscript - Ff.1.24"
+					title="February Update"
+					src="/images/index/news-february14.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">29/01/2014</span>
+				<span class="date">27/02/2014</span>
 				<h5>
-					<a href="/news">January Update</a></h5>
-         				<p>Our January release includes works spanning three continents and many centuries.
+					<a href="/news">February Update</a></h5>
+         				<p>Our February release includes works spanning three of our most important collection.
 			</p>			
 			</div>
 		</div>
