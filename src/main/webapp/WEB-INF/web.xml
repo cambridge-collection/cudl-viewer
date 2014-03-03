@@ -207,6 +207,11 @@
 		<extension>json</extension>
 		<mime-type>application/json</mime-type>
 	</mime-mapping>
+	
+	<mime-mapping>
+		<extension>glsl</extension>
+		<mime-type>application/x-glsl</mime-type>
+	</mime-mapping>	
 
 	<mime-mapping>
 		<extension>dzi</extension>

@@ -81,6 +81,7 @@
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 
 	<!-- resources exclusions from servlet mapping -->
+	<mvc:resources mapping="/models/**" location="/models/" />
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/img/**" location="/img/" />
 	<mvc:resources mapping="/scripts/**" location="/scripts/" />
@@ -95,7 +96,4 @@
 	<mvc:resources mapping="/json/**" location="/json/" />
 	<mvc:resources mapping="/index/**" location="/index/" />
 	
-
-
-
 </beans>

@@ -1,0 +1,647 @@
+<!--
+
+equatorie.html
+
+ -->
+
+<!doctype html>
+
+<!--[if lt IE 7]> 
+  <meta http-equiv="refresh" content="5;url=http://www.webstandards.org/action/previous-campaigns/buc/upgrade/" />
+ <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<title>Equatorie</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="">
+<meta name="author" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="/favicon.ico">
+
+<link href="/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/datepicker.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/slider.css" media="all" rel="stylesheet" type="text/css" />
+<link href="/css/equatorie.css" media="all" rel="stylesheet" type="text/css" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+</head>
+
+<body>
+    
+<header>
+</header>
+
+<canvas id="webgl-canvas" style="border: none;" width="580" height="580"></canvas>
+
+<!--<script type="text/javascript" src="/js/coffeegl.js"></script>-->
+<script type="text/javascript" src="/js/dat.gui.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/js/bootstrap-slider.js"></script>
+
+<script type="text/javascript">
+  // WebGL not supported goes in here. Will basically delete the canvas and load a video
+  window.webGLSupported = true;
+  window.notSupported = function() {
+    
+    $('#webgl-canvas').remove();
+   
+    $('body').append('<iframe width="960" height="720" src="//www.youtube.com/embed/LNyOJthDPpc" frameborder="0" allowfullscreen></iframe>');
+
+    window.webGLSupported = false;
+  }
+
+  var BrowserDetect = {
+      init: function () {
+        this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
+        this.version = this.searchVersion(navigator.userAgent)
+          || this.searchVersion(navigator.appVersion)
+          || "an unknown version";
+        this.OS = this.searchString(this.dataOS) || "an unknown OS";
+      },
+      searchString: function (data) {
+        for (var i=0;i<data.length;i++) {
+          var dataString = data[i].string;
+          var dataProp = data[i].prop;
+          this.versionSearchString = data[i].versionSearch || data[i].identity;
+          if (dataString) {
+            if (dataString.indexOf(data[i].subString) != -1)
+              return data[i].identity;
+          }
+          else if (dataProp)
+            return data[i].identity;
+        }
+      },
+      searchVersion: function (dataString) {
+        var index = dataString.indexOf(this.versionSearchString);
+        if (index == -1) return;
+        return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
+      },
+      dataBrowser: [
+        {
+          string: navigator.userAgent,
+          subString: "Chrome",
+          identity: "Chrome"
+        },
+        {   string: navigator.userAgent,
+          subString: "OmniWeb",
+          versionSearch: "OmniWeb/",
+          identity: "OmniWeb"
+        },
+        {
+          string: navigator.vendor,
+          subString: "Apple",
+          identity: "Safari",
+          versionSearch: "Version"
+        },
+        {
+          prop: window.opera,
+          identity: "Opera",
+          versionSearch: "Version"
+        },
+        {
+          string: navigator.vendor,
+          subString: "iCab",
+          identity: "iCab"
+        },
+        {
+          string: navigator.vendor,
+          subString: "KDE",
+          identity: "Konqueror"
+        },
+        {
+          string: navigator.userAgent,
+          subString: "Firefox",
+          identity: "Firefox"
+        },
+        {
+          string: navigator.vendor,
+          subString: "Camino",
+          identity: "Camino"
+        },
+        {   // for newer Netscapes (6+)
+          string: navigator.userAgent,
+          subString: "Netscape",
+          identity: "Netscape"
+        },
+        {
+          string: navigator.userAgent,
+          subString: "MSIE",
+          identity: "Explorer",
+          versionSearch: "MSIE"
+        },
+        {
+          string: navigator.userAgent,
+          subString: "Gecko",
+          identity: "Mozilla",
+          versionSearch: "rv"
+        },
+        {     // for older Netscapes (4-)
+          string: navigator.userAgent,
+          subString: "Mozilla",
+          identity: "Netscape",
+          versionSearch: "Mozilla"
+        }
+      ],
+      dataOS : [
+        {
+          string: navigator.platform,
+          subString: "Win",
+          identity: "Windows"
+        },
+        {
+          string: navigator.platform,
+          subString: "Mac",
+          identity: "Mac"
+        },
+        {
+             string: navigator.userAgent,
+             subString: "iPhone",
+             identity: "iPhone/iPod"
+          },
+        {
+          string: navigator.platform,
+          subString: "Linux",
+          identity: "Linux"
+        }
+      ]
+
+    };
+
+    function detectmob() { 
+      if( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+      ){
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+
+</script>
+
+<script type="text/javascript" src="/js/equatorie.min.js"></script>
+
+<!-- <script src="http://192.168.2.14:8080/target/target-script-min.js"></script> -->
+
+<!-- Zoom Controls -->
+
+<div id = "zoom_container">
+  <input id="zoomslider" type="text" class="span1 slider" value="" data-slider-min="0" data-slider-max="0.9" data-slider-step="0.01" data-slider-value="0.75" data-slider-orientation="vertical" data-slider-selection="after"data-slider-tooltip="hide">
+
+</div>
+
+
+<!-- Main Controls -->
+
+<div id ="equatorie_text_left">
+<a data-toggle="modal" href="#instructionsModal" class="btn btn-info">Instructions</a>
+
+
+<!-- Date Picker -->
+
+<input type="text" class="date input-append" value="31/12/1392" format="dd-mm-yyyy" id="dp1">
+
+<!-- Buttons for the Actions we can perform -->
+<div class="btn-group dropup" id="actionSelect">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#" id="selectMercury">Mercury: Longitude</a></li>
+    <li><a href="#" id="selectVenus">Venus: Longitude</a></li>
+    <li><a href="#" id="selectMars">Mars: Longitude</a></li>
+    <li><a href="#" id="selectJupiter">Jupiter: Longitude</a></li>
+    <li><a href="#" id="selectSaturn">Saturn: Longitude</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="selectSun">Sun: Longitude</a></li>
+    <li><a href="#" id="selectMoon">Moon: Longitude</a></li>
+    <li class="divider"></li>
+    <li><a href="#" id="selectMoonLat">Moon: Latitude</a></li>
+  </ul>
+</div>
+
+
+<button id="button_prev" type="button" class="btn btn-primary">Previous Step</button>
+<button id="button_next" type="button" class="btn btn-primary">Next Step</button>
+<button id="button_reset" type="button" class="btn btn-danger">Reset</button>
+
+</div>
+
+
+<!-- Loading bar -->
+<div id ="equatorie_loading">
+  <div class="progress progress-striped active">
+  <div class="progress-bar" id ="loadingProgressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    <span class="sr-only"></span>
+  </div>
+</div>
+</div>
+
+
+<!-- About Box -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">About</h4>
+          <p>This model is based on Peterhouse MS 75.I. It was created by Ben Blundell (<a href="http://www.section9.co.uk" target="_blank">section9.co.uk</a>) and Seb Falk (University of Cambridge) in collaboration with Scott Mandelbrote. The project was undertaken by permission of the Master and Fellows of Peterhouse, Cambridge, and supported by the generosity of Dr. Joe Pesce.</p>
+
+        </div>
+        <div class="modal-body">
+          <p>Credits
+            <ul>
+              <li>Built with <a href="http://www.coffeegl.com" target="_blank">CoffeeGL</a></li>
+              <li>Physics provided by <a href="http://schteppe.github.io/cannon.js/" target="_blank">Cannon.js</a></li>
+              <li>Normal maps by <a href="http://www.crazybump.com" target="_blank">CrazyBump</a></li>
+              <li>Modelled in <a href="http://www.blender.org" target="_blank">Blender</a></li>
+              <li>CSS, courtesy of <a href="http://getbootstrap.com" target="_blank">Twitter Bootstrap</a></li>
+            </ul>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+
+<!-- Instructions -->
+
+<div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Instructions</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            To operate the Equatorie model, follow the steps:
+            <ol>
+              <li>Select a date at the bottom left of the screen, or by typing.  The date is preset to 31 December 1392; this is the “radix” (baseline date) of the tables in the manuscript.</li>
+              <li>Use the “Action” button to select the operation you would like the equatorium to perform (e.g. to calculate the celestial longitude of Mars). The “Next Step” button will appear..</li>
+              <li>Pressing the “Next Step” button will take you, step by step, through the procedure of using the equatorium to find the information you want.</li>
+              <li>Press the “Reset” button to reset the model, or to try different settings.</li>
+            </ol>
+          </p>
+          <p>You can rotate the equatorium by holding down the left mouse button and moving the mouse. You may also use a finger on your touch-screen device. To zoom in and out, use the slider on the left of the screen (you can also use your mouse wheel or an equivalent gesture on your touch screen device). To move the entire disc, click and hold the right mouse button over the disc, then move the mouse. On a touch device, use a two-finger swipe.</p>
+
+          <p>You may move the strings by clicking and holding the mouse button over the pin attached to the string. To move the epicycle, click and hold the mouse over the epicycle, then move the mouse.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+</div>
+
+<div id ="equatorie_text_right">
+<a data-toggle="modal" id="buttonAbout" href="#aboutModal" class="btn btn-info">About</a>
+</div>
+
+<!-- http://jsfiddle.net/adzFe/14/ -->
+
+<div id = "popupContainer"></div>
+
+
+<script type="text/javascript">
+
+goForIt = function () {
+
+  loaded = function() {
+    $('#equatorie_text_left').css({display: "block"});
+    $('#equatorie_text_right').css({display: "block"});
+    $('#equatorie_loading').css({display: "none"});
+
+    if (!detectmob()) {
+      $('#zoom_container').css({display: "block"});
+    }
+
+    window.EquatorieMovePOI.add(moving, this);
+    window.EquatorieZoomSignal.add(zooming, this);
+
+    window.Equatorie.setZoom(0.75);
+  }
+
+  loading = function (loaded) {
+    $('#equatorie_loading').css({display: "block"});
+    $('#loadingProgressBar').width(loaded * 100);
+  }
+
+
+  activatePopup = function (text) {
+
+    $container.popover('destroy');
+        
+    $container.popover($.extend({}, {
+        content: text
+    }, options)).popover('show');
+
+
+    $(".popover-content").prepend('<a class="boxclose" id="boxclose"></a>');
+
+    $('#boxclose').click(function(){
+      $container.popover('destroy');
+    });
+
+  }
+
+  moving = function (pos) {
+
+    // Alter the pos a little so its aligned nicely
+    pos.x += 10;
+    pos.y -= $(".popover").height() / 2;
+
+    $container.css({
+      position: 'absolute',
+      left: pos.x,
+      top: pos.y
+    });
+
+    $(".popover").css({
+      left: pos.x,
+      top: pos.y
+    });
+  }
+
+  // Called when the zoom signal is dispatched by Equatorie
+  zooming = function (level) {
+    $("#zoomslider").slider('setValue',level);
+  }
+
+  window.EquatorieLoadProgress.add (loading, this);
+  window.EquatorieLoaded.addOnce(loaded, this);
+
+  // Zoom Slider
+
+  $('#zoomslider').slider()
+    .on('slide', function(ev){
+      window.Equatorie.setZoom(ev.value);
+    });
+
+  // Date Picker
+
+  $('#dp1').datepicker()
+    .on('changeDate', function(ev){
+      d = ev.date;
+      d.setHours(d.getHours() + 12); // Go to midday on each day
+      window.Equatorie.setDate(d);
+      if (window.Equatorie.stack_idx > 0){
+        nd = window.Equatorie.solveImmediate(); 
+        if (nd.text !== undefined){
+          activatePopup(nd.text);
+
+        } else {
+          $container.popover('destroy');
+        }
+      }
+    });
+
+
+  
+
+  $('#dp1').on('change', function() {  
+    var datetxt = $('#dp1').val();
+    parts = datetxt.split("/");
+    if (parts.length === 3){
+      d = new Date(parseInt(parts[2]),parseInt(parts[1])-1, parseInt(parts[0]));
+      if( isNaN( d.getTime())){
+        $('#dp1').val("31/12/1392");
+      } else {
+        window.Equatorie.setDate(d);
+        if (window.Equatorie.stack_idx > 0){
+          nd = window.Equatorie.solveImmediate(); // Naughty - this is normal in a state
+
+          if (nd.text !== undefined){
+            $container.popover('destroy');
+          
+            activatePopup(nd.text);
+
+
+          } else {
+            $container.popover('destroy');
+         
+          }
+        }
+      }
+      
+    } else {
+       $('#dp1').val("31/12/1392");
+    }
+  })
+
+  _initButtons = function() {
+    $("#button_next").show();
+    $("#button_prev").show();
+    $("#button_prev").prop('disabled', true);
+    $("#button_reset").show();
+  }
+
+  // Functions for selectors for the planets
+
+  $("#selectMercury").click(function(){
+    window.Equatorie.chosen_planet = "mercury"; 
+    _initButtons();
+  });
+
+  $("#selectVenus").click(function(){
+    window.Equatorie.chosen_planet = "venus";
+    _initButtons();
+  });
+
+  $("#selectMars").click(function(){
+    window.Equatorie.chosen_planet = "mars";
+    _initButtons();
+  });
+
+  $("#selectJupiter").click(function(){
+    window.Equatorie.chosen_planet = "jupiter";
+    _initButtons();
+  });
+
+  $("#selectSaturn").click(function(){
+    window.Equatorie.chosen_planet = "saturn";
+    _initButtons();
+  });
+
+  $("#selectSun").click(function(){
+    window.Equatorie.chosen_planet = "sun";
+    _initButtons();
+  });
+
+  $("#selectMoon").click(function(){
+    window.Equatorie.chosen_planet = "moon";
+    _initButtons();
+  });
+
+  $("#selectMoonLat").click(function(){
+    window.Equatorie.chosen_planet = "moon_latitude";
+    _initButtons();
+  });
+
+     
+
+  var $container = $('#popupContainer');
+
+  var options = {
+      trigger: 'manual',
+      placement: 'right'
+  };
+
+  // Prev button activation
+
+  $('#button_prev').click( function() {
+
+    if(window.Equatorie !== undefined) {
+    
+
+      nd = window.Equatorie.stepBackward();
+
+      if (nd.pos !== undefined){
+        $container.css({
+          position: 'absolute',
+          left: nd.pos.x,
+          top: nd.pos.y
+        });
+      }
+
+      if (nd.text !== undefined){
+        $container.popover('destroy');
+      
+        activatePopup(nd.text);
+
+      } else {
+        $container.popover('destroy');
+     
+      }
+
+      // Next button activation
+      if (window.Equatorie.stack_idx == window.Equatorie.stack.length - 1){
+        $('#button_next').prop('disabled', true);
+      }
+      else {
+        $('#button_next').prop('disabled', false);
+      }
+
+      // Prev button activation
+      if (window.Equatorie.stack_idx > 0){
+        $('#button_prev').prop('disabled', false);
+      }
+      else {
+        $('#button_prev').prop('disabled', true);
+      }
+
+    }
+
+
+  });
+
+
+  // Next button activation
+
+  $('#button_next').click( function() {
+
+    if(window.Equatorie !== undefined) {
+      $("#actionSelect button:first-child").prop('disabled', true);
+      //$("#dp1").prop('disabled', true);
+
+
+      nd = window.Equatorie.stepForward();
+
+      if (nd.pos !== undefined){
+        $container.css({
+          position: 'absolute',
+          left: nd.pos.x,
+          top: nd.pos.y
+        });
+      }
+
+      if (nd.text !== undefined){
+        $container.popover('destroy');
+      
+        activatePopup(nd.text);
+
+
+      } else {
+        $container.popover('destroy');
+     
+      }
+
+      // Next button activation
+      if (window.Equatorie.stack_idx == window.Equatorie.stack.length - 1){
+        $('#button_next').prop('disabled', true);
+      }
+      else {
+        $('#button_next').prop('disabled', false);
+      }
+
+      // Prev button activation
+      if (window.Equatorie.stack_idx > 0){
+        $('#button_prev').prop('disabled', false);
+      }
+      else {
+        $('#button_prev').prop('disabled', true);
+      }
+
+    }
+  });
+
+  $('#button_reset').click( function() {
+    if(window.Equatorie !== undefined) {
+      window.Equatorie.reset();
+      $container.popover('destroy');
+      $container.css({
+        position: 'absolute',
+        left: 0,
+        top: 0
+      });
+
+      $("#button_next").hide();
+      $("#button_prev").hide();
+      $("#button_reset").hide();
+      $("#actionSelect button:first-child").prop('disabled', false);
+      $('#button_next').prop('disabled', false);
+      //$("#dp1").prop('disabled', false);
+    }
+  });
+}
+
+if (window.webGLSupported == true)
+  goForIt.call(this);
+
+
+//using HTML5 for fullscreen (only newest Chrome + FF)
+//$("#mycanvas")[0].webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT); //Chrome
+//$("#mycanvas")[0].mozRequestFullScreen(); //Firefox
+
+
+//now i want to cancel fullscreen
+//document.webkitCancelFullScreen(); //Chrome
+//document.mozCancelFullScreen(); //Firefox
+
+</script>
+
+
+</body>
+
+</html>

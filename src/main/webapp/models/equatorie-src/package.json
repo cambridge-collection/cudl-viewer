@@ -1,0 +1,39 @@
+{
+    "name": "equatorie",
+    "version": "0.1.0",
+    "description": "Equatorie written in CoffeeScript",
+    "main": "equatorie.js",
+    "scripts": {
+        "postinstall": "make dist",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/OniDaito/Equatorie.git"
+    },
+    "keywords": [
+        "webgl",
+        "design",
+        "generative",
+        "geometry",
+        "physics",
+        "math"
+    ],
+    "author": "Benjamin Blundell",
+    "license": "Creative Commons Attribution Non-Commercial Share Alike",
+    "readmeFilename": "README.markdown",
+    "dependencies": {
+        
+    },
+    
+    "devDependencies": {
+        "coffee-script": "~1.6.2",
+        "browserify": "~2.7.1",
+        "coffeeify": "0.0.0",
+        "uglify-js": "~2.2.0",
+        "node-static": "~0.6.7",
+        "mocha": "~1.8.2",
+        "chai": "~ 1.5.0",
+        "docco" : "*"
+    }
+}
