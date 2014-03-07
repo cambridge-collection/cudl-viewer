@@ -220,6 +220,28 @@
 
 		<div class="collection">
 			<div class="grid_4">
+				<a href="/collections/peterhouse"> <img class="collectionImage"
+					src="/images/collectionsView/collection-peterhouse.jpg"
+					alt="Peterhouse" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Peterhouse</h5>
+				<br /> Peterhouse (founded 1284) is the oldest of the Cambridge Colleges, and holds a significant collection of medieval manuscripts.
+				As part of the process of recataloguing and preserving the College's collections, it has been decided to present highlights from the
+				Peterhouse manuscripts in digital form.
+				<br /> <br /> <a href="/collections/peterhouse">View
+					collection</a>. <br />
+				<br />
+				
+			</div>
+		</div>
+		
+		<hr />
+
+
+		<div class="collection">
+			<div class="grid_4">
 				<a href="/collections/spanishchapbooks"> <img
 					class="collectionImage"
 					src="/images/collectionsView/collection-spanishchapbooks.jpg"

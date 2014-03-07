@@ -307,6 +307,26 @@
 					src="/images/index/carousel-longitude.jpg" alt="Board of Longitude"
 					width="944" height="394" /> </a>
 			</li>
+			
+			<!-- peterhouse collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/peterhouse">Peterhouse</a>
+					</h4>
+
+					<p>
+						Peterhouse (founded 1284) is the oldest of the Cambridge Colleges.
+						As part of the process of recataloguing and preserving the College's collections, it has been decided to present highlights from the Peterhouse manuscripts in digital form.
+						The first manuscript selected for this purpose is the Equatorie of the Planetis (Peterhouse Ms. 75.1).
+						As funding becomes available, further manuscripts will be added to the online collection.
+					</p>
+
+
+				</div> <a href="/collections/peterhouse"><img
+					src="/images/index/carousel-peterhouse.jpg" alt="Peterhouse"
+					width="944" height="394" /> </a>
+			</li>
 		</ol>
 
 	</div>

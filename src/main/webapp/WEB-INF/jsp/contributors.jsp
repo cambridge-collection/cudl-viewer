@@ -227,6 +227,13 @@
 			<li>Dr Alison Pearn, Associate Director, Darwin Correspondence
 				Project</li>
 		</ul>
+		
+		<h4>Peterhouse Collection</h4>
+		<ul>
+			<li>Scott Mandelbrote, Director of Studies in History, and Perne Librarian, Peterhouse</li>
+			<li>Professor Kari Anne Rand, Department of Literature, Area Studies and European Languages, University of Oslo</li>
+			<li>Seb Falk, Department of History and Philosophy of Science, University of Cambridge</li>
+		</ul>
 
 		<h4>Contact Details</h4>
 		<p>
