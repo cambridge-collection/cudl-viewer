@@ -226,7 +226,7 @@
 				</a>
 			</div>
 			<div class="grid_8">
-				<h5>Peterhouse Collection</h5>
+				<h5>Peterhouse Manuscripts</h5>
 				<br /> Peterhouse (founded 1284) is the oldest of the Cambridge Colleges, and holds a significant collection of medieval manuscripts.
 				As part of the process of recataloguing and preserving the College's collections, it has been decided to present highlights from the
 				Peterhouse manuscripts in digital form.

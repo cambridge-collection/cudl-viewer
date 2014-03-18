@@ -28,8 +28,8 @@
 
 <!-- 
 		Want to view items by subject or date? <br /> <a
-			href="/search?facet-collection=Peterhouse+Collection">Search the
-			Peterhouse collection</a> <br /> <br />
+			href="/search?facet-collection=Peterhouse+Manuscripts">Search the
+			Peterhouse Manuscripts collection</a> <br /> <br />
 -->			
 	</div>
 </div>

@@ -312,7 +312,7 @@
 			<li>
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/collections/peterhouse">Peterhouse Collection</a>
+						<a href="/collections/peterhouse">Peterhouse Manuscripts</a>
 					</h4>
 
 					<p>
