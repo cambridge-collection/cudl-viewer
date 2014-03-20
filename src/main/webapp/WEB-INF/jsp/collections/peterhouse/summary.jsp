@@ -9,10 +9,17 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_5 omega print">
 
-		All scripture is given by inspiration of God, and is profitable for
-		doctrine, for reproof, for correction, for instruction in
-		righteousness <br /> <br /> <cite>&mdash; St Paul's 2nd
-			letter to Timothy (3:16) </cite>
+		The volumes great, who so doth still peruse,<br/>
+		And dailie turnes, and gazeth on the same,<br/>
+		If that the fruicte thereof, he do not use,<br/>
+		He reapes but toile, and never gaineth fame:<br/>
+		Firste reade, then marke, then practise that is good,<br/>
+		For without use, we drinke but LETHE flood.
+		
+		<br /> <br />
+		
+		
+		<cite>&mdash; Geffrey Whitney, <i>A Choice of Emblemes</i> (Leiden, 1586), p. 171, dedicated to Andrew Perne.</cite>
 
 	</blockquote>
 	<br /> <br />
