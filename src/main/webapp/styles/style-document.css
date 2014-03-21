@@ -264,7 +264,7 @@ table {
 #metadata {
 	background:#ffffff;
 }
-#metadata-rights,#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page,#metadata-abstract
+#metadata-rights,#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page,#metadata-abstract,#metadata-docAuthority
 	{
 	max-width: 450px;
 	margin: 5px;

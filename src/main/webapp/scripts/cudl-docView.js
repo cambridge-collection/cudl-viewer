@@ -269,6 +269,11 @@ cudl.docView = function() {
 				cudl.view.populateElement(document
 						.getElementById("metadata-download-rights"),
 						descriptiveMetadata.downloadImageRights);
+				//ADDITION
+				cudl.view.populateElement(document
+						.getElementById("metadata-docAuthority"),
+						descriptiveMetadata.docAuthority);
+				
 				
 				// update current page number display.
 				cudl.view.populateElement(document

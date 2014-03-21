@@ -40,6 +40,8 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.L
 
 			<!--  What can I do? -->
 			<div class="document-about-box">
+			
+				
 				<b>What can I do with this image?</b><br /> <br />
 				<div class="document-about-page">
 					<a href="" onclick="cudl.downloadImageCheck(); return false;">
@@ -91,8 +93,11 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.L
 
 				</div>
 
-
-
+			<br /> <br />
+			<i>
+			<div id="metadata-docAuthority"></div>
+			</i>
+			
 			</div>
 
 			<br /> <br /> <br /> <br />
