@@ -231,13 +231,34 @@ cudl.setupViewport = function () {
 	   cudl.setupTab('Contents', 'logical_structure', cudl.viewportComponents.rightTabPanel);
 	}
 	
+	
+	
+	//this bit set up to only distinguish between tab labels if more than one type of transcription exists
+	var diplomaticTranscriptionLabel;
+	var normalisedTranscriptionLabel;
+	
+	
+	if (cudl.data.useDiplomaticTranscriptions && cudl.data.useNormalisedTranscriptions) {
+		//code
+		
+		diplomaticTranscriptionLabel='Transcription (diplomatic)';
+		normalisedTranscriptionLabel='Transcription (normalised)';
+	}else{
+		
+		diplomaticTranscriptionLabel='Transcription';
+		normalisedTranscriptionLabel='Transcription';
+		
+		
+	}
+	
+	
 	// Setup diplomatic transcription tab
 	if (cudl.data.useDiplomaticTranscriptions) {
 
 	    // if this attribute is present, the transcription does not change on page change.  
 		if (cudl.data.allTranscriptionDiplomaticURL) {
 			
-			cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+			cudl.setupTab(diplomaticTranscriptionLabel, 'transcription_diplomatic',
 					cudl.viewportComponents.rightTabPanel);
 			
 			// Create iframe and set target to be the transcription URL. 
@@ -250,7 +271,7 @@ cudl.setupViewport = function () {
 		} else {
 
 			// This tab changes src when the page changes. 
-			cudl.setupTab('Transcription (diplomatic)', 'transcription_diplomatic',
+			cudl.setupTab(diplomaticTranscriptionLabel, 'transcription_diplomatic',
 					cudl.viewportComponents.rightTabPanel, 'transcriptionDiplomaticURL',
 					true);
 		}
@@ -262,7 +283,7 @@ cudl.setupViewport = function () {
 	    // if this attribute is present, the transcription does not change on page change.  
 		if (cudl.data.allTranscriptionNormalisedURL) {
 			
-			cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+			cudl.setupTab(normalisedTranscriptionLabel, 'transcription_normal',
 					cudl.viewportComponents.rightTabPanel);
 			
 			// Create iframe and set target to be the transcription URL. 
@@ -273,7 +294,7 @@ cudl.setupViewport = function () {
 								
 		} else {
 		
-		  cudl.setupTab('Transcription (normalised)', 'transcription_normal',
+		  cudl.setupTab(normalisedTranscriptionLabel, 'transcription_normal',
 				cudl.viewportComponents.rightTabPanel, 'transcriptionNormalisedURL',
 				true);
 		}
