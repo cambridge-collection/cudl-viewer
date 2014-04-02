@@ -378,16 +378,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Greek Manuscript - Ff.1.24"
-					title="February Update"
-					src="/images/index/news-february14.jpg" height="100" width="100"></a>
+					alt="Conrad Martens Sketchbook"
+					title="March Update"
+					src="/content/images/MS-ADD-07983-000-00021_files/9/0_0.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">27/02/2014</span>
+				<span class="date">31/03/2014</span>
 				<h5>
-					<a href="/news">February Update</a></h5>
-         				<p>Our February release includes works spanning three of our most important collection.
+					<a href="/news">March Release</a></h5>
+         				<p>Our March release containes two sketchbooks by Conrad Martens, and several noteworthy additions to our Christian, Islamic and Sandskrit collections.  
 			</p>			
 			</div>
 		</div>

@@ -16,6 +16,28 @@
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
+
+	  <div class="grid_5">
+                        <img alt="Conrad Martens Sketchbook"
+                                title="March Update"
+                                src="/content/images/MS-ADD-07983-000-00021_files/9/0_0.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">31/03/2014</span>
+                        <h4>March Update</h4>
+
+                	<p>Among the many highlights of this release are two sketchbooks by Conrad Martens, the official artist aboard the <i>Beagle</i> from July 1833 to July 1834. The sketches and watercolours in <a href='/view/MS-ADD-07983/1'>MS Add.7983</a> and <a href='/view/MS-ADD-07984/1'>MS Add. 7984</a> include depictions of local landscapes, people, flora and fauna and give a vivid insight into what has become one of the most famous voyages in the world, owing to Marten’s shipmate and lifelong friend Charles Darwin.</p>
+
+<p>There are two further important additions to our Christian Collection. The first is a <a href='/view/MS-GG-00004-00006/1'>fourteenth century copy of the <i>Roman de la Rose</i></a>, probably the most important and influential literary work written in medieval French. This manuscript is full of beautiful illustrations by Richard de Montbaston (fl. 1325-1353), a professional illustrator who lived and worked with his wife Jeanne (fl. 1338-1353) on the rue Neuve Notre-Dame in Paris. The second is the <a href='/view/MS-DD-00005-00005/1'><i>Breviary of Marie de Saint Pol</i></a>, an illuminated prayer book commissioned by Marie de Saint Pol, Countess of Pembroke (c. 1304-1377) and founder of Pembroke College, Cambridge.
+
+<p>Also in this release are <a href='/view/MS-OR-00476/1'>MS Or.476</a> and <a href='/view/MS-OR-00771/1'>MS Or.771</a>, two Qur'ānic fragments from the 9th or 10th century. This brings the total number of early Qur'āns and Qur'ānic fragments in our <a href='/collections/islamic#1'>Islamic Collection</a> to forty six, providing a rich resource for researchers.</p>
+
+<p>Finally, we are adding a further fifteen manuscripts to our Sanskrit Collection, amongst which are beautifully illuminated copies of the <a href='/view/MS-OR-02258/1'>Pañcarakṣā</a> and <a href='/view/MS-ADD-01326/1'>Dhāraṇīsaṅgraha</a>  dating from the 17th and 18th centuries respectively.</p>
+		</div>
+
+                <hr />
+
 	 <div class="grid_5">
                         <img alt="Greek Manuscript - Ff.1.24"
                                 title="February Update"
