@@ -387,7 +387,7 @@
 				<span class="date">31/03/2014</span>
 				<h5>
 					<a href="/news">March Release</a></h5>
-         				<p>Our March release containes two sketchbooks by Conrad Martens, and several noteworthy additions to our Christian, Islamic and Sandskrit collections.  
+         				<p>Our March release containes two sketchbooks by Conrad Martens, and several noteworthy additions to our Christian, Islamic and Sanskrit collections.  
 			</p>			
 			</div>
 		</div>
