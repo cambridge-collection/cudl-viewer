@@ -16,6 +16,25 @@
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
+	  <div class="grid_5">
+                        <img alt="Old English translation of Bede"
+                                title="May Update"
+                                src="/images/index/news-bede.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">27/05/2014</span>
+                        <h4>May Update</h4>
+
+                	<p>Our May release includes < href='view/MS-KK-00003-00018/24'>MS Kk.3.18</a> one of only four surviving Old English translations of Bede's <i>Historia ecclesiastica gentis anglorum</i>. Written in Worcester in the second half of the 11th century, it is extensively annotated in English and Latin, including notes added by the so-called 'Tremulous Hand', a scribe whose additions to numerous Worcester manuscripts are dated c. 1225-1250.</p>
+
+<p>Of the fifteen new items in our Sanskrit Collection, a particular highlight is <a href='view/MS-ADD-01278/1'>MS Add.1278</a>, a wonderful example of an 'accordion book', containing a Tantric Buddhist text. Also included is <a href='view/MS-OR-1818/1'>MS Or.1818</a>, a collection of devotional works of vaiṣṇava affiliation. Both are beautifully illustrated throughout. An additional highlight is <a href='view/MS-ADD-01698/1'>MS Add.1698</a>, which was composed in 1386 and is in the original hand of the author, one Vivṛti. Autograph Sanskrit manuscripts of this antiquity are extremely rare.</p>
+
+<p>We are also adding over five hundred fragments to our Genizah collection. Among them are copies of the only known Medieval Hebrew poem by a woman (<a href='view/MS-MOSSERI-VIII-00202-00002/1'>Mosseri VIII.202.2</a> and <a href='view/MS-TS-NS-00143-00046/1'>T-S NS 143.46</a>), a 10th century letter which is believed to be documentary proof of the existence of Khazar Jews in Kiev (<a href='/view/MS-TS-00012-00122/1'>T-S 12.122</a>) and a court record dealing with a famous case of murder (<a href='view/MS-TS-00008-00111/1'>T-S 8.111</a>).</p> 
+
+		</div>
+
+                <hr />
 
 	  <div class="grid_5">
                         <img alt="Conrad Martens Sketchbook"

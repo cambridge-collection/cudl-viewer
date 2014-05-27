@@ -378,16 +378,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Conrad Martens Sketchbook"
-					title="March Update"
-					src="/content/images/MS-ADD-07983-000-00021_files/9/0_0.jpg" height="100" width="100"></a>
+					alt="Old English translation of Bede"
+					title="May Update"
+					src="/images/index/news-bede.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">31/03/2014</span>
+				<span class="date">27/05/2014</span>
 				<h5>
-					<a href="/news">March Release</a></h5>
-         				<p>Our March release containes two sketchbooks by Conrad Martens, and several noteworthy additions to our Christian, Islamic and Sanskrit collections.  
+					<a href="/news">May Release</a></h5>
+         				<p>Our May release includes < href='view/MS-KK-00003-00018/24'>MS Kk.3.18</a> one of only four surviving Old English translations of Bede's <i>Historia ecclesiastica gentis anglorum</i>.  
 			</p>			
 			</div>
 		</div>
