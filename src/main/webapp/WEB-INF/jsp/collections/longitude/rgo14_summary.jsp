@@ -28,6 +28,8 @@
 		
 		<p>The final decade of the Board’s existence, a period of dramatic expansion as well as crisis, is well documented here. In 1818, at a period when the its remit and budget both grew, the Board was also charged with administering rewards for mariners who charted a north-west passage from the Atlantic to the Pacific, and for those navigators who came close to the North Pole. In 1822, the Board agreed to support the establishment of a new state observatory at the Cape of Good Hope, and the minutes, as well as correspondence in <a href="/view/MS-RGO-00014-00048/1">RGO 14/48</a>-<a href="/view/MS-RGO-00014-00049/1">RGO 14/49</a>, give some details of this decision and its consequences. In the 1820s, the Board planned collaboration with the Paris Observatory to determine the distance between the two Observatories, and papers in <a href="/view/MS-RGO-00014-00013/1">RGO 14/13</a> detail these plans. The papers also testify to the strenuous efforts exerted by the Board throughout its existence somehow to register, catalogue and control the worldwide distribution of instruments and personnel that formed a vital part of its activities.</p>
 		
+		<p>Also included in this collection are two items closely related to the papers of the Board - <a href='/view/MS-MM-00006-00048'>Letters, memoranda and journal containing the history of Mr William Gooch</a> and <a href='/view/MS-H-17809'>An account of John Harrison and his chronometer</a>.</p>
+		
 		<p>Simon Schaffer<br/>
 			History and Philosophy of Science<br/>
 			University of Cambridge</p>
