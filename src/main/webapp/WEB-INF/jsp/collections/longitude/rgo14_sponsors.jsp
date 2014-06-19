@@ -26,7 +26,16 @@
 	</div>
 	<div class="grid_13">
 	<br />
-		Includes content from the collections of the <a target="_blank" href="http://www1.rmg.co.uk/">National Maritime Museum, Royal Museums Greenwich</a>. <br /> <br />
+		Includes content from the collections of the <a target="_blank" href="http://www1.rmg.co.uk/">National Maritime Museum, Royal Museums Greenwich</a>. <br /> <br /><br /><br />
 	</div>
+	
+	<div class="grid_4">
+		<img src="/images/statelibrarylogo.jpg" title="State Library of Victoria" />
+	</div>
+	<div class="grid_13">
+	<br />
+		Images for the <a href="/view/MS-H-17809/1">'Account of  John Harrison and his chronometer' (H17809)</a> supplied by the <a target="_blank" href="http://www.slv.vic.gov.au/">State Library of Victoria.</a>. <br /> <br />
+	</div>
+	
 
 </div>
