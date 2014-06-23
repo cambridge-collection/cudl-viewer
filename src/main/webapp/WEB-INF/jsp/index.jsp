@@ -387,7 +387,7 @@
 				<span class="date">27/05/2014</span>
 				<h5>
 					<a href="/news">May Release</a></h5>
-         				<p>Our May release includes <a href='view/MS-KK-00003-00018/24'>MS Kk.3.18</a> one of only four surviving Old English translations of Bede's <i>Historia ecclesiastica gentis anglorum</i>.  
+         				<p>Our May release includes <a href='view/MS-KK-00003-00018/24'>MS Kk.3.18</a> one of only five surviving copies of the Old English translation of Bede's <i>Historia ecclesiastica gentis anglorum</i>.  
 			</p>			
 			</div>
 		</div>
