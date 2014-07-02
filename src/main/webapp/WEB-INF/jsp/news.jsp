@@ -15,6 +15,25 @@
 	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
+	 <div class="grid_5">
+                        <img alt="The Fabric of the Human Body"
+                                title="June Update"
+                                src="/images/index/news-vesalius.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">30/06/2014</span>
+                        <h4>June Update</h4>
+			
+			<p>A particular highlight of our June release is a beautiful copy of Vesalius' <a href='view/PR-CCF-00046-00036/1' target='_blank'><i>Epitome</i></a>, a companion piece to his <i>Seven books on the fabric of the human body</i>. Published in 1543 the <i>Epitome</i> includes a number of detailed anatomical woodcuts, as well as an extraordinary <a href='view/PR-CCF-00046-00036/45' target='_blank'>three-dimensional manikin</a>.</p>
+
+<p>To coincide with the opening of a <a href="http://www.rmg.co.uk/whats-on/events/ships-clocks-stars" target="_blank">major exhibition at the National Maritime Museum</a>, we are making an important addition to our Longitude Collection. The <a href='view/MS-H-17809/1' target='_blank'><i>Account of John Harrison and his chronometer</i></a> is one of the most interesting and complex sources in the history of the Board of Longitude, detailing Harrison's long and often fraught relationship with the Board. Written from Harrison's point of view it provides an intriguing counterpoint to other material in the Collection, often describing the same events from a very different perspective. We have also taken the opportunity to enrich our presentation of the <a href='view/MS-REG-00009-00037/1' target='_blank'><i>Papers of Nevil Maskelyne</i></a> with a full, searchable index and table of contents.</p>
+
+<p>Our Christian Collection continues to grow with the addition of MS CUL Ff.1.25, a composite manuscript made up of five different parts of different dates, compiled in the sixteenth century. Donated to the Library by Archbishop Matthew Parker in 1574, Ff.1.25 contains copies of many important medieval texts, including Geoffrey of Monmouth's <a href='view/MS-FF-00001-00025-00005/1' target='_blank'><i>Historia regum Britanniae</i></a>.</p>
+
+                </div>
+
+                <hr />
 
 	  <div class="grid_5">
                         <img alt="Old English translation of Bede"

@@ -378,17 +378,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Old English translation of Bede"
-					title="May Update"
-					src="/images/index/news-bede.jpg" height="100" width="100"></a>
+					alt="Vesalius' Epitome"
+					title="June Update"
+					src="/images/index/news-vesalius.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">27/05/2014</span>
+				<span class="date">30/06/2014</span>
 				<h5>
-					<a href="/news">May Release</a></h5>
-         				<p>Our May release includes <a href='view/MS-KK-00003-00018/24'>MS Kk.3.18</a> one of only five surviving copies of the Old English translation of Bede's <i>Historia ecclesiastica gentis anglorum</i>.  
-			</p>			
+					<a href="/news">June Release</a></h5>
+         				<p>A particular highlight of our June release is a beautiful copy of Vesalius' <a href='http://cudl.lib.cam.ac.uk/view/PR-CCF-00046-00036/1' target='_blank'><i>Epitome</i></a>, a companion piece to his <i>Seven books on the fabric of the human body</i>. Published in 1543 the <i>Epitome</i> includes a number of detailed anatomical woodcuts, as well as an extraordinary <a href='http://cudl.lib.cam.ac.uk/view/PR-CCF-00046-00036/45' target='_blank'>three-dimensional manikin</a>.</p>			
 			</div>
 		</div>
 
