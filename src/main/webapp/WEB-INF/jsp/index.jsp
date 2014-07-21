@@ -327,6 +327,26 @@
 					src="/images/index/carousel-peterhouse.jpg" alt="Peterhouse"
 					width="944" height="394" /> </a>
 			</li>
+			
+			<!-- sassoon collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/peterhouse">Sassoon Journals</a>
+					</h4>
+
+					<p>
+						The notebooks kept by the soldier-poet Siegfried Sassoon (1886–1967) during
+						his service in the British Army in the First World War are among the most remarkable documents of their kind, and provide
+						an extraordinary insight into his participation in one of the defining conflicts of European history.
+					</p>
+
+
+				</div> <a href="/collections/sassoon"><img
+					src="/images/index/carousel-sassoon.jpg" alt="Sassoon Journals"
+					width="944" height="394" /> </a>
+			</li>
+			
 		</ol>
 
 	</div>
