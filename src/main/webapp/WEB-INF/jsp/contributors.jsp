@@ -234,6 +234,12 @@
 			<li>Professor Kari Anne Rand, Department of Literature, Area Studies and European Languages, University of Oslo</li>
 			<li>Seb Falk, Department of History and Philosophy of Science, University of Cambridge</li>
 		</ul>
+		
+		<h4>Sassoon Journals</h4>
+		<ul>
+			<li>Dr Emma Saunders, Archivist, Cambridge University Library</li>
+			<li>John Wells, Curator of Literary Archives, Cambridge University Library</li>
+		</ul>
 
 		<h4>Contact Details</h4>
 		<p>

@@ -106,6 +106,28 @@
 			</div>
 		</div>
 		<hr />
+		
+		
+		<div class="collection">
+			<div class="grid_4">
+				<a href="/collections/sassoon"> <img
+					class="collectionImage"
+					src="/images/collectionsView/collection-sassoon.jpg"
+					alt="Sassoon Journals" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Sassoon Journals</h5>
+				<br /> The notebooks kept by the soldier-poet Siegfried Sassoon (1886–1967) during
+				his service in the British Army in the First World War are among the most remarkable documents of their kind, and provide
+				an extraordinary insight into his participation in one of the defining conflicts of European history. <br />
+				<br /> <a href="/collections/sassoon">View collection</a>. <br />
+				
+				<br />
+			</div>
+		</div>
+		<hr />
+		
 
 		<div class="collection collection-faith">
 			<div class="grid_4">
