@@ -266,9 +266,14 @@ cudl.docView = function() {
 						+ descriptiveMetadata.downloadImageRights
 						+ '<br/><br/> Do you want to download this image?';
 
-				cudl.view.populateElement(document
+				document.getElementById("download_img").style.display = 'none';
+				if (descriptiveMetadata.downloadImageRights !=="") {
+					cudl.view.populateElement(document
 						.getElementById("metadata-download-rights"),
 						descriptiveMetadata.downloadImageRights);
+
+					document.getElementById("download_img").style.display = 'block';
+				}
 				//ADDITION
 				cudl.view.populateElement(document
 						.getElementById("metadata-docAuthority"),

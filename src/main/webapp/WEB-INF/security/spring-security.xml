@@ -9,7 +9,7 @@
     <import resource="../datasource/itemsFactory.xml" />
 
 	<!-- This is where we configure Spring-Security -->
-	<security:http auto-config="true" use-expressions="true"
+	<security:http auto-config="false" use-expressions="true"
 		access-denied-page="/auth/denied/">
 
 		<security:intercept-url pattern="/auth/login/"

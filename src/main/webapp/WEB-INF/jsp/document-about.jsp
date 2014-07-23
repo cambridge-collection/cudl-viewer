@@ -44,11 +44,12 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.L
 				
 				<b>What can I do with this image?</b><br /> <br />
 				<div class="document-about-page">
+				    <div id=download_img>
 					<a href="" onclick="cudl.downloadImageCheck(); return false;">
 						<img src="/img/icon-download-blue.png"
 						style="float: left; padding-right: 3px" /> Download image
 					</a> <span id="metadata-download-rights" class="rights-statement"></span>
-
+				     </div>
 
 					<br /> <br /> <a id="metadata-rights-link"
 						href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
