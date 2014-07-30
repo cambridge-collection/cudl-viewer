@@ -15,6 +15,28 @@
 	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
+	<div class="grid_5">
+                        <img alt="The Soul of an Officer"
+                                title="August Update"
+                                src="/images/index/news-sassoon.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">31/07/2014</span>
+                        <h4>August Update</h4>
+
+			<p>Our August release marks the 100th anniversary of the beginning of the First World War with the release of <a href='collections/sassoon'>Siegfried Sassoon's wartime journals and poetry notebooks</a>.</p>
+
+<p>The journals give a fascinating insight into daily life in the trenches, including Sassoon's <a href='view/MS-ADD-09852-00001-00007/19'>description of the first day of the Somme</a>, the moment he was <a href='view/MS-ADD-09852-00001-00010/14'>shot by a sniper at the Battle of Arras</a>, and a <a href='view/MS-ADD-09852-00001-00007/7'>haunting sketch of ‘the soul of an officer’</a>. Two of the journals are marked with traces of <a href='view/MS-ADD-09852-00001-00007/137'>mud</a> and <a href='view/MS-ADD-09852-00001-00009/27'>candle wax</a> from Sassoon's time in the trenches.</p>
+
+<p>The poems include previously unpublished material along with drafts of some of his best-known works including an <a href='view/MS-ADD-09852-00006-00002/159'>early version of ‘The Dug-Out’</a> with an additional, excised verse.</p>
+                </div>
+
+                <hr />
+
+
+
+
 	 <div class="grid_5">
                         <img alt="The Fabric of the Human Body"
                                 title="June Update"

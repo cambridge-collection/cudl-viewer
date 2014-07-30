@@ -398,16 +398,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Vesalius' Epitome"
-					title="June Update"
-					src="/images/index/news-vesalius.jpg" height="100" width="100"></a>
+					alt="Sassoon"
+					title="August Update"
+					src="/images/index/news-sassoon.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">30/06/2014</span>
+				<span class="date">31/07/2014</span>
 				<h5>
-					<a href="/news">June Release</a></h5>
-         				<p>A particular highlight of our June release is a beautiful copy of Vesalius' <a href='http://cudl.lib.cam.ac.uk/view/PR-CCF-00046-00036/1' target='_blank'><i>Epitome</i></a>, a companion piece to his <i>Seven books on the fabric of the human body</i>. Published in 1543 the <i>Epitome</i> includes a number of detailed anatomical woodcuts, as well as an extraordinary <a href='http://cudl.lib.cam.ac.uk/view/PR-CCF-00046-00036/45' target='_blank'>three-dimensional manikin</a>.</p>			
+					<a href="/news">August Release</a></h5>
+					<p>Our August release marks the 100th anniversary of the beginning of the First World War with the release of <a href='collections/sassoon'>Siegfried Sassoon's wartime journals and poetry notebooks</a></p>
 			</div>
 		</div>
 
