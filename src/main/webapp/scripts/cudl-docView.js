@@ -260,7 +260,8 @@ cudl.docView = function() {
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
 				
-				document.getElementById("metadata-rights-link").href=descriptiveMetadata.imageReproPageURL;
+				//CS - July 31st 2014 - hack to keep Sassoon Happy
+				//document.getElementById("metadata-rights-link").href=descriptiveMetadata.imageReproPageURL;
 
 				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights

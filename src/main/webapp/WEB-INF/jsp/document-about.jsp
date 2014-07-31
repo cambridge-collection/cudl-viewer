@@ -52,7 +52,7 @@ import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*, java.util.L
 				     </div>
 
 					<br /> <br /> <a id="metadata-rights-link"
-						href="http://www.lib.cam.ac.uk/deptserv/imagingservices/rights_form/rights_form.html"
+						href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html"
 						target="_blank"><img src="/img/icon-reproduction-blue.png"
 						style="float: left; padding-right: 3px" /> Request reproduction
 						rights to this image</a> <span id="metadata-display-rights"
