@@ -215,12 +215,14 @@ cudl.setupViewport = function () {
 		tooltip : 'Bookmark Image',
 		icon : '/img/icon-bookmark-blue.png',
 		handler : cudl.bookmarkImageCheck
-	});	
-	cudl.viewportComponents.pagingToolbar.add({
-		tooltip : 'Download Image',
-		icon : '/img/icon-download-blue.gif',
-		handler : cudl.downloadImageCheck
 	});
+	if (descriptiveMetadata.downloadImageRights !=="") {	
+		cudl.viewportComponents.pagingToolbar.add({
+			tooltip : 'Download Image',
+			icon : '/img/icon-download-blue.gif',
+			handler : cudl.downloadImageCheck
+		});
+	}
 
 	// Add tabs
 	var aboutTab = cudl.setupTab('About', 'metadata',
