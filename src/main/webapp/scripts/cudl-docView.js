@@ -189,9 +189,7 @@ cudl.docView = function() {
 			    }
 				
 				// setup image download link
-				cudl.downloadImageLink = "/download/image%252Fjpg/document-image"
-						+ cudl.pagenum
-						+ ".jpg?path="
+				cudl.downloadImageLink = cudl.imageServer
 						+ cudl.data.pages[cudl.pagenum - 1].downloadImageURL;
 
 				// setup transcription
