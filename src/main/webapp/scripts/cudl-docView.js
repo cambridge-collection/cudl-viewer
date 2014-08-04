@@ -179,8 +179,8 @@ cudl.docView = function() {
 				
 				// show image
 				if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
-			  	  cudl.viewer.openDzi(cudl.proxyURL
-						+ cudl.data.pages[cudl.pagenum - 1].displayImageURL);
+				    cudl.viewer.openDzi(cudl.imageServer
+                                                + cudl.data.pages[cudl.pagenum - 1].displayImageURL);
 			    } else {
 
 				  // display page number message
@@ -259,9 +259,9 @@ cudl.docView = function() {
 				cudl.view.populateElement(document
 						.getElementById("metadata-display-rights"),
 						descriptiveMetadata.displayImageRights);
-				
+			
 				//CS - July 31st 2014 - hack to keep Sassoon Happy
-				//document.getElementById("metadata-rights-link").href=descriptiveMetadata.imageReproPageURL;
+                                //document.getElementById("metadata-rights-link").href=descriptiveMetadata.imageReproPageURL;
 
 				cudl.downloadMessage.msg = 'This image has the following copyright: <br/><br/>'
 						+ descriptiveMetadata.downloadImageRights
@@ -307,7 +307,7 @@ cudl.docView = function() {
 				// set bookmark URL for this page
 				var bookmarkLink = document.getElementById("bookmarkLink");
 				
-				var dziURL = cudl.proxyURL+cudl.data.pages[cudl.pagenum - 1].displayImageURL;
+				var dziURL = cudl.imageServer+cudl.data.pages[cudl.pagenum - 1].displayImageURL;
 				var thumbnailURL = dziURL.replace(".dzi","_files/8/0_0.jpg"); // build the thumbnail url for this page
 				bookmarkLink.href="/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);				
 				

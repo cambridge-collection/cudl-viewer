@@ -133,15 +133,12 @@ public class ItemsJSONDao implements ItemsDao {
 			// Might have Thumbnail image
 			if (descriptiveMetadata.has("thumbnailUrl")
 					&& descriptiveMetadata.has("thumbnailOrientation")) {
-				itemThumbnailURL = descriptiveMetadata
+				itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata
 						.getString("thumbnailUrl");
-				if (Properties.getString("useProxy").equals("true")) {
-					itemThumbnailURL = Properties.getString("proxyURL")
-							+ itemThumbnailURL;
-				}
 
 				thumbnailOrientation = descriptiveMetadata
-						.getString("thumbnailOrientation");
+                                                .getString("thumbnailOrientation");
+
 			}
 
 		} catch (JSONException e) {

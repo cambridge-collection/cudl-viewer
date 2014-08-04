@@ -5,10 +5,7 @@
 			.getAttribute("subCollections");
 
 	// Proxy url is used for local installations.  Not used on dev or live. 
-	String proxyURL = (String) request.getAttribute("proxyURL");
-	if (proxyURL == null) {
-		proxyURL = "";
-	}
+	String imageServer = (String) request.getAttribute("imageServer");
 	
 %>
 
@@ -167,7 +164,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00051/358"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00051-000-00359_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-RGO-00014-00051-000-00359_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00051">
 						</a>
 					</div>
@@ -178,7 +175,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00024/451"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00024-000-00451_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-RGO-00014-00024-000-00451_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00024">
 						</a>
 					</div>
@@ -189,7 +186,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00039/83"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00039-000-00083_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-RGO-00014-00039-000-00083_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00083">
 						</a>
 					</div>
@@ -213,7 +210,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-MM-00006-00048/368"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-MM-00006-00048-000-00368_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-MM-00006-00048-000-00368_files/8/0_0.jpg"
 							alt="MS-MM-00006-00368">
 						</a>
 					</div>
@@ -225,7 +222,7 @@
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00044/197"> <img
 							style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00044-000-00197_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-RGO-00014-00044-000-00197_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00197">
 						</a>
 					</div>
@@ -236,7 +233,7 @@
 				<div class="parent_featured_item_image_box">
 					<div class="parent_featured_item_image">
 						<a href="/view/MS-RGO-00014-00058/255"> <img style="height: 100%"
-							src="<%=proxyURL%>/content/images/MS-RGO-00014-00058-000-00256_files/8/0_0.jpg"
+							src="<%=imageServer%>/content/images/MS-RGO-00014-00058-000-00256_files/8/0_0.jpg"
 							alt="MS-RGO-00014-00058">
 						</a>
 					</div>

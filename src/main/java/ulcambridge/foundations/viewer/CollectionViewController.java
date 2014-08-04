@@ -75,16 +75,13 @@ public class CollectionViewController {
 		ModelAndView modelAndView = new ModelAndView("jsp/collection-"
 				+ collection.getType());
 
-		// Get proxyURL (if we are using a proxy)
-		String proxyURL = "";
-		if (Properties.getString("useProxy").equals("true")) {
-			proxyURL = Properties.getString("proxyURL");
-		}
-		
+		//Get imageServer
+                String imageServer = Properties.getString("imageServer");
+	
 		modelAndView.addObject("collection", collection);
 		modelAndView.addObject("itemFactory", itemFactory);
 		modelAndView.addObject("collectionFactory", collectionFactory);
-		modelAndView.addObject("proxyURL", proxyURL);
+		modelAndView.addObject("imageServer", imageServer);
 
 		// append a list of this collections subcollections if this is a parent. 
 		if (collection.getType().equals("parent")) {

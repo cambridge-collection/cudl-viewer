@@ -187,11 +187,8 @@ public class DocumentViewController {
 		List<Collection> docCollections = getCollection(item.getId());
 		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
-		// Get proxyURL (if we are using a proxy)
-		String proxyURL = "";
-		if (Properties.getString("useProxy").equals("true")) {
-			proxyURL = Properties.getString("proxyURL");
-		}
+		//Get imageServer
+		String imageServer = Properties.getString("imageServer");
 
 		// forward to the correct location based on type of item 
 		// and page number, where page=0 is the item-level metadata
@@ -208,7 +205,7 @@ public class DocumentViewController {
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
 		modelAndView.addObject("requestURL", requestURL);		
-		modelAndView.addObject("proxyURL", proxyURL);
+		modelAndView.addObject("imageServer", imageServer);
 		
 		/** Collection information **/
 		modelAndView.addObject("organisationalCollection",
@@ -278,12 +275,6 @@ public class DocumentViewController {
 		List<Collection> docCollections = getCollection(item.getId());
 		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
-		// Get proxyURL (if we are using a proxy)
-		String proxyURL = "";
-		if (Properties.getString("useProxy").equals("true")) {
-			proxyURL = Properties.getString("proxyURL");
-		}
-
 		// Get parent collection if there is one.
 		Collection parent = null;
 		if (organisationalCollection.getParentCollectionId() != null) {
@@ -295,7 +286,6 @@ public class DocumentViewController {
 		ModelAndView modelAndView = new ModelAndView("jsp/essay");
 
 		modelAndView.addObject("docId", item.getId());
-		modelAndView.addObject("proxyURL", proxyURL);
 		modelAndView.addObject("organisationalCollection",
 				organisationalCollection);
 		modelAndView.addObject("collections", docCollections);

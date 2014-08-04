@@ -165,10 +165,7 @@ public class SearchController {
 				if (searchResult.getThumbnailURL() != null) {
 					
 					String pageThumbnail = searchResult.getThumbnailURL();
-					if (Properties.getString("useProxy").equals("true")) {
-						pageThumbnail = Properties
-								.getString("proxyURL") + pageThumbnail;
-					}					
+					pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
 					itemJSON.put("pageThumbnailURL", pageThumbnail);
 					
 				} else {
@@ -191,10 +188,7 @@ public class SearchController {
 									.toString()
 									.replace(".dzi", "_files/8/0_0.jpg");
 
-							if (Properties.getString("useProxy").equals("true")) {
-								pageThumbnail = Properties
-										.getString("proxyURL") + pageThumbnail;
-							}
+							pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
 
 						}
 					} catch (JSONException e) {
