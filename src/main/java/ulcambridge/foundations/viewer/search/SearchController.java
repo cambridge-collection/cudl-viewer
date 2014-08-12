@@ -163,11 +163,13 @@ public class SearchController {
 
 				// Page Thumbnails.  Use specified thumbnail if possible. 
 				if (searchResult.getThumbnailURL() != null) {
-					
 					String pageThumbnail = searchResult.getThumbnailURL();
-					pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-					itemJSON.put("pageThumbnailURL", pageThumbnail);
-					
+					if (pageThumbnail.contains("thumbnail")) {
+						itemJSON.put("pageThumbnailURL", pageThumbnail);
+					} else {
+						pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
+						itemJSON.put("pageThumbnailURL", pageThumbnail);
+					}
 				} else {
 					String pageThumbnail = "";
 					org.json.JSONObject page = null;
