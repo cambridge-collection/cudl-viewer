@@ -104,6 +104,10 @@ h3,h2,h1,h4 {
 	width: 100%;
 	height: 100%;
 }
+#translation_frame { /*display: none;*/
+        width: 100%;
+        height: 100%;
+}
 
 /* overwrite the university style for the bottom margin as
  this is conflicting with the Ext Style, esp in ie */
