@@ -112,16 +112,12 @@ cudl.beforeTabShown = function(thisTab) {
 	var urlAttribute = thisTab.urlAttribute;
 	if (urlAttribute) {
 
-		var url = encodeURIComponent(cudl.data.pages[cudl.pagenum - 1][urlAttribute + '']);
-		if (url=="undefined") {
-			url="";
+		var url = cudl.data.pages[cudl.pagenum - 1][urlAttribute + ''];
+		if (typeof url != 'undefined') {
+			thisTab.el.dom.children[0].src = cudl.services + url;
+		} else {
+			thisTab.el.dom.children[0].src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription%2ftranslation available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
 		}
-		//cachedURL = "/externalresource?url="
-		//		+ encodeURIComponent("/transcription?url=" + url) + "&doc="
-		//		+ cudl.docId;
-		cachedURL = "/transcription?url=" + url +"&doc="	+ cudl.docId;
-			
-		thisTab.el.dom.children[0].src = cachedURL;
 	}
 }
 
@@ -136,7 +132,11 @@ cudl.afterTabShown = function () {
 	} else 
 	if (activeTab.id == "transcription_diplomatic") {
 		document.getElementById("transcription_diplomatic_frame").style.height = activeTab.dom.style.height;	
-	}	
+	} else
+	if (activeTab.id == "translation") {
+                document.getElementById("translation_frame").style.height = activeTab.dom.style.height;
+	}
+		
 	// end of hack. 
 	
 	// Unmask tab if required
@@ -266,7 +266,7 @@ cudl.setupViewport = function () {
 			// Create iframe and set target to be the transcription URL. 
 			var iframe = document.createElement("iframe");
 			iframe.setAttribute('id', 'transcription_diplomatic_frame');
-			iframe.setAttribute('src', cudl.data.allTranscriptionDiplomaticURL); 
+			iframe.setAttribute('src', cudl.services + cudl.data.allTranscriptionDiplomaticURL); 
             document.getElementById('transcription_diplomatic').appendChild(iframe);
 					
 			
@@ -291,7 +291,7 @@ cudl.setupViewport = function () {
 			// Create iframe and set target to be the transcription URL. 
 			var iframe = document.createElement("iframe");
 			iframe.setAttribute('id', 'transcription_normal_frame');
-			iframe.setAttribute('src', cudl.data.allTranscriptionNormalisedURL); 
+			iframe.setAttribute('src', cudl.services + cudl.data.allTranscriptionNormalisedURL); 
             document.getElementById('transcription_normal').appendChild(iframe);
 								
 		} else {
@@ -301,6 +301,29 @@ cudl.setupViewport = function () {
 				true);
 		}
 	}
+
+	// Setup translation tab   
+        if (cudl.data.useTranslations) {
+
+            // if this attribute is present, the transcription does not change on page change.  
+                if (cudl.data.allTranslationURL) {
+
+                        cudl.setupTab('Translation (EN)', 'translation',
+                                        cudl.viewportComponents.rightTabPanel);
+
+                        // Create iframe and set target to be the transcription URL. 
+                        var iframe = document.createElement("iframe");
+                        iframe.setAttribute('id', 'translation_frame');
+                        iframe.setAttribute('src', cudl.services + cudl.data.allTranslationURL);
+            document.getElementById('translation').appendChild(iframe);
+
+                } else {
+
+                  cudl.setupTab('Translation (EN)', 'translation',
+                                cudl.viewportComponents.rightTabPanel, 'translationURL',
+                                true);
+                }
+        }
 
 	// Setup Thumbnail Tab if this document has images
 	if (cudl.data.descriptiveMetadata[0].thumbnailUrl) {
@@ -543,7 +566,7 @@ cudl.setupTab = function(title, element, parent, urlAttribute, displayLoadingMas
 		var iframe = document.createElement("iframe");
 		iframe.setAttribute('id', element + '_frame');
 		iframe.setAttribute('onload', 'cudl.afterTabShown()');
-		iframe.setAttribute('src', '/transcription?url=&doc='); // needed for validation of HTML
+		iframe.setAttribute('src', 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription%2Ftranslation available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E'); // needed for validation of HTML
 
 		// validation.
 		div.appendChild(iframe);

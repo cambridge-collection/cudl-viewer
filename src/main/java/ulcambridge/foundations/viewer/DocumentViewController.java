@@ -189,6 +189,9 @@ public class DocumentViewController {
 
 		//Get imageServer
 		String imageServer = Properties.getString("imageServer");
+		
+		//Get services
+		String services = Properties.getString("services");
 
 		// forward to the correct location based on type of item 
 		// and page number, where page=0 is the item-level metadata
@@ -206,6 +209,7 @@ public class DocumentViewController {
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
 		modelAndView.addObject("requestURL", requestURL);		
 		modelAndView.addObject("imageServer", imageServer);
+		modelAndView.addObject("services", services);
 		
 		/** Collection information **/
 		modelAndView.addObject("organisationalCollection",
