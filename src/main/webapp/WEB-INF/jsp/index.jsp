@@ -332,7 +332,7 @@
 			<li>
 				<div class="panel" style="overflow: auto;">
 					<h4>
-						<a href="/collections/peterhouse">Sassoon Journals</a>
+						<a href="/collections/sassoon">Sassoon Journals</a>
 					</h4>
 
 					<p>
