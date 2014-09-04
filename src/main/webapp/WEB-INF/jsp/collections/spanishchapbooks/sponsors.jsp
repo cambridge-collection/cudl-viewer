@@ -21,8 +21,18 @@
 	<div class="grid_13">
 		Content of this collection has been funded by the <b><a href="http://www.ahrc.ac.uk">Arts and Humanities Research Council</a></b>.<br />
 		<br />
+		<br />
+		<br />
+		<br />
+		<br />
 	</div>
 
-
+	<div class="grid_4">
+		<img src="/images/collectionsView/bl_logo.jpg" title="British Library" />
+	</div>
+	<div class="grid_13">
+		From the collections of: <b><a href="http://www.bl.uk/">THE BRITISH LIBRARY</a></b>.<br />
+		<br />
+	</div>
 
 </div>
