@@ -272,9 +272,7 @@
 			</div>
 			<div class="grid_8">
 				<h5>Spanish Chapbooks</h5>
-				<br />A small sample of this fascinating popular literature from
-				the eighteenth and nineteenth centuries. During 2013-14 eight
-				thousand chapbooks will be added to the Digital Library.<br /> <br />
+				<br />These predecessors of the yellow press provide a fascinating bird’s eye view of Spanish popular culture from the eighteenth century onwards.<br /> <br />
 				<a href="/collections/spanishchapbooks">View collection</a>. <br />
 			</div>
 		</div>
