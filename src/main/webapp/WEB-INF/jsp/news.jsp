@@ -15,6 +15,23 @@
 	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
+
+	  <div class="grid_5">
+                        <img alt="Wrongdoing in Spain"
+                                title="September Update"
+                                src="/images/index/news-wrongdoing.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">24/09/2014</span>
+                        <h4>September Update</h4>
+			<p>Our September release includes nearly four and a half thousand <a href='/collections/spanishchapbooks'>Spanish Chapbooks</a> from the collections of the UL and the British Library. These fascinating predecessors of the yellow press provide a bird's eye view of popular culture in Spain from the eighteenth century onwards, including accounts of gory crimes, heroic criminals, and wayward citizens. The collection was catalogued and digitised for the AHRC-funded project 'Wrongdoing in Spain 1800-1936: Realities, Representations, Reactions’, which focused on particular aspects of the cultural representation of wrongdoing and its relation (or lack of it) to historical realities at the time of production. The material in this collection provides a unique base for tracking such interests within the field of popular literature.</p>
+
+<p>We are also adding over thirty manuscripts to our Sanskrit Collection. Particular highlights include <a href='/view/MS-ADD-01049-00001'>Add.1049.1</a>, one of the oldest known dated Sanskrit manuscripts from South Asia, and <a href='/view/MS-ADD-00864'>Add.864</a>, a masterfully crafted and intricately illustrated 16th-century Nepalese accordion book. </p>
+                </div>
+
+                <hr />
+
 	<div class="grid_5">
                         <img alt="The Soul of an Officer"
                                 title="August Update"
@@ -25,7 +42,7 @@
                         <span class="date">31/07/2014</span>
                         <h4>August Update</h4>
 
-			<p>Our August release marks the 100th anniversary of the beginning of the First World War with the release of <a href='collections/sassoon'>Siegfried Sassoon's wartime journals and poetry notebooks</a>.</p>
+			<p>Our August release marks the 100th anniversary of the beginning of the First World War with the release of <a href='/collections/sassoon'>Siegfried Sassoon's wartime journals and poetry notebooks</a>.</p>
 
 <p>The journals give a fascinating insight into daily life in the trenches, including Sassoon's <a href='/view/MS-ADD-09852-00001-00007/19'>description of the first day of the Somme</a>, the moment he was <a href='/view/MS-ADD-09852-00001-00010/14'>shot by a sniper at the Battle of Arras</a>, and a <a href='/view/MS-ADD-09852-00001-00007/7'>haunting sketch of ‘the soul of an officer’</a>. Two of the journals are marked with traces of <a href='/view/MS-ADD-09852-00001-00007/137'>mud</a> and <a href='/view/MS-ADD-09852-00001-00009/27'>candle wax</a> from Sassoon's time in the trenches.</p>
 
@@ -80,7 +97,7 @@
 	  <div class="grid_5">
                         <img alt="Conrad Martens Sketchbook"
                                 title="March Update"
-                                src="/content/images/MS-ADD-07983-000-00021_files/9/0_0.jpg" height="200" width="200">
+                                src="/images/index/news-conrad.jpg" height="200" width="200">
                 </div>
 
                 <div class="grid_8">
@@ -123,7 +140,7 @@
 		 <div class="grid_5">
                         <img alt="Polychrome charm against lightning - MS Add.1577"
                                 title="January Update"
-                                src="/content/images/MS-ADD-01577-000-00001_files/8/0_0.jpg" height="200" width="200">
+                                src="/images/index/news-jan14.jpg" height="200" width="200">
                 </div>
 
                 <div class="grid_8">

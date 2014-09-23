@@ -398,16 +398,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Sassoon"
-					title="August Update"
-					src="/images/index/news-sassoon.jpg" height="100" width="100"></a>
+					alt="Wrongdoing"
+					title="September Update"
+					src="/images/index/news-wrongdoing.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">31/07/2014</span>
+				<span class="date">24/09/2014</span>
 				<h5>
-					<a href="/news">August Release</a></h5>
-					<p>Our August release marks the 100th anniversary of the beginning of the First World War with the release of <a href='collections/sassoon'>Siegfried Sassoon's wartime journals and poetry notebooks</a></p>
+					<a href="/news">September Release</a></h5>
+					<p>Our September release includes nearly four and a half thousand <a href='/collections/spanishchapbooks'>Spanish Chapbooks</a> from the collections of the UL and the British Library. These fascinating predecessors of the yellow press provide a bird's eye view of popular culture in Spain from the eighteenth century onwards, including accounts of gory crimes, heroic criminals, and wayward citizens.</P>
 			</div>
 		</div>
 
