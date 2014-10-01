@@ -239,6 +239,25 @@
 		</div>
 
 		<hr />
+		
+		
+		<div class="collection">
+			<div class="grid_4">
+				<a href="/collections/japanese"> <img class="collectionImage"
+					src="/images/collectionsView/collection-japanese.jpg"
+					alt="Japanese" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Japanese Works</h5>
+				<br /> Items from Cambridge University Library's important collection of early Japanese books and manuscripts, representing a wide range of the various aspects of early Japanese learning
+				and excellent samples of Japan’s early printing culture.<br /> <br /> <a href="/collections/japanese">View collection</a>. <br />
+				
+				<br /> <br />
+			</div>
+		</div>
+
+		<hr />
 
 		<div class="collection">
 			<div class="grid_4">

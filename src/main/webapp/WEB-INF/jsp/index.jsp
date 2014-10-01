@@ -262,6 +262,22 @@
 					src="/images/index/carousel-sanskrit.jpg"
 					alt="Sanskrit Manuscripts" width="944" height="394" /> </a>
 			</li>
+			
+			
+			<!-- The Japanese Works collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/japanese">Japanese Works</a>
+					</h4>
+
+					<p>
+						Japan possesses an exceptionally rich heritage of written culture founded in its long literary tradition and history of paper production, and in its connections with the civilizations of neighbouring China and Korea. Cambridge University Library holds an extremely important collection of early Japanese books and manuscripts, representing a wide range of the various aspects of early Japanese learning and excellent samples of Japan’s early printing culture.
+					</p>
+				</div> <a href="/collections/japanese"><img
+					src="/images/index/carousel-japanese.jpg"
+					alt="Japanese Works" width="944" height="394" /> </a>
+			</li>
 
 			<!-- The Spanish Chapbooks -->
 			<li>

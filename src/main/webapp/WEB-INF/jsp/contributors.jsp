@@ -240,6 +240,12 @@
 			<li>Dr Emma Saunders, Archivist, Cambridge University Library</li>
 			<li>John Wells, Curator of Literary Archives, Cambridge University Library</li>
 		</ul>
+		
+		<h4>Japanese Works</h4>
+		<ul>
+			<li>Noboru Koyama, Japanese Department, Cambridge University Library</li>
+			
+		</ul>
 
 		<h4>Contact Details</h4>
 		<p>
