@@ -177,10 +177,11 @@ cudl.docView = function() {
 
 			if (cudl.viewer && cudl.data) {
 				
-				// show image
-				if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
-				    cudl.viewer.openDzi(cudl.imageServer
-                                                + cudl.data.pages[cudl.pagenum - 1].displayImageURL);
+		            // show image
+			    if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
+                                    $.get(cudl.data.pages[cudl.pagenum - 1].displayImageURL, function( data ) {
+                                        cudl.viewer.openDzi(cudl.imageServer + cudl.data.pages[cudl.pagenum - 1].displayImageURL, data);
+                                    });
 			    } else {
 
 				  // display page number message
