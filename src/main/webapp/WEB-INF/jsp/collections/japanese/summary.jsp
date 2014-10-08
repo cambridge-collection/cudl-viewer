@@ -9,13 +9,17 @@
 	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
 	<blockquote class="grid_5 omega print">
 
-		Japanese quote - replace!
+		Pleasure is<br/>
+		when you understand<br/>
+		all by yourself<br/>
+		a book that people<br/>
+		find impenetrable
 		
 		<br /> <br />
 		
 		
-		<cite>&mdash; Siegfried Sassoon, journal entry, 13 July 1916
-		(<a href="/view/MS-ADD-09852-00001-00007/54">MS Add.9852/1/7, folio 27v</a>)</cite>
+		<cite>&mdash; Tachibana Akemi, (1812-1868)<br/>
+		translated by Haruo Shirane</cite>
 
 	</blockquote>
 	<br /> <br />
