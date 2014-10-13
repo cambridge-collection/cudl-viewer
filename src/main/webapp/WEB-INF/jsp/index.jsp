@@ -414,16 +414,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Wrongdoing"
-					title="September Update"
-					src="/images/index/news-wrongdoing.jpg" height="100" width="100"></a>
+					alt="Japanese Books"
+					title="October Update"
+					src="/images/index/news-japanese.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">24/09/2014</span>
+				<span class="date">13/10/2014</span>
 				<h5>
-					<a href="/news">September Release</a></h5>
-					<p>Our September release includes nearly four and a half thousand <a href='/collections/spanishchapbooks'>Spanish Chapbooks</a> from the collections of the UL and the British Library. These fascinating predecessors of the yellow press provide a bird's eye view of popular culture in Spain from the eighteenth century onwards, including accounts of gory crimes, heroic criminals, and wayward citizens.</P>
+					<a href="/news">October Release</a></h5>
+					<p>In our October release we are celebrating the launch of our new <a href='/collections/japanese'>Japanese Works</a> collection. Cambridge University Library has extremely important holdings of early Japanese books and this initial selection includes examples of <a href='/view/PR-FG-00870/1'>some of the earliest printing</a>, and <a href='/view/MS-FJ-01000-00023/32'>sumptuously illustrated scrolls</a>.</p> 
 			</div>
 		</div>
 

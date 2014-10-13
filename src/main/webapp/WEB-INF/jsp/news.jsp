@@ -17,6 +17,23 @@
 	</div>
 
 	  <div class="grid_5">
+                        <img alt="Japanese Works"
+                                title="October Update"
+                                src="/images/index/news-japanese.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">13/10/2014</span>
+                        <h4>October Update</h4>
+                	<p>In our October release we are celebrating the launch of our new <a href='/collections/japanese'>Japanese Works</a> collection. Cambridge University Library has extremely important holdings of early Japanese books and this initial selection includes examples of <a href='/view/PR-FG-00870/1'>some of the earliest printing</a>, and <a href='/view/MS-FJ-01000-00023/32'>sumptuously illustrated scrolls</a>.</p>
+
+<p>We are also adding a further fourteen early printed books to our collections, in support of the forthcoming Private Lives of Print exhibition here at the University Library. Among the highlights are <a href='/view/PR-INC-00003-A-00001-00008-00037/1'>Ortus sanitatis</a>, one of the first natural history encyclopaedias, and a <a href='/view/PR-INC-00005-D-00001-00019-02530/1'>beautifully printed book of hours</a>.</p>
+
+		</div>
+
+                <hr />
+  
+	<div class="grid_5">
                         <img alt="Wrongdoing in Spain"
                                 title="September Update"
                                 src="/images/index/news-wrongdoing.jpg" height="200" width="200">
