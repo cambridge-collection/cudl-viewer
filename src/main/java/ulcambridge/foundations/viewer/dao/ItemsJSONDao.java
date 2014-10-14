@@ -133,8 +133,12 @@ public class ItemsJSONDao implements ItemsDao {
 			// Might have Thumbnail image
 			if (descriptiveMetadata.has("thumbnailUrl")
 					&& descriptiveMetadata.has("thumbnailOrientation")) {
-				itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata
-						.getString("thumbnailUrl");
+				if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
+				if (itemType.equals("essay")) {
+					itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
+				} else {
+					itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata.getString("thumbnailUrl");
+				}
 
 				thumbnailOrientation = descriptiveMetadata
                                                 .getString("thumbnailOrientation");
