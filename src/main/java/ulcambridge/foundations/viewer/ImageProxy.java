@@ -41,7 +41,7 @@ public class ImageProxy {
 				.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
 		// do nothing if image proxy is off in the properties file. 
-		if (!Properties.getString("useProxy").equals("true")) {
+		if (!Properties.getString("proxyURL").isEmpty()) {
 			return null;
 		}
 		

@@ -189,6 +189,7 @@ public class DocumentViewController {
 
 		//Get imageServer
 		String imageServer = Properties.getString("imageServer");
+		String proxyURL = Properties.getString("proxyURL");	
 		
 		//Get services
 		String services = Properties.getString("services");
@@ -210,7 +211,8 @@ public class DocumentViewController {
 		modelAndView.addObject("requestURL", requestURL);		
 		modelAndView.addObject("imageServer", imageServer);
 		modelAndView.addObject("services", services);
-		
+		modelAndView.addObject("proxyURL", proxyURL);
+
 		/** Collection information **/
 		modelAndView.addObject("organisationalCollection",
 				organisationalCollection);

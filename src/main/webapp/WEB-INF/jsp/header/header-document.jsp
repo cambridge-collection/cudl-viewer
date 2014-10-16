@@ -105,6 +105,7 @@ public String prepareForMetaTag(String input) {
 	cudl.docId = '${docId}';
 	cudl.docURL = '${docURL}';
 	cudl.imageServer = '${imageServer}';
+	cudl.proxyURL = '${proxyURL}';
 	cudl.services = '${services}';	
 	// Read in Attributes
 	cudl.collectionURL = "<%=collectionURL%>";

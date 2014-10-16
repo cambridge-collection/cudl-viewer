@@ -179,7 +179,8 @@ cudl.docView = function() {
 				
 		            // show image
 			    if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
-                                    $.get(cudl.data.pages[cudl.pagenum - 1].displayImageURL, function( data ) {
+				    console.log(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL);
+                                    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL, function( data ) {
                                         cudl.viewer.openDzi(cudl.imageServer + cudl.data.pages[cudl.pagenum - 1].displayImageURL, data);
                                     });
 			    } else {
