@@ -254,9 +254,7 @@
 						manuscripts and to digitise a substantial proportion of them.
 						These comprise more than 1,600 works in Sanskrit, Prakrit, Pali,
 						Tamil and other ancient and medieval South Asian languages,
-						produced over a time-span of more than 1,000 years. We present an
-						<a href="/collections/sanskrit">initial selection</a> from the
-						collection to demonstrate its richness.
+						produced over a time-span of more than 1,000 years.
 					</p>
 				</div> <a href="/collections/sanskrit"><img
 					src="/images/index/carousel-sanskrit.jpg"

@@ -227,9 +227,11 @@
 			</div>
 			<div class="grid_8">
 				<h5>Sanskrit Manuscripts</h5>
-				<br /> A taste of the substantial catalogue and online collection
-				of Sanskrit manuscripts the Library will be making available in
-				2013-14.<br /> <br /> <a href="/collections/sanskrit">View
+				<br />
+				A full catalogue of our Sanskrit manuscript collection, comprising more than 1,600 works in Sanskrit, Prakrit, Pali, Tamil and other ancient and medieval South Asian languages, produced over a time-span of
+				more than 1,000 years.
+				
+				<br /> <br /> <a href="/collections/sanskrit">View
 					collection</a>. <br />
 				<div class="foundations-link-faith">
 					<a href="/about#foundations">Foundations of Faith</a>

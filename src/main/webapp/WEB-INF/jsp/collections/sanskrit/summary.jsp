@@ -34,7 +34,7 @@
 
 		<p>Along with doctrinal, exegetical and ritual works issued from the many religious traditions of South Asia—from the Vedic religion to devotional Hinduism and Tantrism, from Theravāda to Mahāyāna and Tantric Buddhism, to Jainism—the Library’s holdings also include texts on a variety of “secular” topics, ranging from works of poetry and drama to treatises on philosophy, mathematics, grammar, astronomy, law, eroticism, medicine, archery, horse breeding, etc.</p>
 
-		<p>There is, in other words, a wealth here of cultural and historical information on South Asia of great potential significance for contemporary scholarship, which will be gradually made available through the Digital Library.</p>
+		<p>There is, in other words, a wealth here of cultural and historical information on South Asia of great potential significance for contemporary scholarship.</p>
 		<br />
 	</div>
 	
