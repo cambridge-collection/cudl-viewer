@@ -72,7 +72,9 @@ public class XTFSearch implements Search {
 	protected String buildQueryURL(SearchForm searchForm, int start, int end) {
 
 		String xtfURL = Properties.getString("xtfURL");
-		String searchXTFURL = xtfURL + "search?raw=1&smode=advanced&startDoc="+start;
+		String indexPath = Properties.getString("indexPath");
+		
+		String searchXTFURL = xtfURL + "search?indexPath="+indexPath+";raw=1;smode=advanced;startDoc="+start;
 
 		try {
 
