@@ -20,8 +20,8 @@
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/japanese.jpg"
-			alt="Japanese Works" width="150" height="225" />
+			src="/images/collectionsView/music.jpg"
+			alt="Music" width="150" height="225" />
 	</div>
 	<div class="grid_9">
 		<br />
