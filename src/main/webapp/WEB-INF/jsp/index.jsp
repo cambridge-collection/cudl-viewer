@@ -276,6 +276,22 @@
 					src="/images/index/carousel-japanese.jpg"
 					alt="Japanese Works" width="944" height="394" /> </a>
 			</li>
+			
+			
+			<!-- The Music collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/music">Music</a>
+					</h4>
+
+					<p>
+						Music text - replace.
+					</p>
+				</div> <a href="/collections/music"><img
+					src="/images/index/carousel-music.jpg"
+					alt="Music" width="944" height="394" /> </a>
+			</li>
 
 			<!-- The Spanish Chapbooks -->
 			<li>
