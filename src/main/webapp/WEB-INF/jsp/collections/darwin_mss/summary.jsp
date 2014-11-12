@@ -15,14 +15,14 @@
 		
 		
 		<cite>&mdash;  Charles Darwin<br/>
-		Notebook D 135e, 28 September 1838</cite>
+		<a href="/view/MS-DAR-00208/155">Notebook D 135e, 28 September 1838</a></cite>
 
 	</blockquote>
 	<br /> <br />
 	<div class="grid_4">
 		<img class="collectionOrganisationalImage"
 			src="/images/collectionsView/darwin_mss.jpg"
-			alt="Japanese Works" width="150" height="225" />
+			alt="Darwin Manuscripts" width="150" height="225" />
 	</div>
 	<div class="grid_9">
 		<br />
