@@ -2,6 +2,14 @@
 <hr />
 
 	<div class="grid_4">
+		<img src="/images/lutesocsmall.gif" title="Lute Society" />
+	</div>
+	<div class="grid_13">
+		Early lute manuscripts digitised and described with the generous assistance of the  <a target="_blank" href="http://www.lutesociety.org/">Lute Society</a>. <br /> <br /><br /> <br />
+	</div>
+	
+	
+	<div class="grid_4">
 		<img src="/images/PolonskySmall.gif" title="Polonsky Foundation" />
 	</div>
 	<div class="grid_13">
