@@ -122,7 +122,7 @@ public String prepareForMetaTag(String input) {
 <script type="text/javascript" src="/scripts/cudl-docData.js"></script>
 <script type="text/javascript" src="/scripts/cudl-docViewport.js"></script>
 <script type="text/javascript" src="/scripts/cudl-docView.js"></script>
-<script type="text/javascript" src="/scripts/seadragon-min.js"></script>
+<script type="text/javascript" src="/scripts/openseadragon.min.js"></script>
 <script type="text/javascript" src="/scripts/cudl-document.js"></script>
 
 </head>

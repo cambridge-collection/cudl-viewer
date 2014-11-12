@@ -3,20 +3,22 @@
  */
 
 cudl.setupSeaDragon = function () {
+/*
 	Seadragon.Config.imagePath = "/img/";
 	Seadragon.Config.debugMode = true;
 	Seadragon.Config.maxZoomPixelRatio = 1;
 	Seadragon.Strings.Tooltips.Home = "Reset View";
 
 	cudl.viewer = new Seadragon.Viewer("doc");
-	/*		
+*/
 	cudl.viewer = new OpenSeadragon.Viewer({
 		id:"doc",
-        debugMode: true,
+        debugMode: false,
         prefixUrl: "/img/",
+        showRotationControl: true, // yay!
         maxZoomPixelRatio: 1
     });
-*/
+
 
 	// Setup forward and backward buttons
 	function fullscreenNextPage() {
