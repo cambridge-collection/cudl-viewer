@@ -262,6 +262,25 @@
 			</li>
 			
 			
+			<!-- The Darwin Manuscripts -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/darwin_mss">Darwin Manuscripts</a>
+					</h4>
+
+					<p>
+						The <i>Charles Darwin Papers</i> in the Manuscripts Department of Cambridge University Library hold nearly the entire extant collection of Darwin’s working scientific papers.
+				Paramount among these documents are <i>Charles Darwin’s Evolution Manuscripts</i>, which are being published online at the Cambridge Digital Library and simultaneously at the
+				<a href="http://www.amnh.org/our-research/darwin-manuscripts-project">Darwin Manuscripts Project</a> in collaboration with the
+				<a href="http://www.darwinproject.ac.uk/">Darwin Correspondence Project</a>.
+					</p>
+				</div> <a href="/collections/darwin_mss"><img
+					src="/images/index/carousel-darwin_mss.jpg"
+					alt="Darwin Manuscripts" width="944" height="394" /> </a>
+			</li>
+			
+			
 			<!-- The Japanese Works collection -->
 			<li>
 				<div class="panel" style="overflow: auto;">
@@ -286,7 +305,7 @@
 					</h4>
 
 					<p>
-						Music text - replace.
+						The music collections at Cambridge University Library play an important role in the preservation of musical heritage, both on a national and international level. From printed and manuscript music scores and texts on music to ephemera and concert programmes, archival materials documenting the life and work of composers, music scholars and performers, a huge variety and breadth of material has been collected over several centuries. We launch with a selection of important early lute music, digitised and described in collaboration with the <href="http://www.lutesociety.org/">Lute Society</a>
 					</p>
 				</div> <a href="/collections/music"><img
 					src="/images/index/carousel-music.jpg"

@@ -60,6 +60,32 @@
 			</div>
 		</div>
 		<hr />
+		
+		<div class="collection collection-science">
+			<div class="grid_4">
+				<a href="/collections/darwin_mss"> <img
+					class="collectionImage"
+					src="/images/collectionsView/collection-darwin_mss.jpg"
+					alt="Darwin Manuscripts" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Darwin Manuscripts</h5>
+				<br /> The <i>Charles Darwin Papers</i> in the Manuscripts Department of Cambridge University Library hold nearly the entire extant collection of Darwin’s working scientific papers.
+				Paramount among these documents are <i>Charles Darwin’s Evolution Manuscripts</i>, which are being published online at the Cambridge Digital Library and simultaneously at the
+				<a href="http://www.amnh.org/our-research/darwin-manuscripts-project">Darwin Manuscripts Project</a> in collaboration with the
+				<a href="http://www.darwinproject.ac.uk/">Darwin Correspondence Project</a>. <br />
+				
+				<br /> <a href="/collections/darwin_mss">View collection</a>. <br />
+				<div class="foundations-link-science">
+					<a href="/about#foundations">Foundations of Science</a>
+				</div>
+				<br />
+			</div>
+		</div>
+		<hr />
+		
+		
 		<div class="collection collection-science">
 			<div class="grid_4">
 				<a href="/collections/newton"> <img class="collectionImage"
@@ -122,6 +148,25 @@
 				his service in the British Army in the First World War are among the most remarkable documents of their kind, and provide
 				an extraordinary insight into his participation in one of the defining conflicts of European history. <br />
 				<br /> <a href="/collections/sassoon">View collection</a>. <br />
+				
+				<br />
+			</div>
+		</div>
+		<hr />
+		
+		
+		<div class="collection">
+			<div class="grid_4">
+				<a href="/collections/music"> <img
+					class="collectionImage"
+					src="/images/collectionsView/collection-music.jpg"
+					alt="Music" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Music</h5>
+				<br />The music collections at Cambridge University Library play an important role in the preservation of musical heritage, both on a national and international level. From printed and manuscript music scores and texts on music to ephemera and concert programmes, archival materials documenting the life and work of composers, music scholars and performers, a huge variety and breadth of material has been collected over several centuries. We launch with a selection of important early lute music, digitised and described in collaboration with the <href="http://www.lutesociety.org/">Lute Society</a>.<br />
+				<br /> <a href="/collections/music">View collection</a>. <br />
 				
 				<br />
 			</div>
