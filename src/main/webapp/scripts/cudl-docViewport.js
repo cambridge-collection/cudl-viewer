@@ -39,7 +39,7 @@ cudl.viewportComponents = {
 		xtype : 'tabpanel',
 		activeTab : 0,
 		region : 'east',
-		split : true, // enable resizing
+		split : false, // enable resizing
 		width : '50%',
 		title : 'More about this item',
 		collapsed : false,
