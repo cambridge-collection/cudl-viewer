@@ -180,10 +180,33 @@ cudl.docView = function() {
 		            // show image
 			    if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
 				    console.log(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL);
-                                    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL, function( data ) {
-                                        cudl.viewer.openDzi(cudl.imageServer + cudl.data.pages[cudl.pagenum - 1].displayImageURL, data);
-                                    });
-			    } else {
+
+				    // ajax call to fetch .dzi
+				    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL, function(xml) {
+
+						// Seadragon AJAX supported being given a DZI as a string and rewriting the tilesource to an external URL
+						// openseadragon won't accept an external DZI so we build an inline tilesource with a modified URL
+
+						$image = $(xml).find('Image');
+						$size = $(xml).find('Size');
+						var path = cudl.data.pages[cudl.pagenum - 1].displayImageURL;
+						path = path.substring(0, path.length - 4);
+						var dzi = {
+							Image: {
+            							xmlns: $image.attr('xmlns'),
+            							Url: cudl.imageServer + path + '_files/',
+            							Format: $image.attr('Format'), 
+            							Overlap: $image.attr('Overlap'), 
+            							TileSize: $image.attr('TileSize'),
+            							Size: {
+                							Height: $size.attr('Height'),
+                							Width: $size.attr('Width')
+            							}
+        						}
+    						};
+                                        	cudl.viewer.open(dzi);
+				     });
+			     } else {
 
 				  // display page number message
 				  cudl.viewer.showMessage("No image available for page: "+cudl.data.pages[cudl.pagenum - 1].label, 1);
