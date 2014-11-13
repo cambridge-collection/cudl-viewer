@@ -19,7 +19,7 @@
 
 <!-- Simple OpenID Selector -->
 <link type="text/css" rel="stylesheet" href="/styles/openid.css" />
-<script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.5.min.js"></script>
 <script type="text/javascript" src="/scripts/openid/openid-jquery.js"></script>
 <script type="text/javascript" src="/scripts/openid/openid-en.js"></script>
 <script type="text/javascript">

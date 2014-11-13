@@ -2,7 +2,7 @@
 <link rel="icon" type="image/png" href="/img/favicon.png">
 
 <!-- JQuery -->
-<script type="text/javascript" src="/scripts/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery-1.5.min.js"></script>
 <script type="text/javascript" src="/scripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.ba-hashchange.min.js"></script>
