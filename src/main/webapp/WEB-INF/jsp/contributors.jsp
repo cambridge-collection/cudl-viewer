@@ -104,6 +104,19 @@
 		
 		</div>
 		
+		
+		<div class="grid_18">
+		
+			<div class="grid_4">
+				<img src="/images/hamf_logo.jpg" title="HAMF" />
+			</div>
+			<div class="grid_13">
+				Much of the content in the Exhibitions collection has been made possible by a generous gift from the <a href="http://www.howardandabbymilsteinfoundation.org/">Howard and Abby Milstein Foundation</a>.  <br /> <br />
+			</div>
+		
+		</div>
+		
+		
 		<div class="grid_18">
 		
 		
