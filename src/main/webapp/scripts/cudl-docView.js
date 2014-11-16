@@ -179,10 +179,9 @@ cudl.docView = function() {
 				
 		            // show image
 			    if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
-				    console.log(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL);
-
 				    // ajax call to fetch .dzi
-				    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL, function(xml) {
+				    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL) 
+					.success(function(xml) {
 
 						// Seadragon AJAX supported being given a DZI as a string and rewriting the tilesource to an external URL
 						// openseadragon won't accept an external DZI so we build an inline tilesource with a modified URL
@@ -205,11 +204,14 @@ cudl.docView = function() {
         						}
     						};
                                         	cudl.viewer.open(dzi);
-				     });
+				     	})
+					.error(function(jqXHR, textStatus, errorThrown) { 
+						 cudl.viewer._showMessage("Image server temporarily unavailable");
+					});	
 			     } else {
 
 				  // display page number message
-				  cudl.viewer.showMessage("No image available for page: "+cudl.data.pages[cudl.pagenum - 1].label, 1);
+				  cudl.viewer._showMessage("No image available for page: "+cudl.data.pages[cudl.pagenum - 1].label);
 						
 			    }
 				
