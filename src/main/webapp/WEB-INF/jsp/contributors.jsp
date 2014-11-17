@@ -142,10 +142,10 @@
 		<h4>Digital Library Development Department</h4>
 		
 		<ul>
-			<li>Hal Blackburn, Developer</li>
-			<li>Jennie Fletcher, Lead Software Engineer</li>
+			<li>Hal Blackburn, Senior Software Developer</li>
+			<li>Jennie Fletcher, Senior Software Developer</li>
 			<li>Dr Christopher Stokoe, Head of Digital Library Development</li>
-			<li>Lei Zhang, Developer</li>
+			<li>Dr Lei Zhang, Developer</li>
 			
 		</ul>
 		
@@ -153,7 +153,7 @@
 		
 		<ul>
 			<li>Tony Stevenson, Operations</li>
-			<li>Gilleain Torrance, Senior Software Engineer</li>
+			<li>Gilleain Torrance, Senior Software Developer</li>
 		</ul>
 		
 		
