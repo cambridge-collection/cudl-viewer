@@ -16,6 +16,26 @@
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
 
+	<div class="grid_5">
+                        <img alt="Darwin Manuscripts"
+                                title="November Update"
+                                src="/images/index/news-darwin_mss.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">13/10/2014</span>
+                        <h4>November Update</h4>
+                	<p>Our November release sees the launch of our <a href='http://cudl.lib.cam.ac.uk/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='http://cudl.lib.cam.ac.uk/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
+
+<p>November also sees the conclusion of the main phase of the <a href='http://cudl.lib.cam.ac.uk/collections/sanskrit'>Sanskrit Manuscripts project</a>, detailing more than 1,600 manuscripts, 500 of which are fully digitised. Along with important works from the many religious traditions of South Asia, including Vedic, Hindu, Buddhist and Jainist texts – the collection also includes texts on “secular” topics, ranging from works of poetry and drama to treatises on philosophy, mathematics, grammar, astronomy, law, eroticism and medicine.</p>
+
+<p>Finally, this release sees the introduction of new functionality to the website - allowing you to rotate images in the viewer, and also improving the user experience for those using the site on tablets and mobile devices.</p>
+
+		</div>
+
+                <hr />
+
+
 	  <div class="grid_5">
                         <img alt="Japanese Works"
                                 title="October Update"
