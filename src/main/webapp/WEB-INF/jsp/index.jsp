@@ -456,7 +456,7 @@
 				<span class="date">24/11/2014</span>
 				<h5>
 					<a href="/news">November Release</a></h5>
-					<p>Our November release sees the launch of our <a href='http://cudl.lib.cam.ac.uk/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='http://cudl.lib.cam.ac.uk/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
+					<p>Our November release sees the launch of our <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
 			</div>
 		</div>
 
