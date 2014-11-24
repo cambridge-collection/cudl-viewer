@@ -196,16 +196,17 @@ function pageinit() {
     }
   
     // Handle updating the Page selected from the hash part of the URL
-	$(window).hashchange(function() {
+    var hashChange = function() {
 
 		if (window.location.hash)
 			Paging.setPage(window.location.hash.substr(1));
 		else
 			Paging.setPage(1); // we dropped the initial page selection and need to run it manually
-	});
-
-	$(window).hashchange();
-
+	};
+	
+	$(window).bind('hashchange',hashChange);
+    hashChange();
+	
 	// Show the pagination toolbars if enough elements are present
 	if ((numResults/pageLimit)>1) {
 		$(".toppagination")[0].style.display="block";
