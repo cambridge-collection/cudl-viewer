@@ -25,10 +25,10 @@
 cudl.data; // stores the JSON data for this book.
 cudl.currentpage = 0; // stores current page viewed.
 
-//This is used when changing pages from links in the text.
+// This is used when changing pages from links in the text.
 var store = {};
 store.loadPage = function(pagenumber) {
-	
+
 	function openDzi(dziPath) {
 
 		// ajax call to fetch .dzi
@@ -66,13 +66,14 @@ store.loadPage = function(pagenumber) {
 				}).error(function(jqXHR, textStatus, errorThrown) {
 			cudl.viewer._showMessage("Image server temporarily unavailable");
 		});
-	};
-		
-	// open Image	
+	}
+	;
+
+	// open Image
 	openDzi(cudl.data.pages[pagenumber].displayImageURL);
-	
+
 	// update metadata
-	
+
 	// update current page
 	cudl.currentpage = pagenumber;
 	return false;
@@ -138,50 +139,48 @@ cudl.setupSeaDragon = function(data) {
 
 };
 
-function resizeElement(element) {
-	var height = 0;
-	var width = 0;
-	var body = window.document.body;
-	if (window.innerHeight && window.innerWidth) {
-		height = window.innerHeight;
-		width = window.innerWidth;
-	} else if (body.parentElement.clientHeight
-			&& body.parentElement.clientWidth) {
-		height = body.parentElement.clientHeight;
-		width = body.parentElement.clientWidth;
-	} else if (body && body.clientHeight && body.clientWidth) {
-		height = body.clientHeight;
-		width = body.clientWidth;
-	}
-	element.style.height = ((height - element.offsetTop) + "px");
-	element.style.width = ((width - element.offsetLeft) + "px");
-
-};
-
 function setupInfoPanel(data) {
 
+	breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
+			+ cudl.collectionURL + "\">" + cudl.collectionTitle
+			+ "</a></li></ol>";
+	if (cudl.parentCollectionTitle) {
+		breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
+				+ cudl.parentCollectionURL + "\">" + cudl.parentCollectionTitle
+				+ "</a></li><li><a href=\"" + cudl.collectionURL + "\">"
+				+ cudl.collectionTitle + "</a></li></ol>";
+	}
+
+	aboutFooterHTML = "<br/><div class=\"well\"><h4>Want to know more?</h4><p>Under the 'More' menu you can find <a href='#download'>metadata about the item</a>, any transcription and translation we have of the text and find out about <a href='#download'>downloading or sharing this image</a>.  </p></div>";
+
+	imageRights = "<div id='zoomRights'>"
+			+ data.descriptiveMetadata[0].displayImageRights + "</div>";
 	try {
 		// Setup About panel.
 		$('#rightTabs a[href="#abouttab"]').tab('show');
 		$('#abouttab').html(
-				"<div id='about-content'><h3>" + cudl.itemTitle + "</h3><div>"
+				breadcrumbHTML + "<div id='about-content'><h3>"
+						+ cudl.itemTitle + "</h3><div>"
 						+ data.descriptiveMetadata[0].abstract.displayForm
-						+ "</div>");
+						+ "</div>" + aboutFooterHTML + imageRights);
 	} catch (ex) { /* ignore, no contents list */
 		// Should always be a title.
 		$('#abouttab').html(
-				"<div id='about-content'><h3>" + cudl.itemTitle + "</h3><div>");
+				breadcrumbHTML + "<div id='about-content'><h3>"
+						+ cudl.itemTitle + "</h3><div>" + aboutFooterHTML
+						+ imageRights);
 	}
+
 	try {
 		// Set contents panel
 		function addTreeNodes(array) {
 			list = "";
 			for (var i = 0; i < array.length; i++) {
-				list = list
-						.concat("<a href='' onclick='store.loadPage("+(array[i].startPagePosition-1)+");return false;' class='list-group-item'>Page: "
-								+ array[i].startPageLabel
-								+ ": &nbsp; "
-								+ array[i].label + " </a> ");
+				list = list.concat("<a href='' onclick='store.loadPage("
+						+ (array[i].startPagePosition - 1)
+						+ ");return false;' class='list-group-item'>Page: "
+						+ array[i].startPageLabel + ": &nbsp; "
+						+ array[i].label + " </a> ");
 				if (array[i].children) {
 					list = list.concat("<div class=\"list-group\">"
 							+ addTreeNodes(array[i].children) + "</div>");
@@ -195,6 +194,20 @@ function setupInfoPanel(data) {
 	} catch (ex) { /* ignore, no contents list */
 	}
 
+	// setup toggle behaviour
+	infoPanelExpanded = true;
+	$('#right-panel-toggle').click(function() {
+		if (infoPanelExpanded) {
+			$('#right-panel').css({'right':'0px'});
+			infoPanelExpanded = false;
+			$('#doc').width('60%');
+		} else {
+			$('#right-panel').css({'right':($('#right-panel').width()*-1)});
+			infoPanelExpanded = true;
+			$('#doc').width('100%');
+		}
+	});
+
 };
 
 function setupThumbnails(data) {
@@ -203,7 +216,9 @@ function setupThumbnails(data) {
 	for (i = 0; i < data.pages.length; i++) {
 
 		thumbnailhtml = thumbnailhtml
-				.concat("<div class='col-md-6 col-md-3'><a href='' onclick='store.loadPage("+(data.pages[i].sequence-1)+");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
+				.concat("<div class='col-md-6 col-md-3'><a href='' onclick='store.loadPage("
+						+ (data.pages[i].sequence - 1)
+						+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
 						+ data.pages[i].thumbnailImageURL
 						+ "' style='max-width:150px; max-height:130px;'></a></div>");
 
@@ -213,18 +228,17 @@ function setupThumbnails(data) {
 
 };
 
-
 $(document).ready(function() {
 	// Read in the JSON
 	$.getJSON(cudl.JSONURL).done(function(data) {
 
 		// set element height to place the openseadragon image.
 		// and ensure this value is updated on window resize.
-		resizeElement(document.getElementById('doc'));
-		resizeElement(document.getElementById('right-panel'));
+		$('#doc').height($(window).height() - 50);
+		$('#tab-content').height($(window).height() - 100);
 		$(window).resize(function() {
-			resizeElement(document.getElementById('doc'));
-			resizeElement(document.getElementById('right-panel'));
+			$('#doc').height($(window).height() - 50);
+			$('#tab-content').height($(window).height() - 100);
 		});
 
 		// set seadragon options and load in dzi.

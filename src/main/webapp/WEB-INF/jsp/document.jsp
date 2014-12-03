@@ -167,8 +167,9 @@ public String prepareForMetaTag(String input) {
 	<div id="seadragonImage">
 		<div id="doc"></div>
 	</div>
-	<div id="right-panel" style="overflow-y: auto">
+	<div id="right-panel">
 
+        <div id="right-panel-toggle"> + </div>
 		<div role="tabpanel" id="rightTabs">
 
 			<!-- Nav tabs -->
@@ -186,18 +187,18 @@ public String prepareForMetaTag(String input) {
 					<ul id="moreDropDown-contents" class="dropdown-menu"
 						aria-labelledby="moreDropDown" role="menu">
 						<li><a id="dropdown0-tab" aria-controls="dropdown0"
-							data-toggle="tab" role="tab" tabindex="-1" href="#dropdown0">More Information</a></li>						
+							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More Information</a></li>						
 						<li><a id="dropdown1-tab" aria-controls="dropdown1"
-							data-toggle="tab" role="tab" tabindex="-1" href="#dropdown1">Transcription
+							data-toggle="tab" role="tab" tabindex="-1" href="#transcriptionnorm">Transcription
 								(normalised)</a></li>
 						<li><a id="dropdown2-tab" aria-controls="dropdown2"
-							data-toggle="tab" role="tab" tabindex="-1" href="#dropdown2">Transcription
+							data-toggle="tab" role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription
 								(diplomatic)</a></li>
 						<li><a id="dropdown3-tab" aria-controls="dropdown3"
-							data-toggle="tab" role="tab" tabindex="-1" href="#dropdown3">Translation</a>
+							data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
 						</li>
 						<li><a id="dropdown4-tab" aria-controls="dropdown4"
-							data-toggle="tab" role="tab" tabindex="-1" href="#dropdown4">Download or share</a>
+							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download or share</a>
 						</li>						
 					</ul></li>
 
@@ -205,16 +206,13 @@ public String prepareForMetaTag(String input) {
 			<!-- End of nav tabs -->
 
 			<!-- Tab panes -->
-			<div class="tab-content">
+			<div id="tab-content" class="tab-content" style="overflow-y: auto">
 				<div role="tabpanel" class="tab-pane active" id="abouttab"></div>
 				<div role="tabpanel" class="tab-pane" id="contentstab">No Contents List Available</div>
-				<div role="tabpanel" class="tab-pane" id="thumbnailstab">
+				<div role="tabpanel" class="tab-pane" id="thumbnailstab"><div id="thumbnailimages"></div></div>
+                <div role="tabpanel" class="tab-pane" id="metadata">Metadata</div>
+				
 
-<div id="thumbnailimages"></div>
-
-
-</div>
-				<div role="tabpanel" class="tab-pane" id="moretab"></div>
 			</div>
 
 		</div>

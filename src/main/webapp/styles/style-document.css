@@ -1,6 +1,7 @@
 body {
 	padding-top: 50px;
 	position: relative;
+	overflow: hidden;
 }
 
 .container{
@@ -14,10 +15,20 @@ body {
 }
 
 #doc {
-	width: 100%;
+	width: 60%;
 	height: 100%;
 	background-color: black;
 	position: relative;
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transition-property: width;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: linear;
+	-webkit-transition-delay: 0s;
+	/* Standard syntax */
+	transition-property: width;
+	transition-duration: 0.5s;
+	transition-timing-function: linear;
+	transition-delay: 0s;	
 }
 
 #about-content {
@@ -35,15 +46,27 @@ body {
 	z-index: 50;
 	background-color: rgba(255,255,255,0.95);
 	/* For Safari 3.1 to 6.0 */
-	-webkit-transition-property: width;
-	-webkit-transition-duration: 1s;
+	-webkit-transition-property: right;
+	-webkit-transition-duration: 0.5s;
 	-webkit-transition-timing-function: linear;
-	-webkit-transition-delay: 2s;
+	-webkit-transition-delay: 0s;
 	/* Standard syntax */
-	transition-property: width;
-	transition-duration: 1s;
+	transition-property: right;
+	transition-duration: 0.5s;
 	transition-timing-function: linear;
-	transition-delay: 2s;
+	transition-delay: 0s;
+}
+
+#right-panel-toggle {
+	position: absolute;
+	left:-25px;
+	top:44%;
+	color:#fff;
+	font-size:30px;		
+}
+
+#abouttab {
+	margin-right: 30px;
 }
 
 #contentstab {
@@ -55,4 +78,9 @@ body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-left: 0px;
+}
+
+#zoomRights {
+	color:#999;
+	font-size:0.8em;
 }
