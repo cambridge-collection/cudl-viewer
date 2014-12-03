@@ -52,17 +52,17 @@ $(document).ready(function() {
  	  $(".iframe").fancybox({
 		'width' : '75%',
 		'height' : '75%',
-		'autoScale' : false,
+		'autoSize' : false,
 		'transitionIn' : 'none',
 		'transitionOut' : 'none',
 		'type' : 'iframe',
-		'titleShow' : false
+		'title': null
 	  });
 	
 	  $("a#inline").fancybox({
 		'width' : '75%',
 		'height' : '75%',
-		'autoScale' : false,
+		'autoSize' : false,
 		'transitionIn' : 'none',
 		'transitionOut' : 'none'
 	  });	

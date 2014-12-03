@@ -1,398 +1,58 @@
-/* Main Page */
-
-/* overwrite the university style for the bottom margin as
- this is conflicting with the Ext Style, esp in ie */
-table {
-	margin-bottom: 0px;
+body {
+	padding-top: 50px;
+	position: relative;
 }
 
-/* We don't want the gradient background on this page */
-html {
-	background: #eeeeee;
+.container{
+	margin-left:0px;
 }
 
-/* Ext overrides the spacing for p tags, so putting it back */
-p {
-    margin-bottom: 15px;
-}
-
-@font-face
-{
-font-family: CharisSIL;
-font-weight: normal;
-src: url('/styles/fonts/CharisSIL-R.ttf'),
-     url('/styles/fonts/CharisSIL-R.eot'); /* IE9 */
-}
-@font-face
-{
-font-family: CharisSIL;
-font-weight: bold;
-src: url('/styles/fonts/CharisSIL-B.ttf'),
-     url('/styles/fonts/CharisSIL-B.eot'); /* IE9 */
-}
-@font-face
-{
-font-family: CharisSIL;
-font-style: italic
-src: url('/styles/fonts/CharisSIL-I.ttf'),
-     url('/styles/fonts/CharisSIL-I.eot'); /* IE9 */
-}
-@font-face
-{
-font-family: CharisSIL;
-font-weight: bold;
-font-style: italic
-src: url('/styles/fonts/CharisSIL-BI.ttf'),
-     url('/styles/fonts/CharisSIL-BI.eot'); /* IE9 */
-}
-
-#globalMasthead {
-	background: none repeat scroll 0 0 transparent;
-	background-color: #ffffff;
-	min-width: 800px;
-	height: 45x;
-}
-
-#globalMasthead #identifier {
-	background: url("../images/header/logo.png") no-repeat left center;
-	margin-left: 8px;
-	width: 140px;
-}
-
-h3,h2,h1,h4 {
-	line-height: 18px;
-}
-
-.header-title {
-	color: #444444;
-	font-size: 32px;
-	letter-spacing: -1px;
-	line-height: 45px;
-	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
-	font-weight: normal;
-}
-
-.header-title a {
-	text-decoration: none;
-}
-
-/* feedback box close icon was in slightly the wrong place */
-#fancybox-close {
-	right: -35px;
-}
-
-#libraryLogo {
-	background: url("/images/header/ULLogoblack.gif") no-repeat right top;
+#seadragonImage {
+	width: 100%;
+	height: 100%;
+	background-color: black;
 }
 
 #doc {
+	width: 100%;
+	height: 100%;
 	background-color: black;
-	color: white;
+	position: relative;
 }
 
-.addthis {
-	margin-left: auto;
-	width: 130px;
+#about-content {
+   padding-left:15px;	
 }
 
-#transcription_normal_frame { /*display: none;*/
-	width: 100%;
-	height: 100%;
-}
 
-#transcription_diplomatic_frame { /*display: none;*/
-	width: 100%;
-	height: 100%;
-}
-#translation_frame { /*display: none;*/
-        width: 100%;
-        height: 100%;
-}
-
-/* overwrite the university style for the bottom margin as
- this is conflicting with the Ext Style, esp in ie */
-table {
-	margin-bottom: 0px;
-}
-
-/* Ext JS panel header styling */
-.x-toolbar-default {
-	border: 0;
-}
-
-/* Contents Panel */
-#logical_structure li { 
-	margin-top: 15px;
-	margin-bottom: 15px;
-	margin-left: 15px;
-	margin-right: 15px;
-	font-size: 12px;
+#right-panel {
 	color: #000;
-	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
-	/*list-style: disc outside none;*/
-	list-style: none;
+	position: absolute;
+	height: 100%;
+	right: 0px;
+	top: 50px;
+	width: 40%;
+	z-index: 50;
+	background-color: rgba(255,255,255,0.95);
+	/* For Safari 3.1 to 6.0 */
+	-webkit-transition-property: width;
+	-webkit-transition-duration: 1s;
+	-webkit-transition-timing-function: linear;
+	-webkit-transition-delay: 2s;
+	/* Standard syntax */
+	transition-property: width;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+	transition-delay: 2s;
 }
 
-#logical_structure li ul li {
-	padding-left: 10px;
-	list-style: none;
-}
-
-/* bold the first level links */
-#logical_structure ul li a{
-	color: #5E2605;	
-	font-weight: bold;
-}
-
-#logical_structure ul li ul li a{
-	color: #5E2605;
-	font-weight: normal;
-}
-
-/* Right Panel */
-.document-about-media {
-	margin-right: 10px;
-	float: left;
-}
-
-.document-about-box {
-	background-color: #ffffff;
-	padding: 10px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	/*-moz-box-shadow: 3px 3px 5px 6px #eeeeee;
-	-webkit-box-shadow: 3px 3px 5px 6px #eeeeee;
-	box-shadow: 3px 3px 5px 6px #eeeeee;*/
-}
-
-#document-about-exhibition {
-	margin-left:-14px;
-	margin-right:0px;
-	width:504px;
-	background-color: #ffffff;
-    padding: 10px;	
-}
-
-#document-about-radio {
-	margin-left:-14px;
-	margin-right:0px;
-	width:550px;
-	background-color: #ffffff;
-    padding: 10px;	
-}
-
-.nmm_icon {
-	margin-bottom:-5px;
-	display: inline;
-}
-
-.document-about-title {
-	color: #333333;
-	line-height: 30px;
-	text-shadow: 0.1em 0.1em 0.2em #eeeeee;
-	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
-	font-weight: normal;
-	font-size: 30px;
+#contentstab {
+	margin-top: 10px;
 	margin-bottom: 10px;
+	margin-left: 10px;
 }
-
-.document-about-author {
-	color: #333333;
-	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
-	font-weight: normal;
-	font-size: 20px;
-	line-height: 22px;
-	margin-bottom: 10px;
-}
-
-.document-about {
-	color: #333333;
-	font-family: CharisSIL, Georgia, 'Times New Roman', serif;
-	font-weight: normal;
-	font-size: 14px;
-	padding: 15px;
-}
-
-.document-about-abstract-author {
-	margin-right: 0px;
-	margin-top: 30px;
-	margin-left: auto;
-	text-align: left;
-}
-
-.document-about-page a {
-	color: #333;	
-}
-
-.document-about-box {
-    max-width:550px;
-}
-
-/* Rounded Boxes */
-.rbroundbox {
-	background: url(/images/general/cornernt.gif) repeat;
-}
-
-.rbtop div {
-	background: url(/images/general/cornertl.gif) no-repeat top left;
-}
-
-.rbtop {
-	background: url(/images/general/cornertr.gif) no-repeat top right;
-}
-
-.rbbot div {
-	background: url(/images/general/cornerbl.gif) no-repeat bottom left;
-}
-
-.rbbot {
-	background: url(/images/general/cornerbr.gif) no-repeat bottom right;
-}
-
-.rbtop div,.rbtop,.rbbot div,.rbbot {
-	width: 100%;
-	height: 7px;
-	font-size: 1px;
-}
-
-.rbcontent {
-	margin: 0 7px;
-}
-
-.rbroundbox {
-	width: 100%;
-	margin: 1em auto;
-	float: left;
-}
-
-#metadata {
-	background:#ffffff;
-}
-#metadata-rights,#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page,#metadata-abstract,#metadata-docAuthority
-	{
-	max-width: 450px;
-	margin: 5px;
-}
-
-#metadata-rights {
-	float: left;
-}
-
-.rights-statement {
-	font-size: 12px;
-	color:#999999;
-}
-
-.document-spacer {
-	height: 8px;
-}
-
-#metadata-physicalLocation,#metadata-shelfLocation,#metadata-subject,#metadata-dateCreatedDisplay,#metadata-page
-	{
-	font-weight: bold;
-}
-
-.document-about a {
-	color: #5E2605;
-}
-
-.document-about a.externalLink {
-	color: #333;
-}
-
-.document-about a.cudlLink {
-	color: #333;
-}
-
-.document-about .document-about-page a {
-	color: #333;
-}
-
-
-
-
-/*
-.x-panel-header-text-default {
-	color: #000000;
-	font-weight: bold;
-
-}
-
-.x-panel-header-default-top {
-	background-image:
-		url('../images/panel-header/panel-header-default-top-bg.gif')
-}
-
-.x-nlg .x-panel-header-default-bottom {
-	background-image:
-		url('../images/panel-header/panel-header-default-bottom-bg.gif')
-}
-
-.x-panel-header-default {
-	font-size: 11px;
-	line-height: 15px;
-	border-color: #ebe7e7;
-	border-width: 1px;
-	border-style: solid;
-	background-image: none;
-	background-color: #2a2525;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #332e2e),
-		color-stop(45%, #2b2626), color-stop(46%, #151313),
-		color-stop(50%, #151313), color-stop(51%, #1d1a1a),
-		color-stop(100%, #2a2525) );
-	background-image: -webkit-linear-gradient(top, #332e2e, #2b2626 45%, #151313 46%, #151313
-		50%, #1d1a1a 51%, #2a2525);
-	background-image: -moz-linear-gradient(top, #332e2e, #2b2626 45%, #151313 46%, #151313 50%
-		, #1d1a1a 51%, #2a2525);
-	background-image: -o-linear-gradient(top, #332e2e, #2b2626 45%, #151313 46%, #151313 50%,
-		#1d1a1a 51%, #2a2525);
-	background-image: -ms-linear-gradient(top, #332e2e, #2b2626 45%, #151313 46%, #151313 50%,
-		#1d1a1a 51%, #2a2525);
-	background-image: linear-gradient(top, #332e2e, #2b2626 45%, #151313 46%, #151313 50%,
-		#1d1a1a 51%, #2a2525);
-	-moz-box-shadow: #453d3d 0 1px 0px 0 inset;
-	-webkit-box-shadow: #453d3d 0 1px 0px 0 inset;
-	-o-box-shadow: #453d3d 0 1px 0px 0 inset;
-	box-shadow: #453d3d 0 1px 0px 0 inset
-}
-
-.x-panel-header-text-default {
-	color: #FFFFFF;
-	font-size: 11px;
-	font-weight: bold;
-	font-family: tahoma, arial, verdana, sans-serif
-}
-
-.x-tab-bar {
-	background-color: transparent;
-	background-image: none;
-	background-color: #262626;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #323131),
-		color-stop(100%, #262626) );
-	background-image: -webkit-linear-gradient(top, #323131, #262626);
-	background-image: -moz-linear-gradient(top, #323131, #262626);
-	background-image: -o-linear-gradient(top, #323131, #262626);
-	background-image: -ms-linear-gradient(top, #323131, #262626);
-	background-image: linear-gradient(top, #323131, #262626)
-}
-*/
-/* Toolbar style */
-/*.x-toolbar-default{color:#ffffff;font-size:11px;line-height:15px;border-color:#ebe7e7;border-width:1px;border-style:solid;background-image:none;background-color:#2a2525;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #332e2e), color-stop(45%, #2b2626), color-stop(46%, #151313), color-stop(50%, #151313), color-stop(51%, #1d1a1a), color-stop(100%, #2a2525));background-image:-webkit-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-moz-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-o-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:-ms-linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);background-image:linear-gradient(top, #332e2e,#2b2626 45%,#151313 46%,#151313 50%,#1d1a1a 51%,#2a2525);-moz-box-shadow:#453d3d 0 1px 0px 0 inset;-webkit-box-shadow:#453d3d 0 1px 0px 0 inset;-o-box-shadow:#453d3d 0 1px 0px 0 inset;box-shadow:#453d3d 0 1px 0px 0 inset}
-.x-toolbar-default{border:0}*/
-
-/* Style for the collapse of the panels, making button blue 
-  and hopefully more obvious */
-.x-layout-split-right {
-	background: url("/img/icon-mini-right.gif") no-repeat scroll left top
-		transparent;
-}
-
-.x-splitter-collapsed .x-layout-split-right {
-	background: url("/img/icon-mini-left.gif") no-repeat scroll right top
-		transparent;
-}
-
-/* Toolbar font */
-.x-toolbar .x-toolbar-text {
-	font-family: CharisSIL, tahoma, arial, verdana, sans-serif
+#contentstab .list-group {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }

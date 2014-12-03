@@ -186,8 +186,12 @@ cudl.docView = function() {
 						// Seadragon AJAX supported being given a DZI as a string and rewriting the tilesource to an external URL
 						// openseadragon won't accept an external DZI so we build an inline tilesource with a modified URL
 
-						$image = $(xml).find('Image');
-						$size = $(xml).find('Size');
+						xmlDoc = $.parseXML( xml );		
+						$xml = $( xmlDoc );
+						
+						$image = $xml.find('Image');
+						$size = $xml.find('Size');						
+						
 						var path = cudl.data.pages[cudl.pagenum - 1].displayImageURL;
 						path = path.substring(0, path.length - 4);
 						var dzi = {
