@@ -367,7 +367,7 @@
 					<p>
 						Peterhouse (founded 1284) is the oldest of the Cambridge Colleges.
 						As part of the process of recataloguing and preserving the College's collections, it has been decided to present highlights from the Peterhouse manuscripts in digital form.
-						The first manuscript selected for this purpose is the Equatorie of the Planetis (Peterhouse Ms. 75.1).
+						The first manuscript selected for this purpose is the Equatorie of the Planetis (Peterhouse MS 75.I).
 						As funding becomes available, further manuscripts will be added to the online collection.
 					</p>
 
