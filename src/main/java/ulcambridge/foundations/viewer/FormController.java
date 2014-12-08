@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.EmailHelper;
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
 import ulcambridge.foundations.viewer.model.Properties;
 
