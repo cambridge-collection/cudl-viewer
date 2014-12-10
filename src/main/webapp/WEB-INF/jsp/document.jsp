@@ -1,44 +1,45 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
-import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="java.net.URLEncoder, ulcambridge.foundations.viewer.model.*"%>
 <!DOCTYPE html>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<%!
-public String prepareForMetaTag(String input) {
-	
-	// replacing double quotes with single quotes 
-	String output = input.replaceAll("\"", "'");
-	
-	// remove [ or ]
-	output = output.replaceAll("\\[|\\]", "");
-	
-	return output;	
-}
-%>
+<%!public String prepareForMetaTag(String input) {
+
+		// replacing double quotes with single quotes 
+		String output = input.replaceAll("\"", "'");
+
+		// remove [ or ]
+		output = output.replaceAll("\\[|\\]", "");
+
+		return output;
+	}%>
 <%
 	String requestURL = request.getAttribute("requestURL").toString();
 	String encodedRequestURL = URLEncoder.encode(requestURL, "UTF-8");
-	String thumbnailURL = requestURL.replaceFirst("/view" + ".*$", request.getAttribute("thumbnailURL").toString());
-	Collection collection = (Collection) request.getAttribute("organisationalCollection");
-	Collection parentCollection = (Collection) request.getAttribute("parentCollection");
+	String thumbnailURL = requestURL.replaceFirst("/view" + ".*$",
+			request.getAttribute("thumbnailURL").toString());
+	Collection collection = (Collection) request
+			.getAttribute("organisationalCollection");
+	Collection parentCollection = (Collection) request
+			.getAttribute("parentCollection");
 	String collectionURL = "";
 	String collectionTitle = "";
 	String parentCollectionURL = "";
 	String parentCollectionTitle = "";
-	
-	if (collection!=null) {
+
+	if (collection != null) {
 		collectionURL = collection.getURL();
 		collectionTitle = collection.getTitle();
 	}
-	
-	if (parentCollection!=null) {
+
+	if (parentCollection != null) {
 		parentCollectionURL = parentCollection.getURL();
 		parentCollectionTitle = parentCollection.getTitle();
 	}
-	
+
 	// For use in meta tags and to aid search.
 	String itemTitle = request.getAttribute("itemTitle").toString();
 	Object itemAbstract = request.getAttribute("itemAbstract");
@@ -46,9 +47,11 @@ public String prepareForMetaTag(String input) {
 	if (itemAbstract != null) {
 		metaItemAbstract = prepareForMetaTag(itemAbstract.toString());
 	}
-	String metaItemAuthors = prepareForMetaTag(request.getAttribute("itemAuthors").toString());
+	String metaItemAuthors = prepareForMetaTag(request.getAttribute(
+			"itemAuthors").toString());
 	String docId = request.getAttribute("docId").toString();
-	String metaRequestURL = requestURL.replaceFirst(docId +"/"+".*$", docId);
+	String metaRequestURL = requestURL.replaceFirst(
+			docId + "/" + ".*$", docId);
 	String title = collectionTitle + " : " + itemTitle;
 	String metaTitle = prepareForMetaTag(title);
 %>
@@ -64,20 +67,27 @@ public String prepareForMetaTag(String input) {
 <link rel="canonical" href="<%=metaRequestURL%>" />
 
 <!-- Item Title -->
-<meta property="schema:name rdfs:label dcterms:title" content="<%=metaTitle%>" />
+<meta property="schema:name rdfs:label dcterms:title"
+	content="<%=metaTitle%>" />
 <meta property="og:title" content="<%=metaTitle%>" />
 <meta property="twitter:title" content="<%=metaTitle%>" />
-<meta name="keywords" property="schema:keywords" content="<%=metaItemAuthors%>" />
+<meta name="keywords" property="schema:keywords"
+	content="<%=metaItemAuthors%>" />
 
 <!-- Item Description -->
-<% if (itemAbstract != null) { %>
-<meta property="schema:description rdfs:comment dcterms:description" content="<%=metaItemAbstract%>" />
+<%
+	if (itemAbstract != null) {
+%>
+<meta property="schema:description rdfs:comment dcterms:description"
+	content="<%=metaItemAbstract%>" />
 <meta property="og:description" content="<%=metaItemAbstract%>" />
 <meta property="twitter:description" content="<%=metaItemAbstract%>" />
 <meta name="description" content="<%=metaItemAbstract%>" />
 <meta property="schema:keywords" content="<%=metaItemAbstract%>" />
 <meta name="keywords" content="<%=metaItemAbstract%>" />
-<% } %>
+<%
+	}
+%>
 
 <!-- Image URI (Thumbnail) -->
 <meta property="schema:image" content="<%=thumbnailURL%>" />
@@ -88,7 +98,7 @@ public String prepareForMetaTag(String input) {
 <meta property="og:site_name" content="Cambridge Digital Library" />
 <meta property="twitter:creator" content="@camdiglib" />
 <meta property="twitter:site" content="@camdiglib" />
- 
+
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
 <!-- JQuery -->
@@ -118,11 +128,16 @@ public String prepareForMetaTag(String input) {
 	cudl.collectionURL = "<%=collectionURL%>";
 	cudl.collectionTitle = "<%=collectionTitle%>";	
 	cudl.parentCollectionURL = "<%=parentCollectionURL%>";
-	cudl.parentCollectionTitle = "<%=parentCollectionTitle%>";	
+	cudl.parentCollectionTitle = "<%=parentCollectionTitle%>";
 	cudl.itemTitle = "${itemTitle}";
-	cudl.itemAuthors = ${itemAuthors};
-	cudl.itemAuthorsFullForm = ${itemAuthorsFullform}	
-
+	cudl.itemAuthors = $
+	{
+		itemAuthors
+	};
+	cudl.itemAuthorsFullForm = $
+	{
+		itemAuthorsFullform
+	}
 </script>
 
 <script type="text/javascript" src="/scripts/openseadragon.min.js"></script>
@@ -131,13 +146,13 @@ public String prepareForMetaTag(String input) {
 </head>
 <body>
 
-<!--  hidden section for the search engines to index -->
-<div style="display:none">
-  <h1><%=metaTitle%></h1>
-  <h2><%=metaItemAuthors%></h2>
-  <h2><%=collectionTitle%></h2>  
-  <p><%=metaItemAbstract%></p>
-</div>
+	<!--  hidden section for the search engines to index -->
+	<div style="display: none">
+		<h1><%=metaTitle%></h1>
+		<h2><%=metaItemAuthors%></h2>
+		<h2><%=collectionTitle%></h2>
+		<p><%=metaItemAbstract%></p>
+	</div>
 
 	<!--  main site -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -169,7 +184,7 @@ public String prepareForMetaTag(String input) {
 	</div>
 	<div id="right-panel">
 
-        <div id="right-panel-toggle"> + </div>
+		<div id="right-panel-toggle">+</div>
 		<div role="tabpanel" id="rightTabs">
 
 			<!-- Nav tabs -->
@@ -187,33 +202,39 @@ public String prepareForMetaTag(String input) {
 					<ul id="moreDropDown-contents" class="dropdown-menu"
 						aria-labelledby="moreDropDown" role="menu">
 						<li><a id="dropdown0-tab" aria-controls="dropdown0"
-							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More Information</a></li>						
+							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More
+								Information</a></li>
 						<li><a id="dropdown1-tab" aria-controls="dropdown1"
-							data-toggle="tab" role="tab" tabindex="-1" href="#transcriptionnorm">Transcription
-								(normalised)</a></li>
+							data-toggle="tab" role="tab" tabindex="-1"
+							href="#transcriptionnorm">Transcription (normalised)</a></li>
 						<li><a id="dropdown2-tab" aria-controls="dropdown2"
-							data-toggle="tab" role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription
-								(diplomatic)</a></li>
+							data-toggle="tab" role="tab" tabindex="-1"
+							href="#transcriptiondiplo">Transcription (diplomatic)</a></li>
 						<li><a id="dropdown3-tab" aria-controls="dropdown3"
 							data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
 						</li>
 						<li><a id="dropdown4-tab" aria-controls="dropdown4"
-							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download or share</a>
-						</li>						
+							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
+								or share</a></li>
 					</ul></li>
 
 			</ul>
 			<!-- End of nav tabs -->
 
 			<!-- Tab panes -->
-			<div id="tab-content" class="tab-content" style="overflow-y: auto">
+			<div id="tab-content" class="tab-content" style="overflow-x: hidden; overflow-y: auto">
 				<div role="tabpanel" class="tab-pane active" id="abouttab"></div>
-				<div role="tabpanel" class="tab-pane" id="contentstab">No Contents List Available</div>
-				<div role="tabpanel" class="tab-pane" id="thumbnailstab"><div id="thumbnailimages"></div></div>
-                <div role="tabpanel" class="tab-pane" id="metadata">Metadata</div>
-				
-
+				<div role="tabpanel" class="tab-pane" id="contentstab">No
+					Contents List Available</div>
+				<div role="tabpanel" class="tab-pane" id="thumbnailstab">
+					<div id='thumbnails-content'><div id="thumbnailpaginationtop" class="text-center"></div><div id="thumbnailimages"></div><div id="thumbnailpaginationbottom" class="text-center"></div></div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="metadata">Metadata</div>
 			</div>
+
+
+
+
 
 		</div>
 	</div>

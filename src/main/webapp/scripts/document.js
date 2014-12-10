@@ -23,7 +23,7 @@
  */
 
 cudl.data; // stores the JSON data for this book.
-cudl.currentpage = 0; // stores current page viewed.
+cudl.currentpage = 1; // stores current page viewed.
 
 // This is used when changing pages from links in the text.
 var store = {};
@@ -70,7 +70,7 @@ store.loadPage = function(pagenumber) {
 	;
 
 	// open Image
-	openDzi(cudl.data.pages[pagenumber].displayImageURL);
+	openDzi(cudl.data.pages[pagenumber-1].displayImageURL);
 
 	// update metadata
 
@@ -95,7 +95,7 @@ cudl.setupSeaDragon = function(data) {
 	// Setup forward and backward buttons
 	function fullscreenNextPage() {
 
-		if (cudl.currentpage < cudl.data.pages.length - 1) {
+		if (cudl.currentpage < cudl.data.pages.length) {
 			cudl.currentpage++;
 			store.loadPage(cudl.currentpage);
 		}
@@ -104,7 +104,7 @@ cudl.setupSeaDragon = function(data) {
 
 	function fullscreenPrevPage() {
 
-		if (cudl.currentpage >= 1) {
+		if (cudl.currentpage > 1) {
 			cudl.currentpage--;
 			store.loadPage(cudl.currentpage);
 		}
@@ -142,12 +142,18 @@ cudl.setupSeaDragon = function(data) {
 function setupInfoPanel(data) {
 
 	breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
-			+ cudl.collectionURL + "\">" + cudl.collectionTitle
+			+ cudl.collectionURL
+			+ "\">"
+			+ cudl.collectionTitle
 			+ "</a></li></ol>";
 	if (cudl.parentCollectionTitle) {
 		breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
-				+ cudl.parentCollectionURL + "\">" + cudl.parentCollectionTitle
-				+ "</a></li><li><a href=\"" + cudl.collectionURL + "\">"
+				+ cudl.parentCollectionURL
+				+ "\">"
+				+ cudl.parentCollectionTitle
+				+ "</a></li><li><a href=\""
+				+ cudl.collectionURL
+				+ "\">"
 				+ cudl.collectionTitle + "</a></li></ol>";
 	}
 
@@ -177,7 +183,7 @@ function setupInfoPanel(data) {
 			list = "";
 			for (var i = 0; i < array.length; i++) {
 				list = list.concat("<a href='' onclick='store.loadPage("
-						+ (array[i].startPagePosition - 1)
+						+ (array[i].startPagePosition)
 						+ ");return false;' class='list-group-item'>Page: "
 						+ array[i].startPageLabel + ": &nbsp; "
 						+ array[i].label + " </a> ");
@@ -198,11 +204,15 @@ function setupInfoPanel(data) {
 	infoPanelExpanded = true;
 	$('#right-panel-toggle').click(function() {
 		if (infoPanelExpanded) {
-			$('#right-panel').css({'right':'0px'});
+			$('#right-panel').css({
+				'right' : '0px'
+			});
 			infoPanelExpanded = false;
 			$('#doc').width('60%');
 		} else {
-			$('#right-panel').css({'right':($('#right-panel').width()*-1)});
+			$('#right-panel').css({
+				'right' : ($('#right-panel').width() * -1)
+			});
 			infoPanelExpanded = true;
 			$('#doc').width('100%');
 		}
@@ -210,23 +220,123 @@ function setupInfoPanel(data) {
 
 };
 
+/*************** Thumbnails ******************************************************/
 function setupThumbnails(data) {
+/*
+	var getPaginationProperties = function (data) {
+		
+		  var props = {};
+		  
+		  var pageHeaderHeight = 120;
+		  var thumbnailItemHeight = 165;
+		  var thumbnailItemWidth = 165;		
+		  
+		  var tabWidth = parseInt($("#right-panel").width());
+		  var tabHeight = parseInt($("#right-panel").height())-pageHeaderHeight; 
+		  props.numItemInRow =  Math.floor(tabWidth/thumbnailItemWidth);
+		  props.numRows =  Math.floor(tabHeight/thumbnailItemHeight);
+		  
+		  if (props.numItemInRow*props.numRows>0) {
+		    props.pageSize=props.numItemInRow*props.numRows;
+		    
+		    props.numPages= Math.floor(data.numberOfPages/props.pageSize);
+	      }
+		  
+		  return props;
+	};
+*/		
+	var props = {};
+	props.MAX_THUMBNAIL_ITEMS_ON_PAGE = 42;
+	props.MAX_THUMBNAIL_ITEMS_ON_ROW = 3;
+	props.NUM_THUMBNAIL_PAGES = 1; // auto generated
+	function generatePagination(data) {
 
-	var thumbnailhtml = "<div class='row'>";
-	for (i = 0; i < data.pages.length; i++) {
+		// create the pagination
+		NUM_THUMBNAIL_PAGES = 1;		
+		if (data.numberOfPages>props.MAX_THUMBNAIL_ITEMS_ON_PAGE) { props.NUM_THUMBNAIL_PAGES=Math.floor(data.numberOfPages/props.MAX_THUMBNAIL_ITEMS_ON_PAGE); }
+		
+		var html = "<ul class='pagination'>";
+		html = html.concat("<li class='thumbnailpaginationstart' onclick='return showThumbnailPage(currentThumbnailPage-1);'><a href='#'>&laquo;</a></li>");
+		
+		for (i=1; i<=props.NUM_THUMBNAIL_PAGES; i++) {
+			html = html.concat("<li class='thumbnailpaginationitem"+i+"'><a href='#' onclick='return showThumbnailPage("+i+");'>"+i+"</a></li>");
+		}
+		
+		html = html.concat("<li class='thumbnailpaginationend'><a href='#'	onclick='return showThumbnailPage(currentThumbnailPage+1);'>&raquo;</a></li></ul>");		
+				
+		$('#thumbnailpaginationtop').html(html);
+		$('#thumbnailpaginationbottom').html(html);
+	}
+		
+	generatePagination(data);
+	//showThumbnailPageImages(1, data);
 
-		thumbnailhtml = thumbnailhtml
-				.concat("<div class='col-md-6 col-md-3'><a href='' onclick='store.loadPage("
-						+ (data.pages[i].sequence - 1)
-						+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
-						+ data.pages[i].thumbnailImageURL
-						+ "' style='max-width:150px; max-height:130px;'></a></div>");
+	return props;
+};
+
+/**
+ * PageNum should be between 1 and NUM_THUMBNAIL_PAGES
+ */
+function showThumbnailPageImages(props, pageNum, data) {
+	
+
+	// find the startIndex and endIndex for the data items we want to display thumbnails of. 
+	var startIndex = props.MAX_THUMBNAIL_ITEMS_ON_PAGE * (pageNum-1);
+	var endIndex = Math.min((props.MAX_THUMBNAIL_ITEMS_ON_PAGE * pageNum) -1, data.pages.length-1);				
+	var thumbnailhtml = "";
+	
+	console.debug("start: "+startIndex);
+	console.debug("end: "+endIndex);
+	
+	for (i = startIndex; i <= endIndex; i++) {
+		
+		if (i==startIndex) {
+			thumbnailhtml = thumbnailhtml.concat("<div class='thumbnail-pane' id='thumbnail"+pageNum+"'>");
+		}
+		if (i==startIndex || ((i)%props.MAX_THUMBNAIL_ITEMS_ON_ROW)==0) {
+
+			thumbnailhtml = thumbnailhtml.concat("<div class='row'>");
+		}			
+			
+		thumbnailhtml = thumbnailhtml.concat("<div class='col-md-4'><a href='' onclick='store.loadPage("
+							+ (data.pages[i].sequence)
+							+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
+							+ data.pages[i].thumbnailImageURL+"' ");
+		
+		if (data.pages[i].thumbnailImageOrientation=="portrait") {
+			thumbnailhtml = thumbnailhtml.concat("style='height:150px;'><div class='caption'>"+ data.pages[i].label+"</div></a></div>");
+		} else {
+			thumbnailhtml = thumbnailhtml.concat("style='width:130px;'><div class='caption'>"+ data.pages[i].label+"</div></a></div>");
+		}
+		
+		if (i==endIndex || ((i)%props.MAX_THUMBNAIL_ITEMS_ON_ROW)==props.MAX_THUMBNAIL_ITEMS_ON_ROW-1) {
+        	thumbnailhtml = thumbnailhtml.concat("</div>");
+		}		
+		if (i==endIndex) {
+        	thumbnailhtml = thumbnailhtml.concat("</div>");
+		}		
 
 	}
-	console.debug($('#thumbnailimages').html);
-	$('#thumbnailimages').html(thumbnailhtml + "</div>");
-
+		
+	$('#thumbnailimages').html(thumbnailhtml);	
 };
+
+var currentThumbnailPage=1;
+function showThumbnailPage(pagenum) {            
+    if (pagenum>0 && pagenum<=cudl.thumbnailProps.NUM_THUMBNAIL_PAGES) {
+      currentThumbnailPage=pagenum;
+      showThumbnailPageImages(cudl.thumbnailProps,currentThumbnailPage, cudl.data);
+      
+      // Update pagination page selected
+      
+      $( "#thumbnails-content ul.pagination" ).find( "li" ).removeClass('active');
+      $( "#thumbnails-content ul.pagination" ).find( ".thumbnailpaginationitem"+pagenum ).addClass("active");
+
+    }                    
+};
+
+
+/**************** End of Thumbmnails *********************************************/
 
 $(document).ready(function() {
 	// Read in the JSON
@@ -243,13 +353,14 @@ $(document).ready(function() {
 
 		// set seadragon options and load in dzi.
 		cudl.data = data;
-		cudl.currentpage = 0;
+		cudl.currentpage = 1;
 		cudl.setupSeaDragon(data);
 		setupInfoPanel(data);
-		setupThumbnails(data);
+		cudl.thumbnailProps=setupThumbnails(data);
 		store.loadPage(cudl.currentpage);
 		console.debug(data);
-
+		showThumbnailPage(currentThumbnailPage)
 	});
 
 });
+
