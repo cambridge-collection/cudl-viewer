@@ -70,15 +70,47 @@ store.loadPage = function(pagenumber) {
 	;
 
 	// open Image
-	openDzi(cudl.data.pages[pagenumber-1].displayImageURL);
+	openDzi(cudl.data.pages[pagenumber - 1].displayImageURL);
 
 	// update metadata
 
 	// update current page
 	cudl.currentpage = pagenumber;
+	$("#pageInput").val(cudl.currentpage);
 	return false;
 
 };
+
+// As OpenSeadragon currently has a bug with fullscreen and the youtube video
+// panels.
+function toggleFullscreen() {
+	
+	var element = document.getElementById("doc");
+	
+	if (!document.fullscreenElement && 
+	!document.mozFullScreenElement && !document.webkitFullscreenElement
+			&& !document.msFullscreenElement) {
+		if (element.requestFullscreen) {
+			element.requestFullscreen();
+		} else if (element.msRequestFullscreen) {
+			element.msRequestFullscreen();
+		} else if (element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		} else if (element.webkitRequestFullscreen) {
+			element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+		}
+	} else {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.msExitFullscreen) {
+			document.msExitFullscreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.webkitExitFullscreen) {
+			document.webkitExitFullscreen();
+		}
+	}
+}
 
 cudl.setupSeaDragon = function(data) {
 
@@ -89,54 +121,42 @@ cudl.setupSeaDragon = function(data) {
 		prefixUrl : "/img/",
 		showRotationControl : true,
 		maxZoomPixelRatio : 1,
-		navigationControlAnchor : OpenSeadragon.ControlAnchor.BOTTOM_LEFT
+		zoomInButton : "zoomIn",
+		zoomOutButton : "zoomOut",
+		rotateLeftButton : "rotateLeft",
+		rotateRightButton : "rotateRight"
 	});
+	cudl.viewer.clearControls(); // hides controls.
 
 	// Setup forward and backward buttons
-	function fullscreenNextPage() {
+	function nextPage() {
 
 		if (cudl.currentpage < cudl.data.pages.length) {
 			cudl.currentpage++;
 			store.loadPage(cudl.currentpage);
 		}
-
+		return false;
 	}
 
-	function fullscreenPrevPage() {
+	function prevPage() {
 
 		if (cudl.currentpage > 1) {
 			cudl.currentpage--;
 			store.loadPage(cudl.currentpage);
 		}
+		return false;
 	}
 
-	var buttonNextPage = new OpenSeadragon.Button({
-		tooltip : "Next Page",
-		srcRest : "/img/nextPage_rest.png",
-		srcGroup : "/img/nextPage_grouphover.png",
-		srcHover : "/img/nextPage_hover.png",
-		srcDown : "/img/nextPage_pressed.png",
-		onClick : fullscreenNextPage
+	$("#nextPage").click(function() {
+		return nextPage();
 	});
-
-	var buttonPrevPage = new OpenSeadragon.Button({
-		tooltip : "Previous Page",
-		srcRest : "/img/prevPage_rest.png",
-		srcGroup : "/img/prevPage_grouphover.png",
-		srcHover : "/img/prevPage_hover.png",
-		srcDown : "/img/prevPage_pressed.png",
-		onClick : fullscreenPrevPage
+	$("#prevPage").click(function() {
+		return prevPage();
 	});
-
-	var navBar = new OpenSeadragon.ButtonGroup({
-		buttons : [ buttonPrevPage, buttonNextPage ],
-		config : {}
+	$("#pageInput").change(function(input) {
+		store.loadPage(input.target.value);
 	});
-
-	cudl.viewer.addControl(navBar.element, {
-		anchor : OpenSeadragon.ControlAnchor.TOP_LEFT
-	});
-
+	$("#fullscreen").click(toggleFullscreen);
 };
 
 function setupInfoPanel(data) {
@@ -220,31 +240,31 @@ function setupInfoPanel(data) {
 
 };
 
-/*************** Thumbnails ******************************************************/
+/**
+ * ************* Thumbnails
+ * *****************************************************
+ */
 function setupThumbnails(data) {
-/*
-	var getPaginationProperties = function (data) {
-		
-		  var props = {};
-		  
-		  var pageHeaderHeight = 120;
-		  var thumbnailItemHeight = 165;
-		  var thumbnailItemWidth = 165;		
-		  
-		  var tabWidth = parseInt($("#right-panel").width());
-		  var tabHeight = parseInt($("#right-panel").height())-pageHeaderHeight; 
-		  props.numItemInRow =  Math.floor(tabWidth/thumbnailItemWidth);
-		  props.numRows =  Math.floor(tabHeight/thumbnailItemHeight);
-		  
-		  if (props.numItemInRow*props.numRows>0) {
-		    props.pageSize=props.numItemInRow*props.numRows;
-		    
-		    props.numPages= Math.floor(data.numberOfPages/props.pageSize);
-	      }
-		  
-		  return props;
-	};
-*/		
+	/*
+	 * var getPaginationProperties = function (data) {
+	 * 
+	 * var props = {};
+	 * 
+	 * var pageHeaderHeight = 120; var thumbnailItemHeight = 165; var
+	 * thumbnailItemWidth = 165;
+	 * 
+	 * var tabWidth = parseInt($("#right-panel").width()); var tabHeight =
+	 * parseInt($("#right-panel").height())-pageHeaderHeight; props.numItemInRow =
+	 * Math.floor(tabWidth/thumbnailItemWidth); props.numRows =
+	 * Math.floor(tabHeight/thumbnailItemHeight);
+	 * 
+	 * if (props.numItemInRow*props.numRows>0) {
+	 * props.pageSize=props.numItemInRow*props.numRows;
+	 * 
+	 * props.numPages= Math.floor(data.numberOfPages/props.pageSize); }
+	 * 
+	 * return props; };
+	 */
 	var props = {};
 	props.MAX_THUMBNAIL_ITEMS_ON_PAGE = 42;
 	props.MAX_THUMBNAIL_ITEMS_ON_ROW = 3;
@@ -252,24 +272,31 @@ function setupThumbnails(data) {
 	function generatePagination(data) {
 
 		// create the pagination
-		NUM_THUMBNAIL_PAGES = 1;		
-		if (data.numberOfPages>props.MAX_THUMBNAIL_ITEMS_ON_PAGE) { props.NUM_THUMBNAIL_PAGES=Math.floor(data.numberOfPages/props.MAX_THUMBNAIL_ITEMS_ON_PAGE); }
-		
-		var html = "<ul class='pagination'>";
-		html = html.concat("<li class='thumbnailpaginationstart' onclick='return showThumbnailPage(currentThumbnailPage-1);'><a href='#'>&laquo;</a></li>");
-		
-		for (i=1; i<=props.NUM_THUMBNAIL_PAGES; i++) {
-			html = html.concat("<li class='thumbnailpaginationitem"+i+"'><a href='#' onclick='return showThumbnailPage("+i+");'>"+i+"</a></li>");
+		NUM_THUMBNAIL_PAGES = 1;
+		if (data.numberOfPages > props.MAX_THUMBNAIL_ITEMS_ON_PAGE) {
+			props.NUM_THUMBNAIL_PAGES = Math.floor(data.numberOfPages
+					/ props.MAX_THUMBNAIL_ITEMS_ON_PAGE);
 		}
-		
-		html = html.concat("<li class='thumbnailpaginationend'><a href='#'	onclick='return showThumbnailPage(currentThumbnailPage+1);'>&raquo;</a></li></ul>");		
-				
+
+		var html = "<ul class='pagination'>";
+		html = html
+				.concat("<li class='thumbnailpaginationstart' onclick='return showThumbnailPage(currentThumbnailPage-1);'><a href='#'>&laquo;</a></li>");
+
+		for (i = 1; i <= props.NUM_THUMBNAIL_PAGES; i++) {
+			html = html.concat("<li class='thumbnailpaginationitem" + i
+					+ "'><a href='#' onclick='return showThumbnailPage(" + i
+					+ ");'>" + i + "</a></li>");
+		}
+
+		html = html
+				.concat("<li class='thumbnailpaginationend'><a href='#'	onclick='return showThumbnailPage(currentThumbnailPage+1);'>&raquo;</a></li></ul>");
+
 		$('#thumbnailpaginationtop').html(html);
 		$('#thumbnailpaginationbottom').html(html);
 	}
-		
+
 	generatePagination(data);
-	//showThumbnailPageImages(1, data);
+	// showThumbnailPageImages(1, data);
 
 	return props;
 };
@@ -278,65 +305,75 @@ function setupThumbnails(data) {
  * PageNum should be between 1 and NUM_THUMBNAIL_PAGES
  */
 function showThumbnailPageImages(props, pageNum, data) {
-	
 
-	// find the startIndex and endIndex for the data items we want to display thumbnails of. 
-	var startIndex = props.MAX_THUMBNAIL_ITEMS_ON_PAGE * (pageNum-1);
-	var endIndex = Math.min((props.MAX_THUMBNAIL_ITEMS_ON_PAGE * pageNum) -1, data.pages.length-1);				
+	// find the startIndex and endIndex for the data items we want to display
+	// thumbnails of.
+	var startIndex = props.MAX_THUMBNAIL_ITEMS_ON_PAGE * (pageNum - 1);
+	var endIndex = Math.min((props.MAX_THUMBNAIL_ITEMS_ON_PAGE * pageNum) - 1,
+			data.pages.length - 1);
 	var thumbnailhtml = "";
-	
-	console.debug("start: "+startIndex);
-	console.debug("end: "+endIndex);
-	
+
 	for (i = startIndex; i <= endIndex; i++) {
-		
-		if (i==startIndex) {
-			thumbnailhtml = thumbnailhtml.concat("<div class='thumbnail-pane' id='thumbnail"+pageNum+"'>");
+
+		if (i == startIndex) {
+			thumbnailhtml = thumbnailhtml
+					.concat("<div class='thumbnail-pane' id='thumbnail"
+							+ pageNum + "'>");
 		}
-		if (i==startIndex || ((i)%props.MAX_THUMBNAIL_ITEMS_ON_ROW)==0) {
+		if (i == startIndex || ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == 0) {
 
 			thumbnailhtml = thumbnailhtml.concat("<div class='row'>");
-		}			
-			
-		thumbnailhtml = thumbnailhtml.concat("<div class='col-md-4'><a href='' onclick='store.loadPage("
-							+ (data.pages[i].sequence)
-							+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
-							+ data.pages[i].thumbnailImageURL+"' ");
-		
-		if (data.pages[i].thumbnailImageOrientation=="portrait") {
-			thumbnailhtml = thumbnailhtml.concat("style='height:150px;'><div class='caption'>"+ data.pages[i].label+"</div></a></div>");
-		} else {
-			thumbnailhtml = thumbnailhtml.concat("style='width:130px;'><div class='caption'>"+ data.pages[i].label+"</div></a></div>");
 		}
-		
-		if (i==endIndex || ((i)%props.MAX_THUMBNAIL_ITEMS_ON_ROW)==props.MAX_THUMBNAIL_ITEMS_ON_ROW-1) {
-        	thumbnailhtml = thumbnailhtml.concat("</div>");
-		}		
-		if (i==endIndex) {
-        	thumbnailhtml = thumbnailhtml.concat("</div>");
-		}		
+
+		thumbnailhtml = thumbnailhtml
+				.concat("<div class='col-md-4'><a href='' onclick='store.loadPage("
+						+ (data.pages[i].sequence)
+						+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
+						+ data.pages[i].thumbnailImageURL + "' ");
+
+		if (data.pages[i].thumbnailImageOrientation == "portrait") {
+			thumbnailhtml = thumbnailhtml
+					.concat("style='height:150px;'><div class='caption'>"
+							+ data.pages[i].label + "</div></a></div>");
+		} else {
+			thumbnailhtml = thumbnailhtml
+					.concat("style='width:130px;'><div class='caption'>"
+							+ data.pages[i].label + "</div></a></div>");
+		}
+
+		if (i == endIndex
+				|| ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == props.MAX_THUMBNAIL_ITEMS_ON_ROW - 1) {
+			thumbnailhtml = thumbnailhtml.concat("</div>");
+		}
+		if (i == endIndex) {
+			thumbnailhtml = thumbnailhtml.concat("</div>");
+		}
 
 	}
-		
-	$('#thumbnailimages').html(thumbnailhtml);	
+
+	$('#thumbnailimages').html(thumbnailhtml);
 };
 
-var currentThumbnailPage=1;
-function showThumbnailPage(pagenum) {            
-    if (pagenum>0 && pagenum<=cudl.thumbnailProps.NUM_THUMBNAIL_PAGES) {
-      currentThumbnailPage=pagenum;
-      showThumbnailPageImages(cudl.thumbnailProps,currentThumbnailPage, cudl.data);
-      
-      // Update pagination page selected
-      
-      $( "#thumbnails-content ul.pagination" ).find( "li" ).removeClass('active');
-      $( "#thumbnails-content ul.pagination" ).find( ".thumbnailpaginationitem"+pagenum ).addClass("active");
+var currentThumbnailPage = 1;
+function showThumbnailPage(pagenum) {
+	if (pagenum > 0 && pagenum <= cudl.thumbnailProps.NUM_THUMBNAIL_PAGES) {
+		currentThumbnailPage = pagenum;
+		showThumbnailPageImages(cudl.thumbnailProps, currentThumbnailPage,
+				cudl.data);
 
-    }                    
+		// Update pagination page selected
+
+		$("#thumbnails-content ul.pagination").find("li").removeClass('active');
+		$("#thumbnails-content ul.pagination").find(
+				".thumbnailpaginationitem" + pagenum).addClass("active");
+
+	}
 };
 
-
-/**************** End of Thumbmnails *********************************************/
+/**
+ * ************** End of Thumbmnails
+ * ********************************************
+ */
 
 $(document).ready(function() {
 	// Read in the JSON
@@ -356,11 +393,10 @@ $(document).ready(function() {
 		cudl.currentpage = 1;
 		cudl.setupSeaDragon(data);
 		setupInfoPanel(data);
-		cudl.thumbnailProps=setupThumbnails(data);
+		cudl.thumbnailProps = setupThumbnails(data);
 		store.loadPage(cudl.currentpage);
 		console.debug(data);
 		showThumbnailPage(currentThumbnailPage)
 	});
 
 });
-

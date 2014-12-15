@@ -5,9 +5,14 @@ body {
 }
 
 .container{
-	margin-left:0px;
+	margin-left:0px;	
 }
 
+.navbar .container {
+	float:left;
+}
+
+/************ Seadragon Image ******************/
 #seadragonImage {
 	width: 100%;
 	height: 100%;
@@ -31,6 +36,86 @@ body {
 	transition-delay: 0s;	
 }
 
+/************ Seadragon Image Buttons ******************/
+.cudl-viewer-buttons-pagination {
+	z-index:3000;
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+.cudl-viewer-buttons-pagination:hover {
+	opacity: 1;
+}
+.cudl-viewer-buttons-pagination .cudl-btn {
+	margin: 4px;
+}
+.cudl-viewer-buttons-pagination input {
+	text-align:right;
+}
+.cudl-viewer-buttons-pagination input:focus {
+	opacity: 1;
+}
+
+.cudl-viewer-buttons-zoom {
+	z-index:30;
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+.cudl-viewer-buttons-zoom:hover{
+	opacity: 1;
+}
+.cudl-viewer-buttons-zoom .cudl-btn {
+	margin: 4px;
+}
+
+.cudl-viewer-buttons-maximize {
+	z-index:30;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	opacity: 0.6;
+	transition: opacity 0.3s ease;
+}
+.cudl-viewer-buttons-maximize:hover{
+	opacity: 1;
+}
+.cudl-viewer-buttons-maximize .cudl-btn {
+	margin: 4px;
+}
+
+.cudl-btn {
+	border: 1px solid #a7a7a7;
+	background: rgba(41, 41, 41, 0.8);
+	border-radius: 4px;
+	color: white;
+	box-shadow: 0px 4px 5px 0 rgba(0, 0, 0, 0.35);
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.35);
+	cursor: pointer;
+
+	padding: 4px 5px;
+	font-size: 14px;
+	line-height: 14px;
+
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.cudl-btn:hover {
+	border: 1px solid #5fb8ff;
+}
+.cudl-btn:active {
+	background: #314d93;
+}
+
+
+
+/************ Information panel ******************/
 #about-content {
    padding-left:15px;	
 }
@@ -92,3 +177,18 @@ body {
 	margin-right: 10px;
 }
 
+#download {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#download .text {
+	float:right;	
+}
+
+#download .copyright {
+	color:#999;
+	font-size:0.8em;	
+}
