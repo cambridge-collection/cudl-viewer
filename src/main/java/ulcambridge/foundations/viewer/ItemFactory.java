@@ -9,7 +9,7 @@ import ulcambridge.foundations.viewer.model.Item;
 
 public class ItemFactory {
 
-	private static final int MAXCACHE = 400; // max number of items in the cache.
+	private static final int MAXCACHE = 2000; // max number of items in the cache.
 	private static ItemCache itemCache = new ItemCache(MAXCACHE); // cache of most recent items
 	private ItemsDao itemsDao;	
 	private Calendar lastInit;
@@ -58,7 +58,7 @@ public class ItemFactory {
 		  item = (Item) itemCache.get(id);		  
 		} else {
 		  item = itemsDao.getItem(id);
-		  itemCache.put(id, item);
+		  if (item!=null) { itemCache.put(id, item); }
 		}
 		return item;
 		

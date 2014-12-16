@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import ulcambridge.foundations.viewer.model.Item;
 
@@ -21,7 +22,9 @@ public class ItemCache extends LinkedHashMap<String, Item> {
 		this.CAPACITY = capacity;
 	}
 
-	protected boolean removeEldestEntry(Item eldest) {
+	@Override
+	protected boolean removeEldestEntry(Map.Entry eldest) {
 		return size() > CAPACITY;
+		
 	}
 }
