@@ -1,6 +1,8 @@
 package ulcambridge.foundations.viewer;
 
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +12,7 @@ import ulcambridge.foundations.viewer.model.Item;
 public class ItemFactory {
 
 	private static final int MAXCACHE = 500; // max number of items in the cache.
-	private static ItemCache itemCache = new ItemCache(MAXCACHE); // cache of most recent items
+	private static Map<String, Item> itemCache = Collections.synchronizedMap(new ItemCache(MAXCACHE)); // cache of most recent items
 	private ItemsDao itemsDao;	
 	private Calendar lastInit;
 	private final int INIT_TIMEOUT = 60000; // in milliseconds
@@ -59,7 +61,7 @@ public class ItemFactory {
 		} else {
 		  item = itemsDao.getItem(id);
 		  if (item!=null) { itemCache.put(id, item); }
-		}
+		}		
 		return item;
 		
 	}
