@@ -115,6 +115,9 @@
 <!--  font awesome -->
 <link rel="stylesheet" href="/styles/font-awesome/font-awesome.min.css">
 
+<!--  addThis sharing tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4" async="async"></script>
+
 <script src="/scripts/cudl.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -125,7 +128,6 @@
 	cudl.docId = '${docId}';
 	cudl.docURL = '${docURL}';
 	cudl.imageServer = '${imageServer}';
-	cudl.proxyURL = '${proxyURL}';
 	cudl.services = '${services}';	
 	// Read in Attributes
 	cudl.collectionURL = "<%=collectionURL%>";
@@ -142,11 +144,6 @@
 
 </head>
 <body>
-
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<script type="text/javascript"
-		src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-548865291dc37516"
-		async="async"></script>
 
 
 	<!--  hidden section for the search engines to index -->
@@ -187,6 +184,8 @@
 		 <div class="cudl-viewer-buttons-pagination">
            <button id="prevPage" class="cudl-btn fa fa-arrow-left" title="Previous Page"></button>
            <input id="pageInput" type="text" value="1" size="4">
+           of 
+           <span id="maxPage"></span>
            <button id="nextPage" class="cudl-btn fa fa-arrow-right" title="Next Page"></button>
          </div>
 		 <div class="cudl-viewer-buttons-zoom">
@@ -196,15 +195,14 @@
            <button id="zoomOut" class="cudl-btn fa fa-minus" title="Zoom out of the image"></button>
          </div>
          <div class="cudl-viewer-buttons-maximize">
-           <button id="fullscreen" class="cudl-btn fa fa-expand" title="View image fullscreen"></button>
+           <button id="fullscreen" class="cudl-btn fa fa-expand" title="Toggle fullscreen view"></button>
          </div>
         </div>
 
 	</div>
 	<div id="right-panel">
 
-		<div id="right-panel-toggle"><i
-								class="fa fa-angle-right pull-left"></i></div>
+		<div id="right-panel-toggle"><i class="fa fa-angle-right pull-left"></i></div>
 		<div role="tabpanel" id="rightTabs">
 
 			<!-- Nav tabs -->

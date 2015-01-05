@@ -188,9 +188,8 @@ public class DocumentViewController {
 		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
 		//Get imageServer
-		String imageServer = Properties.getString("imageServer");
-		String proxyURL = Properties.getString("proxyURL");	
-		
+		String imageServer = Properties.getString("imageServer");		
+			
 		//Get services
 		String services = Properties.getString("services");
 
@@ -210,8 +209,7 @@ public class DocumentViewController {
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
 		modelAndView.addObject("requestURL", requestURL);		
 		modelAndView.addObject("imageServer", imageServer);
-		modelAndView.addObject("services", services);
-		modelAndView.addObject("proxyURL", proxyURL);
+		modelAndView.addObject("services", services);		
 
 		/** Collection information **/
 		modelAndView.addObject("organisationalCollection",

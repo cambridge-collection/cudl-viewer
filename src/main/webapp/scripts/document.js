@@ -8,7 +8,6 @@
 	cudl.docId 
 	cudl.docURL 
 	cudl.imageServer 
-	cudl.proxyURL
 	cudl.services 
 	
 	// Read in Attributes
@@ -24,46 +23,48 @@
 
 cudl.data; // stores the JSON data for this book.
 cudl.currentpage = 1; // stores current page viewed.
+var store = {}; // This is used when changing pages from links in the text.
+cudl.currentThumbnailPage = 1;
 
-// This is used when changing pages from links in the text.
-var store = {};
+cudl.thumbnailProps = {}; // stores thumbnail properties
+cudl.thumbnailProps.MAX_THUMBNAIL_ITEMS_ON_PAGE = 42;
+cudl.thumbnailProps.MAX_THUMBNAIL_ITEMS_ON_ROW = 3;
+
 store.loadPage = function(pagenumber) {
 
 	function openDzi(dziPath) {
 
 		// ajax call to fetch .dzi
-		$.get('http://found-dom02.lib.cam.ac.uk' + dziPath).success(
-				function(xml) {
+		$.get(cudl.imageServer + dziPath).success(function(xml) {
 
-					// Seadragon AJAX supported being given a DZI as a string
-					// and
-					// rewriting the tilesource to an external URL
-					// openseadragon won't accept an external DZI so we build an
-					// inline tilesource with a modified URL
+			// Seadragon AJAX supported being given a DZI as a string
+			// and rewriting the tilesource to an external URL
+			// openseadragon won't accept an external DZI so we build an
+			// inline tilesource with a modified URL
 
-					xmlDoc = $.parseXML(xml);
-					$xml = $(xmlDoc);
+			xmlDoc = $.parseXML(xml);
+			$xml = $(xmlDoc);
 
-					$image = $xml.find('Image');
-					$size = $xml.find('Size');
+			$image = $xml.find('Image');
+			$size = $xml.find('Size');
 
-					var path = dziPath;
-					path = path.substring(0, path.length - 4);
-					var dzi = {
-						Image : {
-							xmlns : $image.attr('xmlns'),
-							Url : cudl.imageServer + path + '_files/',
-							Format : $image.attr('Format'),
-							Overlap : $image.attr('Overlap'),
-							TileSize : $image.attr('TileSize'),
-							Size : {
-								Height : $size.attr('Height'),
-								Width : $size.attr('Width')
-							}
-						}
-					};
-					cudl.viewer.open(dzi);
-				}).error(function(jqXHR, textStatus, errorThrown) {
+			var path = dziPath;
+			path = path.substring(0, path.length - 4);
+			var dzi = {
+				Image : {
+					xmlns : $image.attr('xmlns'),
+					Url : cudl.imageServer + path + '_files/',
+					Format : $image.attr('Format'),
+					Overlap : $image.attr('Overlap'),
+					TileSize : $image.attr('TileSize'),
+					Size : {
+						Height : $size.attr('Height'),
+						Width : $size.attr('Width')
+					}
+				}
+			};
+			cudl.viewer.open(dzi);
+		}).error(function(jqXHR, textStatus, errorThrown) {
 			cudl.viewer._showMessage("Image server temporarily unavailable");
 		});
 	}
@@ -77,18 +78,19 @@ store.loadPage = function(pagenumber) {
 	// update current page
 	cudl.currentpage = pagenumber;
 	$("#pageInput").val(cudl.currentpage);
+	$("#maxPage").html(cudl.data.numberOfPages);
 	return false;
 
 };
 
 // As OpenSeadragon currently has a bug with fullscreen and the youtube video
 // panels.
-function toggleFullscreen() {
-	
+cudl.toggleFullscreen = function () {
+
 	var element = document.getElementById("doc");
-	
-	if (!document.fullscreenElement && 
-	!document.mozFullScreenElement && !document.webkitFullscreenElement
+
+	if (!document.fullscreenElement && !document.mozFullScreenElement
+			&& !document.webkitFullscreenElement
 			&& !document.msFullscreenElement) {
 		if (element.requestFullscreen) {
 			element.requestFullscreen();
@@ -99,6 +101,11 @@ function toggleFullscreen() {
 		} else if (element.webkitRequestFullscreen) {
 			element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
 		}
+
+		// update icon
+		$("#fullscreen").removeClass("fa-expand");
+		$("#fullscreen").addClass("fa-compress"); 
+		
 	} else {
 		if (document.exitFullscreen) {
 			document.exitFullscreen();
@@ -109,6 +116,11 @@ function toggleFullscreen() {
 		} else if (document.webkitExitFullscreen) {
 			document.webkitExitFullscreen();
 		}
+		
+		// update icon
+		$("#fullscreen").removeClass("fa-compress");
+		$("#fullscreen").addClass("fa-expand");
+		
 	}
 }
 
@@ -156,10 +168,10 @@ cudl.setupSeaDragon = function(data) {
 	$("#pageInput").change(function(input) {
 		store.loadPage(input.target.value);
 	});
-	$("#fullscreen").click(toggleFullscreen);
+	$("#fullscreen").click(cudl.toggleFullscreen);
 };
 
-function setupInfoPanel(data) {
+cudl.setupInfoPanel = function(data) {
 
 	breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
 			+ cudl.collectionURL
@@ -229,46 +241,31 @@ function setupInfoPanel(data) {
 			});
 			infoPanelExpanded = false;
 			$('#doc').width('60%');
+			
+			// update icon
+			$('#right-panel-toggle i').removeClass('fa-angle-left');
+			$('#right-panel-toggle i').addClass('fa-angle-right');
+			
 		} else {
 			$('#right-panel').css({
 				'right' : ($('#right-panel').width() * -1)
 			});
 			infoPanelExpanded = true;
 			$('#doc').width('100%');
+			
+			// update icon
+			$('#right-panel-toggle i').removeClass('fa-angle-right');
+			$('#right-panel-toggle i').addClass('fa-angle-left');
 		}
 	});
 
 };
 
-/**
- * ************* Thumbnails
- * *****************************************************
- */
-function setupThumbnails(data) {
-	/*
-	 * var getPaginationProperties = function (data) {
-	 * 
-	 * var props = {};
-	 * 
-	 * var pageHeaderHeight = 120; var thumbnailItemHeight = 165; var
-	 * thumbnailItemWidth = 165;
-	 * 
-	 * var tabWidth = parseInt($("#right-panel").width()); var tabHeight =
-	 * parseInt($("#right-panel").height())-pageHeaderHeight; props.numItemInRow =
-	 * Math.floor(tabWidth/thumbnailItemWidth); props.numRows =
-	 * Math.floor(tabHeight/thumbnailItemHeight);
-	 * 
-	 * if (props.numItemInRow*props.numRows>0) {
-	 * props.pageSize=props.numItemInRow*props.numRows;
-	 * 
-	 * props.numPages= Math.floor(data.numberOfPages/props.pageSize); }
-	 * 
-	 * return props; };
-	 */
-	var props = {};
-	props.MAX_THUMBNAIL_ITEMS_ON_PAGE = 42;
-	props.MAX_THUMBNAIL_ITEMS_ON_ROW = 3;
-	props.NUM_THUMBNAIL_PAGES = 1; // auto generated
+
+cudl.setupThumbnails = function (data) {
+
+	var props = cudl.thumbnailProps;
+	props.NUM_THUMBNAIL_PAGES = 1; // set below
 	function generatePagination(data) {
 
 		// create the pagination
@@ -280,85 +277,87 @@ function setupThumbnails(data) {
 
 		var html = "<ul class='pagination'>";
 		html = html
-				.concat("<li class='thumbnailpaginationstart' onclick='return showThumbnailPage(currentThumbnailPage-1);'><a href='#'>&laquo;</a></li>");
+				.concat("<li class='thumbnailpaginationstart' onclick='return cudl.showThumbnailPage(cudl.currentThumbnailPage-1);'><a href='#'>&laquo;</a></li>");
 
 		for (i = 1; i <= props.NUM_THUMBNAIL_PAGES; i++) {
 			html = html.concat("<li class='thumbnailpaginationitem" + i
-					+ "'><a href='#' onclick='return showThumbnailPage(" + i
+					+ "'><a href='#' onclick='return cudl.showThumbnailPage(" + i
 					+ ");'>" + i + "</a></li>");
 		}
 
 		html = html
-				.concat("<li class='thumbnailpaginationend'><a href='#'	onclick='return showThumbnailPage(currentThumbnailPage+1);'>&raquo;</a></li></ul>");
+				.concat("<li class='thumbnailpaginationend'><a href='#'	onclick='return cudl.showThumbnailPage(cudl.currentThumbnailPage+1);'>&raquo;</a></li></ul>");
 
 		$('#thumbnailpaginationtop').html(html);
 		$('#thumbnailpaginationbottom').html(html);
 	}
 
 	generatePagination(data);
-	// showThumbnailPageImages(1, data);
 
-	return props;
 };
 
-/**
- * PageNum should be between 1 and NUM_THUMBNAIL_PAGES
- */
-function showThumbnailPageImages(props, pageNum, data) {
 
-	// find the startIndex and endIndex for the data items we want to display
-	// thumbnails of.
-	var startIndex = props.MAX_THUMBNAIL_ITEMS_ON_PAGE * (pageNum - 1);
-	var endIndex = Math.min((props.MAX_THUMBNAIL_ITEMS_ON_PAGE * pageNum) - 1,
-			data.pages.length - 1);
-	var thumbnailhtml = "";
+cudl.showThumbnailPage = function (pagenum) {
+		
+	/**
+	 * PageNum should be between 1 and NUM_THUMBNAIL_PAGES
+	 */
+	function showThumbnailPageImages(props, pageNum, data) {
 
-	for (i = startIndex; i <= endIndex; i++) {
+		// find the startIndex and endIndex for the data items we want to display
+		// thumbnails of.
+		var startIndex = props.MAX_THUMBNAIL_ITEMS_ON_PAGE * (pageNum - 1);
+		var endIndex = Math.min((props.MAX_THUMBNAIL_ITEMS_ON_PAGE * pageNum) - 1,
+				data.pages.length - 1);
+		var thumbnailhtml = "";
 
-		if (i == startIndex) {
+		for (i = startIndex; i <= endIndex; i++) {
+
+			if (i == startIndex) {
+				thumbnailhtml = thumbnailhtml
+						.concat("<div class='thumbnail-pane' id='thumbnail"
+								+ pageNum + "'>");
+			}
+			if (i == startIndex || ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == 0) {
+
+				thumbnailhtml = thumbnailhtml.concat("<div class='row'>");
+			}
+
 			thumbnailhtml = thumbnailhtml
-					.concat("<div class='thumbnail-pane' id='thumbnail"
-							+ pageNum + "'>");
-		}
-		if (i == startIndex || ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == 0) {
+					.concat("<div class='col-md-4'><a href='' onclick='store.loadPage("
+							+ (data.pages[i].sequence)
+							+ ");return false;' class='thumbnail'><img src='"
+							+ cudl.imageServer
+							+ data.pages[i].thumbnailImageURL
+							+ "' ");
 
-			thumbnailhtml = thumbnailhtml.concat("<div class='row'>");
-		}
+			if (data.pages[i].thumbnailImageOrientation == "portrait") {
+				thumbnailhtml = thumbnailhtml
+						.concat("style='height:150px;'><div class='caption'>"
+								+ data.pages[i].label + "</div></a></div>");
+			} else {
+				thumbnailhtml = thumbnailhtml
+						.concat("style='width:130px;'><div class='caption'>"
+								+ data.pages[i].label + "</div></a></div>");
+			}
 
-		thumbnailhtml = thumbnailhtml
-				.concat("<div class='col-md-4'><a href='' onclick='store.loadPage("
-						+ (data.pages[i].sequence)
-						+ ");return false;' class='thumbnail'><img src='http://found-dom02.lib.cam.ac.uk"
-						+ data.pages[i].thumbnailImageURL + "' ");
+			if (i == endIndex
+					|| ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == props.MAX_THUMBNAIL_ITEMS_ON_ROW - 1) {
+				thumbnailhtml = thumbnailhtml.concat("</div>");
+			}
+			if (i == endIndex) {
+				thumbnailhtml = thumbnailhtml.concat("</div>");
+			}
 
-		if (data.pages[i].thumbnailImageOrientation == "portrait") {
-			thumbnailhtml = thumbnailhtml
-					.concat("style='height:150px;'><div class='caption'>"
-							+ data.pages[i].label + "</div></a></div>");
-		} else {
-			thumbnailhtml = thumbnailhtml
-					.concat("style='width:130px;'><div class='caption'>"
-							+ data.pages[i].label + "</div></a></div>");
-		}
-
-		if (i == endIndex
-				|| ((i) % props.MAX_THUMBNAIL_ITEMS_ON_ROW) == props.MAX_THUMBNAIL_ITEMS_ON_ROW - 1) {
-			thumbnailhtml = thumbnailhtml.concat("</div>");
-		}
-		if (i == endIndex) {
-			thumbnailhtml = thumbnailhtml.concat("</div>");
 		}
 
-	}
-
-	$('#thumbnailimages').html(thumbnailhtml);
-};
-
-var currentThumbnailPage = 1;
-function showThumbnailPage(pagenum) {
+		$('#thumbnailimages').html(thumbnailhtml);
+	};
+	
+	
 	if (pagenum > 0 && pagenum <= cudl.thumbnailProps.NUM_THUMBNAIL_PAGES) {
-		currentThumbnailPage = pagenum;
-		showThumbnailPageImages(cudl.thumbnailProps, currentThumbnailPage,
+		cudl.currentThumbnailPage = pagenum;
+		showThumbnailPageImages(cudl.thumbnailProps, cudl.currentThumbnailPage,
 				cudl.data);
 
 		// Update pagination page selected
@@ -370,10 +369,41 @@ function showThumbnailPage(pagenum) {
 	}
 };
 
-/**
- * ************** End of Thumbmnails
- * ********************************************
- */
+cudl.setupMetadata = function (data) {
+	
+	console.debug(data.logicalStructures);
+	$('#metadata').html(getHTMLForLogicalStructure(data.logicalStructures));
+		
+	
+	function getHTMLForLogicalStructure(lsArray) {
+			
+		var html = "";
+		/*for (i=0; i<lsArray.length; i++) {
+			var descriptiveMetadataID = lsArray[i].descriptiveMetadataID;
+			var meta = findDescriptiveMetadata(descriptiveMetadataID, data);
+		    html = html.concat(getHTMLForDescriptiveMetadata(meta))
+		    if (lsArray[i].children) {
+		    	html = html.concat(getHTMLForLogicalStructure(lsArray[i].children));
+		    }
+		}*/
+		return html;
+	};
+	
+	function findDescriptiveMetadata (id, data) {
+
+		for ( var i = 0; i < data.descriptiveMetadata.length; i++) {
+			if (data.descriptiveMetadata[i].ID == id) {
+				return data.descriptiveMetadata[i];
+			}
+
+		}
+	};
+	
+	function getHTMLForDescriptiveMetadata(descriptiveMetadata) {
+		console.debug(descriptiveMetadata);
+		return "<div>"+descriptiveMetadata.title.displayForm+"</div>";
+	}
+}
 
 $(document).ready(function() {
 	// Read in the JSON
@@ -390,13 +420,14 @@ $(document).ready(function() {
 
 		// set seadragon options and load in dzi.
 		cudl.data = data;
+		console.debug(data);
 		cudl.currentpage = 1;
 		cudl.setupSeaDragon(data);
-		setupInfoPanel(data);
-		cudl.thumbnailProps = setupThumbnails(data);
-		store.loadPage(cudl.currentpage);
-		console.debug(data);
-		showThumbnailPage(currentThumbnailPage)
+		cudl.setupInfoPanel(data);
+		cudl.setupThumbnails(data);
+		cudl.setupMetadata(data);
+		store.loadPage(cudl.currentpage);		
+		cudl.showThumbnailPage(cudl.currentThumbnailPage)
 	});
 
 });
