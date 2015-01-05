@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 <script type="text/javascript" src="/scripts/spin.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.truncator.js"></script>
+<script type="text/javascript" src="/scripts/jquery.xdomainrequest.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="/scripts/fancybox/jquery.fancybox.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="/styles/paging.css" media="screen" />	
