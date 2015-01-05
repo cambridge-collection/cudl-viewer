@@ -180,7 +180,7 @@ cudl.docView = function() {
 		            // show image
 			    if (cudl.data.pages[cudl.pagenum - 1].displayImageURL) {
 				    // ajax call to fetch .dzi
-				    $.get(cudl.proxyURL + cudl.data.pages[cudl.pagenum - 1].displayImageURL) 
+				    $.get(cudl.imageServer + cudl.data.pages[cudl.pagenum - 1].displayImageURL) 
 					.success(function(xml) {
 
 						// Seadragon AJAX supported being given a DZI as a string and rewriting the tilesource to an external URL
