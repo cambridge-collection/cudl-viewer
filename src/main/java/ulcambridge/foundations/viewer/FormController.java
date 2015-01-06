@@ -10,6 +10,7 @@ import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.mail.EmailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -17,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.EmailHelper;
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
+import ulcambridge.foundations.viewer.forms.MailingListForm;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
@@ -87,5 +88,30 @@ public class FormController {
 		}
 
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/mailinglistform.html")
+	public ModelAndView showForm(MailingListForm mailingListForm) {
+		ModelAndView modelAndView = new ModelAndView("jsp/mailinglist");
+		modelAndView.addObject("feedbackForm", mailingListForm);
+		return modelAndView;
+	}	
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/mailinglistform.html")
+	public ModelAndView processSubmit(@Valid MailingListForm mailingListForm,
+			BindingResult result) throws EmailException {
+
+		if (result.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("jsp/mailinglist");
+			modelAndView.addObject("errors", result);
+			return modelAndView;
+		}
+
+		// TODO sign up to mailing list.
+
+
+		ModelAndView modelAndView = new ModelAndView("jsp/feedback-success");
+		return modelAndView;
+
+	}		
 
 }
