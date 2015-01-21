@@ -168,7 +168,7 @@ public class DocumentViewController {
 			HttpServletRequest request) {
 
 		// check doc exists, if not return 404 page.
-		if (item == null) {
+		if (item == null || page > item.getPageLabels().size() || page < 0) {
 			return new ModelAndView("jsp/errors/404");
 		}
 
@@ -193,15 +193,7 @@ public class DocumentViewController {
 		//Get services
 		String services = Properties.getString("services");
 
-		// forward to the correct location based on type of item 
-		// and page number, where page=0 is the item-level metadata
-		ModelAndView modelAndView;
-		if (page == 0) {
-			modelAndView = new ModelAndView("jsp/document");
-		} else {
-			modelAndView = new ModelAndView("jsp/page");
-			
-		}
+		ModelAndView modelAndView = new ModelAndView("jsp/document");		
 		
 		/** URLs **/
 		modelAndView.addObject("docURL", docURL);

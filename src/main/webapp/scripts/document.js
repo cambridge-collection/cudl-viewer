@@ -22,7 +22,6 @@
  */
 
 cudl.data; // stores the JSON data for this book.
-cudl.currentpage = 1; // stores current page viewed.
 var store = {}; // This is used when changing pages from links in the text.
 cudl.currentThumbnailPage = 1;
 
@@ -74,10 +73,19 @@ store.loadPage = function(pagenumber) {
 	openDzi(cudl.data.pages[pagenumber - 1].displayImageURL);
 
 	// update metadata
+	var newURL = "/view/" + cudl.docId + "/" + cudl.pagenum;
+	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
+	$('#currentURL').html("http://cudl.lib.cam.ac.uk"+newURL);
+	
+	// update URL bar
+	window.history.replaceState(cudl.docId + " page:"+ cudl.pagenum, "Cambridge Digital Library",newURL);
+	
+	// update transcription data
+	cudl.setTranscriptionPage(cudl.data, pagenumber);	
 
 	// update current page
-	cudl.currentpage = pagenumber;
-	$("#pageInput").val(cudl.currentpage);
+	cudl.pagenum = pagenumber;
+	$("#pageInput").val(cudl.pagenum);
 	$("#maxPage").html(cudl.data.numberOfPages);
 	return false;
 
@@ -143,18 +151,18 @@ cudl.setupSeaDragon = function(data) {
 	// Setup forward and backward buttons
 	function nextPage() {
 
-		if (cudl.currentpage < cudl.data.pages.length) {
-			cudl.currentpage++;
-			store.loadPage(cudl.currentpage);
+		if (cudl.pagenum < cudl.data.pages.length) {
+			cudl.pagenum++;
+			store.loadPage(cudl.pagenum);
 		}
 		return false;
 	}
 
 	function prevPage() {
 
-		if (cudl.currentpage > 1) {
-			cudl.currentpage--;
-			store.loadPage(cudl.currentpage);
+		if (cudl.pagenum > 1) {
+			cudl.pagenum--;
+			store.loadPage(cudl.pagenum);
 		}
 		return false;
 	}
@@ -189,7 +197,7 @@ cudl.setupInfoPanel = function(data) {
 				+ cudl.collectionTitle + "</a></li></ol>";
 	}
 
-	aboutFooterHTML = "<br/><div class=\"well\"><h4>Want to know more?</h4><p>Under the 'More' menu you can find <a href='#download'>metadata about the item</a>, any transcription and translation we have of the text and find out about <a href='#download'>downloading or sharing this image</a>.  </p></div>";
+	aboutFooterHTML = "<br/><div class=\"well\"><h4>Want to know more?</h4><p>Under the 'More' menu you can find <a href='#' onclick='cudl.showPanel(\"#metadata\")'>metadata about the item</a>, any transcription and translation we have of the text and find out about <a href='#' onclick='cudl.showPanel(\"#download\")'>downloading or sharing this image</a>.  </p></div>";
 
 	imageRights = "<div id='zoomRights'>"
 			+ data.descriptiveMetadata[0].displayImageRights + "</div>";
@@ -198,7 +206,7 @@ cudl.setupInfoPanel = function(data) {
 		$('#rightTabs a[href="#abouttab"]').tab('show');
 		$('#abouttab').html(
 				breadcrumbHTML + "<div id='about-content'><h3>"
-						+ cudl.itemTitle + "</h3><div>"
+						+ cudl.itemTitle + " ("+data.descriptiveMetadata[0].shelfLocator.displayForm+")</h3><div>"
 						+ data.descriptiveMetadata[0].abstract.displayForm
 						+ "</div>" + aboutFooterHTML + imageRights);
 	} catch (ex) { /* ignore, no contents list */
@@ -231,6 +239,33 @@ cudl.setupInfoPanel = function(data) {
 		$('#contentstab').html(contents);
 	} catch (ex) { /* ignore, no contents list */
 	}
+	
+	// Enable / disable menus
+	// Note not all pages may have a transcription/translation however
+	// We are enabling the menu if any are available.
+	
+	console.debug(data);
+    if (typeof data.useNormalisedTranscriptions == 'undefined' || !data.useNormalisedTranscriptions) {
+    	$('#transcriptionnormtab').parent().addClass("disabled");
+    	$('#transcriptionnormtab').click(function(e){return false;}); // disable link;
+    }
+    if (typeof data.useDiplomaticTranscriptions == 'undefined' || !data.useDiplomaticTranscriptions) {
+    	$('#transcriptiondiplotab').parent().addClass("disabled");
+    	$('#transcriptiondiplotab').click(function(e){return false;}); // disable link;
+    }
+    
+    if (typeof data.useTranslations == 'undefined' || !data.useTranslations) {	
+    	$('#translationtab').parent().addClass("disabled");
+    	$('#translationtab').click(function(e){return false;}); // disable link;
+    }
+    
+    if (!data.logicalStructures[0].children) {    
+    	$('#rightTabs a[href="#contentstab"]').parent().addClass("disabled");
+    	$('#rightTabs a[href="#contentstab"]').click(function(e){return false;}); // disable link;
+    }
+    
+    // setup fancybox for popups
+    $("#inline").fancybox();	
 
 	// setup toggle behaviour
 	infoPanelExpanded = true;
@@ -261,6 +296,77 @@ cudl.setupInfoPanel = function(data) {
 
 };
 
+/* Allows you to link to a tab panel */
+cudl.showPanel = function (panelHREF) {
+	
+	$('a[href="' + panelHREF + '"]').tab('show');
+
+};
+
+cudl.addBookmark = function () {	
+	
+	// Generate bookmarkPath 	
+	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;
+	var bookmarkPath = "/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);
+	
+	console.debug("thumbnailURL: "+thumbnailURL);
+	console.debug("bookmarkPath: "+bookmarkPath);
+	
+	// ajax call to make the bookmark:	
+	$.get(bookmarkPath).success(function(xml) {
+		
+		// parse JSON response.
+		if (xml.bookmarkcreated==true) {			
+			
+			//created bookmark successfully.
+			console.debug("added bookmark");				
+			$.fancybox.close();			
+			window.confirm('Added Bookmark Successfully.');			
+			return true; 
+		} else {
+			//failed to create bookmark so manually redirect to login page
+			$.fancybox.close();
+			window.location.href = bookmarkPath+"&redirect=true";			
+		}
+		
+	});
+	
+	// failed to create bookmark.	
+	return false;
+	
+}
+
+cudl.downloadImage = function () {
+
+  function SaveToDisk(fileURL, fileName) {
+    // for non-IE
+    if (!window.ActiveXObject) {    	
+        var save = document.createElement('a');
+        save.href = fileURL;
+        save.target = '_blank';
+        save.download = fileName || 'unknown';
+
+        var event = document.createEvent('Event');
+        event.initEvent('click', true, true);
+        save.dispatchEvent(event);
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    }
+
+    // for IE
+    else if ( !! window.ActiveXObject && document.execCommand)     {
+        var _window = window.open(fileURL, '_blank');
+        _window.document.close();
+        _window.document.execCommand('SaveAs', true, fileName || fileURL)
+        _window.close();
+    }
+    
+  }
+	
+  var downloadImageURL = cudl.data.pages[cudl.pagenum-1].downloadImageURL;  
+  window.open(cudl.imageServer+downloadImageURL);
+    
+    
+}
 
 cudl.setupThumbnails = function (data) {
 
@@ -371,21 +477,22 @@ cudl.showThumbnailPage = function (pagenum) {
 
 cudl.setupMetadata = function (data) {
 	
-	console.debug(data.logicalStructures);
-	$('#metadata').html(getHTMLForLogicalStructure(data.logicalStructures));
+	$('#metadatacontent').html("<ul>"+ getHTMLForLogicalStructure(data.logicalStructures, 0)+"</ul>");
 		
-	
-	function getHTMLForLogicalStructure(lsArray) {
+	function getHTMLForLogicalStructure(array, level) {
 			
 		var html = "";
-		/*for (i=0; i<lsArray.length; i++) {
-			var descriptiveMetadataID = lsArray[i].descriptiveMetadataID;
-			var meta = findDescriptiveMetadata(descriptiveMetadataID, data);
-		    html = html.concat(getHTMLForDescriptiveMetadata(meta))
-		    if (lsArray[i].children) {
-		    	html = html.concat(getHTMLForLogicalStructure(lsArray[i].children));
-		    }
-		}*/
+		
+	    for (var i=0; i<array.length; i++) {
+	    			  
+		  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
+		  html = html.concat(getHTMLForDescriptiveMetadata(meta));	
+	    	
+	      if (array[i].children) {		
+			level = level+1;	
+		   	html = html.concat("<div class='well'><ul>"+getHTMLForLogicalStructure(array[i].children, level)+"</ul></div>");
+		  }
+		}
 		return html;
 	};
 	
@@ -395,13 +502,166 @@ cudl.setupMetadata = function (data) {
 			if (data.descriptiveMetadata[i].ID == id) {
 				return data.descriptiveMetadata[i];
 			}
-
 		}
 	};
 	
 	function getHTMLForDescriptiveMetadata(descriptiveMetadata) {
-		console.debug(descriptiveMetadata);
-		return "<div>"+descriptiveMetadata.title.displayForm+"</div>";
+		var metadata = "";
+
+		var metadataArray = getArrayFromDescriptiveMetadata(descriptiveMetadata);
+		metadataArray = metadataArray.sort(function (a,b) {if (a.seq && b.seq) {return a.seq-b.seq;}});
+		
+		for (var i=0; i<metadataArray.length; i++) {
+			var jsonObject = metadataArray[i];
+				
+				if (jsonObject.display == true && jsonObject.label) {
+
+					// prioritise displayForm at top level. 
+					if (jsonObject.displayForm) {
+
+						metadata += getMetadataHTML(jsonObject.label, jsonObject.displayForm);
+
+					// then display value (if an array)
+					} else if (jsonObject.value
+							&& jsonObject.value instanceof Array) {
+
+					    metadata += getMetadataHTML(jsonObject.label, jsonObject.value, "; ");						     
+					}
+
+				}			
+		}
+
+		return metadata;
+		//return "<li>"+descriptiveMetadata.title.displayForm+"</li>";
+	}
+	
+	/**
+	 * Converts the metadata item into HTML representation.
+	 * 
+	 * @param title -
+	 *            Text for the label
+	 * @param metadataItem -
+	 *            Metadata item to display
+	 * @param arraySeparator -
+	 *            for arrays this is the text that will separate items.
+	 * @returns
+	 */
+	function getMetadataHTML(title, metadataItem, arraySeparator) {
+
+		var item = metadataItem;
+
+		if (metadataItem instanceof Array) {
+
+			var metadataArray = new Array();
+			for ( var i = 0; i < metadataItem.length; i++) {
+
+				var singleMetadataItem = metadataItem[i].displayForm;
+				var searchLink = (metadataItem[i].linktype == "keyword search");
+				if (searchLink) {
+					metadataArray[i] = addSearchLink(singleMetadataItem);
+				} else {
+					metadataArray[i] = singleMetadataItem;
+				}
+			}
+
+			if (metadataArray.length > 0) {
+				item = metadataArray.join(arraySeparator);
+			}
+
+			// Not an array, a single item.
+		} else {
+			var searchLink = (metadataItem.linktype == "keyword search");
+			if (searchLink) {
+				item = addSearchLink(metadataItem);
+			} else {
+				item = metadataItem;
+			}
+		}
+
+		if (item != "") {
+			return "<li><div><b>" + title + ": </b>" + item
+					+ "</div></li>\n";
+		}
+
+		return "";
+	}
+
+	function addSearchLink (text) {
+		
+		var linkText = text;
+		
+		// manually escape the special search characters ? and *.
+		if (linkText.indexOf("?")!=-1){
+			linkText = linkText.replace("?", "\\?");
+			}
+        if (linkText.indexOf("*")!=-1){
+			linkText = linkText.replace("*", "\\*");
+			}				
+		
+		linkText = encodeURIComponent(linkText);
+		
+		return "<a class=\"cudlLink\" href='/search?keyword=" + linkText
+				+ "'>" + text + "</a>";
+	}
+	
+	/**
+	 * Used to go through each element in a single descriptiveMetadata item and look for 
+	 * suitable candidates to display.  These are put into an array for sorting. 
+	 * Suitable json objects have - display=true, seq and label fields.  
+	 * Returns an array of json objects. 
+	 */
+	function getArrayFromDescriptiveMetadata(descriptiveMetadata) {
+
+		var metadataArray = new Array();
+		for ( var key in descriptiveMetadata) {
+			if (descriptiveMetadata.hasOwnProperty(key) ) {					
+				var jsonObject = descriptiveMetadata[key];
+				
+				// Handle case where there is no label at the top level, but there exists an 
+				// array of objects under value that may have labels, display values or arrays of 
+				// value strings to display.  
+				if (!jsonObject.label && jsonObject.value && jsonObject.value instanceof Array) {
+				  for (var i=0; i<jsonObject.value.length; i++) {
+				    var value = jsonObject.value[0];
+				    metadataArray = metadataArray.concat(getArrayFromDescriptiveMetadata(jsonObject.value[i]));
+				  }
+				}
+				
+			
+				if (jsonObject.display==true && jsonObject.label && jsonObject.seq) {
+					 metadataArray.push(jsonObject);
+				}
+			}
+		}
+		return metadataArray;
+	}	
+}
+
+
+cudl.setTranscriptionPage = function (data, pagenum) {
+	
+	// normalised transcriptions
+	var url = data.pages[pagenum-1].transcriptionNormalisedURL;
+	if (typeof url != 'undefined') {
+		document.getElementById('transcriptionnormframe').src = cudl.services + url;		
+	} else {
+		document.getElementById('transcriptionnormframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
+	}
+	
+	// diplomatic transcriptions
+	var url = data.pages[pagenum-1].transcriptionDiplomaticURL;
+	if (typeof url != 'undefined') {
+		document.getElementById('transcriptiondiploframe').src = cudl.services + url;		
+	} else {
+		document.getElementById('transcriptiondiploframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
+	}
+	
+	// translation
+	var url = data.pages[pagenum-1].translationURL;
+	if (typeof url != 'undefined') {
+		document.getElementById('translationframe').src = cudl.services + url;		
+	} else {
+		document.getElementById('translationframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo translation available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
 	}
 }
 
@@ -419,14 +679,13 @@ $(document).ready(function() {
 		});
 
 		// set seadragon options and load in dzi.
+		if (cudl.pagenum==0) { cudl.pagenum=1; } // page 0 returns item level metadata. 
 		cudl.data = data;
-		console.debug(data);
-		cudl.currentpage = 1;
 		cudl.setupSeaDragon(data);
 		cudl.setupInfoPanel(data);
 		cudl.setupThumbnails(data);
 		cudl.setupMetadata(data);
-		store.loadPage(cudl.currentpage);		
+		store.loadPage(cudl.pagenum);		
 		cudl.showThumbnailPage(cudl.currentThumbnailPage)
 	});
 

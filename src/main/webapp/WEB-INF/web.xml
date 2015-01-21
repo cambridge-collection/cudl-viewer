@@ -124,18 +124,6 @@
 		<url-pattern>/transcriptionformatter</url-pattern>
 	</servlet-mapping>
 
-	<!-- downloadcontroller servlet -->
-	<servlet>
-		<servlet-name>downloadcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>downloadcontroller</servlet-name>
-		<url-pattern>/download/*</url-pattern>
-	</servlet-mapping>
-
 	<!-- search editor -->
 	<servlet>
 		<servlet-name>search</servlet-name>
@@ -227,7 +215,17 @@
 		<extension>eot</extension>
 		<mime-type>application/octet-stream</mime-type>
 	</mime-mapping>
-
+	
+	<mime-mapping>
+		<extension>woff</extension>
+		<mime-type>application/x-font-woff</mime-type>
+	</mime-mapping>
+	
+	<mime-mapping>
+		<extension>svg</extension>
+		<mime-type>application/svg+xml</mime-type>
+	</mime-mapping>	
+	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/errors/404.html</location>

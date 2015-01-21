@@ -206,3 +206,35 @@ body {
 	color:#999;
 	font-size:0.8em;	
 }
+
+#metadatacontent {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: -20px;
+	margin-right: 10px;
+}
+
+#metadatacontent ul {
+	list-style: none;
+}
+
+/* transcriptions */
+#transcriptionnorm, #transcriptiondiplo, #translation {
+	height:100%;
+	width: 100%;	
+    background-color: #fff;
+}
+#transcriptionnormframe, #transcriptiondiploframe, #translationframe {	
+	height:100%;
+	width: 100%;
+	border:0px;
+}
+
+/* fancybox confirmations */
+
+#bookmarkConfirmation {
+	width:300px;	
+}
+#downloadConfirmation {
+	width:300px;	
+}

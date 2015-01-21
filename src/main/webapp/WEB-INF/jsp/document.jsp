@@ -112,8 +112,12 @@
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
 <script src="/scripts/bootstrap.min.js"></script>
 
+<!--  fancybox -->
+<link rel="stylesheet" href="/scripts/fancybox/jquery.fancybox.css">
+
 <!--  font awesome -->
 <link rel="stylesheet" href="/styles/font-awesome/font-awesome.min.css">
+
 
 <!--  addThis sharing tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4" async="async"></script>
@@ -219,19 +223,19 @@
 				</a>
 					<ul id="moreDropDown-contents" class="dropdown-menu"
 						aria-labelledby="moreDropDown" role="menu">
-						<li><a id="dropdown0-tab" aria-controls="dropdown0"
+						<li><a id="moreinfotab" aria-controls="moreinfo"
 							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More
 								Information</a></li>
-						<li><a id="dropdown1-tab" aria-controls="dropdown1"
+						<li><a id="transcriptionnormtab" aria-controls="transcriptionnormtab"
 							data-toggle="tab" role="tab" tabindex="-1"
 							href="#transcriptionnorm">Transcription (normalised)</a></li>
-						<li><a id="dropdown2-tab" aria-controls="dropdown2"
-							data-toggle="tab" role="tab" tabindex="-1"
+						<li><a id="transcriptiondiplotab" aria-controls="transcriptiondiplotab"
+							data-toggle="tab" role="tab" tabindex="-1" 
 							href="#transcriptiondiplo">Transcription (diplomatic)</a></li>
-						<li><a id="dropdown3-tab" aria-controls="dropdown3"
+						<li><a id="translationtab" aria-controls="translationtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
 						</li>
-						<li><a id="dropdown4-tab" aria-controls="dropdown4"
+						<li><a id="downloadtab" aria-controls="downloadtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
 								or share</a></li>
 					</ul></li>
@@ -252,19 +256,17 @@
 						<div id="thumbnailpaginationbottom" class="text-center"></div>
 					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="metadata">Metadata</div>
-				<div role="tabpanel" class="tab-pane" id="transcriptionnorm">Normalised
-					Transcription</div>
-				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo">Diplomatic
-					Transcription</div>
-				<div role="tabpanel" class="tab-pane" id="translation">Translation</div>
+				<div role="tabpanel" class="tab-pane" id="metadata"><ol class="breadcrumb"><li class="active">More Information</li></ol><div id="metadatacontent">No Metadata Available</div></div>
+				<div role="tabpanel" class="tab-pane" id="transcriptionnorm"><ol class="breadcrumb"><li class="active">Transcription (normalised)</li></ol><iframe id="transcriptionnormframe" src="" ></iframe></div>
+				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo"><ol class="breadcrumb"><li class="active">Transcription (diplomatic)</li></ol><iframe id="transcriptiondiploframe" src="" ></iframe></div>
+				<div role="tabpanel" class="tab-pane" id="translation"><ol class="breadcrumb"><li class="active">Translation</li></ol><iframe id="translationframe" src="" ></iframe></div>
 				<div role="tabpanel" class="tab-pane" id="download">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Download</h3>
 						</div>
 						<div class="panel-body">
-							<a class="btn btn-primary left" href="#"> <i
+							<a class="btn btn-primary left" id="inline" href="#downloadConfirmation"> <i
 								class="fa fa-download fa-2x pull-left"></i> Download This<br>Image
 							</a>
 							<p class="copyright text col-md-9">This image may be used in
@@ -272,12 +274,12 @@
 								teaching and research. If you wish to reproduce it within
 								publications or on the public web, please make a reproduction
 								request.</p>
-							<br /> <br /> <a class="btn btn-primary left" href="#"> <i
+							<br /> <br /> <a class="btn btn-primary left" href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html" target="_blank"> <i
 								class="fa fa-gavel fa-2x pull-left"></i> Request Image<br>Rights
 							</a>
 							<p class="copyright text col-md-9">Request reproduction
 								rights to this image</p>
-							<br /> <br /> <a class="btn btn-primary left" href="#"> <i
+							<br /> <br /> <a class="btn btn-primary left" id="inline" href="#bookmarkConfirmation"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
 							</a>
 							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>
@@ -288,7 +290,7 @@
 							<h3 class="panel-title">Share</h3>
 						</div>
 						<div class="panel-body">
-							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <b><script>document.write(cudl.docURL+"/"+cudl.pagenum)</script></b></p>
+							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <b><span id="currentURL">document.write(cudl.docURL)</span></b></p>
 							<p class="col-md-12">Alternatively please share this page on social media</p> <div class="addthis_sharing_toolbox col-md-12"></div>
 						</div>
 
@@ -297,6 +299,20 @@
 				</div>
 			</div>
 		</div>
+		
+		<!--  Fancybox pop ups -->
+        <div style="display:none">
+          <div id="bookmarkConfirmation">Do you want to create a bookmark for this page in 'My Library'?<br/><br/>
+			  <button type="button" class="btn btn-default btn-success" onclick="cudl.addBookmark()">Yes</button>
+  			  <button type="button" class="btn btn-default" onclick="$.fancybox.close()">Cancel</button>
+           </div>
+         </div>
+        <div style="display:none">
+          <div id="downloadConfirmation"><p>This image has the following copyright:</p><div class="well" id="downloadCopyright"></div><p>Do you want to download this image?</p>              
+			  <button type="button" class="btn btn-default btn-success" onclick="cudl.downloadImage()">Yes</button>
+  			  <button type="button" class="btn btn-default" onclick="$.fancybox.close()">No</button>
+           </div>
+         </div>         
 </body>
 
 </html>
