@@ -68,17 +68,19 @@ store.loadPage = function(pagenumber) {
 		});
 	}
 	;
+	
 
 	// open Image
 	openDzi(cudl.data.pages[pagenumber - 1].displayImageURL);
 
 	// update metadata
-	var newURL = "/view/" + cudl.docId + "/" + cudl.pagenum;
+	var newURL = "/view/" + cudl.docId + "/" + pagenumber;
 	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
 	$('#currentURL').html("http://cudl.lib.cam.ac.uk"+newURL);
+	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
 	
 	// update URL bar
-	window.history.replaceState(cudl.docId + " page:"+ cudl.pagenum, "Cambridge Digital Library",newURL);
+	window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);
 	
 	// update transcription data
 	cudl.setTranscriptionPage(cudl.data, pagenumber);	
@@ -196,46 +198,36 @@ cudl.setupInfoPanel = function(data) {
 				+ "\">"
 				+ cudl.collectionTitle + "</a></li></ol>";
 	}
-
-	aboutFooterHTML = "<br/><div class=\"well\"><h4>Want to know more?</h4><p>Under the 'More' menu you can find <a href='#' onclick='cudl.showPanel(\"#metadata\")'>metadata about the item</a>, any transcription and translation we have of the text and find out about <a href='#' onclick='cudl.showPanel(\"#download\")'>downloading or sharing this image</a>.  </p></div>";
-
-	imageRights = "<div id='zoomRights'>"
-			+ data.descriptiveMetadata[0].displayImageRights + "</div>";
+	$('#about-breadcrumb').html(breadcrumbHTML);
+	
+	$('#about-header').html(cudl.itemTitle+ " ("+data.descriptiveMetadata[0].shelfLocator.displayForm+")");	
+	$('#about-imagerights').html(data.descriptiveMetadata[0].displayImageRights);
 	try {
-		// Setup About panel.
-		$('#rightTabs a[href="#abouttab"]').tab('show');
-		$('#abouttab').html(
-				breadcrumbHTML + "<div id='about-content'><h3>"
-						+ cudl.itemTitle + " ("+data.descriptiveMetadata[0].shelfLocator.displayForm+")</h3><div>"
-						+ data.descriptiveMetadata[0].abstract.displayForm
-						+ "</div>" + aboutFooterHTML + imageRights);
-	} catch (ex) { /* ignore, no contents list */
-		// Should always be a title.
-		$('#abouttab').html(
-				breadcrumbHTML + "<div id='about-content'><h3>"
-						+ cudl.itemTitle + "</h3><div>" + aboutFooterHTML
-						+ imageRights);
-	}
+		$('#about-abstract').html(data.descriptiveMetadata[0].abstract.displayForm);
+	} catch (ex) { /* ignore */} 
+	    
 
 	try {
 		// Set contents panel
-		function addTreeNodes(array) {
+		function addTreeNodes(array, edgeSpacing) {
 			list = "";
 			for (var i = 0; i < array.length; i++) {
 				list = list.concat("<a href='' onclick='store.loadPage("
 						+ (array[i].startPagePosition)
-						+ ");return false;' class='list-group-item'>Page: "
-						+ array[i].startPageLabel + ": &nbsp; "
-						+ array[i].label + " </a> ");
+						+ ");return false;' class='list-group-item'>"+edgeSpacing
+						+ array[i].label
+						+" <span class='about-content-page'>"
+						+"(image "+ array[i].startPagePosition
+						+", page "+ array[i].startPageLabel+")</span>"
+						+" </a> ");				
 				if (array[i].children) {
-					list = list.concat("<div class=\"list-group\">"
-							+ addTreeNodes(array[i].children) + "</div>");
+					list = list.concat(addTreeNodes(array[i].children, edgeSpacing.concat(" &nbsp;&nbsp;&nbsp; ")));
 				}
 			}
 			return list;
 		}
 		var contents = "<div class=\"list-group\">"
-				+ addTreeNodes(data.logicalStructures[0].children) + "</div>";
+				+ addTreeNodes(data.logicalStructures[0].children, "") + "</div>";
 		$('#contentstab').html(contents);
 	} catch (ex) { /* ignore, no contents list */
 	}
@@ -477,24 +469,40 @@ cudl.showThumbnailPage = function (pagenum) {
 
 cudl.setupMetadata = function (data) {
 	
-	$('#metadatacontent').html("<ul>"+ getHTMLForLogicalStructure(data.logicalStructures, 0)+"</ul>");
-		
-	function getHTMLForLogicalStructure(array, level) {
+	// set content of more info tab. 
+	$('#metadatacontent').html("<ul>"+ getHTMLForLogicalStructure(data.logicalStructures, 0, Number.MAX_VALUE)+"</ul>");
+	
+	// set metadata section of about tab. 
+	$('#about-metadata').html("<br/>"+getHTMLForLogicalStructure([data.logicalStructures[0]], 0, 0));
+	
+	
+  function getHTMLForLogicalStructure(array, level, maxlevel) {
 			
-		var html = "";
+	var html = "";
 		
-	    for (var i=0; i<array.length; i++) {
+	for (var i=0; i<array.length; i++) {
 	    			  
-		  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
-		  html = html.concat(getHTMLForDescriptiveMetadata(meta));	
-	    	
-	      if (array[i].children) {		
-			level = level+1;	
-		   	html = html.concat("<div class='well'><ul>"+getHTMLForLogicalStructure(array[i].children, level)+"</ul></div>");
-		  }
-		}
-		return html;
-	};
+	  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
+	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default panel"+array[i].descriptiveMetadataID+"\">");
+	  html = html.concat("<div class=\"panel-heading\"><h4 class=\"panel-title\">");
+	  //html = html.concat("<a data-toggle=\"collapse\" data-target=\"#collapse"+array[i].descriptiveMetadataID+"\" href=\"#collapse"+array[i].descriptiveMetadataID+"\">");
+	  if (level==0) { 
+		  html = html.concat("Information about this document"); // title for full document metadata
+	  } else {
+		  html = html.concat("Section shown in images "+array[i].startPagePosition+" to "+array[i].endPagePosition);
+	  }
+	  //html = html.concat("</a>");
+	  html = html.concat("</h4></div><div id=\"collapse"+array[i].descriptiveMetadataID+"\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">");
+	  html = html.concat("<ul>"+getHTMLForDescriptiveMetadata(meta)+"</ul>");
+	  html = html.concat("</div></div></div>");
+	   	
+	  if (array[i].children && level<maxlevel) {		
+		level = level+1;	
+	   	html = html.concat(getHTMLForLogicalStructure(array[i].children, level, maxlevel));
+	  }
+	}
+    return html;
+  }
 	
 	function findDescriptiveMetadata (id, data) {
 
@@ -604,6 +612,7 @@ cudl.setupMetadata = function (data) {
 				+ "'>" + text + "</a>";
 	}
 	
+	
 	/**
 	 * Used to go through each element in a single descriptiveMetadata item and look for 
 	 * suitable candidates to display.  These are put into an array for sorting. 
@@ -637,6 +646,34 @@ cudl.setupMetadata = function (data) {
 	}	
 }
 
+/**
+ * Returns an array of logical structures for that apply to the
+ * page given. Always includes ROOT logical structure.
+ * Takes in an array of logical structures and a page number. 		 
+ */
+cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
+
+	var lsArray = new Array();			
+	for ( var i = 0; i < logicalStructures.length; i++) {
+		var ls = logicalStructures[i];		
+		
+		if (ls.startPagePosition <= pageNumber
+				&& ls.endPagePosition >= pageNumber) {
+			
+			
+			$('.panel'+ls.descriptiveMetadataID).addClass("panel-primary");
+			
+			if (ls.children) {
+				cudl.highlightMetadataForPageViewed(pageNumber, ls.children);
+			}
+			
+		} else {
+			$('.panel'+ls.descriptiveMetadataID).removeClass("panel-primary");
+		}
+		
+	}
+
+}
 
 cudl.setTranscriptionPage = function (data, pagenum) {
 	

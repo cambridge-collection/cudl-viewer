@@ -244,9 +244,23 @@
 			<!-- End of nav tabs -->
 
 			<!-- Tab panes -->
-			<div id="tab-content" class="tab-content"
-				style="overflow-x: hidden; overflow-y: auto">
-				<div role="tabpanel" class="tab-pane active" id="abouttab"></div>
+			<div id="tab-content" class="tab-content" style="overflow-x: hidden; overflow-y: auto">
+			  <div role="tabpanel" class="tab-pane active" id="abouttab">
+				<span id="about-breadcrumb"></span>
+				<div id='about-content'><h3><span id="about-header"></span></h3>
+				 <div>
+				    <span id="about-abstract"></span>
+				    <span id="about-metadata"></span>
+				    <br><div class="well">
+				    <h4>Want to know more?</h4>
+				    <p>Under the 'More' menu you can find <a href="#" onclick="cudl.showPanel(&quot;#metadata&quot;)">metadata about the item</a>, 
+				    any transcription and translation we have of the text and find out about 
+				    <a href="#" onclick="cudl.showPanel(&quot;#download&quot;)">downloading or sharing this image</a>.  
+				    </p></div>
+				    <div id="zoomRights"><span id="about-imagerights"></span></div>
+				 </div>
+				</div>
+				</div>
 				<div role="tabpanel" class="tab-pane" id="contentstab">No
 					Contents List Available</div>
 				<div role="tabpanel" class="tab-pane" id="thumbnailstab">
