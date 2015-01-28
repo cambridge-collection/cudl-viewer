@@ -345,9 +345,13 @@ cudl.addBookmark = function () {
 
 cudl.downloadImage = function () {
 	
-  var downloadImageURL = cudl.data.pages[cudl.pagenum-1].downloadImageURL;  
-  window.open(cudl.imageServer+downloadImageURL);
   $('#downloadConfirmation').hide();
+  var downloadImageURL = cudl.data.pages[cudl.pagenum-1].downloadImageURL;
+  if (typeof downloadImageURL != "undefined") {
+        window.open(cudl.imageServer+downloadImageURL);    
+  } else {
+	  alert ("No image available to download.");
+  }
     
 }
 
