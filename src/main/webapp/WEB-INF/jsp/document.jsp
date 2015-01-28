@@ -99,12 +99,8 @@
 <meta property="twitter:creator" content="@camdiglib" />
 <meta property="twitter:site" content="@camdiglib" />
 
-<link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
-
 <!-- JQuery -->
 <script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
-<script type="text/javascript"
-	src="/scripts/fancybox/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 <script type="text/javascript" src="/scripts/spin.min.js"></script>
 
@@ -112,12 +108,8 @@
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
 <script src="/scripts/bootstrap.min.js"></script>
 
-<!--  fancybox -->
-<link rel="stylesheet" href="/scripts/fancybox/jquery.fancybox.css">
-
 <!--  font awesome -->
 <link rel="stylesheet" href="/styles/font-awesome/font-awesome.min.css">
-
 
 <!--  addThis sharing tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4" async="async"></script>
@@ -145,6 +137,7 @@
 
 <script type="text/javascript" src="/scripts/openseadragon.min.js"></script>
 <script type="text/javascript" src="/scripts/document.js"></script>
+<link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
 </head>
 <body>
@@ -162,24 +155,17 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<img class="pull-left"
-					src="/images/documentView/logo.png">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand pull-left text-left" href="/#">&nbsp;
+									
+				<a href="http://www.cam.ac.uk"><img id="cam-logo" class="pull-left" src="/images/documentView/logo.png" 
+				alt="Logo for Cambridge University" title="Cambridge University"></a>
+				
+				<a class="navbar-brand pull-left text-left" href="/">&nbsp;
 					Cambridge Digital Library</a>
+					
+				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo" class="pull-right" src="/images/header/ULLogowhite.gif" 
+				alt="Logo for Cambridge University Library" title="Cambridge University Library"></a>
+				
 			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"></li>
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
 		</div>
 	</div>
 	<!-- /.container -->
@@ -191,7 +177,10 @@
            of 
            <span id="maxPage"></span>
            <button id="nextPage" class="cudl-btn fa fa-arrow-right" title="Next Page"></button>
+           <br/>           
          </div>
+         <span id="pageLabel"></span>         
+         
 		 <div class="cudl-viewer-buttons-zoom">
            <button id="rotateLeft" class="cudl-btn fa fa-rotate-left" title="Rotate the image 90° left"></button>
            <button id="rotateRight" class="cudl-btn fa fa-rotate-right" title="Rotate the image 90° right"></button>
@@ -280,7 +269,7 @@
 							<h3 class="panel-title">Download</h3>
 						</div>
 						<div class="panel-body">
-							<a class="btn btn-primary left" id="inline" href="#downloadConfirmation"> <i
+							<a class="btn btn-primary left" href="#" onclick="$('#downloadConfirmation').show();return false;"> <i
 								class="fa fa-download fa-2x pull-left"></i> Download This<br>Image
 							</a>
 							<p class="copyright text col-md-9">This image may be used in
@@ -293,7 +282,7 @@
 							</a>
 							<p class="copyright text col-md-9">Request reproduction
 								rights to this image</p>
-							<br /> <br /> <a class="btn btn-primary left" id="inline" href="#bookmarkConfirmation"> <i
+							<br /> <br /> <a class="btn btn-primary left" href="#" onclick="$('#bookmarkConfirmation').show();return false;"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
 							</a>
 							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>
@@ -304,7 +293,7 @@
 							<h3 class="panel-title">Share</h3>
 						</div>
 						<div class="panel-body">
-							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <b><span id="currentURL">document.write(cudl.docURL)</span></b></p>
+							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <input id="currentURL" type="text" name="link" value="" readonly="readonly" size="60" onclick="select()"></p>
 							<p class="col-md-12">Alternatively please share this page on social media</p> <div class="addthis_sharing_toolbox col-md-12"></div>
 						</div>
 
@@ -313,20 +302,21 @@
 				</div>
 			</div>
 		</div>
-		
-		<!--  Fancybox pop ups -->
-        <div style="display:none">
-          <div id="bookmarkConfirmation">Do you want to create a bookmark for this page in 'My Library'?<br/><br/>
+
+		<!--  Confirmation pop ups -->
+        <div id="bookmarkConfirmation" class="alert alert-info" style="display: none">
+              <a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
+               Do you want to create a bookmark for this page in 'My Library'?<br/><br/>
 			  <button type="button" class="btn btn-default btn-success" onclick="cudl.addBookmark()">Yes</button>
-  			  <button type="button" class="btn btn-default" onclick="$.fancybox.close()">Cancel</button>
-           </div>
-         </div>
-        <div style="display:none">
-          <div id="downloadConfirmation"><p>This image has the following copyright:</p><div class="well" id="downloadCopyright"></div><p>Do you want to download this image?</p>              
+  			  <button type="button" class="btn btn-default" onclick="$('#bookmarkConfirmation').hide();">Cancel</button>
+        </div>
+        <div id="downloadConfirmation" class="alert alert-info" style="display:none">
+              <a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
+              <p>This image has the following copyright:</p><div class="well" id="downloadCopyright"></div><p>Do you want to download this image?</p>              
 			  <button type="button" class="btn btn-default btn-success" onclick="cudl.downloadImage()">Yes</button>
-  			  <button type="button" class="btn btn-default" onclick="$.fancybox.close()">No</button>
-           </div>
-         </div>         
+  			  <button type="button" class="btn btn-default" onclick="$('#downloadConfirmation').hide();">No</button>
+         </div>
+     
 </body>
 
 </html>

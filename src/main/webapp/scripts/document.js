@@ -31,6 +31,20 @@ cudl.thumbnailProps.MAX_THUMBNAIL_ITEMS_ON_ROW = 3;
 
 store.loadPage = function(pagenumber) {
 
+	// validation
+	if (isNaN(pagenumber)) { alert ("Please enter a number."); return; }
+	else if (pagenumber < 0 ) {	pagenumber = 0;	} 
+	else if (pagenumber > cudl.data.numberOfPages ) {
+		pagenumber = cudl.data.numberOfPages;
+	}
+	
+	// test for images
+	var imageavailable = true;	
+	if (typeof(cudl.data.pages[pagenumber-1].displayImageURL) == "undefined") {		
+		cudl.viewer._showMessage("No image available for page: "+cudl.data.pages[pagenumber-1].label);
+		imageavailable = false;
+	}
+		
 	function openDzi(dziPath) {
 
 		// ajax call to fetch .dzi
@@ -63,7 +77,7 @@ store.loadPage = function(pagenumber) {
 				}
 			};
 			cudl.viewer.open(dzi);
-		}).error(function(jqXHR, textStatus, errorThrown) {
+		}).error(function(jqXHR, textStatus, errorThrown) {			
 			cudl.viewer._showMessage("Image server temporarily unavailable");
 		});
 	}
@@ -71,20 +85,21 @@ store.loadPage = function(pagenumber) {
 	
 
 	// open Image
-	openDzi(cudl.data.pages[pagenumber - 1].displayImageURL);
-
-	// update metadata
-	var newURL = "/view/" + cudl.docId + "/" + pagenumber;
-	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
-	$('#currentURL').html("http://cudl.lib.cam.ac.uk"+newURL);
-	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
-	
-	// update URL bar
-	window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);
+	if (imageavailable) { openDzi(cudl.data.pages[pagenumber - 1].displayImageURL); }
 	
 	// update transcription data
 	cudl.setTranscriptionPage(cudl.data, pagenumber);	
 
+	// update metadata
+	var newURL = "/view/" + cudl.docId + "/" + pagenumber;
+	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
+	$('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
+	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
+	$('#pageLabel').html("Page: "+cudl.data.pages[pagenumber-1].label);
+	
+	// update URL bar
+	window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);	
+	
 	// update current page
 	cudl.pagenum = pagenumber;
 	$("#pageInput").val(cudl.pagenum);
@@ -256,8 +271,12 @@ cudl.setupInfoPanel = function(data) {
     	$('#rightTabs a[href="#contentstab"]').click(function(e){return false;}); // disable link;
     }
     
-    // setup fancybox for popups
-    $("#inline").fancybox();	
+    // NB: This will disable thumbnails if the first page has no image. This assumes that 
+    // the there are documents either with a complete set of thumbnails or no thumbnails.  
+    if (typeof data.pages[0].thumbnailImageURL == 'undefined') {    
+    	$('#rightTabs a[href="#thumbnailstab"]').parent().addClass("disabled");
+    	$('#rightTabs a[href="#thumbnailstab"]').click(function(e){return false;}); // disable link;
+    }    
 
 	// setup toggle behaviour
 	infoPanelExpanded = true;
@@ -301,23 +320,19 @@ cudl.addBookmark = function () {
 	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;
 	var bookmarkPath = "/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);
 	
-	console.debug("thumbnailURL: "+thumbnailURL);
-	console.debug("bookmarkPath: "+bookmarkPath);
-	
 	// ajax call to make the bookmark:	
 	$.get(bookmarkPath).success(function(xml) {
 		
 		// parse JSON response.
 		if (xml.bookmarkcreated==true) {			
 			
-			//created bookmark successfully.
-			console.debug("added bookmark");				
-			$.fancybox.close();			
+			//created bookmark successfully.				
+			$('#bookmarkConfirmation').hide();		
 			window.confirm('Added Bookmark Successfully.');			
 			return true; 
 		} else {
 			//failed to create bookmark so manually redirect to login page
-			$.fancybox.close();
+			$('#bookmarkConfirmation').hide();
 			window.location.href = bookmarkPath+"&redirect=true";			
 		}
 		
@@ -329,34 +344,10 @@ cudl.addBookmark = function () {
 }
 
 cudl.downloadImage = function () {
-
-  function SaveToDisk(fileURL, fileName) {
-    // for non-IE
-    if (!window.ActiveXObject) {    	
-        var save = document.createElement('a');
-        save.href = fileURL;
-        save.target = '_blank';
-        save.download = fileName || 'unknown';
-
-        var event = document.createEvent('Event');
-        event.initEvent('click', true, true);
-        save.dispatchEvent(event);
-        (window.URL || window.webkitURL).revokeObjectURL(save.href);
-    }
-
-    // for IE
-    else if ( !! window.ActiveXObject && document.execCommand)     {
-        var _window = window.open(fileURL, '_blank');
-        _window.document.close();
-        _window.document.execCommand('SaveAs', true, fileName || fileURL)
-        _window.close();
-    }
-    
-  }
 	
   var downloadImageURL = cudl.data.pages[cudl.pagenum-1].downloadImageURL;  
   window.open(cudl.imageServer+downloadImageURL);
-    
+  $('#downloadConfirmation').hide();
     
 }
 
@@ -483,7 +474,7 @@ cudl.setupMetadata = function (data) {
 	for (var i=0; i<array.length; i++) {
 	    			  
 	  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
-	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default panel"+array[i].descriptiveMetadataID+"\">");
+	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default panel"+array[i].startPagePosition+"-"+array[i].endPagePosition+"\">");
 	  html = html.concat("<div class=\"panel-heading\"><h4 class=\"panel-title\">");
 	  //html = html.concat("<a data-toggle=\"collapse\" data-target=\"#collapse"+array[i].descriptiveMetadataID+"\" href=\"#collapse"+array[i].descriptiveMetadataID+"\">");
 	  if (level==0) { 
@@ -659,16 +650,15 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 		
 		if (ls.startPagePosition <= pageNumber
 				&& ls.endPagePosition >= pageNumber) {
-			
-			
-			$('.panel'+ls.descriptiveMetadataID).addClass("panel-primary");
+						
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-primary");
 			
 			if (ls.children) {
 				cudl.highlightMetadataForPageViewed(pageNumber, ls.children);
 			}
 			
 		} else {
-			$('.panel'+ls.descriptiveMetadataID).removeClass("panel-primary");
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-primary");
 		}
 		
 	}
@@ -716,7 +706,7 @@ $(document).ready(function() {
 		});
 
 		// set seadragon options and load in dzi.
-		if (cudl.pagenum==0) { cudl.pagenum=1; } // page 0 returns item level metadata. 
+		if (cudl.pagenum==0) { cudl.pagenum=1; } // page 0 returns item level metadata.		
 		cudl.data = data;
 		cudl.setupSeaDragon(data);
 		cudl.setupInfoPanel(data);

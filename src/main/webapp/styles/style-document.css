@@ -4,13 +4,28 @@ body {
 	overflow: hidden;
 }
 
-.container{
-	margin-left:0px;	
+.navbar .container {
+	margin-left:0px;
+	float:left;
+	width: 100%;
 }
 
-.navbar .container {
-	float:left;
+.navbar .navbar-header {
+	width: 100%;
 }
+
+.navbar-inverse .navbar-brand {
+    color: #ddd;
+    font-family: Georgia,"Times New Roman",serif;
+    font-weight: normal;
+    font-size:1.8em;
+    outline: 0;
+}
+
+.navbar #ul-logo {
+	padding-top:7px;
+}
+
 
 /************ Seadragon Image ******************/
 #seadragonImage {
@@ -36,9 +51,13 @@ body {
 	transition-delay: 0s;	
 }
 
+.openseadragon-message {
+	color:#fff;
+}
+
 /************ Seadragon Image Buttons ******************/
 .cudl-viewer-buttons-pagination {
-	z-index:3000;
+	z-index:3000;	
 	position: absolute;
 	margin-left: auto;
 	margin-right: auto;
@@ -49,6 +68,9 @@ body {
 	transition: opacity 0.3s ease;	
     width: 200px;
     color: #fff;
+	text-align: center;
+	display:block;    
+	text-shadow: 1px 1px #333;
 }
 .cudl-viewer-buttons-pagination input {
     color: #333;
@@ -64,6 +86,14 @@ body {
 }
 .cudl-viewer-buttons-pagination input:focus {
 	opacity: 1;
+}
+#pageLabel {
+	position:absolute;
+	right:10px;
+	bottom:5px;
+	color:#fff;
+	z-index:3000;
+	text-shadow: 1px 1px #333;
 }
 
 .cudl-viewer-buttons-zoom {
@@ -126,7 +156,8 @@ body {
 /************ Information panel ******************/
 #about-content {
    padding-left:15px;
-   width:80%;	
+   width:80%;
+   margin-bottom:15px;	
 }
 .about-content-page {
 	color:#999;
@@ -165,6 +196,7 @@ body {
 	border-left:6px solid #fff;
 	border-radius: 2px;
 	z-index: 330;
+	cursor:pointer;
 }
 
 #abouttab {
@@ -217,6 +249,10 @@ body {
 	font-size:0.8em;	
 }
 
+#download .btn {
+	width: 160px;
+}
+
 #metadatacontent {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -240,11 +276,35 @@ body {
 	border:0px;
 }
 
-/* fancybox confirmations */
+/* pop up confirmations */
 
 #bookmarkConfirmation {
-	width:300px;	
+	width:350px;	
+	position:absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index:3000;
+    left: 0;
+    right: 0;
+    top: 200px;
+    color:#000;
+}
+#bookmarkConfirmation .close {
+	margin-top:-15px;
+	margin-right:-10px;
 }
 #downloadConfirmation {
-	width:300px;	
+	width:350px;	
+	position:absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index:3000;
+    left: 0;
+    right: 0;
+    top: 200px;
+    color:#000;	
+}
+#downloadConfirmation .close {
+	margin-top:-15px;
+	margin-right:-10px;
 }
