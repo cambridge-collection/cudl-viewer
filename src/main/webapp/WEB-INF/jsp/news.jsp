@@ -15,6 +15,26 @@
 	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
+	
+	
+	                <hr />
+	
+	<div class="grid_5">
+                        <img alt="Darwin 185"
+                                title="February Update"
+                                src="/images/index/news-2015-02.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">07/02/2015</span>
+                        <h4>February Update</h4>
+                	<p>Our first release of 2015 sees the addition of 16 volumes to the <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection. Amongst these, <a href='/view/MS-DAR-00185'>DAR 185</a> is especially interesting, containing <a href='/view/MS-DAR-00185/541'>marvellous hand-coloured drawings</a> by Darwin’s children on the backs of heavily revised pages of the <i>Origin of Species</i> manuscript. Darwin himself showed little interest in preserving this draft, and these pages were kept for the children’s drawings rather than for their content. They give a fascinating glimpse into life inside the Darwin household, as well as  further insights into the development of the <i>Origin</i>.</p>
+
+<p>We are also releasing two new music manuscripts, <a href='/view/MS-ADD-03389/7'>MS Add.3389</a>, a twelfth-century central Italian <i>Gradual</i> removed from the binding of an early printed book, and <a href='/view/MS-DOC-00038'>MS Doc.38</a>, <i>Indenture for the lease of a property by Mathew Holmes</i>, which was formerly the wrapper of <a href='/view/MS-NN-00006-00036'>MS Nn.6.36</a>, and was the document which identified Holmes as the scribe and owner of one of the most important collections of early lute music.</p>
+
+		</div>
+	
+	                <hr />
 
 	<div class="grid_5">
                         <img alt="Darwin Manuscripts"
@@ -25,9 +45,9 @@
                 <div class="grid_8">
                         <span class="date">13/10/2014</span>
                         <h4>November Update</h4>
-                	<p>Our November release sees the launch of our <a href='http://cudl.lib.cam.ac.uk/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='http://cudl.lib.cam.ac.uk/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
+                	<p>Our November release sees the launch of our <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
 
-<p>November also sees the conclusion of the main phase of the <a href='http://cudl.lib.cam.ac.uk/collections/sanskrit'>Sanskrit Manuscripts project</a>, detailing more than 1,600 manuscripts, 500 of which are fully digitised. Along with important works from the many religious traditions of South Asia, including Vedic, Hindu, Buddhist and Jainist texts – the collection also includes texts on “secular” topics, ranging from works of poetry and drama to treatises on philosophy, mathematics, grammar, astronomy, law, eroticism and medicine.</p>
+<p>November also sees the conclusion of the main phase of the <a href='/collections/sanskrit'>Sanskrit Manuscripts project</a>, detailing more than 1,600 manuscripts, 500 of which are fully digitised. Along with important works from the many religious traditions of South Asia, including Vedic, Hindu, Buddhist and Jainist texts – the collection also includes texts on “secular” topics, ranging from works of poetry and drama to treatises on philosophy, mathematics, grammar, astronomy, law, eroticism and medicine.</p>
 
 <p>Finally, this release sees the introduction of new functionality to the website - allowing you to rotate images in the viewer, and also improving the user experience for those using the site on tablets and mobile devices.</p>
 

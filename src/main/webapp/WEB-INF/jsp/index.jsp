@@ -447,16 +447,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Darwin Manuscripts"
-					title="November Update"
-					src="/images/index/news-darwin_mss.jpg" height="100" width="100"></a>
+					alt="Darwin 185"
+					title="February Update"
+					src="/images/index/news-2015-02.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
 				<span class="date">24/11/2014</span>
 				<h5>
-					<a href="/news">November Release</a></h5>
-					<p>Our November release sees the launch of our <a href='http://cudl.lib.cam.ac.uk/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='http://cudl.lib.cam.ac.uk/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
+					<a href="/news">February Release</a></h5>
+					<p>Our first release of 2015 sees the addition of 16 volumes to the <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection. Amongst these, <a href='/view/MS-DAR-00185'>DAR 185</a> is especially interesting, containing <a href='/view/MS-DAR-00185/541'>marvellous hand-coloured drawings</a> by Darwin’s children on the backs of heavily revised pages of the <i>Origin of Species</i> manuscript. Darwin himself showed little interest in preserving this draft, and these pages were kept for the children’s drawings rather than for their content. They give a fascinating glimpse into life inside the Darwin household, as well as  further insights into the development of the <i>Origin</i>.</p>
 			</div>
 		</div>
 
