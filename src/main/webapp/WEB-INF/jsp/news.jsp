@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="grid_8">
-                        <span class="date">07/02/2015</span>
+                        <span class="date">09/02/2015</span>
                         <h4>February Update</h4>
                 	<p>Our first release of 2015 sees the addition of 16 volumes to the <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection. Amongst these, <a href='/view/MS-DAR-00185'>DAR 185</a> is especially interesting, containing <a href='/view/MS-DAR-00185/541'>marvellous hand-coloured drawings</a> by Darwin’s children on the backs of heavily revised pages of the <i>Origin of Species</i> manuscript. Darwin himself showed little interest in preserving this draft, and these pages were kept for the children’s drawings rather than for their content. They give a fascinating glimpse into life inside the Darwin household, as well as  further insights into the development of the <i>Origin</i>.</p>
 
