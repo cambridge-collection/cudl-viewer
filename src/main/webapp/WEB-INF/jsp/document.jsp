@@ -108,6 +108,10 @@
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
 <script src="/scripts/bootstrap.min.js"></script>
 
+<!--  project light font  -->
+<script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 <!--  font awesome -->
 <link rel="stylesheet" href="/styles/font-awesome/font-awesome.min.css">
 
@@ -156,21 +160,9 @@
 		<div class="container">
 			<div class="navbar-header">
 									
-				<a href="http://www.cam.ac.uk"><img id="cam-logo" class="pull-left" src="/images/documentView/logo.png" 
+				<a href="/"><img id="cam-logo" class="pull-left" src="/images/documentView/cudl-logo-1x.png" 
 				alt="Logo for Cambridge University" title="Cambridge University"></a>
 				
-				<a class="navbar-brand pull-left text-left" href="/">&nbsp;
-					Cambridge Digital Library</a>
-					
-				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo" class="pull-right" src="/images/header/ULLogowhite.gif" 
-				alt="Logo for Cambridge University Library" title="Cambridge University Library"></a>
-				
-			</div>
-		</div>
-	</div>
-	<!-- /.container -->
-	<div id="seadragonImage">	
-		<div id="doc">
 		 <div class="cudl-viewer-buttons-pagination">
            <button id="prevPage" class="cudl-btn fa fa-arrow-left" title="Previous Page"></button>
            <input id="pageInput" type="text" value="1" size="4">
@@ -179,6 +171,17 @@
            <button id="nextPage" class="cudl-btn fa fa-arrow-right" title="Next Page"></button>
            <br/>           
          </div>
+         
+				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo" class="pull-right" src="/images/header/ULLogowhite.gif" 
+				alt="Logo for Cambridge University Library" title="Cambridge University Library"></a>
+				
+			</div>
+		</div>
+	</div>	
+	<!-- /.container -->
+	<div id="seadragonImage">	
+		<div id="doc">
+
          <span id="pageLabel"></span>         
          
 		 <div class="cudl-viewer-buttons-zoom">
@@ -196,6 +199,7 @@
 	<div id="right-panel">
 
 		<div id="right-panel-toggle"><i class="fa fa-angle-right pull-left"></i></div>
+
 		<div role="tabpanel" id="rightTabs">
 
 			<!-- Nav tabs -->
@@ -234,8 +238,8 @@
 
 			<!-- Tab panes -->
 			<div id="tab-content" class="tab-content" style="overflow-x: hidden; overflow-y: auto">
-			  <div role="tabpanel" class="tab-pane active" id="abouttab">
-				<span id="about-breadcrumb"></span>
+			  <div role="tabpanel" class="tab-pane active" id="abouttab">	
+			  <span id="doc-breadcrumb"></span>			
 				<div id='about-content'><h3><span id="about-header"></span></h3>
 				 <div>
 				    <span id="about-abstract"></span>
@@ -269,7 +273,7 @@
 							<h3 class="panel-title">Download</h3>
 						</div>
 						<div class="panel-body">
-							<a class="btn btn-primary left" href="#" onclick="$('#downloadConfirmation').show();return false;"> <i
+							<a class="btn btn-info left" href="#" onclick="$('#downloadConfirmation').show();return false;"> <i
 								class="fa fa-download fa-2x pull-left"></i> Download This<br>Image
 							</a>
 							<p class="copyright text col-md-9">This image may be used in
@@ -277,12 +281,12 @@
 								teaching and research. If you wish to reproduce it within
 								publications or on the public web, please make a reproduction
 								request.</p>
-							<br /> <br /> <a class="btn btn-primary left" href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html" target="_blank"> <i
+							<br /> <br /> <a class="btn btn-info left" href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html" target="_blank"> <i
 								class="fa fa-gavel fa-2x pull-left"></i> Request Image<br>Rights
 							</a>
 							<p class="copyright text col-md-9">Request reproduction
 								rights to this image</p>
-							<br /> <br /> <a class="btn btn-primary left" href="#" onclick="$('#bookmarkConfirmation').show();return false;"> <i
+							<br /> <br /> <a class="btn btn-info left" href="#" onclick="$('#bookmarkConfirmation').show();return false;"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
 							</a>
 							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>

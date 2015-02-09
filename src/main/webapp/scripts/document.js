@@ -213,7 +213,7 @@ cudl.setupInfoPanel = function(data) {
 				+ "\">"
 				+ cudl.collectionTitle + "</a></li></ol>";
 	}
-	$('#about-breadcrumb').html(breadcrumbHTML);
+	$('#doc-breadcrumb').html(breadcrumbHTML);
 	
 	$('#about-header').html(cudl.itemTitle+ " ("+data.descriptiveMetadata[0].shelfLocator.displayForm+")");	
 	$('#about-imagerights').html(data.descriptiveMetadata[0].displayImageRights);
@@ -279,29 +279,43 @@ cudl.setupInfoPanel = function(data) {
     }    
 
 	// setup toggle behaviour
-	infoPanelExpanded = true;
-	$('#right-panel-toggle').click(function() {
+	var infoPanelExpanded = true;
+	
+	var toggleRightPanel = function() {
+
 		if (infoPanelExpanded) {
+			$('#right-panel').css({
+				'right' : ($('#right-panel').width() * -1)
+			});
+			infoPanelExpanded = false;
+			$('#doc').width('100%');
+			
+
+			// update icon
+			$('#right-panel-toggle i').removeClass('fa-angle-right');
+			$('#right-panel-toggle i').addClass('fa-angle-left');
+			
+		} else {
 			$('#right-panel').css({
 				'right' : '0px'
 			});
-			infoPanelExpanded = false;
-			$('#doc').width('60%');
+			infoPanelExpanded = true;
+			$('#doc').css( {'width':($(window).width() - $('#right-panel').width())} );
 			
 			// update icon
 			$('#right-panel-toggle i').removeClass('fa-angle-left');
 			$('#right-panel-toggle i').addClass('fa-angle-right');
-			
-		} else {
-			$('#right-panel').css({
-				'right' : ($('#right-panel').width() * -1)
-			});
-			infoPanelExpanded = true;
-			$('#doc').width('100%');
-			
-			// update icon
-			$('#right-panel-toggle i').removeClass('fa-angle-right');
-			$('#right-panel-toggle i').addClass('fa-angle-left');
+						
+		}
+				
+	}
+	$('#right-panel-toggle').click(toggleRightPanel);
+	if ($(window).width()<550) { toggleRightPanel(); }
+	
+	//update panel positon on resize
+	$(window).resize(function () { 
+		if (!infoPanelExpanded) {
+		  $('#right-panel').css( {'right':($('#right-panel').width() * -1)} );
 		}
 	});
 
@@ -655,14 +669,14 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 		if (ls.startPagePosition <= pageNumber
 				&& ls.endPagePosition >= pageNumber) {
 						
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-primary");
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-info");
 			
 			if (ls.children) {
 				cudl.highlightMetadataForPageViewed(pageNumber, ls.children);
 			}
 			
 		} else {
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-primary");
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-info");
 		}
 		
 	}
@@ -673,7 +687,7 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	
 	// normalised transcriptions
 	var url = data.pages[pagenum-1].transcriptionNormalisedURL;
-	if (typeof url != 'undefined') {
+	if (typeof url != 'undefined' && typeof data.allTranscriptionNormalisedURL == 'undefined') {
 		document.getElementById('transcriptionnormframe').src = cudl.services + url;		
 	} else {
 		document.getElementById('transcriptionnormframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
@@ -681,7 +695,8 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	
 	// diplomatic transcriptions
 	var url = data.pages[pagenum-1].transcriptionDiplomaticURL;
-	if (typeof url != 'undefined') {
+	if (typeof url != 'undefined' && typeof data.allTranscriptionDiplomaticURL == 'undefined') {
+		console.debug ("setting diplo");
 		document.getElementById('transcriptiondiploframe').src = cudl.services + url;		
 	} else {
 		document.getElementById('transcriptiondiploframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
@@ -694,6 +709,19 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	} else {
 		document.getElementById('translationframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo translation available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
 	}
+
+	// set all normalised transcriptions (all transcriptions on one page)
+	var url = data.allTranscriptionNormalisedURL;
+	if (typeof url != 'undefined') {
+		document.getElementById('transcriptionnormframe').src = cudl.services + url;		
+	} 
+	
+	// set all diplomatic transcriptions (all transcriptions on one page)
+	var url = data.allTranscriptionDiplomaticURL;
+	if (typeof url != 'undefined') {
+		document.getElementById('transcriptiondiploframe').src = cudl.services + url;		
+	} 
+	
 }
 
 $(document).ready(function() {
@@ -702,11 +730,11 @@ $(document).ready(function() {
 
 		// set element height to place the openseadragon image.
 		// and ensure this value is updated on window resize.
-		$('#doc').height($(window).height() - 50);
-		$('#tab-content').height($(window).height() - 100);
+		$('#doc').height($(window).height() - 68);
+		$('#tab-content').height($(window).height() - 68);
 		$(window).resize(function() {
-			$('#doc').height($(window).height() - 50);
-			$('#tab-content').height($(window).height() - 100);
+			$('#doc').height($(window).height() - 68);
+			$('#tab-content').height($(window).height() - 68);
 		});
 
 		// set seadragon options and load in dzi.
