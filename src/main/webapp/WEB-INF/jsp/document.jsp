@@ -105,6 +105,7 @@
 <script type="text/javascript" src="/scripts/spin.min.js"></script>
 
 <!--  bootstrap -->
+
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
 <script src="/scripts/bootstrap.min.js"></script>
 

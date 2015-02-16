@@ -226,6 +226,11 @@
 		<mime-type>application/svg+xml</mime-type>
 	</mime-mapping>	
 	
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>	
+		
 	<error-page>
 		<error-code>404</error-code>
 		<location>/errors/404.html</location>
