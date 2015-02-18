@@ -316,7 +316,7 @@ body {
 	position:absolute;
     margin-left: auto;
     margin-right: auto;
-    z-index:3000;
+    z-index:9000;
     left: 0;
     right: 0;
     top: 200px;
@@ -331,7 +331,7 @@ body {
 	position:absolute;
     margin-left: auto;
     margin-right: auto;
-    z-index:3000;
+    z-index:9000;
     left: 0;
     right: 0;
     top: 200px;

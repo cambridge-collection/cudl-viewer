@@ -28,10 +28,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- CSS : implied media="all" -->
-<link rel="stylesheet" href="/styles/bootstrap-default.min.css">
-<link rel="stylesheet" href="/styles/projectlight-full-stylesheet.css" />
-
 <!-- load Project Light Font -->
 <script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
 <script type="text/javascript">
@@ -40,42 +36,6 @@
 	} catch (e) {
 	}
 </script>
-
-<style>
-.carousel-panel {
-	display: none;
-}
-
-@media screen and (min-width: 1177px) {
-	.carousel-panel {
-		background: url("../images/index/grey.png") repeat scroll 0px 0px
-			transparent;
-		height: 374px;
-		right: 0px;
-		padding: 10px;
-		position: absolute;
-		float: right;
-		top: 0px;
-		width: 294px;
-		color: #fff;
-		text-align: left;
-		display: inline-block;
-	}
-	.carousel-panel a {
-		text-decoration: underline;
-	}
-	.campl-carousel-pagination {
-		right: 108px;
-	}
-	.campl-slide-caption {
-		right: 0px;
-	}
-}
-
-input[type="text"] {
-	height: 32px;
-}
-</style>
 
 <!-- jsp:include page="includes.jsp" /-->
 <!-- <script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
@@ -87,10 +47,36 @@ input[type="text"] {
 <link href="/styles/treestyler.css" rel="stylesheet" type="text/css"
 	media="screen" /> -->
 
+<!-- JQuery -->
+<script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
+
+<!--  bootstrap -->
+<link rel="stylesheet" href="/styles/bootstrap-default.min.css">
+<script src="/scripts/bootstrap.min.js"></script>
+
+<!--  Project Light  -->
+<link rel="stylesheet" href="/styles/projectlight-full-stylesheet.css" />
+<script type="text/javascript"	src="/scripts/projectlight-libs/ios-orientationchange-fix.js"></script>
+<script type="text/javascript"	src="/scripts/projectlight-libs/modernizr.js"></script>
+<script type="text/javascript"	src="/scripts/projectlight-libs/jquery-min.js"></script>
+<script type="text/javascript" src="/scripts/projectlight-custom.js"></script>
+
+<!-- Fancybox -->
+<link rel="stylesheet" href="/scripts/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/scripts/fancybox/jquery.fancybox.pack.js"></script>
+
+<!-- Pagination -->
+<link rel="stylesheet" type="text/css" href="/styles/paging.css" media="screen" />	
+<script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
+
+<!-- CUDL -->
+<link rel="stylesheet" href="/styles/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/scripts/cudl.js"></script>
+
 <script type="text/javascript">
 	// initalise page if function is available. 
 	function init() {
-
+		
 		// Show or hide cookie notice and call page specific init statement.
 		cudl.displayCookieNotice();
 		if (typeof pageinit == 'function') {
@@ -103,7 +89,7 @@ input[type="text"] {
 <body onload="init()">
 
 
-	<!--[if lt IE 7]>
+<!--[if lt IE 7]>
 <div class="lt-ie9 lt-ie8 lt-ie7">
 <![endif]-->
 	<!--[if IE 7]>
@@ -123,7 +109,7 @@ input[type="text"] {
 				id="global-header-controls">
 				<a href="http://www.cam.ac.uk" class="campl-main-logo"> <img
 					alt="University of Cambridge"
-					src="../images/interface/main-logo-small.png" />
+					src="/images/interface/main-logo-small.png" />
 				</a>
 
 				<ul
@@ -149,7 +135,7 @@ input[type="text"] {
 							<input id="header-search" type="text" name="query" value=""
 								placeholder="Search" /> <input type="image"
 								class="campl-search-submit "
-								src="../images/interface/btn-search-header.png" />
+								src="/images/interface/btn-search-header.png" />
 						</form>
 					</div>
 				</div>
@@ -163,7 +149,7 @@ input[type="text"] {
 				<div class="campl-search-form-wrapper clearfix">
 					<input type="text" class="text" placeholder="Search" /> <input
 						type="image" class="campl-search-submit"
-						src="../images/interface/btn-search.png" />
+						src="/images/interface/btn-search.png" />
 				</div>
 			</form>
 		</div>

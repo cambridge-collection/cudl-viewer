@@ -7,7 +7,7 @@ cudl.toggleDiv = function (divid) {
 		document.getElementById(divid).style.display = 'none';
 	}
 }
-
+/*
 // Styles expandable trees
 cudl.treestyler = function(){
 	var tree = document.getElementById("tree");
@@ -44,10 +44,12 @@ cudl.treestyler = function(){
 
 // Stores state of expand / collapse on tree
 cudl.treestyler.expand = {};
+*/
 
 /* Fancybox setup */
 
 $(document).ready(function() {
+
 	try {	
  	  $(".iframe").fancybox({
 		'width' : '75%',
@@ -59,7 +61,7 @@ $(document).ready(function() {
 		'title': null
 	  });
 	
-	  $("a#inline").fancybox({
+	  $(".fancybox-inline").fancybox({
 		'width' : '75%',
 		'height' : '75%',
 		'autoSize' : false,
@@ -70,7 +72,7 @@ $(document).ready(function() {
 		/* ignore, fancybox not always present */
 	}
 	// setup any expandable trees
-	cudl.treestyler();
+	//cudl.treestyler();
 });
 
 cudl.setCookie = function (name,value,days)

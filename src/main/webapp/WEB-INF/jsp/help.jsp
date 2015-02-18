@@ -3,16 +3,15 @@
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="4" />
 	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="title" value="Help: FAQ" />
 </jsp:include>
 
-<div class="clear"></div>
-
-<section id="content" class="grid_20 content">
-	<div class="grid_16">
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
+		<div class="campl-column9  campl-main-content" id="content">
+			<div class="campl-content-container">
 
 		<div class="panel light faq">
-
-			<h3 style="margin-left: 8px">Help: FAQ</h3>
 
 			<div class="grid_11">
 
@@ -96,11 +95,10 @@
 					use of plugins to make the site accessible to as many people as
 					possible. For the website we use a collection of JavaScript
 					libraries including <a
-						href="http://gallery.expression.microsoft.com/SeadragonAjax"
-						target="_blank">Seadragon Ajax</a> for the zoomable images, <a
-						href="http://www.sencha.com/products/extjs" target="_blank">ExtJS</a>,
-					<a href="http://jquery.com/" target="_blank">JQuery</a> and <a
-						href="http://www.bbc.co.uk/glow/" target="_blank">Glow</a>. Behind
+						href="https://openseadragon.github.io/"
+						target="_blank">OpenSeadragon</a> for the zoomable images, <a
+						href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and
+					<a href="http://jquery.com/" target="_blank">JQuery</a>. Behind
 					the scenes we use <a href="http://xtf.cdlib.org/" target="_blank">
 						the eXtensible Text Framework (XTF)</a> and <a
 						href="http://www.goobi.org/" target="_blank">Goobi</a> for
@@ -217,10 +215,11 @@
 		</div>
 
 	</div>
+</div>
+</div>
+</div>
 
-</section>
-
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="header/footer-full.jsp" />
 
 
 

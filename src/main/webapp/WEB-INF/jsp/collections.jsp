@@ -548,10 +548,10 @@
 				
 			    String imageDimensions = "";
 				if (item.getThumbnailOrientation().trim().equals("portrait")) {
-					imageDimensions = " style='height:100%' width='100px' ";
+					imageDimensions = " style='height:100%' width='120px' ";
 				} else if (item.getThumbnailOrientation().trim()
 						.equals("landscape")) {
-					imageDimensions = " style='width:100%' width='100px' ";
+					imageDimensions = " style='width:100%' width='120px' ";
 				}%>						
 					<li><a href="/view/<%=item.getId()%>"><img
 							alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
@@ -591,49 +591,6 @@
 	</div>
 </div>
 
-
-
-<!-- 
-<div class="clear"></div>
-
-	
-
-
-	</div>
-
-	<div class="grid_6 box">
-		<h4>Featured Items</h4>
-		<div class="featuredItem grid_6">
-
-			<%for (int i = 0; i < featuredItems.size(); i++) {
-				Item item = featuredItems.get(i);%>
-			<div class="featuredItem-text">
-				<h5>
-					<a href="/view/<%=item.getId()%>"><%=item.getTitle()%></a>
-				</h5>
-			</div>
-
-			<%String imageDimensions = "";
-				if (item.getThumbnailOrientation().trim().equals("portrait")) {
-					imageDimensions = " style='height:100%' ";
-				} else if (item.getThumbnailOrientation().trim()
-						.equals("landscape")) {
-					imageDimensions = " style='width:100%' ";
-				}%>
-			<div style="float: left;">
-				<div class="collections_carousel_image_box">
-					<div class="collections_carousel_image">
-						<a href="/view/<%=item.getId()%>/"><img
-							alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
-							<%=imageDimensions%> /> </a>
-					</div>
-				</div>
-			</div>
-
-			<%}%>
-		</div>
-	</div>
-</section> -->
 
 <jsp:include page="header/footer-full.jsp" />
 

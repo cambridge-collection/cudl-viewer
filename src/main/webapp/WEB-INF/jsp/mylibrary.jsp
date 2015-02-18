@@ -1,11 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.*,java.util.Iterator,java.util.*"%>
-<jsp:include page="header/header-full.jsp" >
-	<jsp:param name="loggedin" value="true" />
-</jsp:include>
+<jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="2" />
 	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="title" value="My Library" />
 </jsp:include>
 
 <%
@@ -36,18 +35,21 @@ function checkRemove() {
 
 <div class="clear"></div>
 
-<section id="content" class="grid_20 content ">
-
-	<div class="grid_20">
-
-		<div class="grid_9">
-			<h3>My Library</h3>
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
+	
+		<div class="campl-column7  campl-main-content" id="content">
+			<div class="campl-content-container">
+			
 			Create your own collection by bookmarking any page within Cambridge
 			Digital Library, and it will appear here. <br /> <br />
 			<jsp:include page="mylibrary-help.jsp" />
-		</div>
-		<div class="grid_10">
-			<h4>My Bookmarks</h4>
+
+            </div>
+        </div>
+        <div class="campl-column5 campl-secondary-content ">
+        
+		  <h2>My Bookmarks</h2>
 
 			<ol id="collections_carousel">
 				<%
@@ -101,7 +103,7 @@ function checkRemove() {
 								+ pageNum
 								+ "'>more</a> "
 								+ "</div>"
-								+ "<a onclick='return checkRemove()' style='float:right' href='/mylibrary/deletebookmark/?itemId="
+								+ "<a class='bookmark-removelink' onclick='return checkRemove()' href='/mylibrary/deletebookmark/?itemId="
 								+ item.getId() + "&page=" + pageNum + "&redirect=true'>remove</a>"
 								+ "<div class='clear'></div></div></li>\n\n");
 					}
@@ -114,13 +116,45 @@ function checkRemove() {
 
 
 			</ol>
-		</div>
+		  
+        </div>
+					
+
 	</div>
-	<div class="grid_20">&nbsp;</div>
+</div>
 
-</section>
 
-<jsp:include page="footer/footer.jsp" />
+
+<jsp:include page="header/footer-full.jsp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

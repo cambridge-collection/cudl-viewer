@@ -3,22 +3,43 @@
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="3" />
 	<jsp:param name="displaySearch" value="true" />
-</jsp:include>
-<jsp:include page="header/nav-about-submenu.jsp">
-	<jsp:param name="activeSubmenu" value="3" />
+	<jsp:param name="subtitle" value="Terms & Conditions" />
 </jsp:include>
 
-<div class="clear"></div>
 
-<section id="content" class="grid_20 content">
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
+
+		<!-- side nav -->
+		<div class="campl-column3">
+			<div class="campl-tertiary-navigation">
+				<div class="campl-tertiary-navigation-structure">
+					<ul class="campl-unstyled-list campl-vertical-breadcrumb">
+						<li><a href="/">Cambridge Digital Library<span
+								class="campl-vertical-breadcrumb-indicator"></span></a></li>
+					</ul>
+					<ul
+						class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
+						<li class="campl-selected"><a href="/about/">About</a>
+							<ul
+								class='campl-unstyled-list campl-vertical-breadcrumb-children'>
+								<li><a href="/about/">Introducing the Cambridge Digital
+										Library</a></li>
+								<li><a href="/news/">News</a></li>
+								<li><a href="/contributors/">Contributors</a></li>
+								<li><a href="/terms/">Terms & Conditions</a></li>
+							</ul></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
 
 
-	<div class="grid_19 terms">
-
-		<div class="panel light">
-
-			<div class="grid_11 terms">
-				<h3>Terms & Conditions</h3>
+		<div class="campl-column8  campl-main-content" id="content">
+			<div class="campl-content-container">
+				<h2>Terms & Conditions</h2>
+				<hr class="cam-teaser-divider campl-column12">
 
 				<ol>
 					<li><a href="#terms">Terms of website use</a></li>
@@ -446,15 +467,11 @@
 					Kingdom<br /> CB3 9DR<br /> Email: <a
 						href="mailto:foundations@lib.cam.ac.uk">foundations@lib.cam.ac.uk</a>
 				</p>
+
 			</div>
 		</div>
-
 	</div>
+</div>
 
 
-</section>
-
-<jsp:include page="footer/footer.jsp" />
-
-
-
+<jsp:include page="header/footer-full.jsp" />

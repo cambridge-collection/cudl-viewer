@@ -3,6 +3,7 @@
 int activeIndex = Integer.valueOf(request.getParameter("activeMenuIndex"));
 boolean displaySearch = request.getParameter("displaySearch").toString().equals("true");
 String title = request.getParameter("title");
+String subtitle = request.getParameter("subtitle");
 %>
 
 	<div class="campl-row campl-page-header campl-section-page">
@@ -46,13 +47,13 @@ String title = request.getParameter("title");
 	<li><a href="/collections/" title="Browse" <% if (activeIndex==1) { %>class="campl-selected" <% } %>> Browse </a></li>
 	<li><a href="/mylibrary/" title="My Library" <% if (activeIndex==2) { %>class="campl-selected" <% } %>> My Library </a></li>
 	<li><a href="/about/" title="About" <% if (activeIndex==3) { %>class="campl-selected" <% } %>> About </a><ul class="campl-unstyled-list local-dropdown-menu">
-							<li><a href="#">Overview</a></li>
-							<li><a href="#">News</a></li>
-							<li><a href="#">Contributors</a>
-							<li><a href="#">Terms and Conditions</a></li>
+							<li><a href="/about/">Introducing the Cambridge Digital Library</a></li>
+							<li><a href="/news/">News</a></li>
+							<li><a href="/contributors/">Contributors</a>
+							<li><a href="/terms/">Terms and Conditions</a></li>
 						</ul></li>	
 	<li><a href="/help/" title="Help" <% if (activeIndex==4) { %>class="campl-selected" <% } %>> Help </a></li></ul>
-			</div>
+			</div></div>
 			
 			<% if (title!=null) { %>
 		<div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
@@ -62,6 +63,20 @@ String title = request.getParameter("title");
 				</div>
 			</div>
 		</div>
+		   <% } 
+		   
+		     else if (subtitle!=null) { %>
+		     
+			<div class="campl-wrap clearfix campl-page-sub-title campl-recessed-sub-title">
+			<div class="campl-column3 campl-spacing-column">
+				&nbsp;
+			</div>
+			<div class="campl-column9">
+				<div class="campl-content-container">
+					<h1 class="campl-sub-title"><%=subtitle %></h1>
+				</div>
+			</div>
+		     
 		   <% } %>
  	  </div>			
 

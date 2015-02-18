@@ -3,11 +3,24 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<jsp:include page="header/header-login.jsp" />
+<jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="2" />
 	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="title" value="Login" />
 </jsp:include>
+
+<!-- Simple OpenID Selector -->
+
+<script type="text/javascript" src="/scripts/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="/scripts/openid/openid-jquery.js"></script>
+<script type="text/javascript" src="/scripts/openid/openid-en.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		openid.init('openid_identifier');
+		//openid.setDemoMode(true); //Stops form submission for client javascript-only test purposes
+	});
+</script>
 
 <script>
 	function showOrHideOpenId() {
@@ -27,50 +40,63 @@
 	}
 </script>
 
-<div class="grid_20">
-	<div class="clear"></div>
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
+		<div class="campl-column12  campl-main-content" id="content">
+			<div class="campl-content-container">
 
-	<section id="content" class="grid_20 content ">
-		<h3>My Library</h3>
-		<div id="error">${error}</div>
-		<br />
-		<div class="grid_18">
-			Login to create or view your collection of bookmarks. <br /> <br />
-		</div>
-		<div class="grid_10 box">
-			<h4>You can login with any of the following:</h4>
+                <div id="login_error">${error}</div>
 
-			<div class="grid_9">
-				<form id="openid_form" method="post"
-					action="/j_spring_openid_security_check">
-					<div class="grid_8">
-						<a class="google openid_large_btn"
-							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: 0px 0px"
-							href="javascript:openid.signin('google');"
-							title="log in with Google"></a> <a class="yahoo openid_large_btn"
-							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -100px 0px"
-							href="javascript:openid.signin('yahoo');"
-							title="log in with Yahoo"></a> <a class="openid openid_large_btn"
-							onclick="showOrHideOpenId()"
-							style="background: #FFF url(../../img/openid/openid-providers-en.png); background-position: -400px 0px"
-							href="javascript:openid.signin('openid');"
-							title="log in with OpenID"></a>
+				<div class="campl-column12">Login to create or view your
+					collection of bookmarks.</div>
+				<div class="campl-column4">&nbsp;</div>
+				<div class="campl-column4 campl-login-form">
+					<div class="campl-content-container">
+						<form id="openid_form" method="post"
+							action="/j_spring_openid_security_check">
+							<fieldset>
+								Sign in with your<br /> <img src="/images/google-logo.jpg"
+									width="20px" height="20px"> <span class="google_account">Google
+									Account</span><br />
+
+								<button type="button" class="btn btn-primary"
+									onclick="javascript:openid.signin('google');">Sign In</button>
+
+								<div>
+									<a title="log in with OpenID" class="login_alt_link"
+										href="javascript:openid.signin('openid');"
+										onclick="showOrHideOpenId()">Use an alternative OpenID
+										provider</a>
+								</div>
+
+								<div id="openid_input_area" style="display: none">
+									<div class="campl-control-group">
+										<input type="hidden" value="verify" name="action"> <label
+											for="openid_identifier">Enter your OpenID</label>
+										<div class="campl-controls">
+											<input id="openid_identifier" value="http://"
+												class="campl-input-block-level" type="text">
+										</div>
+									</div>
+			
+									<button type="submit" class="campl-btn campl-primary-cta campl-float-right">Sign In2</button>	
+								</div>
 					</div>
-					<div class="grid_8">
-						<div id="openid_input_area" style="display: none;">
-
-							<input type="hidden" value="verify" name="action">
-							<p>Enter your OpenID.</p>
-							<input id="openid_identifier" type="text" value="http://"
-								name="openid_identifier"
-								style="background: #FFF url(../../img/openid/openid-inputicon.gif) no-repeat scroll 0 50%; padding-left: 18px;">
-							<input id="openid_submit" type="submit" value="Sign-In">
-
-						</div>
-					</div>
-				</form>
+					</fieldset>
+					</form>
+				</div>
+			</div>
+			<div class="campl-column4"></div>
+			<div class="campl-column12">
+				<br />
+				<br />
 			</div>
 
 		</div>
+	</div>
 </div>
-<jsp:include page="footer/footer.jsp" />
+
+
+<jsp:include page="header/footer-full.jsp" />
+
+

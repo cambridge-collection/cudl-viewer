@@ -1,22 +1,25 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Newton Papers</h3>
-	<blockquote class="grid_5 omega print">
+	<h1>Newton Papers</h1>
+	<div class="campl-column12">
+	
+	<div class="campl-column8">
+	<blockquote class="cam-quote-mark">
 
 		Plato is my friend,<br /> Aristotle is my friend,<br /> but my
-		greatest friend is truth." <br /> <br /> <cite>&mdash;Sir
+		greatest friend is truth." <br /> <br /> <cite>Sir
 			Isaac Newton <br />(<a href="/view/MS-ADD-03996/179">MS
-				Add.3996, 88r</a>)</cite>
+				Add.3996, 88r</a>)</cite><span class="image-credit"> <a href="#trinity">Trinity
+				College, Cambridge.</a> </span>
 
 	</blockquote>
-	<br /> <br />
-	<div class="grid_4">
+    </div>
+	<div class="campl-column4">
 		<img class="collectionOrganisationalImage" src="/images/collectionsView/newton.jpg"
-			alt="Newton" width="150" height="225" /> <span class="image-credit">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#trinity">Trinity
-				College, Cambridge.</a> </span>
+			alt="Newton" width="150" height="225" /> <br/> 
 	</div>
-	<div class="grid_9">
+	</div>
+	<div class="campl-column12">
 		<br />
 		<p>Cambridge University Library holds the largest and most
 			important collection of the scientific works of Isaac Newton

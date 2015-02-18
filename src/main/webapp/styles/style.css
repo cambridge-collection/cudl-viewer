@@ -1,11 +1,38 @@
-/* main pages style */
-html {
-	background: #ffffff url(/images/header/gradient.jpg) repeat-x;
+/* homepage style */
+.carousel-panel {
+	display: none;
 }
 
-body {
-	background: none;
+@media screen and (min-width: 1177px) {
+	.carousel-panel {
+		background: url("../images/index/grey.png") repeat scroll 0px 0px
+			transparent;
+		height: 374px;
+		right: 0px;
+		padding: 10px;
+		position: absolute;
+		float: right;
+		top: 0px;
+		width: 294px;
+		color: #fff;
+		text-align: left;
+		display: inline-block;
+	}
+	.carousel-panel a {
+		text-decoration: underline;
+	}
+	.campl-carousel-pagination {
+		right: 108px;
+	}
+	.campl-slide-caption {
+		right: 0px;
+	}
 }
+
+#header-search input[type="text"] {
+	height: 32px;
+}
+/* end of homepage style */
 
 #noscript-warning {
 	position: fixed;
@@ -47,89 +74,10 @@ body {
 	background-color: #FFFFFF;
 }
 
-#index_carousel_parent {
-	padding-top: 0px;
-	border-style: solid;
-	border-top: 2px solid #999;
-	height: 400px;
-}
-
-ol#index_carousel li {
-	position: relative;
-	float: left;
-	margin: 0px;
-	/*height: 390px;*/
-	width: 944px;
-	list-style: none outside none;
-}
-
-#index_carousel .panel {
-	background: url("../images/index/grey.png") repeat scroll 0 0
-		transparent;
-	height: 374px;
-	left: 0;
-	padding: 10px;
-	position: absolute;
-	float: left;
-	top: 0;
-	width: 278px;
-}
-
-#index_carousel h4,h4 a,#index_carousel p {
-	color: #ffffff;
-}
-
-#index_carousel a:link,#index_carousel a:visited,#index_carousel a:active
-	{
-	color: #ffffff;
-}
-
-ol#index_carousel li {
-	height: 370px;
-}
-
-/* Set the prev button to be absolutely positioned to the left of the carousel */
-#index_carousel_parent #leftarrow {
-	background: transparent url(/images/index/left-arrow-down.png) top left
-		repeat-y;
-	left: 5px;
-	top: 305px;
-	position: absolute;
-	float: left;
-	height: 62px;
-	width: 62px;
-}
-
-/* Set the next button to be absolutely positioned to the right of the carousel */
-#index_carousel_parent #rightarrow {
-	background: transparent url(/images/index/right-arrow-down.png) top left
-		repeat-y;
-	left: 876px;
-	top: 305px;
-	position: absolute;
-	float: left;
-	height: 62px;
-	width: 62px;
-}
-
-/* place dots in the middle */
-#index_carousel_parent .pageNav {
-	padding-left: 240px;
-}
-
 #cookienotice {
-	background: #eeeeee;
-	color: #333333;
-	padding: 8px 0 8px 0;
-	opacity: 0.8;
-	position: fixed;
+	color: #fff;
+	padding: 8px 8px 8px 0;
 	bottom: 0;
-	height: 30px;
-	display: none;
-	z-index: 100;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #333333;
 }
 
 #cookienotice input {
@@ -393,6 +341,10 @@ ol#index_carousel li {
 	font-weight: bold;
 }
 
+blockquote {
+   border-left: 0px;
+}
+
 .collectionOrganisationalImage {
 	margin-left: 14px;
 	margin-right: 0px;
@@ -486,7 +438,7 @@ ol#search_carousel li {
 .collections_carousel_image_box {
 	float: right;
 	width: 180px;
-	height: 180px;
+	height: 190px;
 	background: #000000;
 	padding: 5px;
 	border-style: solid;
@@ -499,6 +451,7 @@ ol#search_carousel li {
 	vertical-align: middle;
 	width: 180px;
 	height: 180px;
+	text-align:center;
 }
 
 .collections_carousel_text {
@@ -898,4 +851,46 @@ ol#vcollections_carousel li {
 	background: none repeat scroll 0 0 #DBE8F1;
 	line-height: 200%;
 	padding:15px;
+}
+
+
+.news_items img {
+	float:left;
+	margin-right:20px;
+}
+
+.funder_item {
+	margin-bottom:20px;
+	margin-top:20px;
+}
+
+#openid_form {
+	text-align:center;
+	line-height:30px;
+}
+#openid_form .google_account {
+	font-weight:bold;
+	font-size:1.3em;
+	margin-left:5px;
+}
+#openid_form button {
+	width:150px;
+    margin:10px;
+}
+#openid_form .login_alt_link {
+	margin-top:10px;
+	margin-bottom:0px;
+}
+#openid_identifier {
+	height:30px;
+}
+#login_error {
+	color:#f00;
+	font-weight:bold;
+	margin-bottom:20px;
+}
+
+.bookmark-removelink {
+	float:right;
+	margin-right:10px;
 }
