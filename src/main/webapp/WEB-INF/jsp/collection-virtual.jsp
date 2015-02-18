@@ -1,88 +1,93 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
-	
+	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%><jsp:include
+	page="header/header-full.jsp" />
+<jsp:include page="header/nav.jsp">
+	<jsp:param name="activeMenuIndex" value="1" />
+	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="title" value="Browse our collections" />
+</jsp:include>
+
+
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 
-    ItemFactory factory = (ItemFactory) request
-             .getAttribute("itemFactory");
+	ItemFactory factory = (ItemFactory) request
+			.getAttribute("itemFactory");
 
 	Iterator<String> ids = collection.getItemIds().iterator();
-	List<Item> items = new ArrayList<Item> ();
-		
-	while(ids.hasNext()) {
+	List<Item> items = new ArrayList<Item>();
+
+	while (ids.hasNext()) {
 		String id = ids.next();
 		Item item = factory.getItemFromId(id);
-		items.add(item);	
+		items.add(item);
 	}
-%>	
-<jsp:include page="header/header-full.jsp" >
-	<jsp:param name="title" value="<%=collection.getTitle()%>" />
-</jsp:include>	
-<jsp:include page="header/nav.jsp" >    
-   <jsp:param name="activeMenuIndex" value="1" />
-   <jsp:param name="displaySearch" value="true" />
-</jsp:include>	
-<jsp:include page="header/nav-browse-submenu.jsp" />
+%>
 
-<script type="text/javascript" >
-  /*
-function pageinit() {
-
-	 var collections_carousel = new glow.widgets.Carousel("#collections_carousel", {
-	 loop : false,
-	 size : 2,
-	 step : 1,
-	 vertical : false,
-	 pageNav : false
-	 }); 
- }*/
-	 
-</script>
 
 <div class="clear"></div>
 
-<section id="content" class="grid_20 content grid_carousel"> <jsp:include
-	page="<%=collection.getSummary() %>" />
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
 
-<div class="grid_20">
+		<div class="campl-column12  campl-main-content" id="content">
+			<div class="campl-content-container">
 
-<ol id="collections_carousel">
-	<%
-	   Iterator<Item> itemIterator = items.iterator();
-	   int itemNum = 0; 
-	   
-		while (itemIterator.hasNext()) {
-			Item item = itemIterator.next();
-			itemNum++;			
+				<jsp:include page="<%=collection.getSummary()%>" />
 
-			String imageDimensions = "";
-			if (item.getThumbnailOrientation().equals("portrait")) {
-				imageDimensions += " style='height:100%' ";
-			} else if (item.getThumbnailOrientation().equals("landscape")) {
-				imageDimensions += " style='width:100%' ";
-			}
+			</div>
+			<div class="campl-content-container campl-column12">
 
-			out.print("<li><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
-			        + "<div class='collections_carousel_image' id='collections_carousel_item"+itemNum+"'><a href='/view/" + item.getId()
-					+ "/1'><img src='" + item.getThumbnailURL()+ "' " + "alt='"
-					+ item.getId() + "' "+imageDimensions
-					+ "></a></div></div> \n ");
-			out.print("<div class='collections_carousel_text'><h5>" + item.getTitle() + " ("
-					+ item.getShelfLocator() + ")</h5> "
-					+ item.getAbstractShort() + " ... <a href='/view/"
-					+ item.getId() + "/1'>more</a> " + "</div><div class='clear'></div></div></li>\n\n");
-		}
-	%>
-</ol>
+				<ol id="collections_carousel">
+					<%
+						Iterator<Item> itemIterator = items.iterator();
+						int itemNum = 0;
 
+						while (itemIterator.hasNext()) {
+							Item item = itemIterator.next();
+							itemNum++;
+
+							String imageDimensions = "";
+							if (item.getThumbnailOrientation().equals("portrait")) {
+								imageDimensions += " style='height:100%' ";
+							} else if (item.getThumbnailOrientation().equals("landscape")) {
+								imageDimensions += " style='width:100%' ";
+							}
+
+							out.print("<li class='campl-column5'><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
+									+ "<div class='collections_carousel_image' id='collections_carousel_item"
+									+ itemNum
+									+ "'><a href='/view/"
+									+ item.getId()
+									+ "/1'><img src='"
+									+ item.getThumbnailURL()
+									+ "' "
+									+ "alt='"
+									+ item.getId()
+									+ "' "
+									+ imageDimensions
+									+ "></a></div></div> \n ");
+							out.print("<div class='collections_carousel_text'><h5>"
+									+ item.getTitle() + " (" + item.getShelfLocator()
+									+ ")</h5> " + item.getAbstractShort()
+									+ " ... <a href='/view/" + item.getId()
+									+ "/1'>more</a> "
+									+ "</div><div class='clear'></div></div></li>\n\n");
+						}
+					%>
+				</ol>
+
+			</div>
+
+			<div class="campl-column12 campl-content-container">
+				<jsp:include page="<%=collection.getSponsors()%>" />
+			</div>
+		</div>
+	</div>
 </div>
-<div class="grid_20">&nbsp;</div>
 
-<jsp:include page="<%=collection.getSponsors() %>" /> </section>
-
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="header/footer-full.jsp" />
 
 
 

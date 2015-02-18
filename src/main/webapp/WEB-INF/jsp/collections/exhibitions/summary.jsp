@@ -1,25 +1,28 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*"%>
+<%
+	Collection collection = (Collection) request
+			.getAttribute("collection");
+%>
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Exhibition Items</h3>
+	<h1><%=collection.getTitle()%></h1>
 
-	<!--  <div class="grid_10">This is a virtual collection and has a
-		different layout.</div> 
-	<br />
-	<br /> -->
-	<div class="virtual_collection_summary">
+	<!--  NOTE This is a virtual collection and has a different layout. -->
 
-		<div class="grid_9">
+	<div class="campl-content-container">
 
-			<blockquote class="grid_8 omega print">
+		<div class="campl-column6 virtual_collection_textgroup">
+
+			<blockquote class="cam-quote-mark">
 
 				Some books are to be tasted, others to be swallowed, and some few
-				to be chewed and digested" <br /> <br /> <cite>&mdash;
+				to be chewed and digested" <br /> <br /> <cite>
 					Francis Bacon, 'Of Studies' from <i>Essays</i> 1625
 				</cite>
 
 			</blockquote>
-			<div class="grid_8">
-				<p>The Library holds regular exhibitions, usually organised
+			<div class="campl-content-container">
+<p>The Library holds regular exhibitions, usually organised
 					around a particular theme or collection. Depending on the chosen
 					theme, the exhibition cases might contain anything from
 					irreplaceable works of world importance to newspapers or printed
@@ -50,7 +53,7 @@
 
 			</div>
 		</div>
-		<div class="grid_10">
+		<div class="campl-column6">
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/exhibition1.jpg');">
 				<a href="/view/PR-01886-00012-00019/1"><img src="/img/blank.gif"
@@ -79,9 +82,6 @@
 					title="The youth's moral pilot" /> </a>
 			</div>
 		</div>
-
 	</div>
-
 </div>
-
-<hr />
+<div class="campl-column12">&nbsp;</div>

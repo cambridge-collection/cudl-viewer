@@ -6,25 +6,31 @@
 %>
 
 <div class="grid_10">
-	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
-	<blockquote class="grid_6 omega print">
+	<h1><%=collection.getTitle()%></h1>
+	<div class="campl-column12">
 
-		<div class="right-aligned-language">היש מספיק בכל שירה ומזמור<br />להלל עט</div>
-		<br /> Are there words enough in all of song / to praise the pen? "<br />
-		<br /> <cite>&mdash; Shem Tov Ardutiel <br />(Trans. Peter
-			Cole, The Dream of the Poem)
-		</cite>
+		<div class="campl-column8">
+			<blockquote class="cam-quote-mark">
 
-	</blockquote>
-	<br /> <br />
-	<div class="grid_3 right">
-		<a href="/view/MS-DD-00010-00068/80"><img
-			class="collectionOrganisationalImage"
-			src="/images/collectionsView/hebrew.jpg" alt="MS-DD-00010-00068"
-			width="150" height="225" /></a>
+				<div class="right-aligned-language">
+					היש מספיק בכל שירה ומזמור<br />להלל עט
+				</div>
+				<br /> Are there words enough in all of song / to praise the pen? "<br />
+				<br /> <cite> Shem Tov Ardutiel <br />(Trans. Peter
+					Cole, The Dream of the Poem)
+				</cite>
+
+			</blockquote>
+		</div>
+		<div class="campl-column4">
+			<a href="/view/MS-DD-00010-00068/80"><img
+				class="collectionOrganisationalImage"
+				src="/images/collectionsView/hebrew.jpg" alt="MS-DD-00010-00068"
+				width="150" height="225" /></a>
+		</div>
 	</div>
-	<div class="grid_9">
-		<br />
+	<div class="campl-column12">
+
 		<p>For over five hundred years Cambridge University has been
 			building up one of the world’s most important collections of Hebrew
 			manuscripts. The University Library holds significant numbers of

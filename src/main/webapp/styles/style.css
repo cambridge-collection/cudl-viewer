@@ -346,9 +346,9 @@ blockquote {
 }
 
 .collectionOrganisationalImage {
-	margin-left: 14px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 15px;
 	float: right;
 }
 
@@ -455,7 +455,8 @@ ol#search_carousel li {
 }
 
 .collections_carousel_text {
-	padding: 5px;
+	width:250px;
+	margin-left:20px;
 }
 
 .word-wrap-200 {
@@ -511,15 +512,34 @@ ol#vcollections_carousel li {
 	width: 920px;
 	margin-bottom: 18px;
 }
+.virtual_collection_textgroup {
+	padding-right: 20px;
+}
 
 /* credit text for images, small */
 .image-credit,.image-credit a {
-	font-size: 0.8em;
+	font-size: 0.9em;
 	color: #999999;
 	vertical-align: top;
 	text-decoration: none;
 	border: 0px;
 	padding: 0px;
+}
+
+.image-credit-darwin, .image-credit-darwin a {
+	font-size: 0.9em;
+	color: #999999;
+	text-decoration: none;
+	margin-left:25px;
+}
+
+.image-credit-islamic, .image-credit-islamic a {
+	font-size: 0.9em;
+	color: #999999;
+	text-decoration: none;
+	margin-right:10px;
+	float:right;
+	margin-bottom:10px;
 }
 
 .search-result-snippet {

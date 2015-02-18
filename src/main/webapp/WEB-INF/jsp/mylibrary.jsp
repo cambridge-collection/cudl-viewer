@@ -10,7 +10,7 @@
 <%
 	List<Item> itemList = (List<Item>) request.getAttribute("items");
 	List<Bookmark> bookmarkList = (List<Bookmark>) request
-			.getAttribute("bookmarks");
+	.getAttribute("bookmarks");
 	
 	// Username ONLY used for embedding in html for debugging purposes.
 	// (so we can tell by inspecting the HTML who the user is)
@@ -19,37 +19,39 @@
 
 
 <form>
-<input type="hidden" name="username" value="<%=username %>"/>
+	<input type="hidden" name="username" value="<%=username%>" />
 </form>
 
 <script>
-function checkRemove() {
-	var result = confirm("Are you sure you want to remove this item from your bookmarks?");
-	if (result==true) {
-		return true;
-	} else {
-	    return false;
+	function checkRemove() {
+		var result = confirm("Are you sure you want to remove this item from your bookmarks?");
+		if (result == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-}
 </script>
 
 <div class="clear"></div>
 
 <div class="campl-row campl-content campl-recessed-content">
 	<div class="campl-wrap clearfix">
-	
+
 		<div class="campl-column7  campl-main-content" id="content">
 			<div class="campl-content-container">
-			
-			Create your own collection by bookmarking any page within Cambridge
-			Digital Library, and it will appear here. <br /> <br />
-			<jsp:include page="mylibrary-help.jsp" />
 
-            </div>
-        </div>
-        <div class="campl-column5 campl-secondary-content ">
-        
-		  <h2>My Bookmarks</h2>
+				Create your own collection by bookmarking any page within Cambridge
+				Digital Library, and it will appear here. <br /> <br />
+				<jsp:include page="mylibrary-help.jsp" />
+
+			</div>
+		</div>
+		<div class="campl-column5 campl-secondary-content ">
+
+			<div class="campl-heading-container">
+				<h2>My Bookmarks</h2>
+			</div>
 
 			<ol id="collections_carousel">
 				<%
@@ -104,7 +106,8 @@ function checkRemove() {
 								+ "'>more</a> "
 								+ "</div>"
 								+ "<a class='bookmark-removelink' onclick='return checkRemove()' href='/mylibrary/deletebookmark/?itemId="
-								+ item.getId() + "&page=" + pageNum + "&redirect=true'>remove</a>"
+								+ item.getId() + "&page=" + pageNum
+								+ "&redirect=true'>remove</a>"
 								+ "<div class='clear'></div></div></li>\n\n");
 					}
 
@@ -116,9 +119,9 @@ function checkRemove() {
 
 
 			</ol>
-		  
-        </div>
-					
+
+		</div>
+
 
 	</div>
 </div>

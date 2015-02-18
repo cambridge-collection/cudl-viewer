@@ -1,34 +1,35 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*"%>
+<%
+	Collection collection = (Collection) request
+			.getAttribute("collection");
+%>
 <div class="grid_10">
-	<h3 style="margin-left: 8px">Treasures of the Library</h3>
+	<h1><%=collection.getTitle()%></h1>
 
-	<!--  <div class="grid_10">This is a virtual collection and has a
-		different layout.</div> 
-	<br />
-	<br /> -->
-	<div class="virtual_collection_summary">
+	<!--  NOTE This is a virtual collection and has a different layout. -->
 
-		<div class="grid_9">
+	<div class="campl-content-container">
 
-			<blockquote class="grid_8 omega print">
+		<div class="campl-column6 virtual_collection_textgroup">
+
+			<blockquote class="cam-quote-mark">
 
 				Knowing that I loved my books, he furnished me from mine own library
-				with volumes that I prize above my dukedom" <br /> <br /> <cite>&mdash;
-					Prospero, <i>The Tempest</i> (Act 1, Scene 2)</cite>
+				with volumes that I prize above my dukedom" <br /> <br /> <cite>
+					Prospero, <i>The Tempest</i> (Act 1, Scene 2)
+				</cite>
 
 			</blockquote>
-			<div class="grid_8">
-				<p>
-					An important goal of the Cambridge Digital Library is to
-					make available substantial collections, so that researchers,
-					teachers and life-long learners can explore a wide range of
-					resources and uncover their own treasures. We expect the
-					digitisation of our collections to enable interesting discoveries
-					to be made and to open up new avenues for research. As we develop
-					the digital library infrastructure we will look for ways of
-					capturing and publicising new information about items held within
-					the digital library.
-				</p>
+			<div class="campl-content-container">
+				<p>An important goal of the Cambridge Digital Library is to make
+					available substantial collections, so that researchers, teachers
+					and life-long learners can explore a wide range of resources and
+					uncover their own treasures. We expect the digitisation of our
+					collections to enable interesting discoveries to be made and to
+					open up new avenues for research. As we develop the digital library
+					infrastructure we will look for ways of capturing and publicising
+					new information about items held within the digital library.</p>
 				<p>However, there are many items within the Library’s
 					collections that already deserve highlighting. This may be because
 					of their historical importance, uniqueness, beauty, fascinating
@@ -41,7 +42,7 @@
 					to cover.</p>
 			</div>
 		</div>
-		<div class="grid_10">
+		<div class="campl-column6">
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/featured-newton.jpg');">
 				<a href="/view/MS-ADD-03975/21"><img src="/img/blank.gif"
@@ -70,9 +71,7 @@
 					title="Titi Lucretii Cari De rerum natura libri sex " /> </a>
 			</div>
 		</div>
-
 	</div>
-
 </div>
+<div class="campl-column12">&nbsp;</div>
 
-<hr/>

@@ -1,24 +1,32 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div class="grid_10">
-	<h3 style="margin-left: 8px">The Cairo Genizah Collection</h3>
-	<blockquote class="grid_5 omega print">
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="ulcambridge.foundations.viewer.model.*"%>
+<%
+	Collection collection = (Collection) request
+			.getAttribute("collection");
+%>
+<div>
+	<h1><%=collection.getTitle()%></h1>
+	<div class="campl-column12">
 
-		It is a battlefield of books, and the literary production of many
-		centuries had their share in the battle, and their <i>disjecta
-			membra</i> are now strewn over its area" <br /> <br /> <cite>&mdash;
-			Solomon Schechter</cite>
+		<div class="campl-column8">
+			<blockquote class="cam-quote-mark">
 
-	</blockquote>
-	<br /> <br />
-	<div class="grid_4">
-		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/genizah.jpg" alt="Genizah Fragments"
-			width="150" height="225" /> <br />
+				It is a battlefield of books, and the literary production of many
+				centuries had their share in the battle, and their <i>disjecta
+					membra</i> are now strewn over its area" <br /> <br /> <cite>
+					Solomon Schechter</cite>
+
+			</blockquote>
+		</div>
+		<div class="campl-column3">
+			<img class="collectionOrganisationalImage"
+				src="/images/collectionsView/genizah.jpg" alt="Genizah Fragments"
+				width="150" height="225" />
+		</div>
 	</div>
+	<div class="campl-column12">
 
-	<div class="grid_8">&nbsp;</div>
 
-	<div class="grid_8 box">
 		<div>
 			<a
 				href="/search?facet-collection=Cairo+Genizah&fileID=TS&keyword=genizah">View
@@ -29,9 +37,7 @@
 				href="/search?facet-collection=Cairo+Genizah&fileID=MOSSERI&keyword=genizah">View
 				only items in the Mosseri Collection</a>
 		</div>
-	</div>
 
-	<div class="grid_9">
 		<br />
 		<p>The Taylor-Schechter Cairo Genizah Collection at Cambridge
 			University Library is the world's largest and most important single
@@ -93,9 +99,10 @@
 			of the Genizah Collection.
 		</p>
 		<br />
-		 
+
 		<div class="box">
-			Search the <a href="/bibliographies/genizah">Genizah Bibliography</a> by author, keyword or classmark. 
+			Search the <a href="/bibliographies/genizah">Genizah Bibliography</a>
+			by author, keyword or classmark.
 		</div>
 
 	</div>

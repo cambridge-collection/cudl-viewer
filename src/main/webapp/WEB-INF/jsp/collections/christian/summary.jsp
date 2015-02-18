@@ -6,23 +6,27 @@
 %>
 
 <div class="grid_10">
-	<h3 style="margin-left: 8px"><%=collection.getTitle()%></h3>
-	<blockquote class="grid_5 omega print">
+	<h1><%=collection.getTitle()%></h1>
+	<div class="campl-column12">
 
-		All scripture is given by inspiration of God, and is profitable for
-		doctrine, for reproof, for correction, for instruction in
-		righteousness <br /> <br /> <cite>&mdash; St Paul's 2nd
-			letter to Timothy (3:16) </cite>
+		<div class="campl-column8">
+			<blockquote class="cam-quote-mark">
 
-	</blockquote>
-	<br /> <br />
-	<div class="grid_4">
-		<img class="collectionOrganisationalImage"
-			src="/images/collectionsView/christian.jpg"
-			alt="Benedictional of Robert de Clercq" width="150" height="225" />
+				All scripture is given by inspiration of God, and is profitable for
+				doctrine, for reproof, for correction, for instruction in
+				righteousness <br /> <br /> <cite> St Paul's 2nd letter to
+					Timothy (3:16) </cite>
+
+			</blockquote>
+		</div>
+		<div class="campl-column4">
+			<img class="collectionOrganisationalImage"
+				src="/images/collectionsView/christian.jpg"
+				alt="Benedictional of Robert de Clercq" width="150" height="225" />
+		</div>
 	</div>
-	<div class="grid_9">
-		<br />
+	<div class="campl-column12">
+
 		<p>From the earliest years of the Christian Church, the concept of
 			‘Christ the Word of God made flesh’ inevitably found a parallel in
 			the written word of the Gospels and the teaching of the Apostles.
@@ -73,10 +77,10 @@
 			worship and debate and reflecting both Church ceremonial and private
 			devotion.</p>
 
-<!-- 
+		<!-- 
 		Want to view items by subject or date? <br /> <a
 			href="/search?facet-collection=Christian+Works">Search the
 			Christian Works</a> <br /> <br />
--->			
+-->
 	</div>
 </div>
