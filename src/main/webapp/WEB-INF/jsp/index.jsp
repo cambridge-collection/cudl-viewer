@@ -396,6 +396,27 @@
 					width="944" height="394" /> </a>
 			</li>
 			
+			
+			<!-- waterloo collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/waterloo">Waterloo</a>
+					</h4>
+
+					<p>
+				        The Battle of Waterloo was the climactic engagement of a campaign that pitted an invading French army under Napoleon Bonaparte against a combined force of Allied troops. The French were routed, and the warfare that had plagued Europe for more than two decades
+					was definitively ended: there were to be no hostilities on such a scale on the continent until the outbreak of the First World War in 1914. Through its impact on the politics and power-relationships of a Europe approaching the height of its worldwide influence,
+					the outcome of Waterloo remains significant to this day.
+					</p>
+
+
+				</div> <a href="/collections/waterloo"><img
+					src="/images/index/carousel-waterloo.jpg" alt="Waterloo"
+					width="944" height="394" /> </a>
+			</li>
+			
+			
 		</ol>
 
 	</div>

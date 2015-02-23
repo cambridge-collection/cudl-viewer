@@ -157,6 +157,28 @@
 		
 		<div class="collection">
 			<div class="grid_4">
+				<a href="/collections/waterloo"> <img
+					class="collectionImage"
+					src="/images/collectionsView/collection-waterloo.jpg"
+					alt="Waterloo" width="150" height="150" />
+				</a>
+			</div>
+			<div class="grid_8">
+				<h5>Waterloo</h5>
+				<br /> The Battle of Waterloo was the climactic engagement of a campaign that pitted an invading French army under Napoleon Bonaparte against a combined force of Allied troops. The French were routed, and the warfare that had plagued Europe for more than two decades
+					was definitively ended: there were to be no hostilities on such a scale on the continent until the outbreak of the First World War in 1914. Through its impact on the politics and power-relationships of a Europe approaching the height of its worldwide influence,
+					the outcome of Waterloo remains significant to this day. <br />
+				<br /> <a href="/collections/waterloo">View collection</a>. <br />
+				
+				<br />
+			</div>
+		</div>
+		<hr />
+		
+		
+		
+		<div class="collection">
+			<div class="grid_4">
 				<a href="/collections/music"> <img
 					class="collectionImage"
 					src="/images/collectionsView/collection-music.jpg"
