@@ -384,6 +384,10 @@ blockquote {
 	display: block;
 }
 
+#subcollection-breadcrumb {
+	color:#000;
+}
+
 ol#collections_carousel li {
 	list-style: none outside none;
 }
@@ -437,7 +441,7 @@ ol#search_carousel li {
 
 .collections_carousel_image_box {
 	float: right;
-	width: 180px;
+	width: 190px;
 	height: 190px;
 	background: #000000;
 	padding: 5px;
@@ -767,6 +771,11 @@ ol#vcollections_carousel li {
 }
 
 /* essay display page */
+.essay_image {
+	float:left;
+	margin-right:15px;
+	margin-bottom:15px;
+}
 .longitudestatistics {
 	margin-bottom:8px;
 	border-style: solid;

@@ -1,35 +1,24 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory, ulcambridge.foundations.viewer.CollectionFactory"%>
-<jsp:include page="header/header-full.jsp" />
+	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory, ulcambridge.foundations.viewer.CollectionFactory, java.util.List"%>
+
+<%
+	Collection collection = (Collection) request
+	.getAttribute("collection");
+
+	CollectionFactory collectionFactory = (CollectionFactory) request
+	.getAttribute("collectionFactory");
+%>
+
+<jsp:include page="header/header-full.jsp">
+	<jsp:param name="title" value="<%=collection.getTitle()%>" />
+</jsp:include>
+
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
 	<jsp:param name="displaySearch" value="true" />
 	<jsp:param name="title" value="Browse our collections" />
 </jsp:include>
 
-
-<%
-	Collection collection = (Collection) request
-	.getAttribute("collection");
- 
-    CollectionFactory collectionFactory = (CollectionFactory) request
-    .getAttribute("collectionFactory");
-%>
-<%
-  // If this collection has a parent show it in secondary navigation
-  if (collection.getParentCollectionId()!=null && collection.getParentCollectionId().length()>0)  {
-		
-    Collection parentCollection = collectionFactory.getCollectionFromId(collection.getParentCollectionId());
-%>
-<nav id="navSecondary" class="grid_20">
-	<ul>
-		<li><a class="active" title="<%=parentCollection.getTitle()%>"
-			href="<%=parentCollection.getURL()%>"> <%=parentCollection.getTitle()%></a></li>
-	</ul>
-</nav>
-<%
-  }
-%>
 <script type="text/javascript">
 	
 var currentSlice;
@@ -212,30 +201,44 @@ function pageinit() {
 }
 </script>
 
-<div class="clear"></div>
-
-<div class="campl-row campl-content campl-recessed-content">
+  <div class="campl-row campl-content campl-recessed-content">
 	<div class="campl-wrap clearfix">
-	
-		<div class="campl-column8  campl-main-content" id="content">
+		<div class="campl-column7  campl-main-content" id="content">
 			<div class="campl-content-container">
-			
-			<jsp:include page="<%=collection.getSummary()%>" />
 
-            </div>
-        </div>
-        <div class="campl-column4 campl-secondary-content ">
-        
-		  <div class="pagination toppagination"></div>
-		  <!-- start of list -->
-		  <div id="collections_carousel" class="collections_carousel campl-related-links"></div>
-		  <!-- end of list -->
-		  <div class="pagination toppagination"></div>
-		  
-        </div>
+<%   // If this collection has a parent show breadcrumb
+	if (collection.getParentCollectionId() != null
+	&& collection.getParentCollectionId().length() > 0) {
+		
+		
+		Collection parentCollection = collectionFactory.getCollectionFromId(collection.getParentCollectionId());
+		%>	
+	      <div class="campl-breadcrumb" id="subcollection-breadcrumb">
+			<ul class="campl-unstyled-list campl-horizontal-navigation clearfix">
+			  <li><a href="<%=parentCollection.getURL() %>"><%=parentCollection.getTitle() %></a></li>
+			  <li>/</li>
+			  <li><p class="campl-current"><%=collection.getTitle() %></p></li>							
+			</ul>
+		  </div>
+	<% } %>
+	
+				<jsp:include page="<%=collection.getSummary()%>" />
 
-	<jsp:include page="<%=collection.getSponsors()%>" />
-					
+			</div>
+		</div>
+		<div class="campl-column5 campl-secondary-content ">
+
+			<div class="pagination toppagination"></div>
+			<!-- start of list -->
+			<div id="collections_carousel"
+				class="collections_carousel campl-related-links"></div>
+			<!-- end of list -->
+			<div class="pagination toppagination"></div>
+
+		</div>
+
+		<jsp:include page="<%=collection.getSponsors()%>" />
+
 
 	</div>
 </div>
