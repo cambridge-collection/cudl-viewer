@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!-- cookie notice -->
-<div id="cookienotice" class="campl-row">
+<div id="cookienotice" class="campl-row" style="display:none">
    <div class="campl-footer-navigation">
 	<div class="campl-column4  campl-content-container">
 		By continuing to use the site you agree to the use of cookies. You can

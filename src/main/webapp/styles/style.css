@@ -409,6 +409,11 @@ blockquote {
 #subcollection-breadcrumb {
 	color: #000;
 }
+#subcollection-breadcrumb li {
+    padding: 0px 9px 0px 0px;	
+    background:#fff;
+}
+
 
 ol#collections_carousel li {
 	list-style: none outside none;
