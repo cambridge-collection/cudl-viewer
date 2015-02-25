@@ -46,7 +46,7 @@ function pageinit() {
 	numResults,
 	{
 
-		format : "[< (q-) ncn (-p) >]",
+		format : "< (q-) ncnn (-p) >", //[< (q-) ncn (-p) >]
 		perpage : pageLimit,
 		lapping : 0,
 		page : 1,
@@ -136,14 +136,14 @@ function pageinit() {
 			case 'next':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next">Next ></a>';
-				return '<span class="disabled">Next ></span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
+				return '<span class="disabled"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
 
 			case 'prev':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev">< Prev</a>';
-				return '<span class="disabled">< Prev</span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
+				return '<span class="disabled"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
 
 			case 'first':
 

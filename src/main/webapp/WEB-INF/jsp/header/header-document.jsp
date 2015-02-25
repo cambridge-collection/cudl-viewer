@@ -88,9 +88,7 @@ public String prepareForMetaTag(String input) {
 <meta property="twitter:creator" content="@camdiglib" />
 <meta property="twitter:site" content="@camdiglib" />
  
-
-
-<jsp:include page="includes.jsp" />
+ <jsp:include page="analytics.jsp" />
 
 <link rel="stylesheet" type="text/css" href="/scripts/extjs/resources/css/ext-partial-gray.css" />
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />

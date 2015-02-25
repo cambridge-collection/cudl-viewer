@@ -3,6 +3,14 @@
 	display: none;
 }
 
+.campl-carousel-container {
+	height: 423px;
+}
+
+#header-search {
+	height: 32px;
+}
+
 @media screen and (min-width: 1177px) {
 	.carousel-panel {
 		background: url("../images/index/grey.png") repeat scroll 0px 0px
@@ -33,19 +41,19 @@
 	height: 32px;
 }
 /* end of homepage style */
-
 #noscript-warning {
 	position: fixed;
 	height: 100%;
 	width: 100%;
 	top: 0;
-	left: 0;	
-	background:#fff;
-	z-index:2000;
+	left: 0;
+	background: #fff;
+	z-index: 2000;
 	vertical-align: middle;
 }
+
 #noscript-warning p {
-	text-align:center;
+	text-align: center;
 	vertical-align: middle;
 }
 
@@ -100,7 +108,7 @@
 	background-color: #ffeeee;
 }
 
-.footer a:link,.footer a:visited,.footer a:active {
+.footer a:link, .footer a:visited, .footer a:active {
 	color: #FFFFFF;
 	text-decoration: underline;
 }
@@ -156,10 +164,16 @@
 	background: #fff; /* for non-css3 browsers */
 	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
 		
+		
+		
+		
+		
+		
+		
 		 
-		'#ffffff', endColorstr=    '#ffffff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ffffff'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#ffffff) ); /* for webkit browsers */
+		to(#ffffff)); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
 	/* for firefox 3.6+ */
 	padding: 14px;
@@ -170,10 +184,16 @@
 	background: #fff;
 	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
 		
+		
+		
+		
+		
+		
+		
 		 
-		'#ffffff', endColorstr=    '#ccd4ff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ccd4ff'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#fff) ); /* for webkit browsers */
+		to(#fff)); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #fff);
 	/* for firefox 3.6+ */
 }
@@ -182,10 +202,16 @@
 	background: #fff;
 	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
 		
+		
+		
+		
+		
+		
+		
 		 
-		'#ffffff', endColorstr=    '#ffffff' ); /* for IE */
+		'#ffffff', endColorstr=    '#ffffff'); /* for IE */
 	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#ffffff) ); /* for webkit browsers */
+		to(#ffffff)); /* for webkit browsers */
 	background: -moz-linear-gradient(top, #ffffff, #ffffff);
 	/* for firefox 3.6+ */
 }
@@ -212,13 +238,13 @@
 /** related item - used on essay page */
 .relatedItem {
 	width: 192px;
-	margin-bottom:8px;
-	border-width:2px;
+	margin-bottom: 8px;
+	border-width: 2px;
 	border-color: #eee;
 	border-style: solid;
-	padding:4px;
+	padding: 4px;
 }
-	
+
 .relatedItem a {
 	text-decoration: none;
 	position: relative;
@@ -228,11 +254,9 @@
 	border-style: solid;
 	border-width: 1px;
 	border-color: #333;
-
 }
 
-
-.foundations-link-faith,.foundations-link-faith a {
+.foundations-link-faith, .foundations-link-faith a {
 	color: #8f7722;
 	position: absolute;
 	right: 4px;
@@ -242,7 +266,7 @@
 	text-decoration: none;
 }
 
-.foundations-link-science,.foundations-link-science a {
+.foundations-link-science, .foundations-link-science a {
 	color: #324088;
 	position: absolute;
 	right: 4px;
@@ -292,7 +316,6 @@
 }
 
 /* Longitude parent collection page */
-
 .parent_featured_item_image img {
 	margin: auto;
 	text-decoration: none;
@@ -309,6 +332,7 @@
 	border-width: 3px;
 	border-color: #333;
 }
+
 .parent_featured_item_image_box:hover {
 	border-color: #999;
 }
@@ -321,8 +345,6 @@
 }
 
 /* end of longitude parent collection page */
-
-
 .helpBanner {
 	margin-top: 20px;
 }
@@ -342,7 +364,7 @@
 }
 
 blockquote {
-   border-left: 0px;
+	border-left: 0px;
 }
 
 .collectionOrganisationalImage {
@@ -385,7 +407,7 @@ blockquote {
 }
 
 #subcollection-breadcrumb {
-	color:#000;
+	color: #000;
 }
 
 ol#collections_carousel li {
@@ -406,27 +428,20 @@ ol#search_carousel li {
 	font-color: #ff0000;
 }
 
+.search-facets {
+	list-style-type: none;
+}
+
 .search-facet-selected {
-	background: #4376bb;
 	padding: 3px;
-	width: 233px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #999;
 	position: relative;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	float: left;
-	color: #ffffff;
 }
 
 .search-close {
-	background: url("/img/search-close.png");
 	cursor: pointer;
 	height: 19px;
-	position: absolute;
-	right: -6px;
-	top: -6px;
 	width: 19px;
 	z-index: 3;
 }
@@ -437,6 +452,8 @@ ol#search_carousel li {
 	text-decoration: none;
 	border: none;
 	outline: none;
+	max-height: 180px;
+	max-width: 180px;
 }
 
 .collections_carousel_image_box {
@@ -455,24 +472,23 @@ ol#search_carousel li {
 	vertical-align: middle;
 	width: 180px;
 	height: 180px;
-	text-align:center;
+	text-align: center;
 }
 
 .collections_carousel_text {
-	width:250px;
-	margin-left:20px;
+	margin-left: 20px;
 }
 
 .word-wrap-200 {
 	word-wrap: break-word;
-	width:200px;
+	width: 200px;
 }
 
-.morelink a:link,.morelink a:visited,.morelink a:active {
+.morelink a:link, .morelink a:visited, .morelink a:active {
 	color: #3a6c8f;
 }
 
-.lesslink a:link,.morelink a:visited,.morelink a:active {
+.lesslink a:link, .morelink a:visited, .morelink a:active {
 	color: #3a6c8f;
 }
 
@@ -516,12 +532,13 @@ ol#vcollections_carousel li {
 	width: 920px;
 	margin-bottom: 18px;
 }
+
 .virtual_collection_textgroup {
 	padding-right: 20px;
 }
 
 /* credit text for images, small */
-.image-credit,.image-credit a {
+.image-credit, .image-credit a {
 	font-size: 0.9em;
 	color: #999999;
 	vertical-align: top;
@@ -534,16 +551,16 @@ ol#vcollections_carousel li {
 	font-size: 0.9em;
 	color: #999999;
 	text-decoration: none;
-	margin-left:25px;
+	margin-left: 25px;
 }
 
 .image-credit-islamic, .image-credit-islamic a {
 	font-size: 0.9em;
 	color: #999999;
 	text-decoration: none;
-	margin-right:10px;
-	float:right;
-	margin-bottom:10px;
+	margin-right: 10px;
+	float: right;
+	margin-bottom: 10px;
 }
 
 .search-result-snippet {
@@ -573,24 +590,67 @@ ol#vcollections_carousel li {
 }
 
 /* For pagination */
-.page_navigation,.alt_page_navigation {
-	padding-bottom: 10px;
-	margin-bottom: 25px;
+div.pagination {
+	text-align:center;
 }
 
-.page_navigation a,.alt_page_navigation a {
-	background-color: #999;
-	color: white;
-	float: left;
-	font-size: 12px;
-	margin: 2px;
-	padding: 3px 5px;
+div.pagination a:hover, div.pagination span.current {
+	background-color: #F2F2F2;
+	color: #000;
+}
+
+div.pagination a {
+	font-style: normal;
+	background-color: #fff;
+	border-color: #D6D6D6;
+	border-style: solid;
+	border-width: 1px;
+	color: #000;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 12px;
+	margin: 0px 2px;
+	padding: 4px 7px;
+	text-align: center;
 	text-decoration: none;
 }
 
-.active_page {
-	background-color: white !important;
-	color: black !important;
+div.pagination span.current {
+	font-style: normal;
+	background-color: #F2F2F2;
+	border-color: #D6D6D6;
+	border-style: solid;
+	border-width: 1px;
+	color: #000;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 12px;
+	margin: 0px 2px;
+	padding: 4px 7px;
+	text-align: center;
+	text-decoration: none;
+}
+
+div.pagination a.next, div.pagination span.disabled, div.pagination a.last,
+	div.pagination a.first, div.pagination a.prev {
+	font-style: normal;
+	background-color: #000;
+	border-color: #000;
+	border-style: solid;
+	border-width: 1px;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 400;
+	line-height: 12px;
+	margin: 0px 2px;
+	padding: 4px 7px;
+	text-align: center;
+	text-decoration: none;
+}
+
+div.pagination a.next:hover, div.pagination a.last:hover, div.pagination a.first:hover,
+	div.pagination a.prev:hover {
+	background-color: #454545
 }
 
 /* search on bar */
@@ -672,24 +732,22 @@ ol#vcollections_carousel li {
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
-	width: 240px;
 }
 
 /* search on search results page */
 .searchform .search {
 	background: none repeat scroll 0 0 white;
 	color: #666666;
-	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 13px;
-	font-style: italic;
 	padding: 5px 5px;
 	top: 0px;
+	margin-right: 0px;
 	width: 230px;
-	z-index: 2;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #999;
-	font-weight: bold;
+	height: 32px;
+}
+
+.searchform .campl-search-submit {
+	margin-bottom: 1px;
+	margin-left: -5px;
 }
 
 /* search style text - for examples on search results page */
@@ -741,6 +799,7 @@ ol#vcollections_carousel li {
 	border-width: 1px;
 	border-color: #999;
 	font-weight: bold;
+	height: 28px;
 }
 
 .advancedsearchform label {
@@ -758,7 +817,7 @@ ol#vcollections_carousel li {
 /* longitude collection page */
 .nmm_icon {
 	margin-bottom: 0px;
-	display:inline;
+	display: inline;
 }
 
 .longitudefeaturedItemsBox {
@@ -766,50 +825,53 @@ ol#vcollections_carousel li {
 	width: 666px;
 	background: none repeat scroll 0 0 #333333;
 	overflow: hidden;
-    padding: 18px 16px 9px;
-    margin-bottom: 18px;
+	padding: 18px 16px 9px;
+	margin-bottom: 18px;
 }
 
 /* essay display page */
 .essay_image {
-	float:left;
-	margin-right:15px;
-	margin-bottom:15px;
+	float: left;
+	margin-right: 15px;
+	margin-bottom: 15px;
 }
+
 .longitudestatistics {
-	margin-bottom:8px;
+	margin-bottom: 8px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #ccc;
-	color:#666;
+	color: #666;
 	margin-bottom: 15px;
 }
-.longitudestatistics a{
-	color:#666;
+
+.longitudestatistics a {
+	color: #666;
 }
 
-.longitudestatistics ul{
-    margin-bottom: 0px;
+.longitudestatistics ul {
+	margin-bottom: 0px;
 }
+
 .longitudestatistics ol {
-    margin-bottom: 0px;
-    padding-left: 25px;
+	margin-bottom: 0px;
+	padding-left: 25px;
 }
 
-.longitudestatisticstitle{
-	text-align:left;
-	margin-bottom:0px;
-	padding-left:8px;
-	color:#fff;
-	background-color:#ccc;
+.longitudestatisticstitle {
+	text-align: left;
+	margin-bottom: 0px;
+	padding-left: 8px;
+	color: #fff;
+	background-color: #ccc;
 	border-color: #ccc;
 	font-weight: bold;
 	margin-bottom: 0px;
 }
 
 .longitudefeaturedcollection {
-	margin-right:15px;
-	margin-left:14px;
+	margin-right: 15px;
+	margin-left: 14px;
 }
 
 /* longitude sub collections */
@@ -855,71 +917,75 @@ ol#vcollections_carousel li {
 
 /* longitude disabled collection */
 .longitudefeaturedcollectiondisabled:hover .featuredcollectionlabel {
-	border-color: #FFF;	
+	border-color: #FFF;
 }
 
 .longitudefeaturedcollectiondisabled {
-	opacity:0.5;	
+	opacity: 0.5;
 }
 
 .longitudefeaturedcollectiondisabled:hover img {
-	border-color: #FFF;	
+	border-color: #FFF;
 }
 
 .longitudefeatureditem {
 	width: 205px;
-    display: inline;
-    float: left;
-    margin-left: 8px;
-    margin-right: 8px;
-    position: relative;	
-    color:#ffffff;
+	display: inline;
+	float: left;
+	margin-left: 8px;
+	margin-right: 8px;
+	position: relative;
+	color: #ffffff;
 }
 
 .longitudeessaymetadata {
 	background: none repeat scroll 0 0 #DBE8F1;
 	line-height: 200%;
-	padding:15px;
+	padding: 15px;
 }
 
-
 .news_items img {
-	float:left;
-	margin-right:20px;
+	float: left;
+	margin-right: 20px;
 }
 
 .funder_item {
-	margin-bottom:20px;
-	margin-top:20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 #openid_form {
-	text-align:center;
-	line-height:30px;
+	text-align: center;
+	line-height: 30px;
 }
+
 #openid_form .google_account {
-	font-weight:bold;
-	font-size:1.3em;
-	margin-left:5px;
+	font-weight: bold;
+	font-size: 1.3em;
+	margin-left: 5px;
 }
+
 #openid_form button {
-	width:150px;
-    margin:10px;
+	width: 150px;
+	margin: 10px;
 }
+
 #openid_form .login_alt_link {
-	margin-top:10px;
-	margin-bottom:0px;
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
+
 #openid_identifier {
-	height:30px;
+	height: 30px;
 }
+
 #login_error {
-	color:#f00;
-	font-weight:bold;
-	margin-bottom:20px;
+	color: #f00;
+	font-weight: bold;
+	margin-bottom: 20px;
 }
 
 .bookmark-removelink {
-	float:right;
-	margin-right:10px;
+	float: right;
+	margin-right: 10px;
 }

@@ -37,18 +37,9 @@
 	}
 </script>
 
-<!-- jsp:include page="includes.jsp" /-->
-<!-- <script src="/scripts/glow/1.7.7/core/core.js" type="text/javascript"></script>
-<script src="/scripts/glow/1.7.7/widgets/widgets.js"
-	type="text/javascript"></script>
-<link rel="stylesheet" href="/scripts/glow/1.7.7/widgets/widgets.css">
-<link rel="stylesheet" href="/styles/hint.min.css">
-
-<link href="/styles/treestyler.css" rel="stylesheet" type="text/css"
-	media="screen" /> -->
-
 <!-- JQuery -->
 <script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/scripts/spin.min.js"></script>
 
 <!--  bootstrap -->
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
@@ -66,7 +57,6 @@
 <script type="text/javascript" src="/scripts/fancybox/jquery.fancybox.pack.js"></script>
 
 <!-- Pagination -->
-<link rel="stylesheet" type="text/css" href="/styles/paging.css" media="screen" />	
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 
 <!-- CUDL -->
@@ -131,8 +121,8 @@
 
 					<label for="header-search" class="hidden">Search site</label>
 					<div class="campl-search-input">
-						<form action="http://search.cam.ac.uk/web" method="get">
-							<input id="header-search" type="text" name="query" value=""
+						<form action="/search" method="get">
+							<input id="header-search" type="text" name="keyword" value=""
 								placeholder="Search" /> <input type="image"
 								class="campl-search-submit "
 								src="/images/interface/btn-search-header.png" />
