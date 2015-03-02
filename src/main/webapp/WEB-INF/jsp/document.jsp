@@ -243,7 +243,8 @@
 			  <span id="doc-breadcrumb"></span>			
 				<div id='about-content'><h3><span id="about-header"></span></h3>
 				 <div>
-				    <span id="about-abstract"></span>
+				    <span id="about-completeness"></span>
+				    <span id="about-abstract"></span>				    
 				    <span id="about-metadata"></span>
 				    <br><div class="well">
 				    <h4>Want to know more?</h4>
@@ -290,7 +291,7 @@
 							<br /> <br /> <a class="btn btn-info left" href="#" onclick="$('#bookmarkConfirmation').show();return false;"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
 							</a>
-							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>
+							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>							
 						</div>
 					</div>
 					<div class="panel panel-default">
@@ -298,8 +299,10 @@
 							<h3 class="panel-title">Share</h3>
 						</div>
 						<div class="panel-body">
-							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <input id="currentURL" type="text" name="link" value="" readonly="readonly" size="60" onclick="select()"></p>
-							<p class="col-md-12">Alternatively please share this page on social media</p> <div class="addthis_sharing_toolbox col-md-12"></div>
+							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <input id="currentURL" type="text" name="link" value="" readonly="readonly" size="60" onclick="select()"><br/></p>							
+							<p class="col-md-12">Alternatively please share this page on social media</p> <div class="addthis_sharing_toolbox col-md-12"></div>							
+							<p class="col-md-12"><br/>You can also embed the viewer into your own website or blog using the code below:<br/>
+							<textarea id="embedCode" name="embedCode" readonly="readonly" cols="60" rows="6" onclick="select()"></textarea><br/></p>
 						</div>
 
 						</div>

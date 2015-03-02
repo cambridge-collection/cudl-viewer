@@ -94,6 +94,7 @@ store.loadPage = function(pagenumber) {
 	var newURL = "/view/" + cudl.docId + "/" + pagenumber;
 	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
 	$('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
+	$('#embedCode').val("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
 	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
 	$('#pageLabel').html("Page: "+cudl.data.pages[pagenumber-1].label);
 	
@@ -219,8 +220,10 @@ cudl.setupInfoPanel = function(data) {
 	$('#about-imagerights').html(data.descriptiveMetadata[0].displayImageRights);
 	try {
 		$('#about-abstract').html(data.descriptiveMetadata[0].abstract.displayForm);
-	} catch (ex) { /* ignore */} 
-	    
+	} catch (ex) { /* ignore, not all items have value */} 
+	try {    
+		$('#about-completeness').html("<p>"+data.completeness+"</p>");
+	} catch (ex) { /* ignore, not all items have value */} 	
 
 	try {
 		// Set contents panel
@@ -251,7 +254,6 @@ cudl.setupInfoPanel = function(data) {
 	// Note not all pages may have a transcription/translation however
 	// We are enabling the menu if any are available.
 	
-	console.debug(data);
     if (typeof data.useNormalisedTranscriptions == 'undefined' || !data.useNormalisedTranscriptions) {
     	$('#transcriptionnormtab').parent().addClass("disabled");
     	$('#transcriptionnormtab').click(function(e){return false;}); // disable link;
@@ -668,15 +670,18 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 		
 		if (ls.startPagePosition <= pageNumber
 				&& ls.endPagePosition >= pageNumber) {
-						
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-info");
-			
-			if (ls.children) {
-				cudl.highlightMetadataForPageViewed(pageNumber, ls.children);
-			}
+					
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-info");			
 			
 		} else {
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-info");
+
+			if ($('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).hasClass("panel-info")) {
+			  $('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-info");
+			}
+		}
+		
+		if (ls.children) {
+			cudl.highlightMetadataForPageViewed(pageNumber, ls.children);
 		}
 		
 	}
@@ -687,7 +692,7 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	
 	// normalised transcriptions
 	var url = data.pages[pagenum-1].transcriptionNormalisedURL;
-	if (typeof url != 'undefined' && typeof data.allTranscriptionNormalisedURL == 'undefined') {
+	if (typeof url != 'undefined' && typeof data.allTranscriptionNormalisedURL == 'undefined') {		
 		document.getElementById('transcriptionnormframe').src = cudl.services + url;		
 	} else {
 		document.getElementById('transcriptionnormframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
@@ -696,7 +701,6 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	// diplomatic transcriptions
 	var url = data.pages[pagenum-1].transcriptionDiplomaticURL;
 	if (typeof url != 'undefined' && typeof data.allTranscriptionDiplomaticURL == 'undefined') {
-		console.debug ("setting diplo");
 		document.getElementById('transcriptiondiploframe').src = cudl.services + url;		
 	} else {
 		document.getElementById('transcriptiondiploframe').src = 'data:text/html;charset=utf-8,%3Chtml%3E%3Chead%3E%3Clink href%3D%22styles%2Fstyle-transcription.css%22 rel%3D%22stylesheet%22 type%3D%22text%2Fcss%22%2F%3E%0A%3C%2Fhead%3E%3Cbody%3E%3Cdiv class%3D%22transcription%22%3ENo transcription available for this image.%3C%2Fdiv%3E%3C%2Fbody%3E%3C%2Fhtml%3E';
