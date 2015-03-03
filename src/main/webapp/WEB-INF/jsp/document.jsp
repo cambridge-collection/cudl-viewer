@@ -103,9 +103,9 @@
 <script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 <script type="text/javascript" src="/scripts/spin.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery.xdomainrequest.min.js"></script>
 
 <!--  bootstrap -->
-
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
 <script src="/scripts/bootstrap.min.js"></script>
 
@@ -325,6 +325,8 @@
   			  <button type="button" class="btn btn-default" onclick="$('#downloadConfirmation').hide();">No</button>
          </div>
      
+     
+ <jsp:include page="header/analytics.jsp" />     
 </body>
 
 </html>

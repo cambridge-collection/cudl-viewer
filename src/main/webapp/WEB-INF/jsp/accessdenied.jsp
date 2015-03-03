@@ -3,11 +3,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<jsp:include page="header/header-login.jsp" />
+<jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="2" />
 	<jsp:param name="displaySearch" value="true" />
+	<jsp:param name="title" value="Access Denied" />
 </jsp:include>
+
 
 <script>
 	function showOrHideOpenId() {
@@ -27,17 +29,18 @@
 	}
 </script>
 
-<div class="grid_20">
-	<div class="clear"></div>
+<div class="campl-row campl-content campl-recessed-content">
+	<div class="campl-wrap clearfix">
+		<div class="campl-column12  campl-main-content" id="content">
+			<div class="campl-content-container">
+				<h2>Access Denied</h2>
+				<div id="error">${error}</div>
 
-	<section id="content" class="grid_20 content ">
-		<h3>Access Denied</h3>
-		<div id="error">${error}</div>
-
-		<div class="grid_18">
-			You do not have permission to access the page requested. <br /> <br />
+				<div class="grid_18">
+					You do not have permission to access the page requested. <br /> <br />
+				</div>
+			</div>
 		</div>
-	</section>
-		
+	</div>
 </div>
-<jsp:include page="footer/footer.jsp" />
+<jsp:include page="header/footer-full.jsp" />
