@@ -56,11 +56,11 @@ store.loadPage = function(pagenumber) {
 			// inline tilesource with a modified URL
 
 			xmlDoc = $.parseXML(xml);
-			$xml = $(xmlDoc);
-
-			$image = $xml.find('Image');
-			$size = $xml.find('Size');
-
+			$xml = $(xmlDoc);			
+			
+			$image = $(xml).find('Image');
+			$size = $(xml).find('Size');
+			
 			var path = dziPath;
 			path = path.substring(0, path.length - 4);
 			var dzi = {
@@ -76,6 +76,7 @@ store.loadPage = function(pagenumber) {
 					}
 				}
 			};
+			
 			cudl.viewer.open(dzi);
 		}).error(function(jqXHR, textStatus, errorThrown) {			
 			cudl.viewer._showMessage("Image server temporarily unavailable");
@@ -98,14 +99,21 @@ store.loadPage = function(pagenumber) {
 	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
 	$('#pageLabel').html("Page: "+cudl.data.pages[pagenumber-1].label);
 	
-	// update URL bar
-	window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);	
+	// update URL bar, does not work in ie9. 
+	try {
+		window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);	
+	} catch (e) {}
 	
 	// update current page
 	cudl.pagenum = pagenumber;
 	$("#pageInput").val(cudl.pagenum);
 	$("#maxPage").html(cudl.data.numberOfPages);
-	return false;
+	
+	
+	// Google analytics
+	ga('create', googleAnalyticsID, 'auto');
+	ga('send', 'pageview');
+	// end of analytics
 
 };
 
@@ -221,9 +229,9 @@ cudl.setupInfoPanel = function(data) {
 	try {
 		$('#about-abstract').html(data.descriptiveMetadata[0].abstract.displayForm);
 	} catch (ex) { /* ignore, not all items have value */} 
-	try {    
+	if (data.completeness) {   
 		$('#about-completeness').html("<p>"+data.completeness+"</p>");
-	} catch (ex) { /* ignore, not all items have value */} 	
+	} 
 
 	try {
 		// Set contents panel
