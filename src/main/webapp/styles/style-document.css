@@ -2,6 +2,7 @@ body {
 	padding-top: 68px;
 	position: relative;
 	overflow: hidden;
+	background: none repeat scroll 0% 0% #000;
 }
 
 .navbar .container {
