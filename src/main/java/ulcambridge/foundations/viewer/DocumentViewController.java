@@ -71,6 +71,9 @@ public class DocumentViewController {
 		
 		// Show a different view based on the itemType for this item.
 		Item item = itemFactory.getItemFromId(docId);
+		if (item==null) {
+			return new ModelAndView("jsp/errors/404");
+		}
 		String itemType = item.getType();
 
 		if (itemType.equals("essay")) {
