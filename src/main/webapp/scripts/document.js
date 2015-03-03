@@ -58,8 +58,16 @@ store.loadPage = function(pagenumber) {
 			xmlDoc = $.parseXML(xml);
 			$xml = $(xmlDoc);			
 			
-			$image = $(xml).find('Image');
-			$size = $(xml).find('Size');
+			if(navigator.appVersion.indexOf("MSIE 9.")!=-1) {
+			  // If using IE 9
+			  $image = $(xml).find('Image');
+			  $size = $(xml).find('Size');
+			  
+			} else { 
+		      // Any other browser
+			  $image = $xml.find('Image');
+			  $size = $xml.find('Size');
+			}
 			
 			var path = dziPath;
 			path = path.substring(0, path.length - 4);
