@@ -103,7 +103,8 @@
 <script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 <script type="text/javascript" src="/scripts/spin.min.js"></script>
-<script type="text/javascript" src="/scripts/jquery.xdomainrequest.min.js"></script>
+<script type="text/javascript"
+	src="/scripts/jquery.xdomainrequest.min.js"></script>
 
 <!--  bootstrap -->
 <link rel="stylesheet" href="/styles/bootstrap-default.min.css">
@@ -117,7 +118,9 @@
 <link rel="stylesheet" href="/styles/font-awesome/font-awesome.min.css">
 
 <!--  addThis sharing tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4" async="async"></script>
+<script type="text/javascript"
+	src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4"
+	async="async"></script>
 
 <script src="/scripts/cudl.js" type="text/javascript"></script>
 
@@ -160,46 +163,57 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-									
-				<a href="/"><img id="cam-logo" class="pull-left" src="/images/documentView/cudl-logo-1x.png" 
-				alt="Logo for Cambridge University" title="Cambridge University"></a>
-				
-		 <div class="cudl-viewer-buttons-pagination">
-           <button id="prevPage" class="cudl-btn fa fa-arrow-left" title="Previous Page"></button>
-           <input id="pageInput" type="text" value="1" size="4">
-           of 
-           <span id="maxPage"></span>
-           <button id="nextPage" class="cudl-btn fa fa-arrow-right" title="Next Page"></button>
-           <br/>           
-         </div>
-         
-				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo" class="pull-right" src="/images/header/ULLogowhite.gif" 
-				alt="Logo for Cambridge University Library" title="Cambridge University Library"></a>
-				
+
+				<a href="/"><img id="cam-logo" class="pull-left"
+					src="/images/documentView/cudl-logo-1x.png"
+					alt="Logo for Cambridge University" title="Cambridge University"></a>
+
+				<div class="cudl-viewer-buttons-pagination">
+					<button id="prevPage" class="cudl-btn fa fa-arrow-left"
+						title="Previous Page"></button>
+					<input id="pageInput" type="text" value="1" size="4"> of <span
+						id="maxPage"></span>
+					<button id="nextPage" class="cudl-btn fa fa-arrow-right"
+						title="Next Page"></button>
+					<br />
+				</div>
+
+				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo"
+					class="pull-right" src="/images/header/ULLogowhite.gif"
+					alt="Logo for Cambridge University Library"
+					title="Cambridge University Library"></a>
+
 			</div>
 		</div>
-	</div>	
+	</div>
 	<!-- /.container -->
-	<div id="seadragonImage">	
+	<div id="seadragonImage">
 		<div id="doc">
 
-         <span id="pageLabel"></span>         
-         
-		 <div class="cudl-viewer-buttons-zoom">
-           <button id="rotateLeft" class="cudl-btn fa fa-rotate-left" title="Rotate the image 90° left"></button>
-           <button id="rotateRight" class="cudl-btn fa fa-rotate-right" title="Rotate the image 90° right"></button>
-           <button id="zoomIn" class="cudl-btn fa fa-plus" title="Zoom in to the image"></button>
-           <button id="zoomOut" class="cudl-btn fa fa-minus" title="Zoom out of the image"></button>
-         </div>
-         <div class="cudl-viewer-buttons-maximize">
-           <button id="fullscreen" class="cudl-btn fa fa-expand" title="Toggle fullscreen view"></button>
-         </div>
-        </div>
+			<span id="pageLabel"></span>
+
+			<div class="cudl-viewer-buttons-zoom">
+				<button id="rotateLeft" class="cudl-btn fa fa-rotate-left"
+					title="Rotate the image 90° left"></button>
+				<button id="rotateRight" class="cudl-btn fa fa-rotate-right"
+					title="Rotate the image 90° right"></button>
+				<button id="zoomIn" class="cudl-btn fa fa-plus"
+					title="Zoom in to the image"></button>
+				<button id="zoomOut" class="cudl-btn fa fa-minus"
+					title="Zoom out of the image"></button>
+			</div>
+			<div class="cudl-viewer-buttons-maximize">
+				<button id="fullscreen" class="cudl-btn fa fa-expand"
+					title="Toggle fullscreen view"></button>
+			</div>
+		</div>
 
 	</div>
 	<div id="right-panel">
 
-		<div id="right-panel-toggle"><i class="fa fa-angle-right pull-left"></i></div>
+		<div id="right-panel-toggle">
+			<i class="fa fa-angle-right pull-left"></i>
+		</div>
 
 		<div role="tabpanel" id="rightTabs">
 
@@ -220,12 +234,14 @@
 						<li><a id="moreinfotab" aria-controls="moreinfo"
 							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More
 								Information</a></li>
-						<li><a id="transcriptionnormtab" aria-controls="transcriptionnormtab"
-							data-toggle="tab" role="tab" tabindex="-1"
-							href="#transcriptionnorm">Transcription (normalised)</a></li>
-						<li><a id="transcriptiondiplotab" aria-controls="transcriptiondiplotab"
-							data-toggle="tab" role="tab" tabindex="-1" 
-							href="#transcriptiondiplo">Transcription (diplomatic)</a></li>
+						<li><a id="transcriptionnormtab"
+							aria-controls="transcriptionnormtab" data-toggle="tab" role="tab"
+							tabindex="-1" href="#transcriptionnorm">Transcription
+								(normalised)</a></li>
+						<li><a id="transcriptiondiplotab"
+							aria-controls="transcriptiondiplotab" data-toggle="tab"
+							role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription
+								(diplomatic)</a></li>
 						<li><a id="translationtab" aria-controls="translationtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
 						</li>
@@ -238,23 +254,33 @@
 			<!-- End of nav tabs -->
 
 			<!-- Tab panes -->
-			<div id="tab-content" class="tab-content" style="overflow-x: hidden; overflow-y: auto">
-			  <div role="tabpanel" class="tab-pane active" id="abouttab">	
-			  <span id="doc-breadcrumb"></span>			
-				<div id='about-content'><h3><span id="about-header"></span></h3>
-				 <div>
-				    <span id="about-completeness"></span>
-				    <span id="about-abstract"></span>				    
-				    <span id="about-metadata"></span>
-				    <br><div class="well">
-				    <h4>Want to know more?</h4>
-				    <p>Under the 'More' menu you can find <a href="#" onclick="cudl.showPanel(&quot;#metadata&quot;)">metadata about the item</a>, 
-				    any transcription and translation we have of the text and find out about 
-				    <a href="#" onclick="cudl.showPanel(&quot;#download&quot;)">downloading or sharing this image</a>.  
-				    </p></div>
-				    <div id="zoomRights"><span id="about-imagerights"></span></div>
-				 </div>
-				</div>
+			<div id="tab-content" class="tab-content"
+				style="overflow-x: hidden; overflow-y: auto">
+				<div role="tabpanel" class="tab-pane active" id="abouttab">
+					<span id="doc-breadcrumb"></span>
+					<div id='about-content'>
+						<h3>
+							<span id="about-header"></span>
+						</h3>
+						<div>
+							<span id="about-completeness"></span> <span id="about-abstract"></span>
+							<span id="about-metadata"></span> <br>
+							<div class="well">
+								<h4>Want to know more?</h4>
+								<p>
+									Under the 'More' menu you can find <a href="#"
+										onclick="cudl.showPanel(&quot;#metadata&quot;)">metadata
+										about the item</a>, any transcription and translation we have of
+									the text and find out about <a href="#"
+										onclick="cudl.showPanel(&quot;#download&quot;)">downloading
+										or sharing this image</a>.
+								</p>
+							</div>
+							<div id="zoomRights">
+								<span id="about-imagerights"></span>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="contentstab">No
 					Contents List Available</div>
@@ -265,17 +291,38 @@
 						<div id="thumbnailpaginationbottom" class="text-center"></div>
 					</div>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="metadata"><ol class="breadcrumb"><li class="active">More Information</li></ol><div id="metadatacontent">No Metadata Available</div></div>
-				<div role="tabpanel" class="tab-pane" id="transcriptionnorm"><ol class="breadcrumb"><li class="active">Transcription (normalised)</li></ol><iframe id="transcriptionnormframe" src="" ></iframe></div>
-				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo"><ol class="breadcrumb"><li class="active">Transcription (diplomatic)</li></ol><iframe id="transcriptiondiploframe" src="" ></iframe></div>
-				<div role="tabpanel" class="tab-pane" id="translation"><ol class="breadcrumb"><li class="active">Translation</li></ol><iframe id="translationframe" src="" ></iframe></div>
+				<div role="tabpanel" class="tab-pane" id="metadata">
+					<ol class="breadcrumb">
+						<li class="active">More Information</li>
+					</ol>
+					<div id="metadatacontent">No Metadata Available</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="transcriptionnorm">
+					<ol class="breadcrumb">
+						<li class="active">Transcription (normalised)</li>
+					</ol>
+					<iframe id="transcriptionnormframe" src=""></iframe>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo">
+					<ol class="breadcrumb">
+						<li class="active">Transcription (diplomatic)</li>
+					</ol>
+					<iframe id="transcriptiondiploframe" src=""></iframe>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="translation">
+					<ol class="breadcrumb">
+						<li class="active">Translation</li>
+					</ol>
+					<iframe id="translationframe" src=""></iframe>
+				</div>
 				<div role="tabpanel" class="tab-pane" id="download">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">Download</h3>
 						</div>
 						<div class="panel-body">
-							<a class="btn btn-info left" href="#" onclick="$('#downloadConfirmation').show();return false;"> <i
+							<a class="btn btn-info left" href="#"
+								onclick="$('#downloadConfirmation').show();return false;"> <i
 								class="fa fa-download fa-2x pull-left"></i> Download This<br>Image
 							</a>
 							<p class="copyright text col-md-9">This image may be used in
@@ -283,15 +330,19 @@
 								teaching and research. If you wish to reproduce it within
 								publications or on the public web, please make a reproduction
 								request.</p>
-							<br /> <br /> <a class="btn btn-info left" href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html" target="_blank"> <i
-								class="fa fa-gavel fa-2x pull-left"></i> Request Image<br>Rights
+							<br /> <br /> <a class="btn btn-info left"
+								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html"
+								target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
+								Request Image<br>Rights
 							</a>
 							<p class="copyright text col-md-9">Request reproduction
 								rights to this image</p>
-							<br /> <br /> <a class="btn btn-info left" href="#" onclick="$('#bookmarkConfirmation').show();return false;"> <i
+							<br /> <br /> <a class="btn btn-info left" href="#"
+								onclick="$('#bookmarkConfirmation').show();return false;"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
 							</a>
-							<p class="copyright text col-md-9">Add this image / page to your personal bookmarks for quick access later.</p>							
+							<p class="copyright text col-md-9">Add this image / page to
+								your personal bookmarks for quick access later.</p>
 						</div>
 					</div>
 					<div class="panel panel-default">
@@ -299,34 +350,55 @@
 							<h3 class="panel-title">Share</h3>
 						</div>
 						<div class="panel-body">
-							<p class="col-md-12">If you want to share this page with others you can send them a link to this individual page: <input id="currentURL" type="text" name="link" value="" readonly="readonly" size="60" onclick="select()"><br/></p>							
-							<p class="col-md-12">Alternatively please share this page on social media</p> <div class="addthis_sharing_toolbox col-md-12"></div>							
-							<p class="col-md-12"><br/>You can also embed the viewer into your own website or blog using the code below:<br/>
-							<textarea id="embedCode" name="embedCode" readonly="readonly" cols="60" rows="6" onclick="select()"></textarea><br/></p>
+							<p class="col-md-12">
+								If you want to share this page with others you can send them a
+								link to this individual page: <input id="currentURL" type="text"
+									name="link" value="" readonly="readonly" size="60"
+									onclick="select()"><br />
+							</p>
+							<p class="col-md-12">Alternatively please share this page on
+								social media</p>
+							<div class="addthis_sharing_toolbox col-md-12"></div>
+							<p class="col-md-12">
+								<br />You can also embed the viewer into your own website or
+								blog using the code below:<br />
+								<textarea id="embedCode" name="embedCode" readonly="readonly"
+									cols="60" rows="6" onclick="select()"></textarea>
+								<br />
+							</p>
 						</div>
 
-						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
+	</div>
 
-		<!--  Confirmation pop ups -->
-        <div id="bookmarkConfirmation" class="alert alert-info" style="display: none">
-              <a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
-               Do you want to create a bookmark for this page in 'My Library'?<br/><br/>
-			  <button type="button" class="btn btn-default btn-success" onclick="cudl.addBookmark()">Yes</button>
-  			  <button type="button" class="btn btn-default" onclick="$('#bookmarkConfirmation').hide();">Cancel</button>
-        </div>
-        <div id="downloadConfirmation" class="alert alert-info" style="display:none">
-              <a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
-              <p>This image has the following copyright:</p><div class="well" id="downloadCopyright"></div><p>Do you want to download this image?</p>              
-			  <button type="button" class="btn btn-default btn-success" onclick="cudl.downloadImage()">Yes</button>
-  			  <button type="button" class="btn btn-default" onclick="$('#downloadConfirmation').hide();">No</button>
-         </div>
-     
-     
- <jsp:include page="header/analytics.jsp" />     
+	<!--  Confirmation pop ups -->
+	<div id="bookmarkConfirmation" class="alert alert-info"
+		style="display: none">
+		<a href="#" class="close" onclick="$('.alert').hide();">&times;</a> Do
+		you want to create a bookmark for this page in 'My Library'?<br /> <br />
+		<button type="button" class="btn btn-default btn-success"
+			onclick="cudl.addBookmark()">Yes</button>
+		<button type="button" class="btn btn-default"
+			onclick="$('#bookmarkConfirmation').hide();">Cancel</button>
+	</div>
+	<div id="downloadConfirmation" class="alert alert-info"
+		style="display: none">
+		<a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
+		<p>This image has the following copyright:</p>
+		<div class="well" id="downloadCopyright"></div>
+		<p>Do you want to download this image?</p>
+		<button type="button" class="btn btn-default btn-success"
+			onclick="cudl.downloadImage()">Yes</button>
+		<button type="button" class="btn btn-default"
+			onclick="$('#downloadConfirmation').hide();">No</button>
+	</div>
+
+
+	<jsp:include page="header/analytics.jsp" />
 </body>
 
 </html>

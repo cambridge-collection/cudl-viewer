@@ -95,28 +95,17 @@ store.loadPage = function(pagenumber) {
 
 	// open Image
 	if (imageavailable) { openDzi(cudl.data.pages[pagenumber - 1].displayImageURL); }
-	
-	// update transcription data
-	cudl.setTranscriptionPage(cudl.data, pagenumber);	
 
-	// update metadata
-	var newURL = "/view/" + cudl.docId + "/" + pagenumber;
-	$('#downloadCopyright').html(cudl.data.descriptiveMetadata[0].downloadImageRights);
-	$('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
-	$('#embedCode').val("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
-	cudl.highlightMetadataForPageViewed(pagenumber, cudl.data.logicalStructures);
-	$('#pageLabel').html("Page: "+cudl.data.pages[pagenumber-1].label);
-	
-	// update URL bar, does not work in ie9. 
-	try {
-		window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);	
-	} catch (e) {}
-	
 	// update current page
 	cudl.pagenum = pagenumber;
 	$("#pageInput").val(cudl.pagenum);
 	$("#maxPage").html(cudl.data.numberOfPages);
 	
+	// update transcription data
+	cudl.setTranscriptionPage(cudl.data, pagenumber);	
+
+	// update metadata
+	cudl.updatePageMetadata(cudl.data, pagenumber);
 	
 	// Google analytics
 	ga('create', googleAnalyticsID, 'auto');
@@ -125,46 +114,24 @@ store.loadPage = function(pagenumber) {
 
 };
 
-// As OpenSeadragon currently has a bug with fullscreen and the youtube video
-// panels.
-cudl.toggleFullscreen = function () {
+// Update the metadata that changes on page change
+cudl.updatePageMetadata = function (data, pagenumber) {
 
-	var element = document.getElementById("doc");
+	try {
+       var newURL = "/view/" + cudl.docId + "/" + pagenumber;
+       $('#downloadCopyright').html(data.descriptiveMetadata[0].downloadImageRights);
+       $('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
+       $('#embedCode').val("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
+       cudl.highlightMetadataForPageViewed(pagenumber, data.logicalStructures);
+       $('#pageLabel').html("Page: "+data.pages[pagenumber-1].label);
 
-	if (!document.fullscreenElement && !document.mozFullScreenElement
-			&& !document.webkitFullscreenElement
-			&& !document.msFullscreenElement) {
-		if (element.requestFullscreen) {
-			element.requestFullscreen();
-		} else if (element.msRequestFullscreen) {
-			element.msRequestFullscreen();
-		} else if (element.mozRequestFullScreen) {
-			element.mozRequestFullScreen();
-		} else if (element.webkitRequestFullscreen) {
-			element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-		}
+       // update URL bar, does not work in ie9. 	
+	   window.history.replaceState(cudl.docId + " page:"+ pagenumber, "Cambridge Digital Library",newURL);
+	   
+	} catch (e) { /* the above does not work in fullscreen mode*/ }
+		
+};
 
-		// update icon
-		$("#fullscreen").removeClass("fa-expand");
-		$("#fullscreen").addClass("fa-compress"); 
-		
-	} else {
-		if (document.exitFullscreen) {
-			document.exitFullscreen();
-		} else if (document.msExitFullscreen) {
-			document.msExitFullscreen();
-		} else if (document.mozCancelFullScreen) {
-			document.mozCancelFullScreen();
-		} else if (document.webkitExitFullscreen) {
-			document.webkitExitFullscreen();
-		}
-		
-		// update icon
-		$("#fullscreen").removeClass("fa-compress");
-		$("#fullscreen").addClass("fa-expand");
-		
-	}
-}
 
 cudl.setupSeaDragon = function(data) {
 
@@ -174,11 +141,11 @@ cudl.setupSeaDragon = function(data) {
 		debugMode : false,
 		prefixUrl : "/img/",
 		showRotationControl : true,
-		maxZoomPixelRatio : 1,
 		zoomInButton : "zoomIn",
 		zoomOutButton : "zoomOut",
 		rotateLeftButton : "rotateLeft",
-		rotateRightButton : "rotateRight"
+		rotateRightButton : "rotateRight",
+		fullPageButton: "fullscreen"
 	});
 	cudl.viewer.clearControls(); // hides controls.
 
@@ -187,7 +154,7 @@ cudl.setupSeaDragon = function(data) {
 
 		if (cudl.pagenum < cudl.data.pages.length) {
 			cudl.pagenum++;
-			store.loadPage(cudl.pagenum);
+			store.loadPage(cudl.pagenum);			
 		}
 		return false;
 	}
@@ -210,7 +177,27 @@ cudl.setupSeaDragon = function(data) {
 	$("#pageInput").change(function(input) {
 		store.loadPage(input.target.value);
 	});
-	$("#fullscreen").click(cudl.toggleFullscreen);
+	
+	// move the pagination controls to the image when going fullscreen
+	// then back to the header bar when full screen is exited. 
+	// Also update transcriptions / metadata etc elements when 
+	// going back to normal view as page may have changed. 
+	cudl.viewer.addHandler("pre-full-screen", function (data) {
+	    if (data.fullScreen) {
+	      $(".cudl-viewer-buttons-pagination").appendTo("#doc");
+	    }
+	});	
+	cudl.viewer.addHandler("full-screen", function (data) {
+	    if (data.fullScreen) {
+	      $('#doc').css("top", "0px");
+	    } else {	    	
+		  $(".cudl-viewer-buttons-pagination").appendTo(".navbar-header");
+		  cudl.setTranscriptionPage(cudl.data, cudl.pagenum);	
+		  cudl.updatePageMetadata(cudl.data, cudl.pagenum);
+		  $('#doc').css("top", "68px");
+	    }
+	});	
+
 };
 
 cudl.setupInfoPanel = function(data) {
@@ -705,6 +692,12 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 }
 
 cudl.setTranscriptionPage = function (data, pagenum) {
+	
+	// check for existance of transcription frame, if not, 
+	// then in fullscreen mode so do nothing. 
+	if (!document.getElementById('transcriptionnormframe')) {
+		return;
+	}	
 	
 	// normalised transcriptions
 	var url = data.pages[pagenum-1].transcriptionNormalisedURL;
