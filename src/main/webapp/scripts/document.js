@@ -743,8 +743,12 @@ $(document).ready(function() {
 
 		// tab content needs fixed height for scrolling
 		$('#tab-content').height($(window).height() - 68 - 42);
-		$(window).resize(function() {
-			$('#tab-content').height($(window).height() - 68 - 42);			
+		//$('#doc').height($(window).height() - 68);
+		$(window).resize(function() {			
+			if (!$('.fullpage').length) {
+			//	$('#doc').height($(window).height() - 68);
+				$('#tab-content').height($(window).height() - 68 - 42);
+			}
 		});
 
 		// set seadragon options and load in dzi.
