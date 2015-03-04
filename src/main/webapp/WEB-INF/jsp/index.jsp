@@ -367,7 +367,7 @@
 					<p>
 						Peterhouse (founded 1284) is the oldest of the Cambridge Colleges.
 						As part of the process of recataloguing and preserving the College's collections, it has been decided to present highlights from the Peterhouse manuscripts in digital form.
-						The first manuscript selected for this purpose is the Equatorie of the Planetis (Peterhouse Ms. 75.1).
+						The first manuscript selected for this purpose is the Equatorie of the Planetis (Peterhouse MS 75.I).
 						As funding becomes available, further manuscripts will be added to the online collection.
 					</p>
 
@@ -395,6 +395,27 @@
 					src="/images/index/carousel-sassoon.jpg" alt="Sassoon Journals"
 					width="944" height="394" /> </a>
 			</li>
+			
+			
+			<!-- waterloo collection -->
+			<li>
+				<div class="panel" style="overflow: auto;">
+					<h4>
+						<a href="/collections/waterloo">Waterloo</a>
+					</h4>
+
+					<p>
+				        The Battle of Waterloo was the climactic engagement of a campaign that pitted an invading French army under Napoleon Bonaparte against a combined force of Allied troops. The French were routed, and the warfare that had plagued Europe for more than two decades
+					was definitively ended: there were to be no hostilities on such a scale on the continent until the outbreak of the First World War in 1914. Through its impact on the politics and power-relationships of a Europe approaching the height of its worldwide influence,
+					the outcome of Waterloo remains significant to this day.
+					</p>
+
+
+				</div> <a href="/collections/waterloo"><img
+					src="/images/index/carousel-waterloo.jpg" alt="Waterloo"
+					width="944" height="394" /> </a>
+			</li>
+			
 			
 		</ol>
 
@@ -447,16 +468,16 @@
 			<h4>Latest News</h4>
 			<div class="grid_3">
 				<a href="/news"> <img
-					alt="Darwin Manuscripts"
-					title="November Update"
-					src="/images/index/news-darwin_mss.jpg" height="100" width="100"></a>
+					alt="Darwin 185"
+					title="February Update"
+					src="/images/index/news-2015-02.jpg" height="100" width="100"></a>
 			</div>
 
 			<div>
-				<span class="date">24/11/2014</span>
+				<span class="date">09/02/2015</span>
 				<h5>
-					<a href="/news">November Release</a></h5>
-					<p>Our November release sees the launch of our <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection, with a selection of papers charting the development of Darwin’s evolutionary theory - from early theoretical reflections made while on board HMS Beagle to the publication of <i>On the Origin of Species</i>. Amongst many highlights are documents of worldwide importance such as the “Transmutation” and “Metaphysical” notebooks of the 1830s and the 1842 “Pencil Sketch” which sees Darwin’s first use of the term <a href='/view/MS-DAR-00006/41'>“natural selection”</a>.</p>
+					<a href="/news">February Release</a></h5>
+					<p>Our first release of 2015 sees the addition of 16 volumes to the <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection. Amongst these, <a href='/view/MS-DAR-00185'>DAR 185</a> is especially interesting, containing <a href='/view/MS-DAR-00185/541'>marvellous hand-coloured drawings</a> by Darwin’s children on the backs of heavily revised pages of the <i>Origin of Species</i> manuscript. Darwin himself showed little interest in preserving this draft, and these pages were kept for the children’s drawings rather than for their content. They give a fascinating glimpse into life inside the Darwin household, as well as  further insights into the development of the <i>Origin</i>.</p>
 			</div>
 		</div>
 

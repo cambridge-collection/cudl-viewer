@@ -15,6 +15,26 @@
 	<div>
 		<h3 style="margin-left: 8px">News</h3>
 	</div>
+	
+	
+	                <hr />
+	
+	<div class="grid_5">
+                        <img alt="Darwin 185"
+                                title="February Update"
+                                src="/images/index/news-2015-02.jpg" height="200" width="200">
+                </div>
+
+                <div class="grid_8">
+                        <span class="date">09/02/2015</span>
+                        <h4>February Update</h4>
+                	<p>Our first release of 2015 sees the addition of 16 volumes to the <a href='/collections/darwin_mss'>Darwin Manuscripts</a> collection. Amongst these, <a href='/view/MS-DAR-00185'>DAR 185</a> is especially interesting, containing <a href='/view/MS-DAR-00185/541'>marvellous hand-coloured drawings</a> by Darwin’s children on the backs of heavily revised pages of the <i>Origin of Species</i> manuscript. Darwin himself showed little interest in preserving this draft, and these pages were kept for the children’s drawings rather than for their content. They give a fascinating glimpse into life inside the Darwin household, as well as  further insights into the development of the <i>Origin</i>.</p>
+
+<p>We are also releasing two new music manuscripts, <a href='/view/MS-ADD-03389/7'>MS Add.3389</a>, a twelfth-century central Italian <i>Gradual</i> removed from the binding of an early printed book, and <a href='/view/MS-DOC-00038'>MS Doc.38</a>, <i>Indenture for the lease of a property by Mathew Holmes</i>, which was formerly the wrapper of <a href='/view/MS-NN-00006-00036'>MS Nn.6.36</a>, and was the document which identified Holmes as the scribe and owner of one of the most important collections of early lute music.</p>
+
+		</div>
+	
+	                <hr />
 
 	<div class="grid_5">
                         <img alt="Darwin Manuscripts"
