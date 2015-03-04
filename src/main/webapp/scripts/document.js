@@ -741,13 +741,10 @@ $(document).ready(function() {
 	// Read in the JSON
 	$.getJSON(cudl.JSONURL).done(function(data) {
 
-		// set element height to place the openseadragon image.
-		// and ensure this value is updated on window resize.
-		$('#doc').height($(window).height() - 68);
-		$('#tab-content').height($(window).height() - 68);
+		// tab content needs fixed height for scrolling
+		$('#tab-content').height($(window).height() - 68 - 42);
 		$(window).resize(function() {
-			$('#doc').height($(window).height() - 68);
-			$('#tab-content').height($(window).height() - 68);
+			$('#tab-content').height($(window).height() - 68 - 42);			
 		});
 
 		// set seadragon options and load in dzi.
