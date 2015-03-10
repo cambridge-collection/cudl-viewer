@@ -135,9 +135,9 @@
 	<div class="campl-row campl-global-header campl-search-drawer">
 		<div class="campl-wrap clearfix">
 			<form class="campl-site-search-form" id="site-search-container"
-				action="">
+				action="/search">
 				<div class="campl-search-form-wrapper clearfix">
-					<input type="text" class="text" placeholder="Search" /> <input
+					<input name="keyword" type="text" class="text" placeholder="Search" /> <input
 						type="image" class="campl-search-submit"
 						src="/images/interface/btn-search.png" />
 				</div>
