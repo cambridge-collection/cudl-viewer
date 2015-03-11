@@ -430,7 +430,7 @@ cudl.setupThumbnails = function (data) {
 		// create the pagination
 		NUM_THUMBNAIL_PAGES = 1;
 		if (data.numberOfPages > props.MAX_THUMBNAIL_ITEMS_ON_PAGE) {
-			props.NUM_THUMBNAIL_PAGES = Math.floor(data.numberOfPages
+			props.NUM_THUMBNAIL_PAGES = Math.ceil(data.numberOfPages
 					/ props.MAX_THUMBNAIL_ITEMS_ON_PAGE);
 		}
 
