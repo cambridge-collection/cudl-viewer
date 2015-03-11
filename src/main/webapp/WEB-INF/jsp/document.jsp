@@ -227,13 +227,12 @@
 					aria-controls="thumbnails" role="tab" data-toggle="tab">Thumbnails</a></li>
 				<li class="dropdown" role="presentation"><a id="moreDropDown"
 					class="dropdown-toggle" aria-controls="moreDropDown-contents"
-					data-toggle="dropdown" href="#"> More <span class="caret"></span>
+					data-toggle="dropdown" href="#"> View more options <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 				</a>
 					<ul id="moreDropDown-contents" class="dropdown-menu"
 						aria-labelledby="moreDropDown" role="menu">
 						<li><a id="moreinfotab" aria-controls="moreinfo"
-							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">More
-								Information</a></li>
+							data-toggle="tab" role="tab" tabindex="-1" href="#metadata">Item metadata</a></li>
 						<li><a id="transcriptionnormtab"
 							aria-controls="transcriptionnormtab" data-toggle="tab" role="tab"
 							tabindex="-1" href="#transcriptionnorm">Transcription
@@ -293,7 +292,7 @@
 				</div>
 				<div role="tabpanel" class="tab-pane" id="metadata">
 					<ol class="breadcrumb">
-						<li class="active">More Information</li>
+						<li class="active">Item Metadata</li>
 					</ol>
 					<div id="metadatacontent">No Metadata Available</div>
 				</div>

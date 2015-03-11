@@ -533,35 +533,75 @@
 
 
 
+				<hr class="campl-teaser-divider">
+
+				<!-- Waterloo  -->
+				<div class="campl-content-container ">
+					<div class="campl-horizontal-teaser campl-teaser clearfix">
+						<div class="campl-column3">
+							<div class="campl-content-container campl-horizontal-teaser-img">
+								<a href="/collections/waterloo" class="campl-teaser-img-link"><img
+									alt="Waterloo" title="Waterloo"
+									src="/images/collectionsView/collection-waterloo.jpg"
+									class="campl-scale-with-grid"></a>
+							</div>
+						</div>
+						<div class="campl-column6">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<h3 class="campl-teaser-title">
+									<a href="/collections/waterloo">Waterloo</a>
+								</h3>
+								<p>The Battle of Waterloo was the climactic engagement of a
+									campaign that pitted an invading French army under Napoleon
+									Bonaparte against a combined force of Allied troops. The French
+									were routed, and the warfare that had plagued Europe for more
+									than two decades was definitively ended: there were to be no
+									hostilities on such a scale on the continent until the outbreak
+									of the First World War in 1914. Through its impact on the
+									politics and power-relationships of a Europe approaching the
+									height of its worldwide influence, the outcome of Waterloo
+									remains significant to this day.</p>
+								<a href="/collections/waterloo" class="campl-primary-cta">Read
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
-		
-		
+
+
 		<div class="campl-column3 campl-secondary-content">
 			<div class="campl-content-container ">
 				<div class="campl-heading-container ">
 					<h2>Featured Items</h2>
 				</div>
-				<ul class='campl-unstyled-list campl-related-links campl-horizontal-teaser-img '>
-			<%for (int i = 0; i < featuredItems.size(); i++) {
-				Item item = featuredItems.get(i);		
-				
-			    String imageDimensions = "";
-				if (item.getThumbnailOrientation().trim().equals("portrait")) {
-					imageDimensions = " style='height:100%' width='120px' ";
-				} else if (item.getThumbnailOrientation().trim()
-						.equals("landscape")) {
-					imageDimensions = " style='width:100%' width='120px' ";
-				}%>						
+				<ul
+					class='campl-unstyled-list campl-related-links campl-horizontal-teaser-img '>
+					<%
+						for (int i = 0; i < featuredItems.size(); i++) {
+							Item item = featuredItems.get(i);
+
+							String imageDimensions = "";
+							if (item.getThumbnailOrientation().trim().equals("portrait")) {
+								imageDimensions = " style='height:100%' width='120px' ";
+							} else if (item.getThumbnailOrientation().trim()
+									.equals("landscape")) {
+								imageDimensions = " style='width:100%' width='120px' ";
+							}
+					%>
 					<li><a href="/view/<%=item.getId()%>"><img
 							alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
 							<%=imageDimensions%> /></a>
-				<h5>
-					<a href="/view/<%=item.getId()%>"><%=item.getTitle()%></a>
-				</h5>
-							</li>
-					
-			<%}%>					
+						<h5>
+							<a href="/view/<%=item.getId()%>"><%=item.getTitle()%></a>
+						</h5></li>
+
+					<%
+						}
+					%>
 				</ul>
 			</div>
 			<!-- 
