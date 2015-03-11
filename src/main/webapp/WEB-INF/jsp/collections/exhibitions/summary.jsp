@@ -4,6 +4,15 @@
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 %>
+
+<style>
+@media screen and (max-width: 800px) {
+	#summary_images {
+	  display:none;		
+	}
+}
+</style>
+
 <div class="grid_10">
 	<h1><%=collection.getTitle()%></h1>
 
@@ -53,7 +62,7 @@
 
 			</div>
 		</div>
-		<div class="campl-column6">
+		<div class="campl-column6" id="summary_images">
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/exhibition1.jpg');">
 				<a href="/view/PR-01886-00012-00019/1"><img src="/img/blank.gif"

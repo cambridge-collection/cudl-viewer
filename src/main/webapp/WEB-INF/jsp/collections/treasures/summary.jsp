@@ -4,6 +4,15 @@
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 %>
+
+<style>
+@media screen and (max-width: 800px) {
+	#summary_images {
+	  display:none;		
+	}
+}
+</style>
+
 <div class="grid_10">
 	<h1><%=collection.getTitle()%></h1>
 
@@ -42,7 +51,7 @@
 					to cover.</p>
 			</div>
 		</div>
-		<div class="campl-column6">
+		<div class="campl-column6" id="summary_images">
 			<div class="virtual_collection_summary_image"
 				style="background: url('/images/collectionsView/featured-newton.jpg');">
 				<a href="/view/MS-ADD-03975/21"><img src="/img/blank.gif"

@@ -55,7 +55,7 @@
 								imageDimensions += " style='width:100%' ";
 							}
 
-							out.print("<li class='campl-column5'><div class='collections_carousel_item'><div class='collections_carousel_image_box'>"
+							out.print("<li class='campl-column5'><div class='collections_carousel_item'><div class='virtual_collections_carousel_image_box campl-column6'>"
 									+ "<div class='collections_carousel_image' id='collections_carousel_item"
 									+ itemNum
 									+ "'><a href='/view/"
@@ -68,7 +68,7 @@
 									+ "' "
 									+ imageDimensions
 									+ "></a></div></div> \n ");
-							out.print("<div class='collections_carousel_text'><h5>"
+							out.print("<div class='collections_carousel_text campl-column6'><h5>"
 									+ item.getTitle() + " (" + item.getShelfLocator()
 									+ ")</h5> " + item.getAbstractShort()
 									+ " ... <a href='/view/" + item.getId()
