@@ -197,6 +197,53 @@ cudl.setupSeaDragon = function(data) {
 		  $('#doc').css("top", "68px");
 	    }
 	});	
+	
+	// setup keyboard shortcuts.  Same as the embedded viewer. 
+	$(window).keypress(function(e) {
+
+		    switch (e.charCode) {
+		        case 118:  // v 
+					cudl.pagenum++;
+					store.loadPage(cudl.pagenum);	
+					return false;
+		        case 99: // c
+		        	cudl.pagenum--;
+					store.loadPage(cudl.pagenum);	
+		            return false;       
+		        case 113: case 43: // q or + zoom in
+		        	cudl.viewer.viewport.zoomBy(2); 
+		            return false;
+		        case 101: case 45: // e or - zoom out 
+		        	cudl.viewer.viewport.zoomBy(0.5); 
+		            return false;	 
+		        case 122: // z rotate left 90	        	
+	        		cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()-90);
+		            return false;	
+		        case 120: // x rotate right 90
+		        	cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()+90);
+		            return false;	 
+		        case 90: // Z rotate left		        	
+	        		cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()-10);
+		            return false;	
+		        case 88: // X rotate right
+		        	cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()+10);
+		            return false;	 f
+		        case 102: // f fullscreen toggle
+		        	if (cudl.viewer.isFullPage()) {
+		        	  cudl.viewer.setFullScreen(false);
+		        	} else {
+		        	  cudl.viewer.setFullScreen(true);	
+		        	}  
+		            return false;		
+		        case 114: // r toggle right panel
+		        	cudl.toggleRightPanel();
+		            return false;			            
+		            
+		    }
+
+	});	
+	
+	$('.openseadragon-canvas').focus();	
 
 };
 
@@ -286,7 +333,7 @@ cudl.setupInfoPanel = function(data) {
 	// setup toggle behaviour
 	var infoPanelExpanded = true;
 	
-	var toggleRightPanel = function() {
+	cudl.toggleRightPanel = function() {
 
 		if (infoPanelExpanded) {
 			$('#right-panel').css({
@@ -314,8 +361,8 @@ cudl.setupInfoPanel = function(data) {
 		}
 				
 	}
-	$('#right-panel-toggle').click(toggleRightPanel);
-	if ($(window).width()<550) { toggleRightPanel(); }
+	$('#right-panel-toggle').click(cudl.toggleRightPanel);
+	if ($(window).width()<550) { cudl.toggleRightPanel(); }
 	
 	//update panel positon on resize
 	$(window).resize(function () { 
@@ -737,6 +784,7 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	
 }
 
+
 $(document).ready(function() {
 	// Read in the JSON
 	$.getJSON(cudl.JSONURL).done(function(data) {
@@ -759,7 +807,7 @@ $(document).ready(function() {
 		cudl.setupThumbnails(data);
 		cudl.setupMetadata(data);
 		store.loadPage(cudl.pagenum);		
-		cudl.showThumbnailPage(cudl.currentThumbnailPage)
+		cudl.showThumbnailPage(cudl.currentThumbnailPage);		
 	});
 
 });
