@@ -209,9 +209,9 @@
 			</div>
 		</div>
 
-	</div>
+	</div>	
 	<div id="right-panel">
-
+        <span id="doc-breadcrumb"></span>
 		<div id="right-panel-toggle">
 			<i class="fa fa-angle-right pull-left"></i>
 		</div>
@@ -256,8 +256,7 @@
 			<!-- Tab panes -->
 			<div id="tab-content" class="tab-content"
 				style="overflow-x: hidden; overflow-y: auto">
-				<div role="tabpanel" class="tab-pane active" id="abouttab">
-					<span id="doc-breadcrumb"></span>
+				<div role="tabpanel" class="tab-pane active" id="abouttab">					
 					<div id='about-content'>
 						<h3>
 							<span id="about-header"></span>

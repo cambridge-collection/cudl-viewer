@@ -261,7 +261,7 @@ cudl.setupInfoPanel = function(data) {
 			+ cudl.collectionURL
 			+ "\">"
 			+ cudl.collectionTitle
-			+ "</a></li></ol>";
+			+ "</a></li><li class='active'>"+cudl.docId+"</li></ol>";
 	if (cudl.parentCollectionTitle) {
 		breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
 				+ cudl.parentCollectionURL
@@ -270,7 +270,7 @@ cudl.setupInfoPanel = function(data) {
 				+ "</a></li><li><a href=\""
 				+ cudl.collectionURL
 				+ "\">"
-				+ cudl.collectionTitle + "</a></li></ol>";
+				+ cudl.collectionTitle + "</a></li><li class='active'>"+cudl.docId+"</li></ol>";
 	}
 	$('#doc-breadcrumb').html(breadcrumbHTML);
 	
