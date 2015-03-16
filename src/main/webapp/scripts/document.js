@@ -261,7 +261,7 @@ cudl.setupInfoPanel = function(data) {
 			+ cudl.collectionURL
 			+ "\">"
 			+ cudl.collectionTitle
-			+ "</a></li><li class='active'>"+cudl.docId+"</li></ol>";
+			+ "</a></li><li class='active'>"+data.descriptiveMetadata[0].shelfLocator.displayForm+"</li></ol>";
 	if (cudl.parentCollectionTitle) {
 		breadcrumbHTML = "<ol class=\"breadcrumb\"><li><a href='/'>Home</a></li><li><a href=\""
 				+ cudl.parentCollectionURL
@@ -270,10 +270,10 @@ cudl.setupInfoPanel = function(data) {
 				+ "</a></li><li><a href=\""
 				+ cudl.collectionURL
 				+ "\">"
-				+ cudl.collectionTitle + "</a></li><li class='active'>"+cudl.docId+"</li></ol>";
+				+ cudl.collectionTitle + "</a></li><li class='active'>"+data.descriptiveMetadata[0].shelfLocator.displayForm+"</li></ol>";
 	}
 	$('#doc-breadcrumb').html(breadcrumbHTML);
-	
+
 	$('#about-header').html(cudl.itemTitle+ " ("+data.descriptiveMetadata[0].shelfLocator.displayForm+")");	
 	$('#about-imagerights').html(data.descriptiveMetadata[0].displayImageRights);
 	try {
