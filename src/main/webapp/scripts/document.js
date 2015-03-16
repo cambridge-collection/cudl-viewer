@@ -119,7 +119,15 @@ cudl.updatePageMetadata = function (data, pagenumber) {
 
 	try {
        var newURL = "/view/" + cudl.docId + "/" + pagenumber;
-       $('#downloadCopyright').html(data.descriptiveMetadata[0].downloadImageRights);
+
+       if (data.descriptiveMetadata[0].downloadImageRights==null || data.descriptiveMetadata[0].downloadImageRights.trim()=="") {
+    	   $('#downloadOption').css("display", "none");
+       } else {
+    	   $('#downloadCopyright').html(data.descriptiveMetadata[0].downloadImageRights);
+           $('#downloadCopyright2').html(data.descriptiveMetadata[0].downloadImageRights);
+         
+       }
+       
        $('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
        $('#embedCode').val("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
        cudl.highlightMetadataForPageViewed(pagenumber, data.logicalStructures);
@@ -346,6 +354,7 @@ cudl.setupInfoPanel = function(data) {
 			// update icon
 			$('#right-panel-toggle i').removeClass('fa-angle-right');
 			$('#right-panel-toggle i').addClass('fa-angle-left');
+
 			
 		} else {
 			$('#right-panel').css({
@@ -357,12 +366,12 @@ cudl.setupInfoPanel = function(data) {
 			// update icon
 			$('#right-panel-toggle i').removeClass('fa-angle-left');
 			$('#right-panel-toggle i').addClass('fa-angle-right');
-						
+
 		}
 				
 	}
 	$('#right-panel-toggle').click(cudl.toggleRightPanel);
-	if ($(window).width()<550) { cudl.toggleRightPanel(); }
+	if ($(window).width()<760) { cudl.toggleRightPanel(); }
 	
 	//update panel positon on resize
 	$(window).resize(function () { 
