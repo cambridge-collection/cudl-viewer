@@ -81,11 +81,11 @@ body {
     top: 68px; 
 	bottom: 0px;
 	background-color: black;
-	
-	width: -moz-calc(100% - 800px);
-    width: -webkit-calc(100% - 800px);
-    width: calc(100% - 800px);
-    
+
+	width: -moz-calc(50%);
+	width: -webkit-calc(50%);
+	width: calc(50%);
+
 	/* For Safari 3.1 to 6.0 */
 	-webkit-transition-property: width;
 	-webkit-transition-duration: 0.5s;
@@ -225,7 +225,9 @@ body {
 	height: 100%;
 	right: 0px;
 	top: 68px;
-	width: 800px;
+	width: -moz-calc(50%);
+	width: -webkit-calc(50%);
+	width: calc(50%);
 	z-index: 5000;
 	background-color: #eee;
 	/* For Safari 3.1 to 6.0 */
@@ -296,17 +298,22 @@ body {
 	margin-right: 10px;
 }
 
-#download .text {
-	float: right;
-}
-
 #download .copyright {
 	color: #999;
 	font-size: 0.8em;
+	align:left;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #download .btn {
 	width: 160px;
+	float:left;
+}
+
+.downloadpanel .button {
+	width:160px;
+	height:54px;
 }
 
 #metadatacontent {
@@ -369,40 +376,7 @@ body {
 }
 
 /** Responsive Design Stuff **/
-@media ( max-width :1800px) {
-	#right-panel {
-		width: 600px;
-	}
-	#doc {
-		width: -moz-calc(100% - 600px);
-		width: -webkit-calc(100% - 600px);
-		width: calc(100% - 600px);
-	}
-}
-
-@media ( max-width :1200px) {
-	#right-panel {
-		width: 500px;
-	}
-	#doc {
-		width: -moz-calc(100% - 500px);
-		width: -webkit-calc(100% - 500px);
-		width: calc(100% - 500px);
-	}
-}
-
-@media ( max-width :1000px) {
-	#right-panel {
-		width: 350px;
-	}
-	#doc {
-		width: -moz-calc(100% - 350px);
-		width: -webkit-calc(100% - 350px);
-		width: calc(100% - 350px);
-	}
-}
-
-@media ( max-width :800px) {
+@media ( max-width :760px) {
 	#cam-logo {
 		margin-left: 20px;
 	}
@@ -413,17 +387,21 @@ body {
 		font-size: 1.2em;
 	}
 	#nextPage {
-		height: 35px;
-		width: 35px;
+		height: 3em;
+		width: 3em;
 		margin-top: 0px;
 	}
 	#prevPage {
-		height: 35px;
-		width: 35px;
+		height: 3em;
+		width: 3em;
 	}
 	.navbar .cudl-title {
 		font-size: 30px;
 		white-space: nowrap;
+
+	}
+	#right-panel {
+	   width:90%;
 	}
 }
 
@@ -434,14 +412,6 @@ body {
 }
 
 @media ( max-width :400px) {
-	#right-panel {
-		width: 250px;
-	}
-	#doc {
-		width: -moz-calc(100% - 250px);
-		width: -webkit-calc(100% - 250px);
-		width: calc(100% - 250px);
-	}
 	#cam-logo {
 		display: none;
 	}
