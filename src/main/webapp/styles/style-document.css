@@ -386,15 +386,16 @@ body {
 	}
 	.cudl-viewer-buttons-pagination {
 		font-size: 1.2em;
+		top:15px;
 	}
 	#nextPage {
-		height: 3em;
-		width: 3em;
+		height: 34px;
+		width: 34px;
 		margin-top: 0px;
 	}
 	#prevPage {
-		height: 3em;
-		width: 3em;
+		height: 34px;
+		width: 34px;
 	}
 	.navbar .cudl-title {
 		font-size: 30px;

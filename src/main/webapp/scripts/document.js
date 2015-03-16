@@ -345,7 +345,7 @@ cudl.setupInfoPanel = function(data) {
 
 		if (infoPanelExpanded) {
 			$('#right-panel').css({
-				'right' : ($('#right-panel').width() * -1)
+				'right' : (($('#right-panel').width() * -1) -1)
 			});
 			infoPanelExpanded = false;
 			$('#doc').width('100%');
