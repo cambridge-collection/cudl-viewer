@@ -382,14 +382,11 @@ cudl.setupInfoPanel = function(data) {
 	
 	// tab content needs fixed height for scrolling
 	cudl.resizeRightPanel = function() {			
-		if (!$('.fullpage').length) {
-						
-				$('#tab-content').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height());
-				$('#transcriptionnormframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
-				$('#transcriptiondiploframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
-				$('#translationframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
-			}
-		};
+	if (!$('.fullpage').length) {
+				
+			$('#tab-content').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height());
+		}
+	};
 		
 	$(window).resize(cudl.resizeRightPanel);	
 	

@@ -300,20 +300,26 @@
 					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Transcription (normalised)</li>
 					</ol></div>
+					<div class="framediv">
 					<iframe id="transcriptionnormframe" src=""></iframe>
+					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo">
 					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Transcription (diplomatic)</li>
 					</ol></div>
+					<div class="framediv">
 					<iframe id="transcriptiondiploframe" src=""></iframe>
+					</div>
 					
 				</div>
 				<div role="tabpanel" class="tab-pane" id="translation">
 					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Translation</li>
 					</ol></div>
+					<div class="framediv">
 					<iframe id="translationframe" src=""></iframe>
+					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="download">
 					<div class="panel panel-default">

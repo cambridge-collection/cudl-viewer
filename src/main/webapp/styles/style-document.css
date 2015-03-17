@@ -334,7 +334,17 @@ body {
 #transcriptionnorm, #transcriptiondiplo, #translation {
     height: 100%;
 	width: 100%;
-	background-color: #fff;    
+	background-color: #fff;   
+	position:relative; 
+}
+
+#transcriptionnorm .framediv, #transcriptiondiplo .framediv, #translation .framediv {
+    position:absolute;
+    top:42px;
+    bottom:0;
+    width: 100%;
+    left:0;
+    overflow:hidden;
 }
 
 #transcriptionnormframe, #transcriptiondiploframe, #translationframe {
