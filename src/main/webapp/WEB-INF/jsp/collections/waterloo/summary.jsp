@@ -81,8 +81,8 @@
 		<p>The battle’s importance was fully recognised by the generations
 			which came after it. From the very first moment after the fighting
 			stopped, soldiers and civilians alike wanted to put their experiences
-			and emotions into words. The direct, first-hand writings of soldiers
-			and civilians involved in the battle were complemented by the works
+			and emotions into words. The direct, first-hand writings of those involved
+			in the battle were complemented by the works
 			of literary authors. Both Byron and Tennyson described the battle as
 			an ‘earthquake’, and Victor Hugo called it ‘the hinge of the
 			nineteenth century’: ‘On that day, the perspective of the human race
@@ -119,6 +119,14 @@
 			him. Lord Acton’s famous judgement on power and corruption may be
 			applied to Napoleon Bonaparte with particular force: ‘Great men are
 			almost always bad men’.</p>
+			
+		<p>Although Cambridge University Library has never set out to assemble a specific,
+		single collection relating to Waterloo, the strength and breadth of our accessioning
+		activity mean that over the course of two hundred years we have amassed a rich and
+		fascinating variety of written records, maps and book arts relating to the battle
+		and the era in which it played so significant a part. To mark the bicentenary of Waterloo,
+		this Digital Library collection presents a sample of such material, encompassing military drill-books,
+		manuscript letters, hand-coloured engravings, battlefield plans, printed mementos and tourist reminiscences.</p>
 
 
 
