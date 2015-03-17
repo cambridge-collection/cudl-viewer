@@ -128,8 +128,8 @@ cudl.updatePageMetadata = function (data, pagenumber) {
          
        }
        
-       $('#currentURL').val("http://cudl.lib.cam.ac.uk"+newURL);
-       $('#embedCode').val("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
+       $('#currentURL').text("http://cudl.lib.cam.ac.uk"+newURL);
+       $('#embedCode').text("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
        cudl.highlightMetadataForPageViewed(pagenumber, data.logicalStructures);
        $('#pageLabel').html("Page: "+data.pages[pagenumber-1].label);
 
@@ -379,6 +379,21 @@ cudl.setupInfoPanel = function(data) {
 		  $('#right-panel').css( {'right':($('#right-panel').width() * -1)} );
 		}
 	});
+	
+	// tab content needs fixed height for scrolling
+	cudl.resizeRightPanel = function() {			
+		if (!$('.fullpage').length) {
+						
+				$('#tab-content').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height());
+				$('#transcriptionnormframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
+				$('#transcriptiondiploframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
+				$('#translationframe').height($(window).height() - $('.navbar-header').height() - $('#doc-breadcrumb').height() - $('#rightTabs .nav-tabs').height() - $('#transcriptiondiplo .breadcrumbdiv').height()-5);
+			}
+		};
+		
+	$(window).resize(cudl.resizeRightPanel);	
+	
+	cudl.resizeRightPanel();
 
 };
 
@@ -797,16 +812,6 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 $(document).ready(function() {
 	// Read in the JSON
 	$.getJSON(cudl.JSONURL).done(function(data) {
-
-		// tab content needs fixed height for scrolling
-		$('#tab-content').height($(window).height() - 68 - 42);
-		//$('#doc').height($(window).height() - 68);
-		$(window).resize(function() {			
-			if (!$('.fullpage').length) {
-			//	$('#doc').height($(window).height() - 68);
-				$('#tab-content').height($(window).height() - 68 - 42);
-			}
-		});
 
 		// set seadragon options and load in dzi.
 		if (cudl.pagenum==0) { cudl.pagenum=1; } // page 0 returns item level metadata.		
