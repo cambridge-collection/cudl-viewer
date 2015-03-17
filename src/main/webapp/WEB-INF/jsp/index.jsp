@@ -199,19 +199,13 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="#4">February Release</a>
+						<a href="#4">March Release</a>
 					</p>
-					<span class="campl-datestamp">9 February 2015</span>
-					<p>Our first release of 2015 sees the addition of 16 volumes to
-						the Darwin Manuscripts collection. Amongst these, DAR 185 is
-						especially interesting, containing marvellous hand-coloured
-						drawings by Darwin’s children on the backs of heavily revised
-						pages of the Origin of Species manuscript. Darwin himself showed
-						little interest in preserving this draft, and these pages were
-						kept for the children’s drawings rather than for their content.
-						They give a fascinating glimpse into life inside the Darwin
-						household, as well as further insights into the development of the
-						Origin.</p>
+					<span class="campl-datestamp">19 March 2015</span>
+					<p>This month sees the release of our new <a href='/collections/waterloo'>Waterloo collection</a>, in support of a major forthcoming exhibition at the Library to mark
+					the 200th anniversary of the battle. Containing eyewitness accounts, maps of the battlefield, and beautifully illustrated commemorative works, the Collection gives a real sense of the significance
+					of Waterloo to contemporaries and to the generations that followed. A particular highlight is a stunning hand-coloured <a href='/view/PR-HARLEY-MASON-A-00025/3'>panoramic view of Wellington’s funeral</a>
+					measuring more than 60 feet from end to end.</p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View
