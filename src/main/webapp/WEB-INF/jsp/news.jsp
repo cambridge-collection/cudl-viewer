@@ -41,6 +41,34 @@
 				<h2>Latest Updates</h2>
 				<hr class="cam-teaser-divider campl-column12">
 
+
+				<div class="grid_5">
+					<img alt="Waterloo" title="March Update"
+						src="/images/index/news-2015-03.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">18/03/2015</span>
+					<h4>March Update</h4>
+					<p>This month sees the release of our new <a href='/collections/waterloo'>Waterloo collection</a>, in support of a major forthcoming exhibition
+					at the Library to mark the 200th anniversary of the battle. Containing eyewitness accounts, maps of the battlefield, and beautifully illustrated
+					commemorative works, the Collection gives a real sense of the significance of Waterloo to contemporaries and to the generations that followed.
+					A particular highlight is a stunning hand-coloured <a href='/view/PR-HARLEY-MASON-A-00025/3'>panoramic view of Wellington’s funeral</a>
+					measuring more than 60 feet from end to end.</p>
+
+					<p>Also included are the remarkable <a href='/view/MS-FF-00004-00042/4'>Cambridge Juvencus</a>, a ninth-century manuscript which contains the earliest
+					surviving written poetry in Welsh, and the <a href='/view/PR-ATLAS-00002-00061-00001/1'>Speed Maps</a>, a set of seventeenth century maps of the counties
+					of England, Scotland and Wales, available for the first time as high-resolution zooming images.</p>
+
+					<p>Regular users of the site will notice that we have undertaken a major redesign of our interface. Hopefully this will
+					make the site clearer and easier to use, especially on tablets and mobile devices. Please send any feedback via
+					<a href='https://twitter.com/CamDigLib'>Twitter</a> or the Feedback link on our site.</p>
+
+				</div>
+
+				<hr class="cam-teaser-divider campl-column12">
+
+
 				<div class="grid_5">
 					<img alt="Darwin 185" title="February Update"
 						src="/images/index/news-2015-02.jpg" height="200" width="200">
