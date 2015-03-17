@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <%!public String prepareForMetaTag(String input) {
 
@@ -149,7 +150,7 @@
 
 </head>
 <body>
-
+<div id="container">
 
 	<!--  hidden section for the search engines to index -->
 	<div style="display: none">
@@ -208,9 +209,9 @@
 			</div>
 		</div>
 
-	</div>
+	</div>	
 	<div id="right-panel">
-
+        <span id="doc-breadcrumb"></span>
 		<div id="right-panel-toggle">
 			<i class="fa fa-angle-right pull-left"></i>
 		</div>
@@ -255,8 +256,7 @@
 			<!-- Tab panes -->
 			<div id="tab-content" class="tab-content"
 				style="overflow-x: hidden; overflow-y: auto">
-				<div role="tabpanel" class="tab-pane active" id="abouttab">
-					<span id="doc-breadcrumb"></span>
+				<div role="tabpanel" class="tab-pane active" id="abouttab">					
 					<div id='about-content'>
 						<h3>
 							<span id="about-header"></span>
@@ -319,29 +319,35 @@
 						<div class="panel-heading">
 							<h3 class="panel-title">Download</h3>
 						</div>
-						<div class="panel-body">
-							<a class="btn btn-info left" href="#"
+						<div class="panel-body downloadpanel">
+						    <div>
+						      <div class="button">
+							  <a class="btn btn-info left" href="#"
 								onclick="$('#downloadConfirmation').show();return false;"> <i
 								class="fa fa-download fa-2x pull-left"></i> Download This<br>Image
-							</a>
-							<p class="copyright text col-md-9">This image may be used in
-								accord with fair use and fair dealing provisions, including
-								teaching and research. If you wish to reproduce it within
-								publications or on the public web, please make a reproduction
-								request.</p>
-							<br /> <br /> <a class="btn btn-info left"
+							  </a></div><div>							
+							  <p class="copyright text" id="downloadCopyright2"></p>
+							  </div>
+							</div>
+							<div> 
+							<div class="button">
+							   <a class="btn btn-info left"
 								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html"
 								target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
 								Request Image<br>Rights
-							</a>
-							<p class="copyright text col-md-9">Request reproduction
+							  </a></div><div>							
+							<p class="copyright text">Request reproduction
 								rights to this image</p>
-							<br /> <br /> <a class="btn btn-info left" href="#"
+							</div></div>
+							<div>
+							<div class="button">	
+							   <a class="btn btn-info left" href="#"
 								onclick="$('#bookmarkConfirmation').show();return false;"> <i
 								class="fa fa-bookmark fa-2x pull-left"></i> Bookmark This<br>Image
-							</a>
-							<p class="copyright text col-md-9">Add this image / page to
+							  </a></div><div>
+							  <p class="copyright text">Add this image / page to
 								your personal bookmarks for quick access later.</p>
+							</div></div>
 						</div>
 					</div>
 					<div class="panel panel-default">
@@ -398,6 +404,10 @@
 
 
 	<jsp:include page="header/analytics.jsp" />
+	
+</div>
+
+<script src="/scripts/projectlight-libs/ios-orientationchange-fix.js"></script>
 </body>
 
 </html>
