@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1">
 
 <%!public String prepareForMetaTag(String input) {
 
@@ -211,7 +211,7 @@
 
 	</div>	
 	<div id="right-panel">
-        <span id="doc-breadcrumb"></span>
+        <div id="doc-breadcrumb"></div>
 		<div id="right-panel-toggle">
 			<i class="fa fa-angle-right pull-left"></i>
 		</div>
@@ -255,7 +255,7 @@
 
 			<!-- Tab panes -->
 			<div id="tab-content" class="tab-content"
-				style="overflow-x: hidden; overflow-y: auto">
+				style="overflow-x: auto; overflow-y: auto">
 				<div role="tabpanel" class="tab-pane active" id="abouttab">					
 					<div id='about-content'>
 						<h3>
@@ -297,22 +297,29 @@
 					<div id="metadatacontent">No Metadata Available</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="transcriptionnorm">
-					<ol class="breadcrumb">
+					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Transcription (normalised)</li>
-					</ol>
+					</ol></div>
+					<div class="framediv">
 					<iframe id="transcriptionnormframe" src=""></iframe>
+					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="transcriptiondiplo">
-					<ol class="breadcrumb">
+					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Transcription (diplomatic)</li>
-					</ol>
+					</ol></div>
+					<div class="framediv">
 					<iframe id="transcriptiondiploframe" src=""></iframe>
+					</div>
+					
 				</div>
 				<div role="tabpanel" class="tab-pane" id="translation">
-					<ol class="breadcrumb">
+					<div class="breadcrumbdiv"><ol class="breadcrumb">
 						<li class="active">Translation</li>
-					</ol>
+					</ol></div>
+					<div class="framediv">
 					<iframe id="translationframe" src=""></iframe>
+					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="download">
 					<div class="panel panel-default">
@@ -355,22 +362,19 @@
 							<h3 class="panel-title">Share</h3>
 						</div>
 						<div class="panel-body">
-							<p class="col-md-12">
+							<div>
 								If you want to share this page with others you can send them a
-								link to this individual page: <input id="currentURL" type="text"
-									name="link" value="" readonly="readonly" size="60"
-									onclick="select()"><br />
-							</p>
-							<p class="col-md-12">Alternatively please share this page on
-								social media</p>
+								link to this individual page: <div class="displaybox" id="currentURL"></div>
+							</div>
+							<div>Alternatively please share this page on
+								social media</div>
 							<div class="addthis_sharing_toolbox col-md-12"></div>
-							<p class="col-md-12">
+							<div>
 								<br />You can also embed the viewer into your own website or
 								blog using the code below:<br />
-								<textarea id="embedCode" name="embedCode" readonly="readonly"
-									cols="60" rows="6" onclick="select()"></textarea>
+								<div id="embedCode" class="displaybox"></div>
 								<br />
-							</p>
+							</div>
 						</div>
 
 					</div>
