@@ -90,7 +90,7 @@
 								+ "' "
 								+ imageDimensions
 								+ "></a></div></div> \n ");
-						out.print("<div class='collections_carousel_text'><h5>"
+						out.print("<div class='collections_carousel_text word-wrap-200'><h5>"
 								+ item.getTitle()
 								+ " ("
 								+ item.getShelfLocator()

@@ -3,7 +3,7 @@
 
 <h2>How do I add a bookmark?</h2>
 <div class="campl-content-container">
-	<p>When viewing an item, from the right hand panel select 'More'
+	<p>When viewing an item, from the right hand panel select 'View more options'
 		then 'Download or Share'</p>
 
 	<a class="fancybox-inline" href="/images/general/bookmark-link1.png">
