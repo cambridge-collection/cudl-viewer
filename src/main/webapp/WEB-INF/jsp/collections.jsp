@@ -586,10 +586,10 @@
 
 							String imageDimensions = "";
 							if (item.getThumbnailOrientation().trim().equals("portrait")) {
-								imageDimensions = " style='height:100%' width='120px' ";
+								imageDimensions = " style='width:120px' ";
 							} else if (item.getThumbnailOrientation().trim()
 									.equals("landscape")) {
-								imageDimensions = " style='width:100%' width='120px' ";
+								imageDimensions = " style='width:200px' ";
 							}
 					%>
 					<li><a href="/view/<%=item.getId()%>"><img
