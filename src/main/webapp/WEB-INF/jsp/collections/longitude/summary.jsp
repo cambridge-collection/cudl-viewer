@@ -198,7 +198,7 @@
 			<li><a href="/view/MS-RGO-00014-00051/358"><img
 					alt="MS-RGO-00014-00051/358"
 					src="<%=imageServer%>/content/images/MS-RGO-00014-00051-000-00359_files/8/0_0.jpg"
-					style='height: 100%' width='120px' /></a>
+					style='width:120px' /></a>
 				<h5>
 					<a href="/view/MS-RGO-00014-00051/358">Matthew Flinders on the
 						naming of Australia</a>
@@ -206,7 +206,7 @@
 			<li><a href="/view/MS-RGO-00014-00024/451"><img
 					alt="MS-RGO-00014-00024/451"
 					src="<%=imageServer%>/content/images/MS-RGO-00014-00024-000-00451_files/8/0_0.jpg"
-					style='height: 100%' width='120px' /></a>
+					style='width:120px' /></a>
 				<h5>
 					<a href="/view/MS-RGO-00014-00024/451">Captain Bligh on the
 						loss of his timekeeper to mutineers</a>
@@ -214,7 +214,7 @@
 			<li><a href="/view/MS-RGO-00014-00039/83"><img
 					alt="MS-RGO-00014-00039/83"
 					src="<%=imageServer%>/content/images/MS-RGO-00014-00039-000-00083_files/8/0_0.jpg"
-					style='height: 100%' width='120px' /></a>
+					style='width:120px' /></a>
 				<h5>
 					<a href="/view/MS-RGO-00014-00039/83">Drawings of globe
 						instruments including a movable compass</a>
@@ -223,7 +223,7 @@
 			<li><a href="/view/MS-RGO-00014-00044/197"><img
 					alt="MS-RGO-00014-00044/197"
 					src="<%=imageServer%>/content/images/MS-RGO-00014-00044-000-00197_files/8/0_0.jpg"
-					style='height: 100%' width='120px' /></a>
+					style='width:120px' /></a>
 				<h5>
 					<a href="/view/MS-RGO-00014-00044/197">Lieutenant Couch's
 						Callista</a>
@@ -232,7 +232,7 @@
 			<li><a href="/view/MS-RGO-00014-00058/255"><img
 					alt="MS-RGO-00014-00058/255"
 					src="<%=imageServer%>/content/images/MS-RGO-00014-00058-000-00256_files/8/0_0.jpg"
-					style='height: 100%' width='120px' /></a>
+					style='width:120px' /></a>
 				<h5>
 					<a href="/view/MS-RGO-00014-00058/255">First map of Palliser's
 						Islands from Cook's Second Voyage</a>
