@@ -61,7 +61,7 @@
 		<div class="campl-column3 campl-footer-navigation">
 			<div class="campl-content-container campl-footer-logo">
 				<img alt="University of Cambridge"
-					src="../images/interface/main-logo-small.png"
+					src="/images/interface/main-logo-small.png"
 					class="campl-scale-with-grid" />
 				<p>&#169; 2015 University of Cambridge</p>
 				<ul class="campl-unstyled-list campl-global-footer-links">
