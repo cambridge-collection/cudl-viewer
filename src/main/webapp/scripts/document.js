@@ -130,6 +130,7 @@ cudl.updatePageMetadata = function (data, pagenumber) {
        
        $('#currentURL').text("http://cudl.lib.cam.ac.uk"+newURL);
        $('#embedCode').text("<div style='position: relative; width: 100%; padding-bottom: 80%;'><iframe type='text/html' width='600' height='410' style='position: absolute; width: 100%; height: 100%;' src='http://cudl.lib.cam.ac.uk/embed/#item="+cudl.docId+"&page="+pagenumber+"&hide-info=true' frameborder='0' allowfullscreen='' onmousewheel=''></iframe></div>")
+       $('#about-metadata').empty();	
        cudl.highlightMetadataForPageViewed(pagenumber, data.logicalStructures);
        $('#pageLabel').html("Page: "+data.pages[pagenumber-1].label);
 
@@ -554,9 +555,6 @@ cudl.setupMetadata = function (data) {
 	// set content of more info tab. 
 	$('#metadatacontent').html("<ul>"+ getHTMLForLogicalStructure(data.logicalStructures, 0, Number.MAX_VALUE)+"</ul>");
 	
-	// set metadata section of about tab. 
-	$('#about-metadata').html("<br/>"+getHTMLForLogicalStructure([data.logicalStructures[0]], 0, 0));
-	
 	
   function getHTMLForLogicalStructure(array, level, maxlevel) {
 			
@@ -743,6 +741,7 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 				&& ls.endPagePosition >= pageNumber) {
 					
 			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-info");			
+			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).clone().appendTo('#about-metadata');
 			
 		} else {
 
