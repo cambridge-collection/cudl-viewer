@@ -155,63 +155,6 @@
 	float: left;
 }
 
-.collection {
-	position: relative;
-	background: #fff; /* for non-css3 browsers */
-	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
-		
-		
-		
-		
-		
-		
-		
-		 
-		'#ffffff', endColorstr=    '#ffffff'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#ffffff)); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #ffffff);
-	/* for firefox 3.6+ */
-	padding: 14px;
-	display: block;
-}
-
-.collection-science {
-	background: #fff;
-	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
-		
-		
-		
-		
-		
-		
-		
-		 
-		'#ffffff', endColorstr=    '#ccd4ff'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#fff)); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #fff);
-	/* for firefox 3.6+ */
-}
-
-.collection-faith {
-	background: #fff;
-	filter: progid:    DXImageTransform.Microsoft.gradient(    startColorstr=
-		
-		
-		
-		
-		
-		
-		
-		 
-		'#ffffff', endColorstr=    '#ffffff'); /* for IE */
-	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff),
-		to(#ffffff)); /* for webkit browsers */
-	background: -moz-linear-gradient(top, #ffffff, #ffffff);
-	/* for firefox 3.6+ */
-}
-
 .featuredItem-text {
 	width: 200px;
 }
@@ -400,16 +343,18 @@ blockquote {
 	font-style: normal;
 	position: relative;
 	display: block;
+	position: relative;
+	min-height: 200px;
 }
 
 #subcollection-breadcrumb {
 	color: #000;
 }
-#subcollection-breadcrumb li {
-    padding: 0px 9px 0px 0px;	
-    background:#fff;
-}
 
+#subcollection-breadcrumb li {
+	padding: 0px 9px 0px 0px;
+	background: #fff;
+}
 
 ol#collections_carousel li {
 	list-style: none outside none;
@@ -469,14 +414,18 @@ ol#search_carousel li {
 }
 
 .collections_carousel_image_box {
-	float: right;
 	width: 190px;
-	height: 190px;
+	height: 100%;
 	background: #000000;
 	padding: 5px;
 	border-style: solid;
 	border-width: 1px;
 	border-color: #333;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	content: "";	
 }
 
 .collections_carousel_image {
@@ -603,7 +552,7 @@ ol#vcollections_carousel li {
 
 /* For pagination */
 div.pagination {
-	text-align:center;
+	text-align: center;
 }
 
 div.pagination a:hover, div.pagination span.current {
