@@ -11,8 +11,9 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>3.0.4.RELEASE</spring.version>
-		<jettyVersion>7.2.0.v20101020</jettyVersion>
+		<!-- <spring.version>3.0.4.RELEASE</spring.version>-->
+		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.security.version>3.2.6.RELEASE</spring.security.version>
 	</properties>
 
 	<!-- <scm> <connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</connection> 
@@ -27,30 +28,6 @@
 
 	<build>
 		<plugins>
-			<!-- Jetty plugin allows us to test locally using mvn jetty:run Note that 
-				the resources in /src/text/resources are pulled in which will not be available 
-				in war file. cudl-global.properties is used on the classpath to specify properties 
-				that vary depending on web container - DEV, BETA, LIVE etc. The version in 
-				main is used if it exists, see src/main/docs/building-foundations-viewer.txt -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jettyVersion}</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<webAppConfig>
-						<extraClasspath>${basedir}/src/main/resources/;${basedir}/src/test/resources/</extraClasspath>
-					</webAppConfig>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>1111</port>
-							<maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
@@ -108,17 +85,9 @@
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.3</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.1.2</version>
-			<type>jar</type>
-			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -174,23 +143,18 @@
 			<version>4aug2000r7-dev</version>
 		</dependency>
 
-		<!-- Jetty -->
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>${jettyVersion}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.0.2.GA</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.5.11</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -213,52 +177,37 @@
 		<!-- Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.context</artifactId>
+			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.core</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-openid</artifactId>
+			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.jdbc</artifactId>
+			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.web</artifactId>
+			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.web.servlet</artifactId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.beans</artifactId>
+			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>org.springframework.oxm</artifactId>
+			<artifactId>spring-oxm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -266,31 +215,21 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-openid</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>		
 	</dependencies>
 
-
-
-	<!-- Repositories -->
-
-	<repositories>
-		<!-- EBR Spring Release Repository -->
-		<repository>
-			<id>com.springsource.repository.bundles.release</id>
-			<name>EBR Spring Release Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/release</url>
-		</repository>
-		<!-- EBR Spring External Repository -->
-		<repository>
-			<id>com.springsource.repository.bundles.external</id>
-			<name>EBR External Release Repository</name>
-			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
-
-
-	</repositories>
-	<!-- <distributionManagement> <repository> <uniqueVersion>false</uniqueVersion> 
-		<id>corp1</id> <name>Corporate Repository</name> <url>scp://repo1/maven2</url> 
-		<layout>default</layout> </repository> <snapshotRepository> <uniqueVersion>true</uniqueVersion> 
-		<id>propSnap</id> <name>Propellors Snapshots</name> <url>sftp://propellers.net/maven</url> 
-		<layout>legacy</layout> </snapshotRepository> </distributionManagement> -->
 </project>
