@@ -213,6 +213,7 @@ body {
 	padding-left: 15px;
 	width: 80%;
 	margin-bottom: 15px;
+	max-width: 640px;
 }
 
 .about-content-page {
