@@ -124,8 +124,11 @@ cudl.updatePageMetadata = function (data, pagenumber) {
     	   $('#downloadOption').css("display", "none");
        } else {
     	   $('#downloadCopyright').html(data.descriptiveMetadata[0].downloadImageRights);
-           $('#downloadCopyright2').html(data.descriptiveMetadata[0].downloadImageRights);
-         
+           $('#downloadCopyright2').html(data.descriptiveMetadata[0].downloadImageRights);         
+       }
+       
+       if (data.embeddable==null || data.embeddable==false) {
+    	   $('#embedOption').css("display", "none");
        }
        
        $('#currentURL').text("http://cudl.lib.cam.ac.uk"+newURL);

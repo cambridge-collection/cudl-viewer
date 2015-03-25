@@ -327,7 +327,7 @@
 							<h3 class="panel-title">Download</h3>
 						</div>
 						<div class="panel-body downloadpanel">
-						    <div>
+						    <div id="downloadOption">
 						      <div class="button">
 							  <a class="btn btn-info left" href="#"
 								onclick="$('#downloadConfirmation').show();return false;"> <i
@@ -336,7 +336,7 @@
 							  <p class="copyright text" id="downloadCopyright2"></p>
 							  </div>
 							</div>
-							<div> 
+							<div id="rightsOption"> 
 							<div class="button">
 							   <a class="btn btn-info left"
 								href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html"
@@ -346,7 +346,7 @@
 							<p class="copyright text">Request reproduction
 								rights to this image</p>
 							</div></div>
-							<div>
+							<div id="bookmarkOption">
 							<div class="button">	
 							   <a class="btn btn-info left" href="#"
 								onclick="$('#bookmarkConfirmation').show();return false;"> <i
@@ -369,7 +369,7 @@
 							<div>Alternatively please share this page on
 								social media</div>
 							<div class="addthis_sharing_toolbox col-md-12"></div>
-							<div>
+							<div id="embedOption">
 								<br />You can also embed the viewer into your own website or
 								blog using the code below:<br />
 								<div id="embedCode" class="displaybox"></div>
