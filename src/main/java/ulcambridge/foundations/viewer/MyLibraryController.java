@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import java.io.IOException;
+import java.net.URI;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.client.OAuth2RestOperations;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +33,7 @@ public class MyLibraryController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private ItemFactory itemFactory;
 	private BookmarkDao bookmarkDao;
+	private final OAuth2RestOperations userTemplate;	
 
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
@@ -38,11 +44,33 @@ public class MyLibraryController {
 	public void setBookmarkDao(BookmarkDao bookmarkDao) {
 		this.bookmarkDao = bookmarkDao;
 	}
+	
+    @Autowired
+    public MyLibraryController (OAuth2RestOperations userTemplate) {
+        this.userTemplate = userTemplate;
+    } 	
 
 	// on path /mylibrary/
 	@RequestMapping(value = "/")
 	public ModelAndView handleRequest(Principal principal) {
 
+		System.out.println("userTemplate: "+userTemplate);
+        System.out.println("code: "+userTemplate.getOAuth2ClientContext().getAccessTokenRequest().getAuthorizationCode());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null) {
+            return null;
+        }
+        String clientId = null;
+
+        if (authentication.getClass().isAssignableFrom(OAuth2Authentication.class)) {
+            clientId = ((OAuth2Authentication) authentication).getOAuth2Request().getClientId();
+        }
+
+        System.out.println("clientId: "+clientId);
+        String result = userTemplate.getForObject(URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"), String.class);
+        //https://www.googleapis.com/oauth2/v1/userinfo?alt=json
+        System.out.println("RESULT IS:" +result); 
+        
 		List<Bookmark> bookmarks = bookmarkDao.getByUsername(principal
 				.getName());
 		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();

@@ -53,7 +53,7 @@
 				<div class="campl-column4 campl-login-form">
 					<div class="campl-content-container">
 						<form id="openid_form" method="post"
-							action="/j_spring_openid_security_check">
+							action="/j_spring_security_check">
 							<fieldset>
 								Sign in with your<br /> <img src="/images/google-logo.jpg"
 									width="20px" height="20px"> <span class="google_account">Google

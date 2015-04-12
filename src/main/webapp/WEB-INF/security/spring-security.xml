@@ -1,79 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-	   		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-			http://www.springframework.org/schema/security 
-			http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+               http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.1.xsd
+            http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.2.xsd
+            http://www.springframework.org/schema/security/oauth2
+http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 
     <import resource="../datasource/itemsFactory.xml" />
 
-	<!-- This is where we configure Spring-Security -->
-	<security:http auto-config="false" use-expressions="true"
-		access-denied-page="/auth/denied/">
+    <context:annotation-config />
+    <!-- This is where we configure Spring-Security -->
+    <!-- <security:http auto-config="false" use-expressions="true" access-denied-page="/auth/denied/">
+        <security:intercept-url pattern="/auth/login/" access="permitAll" /> <security:intercept-url
+        pattern="/auth/denied/" access="permitAll" /> <security:intercept-url pattern="/mylibrary/**"
+        access="hasRole('ROLE_USER')" /> Adding the openid-login tag activates Spring
+        Security's support for OpenID <security:openid-login login-page="/auth/login/"
+        authentication-failure-url="/auth/login/?error=true" default-target-url="/mylibrary/"
+        user-service-ref="MyUserDetailsService"> </security:openid-login> <security:logout
+        invalidate-session="true" logout-success-url="/auth/login/" logout-url="/auth/logout/"
+        /> </security:http> -->
 
-		<security:intercept-url pattern="/auth/login/"
-			access="permitAll" />
-		<security:intercept-url pattern="/auth/denied/"
-			access="permitAll" />		
-			
-        <!--  restrict entire site -->						
-		<!-- <security:intercept-url pattern="/"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/view/**"
-			access="hasRole('ROLE_ADMIN')" />	
-		<security:intercept-url pattern="/collections/**"
-			access="hasRole('ROLE_ADMIN')" />		
-		<security:intercept-url pattern="/mylibrary/**"
-			access="hasRole('ROLE_ADMIN')" />	
-		<security:intercept-url pattern="/help/**"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/about/**"
-			access="hasRole('ROLE_ADMIN')" />	
-		<security:intercept-url pattern="/news/**"
-			access="hasRole('ROLE_ADMIN')" />			
-		<security:intercept-url pattern="/contributors/**"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/terms/**"
-			access="hasRole('ROLE_ADMIN')" />			
-		<security:intercept-url pattern="/search**"
-			access="hasRole('ROLE_ADMIN')" /> -->	 
-			
-		<security:intercept-url pattern="/mylibrary/**"
-			access="hasRole('ROLE_USER')" /> 	
-						
-		<!-- Adding the openid-login tag activates Spring Security's support for 
-			OpenID -->
-		<security:openid-login login-page="/auth/login/"
-			authentication-failure-url="/auth/login/?error=true" default-target-url="/mylibrary/"
-			user-service-ref="MyUserDetailsService">
-		</security:openid-login>
 
-		<security:logout invalidate-session="true"
-			logout-success-url="/auth/login/" logout-url="/auth/logout/" />
+    <security:debug />
 
-	</security:http>
 
-	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:jdbc-user-service
-				data-source-ref="dataSource" />
-		</security:authentication-provider>
-	</security:authentication-manager>
 
-	<!-- <bean id="MyUserDetailsService"
-		class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-		<property name="dataSource" ref="dataSource" />
-	</bean> -->
-	
-	<bean id="usersDao"
-		class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
+    <oauth:resource id="google" type="authorization_code"
+        client-id="${google.clientId}" client-secret="${google.clientSecret}"
+access-token-uri="https://accounts.google.com/o/oauth2/token"
+user-authorization-uri="https://accounts.google.com/o/oauth2/auth"
+        scope="openid"
+        client-authentication-scheme="form"
+pre-established-redirect-uri="http://cudl-dev.lib.cam.ac.uk/oauth2callback " />
 
-	<bean id="MyUserDetailsService"
-		class="ulcambridge.foundations.viewer.authentication.UserDetailsServiceImpl">
-		<property name="usersDao" ref="usersDao" />
-	</bean>
+<!-- scope="profile" -->
+
+    <oauth:rest-template id="googleLoginRestTemplate"
+        resource="google" access-token-provider="accessTokenProviderChain" />
+
+    <!-- see OAuth2RestTemplate; configuration has to be duplicated here to
+        provide the same authorization token providers but use a different implementation
+        for client token services -->
+    <bean id="accessTokenProviderChain"
+class="org.springframework.security.oauth2.client.token.AccessTokenProviderChain">
+        <constructor-arg index="0">
+            <list>
+                <bean
+class="org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeAccessTokenProvider" />
+                <bean
+class="org.springframework.security.oauth2.client.token.grant.implicit.ImplicitAccessTokenProvider" />
+                <bean
+class="org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider" />
+                <bean
+class="org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider" />
+            </list>
+        </constructor-arg>
+        <property name="clientTokenServices">
+            <bean
+class="ulcambridge.foundations.viewer.authentication.JsonClientTokenServices" />
+        </property>
+    </bean>
+    <!-- END OF OAUTH -->
+
+
+    <!-- We do not auto configuration as we want a custom authentication mechanism
+        which requires modifying the filter chain -->
+    <security:http access-denied-page="/auth/denied?authorization_error=true"
+        entry-point-ref="authenticationEntryPoint" auto-config="true">
+
+        <security:intercept-url pattern="/**" access="ROLE_USER" />
+        <!-- ensure we put system credentials into the security context before
+            the anonymous filter does -->
+         <security:custom-filter ref="authProcessingFilter"
+            before="ANONYMOUS_FILTER" />
+        <!--<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY"
+            /> <security:form-login authentication-failure-url="/auth/login?authentication_error=true"
+            default-target-url="/index.jsp" login-page="/auth/login" /> <security:logout
+            logout-success-url="/" /> <security:anonymous /> -->
+
+
+        <security:custom-filter ref="oauth2ClientFilter"
+            after="EXCEPTION_TRANSLATION_FILTER" />
+
+        <!-- after="EXCEPTION_TRANSLATION_FILTER" -->
+    </security:http>
+
+
+    <!--apply the oauth client context -->
+
+    <oauth:client id="oauth2ClientFilter" />
+
+    <!-- This is a dummy authentication entry point that just serves as an empty
+        default entry point as we cannot use default http security configuration. -->
+    <bean id="authenticationEntryPoint"
+class="ulcambridge.foundations.viewer.authentication.SystemAuthenticationEntryPoint" />
+
+<!--      <bean id="clientAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint"/>
+     -->
+
+
+    <security:authentication-manager alias="defaultAuthenticationManager">
+        <security:authentication-provider
+            ref="authenticationProvider" />
+    </security:authentication-manager>
+    <bean id="authProcessingFilter"
+class="ulcambridge.foundations.viewer.authentication.SystemAuthenticationProcessingFilter">
+        <property name="authenticationManager" ref="defaultAuthenticationManager" />
+    </bean>
+    <!-- BEWARE: ******* This authentication provider is used here to simplify
+        the demo application. Use a *real* authentication provider in production! -->
+    <bean id="authenticationProvider"
+class="org.springframework.security.authentication.TestingAuthenticationProvider" />
+
+    <!-- END OF EXTRA STUFF -->
+<!--
+     <security:authentication-manager> <security:authentication-provider>
+        <security:jdbc-user-service data-source-ref="dataSource" /> </security:authentication-provider>
+        </security:authentication-manager>  -->
+
+    <!-- <bean id="MyUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <property name="dataSource" ref="dataSource" /> </bean> -->
+
+    <bean id="usersDao"
+class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="MyUserDetailsService"
+class="ulcambridge.foundations.viewer.authentication.UserDetailsServiceImpl">
+        <property name="usersDao" ref="usersDao" />
+    </bean>
 
 </beans>

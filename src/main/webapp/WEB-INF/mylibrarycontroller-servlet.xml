@@ -26,6 +26,7 @@
 	<bean id="myLibraryController" class="ulcambridge.foundations.viewer.MyLibraryController">
 		<property name="itemFactory" ref="itemFactory" />
 		<property name="bookmarkDao" ref="bookmarkDao" />
+		<constructor-arg ref="googleLoginRestTemplate" />
 	</bean>
 
 	<util:properties id="globalproperties" location="classpath:cudl-global.properties" 
