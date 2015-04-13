@@ -34,10 +34,10 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     <oauth:resource id="google" type="authorization_code"
         client-id="${google.clientId}" client-secret="${google.clientSecret}"
 access-token-uri="https://accounts.google.com/o/oauth2/token"
-user-authorization-uri="https://accounts.google.com/o/oauth2/auth"
-        scope="openid"
+user-authorization-uri="https://accounts.google.com/o/oauth2/auth?openid.realm=http://localhost:1111/"
+        scope="profile openid"
         client-authentication-scheme="form"
-pre-established-redirect-uri="http://cudl-dev.lib.cam.ac.uk/oauth2callback " />
+pre-established-redirect-uri="http://localhost:1111/" />
 
 <!-- scope="profile" -->
 

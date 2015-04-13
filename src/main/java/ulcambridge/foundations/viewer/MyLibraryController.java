@@ -68,8 +68,10 @@ public class MyLibraryController {
 
         System.out.println("clientId: "+clientId);
         String result = userTemplate.getForObject(URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"), String.class);
+	
         //https://www.googleapis.com/oauth2/v1/userinfo?alt=json
         System.out.println("RESULT IS:" +result); 
+        
         
 		List<Bookmark> bookmarks = bookmarkDao.getByUsername(principal
 				.getName());
