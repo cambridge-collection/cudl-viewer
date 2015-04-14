@@ -38,8 +38,6 @@ public class MyLibraryController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private ItemFactory itemFactory;
 	private BookmarkDao bookmarkDao;
-	private final OAuth2RestOperations userTemplate;
-	private UserDetailsService userDetailsService;
 
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
@@ -50,43 +48,13 @@ public class MyLibraryController {
 	public void setBookmarkDao(BookmarkDao bookmarkDao) {
 		this.bookmarkDao = bookmarkDao;
 	}
-	
-    @Autowired
-    public MyLibraryController (OAuth2RestOperations userTemplate) {
-        this.userTemplate = userTemplate;
-    } 	
-    
-    @Autowired
-    public void setUserDetailsService(UserDetailsService userDetailsService) {
-    	this.userDetailsService = userDetailsService;
-    }
 
 	// on path /mylibrary/
 	@RequestMapping(value = "/")
 	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
 		System.out.println("Principal is: "+principal);
-		String id;
-		if (principal == null) {		 
-
-			// User is not logged in, so make Google profile request  
-		    String result = userTemplate.getForObject(URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"), String.class);
-        
-       	    System.out.println("RESULT IS:" +result);
-        	JSONObject json = new JSONObject(result);        	
-        	id = json.getString("sub");
-        	
-        	// Setup user in spring security 
-        	UserDetails details = userDetailsService.loadUserByUsername(id);
-        	System.out.println("user details: "+details.getUsername());
-        	
-        	Authentication auth = new PreAuthenticatedAuthenticationToken(id, null, AuthorityUtils.createAuthorityList("ROLE_USER"));
-        	SecurityContextHolder.getContext().setAuthentication(auth);        	
-        	//https://www.googleapis.com/oauth2/v1/userinfo?alt=json
-        	
-		} else {
-			id = principal.getName();
-		}                   
+		String id = principal.getName();
         
 		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
 		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();

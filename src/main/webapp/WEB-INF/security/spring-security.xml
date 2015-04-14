@@ -56,7 +56,7 @@ pre-established-redirect-uri="http://localhost:1111/" /> -->
          auto-config="true">
 
         <security:form-login login-page='/auth/login'/>
-        <security:intercept-url pattern="/mylibrary" access="ROLE_USER" />
+        <security:intercept-url pattern="/mylibrary/**" access="ROLE_USER" />
     
         <security:custom-filter ref="oauth2ClientFilter"
             after="EXCEPTION_TRANSLATION_FILTER" />
@@ -105,9 +105,9 @@ class="org.springframework.security.authentication.AnonymousAuthenticationProvid
 
     <!-- END OF EXTRA STUFF -->
 
-<!--      <security:authentication-manager alias="defaultAuthenticationManager"> <security:authentication-provider>
+      <security:authentication-manager alias="defaultAuthenticationManager"> <security:authentication-provider>
         <security:jdbc-user-service data-source-ref="dataSource" /> </security:authentication-provider>
-        </security:authentication-manager>  -->
+        </security:authentication-manager>  
 
 
     <bean id="usersDao"

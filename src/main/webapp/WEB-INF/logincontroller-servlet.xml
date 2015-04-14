@@ -18,18 +18,13 @@
         http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 
     <import resource="datasource/itemsFactory.xml" />
-
-	<bean id="bookmarkDao" class="ulcambridge.foundations.viewer.dao.BookmarkDBDao">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
 	
-	<bean id="myLibraryController" class="ulcambridge.foundations.viewer.MyLibraryController">
-		<property name="itemFactory" ref="itemFactory" />
-		<property name="bookmarkDao" ref="bookmarkDao" />
+	<bean id="loginController" class="ulcambridge.foundations.viewer.authentication.LoginController">
+		<property name="userDetailsService" ref="MyUserDetailsService" />
+		<constructor-arg ref="googleLoginRestTemplate" />
 	</bean>
 
-	<util:properties id="globalproperties" location="classpath:cudl-global.properties" 
-		/> 	
+	<util:properties id="globalproperties" location="classpath:cudl-global.properties" /> 	
 
 
 	<bean id="viewResolver"
