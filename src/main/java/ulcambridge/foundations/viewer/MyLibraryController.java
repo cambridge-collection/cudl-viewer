@@ -12,11 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +38,8 @@ public class MyLibraryController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private ItemFactory itemFactory;
 	private BookmarkDao bookmarkDao;
-	private final OAuth2RestOperations userTemplate;	
+	private final OAuth2RestOperations userTemplate;
+	private UserDetailsService userDetailsService;
 
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
@@ -49,32 +55,40 @@ public class MyLibraryController {
     public MyLibraryController (OAuth2RestOperations userTemplate) {
         this.userTemplate = userTemplate;
     } 	
+    
+    @Autowired
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+    	this.userDetailsService = userDetailsService;
+    }
 
 	// on path /mylibrary/
 	@RequestMapping(value = "/")
-	public ModelAndView handleRequest(Principal principal) {
+	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
-		System.out.println("userTemplate: "+userTemplate);
-        System.out.println("code: "+userTemplate.getOAuth2ClientContext().getAccessTokenRequest().getAuthorizationCode());
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null) {
-            return null;
-        }
-        String clientId = null;
+		System.out.println("Principal is: "+principal);
+		String id;
+		if (principal == null) {		 
 
-        if (authentication.getClass().isAssignableFrom(OAuth2Authentication.class)) {
-            clientId = ((OAuth2Authentication) authentication).getOAuth2Request().getClientId();
-        }
-
-        System.out.println("clientId: "+clientId);
-        String result = userTemplate.getForObject(URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"), String.class);
-	
-        //https://www.googleapis.com/oauth2/v1/userinfo?alt=json
-        System.out.println("RESULT IS:" +result); 
+			// User is not logged in, so make Google profile request  
+		    String result = userTemplate.getForObject(URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"), String.class);
         
+       	    System.out.println("RESULT IS:" +result);
+        	JSONObject json = new JSONObject(result);        	
+        	id = json.getString("sub");
+        	
+        	// Setup user in spring security 
+        	UserDetails details = userDetailsService.loadUserByUsername(id);
+        	System.out.println("user details: "+details.getUsername());
+        	
+        	Authentication auth = new PreAuthenticatedAuthenticationToken(id, null, AuthorityUtils.createAuthorityList("ROLE_USER"));
+        	SecurityContextHolder.getContext().setAuthentication(auth);        	
+        	//https://www.googleapis.com/oauth2/v1/userinfo?alt=json
+        	
+		} else {
+			id = principal.getName();
+		}                   
         
-		List<Bookmark> bookmarks = bookmarkDao.getByUsername(principal
-				.getName());
+		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
 		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();
 
 		// Get a list of Items that represent these bookmarks.
@@ -87,7 +101,7 @@ public class MyLibraryController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
-		modelAndView.addObject("username", principal.getName());
+		modelAndView.addObject("username", id);
 		modelAndView.addObject("items", items);
 		modelAndView.addObject("bookmarks", bookmarks);
 		return modelAndView;

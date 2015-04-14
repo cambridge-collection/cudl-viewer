@@ -26,6 +26,7 @@
 	<bean id="myLibraryController" class="ulcambridge.foundations.viewer.MyLibraryController">
 		<property name="itemFactory" ref="itemFactory" />
 		<property name="bookmarkDao" ref="bookmarkDao" />
+		<property name="userDetailsService" ref="MyUserDetailsService" />
 		<constructor-arg ref="googleLoginRestTemplate" />
 	</bean>
 

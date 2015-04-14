@@ -408,8 +408,9 @@ cudl.showPanel = function (panelHREF) {
 cudl.addBookmark = function () {	
 	
 	// Generate bookmarkPath 	
-	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;
+	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;	
 	var bookmarkPath = "/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);
+	console.debug(bookmarkPath);
 	
 	// ajax call to make the bookmark:	
 	$.get(bookmarkPath).success(function(xml) {

@@ -28,67 +28,42 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 
 
     <security:debug />
+    
 
-
-
-    <oauth:resource id="google" type="authorization_code"
+<!--     <oauth:resource id="google" type="authorization_code"
         client-id="${google.clientId}" client-secret="${google.clientSecret}"
 access-token-uri="https://accounts.google.com/o/oauth2/token"
 user-authorization-uri="https://accounts.google.com/o/oauth2/auth?openid.realm=http://localhost:1111/"
         scope="profile openid"
         client-authentication-scheme="form"
-pre-established-redirect-uri="http://localhost:1111/" />
+pre-established-redirect-uri="http://localhost:1111/" /> -->
 
-<!-- scope="profile" -->
+    <bean id="google" class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
+  <property name="clientId" value="${google.clientId}"></property>
+  <property name="clientSecret" value="${google.clientSecret}"></property>  
+  <property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
+  <property name="userAuthorizationUri" value="https://accounts.google.com/o/oauth2/auth?openid.realm=http://localhost:1111/"></property>  
+  <property name="scope" value="#{{'profile','openid'}}"></property>
+  <property name="clientAuthenticationScheme" value="form"></property>
+  <property name="preEstablishedRedirectUri" value="http://localhost:1111/"></property>
+      
+</bean>
 
     <oauth:rest-template id="googleLoginRestTemplate"
-        resource="google" access-token-provider="accessTokenProviderChain" />
+        resource="google"  />
 
-    <!-- see OAuth2RestTemplate; configuration has to be duplicated here to
-        provide the same authorization token providers but use a different implementation
-        for client token services -->
-    <bean id="accessTokenProviderChain"
-class="org.springframework.security.oauth2.client.token.AccessTokenProviderChain">
-        <constructor-arg index="0">
-            <list>
-                <bean
-class="org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeAccessTokenProvider" />
-                <bean
-class="org.springframework.security.oauth2.client.token.grant.implicit.ImplicitAccessTokenProvider" />
-                <bean
-class="org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider" />
-                <bean
-class="org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider" />
-            </list>
-        </constructor-arg>
-        <property name="clientTokenServices">
-            <bean
-class="ulcambridge.foundations.viewer.authentication.JsonClientTokenServices" />
-        </property>
-    </bean>
-    <!-- END OF OAUTH -->
-
-
-    <!-- We do not auto configuration as we want a custom authentication mechanism
-        which requires modifying the filter chain -->
     <security:http access-denied-page="/auth/denied?authorization_error=true"
-        entry-point-ref="authenticationEntryPoint" auto-config="true">
+         auto-config="true">
 
-        <security:intercept-url pattern="/**" access="ROLE_USER" />
-        <!-- ensure we put system credentials into the security context before
-            the anonymous filter does -->
-         <security:custom-filter ref="authProcessingFilter"
-            before="ANONYMOUS_FILTER" />
-        <!--<security:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY"
-            /> <security:form-login authentication-failure-url="/auth/login?authentication_error=true"
-            default-target-url="/index.jsp" login-page="/auth/login" /> <security:logout
-            logout-success-url="/" /> <security:anonymous /> -->
-
-
+        <security:form-login login-page='/auth/login'/>
+        <security:intercept-url pattern="/mylibrary" access="ROLE_USER" />
+    
         <security:custom-filter ref="oauth2ClientFilter"
             after="EXCEPTION_TRANSLATION_FILTER" />
-
-        <!-- after="EXCEPTION_TRANSLATION_FILTER" -->
+<!--         <security:custom-filter ref="authProcessingFilter"
+            after="PRE_AUTH_FILTER" /> -->
+        
+        
     </security:http>
 
 
@@ -98,34 +73,42 @@ class="ulcambridge.foundations.viewer.authentication.JsonClientTokenServices" />
 
     <!-- This is a dummy authentication entry point that just serves as an empty
         default entry point as we cannot use default http security configuration. -->
-    <bean id="authenticationEntryPoint"
-class="ulcambridge.foundations.viewer.authentication.SystemAuthenticationEntryPoint" />
+     <!-- <bean id="authenticationEntryPoint"
+class="ulcambridge.foundations.viewer.authentication.SystemAuthenticationEntryPoint" /> 
 
-<!--      <bean id="clientAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint"/>
-     -->
+      <bean id="clientAuthenticationEntryPoint" class="org.springframework.security.oauth2.provider.error.OAuth2AuthenticationEntryPoint"/> -->
+    
+<!--  NOTE THIS IS NOT USED -->
+<!-- <authentication-manager xmlns="http://www.springframework.org/schema/security">
+    <authentication-provider>
+        <user-service>
+            <user name="test" password="test" authorities="ROLE_USER" />
+        </user-service>
+    </authentication-provider>
+</authentication-manager> -->
 
-
-    <security:authentication-manager alias="defaultAuthenticationManager">
+<!--     <security:authentication-manager alias="defaultAuthenticationManager">
         <security:authentication-provider
             ref="authenticationProvider" />
-    </security:authentication-manager>
-    <bean id="authProcessingFilter"
-class="ulcambridge.foundations.viewer.authentication.SystemAuthenticationProcessingFilter">
+    </security:authentication-manager>-->
+<!--     <bean id="authProcessingFilter"
+class="ulcambridge.foundations.viewer.authentication.OAuth2AuthenticationProcessingFilter">
         <property name="authenticationManager" ref="defaultAuthenticationManager" />
-    </bean>
+        <property name="key" value="myapp" />
+    </bean>  -->
     <!-- BEWARE: ******* This authentication provider is used here to simplify
         the demo application. Use a *real* authentication provider in production! -->
-    <bean id="authenticationProvider"
-class="org.springframework.security.authentication.TestingAuthenticationProvider" />
+<!--     <bean id="authenticationProvider"
+class="org.springframework.security.authentication.AnonymousAuthenticationProvider" >
+        <property name="key" value="myapp" />
+        </bean> -->
 
     <!-- END OF EXTRA STUFF -->
-<!--
-     <security:authentication-manager> <security:authentication-provider>
+
+<!--      <security:authentication-manager alias="defaultAuthenticationManager"> <security:authentication-provider>
         <security:jdbc-user-service data-source-ref="dataSource" /> </security:authentication-provider>
         </security:authentication-manager>  -->
 
-    <!-- <bean id="MyUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-        <property name="dataSource" ref="dataSource" /> </bean> -->
 
     <bean id="usersDao"
 class="ulcambridge.foundations.viewer.authentication.UsersDBDao">

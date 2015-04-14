@@ -24,12 +24,12 @@ import ulcambridge.foundations.viewer.model.Person;
  * Populates an internal system user which is needed when using the Spring OAuth API
  *
  */
-public class SystemAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
+public class OAuth2AuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
 
 	private String key;
 	
-    protected SystemAuthenticationProcessingFilter() {
-        super("/dummy_will_never_be_used_in_practice");
+    protected OAuth2AuthenticationProcessingFilter() {
+        super("/mylibrary");
     }
 
     @Autowired
@@ -40,6 +40,7 @@ public class SystemAuthenticationProcessingFilter extends AbstractAuthentication
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
 
+    	System.out.println("Attempting AUTHENICATION!");
     	// User has not yet authenticated
     	
     	Authentication authentication = new AnonymousAuthenticationToken(key,"anonymous", AuthorityUtils.createAuthorityList("ROLE_ANONYMOUS"));
@@ -52,6 +53,7 @@ public class SystemAuthenticationProcessingFilter extends AbstractAuthentication
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
             throws IOException, ServletException {
 
+    	System.out.println("INFILTER");
         if (SecurityContextHolder.getContext().getAuthentication() == null) {
             SecurityContextHolder.getContext().setAuthentication(attemptAuthentication((HttpServletRequest) req, (HttpServletResponse) res));
 
