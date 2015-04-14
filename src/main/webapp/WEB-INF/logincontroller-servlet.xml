@@ -20,7 +20,7 @@
     <import resource="datasource/itemsFactory.xml" />
 	
 	<bean id="loginController" class="ulcambridge.foundations.viewer.authentication.LoginController">
-		<property name="userDetailsService" ref="MyUserDetailsService" />
+		<property name="usersDao" ref="usersDao" />
 		<constructor-arg ref="googleLoginRestTemplate" />
 	</bean>
 

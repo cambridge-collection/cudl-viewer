@@ -56,6 +56,8 @@ pre-established-redirect-uri="http://localhost:1111/" /> -->
          auto-config="true">
 
         <security:form-login login-page='/auth/login'/>
+        <security:logout logout-url="/auth/logout" logout-success-url="/auth/login?error=Successfully%20logged%20out." delete-cookies="JSESSIONID" />
+        
         <security:intercept-url pattern="/mylibrary/**" access="ROLE_USER" />
     
         <security:custom-filter ref="oauth2ClientFilter"
