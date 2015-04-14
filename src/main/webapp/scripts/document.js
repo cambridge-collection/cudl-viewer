@@ -240,13 +240,13 @@ cudl.setupSeaDragon = function(data) {
 		        case 88: // X rotate right
 		        	cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()+10);
 		            return false;	 f
-		        case 102: // f fullscreen toggle
-		        	if (cudl.viewer.isFullPage()) {
-		        	  cudl.viewer.setFullScreen(false);
-		        	} else {
-		        	  cudl.viewer.setFullScreen(true);	
-		        	}  
-		            return false;		
+		        //case 102: // f fullscreen toggle
+		        //	if (cudl.viewer.isFullPage()) {
+		        //	  cudl.viewer.setFullScreen(false);
+		        //	} else {
+		        //	  cudl.viewer.setFullScreen(true);	
+		        //	}  
+		        //   return false;		
 		        case 114: // r toggle right panel
 		        	cudl.toggleRightPanel();
 		            return false;			            
