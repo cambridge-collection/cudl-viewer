@@ -2,6 +2,8 @@ package ulcambridge.foundations.viewer.authentication;
 
 import java.io.IOException;
 import java.net.URI;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -29,6 +32,7 @@ public class LoginController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private final OAuth2RestOperations userTemplate;
 	private UsersDao usersDao;
+	private UserDetailsService userDetailsService;
 
 	@Autowired
 	public LoginController(OAuth2RestOperations userTemplate) {
@@ -39,6 +43,11 @@ public class LoginController {
 	public void setUsersDao(UsersDao usersDao) {
 		this.usersDao = usersDao;
 	}
+	
+	@Autowired
+	public void setUserDetailsService(UserDetailsService userDetailsService) {
+		this.userDetailsService = userDetailsService;
+	}	
 
 	// on path /auth/login/
 	@RequestMapping(value = "/login")
@@ -68,7 +77,7 @@ public class LoginController {
 	// on path /auth/oauth2/google 
 	@RequestMapping(value = "/oauth2/google")
 	public ModelAndView handleRequest(HttpSession session, HttpServletResponse response)
-			throws JSONException, IOException {
+			throws JSONException, IOException, NoSuchAlgorithmException {
 
 		// Make Google profile request 
 		String result = userTemplate
@@ -80,9 +89,21 @@ public class LoginController {
 		System.out.println("RESULT IS:" + result);
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("sub");
-
+		
+		// Now we need to generate a unique username from the google id for our database. 
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		messageDigest.update(id.getBytes());
+		byte byteData[] = messageDigest.digest();
+		
+		// convert new username to hex and add provider to the start. 
+		StringBuffer hashedUsername = new StringBuffer();
+        for (int i = 0; i < byteData.length; i++) {
+        	hashedUsername.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+        }
+		String username = new String("google:"+hashedUsername);
+		
 		// setup user in Spring Security and DB
-		setupUser(id, session);
+		setupUser(username, session);
 
 		// forward to /mylibrary/
 		response.sendRedirect("/mylibrary/");
@@ -99,7 +120,8 @@ public class LoginController {
 	 */
 	public void setupUser(String username, HttpSession session) {
 		
-		// Create user in database if required, and store details in user session.  
+		// Create user in database if required, and store details in user session. 
+		userDetailsService.loadUserByUsername(username);
 		User user = usersDao.getActiveUserByUsername(username);
 		session.setAttribute("user", user);
 
