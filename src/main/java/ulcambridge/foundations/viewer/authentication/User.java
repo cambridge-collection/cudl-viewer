@@ -1,9 +1,12 @@
 package ulcambridge.foundations.viewer.authentication;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
 
+	private static final long serialVersionUID = 985462454355609846L;
+	
 	private String password;
 	private String username;
 	private boolean enabled;
