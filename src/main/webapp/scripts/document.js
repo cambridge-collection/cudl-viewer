@@ -566,7 +566,7 @@ cudl.setupMetadata = function (data) {
 	for (var i=0; i<array.length; i++) {
 	    			  
 	  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
-	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\" id=\"panel"+array[i].descriptiveMetadataID+"\">");
+	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\" id=\"panel"+escape(array[i].descriptiveMetadataID).replace(/%/g, "")+"\">");
 	  html = html.concat("<div class=\"panel-heading\"><h4 class=\"panel-title\">");
 	  //html = html.concat("<a data-toggle=\"collapse\" data-target=\"#collapse"+array[i].descriptiveMetadataID+"\" href=\"#collapse"+array[i].descriptiveMetadataID+"\">");
 	  if (level==0) { 
@@ -731,24 +731,27 @@ cudl.setupMetadata = function (data) {
 
 /**
  * Takes in an array of logical structures and a page number.
- * Applies the panel-info style to logicalStructures that are relevant to the specified page. 		 
+ * Applies the panel-info style to logicalStructures that are relevant to the specified page. 		
+ * Note special characters are removed from the descriptiveMetadataID used to identify the logical structure
+ * as these are not supported by jquery functions used.   
  */
 cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 
+	
 	var lsArray = new Array();			
 	for ( var i = 0; i < logicalStructures.length; i++) {
 		var ls = logicalStructures[i];		
 		
 		if (ls.startPagePosition <= pageNumber
 				&& ls.endPagePosition >= pageNumber) {
-					
-			$('#panel'+ls.descriptiveMetadataID).addClass("panel-info");			
-			$('#panel'+ls.descriptiveMetadataID).clone().appendTo('#about-metadata');
+			
+			$('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).addClass("panel-info");			
+			$('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).clone().appendTo('#about-metadata');
 			
 		} else {
 
-			if ($('#panel'+ls.descriptiveMetadataID).hasClass("panel-info")) {
-			  $('#panel'+ls.descriptiveMetadataID).removeClass("panel-info");
+			if ($('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).hasClass("panel-info")) {
+			  $('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).removeClass("panel-info");
 			}
 		}
 		
