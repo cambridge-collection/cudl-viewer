@@ -309,6 +309,15 @@
 					<li>Dr Ignacio Sanchez, Specialist Cataloguer</li>
 				</ul>
 
+
+				<h2>Michaelides Fragments</h2>
+
+				<ul>
+					<li>Yasmin Faghihi, Joint-Head of Near and Middle Eastern
+						Department</li>
+					<li>Gennady Kurin, Specialist Cataloguer</li>
+				</ul>
+
 				<h2>Japanese Works</h2>
 				<ul>
 					<li>Noboru Koyama, Japanese Department, Cambridge University
