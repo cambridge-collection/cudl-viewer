@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,10 +42,11 @@ public class MyLibraryController {
 
 	// on path /mylibrary/
 	@RequestMapping(value = "/")
-	public ModelAndView handleRequest(Principal principal) {
+	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
-		List<Bookmark> bookmarks = bookmarkDao.getByUsername(principal
-				.getName());
+		String id = principal.getName();
+        
+		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
 		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();
 
 		// Get a list of Items that represent these bookmarks.
@@ -57,7 +59,7 @@ public class MyLibraryController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
-		modelAndView.addObject("username", principal.getName());
+		modelAndView.addObject("username", id);
 		modelAndView.addObject("items", items);
 		modelAndView.addObject("bookmarks", bookmarks);
 		return modelAndView;

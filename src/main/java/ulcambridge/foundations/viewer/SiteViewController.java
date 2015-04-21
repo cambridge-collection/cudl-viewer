@@ -70,48 +70,6 @@ public class SiteViewController {
 		return modelAndView;
 	}
 
-	// on path /auth/login/
-	@RequestMapping(value = "/auth/login")
-	public ModelAndView handleLoginRequest(
-			@RequestParam(value = "error", required = false) boolean error,
-			ModelMap model) {
-
-		if (error == true) {
-			// Assign an error message
-			model.put("error",
-					"Invalid username or password. Please try again.");
-		} else {
-			model.put("error", "");
-		}
-
-		ModelAndView modelAndView = new ModelAndView("jsp/login");
-		return modelAndView;
-	}
-
-	// on path /auth/logout/
-	@RequestMapping(value = "/auth/logout")
-	public ModelAndView handleLogoutRequest(
-			@RequestParam(value = "error", required = false) boolean error,
-			ModelMap model) {
-
-		ModelAndView modelAndView = new ModelAndView("jsp/login");
-		model.put("error", "You have logged out.");
-		return modelAndView;
-	}
-
-	/**
-	 * Handles and retrieves the denied JSP page. This is shown whenever a
-	 * regular user tries to access an admin only page.
-	 * 
-	 * @return the name of the JSP page
-	 */
-	// on path /auth/denied/
-	@RequestMapping(value = "/auth/denied", method = RequestMethod.GET)
-	public String getDeniedPage() {
-
-		return "jsp/accessdenied";
-	}
-
 	// on path /news/
 	@RequestMapping(value = "/news")
 	public ModelAndView handleNewsRequest() {

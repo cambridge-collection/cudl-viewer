@@ -28,5 +28,8 @@
 
 	<p>Just click on the remove link next to each item to remove that
 		bookmark from your collection.</p>
+</div>
+<div class="campl-content-container">	
 
+	<p><a href="/auth/logout">Logout</a></p>
 </div>

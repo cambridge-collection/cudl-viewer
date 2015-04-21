@@ -60,9 +60,9 @@
 								<div class="campl-column4">
 									<span class="hint--right"
 										data-hint="Applies to full text search"><form:radiobutton
-											path="textJoin" class="radiobutton" type="radio" value="and"
+											path="textJoin" class="radiobutton" value="and"
 											name="textJoin" /> All of these words<form:radiobutton
-											path="textJoin" class="radiobutton" type="radio" value="or"
+											path="textJoin" class="radiobutton" value="or"
 											name="textJoin" /> Any of these words </span><br /> <br />
 								</div>
 							</div>
