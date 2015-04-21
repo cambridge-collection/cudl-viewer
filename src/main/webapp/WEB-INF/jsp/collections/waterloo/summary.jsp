@@ -127,6 +127,8 @@
 		and the era in which it played so significant a part. To mark the bicentenary of Waterloo,
 		this Digital Library collection presents a sample of such material, encompassing military drill-books,
 		manuscript letters, hand-coloured engravings, battlefield plans, printed mementos and tourist reminiscences.</p>
+		
+		<p>An interactive BBC video of the making of the Waterloo collection, including detailed descriptions of some of the more important items, can be seen <a href="http://www.bbc.co.uk/news/uk-england-cambridgeshire-32167860">here</a>.</p>
 
 
 
