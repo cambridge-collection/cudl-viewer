@@ -240,13 +240,13 @@ cudl.setupSeaDragon = function(data) {
 		        case 88: // X rotate right
 		        	cudl.viewer.viewport.setRotation(cudl.viewer.viewport.getRotation()+10);
 		            return false;	 f
-		        case 102: // f fullscreen toggle
-		        	if (cudl.viewer.isFullPage()) {
-		        	  cudl.viewer.setFullScreen(false);
-		        	} else {
-		        	  cudl.viewer.setFullScreen(true);	
-		        	}  
-		            return false;		
+		        //case 102: // f fullscreen toggle
+		        //	if (cudl.viewer.isFullPage()) {
+		        //	  cudl.viewer.setFullScreen(false);
+		        //	} else {
+		        //	  cudl.viewer.setFullScreen(true);	
+		        //	}  
+		        //   return false;		
 		        case 114: // r toggle right panel
 		        	cudl.toggleRightPanel();
 		            return false;			            
@@ -408,7 +408,7 @@ cudl.showPanel = function (panelHREF) {
 cudl.addBookmark = function () {	
 	
 	// Generate bookmarkPath 	
-	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;
+	var thumbnailURL = cudl.imageServer+cudl.data.pages[cudl.pagenum-1].thumbnailImageURL;	
 	var bookmarkPath = "/mylibrary/addbookmark/?itemId="+cudl.docId+"&page="+cudl.pagenum+"&thumbnailURL="+encodeURIComponent(thumbnailURL);
 	
 	// ajax call to make the bookmark:	
@@ -566,7 +566,7 @@ cudl.setupMetadata = function (data) {
 	for (var i=0; i<array.length; i++) {
 	    			  
 	  var meta = findDescriptiveMetadata(array[i].descriptiveMetadataID, data);
-	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default panel"+array[i].startPagePosition+"-"+array[i].endPagePosition+"\">");
+	  html = html.concat("<div class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\" id=\"panel"+escape(array[i].descriptiveMetadataID).replace(/%/g, "")+"\">");
 	  html = html.concat("<div class=\"panel-heading\"><h4 class=\"panel-title\">");
 	  //html = html.concat("<a data-toggle=\"collapse\" data-target=\"#collapse"+array[i].descriptiveMetadataID+"\" href=\"#collapse"+array[i].descriptiveMetadataID+"\">");
 	  if (level==0) { 
@@ -730,26 +730,28 @@ cudl.setupMetadata = function (data) {
 }
 
 /**
- * Returns an array of logical structures for that apply to the
- * page given. Always includes ROOT logical structure.
- * Takes in an array of logical structures and a page number. 		 
+ * Takes in an array of logical structures and a page number.
+ * Applies the panel-info style to logicalStructures that are relevant to the specified page. 		
+ * Note special characters are removed from the descriptiveMetadataID used to identify the logical structure
+ * as these are not supported by jquery functions used.   
  */
 cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 
+	
 	var lsArray = new Array();			
 	for ( var i = 0; i < logicalStructures.length; i++) {
 		var ls = logicalStructures[i];		
 		
 		if (ls.startPagePosition <= pageNumber
 				&& ls.endPagePosition >= pageNumber) {
-					
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).addClass("panel-info");			
-			$('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).clone().appendTo('#about-metadata');
+			
+			$('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).addClass("panel-info");			
+			$('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).clone().appendTo('#about-metadata');
 			
 		} else {
 
-			if ($('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).hasClass("panel-info")) {
-			  $('.panel'+ls.startPagePosition+"-"+ls.endPagePosition).removeClass("panel-info");
+			if ($('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).hasClass("panel-info")) {
+			  $('#panel'+escape(ls.descriptiveMetadataID).replace(/%/g, "")).removeClass("panel-info");
 			}
 		}
 		
@@ -758,7 +760,6 @@ cudl.highlightMetadataForPageViewed = function(pageNumber, logicalStructures) {
 		}
 		
 	}
-
 }
 
 cudl.setTranscriptionPage = function (data, pagenum) {

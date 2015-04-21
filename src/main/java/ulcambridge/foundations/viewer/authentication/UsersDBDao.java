@@ -2,7 +2,6 @@ package ulcambridge.foundations.viewer.authentication;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import com.mysql.jdbc.PreparedStatement;
 
 public class UsersDBDao implements UsersDao {
 
@@ -37,15 +34,16 @@ public class UsersDBDao implements UsersDao {
 					}
 				});
 
-		String query = "SELECT username, password FROM users where username = ? and enabled = true";
+		String query = "SELECT username, password, email FROM users where username = ? and enabled = true";
 
 		try {
 			return (User) jdbcTemplate.queryForObject(query,
 					new Object[] { username }, new RowMapper<User>() {
 						public User mapRow(ResultSet resultSet, int rowNum)
 								throws SQLException {
-							return new User(resultSet.getString("username"),
-									resultSet.getString("password"), true, roles);
+							return new User(resultSet.getString("username"), 
+									resultSet.getString("password"), 
+									resultSet.getString("email"), true, roles);
 						}
 					});
 
@@ -56,15 +54,32 @@ public class UsersDBDao implements UsersDao {
 	}
 
 	@Override
-	public void createOpenIdUser(String username) {
-		User user = new User (username, "", true, Arrays.asList("ROLE_USER"));
-		add(user);
-	}
-	
-	private void add(final User user) {
+	public User createUser(String username, String email) {
 		
-		String usersSQL = "INSERT into users (username, password, enabled) values (?, ?, ?)";
-		jdbcTemplate.update(usersSQL, new Object[] {user.getUsername(), user.getPassword(), user.isEnabled()});
+		// See if user exists already 
+		User user = getActiveUserByUsername(username);
+		
+		// user with this username already exists.  
+		// Note this updates the email address if this has changed. 
+		if (user!=null) { 
+			
+			// has the email address changed?
+			if (email!=null && !email.equals(user.getEmail())) {
+				updateDetails(username, email);
+			}
+			
+		    return user; 
+		}   
+		
+		user = new User (username, "", email, true, Arrays.asList("ROLE_USER"));
+		add(user);
+		return user;
+	}
+		
+	private void add(final User user) {
+
+		String usersSQL = "INSERT into users (username, password, email, enabled) values (?, ?, ?, ?)";
+		jdbcTemplate.update(usersSQL, new Object[] {user.getUsername(), user.getPassword(), user.getEmail(), user.isEnabled()});
 				
 		String authSQL = "INSERT into authorities (username, authority) values (?, ?)";
 		jdbcTemplate.batchUpdate(authSQL, 
@@ -85,6 +100,20 @@ public class UsersDBDao implements UsersDao {
 			}
     });
 	
+	}
+	
+	
+	/** 
+	 * Updates the email address for this user as they have logged in with a new email address.
+	 * 
+	 * @param username
+	 * @param email
+	 */
+	private void updateDetails(String username, String email) {
+
+		String updateSQL = "UPDATE users SET email = ? WHERE username = ?";
+		jdbcTemplate.update(updateSQL, new Object[] {email, username});
+
 	}
 
 

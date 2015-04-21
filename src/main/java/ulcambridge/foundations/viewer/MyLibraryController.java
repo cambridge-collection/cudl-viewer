@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import java.io.IOException;
+import java.net.URI;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.client.OAuth2RestOperations;
+import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,10 +51,11 @@ public class MyLibraryController {
 
 	// on path /mylibrary/
 	@RequestMapping(value = "/")
-	public ModelAndView handleRequest(Principal principal) {
+	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
-		List<Bookmark> bookmarks = bookmarkDao.getByUsername(principal
-				.getName());
+		String id = principal.getName();
+        
+		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
 		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();
 
 		// Get a list of Items that represent these bookmarks.
@@ -57,7 +68,7 @@ public class MyLibraryController {
 		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
-		modelAndView.addObject("username", principal.getName());
+		modelAndView.addObject("username", id);
 		modelAndView.addObject("items", items);
 		modelAndView.addObject("bookmarks", bookmarks);
 		return modelAndView;
