@@ -53,7 +53,6 @@ public class MyLibraryController {
 	@RequestMapping(value = "/")
 	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
-		System.out.println("Principal is: "+principal);
 		String id = principal.getName();
         
 		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
