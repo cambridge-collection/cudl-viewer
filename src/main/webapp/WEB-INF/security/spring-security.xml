@@ -20,15 +20,19 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 		<property name="clientSecret" value="${google.clientSecret}"></property>
 		<property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
 		<property name="userAuthorizationUri"
-			value="https://accounts.google.com/o/oauth2/auth?openid.realm"></property>
-		<property name="scope" value="#{{'profile','openid'}}"></property>
+			value="https://accounts.google.com/o/oauth2/auth?openid.realm=http://localhost:1111/auth/oauth2/google"></property>
+		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
 		<property name="clientAuthenticationScheme" value="form"></property>
 	</bean>
 
 	<oauth:rest-template id="googleLoginRestTemplate"
 		resource="google" />
 
-	<security:http auto-config="true" create-session="never">
+	<security:http pattern="/images/**" security='none' />
+	<security:http pattern="/scripts/**" security='none' />
+	<security:http pattern="/styles/**" security='none' />
+
+	<security:http auto-config="true">
 
 		<security:form-login login-page='/auth/login' />
 		<security:logout logout-url="/auth/logout"
@@ -42,7 +46,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 			after="EXCEPTION_TRANSLATION_FILTER" />
 
 	</security:http>
-
 
 	<!--apply the oauth client context -->
 
@@ -58,11 +61,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 	<bean id="usersDao"
 		class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<bean id="MyUserDetailsService"
-		class="ulcambridge.foundations.viewer.authentication.UserDetailsServiceImpl">
-		<property name="usersDao" ref="usersDao" />
 	</bean>
 
 </beans>

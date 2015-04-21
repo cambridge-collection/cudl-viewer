@@ -8,6 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -16,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,6 @@ public class LoginController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private final OAuth2RestOperations userTemplate;
 	private UsersDao usersDao;
-	private UserDetailsService userDetailsService;
 
 	@Autowired
 	public LoginController(OAuth2RestOperations userTemplate) {
@@ -43,11 +42,6 @@ public class LoginController {
 	public void setUsersDao(UsersDao usersDao) {
 		this.usersDao = usersDao;
 	}
-	
-	@Autowired
-	public void setUserDetailsService(UserDetailsService userDetailsService) {
-		this.userDetailsService = userDetailsService;
-	}	
 
 	// on path /auth/login/
 	@RequestMapping(value = "/login")
@@ -78,37 +72,56 @@ public class LoginController {
 	@RequestMapping(value = "/oauth2/google")
 	public ModelAndView handleRequest(HttpSession session, HttpServletResponse response)
 			throws JSONException, IOException, NoSuchAlgorithmException {
-
+			
 		// Make Google profile request 
 		String result = userTemplate
 				.getForObject(
 						URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"),
 						String.class);
-		// https://www.googleapis.com/oauth2/v1/userinfo?alt=json
+		// https://www.googleapis.com/oauth2/v1/userinfo?alt=json			
 		
-		System.out.println("RESULT IS:" + result);
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("sub");
+		String email = json.getString("email");
+		String email_verified = json.getString("email_verified");
+				
+		// Record email address if present and verified.
+		String emailEncoded = null;
+		if (email_verified !=null && email!=null && email_verified.equals("true")) {
+			emailEncoded = encode(email);
+		}
 		
-		// Now we need to generate a unique username from the google id for our database. 
-		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-		messageDigest.update(id.getBytes());
-		byte byteData[] = messageDigest.digest();
-		
-		// convert new username to hex and add provider to the start. 
-		StringBuffer hashedUsername = new StringBuffer();
-        for (int i = 0; i < byteData.length; i++) {
-        	hashedUsername.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
-        }
-		String username = new String("google:"+hashedUsername);
+		String usernameEncoded = "google:"+encode(id);
 		
 		// setup user in Spring Security and DB
-		setupUser(username, session);
+		setupUser(usernameEncoded, emailEncoded, session);
 
 		// forward to /mylibrary/
 		response.sendRedirect("/mylibrary/");
 
 		return null;
+	}
+	
+	/**
+	 * Encode (SHA-256) specified input and convert to hex. 
+	 * @param input
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 */
+	private String encode(String input) throws NoSuchAlgorithmException  {
+		
+		// generate hash
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		messageDigest.update(input.getBytes());
+		byte bytes[] = messageDigest.digest();
+		
+		// convert to hex
+		StringBuffer hash = new StringBuffer();
+		for (int i = 0; i < bytes.length; i++) {
+			hash.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+		}
+		return new String(hash);
+		
 	}
 	
 	/**
@@ -118,16 +131,15 @@ public class LoginController {
 	 * @param id
 	 * @param session
 	 */
-	public void setupUser(String username, HttpSession session) {
+	public void setupUser(String username, String email, HttpSession session) {
 		
-		// Create user in database if required, and store details in user session. 
-		userDetailsService.loadUserByUsername(username);
-		User user = usersDao.getActiveUserByUsername(username);
+		// Create user in database if required, and store details in user session.
+		User user = usersDao.createUser(username, email);
 		session.setAttribute("user", user);
 
 		// Create user in Spring security
 		Authentication auth = new PreAuthenticatedAuthenticationToken(username, null,
-				AuthorityUtils.createAuthorityList("ROLE_USER"));
+				AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils.join(user.getUserRoles(), ",")));
 		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
 }

@@ -32,15 +32,20 @@
 								<button type="submit" class="btn btn-primary">Sign In</button>
 							</fieldset>
 						</form>
-
 					</div>
+				</div>
+				<div class="campl-column4"></div>
+				<div class="campl-column12">
+					<br /> <br />
+				</div>
+				<div class="campl-column12 center">
 
+					<div class="alert alert-danger" role="alert">Note: Due to
+						changes in the method of authentication some bookmarks stored in
+						older accounts may need to be recreated.</div>
 				</div>
 			</div>
-			<div class="campl-column4"></div>
-			<div class="campl-column12">
-				<br /> <br />
-			</div>
+
 
 		</div>
 	</div>

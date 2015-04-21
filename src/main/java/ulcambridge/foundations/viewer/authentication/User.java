@@ -9,12 +9,14 @@ public class User implements Serializable {
 	
 	private String password;
 	private String username;
+	private String email;
 	private boolean enabled;
 	private List<String> userRoles;
 	
-	public User(String username, String password, boolean enabled, List<String> userRoles) {
+	public User(String username, String password, String email, boolean enabled, List<String> userRoles) {
 		this.username = username;
 		this.password = password;
+		this.email = email;
 		this.enabled = enabled;
 		this.userRoles = userRoles;				
 	}
@@ -22,6 +24,10 @@ public class User implements Serializable {
 	public String getPassword() {
 		return this.password;
 	}
+	
+	public String getEmail() {
+		return this.email;
+	}	
 
 	public String getUsername() {
 		return this.username;
