@@ -20,7 +20,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 		<property name="clientSecret" value="${google.clientSecret}"></property>
 		<property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
 		<property name="userAuthorizationUri"
-			value="https://accounts.google.com/o/oauth2/auth?openid.realm=http://localhost:1111/auth/oauth2/google"></property>
+			value="https://accounts.google.com/o/oauth2/auth"></property>
 		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
 		<property name="clientAuthenticationScheme" value="form"></property>
 	</bean>
@@ -32,15 +32,17 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 	<security:http pattern="/scripts/**" security='none' />
 	<security:http pattern="/styles/**" security='none' />
 
-	<security:http auto-config="true">
+	<security:http auto-config="false">
 
 		<security:form-login login-page='/auth/login' />
 		<security:logout logout-url="/auth/logout"
 			logout-success-url="/auth/login?error=Successfully%20logged%20out."
 			delete-cookies="JSESSIONID" />
 
+		
 		<security:intercept-url pattern="/mylibrary/**"
 			access="ROLE_USER" />
+        <security:intercept-url pattern="/**"  access="ROLE_ANONYMOUS,ROLE_USER" />
 
 		<security:custom-filter ref="oauth2ClientFilter"
 			after="EXCEPTION_TRANSLATION_FILTER" />
