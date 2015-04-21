@@ -43,6 +43,34 @@
 
 
 				<div class="grid_5">
+				<img alt="Michaelides" title="April Update"
+						src="/images/index/news-2015-04.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">22/04/2015</span>
+					<h4>April Update</h4>
+					
+					<p>Our April release sees the launch of our new <a href='/collections/michaelides'>Michaelides Fragments collection</a>. Including personal letters, legal texts, accounts, literary texts, recipes and other documents, they comprise
+					the largest private collection of Arabic papyri to be found in any institution worldwide. Our initial selection of 64 fragments will be added to over the course of the next two years to provide comprehensive coverage of this
+					wonderful resource.</p>
+					
+					<p>We are also adding a further 743 items to our <a href='/collections/genizah'>Cairo Genizah collection</a>. Of particular interest are Arabic petitions and records made before the Muslim courts. These include a
+					<a href='/view/MS-TS-AR-00034-00094/1'>court record (T-S Ar.34.94)</a> from the mid-13th century, where a man named Nāṣir b. Jibrīl engages a Jewish physician to perform surgery on his daughter’s eye. The agreement
+					sets the fee for the operation at 2 dirhams, but retains the option to renegotiate it if the operation is a failure. Another document is a <a href='/view/MS-TS-AR-00040-00003/1'>petition to an Ayyubid emir (T-S Ar.40.3, probably 13th century)</a>
+					from a resident of the Egyptian town of Minyat Ghamr. This man is suffering at the hands of a neighbour, who has recently moved in and whose young son relentlessly bullies him, including having ‘the audacity to injure [his] wife with his teeth’.
+					The long-suffering man demands justice from the emir and punishment for the ‘impudence of the youth’.</a>
+					
+					<p>Finally, we are making an important addition to our <a href='/collections/music'>Music collection</a>. The <a href='/view/MS-FF-00001-00017-00001/1'><i>Later Cambridge Songs</i></a> (1180-1230 C.E.)
+					is a rare survival of what must have been a common type of musical manuscript – an informal production, probably written by performers. Many of the songs are unique to this manuscript and
+					it offers a valuable insight into early English music-making.</p>
+
+				</div>
+				
+				<hr class="cam-teaser-divider campl-column12">
+
+
+				<div class="grid_5">
 					<img alt="Waterloo" title="March Update"
 						src="/images/index/news-2015-03.jpg" height="200" width="200">
 				</div>

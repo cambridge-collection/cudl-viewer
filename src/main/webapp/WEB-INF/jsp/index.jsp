@@ -199,13 +199,12 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="#4">March Release</a>
+						<a href="#4">April Release</a>
 					</p>
-					<span class="campl-datestamp">19 March 2015</span>
-					<p>This month sees the release of our new <a href='/collections/waterloo'>Waterloo collection</a>, in support of a major forthcoming exhibition at the Library to mark
-					the 200th anniversary of the battle. Containing eyewitness accounts, maps of the battlefield, and beautifully illustrated commemorative works, the Collection gives a real sense of the significance
-					of Waterloo to contemporaries and to the generations that followed. A particular highlight is a stunning hand-coloured <a href='/view/PR-HARLEY-MASON-A-00025/3'>panoramic view of Wellington’s funeral</a>
-					measuring more than 60 feet from end to end.</p>
+					<span class="campl-datestamp">22 April 2015</span>
+					<p>Our April release sees the launch of our new <a href='/collections/michaelides'>Michaelides Fragments collection</a>. Including personal letters, legal texts, accounts, literary texts, recipes and other documents, they comprise
+					the largest private collection of Arabic papyri to be found in any institution worldwide. Our initial selection of 64 fragments will be added to over the course of the next two years to provide comprehensive coverage of this
+					wonderful resource.</p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View

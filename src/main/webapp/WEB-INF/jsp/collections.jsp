@@ -567,6 +567,36 @@
 						</div>
 					</div>
 				</div>
+				
+				<hr class="campl-teaser-divider">
+
+				<!-- Michaelides  -->
+				<div class="campl-content-container ">
+					<div class="campl-horizontal-teaser campl-teaser clearfix">
+						<div class="campl-column3">
+							<div class="campl-content-container campl-horizontal-teaser-img">
+								<a href="/collections/michaelides" class="campl-teaser-img-link"><img
+									alt="Michaelides" title="Michaelides"
+									src="/images/collectionsView/collection-michaelides.jpg"
+									class="campl-scale-with-grid"></a>
+							</div>
+						</div>
+						<div class="campl-column6">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<h3 class="campl-teaser-title">
+									<a href="/collections/michaelides">Michaelides</a>
+								</h3>
+								<p>Papyrus was the main writing material of the Greek, Roman, Byzantine and Early Islamic societies in Egypt for 4,000 years before paper took its place.
+								The bulk of historical, linguistic, social and economic evidence of the early Islamic Era can be found on papyrus originally produced in Egypt. The Michaelides
+								fragments comprise the largest private collection of Arabic papyri to be found in any institution worldwide.</p>
+		
+								
+								<a href="/collections/michaelides" class="campl-primary-cta">Read
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 			</div>
