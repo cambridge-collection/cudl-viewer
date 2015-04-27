@@ -22,6 +22,7 @@
 	<bean id="loginController" class="ulcambridge.foundations.viewer.authentication.LoginController">
 		<property name="usersDao" ref="usersDao" />
 		<constructor-arg ref="googleLoginRestTemplate" />
+		<constructor-arg ref="facebookLoginRestTemplate" />
 	</bean>
 
 	<util:properties id="globalproperties" location="classpath:cudl-global.properties" /> 	

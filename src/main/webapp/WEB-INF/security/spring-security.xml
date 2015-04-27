@@ -24,10 +24,26 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
 		<property name="clientAuthenticationScheme" value="form"></property>
 	</bean>
+	
+	<bean id="facebook"
+		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
+		<property name="clientId" value="${facebook.appId}"></property>
+		<property name="clientSecret" value="${facebook.appSecret}"></property>
+		<property name="accessTokenUri" value="https://graph.facebook.com/oauth/access_token"></property>
+		<property name="userAuthorizationUri"
+			value="https://www.facebook.com/dialog/oauth"></property>
+		<property name="tokenName" value="oauth_token"></property>
+		<property name="authenticationScheme" value="query"></property>
+		<property name="scope" value="#{{'email'}}"></property>
+		<property name="clientAuthenticationScheme" value="form"></property>
+	</bean>	
 
 	<oauth:rest-template id="googleLoginRestTemplate"
 		resource="google" />
 
+    <oauth:rest-template id="facebookLoginRestTemplate"
+		resource="facebook" />
+		
 	<security:http pattern="/images/**" security='none' />
 	<security:http pattern="/scripts/**" security='none' />
 	<security:http pattern="/styles/**" security='none' />

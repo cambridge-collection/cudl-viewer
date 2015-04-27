@@ -30,12 +30,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	private final OAuth2RestOperations userTemplate;
+	private final OAuth2RestOperations googleTemplate;
+	private final OAuth2RestOperations facebookTemplate;
 	private UsersDao usersDao;
 
 	@Autowired
-	public LoginController(OAuth2RestOperations userTemplate) {
-		this.userTemplate = userTemplate;
+	public LoginController(OAuth2RestOperations googleTemplate, OAuth2RestOperations facebookTemplate) {
+		this.googleTemplate = googleTemplate;
+		this.facebookTemplate = facebookTemplate;
 	}
 
 	@Autowired
@@ -70,11 +72,11 @@ public class LoginController {
 	// Login using Google oauth.  Note this is also return uri.
 	// on path /auth/oauth2/google 
 	@RequestMapping(value = "/oauth2/google")
-	public ModelAndView handleRequest(HttpSession session, HttpServletResponse response)
+	public ModelAndView handleGoogleRequest(HttpSession session, HttpServletResponse response)
 			throws JSONException, IOException, NoSuchAlgorithmException {
 			
 		// Make Google profile request 
-		String result = userTemplate
+		String result = googleTemplate
 				.getForObject(
 						URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"),
 						String.class);
@@ -101,6 +103,39 @@ public class LoginController {
 
 		return null;
 	}
+	
+	// Login using Facebook oauth.  Note this is also return uri.
+	// on path /auth/oauth2/facebook
+	@RequestMapping(value = "/oauth2/facebook")
+	public ModelAndView handleFacebookRequest(HttpSession session, HttpServletResponse response)
+			throws JSONException, IOException, NoSuchAlgorithmException {
+			
+		// Make Google profile request 
+		String result = facebookTemplate
+				.getForObject(
+						URI.create("https://graph.facebook.com/me/"),
+						String.class);
+		
+		JSONObject json = new JSONObject(result);
+		String id = json.getString("id");
+		String email = json.getString("email");
+				
+		// Record email address if present and verified.
+		String emailEncoded = null;
+		if (email!=null) {
+			emailEncoded = encode(email);
+		}
+		
+		String usernameEncoded = "facebook:"+encode(id);
+		
+		// setup user in Spring Security and DB
+		setupUser(usernameEncoded, emailEncoded, session);
+
+		// forward to /mylibrary/
+		response.sendRedirect("/mylibrary/");
+
+		return null;
+	}	
 	
 	/**
 	 * Encode (SHA-256) specified input and convert to hex. 
