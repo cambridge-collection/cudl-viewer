@@ -79,7 +79,7 @@
 					<h4>More information</h4>
 					<p>
 						For more information about the Library's Foundations project,
-						please contact <a href="mailto:foundations@lib.cam.ac.uk">dl-support@lib.cam.ac.uk</a>.
+						please contact <a href="mailto:dl-support@lib.cam.ac.uk">dl-support@lib.cam.ac.uk</a>.
 						<br /> <br />
 					</p>
 					<p class="image-credit">
