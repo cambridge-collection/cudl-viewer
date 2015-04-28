@@ -250,7 +250,15 @@
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>2.0.7.RELEASE</version>
 		</dependency>
-<!-- 		<dependency>
+		
+		<!-- JSON reading/writing for oauth -->
+		<dependency>
+		  <groupId>com.fasterxml.jackson.core</groupId>
+		  <artifactId>jackson-databind</artifactId>
+		  <version>2.3.2</version>
+		</dependency>  
+		
+<!--  		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-core</artifactId>
 			<version>1.1.0.RELEASE</version>
@@ -260,17 +268,19 @@
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-web</artifactId>
 			<version>1.1.0.RELEASE</version>
-		</dependency>
-		<dependency>
+		</dependency> -->
+<!--  		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-facebook</artifactId>
 			<version>1.1.1.RELEASE</version>
-		</dependency>
-		<dependency>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-twitter</artifactId>
 			<version>1.1.0.RELEASE</version>
-		</dependency>-->
+		</dependency>  -->
+										
+
 	</dependencies>
 
 </project>
