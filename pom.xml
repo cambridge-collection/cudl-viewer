@@ -258,28 +258,12 @@
 		  <version>2.3.2</version>
 		</dependency>  
 		
-<!--  		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-core</artifactId>
-			<version>1.1.0.RELEASE</version>
-		</dependency>
-
+		<!-- for decrypting web tokens (oauth) -->
 		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-web</artifactId>
-			<version>1.1.0.RELEASE</version>
-		</dependency> -->
-<!--  		<dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-facebook</artifactId>
-			<version>1.1.1.RELEASE</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>org.springframework.social</groupId>
-			<artifactId>spring-social-twitter</artifactId>
-			<version>1.1.0.RELEASE</version>
-		</dependency>  -->
-										
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>1.0.3.RELEASE</version>
+		</dependency>				
 
 	</dependencies>
 

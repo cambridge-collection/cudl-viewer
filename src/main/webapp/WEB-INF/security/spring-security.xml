@@ -20,7 +20,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
 		<property name="clientSecret" value="${google.clientSecret}"></property>
 		<property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
 		<property name="userAuthorizationUri"
-			value="https://accounts.google.com/o/oauth2/auth"></property>
+			value="https://accounts.google.com/o/oauth2/auth?openid.realm=${google.openid.realm}"></property>
 		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
 		<property name="clientAuthenticationScheme" value="form"></property>
 	</bean>
