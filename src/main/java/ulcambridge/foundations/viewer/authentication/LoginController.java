@@ -169,8 +169,6 @@ public class LoginController {
 						URI.create("https://api.linkedin.com/v1/people/~:(id,email-address)?format=json"),
 						String.class);
 		
-		System.out.println("RESULT IS: "+result);
-		
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("id");
 		String email = json.getString("emailAddress");
