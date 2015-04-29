@@ -25,6 +25,8 @@
 		</div>
 	</div>
 	<div class="campl-column12">
+	
+		
 
 		<p>The Battle of Waterloo was fought on Sunday 18 June 1815, ten
 			miles south of Brussels in what was then the Kingdom of the
@@ -39,6 +41,9 @@
 			its impact on the politics and power-relationships of a Europe
 			approaching the height of its worldwide influence, the outcome of
 			Waterloo remains significant to this day.</p>
+			
+		
+		<p><iframe width="560" height="315" src="https://www.youtube.com/embed/MjRtC9iExmA?rel=0" frameborder="0" allowfullscreen></iframe></p>
 
 		<p>After the French Revolution of 1789, Europe had been embroiled
 			in twenty-five years of near-continuous war. Early attempts to subdue
@@ -77,6 +82,8 @@
 			suddenly demoralised enemy: the French army broke and was driven from
 			the field. The Coalition armies pursued Napoleon into France, and he
 			abdicated for a final time on 22 June.</p>
+			
+		<p><iframe width="560" height="315" src="https://www.youtube.com/embed/jKoz33Q9d5g?rel=0" frameborder="0" allowfullscreen></iframe></p>
 
 		<p>The battle’s importance was fully recognised by the generations
 			which came after it. From the very first moment after the fighting
