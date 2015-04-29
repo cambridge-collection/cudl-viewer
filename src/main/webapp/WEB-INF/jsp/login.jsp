@@ -56,9 +56,6 @@
 				</div>
 				<div class="campl-column12 center">
 
-					<div class="alert alert-danger" role="alert">Note: Due to
-						changes in the method of authentication, bookmarks stored in older
-						accounts may need to be recreated.</div>
 				</div>
 			</div>
 
