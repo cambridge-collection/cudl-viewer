@@ -40,13 +40,16 @@ public class LoginController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private final OAuth2RestOperations googleTemplate;
 	private final OAuth2RestOperations facebookTemplate;
+	private final OAuth2RestOperations linkedinTemplate;
 	private UsersDao usersDao;
 	private BookmarkDao bookmarkDao;
 
 	@Autowired
-	public LoginController(OAuth2RestOperations googleTemplate, OAuth2RestOperations facebookTemplate) {
+	public LoginController(OAuth2RestOperations googleTemplate, OAuth2RestOperations facebookTemplate, 
+			OAuth2RestOperations linkedinTemplate) {
 		this.googleTemplate = googleTemplate;
 		this.facebookTemplate = facebookTemplate;
+		this.linkedinTemplate = linkedinTemplate;
 	}
 
 	@Autowired
@@ -127,7 +130,7 @@ public class LoginController {
 	public ModelAndView handleFacebookRequest(HttpSession session, HttpServletResponse response)
 			throws JSONException, IOException, NoSuchAlgorithmException {
 			
-		// Make Google profile request 
+		// Make Facebook profile request 
 		String result = facebookTemplate
 				.getForObject(
 						URI.create("https://graph.facebook.com/me/"),
@@ -153,6 +156,41 @@ public class LoginController {
 
 		return null;
 	}	
+	
+	// Login using LinkedIn oauth.  Note this is also return uri.
+	// on path /auth/oauth2/linkedin
+	@RequestMapping(value = "/oauth2/linkedin")
+	public ModelAndView handleLinkedinRequest(HttpSession session, HttpServletResponse response)
+			throws JSONException, IOException, NoSuchAlgorithmException {
+			
+		// Make LinkedIn profile request 
+		String result = linkedinTemplate
+				.getForObject(
+						URI.create("https://api.linkedin.com/v1/people/~:(id,email-address)?format=json"),
+						String.class);
+		
+		System.out.println("RESULT IS: "+result);
+		
+		JSONObject json = new JSONObject(result);
+		String id = json.getString("id");
+		String email = json.getString("emailAddress");
+				
+		// Record email address if present and verified.
+		String emailEncoded = null;
+		if (email!=null) {
+			emailEncoded = encode(email);
+		}
+		
+		String usernameEncoded = "linkedin:"+encode(id);
+		
+		// setup user in Spring Security and DB
+		setupUser(usernameEncoded, emailEncoded, session);
+
+		// forward to /mylibrary/
+		response.sendRedirect("/mylibrary/");
+
+		return null;
+	}		
 	
 	/**
 	 * Encode (SHA-256) specified input and convert to hex. 

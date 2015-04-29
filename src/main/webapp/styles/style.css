@@ -923,7 +923,7 @@ div.pagination a.next:hover, div.pagination a.last:hover, div.pagination a.first
     margin: 0 auto;
 }
 
-.btn-google, .btn-facebook, .btn-twitter {
+.btn-google, .btn-facebook, .btn-twitter, .btn-linkedin {
 	height: 37px;
 	color: #FFF;
 }

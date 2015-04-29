@@ -42,9 +42,9 @@
 							</form>
 							<br />
 							<form class="openid_form" method="post"
-								action="/auth/oauth2/twitter">
-								<a class="btn btn-block btn-social btn-twitter" href="/auth/oauth2/twitter"> <i
-									class="fa fa-twitter"></i> Sign in with your Twitter Account
+								action="/auth/oauth2/linkedin">
+								<a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
+									class="fa fa-linkedin"></i> Sign in with your LinkedIn Account
 								</a>
 							</form>
 						</div>
