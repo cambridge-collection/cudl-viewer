@@ -30,21 +30,21 @@
 							<form class="openid_form" method="post"
 								action="/auth/oauth2/google">
 								<a class="btn btn-block btn-social btn-google" href="/auth/oauth2/google"> <i
-									class="fa fa-google"></i> Sign in with your Google Account
+									class="fa fa-google"></i> Sign In with Google  
 								</a>
 							</form>
 							<br />
 							<form class="openid_form" method="post"
 								action="/auth/oauth2/facebook">
 								<a class="btn btn-block btn-social btn-facebook" href="/auth/oauth2/facebook"> <i
-									class="fa fa-facebook"></i> Sign in with your Facebook Account
+									class="fa fa-facebook"></i> Sign In with Facebook
 								</a>
 							</form>
 							<br />
 							<form class="openid_form" method="post"
 								action="/auth/oauth2/linkedin">
 								<a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
-									class="fa fa-linkedin"></i> Sign in with your LinkedIn Account
+									class="fa fa-linkedin"></i> Sign In with LinkedIn
 								</a>
 							</form>
 						</div>
