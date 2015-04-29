@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page
-	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory,ulcambridge.foundations.viewer.forms.SearchForm"%>
+	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory,ulcambridge.foundations.viewer.forms.SearchForm,org.owasp.encoder.Encode"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
@@ -260,7 +260,7 @@ function pageinit() {
 								action="/search" method="GET">
 
 								<form:input path="keyword" class="search" type="text"
-									value="<%=form.getKeyword()%>" name="keyword"
+									value="<%=Encode.forHtmlAttribute(form.getKeyword())%>" name="keyword"
 									placeholder="Search" />
 								<input class="campl-search-submit "
 									src="/images/interface/btn-search-header.png" type="image">
@@ -271,20 +271,20 @@ function pageinit() {
 											String facetName = facetsUsedHidden.next();
 											String facetValue = form.getFacets().get(facetName);
 								%>
-								<input path="<%=facetName%>" type="hidden"
-									name="facet-<%=facetName%>" value="<%=facetValue%>" />
+								<input path="<%=Encode.forHtmlAttribute(facetName)%>" type="hidden"
+									name="facet-<%=Encode.forHtmlAttribute(facetName)%>" value="<%=Encode.forHtmlAttribute(facetValue)%>" />
 								<%
 									}
 								%>
 								<form:input path="fileID" type="hidden" name="fileID"
-									value="<%=form.getFileID()%>" />
+									value="<%=Encode.forHtmlAttribute(form.getFileID())%>" />
 
 							</form:form>
 							<div class="altsearchlink grid_5">
 								<form:form commandName="searchForm"
 									action="/search/advanced/query" method="GET">
 
-									<input type="hidden" value="<%=form.getKeyword()%>"
+									<input type="hidden" value="<%=Encode.forHtmlAttribute(form.getKeyword())%>"
 										name="keyword" />
 
 									<input class="altsearchlink" type="submit" value="advanced" />
@@ -300,9 +300,9 @@ function pageinit() {
 							<div class="search-facet-selected">
 								<a class="search-close"
 									href="?<%=SearchUtil.getURLParametersWithoutFacet(form,
-						facetName)%>&amp;">X</a>
+						Encode.forHtmlAttribute(facetName))%>&amp;">X</a>
 								<%
-									out.print("in " + facetValue);
+									out.print("in " + Encode.forHtml(facetValue));
 								%>
 							</div>
 							<%
@@ -315,7 +315,7 @@ function pageinit() {
 									href="?<%=SearchUtil.getURLParameters(form).replace(
 						"fileID=" + form.getFileID(), "fileID=")%>&amp;">X</a>
 								<%
-									out.print("CUDL ID: " + form.getFileID());
+									out.print("CUDL ID: " + Encode.forHtml(form.getFileID()));
 								%>
 							</div>
 								<%
@@ -391,7 +391,7 @@ function pageinit() {
 							if (resultSet.getNumberOfResults() == 0) {
 								if (form.getKeyword() != null && !form.getKeyword().equals("")) {
 									out.println("<p class=\"box\">We couldn't find any items matching <b>"
-											+ form.getKeyword() + "</b></p>");
+											+ Encode.forHtml(form.getKeyword()) + "</b></p>");
 								}
 
 								out.println("<div class=\"searchexample campl-content-container\">");

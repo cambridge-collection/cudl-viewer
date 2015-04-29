@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page
-	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory,ulcambridge.foundations.viewer.forms.SearchForm"%>
+	import="java.util.*,java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,ulcambridge.foundations.viewer.model.Item,ulcambridge.foundations.viewer.ItemFactory,ulcambridge.foundations.viewer.forms.SearchForm,org.owasp.encoder.Encode"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
@@ -257,52 +257,52 @@ function pageinit() {
 							<ul>
 								<%
 									if (!form.getKeyword().isEmpty()) {
-										out.println("<li>Keyword: <b>" + form.getKeyword()
+										out.println("<li>Keyword: <b>" + Encode.forHtml(form.getKeyword())
 												+ "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getFullText().isEmpty()) {
-										out.println("<li>Full Text: <b>" + form.getFullText()
+										out.println("<li>Full Text: <b>" + Encode.forHtml(form.getFullText())
 												+ "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getExcludeText().isEmpty()) {
-										out.println("<li>Exclude Text: <b>" + form.getExcludeText()
+										out.println("<li>Exclude Text: <b>" + Encode.forHtml(form.getExcludeText())
 												+ "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getShelfLocator().isEmpty()) {
-										out.println("<li>Classmark: <b>" + form.getShelfLocator()
+										out.println("<li>Classmark: <b>" + Encode.forHtml(form.getShelfLocator())
 												+ "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getFileID().isEmpty()) {
-										out.println("<li>CUDL ID: <b>" + form.getFileID() + "</b></li>");
+										out.println("<li>CUDL ID: <b>" + Encode.forHtml(form.getFileID()) + "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getTitle().isEmpty()) {
-										out.println("<li>Title: <b>" + form.getTitle() + "</b></li>");
+										out.println("<li>Title: <b>" + Encode.forHtml(form.getTitle()) + "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getAuthor().isEmpty()) {
-										out.println("<li>Author: <b>" + form.getAuthor() + "</b></li>");
+										out.println("<li>Author: <b>" + Encode.forHtml(form.getAuthor()) + "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getSubject().isEmpty()) {
-										out.println("<li>Subject: <b>" + form.getSubject()
+										out.println("<li>Subject: <b>" + Encode.forHtml(form.getSubject())
 												+ "</b></li>");
 									}
 								%>
 								<%
 									if (!form.getLocation().isEmpty()) {
-										out.println("<li>Location: <b>" + form.getLocation()
+										out.println("<li>Location: <b>" + Encode.forHtml(form.getLocation())
 												+ "</b></li>");
 									}
 								%>
@@ -318,7 +318,7 @@ function pageinit() {
 								<a
 									href="/search/advanced/query?<%=SearchUtil.getURLParameters(form)%>"><
 									Change Query</a> <input type="hidden" name="fileID"
-									value="<%=form.getFileID()%>">
+									value="<%=Encode.forHtmlAttribute(form.getFileID())%>">
 
 							</form>
 
@@ -334,7 +334,7 @@ function pageinit() {
 										href="?<%=SearchUtil.getURLParametersWithoutFacet(form,
 						facetName)%>&amp;">X</a>
 									<%
-										out.print("in "+facetValue);
+										out.print("in "+Encode.forHtml(facetValue));
 									%>
 								</form>
 							</div>
@@ -382,9 +382,9 @@ function pageinit() {
 														out.print("<li><a href='?"
 																+ SearchUtil
 																		.getURLParametersWithExtraFacet(
-																				form, field,
-																				facet.getBand()) + "'>");
-														out.print(facet.getBand() + "</a> ("
+																				form, Encode.forHtmlAttribute(field),
+																				Encode.forHtmlAttribute(facet.getBand())) + "'>");
+														out.print(Encode.forHtml(facet.getBand()) + "</a> ("
 																+ facet.getOccurences() + ")</li>");
 
 													}

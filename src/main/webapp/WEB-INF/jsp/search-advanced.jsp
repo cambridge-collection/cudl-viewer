@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page import="ulcambridge.foundations.viewer.forms.*"%>
+<%@ page import="ulcambridge.foundations.viewer.forms.*,org.owasp.encoder.Encode"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="1" />
@@ -156,7 +156,7 @@
 						<div class="altsearchlink grid_4 right">
 							<form:form commandName="searchForm" action="/search" method="GET">
 
-								<input type="hidden" value="<%=form.getKeyword()%>"
+								<input type="hidden" value="<%=Encode.forHtmlAttribute(form.getKeyword())%>"
 									name="keyword" />
 
 								<input class="altsearchlink" type="submit"
