@@ -20,7 +20,7 @@
 						<h2>Error occurred.</h2>
 						<p>
 							Sorry, there has been an error displaying the page you requested.
-							Please <a href="mailto:foundations@lib.cam.ac.uk"
+							Please <a href="mailto:dl-support@lib.cam.ac.uk"
 								title="500 Page - Error">Contact Us</a> so we can resolve the
 							issue or click on the link below to go to our home page. <br />
 							<br /> <a href="/">Cambridge Digital Library</a>.

@@ -949,7 +949,7 @@
 							discovery. This collection will be made available as part of the
 							Foundations of Science collection and closely linked to
 							collections held by the National Maritime Museum at Greenwich.
-							Please <a href="mailto:foundations@lib.cam.ac.uk">contact us</a>
+							Please <a href="mailto:dl-feedback@lib.cam.ac.uk">contact us</a>
 							for more information about these projects.
 						</p>
 					</div>

@@ -465,7 +465,7 @@
 					Project Manager<br /> Foundations Project<br /> Cambridge
 					University Library<br /> West Road<br /> Cambridge<br /> United
 					Kingdom<br /> CB3 9DR<br /> Email: <a
-						href="mailto:foundations@lib.cam.ac.uk">foundations@lib.cam.ac.uk</a>
+						href="mailto:dl-feedback@lib.cam.ac.uk">dl-feedback@lib.cam.ac.uk</a>
 				</p>
 
 			</div>

@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp">
+<jsp:include page="../header/header-full.jsp" />
+<jsp:include page="../header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
 	<jsp:param name="displaySearch" value="true" />
 	<jsp:param name="title" value="Cambridge University Digital Library" />
@@ -79,7 +79,7 @@
 					<h4>More information</h4>
 					<p>
 						For more information about the Library's Foundations project,
-						please contact <a href="mailto:foundations@lib.cam.ac.uk">foundations@lib.cam.ac.uk</a>.
+						please contact <a href="mailto:dl-support@lib.cam.ac.uk">dl-support@lib.cam.ac.uk</a>.
 						<br /> <br />
 					</p>
 					<p class="image-credit">

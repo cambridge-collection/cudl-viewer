@@ -118,7 +118,7 @@
 						<p>
 							Our data is primarily in METS, MODS and TEI formats. We are
 							planning to provide our data for others to download and use.
-							Please <a href="mailto:foundations@lib.cam.ac.uk">let us know</a>
+							Please <a href="mailto:dl-feedback@lib.cam.ac.uk">let us know</a>
 							what formats/APIs would be most useful to you.
 						</p>
 
