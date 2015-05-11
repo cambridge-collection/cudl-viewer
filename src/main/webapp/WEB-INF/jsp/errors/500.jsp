@@ -12,7 +12,6 @@
 		<div class="campl-column9  campl-main-content" id="content">
 			<div class="campl-content-container">
 
-
 				<div class="panel light">
 
 					<div class="grid_11">
@@ -29,19 +28,25 @@
 						<p style="color: #999999">
 							Message:<a style="color: #999999" href="javascript:;"
 								onmousedown="cudl.toggleDiv('errordiv');"> <%
- 	out.print(exception.toString());
+ 	if (exception!=null) { out.print(exception.toString()); }
+ 	else { 
+ 		String error = request.getAttribute("javax.servlet.error.message").toString();
+ 		if (error!=null) { out.println(error); }
+ 	}
+	
  %>
 							</a>
 
 						</p>
 
 						<div id="errordiv" style="color: #999999;">
-							<%
+							<% if (exception!=null) {
 								StackTraceElement[] sts = exception.getStackTrace();
 								for (int i = 0; i < sts.length; i++) {
 									out.print(sts[i].toString() + "<br/>");
 								}
-							%>
+							   }
+							%> 
 						</div>
 					</div>
 				</div>

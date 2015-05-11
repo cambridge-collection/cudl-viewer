@@ -47,6 +47,12 @@
 									class="fa fa-linkedin"></i> Sign In with LinkedIn
 								</a>
 							</form>
+							<br />
+							<form class="openid_form" method="post"
+								action="/auth/raven">
+								<a class="btn btn-block btn-social btn-raven" href="/auth/raven"> <img class="img-raven" src="/images/general/raven.png" /> Sign In with Raven
+								</a>
+							</form>							
 						</div>
 					</div>
 				</div>

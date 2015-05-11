@@ -67,6 +67,13 @@
 
 		</plugins>
 
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 	</build>
 
 	<dependencies>
@@ -187,13 +194,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.35</version>
 		</dependency>
-		
+
 		<!-- encoder to prevent XSS -->
 		<dependency>
-          <groupId>org.owasp.encoder</groupId>
-          <artifactId>encoder</artifactId>
-          <version>1.2</version>
-        </dependency>		
+			<groupId>org.owasp.encoder</groupId>
+			<artifactId>encoder</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 		<!-- Spring Framework -->
 		<dependency>
@@ -252,21 +259,36 @@
 			<artifactId>spring-security-oauth2</artifactId>
 			<version>2.0.7.RELEASE</version>
 		</dependency>
-		
+
 		<!-- JSON reading/writing for oauth -->
 		<dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-databind</artifactId>
-		  <version>2.3.2</version>
-		</dependency>  
-		
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
 		<!-- for decrypting web tokens (oauth) -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-jwt</artifactId>
 			<version>1.0.3.RELEASE</version>
-		</dependency>				
+		</dependency>
+
+		<!-- raven auth, in local repo -->
+		<dependency>
+			<groupId>uk.ac.cam</groupId>
+			<artifactId>raven-webauth</artifactId>
+			<version>1.0.3</version>
+		</dependency>
 
 	</dependencies>
+
+	<!-- This includes jars which are not held in a external maven repository -->
+	<repositories>
+		<repository>
+			<id>local-repo</id>
+			<url>file://${basedir}/repo</url>
+		</repository>
+	</repositories>
 
 </project>

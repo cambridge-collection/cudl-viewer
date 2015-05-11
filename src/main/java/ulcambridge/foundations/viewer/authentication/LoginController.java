@@ -41,11 +41,12 @@ public class LoginController {
 	private final OAuth2RestOperations googleTemplate;
 	private final OAuth2RestOperations facebookTemplate;
 	private final OAuth2RestOperations linkedinTemplate;
-	private UsersDao usersDao;
 	private BookmarkDao bookmarkDao;
+	private UsersDao usersDao;
 
 	@Autowired
-	public LoginController(OAuth2RestOperations googleTemplate, OAuth2RestOperations facebookTemplate, 
+	public LoginController(OAuth2RestOperations googleTemplate,
+			OAuth2RestOperations facebookTemplate,
 			OAuth2RestOperations linkedinTemplate) {
 		this.googleTemplate = googleTemplate;
 		this.facebookTemplate = facebookTemplate;
@@ -54,13 +55,14 @@ public class LoginController {
 
 	@Autowired
 	public void setUsersDao(UsersDao usersDao) {
+		// loginUtils = new LoginUtils(usersDao);
 		this.usersDao = usersDao;
 	}
-	
+
 	@Autowired
 	public void setBookmarkDao(BookmarkDao bookmarkDao) {
 		this.bookmarkDao = bookmarkDao;
-	}	
+	}
 
 	// on path /auth/login/
 	@RequestMapping(value = "/login")
@@ -86,68 +88,69 @@ public class LoginController {
 		return "jsp/accessdenied";
 	}
 
-	// Login using Google oauth.  Note this is also return uri.
-	// on path /auth/oauth2/google 
+	// Login using Google oauth. Note this is also return uri.
+	// on path /auth/oauth2/google
 	@RequestMapping(value = "/oauth2/google")
-	public ModelAndView handleGoogleRequest(HttpSession session, HttpServletResponse response)
-			throws JSONException, IOException, NoSuchAlgorithmException {
-			
-		// Make Google profile request 
+	public ModelAndView handleGoogleRequest(HttpSession session,
+			HttpServletResponse response) throws JSONException, IOException,
+			NoSuchAlgorithmException {
+
+		// Make Google profile request
 		String result = googleTemplate
 				.getForObject(
 						URI.create("https://www.googleapis.com/plus/v1/people/me/openIdConnect"),
 						String.class);
-		// https://www.googleapis.com/oauth2/v1/userinfo?alt=json			
-		
+		// https://www.googleapis.com/oauth2/v1/userinfo?alt=json
+
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("sub");
 		String email = json.getString("email");
 		String email_verified = json.getString("email_verified");
-				
+
 		// Record email address if present and verified.
 		String emailEncoded = null;
-		if (email_verified !=null && email!=null && email_verified.equals("true")) {
+		if (email_verified != null && email != null
+				&& email_verified.equals("true")) {
 			emailEncoded = encode(email);
 		}
-		
-		String usernameEncoded = "google:"+encode(id);
-		
+
+		String usernameEncoded = "google:" + encode(id);
+
 		// setup user in Spring Security and DB
 		setupUser(usernameEncoded, emailEncoded, session);
 
-		// This should only be called up until Jan 2017. 
-		migrateGoogleUser(usernameEncoded);		
-		
+		// This should only be called up until Jan 2017.
+		migrateGoogleUser(usernameEncoded);
+
 		// forward to /mylibrary/
 		response.sendRedirect("/mylibrary/");
 
 		return null;
 	}
-	
-	// Login using Facebook oauth.  Note this is also return uri.
+
+	// Login using Facebook oauth. Note this is also return uri.
 	// on path /auth/oauth2/facebook
 	@RequestMapping(value = "/oauth2/facebook")
-	public ModelAndView handleFacebookRequest(HttpSession session, HttpServletResponse response)
-			throws JSONException, IOException, NoSuchAlgorithmException {
-			
-		// Make Facebook profile request 
-		String result = facebookTemplate
-				.getForObject(
-						URI.create("https://graph.facebook.com/me/"),
-						String.class);
-		
+	public ModelAndView handleFacebookRequest(HttpSession session,
+			HttpServletResponse response) throws JSONException, IOException,
+			NoSuchAlgorithmException {
+
+		// Make Facebook profile request
+		String result = facebookTemplate.getForObject(
+				URI.create("https://graph.facebook.com/me/"), String.class);
+
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("id");
 		String email = json.getString("email");
-				
+
 		// Record email address if present and verified.
 		String emailEncoded = null;
-		if (email!=null) {
+		if (email != null) {
 			emailEncoded = encode(email);
 		}
-		
-		String usernameEncoded = "facebook:"+encode(id);
-		
+
+		String usernameEncoded = "facebook:" + encode(id);
+
 		// setup user in Spring Security and DB
 		setupUser(usernameEncoded, emailEncoded, session);
 
@@ -155,32 +158,33 @@ public class LoginController {
 		response.sendRedirect("/mylibrary/");
 
 		return null;
-	}	
-	
-	// Login using LinkedIn oauth.  Note this is also return uri.
+	}
+
+	// Login using LinkedIn oauth. Note this is also return uri.
 	// on path /auth/oauth2/linkedin
 	@RequestMapping(value = "/oauth2/linkedin")
-	public ModelAndView handleLinkedinRequest(HttpSession session, HttpServletResponse response)
-			throws JSONException, IOException, NoSuchAlgorithmException {
-			
-		// Make LinkedIn profile request 
+	public ModelAndView handleLinkedinRequest(HttpSession session,
+			HttpServletResponse response) throws JSONException, IOException,
+			NoSuchAlgorithmException {
+
+		// Make LinkedIn profile request
 		String result = linkedinTemplate
 				.getForObject(
 						URI.create("https://api.linkedin.com/v1/people/~:(id,email-address)?format=json"),
 						String.class);
-		
+
 		JSONObject json = new JSONObject(result);
 		String id = json.getString("id");
 		String email = json.getString("emailAddress");
-				
+
 		// Record email address if present and verified.
 		String emailEncoded = null;
-		if (email!=null) {
+		if (email != null) {
 			emailEncoded = encode(email);
 		}
-		
-		String usernameEncoded = "linkedin:"+encode(id);
-		
+
+		String usernameEncoded = "linkedin:" + encode(id);
+
 		// setup user in Spring Security and DB
 		setupUser(usernameEncoded, emailEncoded, session);
 
@@ -188,94 +192,124 @@ public class LoginController {
 		response.sendRedirect("/mylibrary/");
 
 		return null;
-	}		
-	
+	}
+
+	// Handle login from Raven (started by RavenLoginServlet)
+	@RequestMapping(value = "/raven/login")
+	public ModelAndView handleRavenRequest(HttpSession session,
+			HttpServletResponse response) throws JSONException, IOException,
+			NoSuchAlgorithmException {
+
+		// Get the username from session, if no username is stored, 404. 
+		String username = (String) session.getAttribute("cudl-raven-username");
+		if (username==null) { return new ModelAndView("jsp/errors/404"); }
+		
+		String usernameEncoded = "Raven:" + encode(username);
+		String emailEncoded = encode(username + "@cam.ac.uk");
+
+		// setup user in Spring Security and DB
+		setupUser(usernameEncoded, emailEncoded, session);
+
+		// forward to /mylibrary/
+		response.sendRedirect("/mylibrary/");
+
+		return null;
+	}
+
 	/**
-	 * Encode (SHA-256) specified input and convert to hex. 
+	 * Encode (SHA-256) specified input and convert to hex.
+	 * 
 	 * @param input
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 */
-	private String encode(String input) throws NoSuchAlgorithmException  {
-		
+	private String encode(String input) throws NoSuchAlgorithmException {
+
 		// generate hash
 		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 		messageDigest.update(input.getBytes());
 		byte bytes[] = messageDigest.digest();
-		
+
 		// convert to hex
 		StringBuffer hash = new StringBuffer();
 		for (int i = 0; i < bytes.length; i++) {
-			hash.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+			hash.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16)
+					.substring(1));
 		}
 		return new String(hash);
-		
+
 	}
-	
+
 	/**
 	 * Creates the user in Spring Security and in the database if needed and
-	 * puts the userDetails in the session. 
+	 * puts the userDetails in the session.
 	 * 
 	 * @param id
 	 * @param session
 	 */
 	private void setupUser(String username, String email, HttpSession session) {
-		
-		// Create user in database if required, and store details in user session.
+
+		// Create user in database if required, and store details in user
+		// session.
 		User user = usersDao.createUser(username, email);
 		session.setAttribute("user", user);
 
 		// Create user in Spring security
-		Authentication auth = new PreAuthenticatedAuthenticationToken(username, null,
-				AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils.join(user.getUserRoles(), ",")));
+		Authentication auth = new PreAuthenticatedAuthenticationToken(username,
+				null,
+				AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils
+						.join(user.getUserRoles(), ",")));
 		SecurityContextHolder.getContext().setAuthentication(auth);
 	}
-	
-	
+
 	/**
-	 * Gets the old google id for this user and moves any bookmarks over to the new
-	 * username.  Note this will stop working Jan 2017 when google stops proving the 
-	 * openid_id. 
-	 *  
+	 * Gets the old google id for this user and moves any bookmarks over to the
+	 * new username. Note this will stop working Jan 2017 when google stops
+	 * proving the openid_id.
+	 * 
 	 * @param username
 	 * @throws JSONException
 	 */
 	private void migrateGoogleUser(String username) throws JSONException {
-		
+
 		// Does this user have an old OpenID 2.0 id?
 		String openid_id = null;
-		Map<String, Object> map = googleTemplate.getAccessToken().getAdditionalInformation();
+		Map<String, Object> map = googleTemplate.getAccessToken()
+				.getAdditionalInformation();
 		if (map.containsKey("id_token")) {
 			Object idTokenEncoded = map.get("id_token");
 			Jwt id_token = JwtHelper.decode(idTokenEncoded.toString());
 			JSONObject json = new JSONObject(id_token.getClaims());
-			
+
 			if (json.has("openid_id")) {
-			  openid_id = json.get("openid_id").toString();
+				openid_id = json.get("openid_id").toString();
 			}
 		}
-		if (openid_id==null) { return;	}
-		
+		if (openid_id == null) {
+			return;
+		}
+
 		// Does this old user id have any bookmarks?
 		List<Bookmark> oldBookmarks = bookmarkDao.getByUsername(openid_id);
-		for (int i=0; i<oldBookmarks.size(); i++) {
+		for (int i = 0; i < oldBookmarks.size(); i++) {
 			Bookmark bookmark = oldBookmarks.get(i);
-			
+
 			// change old bookmark to new username
 			bookmark.setUsername(username);
-			
+
 			// add bookmark back to database with new username
 			// and delete from DB using the old username.
 			try {
 				bookmarkDao.add(bookmark);
-				bookmarkDao.delete(openid_id, bookmark.getItemId(), bookmark.getPage());
-				
+				bookmarkDao.delete(openid_id, bookmark.getItemId(),
+						bookmark.getPage());
+
 			} catch (TooManyBookmarksException e) {
 				// this should not occur
 				e.printStackTrace();
-			}			
-			
+			}
+
 		}
-	
+
 	}
 }

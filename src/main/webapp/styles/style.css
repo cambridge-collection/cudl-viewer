@@ -923,7 +923,14 @@ div.pagination a.next:hover, div.pagination a.last:hover, div.pagination a.first
     margin: 0 auto;
 }
 
-.btn-google, .btn-facebook, .btn-twitter, .btn-linkedin {
+.btn-raven{color:#fff;background-color:#7f7f7f;border-color:rgba(0,0,0,0.2)}.btn-raven:hover,.btn-raven:focus,.btn-raven:active,.btn-raven.active,.open>.dropdown-toggle.btn-raven{color:#fff;background-color:#4d4d4d;border-color:rgba(0,0,0,0.2)}
+.btn-raven:active,.btn-raven.active,.open>.dropdown-toggle.btn-raven{background-image:none}
+.btn-raven.disabled,.btn-raven[disabled],fieldset[disabled] .btn-raven,.btn-raven.disabled:hover,.btn-raven[disabled]:hover,fieldset[disabled] .btn-raven:hover,.btn-raven.disabled:focus,.btn-raven[disabled]:focus,fieldset[disabled] .btn-raven:focus,.btn-raven.disabled:active,.btn-raven[disabled]:active,fieldset[disabled] .btn-raven:active,.btn-raven.disabled.active,.btn-raven[disabled].active,fieldset[disabled] .btn-raven.active{background-color:#007bb6;border-color:rgba(0,0,0,0.2)}
+.btn-raven .badge{color:#007bb6;background-color:#fff}
+.img-raven { margin-top:3px; }
+
+
+.btn-google, .btn-facebook, .btn-twitter, .btn-linkedin, .btn-raven {
 	height: 37px;
 	color: #FFF;
 }
