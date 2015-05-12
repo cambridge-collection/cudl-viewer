@@ -17,6 +17,8 @@
 		<property name="password" value="${jdbc.password}" />
 		<property name="maxActive" value="8" />
 		<property name="maxIdle" value="8" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
 		
 	</bean>
 
