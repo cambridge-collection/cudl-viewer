@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="org.owasp.encoder.Encode" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -19,7 +20,12 @@
 		<div class="campl-column12  campl-main-content" id="content">
 			<div class="campl-content-container">
 
-				<div id="login_error">${error}</div>
+				<div id="login_error">
+				<% 
+				String error = request.getParameter("error");
+				if (error!=null) { out.print(Encode.forHtml(error)); } 
+				%>
+				</div>
 
 				<div class="campl-column12">Login to create or view your
 					collection of bookmarks.</div>
