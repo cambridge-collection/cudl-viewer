@@ -204,7 +204,7 @@ public class LoginController {
 		String username = (String) session.getAttribute("cudl-raven-username");
 		if (username==null) { return new ModelAndView("jsp/errors/404"); }
 		
-		String usernameEncoded = "Raven:" + encode(username);
+		String usernameEncoded = "raven:" + encode(username);
 		String emailEncoded = encode(username + "@cam.ac.uk");
 
 		// setup user in Spring Security and DB
