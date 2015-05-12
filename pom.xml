@@ -65,11 +65,21 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>keystore</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+
 		</plugins>
 
 		<resources>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>src/main/resources/</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
