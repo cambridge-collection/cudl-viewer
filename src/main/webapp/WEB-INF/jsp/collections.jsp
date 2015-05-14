@@ -48,28 +48,28 @@
 
 				<hr class="campl-teaser-divider">
 
-				<!-- Board of Longitude -->
+				<!-- Newton Papers -->
 				<div class="campl-content-container ">
 					<div class="campl-horizontal-teaser campl-teaser clearfix">
 						<div class="campl-column3">
 							<div class="campl-content-container campl-horizontal-teaser-img">
-								<a href="/collections/longitude" class="campl-teaser-img-link"><img
-									alt="Board of Longitude" title="Board of Longitude"
-									src="/images/collectionsView/collection-longitude.jpg"
+								<a href="/collections/newton" class="campl-teaser-img-link"><img
+									alt="Newton Papers" title="Newton Papers"
+									src="/images/collectionsView/collection-newton.jpg"
 									class="campl-scale-with-grid"></a>
 							</div>
 						</div>
 						<div class="campl-column6">
 							<div class="campl-content-container campl-horizontal-teaser-txt">
 								<h3 class="campl-teaser-title">
-									<a href="/collections/longitude">Board of Longitude</a>
+									<a href="/collections/newton">Newton Papers</a>
 								</h3>
-								<p>Cambridge University Library holds the entire archive of
-									the Board of Longitude, the state organization established in
-									the eighteenth century to evaluate methods for finding ships’
-									position and to encourage a host of projects in instrument
-									design, clock-making, mapping and voyaging.</p>
-								<a href="/collections/longitude" class="campl-primary-cta">Read
+								<p>Cambridge University Library holds the largest and most
+									important collection of the scientific works of Isaac Newton
+									(1642-1727). We present here an initial selection of Newton's
+									manuscripts, concentrating on his mathematical work in the
+									1660s.</p>
+								<a href="/collections/newton" class="campl-primary-cta">Read
 									more</a>
 							</div>
 						</div>
@@ -112,31 +112,63 @@
 						</div>
 					</div>
 				</div>
-
+				
+				
 				<hr class="campl-teaser-divider">
 
-				<!-- Newton Papers -->
+				<!-- Chinese Works -->
 				<div class="campl-content-container ">
 					<div class="campl-horizontal-teaser campl-teaser clearfix">
 						<div class="campl-column3">
 							<div class="campl-content-container campl-horizontal-teaser-img">
-								<a href="/collections/newton" class="campl-teaser-img-link"><img
-									alt="Newton Papers" title="Newton Papers"
-									src="/images/collectionsView/collection-newton.jpg"
+								<a href="/collections/chinese" class="campl-teaser-img-link"><img
+									alt="Chinese Works" title="Chinese Works"
+									src="/images/collectionsView/collection-chinese.jpg"
 									class="campl-scale-with-grid"></a>
 							</div>
 						</div>
 						<div class="campl-column6">
 							<div class="campl-content-container campl-horizontal-teaser-txt">
 								<h3 class="campl-teaser-title">
-									<a href="/collections/newton">Newton Papers</a>
+									<a href="/collections/chinese">Chinese Works</a>
 								</h3>
-								<p>Cambridge University Library holds the largest and most
-									important collection of the scientific works of Isaac Newton
-									(1642-1727). We present here an initial selection of Newton's
-									manuscripts, concentrating on his mathematical work in the
-									1660s.</p>
-								<a href="/collections/newton" class="campl-primary-cta">Read
+								<p>
+								The Chinese collections comprise about half a million individual titles. The items displayed here show the temporal range, diversity of media and variety of
+								subject-matter contained within the collections, from the oracle bones (the oldest documents in the Library), to unique manuscripts and printed
+								books, historical documents
+								and epigraphical rubbings.
+								</p>
+								<a href="/collections/chinese" class="campl-primary-cta">Read more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+				<hr class="campl-teaser-divider">
+
+				<!-- Board of Longitude -->
+				<div class="campl-content-container ">
+					<div class="campl-horizontal-teaser campl-teaser clearfix">
+						<div class="campl-column3">
+							<div class="campl-content-container campl-horizontal-teaser-img">
+								<a href="/collections/longitude" class="campl-teaser-img-link"><img
+									alt="Board of Longitude" title="Board of Longitude"
+									src="/images/collectionsView/collection-longitude.jpg"
+									class="campl-scale-with-grid"></a>
+							</div>
+						</div>
+						<div class="campl-column6">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<h3 class="campl-teaser-title">
+									<a href="/collections/longitude">Board of Longitude</a>
+								</h3>
+								<p>Cambridge University Library holds the entire archive of
+									the Board of Longitude, the state organization established in
+									the eighteenth century to evaluate methods for finding ships’
+									position and to encourage a host of projects in instrument
+									design, clock-making, mapping and voyaging.</p>
+								<a href="/collections/longitude" class="campl-primary-cta">Read
 									more</a>
 							</div>
 						</div>

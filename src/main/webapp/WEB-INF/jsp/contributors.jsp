@@ -324,6 +324,11 @@
 						Library</li>
 
 				</ul>
+				
+				<h2>Chinese Works</h2>
+				<ul>
+					<li>Charles Aylmer, Chinese Department, Cambridge University Library</li>
+				</ul>
 
 
 				<h2>Music</h2>
@@ -385,12 +390,14 @@
 					<li>Sonia Morcillo-García, Hispanic Specialist Cataloguer</li>
 				</ul>
 
-				<h4>Waterloo</h4>
+				<h2>Waterloo</h2>
 				<ul>
 					<li>Dr Mark Nicholls, St John's College, Cambridge</li>
 					<li>John Wells, Curator of Literary Archives, Cambridge
 						University Library</li>
 				</ul>
+				
+				
 
 				<h2>Treasures of the Library Collection</h2>
 				<ul>
