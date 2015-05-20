@@ -11,6 +11,11 @@
 
 		<div class="campl-column8">
 			<blockquote class="cam-quote-mark">
+				<div class="right-aligned-language" style="font-size:30px">
+				一字值千金。
+				</div>
+				<br /> <br />
+			
 				A single written character is worth a thousand pieces of gold.
 				<br /> <br />
 				<cite>Chinese proverb</cite>
