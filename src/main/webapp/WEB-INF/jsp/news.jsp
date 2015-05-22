@@ -39,6 +39,28 @@
 		<div class="campl-column6  campl-main-content" id="content">
 			<div class="campl-content-container news_items">
 				<h2>Latest Updates</h2>
+				
+				<hr class="cam-teaser-divider campl-column12">
+
+				<div class="grid_5">
+				<img alt="Oracle Bone" title="May Update"
+						src="/images/index/news-2015-05.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">27/05/2015</span>
+					<h4>May Update</h4>
+					
+					<p>Our May release sees the launch of our new <a href='/collections/chinese'>Chinese collection</a>. Our initial selection shows the temporal range, diversity of media and variety of subject-matter contained within the collection,
+					from the three-thousand year old <a href='/view/MS-CUL-00001-00155/1'>Oracle Bones</a> (the oldest documents in the Library), to unique manuscripts and printed books, historical documents and epigraphical rubbings. A particular highlight is a
+					<a href='/view/PR-FH-00910-00083-00098/15'>unique copy of a study of calligraphy and painting</a>, described as ‘perhaps the most beautiful set of prints ever made’.</p>
+	
+					<p>Also included is <a href='/view/MS-RCMS-00352/1'>a very attractive collection of nineteenth century Indian mica paintings</a>, comprising thirty-six miniature portraits from Trichinopoly, dated 1869. Incredibly for objects of such an ephemeral nature,
+					the micas reached the Library still brilliantly coloured and fairly intact, but they had become too fragile to handle. A project to conserve and rehouse them is described on the <a href='https://specialcollections.blog.lib.cam.ac.uk/?p=9876'>Library’s
+					Special Collections Blog</a>.</p>
+
+				</div>
+				
 				<hr class="cam-teaser-divider campl-column12">
 
 

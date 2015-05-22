@@ -199,12 +199,10 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="#4">April Release</a>
+						<a href="#4">May Release</a>
 					</p>
-					<span class="campl-datestamp">22 April 2015</span>
-					<p>Our April release sees the launch of our new <a href='/collections/michaelides'>Michaelides Fragments collection</a>. Including personal letters, legal texts, accounts, literary texts, recipes and other documents, they comprise
-					the largest private collection of Arabic papyri to be found in any institution worldwide. Our initial selection of 64 fragments will be added to over the course of the next two years to provide comprehensive coverage of this
-					wonderful resource.</p>
+					<span class="campl-datestamp">27 May 2015</span>
+					<p><p>This release sees the launch of a new <a href='/collections/chinese'>Chinese collection</a> featuring the oldest documents held by the Library, the three thousand year old <a href='/view/MS-CUL-00001-00155/1'>Oracle Bones</a>, and a <a href='/view/PR-FH-00910-00083-00098/15'>unique copy of a study of calligraphy and painting</a>, described as ‘perhaps the most beautiful set of prints ever made’.</p></p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View
