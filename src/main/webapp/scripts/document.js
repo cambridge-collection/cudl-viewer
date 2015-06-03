@@ -379,7 +379,10 @@ cudl.setupInfoPanel = function(data) {
 	
 	//update panel positon on resize
 	$(window).resize(function () { 
-		if (!infoPanelExpanded) {
+		if (infoPanelExpanded) {
+		  $('#doc').css( {'width':($(window).width() - $('#right-panel').width())} );
+		} else {
+		  $('#doc').width('100%');
 		  $('#right-panel').css( {'right':($('#right-panel').width() * -1)} );
 		}
 	});
