@@ -26,7 +26,7 @@ public class GenizahDBDao implements GenizahDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	private static final String bibliographyColumnNames = 
-			"CY, DA, DO, ET, M1, NV, OP, PB, PY, RN, RP, " +
+			"CY, DA, \"do\", ET, M1, NV, OP, PB, PY, RN, RP, " +
 			"SN, SP, ST, SV, T2, TI, TT, TY, VL ";
 	
 	@Autowired
@@ -46,7 +46,7 @@ public class GenizahDBDao implements GenizahDao {
 	public List<BibliographySearchResult> authorSearch(String author) {
 		// XXX - note that the "Tag = AU" means that the author is not the editor 
 		String authorQuery = "SELECT Author, Title FROM Author " +
-							 "WHERE Tag = \"AU\" AND Author LIKE ?";
+							 "WHERE Tag = 'AU' AND Author LIKE ?";
 //		String percentWrappedString = convertWildcards(author);
 		String percentWrappedString = addWildcards(author);
 		
@@ -149,7 +149,7 @@ public class GenizahDBDao implements GenizahDao {
 	public List<FragmentSearchResult> classmarkSearch(String classmark) {
 		String query = "SELECT LB, Classmark, count(*) as RefCount " +
 					   "FROM Fragment JOIN Reference ON Fragment.ID = Reference.Fragment " +
-					   "WHERE LB LIKE ? GROUP BY Classmark";
+					   "WHERE LB LIKE ? GROUP BY Classmark, LB";
 		String percentWrappedString = convertWildcards(classmark);
 		
 		return jdbcTemplate.query(
