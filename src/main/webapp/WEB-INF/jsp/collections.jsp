@@ -630,6 +630,34 @@
 					</div>
 				</div>
 
+				<!-- RCS  -->
+				<div class="campl-content-container ">
+					<div class="campl-horizontal-teaser campl-teaser clearfix">
+						<div class="campl-column3">
+							<div class="campl-content-container campl-horizontal-teaser-img">
+								<a href="/collections/rcs" class="campl-teaser-img-link"><img
+									alt="Royal Commonwealth Society" title="Royal Commonwealth Society"
+									src="/images/collectionsView/collection-rcs.jpg"
+									class="campl-scale-with-grid"></a>
+							</div>
+						</div>
+						<div class="campl-column6">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<h3 class="campl-teaser-title">
+									<a href="/collections/rcs">Royal Commonwealth Society</a>
+								</h3>
+								<p>The Royal Commonwealth Society (RCS) Library collections are a treasure-trove of information, pictorial and written, print and manuscript,
+								focussing on the Commonwealth and Britain's former colonial territories. This initial selection includes some of the spectacular art work
+								and photograph collections in the RCS Library.</p>
+		
+								
+								<a href="/collections/rcs" class="campl-primary-cta">Read
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+		
 
 			</div>
 		</div>
