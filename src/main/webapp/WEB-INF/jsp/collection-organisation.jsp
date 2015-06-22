@@ -203,8 +203,8 @@ function pageinit() {
 
   <div class="campl-row campl-content campl-recessed-content">
 	<div class="campl-wrap clearfix">
-		<div class="campl-column7  campl-main-content" id="content">
-			<div class="campl-content-container">
+		<div class="campl-column7  campl-main-content" id="content">         
+			<div id="summaryDiv" class="campl-content-container" contenteditable="true">
 
 <%   // If this collection has a parent show breadcrumb
 	if (collection.getParentCollectionId() != null
@@ -236,13 +236,41 @@ function pageinit() {
 			<div class="pagination toppagination"></div>
 
 		</div>
-
-		<jsp:include page="<%=collection.getSponsors()%>" />
-
+ 
+        <div id="sponsorDiv" contenteditable="true">
+		  <jsp:include page="<%=collection.getSponsors()%>" />  
+        </div>
 
 	</div>
 </div>
 
+<script src="/scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+   CKEDITOR.config.allowedContent = true;  // prevent tag filtering
+   
+   CKEDITOR.disableAutoInline = true;
+
+   CKEDITOR.inline( 'summaryDiv', {
+       on: {
+           save: function( event ) {
+               var data = event.editor.getData();
+               // Do sth with your data...
+               alert (data);
+           }
+       }
+   } );
+   
+   CKEDITOR.inline( 'sponsorDiv', {
+       on: {
+           save: function( event ) {
+               var data = event.editor.getData();
+               // Do sth with your data...
+               alert (data);
+           }
+       }
+   } );   
+</script>
+         
 
 
 
