@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory, ulcambridge.foundations.viewer.CollectionFactory, java.util.List"%>
+<%@taglib prefix="c" 
+       uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	Collection collection = (Collection) request
@@ -7,6 +9,8 @@
 
 	CollectionFactory collectionFactory = (CollectionFactory) request
 	.getAttribute("collectionFactory");
+	
+	String contentURL = (String) request.getAttribute("contentURL");
 %>
 
 <jsp:include page="header/header-full.jsp">
@@ -222,7 +226,7 @@ function pageinit() {
 		  </div>
 	<% } %>
 	
-				<jsp:include page="<%=collection.getSummary()%>" />
+				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSummary()%>" /> 
 
 			</div>
 		</div>
@@ -238,7 +242,7 @@ function pageinit() {
 		</div>
  
         <div id="sponsorDiv" contenteditable="true">
-		  <jsp:include page="<%=collection.getSponsors()%>" />  
+		  <c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSponsors()%>" /> 
         </div>
 
 	</div>
