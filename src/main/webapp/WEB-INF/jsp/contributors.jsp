@@ -162,6 +162,13 @@
 						Professor Mikiko Ishii of Kanagawa University, Japan.</div>
 
 				</div>
+				
+				<div class="campl-column12 funder_item">
+
+					<div class="campl-column3">&nbsp;</div>
+					<div class="campl-column8">Digital imaging of the Royal Commonwealth Society collection generously supported by library grants from the <a href="http://www.ist.admin.cam.ac.uk/smuts-memorial-fund">Smuts Memorial Fund</a></div>
+
+				</div>
 
 				<hr class="cam-teaser-divider campl-column12">
 
