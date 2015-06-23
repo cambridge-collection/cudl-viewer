@@ -8,14 +8,18 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.file.Files;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,12 +42,16 @@ public class ContentEditorController {
 	// on path /editor/update/
 	@RequestMapping(value = "/update/")
 	public ModelAndView handleUpdateRequest(HttpServletResponse response,
-			HttpServletRequest request) throws IOException, JSONException {
+			@Valid @ModelAttribute() WriteParameters writeParams,
+	        BindingResult errors ) throws IOException, JSONException {
+		
+		if (errors.hasErrors()) {
+	        throw new IOException("invalid request params");
+	    }
 		
 		// read in data from request
-		// need - new content, filename, anything else?
-		String html = request.getParameter("html");             // TODO validation
-		String filename = request.getParameter("filename");		// TODO validation
+		String html = writeParams.getHtml();        
+		String filename = writeParams.getFilename();
 		String contentPath = Properties.getString("cudl-viewer-content.path");						
 		
 		// write to file system and rename
@@ -76,8 +84,34 @@ public class ContentEditorController {
 			}
 		}
 		return null;
-		
-
+	
 	}
 
+	// Performs validation on parameters used for writing html. 
+	// Do we want html validation? formatting?
+	public static class WriteParameters {
+
+		@NotNull
+		@Pattern(regexp="^[-_/A-Za-z0-9]+\\.html$",
+	             message="Invalid filename")
+		private String filename;
+		
+		@NotNull
+		private String html;
+		  
+		public String getFilename() {
+			return filename;
+		}
+		public void setFilename(String filename) {
+			this.filename = filename;
+		}
+		public String getHtml() {
+			return html;
+		}
+		public void setHtml(String html) {
+			this.html = html;
+		}
+		  
+	}
+	
 }
