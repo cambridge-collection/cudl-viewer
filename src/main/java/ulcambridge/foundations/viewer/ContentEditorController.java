@@ -2,10 +2,13 @@ package ulcambridge.foundations.viewer;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +25,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.tidy.Configuration;
+import org.w3c.tidy.Tidy;
 
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -89,11 +94,11 @@ public class ContentEditorController {
 		
 		// Setup variables
 		boolean task1done = false, task2done = false, task3done = false, task4done = false, task5done = false;					
-		File newFile = new File(contentPath, filename + ".new").getCanonicalFile(); 
+		File newFile = new File(contentPath, filename + ".new_cudl_viewer_version").getCanonicalFile(); 
 		InputStream is = new ByteArrayInputStream( html.getBytes( "UTF-8" ) );
 		File parentDir = new File(newFile.getParent()).getCanonicalFile();
 		File existingParentDir = existingParent(parentDir);
-		File oldFile = new File(contentPath, filename + ".old").getCanonicalFile();
+		File oldFile = new File(contentPath, filename + ".old_cudl_viewer_version").getCanonicalFile();
 		File file = new File(contentPath, filename).getCanonicalFile();
 		
 		try {
@@ -152,7 +157,7 @@ public class ContentEditorController {
             if (! task3done) {
                 if (task2done) {
                     // Rollback task 2
-                	if (newFile.exists()) { newFile.delete(); } // NB: Possible to lose any .new File that was overwritten
+                	if (newFile.exists()) { newFile.delete(); } // NB: Possible to lose any .new_cudl_viewer_version File that was overwritten
                     task2done = false;
                 }
             }
@@ -234,10 +239,9 @@ public class ContentEditorController {
 	    // No match found
 	    return false;
 	}
-	
+
 
 	// Performs validation on parameters used for writing html. 
-	// TODO Do we want html validation? formatting?
 	public static class WriteParameters {
 
 		@NotNull
@@ -258,7 +262,24 @@ public class ContentEditorController {
 			return html;
 		}
 		public void setHtml(String html) {
-			this.html = html;
+			this.html = tidyHTML(html);
+		}		
+		private String tidyHTML(String input) {
+			
+			InputStream inputStream = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
+			OutputStream outputStream = new ByteArrayOutputStream();		
+
+			Tidy tidy = new Tidy(); // obtain a new Tidy instance
+			tidy.setXHTML(false);
+			tidy.setCharEncoding(Configuration.UTF8);
+			tidy.setMakeClean(false);
+			tidy.setTidyMark(false);
+			tidy.setDropEmptyParas(false);
+			tidy.setDocType("omit");
+			tidy.setShowWarnings(false);
+			tidy.parse(inputStream, outputStream);
+			return outputStream.toString();
+			
 		}
 		  
 	}
