@@ -258,18 +258,43 @@ function pageinit() {
        on: {
            save: function( event ) {
                var data = event.editor.getData();
-               // Do sth with your data...
-               alert (data);
+
+               // Submit data to /editor/update/               
+               $.ajax({
+            	   method: "POST",
+            	   url: "/editor/update/",
+            	   data: { html: data, filename: '<%=collection.getSummary()%>' }
+            	 })
+            	   .done(function( msg ) {
+            	     if (msg.writesuccess) {
+            	    	 alert("Changes Saved.");
+            	     } else {
+            	    	 alert("There was a problem saving your changes.");
+            	     }
+            	 });
+
            }
-       }
+       	}
    } );
    
    CKEDITOR.inline( 'sponsorDiv', {
        on: {
            save: function( event ) {
                var data = event.editor.getData();
-               // Do sth with your data...
-               alert (data);
+
+               // Submit data to /editor/update/               
+               $.ajax({
+            	   method: "POST",
+            	   url: "/editor/update/",
+            	   data: { html: data, filename: '<%=collection.getSponsors()%>' }
+            	 })
+            	   .done(function( msg ) {
+              	     if (msg.writesuccess) {
+            	    	 alert("Changes Saved.");
+            	     } else {
+            	    	 alert("There was a problem saving your changes.");
+            	     }
+            	 });
            }
        }
    } );   
