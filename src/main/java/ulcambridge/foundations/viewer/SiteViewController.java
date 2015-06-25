@@ -109,6 +109,8 @@ public class SiteViewController {
 		ModelAndView modelAndView = new ModelAndView("jsp/contributors");
 		return modelAndView;
 	}
+        
+
 
 	// on path /nojavascript
 	@RequestMapping(value = "/nojavascript")

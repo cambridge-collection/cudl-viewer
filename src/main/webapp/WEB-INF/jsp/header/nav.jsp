@@ -53,6 +53,7 @@ String subtitle = request.getParameter("subtitle");
 							<li><a href="/terms/">Terms and Conditions</a></li>
 						</ul></li>	
 	<li><a href="/help/" title="Help" <% if (activeIndex==4) { %>class="campl-selected" <% } %>> Help </a></li></ul>
+        
 			</div></div>
 			
 			<% if (title!=null) { %>
