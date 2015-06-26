@@ -43,7 +43,25 @@
 				<hr class="cam-teaser-divider campl-column12">
 
 				<div class="grid_5">
-				<img alt="Oracle Bone" title="May Update"
+				<img alt="June Update" title="June Update"
+						src="/images/index/news-2015-06.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">30/06/2015</span>
+					<h4>June Update</h4>
+					
+					<p>This release sees the launch of our new <a href='/collections/rcs'>Royal Commonwealth Society collection</a>. The Royal Commonwealth Society Library collections are a treasure-trove of information, pictorial and written, print and manuscript, focussing on the Commonwealth and Britain's former colonial territories. This initial selection highlights the range and scope of our holdings, from spectacular panoramas of <a href='/view/MS-RCMS-00085/1'>Bombay</a> and <a href='/view/MS-RCMS-00086/1'>Simla</a> through to some striking examples from the RCS photographic collections - Sir Henry Norman's <a href='/view/PH-Y-00302-E/1'>images of late nineteenth century French Indo-China, China, Malaya, Siam, Korea and Japan</a>, a <a href='/view/PH-Y-30468-S/1'>set of mounted prints of Lourenço Marques (Maputo, Mozambique)</a>, and a group of <a href='/view/PH-Y-30383-A/1'>spectacular panoramas</a> of Hong Kong, Canton (modern-day Guangzhou), and Macau.</p>
+
+<p>We are also adding a further eight items to our Darwin Manuscripts collection, bringing the total so far to seventy seven complete volumes. Among these is a <a href='/view/MS-DAR-00053-00001/409'>fascinating collection of photographs</a> relating to Darwin’s work on expression. Finally, we are making an important addition to our Christian collection with an 11th century copy of <a href='/view/MS-II-00002-00004/1'>Alfred the Great's translation of Gregory the Great's Pastoral Care</a>.</p>.</p>
+
+				</div>
+				
+				
+				<hr class="cam-teaser-divider campl-column12">
+
+				<div class="grid_5">
+				<img alt="May Update" title="May Update"
 						src="/images/index/news-2015-05.jpg" height="200" width="200">
 				</div>
 
