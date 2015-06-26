@@ -16,7 +16,7 @@
                     <button type="submit" class="campl-primary-cta">Go Live </button>
                 </form>
 
-                <p><a href="/auth/logout">Logout</a></p>
+                <p><a href="/admin/auth/logout">Logout</a></p>
 
             </div>
         </div>

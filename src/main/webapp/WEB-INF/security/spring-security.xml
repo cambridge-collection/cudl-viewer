@@ -66,12 +66,13 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     <security:http pattern="/styles/**" security='none' />
 
     
-   <!--Security for admin access-->
+    <!--Security for admin access-->
     <security:http auto-config="false" pattern="/admin/**" >
 
         <security:form-login login-page='/auth/login?access=admin' />
+        <security:access-denied-handler error-page="/auth/denied"/>
         <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out."
+                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
                          delete-cookies="JSESSIONID" />
                          
         
@@ -86,8 +87,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     <security:http auto-config="false" pattern="/mylibrary/**">
 
         <security:form-login login-page='/auth/login?access=user' />
+        <security:access-denied-handler error-page="/auth/denied"/>
         <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out."
+                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=user"
                          delete-cookies="JSESSIONID" />
                         
 
@@ -102,7 +104,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     <!--Security for all other access-->
     <security:http auto-config="false" >
 
-        <security:form-login login-page='/auth/login' />
+        <security:form-login login-page='/auth/login?access=all' />
         <security:logout logout-url="/auth/logout"
                          logout-success-url="/auth/login?error=Successfully%20logged%20out."
                          delete-cookies="JSESSIONID" />

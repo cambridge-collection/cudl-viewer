@@ -70,8 +70,8 @@ public class LoginController {
     // on path /auth/login/
     @RequestMapping(value = "/login")
     public ModelAndView handleLoginRequest(
-            @RequestParam(value = "error", required = false) String error, @RequestParam(value = "access") String access, HttpSession session,
-            ModelMap model) {
+            @RequestParam(value = "error", required = false) String error,HttpSession session,
+            ModelMap model, @RequestParam(value = "access", required = false) String access) {
         //set access to session variable - can be used to redirect to admin or mylibrary page depending on the access rights
         session.setAttribute("access", access);
         System.out.println("Loginrequest access" + access);
@@ -130,15 +130,7 @@ public class LoginController {
         // This should only be called up until Jan 2017.
         migrateGoogleUser(usernameEncoded);
 
-        //if admin access redirect to admin page
-        if ("admin".equals(sessionAccess)) {
-            response.sendRedirect("/admin/");
-        } else
-            //if user access redirect to mylibrary page
-            if ("user".equals(sessionAccess)) {
-            // forward to /mylibrary/
-            response.sendRedirect("/mylibrary/");
-        }
+        callRedirect(sessionAccess,response);
         session.removeAttribute(sessionAccess);
         return null;
     }
@@ -170,15 +162,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        //if admin access redirect to admin page
-        if ("admin".equals(sessionAccess)) {
-            response.sendRedirect("/admin/");
-        } else
-            //if user access redirect to mylibrary page
-            if ("user".equals(sessionAccess)) {
-            // forward to /mylibrary/
-            response.sendRedirect("/mylibrary/");
-        }
+        callRedirect(sessionAccess,response);
         session.removeAttribute(sessionAccess);
 
         return null;
@@ -213,15 +197,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        //if admin access redirect to admin page
-        if ("admin".equals(sessionAccess)) {
-            response.sendRedirect("/admin/");
-        } else
-            //if user access redirect to mylibrary page
-            if ("user".equals(sessionAccess)) {
-            // forward to /mylibrary/
-            response.sendRedirect("/mylibrary/");
-        }
+        callRedirect(sessionAccess,response);
         session.removeAttribute(sessionAccess);
 
         return null;
@@ -246,16 +222,8 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
         System.out.println("logincontroller Raven-" + sessionAccess);
-       //if admin access redirect to admin page
-        if ("admin".equals(sessionAccess)) {
-            response.sendRedirect("/admin/");
-        } else
-            //if user access redirect to mylibrary page
-            if ("user".equals(sessionAccess)) {
-            // forward to /mylibrary/
-            response.sendRedirect("/mylibrary/");
-        }
-
+        
+        callRedirect(sessionAccess,response);
         session.removeAttribute("access");
 
         return null;
@@ -357,4 +325,16 @@ public class LoginController {
         }
 
     }
+    
+    private void  callRedirect(String sessionAccess,HttpServletResponse response) throws IOException{
+        //if admin access redirect to admin page
+        if ("admin".equals(sessionAccess)) {
+            response.sendRedirect("/admin/");
+        } else //if user access redirect to mylibrary page
+        if ("user".equals(sessionAccess)) {
+            // forward to /mylibrary/
+            response.sendRedirect("/mylibrary/");
+        }
+    }
+
 }

@@ -10,6 +10,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -109,7 +111,15 @@ public class DatabaseCopy {
             File file = new File("/tmp/devTables/" + tablename);
             FileReader fileReader = new FileReader(file);
             copyManager.copyIn("COPY " + tablename + " FROM STDIN", fileReader);
-
+           
+            //restart tomcat
+            /*
+            new ShutdownTask.start();
+            try {
+                Runtime.getRuntime().exec("c:/program files/tomcat/bin/startup.bat");
+            } catch (IOException e) {
+                System.out.println("exception");
+            }*/
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -127,6 +137,8 @@ public class DatabaseCopy {
         return success;
 
     }
+    
+    
 
     public Boolean init() {
         ArrayList<String> tablename;
@@ -165,15 +177,15 @@ public class DatabaseCopy {
                 dbsuccess = copyIn(table, conlive);
                 if (!dbsuccess) {
                     conlive.rollback();//rollback if any issues
-                    copysuccess=false;
+                    copysuccess = false;
                     break;//also stop the copy incase of any issues
-                    
+
                 }
 
             }
             if (!iterator.hasNext() && dbsuccess) {
                 conlive.commit();
-                copysuccess=true;
+                copysuccess = true;
             }
 
         } catch (SQLException ex) {
@@ -189,9 +201,26 @@ public class DatabaseCopy {
                 Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         return copysuccess;
 
     }
 
 }
+
+class ShutdownTask extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                Socket s = new Socket("127.0.0.1", 8015);
+                PrintStream os = new PrintStream(s.getOutputStream());
+                os.println("shutdown");
+                s.close();
+                System.out.println("Shutting down server ...");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }

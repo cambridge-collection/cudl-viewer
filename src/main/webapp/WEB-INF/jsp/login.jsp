@@ -25,8 +25,12 @@
                         String error = request.getParameter("error");
                         if (error != null) {
                             out.print(Encode.forHtml(error));
+                            
                         }
-
+//                            String error=(String)request.getAttribute("error");
+//                            if (error != null) {
+//                                out.print(Encode.forHtml(error));
+//                            }
                     %>
                 </div>
 

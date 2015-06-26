@@ -18,13 +18,6 @@ public class RavenLoginServlet extends RavenServlet {
     private static final long serialVersionUID = 6459642286645404697L;
     private HttpServletRequest request;
     HttpServletResponse response;
-    
-//    public RavenLoginServlet(HttpServletRequest request) throws ServletException, IOException{
-//        this.request = request;
-//        
-//        System.out.println("request"+request);
-//        //performAction(a,session,response);
-//    }
 
     @Override
     protected void performAction(RavenServlet.Action a, HttpSession session,
@@ -34,30 +27,12 @@ public class RavenLoginServlet extends RavenServlet {
         this.response = response;
         String access = (String) session.getAttribute("access");
         // See LoginController
-        response.sendRedirect("/auth/raven/login?access="+access);
+        response.sendRedirect("/auth/raven/login?access=" + access);
         //super.doGet( request, response);
-        System.out.println("RavenLoginServlet-"+access);
+        System.out.println("RavenLoginServlet-" + access);
     }
-    
-//    @Override
-//    protected RavenServlet.Action parseRequest(javax.servlet.http.HttpServletRequest req)
-//                                    throws java.io.IOException,
-//                                           javax.servlet.ServletException{
-//        RavenServlet.Action a = null;
-//        super.doGet( request, response);
-//        System.out.println("request"+request);
-//        return a;
-//    }
-//    protected final void doGeti(javax.servlet.http.HttpServletRequest req,
-//                           javax.servlet.http.HttpServletResponse res)
-//                    throws java.io.IOException,
-//                           javax.servlet.ServletException{
-//        super.doGet(req, res);
-//        // See LoginController
-//        res.sendRedirect("/auth/raven/login?access=admin");
-//    }
 
-	// Called when authentication is not possible because a user could not be
+    // Called when authentication is not possible because a user could not be
     // authenticated.
     protected void reportRavenAuthenticationException(
             RavenServlet.Action action,
@@ -76,7 +51,7 @@ public class RavenLoginServlet extends RavenServlet {
         res.sendRedirect("/auth/login?error=There was a problem logging into Raven.");
     }
 
-	// Called when a token is received from Raven before the application has
+    // Called when a token is received from Raven before the application has
     // requested one.
     protected void reportRavenStateException(RavenServlet.Action action,
             javax.servlet.http.HttpServletResponse res,

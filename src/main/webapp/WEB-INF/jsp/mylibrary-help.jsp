@@ -31,5 +31,5 @@
 </div>
 <div class="campl-content-container">	
 
-	<p><a href="/auth/logout">Logout</a></p>
+	<p><a href="/mylibrary/auth/logout">Logout</a></p>
 </div>
