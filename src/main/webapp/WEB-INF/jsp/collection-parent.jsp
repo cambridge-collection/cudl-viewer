@@ -1,11 +1,14 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List,ulcambridge.foundations.viewer.ItemFactory"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 
 	List<Collection> subCollections = (List<Collection>) request
 			.getAttribute("subCollections");
+	
+	String contentURL = (String) request.getAttribute("contentURL");
 %>
 <jsp:include page="header/header-full.jsp">
 	<jsp:param name="title" value="<%=collection.getTitle()%>" />
@@ -47,15 +50,23 @@
 				</div>
 			</div>
 		</div>
-
-
-		<jsp:include page="<%=collection.getSummary()%>" />
-
-		<jsp:include page="<%=collection.getSponsors()%>" />
-
+	
+	  <div id="summaryDiv" contenteditable="true">
+	   <c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSummary()%>" />
+      </div>
+      
+      <div id="sponsorDiv" class="campl-column12 campl-content-container" contenteditable="true">
+	   <c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSponsors()%>" />
+      </div>
 
 	</div>
 </div>
+
+<jsp:include page="collection-editor.jsp" >
+  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
+  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+</jsp:include>
+
 <jsp:include page="header/footer-full.jsp" />
 
 

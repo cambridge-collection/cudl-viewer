@@ -248,95 +248,9 @@ function pageinit() {
 	</div>
 </div>
 
-<style>
-#confirmation {
-	width: 350px;
-	position: fixed;
-	margin-left: auto;
-	margin-right: auto;
-	z-index: 9000;
-	left: 0;
-	right: 0;
-	top: 200px;
-	color: #000;
-}
-
-#confirmation input {
-	width: 200px;
-	height:30px;
-}
-
-#confirmation .close {
-	margin-top: -15px;
-	margin-right: -10px;
-}
-</style>
-<div id="confirmation" class="alert alert-info" style="display: none">
-		<a href="#" class="close" onclick="$('.alert').hide();">&times;</a> 
-		Saving the page as:<br /> <br />
-        <input id="filename" type="text" name="filename" value=""></input><br /> <br />
-
-		<button type="button" class="btn btn-default btn-success"
-			onclick="saveData()">Yes</button>
-		<button type="button" class="btn btn-default"
-			onclick="$('#confirmation').hide();">Cancel</button>
-</div>
-	
-<script src="/scripts/ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
-   CKEDITOR.config.allowedContent = true;  // prevent tag filtering   
-   CKEDITOR.disableAutoInline = true;
-   var filename='';
-   var data='';
-
-   CKEDITOR.inline( 'summaryDiv', {
-       on: {
-           save: function( event ) {
-               data = event.editor.getData();
-               filename = '<%=collection.getSummary()%>';
-               openConfirmation();
-           }
-       	}
-   } );
-   
-   CKEDITOR.inline( 'sponsorDiv', {
-       on: {
-           save: function( event ) {        	   ;
-               data = event.editor.getData();
-               filename = '<%=collection.getSponsors()%>';               
-               openConfirmation();               
-           }
-       }
-   } );   
-   
-   
-   var saveData = function () {
-	   
-       // Submit data to /editor/update/               
-       $.ajax({
-    	   method: "POST",
-    	   url: "/editor/update/",
-    	   data: { html: data, filename: $('#filename').val() }
-    	 })
-    	   .done(function( msg ) {
-    	     if (msg.writesuccess) {
-    	    	 alert("Changes Saved.");
-    	     } else {
-    	    	 alert("There was a problem saving your changes.");
-    	     }
-    	 });
-       
-       $('#confirmation').hide();
-   }
-   
-   var openConfirmation = function () {	   
-	   	   
-	   $('#filename').val(filename);  
-       $('#confirmation').show();
-   }
-</script>
-         
-
-
+<jsp:include page="collection-editor.jsp" >
+  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
+  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+</jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />
