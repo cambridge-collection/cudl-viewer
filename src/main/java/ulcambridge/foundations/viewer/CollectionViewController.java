@@ -25,146 +25,147 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a collection.
- * 
+ *
  * @author jennie
- * 
+ *
  */
 @Controller
 public class CollectionViewController {
 
-	protected final Log logger = LogFactory.getLog(getClass());
-	private CollectionFactory collectionFactory;
-	private ItemFactory itemFactory;
+    protected final Log logger = LogFactory.getLog(getClass());
+    private CollectionFactory collectionFactory;
+    private ItemFactory itemFactory;
 
-	@Autowired
-	public void setCollectionFactory(CollectionFactory factory) {
-		this.collectionFactory = factory;
-	}
+    @Autowired
+    public void setCollectionFactory(CollectionFactory factory) {
+        this.collectionFactory = factory;
+    }
 
-	@Autowired
-	public void setItemFactory(ItemFactory factory) {
-		this.itemFactory = factory;
-	}
+    @Autowired
+    public void setItemFactory(ItemFactory factory) {
+        this.itemFactory = factory;
+    }
 
-	// on path /collections/
-	@RequestMapping(value = "/")
-	public ModelAndView handleViewRequest(HttpServletResponse response)
-			throws Exception {
+    // on path /collections/
+    @RequestMapping(value = "/")
+    public ModelAndView handleViewRequest(HttpServletResponse response)
+            throws Exception {
 
-		ModelAndView modelAndView = new ModelAndView("jsp/collections");
-		ArrayList<Item> featuredItems = new ArrayList<Item>();
-		String[] itemIds = Properties.getString("collection.featuredItems")
-				.split("\\s*,\\s*");
-		for (int i = 0; i < itemIds.length; i++) {
-			String itemId = itemIds[i];
-			featuredItems.add(itemFactory.getItemFromId(itemId));
-		}
-		modelAndView.addObject("featuredItems", featuredItems);
-		return modelAndView;
-	}
+        ModelAndView modelAndView = new ModelAndView("jsp/collections");
+        ArrayList<Item> featuredItems = new ArrayList<Item>();
+        String[] itemIds = Properties.getString("collection.featuredItems")
+                .split("\\s*,\\s*");
+        for (int i = 0; i < itemIds.length; i++) {
+            String itemId = itemIds[i];
+            featuredItems.add(itemFactory.getItemFromId(itemId));
+        }
+        modelAndView.addObject("featuredItems", featuredItems);
+        return modelAndView;
+    }
 
-	// on path /collections/{collectionId}
-	@RequestMapping(value = "/{collectionId}")
-	public ModelAndView handleRequest(HttpServletResponse response,
-			@PathVariable("collectionId") String collectionId,
-			HttpServletRequest request) {
+    // on path /collections/{collectionId}
+    @RequestMapping(value = "/{collectionId}")
+    public ModelAndView handleRequest(HttpServletResponse response,
+            @PathVariable("collectionId") String collectionId,
+            HttpServletRequest request) {
+        System.out.println("id" + collectionId);
+        Collection collection = collectionFactory
+                .getCollectionFromId(collectionId);
 
-		Collection collection = collectionFactory
-				.getCollectionFromId(collectionId);
+        ModelAndView modelAndView = new ModelAndView("jsp/collection-"
+                + collection.getType());
 
-		ModelAndView modelAndView = new ModelAndView("jsp/collection-"
-				+ collection.getType());
-
-		// Get imageServer
+        // Get imageServer
         String imageServer = Properties.getString("imageServer");
-        
+
         // Get content url
         String contentURL = Properties.getString("cudl-viewer-content.url");
-	
-		modelAndView.addObject("collection", collection);
-		modelAndView.addObject("itemFactory", itemFactory);
-		modelAndView.addObject("collectionFactory", collectionFactory);
-		modelAndView.addObject("imageServer", imageServer);
-		modelAndView.addObject("contentURL", contentURL);
 
-		// append a list of this collections subcollections if this is a parent. 
-		if (collection.getType().equals("parent")) {
+        modelAndView.addObject("collection", collection);
+        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("collectionFactory", collectionFactory);
+        modelAndView.addObject("imageServer", imageServer);
+        modelAndView.addObject("contentURL", contentURL);
 
-			List<Collection> subCollections = this.collectionFactory
-					.getSubCollections(collection);
-			modelAndView.addObject("subCollections", subCollections);
+        // append a list of this collections subcollections if this is a parent. 
+        if (collection.getType().equals("parent")) {
 
-		}
-		
-		return modelAndView;
+            List<Collection> subCollections = this.collectionFactory
+                    .getSubCollections(collection);
+            modelAndView.addObject("subCollections", subCollections);
 
-	}
+        }
+        
+        return modelAndView;
+
+    }
 
 	// on path
-	// /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
-	// To get information for items 0 to 8 url would be
-	// /collections/{collectionId}/itemJSON?start=0&end=8
-	@RequestMapping(value = "/{collectionId}/itemJSON")
-	public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
-			@PathVariable("collectionId") String collectionId,
-			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request)
-			throws Exception {
+    // /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
+    // To get information for items 0 to 8 url would be
+    // /collections/{collectionId}/itemJSON?start=0&end=8
+    @RequestMapping(value = "/{collectionId}/itemJSON")
+    public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
+            @PathVariable("collectionId") String collectionId,
+            @RequestParam("start") int startIndex,
+            @RequestParam("end") int endIndex, HttpServletRequest request)
+            throws Exception {
 
-		Collection collection = collectionFactory
-				.getCollectionFromId(collectionId);
+        Collection collection = collectionFactory
+                .getCollectionFromId(collectionId);
 
-		List<String> ids = collection.getItemIds();
-		List<Item> items = new ArrayList<Item>();
+        List<String> ids = collection.getItemIds();
+        List<Item> items = new ArrayList<Item>();
 
-		if (startIndex < 0) {
-			startIndex = 0;
-		} else if (endIndex >= ids.size()) {
-			endIndex = ids.size(); // if end Index is too large cap at max
-									// size
-		}
+        if (startIndex < 0) {
+            startIndex = 0;
+        } else if (endIndex >= ids.size()) {
+            endIndex = ids.size(); // if end Index is too large cap at max
+            // size
+        }
 
-		for (int i = startIndex; i < endIndex; i++) {
-			items.add(itemFactory.getItemFromId(ids.get(i)));
-		}
+        for (int i = startIndex; i < endIndex; i++) {
+            items.add(itemFactory.getItemFromId(ids.get(i)));
+            
+        }
 
-		JSONArray jsonArray = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
 
-		for (int i = 0; i < items.size(); i++) {
-			Item item = items.get(i);
-			jsonArray.add(item.getSimplifiedJSON());
-		}
+        for (int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+            jsonArray.add(item.getSimplifiedJSON());
+        }
 
-		// build the request object
-		JSONObject dataRequest = new JSONObject();
-		dataRequest.put("start", startIndex);
-		dataRequest.put("end", endIndex);
-		dataRequest.put("collectionId", collectionId);
+        // build the request object
+        JSONObject dataRequest = new JSONObject();
+        dataRequest.put("start", startIndex);
+        dataRequest.put("end", endIndex);
+        dataRequest.put("collectionId", collectionId);
 
-		// build the final returned JSON data
-		JSONObject data = new JSONObject();
-		data.put("request", dataRequest);
-		data.put("items", jsonArray);
+        // build the final returned JSON data
+        JSONObject data = new JSONObject();
+        data.put("request", dataRequest);
+        data.put("items", jsonArray);
 
-		// Write out JSON file.
-		response.setContentType("application/json");
-		PrintStream out = null;
+        // Write out JSON file.
+        response.setContentType("application/json");
+        PrintStream out = null;
 
-		try {
-			out = new PrintStream(new BufferedOutputStream(
-					response.getOutputStream()), true, "UTF-8");
-			out.print(data.toString());
+        try {
+            out = new PrintStream(new BufferedOutputStream(
+                    response.getOutputStream()), true, "UTF-8");
+            out.print(data.toString());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				out.close();
-			} catch (Exception e) {
-			}
-		}
-		return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                out.close();
+            } catch (Exception e) {
+            }
+        }
+        return null;
 
-	}
+    }
 
 }

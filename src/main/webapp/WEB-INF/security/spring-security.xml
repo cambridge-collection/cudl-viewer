@@ -86,15 +86,15 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
     <!--Security for mylibrary access-->
     <security:http auto-config="false" pattern="/mylibrary/**">
 
-        <security:form-login login-page='/auth/login?access=user' />
+        <security:form-login login-page='/auth/login?access=mylibrary' />
         <security:access-denied-handler error-page="/auth/denied"/>
         <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=user"
+                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=mylibrary"
                          delete-cookies="JSESSIONID" />
                         
 
         <security:intercept-url pattern="/**"
-                                access="ROLE_USER" />
+                                access="ROLE_USER,ROLE_ADMIN" />
         
 
         <security:custom-filter ref="oauth2ClientFilter"

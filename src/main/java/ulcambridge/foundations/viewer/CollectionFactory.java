@@ -16,8 +16,8 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionFactory {
 
-	private static Hashtable<String, Collection> collections  = new Hashtable<String, Collection>();
-	private static ArrayList<Collection> rootCollections = new ArrayList<Collection>();
+	private static Hashtable<String, Collection> collections ;// = new Hashtable<String, Collection>();
+	private static ArrayList<Collection> rootCollections ;//= new ArrayList<Collection>();
 	private static boolean initalised = false;
 	private CollectionsDao collectionsDao;
 
@@ -26,11 +26,12 @@ public class CollectionFactory {
 	@Autowired
 	public void setCollectionsDao(CollectionsDao dao) {
 		collectionsDao = dao;
-		if (!initalised) init();
+                if (!initalised) init();
 	}
 	
 	public void init() {
-
+                collections  = new Hashtable<String, Collection>();
+                rootCollections = new ArrayList<Collection>();
 		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
 			String collectionId = collectionIds.get(i);

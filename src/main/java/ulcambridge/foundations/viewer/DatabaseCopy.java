@@ -10,21 +10,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -33,52 +31,55 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class DatabaseCopy {
 
-    private final String urlLive = Properties.getString("db.jdbc.url.live");
-    private final String urlDev = Properties.getString("db.jdbc.url.dev");
-    private final String user = Properties.getString("db.jdbc.user");
-    private final String pwd = Properties.getString("db.jdbc.password");
+    private final String urlLive = "jdbc:postgresql://localhost:5432/RekhaLive_db?autoReconnect=true";//Properties.getString("db.jdbc.url.live");
+    private final String urlDev = "jdbc:postgresql://localhost:5432/postgres?autoReconnect=true";//Properties.getString("db.jdbc.url.dev");
+    private final String user = "postgres";//Properties.getString("db.jdbc.user");
+    private final String pwd = "postgres";//Properties.getString("db.jdbc.password");
 
     /*
      copy items,collections and itemsincollection tables from the dev database to a file in /tmp directory
      The files have the same names as the tables
      */
-    public void copyOut(String tablename, String db) {
-
+    public Boolean copyToFile(String tablename, String db) {
+        Boolean success = false;
         String url;
         if (null != db) {
-            if ("live".equals(db)) {
-
-                url = urlLive;
-                writeToFile(tablename, url, "liveTables");
-            } else if ("dev".equals(db)) {
-                url = urlDev;
-                writeToFile(tablename, url, "devTables");
-
-            }
+            url = urlDev;
+            success = writeToFile(tablename, url, "devTables");
         }
+        return success;
 
     }
 
     /*
-     Called from copyOut-dumps the database tables to a file
+     Called from copyToFile-dumps the database tables to a file
      */
-    public void writeToFile(String tablename, String url, String folder) {
+    public Boolean writeToFile(String tablename, String url, String folder) {
         Connection con = null;
         FileWriter fileWriter = null;
+        Boolean success = false;
         try {
             con = DriverManager.getConnection(url, user, pwd);
             CopyManager copyManager = new CopyManager((BaseConnection) con);
             File file = new File("/tmp/" + folder + "/" + tablename);
             fileWriter = new FileWriter(file);
             long copyOut = copyManager.copyOut("COPY " + tablename + " TO STDOUT ", fileWriter);
+            if (copyOut > 0) {
+                success = true;
+            } else {
+                success = false;
+            }
             fileWriter.flush();
 
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            success = false;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            success = false;
         } catch (IOException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            success = false;
         } finally {
             try {
                 if (con != null) {
@@ -91,16 +92,20 @@ public class DatabaseCopy {
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+                    success = false;
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+                success = false;
+
             }
 
         }
+        return success;
     }
 
     /*
-     copy the contents of the file(output of the copyout function) into the live database
+     copy the contents of the file(output of the copyToFile function) into the live database
      */
     public Boolean copyIn(String tablename, Connection con) {
 
@@ -111,15 +116,7 @@ public class DatabaseCopy {
             File file = new File("/tmp/devTables/" + tablename);
             FileReader fileReader = new FileReader(file);
             copyManager.copyIn("COPY " + tablename + " FROM STDIN", fileReader);
-           
-            //restart tomcat
-            /*
-            new ShutdownTask.start();
-            try {
-                Runtime.getRuntime().exec("c:/program files/tomcat/bin/startup.bat");
-            } catch (IOException e) {
-                System.out.println("exception");
-            }*/
+
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -137,8 +134,6 @@ public class DatabaseCopy {
         return success;
 
     }
-    
-    
 
     public Boolean init() {
         ArrayList<String> tablename;
@@ -154,6 +149,7 @@ public class DatabaseCopy {
         iterator = tablename.iterator();
         Boolean dbsuccess = false;
         Boolean copysuccess = false;
+        Boolean copyfilesuccess = false;
         try {
 
             //connect to live database
@@ -171,17 +167,17 @@ public class DatabaseCopy {
                 //get tablename
                 table = iterator.next();
                 //write table data to file
-                copyOut(table, "dev");
+                copyfilesuccess = copyToFile(table, "dev");
+                if (copyfilesuccess) {//if copy to file has been successful
+                    //copy data from file into live database table
+                    dbsuccess = copyIn(table, conlive);
+                    if (!dbsuccess) {
+                        conlive.rollback();//rollback if any issues
+                        copysuccess = false;
+                        break;//also stop the copy incase of any issues
 
-                //copy data from file into live database table
-                dbsuccess = copyIn(table, conlive);
-                if (!dbsuccess) {
-                    conlive.rollback();//rollback if any issues
-                    copysuccess = false;
-                    break;//also stop the copy incase of any issues
-
+                    }
                 }
-
             }
             if (!iterator.hasNext() && dbsuccess) {
                 conlive.commit();
@@ -207,20 +203,3 @@ public class DatabaseCopy {
     }
 
 }
-
-class ShutdownTask extends Thread {
-
-        @Override
-        public void run() {
-            try {
-                Socket s = new Socket("127.0.0.1", 8015);
-                PrintStream os = new PrintStream(s.getOutputStream());
-                os.println("shutdown");
-                s.close();
-                System.out.println("Shutting down server ...");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
