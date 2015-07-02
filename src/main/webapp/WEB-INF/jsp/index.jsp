@@ -199,10 +199,11 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="/news/">May Release</a>
+						<a href="/news/">June Release</a>
 					</p>
-					<span class="campl-datestamp">27 May 2015</span>
-					<p>This release sees the launch of a new <a href='/collections/chinese'>Chinese collection</a> featuring the oldest documents held by the Library, the three thousand year old <a href='/view/MS-CUL-00001-00155/1'>Oracle Bones</a>, and a <a href='/view/PR-FH-00910-00083-00098/15'>unique copy of a study of calligraphy and painting</a>, described as ‘perhaps the most beautiful set of prints ever made’.</p>
+					<span class="campl-datestamp">30 June 2015</span>
+					<p>This release sees the launch of our new <a href='/collections/rcs/'>Royal Commonwealth Society collection</a>. Our initial selection features everything from
+					<a href='/view/MS-RCMS-00085/1'>spectacular panoramas</a> to <a href='/view/PH-Y-30468-S/27'>striking images</a> from the RCS photographic collections.</p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View

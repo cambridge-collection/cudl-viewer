@@ -276,6 +276,7 @@ public class ContentEditorController {
 			tidy.setTidyMark(false);
 			tidy.setDropEmptyParas(false);
 			tidy.setDocType("omit");
+			tidy.setQuiet(true);
 			tidy.setShowWarnings(false);
 			tidy.parse(inputStream, outputStream);
 			return outputStream.toString();

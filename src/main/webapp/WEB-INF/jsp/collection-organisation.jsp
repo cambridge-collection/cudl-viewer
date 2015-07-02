@@ -248,59 +248,9 @@ function pageinit() {
 	</div>
 </div>
 
-<script src="/scripts/ckeditor/ckeditor.js"></script>
-<script type="text/javascript">
-   CKEDITOR.config.allowedContent = true;  // prevent tag filtering
-   
-   CKEDITOR.disableAutoInline = true;
-
-   CKEDITOR.inline( 'summaryDiv', {
-       on: {
-           save: function( event ) {
-               var data = event.editor.getData();
-
-               // Submit data to /editor/update/               
-               $.ajax({
-            	   method: "POST",
-            	   url: "/editor/update/",
-            	   data: { html: data, filename: '<%=collection.getSummary()%>' }
-            	 })
-            	   .done(function( msg ) {
-            	     if (msg.writesuccess) {
-            	    	 alert("Changes Saved.");
-            	     } else {
-            	    	 alert("There was a problem saving your changes.");
-            	     }
-            	 });
-
-           }
-       	}
-   } );
-   
-   CKEDITOR.inline( 'sponsorDiv', {
-       on: {
-           save: function( event ) {
-               var data = event.editor.getData();
-
-               // Submit data to /editor/update/               
-               $.ajax({
-            	   method: "POST",
-            	   url: "/editor/update/",
-            	   data: { html: data, filename: '<%=collection.getSponsors()%>' }
-            	 })
-            	   .done(function( msg ) {
-              	     if (msg.writesuccess) {
-            	    	 alert("Changes Saved.");
-            	     } else {
-            	    	 alert("There was a problem saving your changes.");
-            	     }
-            	 });
-           }
-       }
-   } );   
-</script>
-         
-
-
+<jsp:include page="collection-editor.jsp" >
+  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
+  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+</jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />

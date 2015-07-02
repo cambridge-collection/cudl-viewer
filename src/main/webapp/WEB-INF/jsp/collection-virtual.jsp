@@ -1,11 +1,15 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
+<%@taglib prefix="c" 
+       uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 
 	ItemFactory factory = (ItemFactory) request
 			.getAttribute("itemFactory");
+	
+	String contentURL = (String) request.getAttribute("contentURL");
 
 	Iterator<String> ids = collection.getItemIds().iterator();
 	List<Item> items = new ArrayList<Item>();
@@ -32,9 +36,9 @@
 	<div class="campl-wrap clearfix">
 
 		<div class="campl-column12  campl-main-content" id="content">
-			<div class="campl-content-container">
+            <div id="summaryDiv" class="campl-content-container" contenteditable="true">
 
-				<jsp:include page="<%=collection.getSummary()%>" />
+				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSummary()%>" />				
 
 			</div>
 			<div class="campl-content-container campl-column12">
@@ -80,12 +84,17 @@
 
 			</div>
 
-			<div class="campl-column12 campl-content-container">
-				<jsp:include page="<%=collection.getSponsors()%>" />
+			<div id="sponsorDiv" class="campl-column12 campl-content-container" contenteditable="true">
+				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSponsors()%>" />	
 			</div>
 		</div>
 	</div>
 </div>
+
+<jsp:include page="collection-editor.jsp" >
+  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
+  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+</jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />
 
