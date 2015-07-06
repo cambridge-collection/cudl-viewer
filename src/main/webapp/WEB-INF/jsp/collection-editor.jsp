@@ -21,8 +21,14 @@ Must have the same number of elements in each.  -->
 	
 
 <script type="text/javascript">
+
    CKEDITOR.config.allowedContent = true;  // prevent tag filtering   
    CKEDITOR.disableAutoInline = true;
+   CKEDITOR.config.filebrowserBrowseUrl = '/editor/browse/';
+   CKEDITOR.config.filebrowserImageBrowseUrl = '/editor/browse/';   
+   CKEDITOR.config.filebrowserUploadUrl = '/editor/upload/';
+   CKEDITOR.config.filebrowserImageUploadUrl = '/editor/upload/';   
+   
    var filename='';
    var data='';
 
@@ -37,7 +43,7 @@ Must have the same number of elements in each.  -->
     	 String dataElement = dataElementList.get(i);
     	 String filename = filenameList.get(i);
      
-     %>   
+     %>       
     		
    CKEDITOR.inline( '<%=dataElement%>', {
        on: {
