@@ -19,7 +19,6 @@ public class CollectionsDBDao implements CollectionsDao {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-                System.out.println("datasource=" +jdbcTemplate.getDataSource());
 	}
 	
 	public List<String> getCollectionIds() {

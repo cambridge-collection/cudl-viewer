@@ -28,8 +28,6 @@ public class RavenLoginServlet extends RavenServlet {
         access = (String) session.getAttribute("access");
         // See LoginController
         response.sendRedirect("/auth/raven/login?access=" + access);
-        //super.doGet( request, response);
-        System.out.println("RavenLoginServlet-" + access);
     }
 
     // Called when authentication is not possible because a user could not be
