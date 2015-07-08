@@ -24,9 +24,9 @@ Must have the same number of elements in each.  -->
 
    CKEDITOR.config.allowedContent = true;  // prevent tag filtering   
    CKEDITOR.disableAutoInline = true;
-   CKEDITOR.config.filebrowserBrowseUrl = '/editor/browse/';
+   //CKEDITOR.config.filebrowserBrowseUrl = '/editor/browse/';
    CKEDITOR.config.filebrowserImageBrowseUrl = '/editor/browse/';   
-   CKEDITOR.config.filebrowserUploadUrl = '/editor/upload/';
+   //CKEDITOR.config.filebrowserUploadUrl = '/editor/upload/';
    CKEDITOR.config.filebrowserImageUploadUrl = '/editor/upload/';   
    
    var filename='';

@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-import ulcambridge.foundations.viewer.model.Properties;
-
 public class FileSave {
 
 	/**
-	 * Saves specified InputStream to file location in properties file cudl-viewer-content.path.
+	 * Saves specified InputStream to the filename and directory path specified. 
 	 * Also commits to GIT any changes and rolls back if any of this process fails. 
+	 *
+	 * Note: Does not validate params. This should occur before calling this
+	 * method.
 	 * 
 	 * @param filename
 	 * @param is

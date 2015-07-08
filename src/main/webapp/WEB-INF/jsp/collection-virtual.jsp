@@ -9,7 +9,7 @@
 	ItemFactory factory = (ItemFactory) request
 			.getAttribute("itemFactory");
 	
-	String contentURL = (String) request.getAttribute("contentURL");
+	String contentHTMLURL = (String) request.getAttribute("contentHTMLURL");
 
 	Iterator<String> ids = collection.getItemIds().iterator();
 	List<Item> items = new ArrayList<Item>();
@@ -38,7 +38,8 @@
 		<div class="campl-column12  campl-main-content" id="content">
             <div id="summaryDiv" class="campl-content-container" contenteditable="true">
 
-				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSummary()%>" />				
+				<% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
+				<c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 				
 
 			</div>
 			<div class="campl-content-container campl-column12">
@@ -85,15 +86,17 @@
 			</div>
 
 			<div id="sponsorDiv" class="campl-column12 campl-content-container" contenteditable="true">
-				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSponsors()%>" />	
+				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+		        <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
 			</div>
 		</div>
 	</div>
 </div>
 
+<% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
 <jsp:include page="collection-editor.jsp" >
   <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
-  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+  <jsp:param name='filenames' value='<%=filenames%>'/>
 </jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />

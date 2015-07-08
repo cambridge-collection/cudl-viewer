@@ -79,13 +79,13 @@ public class CollectionViewController {
         String imageServer = Properties.getString("imageServer");
 
         // Get content url
-        String contentURL = Properties.getString("cudl-viewer-content.url");
+        String contentHTMLURL = Properties.getString("cudl-viewer-content.html.url");
 
         modelAndView.addObject("collection", collection);
         modelAndView.addObject("itemFactory", itemFactory);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
-        modelAndView.addObject("contentURL", contentURL);
+        modelAndView.addObject("contentHTMLURL", contentHTMLURL);
 
         // append a list of this collections subcollections if this is a parent. 
         if (collection.getType().equals("parent")) {
