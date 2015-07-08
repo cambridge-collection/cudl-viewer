@@ -46,16 +46,17 @@ public class AdminController {
             throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminsuccess");
-        DatabaseCopy copyClass = new DatabaseCopy();
+
+        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
         Boolean success = copyClass.init();
         if (success) {
             mv.addObject("copysuccess", "Copy to Live database was successful!");
         } else {
             mv.addObject("copysuccess", "Copy to Live database failed!");
         }
-        this.collectionFactory.init();//.setCollectionsDao(collectionsDao);
-        this.itemFactory.init();
-
+        this.collectionFactory.init();
+        ItemFactory itemfactory = new ItemFactory();
+        itemfactory.clearItemCache();
         return mv;
     }
 

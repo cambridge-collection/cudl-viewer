@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,8 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
-import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
-import ulcambridge.foundations.viewer.dao.CollectionsDao;
+
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -31,10 +32,17 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class DatabaseCopy {
 
-    private final String urlLive = "jdbc:postgresql://localhost:5432/RekhaLive_db?autoReconnect=true";//Properties.getString("db.jdbc.url.live");
-    private final String urlDev = "jdbc:postgresql://localhost:5432/postgres?autoReconnect=true";//Properties.getString("db.jdbc.url.dev");
-    private final String user = "postgres";//Properties.getString("db.jdbc.user");
-    private final String pwd = "postgres";//Properties.getString("db.jdbc.password");
+    private final String urlLive = Properties.getString("db.jdbc.url.live");
+    private final String urlDev = Properties.getString("db.jdbc.url.dev");
+    private final String userLive = Properties.getString("db.jdbc.user.live");
+    private final String pwdLive = Properties.getString("db.jdbc.password.live");
+    private final String userDev = Properties.getString("db.jdbc.user.dev");
+    private final String pwdDev = Properties.getString("db.jdbc.password.dev");
+    private CollectionFactory collectionfactory;
+
+    public DatabaseCopy(CollectionFactory collectionfactory) {
+        this.collectionfactory = collectionfactory;
+    }
 
     /*
      copy items,collections and itemsincollection tables from the dev database to a file in /tmp directory
@@ -58,17 +66,26 @@ public class DatabaseCopy {
         Connection con = null;
         FileWriter fileWriter = null;
         Boolean success = false;
+        int TableRowCount = 0;
         try {
-            con = DriverManager.getConnection(url, user, pwd);
+            if ("collections".equals(tablename)) {
+                TableRowCount = this.collectionfactory.getCollectionsRowCount();
+
+            } else if ("items".equals(tablename)) {
+                TableRowCount = this.collectionfactory.getItemsRowCount();
+
+            } else if ("itemsincollection".equals(tablename)) {
+                TableRowCount = this.collectionfactory.getItemsInCollectionsRowCount();
+
+            }
+
+            con = DriverManager.getConnection(url, userDev, pwdDev);
             CopyManager copyManager = new CopyManager((BaseConnection) con);
             File file = new File("/tmp/" + folder + "/" + tablename);
             fileWriter = new FileWriter(file);
-            long copyOut = copyManager.copyOut("COPY " + tablename + " TO STDOUT ", fileWriter);
-            if (copyOut > 0) {
-                success = true;
-            } else {
-                success = false;
-            }
+            long copyOutRows = copyManager.copyOut("COPY " + tablename + " TO STDOUT ", fileWriter);
+
+            success = (copyOutRows > 0) && (copyOutRows == TableRowCount);
             fileWriter.flush();
 
         } catch (SQLException ex) {
@@ -78,6 +95,12 @@ public class DatabaseCopy {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
             success = false;
         } catch (IOException ex) {
+            Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            success = false;
+        } catch (NullPointerException ex) {
+            Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            success = false;
+        } catch (Exception ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
             success = false;
         } finally {
@@ -153,21 +176,27 @@ public class DatabaseCopy {
         try {
 
             //connect to live database
-            conlive = DriverManager.getConnection(urlLive, user, pwd);
+            conlive = DriverManager.getConnection(urlLive, userLive, pwdLive);
             conlive.setAutoCommit(false);
-            String table;
+            String table;        
+
+            
             //truncate the live tables before copying over the data
             String sql = "TRUNCATE TABLE items,collections,itemsincollection CASCADE";
             PreparedStatement prepareStatement = conlive.prepareStatement(sql);
             int rowsTruncated = prepareStatement.executeUpdate();
+           
+            
 
             //if (rowsTruncated != 0) {
             //iterate over the 3 tables to copy them out from the dev database into a file and then copy them into the live database
             while (iterator.hasNext()) {
                 //get tablename
                 table = iterator.next();
+
                 //write table data to file
                 copyfilesuccess = copyToFile(table, "dev");
+
                 if (copyfilesuccess) {//if copy to file has been successful
                     //copy data from file into live database table
                     dbsuccess = copyIn(table, conlive);
@@ -177,6 +206,10 @@ public class DatabaseCopy {
                         break;//also stop the copy incase of any issues
 
                     }
+                } else {
+                    conlive.rollback();//rollback if any issues
+                    copysuccess = false;
+                    break;//also stop the copy incase of any issues
                 }
             }
             if (!iterator.hasNext() && dbsuccess) {
@@ -186,7 +219,9 @@ public class DatabaseCopy {
 
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+        } catch (Exception ex){
+            Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             try {
                 if (conlive != null) {
                     conlive.setAutoCommit(true);

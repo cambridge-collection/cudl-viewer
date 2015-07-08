@@ -68,7 +68,7 @@ public class CollectionViewController {
     public ModelAndView handleRequest(HttpServletResponse response,
             @PathVariable("collectionId") String collectionId,
             HttpServletRequest request) {
-        System.out.println("id" + collectionId);
+        //System.out.println("id" + collectionId);
         Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 

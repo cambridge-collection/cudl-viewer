@@ -74,7 +74,7 @@ public class LoginController {
             ModelMap model, @RequestParam(value = "access", required = false) String access) {
         //set access to session variable - can be used to redirect to admin or mylibrary page depending on the access rights
         session.setAttribute("access", access);
-        System.out.println("Loginrequest access" + access);
+        //System.out.println("Loginrequest access" + access);
         ModelAndView modelAndView = new ModelAndView("jsp/login");
         model.put("error", error);
         return modelAndView;
@@ -101,7 +101,7 @@ public class LoginController {
             NoSuchAlgorithmException {
         //get the session variable 
         String sessionAccess = (String) session.getAttribute("access");
-        System.out.println("logincontroller google-" + sessionAccess);
+        //System.out.println("logincontroller google-" + sessionAccess);
 
         // Make Google profile request
         String result = googleTemplate
@@ -142,7 +142,7 @@ public class LoginController {
             HttpServletResponse response) throws JSONException, IOException,
             NoSuchAlgorithmException {
         String sessionAccess = (String) session.getAttribute("access");
-        System.out.println("logincontroller google-" + sessionAccess);
+        //System.out.println("logincontroller google-" + sessionAccess);
         // Make Facebook profile request
         String result = facebookTemplate.getForObject(
                 URI.create("https://graph.facebook.com/me/"), String.class);
@@ -175,7 +175,7 @@ public class LoginController {
             HttpServletResponse response) throws JSONException, IOException,
             NoSuchAlgorithmException {
         String sessionAccess = (String) session.getAttribute("access");
-        System.out.println("logincontroller google-" + sessionAccess);
+        //System.out.println("logincontroller google-" + sessionAccess);
         // Make LinkedIn profile request
         String result = linkedinTemplate
                 .getForObject(
@@ -221,7 +221,7 @@ public class LoginController {
 
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
-        System.out.println("logincontroller Raven-" + sessionAccess);
+        //System.out.println("logincontroller Raven-" + sessionAccess);
 
         callRedirect(sessionAccess, response);
         session.removeAttribute("access");
