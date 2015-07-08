@@ -10,7 +10,7 @@
 	CollectionFactory collectionFactory = (CollectionFactory) request
 	.getAttribute("collectionFactory");
 	
-	String contentURL = (String) request.getAttribute("contentURL");
+	String contentHTMLURL = (String) request.getAttribute("contentHTMLURL");
 %>
 
 <jsp:include page="header/header-full.jsp">
@@ -226,7 +226,8 @@ function pageinit() {
 		  </div>
 	<% } %>
 	
-				<c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSummary()%>" /> 
+	            <% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
+				<c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 
 
 			</div>
 		</div>
@@ -242,15 +243,17 @@ function pageinit() {
 		</div>
  
         <div id="sponsorDiv" contenteditable="true">
-		  <c:import charEncoding="UTF-8" url="<%=contentURL + collection.getSponsors()%>" /> 
+          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+		  <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
         </div>
 
 	</div>
 </div>
 
+<% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
 <jsp:include page="collection-editor.jsp" >
   <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
-  <jsp:param name='filenames' value='<%=collection.getSummary()+","+collection.getSponsors()%>'/>
+  <jsp:param name='filenames' value='<%=filenames%>'/>
 </jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />
