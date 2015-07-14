@@ -372,7 +372,7 @@ public class ContentEditorController {
 	public static class DeleteImagesParameters {
 		
 		@NotNull
-		@Pattern(regexp = "^[-_/A-Za-z0-9]+\\.(?i)(jpg|jpeg|png|gif|bmp)$", message = "Invalid characters in filePath")
+		@Pattern(regexp = "^[-_/A-Za-z0-9]+(\\.(?i)(jpg|jpeg|png|gif|bmp))??$", message = "Invalid characters in filePath")
 		private String filePath;
 		
 		public void setFilePath(String filePath) {
