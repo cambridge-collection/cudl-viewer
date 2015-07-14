@@ -17,7 +17,7 @@
     <import resource="datasource/itemsFactory.xml" />
     <import resource="datasource/collectionsFactory.xml" />
     
-    <bean id="admincontroller" class="ulcambridge.foundations.viewer.AdminController">
+    <bean id="admincontroller" class="ulcambridge.foundations.viewer.admin.AdminController">
         <property name="collectionFactory" ref="collectionFactory" />
         <property name="itemFactory" ref="itemFactory" />
 

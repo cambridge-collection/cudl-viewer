@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +22,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
+import ulcambridge.foundations.viewer.CollectionFactory;
 
 import ulcambridge.foundations.viewer.model.Properties;
 

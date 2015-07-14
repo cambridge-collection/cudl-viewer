@@ -310,8 +310,13 @@
 			<artifactId>raven-webauth</artifactId>
 			<version>1.0.3</version>
 		</dependency>
-
-	</dependencies>
+                
+                <dependency>
+                    <groupId>org.eclipse.jgit</groupId>
+                    <artifactId>org.eclipse.jgit</artifactId>
+                    <version>4.0.1.201506240215-r</version>
+                </dependency>
+        </dependencies>
 
 	<!-- This includes jars which are not held in a external maven repository -->
 	<repositories>

@@ -11,9 +11,13 @@
     <div class="campl-wrap clearfix">
         <div class="campl-column9  campl-main-content" id="content">
             <div class="campl-content-container">
-                <form method="get" action="/admin/adminsuccess">
-                   
-                    <button type="submit" class="campl-primary-cta">Go Live </button>
+                <form method="get" action="/admin/jsonsuccess">
+                    <button type="submit" class="campl-primary-cta">Cudl-data Live</button>
+                    <p>copy json from git master to git branch</p>
+                </form>
+                <form method="get" action="/admin/dbsuccess">
+                    <button type="submit" class="campl-primary-cta">Database Live </button>
+                    <p>copy dev database to live database</p>
                 </form>
 
                 <p><a href="/admin/auth/logout">Logout</a></p>
