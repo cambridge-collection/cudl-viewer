@@ -145,6 +145,10 @@
 </script>
 
 <script type="text/javascript" src="/scripts/openseadragon.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/styles/similarity.css" />
+<script type="text/javascript" src="/scripts/similarity.js"></script>
+
 <script type="text/javascript" src="/scripts/document.js"></script>
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
@@ -244,6 +248,9 @@
 								(diplomatic)</a></li>
 						<li><a id="translationtab" aria-controls="translationtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
+							</li>
+						<li><a id="similaritemstab" aria-controls="similaritemstab"
+							data-toggle="tab" role="tab" tabindex="-1" href="#similaritems">Similar items</a>
 						</li>
 						<li><a id="downloadtab" aria-controls="downloadtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
@@ -319,6 +326,13 @@
 					</ol></div>
 					<div class="framediv">
 					<iframe id="translationframe" src=""></iframe>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="similaritems">
+					<div class="breadcrumbdiv"><ol class="breadcrumb">
+						<li class="active">Similar items</li>
+					</ol></div>
+					<div class="similarity-container">
 					</div>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="download">

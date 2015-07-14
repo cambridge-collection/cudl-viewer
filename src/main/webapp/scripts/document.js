@@ -96,6 +96,9 @@ store.loadPage = function(pagenumber) {
 	// open Image
 	if (imageavailable) { openDzi(cudl.data.pages[pagenumber - 1].displayImageURL); }
 
+    // Fire an event to notify listeners of the page number change
+    $(cudl).trigger('change.cudl.pagenum', pagenumber);
+
 	// update current page
 	cudl.pagenum = pagenumber;
 	$("#pageInput").val(cudl.pagenum);
@@ -811,7 +814,6 @@ cudl.setTranscriptionPage = function (data, pagenum) {
 	
 }
 
-
 $(document).ready(function() {
 	// Read in the JSON
 	$.getJSON(cudl.JSONURL).done(function(data) {
@@ -823,7 +825,8 @@ $(document).ready(function() {
 		cudl.setupInfoPanel(data);
 		cudl.setupThumbnails(data);
 		cudl.setupMetadata(data);
-		store.loadPage(cudl.pagenum);		
+		cudl.setupSimilarityTab(data, cudl.docId);
+		store.loadPage(cudl.pagenum);
 		cudl.showThumbnailPage(cudl.currentThumbnailPage);		
 	});
 
