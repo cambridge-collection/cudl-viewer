@@ -66,5 +66,8 @@ public class ItemFactory {
 		
 	}
 
+        public void clearItemCache(){
+            itemCache.clear();
+        }
 
 }
