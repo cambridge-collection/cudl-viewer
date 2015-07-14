@@ -24,10 +24,10 @@ Must have the same number of elements in each.  -->
 
    CKEDITOR.config.allowedContent = true;  // prevent tag filtering   
    CKEDITOR.disableAutoInline = true;
-   //CKEDITOR.config.filebrowserBrowseUrl = '/editor/browse/';
-   CKEDITOR.config.filebrowserImageBrowseUrl = '/editor/browse/';   
-   //CKEDITOR.config.filebrowserUploadUrl = '/editor/upload/';
-   CKEDITOR.config.filebrowserImageUploadUrl = '/editor/upload/';   
+   //CKEDITOR.config.filebrowserBrowseUrl = '/editor/browse/images';
+   CKEDITOR.config.filebrowserImageBrowseUrl = '/editor/browse/images';   
+   //CKEDITOR.config.filebrowserUploadUrl = '/editor/add/image';
+   //CKEDITOR.config.filebrowserImageUploadUrl = '/editor/add/image';     
    
    var filename='';
    var data='';

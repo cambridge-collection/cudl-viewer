@@ -25,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +57,7 @@ public class ContentEditorController {
 
 	// TODO method level security
 	/**
-	 * Request on URL /editor/update
+	 * Request on URL /editor/update/html
 	 * 
 	 * Used by CKEditor to update the HTML on specified sections of the website.
 	 * Also commits to git.
@@ -70,14 +69,15 @@ public class ContentEditorController {
 	 * @throws IOException
 	 * @throws JSONException
 	 */
-	@RequestMapping(value = "/update/")
+	@RequestMapping(value = "/update/html")
 	public synchronized ModelAndView handleUpdateRequest(
 			HttpServletResponse response,
-			@Valid @ModelAttribute() UpdateParameters writeParams,
+			@Valid @ModelAttribute() UpdateHTMLParameters writeParams,
 			BindingResult errors) throws IOException, JSONException {
 
 		if (errors.hasErrors()) {
-			throw new IOException("invalid request params");
+			throw new IOException("HTML Update failed due to invalid parameters. Please check "+
+		    "your filename contains only valid characters.");
 		}
 
 		boolean success = saveHTML(writeParams);
@@ -91,46 +91,51 @@ public class ContentEditorController {
 	}
 
 	/**
-	 * Request on URL /editor/upload
+	 * Request on URL /editor/add/image
 	 * 
 	 * Used by CKEditor to upload an image file to the server.
 	 * 
 	 * @param request
 	 * @param response
-	 * @param uploadParams
+	 * @param addParams
 	 * @param bindResult
 	 * @return
 	 * @throws IOException
 	 */
 	// TODO security
-	@RequestMapping(value = "/upload/")
-	public ModelAndView handleUploadRequest(HttpServletRequest request,
+	@RequestMapping(value = "/add/image")
+	public ModelAndView handleAddImageRequest(HttpServletRequest request,
 			HttpServletResponse response,
-			@Valid @ModelAttribute() UploadParameters uploadParams,
+			@Valid @ModelAttribute() AddImagesParameters addParams,
 			BindingResult bindResult) throws IOException {
 
 		// Check file extension and content type are image.
-		uploadFileValidation(uploadParams, bindResult);
+		uploadFileValidation(addParams, bindResult);
 
-		String filename = uploadParams.getUpload().getOriginalFilename();
-		InputStream is = uploadParams.getUpload().getInputStream();
+		if (bindResult.hasErrors()) {
+			throw new IOException("Your image upload failed. Please ensure you have selected a file "+
+		    "and that your directory path contains only valid characters.");
+		}
+		
+		String filename = addParams.getUpload().getOriginalFilename();
+		InputStream is = addParams.getUpload().getInputStream();
 
 		// Save the file to disk.
-		boolean saveSuccessful = FileSave.save(contentImagesPath, filename, is);
+		boolean saveSuccessful = FileSave.save(contentImagesPath+File.separator+addParams.getDirectory(), filename, is);
 
 		response.setContentType("text/html");
-		write("<script>" + "window.parent.CKEDITOR.tools.callFunction( "
-				+ uploadParams.getCKEditorFuncNum() + ", '" + contentImagesURL
-				+"/"+ uploadParams.getUpload().getOriginalFilename()
-				+ "', 'save successful: " + saveSuccessful + "' );</script>",
-				response.getOutputStream());
+		write("<html><head><script> window.opener.CKEDITOR.tools.callFunction( "
+				+ addParams.getCKEditorFuncNum() + ", '" + contentImagesURL
+				+"/"+ addParams.getUpload().getOriginalFilename()
+				+ "', 'save successful: " + saveSuccessful + "' );window.close();</script>"
+				, response.getOutputStream());
 
 		return null;
 
 	}
 
 	/**
-	 * Request on /editor/browse
+	 * Request on /editor/browse/images
 	 * 
 	 * Used by CKEditor to browse the images available on the server.
 	 * 
@@ -143,8 +148,8 @@ public class ContentEditorController {
 	 * @throws IOException
 	 */
 	// TODO security
-	@RequestMapping(value = "/browse/")
-	public ModelAndView handleBrowseRequest(
+	@RequestMapping(value = "/browse/images")
+	public ModelAndView handleBrowseImagesRequest(
 			HttpServletRequest request,
 			HttpServletResponse response,
 			@RequestParam("CKEditor") String ckEditor,
@@ -175,6 +180,54 @@ public class ContentEditorController {
 
 		return modelAndView;
 	}
+	
+	/**
+	 * on Path /editor/delete/image
+	 * 
+	 * Deletes the image at the specified path.  Must start with contentImagesPath. 
+	 * 
+	 * @param request
+	 * @param response
+	 * @param deleteParams
+	 * @param bindResult
+	 * @return
+	 * @throws IOException
+	 * @throws JSONException 
+	 */
+	// TODO security
+	@RequestMapping(value = "/delete/image")
+	public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
+			HttpServletResponse response,
+			@Valid @ModelAttribute() DeleteImagesParameters deleteParams,
+			BindingResult bindResult) throws IOException, JSONException {
+		
+		if (bindResult.hasErrors()) {
+			throw new IOException("Your image or directory delete failed. Please ensure the filePath exists "
+					+ "and has only got allowed characters in.");
+		}
+		
+		
+		// delete the file. 
+		String filePath = deleteParams.getFilePath();
+		File file = (new File (contentImagesPath+File.separator+filePath)).getCanonicalFile();
+		boolean successful = false;
+		
+		if (file.exists() && !file.isDirectory()) {
+			successful = file.delete(); // delete file
+		} 
+		else if (file.exists() && file.list().length==0) {
+			successful = file.delete(); // delete empty directory. 
+		}
+		
+
+		JSONObject json = new JSONObject();
+		json.put("deletesuccess", successful);
+
+		response.setContentType("application/json");
+		write(json.toString(), response.getOutputStream());
+		return null;
+
+	}	
 
 	/**
 	 * Builds a list of image files on the server to be displayed by the browse
@@ -242,7 +295,7 @@ public class ContentEditorController {
 	 * @return
 	 * @throws IOException
 	 */
-	private synchronized boolean saveHTML(UpdateParameters writeParams)
+	private synchronized boolean saveHTML(UpdateHTMLParameters writeParams)
 			throws IOException {
 
 		// Read in data from request
@@ -255,17 +308,24 @@ public class ContentEditorController {
 
 	}
 
-	// Performs validation on parameters used for writing html.
-	public static class UploadParameters {
+	// Performs validation on parameters used for writing images.
+	public static class AddImagesParameters {
 
+		@NotNull
 		private String CKEditor;
 
 		@NotNull
 		private String CKEditorFuncNum;
 
+		@NotNull
 		private String langCode;
 
+		// File validation is separate. 
 		private MultipartFile file;
+		
+		@NotNull
+		@Pattern(regexp = "^[-_/A-Za-z0-9]*$", message = "Invalid directory")
+		private String directory;
 
 		public String getCKEditor() {
 			return CKEditor;
@@ -298,9 +358,34 @@ public class ContentEditorController {
 		public void setUpload(MultipartFile file) {
 			this.file = file;
 		}
+
+		public String getDirectory() {
+			return directory;
+		}
+
+		public void setDirectory(String directory) {
+			this.directory = directory;
+		}
+	}
+	
+	// Performs validation on parameters used for deleting images.
+	public static class DeleteImagesParameters {
+		
+		@NotNull
+		@Pattern(regexp = "^[-_/A-Za-z0-9]+\\.(?i)(jpg|jpeg|png|gif|bmp)$", message = "Invalid characters in filePath")
+		private String filePath;
+		
+		public void setFilePath(String filePath) {
+			this.filePath = filePath;
+		}
+		
+		public String getFilePath() {
+			return filePath;
+		}		
+		
 	}
 
-	private void uploadFileValidation(UploadParameters uploadParams,
+	private void uploadFileValidation(AddImagesParameters uploadParams,
 			BindingResult bindResult) throws IOException {
 		if (uploadParams.getUpload().getSize() == 0) {
 			bindResult.rejectValue("upload", "Upload file required.");
@@ -318,18 +403,10 @@ public class ContentEditorController {
 			bindResult.rejectValue("upload",
 					"Upload filename should be jpg, png, gif or bmp.");
 		}
-
-		if (bindResult.hasErrors()) {
-			List<ObjectError> errors = bindResult.getAllErrors();
-			for (int i = 0; i < errors.size(); i++) {
-				logger.error(errors.get(i).toString());
-			}
-			throw new IOException("invalid request params");
-		}
 	}
 
 	// Performs validation on parameters used for writing html.
-	public static class UpdateParameters {
+	public static class UpdateHTMLParameters {
 
 		@NotNull
 		@Pattern(regexp = "^[-_/A-Za-z0-9]+\\.html$", message = "Invalid filename")
