@@ -77,8 +77,9 @@ public class ContentEditorController {
 			BindingResult errors) throws IOException, JSONException {
 
 		if (errors.hasErrors()) {
-			throw new IOException("HTML Update failed due to invalid parameters. Please check "+
-		    "your filename contains only valid characters.");
+			throw new IOException(
+					"HTML Update failed due to invalid parameters. Please check "
+							+ "your filename contains only valid characters.");
 		}
 
 		boolean success = saveHTML(writeParams);
@@ -114,22 +115,28 @@ public class ContentEditorController {
 		uploadFileValidation(addParams, bindResult);
 
 		if (bindResult.hasErrors()) {
-			throw new IOException("Your image upload failed. Please ensure you have selected a file "+
-		    "and that your directory path contains only valid characters.");
+			throw new IOException(
+					"Your image upload failed. Please ensure you have selected a file "
+							+ "and that your directory path contains only valid characters.");
 		}
-		
+
 		String filename = addParams.getUpload().getOriginalFilename();
 		InputStream is = addParams.getUpload().getInputStream();
 
 		// Save the file to disk.
-		boolean saveSuccessful = FileSave.save(contentImagesPath+File.separator+addParams.getDirectory(), filename, is);
+		boolean saveSuccessful = FileSave.save(contentImagesPath
+				+ File.separator + addParams.getDirectory(), filename, is);
 
 		response.setContentType("text/html");
 		write("<html><head><script> window.opener.CKEDITOR.tools.callFunction( "
-				+ addParams.getCKEditorFuncNum() + ", '" + contentImagesURL
-				+"/"+ addParams.getUpload().getOriginalFilename()
-				+ "', 'save successful: " + saveSuccessful + "' );window.close();</script>"
-				, response.getOutputStream());
+				+ addParams.getCKEditorFuncNum()
+				+ ", '"
+				+ contentImagesURL
+				+ "/"
+				+ addParams.getUpload().getOriginalFilename()
+				+ "', 'save successful: "
+				+ saveSuccessful
+				+ "' );window.close();</script>", response.getOutputStream());
 
 		return null;
 
@@ -177,15 +184,17 @@ public class ContentEditorController {
 		modelAndView.addObject("imageFiles", imageFiles);
 		modelAndView.addObject("browseDir", browseDir);
 		modelAndView.addObject("homeDir", imagesDir.getPath());
-		modelAndView.addObject("currentDir", browseDir.replaceFirst(contentImagesPath, ""));
+		modelAndView.addObject("currentDir",
+				browseDir.replaceFirst(contentImagesPath, ""));
 
 		return modelAndView;
 	}
-	
+
 	/**
 	 * on Path /editor/delete/image
 	 * 
-	 * Deletes the image at the specified path.  Must start with contentImagesPath. 
+	 * Deletes the image at the specified path. Must start with
+	 * contentImagesPath.
 	 * 
 	 * @param request
 	 * @param response
@@ -193,7 +202,7 @@ public class ContentEditorController {
 	 * @param bindResult
 	 * @return
 	 * @throws IOException
-	 * @throws JSONException 
+	 * @throws JSONException
 	 */
 	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/image")
@@ -201,25 +210,24 @@ public class ContentEditorController {
 			HttpServletResponse response,
 			@Valid @ModelAttribute() DeleteImagesParameters deleteParams,
 			BindingResult bindResult) throws IOException, JSONException {
-		
+
 		if (bindResult.hasErrors()) {
-			throw new IOException("Your image or directory delete failed. Please ensure the filePath exists "
-					+ "and has only got allowed characters in.");
+			throw new IOException(
+					"Your image or directory delete failed. Please ensure the filePath exists "
+							+ "and has only got allowed characters in.");
 		}
-		
-		
-		// delete the file. 
+
+		// delete the file.
 		String filePath = deleteParams.getFilePath();
-		File file = (new File (contentImagesPath+File.separator+filePath)).getCanonicalFile();
+		File file = (new File(contentImagesPath + File.separator + filePath))
+				.getCanonicalFile();
 		boolean successful = false;
-		
+
 		if (file.exists() && !file.isDirectory()) {
 			successful = file.delete(); // delete file
-		} 
-		else if (file.exists() && file.list().length==0) {
-			successful = file.delete(); // delete empty directory. 
+		} else if (file.exists() && file.list().length == 0) {
+			successful = file.delete(); // delete empty directory.
 		}
-		
 
 		JSONObject json = new JSONObject();
 		json.put("deletesuccess", successful);
@@ -228,7 +236,7 @@ public class ContentEditorController {
 		write(json.toString(), response.getOutputStream());
 		return null;
 
-	}	
+	}
 
 	/**
 	 * Builds a list of image files on the server to be displayed by the browse
@@ -272,20 +280,25 @@ public class ContentEditorController {
 	 * 
 	 * @return
 	 */
-	private BrowseFile buildBrowseDirectory(String browseDir, BrowseFile imageFiles) {
-		
-		if (imageFiles.isDirectory() && imageFiles.getFilePath().equals(browseDir)) {
+	private BrowseFile buildBrowseDirectory(String browseDir,
+			BrowseFile imageFiles) {
+
+		if (imageFiles.isDirectory()
+				&& imageFiles.getFilePath().equals(browseDir)) {
 			return imageFiles;
 		}
-		
+
 		List<BrowseFile> children = imageFiles.getChildren();
-		if (children ==null) return null;
-		
-		for (int i=0; i<children.size(); i++) {
+		if (children == null)
+			return null;
+
+		for (int i = 0; i < children.size(); i++) {
 			BrowseFile f = buildBrowseDirectory(browseDir, children.get(i));
-			if (f!=null) { return f;}		
+			if (f != null) {
+				return f;
+			}
 		}
-		
+
 		return null;
 	}
 
@@ -304,8 +317,8 @@ public class ContentEditorController {
 		String filename = writeParams.getFilename();
 
 		// Save the file to disk.
-		return FileSave.save(contentHTMLPath, filename, new ByteArrayInputStream(
-				html.getBytes("UTF-8")));
+		return FileSave.save(contentHTMLPath, filename,
+				new ByteArrayInputStream(html.getBytes("UTF-8")));
 
 	}
 
@@ -321,9 +334,9 @@ public class ContentEditorController {
 		@NotNull
 		private String langCode;
 
-		// File validation is separate. 
+		// File validation is separate.
 		private MultipartFile file;
-		
+
 		@NotNull
 		@Pattern(regexp = "^[-_/A-Za-z0-9]*$", message = "Invalid directory")
 		private String directory;
@@ -368,22 +381,22 @@ public class ContentEditorController {
 			this.directory = directory;
 		}
 	}
-	
+
 	// Performs validation on parameters used for deleting images.
 	public static class DeleteImagesParameters {
-		
+
 		@NotNull
 		@Pattern(regexp = "^[-_/A-Za-z0-9]+(\\.(?i)(jpg|jpeg|png|gif|bmp))??$", message = "Invalid characters in filePath")
 		private String filePath;
-		
+
 		public void setFilePath(String filePath) {
 			this.filePath = filePath;
 		}
-		
+
 		public String getFilePath() {
 			return filePath;
-		}		
-		
+		}
+
 	}
 
 	private void uploadFileValidation(AddImagesParameters uploadParams,
@@ -434,21 +447,36 @@ public class ContentEditorController {
 
 		private String tidyHTML(String input) {
 
-			InputStream inputStream = new ByteArrayInputStream(
-					input.getBytes(StandardCharsets.UTF_8));
-			OutputStream outputStream = new ByteArrayOutputStream();
+			try {
+				InputStream inputStream = new ByteArrayInputStream(
+						input.getBytes(StandardCharsets.UTF_8));
+				OutputStream outputStream = new ByteArrayOutputStream();
 
-			Tidy tidy = new Tidy(); // obtain a new Tidy instance
-			tidy.setXHTML(false);
-			tidy.setCharEncoding(Configuration.UTF8);
-			tidy.setMakeClean(false);
-			tidy.setTidyMark(false);
-			tidy.setDropEmptyParas(false);
-			tidy.setDocType("omit");
-			tidy.setQuiet(true);
-			tidy.setShowWarnings(false);
-			tidy.parse(inputStream, outputStream);
-			return outputStream.toString();
+				Tidy tidy = new Tidy(); 
+				tidy.setXHTML(false);
+				tidy.setInputEncoding("UTF-8");
+				tidy.setOutputEncoding("UTF-8");
+				tidy.setMakeClean(false);
+				tidy.setTidyMark(false);
+				tidy.setDropEmptyParas(false);
+				tidy.setDocType("omit");
+				tidy.setQuiet(true);
+				tidy.setPrintBodyOnly(true);
+				tidy.setShowWarnings(false);
+				tidy.parse(inputStream, outputStream);
+
+				String output = outputStream.toString();
+				if (output!=null && !output.trim().equals("")) {
+				  return output;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			// defult to return input in event of any
+			// error.
+			return input;
 
 		}
 
