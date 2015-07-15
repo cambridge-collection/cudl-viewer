@@ -251,7 +251,7 @@ function pageinit() {
 </div>
 
 <% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
-<jsp:include page="collection-editor.jsp" >
+<jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
   <jsp:param name='filenames' value='<%=filenames%>'/>
 </jsp:include>

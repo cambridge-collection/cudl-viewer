@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List"%>
+<%@taglib prefix="c" 
+       uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
@@ -189,32 +191,20 @@
 		</div>
 
 		<div class="campl-column4">
-			<div
-				class="campl-content-container campl-sub-column-left-border campl-main-content-sub-column">
-				<div class="campl-heading-container">
-					<h2>Latest news</h2>
-				</div>
+			<div id="latestNewsDiv" contenteditable="true">				
+		        <c:import charEncoding="UTF-8" url="/html/index-latest-news.html" /> 
 			</div>
-			<div
-				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
-				<div class="campl-listing-item campl-news-listing clearfix">
-					<p class="campl-listing-title">
-						<a href="/news/">June Release</a>
-					</p>
-					<span class="campl-datestamp">30 June 2015</span>
-					<p>This release sees the launch of our new <a href='/collections/rcs/'>Royal Commonwealth Society collection</a>. Our initial selection features everything from
-					<a href='/view/MS-RCMS-00085/1'>spectacular panoramas</a> to <a href='/view/PH-Y-30468-S/27'>striking images</a> from the RCS photographic collections.</p>
-				</div>
-				<p>
-					<a href="/news/" class="campl-secondary-cta campl-float-right ">View
-						all news</a>
-				</p>
-				<br />
-			</div>
+			
+
 
 		</div>
 	</div>
 </div>
+
+<jsp:include page="editor.jsp" >
+  <jsp:param name='dataElements' value='latestNewsDiv'/>
+  <jsp:param name='filenames' value='index-latest-news.html'/>
+</jsp:include>
 
 <jsp:include page="header/footer-full.jsp" />
 
