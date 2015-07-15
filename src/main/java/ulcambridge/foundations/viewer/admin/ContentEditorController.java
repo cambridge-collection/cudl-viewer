@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,7 +56,6 @@ public class ContentEditorController {
 	
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	// TODO method level security
 	/**
 	 * Request on URL /editor/update/html
 	 * 
@@ -69,6 +69,7 @@ public class ContentEditorController {
 	 * @throws IOException
 	 * @throws JSONException
 	 */
+	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/update/html")
 	public synchronized ModelAndView handleUpdateRequest(
 			HttpServletResponse response,
@@ -102,7 +103,7 @@ public class ContentEditorController {
 	 * @return
 	 * @throws IOException
 	 */
-	// TODO security
+	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/add/image")
 	public ModelAndView handleAddImageRequest(HttpServletRequest request,
 			HttpServletResponse response,
@@ -147,7 +148,7 @@ public class ContentEditorController {
 	 * @return
 	 * @throws IOException
 	 */
-	// TODO security
+	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/browse/images")
 	public ModelAndView handleBrowseImagesRequest(
 			HttpServletRequest request,
@@ -194,7 +195,7 @@ public class ContentEditorController {
 	 * @throws IOException
 	 * @throws JSONException 
 	 */
-	// TODO security
+	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/image")
 	public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
 			HttpServletResponse response,
