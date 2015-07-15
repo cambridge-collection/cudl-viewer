@@ -59,10 +59,10 @@ Must have the same number of elements in each.  -->
    
    var saveData = function () {	  
 	   
-       // Submit data to /editor/update/               
+       // Submit data to /editor/update/html               
        $.ajax({
     	   type: "POST",
-    	   url: "/editor/update/",
+    	   url: "/editor/update/html",
     	   data: { html: data, filename: $('#filename').val() }
     	 })
     	   .done(function( msg ) {

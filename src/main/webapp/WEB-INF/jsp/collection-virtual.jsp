@@ -86,7 +86,7 @@
 			</div>
 
 			<div id="sponsorDiv" class="campl-column12 campl-content-container" contenteditable="true">
-				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
 		        <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
 			</div>
 		</div>
