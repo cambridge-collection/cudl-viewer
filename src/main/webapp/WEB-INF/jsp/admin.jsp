@@ -2,7 +2,7 @@
 
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
-    <jsp:param name="activeMenuIndex" value="1" />
+    <jsp:param name="activeMenuIndex" value="-1" />
     <jsp:param name="displaySearch" value="true" />
     <jsp:param name="subtitle" value="Admin" />
 </jsp:include>
