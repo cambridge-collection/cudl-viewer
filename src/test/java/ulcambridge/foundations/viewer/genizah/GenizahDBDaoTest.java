@@ -14,7 +14,8 @@ public class GenizahDBDaoTest extends TestCase {
 	
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -41,10 +42,14 @@ public class GenizahDBDaoTest extends TestCase {
 	
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://found-dom01.lib.cam.ac.uk:3306/genizahbibdev");
-		dataSource.setUsername("genbibdevuser");
-		dataSource.setPassword("resuvedbibneg");
+		//dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		//dataSource.setUrl("jdbc:mysql://found-dom01.lib.cam.ac.uk:3306/genizahbibdev");
+		dataSource.setUrl("jdbc:postgresql://cudl-postgres.cmzjzpssbgnq.eu-west-1.rds.amazonaws.com:5432/genizahbibdev?autoReconnect=true");
+		//dataSource.setUsername("genbibdevuser");
+		dataSource.setUsername("cudldev");
+		//dataSource.setPassword("resuvedbibneg");
+		dataSource.setPassword("anwqxJcONu1NjUl");
 		return dataSource;
 	}
 	
