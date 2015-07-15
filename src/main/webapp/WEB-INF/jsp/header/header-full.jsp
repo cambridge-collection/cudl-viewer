@@ -111,7 +111,7 @@
 				</ul>
 			</div>
 
-			<div class="campl-column2">
+			<div class="campl-column2" style="float:right;">
 				<div class="campl-quicklinks"></div>
 			</div>
 

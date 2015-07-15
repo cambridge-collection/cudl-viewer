@@ -6,6 +6,44 @@
 	String subtitle = request.getParameter("subtitle");
 %>
 
+<style>
+ 	.cudl-header-search {
+ 		position: absolute;
+ 		right: -20px;
+ 		bottom: 0;
+ 		width: 40%;
+ 	}
+ 	.campl-search-input {
+ 		height: 32px;
+ 		min-height: 32px;
+ 	}
+ 	.cudl-header-search input[type=text] {
+ 		height: 32px;
+ 		width: calc(100% - 31px);
+ 	}
+ 	form.campl-search-input input.campl-search-submit {
+ 		height: 32px;
+ 		width: 32px;
+ 	}
+ 	div.campl-site-search {
+		display: none;
+	}
+	@media screen and (max-width: 767px) {
+		div.campl-site-search {
+			display: block;
+		}
+		.cudl-header-search {
+			display: none;
+		}
+		#site-search-container input[type=text] {
+			margin: 0;
+			padding: 0;
+			height: 32px;
+			line-height: 32px;
+		}
+	}
+</style>
+
 <div class="campl-row campl-page-header campl-section-page">
 	<div class="campl-wrap clearfix">
 		<div class="campl-column12">
@@ -33,7 +71,21 @@
 						%>
 					</ul>
 				</div>
-				<h1 class="campl-page-title">Cambridge Digital Library</h1>
+				
+				<div style="position:relative;">
+					<h1 class="campl-page-title">Cambridge Digital Library</h1>
+					
+					<% if (activeIndex == 0) { %>
+					
+					<div class="campl-column6 cudl-header-search">
+						<form action="/search" class="campl-search-input">
+							<input name="keyword" type="text" class="text" placeholder="Search" />
+							<input type="image" class="campl-search-submit " src="/images/interface/btn-search-inpage.png">
+						</form>
+					</div>
+					
+					<% } %>
+				</div>
 
 				<p class="campl-mobile-parent">
 					<a href=""><span class="campl-back-btn campl-menu-indicator"></span>Department A-Z</a>
