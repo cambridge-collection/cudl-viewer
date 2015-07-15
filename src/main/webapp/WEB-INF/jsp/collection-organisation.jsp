@@ -140,14 +140,14 @@ function pageinit() {
 			case 'next':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
-				return '<span class="disabled"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
+				return '<span class="disabled"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
 
 			case 'prev':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
-				return '<span class="disabled"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
+				return '<span class="disabled"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
 
 			case 'first':
 
@@ -243,7 +243,7 @@ function pageinit() {
 		</div>
  
         <div id="sponsorDiv" contenteditable="true">
-          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
 		  <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
         </div>
 

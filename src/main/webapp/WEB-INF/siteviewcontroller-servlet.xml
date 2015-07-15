@@ -28,13 +28,13 @@
 	<util:properties id="globalproperties" location="classpath:cudl-global.properties" 
 		/> 
 		
-  <!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
       <list>
         <value>classpath:cudl-global.properties</value>
       </list>
     </property>
-  </bean> -->		
+  </bean> 		
 
 	<!-- General Configuration beans -->
 
@@ -82,19 +82,14 @@
 
     <!-- resources exclusions from servlet mapping -->
     <mvc:resources mapping="/models/**" location="/models/" />
-    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="${cudl-viewer-content.images.url}/**" location="file:${cudl-viewer-content.images.path}/"/>
+    <mvc:resources mapping="${cudl-viewer-content.html.url}/**" location="file:${cudl-viewer-content.html.path}/"/>
     <mvc:resources mapping="/img/**" location="/img/" />
     <mvc:resources mapping="/scripts/**" location="/scripts/" />
     <mvc:resources mapping="/styles/fonts/**" location="/styles/fonts/" />
     <mvc:resources mapping="/styles/**" location="/styles/" />
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
     <mvc:resources mapping="/**" location="/" />
-
-    <!-- These are used by the httpd resources (see httpd rewrite rules) -->
-    <mvc:resources mapping="/content/**" location="/content/" />
-    <mvc:resources mapping="/netwon/**" location="/newton/" />
-    <mvc:resources mapping="/data/**" location="/data/" />
-    <mvc:resources mapping="/json/**" location="/json/" />
-    <mvc:resources mapping="/index/**" location="/index/" />
-	
+    
+     
 </beans>

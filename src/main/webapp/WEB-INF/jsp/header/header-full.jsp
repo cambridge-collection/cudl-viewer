@@ -99,7 +99,7 @@
 				id="global-header-controls">
 				<a href="http://www.cam.ac.uk" class="campl-main-logo"> <img
 					alt="University of Cambridge"
-					src="/images/interface/main-logo-small.png" />
+					src="/img/interface/main-logo-small.png" />
 				</a>
 
 				<ul
@@ -125,7 +125,7 @@
 							<input id="header-search" type="text" name="keyword" value=""
 								placeholder="Search" /> <input type="image"
 								class="campl-search-submit "
-								src="/images/interface/btn-search-header.png" />
+								src="/img/interface/btn-search-header.png" />
 						</form>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 				<div class="campl-search-form-wrapper clearfix">
 					<input name="keyword" type="text" class="text" placeholder="Search" /> <input
 						type="image" class="campl-search-submit"
-						src="/images/interface/btn-search.png" />
+						src="/img/interface/btn-search.png" />
 				</div>
 			</form>
 		</div>

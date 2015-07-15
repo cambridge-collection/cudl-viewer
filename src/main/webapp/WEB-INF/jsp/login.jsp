@@ -65,7 +65,7 @@
                             <form class="openid_form" method="post"
                                   action="/auth/raven">
 
-                                <a class="btn btn-block btn-social btn-raven" href="/auth/raven"> <img class="img-raven" src="/images/general/raven.png" /> Sign In with Raven
+                                <a class="btn btn-block btn-social btn-raven" href="/auth/raven"> <img class="img-raven" src="/img/general/raven.png" /> Sign In with Raven
                                 </a>
                             </form>							
                         </div>

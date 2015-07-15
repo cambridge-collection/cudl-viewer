@@ -119,7 +119,7 @@ a.campl-external {
 					<%
 						if (child.isDirectory()) {
 					%>
-					<img src='/images/folder.png' title='directory' />
+					<img src='/img/general/folder.png' title='directory' />
 
 					<div class="caption">
 						<p>
