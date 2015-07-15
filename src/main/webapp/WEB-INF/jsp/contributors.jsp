@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" 
        uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>       
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="3" />
@@ -43,7 +44,7 @@
 			<div class="campl-content-container">
 			
 			
-			<div id="contributorsDiv" contenteditable="true">				
+			<div id="contributorsDiv">				
 		        <c:import charEncoding="UTF-8" url="/html/contributors.html" /> 
 			</div>
 			
@@ -53,10 +54,17 @@
 	</div>
 </div>
 
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#contributorsDiv').attr('contenteditable', 'true');</script>
 <jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='contributorsDiv'/>
   <jsp:param name='filenames' value='contributors.html'/>
 </jsp:include>
+
+</sec:authorize>
+
+
 
 <jsp:include page="header/footer-full.jsp" />
 

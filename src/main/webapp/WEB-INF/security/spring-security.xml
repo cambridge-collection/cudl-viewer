@@ -136,4 +136,5 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" /> 
 </beans>

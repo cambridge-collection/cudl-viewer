@@ -2,6 +2,7 @@
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List"%>
 <%@taglib prefix="c" 
        uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
@@ -191,7 +192,7 @@
 		</div>
 
 		<div class="campl-column4">
-			<div id="latestNewsDiv" contenteditable="true">				
+			<div id="latestNewsDiv">				
 		        <c:import charEncoding="UTF-8" url="/html/index-latest-news.html" /> 
 			</div>
 			
@@ -201,10 +202,15 @@
 	</div>
 </div>
 
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#latestNewsDiv').attr('contenteditable', 'true');</script>
 <jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='latestNewsDiv'/>
   <jsp:param name='filenames' value='index-latest-news.html'/>
 </jsp:include>
+
+</sec:authorize>
 
 <jsp:include page="header/footer-full.jsp" />
 

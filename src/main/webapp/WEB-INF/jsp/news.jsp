@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" 
        uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>       
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="3" />
@@ -42,7 +43,7 @@
 			<div class="campl-content-container news_items">
 			
 			
-			<div id="newsDiv" contenteditable="true">				
+			<div id="newsDiv">				
 		        <c:import charEncoding="UTF-8" url="/html/news.html" /> 
 			</div>
 			
@@ -52,10 +53,15 @@
 	</div>
 </div>
 
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#newsDiv').attr('contenteditable', 'true');</script>
 <jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='newsDiv'/>
   <jsp:param name='filenames' value='news.html'/>
 </jsp:include>
+
+</sec:authorize>
 
 <jsp:include page="header/footer-full.jsp" />
 
