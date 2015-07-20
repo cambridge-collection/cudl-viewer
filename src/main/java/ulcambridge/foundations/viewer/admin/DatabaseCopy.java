@@ -16,9 +16,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
@@ -227,6 +229,7 @@ public class DatabaseCopy {
                 }
             }
             if (!iterator.hasNext() && dbsuccess) {
+                timestampProcess(conlive);
                 conlive.commit();
                 copysuccess = true;
             }
@@ -267,6 +270,20 @@ public class DatabaseCopy {
 
         return copysuccess;
 
+    }
+    
+    private void timestampProcess(Connection conlive){
+        try {
+            java.util.Date date= new java.util.Date();
+            Timestamp timestamp = new Timestamp(date.getTime());
+            String sql = "INSERT INTO timestamp values (?)";
+            System.out.println(sql);
+            PreparedStatement prepareStatement = conlive.prepareStatement(sql);
+            prepareStatement.setTimestamp(1, timestamp);
+            prepareStatement.executeUpdate();
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

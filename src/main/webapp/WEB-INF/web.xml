@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
 
-	<display-name>Foundations Viewer</display-name>
-	<description>
+    <display-name>Foundations Viewer</display-name>
+    <description>
     </description>
 
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
 
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -36,240 +36,241 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-		/WEB-INF/security/spring-security.xml
-		</param-value>
-	</context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/security/spring-security.xml
+        </param-value>
+    </context-param>
 
-	<!-- sitecontroller servlet -->
-	<servlet>
-		<servlet-name>siteviewcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- sitecontroller servlet -->
+    <servlet>
+        <servlet-name>siteviewcontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>siteviewcontroller</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>siteviewcontroller</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
-	<!-- mylibrarycontroller servlet -->
-	<servlet>
-		<servlet-name>mylibrarycontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- mylibrarycontroller servlet -->
+    <servlet>
+        <servlet-name>mylibrarycontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>mylibrarycontroller</servlet-name>
-		<url-pattern>/mylibrary/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mylibrarycontroller</servlet-name>
+        <url-pattern>/mylibrary/*</url-pattern>
+    </servlet-mapping>
 
 
-	<!-- document viewcontroller servlet -->
-	<servlet>
-		<servlet-name>documentviewcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- document viewcontroller servlet -->
+    <servlet>
+        <servlet-name>documentviewcontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>documentviewcontroller</servlet-name>
-		<url-pattern>/view/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>documentviewcontroller</servlet-name>
+        <url-pattern>/view/*</url-pattern>
+    </servlet-mapping>
 
-	<!-- collection viewcontroller servlet -->
-	<servlet>
-		<servlet-name>collectionviewcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- collection viewcontroller servlet -->
+    <servlet>
+        <servlet-name>collectionviewcontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>collectionviewcontroller</servlet-name>
-		<url-pattern>/collections/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>collectionviewcontroller</servlet-name>
+        <url-pattern>/collections/*</url-pattern>
+    </servlet-mapping>
 
-	<!-- cachecontroller servlet -->
-	<servlet>
-		<servlet-name>cachecontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- cachecontroller servlet -->
+    <servlet>
+        <servlet-name>cachecontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>cachecontroller</servlet-name>
-		<url-pattern>/transcriptioncache</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cachecontroller</servlet-name>
+        <url-pattern>/transcriptioncache</url-pattern>
+    </servlet-mapping>
 
-	<!-- transcriptioncontroller servlet -->
-	<servlet>
-		<servlet-name>transcriptioncontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- transcriptioncontroller servlet -->
+    <servlet>
+        <servlet-name>transcriptioncontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>transcriptioncontroller</servlet-name>
-		<url-pattern>/transcription</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>transcriptioncontroller</servlet-name>
+        <url-pattern>/transcription</url-pattern>
+    </servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>transcriptioncontroller</servlet-name>
-		<url-pattern>/transcriptionformatter</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>transcriptioncontroller</servlet-name>
+        <url-pattern>/transcriptionformatter</url-pattern>
+    </servlet-mapping>
 
-	<!-- search editor -->
-	<servlet>
-		<servlet-name>search</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- search editor -->
+    <servlet>
+        <servlet-name>search</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>search</servlet-name>
-		<url-pattern>/search/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>search</servlet-name>
+        <url-pattern>/search/*</url-pattern>
+    </servlet-mapping>
 	
-	<!-- logincontroller servlet -->
+    <!-- logincontroller servlet -->
         
-	<servlet>
-		<servlet-name>logincontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <servlet>
+        <servlet-name>logincontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>logincontroller</servlet-name>
-		<url-pattern>/auth/*</url-pattern>
-	</servlet-mapping>	
+    <servlet-mapping>
+        <servlet-name>logincontroller</servlet-name>
+        <url-pattern>/auth/*</url-pattern>
+    </servlet-mapping>	
 
-	<!-- formcontroller servlet -->
-	<servlet>
-		<servlet-name>formcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- formcontroller servlet -->
+    <servlet>
+        <servlet-name>formcontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>formcontroller</servlet-name>
-		<url-pattern>/feedbackform.html</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formcontroller</servlet-name>
+        <url-pattern>/feedbackform.html</url-pattern>
+    </servlet-mapping>
 
-	<servlet-mapping>
-		<servlet-name>formcontroller</servlet-name>
-		<url-pattern>/mailinglistform.html</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formcontroller</servlet-name>
+        <url-pattern>/mailinglistform.html</url-pattern>
+    </servlet-mapping>
 	
-	<!-- editor servlet -->
-	<servlet>
-		<servlet-name>editorcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- editor servlet -->
+    <servlet>
+        <servlet-name>editorcontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>editorcontroller</servlet-name>
-		<url-pattern>/editor/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editorcontroller</servlet-name>
+        <url-pattern>/editor/*</url-pattern>
+    </servlet-mapping>
 		
 
-	<!-- xtf proxy -->
-	<servlet>
-		<servlet-name>xtfproxy</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <!-- xtf proxy -->
+    <servlet>
+        <servlet-name>xtfproxy</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>xtfproxy</servlet-name>
-		<url-pattern>/xtf/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>xtfproxy</servlet-name>
+        <url-pattern>/xtf/*</url-pattern>
+    </servlet-mapping>
 	
-        <!-- admincontroller servlet -->
+    <!-- admincontroller servlet -->
          
-	<servlet>
-		<servlet-name>admincontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+    <servlet>
+        <servlet-name>admincontroller</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>admincontroller</servlet-name>
-		<url-pattern>/admin/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>admincontroller</servlet-name>
+        <url-pattern>/admin/*</url-pattern>
+    </servlet-mapping>
 
-	<!-- mime types are required or the mvc:resources fails to ignore them -->
-	<mime-mapping>
-		<extension>json</extension>
-		<mime-type>application/json</mime-type>
-	</mime-mapping>
+    
+    <!-- mime types are required or the mvc:resources fails to ignore them -->
+    <mime-mapping>
+        <extension>json</extension>
+        <mime-type>application/json</mime-type>
+    </mime-mapping>
 	
-	<mime-mapping>
-		<extension>glsl</extension>
-		<mime-type>application/x-glsl</mime-type>
-	</mime-mapping>	
+    <mime-mapping>
+        <extension>glsl</extension>
+        <mime-type>application/x-glsl</mime-type>
+    </mime-mapping>	
 
-	<mime-mapping>
-		<extension>dzi</extension>
-		<mime-type>text/xml</mime-type>
-	</mime-mapping>
+    <mime-mapping>
+        <extension>dzi</extension>
+        <mime-type>text/xml</mime-type>
+    </mime-mapping>
 
-	<mime-mapping>
-		<extension>ttf</extension>
-		<mime-type>application/octet-stream</mime-type>
-	</mime-mapping>
+    <mime-mapping>
+        <extension>ttf</extension>
+        <mime-type>application/octet-stream</mime-type>
+    </mime-mapping>
 
-	<mime-mapping>
-		<extension>eot</extension>
-		<mime-type>application/octet-stream</mime-type>
-	</mime-mapping>
+    <mime-mapping>
+        <extension>eot</extension>
+        <mime-type>application/octet-stream</mime-type>
+    </mime-mapping>
 	
-	<mime-mapping>
-		<extension>woff</extension>
-		<mime-type>application/x-font-woff</mime-type>
-	</mime-mapping>
+    <mime-mapping>
+        <extension>woff</extension>
+        <mime-type>application/x-font-woff</mime-type>
+    </mime-mapping>
 	
-	<mime-mapping>
-		<extension>svg</extension>
-		<mime-type>application/svg+xml</mime-type>
-	</mime-mapping>	
+    <mime-mapping>
+        <extension>svg</extension>
+        <mime-type>application/svg+xml</mime-type>
+    </mime-mapping>	
 	
-	<mime-mapping>
-		<extension>map</extension>
-		<mime-type>application/json</mime-type>
-	</mime-mapping>		
+    <mime-mapping>
+        <extension>map</extension>
+        <mime-type>application/json</mime-type>
+    </mime-mapping>		
 	
-	<mime-mapping>
-		<extension>ico</extension>
-		<mime-type>image/x-icon</mime-type>
-	</mime-mapping>	
+    <mime-mapping>
+        <extension>ico</extension>
+        <mime-type>image/x-icon</mime-type>
+    </mime-mapping>	
 		
-	<error-page>
-		<error-code>404</error-code>
-		<location>/errors/404.html</location>
-	</error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errors/404.html</location>
+    </error-page>
 
-	<error-page>
-		<error-code>400</error-code>
-		<location>/errors/404.html</location>
-	</error-page>
+    <error-page>
+        <error-code>400</error-code>
+        <location>/errors/404.html</location>
+    </error-page>
 
-	<error-page>
-		<error-code>500</error-code>
-		<location>/errors/500.html</location>
-	</error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errors/500.html</location>
+    </error-page>
 
-	<jsp-config>
-		<taglib>
-			<taglib-uri>/spring</taglib-uri>
-			<taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
-		</taglib>
-	</jsp-config>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/spring</taglib-uri>
+            <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
 </web-app>   

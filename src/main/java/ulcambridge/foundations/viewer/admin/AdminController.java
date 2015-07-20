@@ -67,9 +67,7 @@ public class AdminController {
         } else {
             mv.addObject("copysuccess", "Copy to Live database failed!");
         }
-        this.collectionFactory.init();
-        ItemFactory itemfactory = new ItemFactory();
-        itemfactory.clearItemCache();
+        
         return mv;
     }
 
