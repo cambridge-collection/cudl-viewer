@@ -657,6 +657,37 @@
 						</div>
 					</div>
 				</div>
+				
+				
+				<!-- Lewis Gibson  -->
+				<div class="campl-content-container ">
+					<div class="campl-horizontal-teaser campl-teaser clearfix">
+						<div class="campl-column3">
+							<div class="campl-content-container campl-horizontal-teaser-img">
+								<a href="/collections/lewisgibson" class="campl-teaser-img-link"><img
+									alt="Lewis-Gibson" title="Lewis-Gibson"
+									src="/images/collectionsView/collection-lewisgibson.jpg"
+									class="campl-scale-with-grid"></a>
+							</div>
+						</div>
+						<div class="campl-column6">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<h3 class="campl-teaser-title">
+									<a href="/collections/lewisgibson">Lewis-Gibson</a>
+								</h3>
+								<p>In August 2013 Cambridge University Library and the Bodleian Libraries, Oxford, jointly purchased 1700 medieval Jewish manuscripts collected by the twin sisters Agnes Smith Lewis (1843–1926) and Margaret
+								Dunlop Gibson (1843–1920). Their collection possesses its fair share of rare and unique items, including autograph drafts of Maimonides’
+								literary works, large and handsome leaves from 11th and 12th century Bibles, early Christian Palestinian Aramaic palimpsests, and an eyewitness account of the Seljuk Turks’ 11th-century invasion of the Holy
+								Land.</p>
+		
+								
+								<a href="/collections/lewisgibson" class="campl-primary-cta">Read
+									more</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 		
 
 			</div>
