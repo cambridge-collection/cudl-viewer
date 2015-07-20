@@ -199,11 +199,11 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="/news/">June Release</a>
+						<a href="/news/">July Release</a>
 					</p>
-					<span class="campl-datestamp">30 June 2015</span>
-					<p>This release sees the launch of our new <a href='/collections/rcs/'>Royal Commonwealth Society collection</a>. Our initial selection features everything from
-					<a href='/view/MS-RCMS-00085/1'>spectacular panoramas</a> to <a href='/view/PH-Y-30468-S/27'>striking images</a> from the RCS photographic collections.</p>
+					<span class="campl-datestamp">23 July 2015</span>
+					<p>This release sees the launch of our new <a href='/collections/lewisgibson/'>Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish
+					manuscripts collected by the twin sisters Agnes Smith Lewis and Margaret Dunlop Gibson and jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013.</p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View

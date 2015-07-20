@@ -40,6 +40,27 @@
 			<div class="campl-content-container news_items">
 				<h2>Latest Updates</h2>
 				
+				
+				<hr class="cam-teaser-divider campl-column12">
+
+				<div class="grid_5">
+				<img alt="July Update" title="June Update"
+						src="/images/index/news-2015-07.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">23/07/2015</span>
+					<h4>July Update</h4>
+					
+					<p>This release sees the launch of our new <a href="/collections/lewisgibson">Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish manuscripts jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013. The collection includes rare and unique items such as drafts of Maimonides’ literary works, large and handsome leaves from 11th and 12th century Bibles, early Christian Palestinian Aramaic palimpsests, and an eyewitness account of the Seljuk Turks’ 11th-century invasion of the Holy Land. An article on the conservation of the Lewis-Gibson collection can be found on the <a href="https://specialcollections.blog.lib.cam.ac.uk/?p=10386">Special Collections Blog</a>.</p>
+
+<p>Our latest additions to the <a href="/collections/lewisgibson">Royal Commonwealth Society Collection</a> focus on the history of Ghana with a wonderful range of photographs taken between 1900 and 1970, digitised in memory of <a href="https://specialcollections.blog.lib.cam.ac.uk/?p=8493">Michael Fuller</a>, and generously funded by his family. They include a 1910 panorama of Accra (<a href="/view/PH-Y-30448-A/1">Y30448A</a>), an album on West African Railways (<a href="/view/PH-Y-30448-W/1">Y30448W</a>), records of the Volta River Project and Tema Harbour (<a href="/view/PH-Y-30448-T/1">Y30448T</a>), scenes of the cotton industry (<a href="/view/PH-Y-30448-U/1">Y30448U</a>), Gold Coast castles, (<a href="/view/PH-Y-30448-J/1">Y30448J</a>, <a href="/view/PH-Y-30448-N/1">Y30448N</a>), soil erosion and farming (<a href="/view/PH-Y-00304-E/1">Y304E</a>, <a href="/view/PH-Y-03011-U/1">Y3011U</a>), Achimota College (<a href="/view/PH-Y-30448-H/1">Y30448H</a>, <a href="/view/PH-Y-30448-J/1">Y30448J</a>), the inauguration of the University of Ghana (<a href="/view/PH-Y-30448-F/1">Y30448F</a>), No.218 Gold Coast Bomber Squadron (<a href="/view/PH-Y-30448-M/1">Y30448M</a>), and the funeral of Asantehene in 1970 (<a href="/view/PH-Y-30448-R/1">Y30448R</a>).</p>
+
+				</div>
+				
+				
+				
+				
 				<hr class="cam-teaser-divider campl-column12">
 
 				<div class="grid_5">
