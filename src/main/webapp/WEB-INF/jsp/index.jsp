@@ -201,7 +201,7 @@
 					<p class="campl-listing-title">
 						<a href="/news/">July Release</a>
 					</p>
-					<span class="campl-datestamp">23 July 2015</span>
+					<span class="campl-datestamp">22 July 2015</span>
 					<p>This release sees the launch of our new <a href='/collections/lewisgibson/'>Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish
 					manuscripts collected by the twin sisters Agnes Smith Lewis and Margaret Dunlop Gibson and jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013.</p>
 				</div>

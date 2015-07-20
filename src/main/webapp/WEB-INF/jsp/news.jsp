@@ -49,7 +49,7 @@
 				</div>
 
 				<div class="grid_8">
-					<span class="date">23/07/2015</span>
+					<span class="date">22/07/2015</span>
 					<h4>July Update</h4>
 					
 					<p>This release sees the launch of our new <a href="/collections/lewisgibson">Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish manuscripts jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013. The collection includes rare and unique items such as drafts of Maimonides’ literary works, large and handsome leaves from 11th and 12th century Bibles, early Christian Palestinian Aramaic palimpsests, and an eyewitness account of the Seljuk Turks’ 11th-century invasion of the Holy Land. An article on the conservation of the Lewis-Gibson collection can be found on the <a href="https://specialcollections.blog.lib.cam.ac.uk/?p=10386">Special Collections Blog</a>.</p>
