@@ -182,7 +182,7 @@ public class ExternalCache {
 			tidy.setQuiet(true);
 			tidy.setShowWarnings(false);
 			tidy.setXHTML(true);
-			tidy.setCharEncoding(org.w3c.tidy.Configuration.UTF8);
+			tidy.setOutputEncoding("UTF-8");
 
 			Document tidyDOM = tidy.parseDOM(uc.getInputStream(), null);
 
