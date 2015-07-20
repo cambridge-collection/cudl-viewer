@@ -6,6 +6,7 @@
 package ulcambridge.foundations.viewer.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,7 +40,7 @@ public class AdminController {
             throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminsuccess");
-        GitJsonCopy gjson = new GitJsonCopy();
+        GitCudlDataCopy gjson = new GitCudlDataCopy();
         Boolean success = gjson.merge();
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
@@ -51,6 +52,7 @@ public class AdminController {
 
     //on path /admin/dbsuccess
     @RequestMapping(value = "/dbsuccess", method = RequestMethod.GET)
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView handleDbSuccessRequest()
             throws Exception {
 

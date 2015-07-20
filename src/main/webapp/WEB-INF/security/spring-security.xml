@@ -130,10 +130,10 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
                 data-source-ref="dataSource" />
         </security:authentication-provider>
     </security:authentication-manager>
-
+    
     <bean id="usersDao"
           class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
         <property name="dataSource" ref="dataSource" />
     </bean>
-
+    <global-method-security pre-post-annotations="enabled"/>
 </beans>

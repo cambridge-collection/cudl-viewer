@@ -1,5 +1,4 @@
 /bin/
 /target/
 src/main/resources/cudl-global.properties
-src/main/resources/cudl-database.properties
 /src/main/webapp/models/
