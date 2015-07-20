@@ -83,6 +83,23 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
                                 after="EXCEPTION_TRANSLATION_FILTER" />
 
     </security:http>
+    <!--Security for editor access-->
+    <security:http auto-config="false" pattern="/editor/**" >
+
+        <security:form-login login-page='/auth/login?access=admin' />
+        <security:access-denied-handler error-page="/auth/denied"/>
+        <security:logout logout-url="/auth/logout"
+                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
+                         delete-cookies="JSESSIONID" />
+                         
+        
+        <security:intercept-url pattern="/**"  access="ROLE_ADMIN" />
+
+
+        <security:custom-filter ref="oauth2ClientFilter"
+                                after="EXCEPTION_TRANSLATION_FILTER" />
+
+    </security:http>    
     <!--Security for mylibrary access-->
     <security:http auto-config="false" pattern="/mylibrary/**">
 
@@ -135,5 +152,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd">
           class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
         <property name="dataSource" ref="dataSource" />
     </bean>
-    <global-method-security pre-post-annotations="enabled"/>
+    
+
+    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    <security:global-method-security secured-annotations="enabled" /> 
+
 </beans>

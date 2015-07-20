@@ -2,6 +2,7 @@
 	import="ulcambridge.foundations.viewer.model.*,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory, ulcambridge.foundations.viewer.CollectionFactory, java.util.List"%>
 <%@taglib prefix="c" 
        uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>       
 
 <%
 	Collection collection = (Collection) request
@@ -140,14 +141,14 @@ function pageinit() {
 			case 'next':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
-				return '<span class="disabled"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="next"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
+				return '<span class="disabled"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
 
 			case 'prev':
 
 				if (this.active)
-					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
-				return '<span class="disabled"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
+					return '<a href="" onclick="viewPage('+ this.value + '); return false;" class="prev"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
+				return '<span class="disabled"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
 
 			case 'first':
 
@@ -208,7 +209,7 @@ function pageinit() {
   <div class="campl-row campl-content campl-recessed-content">
 	<div class="campl-wrap clearfix">
 		<div class="campl-column7  campl-main-content" id="content">         
-			<div id="summaryDiv" class="campl-content-container" contenteditable="true">
+			<div id="summaryDiv" class="campl-content-container">
 
 <%   // If this collection has a parent show breadcrumb
 	if (collection.getParentCollectionId() != null
@@ -242,8 +243,8 @@ function pageinit() {
 
 		</div>
  
-        <div id="sponsorDiv" contenteditable="true">
-          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+        <div id="sponsorDiv">
+          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
 		  <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
         </div>
 
@@ -251,9 +252,18 @@ function pageinit() {
 </div>
 
 <% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
-<jsp:include page="collection-editor.jsp" >
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#summaryDiv').attr('contenteditable', 'true');</script>
+<script>$('#sponsorDiv').attr('contenteditable', 'true');</script>
+<jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
   <jsp:param name='filenames' value='<%=filenames%>'/>
 </jsp:include>
+
+</sec:authorize>
+
+
 
 <jsp:include page="header/footer-full.jsp" />

@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List,ulcambridge.foundations.viewer.ItemFactory"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
@@ -51,13 +52,13 @@
 			</div>
 		</div>
 	
-	  <div id="summaryDiv" contenteditable="true">
+	  <div id="summaryDiv">
 	     <% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
 		 <c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 
       </div>
       
-      <div id="sponsorDiv" class="campl-column12 campl-content-container" contenteditable="true">
-          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSummary();  %>
+      <div id="sponsorDiv" class="campl-column12 campl-content-container">
+          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
 		  <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
       </div>
 
@@ -65,10 +66,19 @@
 </div>
 
 <% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
-<jsp:include page="collection-editor.jsp" >
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#summaryDiv').attr('contenteditable', 'true');</script>
+<script>$('#sponsorDiv').attr('contenteditable', 'true');</script>
+<jsp:include page="editor.jsp" >
   <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
   <jsp:param name='filenames' value='<%=filenames%>'/>
 </jsp:include>
+
+</sec:authorize>
+
+
 
 <jsp:include page="header/footer-full.jsp" />
 

@@ -171,16 +171,16 @@ function pageinit() {
 									if (this.active)
 										return '<a href="" onclick="viewPage('
 												+ this.value
-												+ '); return false;" class="next"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
-									return '<span class="disabled"><img src="/images/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
+												+ '); return false;" class="next"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
+									return '<span class="disabled"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
 
 								case 'prev':
 
 									if (this.active)
 										return '<a href="" onclick="viewPage('
 												+ this.value
-												+ '); return false;" class="prev"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
-									return '<span class="disabled"><img src="/images/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
+												+ '); return false;" class="prev"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
+									return '<span class="disabled"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
 
 								case 'first':
 
@@ -252,7 +252,7 @@ function pageinit() {
 									value="<%=Encode.forHtmlAttribute(form.getKeyword())%>" name="keyword"
 									placeholder="Search" />
 								<input class="campl-search-submit "
-									src="/images/interface/btn-search-header.png" type="image">
+									src="/img/interface/btn-search-header.png" type="image">
 								<%
 									Iterator<String> facetsUsedHidden = form.getFacets().keySet()
 												.iterator();

@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>      
 <%
 int activeIndex = Integer.valueOf(request.getParameter("activeMenuIndex"));
 boolean displaySearch = request.getParameter("displaySearch").toString().equals("true");
@@ -52,8 +53,13 @@ String subtitle = request.getParameter("subtitle");
 							<li><a href="/contributors/">Contributors</a>
 							<li><a href="/terms/">Terms and Conditions</a></li>
 						</ul></li>	
-	<li><a href="/help/" title="Help" <% if (activeIndex==4) { %>class="campl-selected" <% } %>> Help </a></li></ul>
+	<li><a href="/help/" title="Help" <% if (activeIndex==4) { %>class="campl-selected" <% } %>> Help </a></li>
+                
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <li><a style="background:#ff4444" href="/admin/" title="Admin"> Admin </a></li>
+        </sec:authorize>
         
+        </ul>
 			</div></div>
 			
 			<% if (title!=null) { %>

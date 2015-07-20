@@ -22,7 +22,7 @@
 		<div class="campl-column6 campl-footer-navigation">
 			<div class="campl-content-container campl-navigation-list">
 				<ul class="campl-unstyled-list">
-					<li><img src="/images/header/ULLogowhite.gif" /><br /> <br /></li>
+					<li><img src="/img/header/ULLogowhite.gif" /><br /> <br /></li>
 					<li><a href="/terms/">© 2011-2015 Cambridge University
 							Library, West Road, Cambridge CB3 9DR, UK</a></li>
 				</ul>
@@ -61,7 +61,7 @@
 		<div class="campl-column3 campl-footer-navigation">
 			<div class="campl-content-container campl-footer-logo">
 				<img alt="University of Cambridge"
-					src="/images/interface/main-logo-small.png"
+					src="/img/interface/main-logo-small.png"
 					class="campl-scale-with-grid" />
 				<p>&#169; 2015 University of Cambridge</p>
 				<ul class="campl-unstyled-list campl-global-footer-links">
