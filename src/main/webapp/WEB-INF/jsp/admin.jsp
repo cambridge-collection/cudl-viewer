@@ -12,11 +12,11 @@
         <div class="campl-column9  campl-main-content" id="content">
             <div class="campl-content-container">
                 <form method="get" action="/admin/jsonsuccess">
-                    <button type="submit" class="campl-primary-cta">Cudl-data Live</button>
-                    <p>copy json from git master to git branch</p>
+                    <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy json from dev to live?')">Cudl-data Live</button>
+                    <p>copy cudl data from git master to git branch</p>
                 </form>
                 <form method="get" action="/admin/dbsuccess">
-                    <button type="submit" class="campl-primary-cta">Database Live </button>
+                    <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy database from dev to live?')">Database Live </button>
                     <p>copy dev database to live database</p>
                 </form>
 

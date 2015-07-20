@@ -32,7 +32,8 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
-				<configuration>
+                                <version>1.1</version>
+                                <configuration>
 					<path>/</path>
 					<uriEncoding>UTF-8</uriEncoding>
 					<additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
@@ -63,13 +64,15 @@
 				<configuration>
 					<warName>FoundationsViewer</warName>
 					<packagingExcludes>WEB-INF/classes/cudl-global.properties</packagingExcludes>
+<!--                                        <packagingExcludes>WEB-INF/classes/cudl-database.properties</packagingExcludes>-->
 				</configuration>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
+                                <version>2.7</version>
+                                <configuration>
 					<nonFilteredFileExtensions>
 						<nonFilteredFileExtension>keystore</nonFilteredFileExtension>
 					</nonFilteredFileExtensions>

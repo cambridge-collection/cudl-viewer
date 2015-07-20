@@ -22,6 +22,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import ulcambridge.foundations.viewer.CollectionFactory;
 
 import ulcambridge.foundations.viewer.model.Properties;
@@ -50,6 +52,7 @@ public class DatabaseCopy {
      copy items,collections and itemsincollection tables from the dev database to a file in /tmp directory
      The files have the same names as the tables
      */
+    
     public Boolean copyToFile(String tablename) {
         Boolean success;
         String url;
@@ -64,6 +67,7 @@ public class DatabaseCopy {
     /*
      Called from copyToFile-dumps the database tables to a file
      */
+   
     public Boolean writeToFile(String tablename, String url) {
         Connection con = null;
         FileWriter fileWriter = null;
@@ -136,6 +140,7 @@ public class DatabaseCopy {
     /*
      copy the contents of the file(output of the copyToFile function) into the live database
      */
+   
     public Boolean copyIn(String tablename, Connection con) {
 
         Boolean success = true;
@@ -167,6 +172,7 @@ public class DatabaseCopy {
 
     }
 
+    
     public Boolean init() {
         ArrayList<String> tablename;
         Iterator<String> iterator;

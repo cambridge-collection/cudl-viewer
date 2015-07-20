@@ -18,21 +18,23 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.transport.FetchResult;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  *
  * @author rekha
  */
-public class GitJsonCopy {
+public class GitCudlDataCopy {
 
-    private final static String localPathMasters = "/tmp/jgitTest/cudl-data/";
-    private final static String localPathBranch = "/tmp/jgitTest/Branch/cudl-data/";
-    private Repository localRepomasters, localRepobranch;
-    private static Git gitmasters, gitbranch;
-    private final String username = "rr494";
-    private final String password = "";
-    private final static String url = "https://bitbucket.org/CUDL/cudl-data.git";
+    private final static String localPathMasters = Properties.getString("git.localpath");
+    private Repository localRepomasters;
+    private static Git gitmasters;
+    private final String username = Properties.getString("git.username");
+    private final String password = Properties.getString("git.password");
+    private final static String url = Properties.getString("git.url");
+    private final static String refspec = Properties.getString("git.refspec");
     Boolean success = false;
+    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(GitCudlDataCopy.class.getName());
 
     protected Boolean merge() {
 
@@ -40,20 +42,22 @@ public class GitJsonCopy {
             //master
             localRepomasters = new FileRepository(localPathMasters + "/.git");
             gitmasters = new Git(localRepomasters);
-            //master:branch
-            gitmasters.push().setRefSpecs(new RefSpec("cudl-data-m:cudl-data-golive")).setRemote(url).setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, password)).call();
+            //refspec = master:branch
+            gitmasters.push().setRefSpecs(new RefSpec(refspec)).setRemote(url).setCredentialsProvider(new UsernamePasswordCredentialsProvider(username, password)).call();
             success = true;
         } catch (IOException ex) {
-            Logger.getLogger(GitJsonCopy.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("success from IOexception="+success);
+            logger.error("IO Exception" + ex);
             success = false;
         } catch (RefAlreadyExistsException ex) {
-            Logger.getLogger(GitJsonCopy.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("RefAlreadyExistsException" +ex);
             success = false;
         } catch (CheckoutConflictException ex) {
-            Logger.getLogger(GitJsonCopy.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("CheckoutConflictException" +ex);
             success = false;
         } catch (GitAPIException ex) {
-            Logger.getLogger(GitJsonCopy.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("success from gitexception="+success);
+            logger.error("GitAPIException" +ex);
             success = false;
         }
         return success;
