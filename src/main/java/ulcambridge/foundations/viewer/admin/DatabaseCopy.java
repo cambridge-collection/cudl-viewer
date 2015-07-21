@@ -282,7 +282,7 @@ public class DatabaseCopy {
             prepareStatement.setTimestamp(1, timestamp);
             prepareStatement.executeUpdate();
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(DatabaseCopy.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("timestamp process failed");
         }
     }
 

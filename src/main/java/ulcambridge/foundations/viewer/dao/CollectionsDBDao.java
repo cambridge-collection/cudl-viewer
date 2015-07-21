@@ -82,9 +82,9 @@ public class CollectionsDBDao implements CollectionsDao {
         return rowcount;
     }
     
-//    public Timestamp getTimestamp(){
-//        String query = "SELECT timestamp FROM timestamp";
-//        Timestamp timestamptz = jdbcTemplate.queryForObject(query, Timestamp.class);
-//        return timestamptz;
-//    }
+    public Timestamp getTimestamp(){
+        String query = "SELECT max(timestamp) FROM timestamp";
+        Timestamp timestamptz = jdbcTemplate.queryForObject(query, Timestamp.class);
+        return timestamptz;
+    }
 }

@@ -36,9 +36,10 @@ public class CollectionFactory {
         }
     }
 
-    public boolean getInitialised(){
+    public boolean getInitialised() {
         return initialised;
     }
+
     public void init() {
         collections = new Hashtable<String, Collection>();
         rootCollections = new ArrayList<Collection>();
@@ -64,7 +65,7 @@ public class CollectionFactory {
         collectionsRowCount = collectionsDao.getCollectionsRowCount();
         itemsRowCount = collectionsDao.getItemsRowCount();
         itemsinCollectionRowCount = collectionsDao.getItemsInCollectionsRowCount();
-       // timestamp = collectionsDao.getTimestamp();
+        timestamp = collectionsDao.getTimestamp();
         initialised = true;
     }
 
@@ -142,8 +143,14 @@ public class CollectionFactory {
     public int getItemsInCollectionsRowCount() {
         return itemsinCollectionRowCount;
     }
-    
-    public Timestamp getTimestamp(){
+
+    //get the timestamp before database copy
+    public Timestamp getOldTimestamp() {
         return timestamp;
+    }
+
+    //timestamp after database copy
+    public Timestamp getCurrentTimestamp() {
+        return collectionsDao.getTimestamp();
     }
 }

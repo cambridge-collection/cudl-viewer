@@ -5,8 +5,10 @@
  */
 package ulcambridge.foundations.viewer;
 
+import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  *
@@ -16,6 +18,7 @@ public class RefreshCache {
 
     private CollectionFactory collectionFactory;
     private ItemFactory itemFactory;
+    private final String adminEnabled = Properties.getString("admin.enabled");
 
     @Autowired
     public void setCollectionFactory(CollectionFactory factory) {
@@ -29,8 +32,20 @@ public class RefreshCache {
 
     @Scheduled(fixedRate = 5000)
     public void refresh() {
-        this.collectionFactory.init();
-        ItemFactory itemfactory = new ItemFactory();
-        itemfactory.clearItemCache();
+        if (adminEnabled.equals("false")) {
+            Timestamp oldtimestamp = this.collectionFactory.getOldTimestamp();
+            Timestamp currenttimestamp = this.collectionFactory.getCurrentTimestamp();
+
+            int compareTo = oldtimestamp.compareTo(currenttimestamp);
+            if (compareTo < 0) {
+                //get fresh collections from the database
+                this.collectionFactory.init();
+                // empty item cache
+                ItemFactory itemfactory = new ItemFactory();
+                itemfactory.clearItemCache();
+                System.out.println("refreshing...");
+            }
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.dao;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,11 @@ public class CollectionsMockDao implements CollectionsDao {
     @Override
     public int getItemsRowCount() {
         return 0;
+    }
+
+    @Override
+    public Timestamp getTimestamp() {
+        return null;
     }
 
 }
