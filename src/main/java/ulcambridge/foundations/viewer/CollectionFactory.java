@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -18,22 +19,26 @@ public class CollectionFactory {
 
     private static Hashtable<String, Collection> collections;// = new Hashtable<String, Collection>();
     private static ArrayList<Collection> rootCollections;//= new ArrayList<Collection>();
-    private static boolean initalised = false;
+    private static boolean initialised = false;
     private CollectionsDao collectionsDao;
     private static int collectionsRowCount;
     private static int itemsRowCount;
     private static int itemsinCollectionRowCount;
+    private Timestamp timestamp;
 
     private static HashSet<String> allItemIds = new HashSet<String>(); // list of items in any collection
 
     @Autowired
     public void setCollectionsDao(CollectionsDao dao) {
         collectionsDao = dao;
-        if (!initalised) {
+        if (!initialised) {
             init();
         }
     }
 
+    public boolean getInitialised(){
+        return initialised;
+    }
     public void init() {
         collections = new Hashtable<String, Collection>();
         rootCollections = new ArrayList<Collection>();
@@ -59,7 +64,8 @@ public class CollectionFactory {
         collectionsRowCount = collectionsDao.getCollectionsRowCount();
         itemsRowCount = collectionsDao.getItemsRowCount();
         itemsinCollectionRowCount = collectionsDao.getItemsInCollectionsRowCount();
-        initalised = true;
+       // timestamp = collectionsDao.getTimestamp();
+        initialised = true;
     }
 
     public Collection getCollectionFromId(String id) {
@@ -135,5 +141,9 @@ public class CollectionFactory {
 
     public int getItemsInCollectionsRowCount() {
         return itemsinCollectionRowCount;
+    }
+    
+    public Timestamp getTimestamp(){
+        return timestamp;
     }
 }

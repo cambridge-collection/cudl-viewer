@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -80,4 +81,10 @@ public class CollectionsDBDao implements CollectionsDao {
         Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
         return rowcount;
     }
+    
+//    public Timestamp getTimestamp(){
+//        String query = "SELECT timestamp FROM timestamp";
+//        Timestamp timestamptz = jdbcTemplate.queryForObject(query, Timestamp.class);
+//        return timestamptz;
+//    }
 }
