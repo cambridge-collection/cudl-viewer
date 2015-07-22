@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
-import ulcambridge.foundations.viewer.model.Properties;
+
 
 @Controller
 public class LoginController {
@@ -47,7 +47,6 @@ public class LoginController {
     private final OAuth2RestOperations linkedinTemplate;
     private BookmarkDao bookmarkDao;
     private UsersDao usersDao;
-    
 
     @Autowired
     public LoginController(OAuth2RestOperations googleTemplate,
@@ -129,19 +128,16 @@ public class LoginController {
 
         // This should only be called up until Jan 2017.
         migrateGoogleUser(usernameEncoded);
-        
+
         // setup user in Spring Security and DB
-        Boolean adminEnabled = setupUser(usernameEncoded, emailEncoded, session);
+       setupUser(usernameEncoded, emailEncoded, session);
+
         
-        //if live site deny access to admin page
-        if (adminEnabled==false && "admin".equals(sessionAccess)) {
-            callRedirect("liveSite", response);
-        } else {
             callRedirect(sessionAccess, response);
-            
-        }
-        session.removeAttribute("access");
+
         
+        session.removeAttribute("access");
+
         return null;
     }
 
@@ -169,16 +165,14 @@ public class LoginController {
 
         String usernameEncoded = "facebook:" + encode(id);
 
-         // setup user in Spring Security and DB
-        Boolean adminEnabled = setupUser(usernameEncoded, emailEncoded, session);
-        
+        // setup user in Spring Security and DB
+        setupUser(usernameEncoded, emailEncoded, session);
+
         //if live site deny access to admin page
-        if (adminEnabled==false && "admin".equals(sessionAccess)) {
-            callRedirect("liveSite", response);
-        } else {
+        
             callRedirect(sessionAccess, response);
-            
-        }
+
+        
         session.removeAttribute("access");
 
         return null;
@@ -210,16 +204,11 @@ public class LoginController {
 
         String usernameEncoded = "linkedin:" + encode(id);
 
-         // setup user in Spring Security and DB
-        Boolean adminEnabled = setupUser(usernameEncoded, emailEncoded, session);
-        
-        //if live site deny access to admin page
-        if (adminEnabled==false && "admin".equals(sessionAccess)) {
-            callRedirect("liveSite", response);
-        } else {
-            callRedirect(sessionAccess, response);
-            
-        }
+        // setup user in Spring Security and DB
+        setupUser(usernameEncoded, emailEncoded, session);
+
+        callRedirect(sessionAccess, response);
+
         session.removeAttribute("access");
 
         return null;
@@ -242,15 +231,10 @@ public class LoginController {
         String emailEncoded = encode(username + "@cam.ac.uk");
 
         // setup user in Spring Security and DB
-        Boolean adminEnabled = setupUser(usernameEncoded, emailEncoded, session);
-        
-        //if live site deny access to admin page
-        if (adminEnabled==false && "admin".equals(sessionAccess)) {
-            callRedirect("liveSite", response);
-        } else {
-            callRedirect(sessionAccess, response);
-            
-        }
+        setupUser(usernameEncoded, emailEncoded, session);
+
+        callRedirect(sessionAccess, response);
+
         session.removeAttribute("access");
         return null;
     }
@@ -286,26 +270,20 @@ public class LoginController {
      * @param id
      * @param session
      */
-    private Boolean setupUser(String username, String email, HttpSession session) {
-        String adminEnabled = Properties.getString("admin.enabled");
-        
-        if (adminEnabled.equals("false")) {
-            return false;
-        } else {
-            // Create user in database if required, and store details in user
-            // session.
-            User user = usersDao.createUser(username, email);
-            session.setAttribute("user", user);
+    private void setupUser(String username, String email, HttpSession session) {
 
-            // Create user in Spring security
-            Authentication auth = new PreAuthenticatedAuthenticationToken(username,
-                    null,
-                    AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils
-                            .join(user.getUserRoles(), ",")));
-            SecurityContextHolder.getContext().setAuthentication(auth);
-            
-            return true;
-        }
+        // Create user in database if required, and store details in user
+        // session.
+        User user = usersDao.createUser(username, email);
+        session.setAttribute("user", user);
+
+        // Create user in Spring security
+        Authentication auth = new PreAuthenticatedAuthenticationToken(username,
+                null,
+                AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils
+                        .join(user.getUserRoles(), ",")));
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
     }
 
     /**
