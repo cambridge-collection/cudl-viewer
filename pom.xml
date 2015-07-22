@@ -20,11 +20,11 @@
 		<developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</developerConnection> 
 		<url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url> 
 		</scm> -->
-	<scm>
-		<connection>scm:git:ssh://git@bitbucket.org/${username}/CUL-DigiLib/cudl-viewer.git</connection>
-		<developerConnection>scm:git:ssh://git@bitbucket.org/${username}/CUL-DigiLib/cudl-viewer.git</developerConnection>
-		<url>https://bitbucket.org/${username}/CUL-DigiLib/cudl-viewer.git</url>
-	</scm>
+    <scm>
+        <connection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</developerConnection>
+        <url>https://bitbucket.org/${username}/CUDL/cudl-viewer.git</url>
+    </scm>
 
 	<build>
 		<plugins>
