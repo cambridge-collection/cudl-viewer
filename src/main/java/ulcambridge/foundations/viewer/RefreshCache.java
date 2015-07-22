@@ -30,7 +30,7 @@ public class RefreshCache {
         this.itemFactory = factory;
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 300000)  // Check every 5 mins. 
     public void refresh() {
         if (adminEnabled.equals("false")) {
             Timestamp oldtimestamp = this.collectionFactory.getOldTimestamp();
