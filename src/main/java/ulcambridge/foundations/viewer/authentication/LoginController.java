@@ -129,8 +129,7 @@ public class LoginController {
         // This should only be called up until Jan 2017.
         migrateGoogleUser(usernameEncoded);
 
-        // setup user in Spring Security and DB
-       setupUser(usernameEncoded, emailEncoded, session);
+       
 
         
             callRedirect(sessionAccess, response);
@@ -346,11 +345,7 @@ public class LoginController {
         if ("mylibrary".equals(sessionAccess)) {
             // forward to /mylibrary/
             response.sendRedirect("/mylibrary/");
-        } else //if in live website deny access to admin page
-        if ("liveSite".equals(sessionAccess)) {
-            //access denied page
-            response.sendRedirect("/auth/denied/");
-        }
+        } 
     }
 
 }
