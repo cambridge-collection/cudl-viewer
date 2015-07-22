@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  *
@@ -37,12 +38,18 @@ public class AdminController {
 
     // on path /admin/jsonsuccess
     @RequestMapping(value = "/jsonsuccess", method = RequestMethod.GET)
-    public ModelAndView handleAdminSuccessRequest()
+    public ModelAndView handleAdminDataSuccessRequest()
             throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminsuccess");
-        GitCudlDataCopy gjson = new GitCudlDataCopy();
-        Boolean success = gjson.merge();
+        String localPathMasters = Properties.getString("git.localpath");
+        String username = Properties.getString("git.username");
+        String password = Properties.getString("git.password");
+        String url = Properties.getString("git.url");
+        String refspec = Properties.getString("git.refspec");
+        
+        GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
+        Boolean success = gjson.gitcopy();
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
         } else {
@@ -51,6 +58,27 @@ public class AdminController {
         return mv;
     }
 
+    // on path /admin/contentsuccess
+    @RequestMapping(value = "/contentsuccess", method = RequestMethod.GET)
+    public ModelAndView handleAdminContentSuccessRequest()
+            throws Exception {
+
+        ModelAndView mv = new ModelAndView("jsp/adminsuccess");
+        String localPathMasters = Properties.getString("git.content.localpath");
+        String username = Properties.getString("git.content.username");
+        String password = Properties.getString("git.content.password");
+        String url = Properties.getString("git.content.url");
+        String refspec = Properties.getString("git.content.refspec");
+        
+        GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
+        Boolean success = gjson.gitcopy();
+        if (success) {
+            mv.addObject("copysuccess", "Copy to Branch was successful!");
+        } else {
+            mv.addObject("copysuccess", "Copy to Branch failed!");
+        }
+        return mv;
+    }
     
     @Secured("hasRole('ROLE_ADMIN')")
     //on path /admin/dbsuccess
@@ -67,7 +95,7 @@ public class AdminController {
         } else {
             mv.addObject("copysuccess", "Copy to Live database failed!");
         }
-        
+
         return mv;
     }
 
