@@ -26,17 +26,24 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class GitCudlDataCopy {
 
-    private final static String localPathMasters = Properties.getString("git.localpath");
+    private String localPathMasters ;
     private Repository localRepomasters;
-    private static Git gitmasters;
-    private final String username = Properties.getString("git.username");
-    private final String password = Properties.getString("git.password");
-    private final static String url = Properties.getString("git.url");
-    private final static String refspec = Properties.getString("git.refspec");
+    private Git gitmasters;
+    private String username ;
+    private String password ;
+    private String url ;
+    private String refspec;
     Boolean success = false;
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(GitCudlDataCopy.class.getName());
 
-    protected Boolean merge() {
+    public GitCudlDataCopy(String localPathMasters,String username,String password,String url,String refspec){
+        this.localPathMasters = localPathMasters;
+        this.username = username;
+        this.password = password;
+        this.url = url;
+        this.refspec = refspec;
+    }
+    protected Boolean gitcopy() {
 
         try {
             //master

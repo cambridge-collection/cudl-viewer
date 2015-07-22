@@ -37,7 +37,6 @@ import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
 
-
 @Controller
 public class LoginController {
 
@@ -129,12 +128,8 @@ public class LoginController {
         // This should only be called up until Jan 2017.
         migrateGoogleUser(usernameEncoded);
 
-       
+        callRedirect(sessionAccess, response);
 
-        
-            callRedirect(sessionAccess, response);
-
-        
         session.removeAttribute("access");
 
         return null;
@@ -168,10 +163,8 @@ public class LoginController {
         setupUser(usernameEncoded, emailEncoded, session);
 
         //if live site deny access to admin page
-        
-            callRedirect(sessionAccess, response);
+        callRedirect(sessionAccess, response);
 
-        
         session.removeAttribute("access");
 
         return null;
@@ -345,7 +338,7 @@ public class LoginController {
         if ("mylibrary".equals(sessionAccess)) {
             // forward to /mylibrary/
             response.sendRedirect("/mylibrary/");
-        } 
+        }
     }
 
 }
