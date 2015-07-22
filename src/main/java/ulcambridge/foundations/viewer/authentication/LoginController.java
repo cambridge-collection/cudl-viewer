@@ -4,11 +4,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
+import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
 public class LoginController {
@@ -269,11 +267,18 @@ public class LoginController {
         User user = usersDao.createUser(username, email);
         session.setAttribute("user", user);
 
+        List<String> userRoles = user.getUserRoles();        
+        
+    	// Remove the ROLE_ADMIN if admin is disabled.
+        if (!Properties.getString("admin.enabled").trim().equals("true")) {        
+        	userRoles.remove(new String("ROLE_ADMIN"));
+        }
+        
         // Create user in Spring security
         Authentication auth = new PreAuthenticatedAuthenticationToken(username,
                 null,
                 AuthorityUtils.commaSeparatedStringToAuthorityList(StringUtils
-                        .join(user.getUserRoles(), ",")));
+                        .join(userRoles, ",")));
         SecurityContextHolder.getContext().setAuthentication(auth);
 
     }
