@@ -13,21 +13,16 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.logging.Level;
+
 import org.apache.log4j.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import ulcambridge.foundations.viewer.CollectionFactory;
 
+import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -39,8 +34,8 @@ public class DatabaseCopy {
     private final String urlLive = Properties.getString("db.jdbc.url.live");
     private final String urlDev = Properties.getString("db.jdbc.url.dev");
     private final String userLive = Properties.getString("db.jdbc.user.live");
-    private final String pwdLive = Properties.getString("db.jdbc.password.live");
     private final String userDev = Properties.getString("db.jdbc.user.dev");
+    private final String pwdLive = Properties.getString("db.jdbc.password.live");    
     private final String pwdDev = Properties.getString("db.jdbc.password.dev");
     private final String filepath = Properties.getString("db.filepath");
     private CollectionFactory collectionfactory;
@@ -55,7 +50,7 @@ public class DatabaseCopy {
      The files have the same names as the tables
      */
     
-    public Boolean copyToFile(String tablename) {
+    private Boolean copyToFile(String tablename) {
         Boolean success;
         String url;
 
@@ -70,7 +65,7 @@ public class DatabaseCopy {
      Called from copyToFile-dumps the database tables to a file
      */
    
-    public Boolean writeToFile(String tablename, String url) {
+    private Boolean writeToFile(String tablename, String url) {
         Connection con = null;
         FileWriter fileWriter = null;
         Boolean success = false;
@@ -143,7 +138,7 @@ public class DatabaseCopy {
      copy the contents of the file(output of the copyToFile function) into the live database
      */
    
-    public Boolean copyIn(String tablename, Connection con) {
+    private Boolean copyIn(String tablename, Connection con) {
 
         Boolean success = true;
         try {
@@ -175,7 +170,7 @@ public class DatabaseCopy {
     }
 
     
-    public Boolean init() {
+    public Boolean copy() {
         ArrayList<String> tablename;
         Iterator<String> iterator;
         Connection conlive = null;

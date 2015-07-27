@@ -89,7 +89,7 @@ public class AdminController {
         ModelAndView mv = new ModelAndView("jsp/adminsuccess");
 
         DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
-        Boolean success = copyClass.init();
+        Boolean success = copyClass.copy();
         if (success) {
             mv.addObject("copysuccess", "Copy to Live database was successful!");
         } else {
