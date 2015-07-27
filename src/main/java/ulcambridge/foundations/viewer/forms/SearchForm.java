@@ -31,6 +31,7 @@ public class SearchForm {
 	private String facetDate;
 	private String facetSubject;
 	private String facetCollection;	
+	private String facetPlace;
 
 	public String getKeyword() {
 		return keyword;
@@ -161,6 +162,15 @@ public class SearchForm {
 		facets.put("collection", facetCollection);
 	}
 	
+	public String getFacetPlace() {
+		return facetPlace;
+	}
+	
+	public void setFacetPlace(String facetPlace) {
+		this.facetPlace = facetPlace;
+		facets.put("place", facetPlace);
+	}
+	
 	public Map<String, String> getFacets() {
 		
 		return facets;
@@ -189,7 +199,8 @@ public class SearchForm {
 		
 		this.facetCollection = input.facetCollection;
 		this.facetDate = input.facetDate;
-		this.facetSubject = input.facetSubject;		
+		this.facetSubject = input.facetSubject;
+		this.facetPlace = input.facetPlace;
 		Hashtable<String, String> facets = new Hashtable<String, String>();
 		facets.putAll(input.facets);
 		this.facets = facets;		
