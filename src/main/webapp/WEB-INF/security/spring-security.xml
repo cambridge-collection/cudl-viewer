@@ -65,6 +65,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
                          resource="linkedin" />
         		
     <security:http pattern="/images/**" security='none' />
+    <security:http pattern="/img/**" security='none' />
     <security:http pattern="/scripts/**" security='none' />
     <security:http pattern="/styles/**" security='none' />
 

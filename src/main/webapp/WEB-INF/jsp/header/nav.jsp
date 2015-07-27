@@ -81,7 +81,7 @@
 					<div class="campl-column6 cudl-header-search">
 						<form action="/search" class="campl-search-input">
 							<input name="keyword" type="text" class="text" placeholder="Search" />
-							<input type="image" class="campl-search-submit " src="/images/interface/btn-search-inpage.png">
+							<input type="image" class="campl-search-submit " src="/img/interface/btn-search-inpage.png">
 						</form>
 					</div>
 					
