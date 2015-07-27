@@ -6,7 +6,7 @@
 
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
-	<jsp:param name="activeMenuIndex" value="2" />
+	<jsp:param name="activeMenuIndex" value="3" />
 	<jsp:param name="displaySearch" value="true" />
 	<jsp:param name="title" value="Login" />
 </jsp:include>
