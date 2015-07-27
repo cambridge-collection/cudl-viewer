@@ -11,17 +11,17 @@
     <div class="campl-wrap clearfix">
         <div class="campl-column9  campl-main-content" id="content">
             <div class="campl-content-container">
-                <form method="get" action="/admin/jsonsuccess">
+                <form method="get" action="/admin/publishdb">
+                    <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy database from dev to live?')">Database Live </button>
+                    <p>copy dev database to live database</p>
+                </form>            
+                <form method="get" action="/admin/publishjson">
                     <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy data from dev to live?')">Cudl-data Live</button>
                     <p>copy cudl data from git master to git branch</p>
                 </form>
-                <form method="get" action="/admin/contentsuccess">
+                <form method="get" action="/admin/publishcontent">
                     <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy content from dev to live?')">Cudl-content Live</button>
                     <p>copy cudl content from git master to git branch</p>
-                </form>
-                <form method="get" action="/admin/dbsuccess">
-                    <button type="submit" class="campl-primary-cta" onClick="javascript:return confirm('Are you sure you want to copy database from dev to live?')">Database Live </button>
-                    <p>copy dev database to live database</p>
                 </form>
 
                 <p><a href="/admin/auth/logout">Logout</a></p>

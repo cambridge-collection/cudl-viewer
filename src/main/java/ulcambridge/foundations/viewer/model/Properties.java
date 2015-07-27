@@ -11,8 +11,6 @@ public class Properties {
 	private final static ResourceBundle collectionConfig = ResourceBundle
 			.getBundle("collections");
 
-        private final static ResourceBundle databaseConfig = ResourceBundle
-			.getBundle("cudl-database");
 	public static String getString(String key) {
 
 		// Check global properties
@@ -30,16 +28,6 @@ public class Properties {
 			String collectionValue = collectionConfig.getString(key);
 			if (collectionValue != null) {
 				return collectionValue;
-			}
-		} catch (MissingResourceException e) { 
-			/* resource not found, look in next bundle */
-		}
-
-                // Check database properties
-		try {			
-			String databaseValue = databaseConfig.getString(key);
-			if (databaseValue != null) {
-				return databaseValue;
 			}
 		} catch (MissingResourceException e) { 
 			/* resource not found, look in next bundle */

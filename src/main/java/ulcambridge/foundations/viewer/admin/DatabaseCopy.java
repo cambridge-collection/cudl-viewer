@@ -31,13 +31,13 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class DatabaseCopy {
 
-    private final String urlLive = Properties.getString("db.jdbc.url.live");
-    private final String urlDev = Properties.getString("db.jdbc.url.dev");
-    private final String userLive = Properties.getString("db.jdbc.user.live");
-    private final String userDev = Properties.getString("db.jdbc.user.dev");
-    private final String pwdLive = Properties.getString("db.jdbc.password.live");    
-    private final String pwdDev = Properties.getString("db.jdbc.password.dev");
-    private final String filepath = Properties.getString("db.filepath");
+    private final String urlLive = Properties.getString("admin.db.jdbc.url.live");
+    private final String urlDev = Properties.getString("admin.db.jdbc.url.dev");
+    private final String userLive = Properties.getString("admin.db.jdbc.user.live");
+    private final String userDev = Properties.getString("admin.db.jdbc.user.dev");
+    private final String pwdLive = Properties.getString("admin.db.jdbc.password.live");    
+    private final String pwdDev = Properties.getString("admin.db.jdbc.password.dev");
+    private final String filepath = Properties.getString("admin.db.filepath");
     private CollectionFactory collectionfactory;
     private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
 

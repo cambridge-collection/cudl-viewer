@@ -36,17 +36,18 @@ public class AdminController {
         this.itemFactory = factory;
     }
 
-    // on path /admin/jsonsuccess
-    @RequestMapping(value = "/jsonsuccess", method = RequestMethod.GET)
-    public ModelAndView handleAdminDataSuccessRequest()
+    // on path /admin/publishjson
+    @RequestMapping(value = "publishjson", method = RequestMethod.GET)
+    @Secured("hasRole('ROLE_ADMIN')")    
+    public ModelAndView handlePublishJsonRequest()
             throws Exception {
 
-        ModelAndView mv = new ModelAndView("jsp/adminsuccess");
-        String localPathMasters = Properties.getString("git.localpath");
-        String username = Properties.getString("git.username");
-        String password = Properties.getString("git.password");
-        String url = Properties.getString("git.url");
-        String refspec = Properties.getString("git.refspec");
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+        String localPathMasters = Properties.getString("admin.git.json.localpath");
+        String username = Properties.getString("admin.git.json.username");
+        String password = Properties.getString("admin.git.json.password");
+        String url = Properties.getString("admin.git.json.url");
+        String refspec = Properties.getString("admin.git.json.refspec");
         
         GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
         Boolean success = gjson.gitcopy();
@@ -58,17 +59,18 @@ public class AdminController {
         return mv;
     }
 
-    // on path /admin/contentsuccess
-    @RequestMapping(value = "/contentsuccess", method = RequestMethod.GET)
-    public ModelAndView handleAdminContentSuccessRequest()
+    // on path /admin/publishcontent
+    @Secured("hasRole('ROLE_ADMIN')")    
+    @RequestMapping(value = "/publishcontent", method = RequestMethod.GET)
+    public ModelAndView handlePublishContentRequest()
             throws Exception {
 
-        ModelAndView mv = new ModelAndView("jsp/adminsuccess");
-        String localPathMasters = Properties.getString("git.content.localpath");
-        String username = Properties.getString("git.content.username");
-        String password = Properties.getString("git.content.password");
-        String url = Properties.getString("git.content.url");
-        String refspec = Properties.getString("git.content.refspec");
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+        String localPathMasters = Properties.getString("admin.git.content.localpath");
+        String username = Properties.getString("admin.git.content.username");
+        String password = Properties.getString("admin.git.content.password");
+        String url = Properties.getString("admin.git.content.url");
+        String refspec = Properties.getString("admin.git.content.refspec");
         
         GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
         Boolean success = gjson.gitcopy();
@@ -80,13 +82,14 @@ public class AdminController {
         return mv;
     }
     
-    @Secured("hasRole('ROLE_ADMIN')")
+    
     //on path /admin/dbsuccess
-    @RequestMapping(value = "/dbsuccess", method = RequestMethod.GET)
-    public ModelAndView handleDbSuccessRequest()
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/publishdb", method = RequestMethod.GET)    
+    public ModelAndView handlePublishDbRequest()
             throws Exception {
 
-        ModelAndView mv = new ModelAndView("jsp/adminsuccess");
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
 
         DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
         Boolean success = copyClass.copy();

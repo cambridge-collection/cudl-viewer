@@ -1,8 +1,12 @@
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.admin;
 
 import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+
+import ulcambridge.foundations.viewer.CollectionFactory;
+import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
