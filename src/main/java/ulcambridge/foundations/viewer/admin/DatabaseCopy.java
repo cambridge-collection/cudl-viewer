@@ -21,6 +21,7 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
+import org.springframework.security.access.annotation.Secured;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -97,18 +98,23 @@ public class DatabaseCopy {
 
         } catch (SQLException ex) {
             logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            ex.printStackTrace();
             success = false;
         } catch (FileNotFoundException ex) {
             logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            ex.printStackTrace();
             success = false;
         } catch (IOException ex) {
             logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            ex.printStackTrace();
             success = false;
         } catch (NullPointerException ex) {
             logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            ex.printStackTrace();
             success = false;
         } catch (Exception ex) {
             logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            ex.printStackTrace();
             success = false;
         } finally {
             try {
@@ -122,10 +128,12 @@ public class DatabaseCopy {
                     }
                 } catch (IOException ex) {
                     logger.error("Exception from writing from dev db to file - finally clause - filewriter close ", ex);
+                    ex.printStackTrace();
                     success = false;
                 }
             } catch (SQLException ex) {
                 logger.error("Exception from writing from dev db to file - finally clause - connection close ", ex);
+                ex.printStackTrace();
                 success = false;
 
             }
@@ -150,18 +158,19 @@ public class DatabaseCopy {
 
         } catch (SQLException ex) {
             logger.error("Exception from writing from file to live db -copy in method", ex);
-
+            ex.printStackTrace();
             success = false;
         } catch (FileNotFoundException ex) {
             logger.error("Exception from writing from file to live db -copy in method", ex);
-
+            ex.printStackTrace();
             success = false;
         } catch (IOException ex) {
             logger.error("Exception from writing from file to live db -copy in method", ex);
+            ex.printStackTrace();
             success = false;
         } catch (Exception ex) {
             logger.error("Exception from writing from file to live db -copy in method", ex);
-
+            ex.printStackTrace();
             success = false;
         }
 
@@ -169,7 +178,7 @@ public class DatabaseCopy {
 
     }
 
-    
+    @Secured("hasRole('ROLE_ADMIN')")    
     public Boolean copy() {
         ArrayList<String> tablename;
         Iterator<String> iterator;
@@ -211,43 +220,53 @@ public class DatabaseCopy {
                     dbsuccess = copyIn(table, conlive);
                     if (!dbsuccess) {
                         conlive.rollback();//rollback if any issues
-                        logger.error("Exception from init method-copyIn failure-rollback done");
+                        logger.error("Exception from copy method-copyIn failure-rollback done");
                         copysuccess = false;
                         break;//also stop the copy of remaining tables
 
                     }
                 } else {//copy to file not successful rollback
                     conlive.rollback();//rollback if any issues
-                    logger.error("Exception from init method-copyOut failure-rollback done");
+                    logger.error("Exception from copy method-copyOut failure-rollback done");
                     copysuccess = false;
                     break;//also stop the copy of remaining tables
                 }
             }
             if (!iterator.hasNext() && dbsuccess) {
-                timestampProcess(conlive);
-                conlive.commit();
-                copysuccess = true;
+                boolean timestampsuccess = timestampProcess(conlive);
+                if (!timestampsuccess) { 
+                	conlive.rollback();//rollback if any issues
+                	logger.error("Exception from copy method-timestampProcess failure-rollback done");
+                	copysuccess = false;
+                } else {
+                    conlive.commit();
+                    copysuccess = true;
+                }
             }
 
         } catch (SQLException ex) {
-            logger.error("Exception from init method", ex);
+            logger.error("Exception from copy method", ex);
+            ex.printStackTrace();
             try {
                 if (conlive != null) {
                     conlive.rollback();//rollback if any issues
                 }
             } catch (SQLException ex1) {
-                logger.error("Exception from init method - conlive.rollback", ex);
+                logger.error("Exception from copy method - conlive.rollback", ex);
+                ex1.printStackTrace();
                 copysuccess = false;
             }
             copysuccess = false;
         } catch (Exception ex) {
-            logger.error("Exception from init method", ex);
+            logger.error("Exception from copy method", ex);
+            ex.printStackTrace();
             try {
                 if (conlive != null) {
                     conlive.rollback();//rollback if any issues
                 }
             } catch (SQLException ex1) {
-                logger.error("Exception from init method - conlive.rollback", ex);
+                logger.error("Exception from copy method - conlive.rollback", ex1);
+                ex1.printStackTrace();
                 copysuccess = false;
             }
             copysuccess = false;
@@ -259,7 +278,8 @@ public class DatabaseCopy {
                 }
 
             } catch (SQLException ex) {
-                logger.error("Exception from init method - finally clause", ex);
+                logger.error("Exception from copy method - finally clause", ex);
+                ex.printStackTrace();
             }
         }
 
@@ -267,18 +287,28 @@ public class DatabaseCopy {
 
     }
     
-    private void timestampProcess(Connection conlive){
+    private boolean timestampProcess(Connection conlive){
+    	
+    	boolean success = false;
+    	
         try {
             java.util.Date date= new java.util.Date();
             Timestamp timestamp = new Timestamp(date.getTime());
-            String sql = "INSERT INTO timestamp values (?)";
-            System.out.println(sql);
-            PreparedStatement prepareStatement = conlive.prepareStatement(sql);
+            String sql = "UPDATE last_update SET last_updated=? WHERE description=?";
+            
+            PreparedStatement prepareStatement = conlive.prepareStatement(sql);            
             prepareStatement.setTimestamp(1, timestamp);
-            prepareStatement.executeUpdate();
+            prepareStatement.setString(2, "db");
+            prepareStatement.executeUpdate();            
+            success = true;
+            
         } catch (SQLException ex) {
             logger.error("timestamp process failed");
+            ex.printStackTrace();
+            success = false;            		
         }
+        
+        return success;        
     }
 
 }

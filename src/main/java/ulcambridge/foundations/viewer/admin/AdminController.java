@@ -35,6 +35,25 @@ public class AdminController {
     public void setItemFactory(ItemFactory factory) {
         this.itemFactory = factory;
     }
+    
+    //on path /admin/publishdb
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/publishdb", method = RequestMethod.GET)    
+    public ModelAndView handlePublishDbRequest()
+            throws Exception {
+
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+
+        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
+        Boolean success = copyClass.copy();
+        if (success) {
+            mv.addObject("copysuccess", "Copy to Live database was successful!");
+        } else {
+            mv.addObject("copysuccess", "Copy to Live database failed!");
+        }
+
+        return mv;
+    }    
 
     // on path /admin/publishjson
     @RequestMapping(value = "publishjson", method = RequestMethod.GET)
@@ -81,26 +100,7 @@ public class AdminController {
         }
         return mv;
     }
-    
-    
-    //on path /admin/dbsuccess
-    @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/publishdb", method = RequestMethod.GET)    
-    public ModelAndView handlePublishDbRequest()
-            throws Exception {
 
-        ModelAndView mv = new ModelAndView("jsp/adminresult");
-
-        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
-        Boolean success = copyClass.copy();
-        if (success) {
-            mv.addObject("copysuccess", "Copy to Live database was successful!");
-        } else {
-            mv.addObject("copysuccess", "Copy to Live database failed!");
-        }
-
-        return mv;
-    }
 
     // on path /admin/
     @RequestMapping(value = "/")

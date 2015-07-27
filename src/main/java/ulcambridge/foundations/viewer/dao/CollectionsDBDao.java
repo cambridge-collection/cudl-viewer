@@ -82,8 +82,10 @@ public class CollectionsDBDao implements CollectionsDao {
     }
     
     public Timestamp getTimestamp(){
-        String query = "SELECT max(timestamp) FROM timestamp";
-        Timestamp timestamptz = jdbcTemplate.queryForObject(query, Timestamp.class);
+        String query = "SELECT last_updated FROM last_update WHERE description=?";     
+        Object[] params = new Object[1];
+        params[0] = "db";
+        Timestamp timestamptz = jdbcTemplate.queryForObject(query, params, Timestamp.class);
         return timestamptz;
     }
 }
