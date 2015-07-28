@@ -2,7 +2,6 @@ package ulcambridge.foundations.viewer.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -20,9 +19,7 @@ public class CollectionsDBDao implements CollectionsDao {
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
-	
-    
+	}	   
 
     public List<String> getCollectionIds() {
 
@@ -81,11 +78,4 @@ public class CollectionsDBDao implements CollectionsDao {
         return rowcount;
     }
     
-    public Timestamp getTimestamp(){
-        String query = "SELECT last_updated FROM last_update WHERE description=?";     
-        Object[] params = new Object[1];
-        params[0] = "db";
-        Timestamp timestamptz = jdbcTemplate.queryForObject(query, params, Timestamp.class);
-        return timestamptz;
-    }
 }

@@ -45,9 +45,4 @@ public class CollectionsMockDao implements CollectionsDao {
         return 0;
     }
 
-    @Override
-    public Timestamp getTimestamp() {
-        return null;
-    }
-
 }
