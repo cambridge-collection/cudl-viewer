@@ -166,4 +166,22 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
         <property name="collectionFactory" ref="collectionFactory" />
         <property name="itemFactory" ref="itemFactory" />
     </bean>
+    
+    <bean id="adminLiveDB"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+		<property name="driverClassName" value="${admin.db.jdbc.driver.live}" />
+		<property name="url" value="${admin.db.jdbc.url.live}" />
+		<property name="username" value="${admin.db.jdbc.user.live}" />
+		<property name="password" value="${admin.db.jdbc.password.live}" />
+		<property name="maxActive" value="2" />
+		<property name="maxIdle" value="1" />
+		<property name="validationQuery" value="SELECT 1" />
+		<property name="testOnBorrow" value="true" />
+		
+	</bean>
+	
+    <bean id="lastUpdateDao" class="ulcambridge.foundations.viewer.dao.LastUpdateDBDao">
+		<property name="dataSource" ref="adminLiveDB" />
+	</bean>
 </beans>

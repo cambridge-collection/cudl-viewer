@@ -5,15 +5,20 @@
  */
 package ulcambridge.foundations.viewer.admin;
 
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.dao.LastUpdateDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -25,6 +30,7 @@ public class AdminController {
 
     private CollectionFactory collectionFactory;
     private ItemFactory itemFactory;
+    private LastUpdateDao updateDao;
 
     @Autowired
     public void setCollectionFactory(CollectionFactory factory) {
@@ -36,6 +42,11 @@ public class AdminController {
         this.itemFactory = factory;
     }
     
+	@Autowired
+	public void setLastUpdateDao(LastUpdateDao updateDao) {
+		this.updateDao = updateDao;
+	}
+	
     //on path /admin/publishdb
     @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/publishdb", method = RequestMethod.GET)    
@@ -44,7 +55,7 @@ public class AdminController {
 
         ModelAndView mv = new ModelAndView("jsp/adminresult");
 
-        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory);
+        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory, updateDao);
         Boolean success = copyClass.copy();
         if (success) {
             mv.addObject("copysuccess", "Copy to Live database was successful!");
@@ -69,6 +80,11 @@ public class AdminController {
         String refspec = Properties.getString("admin.git.json.refspec");
         
         GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
+        
+        // Set timestamp
+        Date date = new Date();
+        updateDao.setLastUpdate("json", new Timestamp(date.getTime()));
+        
         Boolean success = gjson.gitcopy();
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
@@ -93,6 +109,10 @@ public class AdminController {
         
         GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
         Boolean success = gjson.gitcopy();
+        
+        Date date = new Date();
+        updateDao.setLastUpdate("cudl-viewer", new Timestamp(date.getTime()));
+        
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
         } else {

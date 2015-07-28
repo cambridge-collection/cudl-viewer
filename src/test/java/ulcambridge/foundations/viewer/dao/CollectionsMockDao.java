@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.dao;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 

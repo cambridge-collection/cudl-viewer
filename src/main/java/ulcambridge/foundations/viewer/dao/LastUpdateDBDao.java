@@ -45,7 +45,23 @@ public class LastUpdateDBDao implements LastUpdateDao {
 		} catch (Exception e) {
 			return null;
 		}
-
 	}
+	
+	
+    public boolean setLastUpdate(String description, Timestamp timestamp){
+    	
+        try {            
+
+            String sql = "UPDATE last_update SET last_updated=? WHERE description=?";
+            
+			jdbcTemplate.update(sql, new Object[] { timestamp, description });			
+            
+        } catch (DataAccessException ex) {
+            ex.printStackTrace();
+           return false;            		
+        }
+        
+        return true;        
+    }
 
 }

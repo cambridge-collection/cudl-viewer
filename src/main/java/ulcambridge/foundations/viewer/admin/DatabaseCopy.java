@@ -24,6 +24,7 @@ import org.postgresql.core.BaseConnection;
 import org.springframework.security.access.annotation.Secured;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
+import ulcambridge.foundations.viewer.dao.LastUpdateDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -40,11 +41,15 @@ public class DatabaseCopy {
     private final String pwdDev = Properties.getString("admin.db.jdbc.password.dev");
     private final String filepath = Properties.getString("admin.db.filepath");
     private CollectionFactory collectionfactory;
+    private LastUpdateDao updateDao;
     private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
 
-    public DatabaseCopy(CollectionFactory collectionfactory) {
+    
+    public DatabaseCopy(CollectionFactory collectionfactory, LastUpdateDao updateDao) {    	
         this.collectionfactory = collectionfactory;
+        this.updateDao = updateDao;
     }
+    
 
     /*
      copy items,collections and itemsincollection tables from the dev database to a file in /tmp directory
@@ -233,7 +238,8 @@ public class DatabaseCopy {
                 }
             }
             if (!iterator.hasNext() && dbsuccess) {
-                boolean timestampsuccess = timestampProcess(conlive);
+            	java.util.Date date= new java.util.Date();
+                boolean timestampsuccess = updateDao.setLastUpdate("db", new Timestamp(date.getTime()));
                 if (!timestampsuccess) { 
                 	conlive.rollback();//rollback if any issues
                 	logger.error("Exception from copy method-timestampProcess failure-rollback done");
@@ -286,29 +292,4 @@ public class DatabaseCopy {
         return copysuccess;
 
     }
-    
-    private boolean timestampProcess(Connection conlive){
-    	
-    	boolean success = false;
-    	
-        try {
-            java.util.Date date= new java.util.Date();
-            Timestamp timestamp = new Timestamp(date.getTime());
-            String sql = "UPDATE last_update SET last_updated=? WHERE description=?";
-            
-            PreparedStatement prepareStatement = conlive.prepareStatement(sql);            
-            prepareStatement.setTimestamp(1, timestamp);
-            prepareStatement.setString(2, "db");
-            prepareStatement.executeUpdate();            
-            success = true;
-            
-        } catch (SQLException ex) {
-            logger.error("timestamp process failed");
-            ex.printStackTrace();
-            success = false;            		
-        }
-        
-        return success;        
-    }
-
 }
