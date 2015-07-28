@@ -77,15 +77,16 @@ public class AdminController {
         String username = Properties.getString("admin.git.json.username");
         String password = Properties.getString("admin.git.json.password");
         String url = Properties.getString("admin.git.json.url");
-        String refspec = Properties.getString("admin.git.json.refspec");
-        
-        GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
+        String liveBranch = Properties.getString("admin.git.json.branch.live");
+        String localBranch = Properties.getString("admin.git.json.branch.local");
+                
+        GitHelper git = new GitHelper(localPathMasters,username,password,url);
         
         // Set timestamp
         Date date = new Date();
         updateDao.setLastUpdate("json", new Timestamp(date.getTime()));
         
-        Boolean success = gjson.gitcopy();
+        Boolean success = git.push(localBranch+":"+liveBranch);
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
         } else {
@@ -105,10 +106,11 @@ public class AdminController {
         String username = Properties.getString("admin.git.content.username");
         String password = Properties.getString("admin.git.content.password");
         String url = Properties.getString("admin.git.content.url");
-        String refspec = Properties.getString("admin.git.content.refspec");
+        String liveBranch = Properties.getString("admin.git.content.branch.live");
+        String localBranch = Properties.getString("admin.git.content.branch.local");
         
-        GitCudlDataCopy gjson = new GitCudlDataCopy(localPathMasters,username,password,url,refspec);
-        Boolean success = gjson.gitcopy();
+        GitHelper git = new GitHelper(localPathMasters,username,password,url);
+        Boolean success = git.push(localBranch+":"+liveBranch);
         
         Date date = new Date();
         updateDao.setLastUpdate("cudl-viewer", new Timestamp(date.getTime()));

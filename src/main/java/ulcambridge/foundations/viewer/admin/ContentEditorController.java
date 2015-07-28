@@ -53,6 +53,12 @@ public class ContentEditorController {
 			.getString("cudl-viewer-content.images.path");
 	protected final String contentImagesURL = Properties
 			.getString("cudl-viewer-content.images.url");
+	protected final String gitLocalPath = Properties.getString("admin.git.content.localpath");
+	protected final String gitUsername = Properties.getString("admin.git.content.username");
+	protected final String gitPassword = Properties.getString("admin.git.content.password");
+	protected final String gitUrl = Properties.getString("admin.git.content.url");
+	protected final String gitRefspec = Properties.getString("admin.git.content.refspec");    
+	protected final GitHelper git = new GitHelper(gitLocalPath,gitUsername,gitPassword,gitUrl);
 	
 	protected final Log logger = LogFactory.getLog(getClass());
 
@@ -83,6 +89,13 @@ public class ContentEditorController {
 		}
 
 		boolean success = saveHTML(writeParams);
+		if (success) {	        
+	        String localBranch = Properties.getString("admin.git.content.branch.local");			
+			if (!git.commit() || !git.push(localBranch)) {
+				success = false;
+			} 
+		}
+		
 		JSONObject json = new JSONObject();
 		json.put("writesuccess", success);
 
@@ -127,6 +140,13 @@ public class ContentEditorController {
 		boolean saveSuccessful = FileSave.save(contentImagesPath
 				+ File.separator + addParams.getDirectory(), filename, is);
 
+		if (saveSuccessful) {	        
+	        String localBranch = Properties.getString("admin.git.content.branch.local");			
+			if (!git.commit() || !git.push(localBranch)) {
+				saveSuccessful = false;
+			} 
+		}
+		
 		response.setContentType("text/html");
 		write("<html><head><script> window.opener.CKEDITOR.tools.callFunction( "
 				+ addParams.getCKEditorFuncNum()
@@ -229,6 +249,13 @@ public class ContentEditorController {
 			successful = file.delete(); // delete empty directory.
 		}
 
+		if (successful) {	        
+	        String localBranch = Properties.getString("admin.git.content.branch.local");			
+			if (!git.delete(file.getPath()) || !git.push(localBranch)) {
+				successful = false;
+			} 
+		}
+		
 		JSONObject json = new JSONObject();
 		json.put("deletesuccess", successful);
 
