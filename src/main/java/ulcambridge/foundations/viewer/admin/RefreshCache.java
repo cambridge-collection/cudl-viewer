@@ -42,8 +42,7 @@ public class RefreshCache {
 
     @Scheduled(fixedRate = 300000)  // Check every 5 mins. 
     public void refresh() {
-        if (adminEnabled.equals("false")) {
-            
+    	
             Hashtable<String, Timestamp> lastUpdates = lastUpdateDao.getLastUpdate(); 
             		
             if (lastDBLoad.compareTo(lastUpdates.get("db")) < 0) {
@@ -53,14 +52,12 @@ public class RefreshCache {
                 System.out.println("refreshing db...");
             }   
             
-            if (lastJSONLoad.compareTo(lastUpdates.get("json")) < 0) {
+            if (lastJSONLoad.compareTo(lastUpdates.get("cudl-data")) < 0) {
                 // empty item cache
                 itemFactory.clearItemCache();
                 lastJSONLoad = lastUpdates.get("json");
                 System.out.println("refreshing json...");
             }
-
-        }
     }
     
 }

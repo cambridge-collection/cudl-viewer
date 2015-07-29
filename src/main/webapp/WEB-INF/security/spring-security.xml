@@ -162,9 +162,15 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
     <security:global-method-security secured-annotations="enabled" /> 
 
     <task:annotation-driven />
+	
+    <bean id="lastUpdateLocalDao" class="ulcambridge.foundations.viewer.dao.LastUpdateDBDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>    
+    
     <bean id="refresh" class="ulcambridge.foundations.viewer.admin.RefreshCache">
         <property name="collectionFactory" ref="collectionFactory" />
         <property name="itemFactory" ref="itemFactory" />
+        <property name="lastUpdateDao" ref="lastUpdateLocalDao" />
     </bean>
     
     <bean id="adminLiveDB"
@@ -181,7 +187,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		
 	</bean>
 	
-    <bean id="lastUpdateDao" class="ulcambridge.foundations.viewer.dao.LastUpdateDBDao">
+    <bean id="lastUpdateLiveDao" class="ulcambridge.foundations.viewer.dao.LastUpdateDBDao">
 		<property name="dataSource" ref="adminLiveDB" />
 	</bean>
+	
+
 </beans>

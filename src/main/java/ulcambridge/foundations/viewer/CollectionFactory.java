@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,23 +17,14 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionFactory {
 
-	private static Hashtable<String, Collection> collections;// = new
-																// Hashtable<String,
-																// Collection>();
-	private static ArrayList<Collection> rootCollections;// = new
-															// ArrayList<Collection>();
+	private static Map<String, Collection> collections;
+	private static List<Collection> rootCollections;
 	private static boolean initialised = false;
 	private CollectionsDao collectionsDao;
 	private static int collectionsRowCount;
 	private static int itemsRowCount;
 	private static int itemsinCollectionRowCount;
-
-	private static HashSet<String> allItemIds = new HashSet<String>(); // list
-																		// of
-																		// items
-																		// in
-																		// any
-																		// collection
+	private static Set<String> allItemIds; 
 
 	@Autowired
 	public void setCollectionsDao(CollectionsDao dao) {
@@ -45,9 +38,13 @@ public class CollectionFactory {
 		return initialised;
 	}
 
-	public void init() {
+	public synchronized void init() {
+		
+		// Create a new instance of cached items. 
 		collections = new Hashtable<String, Collection>();
-		rootCollections = new ArrayList<Collection>();
+		rootCollections = new Vector<Collection>();
+		allItemIds =  Collections.synchronizedSet(new HashSet<String>()); 
+				
 		List<String> collectionIds = collectionsDao.getCollectionIds();
 		for (int i = 0; i < collectionIds.size(); i++) {
 			String collectionId = collectionIds.get(i);

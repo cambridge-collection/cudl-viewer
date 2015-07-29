@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 public class RavenLoginServlet extends RavenServlet {
 
-    private static final long serialVersionUID = 6459642286645404697L;
-    private HttpServletRequest request;
-    String access;
+    private static final long serialVersionUID = 645964228655367697L;
 
     @Override
     protected void performAction(RavenServlet.Action a, HttpSession session,
@@ -25,7 +23,7 @@ public class RavenLoginServlet extends RavenServlet {
         // Store the username in the session and redirect to the raven login url
         session.setAttribute("cudl-raven-username", this.getUserName(session));
 
-        access = (String) session.getAttribute("access");
+        String access = (String) session.getAttribute("access");
         // See LoginController
         response.sendRedirect("/auth/raven/login?access=" + access);
     }
@@ -39,7 +37,7 @@ public class RavenLoginServlet extends RavenServlet {
             RavenAuthenticationException cause) throws IOException {
 
         cause.printStackTrace();
-        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.&access=" + access);
+        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.");
     }
 
     // Called when authentication is not possible because of a protocol error.
@@ -47,7 +45,7 @@ public class RavenLoginServlet extends RavenServlet {
             javax.servlet.http.HttpServletResponse res, RavenException cause) throws IOException {
 
         cause.printStackTrace();
-        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.&access=" + access);
+        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.");
     }
 
     // Called when a token is received from Raven before the application has
@@ -57,7 +55,7 @@ public class RavenLoginServlet extends RavenServlet {
             RavenStateException cause) throws IOException {
 
         cause.printStackTrace();
-        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.&access=" + access);
+        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.");
     }
 
     // Called when a ServletException is thrown.
@@ -66,7 +64,7 @@ public class RavenLoginServlet extends RavenServlet {
             javax.servlet.ServletException cause) throws IOException {
 
         cause.printStackTrace();
-        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.&access=" + access);
+        res.sendRedirect("/auth/login?error=There was a problem logging into Raven.");
     }
 
 }

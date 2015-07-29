@@ -84,7 +84,7 @@ public class AdminController {
         
         // Set timestamp
         Date date = new Date();
-        updateDao.setLastUpdate("json", new Timestamp(date.getTime()));
+        updateDao.setLastUpdate("cudl-data", new Timestamp(date.getTime()));
         
         Boolean success = git.push(localBranch+":"+liveBranch);
         if (success) {
@@ -113,7 +113,7 @@ public class AdminController {
         Boolean success = git.push(localBranch+":"+liveBranch);
         
         Date date = new Date();
-        updateDao.setLastUpdate("cudl-viewer", new Timestamp(date.getTime()));
+        updateDao.setLastUpdate("cudl-content", new Timestamp(date.getTime()));
         
         if (success) {
             mv.addObject("copysuccess", "Copy to Branch was successful!");
