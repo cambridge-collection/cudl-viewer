@@ -34,11 +34,11 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class DatabaseCopy {
 
     private final String urlLive = Properties.getString("admin.db.jdbc.url.live");
-    private final String urlDev = Properties.getString("admin.db.jdbc.url.dev");
-    private final String userLive = Properties.getString("admin.db.jdbc.user.live");
-    private final String userDev = Properties.getString("admin.db.jdbc.user.dev");
+    private final String userLive = Properties.getString("admin.db.jdbc.user.live");    
     private final String pwdLive = Properties.getString("admin.db.jdbc.password.live");    
-    private final String pwdDev = Properties.getString("admin.db.jdbc.password.dev");
+    private final String urlLocal = Properties.getString("jdbc.url");
+    private final String userLocal = Properties.getString("jdbc.user");
+    private final String pwdLocal = Properties.getString("jdbc.password");
     private final String filepath = Properties.getString("admin.db.filepath");
     private CollectionFactory collectionfactory;
     private LastUpdateDao updateDao;
@@ -52,7 +52,7 @@ public class DatabaseCopy {
     
 
     /*
-     copy items,collections and itemsincollection tables from the dev database to a file in /tmp directory
+     copy items,collections and itemsincollection tables from the local database to a file in /tmp directory
      The files have the same names as the tables
      */
     
@@ -60,7 +60,7 @@ public class DatabaseCopy {
         Boolean success;
         String url;
 
-        url = urlDev;
+        url = urlLocal;
         success = writeToFile(tablename, url);
 
         return success;
@@ -89,7 +89,7 @@ public class DatabaseCopy {
 
             }
             
-            con = DriverManager.getConnection(url, userDev, pwdDev);
+            con = DriverManager.getConnection(url, userLocal, pwdLocal);
             CopyManager copyManager = new CopyManager((BaseConnection) con);
             File file = new File(filepath + tablename);
             fileWriter = new FileWriter(file);
@@ -102,23 +102,23 @@ public class DatabaseCopy {
             fileWriter.flush();
 
         } catch (SQLException ex) {
-            logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            logger.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (FileNotFoundException ex) {
-            logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            logger.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (IOException ex) {
-            logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            logger.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (NullPointerException ex) {
-            logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            logger.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (Exception ex) {
-            logger.error("Exception from writeToFile method - writing from dev db to file", ex);
+            logger.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } finally {
@@ -132,12 +132,12 @@ public class DatabaseCopy {
                         fileWriter.close();
                     }
                 } catch (IOException ex) {
-                    logger.error("Exception from writing from dev db to file - finally clause - filewriter close ", ex);
+                    logger.error("Exception from writing from local db to file - finally clause - filewriter close ", ex);
                     ex.printStackTrace();
                     success = false;
                 }
             } catch (SQLException ex) {
-                logger.error("Exception from writing from dev db to file - finally clause - connection close ", ex);
+                logger.error("Exception from writing from local db to file - finally clause - connection close ", ex);
                 ex.printStackTrace();
                 success = false;
 
@@ -212,12 +212,12 @@ public class DatabaseCopy {
             PreparedStatement prepareStatement = conlive.prepareStatement(sql);
             int rowsTruncated = prepareStatement.executeUpdate();
             
-            //iterate over the 3 tables to copy them out from the dev database into a file and then copy them into the live database
+            //iterate over the 3 tables to copy them out from the local database into a file and then copy them into the live database
             while (iterator.hasNext()) {
                 //get tablename
                 table = iterator.next();
 
-                //write table data from dev db to file
+                //write table data from local db to file
                 copyfilesuccess = copyToFile(table);
 
                 if (copyfilesuccess) {//if copy to file has been successful

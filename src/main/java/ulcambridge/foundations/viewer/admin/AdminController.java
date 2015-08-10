@@ -6,9 +6,6 @@
 package ulcambridge.foundations.viewer.admin;
 
 
-import java.sql.Timestamp;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -80,14 +77,14 @@ public class AdminController {
         String liveBranch = Properties.getString("admin.git.json.branch.live");
         String localBranch = Properties.getString("admin.git.json.branch.local");
                 
-        GitHelper git = new GitHelper(localPathMasters,username,password,url);
-        
-        // Set timestamp
-        Date date = new Date();
-        updateDao.setLastUpdate("cudl-data", new Timestamp(date.getTime()));
-        
+        GitHelper git = new GitHelper(localPathMasters,username,password,url);                       
         Boolean success = git.push(localBranch+":"+liveBranch);
+
         if (success) {
+            // Set timestamp
+            //Date date = new Date();
+            //updateDao.setLastUpdate("cudl-data", new Timestamp(date.getTime()));
+            
             mv.addObject("copysuccess", "Copy to Branch was successful!");
         } else {
             mv.addObject("copysuccess", "Copy to Branch failed!");
@@ -110,12 +107,13 @@ public class AdminController {
         String localBranch = Properties.getString("admin.git.content.branch.local");
         
         GitHelper git = new GitHelper(localPathMasters,username,password,url);
-        Boolean success = git.push(localBranch+":"+liveBranch);
-        
-        Date date = new Date();
-        updateDao.setLastUpdate("cudl-content", new Timestamp(date.getTime()));
+        Boolean success = git.push(localBranch+":"+liveBranch);                
         
         if (success) {
+        	// Set timestamp
+        	//Date date = new Date();
+            //updateDao.setLastUpdate("cudl-content", new Timestamp(date.getTime()));
+            
             mv.addObject("copysuccess", "Copy to Branch was successful!");
         } else {
             mv.addObject("copysuccess", "Copy to Branch failed!");
