@@ -14,7 +14,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -24,7 +23,6 @@ import org.postgresql.core.BaseConnection;
 import org.springframework.security.access.annotation.Secured;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.dao.LastUpdateDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -33,24 +31,34 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class DatabaseCopy {
 
+	private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
+	
     private final String urlLive = Properties.getString("admin.db.jdbc.url.live");
     private final String userLive = Properties.getString("admin.db.jdbc.user.live");    
     private final String pwdLive = Properties.getString("admin.db.jdbc.password.live");    
     private final String urlLocal = Properties.getString("jdbc.url");
     private final String userLocal = Properties.getString("jdbc.user");
     private final String pwdLocal = Properties.getString("jdbc.password");
-    private final String filepath = Properties.getString("admin.db.filepath");
-    private CollectionFactory collectionfactory;
-    private LastUpdateDao updateDao;
-    private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
-
     
-    public DatabaseCopy(CollectionFactory collectionfactory, LastUpdateDao updateDao) {    	
+    private CollectionFactory collectionfactory;    
+    private String filepath;     
+    private GitHelper git;
+    private String refspec;
+    
+    /**
+     * Create instance of DatabaseCopy. 
+     * 
+     * @param collectionfactory
+     * @param filepath to the location of the db dump files under git
+     * @param git
+     */
+    public DatabaseCopy(CollectionFactory collectionfactory, String filepath, GitHelper git, String refspec) {    	
         this.collectionfactory = collectionfactory;
-        this.updateDao = updateDao;
+        this.filepath = filepath;
+        this.git = git;
+        this.refspec = refspec;
     }
     
-
     /*
      copy items,collections and itemsincollection tables from the local database to a file in /tmp directory
      The files have the same names as the tables
@@ -238,11 +246,11 @@ public class DatabaseCopy {
                 }
             }
             if (!iterator.hasNext() && dbsuccess) {
-            	java.util.Date date= new java.util.Date();
-                boolean timestampsuccess = updateDao.setLastUpdate("db", new Timestamp(date.getTime()));
-                if (!timestampsuccess) { 
+
+            	// Commit to git
+                if (!git.commit() || !git.push(refspec)) { 
                 	conlive.rollback();//rollback if any issues
-                	logger.error("Exception from copy method-timestampProcess failure-rollback done");
+                	logger.error("Exception from copy method-git commit failure-rollback done");
                 	copysuccess = false;
                 } else {
                     conlive.commit();

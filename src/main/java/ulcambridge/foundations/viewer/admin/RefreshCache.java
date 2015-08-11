@@ -1,15 +1,10 @@
 package ulcambridge.foundations.viewer.admin;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Hashtable;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
-import ulcambridge.foundations.viewer.dao.LastUpdateDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -18,46 +13,66 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class RefreshCache {
 
-    private CollectionFactory collectionFactory;
-    private ItemFactory itemFactory;
-    private final String adminEnabled = Properties.getString("admin.enabled");
-    private LastUpdateDao lastUpdateDao;
-    private Timestamp lastJSONLoad = new Timestamp((new Date()).getTime());
-    private Timestamp lastDBLoad = new Timestamp((new Date()).getTime());
+    private static CollectionFactory collectionFactory;
+    private static ItemFactory itemFactory;
+    
+    private String jsonLocalPathMasters = Properties.getString("admin.git.json.localpath");
+    private String jsonUsername = Properties.getString("admin.git.json.username");
+    private String jsonPassword = Properties.getString("admin.git.json.password");
+    private String jsonUrl = Properties.getString("admin.git.json.url");
+    private GitHelper jsonGit = new GitHelper(jsonLocalPathMasters,jsonUsername,jsonPassword,jsonUrl); 
+    
+    private String dbLocalPathMasters = Properties.getString("admin.git.db.localpath");
+    private String dbUsername = Properties.getString("admin.git.db.username");
+    private String dbPassword = Properties.getString("admin.git.db.password");
+    private String dbUrl = Properties.getString("admin.git.db.url");
+    private GitHelper dbGit = new GitHelper(dbLocalPathMasters,dbUsername,dbPassword,dbUrl);
+    
+    private String lastJSONRevision = jsonGit.getLastRevision();
+    private String lastDBRevision = dbGit.getLastRevision();      
     
     @Autowired
     public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
+        
+        collectionFactory = factory;
     }
 
     @Autowired
     public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
+        itemFactory = factory;
     }
     
-    @Autowired
-    public void setLastUpdateDao(LastUpdateDao dao) {
-        this.lastUpdateDao = dao;
-    }
 
     @Scheduled(fixedRate = 300000)  // Check every 5 mins. 
-    public void refresh() {
-    	
-            Hashtable<String, Timestamp> lastUpdates = lastUpdateDao.getLastUpdate(); 
+    public void checkForUpdates() {    	            
             		
-            if (lastDBLoad.compareTo(lastUpdates.get("db")) < 0) {
-                //get fresh collections from the database
-                collectionFactory.init();
-                lastDBLoad = lastUpdates.get("db");
-                System.out.println("refreshing db...");
+    	    String latestDBRevision = dbGit.getLastRevision();
+    	    String latestJSONRevision = jsonGit.getLastRevision();
+    	    
+            if (!lastDBRevision.equals(latestDBRevision)) {
+            	// Get fresh collections from the database
+            	System.out.println("refreshing db...");
+            	            	
+            	refreshDB();
+                lastDBRevision = latestDBRevision;                
             }   
             
-            if (lastJSONLoad.compareTo(lastUpdates.get("cudl-data")) < 0) {
+            if (!lastJSONRevision.equals(latestJSONRevision)) {
                 // empty item cache
-                itemFactory.clearItemCache();
-                lastJSONLoad = lastUpdates.get("json");
-                System.out.println("refreshing json...");
+            	System.out.println("refreshing json...");
+            	
+            	refreshJSON();
+                lastJSONRevision = latestJSONRevision;
+                
             }
+    }
+    
+    public static void refreshDB() {
+    	collectionFactory.init();
+    }
+    
+    public static void refreshJSON() {
+    	itemFactory.clearItemCache();
     }
     
 }

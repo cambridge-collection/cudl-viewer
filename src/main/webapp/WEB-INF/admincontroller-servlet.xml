@@ -19,8 +19,6 @@
     
     <bean id="admincontroller" class="ulcambridge.foundations.viewer.admin.AdminController">
         <property name="collectionFactory" ref="collectionFactory" />
-        <property name="itemFactory" ref="itemFactory" />
-        <property name="lastUpdateDao" ref="lastUpdateLiveDao" />
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
