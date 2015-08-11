@@ -43,7 +43,6 @@ public class DatabaseCopy {
     private CollectionFactory collectionfactory;    
     private String filepath;     
     private GitHelper git;
-    private String refspec;
     
     /**
      * Create instance of DatabaseCopy. 
@@ -52,11 +51,10 @@ public class DatabaseCopy {
      * @param filepath to the location of the db dump files under git
      * @param git
      */
-    public DatabaseCopy(CollectionFactory collectionfactory, String filepath, GitHelper git, String refspec) {    	
+    public DatabaseCopy(CollectionFactory collectionfactory, String filepath, GitHelper git) {    	
         this.collectionfactory = collectionfactory;
         this.filepath = filepath;
         this.git = git;
-        this.refspec = refspec;
     }
     
     /*
@@ -192,7 +190,7 @@ public class DatabaseCopy {
     }
 
     @Secured("hasRole('ROLE_ADMIN')")    
-    public Boolean copy() {
+    public Boolean copy(String username, String password, String refspec, String adminName, String adminEmail) {
         ArrayList<String> tablename;
         Iterator<String> iterator;
         Connection conlive = null;
@@ -248,7 +246,7 @@ public class DatabaseCopy {
             if (!iterator.hasNext() && dbsuccess) {
 
             	// Commit to git
-                if (!git.commit() || !git.push(refspec)) { 
+                if (!git.commit(adminName, adminEmail, "cudl-viewer: commiting DB changes") || !git.push(username, password, refspec)) { 
                 	conlive.rollback();//rollback if any issues
                 	logger.error("Exception from copy method-git commit failure-rollback done");
                 	copysuccess = false;

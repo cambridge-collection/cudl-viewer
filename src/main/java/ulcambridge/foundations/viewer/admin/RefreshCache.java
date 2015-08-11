@@ -17,16 +17,12 @@ public class RefreshCache {
     private static ItemFactory itemFactory;
     
     private String jsonLocalPathMasters = Properties.getString("admin.git.json.localpath");
-    private String jsonUsername = Properties.getString("admin.git.json.username");
-    private String jsonPassword = Properties.getString("admin.git.json.password");
     private String jsonUrl = Properties.getString("admin.git.json.url");
-    private GitHelper jsonGit = new GitHelper(jsonLocalPathMasters,jsonUsername,jsonPassword,jsonUrl); 
+    private GitHelper jsonGit = new GitHelper(jsonLocalPathMasters,jsonUrl); 
     
     private String dbLocalPathMasters = Properties.getString("admin.git.db.localpath");
-    private String dbUsername = Properties.getString("admin.git.db.username");
-    private String dbPassword = Properties.getString("admin.git.db.password");
     private String dbUrl = Properties.getString("admin.git.db.url");
-    private GitHelper dbGit = new GitHelper(dbLocalPathMasters,dbUsername,dbPassword,dbUrl);
+    private GitHelper dbGit = new GitHelper(dbLocalPathMasters,dbUrl);
     
     private String lastJSONRevision = jsonGit.getLastRevision();
     private String lastDBRevision = dbGit.getLastRevision();      

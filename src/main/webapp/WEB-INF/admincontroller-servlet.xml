@@ -19,6 +19,7 @@
     
     <bean id="admincontroller" class="ulcambridge.foundations.viewer.admin.AdminController">
         <property name="collectionFactory" ref="collectionFactory" />
+        <property name="usersDao" ref="usersDao" />
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

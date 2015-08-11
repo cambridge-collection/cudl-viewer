@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -23,6 +24,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,9 +33,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.w3c.tidy.Configuration;
 import org.w3c.tidy.Tidy;
 
+import ulcambridge.foundations.viewer.authentication.AdminUser;
+import ulcambridge.foundations.viewer.authentication.User;
+import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
@@ -53,14 +57,27 @@ public class ContentEditorController {
 			.getString("cudl-viewer-content.images.path");
 	protected final String contentImagesURL = Properties
 			.getString("cudl-viewer-content.images.url");
-	protected final String gitLocalPath = Properties.getString("admin.git.content.localpath");
-	protected final String gitUsername = Properties.getString("admin.git.content.username");
-	protected final String gitPassword = Properties.getString("admin.git.content.password");
-	protected final String gitUrl = Properties.getString("admin.git.content.url");
-	protected final String gitRefspec = Properties.getString("admin.git.content.refspec");    
-	protected final GitHelper git = new GitHelper(gitLocalPath,gitUsername,gitPassword,gitUrl);
-	
+	protected final String gitLocalPath = Properties
+			.getString("admin.git.content.localpath");
+	protected final String gitUsername = Properties
+			.getString("admin.git.content.username");
+	protected final String gitPassword = Properties
+			.getString("admin.git.content.password");
+	protected final String gitUrl = Properties
+			.getString("admin.git.content.url");
+	protected final String gitRefspec = Properties
+			.getString("admin.git.content.refspec");
+	protected final String localBranch = Properties
+			.getString("admin.git.content.branch.local");
+	protected final GitHelper git = new GitHelper(gitLocalPath, gitUrl);
+	private UsersDao usersDao;
+
 	protected final Log logger = LogFactory.getLog(getClass());
+
+	@Autowired
+	public void setUsersDao(UsersDao usersDao) {
+		this.usersDao = usersDao;
+	}
 
 	/**
 	 * Request on URL /editor/update/html
@@ -78,7 +95,7 @@ public class ContentEditorController {
 	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/update/html")
 	public synchronized ModelAndView handleUpdateRequest(
-			HttpServletResponse response,
+			HttpServletResponse response, HttpSession session,
 			@Valid @ModelAttribute() UpdateHTMLParameters writeParams,
 			BindingResult errors) throws IOException, JSONException {
 
@@ -89,13 +106,20 @@ public class ContentEditorController {
 		}
 
 		boolean success = saveHTML(writeParams);
-		if (success) {	        
-	        String localBranch = Properties.getString("admin.git.content.branch.local");			
-			if (!git.commit() || !git.push(localBranch)) {
+		if (success) {
+
+			User user = (User) session.getAttribute("user");
+			AdminUser adminUser = usersDao.getAdminUserByUsername(user
+					.getUsername());
+
+			if (!git.commit(adminUser.getAdminName(),
+					adminUser.getAdminEmail(),
+					"cudl-viewer: Saving HTML changes")
+					|| !git.push(gitUsername, gitPassword, localBranch)) {
 				success = false;
-			} 
+			}
 		}
-		
+
 		JSONObject json = new JSONObject();
 		json.put("writesuccess", success);
 
@@ -120,7 +144,7 @@ public class ContentEditorController {
 	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/add/image")
 	public ModelAndView handleAddImageRequest(HttpServletRequest request,
-			HttpServletResponse response,
+			HttpServletResponse response, HttpSession session,
 			@Valid @ModelAttribute() AddImagesParameters addParams,
 			BindingResult bindResult) throws IOException {
 
@@ -140,13 +164,19 @@ public class ContentEditorController {
 		boolean saveSuccessful = FileSave.save(contentImagesPath
 				+ File.separator + addParams.getDirectory(), filename, is);
 
-		if (saveSuccessful) {	        
-	        String localBranch = Properties.getString("admin.git.content.branch.local");			
-			if (!git.commit() || !git.push(localBranch)) {
+		if (saveSuccessful) {
+			
+			User user = (User) session.getAttribute("user");
+			AdminUser adminUser = usersDao.getAdminUserByUsername(user
+					.getUsername());
+			
+			if (!git.commit(adminUser.getAdminName(),
+					adminUser.getAdminEmail(), "cudl-viewer: Adding new image")
+					|| !git.push(gitUsername, gitPassword, localBranch)) {
 				saveSuccessful = false;
-			} 
+			}
 		}
-		
+
 		response.setContentType("text/html");
 		write("<html><head><script> window.opener.CKEDITOR.tools.callFunction( "
 				+ addParams.getCKEditorFuncNum()
@@ -227,7 +257,7 @@ public class ContentEditorController {
 	@Secured("hasRole('ROLE_ADMIN')")
 	@RequestMapping(value = "/delete/image")
 	public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
-			HttpServletResponse response,
+			HttpServletResponse response, HttpSession session, 
 			@Valid @ModelAttribute() DeleteImagesParameters deleteParams,
 			BindingResult bindResult) throws IOException, JSONException {
 
@@ -249,13 +279,19 @@ public class ContentEditorController {
 			successful = file.delete(); // delete empty directory.
 		}
 
-		if (successful) {	        
-	        String localBranch = Properties.getString("admin.git.content.branch.local");			
-			if (!git.delete(file.getPath()) || !git.push(localBranch)) {
+		if (successful) {
+
+			User user = (User) session.getAttribute("user");
+			AdminUser adminUser = usersDao.getAdminUserByUsername(user
+					.getUsername());
+			
+			if (!git.delete(file.getPath(), adminUser.getAdminName(),
+					adminUser.getAdminEmail(), "cudl-viewer: Deleting image")
+					|| !git.push(gitUsername, gitPassword, localBranch)) {
 				successful = false;
-			} 
+			}
 		}
-		
+
 		JSONObject json = new JSONObject();
 		json.put("deletesuccess", successful);
 
@@ -479,7 +515,7 @@ public class ContentEditorController {
 						input.getBytes(StandardCharsets.UTF_8));
 				OutputStream outputStream = new ByteArrayOutputStream();
 
-				Tidy tidy = new Tidy(); 
+				Tidy tidy = new Tidy();
 				tidy.setXHTML(false);
 				tidy.setInputEncoding("UTF-8");
 				tidy.setOutputEncoding("UTF-8");
@@ -493,14 +529,14 @@ public class ContentEditorController {
 				tidy.parse(inputStream, outputStream);
 
 				String output = outputStream.toString();
-				if (output!=null && !output.trim().equals("")) {
-				  return output;
+				if (output != null && !output.trim().equals("")) {
+					return output;
 				}
-				
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			// defult to return input in event of any
 			// error.
 			return input;
