@@ -12,6 +12,27 @@
 		<div class="campl-column9  campl-main-content" id="content">
 			<div class="campl-content-container">
 
+				<!-- Refresh Cache -->
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title">Refresh the Cache</h3>
+					</div>
+					<div class="panel-body">
+						<div class="campl-column8">
+							<div class="campl-content-container campl-horizontal-teaser-txt">
+								<ul>
+									<li>This will load in the latest changes to items and 
+									collections from the JSON and from the Database. 
+									</li>
+								</ul>
+								<form method="get" action="/admin/refresh">
+									<button type="submit" class="campl-primary-cta">Refresh Cache</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<!-- Publish JSON Changes -->
 				<div class="panel panel-danger">
 					<div class="panel-heading">

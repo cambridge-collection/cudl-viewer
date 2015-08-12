@@ -46,17 +46,13 @@ public class RefreshCache {
     	    String latestJSONRevision = jsonGit.getLastRevision();
     	    
             if (!lastDBRevision.equals(latestDBRevision)) {
-            	// Get fresh collections from the database
-            	System.out.println("refreshing db...");
-            	            	
+            	// Get fresh collections from the database            	            	            	
             	refreshDB();
                 lastDBRevision = latestDBRevision;                
             }   
             
             if (!lastJSONRevision.equals(latestJSONRevision)) {
-                // empty item cache
-            	System.out.println("refreshing json...");
-            	
+                // empty item cache            	
             	refreshJSON();
                 lastJSONRevision = latestJSONRevision;
                 
