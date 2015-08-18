@@ -23,6 +23,7 @@
 		class="ulcambridge.foundations.viewer.authentication.LoginController">
 		<property name="usersDao" ref="usersDao" />
 		<property name="bookmarkDao" ref="bookmarkDao" />
+		<property name="loginAccess" ref="loginAccess" />		
 		<constructor-arg index="0" ref="googleLoginRestTemplate" />
 		<constructor-arg index="1" ref="facebookLoginRestTemplate" />
 		<constructor-arg index="2" ref="linkedinLoginRestTemplate" />

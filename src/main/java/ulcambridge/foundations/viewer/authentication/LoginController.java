@@ -42,6 +42,7 @@ public class LoginController {
     private final OAuth2RestOperations googleTemplate;
     private final OAuth2RestOperations facebookTemplate;
     private final OAuth2RestOperations linkedinTemplate;
+    private java.util.Properties loginAccess;
     private BookmarkDao bookmarkDao;
     private UsersDao usersDao;
 
@@ -63,6 +64,11 @@ public class LoginController {
     @Autowired
     public void setBookmarkDao(BookmarkDao bookmarkDao) {
         this.bookmarkDao = bookmarkDao;
+    }
+    
+    @Autowired
+    public void setLoginAccess(java.util.Properties loginAccess) {
+        this.loginAccess = loginAccess;
     }
 
     // on path /auth/login/
@@ -126,7 +132,7 @@ public class LoginController {
         // This should only be called up until Jan 2017.
         migrateGoogleUser(usernameEncoded);
 
-        callRedirect(sessionAccess, response);
+        response.sendRedirect(loginAccess.getProperty(sessionAccess));
 
         session.removeAttribute("access");
 
@@ -160,8 +166,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        //if live site deny access to admin page
-        callRedirect(sessionAccess, response);
+        response.sendRedirect(loginAccess.getProperty(sessionAccess));
 
         session.removeAttribute("access");
 
@@ -197,7 +202,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        callRedirect(sessionAccess, response);
+        response.sendRedirect(loginAccess.getProperty(sessionAccess));
 
         session.removeAttribute("access");
 
@@ -223,7 +228,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        callRedirect(sessionAccess, response);
+        response.sendRedirect(loginAccess.getProperty(sessionAccess));
 
         session.removeAttribute("access");
         return null;
@@ -334,16 +339,5 @@ public class LoginController {
 
     }
 
-    private void callRedirect(String sessionAccess, HttpServletResponse response) throws IOException {
-
-        //if admin access redirect to admin page
-        if ("admin".equals(sessionAccess)) {
-            response.sendRedirect("/admin/");
-        } else //if user access redirect to mylibrary page
-        if ("mylibrary".equals(sessionAccess)) {
-            // forward to /mylibrary/
-            response.sendRedirect("/mylibrary/");
-        }
-    }
 
 }

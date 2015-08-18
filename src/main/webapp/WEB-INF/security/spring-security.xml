@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
                http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-4.1.xsd
@@ -13,173 +13,172 @@ http://www.springframework.org/schema/security/spring-security-3.2.xsd
 http://www.springframework.org/schema/security/spring-security-oauth2.xsd
  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
-       xmlns:task="http://www.springframework.org/schema/task">
+	xmlns:task="http://www.springframework.org/schema/task">
 
-    <import resource="../datasource/itemsFactory.xml" />
+	<import resource="../datasource/itemsFactory.xml" />
 
-    <bean id="google"
-          class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-        <property name="clientId" value="${google.clientId}"></property>
-        <property name="clientSecret" value="${google.clientSecret}"></property>
-        <property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
-        <property name="userAuthorizationUri"
-                  value="https://accounts.google.com/o/oauth2/auth?openid.realm=${google.openid.realm}">
-        </property>
-        <property name="scope" value="#{{'profile','openid', 'email'}}"></property>
-        <property name="clientAuthenticationScheme" value="form"></property>
-    </bean>
+	<bean id="google"
+		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
+		<property name="clientId" value="${google.clientId}"></property>
+		<property name="clientSecret" value="${google.clientSecret}"></property>
+		<property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
+		<property name="userAuthorizationUri"
+			value="https://accounts.google.com/o/oauth2/auth?openid.realm=${google.openid.realm}">
+		</property>
+		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
+		<property name="clientAuthenticationScheme" value="form"></property>
+	</bean>
+
+	<bean id="facebook"
+		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
+		<property name="clientId" value="${facebook.appId}"></property>
+		<property name="clientSecret" value="${facebook.appSecret}"></property>
+		<property name="accessTokenUri"
+			value="https://graph.facebook.com/oauth/access_token"></property>
+		<property name="userAuthorizationUri" value="https://www.facebook.com/dialog/oauth">
+		</property>
+		<property name="tokenName" value="oauth_token"></property>
+		<property name="authenticationScheme" value="query"></property>
+		<property name="scope" value="#{{'email'}}"></property>
+		<property name="clientAuthenticationScheme" value="form"></property>
+	</bean>
+
+	<bean id="linkedin"
+		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
+		<property name="clientId" value="${linkedin.clientId}"></property>
+		<property name="clientSecret" value="${linkedin.clientSecret}"></property>
+		<property name="accessTokenUri"
+			value="https://www.linkedin.com/uas/oauth2/accessToken"></property>
+		<property name="userAuthorizationUri"
+			value="https://www.linkedin.com/uas/oauth2/authorization">
+		</property>
+		<property name="scope" value="#{{'r_basicprofile','r_emailaddress'}}"></property>
+		<property name="clientAuthenticationScheme" value="form"></property>
+	</bean>
+
+	<oauth:rest-template id="googleLoginRestTemplate"
+		resource="google" />
+
+	<oauth:rest-template id="facebookLoginRestTemplate"
+		resource="facebook" />
+
+	<oauth:rest-template id="linkedinLoginRestTemplate"
+		resource="linkedin" />
+
+	<security:http pattern="/images/**" security='none' />
+	<security:http pattern="/img/**" security='none' />
+	<security:http pattern="/scripts/**" security='none' />
+	<security:http pattern="/styles/**" security='none' />
+
+	<!-- configure the redirect path, based on the access property. -->
+	<bean id="loginAccess" class="java.util.Properties">
+		<constructor-arg>
+			<props>
+				<prop key="all">/</prop>
+				<prop key="editor">/admin/</prop>
+				<prop key="admin">/admin/</prop>
+				<prop key="mylibrary">/mylibrary/</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+
+	<!--Security for admin access -->
+	<security:http auto-config="false" pattern="/admin/**">
+
+		<security:form-login login-page='/auth/login?access=admin' />
+		<security:access-denied-handler
+			error-page="/auth/denied" />
+		<security:logout logout-url="/auth/logout"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
+			delete-cookies="JSESSIONID" />
+
+		<security:intercept-url pattern="/**" access="ROLE_ADMIN" />
+
+		<security:custom-filter ref="oauth2ClientFilter"
+			after="EXCEPTION_TRANSLATION_FILTER" />
+
+	</security:http>
 	
-    <bean id="facebook"
-          class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-        <property name="clientId" value="${facebook.appId}"></property>
-        <property name="clientSecret" value="${facebook.appSecret}"></property>
-        <property name="accessTokenUri" value="https://graph.facebook.com/oauth/access_token"></property>
-        <property name="userAuthorizationUri"
-                  value="https://www.facebook.com/dialog/oauth">
-        </property>
-        <property name="tokenName" value="oauth_token"></property>
-        <property name="authenticationScheme" value="query"></property>
-        <property name="scope" value="#{{'email'}}"></property>
-        <property name="clientAuthenticationScheme" value="form"></property>
-    </bean>	
-
-    <bean id="linkedin"
-          class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-        <property name="clientId" value="${linkedin.clientId}"></property>
-        <property name="clientSecret" value="${linkedin.clientSecret}"></property>
-        <property name="accessTokenUri" value="https://www.linkedin.com/uas/oauth2/accessToken"></property>
-        <property name="userAuthorizationUri"
-                  value="https://www.linkedin.com/uas/oauth2/authorization">
-        </property>
-        <property name="scope" value="#{{'r_basicprofile','r_emailaddress'}}"></property>
-        <property name="clientAuthenticationScheme" value="form"></property>
-    </bean>	
 	
-    <oauth:rest-template id="googleLoginRestTemplate"
-                         resource="google" />
+	<!--Security for editor access -->
+	<security:http auto-config="false" pattern="/editor/**">
 
-    <oauth:rest-template id="facebookLoginRestTemplate"
-                         resource="facebook" />
+		<security:form-login login-page='/auth/login?access=editor' />
+		<security:access-denied-handler
+			error-page="/auth/denied" />
+		<security:logout logout-url="/auth/logout"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
+			delete-cookies="JSESSIONID" />
 
-    <oauth:rest-template id="linkedinLoginRestTemplate"
-                         resource="linkedin" />
-        		
-    <security:http pattern="/images/**" security='none' />
-    <security:http pattern="/img/**" security='none' />
-    <security:http pattern="/scripts/**" security='none' />
-    <security:http pattern="/styles/**" security='none' />
+		<security:intercept-url pattern="/**" access="ROLE_ADMIN" />
 
-    
-    <!--Security for admin access-->
-    <security:http auto-config="false" pattern="/admin/**" >
+		<security:custom-filter ref="oauth2ClientFilter"
+			after="EXCEPTION_TRANSLATION_FILTER" />
 
-        <security:form-login login-page='/auth/login?access=admin' />
-        <security:access-denied-handler error-page="/auth/denied"/>
-        <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
-                         delete-cookies="JSESSIONID" />
-                         
-        
-        <security:intercept-url pattern="/**"  access="ROLE_ADMIN" />
+	</security:http>
 
 
-        <security:custom-filter ref="oauth2ClientFilter"
-                                after="EXCEPTION_TRANSLATION_FILTER" />
+	<!--Security for mylibrary access -->
+	<security:http auto-config="false" pattern="/mylibrary/**">
 
-    </security:http>
-    <!--Security for editor access-->
-    <security:http auto-config="false" pattern="/editor/**" >
+		<security:form-login login-page='/auth/login?access=mylibrary' />
+		<security:access-denied-handler
+			error-page="/auth/denied" />
+		<security:logout logout-url="/auth/logout"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=mylibrary"
+			delete-cookies="JSESSIONID" />
 
-        <security:form-login login-page='/auth/login?access=admin' />
-        <security:access-denied-handler error-page="/auth/denied"/>
-        <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
-                         delete-cookies="JSESSIONID" />
-                         
-        
-        <security:intercept-url pattern="/**"  access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/**"
+			access="ROLE_USER,ROLE_ADMIN" />
+
+		<security:custom-filter ref="oauth2ClientFilter"
+			after="EXCEPTION_TRANSLATION_FILTER" />
+
+	</security:http>
+
+	<!--Security for all other access -->
+	<security:http auto-config="false">
+
+		<security:form-login login-page='/auth/login?access=all' />
+		<security:logout logout-url="/auth/logout"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out."
+			delete-cookies="JSESSIONID" />
+
+		<security:intercept-url pattern="/**"
+			access="ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN" />
+
+		<security:custom-filter ref="oauth2ClientFilter"
+			after="EXCEPTION_TRANSLATION_FILTER" />
+
+	</security:http>
+
+	<!--apply the oauth client context -->
+
+	<oauth:client id="oauth2ClientFilter" />
+
+	<security:authentication-manager alias="defaultAuthenticationManager">
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="dataSource" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="usersDao"
+		class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 
-        <security:custom-filter ref="oauth2ClientFilter"
-                                after="EXCEPTION_TRANSLATION_FILTER" />
+	<bean id="webexpressionHandler"
+		class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+	<security:global-method-security
+		secured-annotations="enabled" />
 
-    </security:http>    
-    <!--Security for mylibrary access-->
-    <security:http auto-config="false" pattern="/mylibrary/**">
+	<task:annotation-driven />
 
-        <security:form-login login-page='/auth/login?access=mylibrary' />
-        <security:access-denied-handler error-page="/auth/denied"/>
-        <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=mylibrary"
-                         delete-cookies="JSESSIONID" />
-                        
-
-        <security:intercept-url pattern="/**"
-                                access="ROLE_USER,ROLE_ADMIN" />
-        
-
-        <security:custom-filter ref="oauth2ClientFilter"
-                                after="EXCEPTION_TRANSLATION_FILTER" />
-
-    </security:http>
-    <!--Security for all other access-->
-    <security:http auto-config="false" >
-
-        <security:form-login login-page='/auth/login?access=all' />
-        <security:logout logout-url="/auth/logout"
-                         logout-success-url="/auth/login?error=Successfully%20logged%20out."
-                         delete-cookies="JSESSIONID" />
-                             
-        <security:intercept-url pattern="/**"  access="ROLE_ANONYMOUS,ROLE_USER,ROLE_ADMIN" />
-
-        <security:custom-filter ref="oauth2ClientFilter"
-                                after="EXCEPTION_TRANSLATION_FILTER" />
-
-    </security:http>
-  
-    
-    
-   
-    
-    <!--apply the oauth client context -->
-
-    <oauth:client id="oauth2ClientFilter" />
-
-    <security:authentication-manager alias="defaultAuthenticationManager">
-        <security:authentication-provider>
-            <security:jdbc-user-service
-                data-source-ref="dataSource" />
-        </security:authentication-provider>
-    </security:authentication-manager>
-    
-    <bean id="usersDao"
-          class="ulcambridge.foundations.viewer.authentication.UsersDBDao">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
-    
-
-    <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
-    <security:global-method-security secured-annotations="enabled" /> 
-
-    <task:annotation-driven /> 
-    
-    <bean id="refresh" class="ulcambridge.foundations.viewer.admin.RefreshCache">
-        <property name="collectionFactory" ref="collectionFactory" />
-        <property name="itemFactory" ref="itemFactory" />
-    </bean>
-    
-    <bean id="adminLiveDB"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-
-		<property name="driverClassName" value="${admin.db.jdbc.driver.live}" />
-		<property name="url" value="${admin.db.jdbc.url.live}" />
-		<property name="username" value="${admin.db.jdbc.user.live}" />
-		<property name="password" value="${admin.db.jdbc.password.live}" />
-		<property name="maxActive" value="2" />
-		<property name="maxIdle" value="1" />
-		<property name="validationQuery" value="SELECT 1" />
-		<property name="testOnBorrow" value="true" />
-		
-	</bean>	
+	<bean id="refresh" class="ulcambridge.foundations.viewer.admin.RefreshCache">
+		<property name="collectionFactory" ref="collectionFactory" />
+		<property name="itemFactory" ref="itemFactory" />
+	</bean>
 
 </beans>
