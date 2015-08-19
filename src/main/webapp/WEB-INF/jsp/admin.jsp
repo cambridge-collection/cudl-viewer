@@ -15,7 +15,7 @@
 				<!-- Refresh Cache -->
 				<div class="panel panel-success">
 					<div class="panel-heading">
-						<h3 class="panel-title">Refresh the Cache</h3>
+						<h3 class="panel-title">Refresh the Cache on this site</h3>(Does not affect live)
 					</div>
 					<div class="panel-body">
 						<div class="campl-column8">
@@ -36,7 +36,7 @@
 				<!-- Publish JSON Changes -->
 				<div class="panel panel-danger">
 					<div class="panel-heading">
-						<h3 class="panel-title">1. Publish JSON Changes</h3>
+						<h3 class="panel-title">1. Publish JSON Changes to LIVE</h3>
 					</div>
 					<div class="panel-body">
 						<div class="campl-column8">
@@ -65,7 +65,7 @@
 				<!-- Publish Database Changes -->
 				<div class="panel panel-danger">
 					<div class="panel-heading">
-						<h3 class="panel-title">2. Publish Database Changes</h3>
+						<h3 class="panel-title">2. Publish Database Changes to LIVE</h3>
 					</div>
 					<div class="panel-body">
 						<div class="campl-column8">
@@ -98,7 +98,7 @@
 				<!-- Publish Database Changes -->
 				<div class="panel panel-danger">
 					<div class="panel-heading">
-						<h3 class="panel-title">3. Publish Website Content</h3>
+						<h3 class="panel-title">3. Publish Website Content to LIVE</h3>
 					</div>
 					<div class="panel-body">
 						<div class="campl-column8">
