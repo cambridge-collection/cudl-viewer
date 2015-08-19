@@ -42,10 +42,10 @@
 						<div class="campl-column8">
 							<div class="campl-content-container campl-horizontal-teaser-txt">
 								<ul>
-									<li>This button copies any changes made to the Dev master
+									<li>This button copies any changes made to the master
 										branch on cudl-data into a branch that live will read.</li>
-									<li><b>Please ensure you have tested your changes in
-											Dev thoroughly before publishing.</b></li>
+									<li><b>Please ensure you have tested your changes thoroughly 
+									    before publishing.</b></li>
 									<li>This button is used you want to update any information
 										about an item described in its metadata.</li>
 									<li>There will be a short delay before these new items
@@ -54,7 +54,7 @@
 								</ul>
 								<form method="get" action="/admin/publishjson">
 									<button type="submit" class="campl-primary-cta"
-										onClick="javascript:return confirm('Are you sure you want to copy data from dev to live?')">Publish
+										onClick="javascript:return confirm('Are you sure you want to copy data to live?')">Publish
 										JSON (cudl-data)</button>
 								</form>
 							</div>
@@ -74,8 +74,8 @@
 									<li>This button copies any changes made to the Dev
 										Database (collections, items and itemsincollection tables)
 										from the DEV database to the LIVE database.</li>
-									<li><b>Please ensure you have tested your changes in
-											Dev thoroughly before publishing.</b></li>
+									<li><b>Please ensure you have tested your changes
+											thoroughly before publishing.</b></li>
 									<li>This button is used when you want to add new items to
 										a collection or change the order of a collection on the LIVE
 										homepage.</li>
@@ -104,11 +104,11 @@
 						<div class="campl-column8">
 							<div class="campl-content-container campl-horizontal-teaser-txt">
 								<ul>
-									<li>This button copies any changes made to the Dev master
+									<li>This button copies any changes made to the master
 										branch on cudl-viewer-content into a branch that live will
 										read.</li>
-									<li><b>Please ensure you have tested your changes in
-											Dev thoroughly before publishing.</b></li>
+									<li><b>Please ensure you have tested your changes
+											thoroughly before publishing.</b></li>
 									<li>This button is used when you want to push any changes
 										made to the website text and images into the live website.</li>
 									<li>If you are adding any new items or collections please
@@ -119,7 +119,7 @@
 								</ul>
 								<form method="get" action="/admin/publishcontent">
 									<button type="submit" class="campl-primary-cta"
-										onClick="javascript:return confirm('Are you sure you want to copy content from dev to live?')">Publish
+										onClick="javascript:return confirm('Are you sure you want to copy content to live?')">Publish
 										Website Content (cudl-viewer-content)</button>
 								</form>
 							</div>
