@@ -80,17 +80,19 @@ public class GitHelper {
 									password)).call();
 			success = true;
 		} catch (IOException ex) {
-			System.out.println("success from IOexception=" + success);
+			ex.printStackTrace();
 			logger.error("IO Exception" + ex);
 			success = false;
 		} catch (RefAlreadyExistsException ex) {
+			ex.printStackTrace();
 			logger.error("RefAlreadyExistsException" + ex);
 			success = false;
 		} catch (CheckoutConflictException ex) {
+			ex.printStackTrace();
 			logger.error("CheckoutConflictException" + ex);
 			success = false;
 		} catch (GitAPIException ex) {
-			System.out.println("success from gitexception=" + success);
+			ex.printStackTrace();
 			logger.error("GitAPIException" + ex);
 			success = false;
 		}
@@ -112,6 +114,7 @@ public class GitHelper {
 			gitmasters.add().addFilepattern(".").call();
 			gitmasters.commit().setCommitter(new PersonIdent(name, email))
 					.setMessage(message).call();
+			
 			success = true;
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -130,6 +133,7 @@ public class GitHelper {
 			logger.error("GitAPIException" + ex);
 			success = false;
 		}
+		
 		return success;
 	}
 
@@ -137,13 +141,16 @@ public class GitHelper {
 	 * Deletes file from git local repository and commits the change A push is
 	 * required to push these changes to BitBucket.
 	 * 
-	 * @param filePath
+	 * @param filePath absolute path, MUST start with admin.git.content.localpath
 	 * @return
 	 */
 	protected Boolean delete(String filePath, String name, String email,
 			String message) {
 
 		try {
+			// convert from full path to relative path to git 
+			filePath = filePath.replace(localPathMasters, "");
+			
 			// master
 			localRepomasters = new FileRepository(localPathMasters + "/.git");
 			gitmasters = new Git(localRepomasters);
@@ -168,6 +175,7 @@ public class GitHelper {
 			logger.error("GitAPIException" + ex);
 			success = false;
 		}
+		
 		return success;
 	}
 
