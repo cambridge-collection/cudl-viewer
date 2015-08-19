@@ -16,7 +16,7 @@ Must have the same number of elements in each.  -->
 		<button type="button" class="btn btn-default btn-success"
 			onclick="saveData()">Yes</button>
 		<button type="button" class="btn btn-default"
-			onclick="$('#confirmation').hide();">Cancel</button>
+			onclick="$('.alert').hide();">Cancel</button>
 </div>
 	
 
