@@ -282,6 +282,9 @@ a.campl-external {
 	function validateAddForm() {
 
 		var upload = document.forms["addFileForm"]["upload"].value;
+		
+		upload = upload.replace("C:\\fakepath\\", ""); // Chrome and Safari prepend this, so remove it. 
+		
 		var fileRegEx1 = /^.*\.(jpg|jpeg|png|gif|bmp)$/i;
 		if (!fileRegEx1.test(upload)) {
 			alert("Select an image file with the file extension .jpg .jpeg .bmp .png or .gif");
