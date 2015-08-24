@@ -199,11 +199,10 @@
 				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
 				<div class="campl-listing-item campl-news-listing clearfix">
 					<p class="campl-listing-title">
-						<a href="/news/">July Release</a>
+						<a href="/news/">August Release</a>
 					</p>
-					<span class="campl-datestamp">22 July 2015</span>
-					<p>This release sees the launch of our new <a href='/collections/lewisgibson/'>Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish
-					manuscripts collected by the twin sisters Agnes Smith Lewis and Margaret Dunlop Gibson and jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013.</p>
+					<span class="campl-datestamp">26 August 2015</span>
+					<p>This release includes Thomas Dalrymple’s <a href='/view/PH-Y-03043-BB/9'>extraordinary photographs</a> of the the former British Cameroons (now Nigeria) in 1937-1942, giving a vivid insight into everyday life, ritual and social hierarchy.</p>
 				</div>
 				<p>
 					<a href="/news/" class="campl-secondary-cta campl-float-right ">View
