@@ -312,6 +312,12 @@ public class ItemsJSONDao implements ItemsDao {
 
 		return displayForms;
 	}
+
+	@Override
+	public boolean getItemTaggingStatus(String itemId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

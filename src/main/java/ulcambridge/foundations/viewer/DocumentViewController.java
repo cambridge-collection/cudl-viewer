@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
@@ -42,6 +43,7 @@ public class DocumentViewController {
 
 	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;
+	private ItemsDao dataSource; 
 
 	@Autowired
 	public void setCollectionFactory(CollectionFactory factory) {
@@ -51,6 +53,11 @@ public class DocumentViewController {
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
+	}
+	
+	@Autowired
+	public void setDataSource(ItemsDao dataSource) {
+		this.dataSource = dataSource;
 	}
 
 	// on path /view/{docId}
@@ -75,6 +82,11 @@ public class DocumentViewController {
 			return new ModelAndView("jsp/errors/404");
 		}
 		String itemType = item.getType();
+		
+		// check if tagging feature is enabled
+		boolean isTaggable = dataSource.getItemTaggingStatus(docId);
+		request.getSession().setAttribute("taggable", isTaggable);
+		//System.out.println(isTaggable);
 
 		if (itemType.equals("essay")) {
 			return setupEssayView((EssayItem) item, page, request);
@@ -82,7 +94,7 @@ public class DocumentViewController {
 			// default to document view.
 			return setupDocumentView(item, page, request);
 		}
-
+		
 	}
 
 	// on path /view/thumbnails/{docId}.json?page=?&start=?&limit=?

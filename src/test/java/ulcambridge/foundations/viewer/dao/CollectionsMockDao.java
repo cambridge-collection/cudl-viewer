@@ -25,7 +25,7 @@ public class CollectionsMockDao implements CollectionsDao {
 	public Collection getCollection(String collectionId) {
 
 		return new Collection("treasures", "Newton Papers", getCollectionIds(),
-				"collections/treasures/summary.jsp", "collections/treasures/sponsors.jsp", "virtual", "");
+				"collections/treasures/summary.jsp", "collections/treasures/sponsors.jsp", "virtual", "", true);
 
 	}
 

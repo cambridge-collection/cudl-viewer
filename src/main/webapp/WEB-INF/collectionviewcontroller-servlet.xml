@@ -23,7 +23,6 @@
 		<property name="itemFactory" ref="itemFactory" />
 	</bean>
 	
-
 	
 	<bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
       <property name="locations">

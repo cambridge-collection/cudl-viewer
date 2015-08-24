@@ -36,7 +36,7 @@ public class CollectionsDBDao implements CollectionsDao {
 
 	public Collection getCollection(String collectionId) {
 
-		String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid FROM collections WHERE collectionid = ? ORDER BY collectionorder";
+		String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid, taggingstatus FROM collections WHERE collectionid = ? ORDER BY collectionorder";
 
 		return (Collection) jdbcTemplate.queryForObject(query, new Object[] { collectionId }, 
 				new RowMapper<Collection>() {
@@ -44,7 +44,8 @@ public class CollectionsDBDao implements CollectionsDao {
 						return new Collection(resultSet.getString("collectionid"),
 								resultSet.getString("title"), getItemIds(resultSet.getString("collectionid")),
 								resultSet.getString("summaryurl"), resultSet.getString("sponsorsurl"), 
-								resultSet.getString("type"), resultSet.getString("parentcollectionid"));
+								resultSet.getString("type"), resultSet.getString("parentcollectionid"), 
+								resultSet.getBoolean("taggingstatus"));
 					}
 				});
 	}	
@@ -59,7 +60,6 @@ public class CollectionsDBDao implements CollectionsDao {
 				return resultSet.getString("itemid");
 			}
 		});
-	}	
-	
+	}
 
 }

@@ -27,9 +27,10 @@ public class CollectionsFileDao implements CollectionsDao {
 				+ ".sponsors");
 		String collectionType = Properties.getString(collectionId + ".type");
 		String collectionParentId = Properties.getString(collectionId + ".parentId");
+		boolean taggingStatus = Boolean.parseBoolean( Properties.getString(collectionId + ".tagging") );
 		
 		return new Collection(collectionId, collectionTitle, collectionItemIds,
-				collectionSummary, collectionSponsors, collectionType, collectionParentId);
+				collectionSummary, collectionSponsors, collectionType, collectionParentId, taggingStatus);
 
 	}
 
