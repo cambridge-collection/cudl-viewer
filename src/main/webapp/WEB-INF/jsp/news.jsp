@@ -44,7 +44,29 @@
 				<hr class="cam-teaser-divider campl-column12">
 
 				<div class="grid_5">
-				<img alt="July Update" title="June Update"
+				<img alt="August Update" title="August Update"
+						src="/images/index/news-2015-08.jpg" height="200" width="200">
+				</div>
+
+				<div class="grid_8">
+					<span class="date">26/08/2015</span>
+					<h4>August Update</h4>
+					
+					<p>This release includes an important addition to our Royal Commonwealth Society collection. Thomas Dalrymple’s <a href='/view/PH-Y-03043-BB/9'>extraordinary photographs</a> of the the former British Cameroons (now Nigeria) in 1937-1942 give a vivid insight into everyday life, ritual and social hierarchy.</p>
+
+<p>We are also adding around 350 newly-conserved fragments to our <a href='/collections/lewisgibson'>Lewis-Gibson collection</a>, including leaves from large-format Bibles as well as smaller-format Bibles for personal use. <a href='/view/MS-LG-BIBLE-00002-00005/1'>L-G Bible 2.5</a> is a leaf from one such small-format Bible, but - unusually - has the full complement of masoretic notations in the margins.</p>
+
+<p><a href='/view/MS-LG-BIBLE-00003-00053/1'>L-G Bible 3.53</a> has the Judaeo-Arabic Bible translation of Saadya Gaon given after each verse, but what is special about this fragment is that its scribe was none other than Samuel ben Jacob. Samuel also produced a fine Bible codex in Fustat in 1008-9 CE, which would survive to become the oldest complete manuscript of the Bible - now known as the Leningrad Codex - and the basis for modern printed editions. The date of his other works, including this Judaeo-Arabic Bible translation, is unknown, but we can assume that it dates to a similar time at the end of the 10th century or the beginning of the 11th. Other leaves from this same manuscript have also been found in other Genizah collections (<a href='http://www.lib.cam.ac.uk/Taylor-Schechter/fotm/november-2009/'>http://www.lib.cam.ac.uk/Taylor-Schechter/fotm/november-2009/</a>).</p>
+
+
+				</div>
+				
+				
+				
+				<hr class="cam-teaser-divider campl-column12">
+
+				<div class="grid_5">
+				<img alt="July Update" title="July Update"
 						src="/images/index/news-2015-07.jpg" height="200" width="200">
 				</div>
 
