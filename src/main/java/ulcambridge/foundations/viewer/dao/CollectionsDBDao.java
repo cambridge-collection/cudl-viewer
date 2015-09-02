@@ -14,52 +14,68 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionsDBDao implements CollectionsDao {
 
-	private JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
-	
-	public List<String> getCollectionIds() {
+	}	   
 
-		String query = "SELECT collectionid FROM collections ORDER BY collectionorder";
+    public List<String> getCollectionIds() {
 
-		return (List<String>) jdbcTemplate.query(query, 
-				new RowMapper<String>() {
-					public String mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-						return resultSet.getString("collectionid");
-					}
-				});
-	}
-	
+        String query = "SELECT collectionid FROM collections ORDER BY collectionorder";
 
-	public Collection getCollection(String collectionId) {
+        return (List<String>) jdbcTemplate.query(query,
+                new RowMapper<String>() {
+                    public String mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                        return resultSet.getString("collectionid");
+                    }
+                });
+    }
 
-		String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid FROM collections WHERE collectionid = ? ORDER BY collectionorder";
+    public Collection getCollection(String collectionId) {
 
-		return (Collection) jdbcTemplate.queryForObject(query, new Object[] { collectionId }, 
-				new RowMapper<Collection>() {
-					public Collection mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-						return new Collection(resultSet.getString("collectionid"),
-								resultSet.getString("title"), getItemIds(resultSet.getString("collectionid")),
-								resultSet.getString("summaryurl"), resultSet.getString("sponsorsurl"), 
-								resultSet.getString("type"), resultSet.getString("parentcollectionid"));
-					}
-				});
-	}	
+        String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid FROM collections WHERE collectionid = ? ORDER BY collectionorder";
 
-	private List<String> getItemIds(String collectionId) {
+        return (Collection) jdbcTemplate.queryForObject(query, new Object[]{collectionId},
+                new RowMapper<Collection>() {
+                    public Collection mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                        return new Collection(resultSet.getString("collectionid"),
+                                resultSet.getString("title"), getItemIds(resultSet.getString("collectionid")),
+                                resultSet.getString("summaryurl"), resultSet.getString("sponsorsurl"),
+                                resultSet.getString("type"), resultSet.getString("parentcollectionid"));
+                    }
+                });
+    }
 
-		String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? AND visible=true ORDER BY itemorder";
+    private List<String> getItemIds(String collectionId) {
 
-		return (List<String>) jdbcTemplate.query(query, new Object[] { collectionId },
-			new RowMapper<String>() {
-			public String mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-				return resultSet.getString("itemid");
-			}
-		});
-	}	
-	
+        String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? AND visible=true ORDER BY itemorder";
 
+        return (List<String>) jdbcTemplate.query(query, new Object[]{collectionId},
+                new RowMapper<String>() {
+                    public String mapRow(ResultSet resultSet, int rowNum) throws SQLException {
+                        return resultSet.getString("itemid");
+                    }
+                });
+    }
+
+    public int getCollectionsRowCount() {
+        String query = "SELECT count(*) FROM collections";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+
+    public int getItemsInCollectionsRowCount() {
+        String query = "SELECT count(*) FROM itemsincollection";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+
+    public int getItemsRowCount() {
+        String query = "SELECT count(*) FROM items";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+    
 }

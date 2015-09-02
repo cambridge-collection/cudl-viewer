@@ -1,3 +1,6 @@
 /bin/
 /target/
 src/main/resources/cudl-global.properties
+/src/main/webapp/models/
+/.classpath
+/.project

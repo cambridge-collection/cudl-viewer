@@ -38,7 +38,6 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class DocumentViewController {
 
 	protected final Log logger = LogFactory.getLog(getClass());
-	private static JSONReader reader = new JSONReader();
 
 	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;

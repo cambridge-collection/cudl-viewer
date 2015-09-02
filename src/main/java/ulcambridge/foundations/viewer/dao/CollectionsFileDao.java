@@ -6,7 +6,7 @@ import java.util.List;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 
-public class CollectionsFileDao implements CollectionsDao {
+public abstract class CollectionsFileDao implements CollectionsDao {
 
 	public List<String> getCollectionIds() {
 

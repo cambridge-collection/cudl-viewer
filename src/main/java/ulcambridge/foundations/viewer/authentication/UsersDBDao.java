@@ -116,5 +116,29 @@ public class UsersDBDao implements UsersDao {
 
 	}
 
+	@Override
+	public AdminUser getAdminUserByUsername(String username) {
+		
+		String query = "SELECT username, name, email FROM adminusers where username = ?";
+
+		try {
+			return (AdminUser) jdbcTemplate.queryForObject(query,
+					new Object[] { username }, new RowMapper<User>() {
+						public AdminUser mapRow(ResultSet resultSet, int rowNum)
+								throws SQLException {
+							User user = getActiveUserByUsername(resultSet.getString("username"));
+							AdminUser adminUser = new AdminUser(user.getUsername(), user.getPassword(), user.getEmail(), user.isEnabled(), user.getUserRoles());
+							adminUser.setAdminEmail(resultSet.getString("email"));
+							adminUser.setAdminName(resultSet.getString("name"));
+							return adminUser;
+						}
+					});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+				
+	}
 
 }
