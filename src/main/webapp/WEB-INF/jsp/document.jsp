@@ -270,7 +270,7 @@
 						</h3>
 						<div>
 							<span id="about-completeness"></span> <span id="about-abstract"></span>
-							<span id="about-metadata"></span> <br>
+							<span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
 							<div class="well">
 								<h4>Want to know more?</h4>
 								<p>
