@@ -3,7 +3,7 @@
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
 	<artifactId>FoundationsViewer</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>production-2015091700</version>
 	<packaging>war</packaging>
 
     <name>Foundations Viewer</name>
@@ -12,7 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- <spring.version>3.0.4.RELEASE</spring.version> -->
-        <spring.version>4.1.5.RELEASE</spring.version>
+        <spring.version>4.2.1.RELEASE</spring.version>
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
     </properties>
 
@@ -21,9 +21,9 @@
     <url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url> 
     </scm> -->
     <scm>
-        <connection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</developerConnection>
-        <url>https://bitbucket.org/${username}/CUDL/cudl-viewer.git</url>
+        <connection>scm:git:ssh://git@bitbucket.org/ucamhal/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org/ucamhal/cudl-viewer.git</developerConnection>
+        <url>https://bitbucket.org/CUDL/cudl-viewer</url>
     </scm>
 
     <build>
