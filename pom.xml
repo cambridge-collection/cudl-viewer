@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
@@ -11,7 +13,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- <spring.version>3.0.4.RELEASE</spring.version> -->
         <spring.version>4.1.5.RELEASE</spring.version>
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
     </properties>
@@ -91,7 +92,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <dependencies>
@@ -224,7 +224,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
         
         <!-- PostgreSQL driver -->
         <dependency>
@@ -297,7 +296,6 @@
             <version>${spring.security.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
@@ -339,5 +337,4 @@
             <url>file://${basedir}/repo</url>
         </repository>
     </repositories>
-
 </project>
