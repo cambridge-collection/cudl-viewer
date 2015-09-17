@@ -78,8 +78,7 @@ $ mvn tomcat7:run
 You can then access the Viewer at
 [http://localhost:1111/](http://localhost:1111/).
 
-
-## Building and tagging
+## Building
 
 To build a WAR file, run:
 
@@ -95,7 +94,47 @@ classpath.
 This file will be excluded from any WAR file generated as it contains the properties
 that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the 
 classpath for your web container (e.g. `lib` directory in Tomcat).
-	
+
+## Tagging a release
+
+Tagging can be done using the Maven release plugin.
+
+### Tag format
+
+Releases are tagged using the old CARET Ops tag format, which is
+`<server-class>-<date-yyyymmdd><release-in-day>`. `<release-in-day>` is a two
+digit number, starting from `00` which increments after each release in one day.
+
+For example, for the 1st release on `21/06/2015` for a production deployment
+we'd use `production-2015062100`.
+
+Note that the last two digits make tags a pain to auto-generate, so you'll have
+to manually specify the tag value each time you tag.
+
+### Tagging
+
+After committing and testing all changes, switch to the `master` branch and
+run:
+
+```
+$ mvn release:prepare
+```
+
+You'll be prompted for the version and tag to use for the release, and the
+version to use for the next version. Use a tag in the above format for the first
+two, and accept the default for the next version, which should be
+`1.0-SNAPSHOT`.
+
+After this finishes, you'll have two new commits on your `master` branch and
+a new tag in your local repo. You need to push all of these to the CUDL repo.
+Assuming your CUDL remote is `cudl`, and your created tag was
+`production-2015062100`, you'd run:
+
+```
+$ git push cudl master
+$ git push cudl production-2015062100
+```
+
 ## More information
 
 For more information, see the [CUDL Wiki](https://wiki.cam.ac.uk/cudl-docs/).
