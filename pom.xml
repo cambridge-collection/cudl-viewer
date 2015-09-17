@@ -6,8 +6,8 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-    <name>Foundations Viewer</name>
-    <url>http://maven.apache.org</url>
+    <name>CUDL Viewer</name>
+    <url>https://bitbucket.org/CUDL/cudl-viewer</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,14 +16,10 @@
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
     </properties>
 
-    <!-- <scm> <connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</connection> 
-    <developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</developerConnection> 
-    <url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url> 
-    </scm> -->
     <scm>
-        <connection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</developerConnection>
-        <url>https://bitbucket.org/${username}/CUDL/cudl-viewer.git</url>
+        <connection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</developerConnection>
+        <url>https://bitbucket.org/CUDL/cudl-viewer</url>
     </scm>
 
     <build>
@@ -77,6 +73,16 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <!-- Don't automatically push changes to the remote repo
+                         while executing release:prepare. -->
+                    <pushChanges>false</pushChanges>
+                </configuration>
+            </plugin>
         </plugins>
 
         <resources>
