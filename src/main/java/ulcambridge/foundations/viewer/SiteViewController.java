@@ -111,16 +111,6 @@ public class SiteViewController {
         return modelAndView;
     }
 
-    // on path /nojavascript
-    @RequestMapping(value = "/nojavascript")
-    public ModelAndView handleNoJavascriptRequest(
-            @RequestParam("url") String url) {
-
-        ModelAndView modelAndView = new ModelAndView("jsp/errors/nojavascript");
-        modelAndView.addObject("requestURL", url);
-        return modelAndView;
-    }
-
     // on path /errors/404.html
     @RequestMapping(value = "/errors/404.html")
     public ModelAndView handle404() {

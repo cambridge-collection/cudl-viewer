@@ -62,12 +62,6 @@ public class SiteViewControllerTest extends TestCase {
 		assertTrue(modelAndView!=null);
 	}
 
-	public void testHandleNoJavascriptRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleNoJavascriptRequest("testurl");
-		assertEquals(modelAndView.getModelMap().get("requestURL"), "testurl");
-	}
-
 	public void testHandle404() {
 		SiteViewController c = new SiteViewController();
 		ModelAndView modelAndView = c.handle404();
