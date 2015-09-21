@@ -158,6 +158,7 @@ cudl.setupSeaDragon = function(data) {
 		showRotationControl : true,
 		zoomInButton : "zoomIn",
 		zoomOutButton : "zoomOut",
+		zoomPerClick : 1, // genizah tagging
 		rotateLeftButton : "rotateLeft",
 		rotateRightButton : "rotateRight",
 		fullPageButton: "fullscreen"
@@ -826,6 +827,8 @@ $(document).ready(function() {
 		cudl.setupThumbnails(data);
 		cudl.setupMetadata(data);
 		cudl.setupSimilarityTab(data, cudl.docId);
+		if ('function' == typeof cudl.setupTaggingTab) 
+			cudl.setupTaggingTab(data, cudl.docId, cudl.pagenum);
 		store.loadPage(cudl.pagenum);
 		cudl.showThumbnailPage(cudl.currentThumbnailPage);		
 	});

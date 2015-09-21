@@ -149,6 +149,22 @@
 <link rel="stylesheet" type="text/css" href="/styles/similarity.css" />
 <script type="text/javascript" src="/scripts/similarity.js"></script>
 
+<!-- genizah crowdsourcing -->
+<%  
+	// user login status
+	boolean user = (session.getAttribute("user") != null) ? true : false;
+	// tagging status for current doc
+	boolean taggable = (Boolean) session.getAttribute("taggable");
+%>
+<script type="text/javascript"> 
+	// pass user login status to js 
+	var global_user = '<%=user%>';
+	// tagging status for current doc
+	var taggable = '<%=taggable%>';
+</script>
+<link rel="stylesheet" type="text/css" href="/styles/tagging.css" />
+<script type="text/javascript" src="/scripts/tagging.js"></script>
+
 <script type="text/javascript" src="/scripts/document.js"></script>
 <link rel="stylesheet" type="text/css" href="/styles/style-document.css" />
 
@@ -255,6 +271,9 @@
 						<li><a id="downloadtab" aria-controls="downloadtab"
 							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
 								or share</a></li>
+						<!-- genizah tagging -->
+						<li><a id="taggingtab" aria-controls="taggingtab"
+							data-toggle="tab" role="tab" tabindex="-1" href="#tagging">Tagging</a></li>
 					</ul></li>
 
 			</ul>
@@ -393,6 +412,8 @@
 
 					</div>
 				</div>
+				<!-- genizah tagging -->
+				<div role="tabpanel" class="tab-pane" id="tagging"></div>
 
 			</div>
 		</div>
