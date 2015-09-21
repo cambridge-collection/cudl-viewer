@@ -29,4 +29,22 @@ public class CollectionsMockDao implements CollectionsDao {
 
 	}
 
+	@Override
+	public boolean isItemTaggable(String itemId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isCollectionTaggable(String collectionId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getCollectionId(String itemId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

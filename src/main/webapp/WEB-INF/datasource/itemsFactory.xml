@@ -12,10 +12,6 @@
 	  <property name="JSONReader" ref="JSONReader" />
 	</bean>
 	
-	<bean id="itemsDBDao" class="ulcambridge.foundations.viewer.dao.ItemsDBDao">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-	
   	<bean id="itemFactory" class="ulcambridge.foundations.viewer.ItemFactory">
 		<property name="itemsDao" ref="itemsDao" />
 	</bean>
