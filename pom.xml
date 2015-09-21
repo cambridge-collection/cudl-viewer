@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>ulcambridge.foundations.viewer</groupId>
@@ -6,32 +8,27 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-    <name>Foundations Viewer</name>
-    <url>http://maven.apache.org</url>
+    <name>CUDL Viewer</name>
+    <url>https://bitbucket.org/CUDL/cudl-viewer</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- <spring.version>3.0.4.RELEASE</spring.version> -->
         <spring.version>4.1.5.RELEASE</spring.version>
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
     </properties>
 
-    <!-- <scm> <connection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</connection> 
-    <developerConnection>scm:svn:https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</developerConnection> 
-    <url>https://source.caret.cam.ac.uk/svn/projects/ul-foundations/foundationsviewer/trunk</url> 
-    </scm> -->
     <scm>
-        <connection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/${username}/CUDL/cudl-viewer.git</developerConnection>
-        <url>https://bitbucket.org/${username}/CUDL/cudl-viewer.git</url>
+        <connection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</developerConnection>
+        <url>https://bitbucket.org/CUDL/cudl-viewer</url>
     </scm>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>tomcat-maven-plugin</artifactId>
-                <version>1.1</version>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
                 <configuration>
                     <path>/</path>
                     <uriEncoding>UTF-8</uriEncoding>
@@ -77,6 +74,16 @@
                 </configuration>
             </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <!-- Don't automatically push changes to the remote repo
+                         while executing release:prepare. -->
+                    <pushChanges>false</pushChanges>
+                </configuration>
+            </plugin>
         </plugins>
 
         <resources>
@@ -85,7 +92,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <dependencies>
@@ -218,7 +224,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
         
         <!-- PostgreSQL driver -->
         <dependency>
@@ -291,7 +296,6 @@
             <version>${spring.security.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
@@ -333,5 +337,4 @@
             <url>file://${basedir}/repo</url>
         </repository>
     </repositories>
-
 </project>
