@@ -47,4 +47,22 @@ public class CollectionsMockDao implements CollectionsDao {
 		return null;
 	}
 
+	@Override
+	public int getCollectionsRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getItemsInCollectionsRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getItemsRowCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

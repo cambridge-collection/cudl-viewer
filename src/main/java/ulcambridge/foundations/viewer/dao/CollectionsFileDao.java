@@ -6,7 +6,7 @@ import java.util.List;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 
-public class CollectionsFileDao implements CollectionsDao {
+public abstract class CollectionsFileDao implements CollectionsDao {
 
 	public List<String> getCollectionIds() {
 
@@ -27,29 +27,15 @@ public class CollectionsFileDao implements CollectionsDao {
 				+ ".sponsors");
 		String collectionType = Properties.getString(collectionId + ".type");
 		String collectionParentId = Properties.getString(collectionId + ".parentId");
+		
+		//
+		// XXX genizah tagging
+		//
 		boolean taggingStatus = Boolean.parseBoolean( Properties.getString(collectionId + ".tagging") );
 		
 		return new Collection(collectionId, collectionTitle, collectionItemIds,
 				collectionSummary, collectionSponsors, collectionType, collectionParentId, taggingStatus);
 
-	}
-
-	@Override
-	public boolean isItemTaggable(String itemId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isCollectionTaggable(String collectionId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String getCollectionId(String itemId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

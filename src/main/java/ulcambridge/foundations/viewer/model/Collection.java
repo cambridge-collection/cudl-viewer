@@ -36,6 +36,7 @@ public class Collection implements Comparable<Collection> {
 		this.sponsors = collectionSponsors;
 		this.type = collectionType;
 		this.parentCollectionId = parentCollectionId;
+		// XXX genizah tagging
 		this.taggingStatus = taggingStatus;
 
 		orderCount++;

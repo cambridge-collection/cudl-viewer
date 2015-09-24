@@ -40,15 +40,18 @@ public class CrowdsourcingXMLController {
 
 	private CrowdsourcingDao dataSource;
 
+	private final String APIKEY = Properties.getString("api.key.xmlgeneration");
+	
+	private final String PATH_META = Properties.getString("path.meta");
+	private final String PATH_FRAG = Properties.getString("path.fragment");
+	
 	private final String PATH_ANNO = Properties.getString("path.anno");
 	private final String PATH_TAG = Properties.getString("path.tag");
 	private final String PATH_ANNOTAG = Properties.getString("path.annotag");
 	private final String PATH_ANNOMETA = Properties.getString("path.annometa");
 	private final String PATH_TAGMETA = Properties.getString("path.tagmeta");
 	private final String PATH_ANNOTAGMETA = Properties.getString("path.annotagmeta");
-	private final String PATH_META = Properties.getString("path.meta");
-	private final String PATH_FRAG = Properties.getString("path.fragment");
-
+	
 	public CrowdsourcingXMLController(CrowdsourcingDao dataSource) {
 		this.dataSource = dataSource;
 	}
@@ -57,7 +60,7 @@ public class CrowdsourcingXMLController {
 	@RequestMapping(value = "/updatefrags/{key}", method = RequestMethod.GET)
 	public JsonResponse handleUpdateFragments(@PathVariable("key") String key) {
 
-		if (!key.equals(Properties.getString("api.cs.key")))
+		if (!key.equals(APIKEY))
 			return new JsonResponse("400", "API key missing");
 
 		// TODO validate filenames, skip invalid filenames
@@ -104,20 +107,26 @@ public class CrowdsourcingXMLController {
 	@RequestMapping(value = "/{type}/{key}", method = RequestMethod.GET)
 	public JsonResponse handleGenerateXMLsForXTFSearch(@PathVariable("type") String type, @PathVariable("key") String key) {
 
-		if (!key.equals(Properties.getString("api.cs.key")))
+		if (!key.equals(APIKEY))
 			return new JsonResponse("400", "API key missing");
 
+		// annotation xml
 		if (type.equals("anno")) {
 			generateXML_Anno();
 			return new JsonResponse("200", "Annotation XMLs generated");
-		} else if (type.equals("tag")) {
+		} 
+		
+		// tag xml
+		else if (type.equals("tag")) {
 			generateXML_Tag();
 			return new JsonResponse("200", "Combined XMLs (tags+removed tags) generated");
-		} else if (type.equals("annotag")) {
+		} 
+		
+		// annotation & tag xml
+		else if (type.equals("annotag")) {
 			generateXML_AnnoTag();
 			return new JsonResponse("200", "Combined XMLs (annotations and tags+removed tags) generated");
-		} else {
-			if (type.equals("annometa") || type.equals("tagmeta") || type.equals("annotagmeta")) {
+		} else if (type.equals("annometa") || type.equals("tagmeta") || type.equals("annotagmeta")) {
 				SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
 				List<File> metadataFiles = sr.listMetadata();
 
@@ -126,21 +135,47 @@ public class CrowdsourcingXMLController {
 					return new JsonResponse("400", "Metadata not found");
 				}
 
+				// annotation & metadata xml
 				if (type.equals("annometa")) {
 					generateXML_AnnoMeta(metadataFiles, sr);
 					return new JsonResponse("200", "Combined XMLs (annotations and metadata) generated");
-				} else if (type.equals("tagmeta")) {
+				} 
+				
+				// tag & metadata xml
+				else if (type.equals("tagmeta")) {
 					generateXML_TagMeta(metadataFiles, sr);
 					return new JsonResponse("200", "Combined XMLs (tags+removed tags and metadata) generated");
-				} else if (type.equals("annotagmeta")) {
+				} 
+				
+				// annotation, tag & metadata xml
+				else if (type.equals("annotagmeta")) {
 					generateXML_AnnoTagMeta(metadataFiles, sr);
 					return new JsonResponse("200", "Combined XMLs (annotations, tags+removed tags and metadata) generated");
-				} else {
+				} 
+				
+				else {
 					return new JsonResponse("400", "Bad requeist");
 				}
-			} else {
-				return new JsonResponse("400", "Bad requeist");
+		} else if (type.equals("all")) {
+			generateXML_Anno();
+			generateXML_Tag();
+			generateXML_AnnoTag();
+			
+			SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
+			List<File> metadataFiles = sr.listMetadata();
+			
+			if (metadataFiles == null) {
+				logger.error("Metadata not found");
+				return new JsonResponse("400", "Metadata not found");
 			}
+			
+			generateXML_AnnoMeta(metadataFiles, sr);
+			generateXML_TagMeta(metadataFiles, sr);
+			generateXML_AnnoTagMeta(metadataFiles, sr);
+			
+			return new JsonResponse("200", "XML documents for XTF search generated");
+		} else {
+			return new JsonResponse("400", "Bad requeist");
 		}
 	}
 

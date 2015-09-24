@@ -65,6 +65,24 @@ public class CollectionsDBDao implements CollectionsDao {
 		});
 	}
 	
+	public int getCollectionsRowCount() {
+        String query = "SELECT count(*) FROM collections";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+
+    public int getItemsInCollectionsRowCount() {
+        String query = "SELECT count(*) FROM itemsincollection";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+
+    public int getItemsRowCount() {
+        String query = "SELECT count(*) FROM items";
+        Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
+        return rowcount;
+    }
+	
 	//
 	// XXX tagging switch
 	//
