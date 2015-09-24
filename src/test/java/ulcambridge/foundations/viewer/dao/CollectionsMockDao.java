@@ -25,26 +25,23 @@ public class CollectionsMockDao implements CollectionsDao {
 	public Collection getCollection(String collectionId) {
 
 		return new Collection("treasures", "Newton Papers", getCollectionIds(),
-				"collections/treasures/summary.jsp", "collections/treasures/sponsors.jsp", "virtual", "");
+				"collections/treasures/summary.html", "collections/treasures/sponsors.html", "virtual", "");
 
 	}
 
-	@Override
-	public int getCollectionsRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int getCollectionsRowCount() {
+        return 0;
+    }
 
-	@Override
-	public int getItemsInCollectionsRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int getItemsInCollectionsRowCount() {
+        return 0;
+    }
 
-	@Override
-	public int getItemsRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int getItemsRowCount() {
+        return 0;
+    }
 
 }
