@@ -6,21 +6,21 @@
 	<p>When viewing an item, from the right hand panel select 'View more options'
 		then 'Download or Share'</p>
 
-	<a class="fancybox-inline" href="/images/general/bookmark-link1.png">
-		<img src="/images/general/bookmark-link1-thumb.png">
+	<a class="fancybox-inline" href="/img/general/bookmark-link1.png">
+		<img src="/img/general/bookmark-link1-thumb.png">
 	</a>
 </div>
 <div class="campl-content-container">
 	<p>Then click on the 'Bookmark This Image' button.</p>
 
-	<a class="fancybox-inline" href="/images/general/bookmark-link2.png">
-		<img src="/images/general/bookmark-link2-thumb.png">
+	<a class="fancybox-inline" href="/img/general/bookmark-link2.png">
+		<img src="/img/general/bookmark-link2-thumb.png">
 	</a>
 </div>
 <div class="campl-content-container">
 	<p>Then click 'Yes'</p>
-	<a class="fancybox-inline" href="/images/general/bookmark-link3.png">
-		<img src="/images/general/bookmark-link3-thumb.png">
+	<a class="fancybox-inline" href="/img/general/bookmark-link3.png">
+		<img src="/img/general/bookmark-link3-thumb.png">
 	</a>
 </div>
 <div class="campl-content-container">
@@ -31,5 +31,5 @@
 </div>
 <div class="campl-content-container">	
 
-	<p><a href="/auth/logout">Logout</a></p>
+	<p><a href="/mylibrary/auth/logout">Logout</a></p>
 </div>

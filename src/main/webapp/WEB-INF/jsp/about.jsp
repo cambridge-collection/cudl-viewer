@@ -39,7 +39,7 @@
 
 
 		<div class="campl-column6  campl-main-content" id="content">
-			<img src="/images/general/introducingCUDL.jpg" alt="Introducing CUDL"
+			<img src="/img/general/introducingCUDL.jpg" alt="Introducing CUDL"
 				class="campl-scale-with-grid" />
 			<div class="campl-content-container">
 				<h2>Foundations of Faith and Science</h2>

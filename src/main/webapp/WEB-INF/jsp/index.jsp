@@ -1,5 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <jsp:include page="header/header-full.jsp" />
 <jsp:include page="header/nav.jsp">
 	<jsp:param name="activeMenuIndex" value="0" />
@@ -23,99 +26,33 @@
 			<div class="campl-recessed-carousel">
 				<div class="section-carousel campl-carousel clearfix campl-banner">
 					<div class="campl-carousel-container">
+
+
 						<ul class="campl-unstyled-list campl-slides">
 							<li class="campl-slide campl-column12">
-								<div class="image-container">
-									<a href="/collections/treasures"> <img alt="Treasures"
-										title="Treasures" src="/images/index/carousel-treasures.jpg"
-										class="campl-scale-with-grid" />
-									</a>
-								</div>
-								<div class="campl-slide-caption">
-									<a href="/collections/treasures"><span
-										class="campl-slide-caption-txt"> Treasures of the
-											Library</span></a>
-								</div>
-								<div class="carousel-panel" style="overflow: auto;">
-									<h4>
-										<a href="/collections/treasures">Treasures of the Library</a>
-									</h4>
-
-									<p>Many items within the Library’s collections deserve to
-										be highlighted. This may be because of their historical
-										importance, uniqueness, beauty, fascinating content, or
-										perhaps their personal associations. In this special
-										collection within the Cambridge Digital Library we will draw
-										together books, manuscripts and other items from across our
-										collections that are especially significant. Many of them have
-										been displayed in Library exhibitions in the past – now they
-										can be accessed at any time, from anywhere in the world, and
-										browsed cover to cover.</p>
-
-								</div>
-							</li>						
-							<li class="campl-slide campl-column12">
-								<div class="image-container">
-									<a href="/collections/newton"> <img alt="Newton"
-										title="Newton Papers" src="/images/index/carousel-newton.jpg"
-										class="campl-scale-with-grid" />
-									</a>
-								</div>
-								<div class="campl-slide-caption">
-									<a href="/collections/newton"><span
-										class="campl-slide-caption-txt">Papers of Isaac Newton</span></a>
-								</div>
-								<div class="carousel-panel" style="overflow: auto;">
-									<h4>
-										<a href="/collections/newton">Newton Papers</a>
-									</h4>
-
-									<p>Cambridge University Library is pleased to present the
-										first items in its Foundations of Science collection: a
-										selection from the Papers of Sir Isaac Newton. The Library
-										holds the most important and substantial collection of
-										Newton's scientific and mathematical manuscripts and over the
-										next few months we intend to make most of our Newton papers
-										available on this site.</p>
-
-									<p>
-										This collection features some of Newton's most important work
-										from the 1660s, including his <a href="/collections/newton">college
-											notebooks</a> and '<a href="/view/MS-ADD-04004/">Waste Book</a>'.
-									</p>
-
+								<div id="index-carousel-1" style="position:relative">
+									<c:import charEncoding="UTF-8"
+										url="/html/index-carousel-1.html" />
 								</div>
 							</li>
 							<li class="campl-slide campl-column12">
-								<div class="image-container">
-									<a href="/collections/sassoon"> <img alt="Sassoon Journals"
-										title="Sassoon Journals"
-										src="/images/index/carousel-sassoon.jpg"
-										class="campl-scale-with-grid" />
-									</a>
+								<div id="index-carousel-2" style="position:relative">
+									<c:import charEncoding="UTF-8"
+										url="/html/index-carousel-2.html" />
 								</div>
-								<div class="campl-slide-caption">
-									<a href="/collections/sassoon"><span
-										class="campl-slide-caption-txt">Sassoon Journals</span></a>
-								</div>
-								<div class="carousel-panel" style="overflow: auto;">
-									<h4>
-										<a href="/collections/sassoon">Sassoon Journals</a>
-									</h4>
-
-									<p>The notebooks kept by the soldier-poet Siegfried Sassoon
-										(1886–1967) during his service in the British Army in the
-										First World War are among the most remarkable documents of
-										their kind, and provide an extraordinary insight into his
-										participation in one of the defining conflicts of European
-										history.</p>
-
+							</li>
+							<li class="campl-slide campl-column12">
+								<div id="index-carousel-3" style="position:relative">
+									<c:import charEncoding="UTF-8"
+										url="/html/index-carousel-3.html" />
 								</div>
 							</li>
 						</ul>
+
 					</div>
 				</div>
 			</div>
+
 			<div class="campl-column4">&nbsp;</div>
 		</div>
 	</div>
@@ -132,7 +69,7 @@
 
 			<%
 				for (int i=0; i<rootCollections.size(); i++) { 
-					       Collection c = rootCollections.get(i);
+								       Collection c = rootCollections.get(i);
 			%>
 			<div class="campl-column6">
 				<div class="campl-content-container campl-side-padding">
@@ -189,32 +126,32 @@
 		</div>
 
 		<div class="campl-column4">
-			<div
-				class="campl-content-container campl-sub-column-left-border campl-main-content-sub-column">
-				<div class="campl-heading-container">
-					<h2>Latest news</h2>
-				</div>
+			<div id="latestNewsDiv">
+				<c:import charEncoding="UTF-8" url="/html/index-latest-news.html" />
 			</div>
-			<div
-				class="campl-content-container campl-no-top-padding campl-sub-column-left-border campl-main-content-sub-column">
-				<div class="campl-listing-item campl-news-listing clearfix">
-					<p class="campl-listing-title">
-						<a href="/news/">July Release</a>
-					</p>
-					<span class="campl-datestamp">22 July 2015</span>
-					<p>This release sees the launch of our new <a href='/collections/lewisgibson/'>Lewis-Gibson collection</a> with an initial selection of the 1700 medieval Jewish
-					manuscripts collected by the twin sisters Agnes Smith Lewis and Margaret Dunlop Gibson and jointly purchased by Cambridge University Library and the Bodleian Libraries, Oxford in August 2013.</p>
-				</div>
-				<p>
-					<a href="/news/" class="campl-secondary-cta campl-float-right ">View
-						all news</a>
-				</p>
-				<br />
-			</div>
+
+
 
 		</div>
 	</div>
 </div>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+
+	<script type="text/javascript">
+		$('#latestNewsDiv').attr('contenteditable', 'true');
+		$('#index-carousel-1').attr('contenteditable', 'true');
+		$('#index-carousel-2').attr('contenteditable', 'true');
+		$('#index-carousel-3').attr('contenteditable', 'true');
+	</script>
+	<jsp:include page="editor.jsp">
+		<jsp:param name='dataElements'
+			value='latestNewsDiv,index-carousel-1,index-carousel-2,index-carousel-3' />
+		<jsp:param name='filenames'
+			value='index-latest-news.html,index-carousel-1.html,index-carousel-2.html,index-carousel-3.html' />
+	</jsp:include>
+
+</sec:authorize>
 
 <jsp:include page="header/footer-full.jsp" />
 

@@ -196,7 +196,7 @@ public class SearchController {
 					} catch (JSONException e) {
 
 						// displayImageURL not found, which throws an exception.
-						pageThumbnail = "/images/collectionsView/no-thumbnail.jpg";
+						pageThumbnail = "/img/no-thumbnail.jpg";
 
 					}
 

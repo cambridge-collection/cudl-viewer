@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>      
 <%
 	int activeIndex = Integer.valueOf(request.getParameter("activeMenuIndex"));
 	boolean displaySearch = request.getParameter("displaySearch").toString().equals("true");
@@ -80,7 +81,7 @@
 					<div class="campl-column6 cudl-header-search">
 						<form action="/search" class="campl-search-input">
 							<input name="keyword" type="text" class="text" placeholder="Search" />
-							<input type="image" class="campl-search-submit " src="/images/interface/btn-search-inpage.png">
+							<input type="image" class="campl-search-submit " src="/img/interface/btn-search-inpage.png">
 						</form>
 					</div>
 					
@@ -116,6 +117,11 @@
 					</ul>
 				</li>
 				<li><a href="/help/" title="Help" <%if (activeIndex == 5) {%> class="campl-selected" <%}%>> Help </a></li>
+
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li><a style="background:#ff4444" href="/admin/" title="Admin"> Admin </a></li>
+                </sec:authorize>
+
 			</ul>
 		</div>
 	</div>

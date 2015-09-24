@@ -287,6 +287,9 @@ cudl.setupInfoPanel = function(data) {
 	try {
 		$('#about-abstract').html(data.descriptiveMetadata[0].abstract.displayForm);
 	} catch (ex) { /* ignore, not all items have value */} 
+	if (data.descriptiveMetadata[0].docAuthority) {
+		$('#about-docAuthority').html("<p class='about-docAuthority'>"+data.descriptiveMetadata[0].docAuthority+"</p>");
+	} 
 	if (data.completeness) {   
 		$('#about-completeness').html("<p>"+data.completeness+"</p>");
 	} 

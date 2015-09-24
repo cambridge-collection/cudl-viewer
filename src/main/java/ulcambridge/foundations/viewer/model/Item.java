@@ -55,7 +55,7 @@ public class Item implements Comparable<Item> {
 		
 		// default to placeholder image
 		if (thumbnailURL == null ||thumbnailURL.equals("")) {
-			this.thumbnailURL = "/images/collectionsView/no-thumbnail.jpg";
+			this.thumbnailURL = "/img/no-thumbnail.jpg";
 			this.thumbnailOrientation =	"landscape";
 		}
 

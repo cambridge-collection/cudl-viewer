@@ -221,6 +221,12 @@ body {
 	font-size: 0.9em;
 }
 
+.about-docAuthority {
+	color: #999;
+	font-size: 0.9em;
+	font-style:italic;	
+}
+
 #right-panel {
 	color: #000;
 	position: absolute;

@@ -186,7 +186,7 @@
 			<div class="navbar-header">
 
 				<a href="/"><img id="cam-logo" class="pull-left"
-					src="/images/documentView/cudl-logo-1x.png"
+					src="/img/documentView/cudl-logo-1x.png"
 					alt="Logo for Cambridge University" title="Cambridge University"></a>
 
 				<div class="cudl-viewer-buttons-pagination">
@@ -200,7 +200,7 @@
 				</div>
 
 				<a href="http://www.lib.cam.ac.uk"><img id="ul-logo"
-					class="pull-right" src="/images/header/ULLogowhite.gif"
+					class="pull-right" src="/img/header/ULLogowhite.gif"
 					alt="Logo for Cambridge University Library"
 					title="Cambridge University Library"></a>
 
@@ -289,7 +289,7 @@
 						</h3>
 						<div>
 							<span id="about-completeness"></span> <span id="about-abstract"></span>
-							<span id="about-metadata"></span> <br>
+							<span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
 							<div class="well">
 								<h4>Want to know more?</h4>
 								<p>

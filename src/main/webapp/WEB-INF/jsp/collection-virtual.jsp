@@ -1,11 +1,16 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
+<%@taglib prefix="c" 
+       uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>       
 <%
 	Collection collection = (Collection) request
 			.getAttribute("collection");
 
 	ItemFactory factory = (ItemFactory) request
 			.getAttribute("itemFactory");
+	
+	String contentHTMLURL = (String) request.getAttribute("contentHTMLURL");
 
 	Iterator<String> ids = collection.getItemIds().iterator();
 	List<Item> items = new ArrayList<Item>();
@@ -32,9 +37,10 @@
 	<div class="campl-wrap clearfix">
 
 		<div class="campl-column12  campl-main-content" id="content">
-			<div class="campl-content-container">
+            <div id="summaryDiv" class="campl-content-container">
 
-				<jsp:include page="<%=collection.getSummary()%>" />
+				<% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
+				<c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 				
 
 			</div>
 			<div class="campl-content-container campl-column12">
@@ -80,14 +86,25 @@
 
 			</div>
 
-			<div class="campl-column12 campl-content-container">
-				<jsp:include page="<%=collection.getSponsors()%>" />
+			<div id="sponsorDiv" class="campl-column12 campl-content-container">
+				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
+		        <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
 			</div>
 		</div>
 	</div>
 </div>
 
+<% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
+
+<sec:authorize access="hasRole('ROLE_ADMIN')">
+ 
+<script>$('#summaryDiv').attr('contenteditable', 'true');</script>
+<script>$('#sponsorDiv').attr('contenteditable', 'true');</script>
+<jsp:include page="editor.jsp" >
+  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
+  <jsp:param name='filenames' value='<%=filenames%>'/>
+</jsp:include>
+
+</sec:authorize>
+
 <jsp:include page="header/footer-full.jsp" />
-
-
-
