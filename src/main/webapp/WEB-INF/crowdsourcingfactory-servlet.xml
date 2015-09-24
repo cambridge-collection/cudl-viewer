@@ -26,10 +26,10 @@
 	<!-- PostgreSQL Data source -->
 	<bean id="wcDataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="${postgres.jdbc.driver}" />
-		<property name="url" value="${postgres.jdbc.url}" />
-		<property name="username" value="${postgres.jdbc.user}" />
-		<property name="password" value="${postgres.jdbc.password}" />
+		<property name="driverClassName" value="${tagging.jdbc.driver}" />
+		<property name="url" value="${tagging.jdbc.url}" />
+		<property name="username" value="${tagging.jdbc.user}" />
+		<property name="password" value="${tagging.jdbc.password}" />
 	</bean>
 
 	<bean id="wcDao"
