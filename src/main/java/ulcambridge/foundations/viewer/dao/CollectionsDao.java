@@ -24,6 +24,6 @@ public interface CollectionsDao {
 	
 	public boolean isCollectionTaggable(String collectionId);
 	
-	public String getCollectionId(String itemId);
+	public List<String> getCollectionId(String itemId);
     
 }

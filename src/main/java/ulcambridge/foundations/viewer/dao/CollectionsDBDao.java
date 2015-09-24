@@ -2,13 +2,13 @@ package ulcambridge.foundations.viewer.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -120,15 +120,22 @@ public class CollectionsDBDao implements CollectionsDao {
 	}
 
 	@Override
-	public String getCollectionId(String itemId) {
+	public List<String> getCollectionId(String itemId) {
 		
 		String query = "SELECT collectionid FROM itemsincollection WHERE itemid = ?";
 		
-		try {
-			return jdbcTemplate.queryForObject(query, String.class, itemId);
-		} catch(EmptyResultDataAccessException e) {
-			return null;
-		}
+		return jdbcTemplate.query(query, new Object[] { itemId }, 
+				new ResultSetExtractor<List<String>>() {
+					@Override
+					public List<String> extractData(ResultSet rs) throws SQLException, DataAccessException {
+						List<String> colIds = new ArrayList<String> ();
+						while (rs.next()) {
+							String colId = rs.getString("collectionid");
+							colIds.add( colId );
+						}
+						return colIds;
+					}
+		});
 	}
     
 }

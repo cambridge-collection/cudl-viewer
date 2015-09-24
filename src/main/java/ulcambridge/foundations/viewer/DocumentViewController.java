@@ -87,8 +87,8 @@ public class DocumentViewController {
 		// XXX check if tagging feature is enabled
 		//
 		boolean itemTaggable = dataSource.isItemTaggable(docId);
-		String collId = dataSource.getCollectionId(docId);
-		boolean collTaggable = dataSource.isCollectionTaggable(collId);
+		List<String> colIds = dataSource.getCollectionId(docId);
+		//boolean colTaggable = dataSource.isCollectionTaggable(colId);
 		request.getSession().setAttribute("taggable", itemTaggable);
 		//logger.info(itemTaggable);
 		

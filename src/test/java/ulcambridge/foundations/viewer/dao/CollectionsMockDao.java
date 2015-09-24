@@ -57,7 +57,7 @@ public class CollectionsMockDao implements CollectionsDao {
 	}
 
 	@Override
-	public String getCollectionId(String itemId) {
+	public List<String> getCollectionId(String itemId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
