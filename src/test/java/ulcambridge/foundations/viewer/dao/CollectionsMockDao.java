@@ -25,26 +25,8 @@ public class CollectionsMockDao implements CollectionsDao {
 	public Collection getCollection(String collectionId) {
 
 		return new Collection("treasures", "Newton Papers", getCollectionIds(),
-				"collections/treasures/summary.jsp", "collections/treasures/sponsors.jsp", "virtual", "", true);
+				"collections/treasures/summary.jsp", "collections/treasures/sponsors.jsp", "virtual", "");
 
-	}
-
-	@Override
-	public boolean isItemTaggable(String itemId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isCollectionTaggable(String collectionId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String getCollectionId(String itemId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

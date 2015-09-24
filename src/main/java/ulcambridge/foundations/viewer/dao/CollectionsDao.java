@@ -4,9 +4,8 @@ import java.util.List;
 
 import ulcambridge.foundations.viewer.model.Collection;
 
-
 public interface CollectionsDao {
-	
+
     public List<String> getCollectionIds();
 
     public Collection getCollection(String collectionId);
@@ -16,14 +15,4 @@ public interface CollectionsDao {
     public int getItemsInCollectionsRowCount();
 
     public int getItemsRowCount();
-	
-	//
-	// XXX tagging switch
-	//
-
-	public boolean isItemTaggable(String itemId);
-	
-	public boolean isCollectionTaggable(String collectionId);
-	
-	public String getCollectionId(String itemId);
 }

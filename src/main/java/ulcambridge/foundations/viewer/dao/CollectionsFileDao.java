@@ -28,13 +28,8 @@ public abstract class CollectionsFileDao implements CollectionsDao {
 		String collectionType = Properties.getString(collectionId + ".type");
 		String collectionParentId = Properties.getString(collectionId + ".parentId");
 		
-		//
-		// XXX genizah tagging
-		//
-		boolean taggingStatus = Boolean.parseBoolean( Properties.getString(collectionId + ".tagging") );
-		
 		return new Collection(collectionId, collectionTitle, collectionItemIds,
-				collectionSummary, collectionSponsors, collectionType, collectionParentId, taggingStatus);
+				collectionSummary, collectionSponsors, collectionType, collectionParentId);
 
 	}
 

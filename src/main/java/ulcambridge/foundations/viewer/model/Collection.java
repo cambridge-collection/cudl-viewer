@@ -20,13 +20,11 @@ public class Collection implements Comparable<Collection> {
 	private String sponsors;
 	private String type;
 	private String parentCollectionId;
-	private boolean taggingStatus;
 
 	public Collection(String collectionId, String collectionTitle,
 			List<String> collectionItemIds, 
 			String collectionSummary, String collectionSponsors,
-			String collectionType, String parentCollectionId, 
-			boolean taggingStatus) {
+			String collectionType, String parentCollectionId) {
 
 		this.id = collectionId;
 		this.title = collectionTitle;
@@ -36,8 +34,6 @@ public class Collection implements Comparable<Collection> {
 		this.sponsors = collectionSponsors;
 		this.type = collectionType;
 		this.parentCollectionId = parentCollectionId;
-		// XXX genizah tagging
-		this.taggingStatus = taggingStatus;
 
 		orderCount++;
 		this.order = orderCount;
@@ -79,9 +75,6 @@ public class Collection implements Comparable<Collection> {
 		return parentCollectionId;
 	}
 
-	public boolean isTaggingStatus() {
-		return taggingStatus;
-	}
 
 	@Override
 	public int compareTo(Collection o) {
