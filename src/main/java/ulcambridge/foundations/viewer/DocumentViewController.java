@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
@@ -41,6 +42,7 @@ public class DocumentViewController {
 
 	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;
+	private CollectionsDBDao dataSource;
 
 	@Autowired
 	public void setCollectionFactory(CollectionFactory factory) {
@@ -50,6 +52,11 @@ public class DocumentViewController {
 	@Autowired
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
+	}
+	
+	@Autowired
+	public void setDataSource(CollectionsDBDao dataSource) {
+		this.dataSource = dataSource;
 	}
 
 	// on path /view/{docId}
@@ -75,6 +82,15 @@ public class DocumentViewController {
 		}
 		String itemType = item.getType();
 
+		//
+		// XXX check if tagging feature is enabled
+		//
+		boolean itemTaggable = dataSource.isItemTaggable(docId);
+		String collId = dataSource.getCollectionId(docId);
+		boolean collTaggable = dataSource.isCollectionTaggable(collId);
+		request.getSession().setAttribute("taggable", itemTaggable);
+		//logger.info(itemTaggable);
+		
 		if (itemType.equals("essay")) {
 			return setupEssayView((EssayItem) item, page, request);
 		} else {

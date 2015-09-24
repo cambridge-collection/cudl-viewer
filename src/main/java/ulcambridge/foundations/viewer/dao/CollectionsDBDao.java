@@ -7,7 +7,10 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import ulcambridge.foundations.viewer.model.Collection;
@@ -77,5 +80,55 @@ public class CollectionsDBDao implements CollectionsDao {
         Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
         return rowcount;
     }
+    
+    //
+	// XXX tagging switch
+	//
+
+	@Override
+	public boolean isItemTaggable(String itemId) {
+		
+		String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
+		
+		return jdbcTemplate.query(query, new Object[] { itemId }, 
+				new ResultSetExtractor<Boolean>() {
+					@Override
+					public Boolean extractData(ResultSet rs) throws SQLException, DataAccessException {
+						while (rs.next()) {
+							return rs.getBoolean("taggingstatus");
+						}
+						return false;
+					}
+				});
+	}
+
+	@Override
+	public boolean isCollectionTaggable(String collectionId) {
+		
+		String query = "SELECT taggingstatus FROM collections WHERE collectionid = ?";
+		
+		return jdbcTemplate.query(query, new Object[] { collectionId }, 
+				new ResultSetExtractor<Boolean>() {
+					@Override
+					public Boolean extractData(ResultSet rs) throws SQLException, DataAccessException {
+						while (rs.next()) {
+							return rs.getBoolean("taggingstatus");
+						}
+						return false;
+					}
+				});
+	}
+
+	@Override
+	public String getCollectionId(String itemId) {
+		
+		String query = "SELECT collectionid FROM itemsincollection WHERE itemid = ?";
+		
+		try {
+			return jdbcTemplate.queryForObject(query, String.class, itemId);
+		} catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+	}
     
 }

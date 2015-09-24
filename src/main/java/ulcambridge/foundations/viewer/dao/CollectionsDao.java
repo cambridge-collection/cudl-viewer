@@ -15,4 +15,15 @@ public interface CollectionsDao {
     public int getItemsInCollectionsRowCount();
 
     public int getItemsRowCount();
+    
+    //
+	// XXX tagging switch
+	//
+
+	public boolean isItemTaggable(String itemId);
+	
+	public boolean isCollectionTaggable(String collectionId);
+	
+	public String getCollectionId(String itemId);
+    
 }
