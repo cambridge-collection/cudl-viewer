@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
@@ -42,7 +43,7 @@ public class DocumentViewController {
 
 	private CollectionFactory collectionFactory;
 	private ItemFactory itemFactory;
-	private CollectionsDBDao dataSource;
+	private CollectionsDao dataSource;
 
 	@Autowired
 	public void setCollectionFactory(CollectionFactory factory) {
@@ -55,7 +56,7 @@ public class DocumentViewController {
 	}
 	
 	@Autowired
-	public void setDataSource(CollectionsDBDao dataSource) {
+	public void setDataSource(CollectionsDao dataSource) {
 		this.dataSource = dataSource;
 	}
 

@@ -7,6 +7,7 @@ import junit.framework.TestSuite;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
 import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
@@ -62,6 +63,9 @@ public class DocumentViewControllerTest extends TestCase {
 		// inject the factories
 		c.setCollectionFactory(collectionFactory);	
 		c.setItemFactory(itemFactory);
+		
+		// inject the datasource
+		c.setDataSource(collectionsdao);
 		
 		ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);	
 
