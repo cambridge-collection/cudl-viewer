@@ -40,7 +40,7 @@ public class CrowdsourcingXMLController {
 
 	private CrowdsourcingDao dataSource;
 
-	private final String APIKEY = Properties.getString("api.key.xmlgeneration");
+	private final String APIKEY = Properties.getString("api.cs.key");
 	
 	private final String PATH_META = Properties.getString("path.meta");
 	private final String PATH_FRAG = Properties.getString("path.fragment");
