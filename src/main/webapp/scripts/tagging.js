@@ -125,7 +125,7 @@ var tagging =
 				e.preventDefault();
 				e.stopPropagation();
 
-				window.location.href = '/auth/login';
+				window.location.href = '/auth/login?access=all';
 			} else {
 				// start tagging
 				tagging_c.startTagging();
