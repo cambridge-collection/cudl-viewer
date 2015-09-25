@@ -131,7 +131,7 @@ public class CrowdsourcingXMLController {
 				List<File> metadataFiles = sr.listMetadata();
 
 				if (metadataFiles == null) {
-					logger.error("Metadata not found");
+					logger.error("Metadata not found, " + PATH_META);
 					return new JsonResponse("400", "Metadata not found");
 				}
 
