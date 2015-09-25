@@ -4,9 +4,6 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
-
-import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * 
@@ -15,16 +12,15 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class Utils {
 
+	public static final String dateformat = "YYYY-MM-dd HH:mm:ss z";
+	public static final String timezone = "BST";
+	
 	// date format
-	public static final SimpleDateFormat dateFormat = new SimpleDateFormat(Properties.getString("dateformat"));
-
-	// time zone
-	private static final String timeZone = Properties.getString("timezone");
+	public static final SimpleDateFormat dateFormat = new SimpleDateFormat(dateformat);
 
 	// get current date time
 	public static Date getCurrentDateTime() {
 		try {
-			dateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
 			return dateFormat.parse(dateFormat.format(new Date()));
 		} catch (ParseException e) {
 			e.printStackTrace();
