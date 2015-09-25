@@ -92,7 +92,7 @@ var tagging =
 	function setUpTaggingTab(data, docId) {
 
 		if (taggable === 'false') {
-			console.log('Tagging is disabled');
+			//console.log('Tagging is disabled');
 			// remove tagging tab and panel
 			$('#taggingtab').parent().remove();
 			$('#tagging').remove();
@@ -229,7 +229,7 @@ var tagging =
 				var url = path.join(API_GET_ANNO, docId, page.toString());
 
 				this._ajax({ url: url }, function (resp) {
-					console.log('anno found: ' + resp.result.annotations.length);
+					//console.log('anno found: '+resp.result.annotations.length);
 					callback(resp.result.annotations);
 				});
 			}
@@ -241,7 +241,7 @@ var tagging =
 				var url = path.join(API_GET_TAG, docId);
 
 				this._ajax({ url: url }, function (resp) {
-					console.log('tags found: ' + resp.result.terms.length);
+					//console.log('tags found: '+resp.result.terms.length);
 					callback(resp.result.terms);
 				});
 			}
@@ -253,7 +253,7 @@ var tagging =
 				var url = path.join(API_GET_RTAG, docId);
 
 				this._ajax({ url: url }, function (resp) {
-					console.log('removed tags found: ' + resp.result.tags.length);
+					//console.log('removed tags found: '+resp.result.tags.length);
 					callback(resp.result.tags);
 				});
 			}
@@ -268,7 +268,7 @@ var tagging =
 			key: '_ajax',
 			value: function _ajax(opts, callback) {
 
-				console.log(opts.url);
+				//console.log(opts.url);
 				// console.log('payload: '+opts.data);
 
 				var method = _lodashLang2['default'].isUndefined(opts.data) ? 'GET' : 'POST';
@@ -292,7 +292,7 @@ var tagging =
 						callback(data);
 					}
 				}).fail(function (jqxhr, status, error) {
-					console.log('ajax fail: ' + status);
+					//console.log('ajax fail: '+status);
 				});
 			}
 		}]);
@@ -3688,7 +3688,6 @@ var tagging =
 			key: 'overridePrototype',
 			value: function overridePrototype(opts) {
 				_cudl2['default'].setupSeaDragon.prototype.nextPage1 = function () {
-					console.log('nn');
 					// draw annotation markers if toggle is on
 					if (this.opts.toolbar_c.toolbar.colorIndicator.shown) {
 						this.opts.toolbar_c.drawMarkersAction();
@@ -3696,7 +3695,6 @@ var tagging =
 				};
 
 				_cudl2['default'].setupSeaDragon.prototype.prevPage = function () {
-					console.log('pp');
 					// draw annotation markers if toggle is on
 					if (this.opts.toolbar.colorIndicator.shown) {
 						this.opts.toolbar_c.drawMarkersAction();
@@ -22039,7 +22037,7 @@ var tagging =
 	        value: function actionOnCanvasClick(position) {
 
 	            var idx = this.toolbar_c.getActiveTbId();
-	            console.log(idx);
+	            //console.log(idx);
 
 	            // clear guides
 	            this.clearGuides();
@@ -22162,7 +22160,7 @@ var tagging =
 
 	            var rect = this.getRectViewportCoords(point, 60, 60),
 	                OSDrect = new OpenSeadragon.Rect(rect[0], rect[1], rect[2], rect[3]);
-	            console.log(rect);
+	            //console.log(rect);
 
 	            this.osd.addOverlay(box, OSDrect, OpenSeadragon.OverlayPlacement.CENTER);
 	        }
@@ -22613,7 +22611,7 @@ var tagging =
 	                name: $(el).text(),
 	                raw: -1
 	            }), function (resp) {
-	                console.log('word removed');
+	                //console.log('word removed');
 	            });
 	        }
 	    }, {
@@ -22627,7 +22625,7 @@ var tagging =
 	                name: $(el).text(),
 	                raw: 1
 	            }), function (resp) {
-	                console.log('removed word reverted');
+	                //console.log('removed word reverted');
 	            });
 	        }
 
