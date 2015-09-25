@@ -252,7 +252,7 @@ public class CrowdsourcingXMLController {
 			DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(FilenameUtils.getBaseName(metadataId));
 
 			// combine annotations with metadata (level up raw)
-			DocumentTerms docTerms = new TermCombiner().combine_Anno_Meta(docAnnotations);
+			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations);
 
 			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
 			String path = (new File(PATH_ANNOMETA, metadataId + ".xml")).getPath();
@@ -273,7 +273,7 @@ public class CrowdsourcingXMLController {
 			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
 
 			// combine tags, removed tags with meta (level up raw)
-			DocumentTerms docTerms = new TermCombiner().combine_Tag_RemovedTag_Meta(docTags, docRemovedTags);
+			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docTags, docRemovedTags);
 
 			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
 			String path = (new File(PATH_TAGMETA, metadataId + ".xml")).getPath();
@@ -295,7 +295,7 @@ public class CrowdsourcingXMLController {
 			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
 
 			// combine annotations, tags, removed tags with meta (level up raw)
-			DocumentTerms docTerms = new TermCombiner().combine_Anno_Tag_RemovedTag_Meta(docAnnotations, docTags, docRemovedTags);
+			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations, docTags, docRemovedTags);
 
 			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
 			String path = (new File(PATH_ANNOTAGMETA, metadataId + ".xml")).getPath();

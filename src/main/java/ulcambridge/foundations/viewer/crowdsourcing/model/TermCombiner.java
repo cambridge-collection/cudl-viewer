@@ -2,8 +2,12 @@ package ulcambridge.foundations.viewer.crowdsourcing.model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -14,6 +18,8 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class TermCombiner {
 
+	private static final Logger logger = LoggerFactory.getLogger(TermCombiner.class);
+	
 	private int annoWeight;
 
 	private int removedTagWeight;
@@ -34,7 +40,7 @@ public class TermCombiner {
 		int ratio_T_R = this.tagWeight / this.removedTagWeight;
 
 		DocumentTerms docRTTerms = combine(docTags, docRemovedTags, ratio_T_R);
-		removeNegative(docRTTerms.getTerms());
+		removeInvalidTerms(docRTTerms.getTerms());
 
 		return docRTTerms;
 	}
@@ -43,8 +49,8 @@ public class TermCombiner {
 
 		int ratio_A_T = this.tagWeight / this.annoWeight;
 
-		DocumentTerms docATTerms = combine(docAnnotations, docTags, ratio_A_T);
-		removeNegative(docATTerms.getTerms());
+		DocumentTerms docATTerms = combine(docTags, docAnnotations, ratio_A_T);
+		removeInvalidTerms(docATTerms.getTerms());
 
 		return docATTerms;
 	}
@@ -56,41 +62,41 @@ public class TermCombiner {
 
 		DocumentTerms docARTerms = combine(docAnnotations, docRemovedTags, ratio_A_R);
 		DocumentTerms docARTTerms = combine(docTags, docARTerms, ratio_A_T);
-		removeNegative(docARTTerms.getTerms());
+		removeInvalidTerms(docARTTerms.getTerms());
 
 		return docARTTerms;
 	}
 
-	public DocumentTerms combine_Anno_Meta(DocumentAnnotations docAnnotations) {
+	public DocumentTerms updateToMetaLevel(DocumentAnnotations docAnnotations) {
 
 		int ratio_A_M = this.metaWeight / this.annoWeight;
 
 		DocumentTerms docAMTerms = combine(docAnnotations, ratio_A_M);
-		removeNegative(docAMTerms.getTerms());
+		removeInvalidTerms(docAMTerms.getTerms());
 
 		return docAMTerms;
 	}
 
-	public DocumentTerms combine_Tag_RemovedTag_Meta(DocumentTags docTags, DocumentTags docRemovedTags) {
+	public DocumentTerms updateToMetaLevel(DocumentTags docTags, DocumentTags docRemovedTags) {
 		// combine tags with removed tags
 		DocumentTerms docRTTerms = combine_Tag_RemovedTag(docTags, docRemovedTags);
-
+		
 		int ratio_T_M = this.metaWeight / this.tagWeight;
 
 		DocumentTerms docRTMTerms = combine(docRTTerms, ratio_T_M);
-		removeNegative(docRTMTerms.getTerms());
-
+		removeInvalidTerms(docRTMTerms.getTerms());
+		
 		return docRTMTerms;
 	}
 
-	public DocumentTerms combine_Anno_Tag_RemovedTag_Meta(DocumentAnnotations docAnnotations, DocumentTags docTags, DocumentTags docRemovedTags) {
+	public DocumentTerms updateToMetaLevel(DocumentAnnotations docAnnotations, DocumentTags docTags, DocumentTags docRemovedTags) {
 		// combine annotations, tags and removed tags
 		DocumentTerms docARTTerms = combine_Anno_Tag_RemovedTag(docAnnotations, docTags, docRemovedTags);
-
+		
 		int ratio_T_M = this.metaWeight / this.tagWeight;
 
 		DocumentTerms docARTMTerms = combine(docARTTerms, ratio_T_M);
-		removeNegative(docARTMTerms.getTerms());
+		removeInvalidTerms(docARTMTerms.getTerms());
 
 		return docARTMTerms;
 	}
@@ -99,70 +105,89 @@ public class TermCombiner {
 		List<Term> terms1 = docTerms1.getTerms();
 		List<Term> terms2 = docTerms2.getTerms();
 
-		List<Term> combined = merge(terms1, terms2, ratio);
+		List<Term> mergedTerms = mergeTerms(terms1, terms2, ratio);
 
-		return new DocumentTerms(docTerms1.getDocumentId(), combined.size(), combined);
+		return new DocumentTerms(docTerms1.getDocumentId(), mergedTerms.size(), mergedTerms);
 	}
 
 	private DocumentTerms combine(DocumentTerms docTerms, int ratio) {
-		List<Term> terms = docTerms.getTerms();
+		List<Term> terms = docTerms.getTerms();		
 
-		levelUp(terms, ratio);
+		List<Term> updatedTerms = updateTerms(terms, ratio);
 
-		return docTerms;
+		return new DocumentTerms(docTerms.getDocumentId(), updatedTerms.size(), updatedTerms); 
 	}
 
 	/**
-	 * merge two term lists, recalculate raw if duplicate exists
+	 * merge two term lists, recalculate raw if duplicates
 	 * 
-	 * @param terms1
-	 * @param terms2
+	 * @param terms1 with higher level, e.g., tag
+	 * @param terms2 with lower level, e.g., annotation
 	 * @param ratio = terms1.weight / terms2.weight
 	 */
-	private List<Term> merge(List<Term> terms1, List<Term> terms2, int ratio) {
-		// get similar and different terms
-		Set<Term> similar = new HashSet<Term>(terms1);
-		Set<Term> different = new HashSet<Term>();
-		different.addAll(terms1);
-		different.addAll(terms2);
+	private List<Term> mergeTerms(List<Term> terms1, List<Term> terms2, int ratio) {
+		// separate the same and the different terms
+		Set<Term> sames = new HashSet<Term>(terms1);
+		Set<Term> diffs1 = new HashSet<Term>(terms1);
+		Set<Term> diffs2 = new HashSet<Term>(terms2);
+		sames.retainAll(terms2);
+		diffs1.removeAll(sames);
+		diffs2.removeAll(sames);
+		List<Term> sameTerms = new ArrayList<Term>(sames);
+		List<Term> diffTerms1 = new ArrayList<Term>(diffs1);
+		List<Term> diffTerms2 = new ArrayList<Term>(diffs2);
 
-		similar.retainAll(terms2);
-		different.removeAll(similar);
-
-		List<Term> _similar = new ArrayList<Term>(similar);
-		List<Term> _different = new ArrayList<Term>(different);
-
-		// calculate new raw
-		for (Term term : _similar) {
-			int i1 = terms1.indexOf(term), i2 = terms2.indexOf(term);
-			Term t1 = terms1.get(i1), t2 = terms2.get(i2);
-			int r1 = t1.getRaw(), r2 = t2.getRaw();
-
-			int r = (r2 >= 0) ? (int) Math.floor((double) r2 / ratio) : (int) Math.ceil((double) r2 / ratio);
-
-			term.setRaw(r1 + r);
-			//_similar.set(i, term);
-		}
-
-		_different.addAll(_similar);
-
-		return _different;
+		// recalculate raw based on ratio
+		List<Term> t1 = updateTerms(sameTerms, ratio, terms1, terms2);
+		List<Term> t2 = updateTerms(diffTerms2, ratio);
+		t1.addAll(t2);
+		t1.addAll(diffTerms1);
+		
+		return t1;
 	}
-
+	
 	/**
-	 * recalculate raw for each item
+	 * recalculate raw
 	 * 
 	 * @param terms
 	 * @param ratio
 	 */
-	private void levelUp(List<Term> terms, int ratio) {
-		for (Term term : terms) {
+	private List<Term> updateTerms(List<Term> terms, int ratio) {
+		List<Term> ts = new ArrayList<Term> ();
+		for (Iterator<Term> it = terms.iterator(); it.hasNext();) {
+			Term term = it.next();
 			int r = term.getRaw();
 
 			r = (r >= 0) ? (int) Math.floor((double) r / ratio) : (int) Math.ceil((double) r / ratio);
 
 			term.setRaw(r);
+			
+			if (r > 0)
+				ts.add(term);
 		}
+		
+		return ts;
+	}
+	
+	private List<Term> updateTerms(List<Term> terms, int ratio, List<Term> terms1, List<Term> terms2) {
+		List<Term> ts = new ArrayList<Term> ();
+		for (Iterator<Term> it = terms.iterator(); it.hasNext();) {
+			Term term = it.next();
+			int i1 = terms1.indexOf(term), 
+				i2 = terms2.indexOf(term);
+			Term t1 = terms1.get(i1), 
+				 t2 = terms2.get(i2);
+			int r1 = t1.getRaw(), r2 = t2.getRaw();
+
+			int r = (r2 >= 0) ? (int) Math.floor((double) r2 / ratio) : (int) Math.ceil((double) r2 / ratio);
+			
+			term.setRaw(r1 + r);
+			
+			if ((r1+r) > 0)
+				ts.add(term);
+		}
+		
+		return ts;
 	}
 
 	/**
@@ -170,14 +195,13 @@ public class TermCombiner {
 	 * 
 	 * @param docTerms
 	 */
-	private void removeNegative(List<Term> terms) {
-		List<Term> tmp = new ArrayList<Term>();
-		for (Term term : terms) {
-			if (term.getRaw() <= 0) {
-				tmp.add(term);
-			}
+	private List<Term> removeInvalidTerms(List<Term> terms) {
+		for (Iterator<Term> it = terms.iterator(); it.hasNext();) {
+			Term term = it.next();
+			if (term.getRaw() <= 0)
+				it.remove();
 		}
-		terms.removeAll(tmp);
+		return terms;
 	}
 
 }
