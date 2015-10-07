@@ -93,6 +93,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
                 <executions>
                     <!-- Unpack the the viewer UI's built resources into the war -->
                     <execution>
@@ -106,8 +107,7 @@
                             <includeArtifactIds>viewer-ui</includeArtifactIds>
                             <includeGroupIds>${project.groupId}</includeGroupIds>
                             <excludeTransitive>true</excludeTransitive>
-                            <classifier>${cudl.viewer-ui-built-assets-classifier}</classifier>
-                            <!--use as much as needed to be specific...also scope,type,classifier etc-->
+                            <includeClassifiers>${cudl.viewer-ui-built-assets-classifier}</includeClassifiers>
                         </configuration>
                     </execution>
                 </executions>
