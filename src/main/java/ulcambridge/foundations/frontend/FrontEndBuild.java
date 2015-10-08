@@ -7,13 +7,26 @@ import java.net.URI;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * Represents a collection of related frontend UI resources required in an HTML
+ * document.
+ */
 public interface FrontEndBuild {
     List<Resource> resources();
 
+    /**
+     * Represents an individual resource, such as a CSS or Javascript file.
+     */
     public interface Resource {
+        /**
+         * @return an HTML representation of the resource.
+         */
         public String render();
     }
 
+    /**
+     * A resource included inline in a document (rather than referenced by URL).
+     */
     public class InlineResource implements Resource {
         private final ResourceType type;
         private final String body;
@@ -31,12 +44,16 @@ public interface FrontEndBuild {
         }
     }
 
+    /**
+     * An external resource which is referenced via URL.
+     */
     public interface LinkedResource extends Resource {
         ResourceType getType();
         URI getUri();
     }
 
-    public static abstract class AbstractLinkedResource implements LinkedResource {
+    public static abstract class AbstractLinkedResource
+            implements LinkedResource {
 
         private static final Pattern TAG_ATTR =
                 Pattern.compile("^[a-zA-Z][\\w-]*$");
@@ -92,6 +109,9 @@ public interface FrontEndBuild {
         }
     }
 
+    /**
+     * Represents a reference to an external CSS file.
+     */
     public static class LinkedCSSResource extends AbstractLinkedResource {
         public LinkedCSSResource(URI link) {
             super(link, ResourceType.CSS, "link", "href");
@@ -103,6 +123,9 @@ public interface FrontEndBuild {
         }
     }
 
+    /**
+     * Represents a reference to an external Javascript file.
+     */
     public class LinkedJavascriptResource extends AbstractLinkedResource {
         private final boolean isAsync;
 
@@ -131,7 +154,10 @@ public interface FrontEndBuild {
         }
     }
 
-    public enum ResourceType {
+    /**
+     * The types of resources available.
+     */
+    enum ResourceType {
         JAVASCRIPT("text/javascript"), CSS("text/css");
 
         private final String mime;
