@@ -1,5 +1,6 @@
 package ulcambridge.foundations.frontend.webpack;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -18,6 +19,20 @@ import java.util.*;
 public final class WebpackBuilds {
     private WebpackBuilds() { throw new RuntimeException(); }
 
+    /**
+     * Convenience wrapper for {@link #create(URI, Iterable, Map)} which parses
+     * the provided InputStreams using {@link #parseDependencies(InputStream)}
+     * and {@link #parseMetadata(InputStream)}.
+     *
+     * @param baseUri The URL that paths in the webpack metadata are relative
+     *                to.
+     * @param metadata The webpack build metadata file.
+     * @param dependencies The initial/entry chunk dependency graph file.
+     * @return A {@link WebpackBuild} instance representing the provided
+     *         webpack build metadata.
+     * @throws IOException If the metadata source can't be read
+     * @throws WebpackMetadataException If the metadata is invalid
+     */
     public static WebpackBuild create(
             URI baseUri,
             InputStream metadata, InputStream dependencies)
@@ -26,6 +41,19 @@ public final class WebpackBuilds {
         return create(baseUri, parseMetadata(metadata), parseDependencies(dependencies));
     }
 
+    /**
+     * Create a {@link WebpackBuild} from initial/entry chunk definitions and
+     * a dependency graph specifying which chunks are required to be loaded
+     * before a given chunk.
+     *
+     * @param baseUri The URL that paths in the webpack metadata are relative
+     *                to.
+     * @param metadata The webpack build metadata file.
+     * @param dependencies The initial/entry chunk dependency graph file.
+     * @return A {@link WebpackBuild} instance representing the provided
+     *         webpack build metadata.
+     * @throws WebpackMetadataException If the metadata is invalid
+     */
     public static WebpackBuild create(
             URI baseUri,
             Iterable<MetadataRecord> metadata,
@@ -38,33 +66,115 @@ public final class WebpackBuilds {
     /**
      * Parse a JSON chunk dependencies file.
      *
-     * Note that this function does not perform any verification of
+     * <p>Note that this function does not perform any verification of
      * the dependency graph, i.e. cycle detection etc.
      *
+     * <p>The format of the JSON file is as follows:
+     * <pre>{@code
+     * {
+     *     "foo": [],
+     *     "bar": ["foo"],
+     *     "baz": ["bar", "boz"],
+     *     "boz": []
+     * }
+     * }</pre>
+     *
+     * <p>This specifies that {@code baz} depends on all other chunks,
+     * {@code foo} depends on no chunks.
+     *
      * @return A map of chunk names to lists of dependency chunks.
+     * @throws IOException If the stream can't be read
+     * @throws WebpackMetadataException If the input is malformed
      */
-    private static Map<String, List<String>> parseDependencies(
-            InputStream json) {
-        throw new RuntimeException("Not implemented");
+    public static Map<String, List<String>> parseDependencies(
+            InputStream input) throws WebpackMetadataException, IOException {
+        JsonNode root;
+        try {
+             root = new ObjectMapper().readTree(input);
+        }
+        catch(JsonProcessingException e) {
+            throw new WebpackMetadataException(
+                    "Dependencies file was not valid JSON", e);
+        }
+
+        if(!root.isObject())
+            throw new WebpackMetadataException("Root was not a JSON object");
+
+        ObjectNode chunks = (ObjectNode)root;
+        Map<String, List<String>> dependencies =
+                new HashMap<String, List<String>>();
+
+        Iterator<String> names = chunks.fieldNames();
+        List<String> deps = new ArrayList<String>();
+        while(names.hasNext()) {
+            String name = names.next();
+            JsonNode chunkNode = chunks.get(name);
+            if(!chunkNode.isArray()) {
+                throw new WebpackMetadataException(
+                        "Chunk value was not an array: " + name);
+            }
+
+            deps.clear();
+            for(JsonNode node : chunkNode) {
+                if(!node.isTextual()) {
+                    throw new WebpackMetadataException(
+                            "Dependencies must be strings (chunk names)");
+                }
+                deps.add(asString(node));
+            }
+
+            dependencies.put(name, deps.isEmpty() ?
+                    Collections.<String>emptyList() :
+                    Collections.unmodifiableList(new ArrayList<String>(deps)));
+        }
+
+        return Collections.unmodifiableMap(dependencies);
     }
 
     /**
      * Parse an input stream containing a webpack build metadata JSON document.
      *
+     * <p>The format of the JSON file is as follows:
+     *
+     * <pre>{@code
+     * {
+     *     "foo": { "js": "js/foo.js" },
+     *     "bar": {
+     *         "js": "js/bar.js",
+     *         "css": "css/bar.css"
+     *     },
+     *     "baz": { "js": "js/baz.js" },
+     *     "boz": { "css": "css/boz.css" }
+     * }
+     * }</pre>
+     *
+     * <p>Each key of the root object defines a chunk with the key's name.
+     * A {@code js} or {@code css} attribute defines the path to the chunk's
+     * javascript or css file. Each {@link MetadataRecord} represents a single
+     * css or js file, so a chunk can (currently) have one or two records.
+     *
      * @param input The JSON document to parse
-     * @return A map of chunk names to chunks
-     * @throws IOException
+     * @return A set of the js and css records defined in the metadata.
+     * @throws IOException If the stream can't be read
      * @throws WebpackMetadataException If the metadata is malformed
      */
-    private static Set<MetadataRecord> parseMetadata(InputStream input)
+    public static Set<MetadataRecord> parseMetadata(InputStream input)
             throws IOException, WebpackMetadataException {
 
-        JsonNode root = new ObjectMapper().readTree(input);
+        JsonNode root;
+        try {
+            root = new ObjectMapper().readTree(input);
+        }
+        catch(JsonProcessingException e) {
+            throw new WebpackMetadataException(
+                    "Metadata file was not valid JSON", e);
+        }
+
         if(!root.isObject())
             throw new WebpackMetadataException("Root was not a JSON object");
 
         ObjectNode chunks = (ObjectNode)root;
-        Map<String, MetadataRecord> result = new HashMap<String, MetadataRecord>();
+        Set<MetadataRecord> records = new HashSet<MetadataRecord>();
 
         Iterator<String> names = chunks.fieldNames();
         while(names.hasNext()) {
@@ -76,27 +186,36 @@ public final class WebpackBuilds {
             if(name.length() == 0)
                 throw new WebpackMetadataException("Chunk name was empty");
 
-            result.put(name, MetadataRecord.fromJson(name, (ObjectNode)chunkNode));
+            if(chunkNode.has("css")) {
+                records.add(MetadataRecord.fromFilename(
+                        name,
+                        asString(chunkNode.get("css")),
+                        FrontEndBuild.ResourceType.CSS));
+            }
+
+            if(chunkNode.has("js")) {
+                records.add(MetadataRecord.fromFilename(
+                        name,
+                        asString(chunkNode.get("js")),
+                        FrontEndBuild.ResourceType.JAVASCRIPT));
+            }
         }
 
-        // FIXME: handle chunk entries with css and js
-        throw new RuntimeException("FIXME: implement");
-//        return result;
+        return Collections.unmodifiableSet(records);
     }
 
     private static String asString(JsonNode node) throws WebpackMetadataException{
         if(!node.isTextual())
             throw new WebpackMetadataException(
                     "Unexpected node type: " + node.getNodeType());
-        return node.toString();
+        return node.textValue();
     }
 
-    /* package */ static class MetadataRecord {
+    public static class MetadataRecord {
         private final String name;
         private final URI uri;
         private final FrontEndBuild.ResourceType type;
 
-        // FIXME: change filename to path
         public MetadataRecord(String name, URI uri,
                               FrontEndBuild.ResourceType type) {
 
@@ -110,26 +229,14 @@ public final class WebpackBuilds {
             this.type = type;
         }
 
-        private static MetadataRecord fromJson(String name, ObjectNode chunk)
+        private static MetadataRecord fromFilename(
+                String name, String filename, FrontEndBuild.ResourceType type)
                 throws WebpackMetadataException {
-            FrontEndBuild.ResourceType type;
-            String filename;
-            if(chunk.has("css")) {
-                type = FrontEndBuild.ResourceType.CSS;
-                filename = asString(chunk.get("css"));
-            }
-            else if(chunk.has("js")) {
-                type = FrontEndBuild.ResourceType.JAVASCRIPT;
-                filename = asString(chunk.get("js"));
-            }
-            else {
-                throw new WebpackMetadataException(
-                        "Chunk did not have a js or css property");
-            }
 
-            if(filename.length() == 0)
+            Assert.notNull(type);
+            if(name.length() == 0)
                 throw new WebpackMetadataException(
-                        "chunk filename was empty: " + name);
+                        "chunk name was empty: " + name);
 
             URI uri;
             try {
@@ -154,6 +261,36 @@ public final class WebpackBuilds {
 
         public FrontEndBuild.ResourceType getResourceType() {
             return this.type;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            MetadataRecord that = (MetadataRecord) o;
+
+            if (!name.equals(that.name)) return false;
+            if (!uri.equals(that.uri)) return false;
+            return type == that.type;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = name.hashCode();
+            result = 31 * result + uri.hashCode();
+            result = 31 * result + type.hashCode();
+            return result;
+        }
+
+        @Override
+        public String toString() {
+            return "MetadataRecord{" +
+                    "name='" + name + '\'' +
+                    ", uri=" + uri +
+                    ", type=" + type +
+                    '}';
         }
     }
 }
