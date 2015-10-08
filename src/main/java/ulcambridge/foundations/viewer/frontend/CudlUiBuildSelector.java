@@ -1,6 +1,10 @@
 package ulcambridge.foundations.viewer.frontend;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.frontend.webpack.WebpackMetadataException;
 
@@ -10,6 +14,7 @@ import java.net.URI;
 /**
  * This
  */
+@Component
 public class CudlUiBuildSelector {
     private final ResourceLoader resourceLoader;
 
@@ -20,12 +25,18 @@ public class CudlUiBuildSelector {
     private final URI devBaseUrl;
     private final URI baseUrl;
 
+    @Autowired
     private CudlUiBuildSelector(
             ResourceLoader loader,
+            @Value("${cudl.ui.metadata:classpath:ulcambridge/foundations/viewer/viewer-ui/webpack-assets.json}")
             String metadataResourcePath,
+            @Value("${cudl.ui.dev.metadata:classpath:ulcambridge/foundations/viewer/viewer-ui/webpack-assets-dev.json}")
             String metadataDevserverResourcePath,
+            @Value("${cudl.ui.dependencies:classpath:ulcambridge/foundations/viewer/viewer-ui/deps.json}")
             String dependenciesResourcePath,
+            @Value("${cudl.ui.dev.baseUrl:http://localhost:8080/}")
             URI devBaseUrl,
+            @Value("${cudl.ui.baseUrl:/ui/}")
             URI baseUrl) {
 
         Assert.notNull(loader);
@@ -49,7 +60,9 @@ public class CudlUiBuildSelector {
      *
      * @return A BuildFactory instance
      */
-    public BuildFactory getBuildFactory(boolean useDevserver)
+    @Bean
+    public BuildFactory getBuildFactory(
+            @Value("${cudl.ui.dev:false}") boolean useDevserver)
             throws IOException, WebpackMetadataException {
 
         String metadataPath;
