@@ -69,13 +69,13 @@ import java.util.*;
             }
         }
 
-        // Ensure the dependency graph has no chunks which depend on themselves
-        checkDependencyCycles();
-
         this.baseUri = baseUri;
         this.dependencies = deps;
         this.records = records;
         this.namedChunks = Collections.unmodifiableMap(namedChunks);
+
+        // Ensure the dependency graph has no chunks which depend on themselves
+        checkDependencyCycles();
     }
 
     private URI resolveChunkUri(URI chunkUri) {
