@@ -139,7 +139,7 @@ import java.util.*;
             topologicalSortDfs(c, marked, sorted);
         }
         marked.remove(chunk);
-        sorted.add(0, chunk);
+        sorted.add(chunk);
     }
 
     @Override
