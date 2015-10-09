@@ -141,7 +141,7 @@
 				<div class="campl-column3 campl-spacing-column">&nbsp;</div>
 				<div class="campl-column9">
 					<div class="campl-content-container">
-						<h1 class="campl-sub-title"><c:out value="subtitle: ${subtitle}"/></h1>
+						<h1 class="campl-sub-title"><c:out value="${subtitle}"/></h1>
 					</div>
 				</div>
 			</div>
