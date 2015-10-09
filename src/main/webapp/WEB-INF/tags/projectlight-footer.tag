@@ -1,4 +1,4 @@
-<%@tag description="CUDL base page" pageEncoding="UTF-8"%>
+<%@tag pageEncoding="UTF-8"%>
 
 <div class="campl-row campl-global-footer">
 	<div class="campl-wrap clearfix">

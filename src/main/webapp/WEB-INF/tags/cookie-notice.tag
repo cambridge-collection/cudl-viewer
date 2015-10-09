@@ -1,3 +1,4 @@
+<%@tag pageEncoding="UTF-8"%>
 <!-- cookie notice -->
 <div id="cookienotice" class="campl-row" style="display:none">
    <div class="campl-footer-navigation">

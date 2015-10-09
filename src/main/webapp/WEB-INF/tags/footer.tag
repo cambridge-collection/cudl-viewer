@@ -1,3 +1,4 @@
+<%@tag pageEncoding="UTF-8"%>
 <div class="campl-row campl-local-footer">
 	<div class="campl-wrap clearfix">
 		<div class="campl-column6 campl-footer-navigation">
