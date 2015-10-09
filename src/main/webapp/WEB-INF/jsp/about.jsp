@@ -2,7 +2,7 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 
-<cudl:generic-page>
+<cudl:generic-page pagetype="STANDARD">
 	<cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing the Cambridge Digital Library"/>
 
 

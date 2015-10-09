@@ -1,4 +1,5 @@
 <%@tag description="CUDL head content tags" pageEncoding="UTF-8"%>
+<%@attribute name="pagetype" required="true" type="java.lang.String"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>

@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<cudl:generic-page>
+<cudl:generic-page pagetype="STANDARD">
 	<cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Access Denied"/>
 
 	<%-- FIXME: move this script out to UI build. --%>
