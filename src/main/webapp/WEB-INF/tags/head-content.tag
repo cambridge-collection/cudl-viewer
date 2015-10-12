@@ -3,6 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudl-frontend" uri="/WEB-INF/cudl-frontend.tld" %>
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,12 +16,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%-- TODO: Async load UI's js and css --%>
-
 <%-- load Project Light Font. This is not loaded with the webpack build as
-	 the fonts are external. Could use this in the future via the UI's js:
-	 https://github.com/typekit/webfontloader --%>
+	 the fonts are external. Could do async load in future. --%>
 <script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
 <script type="text/javascript">try { Typekit.load(); } catch (e) {}</script>
 
-<cudl:legacy-ui-resources/>
+<cudl-frontend:fontend-resources pagetype="${pagetype}"/>
