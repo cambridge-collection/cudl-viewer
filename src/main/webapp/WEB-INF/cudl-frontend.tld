@@ -1,0 +1,17 @@
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version="2.2">
+    <tlib-version>1.0</tlib-version>
+    <short-name>CUDL Front-end resources</short-name>
+    <tag>
+        <name>fontend-resources</name>
+        <tag-class>ulcambridge.foundations.viewer.frontend.FrontEndResourcesTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>pagetype</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
