@@ -104,7 +104,7 @@ public interface FrontEndBuild {
 
         @Override
         public String render() {
-            return String.format("<%s %s></%$1s>",
+            return String.format("<%s %s></%1$s>",
                     this.tag, this.renderAttributes());
         }
     }
