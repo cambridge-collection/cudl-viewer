@@ -6,25 +6,6 @@
 <cudl:generic-page pagetype="STANDARD">
 	<cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Access Denied"/>
 
-	<%-- FIXME: move this script out to UI build. --%>
-	<script>
-    	function showOrHideOpenId() {
-    		var div = document.getElementById('openid_input_area');
-    		if (div.style.display = 'none') {
-    			div.style.display = 'inline';
-    		} else {
-    			div.style.display = 'none';
-    		}
-    	}
-
-    	function onSumbitMyOpenId() {
-    		var username = document.forms["myopenid_form"]["openid_username"].value;
-    		document.forms["myopenid_form"]["openid_identifier"].value = "http://"
-    				+ username + ".myopenid.com/";
-    		return true;
-    	}
-    </script>
-
     <div class="campl-row campl-content campl-recessed-content">
     	<div class="campl-wrap clearfix">
     		<div class="campl-column12  campl-main-content" id="content">
