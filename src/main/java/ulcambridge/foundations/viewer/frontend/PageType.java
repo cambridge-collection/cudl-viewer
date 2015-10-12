@@ -6,7 +6,8 @@ public enum PageType {
     STANDARD("page-standard"),
     DOCUMENT("page-document"),
     ADVANCED_SEARCH("page-advancedsearch"),
-    TRANSCRIPTION("page-transcription");
+    TRANSCRIPTION("page-transcription"),
+    LOGIN("page-login");
 
     private final String chunkName;
 
