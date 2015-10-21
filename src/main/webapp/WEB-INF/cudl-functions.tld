@@ -1,0 +1,12 @@
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        version="2.2">
+    <tlib-version>1.0</tlib-version>
+    <short-name>CUDL EL Functions</short-name>
+    <function>
+        <name>getCollection</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>ulcambridge.foundations.viewer.model.Collection getCollection(ulcambridge.foundations.viewer.CollectionFactory, java.lang.String)</function-signature>
+    </function>
+</taglib>
