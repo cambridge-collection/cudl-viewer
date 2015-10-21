@@ -1,95 +1,68 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,ulcambridge.foundations.viewer.model.Collection,java.util.List,ulcambridge.foundations.viewer.ItemFactory"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%
-	Collection collection = (Collection) request
-			.getAttribute("collection");
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
-	List<Collection> subCollections = (List<Collection>) request
-			.getAttribute("subCollections");
-	
-	String contentHTMLURL = (String) request.getAttribute("contentHTMLURL");
-%>
-<jsp:include page="header/header-full.jsp">
-	<jsp:param name="title" value="<%=collection.getTitle()%>" />
-</jsp:include>
-<jsp:include page="header/nav.jsp">
-	<jsp:param name="activeMenuIndex" value="1" />
-	<jsp:param name="displaySearch" value="true" />
-	<jsp:param name="subtitle" value="<%=collection.getTitle()%>" />
-</jsp:include>
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-<div class="campl-row campl-content campl-recessed-content">
-	<div class="campl-wrap clearfix">
 
-		<!-- side nav -->
-		<div class="campl-column3">
-			<div class="campl-tertiary-navigation">
-				<div class="campl-tertiary-navigation-structure">
-					<ul class="campl-unstyled-list campl-vertical-breadcrumb">
-						<li><a href="/">Cambridge Digital Library<span
-								class="campl-vertical-breadcrumb-indicator"></span></a></li>
-					</ul>
-					<ul
-						class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
-						<li class="campl-selected"><a href="<%=collection.getURL()%>"><%=collection.getTitle()%></a>
-							<ul
-								class='campl-unstyled-list campl-vertical-breadcrumb-children'>
+<cudl:generic-page pagetype="STANDARD" title="${collection.title}">
+	<jsp:attribute name="pageData">
+		<json:object>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<json:property name="isAdmin" value="${true}"/>
+				<json:array name="editableAreas">
+					<json:object>
+						<json:property name="id" value="summaryDiv"/>
+						<json:property name="filename" value="${collection.summary}"/>
+					</json:object>
+					<json:object>
+						<json:property name="id" value="sponsorDiv"/>
+						<json:property name="filename" value="${collection.sponsors}"/>
+					</json:object>
+				</json:array>
+			</sec:authorize>
+		</json:object>
+	</jsp:attribute>
 
-								<%
-									for (int i = 0; i < subCollections.size(); i++) {
-										Collection c = subCollections.get(i);
-								%>
-								<li><a href="<%=c.getURL()%>"><%=c.getTitle()%></a></li>
-								<%
-									}
-								%>
-							</ul></li>
+	<jsp:body>
+		<cudl:nav activeMenuIndex="${1}" displaySearch="true" subtitle="${collection.title}"/>
 
-					</ul>
+		<div class="campl-row campl-content campl-recessed-content">
+			<div class="campl-wrap clearfix">
+
+				<!-- side nav -->
+				<div class="campl-column3">
+					<div class="campl-tertiary-navigation">
+						<div class="campl-tertiary-navigation-structure">
+							<ul class="campl-unstyled-list campl-vertical-breadcrumb">
+								<li><a href="/">Cambridge Digital Library<span
+										class="campl-vertical-breadcrumb-indicator"></span></a></li>
+							</ul>
+							<ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
+								<li class="campl-selected"><a href="${fn:escapeXml(collection.URL)}"><c:out value="${collection.title}"/></a>
+									<ul class='campl-unstyled-list campl-vertical-breadcrumb-children'>
+
+										<c:forEach items="${subCollections}" var="c">
+											<li><a href="${fn:escapeXml(c.URL)}"><c:out value="${c.title}"/></a></li>
+										</c:forEach>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div id="summaryDiv">
+					<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+				</div>
+
+				<div id="sponsorDiv" class="campl-column12 campl-content-container">
+					<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}"/>
 				</div>
 			</div>
 		</div>
-	
-	  <div id="summaryDiv">
-	     <% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
-		 <c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 
-      </div>
-      
-      <div id="sponsorDiv" class="campl-column12 campl-content-container">
-          <% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
-		  <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
-      </div>
-
-	</div>
-</div>
-
-<% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
-
-<sec:authorize access="hasRole('ROLE_ADMIN')">
- 
-<script>$('#summaryDiv').attr('contenteditable', 'true');</script>
-<script>$('#sponsorDiv').attr('contenteditable', 'true');</script>
-<jsp:include page="editor.jsp" >
-  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
-  <jsp:param name='filenames' value='<%=filenames%>'/>
-</jsp:include>
-
-</sec:authorize>
-
-
-
-<jsp:include page="header/footer-full.jsp" />
-
-
-
-
-
-
-
-
-
-
-
-
+	</jsp:body>
+</cudl:generic-page>
