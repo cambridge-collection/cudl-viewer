@@ -21,4 +21,8 @@
 <script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
 <script type="text/javascript">try { Typekit.load(); } catch (e) {}</script>
 
+<%-- Tell our webpack bundle about the path we serve it from. This is required
+     as we don't hard-code this in the webpack build. --%>
+<script type="text/javascript">__cudl_webpack_public_path__ = '/ui/';</script>
+
 <cudl-frontend:fontend-resources pagetype="${pagetype}"/>
