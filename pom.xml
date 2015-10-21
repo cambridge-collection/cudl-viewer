@@ -400,7 +400,12 @@
 		</dependency>
 		
 		<!-- for Genizah tagging end -->
-        
+
+        <dependency>
+            <groupId>com.github.livesense</groupId>
+            <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
+            <version>1.0.5</version>
+        </dependency>
     </dependencies>
 
     <!-- This includes jars which are not held in a external maven repository -->
