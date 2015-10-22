@@ -16,4 +16,10 @@
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
         <function-signature>ulcambridge.foundations.viewer.model.Item getItem(ulcambridge.foundations.viewer.ItemFactory, java.lang.String)</function-signature>
     </function>
+
+    <function>
+        <name>uriEnc</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>java.lang.String uriEnc(java.lang.String)</function-signature>
+    </function>
 </taglib>
