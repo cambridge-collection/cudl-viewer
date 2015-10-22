@@ -1,110 +1,89 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.List,java.util.ArrayList,java.util.Iterator,ulcambridge.foundations.viewer.ItemFactory"%>
-<%@taglib prefix="c" 
-       uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>       
-<%
-	Collection collection = (Collection) request
-			.getAttribute("collection");
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-	ItemFactory factory = (ItemFactory) request
-			.getAttribute("itemFactory");
-	
-	String contentHTMLURL = (String) request.getAttribute("contentHTMLURL");
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
-	Iterator<String> ids = collection.getItemIds().iterator();
-	List<Item> items = new ArrayList<Item>();
-
-	while (ids.hasNext()) {
-		String id = ids.next();
-		Item item = factory.getItemFromId(id);
-		items.add(item);
-	}
-%>
-<jsp:include page="header/header-full.jsp">
-	<jsp:param name="title" value="<%=collection.getTitle()%>" />
-</jsp:include>
-<jsp:include page="header/nav.jsp">
-	<jsp:param name="activeMenuIndex" value="1" />
-	<jsp:param name="displaySearch" value="true" />
-	<jsp:param name="title" value="Browse our collections" />
-</jsp:include>
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 
-<div class="clear"></div>
+<cudl:generic-page pagetype="STANDARD" title="${collection.title}">
+	<jsp:attribute name="pageData">
+			<json:object>
+    			<sec:authorize access="hasRole('ROLE_ADMIN')">
+    				<json:property name="isAdmin" value="${true}"/>
+    				<json:array name="editableAreas">
+    					<json:object>
+    						<json:property name="id" value="summaryDiv"/>
+    						<json:property name="filename" value="${collection.summary}"/>
+    					</json:object>
+    					<json:object>
+    						<json:property name="id" value="sponsorDiv"/>
+    						<json:property name="filename" value="${collection.sponsors}"/>
+    					</json:object>
+    				</json:array>
+    			</sec:authorize>
+    		</json:object>
+    	</jsp:attribute>
+    	<jsp:body>
+			<cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
 
-<div class="campl-row campl-content campl-recessed-content">
-	<div class="campl-wrap clearfix">
+			<div class="clear"></div>
 
-		<div class="campl-column12  campl-main-content" id="content">
-            <div id="summaryDiv" class="campl-content-container">
+			<div class="campl-row campl-content campl-recessed-content">
+				<div class="campl-wrap clearfix">
 
-				<% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
-				<c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 				
+					<div class="campl-column12  campl-main-content" id="content">
+						<div id="summaryDiv" class="campl-content-container">
+							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+						</div>
+						<div class="campl-content-container campl-column12">
 
+							<ol id="collections_carousel">
+								<c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
+									<c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
+
+									<%-- FIXME: move this inline style into CSS and apply a class here --%>
+									<c:set var="imageDimensions" value="-x-foo: bar"/>
+									<c:choose>
+										<c:when test="${item.thumbnailOrientation == 'portrait'}">
+											<c:set var="imageDimensions" value="height: 100%"/>
+										</c:when>
+										<c:when test="${item.thumbnailOrientation == 'landscape'}">
+											<c:set var="imageDimensions" value="width: 100%"/>
+										</c:when>
+									</c:choose>
+
+									<li class="campl-column5">
+										<div class="collections_carousel_item">
+											<div class="virtual_collections_carousel_image_box campl-column6">
+												<div class="collections_carousel_image" id="collections_carousel_item${loop.index + 1}">
+													<a href="/view/${fn:escapeXml(item.id)}/1">
+														<img src="${fn:escapeXml(item.thumbnailURL)}"
+															 alt="${fn:escapeXml(item.id)}"
+															 style="${fn:escapeXml(imageDimensions)}">
+													</a>
+												</div>
+											</div>
+											<div class='collections_carousel_text campl-column6'>
+												<h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
+												<c:out value="${item.abstractShort}"/> &hellip;
+												<a href="/view/${fn:escapeXml(item.id)}/1">more</a>
+											</div>
+											<div class='clear'></div>
+										</div>
+									</li>
+								</c:forEach>
+							</ol>
+						</div>
+
+						<div id="sponsorDiv" class="campl-column12 campl-content-container">
+							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="campl-content-container campl-column12">
-
-				<ol id="collections_carousel">
-					<%
-						Iterator<Item> itemIterator = items.iterator();
-						int itemNum = 0;
-
-						while (itemIterator.hasNext()) {
-							Item item = itemIterator.next();
-							itemNum++;
-
-							String imageDimensions = "";
-							if (item.getThumbnailOrientation().equals("portrait")) {
-								imageDimensions += " style='height:100%' ";
-							} else if (item.getThumbnailOrientation().equals("landscape")) {
-								imageDimensions += " style='width:100%' ";
-							}
-
-							out.print("<li class='campl-column5'><div class='collections_carousel_item'><div class='virtual_collections_carousel_image_box campl-column6'>"
-									+ "<div class='collections_carousel_image' id='collections_carousel_item"
-									+ itemNum
-									+ "'><a href='/view/"
-									+ item.getId()
-									+ "/1'><img src='"
-									+ item.getThumbnailURL()
-									+ "' "
-									+ "alt='"
-									+ item.getId()
-									+ "' "
-									+ imageDimensions
-									+ "></a></div></div> \n ");
-							out.print("<div class='collections_carousel_text campl-column6'><h5>"
-									+ item.getTitle() + " (" + item.getShelfLocator()
-									+ ")</h5> " + item.getAbstractShort()
-									+ " ... <a href='/view/" + item.getId()
-									+ "/1'>more</a> "
-									+ "</div><div class='clear'></div></div></li>\n\n");
-						}
-					%>
-				</ol>
-
-			</div>
-
-			<div id="sponsorDiv" class="campl-column12 campl-content-container">
-				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
-		        <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
-			</div>
-		</div>
-	</div>
-</div>
-
-<% String filenames = collection.getSummary()+","+collection.getSponsors(); %>
-
-<sec:authorize access="hasRole('ROLE_ADMIN')">
- 
-<script>$('#summaryDiv').attr('contenteditable', 'true');</script>
-<script>$('#sponsorDiv').attr('contenteditable', 'true');</script>
-<jsp:include page="editor.jsp" >
-  <jsp:param name='dataElements' value='summaryDiv,sponsorDiv'/>
-  <jsp:param name='filenames' value='<%=filenames%>'/>
-</jsp:include>
-
-</sec:authorize>
-
-<jsp:include page="header/footer-full.jsp" />
+	</jsp:body>
+</cudl:generic-page>
