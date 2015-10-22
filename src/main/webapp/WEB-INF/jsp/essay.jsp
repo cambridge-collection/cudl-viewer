@@ -1,163 +1,126 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-	import="ulcambridge.foundations.viewer.model.*,java.util.List,ulcambridge.foundations.viewer.ItemFactory"%>
-<%
-	Collection organisationalCollection = (Collection) request
-			.getAttribute("organisationalCollection");
-	Collection parentCollection = (Collection) request
-			.getAttribute("parentCollection");
-	String itemTitle = (String) request.getAttribute("itemTitle");
-	String content = (String) request.getAttribute("content");
-	String itemThumbnailURL = (String) request
-			.getAttribute("itemThumbnailURL");
-	String itemThumbnailOrientation = (String) request
-			.getAttribute("itemThumbnailOrientation");
-	List<String> relatedItems = (List<String>) request
-			.getAttribute("relatedItems");
-	ItemFactory itemFactory = (ItemFactory) request
-			.getAttribute("itemFactory");
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-	EssayItem essayItem = (EssayItem) request.getAttribute("essayItem");
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<jsp:include page="header/header-full.jsp">
-	<jsp:param name="title"
-		value="<%=organisationalCollection.getTitle()%>" />
-</jsp:include>
-<jsp:include page="header/nav.jsp">
-	<jsp:param name="activeMenuIndex" value="1" />
-	<jsp:param name="displaySearch" value="true" />
-	<jsp:param name="title"
-		value="<%=organisationalCollection.getTitle()%>" />
-</jsp:include>
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 
-<div class="campl-row campl-content campl-recessed-content">
-	<div class="campl-wrap clearfix">
-		<div class="campl-column12  campl-main-content" id="content">
+<cudl:generic-page pagetype="STANDARD" title="${organisationalCollection.title}">
+	<cudl:nav activeMenuIndex="${1}" displaySearch="true"
+			  title="${organisationalCollection.title}"/>
+	
+	<div class="campl-row campl-content campl-recessed-content">
+		<div class="campl-wrap clearfix">
+			<div class="campl-column12  campl-main-content" id="content">
+	
+				<div class="campl-column8">
+					<div class="campl-content-container">
+						<div class="campl-column10">
+							<c:if test="${parentCollection != null}">
+								<a href="${fn:escapeXml(parentCollection.URL)}">
+									<c:out value="${parentCollection.title}"/>
+								</a>
+								&gt;
+							</c:if>
 
-			<div class="campl-column8">
-				<div class="campl-content-container">
-					<div class="campl-column10">
-						<%
-							if (parentCollection != null) {
-						%>
-						<a href="<%=parentCollection.getURL()%>"><%=parentCollection.getTitle()%></a>
-						>
-						<%
-							}
-						%>
-						<a href="<%=organisationalCollection.getURL()%>"><%=organisationalCollection.getTitle()%></a>
-						<br /> <br />
+							<a href="${fn:escapeXml(organisationalCollection.URL)}">
+								<c:out value="${organisationalCollection.title}"/>
+							</a>
+							<br/><br/>
+	
+							<h2><c:out value="${itemTitle}"/></h2>
+							<div class="grid_12 essaytext">
+								<img class="essay_image" src="${fn:escapeXml(itemThumbnailURL)}">
 
-						<h2><%=itemTitle%></h2>
-						<div class="grid_12 essaytext">
-							<img class="essay_image" src="<%=itemThumbnailURL%>" /><%=content%>
-						</div>
-						<div class="grid_12 longitudeessaymetadata">
+								<c:out value="${content}" escapeXml="false"/>
+							</div>
 
-							<%
-								if (essayItem.getAssociatedPeople() != null
-										&& essayItem.getAssociatedPeople().size() > 0) {
-							%>
-							<strong>Associated People</strong>:
-							<%
-								for (String person : essayItem.getAssociatedPeople()) {
-							%>
-							<a href="/search?keyword=<%=person%>"><%=person%></a>;&nbsp;
-							<%
-								}
-								}
+							<div class="grid_12 longitudeessaymetadata">
+								<c:if test="${fn:length(essayItem.associatedPeople) > 0}">
 
-								if (essayItem.getAssociatedOrganisations() != null
-										&& essayItem.getAssociatedOrganisations().size() > 0) {
-							%>
-							<br /> <br /> <strong>Organisations</strong>:
-							<%
- 	for (String organisation : essayItem
- 				.getAssociatedOrganisations()) {
- %>
-							<a href="/search?keyword=<%=organisation%>"><%=organisation%></a>;&nbsp;
-							<%
-								}
-								}
+									<strong>Associated People</strong>:
 
-								if (essayItem.getAssociatedSubjects() != null
-										&& essayItem.getAssociatedSubjects().size() > 0) {
-							%>
-							<br /> <br /> <strong>Subjects</strong>:
-							<%
- 	for (String subject : essayItem.getAssociatedSubjects()) {
- %>
-							<a href="/search/advanced/results?subject=<%=subject%>"><%=subject%></a>;&nbsp;
-							<%
-								}
-								}
+									<c:forEach items="${essayItem.associatedPeople}" var="person">
+										<a href="/search?keyword=${cudlfn:uriEnc(person)}"><c:out value="${person}"/></a>;&nbsp;
+									</c:forEach>
+								</c:if>
 
-								if (essayItem.getAssociatedPlaces() != null
-										&& essayItem.getAssociatedPlaces().size() > 0) {
-							%>
-							<br /> <br /> <strong>Places</strong>:
-							<%
- 	for (String place : essayItem.getAssociatedPlaces()) {
- %>
-							<a href="/search/advanced/results?location=<%=place%>"><%=place%></a>;&nbsp;
-							<%
-								}
-								}
-							%>
-						</div>
-					</div>
-				</div>
+								<c:if test="${fn:length(essayItem.associatedOrganisations) > 0}">
 
-			</div>
-			<div class="campl-column4 campl-secondary-content">
-				<div class="campl-content-container">
+									<br/><br/>
+									<strong>Organisations</strong>:
 
-					<h4>Related Items</h4>
+									<c:forEach items="${essayItem.associatedOrganisations}"
+											   var="organisation">
 
-					<%
-						for (int i = 0; i < relatedItems.size(); i++) {
-							Item item = itemFactory.getItemFromId(relatedItems.get(i));
-					%>
-					<div class="relatedItem grid_6">
-						<h5>
-							<a href="/view/<%=item.getId()%>"><%=item.getTitle()%> (<%=item.getShelfLocator()%>)</a>
-						</h5>
+										<a href="/search?keyword=${cudlfn:uriEnc(organisation)}"><c:out value="${organisation}"/></a>;&nbsp;
+								    </c:forEach>
+								</c:if>
 
-						<%
-							String imageDimensions = "";
-								if (item.getThumbnailOrientation().trim().equals("portrait")) {
-									imageDimensions = " style='height:100%' ";
-								} else if (item.getThumbnailOrientation().trim()
-										.equals("landscape")) {
-									imageDimensions = " style='width:100%' ";
-								}
-						%>
-						<div class="left">
-							<div class="collections_carousel_image_box">
-								<div class="collections_carousel_image">
-									<a href="/view/<%=item.getId()%>/"><img
-										alt="<%=item.getId()%>" src="<%=item.getThumbnailURL()%>"
-										<%=imageDimensions%> /> </a>
-								</div>
+								<c:if test="${fn:length(essayItem.associatedSubjects) > 0}">
+									<br/><br/>
+									<strong>Subjects</strong>:
+									<c:forEach items="${essayItem.associatedSubjects}"
+											   var="subject">
+										<a href="/search/advanced/results?subject=${cudlfn:uriEnc(subject)}"><c:out value="${subject}"/></a>;&nbsp;
+									</c:forEach>
+								</c:if>
+
+								<c:if test="${fn:length(essayItem.associatedPlaces) > 0}">
+									<br/><br/>
+									<strong>Places</strong>:
+									<c:forEach items="${essayItem.associatedPlaces}"
+											   var="place">
+										<a href="/search/advanced/results?location=${cudlfn:uriEnc(place)}"><c:out value="${place}"/></a>;&nbsp;
+									</c:forEach>
+								</c:if>
 							</div>
 						</div>
 					</div>
 
-					<%
-						}
-					%>
+				</div>
+				<div class="campl-column4 campl-secondary-content">
+					<div class="campl-content-container">
+	
+						<h4>Related Items</h4>
+
+						<c:forEach items="${relatedItems}" var="itemId">
+							<c:set var="item" value="${cudlfn:getItem(itemFactory, itemId)}"/>
+
+							<div class="relatedItem grid_6">
+								<h5>
+									<a href="/view/${cudlfn:uriEnc(item.id)}">
+										<c:out value="${item.title} (${item.shelfLocator})"/>
+									</a>
+								</h5>
+
+								<c:choose>
+									<c:when test="${fn:trim(item.thumbnailOrientation) == 'portrait'}">
+										<c:set var="imageDimensions" value="height: 100%"/>
+									</c:when>
+									<c:when test="${fn:trim(item.thumbnailOrientation) == 'landscape'}">
+										<c:set var="imageDimensions" value="width: 100%"/>
+									</c:when>
+								</c:choose>
+
+								<div class="left">
+									<div class="collections_carousel_image_box">
+										<div class="collections_carousel_image">
+											<a href="/view/${cudlfn:uriEnc(item.id)}/">
+												<img alt="${fn:escapeXml(item.id)}"
+													 src="${fn:escapeXml(item.thumbnailURL)}"
+													 style="${fn:escapeXml(imageDimensions)}">
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
-
 		</div>
-
-	</div>
-</div>
-
-
-
-<jsp:include page="header/footer-full.jsp" />
-
-
-
+	</div>	
+</cudl:generic-page>
