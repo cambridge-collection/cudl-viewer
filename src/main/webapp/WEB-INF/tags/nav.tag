@@ -1,8 +1,8 @@
-<%@tag description="The CUDL local navigation" pageEncoding="UTF-8"%>
-<%@attribute name="activeMenuIndex" required="true" type="java.lang.Integer"%>
-<%@attribute name="displaySearch" required="true" type="java.lang.Boolean"%>
-<%@attribute name="title" required="false" type="java.lang.String"%>
-<%@attribute name="subtitle" required="false" type="java.lang.String"%>
+<%@tag description="The CUDL local navigation" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@attribute name="activeMenuIndex" required="true" type="java.lang.Integer" %>
+<%@attribute name="displaySearch" required="true" type="java.lang.Boolean" %>
+<%@attribute name="title" required="false" type="java.lang.String" %>
+<%@attribute name="subtitle" required="false" type="java.lang.String" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>

@@ -1,4 +1,4 @@
-<%@tag description="Wrap content in a div with IE version classes" pageEncoding="UTF-8"%>
+<%@tag description="Wrap content in a div with IE version classes" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <!--[if lt IE 7]>
 <div class="lt-ie9 lt-ie8 lt-ie7">

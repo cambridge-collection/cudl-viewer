@@ -1,6 +1,6 @@
-<%@tag description="CUDL base page" pageEncoding="UTF-8"%>
-<%@attribute name="title" required="false" type="java.lang.String"%>
-<%@attribute name="pagetype" required="true" type="java.lang.String"%>
+<%@tag description="CUDL base page" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@attribute name="title" required="false" type="java.lang.String" %>
+<%@attribute name="pagetype" required="true" type="java.lang.String" %>
 
 <%-- A string containing JSON encoded data. It should start with '{' or '['. --%>
 <%@attribute name="pageData" type="java.lang.String"%>

@@ -1,4 +1,4 @@
-<%@tag description="The standard project light navigation header" pageEncoding="UTF-8"%>
+<%@tag description="The standard project light navigation header" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <a href="#primary-nav" class="campl-skipTo">skip to primary
 		navigation</a>
