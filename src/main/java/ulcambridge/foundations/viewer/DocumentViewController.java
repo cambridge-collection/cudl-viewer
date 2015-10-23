@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import ulcambridge.foundations.viewer.dao.CollectionsDBDao;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
@@ -38,6 +38,8 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 @Controller
 public class DocumentViewController {
+
+	private static final String PATH_DOC_NO_PAGE = "/{docId}";
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
@@ -61,7 +63,7 @@ public class DocumentViewController {
 	}
 
 	// on path /view/{docId}
-	@RequestMapping(value = "/{docId}")
+	@RequestMapping(value = PATH_DOC_NO_PAGE)
 	public ModelAndView handleRequest(@PathVariable("docId") String docId,
 			HttpServletRequest request) {
 		// '0' is special page value indicating the item-level view
@@ -207,7 +209,7 @@ public class DocumentViewController {
 		Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
 		//Get imageServer
-		String imageServer = Properties.getString("imageServer");		
+		String imageServer = Properties.getString("imageServer");
 			
 		//Get services
 		String services = Properties.getString("services");
@@ -218,7 +220,9 @@ public class DocumentViewController {
 		modelAndView.addObject("docURL", docURL);
 		modelAndView.addObject("jsonURL", jsonURL);
 		modelAndView.addObject("jsonThumbnailsURL", jsonThumbnailsURL);
-		modelAndView.addObject("requestURL", requestURL);		
+		modelAndView.addObject("requestURL", requestURL);
+		modelAndView.addObject(
+				"canonicalURL", this.getCanonicalItemUrl(request, item.getId()));
 		modelAndView.addObject("imageServer", imageServer);
 		modelAndView.addObject("services", services);		
 
@@ -235,8 +239,9 @@ public class DocumentViewController {
 							.getParentCollectionId());
 		}
 		modelAndView.addObject("parentCollection", parent);
-		
+
 		/** Item Information **/
+		modelAndView.addObject("item", item);
 		modelAndView.addObject("docId", item.getId());
 		modelAndView.addObject("itemTitle", item.getTitle());
 		modelAndView.addObject("itemAuthors",
@@ -270,6 +275,21 @@ public class DocumentViewController {
 		}
 
 		return modelAndView;
+	}
+
+	/**
+	 * Get the canonical URL for an item. This is the item without any page
+	 * selected (implicitly the first page).
+	 *
+	 * @param itemId The item ID to get the URL for.
+	 * @return The URL
+	 */
+	private String getCanonicalItemUrl(HttpServletRequest req, String itemId) {
+		return ServletUriComponentsBuilder.fromRequest(req)
+				.path(PATH_DOC_NO_PAGE)
+				.build()
+				.expand(itemId)
+				.toUriString();
 	}
 
 	/**
