@@ -30,3 +30,5 @@
 <script type="text/javascript">__cudl_webpack_public_path__ = '/ui/';</script>
 
 <cudl-frontend:fontend-resources pagetype="${pagetype}"/>
+
+<jsp:doBody/>
