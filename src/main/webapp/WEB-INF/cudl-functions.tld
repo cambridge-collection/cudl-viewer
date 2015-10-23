@@ -22,4 +22,10 @@
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
         <function-signature>java.lang.String uriEnc(java.lang.String)</function-signature>
     </function>
+
+    <function>
+        <name>join</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>java.lang.String join(java.lang.Iterable, java.lang.String)</function-signature>
+    </function>
 </taglib>

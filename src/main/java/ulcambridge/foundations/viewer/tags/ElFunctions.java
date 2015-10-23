@@ -50,5 +50,23 @@ public final class ElFunctions {
         }
     }
 
+    public static String join(Iterable<Object> items, String separator) {
+        if(items == null) {
+            return "";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        boolean first = true;
+        for(Object item : items) {
+            if(first)
+                first = false;
+            else
+                sb.append(separator);
+            sb.append(item);
+        }
+        return sb.toString();
+    }
+
     private ElFunctions() { throw new RuntimeException("No instantiation"); }
 }
