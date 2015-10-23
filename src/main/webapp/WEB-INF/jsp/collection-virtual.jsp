@@ -46,7 +46,6 @@
 									<c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
 
 									<%-- FIXME: move this inline style into CSS and apply a class here --%>
-									<c:set var="imageDimensions" value="-x-foo: bar"/>
 									<c:choose>
 										<c:when test="${item.thumbnailOrientation == 'portrait'}">
 											<c:set var="imageDimensions" value="height: 100%"/>
