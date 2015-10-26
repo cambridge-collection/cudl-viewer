@@ -4,13 +4,19 @@
 <%@attribute name="bodyAttrs" required="false" fragment="true" %>
 
 <%-- A string containing JSON encoded data. It should start with '{' or '['. --%>
-<%@attribute name="pageData" type="java.lang.String" %>
+<%@attribute name="pageData" required="false" type="java.lang.String" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 <c:set var="title" value="${(empty title) ? 'Cambridge Digital Library - University of Cambridge' : title}"/>
+
+<c:if test="${empty pageData}">
+	<c:set var="pageData">
+		<cudl:default-context/>
+	</c:set>
+</c:if>
 
 <cudl:html title="${title}">
 	<jsp:attribute name="head">
