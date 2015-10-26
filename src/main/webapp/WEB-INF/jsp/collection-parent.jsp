@@ -2,7 +2,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
@@ -11,19 +10,10 @@
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
 	<jsp:attribute name="pageData">
 		<cudl:default-context>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<json:property name="isAdmin" value="${true}"/>
-				<json:array name="editableAreas">
-					<json:object>
-						<json:property name="id" value="summaryDiv"/>
-						<json:property name="filename" value="${collection.summary}"/>
-					</json:object>
-					<json:object>
-						<json:property name="id" value="sponsorDiv"/>
-						<json:property name="filename" value="${collection.sponsors}"/>
-					</json:object>
-				</json:array>
-			</sec:authorize>
+			<cudl:context-editable-areas>
+				<cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
+				<cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>
+			</cudl:context-editable-areas>
 		</cudl:default-context>
 	</jsp:attribute>
 
