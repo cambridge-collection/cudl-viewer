@@ -61,7 +61,7 @@
 		<cudl:attr name="data-context" skipEmpty="${true}">
 			<jsp:attribute name="value">
 				<%-- FIXME: Some of these arent' used --%>
-				<json:object>
+				<cudl:default-context>
 					<json:property name="jsonURL" value="${jsonURL}"/>
 					<json:property name="jsonThumbURL" value="${jsonThumbnailsURL}"/>
 					<json:property name="pageNum" value="${page}"/>
@@ -76,7 +76,7 @@
 					<json:property name="itemTitle" value="${item.title}"/>
 					<json:array name="itemAuthors" items="${item.authorNames}"/>
 					<json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
-				</json:object>
+				</cudl:default-context>
 			</jsp:attribute>
 		</cudl:attr>
 	</jsp:attribute>

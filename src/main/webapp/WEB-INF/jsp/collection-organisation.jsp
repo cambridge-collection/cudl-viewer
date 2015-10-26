@@ -11,7 +11,7 @@
 
 <cudl:generic-page pagetype="COLLECTION_ORGANISATION" title="${collection.title}">
 	<jsp:attribute name="pageData">
-		<json:object>
+		<cudl:default-context>
 			<json:property name="collectionCookieName" value="${collection.id}_pageNum"/>
 			<json:property name="collectionSize" value="${fn:length(collection.itemIds)}"/>
 			<json:property name="collectionUrl" value="${collection.URL}"/>
@@ -28,7 +28,7 @@
 					</json:object>
 				</json:array>
 			</sec:authorize>
-		</json:object>
+		</cudl:default-context>
 	</jsp:attribute>
 
 	<jsp:body>

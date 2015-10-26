@@ -10,7 +10,7 @@
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
 	<jsp:attribute name="pageData">
-		<json:object>
+		<cudl:default-context>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<json:property name="isAdmin" value="${true}"/>
 				<json:array name="editableAreas">
@@ -24,7 +24,7 @@
 					</json:object>
 				</json:array>
 			</sec:authorize>
-		</json:object>
+		</cudl:default-context>
 	</jsp:attribute>
 
 	<jsp:body>
