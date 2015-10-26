@@ -349,9 +349,6 @@
         		<button type="button" class="btn btn-default btn-success">Yes</button>
         		<button type="button" class="btn btn-default">No</button>
         	</div>
-
-        	<%-- FIXME: Move this into UI build --%>
-        	<jsp:include page="header/analytics.jsp" />
         </div>
 	</jsp:body>
 </cudl:html>
