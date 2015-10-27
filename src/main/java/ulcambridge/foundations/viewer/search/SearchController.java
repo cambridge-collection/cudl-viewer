@@ -116,6 +116,8 @@ public class SearchController {
 				"jsp/search-advancedresults");
 		modelAndView.addObject("form", searchForm);
 		modelAndView.addObject("results", results);
+		modelAndView.addObject("queryString",
+				SearchUtil.getURLParameters(searchForm));
 
 		return modelAndView;
 	}

@@ -1,429 +1,136 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page
-	import="java.util.*,
-	java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,
-	ulcambridge.foundations.viewer.model.Item,
-	ulcambridge.foundations.viewer.ItemFactory,
-	ulcambridge.foundations.viewer.forms.SearchForm,
-	org.owasp.encoder.Encode,
-	java.text.*"%>
-<jsp:include page="header/header-full.jsp" />
-<jsp:include page="header/nav.jsp">
-	<jsp:param name="activeMenuIndex" value="2" />
-	<jsp:param name="displaySearch" value="true" />
-	<jsp:param name="title" value="Advanced Search" />
-</jsp:include>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
-<!-- result css, query duration and sticky menu -->
-<script type="text/javascript" src="/scripts/moment.min.js"></script>
-<!-- <script type="text/javascript" src="/scripts/jquery.sticky.js"></script> -->
-<link rel="stylesheet" href="/styles/advancedsearch.css">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="en_GB"/>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
-<%
-	SearchResultSet resultSet = ((SearchResultSet) request.getAttribute("results"));
-	SearchForm form = ((SearchForm) request.getAttribute("form"));
-%>
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-<!--  script for ajax pagination -->
-<script type="text/javascript">
 
-	var viewPage = function(pageNum) {
-		 if (window.history.replaceState) {
-			 window.history.replaceState(pageNum, "Cambridge Digital Library", "#"+pageNum);
-		 } else if (window.location){
-			 window.location.hash = pageNum;
-		 }
-		 return false;
-	};
-	
-	// query duration
-	var requestStartTime = 0, requestTime = 0;
-	$(document).ajaxStart(function() {
-		requestStartTime = new Date().getTime();
-	});
+<cudl:generic-page pagetype="ADVANCED_SEARCH_RESULTS" title="Advanced Search">
+	<jsp:attribute name="pageData">
+		<cudl:default-context>
+			<json:property name="resultCount" value="${results.numberOfResults}"/>
+			<json:property name="queryString" value="${queryString}"/>
+		</cudl:default-context>
+	</jsp:attribute>
 
-	function pageinit() {
-		
-		var pageLimit = 20;
-		var numResults = <%=resultSet.getNumberOfResults()%>;
-	  
-		// Setup spinner. 
-		var opts = {
-				length: 7, // The length of each line
-				width: 4, // The line thickness
-				radius: 10, // The radius of the inner circle
-		};
-		
-		var target = document.getElementById('content');
-		
-		var spinner = new Spinner(opts);
-			
-		// Setup pagination
-		var Paging = $(".pagination").paging(
-				numResults, 
-				{
-					format : "< (q-) ncnnnnnn (-p) >",  //[< (q-) ncnnnnnn (-p) >]
-					perpage : pageLimit,
-					lapping : 0,
-					page : 1,
-					onSelect : function(page) {
-						
-						spinner.spin(target);
-						
-						$.ajax({
-							"url": '/search/JSON?start=' + this.slice[0] + '&end=' + this.slice[1] +'&<%=request.getQueryString()%>',
-							"success" : function(data) {
-								
-								// query duration
-								requestTime = new Date().getTime() - requestStartTime;
-								$("#reqtime").text(moment.duration(parseInt(requestTime)).asSeconds() + ' seconds');
-							
-								spinner.stop();
+	<jsp:body>
+		<cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Advanced Search"/>
 
-								// content replace					                   
-								var container = document.getElementById("collections_carousel");
+		<div class="campl-row campl-content campl-recessed-content">
+			<div class="campl-wrap clearfix">
+				<div class="campl-main-content" id="content">
+					<div class="campl-column4 campl-secondary-content">
 
-								// Remove all children
-								container.innerHTML = '';
+						<div class="searchform box">
 
-								// add in the results
-								for (var i = 0; i < data.length; i++) {
-									var result = data[i];
-									var item = result.item;
-									var imageDimensions = "";
-									if (item.thumbnailOrientation == "portrait") {
-										imageDimensions = " style='height:100%' ";
-									} else if (item.thumbnailOrientation == "landscape") {
-										imageDimensions = " style='width:100%' ";
-									}
-									var title = item.title;
-									if (result.itemType == "essay") {
-										title = "Essay: "
-												+ title;
-									}
+							<div class="campl-content-container">
+								<ul>
+									<cudl:search-result-param form="${form}" label="Keyword" attr="keyword"/>
+									<cudl:search-result-param form="${form}" label="Full Text" attr="fullText"/>
+									<cudl:search-result-param form="${form}" label="Exclude Text" attr="excludeText"/>
+									<cudl:search-result-param form="${form}" label="Classmark" attr="shelfLocator"/>
+									<cudl:search-result-param form="${form}" label="CUDL ID" attr="fileID"/>
+									<cudl:search-result-param form="${form}" label="Title" attr="title"/>
+									<cudl:search-result-param form="${form}" label="Subject" attr="subject"/>
+									<cudl:search-result-param form="${form}" label="Location" attr="location"/>
+									<c:if test="${not (empty form.yearStart or empty form.yearEnd)}">
+										<li>
+											<span>Year: <b><c:out value="${form.yearStart}"/></b> to <b><c:out value="${form.yearEnd}"/></b></span>
+										</li>
+									</c:if>
+								</ul>
 
-									var itemDiv = document.createElement('div');
-									itemDiv.setAttribute("class", "collections_carousel_item");
-									var itemText = "<div class='collections_carousel_image_box campl-column4'>"
-										+ "<div class='collections_carousel_image'>"
-										+ "<a href='/view/" +item.id+ "/"+result.startPage+"'><img src='" +result.pageThumbnailURL+ "' alt='" +item.id+ "' "+ imageDimensions+ " > </a></div></div> "
-										//+ "<div class='collections_carousel_text campl-column8'><h5>"
-										+ "<div class='collections_carousel_text campl-column8'><h3>"
-										//+ "# " + (currentPage * pageLimit + i + 1) + " "
-										//+ title
-										+ "<a href='/view/" +item.id+ "/"+result.startPage+"'>" + title + "</a>" //+ " </h3>"
-										//+ " <font style='color:#999'>(" + item.shelfLocator + " Page: " + result.startPageLabel
-										+ " <font style='color:#999;font-weight:normal;font-size:14px;'>(" + "<span title='Shelf locator'>" +item.shelfLocator + "</span>" + (item.shelfLocator[0].length <= 0 ? "" : " ") + "Page: " + result.startPageLabel + ")</font>"
-										//+ ")</font></h5> "
-										+ "</h3> "
-										+ item.abstractShort
-										+ " ... <br/><br/><ul>";
-
-									for (var j = 0; j < result.snippets.length; j++) {
-										var snippet = result.snippets[j];
-										if (snippet != "" && snippet != "undefined") {
-											var snippetLabel = "";
-											itemText += "<li><span>" + styleSnippet(snippet) + "</span></li>";
-										}
-									}
-
-									itemText += "</ul></div><div class='clear'></div>";
-									itemDiv.innerHTML = itemText;
-									container.appendChild(itemDiv);
-								}
-
-								/*
-								$('.collections_carousel_text').truncate({  
-								    max_length: 260,  
-								     more: "view more",  
-								     less: "hide"
-								 }); 
-								 */
-							}
-					});
-
-					return false;
-				},
-				onFormat : function(type) {
-
-					switch (type) {
-
-						case 'block':
-							if (!this.active)
-								return '<span class="disabled">' + this.value + '</span>';
-							else if (this.value != this.page)
-								return '<em><a href="" onclick="viewPage(' + this.value + '); return false;">' + this.value + '</a></em>';
-							return '<span class="current">' + this.value + '</span>';
-		
-						case 'right':
-							
-						case 'left':
-							if (!this.active) {
-								return '';
-							}
-							return '<a href="" onclick="viewPage(' + this.value + '); return false;">' + this.value + '</a>';
-		
-						case 'next':
-							if (this.active)
-								return '<a href="" onclick="viewPage(' + this.value
-										+ '); return false;" class="next"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></a>';
-							return '<span class="disabled"><img src="/img/interface/icon-fwd-btn-larger.png" class="pagination-fwd"/></span>';
-		
-						case 'prev':
-							if (this.active)
-								return '<a href="" onclick="viewPage(' + this.value
-										+ '); return false;" class="prev"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></a>';
-							return '<span class="disabled"><img src="/img/interface/icon-back-btn-larger.png" class="pagination-back"/></span>';
-		
-						case 'first':
-							if (this.active)
-								return '<a href="" onclick="viewPage(' + this.value + '); return false;" class="first">|<</a>';
-							return '<span class="disabled">|<</span>';
-		
-						case 'last':
-							if (this.active)
-								return '<a href="" onclick="viewPage(' + this.value + '); return false;" class="last">>|</a>';
-							return '<span class="disabled">>|</span>';
-
-						case "leap":
-							if (this.active)
-								return "...";
-							return "";
-
-						case 'fill':
-							if (this.active)
-								return "...";
-							return "";
-					}
-				}
-			});
-	
-		// Handle updating the Page selected from the hash part of the URL
-		var hashChange = function() {
-			if (window.location.hash)
-				Paging.setPage(window.location.hash.substr(1));
-			else
-				Paging.setPage(1); // we dropped the initial page selection and need to run it manually
-		};
-
-		$(window).bind('hashchange', hashChange);
-		hashChange();
-
-		// Show the pagination toolbars if enough elements are present
-		if ((numResults / pageLimit) > 1) {
-			$(".toppagination")[0].style.display = "block";
-			$(".toppagination")[1].style.display = "block";
-		} else {
-			$(".toppagination")[0].style.display = "none";
-			$(".toppagination")[1].style.display = "none";
-		}
-		
-	}
-
-</script>
-
-<div class="campl-row campl-content campl-recessed-content">
-	<div class="campl-wrap clearfix">
-		<div class="campl-main-content" id="content">
-			<!-- <div> -->
-				<div class="campl-column4 campl-secondary-content">
-
-					<div class="searchform box">
-					
-						<div class="campl-content-container">
-							<ul>
-								<%
-									if (!form.getKeyword().isEmpty()) {
-										out.println("<li><span>Keyword: <b>" + Encode.forHtml(form.getKeyword()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getFullText().isEmpty()) {
-										out.println("<li><span>Full Text: <b>" + Encode.forHtml(form.getFullText()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getExcludeText().isEmpty()) {
-										out.println("<li><span>Exclude Text: <b>" + Encode.forHtml(form.getExcludeText()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getShelfLocator().isEmpty()) {
-										out.println("<li><span>Classmark: <b>" + Encode.forHtml(form.getShelfLocator()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getFileID().isEmpty()) {
-										out.println("<li><span>CUDL ID: <b>" + Encode.forHtml(form.getFileID()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getTitle().isEmpty()) {
-										out.println("<li><span>Title: <b>" + Encode.forHtml(form.getTitle()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getAuthor().isEmpty()) {
-										out.println("<li><span>Author: <b>" + Encode.forHtml(form.getAuthor()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getSubject().isEmpty()) {
-										out.println("<li><span>Subject: <b>" + Encode.forHtml(form.getSubject()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (!form.getLocation().isEmpty()) {
-										out.println("<li><span>Location: <b>" + Encode.forHtml(form.getLocation()) + "</b></span></li>");
-									}
-								%>
-								<%
-									if (form.getYearStart() != null && form.getYearEnd() != null) {
-										out.println("<li><span>Year: <b>" + form.getYearStart() + "</b> to <b>" + form.getYearEnd() + "</b></span></li>");
-									}
-								%>
-							</ul>
-
-							<form class="grid_5" action="/search">
-								<a href="/search/advanced/query?<%=SearchUtil.getURLParameters(form)%>">
-									Change Query
-								</a> 
-								<input type="hidden" name="fileID" value="<%=Encode.forHtmlAttribute(form.getFileID())%>">
-							</form>
-
-							<%
-								Iterator<String> facetsUsed = form.getFacets().keySet().iterator();
-								while (facetsUsed.hasNext()) {
-									String facetName = facetsUsed.next();
-									String facetValue = form.getFacets().get(facetName);
-							%>
-							<div class="search-facet-selected">
-								<%-- <form action="/search/advanced/results"> --%>
-									<a class="search-close" href="?<%=SearchUtil.getURLParametersWithoutFacet(form, facetName)%>&amp;" title="Remove"> 
-										in <b><% out.print("<span>" + Encode.forHtml(facetValue) + "</span>"); %></b> 
-										<% out.println(" (" + Encode.forHtml(facetName) + ")"); %> &Cross; 
+								<form class="grid_5" action="/search">
+									<a href="/search/advanced/query?${fn:escapeXml(queryString)}">
+										Change Query
 									</a>
-								<%-- </form> --%>
+									<input type="hidden" name="fileID" value="${fn:escapeXml(form.fileID)}>">
+								</form>
+
+								<c:forEach items="${form.facets}" var="facet">
+									<div class="search-facet-selected">
+										<a class="search-close" href="?${fn:escapeXml(cudlfn:urlParamsWithoutFacet(form, facetName))}&amp;" title="Remove">
+											in <b><c:out value="${facet.value}"/></b> ( <c:out value="${facetName}"/>) &cross;
+										</a>
+									</div>
+								</c:forEach>
+
+								<c:if test="${not empty results.spellingSuggestedTerm}">
+									Did you mean
+									<a href="/search?keyword=${cudlfn:uriEnc(results.spellingSuggestedTerm)}">
+										<c:out value="${results.spellingSuggestedTerm}"/>
+									</a>
+								</c:if>
+
+								<div class="_mib"></div>
+								<div class="campl-column12 resultcount">
+									About <fmt:formatNumber value="${results.numberOfResults}"/> results (<span id="reqtime"></span></span>)
+								</div>
 							</div>
-							<%
-								}
-								if (resultSet.getSpellingSuggestedTerm() != null && !resultSet.getSpellingSuggestedTerm().equals("")) {
-									out.println("Did you mean <a href=\"/search?keyword=" + resultSet.getSpellingSuggestedTerm() + "\">" + resultSet.getSpellingSuggestedTerm() + "</a> ?");
-								}
-								out.println("<div class=\"_mib\"></div>");
-								out.println("<div class=\"campl-column12 resultcount\"> About " +
-										NumberFormat.getNumberInstance(Locale.US).format(resultSet.getNumberOfResults()) +
-										" results (<span id=\"reqtime\"></span></span>)</div>");
-							%>
+
+							<c:if test="${results.numberOfResults > 0}">
+								<div class="campl-content-container">
+									<h5>Refine by:</h5>
+
+									<ol id="tree" class="campl-unstyled-list">
+										<c:forEach items="${results.facets}" var="facetGroup">
+											<%-- Do not show a facet for a field we're already faceting on --%>
+											<c:if test="${empty form.facets[facetGroup.field]}">
+												<li>
+													<%-- FIXME: Add these arrows in CSS instead --%>
+													<strong>
+														▾ <c:out value="${facetGroup.fieldLabel}"/>
+													</strong>
+													<ul class="campl-unstyled-list">
+														<c:forEach items="${facetGroup.facets}" var="facet">
+															<li>
+																<a href="?${fn:escapeXml(cudlfn:urlParamsWithFacet(form, facetGroup.field, facet.band))}">
+																	<c:out value="${facet.band}"/>
+																</a>
+																(<c:out value="${facet.occurences}"/>)
+															</li>
+														</c:forEach>
+													</ul>
+												</li>
+											</c:if>
+										</c:forEach>
+									</ol>
+								</div>
+							</c:if>
 						</div>
-						
-						<%
-							if (resultSet.getNumberOfResults() > 0) {
-						%>
-						<div class="campl-content-container">
-							<h5>Refine by:</h5>
+					</div>
 
-							<ol id="tree" class="campl-unstyled-list">
-							<%
-								List<FacetGroup> facetGroups = resultSet.getFacets();
+					<div class="campl-column8 camp-content">
+						<c:if test="${empty results.results}">
+							<div class="searchexample campl-content-container">
+								<p class="box">We couldn't find any items your query.</p>
 
-								if (facetGroups != null) {
-									for (int i = 0; i < facetGroups.size(); i++) {
-										FacetGroup facetGroup = (FacetGroup) facetGroups.get(i);
-										String fieldLabel = facetGroup.getFieldLabel();
-										String field = facetGroup.getField();
-										List<Facet> facets = facetGroup.getFacets();
+								<h5>Example Searches</h5>
+								<br>
+								<p>
+									Searching for <span class="search">newton</span> Searches the metadata for 'newton'<br>
+									Searching for <span class="search">isaac newton</span> Searches for 'isaac' AND 'newton'<br>
+									Searching for <span class="search">"isaac newton"</span> Searches for the phrase 'isaac newton'<br>
+									The characters <b>?</b> and <b>*</b> can be used as wildcards in your search.<br>
+									Use <b>?</b> to represent one unknown character and <b>*</b> to represent any number of unknown characters.<br/>
+								</p>
+							</div>
+						</c:if>
 
-										// Do not print out the facet for a field already faceting on
-										/* if (!form.getFacets().containsKey(field)) {
 
-											out.println("<li><strong>" + fieldLabel + "</strong><ul class='campl-unstyled-list'>");
-
-											for (int j = 0; j < facets.size(); j++) {
-												Facet facet = facets.get(j);
-
-												out.print("<li><a href='?" 
-													+ SearchUtil.getURLParametersWithExtraFacet(form, Encode.forHtmlAttribute(field), Encode.forHtmlAttribute(facet.getBand())) 
-													+ "'>");
-												out.print(Encode.forHtml(facet.getBand()) + "</a> (" + facet.getOccurences() + ")</li>");
-											}
-											out.println("</ul></li>");
-										} */
-										// Do not print out the facet for a field already faceting on
-										if (!form.getFacets().containsKey(field)) {
-											out.println("<li><strong><span>&#9662; </span>" + fieldLabel + "</strong><ul class='campl-unstyled-list'>");
-
-											for (int j = 0; j < facets.size(); j++) {
-												Facet facet = facets.get(j);
-												
-												out.print("<li><a href='?" + SearchUtil.getURLParametersWithExtraFacet(form, Encode.forHtmlAttribute(field), Encode.forHtmlAttribute(facet.getBand())) + "'>");
-												out.print(Encode.forHtml(facet.getBand()) + "</a> (" + facet.getOccurences() + ")</li>");
-											}
-											out.println("</ul></li>");
-										}
-									}
-								}
-							%>
-							</ol>
+						<!-- start of list -->
+						<div id="collections_carousel" class="collections_carousel">
 						</div>
-						<%
-							}
-						%>
-						
+						<!-- end of list -->
+						<div class="pagination toppagination"></div>
 					</div>
 				</div>
-
-				<!-- <div class="campl-column8" id="pagination_container"> -->
-				<div class="campl-column8 camp-content">
-				
-					<%
-						List<SearchResult> results = resultSet.getResults();
-
-						// No results were returned. So print out some help.
-						if (resultSet.getNumberOfResults() == 0) {
-							out.println("<div class=\"searchexample campl-content-container\">");
-							
-							out.println("<p class=\"box\">We couldn't find any items your query.</p>");
-							
-							out.println("<h5>Example Searches</h5><br/><p>");
-							out.println("Searching for <span class=\"search\">newton</span> Searches the metadata for 'newton'<br/>");
-							out.println("Searching for <span class=\"search\">isaac newton</span> Searches for 'isaac' AND 'newton'<br/>");
-							out.println("Searching for <span class=\"search\">\"isaac newton\"</span> Searches for the phrase 'isaac newton'<br/>");
-							out.println("The characters <b>?</b> and <b>*</b> can be used as wildcards in your search.<br />");
-							out.println("Use <b>?</b> to represent one unknown character and <b>*</b> to represent any number of unknown characters.<br/>");
-							out.println("</p></div>");
-						}
-					%>
-
-					<!-- <div class="pagination toppagination"></div> -->
-					<!-- start of list -->
-					<div id="collections_carousel" class="collections_carousel">
-					</div>
-					<!-- end of list -->
-					<div class="pagination toppagination"></div>
-					
-				</div>
-
-			<!-- </div> -->
+			</div>
 		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-	// collapsible list
-	$("#tree > li > strong").on("click", function(e) {
-		if($(this).parent().find("span").html().match("^\u25be")) $(this).parent().find("span").html("\u25b8 ")
-		else $(this).parent().find("span").html("\u25be ")
-		$(this).parent().find("ul").toggleClass("hide");
-	});
-	
-	//style snippet
-	function styleSnippet(s) {
-		s = s.replace(/<b>/g, "<span class=\"campl-search-term\">");
-		s = s.replace(/<\/b>/g, "</span>");
-		return s;
-	}
-</script>
-
-<jsp:include page="header/footer-full.jsp" />
+	</jsp:body>
+</cudl:generic-page>

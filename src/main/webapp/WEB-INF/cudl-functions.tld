@@ -1,3 +1,8 @@
+<!--
+    Note: this is only separate from the cudl taglib because you can't manually
+    define functions in an implicit taglib, so we'd have to manually define all
+    tags AND functions if they were in one taglib.
+-->
 <taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
         xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -27,5 +32,17 @@
         <name>join</name>
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
         <function-signature>java.lang.String join(java.lang.Iterable, java.lang.String)</function-signature>
+    </function>
+
+    <function>
+        <name>urlParamsWithoutFacet</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>java.lang.String urlParamsWithoutFacet(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String)</function-signature>
+    </function>
+
+    <function>
+        <name>urlParamsWithFacet</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>java.lang.String urlParamsWithFacet(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String, java.lang.String)</function-signature>
     </function>
 </taglib>

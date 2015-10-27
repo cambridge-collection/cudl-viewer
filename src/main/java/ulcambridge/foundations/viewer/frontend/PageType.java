@@ -9,7 +9,8 @@ public enum PageType {
     TRANSCRIPTION("page-transcription"),
     LOGIN("page-login"),
     COLLECTION_ORGANISATION("page-collection-organisation"),
-    MY_LIBRARY("page-my-library");
+    MY_LIBRARY("page-my-library"),
+    ADVANCED_SEARCH_RESULTS("page-advanced-search-results");
 
     private final String chunkName;
 
