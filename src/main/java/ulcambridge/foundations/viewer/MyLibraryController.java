@@ -45,23 +45,12 @@ public class MyLibraryController {
 	public ModelAndView handleRequest(Principal principal) throws JSONException {
 
 		String id = principal.getName();
-        
 		List<Bookmark> bookmarks = bookmarkDao.getByUsername(id);
-		Iterator<Bookmark> bookmarksIt = bookmarks.iterator();
-
-		// Get a list of Items that represent these bookmarks.
-		List<Item> items = new ArrayList<Item>();
-
-		while (bookmarksIt.hasNext()) {
-			Bookmark bookmark = bookmarksIt.next();
-			Item item = itemFactory.getItemFromId(bookmark.getItemId());
-			items.add(item);
-		}
 
 		ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
 		modelAndView.addObject("username", id);
-		modelAndView.addObject("items", items);
 		modelAndView.addObject("bookmarks", bookmarks);
+		modelAndView.addObject("itemFactory", itemFactory);
 		return modelAndView;
 	}
 
