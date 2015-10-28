@@ -68,6 +68,8 @@ public class SearchController {
 		ModelAndView modelAndView = new ModelAndView("jsp/search-results");
 		modelAndView.addObject("form", searchForm);
 		modelAndView.addObject("results", results);
+		modelAndView.addObject("queryString",
+				SearchUtil.getURLParameters(searchForm));
 
 		return modelAndView;
 	}
