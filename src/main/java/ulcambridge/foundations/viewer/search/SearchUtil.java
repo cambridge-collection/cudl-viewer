@@ -1,10 +1,13 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Iterator;
-
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Used for facet refinement in search results.
@@ -12,102 +15,100 @@ import ulcambridge.foundations.viewer.forms.SearchForm;
  * @author jennie
  * 
  */
-public class SearchUtil {
+public final class SearchUtil {
+	private SearchUtil() { throw new RuntimeException(); }
+
+	private static String getQuery(UriComponentsBuilder builder) {
+		return builder.build().encode().getQuery();
+	}
+
+	private static UriComponentsBuilder addBaseQueryParams(
+			UriComponentsBuilder builder,
+			SearchForm searchForm) {
+
+		builder.queryParam("keyword", searchForm.getKeyword())
+				.queryParam("fullText", searchForm.getFullText())
+				.queryParam("excludeText", searchForm.getExcludeText())
+				.queryParam("textJoin", searchForm.getTextJoin())
+				.queryParam("fileID", searchForm.getFileID())
+				.queryParam("shelfLocator", searchForm.getShelfLocator())
+				.queryParam("title", searchForm.getTitle())
+				.queryParam("author", searchForm.getAuthor())
+				.queryParam("subject", searchForm.getSubject())
+				.queryParam("location", searchForm.getLocation());
+
+		if (searchForm.getYearStart() != null &&
+				searchForm.getYearEnd() != null) {
+			builder.queryParam("yearStart", searchForm.getYearStart())
+					.queryParam("yearEnd", searchForm.getYearEnd());
+		}
+
+		return builder;
+	}
+
+	private static UriComponentsBuilder addFacetQueryParams(
+			UriComponentsBuilder builder,
+			Iterable<Map.Entry<String, String>> facets) {
+
+		for(Map.Entry<String, String> facet : facets) {
+			String value = facet.getValue();
+
+			if(value == null) {
+				builder.queryParam(facet.getKey());
+			}
+			else {
+				builder.queryParam(getFacetName(facet.getKey()), value);
+			}
+		}
+
+		return builder;
+	}
+
+	private static final String getFacetName(String name) {
+		if(name == null || name.length() == 0)
+			throw new IllegalArgumentException("name was empty: " + name);
+
+		return "facet" + name.substring(0, 1).toUpperCase() + name.substring(1);
+	}
+
+	private static Iterable<Map.Entry<String, String>> removeFacet(
+			Iterable<Map.Entry<String, String>> facets, String excludedName) {
+
+		List<Map.Entry<String, String>> filtered =
+				new ArrayList<Map.Entry<String, String>>();
+		for(Map.Entry<String, String> facet : facets) {
+			if(!facet.getKey().equals(excludedName))
+				filtered.add(facet);
+
+		}
+		return filtered;
+	}
 
 	public static String getURLParameters(SearchForm searchForm) {
-		try {
-			String params = "keyword=" + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
-			params += "&amp;fullText=" + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
-			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
-			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
-			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
-			params += "&amp;shelfLocator=" + URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
-			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
-			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
-			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
-			params += "&amp;location=" + URLEncoder.encode(searchForm.getLocation(), "UTF-8");
-			
-			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
-				params += "&amp;yearStart=" + searchForm.getYearStart();
-				params += "&amp;yearEnd=" + searchForm.getYearEnd();
-			}			
-			
-			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
-			while (facetIterator.hasNext()) {
-				String facet = facetIterator.next().toString();
-				
-				// uppercase first letter of facet
-				char[] stringArray = facet.toCharArray();
-				stringArray[0] = Character.toUpperCase(stringArray[0]);
-				String facetUpper = new String(stringArray);
-				
-				params += "&amp;facet" + URLEncoder.encode(facetUpper, "UTF-8") + "="
-						+ URLEncoder.encode(searchForm.getFacets().get(facet), "UTF-8");
-			}
-			return params;
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "";
+		UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
+		addBaseQueryParams(builder, searchForm);
+		addFacetQueryParams(builder, searchForm.getFacets().entrySet());
+		return getQuery(builder);
 	}
 
-	public static String getURLParametersWithoutFacet(SearchForm searchForm, String facetName) {
-		try {
+	public static String getURLParametersWithoutFacet(
+			SearchForm searchForm, String facetName) {
 
-			String params = "keyword=" + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
-			params += "&amp;fullText=" + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
-			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
-			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
-			params += "&amp;fileID=" + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
-			params += "&amp;shelfLocator=" + URLEncoder.encode(searchForm.getShelfLocator(), "UTF-8");
-			params += "&amp;title=" + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
-			params += "&amp;author=" + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
-			params += "&amp;subject=" + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
-			params += "&amp;location=" + URLEncoder.encode(searchForm.getLocation(), "UTF-8");
-			
-			if (searchForm.getYearStart()!=null && searchForm.getYearEnd()!=null) {
-				params += "&amp;yearStart=" + searchForm.getYearStart();
-				params += "&amp;yearEnd=" + searchForm.getYearEnd();
-			}	
-			
-			Iterator<String> facetIterator = searchForm.getFacets().keySet().iterator();
-			while (facetIterator.hasNext()) {
-				String facet = facetIterator.next().toString();
-				if (!facet.equals(facetName)) {
-					
-					// uppercase first letter of facet
-					char[] stringArray = facet.toCharArray();
-					stringArray[0] = Character.toUpperCase(stringArray[0]);
-					String facetUpper = new String(stringArray);
-					
-					params += "&amp;facet" + URLEncoder.encode(facetUpper, "UTF-8")
-							+ "="
-							+ URLEncoder.encode(searchForm.getFacets().get(facet), "UTF-8");
-				}
-			}
-			return params;
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "";
+		UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
+		addBaseQueryParams(builder, searchForm);
+		addFacetQueryParams(builder,
+				removeFacet(searchForm.getFacets().entrySet(), facetName));
+		return getQuery(builder);
 	}
 
-	public static String getURLParametersWithExtraFacet(SearchForm searchForm, String facetName,
-			String facetValue) {
-		try {
-			
-			// uppercase first letter of facet
-			char[] stringArray = facetName.toCharArray();
-			stringArray[0] = Character.toUpperCase(stringArray[0]);
-			facetName = new String(stringArray);
-			
-			return getURLParameters(searchForm) + "&amp;facet"
-					+ URLEncoder.encode(facetName, "UTF-8") + "="
-					+ URLEncoder.encode(facetValue, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
+	public static String getURLParametersWithExtraFacet(
+			SearchForm searchForm, String facetName, String facetValue) {
 
+		UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
+		builder = addBaseQueryParams(builder, searchForm);
+		builder = addFacetQueryParams(builder,
+				searchForm.getFacets().entrySet());
+		builder.queryParam(getFacetName(facetName), facetValue);
+		return getQuery(builder);
+	}
 }
