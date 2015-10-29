@@ -104,6 +104,7 @@
 				<li><a href="/collections/" title="Browse" class="${activeMenuIndex == 1 ? 'campl-selected' : ''}"> Browse </a></li>
 				<li><a href="/search" title="Search" class="${activeMenuIndex == 2 ? 'campl-selected' : ''}"> Search </a>
 					<ul class="campl-unstyled-list local-dropdown-menu">
+						<li><a href="/search">Simple Search</a></li>
 						<li><a href="/search/advanced/query">Advanced Search</a></li>
 					</ul>
 				</li>
