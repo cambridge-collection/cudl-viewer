@@ -10,7 +10,8 @@ public enum PageType {
     LOGIN("page-login"),
     COLLECTION_ORGANISATION("page-collection-organisation"),
     MY_LIBRARY("page-my-library"),
-    ADVANCED_SEARCH_RESULTS("page-advanced-search-results");
+    ADVANCED_SEARCH_RESULTS("page-advanced-search-results"),
+    ERROR_500("page-error-500");
 
     private final String chunkName;
 

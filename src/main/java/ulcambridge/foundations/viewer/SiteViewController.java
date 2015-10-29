@@ -2,10 +2,12 @@ package ulcambridge.foundations.viewer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -119,12 +121,36 @@ public class SiteViewController {
         return modelAndView;
     }
 
+    private String formatThrowable(Throwable t) {
+        StringWriter writer = new StringWriter();
+        t.printStackTrace(new PrintWriter(writer));
+        return writer.toString();
+    }
+
+    private Throwable getErrorException(HttpServletRequest request) {
+        Object exc = request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+
+        if(exc == null)
+            return null;
+
+        // Should always be the case
+        assert exc instanceof Throwable;
+        return (Throwable)exc;
+    }
+
     // on path /errors/500.html
     @RequestMapping(value = "/errors/500.html")
-    public ModelAndView handle500() {
+    public ModelAndView handle500(HttpServletRequest request) {
 
-        ModelAndView modelAndView = new ModelAndView("jsp/errors/500");
-        return modelAndView;
+        ModelAndView mv = new ModelAndView("jsp/errors/500");
+
+        Throwable t = this.getErrorException(request);
+        if(t != null) {
+            mv.addObject("errorMessage", t.getMessage());
+            mv.addObject("errorTraceback", this.formatThrowable(t));
+        }
+
+        return mv;
     }
 
     // on path /robots.txt

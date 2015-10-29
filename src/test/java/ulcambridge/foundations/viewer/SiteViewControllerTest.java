@@ -2,11 +2,17 @@ package ulcambridge.foundations.viewer;
 
 import junit.framework.TestCase;
 
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.test.web.ModelAndViewAssert;
+import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
+import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
 import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
+
+import javax.servlet.RequestDispatcher;
 
 public class SiteViewControllerTest extends TestCase {
 
@@ -70,7 +76,14 @@ public class SiteViewControllerTest extends TestCase {
 
 	public void testHandle500() {
 		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handle500();
-		assertTrue(modelAndView!=null);
+
+		MockHttpServletRequest req = new MockHttpServletRequest();
+		req.setAttribute(RequestDispatcher.ERROR_EXCEPTION,
+				new RuntimeException("boom"));
+
+		ModelAndView mav = c.handle500(req);
+
+		assertModelAttributeValue(mav, "errorMessage", "boom");
+		assertModelAttributeAvailable(mav, "errorTraceback");
 	}
 }
