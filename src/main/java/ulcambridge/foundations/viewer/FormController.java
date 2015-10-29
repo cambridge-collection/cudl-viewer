@@ -1,13 +1,8 @@
 package ulcambridge.foundations.viewer;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
-import net.tanesha.recaptcha.ReCaptchaImpl;
+import net.tanesha.recaptcha.ReCaptcha;
+import net.tanesha.recaptcha.ReCaptchaFactory;
 import net.tanesha.recaptcha.ReCaptchaResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.mail.EmailException;
@@ -17,13 +12,21 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
 import ulcambridge.foundations.viewer.forms.MailingListForm;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 @Controller
 public class FormController {
+
+	private static final String
+			RECAPTCHA_PUBLIC_KEY = "6Lfp19cSAAAAACCDpTi_8O1znKcR8boRacNb0NjC",
+			RECAPTCHA_PRIVATE_KEY = "6Lfp19cSAAAAACgXgRVTbk1m11OdFS8sttohEMDv";
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
@@ -32,11 +35,37 @@ public class FormController {
 	protected final static String feedbackSubject = Properties
 			.getString("feedbackSubject");
 
+	private ReCaptcha getReCaptcha() {
+		return ReCaptchaFactory.newReCaptcha(
+				RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY, false);
+	}
+
+	private String getReCaptchaHtml() {
+		return this.getReCaptcha().createRecaptchaHtml(null, null);
+	}
+
+	private ModelAndView getFeedbackResponse(FeedbackForm form) {
+		return this.getFeedbackResponse(form, null);
+	}
+
+	private ModelAndView getFeedbackResponse(
+			FeedbackForm form, BindingResult errors) {
+		return this.getFeedbackResponse(form, errors, false);
+	}
+
+	private ModelAndView getFeedbackResponse(
+			FeedbackForm form, BindingResult errors, boolean submissionFailed) {
+
+		return new ModelAndView("jsp/feedback")
+				.addObject("feedbackForm", form)
+				.addObject("captchaHtml", this.getReCaptchaHtml())
+				.addObject("errors", errors)
+				.addObject("submissionFailed", submissionFailed);
+	}
+
 	@RequestMapping(method = RequestMethod.GET, value = "/feedbackform.html")
 	public ModelAndView showForm(FeedbackForm feedbackForm) {
-		ModelAndView modelAndView = new ModelAndView("jsp/feedback");
-		modelAndView.addObject("feedbackForm", feedbackForm);
-		return modelAndView;
+		return this.getFeedbackResponse(feedbackForm);
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/feedbackform.html")
@@ -46,28 +75,23 @@ public class FormController {
 
 		// validation for standard parameters
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("jsp/feedback");
-			modelAndView.addObject("errors", result);
-			return modelAndView;
+			return this.getFeedbackResponse(feedbackForm, result);
 		}
 
 		// validation for capcha
 		String remoteAddr = request.getRemoteAddr();
-		ReCaptchaImpl reCaptcha = new ReCaptchaImpl();
-		reCaptcha.setPrivateKey("6Lfp19cSAAAAACgXgRVTbk1m11OdFS8sttohEMDv");
 
 		String challenge = request.getParameter("recaptcha_challenge_field");
 		String uresponse = request.getParameter("recaptcha_response_field");
-		ReCaptchaResponse reCaptchaResponse = reCaptcha.checkAnswer(remoteAddr,
-				challenge, uresponse);
+		ReCaptchaResponse reCaptchaResponse = this.getReCaptcha()
+				.checkAnswer(remoteAddr, challenge, uresponse);
 
 		if (!reCaptchaResponse.isValid()) {
 			ObjectError error = new ObjectError("FeedbackForm",
-					"The recaptcha input was not correct, please try again");
+					"The reCAPTCHA input was not correct, please try again");
 			result.addError(error);
-			ModelAndView modelAndView = new ModelAndView("jsp/feedback");
-			modelAndView.addObject("errors", result);
-			return modelAndView;
+
+			return this.getFeedbackResponse(feedbackForm, result);
 		}
 
 		// send email with comment in.
@@ -80,13 +104,12 @@ public class FormController {
 						+ feedbackForm.getComment());
 
 		if (success) {
-			ModelAndView modelAndView = new ModelAndView("jsp/feedback-success");
-			return modelAndView;
+			return new ModelAndView("jsp/feedback-success");
 		} else {
-			ModelAndView modelAndView = new ModelAndView("jsp/feedback-failure");
-			return modelAndView;
+			// Handle failure to submit feedback email by re-showing the form
+			// with an error. This way the user doesn't loose their comments.
+			return this.getFeedbackResponse(feedbackForm, result, true);
 		}
-
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/mailinglistform.html")

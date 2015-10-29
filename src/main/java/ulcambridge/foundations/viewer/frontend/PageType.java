@@ -12,7 +12,8 @@ public enum PageType {
     MY_LIBRARY("page-my-library"),
     ADVANCED_SEARCH_RESULTS("page-advanced-search-results"),
     ERROR_500("page-error-500"),
-    ADMIN("page-admin");
+    ADMIN("page-admin"),
+    FEEDBACK("page-feedback");
 
     private final String chunkName;
 

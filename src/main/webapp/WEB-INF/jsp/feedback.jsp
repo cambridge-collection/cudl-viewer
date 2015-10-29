@@ -1,93 +1,84 @@
-<%@ page import="net.tanesha.recaptcha.ReCaptcha"%>
-<%@ page import="net.tanesha.recaptcha.ReCaptchaFactory"%>
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
-<!DOCTYPE html>
-<html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<head>
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-<title>Cambridge Digital Library - Feedback</title>
-<link rel="stylesheet" href="/styles/uoc.min.css">
-<!--[if lt IE 9]>
-   <link rel="stylesheet" href="/styles/ie.min.css"/>
-   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<cudl:base-page title="Cambridge Digital Library - Feedback"
+					pagetype="FEEDBACK">
 
-<style>
-body {
-	background: #ffffff;
-}
-
-.feedbackform {
-	color: black;
-	background: #ffffff;
-	padding-bottom: 18px;
-}
-
-.feedbackform input,.feedbackform textarea {
-	border: 1px inset;
-	margin: 3px;
-	padding: 2px;
-}
-
-.error {
-	color: red;
-}
-</style>
-</head>
-<body>
-	<div class="grid_11 container">
-
-		<h3>Feedback</h3>
-
-
-		<div class="feedbackform">
+	<div class="campl-row campl-content">
+		<div class="campl-content-container">
 			<form:form method="post" commandName="feedbackForm">
+				<fieldset>
+					<legend>Feedback</legend>
 
-				<p>We welcome all comments, feedback and suggestions. Please
-					tell us what you liked, disliked, would like to see improved, or if
-					you think something is not right. Fields marked with an * are
-					required.</p>
+					<p>
+						We welcome all comments, feedback and suggestions. Please
+						tell us what you liked, disliked, would like to see improved, or if
+						you think something is not right.
+					</p>
 
-				<p>
-					<form:label path="name">Name:</form:label>
-					<em>*</em>
-					<form:input path="name" />
-					<form:errors path="name" cssClass="error" />
-				</p>
-				<p>
-					<form:label path="email">E-Mail:</form:label>
-					<em>*</em>
-					<form:input path="email" name="email" size="30" />
-					<form:errors path="email" cssClass="error" />
-				</p>
-				<p>
+					<div class="campl-control-group <form:errors path="name">campl-error</form:errors>">
+						<form:label path="name">Name</form:label>
+						<div class="campl-controls">
+							<form:input path="name" type="text" />
+							<form:errors path="name" cssClass="campl-help-block" />
+						</div>
+					</div>
 
-					<form:label path="comment">Your comment:</form:label>
-					<em>*</em>
-					<form:textarea path="comment" name="comment" cols="50" rows="4"></form:textarea>
-					<form:errors path="comment" cssClass="error" />
-				</p>
+					<div class="campl-control-group <form:errors path="email">campl-error</form:errors>">
+						<form:label path="name">Email</form:label>
+						<div class="campl-controls">
+							<form:input path="email" type="text" />
+							<form:errors path="email" cssClass="campl-help-block" />
+						</div>
+					</div>
 
-				<%
-					ReCaptcha c = ReCaptchaFactory.newReCaptcha(
-								"6Lfp19cSAAAAACCDpTi_8O1znKcR8boRacNb0NjC",
-								"6Lfp19cSAAAAACgXgRVTbk1m11OdFS8sttohEMDv", false);
-						out.print(c.createRecaptchaHtml(null, null));
-				%>
+					<div class="campl-control-group <form:errors path="comment">campl-error</form:errors>">
+						<form:label path="comment">Your comment</form:label>
+						<div class="campl-controls">
+							<form:textarea path="comment" rows="3"/>
+							<form:errors path="comment" cssClass="campl-help-block"/>
+						</div>
+					</div>
+				</fieldset>
 
-				<input type="submit" name=submit value="Send Feedback">
+				<fieldset>
+					<legend>Are you human?</legend>
+					<div class="campl-control-group">
+						<c:out value="${captchaHtml}" escapeXml="false"/>
+					</div>
+
+					<%-- This is effectively the recaptcha error area as the
+						 only object errors generated are for recaptcha --%>
+					<form:errors>
+						<div class="campl-control-group campl-error">
+							<label><form:errors/></label>
+						</div>
+					</form:errors>
+				</fieldset>
+
+				<c:if test="${submissionFailed}">
+					<div class="campl-notifications-panel campl-warning-panel campl-notifications-container clearfix">
+						<div class="campl-column4">
+							<p class="campl-notifications-icon campl-warning-icon">Error:</p>
+						</div>
+						<div class="campl-column8">
+							<p>
+								Sorry there was a problem submitting your feedback, we'll be looking into it as soon as we can.
+								Please email your comments directly to the team at <a href="mailto:dl-feedback@lib.cam.ac.uk?body=${cudlfn:uriEnc(feedbackForm.comment)}">dl-feedback@lib.cam.ac.uk</a>.
+							</p>
+						</div>
+					</div>
+				</c:if>
+
+				<div class="campl-form-actions">
+					<button class="campl-btn campl-primary-cta" type="submit">Send Feedback</button>
+				</div>
 			</form:form>
-
 		</div>
 	</div>
-
-</body>
-</html>
-
-
-
-
-
+</cudl:base-page>
