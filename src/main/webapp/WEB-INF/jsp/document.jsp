@@ -11,7 +11,7 @@
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
 
-<cudl:html title="${title}">
+<cudl:base-page title="${title}">
 	<jsp:attribute name="head">
 		<cudl:head-content pagetype="DOCUMENT"
 						   viewport="width=device-width, maximum-scale=1, initial-scale=1">
@@ -57,28 +57,24 @@
 		</cudl:head-content>
 	</jsp:attribute>
 
-	<jsp:attribute name="bodyAttrs">
-		<cudl:attr name="data-context" skipEmpty="${true}">
-			<jsp:attribute name="value">
-				<%-- FIXME: Some of these arent' used --%>
-				<cudl:default-context>
-					<json:property name="jsonURL" value="${jsonURL}"/>
-					<json:property name="jsonThumbURL" value="${jsonThumbnailsURL}"/>
-					<json:property name="pageNum" value="${page}"/>
-					<json:property name="docId" value="${item.id}"/>
-					<json:property name="docURL" value="${docURL}"/>
-					<json:property name="imageServer" value="${imageServer}"/>
-					<json:property name="services" value="${services}"/>
-					<json:property name="collectionURL" value="${organisationalCollection.URL}"/>
-					<json:property name="collectionTitle" value="${organisationalCollection.title}"/>
-					<json:property name="parentCollectionURL" value="${parentCollection.URL}"/>
-					<json:property name="parentCollectionTitle" value="${parentCollection.title}"/>
-					<json:property name="itemTitle" value="${item.title}"/>
-					<json:array name="itemAuthors" items="${item.authorNames}"/>
-					<json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
-				</cudl:default-context>
-			</jsp:attribute>
-		</cudl:attr>
+	<jsp:attribute name="pageData">
+		<%-- FIXME: Some of these arent' used --%>
+		<cudl:default-context>
+			<json:property name="jsonURL" value="${jsonURL}"/>
+			<json:property name="jsonThumbURL" value="${jsonThumbnailsURL}"/>
+			<json:property name="pageNum" value="${page}"/>
+			<json:property name="docId" value="${item.id}"/>
+			<json:property name="docURL" value="${docURL}"/>
+			<json:property name="imageServer" value="${imageServer}"/>
+			<json:property name="services" value="${services}"/>
+			<json:property name="collectionURL" value="${organisationalCollection.URL}"/>
+			<json:property name="collectionTitle" value="${organisationalCollection.title}"/>
+			<json:property name="parentCollectionURL" value="${parentCollection.URL}"/>
+			<json:property name="parentCollectionTitle" value="${parentCollection.title}"/>
+			<json:property name="itemTitle" value="${item.title}"/>
+			<json:array name="itemAuthors" items="${item.authorNames}"/>
+			<json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
+		</cudl:default-context>
 	</jsp:attribute>
 
 	<jsp:body>
@@ -351,4 +347,4 @@
         	</div>
         </div>
 	</jsp:body>
-</cudl:html>
+</cudl:base-page>
