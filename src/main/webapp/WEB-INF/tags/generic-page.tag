@@ -1,43 +1,24 @@
-<%@tag description="CUDL base page" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@tag description="The base for the majority of CUDL pages" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@attribute name="title" required="false" type="java.lang.String" %>
-<%@attribute name="pagetype" required="true" type="java.lang.String" %>
+<%@attribute name="pagetype" required="false" type="java.lang.String" %>
 <%@attribute name="bodyAttrs" required="false" fragment="true" %>
 
 <%-- A string containing JSON encoded data. It should start with '{' or '['. --%>
 <%@attribute name="pageData" required="false" type="java.lang.String" %>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-<c:set var="title" value="${(empty title) ? 'Cambridge Digital Library - University of Cambridge' : title}"/>
 
-<c:if test="${empty pageData}">
-	<c:set var="pageData">
-		<cudl:default-context/>
-	</c:set>
-</c:if>
+<cudl:base-page title="${title}" pagetype="${pagetype}" bodyAttrs="${bodyAttrs}"
+				pageData="${pageData}">
+	<cudl:ie-div>
+		<cudl:projectlight-header/>
 
-<cudl:html title="${title}">
-	<jsp:attribute name="head">
-		<cudl:head-content pagetype="${pagetype}"/>
-	</jsp:attribute>
+		<%-- Pass through body --%>
+		<jsp:doBody/>
 
-	<jsp:attribute name="bodyAttrs">
-		<cudl:attr name="data-context" value="${pageData}" skipEmpty="${true}"/>
-		<jsp:invoke fragment="bodyAttrs"/>
-	</jsp:attribute>
-
-	<jsp:body>
-		<cudl:ie-div>
-			<cudl:projectlight-header/>
-
-			<%-- Pass through body --%>
-			<jsp:doBody/>
-
-			<cudl:cookie-notice/>
-			<cudl:footer/>
-			<cudl:projectlight-footer/>
-		</cudl:ie-div>
-	</jsp:body>
-</cudl:html>
+		<cudl:cookie-notice/>
+		<cudl:footer/>
+		<cudl:projectlight-footer/>
+	</cudl:ie-div>
+</cudl:base-page>
