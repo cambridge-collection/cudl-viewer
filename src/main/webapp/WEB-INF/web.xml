@@ -47,6 +47,26 @@
         </param-value>
     </context-param>
 
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <!--
+                Disable scriptlets in JSP files. Scriptlets aren't allowed
+                inside custom tags anyway, and their use is discouraged since
+                EL became available in JSP 2.
+
+                These may be informative:
+                 - http://stackoverflow.com/questions/3177733/how-to-avoid-java-code-in-jsp-files
+                 - http://stackoverflow.com/questions/1296235/jsp-tricks-to-make-templating-easier
+            -->
+            <scripting-invalid>true</scripting-invalid>
+
+            <!-- All the JSP templates should be UTF-8. -->
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
+
+
     <!-- sitecontroller servlet -->
     <servlet>
         <servlet-name>siteviewcontroller</servlet-name>
