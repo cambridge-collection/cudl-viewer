@@ -7,6 +7,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<c:if test="${empty value}">
+	<c:set var="value"><jsp:doBody/></c:set>
+</c:if>
+
 <c:if test="${not (skipEmpty and empty value)}">
 	<c:out value=" ${name}" escapeXml="false"/>
 	<c:if test="${not empty value}">
