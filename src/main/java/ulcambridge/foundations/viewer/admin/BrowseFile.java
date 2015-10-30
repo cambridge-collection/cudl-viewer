@@ -7,14 +7,14 @@ public class BrowseFile implements Comparable<Object> {
 	private String filename;
 	private String filePath;
 	private String fileURL;
-	private boolean isDirectory;
+	private FileType fileType;
 	private List<BrowseFile> children;
 
 	public BrowseFile(String filename, String filePath, String fileURL, boolean isDirectory, List<BrowseFile> children) {
 		this.filename = filename;
 		this.filePath = filePath;
 		this.fileURL = fileURL;
-		this.isDirectory = isDirectory;
+		this.fileType = isDirectory ? FileType.DIRECTORY : FileType.FILE;
 		this.children = children;
 	}
 	
@@ -31,7 +31,12 @@ public class BrowseFile implements Comparable<Object> {
 	}
 
 	public boolean isDirectory() {
-		return isDirectory;
+		return fileType == FileType.DIRECTORY;
+	}
+
+	public FileType getType() {
+		assert fileType != null;
+		return fileType;
 	}
 
 	public List<BrowseFile> getChildren() {
@@ -57,4 +62,7 @@ public class BrowseFile implements Comparable<Object> {
 		return getFilename().compareTo(((BrowseFile)o).getFilename());
 	}
 
+	public enum FileType {
+		FILE, DIRECTORY
+	}
 }
