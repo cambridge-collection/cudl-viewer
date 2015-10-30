@@ -228,8 +228,8 @@ public class ContentEditorController {
 		imageFiles = buildBrowseDirectory(browseDir, imageFiles);
 
 		ModelAndView modelAndView = new ModelAndView("jsp/admin-editor-browse");
-		modelAndView.addObject("CKEditor", ckEditor);
-		modelAndView.addObject("CKEditorFuncNum", ckEditorFuncNum);
+		modelAndView.addObject("ckEditor", ckEditor);
+		modelAndView.addObject("ckEditorFuncNum", ckEditorFuncNum);
 		modelAndView.addObject("langCode", langCode);
 		modelAndView.addObject("imageFiles", imageFiles);
 		modelAndView.addObject("browseDir", browseDir);
@@ -295,10 +295,10 @@ public class ContentEditorController {
 		JSONObject json = new JSONObject();
 		json.put("deletesuccess", successful);
 
+		response.setStatus(successful ? 200 : 400);
 		response.setContentType("application/json");
 		write(json.toString(), response.getOutputStream());
 		return null;
-
 	}
 
 	/**

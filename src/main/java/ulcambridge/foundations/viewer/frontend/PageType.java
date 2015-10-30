@@ -13,7 +13,8 @@ public enum PageType {
     ADVANCED_SEARCH_RESULTS("page-advanced-search-results"),
     ERROR_500("page-error-500"),
     ADMIN("page-admin"),
-    FEEDBACK("page-feedback");
+    FEEDBACK("page-feedback"),
+    ADMIN_FILE_BROWSE("page-admin-file-browse");
 
     private final String chunkName;
 
