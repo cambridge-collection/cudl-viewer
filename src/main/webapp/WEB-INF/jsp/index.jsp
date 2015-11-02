@@ -87,7 +87,7 @@
 									<div class="campl-focus-teaser-txt">
 										<div class="campl-content-container campl-horizontal-teaser-txt">
 											<h3 class='campl-teaser-title'>
-												<a href="${fn:escapeXml(c.URL)}>"><c:out value="${c.title}"/></a>
+												<a href="${fn:escapeXml(c.URL)}"><c:out value="${c.title}"/></a>
 											</h3>
 											<a href="${fn:escapeXml(c.URL)}" class="ir campl-focus-link">Read
 												more</a>
