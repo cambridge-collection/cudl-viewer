@@ -11,6 +11,13 @@ manually.
 
 Ensure you have a recent JDK and version of Maven installed before continuing.
 
+### Database Setup
+
+See the [database setup](src/main/docs/database-setup.md) document for
+instructions on creating a Postgres database for use with CUDL Viewer. It also
+covers importing data and creating admin users.
+
+
 ### Setup
 
 Before running the Viewer, some setup and configuration is needed to obtain
