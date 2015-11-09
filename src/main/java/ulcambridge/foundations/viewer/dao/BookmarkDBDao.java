@@ -43,6 +43,7 @@ public class BookmarkDBDao implements BookmarkDao {
 					});
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -74,6 +75,7 @@ public class BookmarkDBDao implements BookmarkDao {
 
 		} catch (Exception e) {
 			// hasn't found the bookmark.
+			e.printStackTrace();
 		}
 		return false;
 	}
