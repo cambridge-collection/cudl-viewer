@@ -86,7 +86,15 @@
     <mvc:resources mapping="${cudl-viewer-content.html.url}/**" location="file:${cudl-viewer-content.html.path}/"/>
     <mvc:resources mapping="/img/**" location="/img/" />
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
+
+    <!-- 31536000 = 60*60*24*365 = 1 year -->
+    <mvc:resources mapping="/ui/**" location="classpath:ulcambridge/foundations/viewer/viewer-ui/assets/"
+                    cache-period="31536000">
+        <mvc:resource-chain resource-cache="true">
+            <mvc:resolvers>
+                <bean class="org.springframework.web.servlet.resource.GzipResourceResolver"/>
+            </mvc:resolvers>
+        </mvc:resource-chain>
+    </mvc:resources>
     <mvc:resources mapping="/**" location="/" />
-    
-     
 </beans>
