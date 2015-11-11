@@ -85,9 +85,6 @@
     <mvc:resources mapping="${cudl-viewer-content.images.url}/**" location="file:${cudl-viewer-content.images.path}/"/>
     <mvc:resources mapping="${cudl-viewer-content.html.url}/**" location="file:${cudl-viewer-content.html.path}/"/>
     <mvc:resources mapping="/img/**" location="/img/" />
-    <mvc:resources mapping="/scripts/**" location="/scripts/" />
-    <mvc:resources mapping="/styles/fonts/**" location="/styles/fonts/" />
-    <mvc:resources mapping="/styles/**" location="/styles/" />
     <mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
     <mvc:resources mapping="/**" location="/" />
     
