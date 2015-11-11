@@ -12,7 +12,7 @@ import java.util.Date;
  */
 public class Utils {
 
-	public static final String dateformat = "YYYY-MM-dd HH:mm:ss z";
+	public static final String dateformat = "yyyy-MM-dd HH:mm:ss z";
 	public static final String timezone = "BST";
 	
 	// date format
