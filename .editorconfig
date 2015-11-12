@@ -1,0 +1,14 @@
+# http://EditorConfig.org
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[pom.xml]
+indent_style = space
+indent_size = 4
+
+[*.{jsp,tag}]
+end_of_line = lf
+insert_final_newline = true
+# Only because they already mostly use tabs
+indent_style = tab
