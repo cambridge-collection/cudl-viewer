@@ -358,10 +358,10 @@
             <version>1.0.3.RELEASE</version>
         </dependency>
 
-        <!-- raven auth, in local repo -->
+        <!-- raven auth, in cudl repo -->
         <dependency>
-            <groupId>uk.ac.cam</groupId>
-            <artifactId>raven-webauth</artifactId>
+            <groupId>uk.ac.cam.raven</groupId>
+            <artifactId>servlet-lib</artifactId>
             <version>1.0.3</version>
         </dependency>
 
@@ -416,13 +416,8 @@
         </dependency>
     </dependencies>
 
-    <!-- This includes jars which are not held in a external maven repository -->
+    <!-- Resolve private CUDL artifacts -->
     <repositories>
-        <repository>
-            <id>local-repo</id>
-            <url>file://${basedir}/repo</url>
-        </repository>
-        <!-- Resolve private CUDL artifacts -->
         <repository>
             <id>cudl-aws-release</id>
             <name>AWS Release Repository</name>
