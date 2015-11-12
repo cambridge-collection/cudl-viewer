@@ -74,6 +74,12 @@
 			<json:property name="itemTitle" value="${item.title}"/>
 			<json:array name="itemAuthors" items="${item.authorNames}"/>
 			<json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
+
+			<%-- Tagging related data --%>
+			<sec:authorize access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
+            	<json:property name="isUser" value="${true}"/>
+            </sec:authorize>
+            <json:property name="taggingEnabled" value="${!!taggable}"/>
 		</cudl:default-context>
 	</jsp:attribute>
 
@@ -179,6 +185,10 @@
         						<li><a id="downloadtab" aria-controls="downloadtab"
         							data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
         								or share</a></li>
+
+								<%-- genizah tagging --%>
+								<li><a id="taggingtab" aria-controls="taggingtab"
+									data-toggle="tab" role="tab" tabindex="-1" href="#tagging">Tagging</a></li>
         					</ul></li>
 
         			</ul>
@@ -323,7 +333,8 @@
 
         					</div>
         				</div>
-
+						<%-- genizah tagging --%>
+						<div role="tabpanel" class="tab-pane" id="tagging"></div>
         			</div>
         		</div>
         	</div>
