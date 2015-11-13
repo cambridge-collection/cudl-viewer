@@ -81,11 +81,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.2</version>
+                <version>2.5.3</version>
                 <configuration>
                     <!-- Don't automatically push changes to the remote repo
                          while executing release:prepare. -->
                     <pushChanges>false</pushChanges>
+                    <!-- Use the local repo with release:perform instead of the
+                         upstream repository specified in <scm>. -->
+                    <localCheckout>true</localCheckout>
                 </configuration>
             </plugin>
         </plugins>
