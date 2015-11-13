@@ -11,6 +11,11 @@ manually.
 
 Ensure you have a recent JDK and version of Maven installed before continuing.
 
+You'll need to
+[add credentials for the CUDL Maven repository](https://wiki.cam.ac.uk/cudl-docs/CUDL_Maven_Repository#Credentials)
+in order to resolve internal dependencies such as
+[cudl-viewer-ui](https://bitbucket.org/CUDL/cudl-viewer-ui).
+
 ### Database Setup
 
 See the [database setup](src/main/docs/database-setup.md) document for
@@ -84,6 +89,22 @@ $ mvn tomcat7:run
 
 You can then access the Viewer at
 [http://localhost:1111/](http://localhost:1111/).
+
+### Live updates from `cudl-viewer-ui`
+
+All the Javascript, CSS etc used by the viewer comes from `cudl-viewer-ui`
+via a Maven dependency. You can make live changes to the UI Javascript etc
+without rebuilding each time by using the UI's devserver.
+
+This requires setting the `cudl.ui.dev` property to `true` in
+`cudl-global.properties`. You can also set `cudl.ui.dev.baseUrl` if the default
+of `http://localhost:8080/` is not right for you.
+
+Once enabled, the viewer will link to the UI's devserver instead of serving
+Javascript/CSS from the dependency JARs.
+
+See the [cudl-viewer-ui's README](https://bitbucket.org/CUDL/cudl-viewer-ui) for
+instructions on running the UI devserver.
 
 ## Building
 
