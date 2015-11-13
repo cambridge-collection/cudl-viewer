@@ -97,14 +97,14 @@ The war file will be created under `target/`.
 
 When deployed, the Viewer requires `cudl-global.properties` to exist on on the
 classpath.
-	
+
 This file will be excluded from any WAR file generated as it contains the properties
-that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the 
+that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
 classpath for your web container (e.g. `lib` directory in Tomcat).
 
-## Tagging a release
+## Making a release
 
-Tagging can be done using the Maven release plugin.
+Releasing is using the Maven release plugin.
 
 ### Tag format
 
@@ -118,7 +118,7 @@ we'd use `production-2015062100`.
 Note that the last two digits make tags a pain to auto-generate, so you'll have
 to manually specify the tag value each time you tag.
 
-### Tagging
+### Step 1: Prepare
 
 After committing and testing all changes, switch to the `master` branch and
 run:
@@ -138,8 +138,16 @@ Assuming your CUDL remote is `cudl`, and your created tag was
 `production-2015062100`, you'd run:
 
 ```
-$ git push cudl master
-$ git push cudl production-2015062100
+$ git push cudl master production-2015062100
+```
+
+### Step 2: Perform (deploy to CUDL repository)
+
+Once the release has been tagged you can finish off by deploying the artifacts
+to the CUDL repository:
+
+```
+$ mvn release:perform
 ```
 
 ## More information
