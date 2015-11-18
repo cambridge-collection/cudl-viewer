@@ -104,6 +104,7 @@
 				<li><a href="/collections/" title="Browse" <%if (activeIndex == 1) {%> class="campl-selected" <%}%>> Browse </a></li>
 				<li><a href="/search" title="Search" <%if (activeIndex == 2) {%> class="campl-selected" <%}%>> Search </a>
 					<ul class="campl-unstyled-list local-dropdown-menu">
+						<li><a href="/search">Simple Search</a></li>
 						<li><a href="/search/advanced/query">Advanced Search</a></li>
 					</ul>
 				</li>
