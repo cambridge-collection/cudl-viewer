@@ -139,7 +139,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	     they've logged in once the credentials should be remembered for some
 	     time. Because this is stateless auth without using sessions, it
 	     shouldn't conflict with the normal CUDL sessions. -->
-	<security:http pattern="/ui/**"
+	<security:http pattern="/ui/**/*.map"
 				   authentication-manager-ref="stateless"
 				   create-session="stateless"
 				   realm="Tasty source maps">
