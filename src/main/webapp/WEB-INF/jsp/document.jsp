@@ -92,7 +92,7 @@
 
 <!-- Image URI (Thumbnail) -->
 <meta property="schema:image" content="<%=thumbnailURL%>" />
-<meta property="og:image" content="<%=thumbnailURL%>" />
+<meta property="og:image" content="http://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
 <meta property="twitter:image" content="<%=thumbnailURL%>" />
 <meta property="schema:thumbnailUrl" content="<%=thumbnailURL%>" />
 
