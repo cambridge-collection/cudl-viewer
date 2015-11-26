@@ -322,7 +322,12 @@
         							</div>
         							<div>Alternatively please share this page on
         								social media</div>
-        							<div class="addthis_sharing_toolbox col-md-12"></div>
+        							<div class="addthis_sharing_toolbox col-md-12">
+        							    <script type="text/javascript"
+                                                src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4"
+                                                async="async"></script>
+
+        							</div>
         							<div id="embedOption">
         								<br />You can also embed the viewer into your own website or
         								blog using the code below:<br />
