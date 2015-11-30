@@ -65,7 +65,7 @@ public class LoginController {
     public void setBookmarkDao(BookmarkDao bookmarkDao) {
         this.bookmarkDao = bookmarkDao;
     }
-    
+
     @Autowired
     public void setLoginAccess(java.util.Properties loginAccess) {
         this.loginAccess = loginAccess;
@@ -75,12 +75,14 @@ public class LoginController {
     @RequestMapping(value = "/login")
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error, HttpSession session,
-            ModelMap model, @RequestParam(value = "access", required = false) String access) {
+            ModelMap model, @RequestParam(value = "access", required = true) String access) {
+
         //set access to session variable - can be used to redirect to admin or mylibrary page depending on the access rights
         session.setAttribute("access", access);
         ModelAndView modelAndView = new ModelAndView("jsp/login");
         model.put("error", error);
         return modelAndView;
+
     }
 
     /**
@@ -272,13 +274,13 @@ public class LoginController {
         User user = usersDao.createUser(username, email);
         session.setAttribute("user", user);
 
-        List<String> userRoles = user.getUserRoles();        
-        
-    	// Remove the ROLE_ADMIN if admin is disabled.
-        if (!Properties.getString("admin.enabled").trim().equals("true")) {        
-        	userRoles.remove(new String("ROLE_ADMIN"));
+        List<String> userRoles = user.getUserRoles();
+
+        // Remove the ROLE_ADMIN if admin is disabled.
+        if (!Properties.getString("admin.enabled").trim().equals("true")) {
+            userRoles.remove(new String("ROLE_ADMIN"));
         }
-        
+
         // Create user in Spring security
         Authentication auth = new PreAuthenticatedAuthenticationToken(username,
                 null,
@@ -338,6 +340,5 @@ public class LoginController {
         }
 
     }
-
 
 }
