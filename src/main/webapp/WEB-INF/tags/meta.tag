@@ -20,7 +20,6 @@
 		<cudl:attr name="charset" value="${charset}" skipEmpty="${true}"/>
 		<cudl:attr name="itemprop" value="${itemprop}" skipEmpty="${true}"/>
 		<cudl:attr name="property" value="${property}" skipEmpty="${true}"/>
-		<cudl:attr name="property" value="${property}" skipEmpty="${true}"/>
 		<cudl:attr name="content" value="${content}" skipEmpty="${true}"/>
 	</jsp:attribute>
 </cudl:tag>
