@@ -103,6 +103,13 @@ store.loadPage = function(pagenumber) {
 	cudl.pagenum = pagenumber;
 	$("#pageInput").val(cudl.pagenum);
 	$("#maxPage").html(cudl.data.numberOfPages);
+
+	// update to specified tab (if present)	
+	var hash = window.location.hash;	
+    if (hash!="" && hash!="#") {
+        var selectedTab = $('.nav li a[href="' + hash + '"]');
+        selectedTab.trigger('click', true);
+    }
 	
 	// update transcription data
 	cudl.setTranscriptionPage(cudl.data, pagenumber);	

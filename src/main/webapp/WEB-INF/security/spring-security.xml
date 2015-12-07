@@ -85,11 +85,11 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	<!--Security for admin access -->
 	<security:http auto-config="false" pattern="/admin/**">
 
-		<security:form-login login-page='/auth/login?access=admin' />
+		<security:form-login login-page='/auth/login?access=/admin/' />
 		<security:access-denied-handler
 			error-page="/auth/denied" />
 		<security:logout logout-url="/auth/logout"
-			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=/admin/"
 			delete-cookies="JSESSIONID" />
 
 		<security:intercept-url pattern="/**" access="ROLE_ADMIN" />
@@ -103,11 +103,11 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	<!--Security for editor access -->
 	<security:http auto-config="false" pattern="/editor/**">
 
-		<security:form-login login-page='/auth/login?access=editor' />
+		<security:form-login login-page='/auth/login?access=/admin/' />
 		<security:access-denied-handler
 			error-page="/auth/denied" />
 		<security:logout logout-url="/auth/logout"
-			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=admin"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=/admin/"
 			delete-cookies="JSESSIONID" />
 
 		<security:intercept-url pattern="/**" access="ROLE_ADMIN" />
@@ -121,11 +121,11 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	<!--Security for mylibrary access -->
 	<security:http auto-config="false" pattern="/mylibrary/**">
 
-		<security:form-login login-page='/auth/login?access=mylibrary' />
+		<security:form-login login-page='/auth/login?access=/mylibrary/' />
 		<security:access-denied-handler
 			error-page="/auth/denied" />
 		<security:logout logout-url="/auth/logout"
-			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=mylibrary"
+			logout-success-url="/auth/login?error=Successfully%20logged%20out &amp;access=/mylibrary/"
 			delete-cookies="JSESSIONID" />
 
 		<security:intercept-url pattern="/**"
@@ -139,7 +139,7 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	<!--Security for all other access -->
 	<security:http auto-config="false">
 
-		<security:form-login login-page='/auth/login?access=all' />
+		<security:form-login login-page='/auth/login' />
 		<security:logout logout-url="/auth/logout"
 			logout-success-url="/auth/login?error=Successfully%20logged%20out."
 			delete-cookies="JSESSIONID" />

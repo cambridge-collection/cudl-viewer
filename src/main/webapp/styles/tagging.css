@@ -197,7 +197,7 @@
   background-color: #181818;
   border: 0;
   border-radius: 0;
-  color: #555555;
+  color: #555;
   display: block;
   padding: 0;
   margin: 0;
@@ -407,7 +407,7 @@
   -moz-box-shadow: 0px 2px 5px #666;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-titlebar {
-  background-color: #333333;
+  background-color: #333;
   height: 1.6em;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-titlebar button {
@@ -443,7 +443,7 @@
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-content input {
   width: 100%;
   box-sizing: border-box;
-  background-color: #dddddd;
+  background-color: #ddd;
   border: 0;
   border-radius: 3px;
   text-indent: .3em;
@@ -454,7 +454,7 @@
   outline: none;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-buttonpane {
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 0;
   padding-bottom: .5em;
 }
@@ -476,10 +476,10 @@
   outline-color: transparent;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-buttonset button:first-child {
-  background-color: #a3c1ad;
+  background-color: #A3C1AD;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-buttonset button:last-child {
-  background-color: #f7c467;
+  background-color: #F7C467;
 }
 .dialog-tagging .ui-dialog.dialog-style .ui-dialog-buttonset .ui-button-icon-primary {
   margin-right: .5em;
@@ -506,7 +506,7 @@
 .dialog-tagging .dialog-date #datepicker label {
   font-weight: normal;
   font-size: 10px;
-  color: #888888;
+  color: #888;
   text-align: center;
 }
 .dialog-tagging .dialog-date #datepicker .grid-background {
@@ -520,7 +520,7 @@
 }
 .dialog-tagging .dialog-date #datepicker .axis {
   font-size: 9px;
-  color: #888888;
+  color: #888;
 }
 .dialog-tagging .dialog-date #datepicker .axis path {
   display: none;
