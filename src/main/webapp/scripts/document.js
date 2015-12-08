@@ -165,7 +165,7 @@ cudl.setupSeaDragon = function(data) {
 		showRotationControl : true,
 		zoomInButton : "zoomIn",
 		zoomOutButton : "zoomOut",
-		zoomPerClick : 1, // genizah tagging
+		zoomPerClick : 2, 
 		rotateLeftButton : "rotateLeft",
 		rotateRightButton : "rotateRight",
 		fullPageButton: "fullscreen"

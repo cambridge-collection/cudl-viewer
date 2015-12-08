@@ -3672,6 +3672,9 @@ var tagging =
 	            this.toolbar_c.openToolbar();
 	            // show wordcloud
 	            this.tagcloud_c.openCloud();
+	            // store the previous zoomPerClick value and prevent zooming with value 1.
+	            this.osd_c.osd.previousZoomPerClick = this.osd_c.osd.zoomPerClick;
+	            this.osd_c.osd.zoomPerClick = 1;
 	        }
 	    }, {
 	        key: 'endTagging',
@@ -3684,6 +3687,9 @@ var tagging =
 	            this.osd_c.clearMarkers();
 	            // remove wordcloud from dom
 	            this.tagcloud_c.closeCloud();
+	            // restore the zooming when clicking
+	            this.osd_c.osd.zoomPerClick = this.osd_c.osd.previousZoomPerClick;
+	            delete this.osd_c.osd.previousZoomPerClick;
 	        }
 
 	        /**
@@ -22044,7 +22050,6 @@ var tagging =
 	        value: function actionOnCanvasClick(position) {
 
 	            var idx = this.toolbar_c.getActiveTbId();
-	            console.log(idx);
 
 	            // clear guides
 	            this.clearGuides();
@@ -22167,7 +22172,6 @@ var tagging =
 
 	            var rect = this.getRectViewportCoords(point, 60, 60),
 	                OSDrect = new OpenSeadragon.Rect(rect[0], rect[1], rect[2], rect[3]);
-	            console.log(rect);
 
 	            this.osd.addOverlay(box, OSDrect, OpenSeadragon.OverlayPlacement.CENTER);
 	        }
