@@ -1,12 +1,15 @@
 package ulcambridge.foundations.viewer.authentication;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -69,8 +72,29 @@ public class LoginController {
     @RequestMapping(value = "/login")
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error, HttpSession session,
-            ModelMap model, @RequestParam(value = "access", required = true) String access) {
+            HttpServletRequest request, ModelMap model, 
+            @RequestParam(value = "access", required = false) String access) {
 
+    	// access will be null in for example timeout or for some errors.
+    	// default to Referer value from header
+    	if (access==null) {
+    		String referer = request.getHeader("Referer");
+    		if (referer!=null) {
+    			URL refererURL;
+				try {
+					refererURL = new URL(referer);
+					access = refererURL.getPath();
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}    			    		
+    		}
+    	}
+    
+    	// If access is still null default to my library. 
+    	if (access==null) {
+    		access = "/mylibrary/";
+    	}
+    	
     	// Put the access variable in the session, 
     	// which is used to redirect to the correct page after login. 
         session.setAttribute("access", access);
