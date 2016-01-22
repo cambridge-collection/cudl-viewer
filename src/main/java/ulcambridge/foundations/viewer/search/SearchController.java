@@ -85,12 +85,13 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
 	public ModelAndView advancedSearch(
 			@Valid @ModelAttribute SearchForm searchForm,
+			@RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
 			BindingResult bindingResult, HttpSession session)
 			throws MalformedURLException {
 
-		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
-		modelAndView.addObject("form", searchForm);
-		return modelAndView;
+		return new ModelAndView("jsp/search-advanced")
+				.addObject("form", searchForm)
+				.addObject("enableTagging", enableTagging);
 	}
 
 	/**
@@ -106,18 +107,17 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
 	public ModelAndView processAdvancedSearch(
 			@ModelAttribute @Valid SearchForm searchForm,
+			@RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
 			BindingResult bindingResult, HttpSession session)
 			throws MalformedURLException {
 
 		// Perform XTF Search
 		SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
 
-		ModelAndView modelAndView = new ModelAndView(
-				"jsp/search-advancedresults");
-		modelAndView.addObject("form", searchForm);
-		modelAndView.addObject("results", results);
-
-		return modelAndView;
+		return new ModelAndView("jsp/search-advancedresults")
+				.addObject("form", searchForm)
+				.addObject("results", results)
+				.addObject("enableTagging", enableTagging);
 	}
 
 	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params

@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="ulcambridge.foundations.viewer.forms.*,
 org.owasp.encoder.Encode"%>
 <jsp:include page="header/header-full.jsp" />
@@ -10,6 +12,7 @@ org.owasp.encoder.Encode"%>
 </jsp:include>
 
 <link rel="stylesheet" href="/styles/hint.min.css">
+<link rel="stylesheet" href="/styles/bootstrap-slider.min.css">
 
 <!-- advanced search css -->
 <link rel="stylesheet" href="/styles/advancedsearch.css">
@@ -39,6 +42,20 @@ org.owasp.encoder.Encode"%>
 										<span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
 											<form:input path="keyword" type="text" value="" name="keyword" />
 										</span>
+
+                                        <c:if test="${enableTagging}">
+                                            <div class="recall-slider">
+                                                <input id="recall-slider-input" type="text" name="recallScale"
+                                                        data-slider-value="${fn:escapeXml(form.recallScale)}"
+                                                        data-slider-min="0"
+                                                        data-slider-max="1"
+                                                        data-slider-step="0.1"
+                                                        data-slider-ticks="[0, 0.5, 1]"
+                                                        data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
+                                                        data-slider-tooltip="hide">
+                                                <input type="hidden" name="tagging" value="1">
+                                            </div>
+                                        </c:if>
 									</div>
 								</div>
 	
@@ -194,8 +211,11 @@ org.owasp.encoder.Encode"%>
 	</div>
 </div>
 
+<script src="/scripts/bootstrap-slider.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+	    $('#recall-slider-input').slider();
+
 		// change hint direction
 		if ($(window).width() > 767) {
 			$('span.hint--bottom').addClass('hint--right');

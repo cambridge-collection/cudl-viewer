@@ -1,5 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page
 	import="java.util.*,
 	java.net.URLEncoder,ulcambridge.foundations.viewer.search.*,
@@ -17,8 +19,10 @@
 
 <!-- result css, query duration and sticky menu -->
 <script type="text/javascript" src="/scripts/moment.min.js"></script>
+<script src="/scripts/bootstrap-slider.min.js"></script>
 <!-- <script type="text/javascript" src="/scripts/jquery.sticky.js"></script> -->
 <link rel="stylesheet" href="/styles/advancedsearch.css">
+<link rel="stylesheet" href="/styles/bootstrap-slider.min.css">
 
 <%
 	SearchResultSet resultSet = ((SearchResultSet) request.getAttribute("results"));
@@ -233,11 +237,26 @@
 					
 						<div class="campl-content-container">
 							<ul>
-								<%
-									if (!form.getKeyword().isEmpty()) {
-										out.println("<li><span>Keyword: <b>" + Encode.forHtml(form.getKeyword()) + "</b></span></li>");
-									}
-								%>
+							    <c:if test="${fn:length(form.keyword) > 0}">
+							        <li>
+							            <span>Keyword: <b><c:out value="${form.keyword}"/></b></span>
+							        </li>
+
+							        <c:if test="${enableTagging}">
+							               <div class="recall-slider">
+                                               <input id="recall-slider-input" type="text" name="recallScale"
+                                                       data-slider-value="${fn:escapeXml(form.recallScale)}"
+                                                       data-slider-min="0"
+                                                       data-slider-max="1"
+                                                       data-slider-step="0.1"
+                                                       data-slider-ticks="[0, 0.5, 1]"
+                                                       data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
+                                                       data-slider-tooltip="hide"
+                                                       data-slider-enabled="false">
+                                               <input type="hidden" name="tagging" value="1">
+                                           </div>
+							        </c:if>
+								</c:if>
 								<%
 									if (!form.getFullText().isEmpty()) {
 										out.println("<li><span>Full Text: <b>" + Encode.forHtml(form.getFullText()) + "</b></span></li>");
@@ -411,6 +430,10 @@
 </div>
 
 <script type="text/javascript">
+    $(function() {
+        $('#recall-slider-input').slider();
+    });
+
 	// collapsible list
 	$("#tree > li > strong").on("click", function(e) {
 		if($(this).parent().find("span").html().match("^\u25be")) $(this).parent().find("span").html("\u25b8 ")

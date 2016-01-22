@@ -17,6 +17,11 @@ public class SearchUtil {
 	public static String getURLParameters(SearchForm searchForm) {
 		try {
 			String params = "keyword=" + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
+
+			if(searchForm.hasRecallScale()) {
+				params += String.format("&amp;tagging=1&amp;recallScale=%s", searchForm.getRecallScale());
+			}
+
 			params += "&amp;fullText=" + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
 			params += "&amp;excludeText=" + URLEncoder.encode(searchForm.getExcludeText(), "UTF-8");
 			params += "&amp;textJoin=" + URLEncoder.encode(searchForm.getTextJoin(), "UTF-8");
