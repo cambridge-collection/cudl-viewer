@@ -388,6 +388,14 @@
 							  <p class="copyright text">Add this image / page to
 								your personal bookmarks for quick access later.</p>
 							</div></div>
+							<div id="downloadMetadataOption">
+							<div class="button">	
+							   <a class="btn btn-info left" href="#"
+								onclick="$('#downloadMetadataConfirmation').show();return false;"> <i
+								class="fa fa-file-code-o fa-2x pull-left"></i> Download<br>Metadata
+							  </a></div><div>
+							  <p class="copyright text">Download original metadata for this document.</p>
+							</div></div>
 						</div>
 					</div>
 					<div class="panel panel-default">
@@ -439,6 +447,17 @@
 			onclick="cudl.downloadImage()">Yes</button>
 		<button type="button" class="btn btn-default"
 			onclick="$('#downloadConfirmation').hide();">No</button>
+	</div>
+	<div id="downloadMetadataConfirmation" class="alert alert-info"
+		style="display: none">
+		<a href="#" class="close" onclick="$('.alert').hide();">&times;</a>
+		<p>This metadata has the following copyright:</p>
+		<div class="well" id="downloadMetadataCopyright"></div>
+		<p>Do you want to download metadata for this document?</p>
+		<button type="button" class="btn btn-default btn-success"
+			onclick="cudl.downloadMetadata()">Yes</button>
+		<button type="button" class="btn btn-default"
+			onclick="$('#downloadMetadataConfirmation').hide();">No</button>
 	</div>
 
 

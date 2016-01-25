@@ -137,6 +137,12 @@ cudl.updatePageMetadata = function (data, pagenumber) {
            $('#downloadCopyright2').html(data.descriptiveMetadata[0].downloadImageRights);         
        }
        
+       if (data.descriptiveMetadata[0].metadataRights==null || data.descriptiveMetadata[0].metadataRights.trim()=="") {
+    	   $('#downloadMetadataOption').css("display", "none");
+       } else {
+    	   $('#downloadMetadataCopyright').html(data.descriptiveMetadata[0].metadataRights);
+       }
+       
        if (data.embeddable==null || data.embeddable==false) {
     	   $('#embedOption').css("display", "none");
        }
@@ -461,6 +467,17 @@ cudl.downloadImage = function () {
 	  alert ("No image available to download.");
   }
     
+}
+
+cudl.downloadMetadata = function () {
+	
+  $('#downloadMetadataConfirmation').hide();
+  var downloadMetadataURL = cudl.data.sourceData;
+  if (typeof downloadMetadataURL != "undefined") {
+      window.open(cudl.services+downloadMetadataURL);
+  } else {
+	  alert ("No metadata available to download.");
+  }	    
 }
 
 cudl.setupThumbnails = function (data) {
