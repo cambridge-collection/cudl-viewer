@@ -292,4 +292,9 @@
         <error-code>500</error-code>
         <location>/errors/500.html</location>
     </error-page>
+    
+    <session-config>
+        <session-timeout>240</session-timeout>
+    </session-config>
+    
 </web-app>   
