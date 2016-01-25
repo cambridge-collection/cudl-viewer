@@ -287,7 +287,8 @@ public class SearchController {
 	}
 
 	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
-	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
+	@RequestMapping(method = RequestMethod.GET, value = "/JSON",
+			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> handleItemsAjaxRequest(
 			@Valid SearchForm searchForm,
 			@RequestParam("start") int startIndex,
@@ -298,7 +299,6 @@ public class SearchController {
 
 		// Write out JSON file.
 		return ResponseEntity.ok()
-				.contentType(MediaType.APPLICATION_JSON)
 				.header("Cache-Control", "public, max-age=60")
 				.body(getResultsJSON(results).toString());
 	}
@@ -307,7 +307,8 @@ public class SearchController {
 	 * Similar to the /JSON endpoint, except this includes facets and
 	 * statistics, allowing the entire page to be re-rendered.
      */
-	@RequestMapping(method = RequestMethod.GET, value = "/JSONAdvanced")
+	@RequestMapping(method = RequestMethod.GET, value = "/JSONAdvanced",
+			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> handleItemsAdvancedAjaxRequest(
 			@Valid SearchForm searchForm,
 			@RequestParam("start") int startIndex,
@@ -318,7 +319,6 @@ public class SearchController {
 
 		// Write out JSON file.
 		return ResponseEntity.ok()
-				.contentType(MediaType.APPLICATION_JSON)
 				.header("Cache-Control", "public, max-age=60")
 				.body(getJSON(results, searchForm).toString());
 	}
