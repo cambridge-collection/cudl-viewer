@@ -4,3 +4,7 @@ src/main/resources/cudl-global.properties
 /src/main/webapp/models/
 /.classpath
 /.project
+
+# Intellij files
+.idea
+FoundationsViewer.iml
