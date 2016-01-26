@@ -1,5 +1,10 @@
 .campl-main-content {
 	min-height: 350px;
+	transition: opacity 0.3s;
+}
+
+.loading .campl-main-content {
+    opacity: 0.4;
 }
 
 /* advanced search form */
@@ -106,6 +111,7 @@
 /* pagination */
 .pagination.toppagination {
 	margin: 30px 0;
+	width: 100%;
 }
 
 /* search result left panel */
