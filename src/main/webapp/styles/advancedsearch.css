@@ -149,7 +149,8 @@ ol#tree > li > strong {
 .searchform div:first-child ul li {
 	padding-bottom: .5em;
 }
-.searchform div:first-child > form {
+
+.searchform .query-actions {
 	margin: 20px 0;
 }
 
