@@ -52,7 +52,6 @@ CREATE TABLE collections
   type text NOT NULL,
   collectionorder bigint,
   parentcollectionid text,
-  taggingstatus boolean NOT NULL DEFAULT true,
   PRIMARY KEY (collectionid)
 );
 
@@ -60,7 +59,7 @@ CREATE TABLE collections
 CREATE TABLE items
 (
   itemid text NOT NULL,
-  taggingstatus boolean NOT NULL DEFAULT true,
+  taggingstatus boolean NOT NULL DEFAULT false,
   PRIMARY KEY (itemid)
 );
 
