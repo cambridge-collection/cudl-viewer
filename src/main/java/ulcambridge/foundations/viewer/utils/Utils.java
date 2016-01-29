@@ -55,12 +55,7 @@ public class Utils {
 
 	// get current date time
 	public static Date getCurrentDateTime() {
-		try {
-			return dateFormat.parse(dateFormat.format(new Date()));
-		} catch (ParseException e) {
-			e.printStackTrace();
-			return null;
-		}
+		return new Date();
 	}
 
 	// format a double to 5 digit precision
