@@ -1,13 +1,11 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.io.BufferedOutputStream;
-import java.io.PrintStream;
 import java.net.MalformedURLException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -28,8 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -45,7 +45,8 @@ public class SearchController {
 	protected final Log logger = LogFactory.getLog(getClass());
 	private Search search;
 	private ItemFactory itemFactory;
-
+	private CollectionFactory collectionFactory;
+	
 	/**
 	 * Constructor, set in search-servlet.xml.
 	 * 
@@ -60,6 +61,12 @@ public class SearchController {
 	public void setItemFactory(ItemFactory factory) {
 		this.itemFactory = factory;
 	}
+	
+	@Autowired
+	public void setCollectionFactory(CollectionFactory factory) {
+		this.collectionFactory = factory;
+	}
+
 
 	// on /search path
 	@RequestMapping(method = RequestMethod.GET, value = "/search")
@@ -93,9 +100,14 @@ public class SearchController {
 			BindingResult bindingResult, HttpSession session)
 			throws MalformedURLException {
 
-		return new ModelAndView("jsp/search-advanced")
-				.addObject("form", searchForm)
-				.addObject("enableTagging", enableTagging);
+		ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");		
+		List<Collection> collectionList = collectionFactory.getCollections();
+		Collections.sort(collectionList, collectionTitleComparator);
+ 		// order alphabetically by title
+        searchForm.setCollections(collectionList);
+		modelAndView.addObject("form", searchForm);
+		modelAndView.addObject("enableTagging", enableTagging);
+		return modelAndView;
 	}
 
 	/**
@@ -323,4 +335,14 @@ public class SearchController {
 				.body(getJSON(results, searchForm).toString());
 	}
 
+	
+	public static Comparator<Collection> collectionTitleComparator = new Comparator<Collection>() {
+
+		public int compare(Collection col1, Collection col2) {
+
+			// ascending order
+			return col1.getTitle().compareTo(col2.getTitle());
+		}
+
+	};
 }

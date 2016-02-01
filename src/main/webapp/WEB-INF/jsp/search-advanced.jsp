@@ -97,7 +97,20 @@ org.owasp.encoder.Encode"%>
 							
 							<div class="advancedsearch-section campl-column6 clearfix">						
 								<h2>Narrow your results by ...</h2>
-	
+								
+								<div class="campl-column12">
+									<div class="campl-column2">
+										<form:label class="right" path="FacetCollection">Collection</form:label>
+									</div>
+									<div class="campl-column10">	
+									   								     
+										<form:select path="FacetCollection">
+										<form:option value="" label="--- Select ---"/>
+										<form:options items="<%=form.getCollections() %>" itemValue="title" itemLabel="title" multiple="false"/>
+										</form:select> 											
+									</div>
+								</div>
+								
 								<div class="campl-column12">
 									<div class="campl-column2">
 										<form:label class="right" path="shelfLocator">Classmark</form:label>

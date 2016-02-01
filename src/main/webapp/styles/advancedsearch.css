@@ -35,7 +35,9 @@
 .advancedsearchform input[type=radio] {
 	vertical-align: middle;
 }
-
+.advancedsearchform select, .advancedsearchform select option {
+    width: 100%;
+}
 .searchform .recall-slider,
 .advancedsearchform .recall-slider {
     margin: 5px 10px 30px 10px;
