@@ -3,16 +3,20 @@ package ulcambridge.foundations.viewer.crowdsourcing;
 import org.apache.jena.riot.RDFFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ulcambridge.foundations.viewer.crowdsourcing.dao.CrowdsourcingDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
@@ -34,6 +38,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -90,11 +95,25 @@ public class CrowdsourcingController {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
 
+	@ExceptionHandler(SQLException.class)
+	private ResponseEntity<Void> handleSqlException(SQLException e) {
+		logger.error("Database operation failed", e);
+
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.build();
+	}
+
 	private JsonResponse redirect() {
 		JsonResponse resp = new JsonResponse("401", "User unauthenticated");
 		resp.setRedirect(true);
 		resp.setRedirectURL("/auth/login");
 		return resp;
+	}
+
+	private String getCurrentUserId() {
+		ensureAuthenticated();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		return auth.getName();
 	}
 
 	// on path /anno/get
@@ -133,6 +152,22 @@ public class CrowdsourcingController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		int result = dataSource.removeAnnotation(auth.getName(), documentId, UUID.fromString(annotationUuid));
 		return new JsonResponse("200", "Annotation removed");
+	}
+
+	/**
+	 * Delete the annotations created by the logged-in user with the specified
+	 * IDs from a document.
+     */
+	@RequestMapping(value = "/anno/remove/{docId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	public ResponseEntity<Set<UUID>> removeAnnotations(
+			@PathVariable("docId") String documentId,
+			@RequestParam("uuid") List<UUID> annotationIds)
+			throws SQLException, IOException {
+
+		Set<UUID> removed = dataSource.removeAnnotations(
+				getCurrentUserId(), documentId, annotationIds);
+
+		return ResponseEntity.ok().body(removed);
 	}
 
 	// on path /tag/get

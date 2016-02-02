@@ -5,9 +5,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
@@ -24,6 +26,8 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -129,6 +133,87 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 		int rowsAffected = sqlUpdateAnnotations(userId, documentId, newJson);
 
 		return 1;
+	}
+
+	@Override
+	public Set<UUID> removeAnnotations(
+			String userId, String documentId, Collection<UUID> annotationIds)
+			throws SQLException {
+
+		JsonObject json;
+		try {
+			json = getUserDocumentAnnotations(userId, documentId);
+		}
+		catch(IncorrectResultSizeDataAccessException e) {
+			return Collections.emptySet();
+		}
+
+		Set<UUID> removed = removeAnnotationsWithIds(json, annotationIds);
+
+		if(removed.size() > 0)
+			sqlUpdateAnnotations(userId, documentId, json);
+
+		return removed;
+	}
+
+	private Set<UUID> removeAnnotationsWithIds(
+			JsonObject json, Collection<UUID> annotationIds)
+			throws SQLException {
+
+		if(!(json.has("annotations") && json.get("annotations").isJsonArray()))
+			throw new SQLException(
+					"JSON's top-level \"annotations\" field is not an array");
+
+		JsonArray annotations = json.getAsJsonArray("annotations");
+		JsonArray remainingAnnotations = new JsonArray();
+
+		Set<UUID> removed = removeAnnotationsWithIds(
+				annotations, remainingAnnotations, new HashSet<UUID>(annotationIds));
+
+		json.add("annotations", remainingAnnotations);
+
+		return removed;
+	}
+
+	private Set<UUID> removeAnnotationsWithIds(JsonArray annotations, JsonArray remaining, Set<UUID> annotationIds)
+			throws SQLException {
+
+		if(remaining == null || remaining.size() != 0)
+			throw new IllegalArgumentException(
+					"remaining must be an empty JsonArray");
+
+		Set<UUID> removed = new HashSet<UUID>();
+		for(JsonElement e : annotations) {
+			if(!e.isJsonObject()) {
+				remaining.add(e);
+				continue;
+			}
+
+			UUID uuid = getUuid("uuid", e.getAsJsonObject().get("uuid"));
+			if(annotationIds.contains(uuid)) {
+				removed.add(uuid);
+			}
+			else {
+				remaining.add(e);
+			}
+		}
+
+		return removed;
+	}
+
+	private UUID getUuid(String fieldName, JsonElement e) throws SQLException {
+		if(e == null || !(e.isJsonPrimitive() && e.getAsJsonPrimitive().isString()))
+			throw new SQLException(String.format("%s is not a string", fieldName));
+
+		String uuid = e.getAsJsonPrimitive().getAsString();
+		try {
+			return UUID.fromString(uuid);
+		}
+		catch(IllegalArgumentException ex) {
+			String msg = String.format("Field %s contained an invalid UUID: %s",
+										fieldName, uuid);
+			throw new SQLException(msg, ex);
+		}
 	}
 
 	@Override
@@ -299,6 +384,32 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 				return gson.fromJson(rs.getString(1), Annotation.class);
 			}
 		});
+	}
+
+	/**
+	 * Get all of a user's annotations for a given document.
+     */
+	private JsonObject getUserDocumentAnnotations(String userId, String documentId) {
+		String query =
+				"SELECT annos\n" +
+				"FROM\n" +
+				"  \"DocumentAnnotations\"\n" +
+				"WHERE \"docId\" = ? AND oid = ?\n" +
+				"LIMIT 1;";
+
+		RowMapper<JsonObject> mapper = new RowMapper<JsonObject>() {
+			@Override
+			public JsonObject mapRow(ResultSet rs, int rowNum) throws SQLException {
+				JsonElement e = new JsonParser().parse(rs.getString(1));
+
+				if(!e.isJsonObject())
+					throw new SQLException("annotation JSON was not an Object");
+
+				return e.getAsJsonObject();
+			}
+		};
+
+		return jdbcTemplate.queryForObject(query, mapper, documentId, userId);
 	}
 
 	private JsonObject sqlGetTags(final String documentId) {
