@@ -5,7 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSyntaxException;
 import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -91,8 +91,11 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 	}
 
 	@Override
-	public int addAnnotation(String userId, String documentId, Annotation annotation) throws SQLException {
-		DocumentAnnotations da = getAnnotations(userId, documentId, 0);
+	public int addAnnotation(
+			String userId, String documentId, Annotation annotation)
+			throws SQLException {
+
+		DocumentAnnotations da = sqlGetAnnotations(userId, documentId);
 		List<Annotation> annotations = da.getAnnotations();
 
 		if (annotations.contains(annotation)) {
@@ -348,6 +351,53 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 		});
 	}
 
+	private static final class GsonRowMapper<T> implements RowMapper<T> {
+		private final Class<T> clazz;
+		private final int columnIndex;
+		private final Gson gson;
+
+		public GsonRowMapper(Class<T> clazz) {
+			this(clazz, 1, GsonFactory.create());
+		}
+
+		public GsonRowMapper(Class<T> clazz, int jsonColumnIndex, Gson gson) {
+			if(jsonColumnIndex < 1)
+				throw new IllegalArgumentException(
+						"index must be >= 1, got: " + jsonColumnIndex);
+
+			if(clazz == null)
+				throw new IllegalArgumentException("class was null");
+
+			if(gson == null)
+				throw new IllegalArgumentException("gson was null");
+
+
+			this.columnIndex = jsonColumnIndex;
+			this.clazz = clazz;
+			this.gson = gson;
+		}
+
+		@Override
+		public T mapRow(ResultSet rs, int rowNum) throws SQLException {
+			try {
+				return this.gson.fromJson(rs.getString(this.columnIndex), clazz);
+			}
+			catch(JsonSyntaxException e) {
+				throw new SQLException("Unable to map json to " + this.clazz, e);
+			}
+		}
+	}
+
+	private static final RowMapper<DocumentAnnotations> DOC_ANNOTATIONS_ROW_MAPPER =
+			new GsonRowMapper<DocumentAnnotations>(DocumentAnnotations.class);
+
+	private DocumentAnnotations sqlGetAnnotations(final String userId, final String documentId) {
+		return jdbcTemplate.queryForObject(
+				SQL_USER_DOCUMENT_ANNOTATIONS,
+				DOC_ANNOTATIONS_ROW_MAPPER,
+				documentId, userId);
+	}
+
 	private List<Annotation> sqlGetAnnotations(final String userId, final String documentId, final int documentPageNo) {
 		String query =
 				"SELECT annotations\n" +
@@ -368,17 +418,17 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 		});
 	}
 
+	private static final String SQL_USER_DOCUMENT_ANNOTATIONS =
+			"SELECT annos\n" +
+			"FROM\n" +
+			"  \"DocumentAnnotations\"\n" +
+			"WHERE \"docId\" = ? AND oid = ?\n" +
+			"LIMIT 1;";
+
 	/**
 	 * Get all of a user's annotations for a given document.
      */
 	private JsonObject getUserDocumentAnnotations(String userId, String documentId) {
-		String query =
-				"SELECT annos\n" +
-				"FROM\n" +
-				"  \"DocumentAnnotations\"\n" +
-				"WHERE \"docId\" = ? AND oid = ?\n" +
-				"LIMIT 1;";
-
 		RowMapper<JsonObject> mapper = new RowMapper<JsonObject>() {
 			@Override
 			public JsonObject mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -391,7 +441,7 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 			}
 		};
 
-		return jdbcTemplate.queryForObject(query, mapper, documentId, userId);
+		return jdbcTemplate.queryForObject(SQL_USER_DOCUMENT_ANNOTATIONS, mapper, documentId, userId);
 	}
 
 	private JsonObject sqlGetTags(final String documentId) {
