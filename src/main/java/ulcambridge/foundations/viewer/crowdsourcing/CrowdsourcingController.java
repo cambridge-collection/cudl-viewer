@@ -142,16 +142,17 @@ public class CrowdsourcingController {
 		return new JsonResponse("200", "Annotation added/updated");
 	}
 
-	// on path /anno/remove
-	@RequestMapping(value = "/anno/remove/{docId}/{uuid}", method = RequestMethod.POST, produces = { "application/json" })
-	public JsonResponse handleAnnotationRemove(@PathVariable("docId") String documentId, @PathVariable("uuid") String annotationUuid)
+	@RequestMapping(value = "/anno/remove/{docId}/{uuid}",
+					method = RequestMethod.DELETE)
+	public ResponseEntity<Void> handleAnnotationRemove(
+			@PathVariable("docId") String documentId,
+			@PathVariable("uuid") UUID annotationId)
 			throws SQLException, IOException {
 
-		ensureAuthenticated();
-
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		int result = dataSource.removeAnnotation(auth.getName(), documentId, UUID.fromString(annotationUuid));
-		return new JsonResponse("200", "Annotation removed");
+		boolean removed = dataSource.removeAnnotation(getCurrentUserId(), documentId, annotationId);
+		return ResponseEntity.status(removed ? HttpStatus.NO_CONTENT
+											 : HttpStatus.NOT_FOUND)
+				.build();
 	}
 
 	/**

@@ -112,27 +112,9 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 	}
 
 	@Override
-	public int removeAnnotation(String userId, String documentId, UUID AnnotationUuid) throws SQLException {
-		DocumentAnnotations da = getAnnotations(userId, documentId, 0);
-		List<Annotation> annotations = da.getAnnotations();
-
-		if (annotations.size() < 0)
-			return 0;
-
-		for (Annotation annotation : annotations) {
-			if (annotation.getUuid().toString().equals(AnnotationUuid.toString())) {
-				annotations.remove(annotation);
-				break;
-			}
-		}
-		da.setTotal(annotations.size());
-
-		JsonObject newJson = new JSONConverter().toJsonDocumentAnnotations(da);
-
-		// query 
-		int rowsAffected = sqlUpdateAnnotations(userId, documentId, newJson);
-
-		return 1;
+	public boolean removeAnnotation(String userId, String documentId, UUID annotationUuid) throws SQLException {
+		return removeAnnotations(userId, documentId,
+				Collections.singleton(annotationUuid)).size() == 1;
 	}
 
 	@Override

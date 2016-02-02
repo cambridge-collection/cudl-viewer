@@ -37,7 +37,7 @@ public interface CrowdsourcingDao {
 
 	public int addRemovedTag(String userId, String documentId, Tag removedTag) throws SQLException;
 
-	public int removeAnnotation(String userId, String documentId, UUID annotationUuid) throws SQLException;
+	public boolean removeAnnotation(String userId, String documentId, UUID annotationUuid) throws SQLException;
 
 	/**
 	 * Remove multiple annotations owned by a single user from a document.
