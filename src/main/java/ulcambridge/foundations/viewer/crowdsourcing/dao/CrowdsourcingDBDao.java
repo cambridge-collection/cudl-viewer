@@ -425,23 +425,16 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 			"WHERE \"docId\" = ? AND oid = ?\n" +
 			"LIMIT 1;";
 
+	private static final RowMapper<JsonObject> JSON_OBJECT_ROW_MAPPER =
+			new GsonRowMapper<JsonObject>(JsonObject.class);
+
 	/**
 	 * Get all of a user's annotations for a given document.
      */
 	private JsonObject getUserDocumentAnnotations(String userId, String documentId) {
-		RowMapper<JsonObject> mapper = new RowMapper<JsonObject>() {
-			@Override
-			public JsonObject mapRow(ResultSet rs, int rowNum) throws SQLException {
-				JsonElement e = new JsonParser().parse(rs.getString(1));
-
-				if(!e.isJsonObject())
-					throw new SQLException("annotation JSON was not an Object");
-
-				return e.getAsJsonObject();
-			}
-		};
-
-		return jdbcTemplate.queryForObject(SQL_USER_DOCUMENT_ANNOTATIONS, mapper, documentId, userId);
+		return jdbcTemplate.queryForObject(
+				SQL_USER_DOCUMENT_ANNOTATIONS, JSON_OBJECT_ROW_MAPPER,
+				documentId, userId);
 	}
 
 	private JsonObject sqlGetTags(final String documentId) {
