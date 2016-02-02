@@ -3656,10 +3656,10 @@ var tagging =
 	            this.osd_c.init();
 
 	            //
-	            // override page navigation functions
+	            // on page turn ensure markers are shown if toggle enabled.
 	            //
 
-	            this.overridePrototype({
+	            this.showMarkersOnPageTurn({
 	                toolbar_c: this.toolbar_c
 	            });
 
@@ -3693,26 +3693,19 @@ var tagging =
 	        }
 
 	        /**
-	         * override page navigation functions
+	         * Ensure the toggle remains on if it is on when the page is turned. 
 	         */
 	    }, {
-	        key: 'overridePrototype',
-	        value: function overridePrototype(opts) {
-	            _cudl2['default'].setupSeaDragon.prototype.nextPage1 = function () {
-	                console.log('nn');
-	                // draw annotation markers if toggle is on
-	                if (this.opts.toolbar_c.toolbar.colorIndicator.shown) {
-	                    this.opts.toolbar_c.drawMarkersAction();
-	                }
-	            };
+	        key: 'showMarkersOnPageTurn',
+	        value: function showMarkersOnPageTurn(opts) {
 
-	            _cudl2['default'].setupSeaDragon.prototype.prevPage = function () {
-	                console.log('pp');
+	            _cudl2['default'].viewer.addHandler("page", function () {
+
 	                // draw annotation markers if toggle is on
-	                if (this.opts.toolbar.colorIndicator.shown) {
-	                    this.opts.toolbar_c.drawMarkersAction();
+	                if (opts.toolbar_c.toolbar.colorIndicator.shown) {
+	                    opts.toolbar_c.drawMarkersAction();
 	                }
-	            };
+	            });
 	        }
 	    }]);
 

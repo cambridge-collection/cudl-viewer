@@ -117,6 +117,9 @@ store.loadPage = function(pagenumber) {
 	// update metadata
 	cudl.updatePageMetadata(cudl.data, pagenumber);
 	
+	// fire the page changed event in seadragon 
+	cudl.viewer.raiseEvent("page");
+	
 	// Google analytics
 	ga('create', googleAnalyticsID, 'auto');
 	ga('send', 'pageview');
