@@ -1,5 +1,26 @@
 package ulcambridge.foundations.viewer.crowdsourcing.dao;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.postgresql.util.PGobject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
+import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
+import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentAnnotations;
+import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentTags;
+import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
+import ulcambridge.foundations.viewer.crowdsourcing.model.JSONConverter;
+import ulcambridge.foundations.viewer.crowdsourcing.model.Tag;
+import ulcambridge.foundations.viewer.crowdsourcing.model.UserAnnotations;
+import ulcambridge.foundations.viewer.utils.Utils;
+
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,28 +29,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import javax.sql.DataSource;
-
-import org.postgresql.util.PGobject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
-import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentAnnotations;
-import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentTags;
-import ulcambridge.foundations.viewer.crowdsourcing.model.JSONConverter;
-import ulcambridge.foundations.viewer.crowdsourcing.model.Tag;
-import ulcambridge.foundations.viewer.crowdsourcing.model.UserAnnotations;
-import ulcambridge.foundations.viewer.utils.Utils;
 
 /**
  * 
@@ -47,17 +46,15 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
 	@Override
 	public DocumentAnnotations getAnnotations(String userId, String documentId, int documentPageNo) {
-		// query
-		JsonObject uda = sqlGetAnnotations(userId, documentId, documentPageNo);
+		List<Annotation> annotations = sqlGetAnnotations(userId, documentId, documentPageNo);
 
-		if (!uda.has("oid")) {
-			uda.addProperty("oid", userId);
-			uda.addProperty("docId", documentId);
-			uda.addProperty("total", 0);
-			uda.add("annotations", new JsonArray());
-		}
+		DocumentAnnotations da = new DocumentAnnotations();
+		da.setAnnotations(annotations);
+		da.setUserId(userId);
+		da.setDocumentId(documentId);
+		da.setTotal(annotations.size());
 
-		return new JSONConverter().toDocumentAnnotations(uda);
+		return da;
 	}
 
 	@Override
@@ -284,18 +281,22 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 		});
 	}
 
-	private JsonObject sqlGetAnnotations(final String userId, final String documentId, final int documentPageNo) {
-		String query = "SELECT annos FROM \"DocumentAnnotations\" WHERE \"oid\" = ? AND \"docId\" = ?";
+	private List<Annotation> sqlGetAnnotations(final String userId, final String documentId, final int documentPageNo) {
+		String query =
+				"SELECT annotations\n" +
+				"FROM\n" +
+				"  \"DocumentAnnotations\",\n" +
+				"  json_array_elements(annos->'annotations') as annotations\n" +
+				"WHERE \"docId\" = ? AND oid = ? AND (annotations->>'page')::int = ?;\n";
 
-		return jdbcTemplate.query(query, new Object[] { userId, documentId }, new ResultSetExtractor<JsonObject>() {
+		Object[] params = new Object[] {documentId, userId, documentPageNo};
+
+		return jdbcTemplate.query(query, params, new RowMapper<Annotation>() {
+			Gson gson = GsonFactory.create();
+
 			@Override
-			public JsonObject extractData(ResultSet rs) throws SQLException {
-				List<String> udas = new ArrayList<String>();
-				while (rs.next()) {
-					String anno = rs.getString("annos");
-					udas.add(anno);
-				}
-				return (udas.isEmpty()) ? new JsonObject() : (JsonObject) new JsonParser().parse(udas.get(0));
+			public Annotation mapRow(ResultSet rs, int rowNum) throws SQLException {
+				return gson.fromJson(rs.getString(1), Annotation.class);
 			}
 		});
 	}
