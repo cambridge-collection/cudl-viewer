@@ -12,7 +12,6 @@ org.owasp.encoder.Encode"%>
 </jsp:include>
 
 <link rel="stylesheet" href="/styles/hint.min.css">
-<link rel="stylesheet" href="/styles/bootstrap-slider.min.css">
 
 <!-- advanced search css -->
 <link rel="stylesheet" href="/styles/advancedsearch.css">
@@ -224,7 +223,6 @@ org.owasp.encoder.Encode"%>
 	</div>
 </div>
 
-<script src="/scripts/bootstrap-slider.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	    $('#recall-slider-input').slider();

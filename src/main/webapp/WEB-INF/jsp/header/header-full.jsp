@@ -59,6 +59,10 @@
 <!-- Pagination -->
 <script type="text/javascript" src="/scripts/jquery.paging.min.js"></script>
 
+<!-- Used for quick search functionality. -->
+<link rel="stylesheet" href="/styles/bootstrap-slider.min.css">
+<script src="/scripts/bootstrap-slider.min.js"></script>
+
 <!-- CUDL -->
 <link rel="stylesheet" href="/styles/style.css" type="text/css" media="screen" />
 <script type="text/javascript" src="/scripts/cudl.js"></script>

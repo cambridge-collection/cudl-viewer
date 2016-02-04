@@ -974,3 +974,36 @@ div.pagination a.next:hover, div.pagination a.last:hover, div.pagination a.first
 	float: right;
 	margin-right: 10px;
 }
+
+.quick-search form {
+    margin: 10px 0;
+}
+
+.quick-search button {
+    margin-left: 10px;
+}
+
+.quick-search .recall-slider,
+.searchform .recall-slider,
+.advancedsearchform .recall-slider {
+    margin: 5px 10px 30px 10px;
+}
+
+.quick-search .recall-slider .slider-horizontal,
+.searchform .recall-slider .slider-horizontal,
+.advancedsearchform .recall-slider .slider-horizontal {
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+
+    .quick-search button {
+        margin-left: initial;
+    }
+
+    .quick-search .recall-slider,
+    .searchform .recall-slider,
+    .advancedsearchform .recall-slider {
+        margin: 10px 30px 30px 30px;
+    }
+}

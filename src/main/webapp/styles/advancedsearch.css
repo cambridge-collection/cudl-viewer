@@ -38,19 +38,6 @@
 .advancedsearchform select, .advancedsearchform select option {
     width: 100%;
 }
-.searchform .recall-slider,
-.advancedsearchform .recall-slider {
-    margin: 5px 10px 30px 10px;
-}
-.searchform .recall-slider {
-    margin-left: 25px;
-    margin-right: 25px;
-}
-
-.searchform .recall-slider .slider-horizontal,
-.advancedsearchform .recall-slider .slider-horizontal {
-    width: 100%;
-}
 
 .excludetext {
 	float: right;
@@ -204,9 +191,4 @@ ol#tree > li > strong {
 	.excludetext {
 		float: none !important;
 	}
-
-	.searchform .recall-slider,
-	.advancedsearchform .recall-slider {
-        margin: 10px 30px 30px 30px;
-    }
 }
