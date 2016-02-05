@@ -68,8 +68,10 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
 		if (!dt.has("docId")) {
 			dt.addProperty("docId", documentId);
-			dt.addProperty("total", 0);
+		}
+		if(!dt.has("tags")) {
 			dt.add("tags", new JsonArray());
+			dt.addProperty("total", 0);
 		}
 
 		return new JSONConverter().toDocumentTags(dt);
