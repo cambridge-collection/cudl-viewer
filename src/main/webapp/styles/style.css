@@ -394,6 +394,29 @@ ol#search_carousel li {
 }
 
 /* for virtual collections */
+
+.virtual_collections_carousel {
+	position: relative;
+	display: block;
+}
+
+ol#virtual_collections_carousel li {
+	list-style: none outside none;
+	float: none;
+	width: 100%;
+}
+
+.virtual_collections_carousel_item {
+	width: 100%;	
+	font-style: normal;
+	position: relative;
+	display: block;
+	position: relative;
+	min-height: 190px;
+	max-width: 500px;		
+	float:left; 
+}
+
 .virtual_collections_carousel_image_box {
 	width: 190px;
 	height: 190px;
@@ -402,6 +425,81 @@ ol#search_carousel li {
 	border-style: solid;
 	border-width: 1px;
 	border-color: #333;
+	float:left;
+	margin-right:20px;
+}
+
+.virtual_collections_carousel_image {
+	display: table-cell;
+	vertical-align: middle;
+	width: 180px;
+	height: 180px;
+	text-align: center;
+}
+
+.virtual_collections_carousel_image img {
+	margin: auto;
+	text-decoration: none;
+	border: none;
+	outline: none;
+	max-height: 180px;
+	max-width: 180px;
+}
+
+.virtual-collections-items {
+   float:left;
+   padding-top:18px;
+}
+
+.virtual_collections_carousel_text {
+	float:left;
+	width:200px;
+	margin-left: 10px;
+	margin-left: 10px;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+
+.virtual_collection_summary_images {
+	width:460px;
+	height:500px;
+	float:none;	
+}
+
+@media screen and (max-width: 767px) {
+	.virtual_collection_summary_images {
+       display:none;
+    }
+    .virtual_collection_summary_image {
+       display:none;
+    }
+}
+    
+.virtual_collection_summary_image {
+	position: relative;
+	float: left;
+	height: 250px;
+	width: 230px;
+}
+
+.virtual_collection_summary {
+	position: relative;	
+	margin-bottom: 18px;	
+	float:none;
+	background-color:#fff;
+}
+
+.virtual_collection_sponsor {
+	float:left;
+}
+
+.virtual_collection_items {
+	position: relative;
+	float:left;
+} 
+
+.virtual_collection_textgroup {
+	padding-right: 20px;
 }
 
 /* Note the max height and width are set in jsp also */
@@ -433,15 +531,10 @@ ol#search_carousel li {
 	text-align: center;
 }
 
-.collections_carousel_text {
-	margin-left: 20px;
+.collections_carousel_text {	
+    margin-left: 20px;
 }
 
-@media screen and (max-width: 760px) {
-    .collections_carousel_text {
-       width:200px;
-    }
-}
 
 .word-wrap-200 {
 	word-wrap: break-word;
@@ -454,14 +547,6 @@ ol#search_carousel li {
 
 .lesslink a:link, .morelink a:visited, .morelink a:active {
 	color: #3a6c8f;
-}
-
-ol#vcollections_carousel li {
-	margin: 4px;
-	height: 217px;
-	width: 550px;
-	font-style: normal;
-	list-style: none outside none;
 }
 
 .faq ol {
@@ -480,25 +565,6 @@ ol#vcollections_carousel li {
 	margin-top: -5px;
 	margin-bottom: -5px;
 	margin-left: 15px;
-}
-
-.virtual_collection_summary_image {
-	position: relative;
-	float: left;
-	height: 250px;
-	width: 230px;
-}
-
-.virtual_collection_summary {
-	position: relative;
-	margin: 5px;
-	height: 500px;
-	width: 920px;
-	margin-bottom: 18px;
-}
-
-.virtual_collection_textgroup {
-	padding-right: 20px;
 }
 
 /* credit text for images, small */

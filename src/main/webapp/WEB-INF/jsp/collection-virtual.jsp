@@ -36,16 +36,16 @@
 <div class="campl-row campl-content campl-recessed-content">
 	<div class="campl-wrap clearfix">
 
-		<div class="campl-column12  campl-main-content" id="content">
-            <div id="summaryDiv" class="campl-content-container">
+		<div class="campl-column12  campl-main-content campl-content-container" id="content">
+            <div id="summaryDiv" class="virtual_collection_summary">
 
 				<% String summaryURL = contentHTMLURL+"/"+collection.getSummary();  %>
 				<c:import charEncoding="UTF-8" url="<%=summaryURL%>" /> 				
 
 			</div>
-			<div class="campl-content-container campl-column12">
+			<div class="campl-column12 virtual-collections-items">
 
-				<ol id="collections_carousel">
+				<ol id="virtual_collections_carousel">
 					<%
 						Iterator<Item> itemIterator = items.iterator();
 						int itemNum = 0;
@@ -61,8 +61,8 @@
 								imageDimensions += " style='width:100%' ";
 							}
 
-							out.print("<li class='campl-column5'><div class='collections_carousel_item'><div class='virtual_collections_carousel_image_box campl-column6'>"
-									+ "<div class='collections_carousel_image' id='collections_carousel_item"
+							out.print("<li class='campl-column5'><div class='virtual_collections_carousel_item'><div class='virtual_collections_carousel_image_box campl-column6'>"
+									+ "<div class='virtual_collections_carousel_image' id='virtual_collections_carousel_item"
 									+ itemNum
 									+ "'><a href='/view/"
 									+ item.getId()
@@ -74,7 +74,7 @@
 									+ "' "
 									+ imageDimensions
 									+ "></a></div></div> \n ");
-							out.print("<div class='collections_carousel_text campl-column6'><h5>"
+							out.print("<div class='virtual_collections_carousel_text campl-column6'><h5>"
 									+ item.getTitle() + " (" + item.getShelfLocator()
 									+ ")</h5> " + item.getAbstractShort()
 									+ " ... <a href='/view/" + item.getId()
@@ -86,7 +86,7 @@
 
 			</div>
 
-			<div id="sponsorDiv" class="campl-column12 campl-content-container">
+			<div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
 				<% String sponsorsURL = contentHTMLURL+"/"+collection.getSponsors();  %>
 		        <c:import charEncoding="UTF-8" url="<%=sponsorsURL%>" /> 
 			</div>
