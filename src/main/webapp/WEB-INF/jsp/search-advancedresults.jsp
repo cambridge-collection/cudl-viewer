@@ -106,7 +106,7 @@ $(function() {
         var page = parseInt(state.page);
 
         // The search endpoint uses start and end rather than page.
-        var queryParams = Object.assign({}, state, {
+        var queryParams = $.extend({}, state, {
             start: (page - 1) * pageLimit,
             end: page * pageLimit
         });
@@ -244,7 +244,7 @@ $(function() {
     }
 
     function renderFacet(state, group, facet) {
-        var facetState = Object.assign({}, state);
+        var facetState = $.extend({}, state);
         facetState[getFacetParam(group.field)] = facet.value;
 
         var url = serialiseQuery(facetState);
@@ -278,7 +278,7 @@ $(function() {
     }
 
     function renderSelectedFacet(state, selectedFacet) {
-        var facetState = Object.assign({}, state);
+        var facetState = $.extend({}, state);
         delete facetState[getFacetParam(selectedFacet.field)];
 
         var url = serialiseQuery(facetState);
@@ -487,7 +487,7 @@ $(function() {
         if(paging === undefined) {
             return;
         }
-        requestState(Object.assign({}, currentState, {page: '' + page}));
+        requestState($.extend({}, currentState, {page: '' + page}));
     }
 
     /**
@@ -532,7 +532,7 @@ $(function() {
 
     function parseState(query, defaults) {
         defaults = defaults || {};
-        var state = Object.assign({page: 1}, defaults, parseQuery(query));
+        var state = $.extend({page: 1}, defaults, parseQuery(query));
         state.page = parseInt(state.page);
         return state;
     }
@@ -582,7 +582,7 @@ $(function() {
 
     // Ensure we get a non-null state when returning to the first page. Also
     // load the first page of data.
-    requestState(Object.assign({}, currentState, {page: initialPage}), 'replace');
+    requestState($.extend({}, currentState, {page: initialPage}), 'replace');
 
     // Show the stored state when browser history is accessed.
     $(window).on('popstate', function(e) {
@@ -593,7 +593,7 @@ $(function() {
     $("#recall-slider-input")
         .on("change", function(e) {
             var recallScale = e.value.newValue;
-            requestState(Object.assign({}, currentState, {
+            requestState($.extend({}, currentState, {
                 recallScale: recallScale,
                 page: 1 // Reset page as it's a new query
             }));
