@@ -587,7 +587,11 @@ $(function() {
     // Show the stored state when browser history is accessed.
     $(window).on('popstate', function(e) {
         var state = e.originalEvent.state;
-        showState(state);
+
+        // Safari fires a popstate event on page load with null state
+        if(state !== null) {
+            showState(state);
+        }
     });
 
     $("#recall-slider-input")
