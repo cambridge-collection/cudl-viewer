@@ -374,6 +374,7 @@ $(function() {
         .done(function(data) {
             // Reset the pagination for the new data
             paging.setNumber(data.info.hits);
+            paging.setPage(); // no page reloads the paginator
             paging.setPage(parseInt(state.page));
 
             // query duration
