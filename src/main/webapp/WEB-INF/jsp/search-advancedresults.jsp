@@ -309,7 +309,7 @@ $(function() {
         var query = serialiseQueryPairs(
             Object.keys(state)
                 .filter(function(k) {
-                    return !/^(?:facet\w+|page)$/.test(k);
+                    return k !== 'page';
                 })
                 .map(function(k) { return [k, state[k]]; })
         );
