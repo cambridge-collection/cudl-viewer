@@ -262,7 +262,7 @@ public class CrowdsourcingController {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-		DocumentAnnotations docAnnotations = dataSource.getAnnotations(auth.getName(), documentId, 0);
+		DocumentAnnotations docAnnotations = dataSource.getAnnotations(auth.getName(), documentId);
 
 		String baseUrl = String.format("%s://%s:%d/", request.getScheme(), request.getServerName(), request.getServerPort());
 
