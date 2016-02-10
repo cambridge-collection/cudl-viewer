@@ -614,7 +614,7 @@ cudl.setupMetadata = function (data) {
 	  //html = html.concat("</a>");
 	  html = html.concat("</h4></div><div id=\"collapse"+array[i].descriptiveMetadataID+"\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">");
 	  html = html.concat("<ul>"+getHTMLForDescriptiveMetadata(meta)+"</ul>");
-	  html = html.concat("</div></div></div>");
+	  html = html.concat("</div></div></div></div>");
 	   	
 	  if (array[i].children && level<maxlevel) {		
 		level = level+1;	
