@@ -58,6 +58,11 @@
 	max-width: 190px;
 	width: 33.333333333333336%;
 }
+@media screen and (max-width: 320px) {
+  .collections_carousel_image_box {
+	width: 180px;
+  }
+}
 #collections_carousel > div:not(:last-child) {
 	padding-bottom: 10px;
 	border-bottom: 1px dotted #ddd;

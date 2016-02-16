@@ -324,7 +324,7 @@ blockquote {
 
 .grid_carousel ol li {
 	float: left;
-	width: 450px;;
+	width: 550px;
 }
 
 .matrix_carousel ol {
@@ -345,7 +345,6 @@ blockquote {
 	display: block;
 	position: relative;
 	min-height: 190px;
-	min-width:420px;
 }
 
 #subcollection-breadcrumb {
@@ -453,7 +452,6 @@ ol#virtual_collections_carousel li {
 
 .virtual_collections_carousel_text {
 	float:left;
-	width:200px;
 	margin-left: 10px;
 	margin-left: 10px;
 	margin-right:10px;
@@ -531,8 +529,15 @@ ol#virtual_collections_carousel li {
 	text-align: center;
 }
 
-.collections_carousel_text {	
-    margin-left: 20px;
+@media screen and (max-width: 320px) {
+  .collections_carousel_image_box {
+	float: none;
+  }
+  .collections_carousel_item {
+    margin-bottom:20px;
+    margin-left:20px;
+    margin-right:20px;
+  }
 }
 
 
@@ -1071,5 +1076,9 @@ div.pagination a.next:hover, div.pagination a.last:hover, div.pagination a.first
     .searchform .recall-slider,
     .advancedsearchform .recall-slider {
         margin: 10px 30px 30px 30px;
+    }
+    
+    .word-wrap-200 {
+	  width: 80%;
     }
 }
