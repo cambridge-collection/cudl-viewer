@@ -304,13 +304,17 @@
 
 blockquote {
 	border-left: 0px;
+	margin-right:20px;
+}
+
+.cam-quote-mark {
+	float:left;	
+	margin-right:20px;
 }
 
 .collectionOrganisationalImage {
-	margin-left: 15px;
-	margin-right: 15px;
 	margin-bottom: 15px;
-	float: right;
+	float: none;
 }
 
 .collections_carousel {
