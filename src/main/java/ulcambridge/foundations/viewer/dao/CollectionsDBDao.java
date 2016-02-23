@@ -103,23 +103,6 @@ public class CollectionsDBDao implements CollectionsDao {
 	}
 
 	@Override
-	public boolean isCollectionTaggable(String collectionId) {
-		
-		String query = "SELECT taggingstatus FROM collections WHERE collectionid = ?";
-		
-		return jdbcTemplate.query(query, new Object[] { collectionId }, 
-				new ResultSetExtractor<Boolean>() {
-					@Override
-					public Boolean extractData(ResultSet rs) throws SQLException, DataAccessException {
-						while (rs.next()) {
-							return rs.getBoolean("taggingstatus");
-						}
-						return false;
-					}
-				});
-	}
-
-	@Override
 	public List<String> getCollectionId(String itemId) {
 		
 		String query = "SELECT collectionid FROM itemsincollection WHERE itemid = ?";

@@ -89,10 +89,7 @@ public class DocumentViewController {
 		// XXX check if tagging feature is enabled
 		//
 		boolean itemTaggable = dataSource.isItemTaggable(docId);
-		List<String> colIds = dataSource.getCollectionId(docId);
-		//boolean colTaggable = dataSource.isCollectionTaggable(colId);
 		request.getSession().setAttribute("taggable", itemTaggable);
-		//logger.info(itemTaggable);
 		
 		if (itemType.equals("essay")) {
 			return setupEssayView((EssayItem) item, page, request);
