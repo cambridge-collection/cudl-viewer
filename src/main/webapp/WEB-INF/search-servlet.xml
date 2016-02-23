@@ -47,11 +47,18 @@
     	</property>
 		
 	</bean>
-	
 
 
 
-	<mvc:annotation-driven />
+
+	<mvc:annotation-driven>
+		<!-- register custom converter that returns UTF-8 encoded response-body by default -->
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" name="defaultCharset" value="UTF-8"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
 	

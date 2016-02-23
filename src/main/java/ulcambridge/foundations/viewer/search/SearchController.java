@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,10 @@ import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -124,114 +128,203 @@ public class SearchController {
 				.addObject("enableTagging", enableTagging);
 	}
 
-	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
-	@SuppressWarnings("unchecked")
-	@RequestMapping(method = RequestMethod.GET, value = "/JSON")
-	public ModelAndView handleItemsAjaxRequest(@Valid SearchForm searchForm,
-			BindingResult bindingResult, HttpServletResponse response,
-			@RequestParam("start") int startIndex,
-			@RequestParam("end") int endIndex, HttpServletRequest request)
-			throws MalformedURLException {
-
-		SearchResultSet results = this.search.makeSearch(searchForm,
-				startIndex, endIndex);
+	private JSONArray getResultsJSON(SearchResultSet results) {
+		Assert.notNull(results);
 
 		// Put chosen search results into an array.
 		JSONArray jsonArray = new JSONArray();
 
-		if (results != null) {
-
-			List<SearchResult> searchResults = results.getResults();
-
-			for (int i = 0; i < searchResults.size(); i++) {
-				SearchResult searchResult = searchResults.get(i);
-				Item item = itemFactory.getItemFromId(searchResult.getFileId());
-
-				// Make a JSON object that contains information about the
-				// matching item and information about the result snippets
-				// and pages that match.
-				JSONObject itemJSON = new JSONObject();
-				itemJSON.put("item", item.getSimplifiedJSON());
-				itemJSON.put("startPage", searchResult.getStartPage());
-				itemJSON.put("startPageLabel", searchResult.getStartPageLabel());
-				itemJSON.put("itemType", searchResult.getType());
-
-				// Make an array for the snippets.
-				JSONArray resultsArray = new JSONArray();
-
-				for (String snippet : searchResult.getSnippets()) {
-					resultsArray.add(snippet.trim());
-				}
-
-				itemJSON.put("snippets", resultsArray);
-
-				// Page Thumbnails.  Use specified thumbnail if possible. 
-				if (searchResult.getThumbnailURL() != null) {
-					String pageThumbnail = searchResult.getThumbnailURL();
-					if (pageThumbnail.contains("thumbnail")) {
-						itemJSON.put("pageThumbnailURL", pageThumbnail);
-					} else {
-						pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-						itemJSON.put("pageThumbnailURL", pageThumbnail);
-					}
-				} else {
-					String pageThumbnail = "";
-					org.json.JSONObject page = null;
-					try {
-						page = (org.json.JSONObject) item.getJSON()
-								.getJSONArray("pages")
-								.get(searchResult.getStartPage() - 1);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-
-					try {
-						if (page != null && page.get("displayImageURL") != null) {
-
-							// FIXME super hacky way to get the page thumbnail
-							// URL until we can read it from json.
-							pageThumbnail = page.get("displayImageURL")
-									.toString()
-									.replace(".dzi", "_files/8/0_0.jpg");
-
-							pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-
-						}
-					} catch (JSONException e) {
-
-						// displayImageURL not found, which throws an exception.
-						pageThumbnail = "/img/no-thumbnail.jpg";
-
-					}
-
-					itemJSON.put("pageThumbnailURL", pageThumbnail);
-
-				}// End Page Thumbnails
-
-				jsonArray.add(itemJSON);
-			}
+		for(SearchResult searchResult : results.getResults()) {
+			jsonArray.add(getResultItemJSON(searchResult));
 		}
+
+		return jsonArray;
+	}
+
+	private JSONObject getResultItemJSON(SearchResult searchResult) {
+		Item item = itemFactory.getItemFromId(searchResult.getFileId());
+
+		// Make a JSON object that contains information about the
+		// matching item and information about the result snippets
+		// and pages that match.
+		JSONObject itemJSON = new JSONObject();
+		itemJSON.put("item", item.getSimplifiedJSON());
+		itemJSON.put("startPage", searchResult.getStartPage());
+		itemJSON.put("startPageLabel", searchResult.getStartPageLabel());
+		itemJSON.put("itemType", searchResult.getType());
+
+		// Make an array for the snippets.
+		JSONArray resultsArray = new JSONArray();
+
+		for (String snippet : searchResult.getSnippets()) {
+			resultsArray.add(snippet.trim());
+		}
+
+		itemJSON.put("snippets", resultsArray);
+
+		// Page Thumbnails.  Use specified thumbnail if possible.
+		if (searchResult.getThumbnailURL() != null) {
+			String pageThumbnail = searchResult.getThumbnailURL();
+			if (pageThumbnail.contains("thumbnail")) {
+				itemJSON.put("pageThumbnailURL", pageThumbnail);
+			} else {
+				pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
+				itemJSON.put("pageThumbnailURL", pageThumbnail);
+			}
+		} else {
+			String pageThumbnail = "";
+			org.json.JSONObject page = null;
+			try {
+				page = (org.json.JSONObject) item.getJSON()
+						.getJSONArray("pages")
+						.get(searchResult.getStartPage() - 1);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				if (page != null && page.get("displayImageURL") != null) {
+
+					// FIXME super hacky way to get the page thumbnail
+					// URL until we can read it from json.
+					pageThumbnail = page.get("displayImageURL")
+							.toString()
+							.replace(".dzi", "_files/8/0_0.jpg");
+
+					pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
+
+				}
+			} catch (JSONException e) {
+
+				// displayImageURL not found, which throws an exception.
+				pageThumbnail = "/img/no-thumbnail.jpg";
+
+			}
+
+			itemJSON.put("pageThumbnailURL", pageThumbnail);
+
+		}// End Page Thumbnails
+
+		return itemJSON;
+	}
+
+	private JSONObject getFacetJson(Facet facet) {
+		JSONObject o = new JSONObject();
+
+		o.put("value", facet.getBand());
+		o.put("occurrences", facet.getOccurences());
+
+		return o;
+	}
+
+	private JSONArray getGroupFacetsJSON(FacetGroup group) {
+		JSONArray a = new JSONArray();
+
+		for(Facet f : group.getFacets()) {
+			a.add(getFacetJson(f));
+		}
+
+		return a;
+	}
+
+	private JSONObject getFacetGroupJSON(FacetGroup group) {
+		JSONObject o = new JSONObject();
+
+		o.put("label", group.getFieldLabel());
+		o.put("field", group.getField());
+		o.put("facets", getGroupFacetsJSON(group));
+
+		return o;
+	}
+
+	private JSONArray getAvailableFacetsJSON(SearchResultSet results, SearchForm form) {
+		JSONArray a = new JSONArray();
+
+		for(FacetGroup facetGroup : results.getFacets()) {
+			if(form.getFacets().containsKey(facetGroup.getField()))
+				continue;
+
+			a.add(getFacetGroupJSON(facetGroup));
+		}
+
+		return a;
+	}
+
+	private JSONArray getSelectedFacetsJSON(SearchForm form) {
+		JSONArray a = new JSONArray();
+
+		for(Map.Entry<String, String> selectedFacet : form.getFacets().entrySet()) {
+			JSONObject o = new JSONObject();
+			o.put("field", selectedFacet.getKey());
+			o.put("value", selectedFacet.getValue());
+			a.add(o);
+		}
+
+		return a;
+	}
+
+	private JSONObject getFacetsJSON(SearchResultSet results, SearchForm form) {
+		JSONObject o = new JSONObject();
+
+		o.put("selected", getSelectedFacetsJSON(form));
+		o.put("available", getAvailableFacetsJSON(results, form));
+
+		return o;
+	}
+
+	private JSONObject getInfoJSON(SearchResultSet results) {
+		JSONObject o = new JSONObject();
+
+		o.put("hits", results.getNumberOfResults());
+
+		return o;
+	}
+
+	private JSONObject getJSON(SearchResultSet results, SearchForm form) {
+		JSONObject o = new JSONObject();
+
+		o.put("items", getResultsJSON(results));
+		o.put("facets", getFacetsJSON(results, form));
+		o.put("info", getInfoJSON(results));
+
+		return o;
+	}
+
+	// on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
+	@RequestMapping(method = RequestMethod.GET, value = "/JSON",
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> handleItemsAjaxRequest(
+			@Valid SearchForm searchForm,
+			@RequestParam("start") int startIndex,
+			@RequestParam("end") int endIndex) {
+
+		SearchResultSet results = this.search.makeSearch(
+				searchForm, startIndex, endIndex);
 
 		// Write out JSON file.
-		response.setContentType("application/json");
-		PrintStream out = null;
+		return ResponseEntity.ok()
+				.header("Cache-Control", "public, max-age=60")
+				.body(getResultsJSON(results).toString());
+	}
 
-		try {
-			out = new PrintStream(new BufferedOutputStream(
-					response.getOutputStream()), true, "UTF-8");
+	/**
+	 * Similar to the /JSON endpoint, except this includes facets and
+	 * statistics, allowing the entire page to be re-rendered.
+     */
+	@RequestMapping(method = RequestMethod.GET, value = "/JSONAdvanced",
+			produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> handleItemsAdvancedAjaxRequest(
+			@Valid SearchForm searchForm,
+			@RequestParam("start") int startIndex,
+			@RequestParam("end") int endIndex) {
 
-			out.print(jsonArray);
+		SearchResultSet results = this.search.makeSearch(
+				searchForm, startIndex, endIndex);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				out.close();
-			} catch (Exception e) {
-			}
-		}
-		return null;
-
+		// Write out JSON file.
+		return ResponseEntity.ok()
+				.header("Cache-Control", "public, max-age=60")
+				.body(getJSON(results, searchForm).toString());
 	}
 
 }
