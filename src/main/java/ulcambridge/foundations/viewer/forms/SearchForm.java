@@ -8,6 +8,8 @@ import org.apache.commons.logging.LogFactory;
 
 public class SearchForm {
 
+	public static final double MIN_RECALL_SCALE = 0, MAX_RECALL_SCALE = 1;
+
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	// Keyword information	
@@ -32,6 +34,15 @@ public class SearchForm {
 	private String facetSubject;
 	private String facetCollection;	
 	private String facetPlace;
+
+	// Variable recall
+	/**
+	 * The recallScale controls the variable recall in keyword searches
+	 * against tagging data.
+	 */
+	// Note that Double is used over double as we need to be able to represent
+	// the absence of a recallScale value as null.
+	private Double recallScale = MIN_RECALL_SCALE;
 
 	public String getKeyword() {
 		return keyword;
@@ -174,6 +185,24 @@ public class SearchForm {
 	public Map<String, String> getFacets() {
 		
 		return facets;
+	}
+
+	public boolean hasRecallScale() {
+		return recallScale != null;
+	}
+
+	/**
+	 * @return The recall scale, always between {@link #MIN_RECALL_SCALE} and
+	 * 			{@link #MAX_RECALL_SCALE}.
+	 */
+	public Double getRecallScale() {
+		assert recallScale == null || recallScale >= MIN_RECALL_SCALE && recallScale < MAX_RECALL_SCALE;
+		return recallScale;
+	}
+
+	public void setRecallScale(Double recallScale) {
+		this.recallScale = Math.min(MAX_RECALL_SCALE,
+				Math.max(MIN_RECALL_SCALE, recallScale));
 	}
 
 	/**

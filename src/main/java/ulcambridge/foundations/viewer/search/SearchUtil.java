@@ -37,6 +37,11 @@ public final class SearchUtil {
 				.queryParam("subject", searchForm.getSubject())
 				.queryParam("location", searchForm.getLocation());
 
+		if(searchForm.hasRecallScale()) {
+			builder.queryParam("tagging", 1)
+					.queryParam("recallScale", searchForm.getRecallScale());
+		}
+
 		if (searchForm.getYearStart() != null &&
 				searchForm.getYearEnd() != null) {
 			builder.queryParam("yearStart", searchForm.getYearStart())

@@ -1,23 +1,25 @@
 package ulcambridge.foundations.viewer.search;
 
+import org.springframework.util.Assert;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import ulcambridge.foundations.viewer.forms.SearchForm;
-import ulcambridge.foundations.viewer.model.Properties;
-
 public class XTFSearch implements Search {
+
+	private static final String INDEX_NAME_REGULAR = "index-cudl",
+								INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
 
 	/**
 	 * Returns the 'maxDocs' number of results starting at the first one. 
@@ -69,14 +71,23 @@ public class XTFSearch implements Search {
 		return null;
 	}
 
+	/**
+	 * Get the name of the search index to query for a given SearchForm.
+	 */
+	private String getIndexName(SearchForm searchForm) {
+		return searchForm.hasRecallScale() ? INDEX_NAME_VARIABLE_RECALL
+										   : INDEX_NAME_REGULAR;
+	}
+
 	protected String buildQueryURL(SearchForm searchForm, int start, int end) {
 
 		String xtfURL = Properties.getString("xtfURL");
-		String indexPath = Properties.getString("indexPath");
-		
-		String searchXTFURL = xtfURL + "search?indexPath="+indexPath+";raw=1;smode=advanced;startDoc="+start;
+		String searchXTFURL = xtfURL + "search?";
 
 		try {
+			 searchXTFURL +=
+					"indexName=" + URLEncoder.encode(getIndexName(searchForm), "UTF-8") +
+					"&raw=1;smode=advanced;startDoc=" + start;
 
 			// Keywords
 			if (searchForm.getKeyword() != null) {
@@ -84,6 +95,12 @@ public class XTFSearch implements Search {
 				searchXTFURL += "&keyword="
 						+ URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
 			}
+
+			if (searchForm.hasRecallScale()) {
+				searchXTFURL += String.format("&recallScale=%f",
+											  searchForm.getRecallScale());
+			}
+
 			if (searchForm.getFullText() != null) {
 
 				searchXTFURL += "&text="
@@ -438,5 +455,4 @@ public class XTFSearch implements Search {
 		return "";
 
 	}
-
 }

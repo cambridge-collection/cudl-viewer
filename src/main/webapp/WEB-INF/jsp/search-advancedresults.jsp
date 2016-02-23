@@ -12,6 +12,20 @@
 	<jsp:attribute name="queryInfo">
 		<ul>
 			<cudl:search-result-param form="${form}" label="Keyword" attr="keyword"/>
+			<c:if test="${not empty form['keyword'] and enableTagging}">
+				<div class="recall-slider">
+					<input id="recall-slider-input" type="text" name="recallScale"
+							data-slider-value="${fn:escapeXml(form.recallScale)}"
+							data-slider-min="0"
+							data-slider-max="1"
+							data-slider-step="0.1"
+							data-slider-ticks="[0, 0.5, 1]"
+							data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
+							data-slider-tooltip="hide"
+							data-slider-enabled="false">
+					<input type="hidden" name="tagging" value="1">
+				</div>
+			</c:if>
 			<cudl:search-result-param form="${form}" label="Full Text" attr="fullText"/>
 			<cudl:search-result-param form="${form}" label="Exclude Text" attr="excludeText"/>
 			<cudl:search-result-param form="${form}" label="Classmark" attr="shelfLocator"/>

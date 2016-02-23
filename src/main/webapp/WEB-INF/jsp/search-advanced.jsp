@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -29,6 +30,19 @@
 											<span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
 												<form:input path="keyword" type="text" value="" name="keyword" />
 											</span>
+											<c:if test="${enableTagging}">
+												<div class="recall-slider">
+													<input id="recall-slider-input" type="text" name="recallScale"
+														data-slider-value="${fn:escapeXml(form.recallScale)}"
+														data-slider-min="0"
+														data-slider-max="1"
+														data-slider-step="0.1"
+														data-slider-ticks="[0, 0.5, 1]"
+														data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
+														data-slider-tooltip="hide">
+													<input type="hidden" name="tagging" value="1">
+												</div>
+											</c:if>
 										</div>
 									</div>
 
