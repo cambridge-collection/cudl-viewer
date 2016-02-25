@@ -39,12 +39,11 @@
 			</c:if>
 		</ul>
 
-		<form class="grid_5" action="/search">
-			<a href="/search/advanced/query?${fn:escapeXml(queryString)}">
+		<div class="query-actions">
+			<a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">
 				Change Query
 			</a>
-			<input type="hidden" name="fileID" value="${fn:escapeXml(form.fileID)}>">
-		</form>
+		</div>
 	</jsp:attribute>
 	<jsp:body/>
 </cudl:search-results-page>
