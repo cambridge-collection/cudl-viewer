@@ -68,8 +68,10 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
 		if (!dt.has("docId")) {
 			dt.addProperty("docId", documentId);
-			dt.addProperty("total", 0);
+		}
+		if(!dt.has("tags")) {
 			dt.add("tags", new JsonArray());
+			dt.addProperty("total", 0);
 		}
 
 		return new JSONConverter().toDocumentTags(dt);
@@ -96,7 +98,7 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 			throws SQLException {
 
 		DocumentAnnotations da = sqlGetAnnotations(userId, documentId);
-		List<Annotation> annotations = da.getAnnotations();
+		List<Annotation> annotations = new ArrayList<Annotation>(da.getAnnotations());
 
 		if (annotations.contains(annotation)) {
 			annotations.remove(annotation);
@@ -104,6 +106,7 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 		annotation.setDate(Utils.getCurrentDateTime());
 		annotation.setUuid(UUID.randomUUID());
 		annotations.add(annotation);
+		da.setAnnotations(annotations);
 		da.setTotal(annotations.size());
 
 		JsonObject newJson = new JSONConverter().toJsonDocumentAnnotations(da);
@@ -392,10 +395,18 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 			new GsonRowMapper<DocumentAnnotations>(DocumentAnnotations.class);
 
 	private DocumentAnnotations sqlGetAnnotations(final String userId, final String documentId) {
-		return jdbcTemplate.queryForObject(
-				SQL_USER_DOCUMENT_ANNOTATIONS,
-				DOC_ANNOTATIONS_ROW_MAPPER,
-				documentId, userId);
+		try {
+			return jdbcTemplate.queryForObject(
+					SQL_USER_DOCUMENT_ANNOTATIONS,
+					DOC_ANNOTATIONS_ROW_MAPPER,
+					documentId, userId);
+		}
+		catch(IncorrectResultSizeDataAccessException e) {
+			DocumentAnnotations da = new DocumentAnnotations();
+			da.setDocumentId(documentId);
+			da.setUserId(userId);
+			return da;
+		}
 	}
 
 	private List<Annotation> sqlGetAnnotations(final String userId, final String documentId, final int documentPageNo) {
