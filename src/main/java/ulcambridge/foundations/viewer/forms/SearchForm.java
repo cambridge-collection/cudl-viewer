@@ -1,10 +1,14 @@
 package ulcambridge.foundations.viewer.forms;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import ulcambridge.foundations.viewer.model.Collection;
 
 public class SearchForm {
 
@@ -27,6 +31,7 @@ public class SearchForm {
 	private String location = "";	
 	private Integer yearStart = null;
 	private Integer yearEnd = null;
+	private List<Collection> collections = new ArrayList<Collection>();
 	
 	// Search Facets
 	private Map<String, String> facets = new Hashtable<String,String>();
@@ -143,6 +148,14 @@ public class SearchForm {
 		this.yearEnd = yearEnd;
 	}
 
+	public List<Collection> getCollections() {
+		return collections;
+	}
+
+	public void setCollections(List<Collection> collections) {
+		this.collections=collections;
+		
+	}
 	
 	/** Facets **/
 	
@@ -169,8 +182,10 @@ public class SearchForm {
 	}
 
 	public void setFacetCollection(String facetCollection) {
-		this.facetCollection = facetCollection;
-		facets.put("collection", facetCollection);
+		if (facetCollection!=null && !facetCollection.trim().equals("")) {
+		  this.facetCollection = facetCollection;
+		  facets.put("collection", facetCollection);
+		}
 	}
 	
 	public String getFacetPlace() {
@@ -234,5 +249,7 @@ public class SearchForm {
 		facets.putAll(input.facets);
 		this.facets = facets;		
 	}
+
+
 
 }

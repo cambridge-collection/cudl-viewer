@@ -85,6 +85,18 @@
 
 									<div class="campl-column12">
 										<div class="campl-column2">
+											<form:label class="right" path="FacetCollection">Collection</form:label>
+										</div>
+										<div class="campl-column10">
+											<form:select path="FacetCollection">
+											<form:option value="" label="--- Select ---"/>
+											<form:options items="${form.collections}" itemValue="title" itemLabel="title" multiple="false"/>
+											</form:select>
+										</div>
+									</div>
+
+									<div class="campl-column12">
+										<div class="campl-column2">
 											<form:label class="right" path="shelfLocator">Classmark</form:label>
 										</div>
 										<div class="campl-column10">
