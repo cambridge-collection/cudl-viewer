@@ -8,6 +8,7 @@ src/main/resources/cudl-global.properties
 # IntelliJ
 .idea
 *.iml
+FoundationsViewer.iml
 
 # Maven release plugin
 *.releaseBackup
