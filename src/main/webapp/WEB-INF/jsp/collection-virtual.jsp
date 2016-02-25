@@ -25,13 +25,13 @@
 			<div class="campl-row campl-content campl-recessed-content">
 				<div class="campl-wrap clearfix">
 
-					<div class="campl-column12  campl-main-content" id="content">
-						<div id="summaryDiv" class="campl-content-container">
+					<div class="campl-column12  campl-main-content campl-content-container" id="content">
+						<div id="summaryDiv" class="virtual_collection_summary">
 							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
 						</div>
-						<div class="campl-content-container campl-column12">
+						<div class="campl-column12 virtual-collections-items">
 
-							<ol id="collections_carousel">
+							<ol id="virtual_collections_carousel">
 								<c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
 									<c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
 
@@ -46,9 +46,9 @@
 									</c:choose>
 
 									<li class="campl-column5">
-										<div class="collections_carousel_item">
+										<div class="virtual_collections_carousel_item">
 											<div class="virtual_collections_carousel_image_box campl-column6">
-												<div class="collections_carousel_image" id="collections_carousel_item${loop.index + 1}">
+												<div class="virtual_collections_carousel_image" id="virtual_collections_carousel_item${loop.index + 1}">
 													<a href="/view/${fn:escapeXml(item.id)}/1">
 														<img src="${fn:escapeXml(item.thumbnailURL)}"
 															 alt="${fn:escapeXml(item.id)}"
@@ -56,7 +56,7 @@
 													</a>
 												</div>
 											</div>
-											<div class='collections_carousel_text campl-column6'>
+											<div class='virtual_collections_carousel_text campl-column6'>
 												<h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
 												<c:out value="${item.abstractShort}"/> &hellip;
 												<a href="/view/${fn:escapeXml(item.id)}/1">more</a>
@@ -68,7 +68,7 @@
 							</ol>
 						</div>
 
-						<div id="sponsorDiv" class="campl-column12 campl-content-container">
+						<div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
 							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
 						</div>
 					</div>
