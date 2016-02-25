@@ -95,6 +95,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		<security:custom-filter ref="oauth2ClientFilter"
 			after="EXCEPTION_TRANSLATION_FILTER" />
 
+		<security:headers>
+			<security:frame-options/>
+		</security:headers>
 	</security:http>
 	
 	
@@ -113,6 +116,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		<security:custom-filter ref="oauth2ClientFilter"
 			after="EXCEPTION_TRANSLATION_FILTER" />
 
+		<security:headers>
+			<security:frame-options/>
+		</security:headers>
 	</security:http>
 
 
@@ -132,6 +138,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		<security:custom-filter ref="oauth2ClientFilter"
 			after="EXCEPTION_TRANSLATION_FILTER" />
 
+		<security:headers>
+			<security:frame-options/>
+		</security:headers>
 	</security:http>
 
 	<!-- Require HTTP basic auth to access javascript source maps.
@@ -161,6 +170,9 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		<security:custom-filter ref="oauth2ClientFilter"
 			after="EXCEPTION_TRANSLATION_FILTER" />
 
+		<security:headers>
+			<security:frame-options/>
+		</security:headers>
 	</security:http>
 
 	<!--apply the oauth client context -->
