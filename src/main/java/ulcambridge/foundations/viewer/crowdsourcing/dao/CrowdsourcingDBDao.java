@@ -62,6 +62,11 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 	}
 
 	@Override
+	public DocumentAnnotations getAnnotations(String userId, String documentId) {
+		return sqlGetAnnotations(userId, documentId);
+	}
+
+	@Override
 	public DocumentTags getTagsByDocument(String documentId) {
 		// query
 		JsonObject dt = sqlGetTags(documentId);
@@ -438,6 +443,7 @@ public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
 	private static final RowMapper<JsonObject> JSON_OBJECT_ROW_MAPPER =
 			new GsonRowMapper<JsonObject>(JsonObject.class);
+
 
 	/**
 	 * Get all of a user's annotations for a given document.

@@ -21,6 +21,8 @@ public interface CrowdsourcingDao {
 
 	public DocumentAnnotations getAnnotations(String userId, String documentId, int documentPageNo);
 
+	public DocumentAnnotations getAnnotations(String userId, String documentId);
+
 	public DocumentAnnotations getAnnotationsByDocument(String documentId);
 
 	public UserAnnotations getAnnotationsByUser(String userId);
