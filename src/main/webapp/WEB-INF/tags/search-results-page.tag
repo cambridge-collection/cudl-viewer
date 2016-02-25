@@ -33,13 +33,15 @@
 							<div class="campl-content-container">
 								<jsp:invoke fragment="queryInfo"/>
 
-								<c:forEach items="${form.facets}" var="facet">
-									<div class="search-facet-selected">
-										<a class="search-close" href="?${fn:escapeXml(cudlfn:urlParamsWithoutFacet(form, facet.key))}" title="Remove">
-											in <b><span><c:out value="${facet.value}"/></span></b> (<c:out value="${facet.key}"/>) &cross;
-										</a>
-									</div>
-								</c:forEach>
+								<div id="selected_facets">
+									<c:forEach items="${form.facets}" var="facet">
+										<div class="search-facet-selected">
+											<a class="search-close" href="?${fn:escapeXml(cudlfn:urlParamsWithoutFacet(form, facet.key))}" title="Remove">
+												in <b><span><c:out value="${facet.value}"/></span></b> (<c:out value="${facet.key}"/>) &cross;
+											</a>
+										</div>
+									</c:forEach>
+								</div>
 
 								<c:if test="${not empty results.spellingSuggestedTerm}">
 									Did you mean

@@ -21,8 +21,7 @@
 							data-slider-step="0.1"
 							data-slider-ticks="[0, 0.5, 1]"
 							data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
-							data-slider-tooltip="hide"
-							data-slider-enabled="false">
+							data-slider-tooltip="hide">
 					<input type="hidden" name="tagging" value="1">
 				</div>
 			</c:if>
