@@ -3,14 +3,13 @@ package ulcambridge.foundations.viewer.crowdsourcing;
 import org.apache.jena.riot.RDFFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
+import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +40,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Handles requests for the crowdsourcing platform.
@@ -68,6 +68,12 @@ public class CrowdsourcingController {
 		this();
 		this.dataSource = dataSource;
 	}
+
+	private static final CacheControl CACHE_PRIVATE = CacheControl.noCache();
+	private static final CacheControl CACHE_PUBLIC_INFREQUENTLY_CHANGING =
+			CacheControl.empty()
+				.cachePublic()
+				.sMaxAge(30, TimeUnit.MINUTES);
 
 	private boolean isUserAuthenticated() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -118,7 +124,7 @@ public class CrowdsourcingController {
 
 	// on path /anno/get
 	@RequestMapping(value = "/anno/get/{docId}/{docPage}", method = RequestMethod.GET, produces = { "application/json" })
-	public JsonResponse handleAnnotationsFetch(@PathVariable("docId") String documentId, @PathVariable("docPage") int documentPageNo,
+	public ResponseEntity<JsonResponse> handleAnnotationsFetch(@PathVariable("docId") String documentId, @PathVariable("docPage") int documentPageNo,
 											   HttpServletRequest req)
 			throws IOException {
 
@@ -126,7 +132,10 @@ public class CrowdsourcingController {
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		DocumentAnnotations docAnnotations = dataSource.getAnnotations(auth.getName(), documentId, documentPageNo);
-		return new JsonResponse("200", "Annotations fetched", docAnnotations);
+
+		return ResponseEntity.status(HttpStatus.OK)
+				.cacheControl(CACHE_PRIVATE)
+				.body(new JsonResponse("200", "Annotations fetched", docAnnotations));
 	}
 
 	// on path /anno/update
@@ -173,7 +182,7 @@ public class CrowdsourcingController {
 
 	// on path /tag/get
 	@RequestMapping(value = "/tag/get/{docId}", method = RequestMethod.GET, produces = { "application/json" })
-	public JsonResponse handleTagsFetch(@PathVariable("docId") String documentId) throws IOException {
+	public ResponseEntity<JsonResponse> handleTagsFetch(@PathVariable("docId") String documentId) throws IOException {
 
 		// combine tags with annotations and removed tags
 		DocumentTags docTags = dataSource.getTagsByDocument(documentId);
@@ -182,18 +191,23 @@ public class CrowdsourcingController {
 
 		DocumentTerms docARTTerms = new TermCombiner().combine_Anno_Tag_RemovedTag(docAnnotations, docTags, docRemovedTags);
 
-		return new JsonResponse("200", "Tags fetched", docARTTerms);
+		return ResponseEntity.ok()
+				.cacheControl(CACHE_PUBLIC_INFREQUENTLY_CHANGING)
+				.body(new JsonResponse("200", "Tags fetched", docARTTerms));
 	}
 
 	// on path /rmvtag/get
 	@RequestMapping(value = "/rmvtag/get/{docId}", method = RequestMethod.GET, produces = { "application/json" })
-	public JsonResponse handleRemovedTagsFetch(@PathVariable("docId") String documentId) throws IOException {
+	public ResponseEntity<JsonResponse> handleRemovedTagsFetch(@PathVariable("docId") String documentId) throws IOException {
 
 		ensureAuthenticated();
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		DocumentTags docTags = dataSource.getRemovedTags(auth.getName(), documentId);
-		return new JsonResponse("200", "Removed tags fetched", docTags);
+
+		return ResponseEntity.ok()
+				.cacheControl(CACHE_PRIVATE)
+				.body(new JsonResponse("200", "Removed tags fetched", docTags));
 	}
 
 	// on path /rmvtag/update
@@ -231,6 +245,7 @@ public class CrowdsourcingController {
 		}
 
 		response.setHeader("Content-Disposition", "attachment; filename=" + ("USER" + "_" + Utils.getCurrentDateTime().toString()) + ".rdf");
+		response.setHeader("Cache-Control", CACHE_PRIVATE.getHeaderValue());
 
 		OutputStream os = response.getOutputStream();
 		rr.getModel().write(os, RDFFormat.RDFXML.getLang().getName());
@@ -259,6 +274,7 @@ public class CrowdsourcingController {
 
 		// prepareResp(response, "application/rdf+xml; charset=utf-8");
 		response.setHeader("Content-Disposition", "attachment; filename=" + (documentId + "_" + Utils.getCurrentDateTime().toString()) + ".rdf");
+		response.setHeader("Cache-Control", CACHE_PRIVATE.getHeaderValue());
 
 		OutputStream os = response.getOutputStream();
 		rr.getModel().write(os, RDFFormat.RDFXML.getLang().getName());
