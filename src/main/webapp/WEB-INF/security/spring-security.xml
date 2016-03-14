@@ -143,19 +143,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		</security:headers>
 	</security:http>
 
-	<!-- Require HTTP basic auth to access javascript source maps.
-	     A developer will need to hit a sourcemap URL manually and log in. Once
-	     they've logged in once the credentials should be remembered for some
-	     time. Because this is stateless auth without using sessions, it
-	     shouldn't conflict with the normal CUDL sessions. -->
-	<security:http pattern="/ui/**/*.map"
-				   authentication-manager-ref="stateless"
-				   create-session="stateless"
-				   realm="Tasty source maps">
-		<security:intercept-url pattern="/**/*.map" access="ROLE_DEVELOPER" />
-		<security:http-basic/>
-	</security:http>
-
 	<!--Security for all other access -->
 	<security:http auto-config="false">
 
@@ -183,16 +170,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 		<security:authentication-provider>
 			<security:jdbc-user-service
 				data-source-ref="dataSource" />
-		</security:authentication-provider>
-	</security:authentication-manager>
-
-	<!-- Used to authenticate users accessing javascript source maps. Currently
-	     the same high security credentials for dev/staging are used. -->
-	<security:authentication-manager id="stateless">
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="cudl" password="cudldev" authorities="ROLE_DEVELOPER"/>
-			</security:user-service>
 		</security:authentication-provider>
 	</security:authentication-manager>
 
