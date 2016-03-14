@@ -144,12 +144,17 @@ public class DocumentViewController {
 		docId = docId.toUpperCase();
 		
 		Item item = itemFactory.getItemFromId(docId);
-		JSONObject json = item.getJSON();
+		if (item!=null) {
+		  JSONObject json = item.getJSON();
 
-		writeJSONOut(json, response);
-
-		return null;
-
+		  writeJSONOut(json, response);
+		  
+		  return null;
+		  
+		} else {
+		  return new ModelAndView("jsp/errors/404"); 	
+		}
+		
 	}
 
 	private void writeJSONOut(JSONObject json, HttpServletResponse response)
