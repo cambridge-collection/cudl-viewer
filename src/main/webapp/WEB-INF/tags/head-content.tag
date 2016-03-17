@@ -13,7 +13,7 @@
 
 <%--  webmaster tools --%>
 <cudl:meta name="google-site-verification"
-	content="asuuZDOIgJTwOZ0EfnrFe1hQ2A7q6uukh5ebEsciiNg" />
+    content="asuuZDOIgJTwOZ0EfnrFe1hQ2A7q6uukh5ebEsciiNg" />
 <cudl:meta name="msvalidate.01" content="EF9291052C3CCD9E1AC12147B69C52C2"/>
 
 <cudl:meta name="viewport" content="${(empty viewport) ? \"width=device-width, initial-scale=1.0\" : viewport}"/>
@@ -21,7 +21,7 @@
 <jsp:invoke fragment="metaTags"/>
 
 <%-- load Project Light Font. This is not loaded with the webpack build as
-	 the fonts are external. Could do async load in future. --%>
+     the fonts are external. Could do async load in future. --%>
 <script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
 <script type="text/javascript">try { Typekit.load(); } catch (e) {}</script>
 

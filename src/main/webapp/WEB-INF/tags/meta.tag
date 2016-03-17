@@ -14,12 +14,12 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 <cudl:tag name="meta" selfClose="${true}">
-	<jsp:attribute name="attributes">
-		<cudl:attr name="name" value="${name}" skipEmpty="${true}"/>
-		<cudl:attr name="http-equiv" value="${httpEquiv}" skipEmpty="${true}"/>
-		<cudl:attr name="charset" value="${charset}" skipEmpty="${true}"/>
-		<cudl:attr name="itemprop" value="${itemprop}" skipEmpty="${true}"/>
-		<cudl:attr name="property" value="${property}" skipEmpty="${true}"/>
-		<cudl:attr name="content" value="${content}" skipEmpty="${true}"/>
-	</jsp:attribute>
+    <jsp:attribute name="attributes">
+        <cudl:attr name="name" value="${name}" skipEmpty="${true}"/>
+        <cudl:attr name="http-equiv" value="${httpEquiv}" skipEmpty="${true}"/>
+        <cudl:attr name="charset" value="${charset}" skipEmpty="${true}"/>
+        <cudl:attr name="itemprop" value="${itemprop}" skipEmpty="${true}"/>
+        <cudl:attr name="property" value="${property}" skipEmpty="${true}"/>
+        <cudl:attr name="content" value="${content}" skipEmpty="${true}"/>
+    </jsp:attribute>
 </cudl:tag>

@@ -8,7 +8,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:if test="${not empty form[attr]}">
-	<li>
-		<span><c:out value="${label}"/>: <b><c:out value="${form[attr]}"/></b></span>
-	</li>
+    <li>
+        <span><c:out value="${label}"/>: <b><c:out value="${form[attr]}"/></b></span>
+    </li>
 </c:if>

@@ -10,15 +10,15 @@
 
 
 <cudl:base-page title="${title}" pagetype="${pagetype}" bodyAttrs="${bodyAttrs}"
-				pageData="${pageData}">
-	<cudl:ie-div>
-		<cudl:projectlight-header/>
+                pageData="${pageData}">
+    <cudl:ie-div>
+        <cudl:projectlight-header/>
 
-		<%-- Pass through body --%>
-		<jsp:doBody/>
+        <%-- Pass through body --%>
+        <jsp:doBody/>
 
-		<cudl:cookie-notice/>
-		<cudl:footer/>
-		<cudl:projectlight-footer/>
-	</cudl:ie-div>
+        <cudl:cookie-notice/>
+        <cudl:footer/>
+        <cudl:projectlight-footer/>
+    </cudl:ie-div>
 </cudl:base-page>

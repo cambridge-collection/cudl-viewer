@@ -12,39 +12,39 @@
 <c:set var="userHasSearched" value="${not empty form.keyword}"/>
 
 <cudl:search-results-page title="Search">
-	<jsp:attribute name="queryInfo">
-		<form:form commandName="searchForm" class="grid_5" action="/search" method="GET">
+    <jsp:attribute name="queryInfo">
+        <form:form commandName="searchForm" class="grid_5" action="/search" method="GET">
 
-			<form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search"/>
-			<input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
-			<c:forEach items="${form.facets}" var="facet">
-				<%-- FIXME: Should this be using form:input? --%>
-				<input path="${fn:escapeXml(facet.key)}"
-					   type="hidden"
-					   name="facet-${fn:escapeXml(facet.key)}"
-					   value="${fn:escapeXml(facet.value)}">
-			</c:forEach>
-			<form:input path="fileID" type="hidden" name="fileID" value="${form.fileID}"/>
-		</form:form>
-		<div class="altsearchlink grid_5">
-			<form:form commandName="searchForm" action="/search/advanced/query" method="GET">
-				<input type="hidden" value="${fn:escapeXml(form.keyword)}>" name="keyword">
-				<input class="altsearchlink" type="submit" value="Advanced Search">
-			</form:form>
-		</div>
-	</jsp:attribute>
-	<jsp:attribute name="resultInfo">
-		<%-- Don't show the result count before the user has performed a search --%>
-		<c:if test="${userHasSearched}">
-			<cudl:search-result-info results="${results}"/>
-		</c:if>
-	</jsp:attribute>
-	<jsp:attribute name="queryHelp">
-		<%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
-		<c:if test="${userHasSearched}">
-			<cudl:search-no-results/>
-		</c:if>
-		<cudl:search-examples/>
-	</jsp:attribute>
-	<jsp:body/>
+            <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search"/>
+            <input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
+            <c:forEach items="${form.facets}" var="facet">
+                <%-- FIXME: Should this be using form:input? --%>
+                <input path="${fn:escapeXml(facet.key)}"
+                       type="hidden"
+                       name="facet-${fn:escapeXml(facet.key)}"
+                       value="${fn:escapeXml(facet.value)}">
+            </c:forEach>
+            <form:input path="fileID" type="hidden" name="fileID" value="${form.fileID}"/>
+        </form:form>
+        <div class="altsearchlink grid_5">
+            <form:form commandName="searchForm" action="/search/advanced/query" method="GET">
+                <input type="hidden" value="${fn:escapeXml(form.keyword)}>" name="keyword">
+                <input class="altsearchlink" type="submit" value="Advanced Search">
+            </form:form>
+        </div>
+    </jsp:attribute>
+    <jsp:attribute name="resultInfo">
+        <%-- Don't show the result count before the user has performed a search --%>
+        <c:if test="${userHasSearched}">
+            <cudl:search-result-info results="${results}"/>
+        </c:if>
+    </jsp:attribute>
+    <jsp:attribute name="queryHelp">
+        <%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
+        <c:if test="${userHasSearched}">
+            <cudl:search-no-results/>
+        </c:if>
+        <cudl:search-examples/>
+    </jsp:attribute>
+    <jsp:body/>
 </cudl:search-results-page>

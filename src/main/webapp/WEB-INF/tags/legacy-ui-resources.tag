@@ -9,9 +9,9 @@
 
 <!--  Project Light  -->
 <link rel="stylesheet" href="/styles/projectlight-full-stylesheet.css" />
-<script type="text/javascript"	src="/scripts/projectlight-libs/ios-orientationchange-fix.js"></script>
-<script type="text/javascript"	src="/scripts/projectlight-libs/modernizr.js"></script>
-<script type="text/javascript"	src="/scripts/projectlight-libs/jquery-min.js"></script>
+<script type="text/javascript"    src="/scripts/projectlight-libs/ios-orientationchange-fix.js"></script>
+<script type="text/javascript"    src="/scripts/projectlight-libs/modernizr.js"></script>
+<script type="text/javascript"    src="/scripts/projectlight-libs/jquery-min.js"></script>
 <script type="text/javascript" src="/scripts/projectlight-custom.js"></script>
 
 <!-- Fancybox -->
@@ -26,13 +26,13 @@
 <script type="text/javascript" src="/scripts/cudl.js"></script>
 
 <script type="text/javascript">
-	// initalise page if function is available.
-	function init() {
+    // initalise page if function is available.
+    function init() {
 
-		// Show or hide cookie notice and call page specific init statement.
-		cudl.displayCookieNotice();
-		if (typeof pageinit == 'function') {
-			pageinit();
-		}
-	}
+        // Show or hide cookie notice and call page specific init statement.
+        cudl.displayCookieNotice();
+        if (typeof pageinit == 'function') {
+            pageinit();
+        }
+    }
 </script>

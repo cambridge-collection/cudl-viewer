@@ -17,5 +17,5 @@ trim_trailing_whitespace = true
 [*.{jsp,tag}]
 end_of_line = lf
 insert_final_newline = true
-# Only because they already mostly use tabs
-indent_style = tab
+indent_size = 4
+indent_style = space

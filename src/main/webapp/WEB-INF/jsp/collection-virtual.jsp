@@ -9,70 +9,70 @@
 
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
-	<jsp:attribute name="pageData">
-			<cudl:default-context>
-				<cudl:context-editable-areas>
-					<cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
-					<cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>
-				</cudl:context-editable-areas>
-    		</cudl:default-context>
-    	</jsp:attribute>
-    	<jsp:body>
-			<cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
+    <jsp:attribute name="pageData">
+            <cudl:default-context>
+                <cudl:context-editable-areas>
+                    <cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
+                    <cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>
+                </cudl:context-editable-areas>
+            </cudl:default-context>
+        </jsp:attribute>
+        <jsp:body>
+            <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
 
-			<div class="clear"></div>
+            <div class="clear"></div>
 
-			<div class="campl-row campl-content campl-recessed-content">
-				<div class="campl-wrap clearfix">
+            <div class="campl-row campl-content campl-recessed-content">
+                <div class="campl-wrap clearfix">
 
-					<div class="campl-column12  campl-main-content campl-content-container" id="content">
-						<div id="summaryDiv" class="virtual_collection_summary">
-							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
-						</div>
-						<div class="campl-column12 virtual-collections-items">
+                    <div class="campl-column12  campl-main-content campl-content-container" id="content">
+                        <div id="summaryDiv" class="virtual_collection_summary">
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+                        </div>
+                        <div class="campl-column12 virtual-collections-items">
 
-							<ol id="virtual_collections_carousel">
-								<c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
-									<c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
+                            <ol id="virtual_collections_carousel">
+                                <c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
+                                    <c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
 
-									<%-- FIXME: move this inline style into CSS and apply a class here --%>
-									<c:choose>
-										<c:when test="${item.thumbnailOrientation == 'portrait'}">
-											<c:set var="imageDimensions" value="height: 100%"/>
-										</c:when>
-										<c:when test="${item.thumbnailOrientation == 'landscape'}">
-											<c:set var="imageDimensions" value="width: 100%"/>
-										</c:when>
-									</c:choose>
+                                    <%-- FIXME: move this inline style into CSS and apply a class here --%>
+                                    <c:choose>
+                                        <c:when test="${item.thumbnailOrientation == 'portrait'}">
+                                            <c:set var="imageDimensions" value="height: 100%"/>
+                                        </c:when>
+                                        <c:when test="${item.thumbnailOrientation == 'landscape'}">
+                                            <c:set var="imageDimensions" value="width: 100%"/>
+                                        </c:when>
+                                    </c:choose>
 
-									<li class="campl-column5">
-										<div class="virtual_collections_carousel_item">
-											<div class="virtual_collections_carousel_image_box campl-column6">
-												<div class="virtual_collections_carousel_image" id="virtual_collections_carousel_item${loop.index + 1}">
-													<a href="/view/${fn:escapeXml(item.id)}/1">
-														<img src="${fn:escapeXml(item.thumbnailURL)}"
-															 alt="${fn:escapeXml(item.id)}"
-															 style="${fn:escapeXml(imageDimensions)}">
-													</a>
-												</div>
-											</div>
-											<div class='virtual_collections_carousel_text campl-column6'>
-												<h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
-												<c:out value="${item.abstractShort}"/> &hellip;
-												<a href="/view/${fn:escapeXml(item.id)}/1">more</a>
-											</div>
-											<div class='clear'></div>
-										</div>
-									</li>
-								</c:forEach>
-							</ol>
-						</div>
+                                    <li class="campl-column5">
+                                        <div class="virtual_collections_carousel_item">
+                                            <div class="virtual_collections_carousel_image_box campl-column6">
+                                                <div class="virtual_collections_carousel_image" id="virtual_collections_carousel_item${loop.index + 1}">
+                                                    <a href="/view/${fn:escapeXml(item.id)}/1">
+                                                        <img src="${fn:escapeXml(item.thumbnailURL)}"
+                                                             alt="${fn:escapeXml(item.id)}"
+                                                             style="${fn:escapeXml(imageDimensions)}">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class='virtual_collections_carousel_text campl-column6'>
+                                                <h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
+                                                <c:out value="${item.abstractShort}"/> &hellip;
+                                                <a href="/view/${fn:escapeXml(item.id)}/1">more</a>
+                                            </div>
+                                            <div class='clear'></div>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ol>
+                        </div>
 
-						<div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
-							<c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
-						</div>
-					</div>
-				</div>
-			</div>
-	</jsp:body>
+                        <div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </jsp:body>
 </cudl:generic-page>

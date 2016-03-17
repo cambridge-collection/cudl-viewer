@@ -12,6 +12,6 @@
 <c:out value=">" escapeXml="false"/>
 
 <c:if test="${not selfClose}">
-	<jsp:doBody/>
-	<c:out value="</${name}>" escapeXml="false"/>
+    <jsp:doBody/>
+    <c:out value="</${name}>" escapeXml="false"/>
 </c:if>

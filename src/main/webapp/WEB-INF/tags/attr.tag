@@ -8,12 +8,12 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:if test="${empty value}">
-	<c:set var="value"><jsp:doBody/></c:set>
+    <c:set var="value"><jsp:doBody/></c:set>
 </c:if>
 
 <c:if test="${not (skipEmpty and empty value)}">
-	<c:out value=" ${name}" escapeXml="false"/>
-	<c:if test="${not empty value}">
-		<c:out value="=\"${fn:escapeXml(value)}\"" escapeXml="false"/>
-	</c:if>
+    <c:out value=" ${name}" escapeXml="false"/>
+    <c:if test="${not empty value}">
+        <c:out value="=\"${fn:escapeXml(value)}\"" escapeXml="false"/>
+    </c:if>
 </c:if>

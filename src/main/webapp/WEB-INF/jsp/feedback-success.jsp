@@ -4,12 +4,12 @@
 
 
 <cudl:base-page title="Cambridge Digital Library - Feedback"
-					pagetype="FEEDBACK">
-	<div class="campl-row campl-content">
-		<div class="campl-content-container">
-			<h3>Feedback</h3>
+                    pagetype="FEEDBACK">
+    <div class="campl-row campl-content">
+        <div class="campl-content-container">
+            <h3>Feedback</h3>
 
-			<p>Thank you for your feedback.</p>
-		</div>
-	</div>
+            <p>Thank you for your feedback.</p>
+        </div>
+    </div>
 </cudl:base-page>

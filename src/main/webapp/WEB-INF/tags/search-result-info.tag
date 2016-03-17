@@ -7,5 +7,5 @@
 
 <div class="_mib"></div>
 <div class="campl-column12 resultcount">
-	About <fmt:formatNumber value="${results.numberOfResults}"/> results (<span id="reqtime"></span></span>)
+    About <fmt:formatNumber value="${results.numberOfResults}"/> results (<span id="reqtime"></span></span>)
 </div>
