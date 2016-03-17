@@ -78,7 +78,7 @@
                 <div style="position:relative;">
                     <h1 class="campl-page-title"><c:out value="${defaultTitle}"/></h1>
 
-                    <c:if test="${activeMenuIndex == 0}">
+                    <c:if test="${displaySearch}">
                         <div class="campl-column6 cudl-header-search">
                             <form action="/search" class="campl-search-input">
                                 <input name="keyword" type="text" class="text" placeholder="Search" />
