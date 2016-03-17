@@ -225,7 +225,7 @@
                         <div role="tabpanel" class="tab-pane" id="thumbnailstab">
                             <div id='thumbnails-content'>
                                 <div id="thumbnailpaginationtop" class="text-center"></div>
-                                <div id="thumbnailimages"></div>
+                                <div id="thumbnailimages" class="container-fluid"></div>
                                 <div id="thumbnailpaginationbottom" class="text-center"></div>
                             </div>
                         </div>
