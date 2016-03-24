@@ -144,11 +144,10 @@
                 </div>
 
             </div>
-            <div id="right-panel">
+            <div id="right-panel" class="right-panel">
                 <div id="doc-breadcrumb"></div>
-                <div id="right-panel-toggle">
-                    <i class="fa fa-angle-right pull-left"></i>
-                </div>
+                <button id="right-panel-toggle" class="btn toggle-btn fa fa-bars"
+                     aria-label="Toggle sidebar"></button>
 
                 <div role="tabpanel" id="rightTabs">
 
