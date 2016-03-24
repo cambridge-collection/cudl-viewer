@@ -285,11 +285,6 @@
     </mime-mapping>
 	
     <mime-mapping>
-        <extension>svg</extension>
-        <mime-type>application/svg+xml</mime-type>
-    </mime-mapping>	
-	
-    <mime-mapping>
         <extension>map</extension>
         <mime-type>application/json</mime-type>
     </mime-mapping>		
