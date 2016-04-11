@@ -522,6 +522,8 @@ public class ContentEditorController {
 				tidy.setOutputEncoding("UTF-8");
 				tidy.setMakeClean(false);
 				tidy.setTidyMark(false);
+				tidy.setIndentContent(true);
+				tidy.setSmartIndent(true);
 				tidy.setDropEmptyParas(false);
 				tidy.setDocType("omit");
 				tidy.setQuiet(true);
