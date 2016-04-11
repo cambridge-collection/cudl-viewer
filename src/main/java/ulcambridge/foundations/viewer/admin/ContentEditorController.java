@@ -485,6 +485,8 @@ public class ContentEditorController {
 	// Performs validation on parameters used for writing html.
 	public static class UpdateHTMLParameters {
 
+		private static final Log logger = LogFactory.getLog(UpdateHTMLParameters.class);
+
 		@NotNull
 		@Pattern(regexp = "^[-_/A-Za-z0-9]+\\.html$", message = "Invalid filename")
 		private String filename;
@@ -505,7 +507,9 @@ public class ContentEditorController {
 		}
 
 		public void setHtml(String html) {
+			logger.debug("setHtml() before tidy: " + html);
 			this.html = tidyHTML(html);
+			logger.debug("setHtml() after tidy: " + this.html);
 		}
 
 		private String tidyHTML(String input) {
