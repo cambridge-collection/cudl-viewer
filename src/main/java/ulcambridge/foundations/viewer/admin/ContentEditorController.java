@@ -542,7 +542,7 @@ public class ContentEditorController {
 				logger.error("Tidying HTML failed", e);
 			}
 
-			// defult to return input in event of any
+			// default to return input in event of any
 			// error.
 			return input;
 
