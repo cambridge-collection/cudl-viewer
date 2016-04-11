@@ -539,7 +539,7 @@ public class ContentEditorController {
 				}
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Tidying HTML failed", e);
 			}
 
 			// defult to return input in event of any
