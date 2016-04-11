@@ -2,13 +2,13 @@ package ulcambridge.foundations.viewer.admin;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
+import java.io.StringReader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +20,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.apache.commons.io.output.StringBuilderWriter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -515,10 +516,6 @@ public class ContentEditorController {
 		private String tidyHTML(String input) {
 
 			try {
-				InputStream inputStream = new ByteArrayInputStream(
-						input.getBytes(StandardCharsets.UTF_8));
-				OutputStream outputStream = new ByteArrayOutputStream();
-
 				Tidy tidy = new Tidy();
 				tidy.setXHTML(false);
 				tidy.setInputEncoding("UTF-8");
@@ -530,9 +527,11 @@ public class ContentEditorController {
 				tidy.setQuiet(true);
 				tidy.setPrintBodyOnly(true);
 				tidy.setShowWarnings(false);
-				tidy.parse(inputStream, outputStream);
 
-				String output = outputStream.toString();
+				Writer writer = new StringBuilderWriter(input.length());
+				tidy.parse(new StringReader(input), writer);
+
+				String output = writer.toString();
 				if (output != null && !output.trim().equals("")) {
 					return output;
 				}
