@@ -286,7 +286,7 @@
                                     <div id="rightsOption">
                                         <div class="button">
                                             <a class="btn btn-info left"
-                                            href="http://www.lib.cam.ac.uk/deptserv/imagingservices/reproductionrights.html"
+                                            href="http://www.lib.cam.ac.uk/collections/departments/digital-content-unit/licensing-images"
                                             target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
                                             Request Image<br>Rights
                                             </a>
