@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite
+        PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<urlrewrite>
+    <rule>
+        <note>Serve viewer.html as /embed/ index</note>
+        <from>^/embed/$</from>
+        <set name="embedViewerRedirect">true</set>
+        <to>%{context-path}/embed/viewer.html</to>
+    </rule>
+    <rule>
+        <note>Don't allow access to /embed/viewer.html</note>
+        <!-- Don't apply this rule if we're in the internal redirect from
+             /embed/ otherwise an infinite loop occurs. -->
+        <condition type="attribute" name="embedViewerRedirect" operator="notequal">true</condition>
+        <from>^/embed/viewer.html$</from>
+        <set type="expires">1 year</set>
+        <to type="permanent-redirect">%{context-path}/embed/</to>
+    </rule>
+    <rule>
+        <note>Add slashes to /embed</note>
+        <from>^/embed$</from>
+        <set type="expires">1 year</set>
+        <to type="permanent-redirect">%{context-path}/embed/</to>
+    </rule>
+</urlrewrite>
