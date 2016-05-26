@@ -19,7 +19,7 @@
 
     <import resource="datasource/itemsFactory.xml" />
     <import resource="datasource/collectionsFactory.xml" />
-    
+
 	<bean id="siteView" class="ulcambridge.foundations.viewer.SiteViewController">
 		<property name="collectionFactory" ref="collectionFactory" />
 		<property name="itemFactory" ref="itemFactory" />
@@ -109,9 +109,10 @@
         <constructor-arg name="metadataUrlHost" value="${rootURL://cudl.lib.cam.ac.uk}"/>
     </bean>
 
-    <!-- 31536000 = 60*60*24*365 = 1 year -->
-    <mvc:resources mapping="/embed/**" location="classpath:ulcambridge/foundations/embeddedviewer/assets/"
-                   cache-period="31536000">
+    <!-- Cache headers are not set here but in urlrewrite.xml. This is because
+         the viewer.html needs different cache-control values to the rest of the
+         assets. -->
+    <mvc:resources mapping="/embed/**" location="classpath:ulcambridge/foundations/embeddedviewer/assets/">
         <mvc:resource-chain resource-cache="true">
             <mvc:resolvers>
                 <bean class="org.springframework.web.servlet.resource.GzipResourceResolver"/>

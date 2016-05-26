@@ -7,7 +7,15 @@
         <note>Serve viewer.html as /embed/ index</note>
         <from>^/embed/$</from>
         <set name="embedViewerRedirect">true</set>
+        <!-- 10800 = 60*60*3 = 3 hours -->
+        <set type="response-header" name="Cache-Control">must-revalidate, max-age=10800</set>
         <to>%{context-path}/embed/viewer.html</to>
+    </rule>
+    <rule>
+        <note>Set cache-control headers on embedded viewer assets (without redirecting)</note>
+        <from>^/embed/(?!viewer.html$).*$</from>
+        <!-- 31536000 = 60*60*24*365 = 1 year -->
+        <set type="response-header" name="Cache-Control">max-age=31536000</set>
     </rule>
     <rule>
         <note>Don't allow access to /embed/viewer.html</note>
