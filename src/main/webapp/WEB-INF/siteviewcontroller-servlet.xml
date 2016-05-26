@@ -96,5 +96,34 @@
             </mvc:resolvers>
         </mvc:resource-chain>
     </mvc:resources>
+
+    <!-- Create an embedded viewer configuration based on values from our
+         .properties file. -->
+    <bean name="embeddedViewerConfig"
+          class="ulcambridge.foundations.viewer.embedded.Configs"
+          factory-method="createEmbeddedViewerConfig">
+        <constructor-arg name="gaTrackingId" value="${GoogleAnalyticsId:UA-57175370-1}"/>
+        <constructor-arg name="metadataUrlPrefix" value="${services://services.cudl.lib.cam.ac.uk}/v1/metadata/json/"/>
+        <constructor-arg name="metadataUrlSuffix" value="${metadataUrlSuffix:}"/>
+        <constructor-arg name="dziUrlPrefix" value="${imageServer://image01.cudl.lib.cam.ac.uk/}"/>
+        <constructor-arg name="metadataUrlHost" value="${rootURL://cudl.lib.cam.ac.uk}"/>
+    </bean>
+
+    <!-- 31536000 = 60*60*24*365 = 1 year -->
+    <mvc:resources mapping="/embed/**" location="classpath:ulcambridge/foundations/embeddedviewer/assets/"
+                   cache-period="31536000">
+        <mvc:resource-chain resource-cache="true">
+            <mvc:resolvers>
+                <bean class="org.springframework.web.servlet.resource.GzipResourceResolver"/>
+            </mvc:resolvers>
+            <mvc:transformers>
+                <bean name="embeddedviewerconfigurator"
+                      class="ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer">
+                    <constructor-arg ref="embeddedViewerConfig"/>
+                </bean>
+            </mvc:transformers>
+        </mvc:resource-chain>
+    </mvc:resources>
+
     <mvc:resources mapping="/**" location="/" />
 </beans>

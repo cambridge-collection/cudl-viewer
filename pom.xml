@@ -153,6 +153,29 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Include the embedded viewer's assets (html, css, js etc). -->
+        <!-- TODO: I've not tested it, but it should be possible to include the
+             previous version of the embedded viewer after this in order to have
+             assets resolve for both versions. This would be required when
+             updating the viewer so that people using cached viewer HTML could
+             still resolve assets. As long as the new version is earlier on the
+             classpath the correct viewer html should be used. -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>embedded-viewer-assets</artifactId>
+            <version>0.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Provides a ResourceTransformer which dynamically configures the
+             embedded viewer HTML. -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>embedded-viewer-configurer</artifactId>
+            <version>0.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
