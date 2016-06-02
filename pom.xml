@@ -14,7 +14,7 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <spring.version>4.2.4.RELEASE</spring.version>
         <spring.security.version>3.2.6.RELEASE</spring.security.version>
-        <cudl.viewer-ui-version>1.1.3</cudl.viewer-ui-version>
+        <cudl.viewer-ui-version>1.1.4</cudl.viewer-ui-version>
     </properties>
 
     <scm>
