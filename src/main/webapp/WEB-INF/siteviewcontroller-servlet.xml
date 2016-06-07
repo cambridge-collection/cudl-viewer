@@ -102,7 +102,7 @@
     <bean name="embeddedViewerConfig"
           class="ulcambridge.foundations.viewer.embedded.Configs"
           factory-method="createEmbeddedViewerConfig">
-        <constructor-arg name="gaTrackingId" value="${GoogleAnalyticsId:UA-57175370-1}"/>
+        <constructor-arg name="gaTrackingId" value="${cudl.viewer.analytics.embedded.gaid:}"/>
         <constructor-arg name="metadataUrlPrefix" value="${services://services.cudl.lib.cam.ac.uk}/v1/metadata/json/"/>
         <constructor-arg name="metadataUrlSuffix" value="${metadataUrlSuffix:}"/>
         <constructor-arg name="dziUrlPrefix" value="${imageServer://image01.cudl.lib.cam.ac.uk/}"/>
