@@ -16,14 +16,15 @@
 
     <import resource="datasource/collectionsFactory.xml" />
     <import resource="datasource/itemsFactory.xml" />
-    					
+
     <bean id="docView" 
               class="ulcambridge.foundations.viewer.DocumentViewController">
+        <property name="rootURL" value="${rootURL}"/>
         <property name="collectionFactory" ref="collectionFactory" />
         <property name="itemFactory" ref="itemFactory" />
         <property name="dataSource" ref="collectionsDao" />
     </bean>
-	
+
     <bean id="globalproperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
             <list>

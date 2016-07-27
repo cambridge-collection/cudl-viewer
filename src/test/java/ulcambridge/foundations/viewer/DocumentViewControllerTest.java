@@ -54,8 +54,10 @@ public class DocumentViewControllerTest extends TestCase {
 		req.setServerName("testurl.testingisthebest.com");
 		req.setServerPort(8080);
 
-		DocumentViewController c = new DocumentViewController();	
-		
+		DocumentViewController c = new DocumentViewController();
+
+		c.setRootURL("http://testurl.testingisthebest.com:8080");
+
 		// inject the mock dao 
 		CollectionFactory collectionFactory = new CollectionFactory();
 		collectionFactory.setCollectionsDao(collectionsdao);
@@ -72,7 +74,7 @@ public class DocumentViewControllerTest extends TestCase {
 		assertEquals("MS-ADD-04004", mDoc.getModelMap().get("docId"));
 		assertEquals(0, mDoc.getModelMap().get("page"));
 		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
-		
+		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
 	}
 	
 }

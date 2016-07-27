@@ -60,6 +60,7 @@
     <jsp:attribute name="pageData">
         <%-- FIXME: Some of these arent' used --%>
         <cudl:default-context>
+            <json:property name="rootURL" value="${rootURL}"/>
             <json:property name="jsonURL" value="${jsonURL}"/>
             <json:property name="jsonThumbURL" value="${jsonThumbnailsURL}"/>
             <json:property name="pageNum" value="${page}"/>
