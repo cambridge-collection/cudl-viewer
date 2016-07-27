@@ -54,6 +54,14 @@
                 <cudl:meta property="twitter:creator" content="@camdiglib" />
                 <cudl:meta property="twitter:site" content="@camdiglib" />
             </jsp:attribute>
+
+            <jsp:body>
+                <script type="text/javascript">
+                    var addthis_config = addthis_config||{};
+                    addthis_config.data_track_addressbar = false;
+                    addthis_config.data_track_clickback = false;
+                </script>
+            </jsp:body>
         </cudl:head-content>
     </jsp:attribute>
 
