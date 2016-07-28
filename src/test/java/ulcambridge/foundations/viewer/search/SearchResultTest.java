@@ -14,53 +14,53 @@ import org.w3c.dom.NodeList;
  * Unit test
  */
 public class SearchResultTest extends TestCase {
-	/**
-	 * Create the test case
-	 * 
-	 * @param testName
-	 *            name of the test case
-	 */
-	public SearchResultTest(String testName) {
-		super(testName);
-	}
+    /**
+     * Create the test case
+     *
+     * @param testName
+     *            name of the test case
+     */
+    public SearchResultTest(String testName) {
+        super(testName);
+    }
 
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(SearchResultTest.class);
-	}
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite() {
+        return new TestSuite(SearchResultTest.class);
+    }
 
-	/**
-	 * Tests the SearchResultSet object
-	 */
-	public void testSearchResultSet() {
-		
-		// Read document from File
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		Element dom = null;
-		try {
+    /**
+     * Tests the SearchResultSet object
+     */
+    public void testSearchResultSet() {
 
-			DocumentBuilder db = dbf.newDocumentBuilder();
+        // Read document from File
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Element dom = null;
+        try {
 
-			dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();
+            DocumentBuilder db = dbf.newDocumentBuilder();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+            dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();
 
-		}
-		
-		// Get first result
-		NodeList docHits = dom.getElementsByTagName("docHit");
-		Element node = (Element) docHits.item(0);
-		
-		XTFSearch xtfSearch = new XTFSearch();		
-		SearchResult result = xtfSearch.createSearchResult(node);		
+        } catch (Exception e) {
+            e.printStackTrace();
 
-		assertEquals(result.getFileId(), "MS-ADD-04004");
-		assertEquals(result.getTitle(), "Newton's Waste Book");		
-		assertEquals(result.getStartPage(), 1);
-		assertEquals(result.getStartPageLabel(), "front cover");
-		assertEquals(result.getSnippets().size(), 1);
-	}
+        }
+
+        // Get first result
+        NodeList docHits = dom.getElementsByTagName("docHit");
+        Element node = (Element) docHits.item(0);
+
+        XTFSearch xtfSearch = new XTFSearch();
+        SearchResult result = xtfSearch.createSearchResult(node);
+
+        assertEquals(result.getFileId(), "MS-ADD-04004");
+        assertEquals(result.getTitle(), "Newton's Waste Book");
+        assertEquals(result.getStartPage(), 1);
+        assertEquals(result.getStartPageLabel(), "front cover");
+        assertEquals(result.getSnippets().size(), 1);
+    }
 }

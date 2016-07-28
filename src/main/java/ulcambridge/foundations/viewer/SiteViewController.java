@@ -46,7 +46,7 @@ public class SiteViewController {
     // on path /
     @RequestMapping(value = "/")
     public ModelAndView handleRequest() {
-        
+
         if (showHoldingPage != null && showHoldingPage.equals("true")) {
             ModelAndView modelAndView = new ModelAndView(
                     "jsp/errors/holdingpage");
@@ -66,7 +66,7 @@ public class SiteViewController {
 
         List<Collection> rootCollections = this.collectionFactory
                 .getRootCollections();
-		// Collections.shuffle(allCollections); // shuffle to randomise
+        // Collections.shuffle(allCollections); // shuffle to randomise
         // collection order.
         modelAndView.addObject("rootCollections", rootCollections);
 

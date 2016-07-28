@@ -7,27 +7,27 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 /**
  * Used for testing
- * 
+ *
  * @author jennie
  */
 public class CollectionsMockDao implements CollectionsDao {
 
-	public List<String> getCollectionIds() {
+    public List<String> getCollectionIds() {
 
-		List<String> ids = new ArrayList<String>();
-		ids.add("MS-ADD-03959");
-		ids.add("MS-ADD-04000");
-		ids.add("MS-ADD-04004");
-		
-		return ids;
-	}
+        List<String> ids = new ArrayList<String>();
+        ids.add("MS-ADD-03959");
+        ids.add("MS-ADD-04000");
+        ids.add("MS-ADD-04004");
 
-	public Collection getCollection(String collectionId) {
+        return ids;
+    }
 
-		return new Collection("treasures", "Newton Papers", getCollectionIds(),
-				"collections/treasures/summary.html", "collections/treasures/sponsors.html", "virtual", "");
+    public Collection getCollection(String collectionId) {
 
-	}
+        return new Collection("treasures", "Newton Papers", getCollectionIds(),
+                "collections/treasures/summary.html", "collections/treasures/sponsors.html", "virtual", "");
+
+    }
 
     @Override
     public int getCollectionsRowCount() {
@@ -44,16 +44,16 @@ public class CollectionsMockDao implements CollectionsDao {
         return 0;
     }
 
-	@Override
-	public boolean isItemTaggable(String itemId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isItemTaggable(String itemId) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	@Override
-	public List<String> getCollectionId(String itemId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<String> getCollectionId(String itemId) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

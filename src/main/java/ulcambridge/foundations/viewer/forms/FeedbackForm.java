@@ -14,11 +14,11 @@ public class FeedbackForm {
     @NotEmpty
     @Size(max = 100)
     private String name;
-    
+
     @NotEmpty
     @Email
     private String email;
-    
+
     @NotEmpty
     private String comment;
 
@@ -37,12 +37,12 @@ public class FeedbackForm {
     public String getEmail() {
         return email;
     }
-    
+
     public void setComment(String comment) {
         this.comment = comment;
     }
 
     public String getComment() {
         return comment;
-    }    
+    }
 }

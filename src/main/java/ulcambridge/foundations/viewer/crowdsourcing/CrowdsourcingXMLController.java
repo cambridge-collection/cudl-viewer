@@ -29,281 +29,281 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Handles requests for generating combined xmls for xtf search.
- * 
+ *
  * @author Lei
- * 
+ *
  */
 @RestController
 public class CrowdsourcingXMLController {
 
-	private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
 
-	private CrowdsourcingDao dataSource;
+    private CrowdsourcingDao dataSource;
 
-	private final String APIKEY = Properties.getString("api.cs.key");
-	
-	private final String PATH_META = Properties.getString("path.meta");
-	private final String PATH_FRAG = Properties.getString("path.fragment");
-	
-	private final String PATH_ANNO = Properties.getString("path.anno");
-	private final String PATH_TAG = Properties.getString("path.tag");
-	private final String PATH_ANNOTAG = Properties.getString("path.annotag");
-	private final String PATH_ANNOMETA = Properties.getString("path.annometa");
-	private final String PATH_TAGMETA = Properties.getString("path.tagmeta");
-	private final String PATH_ANNOTAGMETA = Properties.getString("path.annotagmeta");
-	
-	public CrowdsourcingXMLController(CrowdsourcingDao dataSource) {
-		this.dataSource = dataSource;
-	}
+    private final String APIKEY = Properties.getString("api.cs.key");
 
-	// on path /updatefrags
-	@RequestMapping(value = "/updatefrags/{key}", method = RequestMethod.GET)
-	public JsonResponse handleUpdateFragments(@PathVariable("key") String key) {
+    private final String PATH_META = Properties.getString("path.meta");
+    private final String PATH_FRAG = Properties.getString("path.fragment");
 
-		if (!key.equals(APIKEY))
-			return new JsonResponse("400", "API key missing");
+    private final String PATH_ANNO = Properties.getString("path.anno");
+    private final String PATH_TAG = Properties.getString("path.tag");
+    private final String PATH_ANNOTAG = Properties.getString("path.annotag");
+    private final String PATH_ANNOMETA = Properties.getString("path.annometa");
+    private final String PATH_TAGMETA = Properties.getString("path.tagmeta");
+    private final String PATH_ANNOTAGMETA = Properties.getString("path.annotagmeta");
 
-		// TODO validate filenames, skip invalid filenames
-		//
-		SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
-		List<File> fragmentFiles = sr.listFragments();
+    public CrowdsourcingXMLController(CrowdsourcingDao dataSource) {
+        this.dataSource = dataSource;
+    }
 
-		if (fragmentFiles == null) {
-			logger.error("Fragments not found");
-			return new JsonResponse("400", "Fragments not found");
-		}
+    // on path /updatefrags
+    @RequestMapping(value = "/updatefrags/{key}", method = RequestMethod.GET)
+    public JsonResponse handleUpdateFragments(@PathVariable("key") String key) {
 
-		int size = fragmentFiles.size(), counter = 0, counterSkip = 0;
+        if (!key.equals(APIKEY))
+            return new JsonResponse("400", "API key missing");
 
-		//for (String documentPath : fragmentNames) {
-		for (File fragmentFile : fragmentFiles) {
-			String documentId = FilenameUtils.getBaseName(fragmentFile.getName());
+        // TODO validate filenames, skip invalid filenames
+        //
+        SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
+        List<File> fragmentFiles = sr.listFragments();
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + documentId);
+        if (fragmentFiles == null) {
+            logger.error("Fragments not found");
+            return new JsonResponse("400", "Fragments not found");
+        }
 
-			try {
-				// extract tags from file
-				List<Tag> tags = sr.extractKeywords(fragmentFile.getPath());
+        int size = fragmentFiles.size(), counter = 0, counterSkip = 0;
 
-				DocumentTags dt = new DocumentTags();
-				dt.setDocumentId(documentId);
-				dt.setTotal(tags.size());
-				dt.setTags(tags);
+        //for (String documentPath : fragmentNames) {
+        for (File fragmentFile : fragmentFiles) {
+            String documentId = FilenameUtils.getBaseName(fragmentFile.getName());
 
-				int rowsAffected = dataSource.addTag(documentId, dt);
+            counter++;
+            logger.info(counter + "/" + size + ": " + documentId);
 
-			} catch (Exception e) {
-				counterSkip++;
-				e.printStackTrace();
-			}
-		}
-		logger.info("skip: " + counterSkip);
+            try {
+                // extract tags from file
+                List<Tag> tags = sr.extractKeywords(fragmentFile.getPath());
 
-		return new JsonResponse("200", "Tags added/updated in database");
-	}
+                DocumentTags dt = new DocumentTags();
+                dt.setDocumentId(documentId);
+                dt.setTotal(tags.size());
+                dt.setTags(tags);
 
-	// on path /
-	@RequestMapping(value = "/{type}/{key}", method = RequestMethod.GET)
-	public JsonResponse handleGenerateXMLsForXTFSearch(@PathVariable("type") String type, @PathVariable("key") String key) {
+                int rowsAffected = dataSource.addTag(documentId, dt);
 
-		if (!key.equals(APIKEY))
-			return new JsonResponse("400", "API key missing");
+            } catch (Exception e) {
+                counterSkip++;
+                e.printStackTrace();
+            }
+        }
+        logger.info("skip: " + counterSkip);
 
-		// annotation xml
-		if (type.equals("anno")) {
-			generateXML_Anno();
-			return new JsonResponse("200", "Annotation XMLs generated");
-		} 
-		
-		// tag xml
-		else if (type.equals("tag")) {
-			generateXML_Tag();
-			return new JsonResponse("200", "Combined XMLs (tags+removed tags) generated");
-		} 
-		
-		// annotation & tag xml
-		else if (type.equals("annotag")) {
-			generateXML_AnnoTag();
-			return new JsonResponse("200", "Combined XMLs (annotations and tags+removed tags) generated");
-		} else if (type.equals("annometa") || type.equals("tagmeta") || type.equals("annotagmeta")) {
-				SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
-				List<File> metadataFiles = sr.listMetadata();
+        return new JsonResponse("200", "Tags added/updated in database");
+    }
 
-				if (metadataFiles == null) {
-					logger.error("Metadata not found, " + PATH_META);
-					return new JsonResponse("400", "Metadata not found");
-				}
+    // on path /
+    @RequestMapping(value = "/{type}/{key}", method = RequestMethod.GET)
+    public JsonResponse handleGenerateXMLsForXTFSearch(@PathVariable("type") String type, @PathVariable("key") String key) {
 
-				// annotation & metadata xml
-				if (type.equals("annometa")) {
-					generateXML_AnnoMeta(metadataFiles, sr);
-					return new JsonResponse("200", "Combined XMLs (annotations and metadata) generated");
-				} 
-				
-				// tag & metadata xml
-				else if (type.equals("tagmeta")) {
-					generateXML_TagMeta(metadataFiles, sr);
-					return new JsonResponse("200", "Combined XMLs (tags+removed tags and metadata) generated");
-				} 
-				
-				// annotation, tag & metadata xml
-				else if (type.equals("annotagmeta")) {
-					generateXML_AnnoTagMeta(metadataFiles, sr);
-					return new JsonResponse("200", "Combined XMLs (annotations, tags+removed tags and metadata) generated");
-				} 
-				
-				else {
-					return new JsonResponse("400", "Bad requeist");
-				}
-		} else if (type.equals("all")) {
-			generateXML_Anno();
-			generateXML_Tag();
-			generateXML_AnnoTag();
-			
-			SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
-			List<File> metadataFiles = sr.listMetadata();
-			
-			if (metadataFiles == null) {
-				logger.error("Metadata not found");
-				return new JsonResponse("400", "Metadata not found");
-			}
-			
-			generateXML_AnnoMeta(metadataFiles, sr);
-			generateXML_TagMeta(metadataFiles, sr);
-			generateXML_AnnoTagMeta(metadataFiles, sr);
-			
-			return new JsonResponse("200", "XML documents for XTF search generated");
-		} else {
-			return new JsonResponse("400", "Bad requeist");
-		}
-	}
+        if (!key.equals(APIKEY))
+            return new JsonResponse("400", "API key missing");
 
-	private void generateXML_Anno() {
-		List<String> documentIds = dataSource.getAnnotatedDocuments();
+        // annotation xml
+        if (type.equals("anno")) {
+            generateXML_Anno();
+            return new JsonResponse("200", "Annotation XMLs generated");
+        }
 
-		int counter = 0, size = documentIds.size();
+        // tag xml
+        else if (type.equals("tag")) {
+            generateXML_Tag();
+            return new JsonResponse("200", "Combined XMLs (tags+removed tags) generated");
+        }
 
-		for (String documentId : documentIds) {
-			DocumentAnnotations docAnnotation = dataSource.getAnnotationsByDocument(documentId);
+        // annotation & tag xml
+        else if (type.equals("annotag")) {
+            generateXML_AnnoTag();
+            return new JsonResponse("200", "Combined XMLs (annotations and tags+removed tags) generated");
+        } else if (type.equals("annometa") || type.equals("tagmeta") || type.equals("annotagmeta")) {
+                SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
+                List<File> metadataFiles = sr.listMetadata();
 
-			DocumentTerms docTerms = new DocumentTerms(docAnnotation.getDocumentId(), docAnnotation.getTotal(), docAnnotation.getTerms());
+                if (metadataFiles == null) {
+                    logger.error("Metadata not found, " + PATH_META);
+                    return new JsonResponse("400", "Metadata not found");
+                }
 
-			String path = (new File(PATH_ANNO, documentId + ".xml")).getPath();
-			new FileReader().save(path, docTerms.toJAXBString(docTerms));
+                // annotation & metadata xml
+                if (type.equals("annometa")) {
+                    generateXML_AnnoMeta(metadataFiles, sr);
+                    return new JsonResponse("200", "Combined XMLs (annotations and metadata) generated");
+                }
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + documentId);
-		}
-	}
+                // tag & metadata xml
+                else if (type.equals("tagmeta")) {
+                    generateXML_TagMeta(metadataFiles, sr);
+                    return new JsonResponse("200", "Combined XMLs (tags+removed tags and metadata) generated");
+                }
 
-	private void generateXML_Tag() {
-		List<String> documentIds = dataSource.getTaggedDocuments();
+                // annotation, tag & metadata xml
+                else if (type.equals("annotagmeta")) {
+                    generateXML_AnnoTagMeta(metadataFiles, sr);
+                    return new JsonResponse("200", "Combined XMLs (annotations, tags+removed tags and metadata) generated");
+                }
 
-		int counter = 0, size = documentIds.size();
+                else {
+                    return new JsonResponse("400", "Bad requeist");
+                }
+        } else if (type.equals("all")) {
+            generateXML_Anno();
+            generateXML_Tag();
+            generateXML_AnnoTag();
 
-		for (String documentId : documentIds) {
-			DocumentTags docTags = dataSource.getTagsByDocument(documentId);
-			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(documentId);
+            SourceReader sr = new SourceReader(PATH_META, PATH_FRAG);
+            List<File> metadataFiles = sr.listMetadata();
 
-			// combine tags with removed tags
-			DocumentTerms docTerms = new TermCombiner().combine_Tag_RemovedTag(docTags, docRemovedTags);
+            if (metadataFiles == null) {
+                logger.error("Metadata not found");
+                return new JsonResponse("400", "Metadata not found");
+            }
 
-			String path = (new File(PATH_TAG, documentId + ".xml")).getPath();
-			new FileReader().save(path, docTerms.toJAXBString(docTerms));
+            generateXML_AnnoMeta(metadataFiles, sr);
+            generateXML_TagMeta(metadataFiles, sr);
+            generateXML_AnnoTagMeta(metadataFiles, sr);
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + documentId);
-		}
-	}
+            return new JsonResponse("200", "XML documents for XTF search generated");
+        } else {
+            return new JsonResponse("400", "Bad requeist");
+        }
+    }
 
-	private void generateXML_AnnoTag() {
-		List<String> annotatedDocuments = dataSource.getAnnotatedDocuments();
-		List<String> taggedDocuments = dataSource.getTaggedDocuments();
-		Set<String> distinctDocumentIdsSet = new HashSet<String>(annotatedDocuments);
-		distinctDocumentIdsSet.addAll(taggedDocuments);
+    private void generateXML_Anno() {
+        List<String> documentIds = dataSource.getAnnotatedDocuments();
 
-		List<String> documentIds = new ArrayList<String>(distinctDocumentIdsSet);
+        int counter = 0, size = documentIds.size();
 
-		int counter = 0, size = documentIds.size();
+        for (String documentId : documentIds) {
+            DocumentAnnotations docAnnotation = dataSource.getAnnotationsByDocument(documentId);
 
-		for (String documentId : documentIds) {
-			DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(documentId);
-			DocumentTags docTags = dataSource.getTagsByDocument(documentId);
-			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(documentId);
+            DocumentTerms docTerms = new DocumentTerms(docAnnotation.getDocumentId(), docAnnotation.getTotal(), docAnnotation.getTerms());
 
-			// combine annotations, tags and removed tags
-			DocumentTerms docTerms = new TermCombiner().combine_Anno_Tag_RemovedTag(docAnnotations, docTags, docRemovedTags);
+            String path = (new File(PATH_ANNO, documentId + ".xml")).getPath();
+            new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
-			String path = (new File(PATH_ANNOTAG, documentId + ".xml")).getPath();
-			new FileReader().save(path, docTerms.toJAXBString(docTerms));
+            counter++;
+            logger.info(counter + "/" + size + ": " + documentId);
+        }
+    }
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + documentId);
-		}
-	}
+    private void generateXML_Tag() {
+        List<String> documentIds = dataSource.getTaggedDocuments();
 
-	private void generateXML_AnnoMeta(List<File> metadataFiles, SourceReader sr) {
-		int counter = 0, size = metadataFiles.size();
+        int counter = 0, size = documentIds.size();
 
-		for (File metadataFile : metadataFiles) {
-			String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
+        for (String documentId : documentIds) {
+            DocumentTags docTags = dataSource.getTagsByDocument(documentId);
+            DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(documentId);
 
-			DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(FilenameUtils.getBaseName(metadataId));
+            // combine tags with removed tags
+            DocumentTerms docTerms = new TermCombiner().combine_Tag_RemovedTag(docTags, docRemovedTags);
 
-			// combine annotations with metadata (level up raw)
-			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations);
+            String path = (new File(PATH_TAG, documentId + ".xml")).getPath();
+            new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
-			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
-			String path = (new File(PATH_ANNOMETA, metadataId + ".xml")).getPath();
-			new FileReader().save(path, xml);
+            counter++;
+            logger.info(counter + "/" + size + ": " + documentId);
+        }
+    }
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + metadataId);
-		}
-	}
+    private void generateXML_AnnoTag() {
+        List<String> annotatedDocuments = dataSource.getAnnotatedDocuments();
+        List<String> taggedDocuments = dataSource.getTaggedDocuments();
+        Set<String> distinctDocumentIdsSet = new HashSet<String>(annotatedDocuments);
+        distinctDocumentIdsSet.addAll(taggedDocuments);
 
-	private void generateXML_TagMeta(List<File> metadataFiles, SourceReader sr) {
-		int counter = 0, size = metadataFiles.size();
+        List<String> documentIds = new ArrayList<String>(distinctDocumentIdsSet);
 
-		for (File metadataFile : metadataFiles) {
-			String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
+        int counter = 0, size = documentIds.size();
 
-			DocumentTags docTags = dataSource.getTagsByDocument(metadataId);
-			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
+        for (String documentId : documentIds) {
+            DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(documentId);
+            DocumentTags docTags = dataSource.getTagsByDocument(documentId);
+            DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(documentId);
 
-			// combine tags, removed tags with meta (level up raw)
-			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docTags, docRemovedTags);
+            // combine annotations, tags and removed tags
+            DocumentTerms docTerms = new TermCombiner().combine_Anno_Tag_RemovedTag(docAnnotations, docTags, docRemovedTags);
 
-			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
-			String path = (new File(PATH_TAGMETA, metadataId + ".xml")).getPath();
-			new FileReader().save(path, xml);
+            String path = (new File(PATH_ANNOTAG, documentId + ".xml")).getPath();
+            new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + metadataId);
-		}
-	}
+            counter++;
+            logger.info(counter + "/" + size + ": " + documentId);
+        }
+    }
 
-	private void generateXML_AnnoTagMeta(List<File> metadataFiles, SourceReader sr) {
-		int counter = 0, size = metadataFiles.size();
+    private void generateXML_AnnoMeta(List<File> metadataFiles, SourceReader sr) {
+        int counter = 0, size = metadataFiles.size();
 
-		for (File metadataFile : metadataFiles) {
-			String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
+        for (File metadataFile : metadataFiles) {
+            String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
 
-			DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(metadataId);
-			DocumentTags docTags = dataSource.getTagsByDocument(metadataId);
-			DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
+            DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(FilenameUtils.getBaseName(metadataId));
 
-			// combine annotations, tags, removed tags with meta (level up raw)
-			DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations, docTags, docRemovedTags);
+            // combine annotations with metadata (level up raw)
+            DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations);
 
-			String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
-			String path = (new File(PATH_ANNOTAGMETA, metadataId + ".xml")).getPath();
-			new FileReader().save(path, xml);
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String path = (new File(PATH_ANNOMETA, metadataId + ".xml")).getPath();
+            new FileReader().save(path, xml);
 
-			counter++;
-			logger.info(counter + "/" + size + ": " + metadataId);
-		}
-	}
+            counter++;
+            logger.info(counter + "/" + size + ": " + metadataId);
+        }
+    }
+
+    private void generateXML_TagMeta(List<File> metadataFiles, SourceReader sr) {
+        int counter = 0, size = metadataFiles.size();
+
+        for (File metadataFile : metadataFiles) {
+            String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
+
+            DocumentTags docTags = dataSource.getTagsByDocument(metadataId);
+            DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
+
+            // combine tags, removed tags with meta (level up raw)
+            DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docTags, docRemovedTags);
+
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String path = (new File(PATH_TAGMETA, metadataId + ".xml")).getPath();
+            new FileReader().save(path, xml);
+
+            counter++;
+            logger.info(counter + "/" + size + ": " + metadataId);
+        }
+    }
+
+    private void generateXML_AnnoTagMeta(List<File> metadataFiles, SourceReader sr) {
+        int counter = 0, size = metadataFiles.size();
+
+        for (File metadataFile : metadataFiles) {
+            String metadataId = FilenameUtils.getBaseName(metadataFile.getName());
+
+            DocumentAnnotations docAnnotations = dataSource.getAnnotationsByDocument(metadataId);
+            DocumentTags docTags = dataSource.getTagsByDocument(metadataId);
+            DocumentTags docRemovedTags = dataSource.getRemovedTagsByDocument(metadataId);
+
+            // combine annotations, tags, removed tags with meta (level up raw)
+            DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations, docTags, docRemovedTags);
+
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String path = (new File(PATH_ANNOTAGMETA, metadataId + ".xml")).getPath();
+            new FileReader().save(path, xml);
+
+            counter++;
+            logger.info(counter + "/" + size + ": " + metadataId);
+        }
+    }
 
 }

@@ -16,74 +16,74 @@ import javax.servlet.RequestDispatcher;
 
 public class SiteViewControllerTest extends TestCase {
 
-	public void testHandleRequest() {
-		SiteViewController c = new SiteViewController();
+    public void testHandleRequest() {
+        SiteViewController c = new SiteViewController();
 
-		JSONReader reader = new MockJSONReader();
-		
-		ItemsJSONDao jsondao = new ItemsJSONDao();
-		jsondao.setJSONReader(reader);
-				
-		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setItemsDao(jsondao);	
-		
-		CollectionFactory collectionFactory = new CollectionFactory();
-		CollectionsDao collectionsdao = new CollectionsMockDao();
-		collectionFactory.setCollectionsDao(collectionsdao);	
+        JSONReader reader = new MockJSONReader();
 
-		c.setItemFactory(itemFactory);
-		c.setCollectionFactory(collectionFactory);		
-		
-		ModelAndView modelAndView = c.handleRequest();
-		assertTrue(modelAndView!=null);
-	}
+        ItemsJSONDao jsondao = new ItemsJSONDao();
+        jsondao.setJSONReader(reader);
 
-	public void testHandleNewsRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleNewsRequest();
-		assertTrue(modelAndView!=null);
-	}
+        ItemFactory itemFactory = new ItemFactory();
+        itemFactory.setItemsDao(jsondao);
 
-	public void testHandleAboutRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleAboutRequest();
-		assertTrue(modelAndView!=null);
-	}
+        CollectionFactory collectionFactory = new CollectionFactory();
+        CollectionsDao collectionsdao = new CollectionsMockDao();
+        collectionFactory.setCollectionsDao(collectionsdao);
 
-	public void testHandleHelpRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleHelpRequest();
-		assertTrue(modelAndView!=null);
-	}
+        c.setItemFactory(itemFactory);
+        c.setCollectionFactory(collectionFactory);
 
-	public void testHandleTermsRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleTermsRequest();
-		assertTrue(modelAndView!=null);
-	}
+        ModelAndView modelAndView = c.handleRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-	public void testHandleContributorsRequest() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handleContributorsRequest();
-		assertTrue(modelAndView!=null);
-	}
+    public void testHandleNewsRequest() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handleNewsRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-	public void testHandle404() {
-		SiteViewController c = new SiteViewController();
-		ModelAndView modelAndView = c.handle404();
-		assertTrue(modelAndView!=null);
-	}
+    public void testHandleAboutRequest() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handleAboutRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-	public void testHandle500() {
-		SiteViewController c = new SiteViewController();
+    public void testHandleHelpRequest() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handleHelpRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-		MockHttpServletRequest req = new MockHttpServletRequest();
-		req.setAttribute(RequestDispatcher.ERROR_EXCEPTION,
-				new RuntimeException("boom"));
+    public void testHandleTermsRequest() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handleTermsRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-		ModelAndView mav = c.handle500(req);
+    public void testHandleContributorsRequest() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handleContributorsRequest();
+        assertTrue(modelAndView!=null);
+    }
 
-		assertModelAttributeValue(mav, "errorMessage", "boom");
-		assertModelAttributeAvailable(mav, "errorTraceback");
-	}
+    public void testHandle404() {
+        SiteViewController c = new SiteViewController();
+        ModelAndView modelAndView = c.handle404();
+        assertTrue(modelAndView!=null);
+    }
+
+    public void testHandle500() {
+        SiteViewController c = new SiteViewController();
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setAttribute(RequestDispatcher.ERROR_EXCEPTION,
+                new RuntimeException("boom"));
+
+        ModelAndView mav = c.handle500(req);
+
+        assertModelAttributeValue(mav, "errorMessage", "boom");
+        assertModelAttributeAvailable(mav, "errorTraceback");
+    }
 }

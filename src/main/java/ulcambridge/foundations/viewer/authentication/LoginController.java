@@ -44,7 +44,7 @@ public class LoginController {
     protected final Log logger = LogFactory.getLog(getClass());
     private final OAuth2RestOperations googleTemplate;
     private final OAuth2RestOperations facebookTemplate;
-    private final OAuth2RestOperations linkedinTemplate;    
+    private final OAuth2RestOperations linkedinTemplate;
     private BookmarkDao bookmarkDao;
     private UsersDao usersDao;
 
@@ -72,33 +72,33 @@ public class LoginController {
     @RequestMapping(value = "/login")
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error, HttpSession session,
-            HttpServletRequest request, ModelMap model, 
+            HttpServletRequest request, ModelMap model,
             @RequestParam(value = "access", required = false) String access) {
 
-    	// access will be null in for example timeout or for some errors.
-    	// default to Referer value from header
-    	if (access==null) {
-    		String referer = request.getHeader("Referer");
-    		if (referer!=null) {
-    			URL refererURL;
-				try {
-					refererURL = new URL(referer);
-					access = refererURL.getPath();
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				}    			    		
-    		}
-    	}
-    
-    	// If access is still null default to my library. 
-    	if (access==null) {
-    		access = "/mylibrary/";
-    	}
-    	
-    	// Put the access variable in the session, 
-    	// which is used to redirect to the correct page after login. 
+        // access will be null in for example timeout or for some errors.
+        // default to Referer value from header
+        if (access==null) {
+            String referer = request.getHeader("Referer");
+            if (referer!=null) {
+                URL refererURL;
+                try {
+                    refererURL = new URL(referer);
+                    access = refererURL.getPath();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // If access is still null default to my library.
+        if (access==null) {
+            access = "/mylibrary/";
+        }
+
+        // Put the access variable in the session,
+        // which is used to redirect to the correct page after login.
         session.setAttribute("access", access);
-        
+
         ModelAndView modelAndView = new ModelAndView("jsp/login");
         model.put("error", error);
         return modelAndView;
@@ -123,7 +123,7 @@ public class LoginController {
     @RequestMapping(value = "/oauth2/google")
     public ModelAndView handleGoogleRequest(HttpSession session,
             HttpServletResponse response) throws JSONException, IOException,
-            NoSuchAlgorithmException {    	    
+            NoSuchAlgorithmException {
 
         // Make Google profile request
         String result = googleTemplate
@@ -150,9 +150,9 @@ public class LoginController {
         setupUser(usernameEncoded, emailEncoded, session);
 
         // This should only be called up until Jan 2017.
-        migrateGoogleUser(usernameEncoded);        
+        migrateGoogleUser(usernameEncoded);
 
-        redirect(response, (String) session.getAttribute("access"));        
+        redirect(response, (String) session.getAttribute("access"));
         session.removeAttribute("access");
 
         return null;
@@ -163,7 +163,7 @@ public class LoginController {
     @RequestMapping(value = "/oauth2/facebook")
     public ModelAndView handleFacebookRequest(HttpSession session,
             HttpServletResponse response) throws JSONException, IOException,
-            NoSuchAlgorithmException {    
+            NoSuchAlgorithmException {
 
         // Make Facebook profile request
         String result = facebookTemplate.getForObject(
@@ -184,7 +184,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        redirect(response, (String) session.getAttribute("access"));      
+        redirect(response, (String) session.getAttribute("access"));
         session.removeAttribute("access");
 
         return null;
@@ -195,7 +195,7 @@ public class LoginController {
     @RequestMapping(value = "/oauth2/linkedin")
     public ModelAndView handleLinkedinRequest(HttpSession session,
             HttpServletResponse response) throws JSONException, IOException,
-            NoSuchAlgorithmException {    	        
+            NoSuchAlgorithmException {
 
         // Make LinkedIn profile request
         String result = linkedinTemplate
@@ -218,7 +218,7 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        redirect(response, (String) session.getAttribute("access"));        
+        redirect(response, (String) session.getAttribute("access"));
         session.removeAttribute("access");
 
         return null;
@@ -230,7 +230,7 @@ public class LoginController {
             HttpServletResponse response) throws JSONException, IOException,
             NoSuchAlgorithmException {
 
-        // Get the username from session, if no username is stored, 404. 
+        // Get the username from session, if no username is stored, 404.
         String username = (String) session.getAttribute("cudl-raven-username");
         if (username == null) {
             return new ModelAndView("jsp/errors/404");
@@ -242,37 +242,37 @@ public class LoginController {
         // setup user in Spring Security and DB
         setupUser(usernameEncoded, emailEncoded, session);
 
-        redirect(response, (String) session.getAttribute("access"));        
+        redirect(response, (String) session.getAttribute("access"));
         session.removeAttribute("access");
-        
+
         return null;
     }
 
     /**
      * Validates the access (which is a property read directly from the URL)
-     * and redirects to the page specified if this is valid. 
-     * 
+     * and redirects to the page specified if this is valid.
+     *
      * @param response
      * @param access
      * @throws IOException
      */
     private void redirect(HttpServletResponse response, String access) throws IOException {
-    	
-    	if (access==null) { access="/"; }  // default redirect to homepage.
-    	
-    	// validate access string
-    	URI uri = URI.create(access);    	
-    	uri = uri.normalize();
-    	
-    	// Currently restrict to /,/admin/,/mylibrary/ or /view/[itemid] pages. 
-    	if (uri.isAbsolute() || !uri.toString().startsWith("/") ||
-    			!uri.toString().matches("/|/mylibrary[/]?|/admin[/]?|/view/[A-Za-z0-9-]*/?[0-9]*(#[A-Za-z0-9-]*)?")) {
-    		throw new IOException("Invalid access parameter.");
-    	}
-    	
-        response.sendRedirect(uri.toString());              
+
+        if (access==null) { access="/"; }  // default redirect to homepage.
+
+        // validate access string
+        URI uri = URI.create(access);
+        uri = uri.normalize();
+
+        // Currently restrict to /,/admin/,/mylibrary/ or /view/[itemid] pages.
+        if (uri.isAbsolute() || !uri.toString().startsWith("/") ||
+                !uri.toString().matches("/|/mylibrary[/]?|/admin[/]?|/view/[A-Za-z0-9-]*/?[0-9]*(#[A-Za-z0-9-]*)?")) {
+            throw new IOException("Invalid access parameter.");
+        }
+
+        response.sendRedirect(uri.toString());
     }
-    
+
     /**
      * Encode (SHA-256) specified input and convert to hex.
      *

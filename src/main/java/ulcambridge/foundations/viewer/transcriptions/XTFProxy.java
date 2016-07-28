@@ -18,64 +18,64 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
- * This class forwards any requests to /xtf to the xtf URL specified in the 
- * cudl-gloabl.properties file. 
- * 
- * This allows relative URLs to XTF to be used that will use the spacified 
+ * This class forwards any requests to /xtf to the xtf URL specified in the
+ * cudl-gloabl.properties file.
+ *
+ * This allows relative URLs to XTF to be used that will use the spacified
  * version of XTF you have given (and for dev will the the dev XTF and for live
- * the live XTF without having to change the URL). 
- * 
+ * the live XTF without having to change the URL).
+ *
  * @author jennie
  *
  */
 @Controller
 public class XTFProxy {
 
-	protected final Log logger = LogFactory.getLog(getClass());
+    protected final Log logger = LogFactory.getLog(getClass());
 
-	// on path /transcription
-	// passed url parameter which is url from the json data for this page.
-	@RequestMapping(value = "/**")
-	public ModelAndView handleViewRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+    // on path /transcription
+    // passed url parameter which is url from the json data for this page.
+    @RequestMapping(value = "/**")
+    public ModelAndView handleViewRequest(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
 
-		// do nothing if proxy is off in the properties file. 
-		if (!Properties.getString("useProxy").equals("true")) {
-			return null;
-		}
-		
-		URL url = new URL(new URL(Properties.getString("xtfURL")), request.getRequestURI()+"?"+request.getQueryString());
+        // do nothing if proxy is off in the properties file.
+        if (!Properties.getString("useProxy").equals("true")) {
+            return null;
+        }
 
-		BufferedOutputStream out = new BufferedOutputStream(
-				response.getOutputStream());
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	    response.setContentType(connection.getContentType());
-	    InputStream is = connection.getInputStream();
-	    
-		try {
-			
-			byte[] byteChunk = new byte[4096];
+        URL url = new URL(new URL(Properties.getString("xtfURL")), request.getRequestURI()+"?"+request.getQueryString());
 
-			int n;
+        BufferedOutputStream out = new BufferedOutputStream(
+                response.getOutputStream());
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        response.setContentType(connection.getContentType());
+        InputStream is = connection.getInputStream();
 
-			while ((n = is.read(byteChunk)) > 0) {
-				out.write(byteChunk, 0, n);
-			}
-			out.flush();
+        try {
 
-		} catch (IOException e) {
-			e.printStackTrace();
+            byte[] byteChunk = new byte[4096];
 
-		} finally {
-			if (is != null) {
-				is.close();
-			}
-			if (out != null) {
-				out.close();
-			}
-		}
+            int n;
 
-		return null;
-	}
+            while ((n = is.read(byteChunk)) > 0) {
+                out.write(byteChunk, 0, n);
+            }
+            out.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+
+        return null;
+    }
 }
 

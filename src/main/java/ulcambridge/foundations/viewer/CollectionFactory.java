@@ -17,133 +17,133 @@ import ulcambridge.foundations.viewer.model.Collection;
 
 public class CollectionFactory {
 
-	private static Map<String, Collection> collections;
-	private static List<Collection> rootCollections;
-	private static boolean initialised = false;
-	private CollectionsDao collectionsDao;
-	private static int collectionsRowCount;
-	private static int itemsRowCount;
-	private static int itemsinCollectionRowCount;
-	private static Set<String> allItemIds; 
+    private static Map<String, Collection> collections;
+    private static List<Collection> rootCollections;
+    private static boolean initialised = false;
+    private CollectionsDao collectionsDao;
+    private static int collectionsRowCount;
+    private static int itemsRowCount;
+    private static int itemsinCollectionRowCount;
+    private static Set<String> allItemIds;
 
-	@Autowired
-	public void setCollectionsDao(CollectionsDao dao) {
-		collectionsDao = dao;
-		if (!initialised) {
-			init();
-		}
-	}
+    @Autowired
+    public void setCollectionsDao(CollectionsDao dao) {
+        collectionsDao = dao;
+        if (!initialised) {
+            init();
+        }
+    }
 
-	public boolean getInitialised() {
-		return initialised;
-	}
+    public boolean getInitialised() {
+        return initialised;
+    }
 
-	public synchronized void init() {
-		
-		// Create a new instance of cached items. 
-		collections = new Hashtable<String, Collection>();
-		rootCollections = new Vector<Collection>();
-		allItemIds =  Collections.synchronizedSet(new HashSet<String>()); 
-				
-		List<String> collectionIds = collectionsDao.getCollectionIds();
-		for (int i = 0; i < collectionIds.size(); i++) {
-			String collectionId = collectionIds.get(i);
-			Collection collection = collectionsDao.getCollection(collectionId);
-			collections.put(collectionId, collection);
-			allItemIds.addAll(collection.getItemIds());
-		}
+    public synchronized void init() {
 
-		// Setup the list of root collections used on the homescreen.
-		Iterator<Collection> iter = collections.values().iterator();
-		while (iter.hasNext()) {
-			Collection c = iter.next();
-			String parentId = c.getParentCollectionId();
+        // Create a new instance of cached items.
+        collections = new Hashtable<String, Collection>();
+        rootCollections = new Vector<Collection>();
+        allItemIds =  Collections.synchronizedSet(new HashSet<String>());
 
-			if (parentId == null || parentId.length() == 0) {
-				rootCollections.add(c);
-			}
-		}
-		Collections.sort(rootCollections);
-		collectionsRowCount = collectionsDao.getCollectionsRowCount();
-		itemsRowCount = collectionsDao.getItemsRowCount();
-		itemsinCollectionRowCount = collectionsDao
-				.getItemsInCollectionsRowCount();
-		initialised = true;
-	}
+        List<String> collectionIds = collectionsDao.getCollectionIds();
+        for (int i = 0; i < collectionIds.size(); i++) {
+            String collectionId = collectionIds.get(i);
+            Collection collection = collectionsDao.getCollection(collectionId);
+            collections.put(collectionId, collection);
+            allItemIds.addAll(collection.getItemIds());
+        }
 
-	public Collection getCollectionFromId(String id) {
+        // Setup the list of root collections used on the homescreen.
+        Iterator<Collection> iter = collections.values().iterator();
+        while (iter.hasNext()) {
+            Collection c = iter.next();
+            String parentId = c.getParentCollectionId();
 
-		return collections.get(id);
+            if (parentId == null || parentId.length() == 0) {
+                rootCollections.add(c);
+            }
+        }
+        Collections.sort(rootCollections);
+        collectionsRowCount = collectionsDao.getCollectionsRowCount();
+        itemsRowCount = collectionsDao.getItemsRowCount();
+        itemsinCollectionRowCount = collectionsDao
+                .getItemsInCollectionsRowCount();
+        initialised = true;
+    }
 
-	}
+    public Collection getCollectionFromId(String id) {
 
-	/**
-	 * Returns the first collection with the given title or null if no
-	 * collections exist with that title.
-	 *
-	 * @param title
-	 * @return
-	 */
-	public Collection getCollectionFromTitle(String title) {
+        return collections.get(id);
 
-		Iterator<Collection> c = getCollections().iterator();
+    }
 
-		while (c.hasNext()) {
-			Collection collection = c.next();
-			if (collection.getTitle().equals(title)) {
-				return collection;
-			}
-		}
+    /**
+     * Returns the first collection with the given title or null if no
+     * collections exist with that title.
+     *
+     * @param title
+     * @return
+     */
+    public Collection getCollectionFromTitle(String title) {
 
-		return null;
-	}
+        Iterator<Collection> c = getCollections().iterator();
 
-	public List<Collection> getCollections() {
+        while (c.hasNext()) {
+            Collection collection = c.next();
+            if (collection.getTitle().equals(title)) {
+                return collection;
+            }
+        }
 
-		ArrayList<Collection> list = new ArrayList<Collection>(
-				collections.values());
-		Collections.sort(list);
-		return list;
+        return null;
+    }
 
-	}
+    public List<Collection> getCollections() {
 
-	public List<Collection> getRootCollections() {
+        ArrayList<Collection> list = new ArrayList<Collection>(
+                collections.values());
+        Collections.sort(list);
+        return list;
 
-		return rootCollections;
+    }
 
-	}
+    public List<Collection> getRootCollections() {
 
-	public List<Collection> getSubCollections(Collection collection) {
+        return rootCollections;
 
-		List<Collection> output = new ArrayList<Collection>();
-		Iterator<Collection> iter = collections.values().iterator();
-		while (iter.hasNext()) {
-			Collection c = iter.next();
-			String parentId = c.getParentCollectionId();
+    }
 
-			if (parentId != null && parentId.equals(collection.getId())) {
-				output.add(c);
-			}
-		}
-		Collections.sort(output);
-		return output;
-	}
+    public List<Collection> getSubCollections(Collection collection) {
 
-	public Set<String> getAllItemIds() {
+        List<Collection> output = new ArrayList<Collection>();
+        Iterator<Collection> iter = collections.values().iterator();
+        while (iter.hasNext()) {
+            Collection c = iter.next();
+            String parentId = c.getParentCollectionId();
 
-		return allItemIds;
-	}
+            if (parentId != null && parentId.equals(collection.getId())) {
+                output.add(c);
+            }
+        }
+        Collections.sort(output);
+        return output;
+    }
 
-	public int getCollectionsRowCount() {
-		return collectionsRowCount;
-	}
+    public Set<String> getAllItemIds() {
 
-	public int getItemsRowCount() {
-		return itemsRowCount;
-	}
+        return allItemIds;
+    }
 
-	public int getItemsInCollectionsRowCount() {
-		return itemsinCollectionRowCount;
-	}
+    public int getCollectionsRowCount() {
+        return collectionsRowCount;
+    }
+
+    public int getItemsRowCount() {
+        return itemsRowCount;
+    }
+
+    public int getItemsInCollectionsRowCount() {
+        return itemsinCollectionRowCount;
+    }
 
 }

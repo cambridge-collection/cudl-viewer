@@ -16,65 +16,65 @@ import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
  * Unit test for simple App.
  */
 public class DocumentViewControllerTest extends TestCase {
-	/**
-	 * Create the test case
-	 * 
-	 * @param testName
-	 *            name of the test case
-	 */
-	public DocumentViewControllerTest(String testName) {
-		super(testName);
-	}
+    /**
+     * Create the test case
+     *
+     * @param testName
+     *            name of the test case
+     */
+    public DocumentViewControllerTest(String testName) {
+        super(testName);
+    }
 
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(DocumentViewControllerTest.class);
-	}
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite() {
+        return new TestSuite(DocumentViewControllerTest.class);
+    }
 
-	/**
-	 * test the class DocumentViewController
-	 */
-	public void testDocumentViewController() throws Throwable {
-		
-		JSONReader reader = new MockJSONReader();
-		
-		ItemsJSONDao jsondao = new ItemsJSONDao();
-		jsondao.setJSONReader(reader);
-		
-		CollectionsDao collectionsdao = new CollectionsMockDao();
-				
-		ItemFactory itemFactory = new ItemFactory();
-		itemFactory.setItemsDao(jsondao);		
-		
-		MockHttpServletRequest req = new MockHttpServletRequest();
-		req.setRequestURI("/view/MS-ADD-04004");
-		req.setProtocol("http");
-		req.setServerName("testurl.testingisthebest.com");
-		req.setServerPort(8080);
+    /**
+     * test the class DocumentViewController
+     */
+    public void testDocumentViewController() throws Throwable {
 
-		DocumentViewController c = new DocumentViewController();
+        JSONReader reader = new MockJSONReader();
 
-		c.setRootURL("http://testurl.testingisthebest.com:8080");
+        ItemsJSONDao jsondao = new ItemsJSONDao();
+        jsondao.setJSONReader(reader);
 
-		// inject the mock dao 
-		CollectionFactory collectionFactory = new CollectionFactory();
-		collectionFactory.setCollectionsDao(collectionsdao);
-		
-		// inject the factories
-		c.setCollectionFactory(collectionFactory);	
-		c.setItemFactory(itemFactory);
-		
-		// inject the datasource
-		c.setDataSource(collectionsdao);
-		
-		ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);	
+        CollectionsDao collectionsdao = new CollectionsMockDao();
 
-		assertEquals("MS-ADD-04004", mDoc.getModelMap().get("docId"));
-		assertEquals(0, mDoc.getModelMap().get("page"));
-		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
-		assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
-	}
-	
+        ItemFactory itemFactory = new ItemFactory();
+        itemFactory.setItemsDao(jsondao);
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setRequestURI("/view/MS-ADD-04004");
+        req.setProtocol("http");
+        req.setServerName("testurl.testingisthebest.com");
+        req.setServerPort(8080);
+
+        DocumentViewController c = new DocumentViewController();
+
+        c.setRootURL("http://testurl.testingisthebest.com:8080");
+
+        // inject the mock dao
+        CollectionFactory collectionFactory = new CollectionFactory();
+        collectionFactory.setCollectionsDao(collectionsdao);
+
+        // inject the factories
+        c.setCollectionFactory(collectionFactory);
+        c.setItemFactory(itemFactory);
+
+        // inject the datasource
+        c.setDataSource(collectionsdao);
+
+        ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);
+
+        assertEquals("MS-ADD-04004", mDoc.getModelMap().get("docId"));
+        assertEquals(0, mDoc.getModelMap().get("page"));
+        assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
+        assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
+    }
+
 }

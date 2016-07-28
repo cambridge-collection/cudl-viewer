@@ -15,25 +15,25 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 /**
- * 
+ *
  * @author Lei
- * 
+ *
  */
 public class GsonDateAdapter implements JsonSerializer<Date>, JsonDeserializer<Date> {
 
-	@Override
-	public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
-		return new JsonPrimitive(Utils.formatDate(src));
-	}
+    @Override
+    public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
+        return new JsonPrimitive(Utils.formatDate(src));
+    }
 
-	@Override
-	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-		try {
-			return Utils.parseDate(json.getAsString());
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+    @Override
+    public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        try {
+            return Utils.parseDate(json.getAsString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

@@ -19,63 +19,63 @@ import ulcambridge.foundations.viewer.model.Properties;
 @Controller
 public class ImageProxy {
 
-	/**
-	 * This is used when we want to display images as if they were appearing
-	 * locally, but actually stream them from a remote location.
-	 * 
-	 * This is needed to view images from the SeaDragon Ajax which are stored on
-	 * a remote server. This servers location is specified in the cudl-global
-	 * properties file in the imageServer option.
-	 * 
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	// on path /imageproxy/
-	@RequestMapping(value = "/**")
-	public ModelAndView handleViewRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+    /**
+     * This is used when we want to display images as if they were appearing
+     * locally, but actually stream them from a remote location.
+     *
+     * This is needed to view images from the SeaDragon Ajax which are stored on
+     * a remote server. This servers location is specified in the cudl-global
+     * properties file in the imageServer option.
+     *
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    // on path /imageproxy/
+    @RequestMapping(value = "/**")
+    public ModelAndView handleViewRequest(HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
 
-		String imagePath = (String) request
-				.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+        String imagePath = (String) request
+                .getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
 
-		// do nothing if image proxy is off in the properties file. 
-		if (Properties.getString("proxyURL").isEmpty()) {
-			return null;
-		}
-				
-		URL url = new URL(Properties.getString("imageServer") + imagePath);
+        // do nothing if image proxy is off in the properties file.
+        if (Properties.getString("proxyURL").isEmpty()) {
+            return null;
+        }
 
-		BufferedOutputStream out = new BufferedOutputStream(
-				response.getOutputStream());
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-	    response.setContentType(connection.getContentType());
-	    InputStream is = connection.getInputStream();
-	    
-		try {
-			is = url.openStream();
-			byte[] byteChunk = new byte[4096];
+        URL url = new URL(Properties.getString("imageServer") + imagePath);
 
-			int n;
+        BufferedOutputStream out = new BufferedOutputStream(
+                response.getOutputStream());
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        response.setContentType(connection.getContentType());
+        InputStream is = connection.getInputStream();
 
-			while ((n = is.read(byteChunk)) > 0) {
-				out.write(byteChunk, 0, n);
-			}
-			out.flush();
+        try {
+            is = url.openStream();
+            byte[] byteChunk = new byte[4096];
 
-		} catch (IOException e) {
-			e.printStackTrace();
+            int n;
 
-		} finally {
-			if (is != null) {
-				is.close();
-			}
-			if (out != null) {
-				out.close();
-			}
-		}
+            while ((n = is.read(byteChunk)) > 0) {
+                out.write(byteChunk, 0, n);
+            }
+            out.flush();
 
-		return null;
-	}
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            if (is != null) {
+                is.close();
+            }
+            if (out != null) {
+                out.close();
+            }
+        }
+
+        return null;
+    }
 }

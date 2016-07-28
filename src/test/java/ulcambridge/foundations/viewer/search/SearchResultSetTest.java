@@ -16,87 +16,87 @@ import org.w3c.dom.NodeList;
  * Unit test
  */
 public class SearchResultSetTest extends TestCase {
-	/**
-	 * Create the test case
-	 * 
-	 * @param testName
-	 *            name of the test case
-	 */
-	public SearchResultSetTest(String testName) {
-		super(testName);
-	}
+    /**
+     * Create the test case
+     *
+     * @param testName
+     *            name of the test case
+     */
+    public SearchResultSetTest(String testName) {
+        super(testName);
+    }
 
-	/**
-	 * @return the suite of tests being tested
-	 */
-	public static Test suite() {
-		return new TestSuite(SearchResultSetTest.class);
-	}
+    /**
+     * @return the suite of tests being tested
+     */
+    public static Test suite() {
+        return new TestSuite(SearchResultSetTest.class);
+    }
 
-	/**
-	 * Tests the SearchResult object
-	 */
-	public void testSearchResult() {
-		
-		// Read document from File
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		Element dom = null;
-		try {
+    /**
+     * Tests the SearchResult object
+     */
+    public void testSearchResult() {
 
-			DocumentBuilder db = dbf.newDocumentBuilder();
+        // Read document from File
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Element dom = null;
+        try {
 
-			dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();;
+            DocumentBuilder db = dbf.newDocumentBuilder();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+            dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();;
 
-		}
-		
-		// Get first result
-		NodeList docHits = dom.getElementsByTagName("docHit");
-		Element node = (Element) docHits.item(0);
-		
-		XTFSearch xtfSearch = new XTFSearch();		
-		SearchResult result = xtfSearch.createSearchResult(node);
-		ArrayList<SearchResult> results = new ArrayList<SearchResult> ();
-		results.add(result);
-		
-		// Build facet list
-		Facet f = new Facet("field", "band", 3, 1);
-		Facet f2 = new Facet("field", "band2", 2, 2);
+        } catch (Exception e) {
+            e.printStackTrace();
 
-		ArrayList<Facet> facets = new ArrayList<Facet>();
-		facets.add(f);
-		facets.add(f2);	
-		
-		FacetGroup g = new FacetGroup("field", facets, 5);
-	
-		ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup> ();
-		facetGroups.add(g);
-		
-		SearchResultSet r = new SearchResultSet(1, "spellingSuggestedTerm", 2.3f,
-				results, facetGroups, "error");
-				
-		assertEquals(r.getError(), "error");
-		assertEquals(r.getSpellingSuggestedTerm(), "spellingSuggestedTerm");
-		assertEquals(r.getQueryTime(), 2.3f);
-		assertEquals(r.getNumberOfResults(), 1);
-		assertEquals(r.getResults().size(), 1);
-		assertEquals(r.getFacets().size(), 1);
-		
-		// Build second facet list
-		Facet f3 = new Facet("field2", "band3", 50, 3);
-		Facet f4 = new Facet("field2", "band4", 1, 4);
+        }
 
-		ArrayList<Facet> facets2 = new ArrayList<Facet>();
-		facets2.add(f3);
-		facets2.add(f4);
-		
-		FacetGroup g2 = new FacetGroup("field2", facets2, 51);		
-		
-		r.addFacetGroup(0, g2);
-		assertEquals(r.getFacets().size(),2);
-		
-		
-	}
+        // Get first result
+        NodeList docHits = dom.getElementsByTagName("docHit");
+        Element node = (Element) docHits.item(0);
+
+        XTFSearch xtfSearch = new XTFSearch();
+        SearchResult result = xtfSearch.createSearchResult(node);
+        ArrayList<SearchResult> results = new ArrayList<SearchResult> ();
+        results.add(result);
+
+        // Build facet list
+        Facet f = new Facet("field", "band", 3, 1);
+        Facet f2 = new Facet("field", "band2", 2, 2);
+
+        ArrayList<Facet> facets = new ArrayList<Facet>();
+        facets.add(f);
+        facets.add(f2);
+
+        FacetGroup g = new FacetGroup("field", facets, 5);
+
+        ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup> ();
+        facetGroups.add(g);
+
+        SearchResultSet r = new SearchResultSet(1, "spellingSuggestedTerm", 2.3f,
+                results, facetGroups, "error");
+
+        assertEquals(r.getError(), "error");
+        assertEquals(r.getSpellingSuggestedTerm(), "spellingSuggestedTerm");
+        assertEquals(r.getQueryTime(), 2.3f);
+        assertEquals(r.getNumberOfResults(), 1);
+        assertEquals(r.getResults().size(), 1);
+        assertEquals(r.getFacets().size(), 1);
+
+        // Build second facet list
+        Facet f3 = new Facet("field2", "band3", 50, 3);
+        Facet f4 = new Facet("field2", "band4", 1, 4);
+
+        ArrayList<Facet> facets2 = new ArrayList<Facet>();
+        facets2.add(f3);
+        facets2.add(f4);
+
+        FacetGroup g2 = new FacetGroup("field2", facets2, 51);
+
+        r.addFacetGroup(0, g2);
+        assertEquals(r.getFacets().size(),2);
+
+
+    }
 }

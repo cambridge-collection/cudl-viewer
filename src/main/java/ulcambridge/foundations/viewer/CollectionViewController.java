@@ -68,7 +68,7 @@ public class CollectionViewController {
     public ModelAndView handleRequest(HttpServletResponse response,
             @PathVariable("collectionId") String collectionId,
             HttpServletRequest request) {
-    	
+
         Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 
@@ -87,7 +87,7 @@ public class CollectionViewController {
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHTMLURL);
 
-        // append a list of this collections subcollections if this is a parent. 
+        // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {
 
             List<Collection> subCollections = this.collectionFactory
@@ -95,12 +95,12 @@ public class CollectionViewController {
             modelAndView.addObject("subCollections", subCollections);
 
         }
-        
+
         return modelAndView;
 
     }
 
-	// on path
+    // on path
     // /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
     // To get information for items 0 to 8 url would be
     // /collections/{collectionId}/itemJSON?start=0&end=8
@@ -126,7 +126,7 @@ public class CollectionViewController {
 
         for (int i = startIndex; i < endIndex; i++) {
             items.add(itemFactory.getItemFromId(ids.get(i)));
-            
+
         }
 
         JSONArray jsonArray = new JSONArray();

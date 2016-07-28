@@ -14,7 +14,7 @@ public class MailingListForm {
     @NotEmpty
     @Size(max = 100)
     private String name;
-    
+
     @NotEmpty
     @Email
     private String email;
@@ -34,5 +34,5 @@ public class MailingListForm {
     public String getEmail() {
         return email;
     }
-       
+
 }

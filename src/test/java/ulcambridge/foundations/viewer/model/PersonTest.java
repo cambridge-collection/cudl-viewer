@@ -8,7 +8,7 @@ import ulcambridge.foundations.viewer.model.Person;
 /**
  * Unit test for testing individual people objects
  */
-public class PersonTest 
+public class PersonTest
     extends TestCase
 {
     /**
@@ -35,12 +35,12 @@ public class PersonTest
     public void testPerson()
     {
 
-    	Person a = new Person("Test Person, 2012", "Test Person", "test authority ID",
-    			"test authority", "test value uri", "test type", "aut");
-   
-    	Person b = new Person("ZZZ Person, 2012", "Test Person", "test authority ID",
-    			"test authority", "test value uri", "test type", "aut");
-    	
+        Person a = new Person("Test Person, 2012", "Test Person", "test authority ID",
+                "test authority", "test value uri", "test type", "aut");
+
+        Person b = new Person("ZZZ Person, 2012", "Test Person", "test authority ID",
+                "test authority", "test value uri", "test type", "aut");
+
         assertEquals (a.getAuthority(),"test authority");
         assertEquals (a.getAuthorityURI(),"test authority ID");
         assertEquals (a.getDisplayForm(),"Test Person");

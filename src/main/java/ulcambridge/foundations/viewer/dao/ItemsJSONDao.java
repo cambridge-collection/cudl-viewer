@@ -17,307 +17,307 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 public class ItemsJSONDao implements ItemsDao {
 
-	private JSONReader reader;
+    private JSONReader reader;
 
-	@Autowired
-	public void setJSONReader(JSONReader jsonreader) {
-		reader = jsonreader;
-	}
+    @Autowired
+    public void setJSONReader(JSONReader jsonreader) {
+        reader = jsonreader;
+    }
 
-	/**
-	 * Get item information from the JSON file.
-	 */
-	public Item getItem(String itemId) {
-		
-		JSONObject itemJson = null;
-		String itemType = "bookormanuscript"; // default
-		
-		if (itemId == null || itemId.equals("")) {
-			throw new IllegalArgumentException("Invalid Item Id given.");
-		}
-		try {
+    /**
+     * Get item information from the JSON file.
+     */
+    public Item getItem(String itemId) {
 
-			itemJson = reader.readJsonFromUrl(Properties.getString("jsonURL")
-					+ itemId + ".json");
-			
-			// Might have type, might not.
-			if (itemJson.has("itemType")) {
-				itemType = itemJson.getString("itemType");
-			}
-			
-			if (itemType.equals("essay")) {
-								
-				Item bookItem = getBookItem(itemId, itemJson);				
-				return getEssayItem(itemId, itemJson, bookItem);
-				
-			} else {
-				return getBookItem(itemId, itemJson);
-			}
-			
-		} catch (IOException e) {
-			System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());			
-			return null;
-		} catch (JSONException e) {
-			System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
-			return null;
-		}			
-	}
-	
-	/**
-	 * Parse the JSON into a Item object (default root object). 
-	 * 
-	 * @param itemId
-	 * @param itemJson
-	 * @return
-	 */
-	private Item getBookItem(String itemId, JSONObject itemJson) {
+        JSONObject itemJson = null;
+        String itemType = "bookormanuscript"; // default
 
-		String itemType = "bookormanuscript";
-		String itemTitle = "";
-		List<Person> itemAuthors = new ArrayList<Person>();
-		String itemShelfLocator = "";
-		String itemAbstract = "";
-		String itemThumbnailURL = "";
-		String thumbnailOrientation = "";
-		List<String> pageLabels = new ArrayList<String>();
-		List<String> pageThumbnailURLs = new ArrayList<String>();
-			
-		try {
-			
-			// Pull out the information we want in our Item object
-			JSONObject descriptiveMetadata = itemJson.getJSONArray(
-					"descriptiveMetadata").getJSONObject(0);
-			
-			// Should always have title
-			itemTitle = descriptiveMetadata.getJSONObject("title").getString(
-					"displayForm");
+        if (itemId == null || itemId.equals("")) {
+            throw new IllegalArgumentException("Invalid Item Id given.");
+        }
+        try {
 
-			// Might have authors, might not.
-			if (descriptiveMetadata.has("authors")) {
-				itemAuthors = getPeopleFromJSON(descriptiveMetadata
-						.getJSONObject("authors").getJSONArray("value"),
-						"author");
-			}
+            itemJson = reader.readJsonFromUrl(Properties.getString("jsonURL")
+                    + itemId + ".json");
 
-			// Might have shelf locator, might not.
-			if (descriptiveMetadata.has("shelfLocator")) {
-				itemShelfLocator = descriptiveMetadata.getJSONObject(
-						"shelfLocator").getString("displayForm");
-			}
+            // Might have type, might not.
+            if (itemJson.has("itemType")) {
+                itemType = itemJson.getString("itemType");
+            }
 
-			// Might have abstract, might not.
-			if (descriptiveMetadata.has("abstract")) {
-				itemAbstract = descriptiveMetadata.getJSONObject("abstract")
-						.getString("displayForm");
-			}
-			
-			// if not see if we have content (used in essay objects)
-			// - NOTE reads content from page 0 only. 
-			JSONArray pages = itemJson.getJSONArray("pages");
-			JSONObject page0 = pages.getJSONObject(0);
-			
-			if (itemAbstract.equals("") && page0.has("content")) {
-				itemAbstract = page0.getString("content");
-			}
-			
-			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
-				JSONObject page = pages.getJSONObject(pageIndex);
-				pageLabels.add(page.getString("label"));
-				if (page.has("thumbnailImageURL")) {
-					pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
-				} else {
-					pageThumbnailURLs.add("");
-				}
-			}
+            if (itemType.equals("essay")) {
 
-			// Might have Thumbnail image
-			if (descriptiveMetadata.has("thumbnailUrl")
-					&& descriptiveMetadata.has("thumbnailOrientation")) {
-				if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
-				if (itemType.equals("essay")) {
-					itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
-				} else {
-					itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata.getString("thumbnailUrl");
-				}
+                Item bookItem = getBookItem(itemId, itemJson);
+                return getEssayItem(itemId, itemJson, bookItem);
 
-				thumbnailOrientation = descriptiveMetadata
+            } else {
+                return getBookItem(itemId, itemJson);
+            }
+
+        } catch (IOException e) {
+            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+            return null;
+        } catch (JSONException e) {
+            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Parse the JSON into a Item object (default root object).
+     *
+     * @param itemId
+     * @param itemJson
+     * @return
+     */
+    private Item getBookItem(String itemId, JSONObject itemJson) {
+
+        String itemType = "bookormanuscript";
+        String itemTitle = "";
+        List<Person> itemAuthors = new ArrayList<Person>();
+        String itemShelfLocator = "";
+        String itemAbstract = "";
+        String itemThumbnailURL = "";
+        String thumbnailOrientation = "";
+        List<String> pageLabels = new ArrayList<String>();
+        List<String> pageThumbnailURLs = new ArrayList<String>();
+
+        try {
+
+            // Pull out the information we want in our Item object
+            JSONObject descriptiveMetadata = itemJson.getJSONArray(
+                    "descriptiveMetadata").getJSONObject(0);
+
+            // Should always have title
+            itemTitle = descriptiveMetadata.getJSONObject("title").getString(
+                    "displayForm");
+
+            // Might have authors, might not.
+            if (descriptiveMetadata.has("authors")) {
+                itemAuthors = getPeopleFromJSON(descriptiveMetadata
+                        .getJSONObject("authors").getJSONArray("value"),
+                        "author");
+            }
+
+            // Might have shelf locator, might not.
+            if (descriptiveMetadata.has("shelfLocator")) {
+                itemShelfLocator = descriptiveMetadata.getJSONObject(
+                        "shelfLocator").getString("displayForm");
+            }
+
+            // Might have abstract, might not.
+            if (descriptiveMetadata.has("abstract")) {
+                itemAbstract = descriptiveMetadata.getJSONObject("abstract")
+                        .getString("displayForm");
+            }
+
+            // if not see if we have content (used in essay objects)
+            // - NOTE reads content from page 0 only.
+            JSONArray pages = itemJson.getJSONArray("pages");
+            JSONObject page0 = pages.getJSONObject(0);
+
+            if (itemAbstract.equals("") && page0.has("content")) {
+                itemAbstract = page0.getString("content");
+            }
+
+            for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
+                JSONObject page = pages.getJSONObject(pageIndex);
+                pageLabels.add(page.getString("label"));
+                if (page.has("thumbnailImageURL")) {
+                    pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
+                } else {
+                    pageThumbnailURLs.add("");
+                }
+            }
+
+            // Might have Thumbnail image
+            if (descriptiveMetadata.has("thumbnailUrl")
+                    && descriptiveMetadata.has("thumbnailOrientation")) {
+                if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
+                if (itemType.equals("essay")) {
+                    itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
+                } else {
+                    itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata.getString("thumbnailUrl");
+                }
+
+                thumbnailOrientation = descriptiveMetadata
                                                 .getString("thumbnailOrientation");
 
-			}
+            }
 
-		} catch (JSONException e) {
-			System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
-			return null;
-		}	
-		
-		Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
-				itemAbstract, itemThumbnailURL, thumbnailOrientation, 
-				pageLabels, pageThumbnailURLs, itemJson);
+        } catch (JSONException e) {
+            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+            return null;
+        }
 
-		return item;
+        Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
+                itemAbstract, itemThumbnailURL, thumbnailOrientation,
+                pageLabels, pageThumbnailURLs, itemJson);
 
-	}
-	
-	private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
-		
-		String content = "";
-		List<String> relatedItems = new ArrayList<String>();
-		List<String> associatedPeople = new ArrayList<String>();
-		List<String> associatedPlaces = new ArrayList<String>();
-		List<String> associatedOrganisations = new ArrayList<String>();
-		List<String> associatedSubjects = new ArrayList<String>();
-		JSONObject descriptiveMetadata = null;
-		List<String> pageLabels = new ArrayList<String>();
-		List<String> pageThumbnailURLs = new ArrayList<String>();
-		
-		try {
-			
-			JSONArray pages = itemJson.getJSONArray("pages");
-			JSONObject page0 = pages.getJSONObject(0);
-			
-			for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
-				JSONObject page = pages.getJSONObject(pageIndex);
-				pageLabels.add(page.getString("label"));
-			}
-			
-			// Get essay content
-			content = page0.getString("content");
-			
-			descriptiveMetadata = itemJson.getJSONArray(
-					"descriptiveMetadata").getJSONObject(0);
-			
-			// Get list of related items
-			relatedItems = new ArrayList<String>();
-			JSONArray itemReferences = descriptiveMetadata.getJSONArray("itemReferences");
-			for (int i=0; i<itemReferences.length(); i++) {
-				JSONObject itemRef = itemReferences.getJSONObject(i);	
-				relatedItems.add(itemRef.getString("ID"));
-			}
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}			
-			
-		try { 
-			// Associated people			
-			associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
-					.getJSONObject("associated").getJSONArray("value"));
-		} catch (JSONException e) { /* not always present */ }		
-			
-		try { 		
-			// Associated Places
-			associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
-					.getJSONObject("places").getJSONArray("value"));
-		} catch (JSONException e) { /* not always present */ }				
+        return item;
 
-		try { 			
-			// Associated Organisations
-			associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
-					.getJSONObject("associatedCorps").getJSONArray("value"));
-		} catch (JSONException e) { /* not always present */ }		
-			
-		try {
-			// Associated Subjects
-			associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
-					.getJSONObject("subjects").getJSONArray("value"));				
-		} catch (JSONException e) { /* not always present */ }		
-		
-		return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
-			 parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(), 
-			 content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects, 
-			 pageLabels, pageThumbnailURLs);
-	}
+    }
 
-	/**
-	 * This method takes a JSONArray and creates Person objects for each JSON
-	 * object in it.
-	 * 
-	 * @param names
-	 * @return
-	 */
-	private List<Person> getPeopleFromJSON(JSONArray json, String role) {
+    private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
 
-		ArrayList<Person> people = new ArrayList<Person>();
+        String content = "";
+        List<String> relatedItems = new ArrayList<String>();
+        List<String> associatedPeople = new ArrayList<String>();
+        List<String> associatedPlaces = new ArrayList<String>();
+        List<String> associatedOrganisations = new ArrayList<String>();
+        List<String> associatedSubjects = new ArrayList<String>();
+        JSONObject descriptiveMetadata = null;
+        List<String> pageLabels = new ArrayList<String>();
+        List<String> pageThumbnailURLs = new ArrayList<String>();
 
-		if (json == null) {
-			return people;
-		}
+        try {
 
-		String authority = null;
-		String authorityURI = null;
-		String valueURI = null;
-		String fullForm = null;
-		String type = null;
-		try {
-			for (int i = 0; i < json.length(); i++) {
-				JSONObject personJSON = json.getJSONObject(i);
-				
-				String shortForm = personJSON.getString("shortForm");
-				try {
-					fullForm = personJSON.getString("fullForm");
-					authority = personJSON.getString("authority");
-					authorityURI = personJSON.getString("authorityURI");
-					valueURI = personJSON.getString("valueURI");
-					type = personJSON.getString("type");
-				} catch (JSONException e) {
-					/* ignore if not present */
-				}
-				new ArrayList<String>();
-				Person person = new Person(fullForm, shortForm, authority,
-						authorityURI, valueURI, type, role);
-				people.add(person);
-			}
+            JSONArray pages = itemJson.getJSONArray("pages");
+            JSONObject page0 = pages.getJSONObject(0);
 
-		} catch (JSONException e) {
+            for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
+                JSONObject page = pages.getJSONObject(pageIndex);
+                pageLabels.add(page.getString("label"));
+            }
 
-			System.err.println("Error processing: " + json);
-			e.printStackTrace();
-		}
+            // Get essay content
+            content = page0.getString("content");
 
-		return people;
-	}
-	
-	/**
-	 * This method takes a JSONArray and returns a list of the displayForm for
-	 * each visible item. 
-	 * 
-	 * @param json
-	 * @return
-	 */
-	private List<String> getDisplayFormFromJSON(JSONArray json) {
+            descriptiveMetadata = itemJson.getJSONArray(
+                    "descriptiveMetadata").getJSONObject(0);
 
-		ArrayList<String> displayForms = new ArrayList<String>();
+            // Get list of related items
+            relatedItems = new ArrayList<String>();
+            JSONArray itemReferences = descriptiveMetadata.getJSONArray("itemReferences");
+            for (int i=0; i<itemReferences.length(); i++) {
+                JSONObject itemRef = itemReferences.getJSONObject(i);
+                relatedItems.add(itemRef.getString("ID"));
+            }
 
-		if (json == null) {
-			return displayForms;
-		}
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-		try {
-			for (int i = 0; i < json.length(); i++) {
-				JSONObject objectJSON = json.getJSONObject(i);
-				
-				if (objectJSON.getString("display")!=null 
-						&& objectJSON.getString("display").equals("true")) {
-					
-					String displayForm = objectJSON.getString("displayForm");
-					displayForms.add(displayForm);
-				}							
-			}
+        try {
+            // Associated people
+            associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
+                    .getJSONObject("associated").getJSONArray("value"));
+        } catch (JSONException e) { /* not always present */ }
 
-		} catch (JSONException e) {
+        try {
+            // Associated Places
+            associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
+                    .getJSONObject("places").getJSONArray("value"));
+        } catch (JSONException e) { /* not always present */ }
 
-			System.err.println("Error processing: " + json);
-			e.printStackTrace();
-		}
+        try {
+            // Associated Organisations
+            associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
+                    .getJSONObject("associatedCorps").getJSONArray("value"));
+        } catch (JSONException e) { /* not always present */ }
 
-		return displayForms;
-	}
+        try {
+            // Associated Subjects
+            associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
+                    .getJSONObject("subjects").getJSONArray("value"));
+        } catch (JSONException e) { /* not always present */ }
 
-	@Override
-	public boolean getItemTaggingStatus(String itemId) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+        return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
+             parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
+             content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects,
+             pageLabels, pageThumbnailURLs);
+    }
+
+    /**
+     * This method takes a JSONArray and creates Person objects for each JSON
+     * object in it.
+     *
+     * @param names
+     * @return
+     */
+    private List<Person> getPeopleFromJSON(JSONArray json, String role) {
+
+        ArrayList<Person> people = new ArrayList<Person>();
+
+        if (json == null) {
+            return people;
+        }
+
+        String authority = null;
+        String authorityURI = null;
+        String valueURI = null;
+        String fullForm = null;
+        String type = null;
+        try {
+            for (int i = 0; i < json.length(); i++) {
+                JSONObject personJSON = json.getJSONObject(i);
+
+                String shortForm = personJSON.getString("shortForm");
+                try {
+                    fullForm = personJSON.getString("fullForm");
+                    authority = personJSON.getString("authority");
+                    authorityURI = personJSON.getString("authorityURI");
+                    valueURI = personJSON.getString("valueURI");
+                    type = personJSON.getString("type");
+                } catch (JSONException e) {
+                    /* ignore if not present */
+                }
+                new ArrayList<String>();
+                Person person = new Person(fullForm, shortForm, authority,
+                        authorityURI, valueURI, type, role);
+                people.add(person);
+            }
+
+        } catch (JSONException e) {
+
+            System.err.println("Error processing: " + json);
+            e.printStackTrace();
+        }
+
+        return people;
+    }
+
+    /**
+     * This method takes a JSONArray and returns a list of the displayForm for
+     * each visible item.
+     *
+     * @param json
+     * @return
+     */
+    private List<String> getDisplayFormFromJSON(JSONArray json) {
+
+        ArrayList<String> displayForms = new ArrayList<String>();
+
+        if (json == null) {
+            return displayForms;
+        }
+
+        try {
+            for (int i = 0; i < json.length(); i++) {
+                JSONObject objectJSON = json.getJSONObject(i);
+
+                if (objectJSON.getString("display")!=null
+                        && objectJSON.getString("display").equals("true")) {
+
+                    String displayForm = objectJSON.getString("displayForm");
+                    displayForms.add(displayForm);
+                }
+            }
+
+        } catch (JSONException e) {
+
+            System.err.println("Error processing: " + json);
+            e.printStackTrace();
+        }
+
+        return displayForms;
+    }
+
+    @Override
+    public boolean getItemTaggingStatus(String itemId) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
 
 }

@@ -18,123 +18,123 @@ import ulcambridge.foundations.viewer.model.Properties;
 @Controller
 public class AdminController {
 
-	private CollectionFactory collectionFactory;
-	private UsersDao usersDao;
+    private CollectionFactory collectionFactory;
+    private UsersDao usersDao;
 
-	@Autowired
-	public void setCollectionFactory(CollectionFactory factory) {
-		this.collectionFactory = factory;
-	}
-	
-	@Autowired
-	public void setUsersDao(UsersDao usersDao) {
-		this.usersDao = usersDao;
-	}
+    @Autowired
+    public void setCollectionFactory(CollectionFactory factory) {
+        this.collectionFactory = factory;
+    }
 
-	// on path /admin/publishdb
-	@Secured("hasRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/publishdb", method = RequestMethod.GET)
-	public ModelAndView handlePublishDbRequest(HttpSession session) throws Exception {
+    @Autowired
+    public void setUsersDao(UsersDao usersDao) {
+        this.usersDao = usersDao;
+    }
 
-		ModelAndView mv = new ModelAndView("jsp/adminresult");
+    // on path /admin/publishdb
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/publishdb", method = RequestMethod.GET)
+    public ModelAndView handlePublishDbRequest(HttpSession session) throws Exception {
 
-		// Setup Git
-		String localPathMasters = Properties.getString("admin.git.db.localpath");
-		String username = Properties.getString("admin.git.db.username");
-		String password = Properties.getString("admin.git.db.password");
-		String url = Properties.getString("admin.git.db.url");
-		String localBranch = Properties.getString("admin.git.db.branch.local");
-		String filepath = localPathMasters+Properties.getString("admin.db.filepath");
-		
-		GitHelper git = new GitHelper(localPathMasters,url);
-		
-		// Copy local DB tables to LIVE DB.					
-		User user = (User) session.getAttribute("user");
-		AdminUser adminUser = usersDao.getAdminUserByUsername(user.getUsername());
-		DatabaseCopy copyClass = new DatabaseCopy(collectionFactory, filepath, git);
-		boolean copySuccess = copyClass.copy(username, password, localBranch, adminUser.getAdminName(), adminUser.getAdminEmail());
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
 
-		if (copySuccess) {
-			mv.addObject("copysuccess", "Copy to Live database was successful!");
-		} else {
-			mv.addObject("copysuccess", "Copy to Live database failed!");
-		}
+        // Setup Git
+        String localPathMasters = Properties.getString("admin.git.db.localpath");
+        String username = Properties.getString("admin.git.db.username");
+        String password = Properties.getString("admin.git.db.password");
+        String url = Properties.getString("admin.git.db.url");
+        String localBranch = Properties.getString("admin.git.db.branch.local");
+        String filepath = localPathMasters+Properties.getString("admin.db.filepath");
 
-		return mv;
-	}
+        GitHelper git = new GitHelper(localPathMasters,url);
 
-	// on path /admin/publishjson
-	@RequestMapping(value = "publishjson", method = RequestMethod.GET)
-	@Secured("hasRole('ROLE_ADMIN')")
-	public ModelAndView handlePublishJsonRequest() throws Exception {
+        // Copy local DB tables to LIVE DB.
+        User user = (User) session.getAttribute("user");
+        AdminUser adminUser = usersDao.getAdminUserByUsername(user.getUsername());
+        DatabaseCopy copyClass = new DatabaseCopy(collectionFactory, filepath, git);
+        boolean copySuccess = copyClass.copy(username, password, localBranch, adminUser.getAdminName(), adminUser.getAdminEmail());
 
-		ModelAndView mv = new ModelAndView("jsp/adminresult");
-		String localPathMasters = Properties
-				.getString("admin.git.json.localpath");
-		String username = Properties.getString("admin.git.json.username");
-		String password = Properties.getString("admin.git.json.password");
-		String url = Properties.getString("admin.git.json.url");
-		String liveBranch = Properties.getString("admin.git.json.branch.live");
-		String localBranch = Properties
-				.getString("admin.git.json.branch.local");
+        if (copySuccess) {
+            mv.addObject("copysuccess", "Copy to Live database was successful!");
+        } else {
+            mv.addObject("copysuccess", "Copy to Live database failed!");
+        }
 
-		GitHelper git = new GitHelper(localPathMasters, url);
-		Boolean success = git.push(username, password, localBranch + ":" + liveBranch);
+        return mv;
+    }
 
-		if (success) {
-			mv.addObject("copysuccess", "Copy to Branch was successful!");
-		} else {
-			mv.addObject("copysuccess", "Copy to Branch failed!");
-		}
-		return mv;
-	}
+    // on path /admin/publishjson
+    @RequestMapping(value = "publishjson", method = RequestMethod.GET)
+    @Secured("hasRole('ROLE_ADMIN')")
+    public ModelAndView handlePublishJsonRequest() throws Exception {
 
-	// on path /admin/publishcontent
-	@Secured("hasRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/publishcontent", method = RequestMethod.GET)
-	public ModelAndView handlePublishContentRequest() throws Exception {
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+        String localPathMasters = Properties
+                .getString("admin.git.json.localpath");
+        String username = Properties.getString("admin.git.json.username");
+        String password = Properties.getString("admin.git.json.password");
+        String url = Properties.getString("admin.git.json.url");
+        String liveBranch = Properties.getString("admin.git.json.branch.live");
+        String localBranch = Properties
+                .getString("admin.git.json.branch.local");
 
-		ModelAndView mv = new ModelAndView("jsp/adminresult");
-		String localPathMasters = Properties
-				.getString("admin.git.content.localpath");
-		String username = Properties.getString("admin.git.content.username");
-		String password = Properties.getString("admin.git.content.password");
-		String url = Properties.getString("admin.git.content.url");
-		String liveBranch = Properties
-				.getString("admin.git.content.branch.live");
-		String localBranch = Properties
-				.getString("admin.git.content.branch.local");
+        GitHelper git = new GitHelper(localPathMasters, url);
+        Boolean success = git.push(username, password, localBranch + ":" + liveBranch);
 
-		GitHelper git = new GitHelper(localPathMasters, url);
-		Boolean success = git.push(username, password, localBranch + ":" + liveBranch);
+        if (success) {
+            mv.addObject("copysuccess", "Copy to Branch was successful!");
+        } else {
+            mv.addObject("copysuccess", "Copy to Branch failed!");
+        }
+        return mv;
+    }
 
-		if (success) {
-			mv.addObject("copysuccess", "Copy to Branch was successful!");
-		} else {
-			mv.addObject("copysuccess", "Copy to Branch failed!");
-		}
-		return mv;
-	}
-	
-	// on path /admin/
-	@Secured("hasRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/refresh")
-	public ModelAndView handleRefreshRequest() {
+    // on path /admin/publishcontent
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/publishcontent", method = RequestMethod.GET)
+    public ModelAndView handlePublishContentRequest() throws Exception {
 
-		RefreshCache.refreshDB();
-		RefreshCache.refreshJSON();
-		
-		ModelAndView mv = new ModelAndView("jsp/adminresult");
-		mv.addObject("copysuccess", "Cache has been Refreshed");
-		return mv;
-	}
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+        String localPathMasters = Properties
+                .getString("admin.git.content.localpath");
+        String username = Properties.getString("admin.git.content.username");
+        String password = Properties.getString("admin.git.content.password");
+        String url = Properties.getString("admin.git.content.url");
+        String liveBranch = Properties
+                .getString("admin.git.content.branch.live");
+        String localBranch = Properties
+                .getString("admin.git.content.branch.local");
 
-	// on path /admin/
-	@Secured("hasRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/")
-	public ModelAndView handleAdminRequest() {
+        GitHelper git = new GitHelper(localPathMasters, url);
+        Boolean success = git.push(username, password, localBranch + ":" + liveBranch);
 
-		ModelAndView modelAndView = new ModelAndView("jsp/admin");
-		return modelAndView;
-	}
+        if (success) {
+            mv.addObject("copysuccess", "Copy to Branch was successful!");
+        } else {
+            mv.addObject("copysuccess", "Copy to Branch failed!");
+        }
+        return mv;
+    }
+
+    // on path /admin/
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/refresh")
+    public ModelAndView handleRefreshRequest() {
+
+        RefreshCache.refreshDB();
+        RefreshCache.refreshJSON();
+
+        ModelAndView mv = new ModelAndView("jsp/adminresult");
+        mv.addObject("copysuccess", "Cache has been Refreshed");
+        return mv;
+    }
+
+    // on path /admin/
+    @Secured("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/")
+    public ModelAndView handleAdminRequest() {
+
+        ModelAndView modelAndView = new ModelAndView("jsp/admin");
+        return modelAndView;
+    }
 }

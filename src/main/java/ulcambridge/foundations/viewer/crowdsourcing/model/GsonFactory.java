@@ -6,17 +6,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 /**
- * 
+ *
  * @author Lei
- * 
+ *
  */
 public class GsonFactory {
 
-	private GsonFactory() {
-	}
+    private GsonFactory() {
+    }
 
-	public static Gson create() {
-		return new GsonBuilder().registerTypeAdapter(Date.class, new GsonDateAdapter()).setPrettyPrinting().create();
-	}
+    public static Gson create() {
+        return new GsonBuilder().registerTypeAdapter(Date.class, new GsonDateAdapter()).setPrettyPrinting().create();
+    }
 
 }

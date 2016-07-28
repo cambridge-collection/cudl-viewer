@@ -19,10 +19,10 @@ public class CollectionsDBDao implements CollectionsDao {
 
     private JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	public void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}	   
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     public List<String> getCollectionIds() {
 
@@ -80,45 +80,45 @@ public class CollectionsDBDao implements CollectionsDao {
         Integer rowcount = jdbcTemplate.queryForObject(query, Integer.class);
         return rowcount;
     }
-    
+
     //
-	// XXX tagging switch
-	//
+    // XXX tagging switch
+    //
 
-	@Override
-	public boolean isItemTaggable(String itemId) {
-		
-		String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
-		
-		return jdbcTemplate.query(query, new Object[] { itemId }, 
-				new ResultSetExtractor<Boolean>() {
-					@Override
-					public Boolean extractData(ResultSet rs) throws SQLException, DataAccessException {
-						while (rs.next()) {
-							return rs.getBoolean("taggingstatus");
-						}
-						return false;
-					}
-				});
-	}
+    @Override
+    public boolean isItemTaggable(String itemId) {
 
-	@Override
-	public List<String> getCollectionId(String itemId) {
-		
-		String query = "SELECT collectionid FROM itemsincollection WHERE itemid = ?";
-		
-		return jdbcTemplate.query(query, new Object[] { itemId }, 
-				new ResultSetExtractor<List<String>>() {
-					@Override
-					public List<String> extractData(ResultSet rs) throws SQLException, DataAccessException {
-						List<String> colIds = new ArrayList<String> ();
-						while (rs.next()) {
-							String colId = rs.getString("collectionid");
-							colIds.add( colId );
-						}
-						return colIds;
-					}
-		});
-	}
-    
+        String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
+
+        return jdbcTemplate.query(query, new Object[] { itemId },
+                new ResultSetExtractor<Boolean>() {
+                    @Override
+                    public Boolean extractData(ResultSet rs) throws SQLException, DataAccessException {
+                        while (rs.next()) {
+                            return rs.getBoolean("taggingstatus");
+                        }
+                        return false;
+                    }
+                });
+    }
+
+    @Override
+    public List<String> getCollectionId(String itemId) {
+
+        String query = "SELECT collectionid FROM itemsincollection WHERE itemid = ?";
+
+        return jdbcTemplate.query(query, new Object[] { itemId },
+                new ResultSetExtractor<List<String>>() {
+                    @Override
+                    public List<String> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                        List<String> colIds = new ArrayList<String> ();
+                        while (rs.next()) {
+                            String colId = rs.getString("collectionid");
+                            colIds.add( colId );
+                        }
+                        return colIds;
+                    }
+        });
+    }
+
 }

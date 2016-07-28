@@ -14,54 +14,54 @@ import org.json.JSONObject;
 
 public class JSONReader {
 
-	private String readAll(Reader rd) throws IOException {
-		StringBuilder sb = new StringBuilder();
-		int cp;
-		while ((cp = rd.read()) != -1) {
-			sb.append((char) cp);
-		}
-		return sb.toString();
-	}
+    private String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
+    }
 
-	public JSONObject readJsonFromUrl(String url) throws IOException,
-			JSONException {
-		InputStream is = new URL(url).openStream();
-		try {
-		    is = new URL(url).openStream();
-		
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is,
-					Charset.forName("UTF-8")));
-			String jsonText = readAll(rd);
-			JSONObject json = new JSONObject(jsonText);
-			return json;
-			
-		} catch (JSONException e) {
-			e.printStackTrace();
-		} finally {
-			is.close();
-		}		
-		
-		return null;
-	}
+    public JSONObject readJsonFromUrl(String url) throws IOException,
+            JSONException {
+        InputStream is = new URL(url).openStream();
+        try {
+            is = new URL(url).openStream();
 
-	/**
-	 * Checks to see if the specified URl exists
-	 * 
-	 * @param urlString
-	 * @return
-	 */
-	public boolean urlExists(String urlString) {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is,
+                    Charset.forName("UTF-8")));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            return json;
 
-		try {
-			URL url = new URL(urlString);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } finally {
+            is.close();
+        }
 
-			if (((HttpURLConnection) url.openConnection()).getResponseCode() == 200) {
-				return true;
-			}
-		} catch (Exception e) {
-			/* do nothing */
-		}
-		return false;
+        return null;
+    }
 
-	}
+    /**
+     * Checks to see if the specified URl exists
+     *
+     * @param urlString
+     * @return
+     */
+    public boolean urlExists(String urlString) {
+
+        try {
+            URL url = new URL(urlString);
+
+            if (((HttpURLConnection) url.openConnection()).getResponseCode() == 200) {
+                return true;
+            }
+        } catch (Exception e) {
+            /* do nothing */
+        }
+        return false;
+
+    }
 }

@@ -2,69 +2,69 @@ package ulcambridge.foundations.viewer.model;
 
 /**
  * This class contains information on a person. Could be an author, scribe etc.
- * 
+ *
  * @author jennie
- * 
+ *
  */
 public class Person implements Comparable<Person> {
 
-	private String fullForm;
-	private String shortForm;
-	private String authority;
-	private String authorityURI;
-	private String valueURI;
-	private String type;
-	private String role;
+    private String fullForm;
+    private String shortForm;
+    private String authority;
+    private String authorityURI;
+    private String valueURI;
+    private String type;
+    private String role;
 
-	public Person(String fullForm, String shortForm, String authorityURI,
-			String authority, String valueURI, String type, String role) {
+    public Person(String fullForm, String shortForm, String authorityURI,
+            String authority, String valueURI, String type, String role) {
 
-		this.fullForm = fullForm;
-		this.shortForm = shortForm;
-		this.authority = authority;
-		this.authorityURI = authorityURI;
-		this.valueURI = valueURI;
-		this.type = type;
-		this.role = role;
+        this.fullForm = fullForm;
+        this.shortForm = shortForm;
+        this.authority = authority;
+        this.authorityURI = authorityURI;
+        this.valueURI = valueURI;
+        this.type = type;
+        this.role = role;
 
-	}
+    }
 
-	public String getFullForm() {
-		return fullForm;
-	}
+    public String getFullForm() {
+        return fullForm;
+    }
 
-	public String getDisplayForm() {
-		return shortForm;
-	}
-	
-	public String getAuthority() {
-		return authority;
-	}	
+    public String getDisplayForm() {
+        return shortForm;
+    }
 
-	public String getAuthorityURI() {
-		return authorityURI;
-	}
+    public String getAuthority() {
+        return authority;
+    }
 
-	public String getValueURI() {
-		return valueURI;
-	}
+    public String getAuthorityURI() {
+        return authorityURI;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getValueURI() {
+        return valueURI;
+    }
 
-	public String getRole() {
-		return role;
-	}
-	
-	@Override
-	public String toString() {
-		return shortForm;
-	}
+    public String getType() {
+        return type;
+    }
 
-	@Override
-	public int compareTo(Person o) {
-		return getFullForm().compareTo(o.getFullForm());
-	}
+    public String getRole() {
+        return role;
+    }
+
+    @Override
+    public String toString() {
+        return shortForm;
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return getFullForm().compareTo(o.getFullForm());
+    }
 
 }

@@ -31,37 +31,37 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class DatabaseCopy {
 
-	private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
-	
+    private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
+
     private final String urlLive = Properties.getString("admin.db.jdbc.url.live");
-    private final String userLive = Properties.getString("admin.db.jdbc.user.live");    
-    private final String pwdLive = Properties.getString("admin.db.jdbc.password.live");    
+    private final String userLive = Properties.getString("admin.db.jdbc.user.live");
+    private final String pwdLive = Properties.getString("admin.db.jdbc.password.live");
     private final String urlLocal = Properties.getString("jdbc.url");
     private final String userLocal = Properties.getString("jdbc.user");
     private final String pwdLocal = Properties.getString("jdbc.password");
-    
-    private CollectionFactory collectionfactory;    
-    private String filepath;     
+
+    private CollectionFactory collectionfactory;
+    private String filepath;
     private GitHelper git;
-    
+
     /**
-     * Create instance of DatabaseCopy. 
-     * 
+     * Create instance of DatabaseCopy.
+     *
      * @param collectionfactory
      * @param filepath to the location of the db dump files under git
      * @param git
      */
-    public DatabaseCopy(CollectionFactory collectionfactory, String filepath, GitHelper git) {    	
+    public DatabaseCopy(CollectionFactory collectionfactory, String filepath, GitHelper git) {
         this.collectionfactory = collectionfactory;
         this.filepath = filepath;
         this.git = git;
     }
-    
+
     /*
      copy items,collections and itemsincollection tables from the local database to a file in /tmp directory
      The files have the same names as the tables
      */
-    
+
     private Boolean copyToFile(String tablename) {
         Boolean success;
         String url;
@@ -76,7 +76,7 @@ public class DatabaseCopy {
     /*
      Called from copyToFile-dumps the database tables to a file
      */
-   
+
     private Boolean writeToFile(String tablename, String url) {
         Connection con = null;
         FileWriter fileWriter = null;
@@ -94,7 +94,7 @@ public class DatabaseCopy {
                 TableRowCount = this.collectionfactory.getItemsInCollectionsRowCount();
 
             }
-            
+
             con = DriverManager.getConnection(url, userLocal, pwdLocal);
             CopyManager copyManager = new CopyManager((BaseConnection) con);
             File file = new File(filepath + tablename);
@@ -156,7 +156,7 @@ public class DatabaseCopy {
     /*
      copy the contents of the file(output of the copyToFile function) into the live database
      */
-   
+
     private Boolean copyIn(String tablename, Connection con) {
 
         Boolean success = true;
@@ -189,7 +189,7 @@ public class DatabaseCopy {
 
     }
 
-    @Secured("hasRole('ROLE_ADMIN')")    
+    @Secured("hasRole('ROLE_ADMIN')")
     public Boolean copy(String username, String password, String refspec, String adminName, String adminEmail) {
         ArrayList<String> tablename;
         Iterator<String> iterator;
@@ -217,7 +217,7 @@ public class DatabaseCopy {
             String sql = "TRUNCATE TABLE items,collections,itemsincollection CASCADE";
             PreparedStatement prepareStatement = conlive.prepareStatement(sql);
             int rowsTruncated = prepareStatement.executeUpdate();
-            
+
             //iterate over the 3 tables to copy them out from the local database into a file and then copy them into the live database
             while (iterator.hasNext()) {
                 //get tablename
@@ -245,11 +245,11 @@ public class DatabaseCopy {
             }
             if (!iterator.hasNext() && dbsuccess) {
 
-            	// Commit to git
-                if (!git.commit(adminName, adminEmail, "cudl-viewer: commiting DB changes") || !git.push(username, password, refspec)) { 
-                	conlive.rollback();//rollback if any issues
-                	logger.error("Exception from copy method-git commit failure-rollback done");
-                	copysuccess = false;
+                // Commit to git
+                if (!git.commit(adminName, adminEmail, "cudl-viewer: commiting DB changes") || !git.push(username, password, refspec)) {
+                    conlive.rollback();//rollback if any issues
+                    logger.error("Exception from copy method-git commit failure-rollback done");
+                    copysuccess = false;
                 } else {
                     conlive.commit();
                     copysuccess = true;
