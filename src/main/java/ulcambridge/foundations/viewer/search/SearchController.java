@@ -40,6 +40,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 @Controller
+@RequestMapping("/search")
 public class SearchController {
 
     protected final Log logger = LogFactory.getLog(getClass());
@@ -69,7 +70,7 @@ public class SearchController {
 
 
     // on /search path
-    @RequestMapping(method = RequestMethod.GET, value = "/search")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView processSearch(@Valid SearchForm searchForm)
             throws MalformedURLException {
 

@@ -40,6 +40,20 @@
         <property name="itemFactory" ref="itemFactory"/>
     </bean>
 
+    <!-- default to XTF Search -->
+    <bean id="search"
+          class="ulcambridge.foundations.viewer.search.XTFSearch">
+    </bean>
+
+    <bean id="searchController"
+          class="ulcambridge.foundations.viewer.search.SearchController">
+        <constructor-arg type="ulcambridge.foundations.viewer.search.Search">
+            <ref bean="search"/>
+        </constructor-arg>
+        <property name="itemFactory" ref="itemFactory" />
+        <property name="collectionFactory" ref="collectionFactory" />
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
