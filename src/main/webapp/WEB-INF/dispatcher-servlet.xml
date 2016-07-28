@@ -17,6 +17,15 @@
         <property name="itemFactory" ref="itemFactory" />
     </bean>
 
+    <bean id="bookmarkDao" class="ulcambridge.foundations.viewer.dao.BookmarkDBDao">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <bean id="myLibraryController" class="ulcambridge.foundations.viewer.MyLibraryController">
+        <property name="itemFactory" ref="itemFactory" />
+        <property name="bookmarkDao" ref="bookmarkDao" />
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

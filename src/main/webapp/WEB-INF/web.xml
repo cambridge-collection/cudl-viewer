@@ -91,19 +91,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- mylibrarycontroller servlet -->
-    <servlet>
-        <servlet-name>mylibrarycontroller</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>mylibrarycontroller</servlet-name>
-        <url-pattern>/mylibrary/*</url-pattern>
-    </servlet-mapping>
-
-
     <!-- document viewcontroller servlet -->
     <servlet>
         <servlet-name>documentviewcontroller</servlet-name>

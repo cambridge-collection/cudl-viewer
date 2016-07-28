@@ -24,6 +24,7 @@ import ulcambridge.foundations.viewer.model.Bookmark;
 import ulcambridge.foundations.viewer.model.Item;
 
 @Controller
+@RequestMapping("/mylibrary")
 public class MyLibraryController {
 
     protected final Log logger = LogFactory.getLog(getClass());
