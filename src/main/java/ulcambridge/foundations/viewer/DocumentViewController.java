@@ -38,6 +38,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 @Controller
+@RequestMapping("/view")
 public class DocumentViewController {
     private static final String PATH_PREFIX = "/view";
     private static final String PATH_DOC_NO_PAGE = "/{docId}";

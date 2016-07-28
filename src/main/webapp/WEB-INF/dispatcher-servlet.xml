@@ -26,6 +26,14 @@
         <property name="bookmarkDao" ref="bookmarkDao" />
     </bean>
 
+    <bean id="docView"
+          class="ulcambridge.foundations.viewer.DocumentViewController">
+        <property name="rootURL" value="${rootURL}"/>
+        <property name="collectionFactory" ref="collectionFactory" />
+        <property name="itemFactory" ref="itemFactory" />
+        <property name="dataSource" ref="collectionsDao" />
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
