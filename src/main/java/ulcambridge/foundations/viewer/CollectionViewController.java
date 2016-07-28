@@ -30,6 +30,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 @Controller
+@RequestMapping("/collections")
 public class CollectionViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());

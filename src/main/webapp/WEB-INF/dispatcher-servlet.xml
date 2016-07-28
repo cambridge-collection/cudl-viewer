@@ -34,6 +34,12 @@
         <property name="dataSource" ref="collectionsDao" />
     </bean>
 
+    <bean id="collectionView"
+          class="ulcambridge.foundations.viewer.CollectionViewController">
+        <property name="collectionFactory" ref="collectionFactory"/>
+        <property name="itemFactory" ref="itemFactory"/>
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

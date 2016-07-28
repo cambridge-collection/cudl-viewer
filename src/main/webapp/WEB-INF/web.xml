@@ -91,18 +91,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- collection viewcontroller servlet -->
-    <servlet>
-        <servlet-name>collectionviewcontroller</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>collectionviewcontroller</servlet-name>
-        <url-pattern>/collections/*</url-pattern>
-    </servlet-mapping>
-
     <!-- cachecontroller servlet -->
     <servlet>
         <servlet-name>cachecontroller</servlet-name>
