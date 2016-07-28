@@ -26,6 +26,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
+@RequestMapping(value = "/")
 public class SiteViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
