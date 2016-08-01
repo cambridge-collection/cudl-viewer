@@ -40,13 +40,11 @@ public class DocumentViewControllerTest extends TestCase {
 
         JSONReader reader = new MockJSONReader();
 
-        ItemsJSONDao jsondao = new ItemsJSONDao();
-        jsondao.setJSONReader(reader);
+        ItemsJSONDao jsondao = new ItemsJSONDao(reader);
 
         CollectionsDao collectionsdao = new CollectionsMockDao();
 
-        ItemFactory itemFactory = new ItemFactory();
-        itemFactory.setItemsDao(jsondao);
+        ItemFactory itemFactory = new ItemFactory(jsondao);
 
         MockHttpServletRequest req = new MockHttpServletRequest();
         req.setRequestURI("/view/MS-ADD-04004");

@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import ulcambridge.foundations.viewer.CollectionFactory;
+import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.JSONReader;
 
 import javax.sql.DataSource;
 
@@ -18,7 +20,7 @@ public class AppConfig {
 
     @Configuration
     @ComponentScan("ulcambridge.foundations.viewer.dao")
-    @Import(CollectionFactory.class)
+    @Import({CollectionFactory.class, ItemFactory.class, JSONReader.class})
     public static class DatabaseConfig {
         @Bean
         public DataSource dataSource(

@@ -9,19 +9,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
+@Component
 public class ItemsJSONDao implements ItemsDao {
 
-    private JSONReader reader;
+    private final JSONReader reader;
 
     @Autowired
-    public void setJSONReader(JSONReader jsonreader) {
-        reader = jsonreader;
+    public ItemsJSONDao(JSONReader reader) {
+        Assert.notNull(reader);
+        this.reader = reader;
     }
 
     /**

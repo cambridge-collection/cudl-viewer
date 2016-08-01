@@ -11,7 +11,9 @@ import java.nio.charset.Charset;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JSONReader {
 
     private String readAll(Reader rd) throws IOException {

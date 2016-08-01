@@ -5,9 +5,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.model.Item;
 
+@Component
 public class ItemFactory {
 
     private static final int MAXCACHE = 500; // max number of items in the
@@ -15,21 +18,14 @@ public class ItemFactory {
     private static Map<String, Item> itemCache = Collections
             .synchronizedMap(new ItemCache(MAXCACHE)); // cache of most recent
                                                         // items
-    private ItemsDao itemsDao;
+
+    private final ItemsDao itemsDao;
 
     @Autowired
-    public void setItemsDao(ItemsDao dao) {
-        itemsDao = dao;
+    public ItemFactory(ItemsDao itemsDao) {
+        Assert.notNull(itemsDao);
+        this.itemsDao = itemsDao;
     }
-
-    /*
-     * private Dimension getWidthHeightImage(URL url) {
-     *
-     * ImageIcon icon = new ImageIcon(url); return new
-     * Dimension(icon.getIconWidth(), icon.getIconHeight());
-     *
-     * }
-     */
 
     /**
      * Returns the first matching item for that id in any collection. NOTE: Gets
