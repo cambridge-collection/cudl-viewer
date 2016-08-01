@@ -418,7 +418,7 @@
         <dependency>
             <groupId>uk.ac.cam.raven</groupId>
             <artifactId>servlet-lib</artifactId>
-            <version>1.0.3</version>
+            <version>1.0.3b-2</version>
         </dependency>
 
         <dependency>
