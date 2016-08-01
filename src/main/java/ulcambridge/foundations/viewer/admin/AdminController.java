@@ -16,6 +16,7 @@ import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
     private CollectionFactory collectionFactory;

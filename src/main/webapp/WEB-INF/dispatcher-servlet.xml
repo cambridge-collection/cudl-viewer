@@ -79,6 +79,11 @@
         <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
     </bean>
 
+    <bean id="admincontroller" class="ulcambridge.foundations.viewer.admin.AdminController">
+        <property name="collectionFactory" ref="collectionFactory" />
+        <property name="usersDao" ref="usersDao" />
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

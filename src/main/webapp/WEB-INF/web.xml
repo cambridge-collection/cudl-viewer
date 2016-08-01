@@ -102,19 +102,6 @@
         <url-pattern>/raven/*</url-pattern>
     </servlet-mapping>
 
-    <!-- admincontroller servlet -->
-
-    <servlet>
-        <servlet-name>admincontroller</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>admincontroller</servlet-name>
-        <url-pattern>/admin/*</url-pattern>
-    </servlet-mapping>
-
 	<!-- genizah tagging controllers -->
 	<servlet>
 		<servlet-name>crowdsourcingcontroller</servlet-name>
