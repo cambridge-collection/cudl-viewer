@@ -63,6 +63,8 @@
         <constructor-arg index="2" ref="linkedinLoginRestTemplate" />
     </bean>
 
+    <bean id="form" class="ulcambridge.foundations.viewer.FormController"/>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
