@@ -48,6 +48,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 @Controller
+@RequestMapping("/editor")
 public class ContentEditorController {
 
     protected final String contentHTMLPath = Properties
