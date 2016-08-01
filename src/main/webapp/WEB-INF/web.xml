@@ -36,7 +36,7 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-	
+
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -111,11 +111,11 @@
         <extension>json</extension>
         <mime-type>application/json</mime-type>
     </mime-mapping>
-	
+
     <mime-mapping>
         <extension>glsl</extension>
         <mime-type>application/x-glsl</mime-type>
-    </mime-mapping>	
+    </mime-mapping>
 
     <mime-mapping>
         <extension>dzi</extension>
@@ -131,22 +131,22 @@
         <extension>eot</extension>
         <mime-type>application/octet-stream</mime-type>
     </mime-mapping>
-	
+
     <mime-mapping>
         <extension>woff</extension>
         <mime-type>application/x-font-woff</mime-type>
     </mime-mapping>
-	
+
     <mime-mapping>
         <extension>map</extension>
         <mime-type>application/json</mime-type>
-    </mime-mapping>		
-	
+    </mime-mapping>
+
     <mime-mapping>
         <extension>ico</extension>
         <mime-type>image/x-icon</mime-type>
-    </mime-mapping>	
-		
+    </mime-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/errors/404.html</location>
@@ -161,9 +161,8 @@
         <error-code>500</error-code>
         <location>/errors/500.html</location>
     </error-page>
-    
+
     <session-config>
         <session-timeout>240</session-timeout>
     </session-config>
-    
-</web-app>   
+</web-app>
