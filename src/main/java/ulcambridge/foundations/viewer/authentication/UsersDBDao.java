@@ -11,13 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
+@Component
 public class UsersDBDao implements UsersDao {
 
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
+    public UsersDBDao(DataSource dataSource) {
+        Assert.notNull(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

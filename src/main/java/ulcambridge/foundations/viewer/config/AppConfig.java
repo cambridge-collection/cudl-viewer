@@ -10,17 +10,20 @@ import org.springframework.context.annotation.PropertySource;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
+import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 
 import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
 @ComponentScan("ulcambridge.foundations.viewer.frontend")
+@Import(SecurityConfig.class)
 public class AppConfig {
 
     @Configuration
     @ComponentScan("ulcambridge.foundations.viewer.dao")
-    @Import({CollectionFactory.class, ItemFactory.class, JSONReader.class})
+    @Import({CollectionFactory.class, ItemFactory.class, JSONReader.class,
+             UsersDBDao.class})
     public static class DatabaseConfig {
         @Bean
         public DataSource dataSource(

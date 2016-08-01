@@ -15,56 +15,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"
 	xmlns:task="http://www.springframework.org/schema/task">
 
-	<import resource="../datasource/itemsFactory.xml" />
-
-	<bean id="google"
-		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-		<property name="clientId" value="${google.clientId}"></property>
-		<property name="clientSecret" value="${google.clientSecret}"></property>
-		<property name="accessTokenUri" value="https://accounts.google.com/o/oauth2/token"></property>
-		<property name="userAuthorizationUri"
-			value="https://accounts.google.com/o/oauth2/auth?openid.realm=${google.openid.realm}">
-		</property>
-		<property name="scope" value="#{{'profile','openid', 'email'}}"></property>
-		<property name="clientAuthenticationScheme" value="form"></property>
-	</bean>
-
-	<bean id="facebook"
-		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-		<property name="clientId" value="${facebook.appId}"></property>
-		<property name="clientSecret" value="${facebook.appSecret}"></property>
-		<property name="accessTokenUri"
-			value="https://graph.facebook.com/oauth/access_token"></property>
-		<property name="userAuthorizationUri" value="https://www.facebook.com/dialog/oauth">
-		</property>
-		<property name="tokenName" value="oauth_token"></property>
-		<property name="authenticationScheme" value="query"></property>
-		<property name="scope" value="#{{'email'}}"></property>
-		<property name="clientAuthenticationScheme" value="form"></property>
-	</bean>
-
-	<bean id="linkedin"
-		class="ulcambridge.foundations.viewer.authentication.ExtendedBaseOAuth2ProtectedResourceDetails">
-		<property name="clientId" value="${linkedin.clientId}"></property>
-		<property name="clientSecret" value="${linkedin.clientSecret}"></property>
-		<property name="accessTokenUri"
-			value="https://www.linkedin.com/uas/oauth2/accessToken"></property>
-		<property name="userAuthorizationUri"
-			value="https://www.linkedin.com/uas/oauth2/authorization">
-		</property>
-		<property name="scope" value="#{{'r_basicprofile','r_emailaddress'}}"></property>
-		<property name="clientAuthenticationScheme" value="form"></property>
-	</bean>
-
-	<oauth:rest-template id="googleLoginRestTemplate"
-		resource="google" />
-
-	<oauth:rest-template id="facebookLoginRestTemplate"
-		resource="facebook" />
-
-	<oauth:rest-template id="linkedinLoginRestTemplate"
-		resource="linkedin" />
-
 	<security:http pattern="/images/**" security='none' />
 	<security:http pattern="/img/**" security='none' />
 
@@ -99,8 +49,8 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 			<security:frame-options	policy="SAMEORIGIN" />
 		</security:headers>
 	</security:http>
-	
-	
+
+
 	<!--Security for editor access -->
 	<security:http auto-config="false" pattern="/editor/**">
 

@@ -1,11 +1,10 @@
 package ulcambridge.foundations.viewer.config;
 
-import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -32,6 +31,9 @@ public class ViewerEntryPoint
         registerRavenServlet(container);
 
         container.getJspConfigDescriptor();
+
+        // Register a filter proxy to be used by @EnableOAuth2Client
+        registerProxyFilter(container, "oauth2ClientContextFilter");
     }
 
     void registerRavenServlet(ServletContext container) {
@@ -67,10 +69,13 @@ public class ViewerEntryPoint
         };
     }
 
-    @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[] {
+    private void registerProxyFilter(
+        ServletContext servletContext, String name) {
 
-        };
+        DelegatingFilterProxy filter = new DelegatingFilterProxy(name);
+        filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
+        servletContext
+            .addFilter(name, filter)
+            .addMappingForUrlPatterns(null, false, "/*");
     }
 }
