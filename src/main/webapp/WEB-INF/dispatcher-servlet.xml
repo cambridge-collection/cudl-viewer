@@ -54,6 +54,15 @@
         <property name="collectionFactory" ref="collectionFactory" />
     </bean>
 
+    <bean id="oauthLoginController"
+          class="ulcambridge.foundations.viewer.authentication.LoginController">
+        <property name="usersDao" ref="usersDao" />
+        <property name="bookmarkDao" ref="bookmarkDao" />
+        <constructor-arg index="0" ref="googleLoginRestTemplate" />
+        <constructor-arg index="1" ref="facebookLoginRestTemplate" />
+        <constructor-arg index="2" ref="linkedinLoginRestTemplate" />
+    </bean>
+
     <util:properties id="globalproperties" location="classpath:cudl-global.properties"/>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

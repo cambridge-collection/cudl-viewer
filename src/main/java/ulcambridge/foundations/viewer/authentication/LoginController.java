@@ -39,6 +39,7 @@ import ulcambridge.foundations.viewer.model.Bookmark;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
+@RequestMapping("/auth")
 public class LoginController {
 
     protected final Log logger = LogFactory.getLog(getClass());
