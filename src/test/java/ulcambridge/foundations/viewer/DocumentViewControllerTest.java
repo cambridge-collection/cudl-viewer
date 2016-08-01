@@ -59,8 +59,7 @@ public class DocumentViewControllerTest extends TestCase {
         c.setRootURL("http://testurl.testingisthebest.com:8080");
 
         // inject the mock dao
-        CollectionFactory collectionFactory = new CollectionFactory();
-        collectionFactory.setCollectionsDao(collectionsdao);
+        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
         // inject the factories
         c.setCollectionFactory(collectionFactory);

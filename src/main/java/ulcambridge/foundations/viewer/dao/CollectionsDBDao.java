@@ -13,14 +13,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Collection;
 
+@Component
 public class CollectionsDBDao implements CollectionsDao {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
+    public CollectionsDBDao(DataSource dataSource) {
+        Assert.notNull(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

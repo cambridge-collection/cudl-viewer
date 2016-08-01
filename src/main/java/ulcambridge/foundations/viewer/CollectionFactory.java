@@ -12,9 +12,13 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 
+
+@Component
 public class CollectionFactory {
 
     private static Map<String, Collection> collections;
@@ -26,16 +30,16 @@ public class CollectionFactory {
     private static int itemsinCollectionRowCount;
     private static Set<String> allItemIds;
 
+
     @Autowired
-    public void setCollectionsDao(CollectionsDao dao) {
-        collectionsDao = dao;
-        if (!initialised) {
-            init();
-        }
+    public CollectionFactory(CollectionsDao dao) {
+        Assert.notNull(dao);
+        setCollectionsDao(dao);
     }
 
-    public boolean getInitialised() {
-        return initialised;
+    private void setCollectionsDao(CollectionsDao dao) {
+        collectionsDao = dao;
+        init();
     }
 
     public synchronized void init() {
