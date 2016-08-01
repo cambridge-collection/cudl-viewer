@@ -45,13 +45,15 @@ public class RefreshCache {
             String latestDBRevision = dbGit.getLastRevision();
             String latestJSONRevision = jsonGit.getLastRevision();
 
-            if (!lastDBRevision.equals(latestDBRevision)) {
+            if (latestDBRevision != null &&
+                !lastDBRevision.equals(latestDBRevision)) {
                 // Get fresh collections from the database
                 refreshDB();
                 lastDBRevision = latestDBRevision;
             }
 
-            if (!lastJSONRevision.equals(latestJSONRevision)) {
+            if (latestJSONRevision != null &&
+                !lastJSONRevision.equals(latestJSONRevision)) {
                 // empty item cache
                 refreshJSON();
                 lastJSONRevision = latestJSONRevision;
