@@ -49,6 +49,7 @@ import java.util.concurrent.TimeUnit;
  *
  */
 @RestController
+@RequestMapping("/crowdsourcing")
 public class CrowdsourcingController {
 
     private static final Set<String> USER_ROLES = Collections.unmodifiableSet(

@@ -83,6 +83,10 @@
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>dispatchOptionsRequest</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
@@ -102,34 +106,6 @@
         <url-pattern>/raven/*</url-pattern>
     </servlet-mapping>
 
-	<!-- genizah tagging controllers -->
-	<servlet>
-		<servlet-name>crowdsourcingcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/crowdsourcingcontroller-servlet.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>dispatchOptionsRequest</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>crowdsourcingcontroller</servlet-name>
-		<url-pattern>/crowdsourcing/*</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>crowdsourcingxmlcontroller</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>crowdsourcingxmlcontroller</servlet-name>
-		<url-pattern>/crowdsourcing/xtfxml/*</url-pattern>
-	</servlet-mapping>
-    
     <!-- mime types are required or the mvc:resources fails to ignore them -->
     <mime-mapping>
         <extension>json</extension>

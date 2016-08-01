@@ -34,6 +34,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 @RestController
+@RequestMapping("/crowdsourcing/xtfxml")
 public class CrowdsourcingXMLController {
 
     private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
