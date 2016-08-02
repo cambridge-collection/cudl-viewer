@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,17 +20,20 @@ import ulcambridge.foundations.viewer.model.Properties;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private CollectionFactory collectionFactory;
-    private UsersDao usersDao;
+    private final CollectionFactory collectionFactory;
+    private final UsersDao usersDao;
+    private final RefreshCache cacheRefresher;
 
     @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
-    }
+    public AdminController(CollectionFactory collectionFactory,
+                           UsersDao usersDao, RefreshCache cacheRefresher) {
+        Assert.notNull(collectionFactory);
+        Assert.notNull(usersDao);
+        Assert.notNull(cacheRefresher);
 
-    @Autowired
-    public void setUsersDao(UsersDao usersDao) {
+        this.collectionFactory = collectionFactory;
         this.usersDao = usersDao;
+        this.cacheRefresher = cacheRefresher;
     }
 
     // on path /admin/publishdb
@@ -122,8 +126,8 @@ public class AdminController {
     @RequestMapping(value = "/refresh")
     public ModelAndView handleRefreshRequest() {
 
-        RefreshCache.refreshDB();
-        RefreshCache.refreshJSON();
+        this.cacheRefresher.refreshDB();
+        this.cacheRefresher.refreshJSON();
 
         ModelAndView mv = new ModelAndView("jsp/adminresult");
         mv.addObject("copysuccess", "Cache has been Refreshed");

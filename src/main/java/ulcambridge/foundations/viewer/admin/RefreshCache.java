@@ -3,19 +3,22 @@ package ulcambridge.foundations.viewer.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
- *
  * @author rekha
  */
+@Component
 public class RefreshCache {
 
-    private static CollectionFactory collectionFactory;
-    private static ItemFactory itemFactory;
+    private final CollectionFactory collectionFactory;
+    private final ItemFactory itemFactory;
 
+    // FIXME: Inject this stuff
     private String jsonLocalPathMasters = Properties.getString("admin.git.json.localpath");
     private String jsonUrl = Properties.getString("admin.git.json.url");
     private GitHelper jsonGit = new GitHelper(jsonLocalPathMasters,jsonUrl);
@@ -28,18 +31,15 @@ public class RefreshCache {
     private String lastDBRevision = dbGit.getLastRevision();
 
     @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
+    public RefreshCache(CollectionFactory collectionFactory, ItemFactory itemFactory) {
+        Assert.notNull(collectionFactory);
+        Assert.notNull(itemFactory);
 
-        collectionFactory = factory;
+        this.collectionFactory = collectionFactory;
+        this.itemFactory = itemFactory;
     }
 
-    @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        itemFactory = factory;
-    }
-
-
-    @Scheduled(fixedRate = 300000)  // Check every 5 mins.
+    @Scheduled(fixedRate = 1000 * 60 * 5)  // Check every 5 mins.
     public void checkForUpdates() {
 
             String latestDBRevision = dbGit.getLastRevision();
@@ -61,11 +61,11 @@ public class RefreshCache {
             }
     }
 
-    public static void refreshDB() {
+    public void refreshDB() {
         collectionFactory.init();
     }
 
-    public static void refreshJSON() {
+    public void refreshJSON() {
         itemFactory.clearItemCache();
     }
 

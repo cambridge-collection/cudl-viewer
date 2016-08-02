@@ -17,7 +17,10 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
-@ComponentScan("ulcambridge.foundations.viewer.frontend")
+@ComponentScan({
+    "ulcambridge.foundations.viewer.frontend",
+    "ulcambridge.foundations.viewer.admin"
+})
 @Import(SecurityConfig.class)
 @EnableScheduling
 public class AppConfig {
