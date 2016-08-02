@@ -16,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,22 +27,17 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
-@RequestMapping(value = "/")
 public class SiteViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private String showHoldingPage = Properties.getString("showHoldingPage");
-    private ItemFactory itemFactory;
-    private CollectionFactory collectionFactory;
+    private final CollectionFactory collectionFactory;
 
     @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
-    }
+    public SiteViewController(CollectionFactory collectionFactory) {
+        Assert.notNull(collectionFactory);
 
-    @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
+        this.collectionFactory = collectionFactory;
     }
 
     // on path /
