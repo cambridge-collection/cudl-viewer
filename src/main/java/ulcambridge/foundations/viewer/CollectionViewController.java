@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,17 +35,17 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class CollectionViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
-    private CollectionFactory collectionFactory;
-    private ItemFactory itemFactory;
+    private final CollectionFactory collectionFactory;
+    private final ItemFactory itemFactory;
 
     @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
-    }
+    public CollectionViewController(CollectionFactory collectionFactory,
+                                    ItemFactory itemFactory) {
+        Assert.notNull(collectionFactory);
+        Assert.notNull(itemFactory);
 
-    @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
+        this.collectionFactory = collectionFactory;
+        this.itemFactory = itemFactory;
     }
 
     // on path /collections/
