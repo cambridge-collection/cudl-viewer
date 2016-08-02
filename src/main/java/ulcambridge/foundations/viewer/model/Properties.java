@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer.model;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+// FIXME: replace usages of this with value injection
 public class Properties {
 
     private final static ResourceBundle globalConfig = ResourceBundle
