@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:cudl-global.properties")
 @ComponentScan("ulcambridge.foundations.viewer.frontend")
 @Import(SecurityConfig.class)
+@EnableScheduling
 public class AppConfig {
 
     @Configuration

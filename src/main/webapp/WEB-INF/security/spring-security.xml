@@ -134,8 +134,6 @@ http://www.springframework.org/schema/security/spring-security-oauth2.xsd
 	<security:global-method-security
 		secured-annotations="enabled" />
 
-	<task:annotation-driven />
-
 	<bean id="refresh" class="ulcambridge.foundations.viewer.admin.RefreshCache">
 		<property name="collectionFactory" ref="collectionFactory" />
 		<property name="itemFactory" ref="itemFactory" />
