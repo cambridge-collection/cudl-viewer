@@ -53,27 +53,21 @@ public class SearchControllerTest extends TestCase {
 
         JSONReader reader = new MockJSONReader();
 
-        ItemsJSONDao jsondao = new ItemsJSONDao();
-        jsondao.setJSONReader(reader);
+        ItemsJSONDao jsondao = new ItemsJSONDao(reader);
 
         CollectionsDao collectionsdao = new CollectionsMockDao();
 
-        ItemFactory itemFactory = new ItemFactory();
-        itemFactory.setItemsDao(jsondao);
+        ItemFactory itemFactory = new ItemFactory(jsondao);
 
         SearchForm form = new SearchForm();
         form.setKeyword("Elementary Mathematics");
         form.setFacetCollection("Newton Papers");
         form.setFacetSubject("Algebra - Early works to 1800");
 
-        SearchController c = new SearchController(new MockSearch());
+        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
-        // inject the mock dao
-        CollectionFactory collectionFactory = new CollectionFactory();
-        collectionFactory.setCollectionsDao(collectionsdao);
-
-        // inject the factories
-        c.setItemFactory(itemFactory);
+        SearchController c = new SearchController(
+            collectionFactory, itemFactory, new MockSearch());
 
         ModelAndView m = c.processSearch(form);
 

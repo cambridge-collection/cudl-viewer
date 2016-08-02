@@ -9,6 +9,8 @@ import java.util.Set;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,7 +41,7 @@ public class CrowdsourcingXMLController {
 
     private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
 
-    private CrowdsourcingDao dataSource;
+    private final CrowdsourcingDao dataSource;
 
     private final String APIKEY = Properties.getString("api.cs.key");
 
@@ -53,8 +55,11 @@ public class CrowdsourcingXMLController {
     private final String PATH_TAGMETA = Properties.getString("path.tagmeta");
     private final String PATH_ANNOTAGMETA = Properties.getString("path.annotagmeta");
 
-    public CrowdsourcingXMLController(CrowdsourcingDao dataSource) {
-        this.dataSource = dataSource;
+    @Autowired
+    public CrowdsourcingXMLController(CrowdsourcingDao crowdsourcingDao) {
+        Assert.notNull(crowdsourcingDao);
+
+        this.dataSource = crowdsourcingDao;
     }
 
     // on path /updatefrags

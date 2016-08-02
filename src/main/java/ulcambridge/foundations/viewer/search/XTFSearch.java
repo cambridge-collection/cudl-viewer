@@ -1,6 +1,6 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.springframework.util.Assert;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class XTFSearch implements Search {
 
     private static final String INDEX_NAME_REGULAR = "index-cudl",

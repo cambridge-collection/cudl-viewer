@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
+@RequestMapping("/imageproxy/")
 public class ImageProxy {
 
     /**

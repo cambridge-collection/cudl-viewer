@@ -19,6 +19,7 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +29,7 @@ import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,27 +48,27 @@ public class LoginController {
     private final OAuth2RestOperations googleTemplate;
     private final OAuth2RestOperations facebookTemplate;
     private final OAuth2RestOperations linkedinTemplate;
-    private BookmarkDao bookmarkDao;
-    private UsersDao usersDao;
+    private final BookmarkDao bookmarkDao;
+    private final UsersDao usersDao;
 
     @Autowired
-    public LoginController(OAuth2RestOperations googleTemplate,
-            OAuth2RestOperations facebookTemplate,
-            OAuth2RestOperations linkedinTemplate) {
+    public LoginController(
+        BookmarkDao bookmarkDao, UsersDao usersDao,
+        @Qualifier("googleOauth") OAuth2RestOperations googleTemplate,
+        @Qualifier("facebookOauth") OAuth2RestOperations facebookTemplate,
+        @Qualifier("linkedinOauth") OAuth2RestOperations linkedinTemplate) {
+
+        Assert.notNull(bookmarkDao);
+        Assert.notNull(usersDao);
+        Assert.notNull(googleTemplate);
+        Assert.notNull(facebookTemplate);
+        Assert.notNull(linkedinTemplate);
+
+        this.bookmarkDao = bookmarkDao;
+        this.usersDao = usersDao;
         this.googleTemplate = googleTemplate;
         this.facebookTemplate = facebookTemplate;
         this.linkedinTemplate = linkedinTemplate;
-    }
-
-    @Autowired
-    public void setUsersDao(UsersDao usersDao) {
-        // loginUtils = new LoginUtils(usersDao);
-        this.usersDao = usersDao;
-    }
-
-    @Autowired
-    public void setBookmarkDao(BookmarkDao bookmarkDao) {
-        this.bookmarkDao = bookmarkDao;
     }
 
     // on path /auth/login/

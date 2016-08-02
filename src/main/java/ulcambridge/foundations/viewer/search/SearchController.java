@@ -44,9 +44,9 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class SearchController {
 
     protected final Log logger = LogFactory.getLog(getClass());
-    private Search search;
-    private ItemFactory itemFactory;
-    private CollectionFactory collectionFactory;
+    private final Search search;
+    private final ItemFactory itemFactory;
+    private final CollectionFactory collectionFactory;
 
     /**
      * Constructor, set in search-servlet.xml.
@@ -54,20 +54,18 @@ public class SearchController {
      * @param search
      *            to use for queries. e.g. SearchXTF.
      */
-    public SearchController(Search search) {
+    @Autowired
+    public SearchController(CollectionFactory collectionFactory,
+                            ItemFactory itemFactory, Search search) {
+
+        Assert.notNull(collectionFactory);
+        Assert.notNull(itemFactory);
+        Assert.notNull(search);
+
+        this.collectionFactory = collectionFactory;
+        this.itemFactory = itemFactory;
         this.search = search;
     }
-
-    @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
-    }
-
-    @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
-    }
-
 
     // on /search path
     @RequestMapping(method = RequestMethod.GET)

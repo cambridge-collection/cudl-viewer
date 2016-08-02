@@ -1,6 +1,8 @@
 package ulcambridge.foundations.viewer.config;
 
+import com.google.gson.Gson;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,11 +10,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.authentication.UsersDBDao;
+import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 
 import javax.sql.DataSource;
 
@@ -20,16 +26,14 @@ import javax.sql.DataSource;
 @PropertySource("classpath:cudl-global.properties")
 @ComponentScan({
     "ulcambridge.foundations.viewer.frontend",
-    "ulcambridge.foundations.viewer.admin"
+    "ulcambridge.foundations.viewer.admin",
+    "ulcambridge.foundations.viewer.search",
+    "ulcambridge.foundations.viewer.crowdsourcing"
 })
-@Import(SecurityConfig.class)
+@Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableScheduling
+@EnableTransactionManagement
 public class AppConfig {
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
 
     @Configuration
     @ComponentScan("ulcambridge.foundations.viewer.dao")
@@ -55,5 +59,18 @@ public class AppConfig {
 
             return ds;
         }
+
+        @Bean
+        @Autowired
+        public PlatformTransactionManager transactionManager(
+            DataSource dataSource) {
+
+            return new DataSourceTransactionManager(dataSource);
+        }
+    }
+
+    @Bean
+    public Gson gson() {
+        return GsonFactory.create();
     }
 }

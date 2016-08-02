@@ -13,6 +13,8 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
 import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentAnnotations;
 import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentTags;
@@ -35,16 +37,17 @@ import java.util.Set;
 import java.util.UUID;
 
 /**
- *
  * @author Lei
- *
  */
+@Component
 public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
+    public CrowdsourcingDBDao(DataSource dataSource) {
+        Assert.notNull(dataSource);
+
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

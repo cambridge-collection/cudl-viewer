@@ -28,6 +28,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,12 +73,14 @@ public class ContentEditorController {
     protected final String localBranch = Properties
             .getString("admin.git.content.branch.local");
     protected final GitHelper git = new GitHelper(gitLocalPath, gitUrl);
-    private UsersDao usersDao;
+    private final UsersDao usersDao;
 
     protected final Log logger = LogFactory.getLog(getClass());
 
     @Autowired
-    public void setUsersDao(UsersDao usersDao) {
+    public ContentEditorController(UsersDao usersDao) {
+        Assert.notNull(usersDao);
+
         this.usersDao = usersDao;
     }
 
