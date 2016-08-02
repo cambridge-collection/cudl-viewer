@@ -14,6 +14,7 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,16 +29,16 @@ import ulcambridge.foundations.viewer.model.Item;
 public class MyLibraryController {
 
     protected final Log logger = LogFactory.getLog(getClass());
-    private ItemFactory itemFactory;
-    private BookmarkDao bookmarkDao;
+    private final ItemFactory itemFactory;
+    private final BookmarkDao bookmarkDao;
 
     @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
-    }
+    public MyLibraryController(ItemFactory itemFactory,
+                               BookmarkDao bookmarkDao) {
+        Assert.notNull(itemFactory);
+        Assert.notNull(bookmarkDao);
 
-    @Autowired
-    public void setBookmarkDao(BookmarkDao bookmarkDao) {
+        this.itemFactory = itemFactory;
         this.bookmarkDao = bookmarkDao;
     }
 
