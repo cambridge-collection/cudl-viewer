@@ -10,17 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
 
+@Component
 public class BookmarkDBDao implements BookmarkDao {
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
     private int bookmarkLimit = 500; // could make this read from a properties
                                         // file.
 
     @Autowired
-    public void setDataSource(DataSource dataSource) {
+    public BookmarkDBDao(DataSource dataSource) {
+        Assert.notNull(dataSource);
+
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
