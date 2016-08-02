@@ -1,5 +1,27 @@
 package ulcambridge.foundations.viewer;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.EssayItem;
+import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -7,28 +29,6 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import org.springframework.web.util.UriComponentsBuilder;
-import ulcambridge.foundations.viewer.dao.CollectionsDao;
-import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.EssayItem;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -46,29 +46,25 @@ public class DocumentViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
 
-    private CollectionFactory collectionFactory;
-    private ItemFactory itemFactory;
-    private CollectionsDao dataSource;
+    private final CollectionFactory collectionFactory;
+    private final ItemFactory itemFactory;
+    private final CollectionsDao dataSource;
 
-    private URI rootURL;
-
-    public void setRootURL(String rootURL) {
-        this.rootURL = URI.create(rootURL);
-    }
+    private final URI rootURL;
 
     @Autowired
-    public void setCollectionFactory(CollectionFactory factory) {
-        this.collectionFactory = factory;
-    }
+    public DocumentViewController(
+        CollectionFactory collectionFactory, CollectionsDao collectionsDao,
+        ItemFactory itemFactory, @Value("${rootURL}") URI rootUrl) {
 
-    @Autowired
-    public void setItemFactory(ItemFactory factory) {
-        this.itemFactory = factory;
-    }
+        Assert.notNull(collectionFactory);
+        Assert.notNull(itemFactory);
+        Assert.notNull(rootUrl);
 
-    @Autowired
-    public void setDataSource(CollectionsDao dataSource) {
-        this.dataSource = dataSource;
+        this.collectionFactory = collectionFactory;
+        this.dataSource = collectionsDao;
+        this.itemFactory = itemFactory;
+        this.rootURL = rootUrl;
     }
 
     // on path /view/{docId}
