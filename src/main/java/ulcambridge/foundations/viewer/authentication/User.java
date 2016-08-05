@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer.authentication;
 
+import org.springframework.util.Assert;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,6 +16,8 @@ public class User implements Serializable {
     private List<String> userRoles;
 
     public User(String username, String password, String email, boolean enabled, List<String> userRoles) {
+        Assert.notNull(username);
+
         this.username = username;
         this.password = password;
         this.email = email;
