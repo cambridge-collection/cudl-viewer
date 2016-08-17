@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
@@ -46,11 +47,12 @@
                                     </a>
                                 </form>
                                 <br />
-                                <form class="openid_form" method="post"
-                                    action="/auth/raven">
+                                <form:form class="openid_form" method="POST"
+                                    action="/auth/login?type=raven">
                                     <a class="btn btn-block btn-social btn-raven" href="/raven/"> <img class="img-raven" src="/img/general/raven.png" /> Sign In with Raven
                                     </a>
-                                </form>
+                                    <button action="submit">Sign in with Raven</button>
+                                </form:form>
                             </div>
                         </div>
                     </div>

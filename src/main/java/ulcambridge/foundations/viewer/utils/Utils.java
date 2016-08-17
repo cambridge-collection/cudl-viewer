@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 
 public class Utils {
@@ -64,4 +66,7 @@ public class Utils {
         return new DecimalFormat("#0.00000").format(value);
     }
 
+    public static <T> Stream<T> stream(Iterable<T> i) {
+        return StreamSupport.stream(i.spliterator(), false);
+    }
 }

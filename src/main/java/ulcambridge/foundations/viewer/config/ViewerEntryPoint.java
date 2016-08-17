@@ -5,6 +5,7 @@ import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -70,12 +71,18 @@ public class ViewerEntryPoint
     }
 
     private void registerProxyFilter(
+        ServletContext servletContext, String name, String...patterns) {
+
+            DelegatingFilterProxy filter = new DelegatingFilterProxy(name);
+            filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
+            servletContext
+                .addFilter(name, filter)
+                .addMappingForUrlPatterns(null, false, patterns);
+    }
+
+    private void registerProxyFilter(
         ServletContext servletContext, String name) {
 
-        DelegatingFilterProxy filter = new DelegatingFilterProxy(name);
-        filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
-        servletContext
-            .addFilter(name, filter)
-            .addMappingForUrlPatterns(null, false, "/*");
+        registerProxyFilter(servletContext, name, "/*");
     }
 }
