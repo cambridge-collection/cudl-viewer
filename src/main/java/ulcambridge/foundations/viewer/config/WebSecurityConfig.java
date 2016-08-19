@@ -43,6 +43,7 @@ import ulcambridge.foundations.viewer.authentication.CudlUserDetailsRavenTokenCr
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
+import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.authentication.ViewerUserDetailsService;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
@@ -161,10 +162,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public RavenAuthenticationFilter ravenAuthenticationFilter(
         RavenRequestCreator requestCreator, RequestCache requestCache,
+        RavenAuthCancellationFailureHandler failureHandler,
         AuthenticationManager authenticationManager) {
 
-        return new RavenAuthenticationFilter(
+        RavenAuthenticationFilter f = new RavenAuthenticationFilter(
             authenticationManager, requestCreator, requestCache);
+
+        f.setAuthenticationFailureHandler(failureHandler);
+
+        return f;
     }
 
     @Bean
@@ -226,6 +232,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         Iterable<EntryPointSelector> entryPointSelectors) {
 
         return new DeferredEntryPointFilter(entryPointSelectors);
+    }
+
+    @Bean
+    public RavenAuthCancellationFailureHandler ravenAuthCancellationFailureHandler() {
+
+        return RavenAuthCancellationFailureHandler.redirectingTo("/auth/login");
     }
 
     /**
