@@ -127,7 +127,7 @@
                         </div>
                     </div>
 
-                    <p><a href="/admin/auth/logout">Logout</a></p>
+                    <p><a href="/auth/logout">Logout</a></p>
                 </div>
             </div>
         </div>
