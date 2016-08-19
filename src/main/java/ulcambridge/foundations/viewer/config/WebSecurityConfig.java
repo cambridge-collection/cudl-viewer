@@ -39,6 +39,7 @@ import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator;
 import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.RequestParam;
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
 import uk.ac.cam.ucs.webauth.WebauthValidator;
+import ulcambridge.foundations.viewer.authentication.CudlUserDetailsRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
@@ -144,7 +145,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     public UserDetailsRavenTokenCreator ravenTokenCreator(
         UserDetailsService userDetailsService) {
 
-        return new UserDetailsRavenTokenCreator(userDetailsService);
+        return new CudlUserDetailsRavenTokenCreator(userDetailsService);
     }
 
     @Bean
