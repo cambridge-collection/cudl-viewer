@@ -420,12 +420,6 @@
 
         <!-- raven auth, in cudl repo -->
         <dependency>
-            <groupId>uk.ac.cam.raven</groupId>
-            <artifactId>servlet-lib</artifactId>
-            <version>1.0.3b-2</version>
-        </dependency>
-
-        <dependency>
             <groupId>uk.ac.cam.lib</groupId>
             <artifactId>spring-security-raven</artifactId>
             <version>0.0.0-SNAPSHOT</version>

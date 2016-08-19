@@ -227,30 +227,6 @@ public class LoginController {
         return null;
     }
 
-    // Handle login from Raven (started by RavenLoginServlet)
-    @RequestMapping(value = "/raven/login")
-    public ModelAndView handleRavenRequest(HttpSession session,
-            HttpServletResponse response) throws JSONException, IOException,
-            NoSuchAlgorithmException {
-
-        // Get the username from session, if no username is stored, 404.
-        String username = (String) session.getAttribute("cudl-raven-username");
-        if (username == null) {
-            return new ModelAndView("jsp/errors/404");
-        }
-
-        String usernameEncoded = "raven:" + encode(username);
-        String emailEncoded = encode(username + "@cam.ac.uk");
-
-        // setup user in Spring Security and DB
-        setupUser(usernameEncoded, emailEncoded, session);
-
-        redirect(response, (String) session.getAttribute("access"));
-        session.removeAttribute("access");
-
-        return null;
-    }
-
     /**
      * Validates the access (which is a property read directly from the URL)
      * and redirects to the page specified if this is valid.
