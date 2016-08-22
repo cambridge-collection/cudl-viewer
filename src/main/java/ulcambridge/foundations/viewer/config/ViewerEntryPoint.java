@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.config;
 
+import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -28,7 +29,11 @@ public class ViewerEntryPoint
         container.getJspConfigDescriptor();
 
         // Register a filter proxy to be used by @EnableOAuth2Client
-        registerProxyFilter(container, "oauth2ClientContextFilter");
+        //registerProxyFilter(container, "oauth2ClientContextFilter");
+
+        // Expose current request outside DispatchServlet. Required for spring
+        // security auth filters.
+        container.addListener(new RequestContextListener());
     }
 
     @Override

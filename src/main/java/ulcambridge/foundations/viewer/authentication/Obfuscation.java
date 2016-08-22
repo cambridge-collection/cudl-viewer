@@ -26,6 +26,10 @@ public final class Obfuscation {
         return String.format("%s:%s", type, sha256(username));
     }
 
+    public static String obfuscate(String input) {
+        return sha256(input);
+    }
+
     private static String sha256(String s) {
         MessageDigest d;
         try {

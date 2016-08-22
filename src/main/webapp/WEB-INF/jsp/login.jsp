@@ -40,12 +40,13 @@
                                     </a>
                                 </form>
                                 <br />
-                                <form class="openid_form" method="post"
-                                    action="/auth/oauth2/linkedin">
+                                <form:form class="openid_form" method="POST"
+                                    action="/auth/login?type=linkedin">
                                     <a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
-                                        class="fa fa-linkedin"></i> Sign In with LinkedIn
-                                    </a>
-                                </form>
+                                                                            class="fa fa-linkedin"></i> Sign In with LinkedIn
+                                                                        </a>
+                                    <button action="submit">Sign in with LinkedIn</button>
+                                </form:form>
                                 <br />
                                 <form:form class="openid_form" method="POST"
                                     action="/auth/login?type=raven">

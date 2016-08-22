@@ -16,7 +16,12 @@ import java.util.stream.Stream;
 public abstract class QueryStringRequestMatcher implements RequestMatcher {
     @Override
     public boolean matches(HttpServletRequest request) {
-        return matches(Arrays.stream(request.getQueryString().split("&"))
+        String query = request.getQueryString();
+
+        if(query == null)
+            return false;
+
+        return matches(Arrays.stream(query.split("&"))
             .map(s -> s.split("=", 2))
             .map(kv -> ImmutablePair.of(
                 decode(kv[0]),

@@ -8,19 +8,25 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
+import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
@@ -46,6 +52,9 @@ import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
 import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.authentication.ViewerUserDetailsService;
+import ulcambridge.foundations.viewer.authentication.oauth2.CudlProviders;
+import ulcambridge.foundations.viewer.authentication.oauth2.LinkedinProfile;
+import ulcambridge.foundations.viewer.authentication.oauth2.Oauth2AuthenticationFilter;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
 
 import javax.servlet.Filter;
@@ -56,6 +65,7 @@ import javax.servlet.ServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -67,8 +77,11 @@ import java.util.Optional;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
+@Import(WebSecurityConfig.Oauth2AuthConfig.class)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                                implements BeanFactoryAware {
+
+    public static final String LOGIN_PATH = "/auth/login";
 
     public static final String RAVEN_RETURN_LOGIN_PATH = "/auth/raven/login";
 
@@ -190,7 +203,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     @Bean(name = "authenticationEntryPoint")
     public AuthenticationEntryPoint authenticationEntryPoint() {
-        return new LoginUrlAuthenticationEntryPoint("/auth/login");
+        return new LoginUrlAuthenticationEntryPoint(LOGIN_PATH);
     }
 
     @Bean
@@ -210,7 +223,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             .forKeyWithValue("type", "raven");
 
         RequestMatcher pathMatcher = new AntPathRequestMatcher(
-            "/auth/login", "POST");
+            LOGIN_PATH, "POST");
 
         RequestMatcher m = new AndRequestMatcher(pathMatcher, queryMatcher);
 
@@ -221,9 +234,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     @Autowired
     public Iterable<EntryPointSelector> entryPointSelectors(
-        @Qualifier("ravenEntryPointSelector") EntryPointSelector raven) {
+        @Qualifier("ravenEntryPointSelector") EntryPointSelector raven,
+        @Qualifier("linkedinEntryPointSelector") EntryPointSelector linkedin) {
 
-        return Arrays.asList(raven);
+        return Arrays.asList(raven, linkedin);
     }
 
     @Bean(name = "deferredEntryPointFilter")
@@ -237,7 +251,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     public RavenAuthCancellationFailureHandler ravenAuthCancellationFailureHandler() {
 
-        return RavenAuthCancellationFailureHandler.redirectingTo("/auth/login");
+        return RavenAuthCancellationFailureHandler.redirectingTo(LOGIN_PATH);
     }
 
     /**
@@ -287,6 +301,63 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             new AntPathRequestMatcher(pattern), filter);
     }
 
+    @Configuration
+    public static class Oauth2AuthConfig {
+        public static final URI LINKEDIN_PROFILE_URL = URI.create(
+            "https://api.linkedin.com/v1/people/~:(id,email-address)?format=json");
+        public static final String TYPE_LINKEDIN = "linkedin";
+
+        public static final String OAUTH2_LOGIN_PATH = "/auth/oauth2/{type}";
+
+        public static RequestMatcher authFilterUrlMatcher(String type) {
+            return new AntPathRequestMatcher(getAuthFilterPath(type));
+        }
+
+        public static String getAuthFilterPath(String type) {
+            return UriComponentsBuilder.fromPath(OAUTH2_LOGIN_PATH)
+                .buildAndExpand(type).toUriString();
+        }
+
+        @Bean(name = "oauthAuthenticationProvider")
+        @Autowired
+        public AuthenticationProvider linkedinAuthenticationProvider(
+            UserDetailsService userDetailsService) {
+
+            return CudlProviders.cudlOauthAuthenticationProvider(
+                    userDetailsService);
+        }
+
+        @Bean(name = "linkedinAuthFilter")
+        @Autowired
+        public Oauth2AuthenticationFilter<LinkedinProfile> linkedinOauth2Filter(
+            @Qualifier("linkedinOauth")
+            OAuth2RestTemplate restTemplate,
+            AuthenticationManager authenticationManager) {
+
+            return new Oauth2AuthenticationFilter<>(
+                authenticationManager, restTemplate, LINKEDIN_PROFILE_URL,
+                LinkedinProfile.class, authFilterUrlMatcher(TYPE_LINKEDIN));
+        }
+
+        public EntryPointSelector entryPointSelector(String type) {
+            RequestMatcher matcher = new AndRequestMatcher(
+                new AntPathRequestMatcher(LOGIN_PATH),
+                QueryStringRequestMatcher.forKeyWithValue("type", TYPE_LINKEDIN)
+            );
+
+            AuthenticationEntryPoint ep = new LoginUrlAuthenticationEntryPoint(
+                getAuthFilterPath(type));
+
+            return req -> matcher.matches(req) ? Optional.of(ep)
+                                               : Optional.empty();
+        }
+
+        @Bean(name = "linkedinEntryPointSelector")
+        public EntryPointSelector linkedinEntryPointSelector() {
+            return entryPointSelector(TYPE_LINKEDIN);
+        }
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         AuthenticationEntryPoint entryPoint = beanFactory.getBean(
@@ -301,11 +372,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             beanFactory.getBean(DeferredEntryPointFilter.class);
 
         http
+            .addFilterBefore(
+                beanFactory.getBean(OAuth2ClientContextFilter.class),
+                SecurityContextPersistenceFilter.class)
+
             // Add our raven auth filter amongst the other auth filters. It has
             // to be after the SECURITY_CONTEXT_FILTER otherwise the auth result
             // doesn't get persisted.
             .addFilterAfter(
-                restrictFilterToAntPattern("/auth/raven/login",
+                restrictFilterToAntPattern(RAVEN_RETURN_LOGIN_PATH,
                                            ravenAuthFilter),
                 AbstractPreAuthenticatedProcessingFilter.class)
 
@@ -313,13 +388,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             // ExceptionTranslationFilter as that's the spring filter that
             // invokes the built-in entry points.
             .addFilterAfter(
-                restrictFilterToAntPattern("/auth/login",
+                restrictFilterToAntPattern(LOGIN_PATH,
                                            deferredEntryPointFilter),
                 ExceptionTranslationFilter.class)
+
+            .addFilterAfter(
+                beanFactory.getBean("linkedinAuthFilter",
+                                    Oauth2AuthenticationFilter.class),
+                AbstractPreAuthenticatedProcessingFilter.class)
 
             // Add support for authenticating raven auth tokens
             .authenticationProvider(
                 beanFactory.getBean(RavenAuthenticationProvider.class))
+            .authenticationProvider(
+                beanFactory.getBean("oauthAuthenticationProvider",
+                    AuthenticationProvider.class))
             .requestCache()
                 .requestCache(requestCache)
                 .and()
