@@ -211,8 +211,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     @Autowired
     public RavenAuthenticationEntryPoint ravenAuthEntryPoint(
-        RavenRequestCreator requestCreator) {
-        return new RavenAuthenticationEntryPoint(requestCreator);
+        RavenRequestCreator requestCreator, RequestCache requestCache) {
+        return new RavenAuthenticationEntryPoint(requestCreator, requestCache);
     }
 
 
