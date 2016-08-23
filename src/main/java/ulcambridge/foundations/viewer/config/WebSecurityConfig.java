@@ -53,6 +53,7 @@ import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailur
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.authentication.ViewerUserDetailsService;
 import ulcambridge.foundations.viewer.authentication.oauth2.CudlProviders;
+import ulcambridge.foundations.viewer.authentication.oauth2.GoogleProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.LinkedinProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.Oauth2AuthenticationFilter;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
@@ -235,9 +236,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public Iterable<EntryPointSelector> entryPointSelectors(
         @Qualifier("ravenEntryPointSelector") EntryPointSelector raven,
-        @Qualifier("linkedinEntryPointSelector") EntryPointSelector linkedin) {
+        @Qualifier("linkedinEntryPointSelector") EntryPointSelector linkedin,
+        @Qualifier("googleEntryPointSelector") EntryPointSelector google) {
 
-        return Arrays.asList(raven, linkedin);
+        return Arrays.asList(raven, linkedin, google);
     }
 
     @Bean(name = "deferredEntryPointFilter")
@@ -305,7 +307,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     public static class Oauth2AuthConfig {
         public static final URI LINKEDIN_PROFILE_URL = URI.create(
             "https://api.linkedin.com/v1/people/~:(id,email-address)?format=json");
+        public static final URI GOOGLE_PROFILE_URL = URI.create(
+            "https://www.googleapis.com/plus/v1/people/me/openIdConnect");
         public static final String TYPE_LINKEDIN = "linkedin";
+        public static final String TYPE_GOOGLE = "google";
 
         public static final String OAUTH2_LOGIN_PATH = "/auth/oauth2/{type}";
 
@@ -320,11 +325,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
         @Bean(name = "oauthAuthenticationProvider")
         @Autowired
-        public AuthenticationProvider linkedinAuthenticationProvider(
+        public AuthenticationProvider oauth2AuthenticationProvider(
             UserDetailsService userDetailsService, UsersDao usersDao) {
 
             return CudlProviders.cudlOauthAuthenticationProvider(
                     userDetailsService, usersDao);
+        }
+
+        @Bean(name = "googleAuthFilter")
+        @Autowired
+        public Oauth2AuthenticationFilter<GoogleProfile> googleOauth2Filter(
+            @Qualifier("googleOauth")
+                OAuth2RestTemplate restTemplate,
+            AuthenticationManager authenticationManager) {
+
+            return new Oauth2AuthenticationFilter<>(
+                authenticationManager, restTemplate, GOOGLE_PROFILE_URL,
+                GoogleProfile.class, authFilterUrlMatcher(TYPE_GOOGLE));
         }
 
         @Bean(name = "linkedinAuthFilter")
@@ -342,7 +359,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         public EntryPointSelector entryPointSelector(String type) {
             RequestMatcher matcher = new AndRequestMatcher(
                 new AntPathRequestMatcher(LOGIN_PATH),
-                QueryStringRequestMatcher.forKeyWithValue("type", TYPE_LINKEDIN)
+                QueryStringRequestMatcher.forKeyWithValue("type", type)
             );
 
             AuthenticationEntryPoint ep = new LoginUrlAuthenticationEntryPoint(
@@ -355,6 +372,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         @Bean(name = "linkedinEntryPointSelector")
         public EntryPointSelector linkedinEntryPointSelector() {
             return entryPointSelector(TYPE_LINKEDIN);
+        }
+
+        @Bean(name = "googleEntryPointSelector")
+        public EntryPointSelector googleEntryPointSelector() {
+            return entryPointSelector(TYPE_GOOGLE);
         }
     }
 
@@ -394,6 +416,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
             .addFilterAfter(
                 beanFactory.getBean("linkedinAuthFilter",
+                                    Oauth2AuthenticationFilter.class),
+                AbstractPreAuthenticatedProcessingFilter.class)
+
+            .addFilterAfter(
+                beanFactory.getBean("googleAuthFilter",
                                     Oauth2AuthenticationFilter.class),
                 AbstractPreAuthenticatedProcessingFilter.class)
 

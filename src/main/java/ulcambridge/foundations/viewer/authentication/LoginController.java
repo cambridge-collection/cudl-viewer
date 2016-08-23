@@ -72,7 +72,7 @@ public class LoginController {
     }
 
     // on path /auth/login/
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error, HttpSession session,
             HttpServletRequest request, ModelMap model,

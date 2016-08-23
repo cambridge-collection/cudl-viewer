@@ -45,7 +45,9 @@ public final class CudlProviders {
 
         return new DefaultProfile(type,
             Obfuscation.obfuscateUsername(type, profile.getId()),
-            Obfuscation.obfuscate(profile.getEmailAddress()));
+            profile.getEmailAddress()
+                .map(Obfuscation::obfuscate)
+                .orElse(null));
     }
 
     private static Function<Profile, Oauth2AuthenticationToken<Profile>>
@@ -60,7 +62,7 @@ public final class CudlProviders {
     }
 
     private static void createUser(Profile profile, UsersDao dao) {
-        dao.createUser(profile.getId(), profile.getEmailAddress());
+        dao.createUser(profile.getId(), profile.getEmailAddress().orElse(null));
     }
 
     /**
@@ -86,7 +88,8 @@ public final class CudlProviders {
             catch(UsernameNotFoundException e) {
                 // A user for the profile doesn't exist yet, create one and
                 // try again...
-                usersDao.createUser(profile.getId(), profile.getEmailAddress());
+                usersDao.createUser(profile.getId(),
+                                    profile.getEmailAddress().orElse(null));
 
                 // Retry authentication
                 return tokenCreator.apply(profile);

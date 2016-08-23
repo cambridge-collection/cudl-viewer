@@ -2,8 +2,11 @@ package ulcambridge.foundations.viewer.authentication.oauth2;
 
 import org.springframework.util.Assert;
 
+import java.util.Optional;
+
 public class DefaultProfile implements Profile {
-    private final String typeName, id, email;
+    private final String typeName, id;
+    private final Optional<String> email;
 
     public DefaultProfile(String typeName, String id, String email) {
         Assert.hasText(typeName);
@@ -12,7 +15,7 @@ public class DefaultProfile implements Profile {
 
         this.typeName = typeName;
         this.id = id;
-        this.email = email;
+        this.email = Optional.ofNullable(email);
     }
 
     @Override
@@ -26,7 +29,7 @@ public class DefaultProfile implements Profile {
     }
 
     @Override
-    public String getEmailAddress() {
+    public Optional<String> getEmailAddress() {
         return this.email;
     }
 }

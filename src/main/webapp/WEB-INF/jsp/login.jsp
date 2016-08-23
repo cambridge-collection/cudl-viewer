@@ -26,12 +26,13 @@
                     <div class="campl-column12">
                         <div class="campl-column4 campl-login-form">
                             <div class="campl-content-container">
-                                <form class="openid_form" method="post"
-                                    action="/auth/oauth2/google">
+                                <form:form class="openid_form" method="POST"
+                                    action="/auth/login?type=google">
                                     <a class="btn btn-block btn-social btn-google" href="/auth/oauth2/google"> <i
                                         class="fa fa-google"></i> Sign In with Google
                                     </a>
-                                </form>
+                                    <button action="submit">Sign in with Google</button>
+                                </form:form>
                                 <br />
                                 <form class="openid_form" method="post"
                                     action="/auth/oauth2/facebook">
