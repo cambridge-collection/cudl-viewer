@@ -34,18 +34,19 @@
                                     <button action="submit">Sign in with Google</button>
                                 </form:form>
                                 <br />
-                                <form class="openid_form" method="post"
-                                    action="/auth/oauth2/facebook">
+                                <form:form class="openid_form" method="POST"
+                                    action="/auth/login?type=facebook">
                                     <a class="btn btn-block btn-social btn-facebook" href="/auth/oauth2/facebook"> <i
                                         class="fa fa-facebook"></i> Sign In with Facebook
                                     </a>
-                                </form>
+                                    <button action="submit">Sign in with Facebook</button>
+                                </form:form>
                                 <br />
                                 <form:form class="openid_form" method="POST"
                                     action="/auth/login?type=linkedin">
                                     <a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
-                                                                            class="fa fa-linkedin"></i> Sign In with LinkedIn
-                                                                        </a>
+                                        class="fa fa-linkedin"></i> Sign In with LinkedIn
+                                    </a>
                                     <button action="submit">Sign in with LinkedIn</button>
                                 </form:form>
                                 <br />

@@ -53,6 +53,7 @@ import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailur
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.authentication.ViewerUserDetailsService;
 import ulcambridge.foundations.viewer.authentication.oauth2.CudlProviders;
+import ulcambridge.foundations.viewer.authentication.oauth2.FacebookProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.GoogleProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.LinkedinProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.Oauth2AuthenticationFilter;
@@ -237,9 +238,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     public Iterable<EntryPointSelector> entryPointSelectors(
         @Qualifier("ravenEntryPointSelector") EntryPointSelector raven,
         @Qualifier("linkedinEntryPointSelector") EntryPointSelector linkedin,
-        @Qualifier("googleEntryPointSelector") EntryPointSelector google) {
+        @Qualifier("googleEntryPointSelector") EntryPointSelector google,
+        @Qualifier("facebookEntryPointSelector") EntryPointSelector facebook) {
 
-        return Arrays.asList(raven, linkedin, google);
+        return Arrays.asList(raven, linkedin, google, facebook);
     }
 
     @Bean(name = "deferredEntryPointFilter")
@@ -309,8 +311,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
             "https://api.linkedin.com/v1/people/~:(id,email-address)?format=json");
         public static final URI GOOGLE_PROFILE_URL = URI.create(
             "https://www.googleapis.com/plus/v1/people/me/openIdConnect");
+        public static final URI FACEBOOK_PROFILE_URL = URI.create(
+            "https://graph.facebook.com/me/");
+
         public static final String TYPE_LINKEDIN = "linkedin";
         public static final String TYPE_GOOGLE = "google";
+        public static final String TYPE_FACEBOOK = "facebook";
 
         public static final String OAUTH2_LOGIN_PATH = "/auth/oauth2/{type}";
 
@@ -330,6 +336,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
             return CudlProviders.cudlOauthAuthenticationProvider(
                     userDetailsService, usersDao);
+        }
+
+        @Bean(name = "facebookAuthFilter")
+        @Autowired
+        public Oauth2AuthenticationFilter<FacebookProfile> facebookOauth2Filter(
+            @Qualifier("facebookOauth")
+                OAuth2RestTemplate restTemplate,
+            AuthenticationManager authenticationManager) {
+
+            return new Oauth2AuthenticationFilter<>(
+                authenticationManager, restTemplate, FACEBOOK_PROFILE_URL,
+                FacebookProfile.class, authFilterUrlMatcher(TYPE_FACEBOOK));
         }
 
         @Bean(name = "googleAuthFilter")
@@ -378,6 +396,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         public EntryPointSelector googleEntryPointSelector() {
             return entryPointSelector(TYPE_GOOGLE);
         }
+
+        @Bean(name = "facebookEntryPointSelector")
+        public EntryPointSelector facebookEntryPointSelector() {
+            return entryPointSelector(TYPE_FACEBOOK);
+        }
     }
 
     @Override
@@ -421,6 +444,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
             .addFilterAfter(
                 beanFactory.getBean("googleAuthFilter",
+                                    Oauth2AuthenticationFilter.class),
+                AbstractPreAuthenticatedProcessingFilter.class)
+
+            .addFilterAfter(
+                beanFactory.getBean("facebookAuthFilter",
                                     Oauth2AuthenticationFilter.class),
                 AbstractPreAuthenticatedProcessingFilter.class)
 
