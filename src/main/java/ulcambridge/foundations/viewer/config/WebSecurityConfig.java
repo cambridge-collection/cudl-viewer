@@ -321,10 +321,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         @Bean(name = "oauthAuthenticationProvider")
         @Autowired
         public AuthenticationProvider linkedinAuthenticationProvider(
-            UserDetailsService userDetailsService) {
+            UserDetailsService userDetailsService, UsersDao usersDao) {
 
             return CudlProviders.cudlOauthAuthenticationProvider(
-                    userDetailsService);
+                    userDetailsService, usersDao);
         }
 
         @Bean(name = "linkedinAuthFilter")
