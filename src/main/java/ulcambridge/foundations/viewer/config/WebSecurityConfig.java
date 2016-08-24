@@ -88,11 +88,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     public static final String RAVEN_RETURN_LOGIN_PATH = "/auth/raven/login";
 
     private final DataSource dataSource;
-    private BeanFactory beanFactory;
+    private Optional<BeanFactory> beanFactory = Optional.empty();
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        this.beanFactory = beanFactory;
+        this.beanFactory = Optional.of(beanFactory);
+    }
+
+    protected BeanFactory getBeanFactory() {
+        return this.beanFactory.get();
     }
 
     @Override
@@ -405,20 +409,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        AuthenticationEntryPoint entryPoint = beanFactory.getBean(
+        AuthenticationEntryPoint entryPoint = getBeanFactory().getBean(
             "authenticationEntryPoint", AuthenticationEntryPoint.class);
 
-        RequestCache requestCache = beanFactory.getBean(RequestCache.class);
+        RequestCache requestCache = getBeanFactory().getBean(RequestCache.class);
 
         RavenAuthenticationFilter ravenAuthFilter =
-            beanFactory.getBean(RavenAuthenticationFilter.class);
+            getBeanFactory().getBean(RavenAuthenticationFilter.class);
 
         DeferredEntryPointFilter deferredEntryPointFilter =
-            beanFactory.getBean(DeferredEntryPointFilter.class);
+            getBeanFactory().getBean(DeferredEntryPointFilter.class);
 
         http
             .addFilterBefore(
-                beanFactory.getBean(OAuth2ClientContextFilter.class),
+                getBeanFactory().getBean(OAuth2ClientContextFilter.class),
                 SecurityContextPersistenceFilter.class)
 
             // Add our raven auth filter amongst the other auth filters. It has
@@ -438,25 +442,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 ExceptionTranslationFilter.class)
 
             .addFilterAfter(
-                beanFactory.getBean("linkedinAuthFilter",
+                getBeanFactory().getBean("linkedinAuthFilter",
                                     Oauth2AuthenticationFilter.class),
                 AbstractPreAuthenticatedProcessingFilter.class)
 
             .addFilterAfter(
-                beanFactory.getBean("googleAuthFilter",
+                getBeanFactory().getBean("googleAuthFilter",
                                     Oauth2AuthenticationFilter.class),
                 AbstractPreAuthenticatedProcessingFilter.class)
 
             .addFilterAfter(
-                beanFactory.getBean("facebookAuthFilter",
+                getBeanFactory().getBean("facebookAuthFilter",
                                     Oauth2AuthenticationFilter.class),
                 AbstractPreAuthenticatedProcessingFilter.class)
 
             // Add support for authenticating raven auth tokens
             .authenticationProvider(
-                beanFactory.getBean(RavenAuthenticationProvider.class))
+                getBeanFactory().getBean(RavenAuthenticationProvider.class))
             .authenticationProvider(
-                beanFactory.getBean("oauthAuthenticationProvider",
+                getBeanFactory().getBean("oauthAuthenticationProvider",
                     AuthenticationProvider.class))
             .requestCache()
                 .requestCache(requestCache)
