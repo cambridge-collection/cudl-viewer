@@ -23,6 +23,8 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
+import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
@@ -45,6 +47,7 @@ import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator;
 import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.RequestParam;
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
 import uk.ac.cam.ucs.webauth.WebauthValidator;
+import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthenticationSuccessHandler;
 import ulcambridge.foundations.viewer.authentication.CudlUserDetailsRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
@@ -177,17 +180,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         return new RavenAuthenticationProvider(ravenValidator, tokenCreator);
     }
 
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler(
+        RequestCache requestCache) {
+
+        return new CudlSavedRequestAwareAuthenticationSuccessHandler(
+            requestCache);
+    }
+
     @Bean(name = "ravenAuthenticationFilter")
     @Autowired
     public RavenAuthenticationFilter ravenAuthenticationFilter(
         RavenRequestCreator requestCreator, RequestCache requestCache,
         RavenAuthCancellationFailureHandler failureHandler,
+        AuthenticationSuccessHandler successHandler,
         AuthenticationManager authenticationManager) {
 
         RavenAuthenticationFilter f = new RavenAuthenticationFilter(
             authenticationManager, requestCreator, requestCache);
 
         f.setAuthenticationFailureHandler(failureHandler);
+        f.setAuthenticationSuccessHandler(successHandler);
 
         return f;
     }
@@ -342,16 +355,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                     userDetailsService, usersDao);
         }
 
+        private static <T extends AbstractAuthenticationProcessingFilter>
+        T setSuccessHandler(T filter,
+                            AuthenticationSuccessHandler successHandler) {
+
+            filter.setAuthenticationSuccessHandler(successHandler);
+            return filter;
+        }
+
         @Bean(name = "facebookAuthFilter")
         @Autowired
         public Oauth2AuthenticationFilter<FacebookProfile> facebookOauth2Filter(
             @Qualifier("facebookOauth")
                 OAuth2RestTemplate restTemplate,
-            AuthenticationManager authenticationManager) {
+            AuthenticationManager authenticationManager,
+            AuthenticationSuccessHandler successHandler) {
 
-            return new Oauth2AuthenticationFilter<>(
-                authenticationManager, restTemplate, FACEBOOK_PROFILE_URL,
-                FacebookProfile.class, authFilterUrlMatcher(TYPE_FACEBOOK));
+            return setSuccessHandler(
+                new Oauth2AuthenticationFilter<>(
+                    authenticationManager, restTemplate, FACEBOOK_PROFILE_URL,
+                    FacebookProfile.class, authFilterUrlMatcher(TYPE_FACEBOOK)),
+                successHandler);
         }
 
         @Bean(name = "googleAuthFilter")
@@ -359,11 +383,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         public Oauth2AuthenticationFilter<GoogleProfile> googleOauth2Filter(
             @Qualifier("googleOauth")
                 OAuth2RestTemplate restTemplate,
-            AuthenticationManager authenticationManager) {
+            AuthenticationManager authenticationManager,
+            AuthenticationSuccessHandler successHandler) {
 
-            return new Oauth2AuthenticationFilter<>(
-                authenticationManager, restTemplate, GOOGLE_PROFILE_URL,
-                GoogleProfile.class, authFilterUrlMatcher(TYPE_GOOGLE));
+            return setSuccessHandler(
+                new Oauth2AuthenticationFilter<>(
+                    authenticationManager, restTemplate, GOOGLE_PROFILE_URL,
+                    GoogleProfile.class, authFilterUrlMatcher(TYPE_GOOGLE)),
+                successHandler);
         }
 
         @Bean(name = "linkedinAuthFilter")
@@ -371,11 +398,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         public Oauth2AuthenticationFilter<LinkedinProfile> linkedinOauth2Filter(
             @Qualifier("linkedinOauth")
             OAuth2RestTemplate restTemplate,
-            AuthenticationManager authenticationManager) {
+            AuthenticationManager authenticationManager,
+            AuthenticationSuccessHandler successHandler) {
 
-            return new Oauth2AuthenticationFilter<>(
-                authenticationManager, restTemplate, LINKEDIN_PROFILE_URL,
-                LinkedinProfile.class, authFilterUrlMatcher(TYPE_LINKEDIN));
+            return setSuccessHandler(
+                new Oauth2AuthenticationFilter<>(
+                    authenticationManager, restTemplate, LINKEDIN_PROFILE_URL,
+                    LinkedinProfile.class, authFilterUrlMatcher(TYPE_LINKEDIN)),
+                successHandler);
         }
 
         public EntryPointSelector entryPointSelector(String type) {
