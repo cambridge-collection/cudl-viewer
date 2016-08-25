@@ -51,8 +51,11 @@ import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthen
 import ulcambridge.foundations.viewer.authentication.CudlUserDetailsRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
+import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
 import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailureHandler;
+import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper;
+import ulcambridge.foundations.viewer.authentication.UrlQueryParamAuthenticationEntryPoint;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.authentication.ViewerUserDetailsService;
 import ulcambridge.foundations.viewer.authentication.oauth2.CudlProviders;
@@ -79,6 +82,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -221,22 +226,70 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Bean(name = "authenticationEntryPoint")
-    public AuthenticationEntryPoint authenticationEntryPoint() {
-        return new LoginUrlAuthenticationEntryPoint(LOGIN_PATH);
+    @Autowired
+    public AuthenticationEntryPoint authenticationEntryPoint(
+        @Value("${rootURL}") String siteUrl, RequestCache requestCache) {
+
+        URI loginPage = UriComponentsBuilder.fromUriString(siteUrl)
+            .replacePath(LOGIN_PATH)
+            .build().toUri();
+
+        return new UrlQueryParamAuthenticationEntryPoint(
+            loginPage, requestCache);
+    }
+
+    @Bean
+    public URI homepageUrl(@Value("${rootURL}") String siteUrl) {
+        URI homepage = URI.create(siteUrl);
+
+        Assert.isTrue("".equals(homepage.getRawPath()));
+
+        return homepage;
     }
 
     @Bean
     @Autowired
-    public RavenAuthenticationEntryPoint ravenAuthEntryPoint(
-        RavenRequestCreator requestCreator, RequestCache requestCache) {
-        return new RavenAuthenticationEntryPoint(requestCreator, requestCache);
+    public Predicate<URI> isSafeRedirectUrl(
+        @Qualifier("homepageUrl") URI homepage) {
+
+        return EntryPointRequestFilters.isSameSite(homepage, true);
+    }
+
+    @Bean
+    @Autowired
+    public Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
+    entryPointWrapper(
+        RequestCache requestCache, @Qualifier("homepageUrl") URI homepage,
+        @Qualifier("isSafeRedirectUrl") Predicate<URI> isSafeRedirectUrl) {
+
+        RequestFilterEntryPointWrapper.RequestFilter saveRequestFromQueryParam =
+            EntryPointRequestFilters.saveRequestFromQueryParamUrl(
+                requestCache, homepage, isSafeRedirectUrl);
+
+        return new RequestFilterEntryPointWrapper.Builder()
+            .withFilter(saveRequestFromQueryParam)
+            ::build;
+
+    }
+
+    @Bean
+    @Autowired
+    public AuthenticationEntryPoint ravenAuthEntryPoint(
+        RavenRequestCreator requestCreator,
+        @Qualifier("entryPointWrapper")
+        Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
+            entryPointWrapper) {
+
+        return entryPointWrapper.apply(
+            new RavenAuthenticationEntryPoint(requestCreator));
     }
 
 
     @Bean(name = "ravenEntryPointSelector")
     @Autowired
     EntryPointSelector ravenEntryPointSelector(
-        RavenAuthenticationEntryPoint ravenEntryPoint) {
+        @Qualifier("ravenAuthEntryPoint")
+            AuthenticationEntryPoint ravenEntryPoint) {
 
         RequestMatcher queryMatcher = QueryStringRequestMatcher
             .forKeyWithValue("type", "raven");
@@ -408,32 +461,46 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 successHandler);
         }
 
-        public EntryPointSelector entryPointSelector(String type) {
-            RequestMatcher matcher = new AndRequestMatcher(
-                new AntPathRequestMatcher(LOGIN_PATH),
-                QueryStringRequestMatcher.forKeyWithValue("type", type)
-            );
+        @Bean
+        public Function<String, EntryPointSelector> entryPointSelector(
+            @Qualifier("entryPointWrapper")
+                Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
+                entryPointWrapper) {
 
-            AuthenticationEntryPoint ep = new LoginUrlAuthenticationEntryPoint(
-                getAuthFilterPath(type));
+            return type -> {
+                RequestMatcher matcher = new AndRequestMatcher(
+                    new AntPathRequestMatcher(LOGIN_PATH),
+                    QueryStringRequestMatcher.forKeyWithValue("type", type)
+                );
 
-            return req -> matcher.matches(req) ? Optional.of(ep)
-                                               : Optional.empty();
+                AuthenticationEntryPoint ep = entryPointWrapper.apply(
+                    new LoginUrlAuthenticationEntryPoint(
+                        getAuthFilterPath(type)));
+
+                return req -> matcher.matches(req) ? Optional.of(ep)
+                                                   : Optional.empty();
+            };
         }
 
         @Bean(name = "linkedinEntryPointSelector")
-        public EntryPointSelector linkedinEntryPointSelector() {
-            return entryPointSelector(TYPE_LINKEDIN);
+        public EntryPointSelector linkedinEntryPointSelector(
+            Function<String, EntryPointSelector> entryPointSelector) {
+
+            return entryPointSelector.apply(TYPE_LINKEDIN);
         }
 
         @Bean(name = "googleEntryPointSelector")
-        public EntryPointSelector googleEntryPointSelector() {
-            return entryPointSelector(TYPE_GOOGLE);
+        public EntryPointSelector googleEntryPointSelector(
+            Function<String, EntryPointSelector> entryPointSelector) {
+
+            return entryPointSelector.apply(TYPE_GOOGLE);
         }
 
         @Bean(name = "facebookEntryPointSelector")
-        public EntryPointSelector facebookEntryPointSelector() {
-            return entryPointSelector(TYPE_FACEBOOK);
+        public EntryPointSelector facebookEntryPointSelector(
+            Function<String, EntryPointSelector> entryPointSelector) {
+
+            return entryPointSelector.apply(TYPE_FACEBOOK);
         }
     }
 

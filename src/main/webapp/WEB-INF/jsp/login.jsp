@@ -4,6 +4,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 
 <cudl:generic-page pagetype="LOGIN">
@@ -26,8 +27,10 @@
                     <div class="campl-column12">
                         <div class="campl-column4 campl-login-form">
                             <div class="campl-content-container">
+                                <c:set var="nextUrlQuerySegment"
+                                       value="${not empty nextUrl ? '&next='.concat(cudlfn:uriEnc(nextUrl)) : ''}"/>
                                 <form:form class="openid_form" method="POST"
-                                    action="/auth/login?type=google">
+                                    action="/auth/login?type=google${nextUrlQuerySegment}">
                                     <a class="btn btn-block btn-social btn-google" href="/auth/oauth2/google"> <i
                                         class="fa fa-google"></i> Sign In with Google
                                     </a>
@@ -35,7 +38,7 @@
                                 </form:form>
                                 <br />
                                 <form:form class="openid_form" method="POST"
-                                    action="/auth/login?type=facebook">
+                                    action="/auth/login?type=facebook${nextUrlQuerySegment}">
                                     <a class="btn btn-block btn-social btn-facebook" href="/auth/oauth2/facebook"> <i
                                         class="fa fa-facebook"></i> Sign In with Facebook
                                     </a>
@@ -43,7 +46,7 @@
                                 </form:form>
                                 <br />
                                 <form:form class="openid_form" method="POST"
-                                    action="/auth/login?type=linkedin">
+                                    action="/auth/login?type=linkedin${nextUrlQuerySegment}">
                                     <a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
                                         class="fa fa-linkedin"></i> Sign In with LinkedIn
                                     </a>
@@ -51,7 +54,7 @@
                                 </form:form>
                                 <br />
                                 <form:form class="openid_form" method="POST"
-                                    action="/auth/login?type=raven">
+                                    action="/auth/login?type=raven${nextUrlQuerySegment}">
                                     <a class="btn btn-block btn-social btn-raven" href="/raven/"> <img class="img-raven" src="/img/general/raven.png" /> Sign In with Raven
                                     </a>
                                     <button action="submit">Sign in with Raven</button>

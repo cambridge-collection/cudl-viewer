@@ -8,6 +8,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,25 +52,29 @@ public class LoginController {
     private final OAuth2RestOperations linkedinTemplate;
     private final BookmarkDao bookmarkDao;
     private final UsersDao usersDao;
+    private final Predicate<URI> isSafeRedirectUrl;
 
     @Autowired
     public LoginController(
         BookmarkDao bookmarkDao, UsersDao usersDao,
         @Qualifier("googleOauth") OAuth2RestOperations googleTemplate,
         @Qualifier("facebookOauth") OAuth2RestOperations facebookTemplate,
-        @Qualifier("linkedinOauth") OAuth2RestOperations linkedinTemplate) {
+        @Qualifier("linkedinOauth") OAuth2RestOperations linkedinTemplate,
+        @Qualifier("isSafeRedirectUrl") Predicate<URI> isSafeRedirectUrl) {
 
         Assert.notNull(bookmarkDao);
         Assert.notNull(usersDao);
         Assert.notNull(googleTemplate);
         Assert.notNull(facebookTemplate);
         Assert.notNull(linkedinTemplate);
+        Assert.notNull(isSafeRedirectUrl);
 
         this.bookmarkDao = bookmarkDao;
         this.usersDao = usersDao;
         this.googleTemplate = googleTemplate;
         this.facebookTemplate = facebookTemplate;
         this.linkedinTemplate = linkedinTemplate;
+        this.isSafeRedirectUrl = isSafeRedirectUrl;
     }
 
     // on path /auth/login/
@@ -76,7 +82,8 @@ public class LoginController {
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error, HttpSession session,
             HttpServletRequest request, ModelMap model,
-            @RequestParam(value = "access", required = false) String access) {
+            @RequestParam(value = "access", required = false) String access,
+            @RequestParam("next") Optional<URI> nextUrl) {
 
         // access will be null in for example timeout or for some errors.
         // default to Referer value from header
@@ -104,6 +111,10 @@ public class LoginController {
 
         ModelAndView modelAndView = new ModelAndView("jsp/login");
         model.put("error", error);
+
+        nextUrl.filter(this.isSafeRedirectUrl).ifPresent(
+            url -> modelAndView.addObject("nextUrl", url));
+
         return modelAndView;
 
     }
