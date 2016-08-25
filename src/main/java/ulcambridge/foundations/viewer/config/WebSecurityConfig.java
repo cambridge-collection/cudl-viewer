@@ -48,12 +48,12 @@ import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.Requ
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
 import uk.ac.cam.ucs.webauth.WebauthValidator;
 import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthenticationSuccessHandler;
-import ulcambridge.foundations.viewer.authentication.CudlUserDetailsRavenTokenCreator;
+import ulcambridge.foundations.viewer.authentication.raven.CudlUserDetailsRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
-import ulcambridge.foundations.viewer.authentication.RavenAuthCancellationFailureHandler;
+import ulcambridge.foundations.viewer.authentication.raven.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper;
 import ulcambridge.foundations.viewer.authentication.UrlQueryParamAuthenticationEntryPoint;
 import ulcambridge.foundations.viewer.authentication.UsersDao;

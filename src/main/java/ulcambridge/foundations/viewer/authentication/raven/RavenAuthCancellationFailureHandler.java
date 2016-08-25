@@ -1,4 +1,4 @@
-package ulcambridge.foundations.viewer.authentication;
+package ulcambridge.foundations.viewer.authentication.raven;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;

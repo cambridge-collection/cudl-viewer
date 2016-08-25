@@ -1,9 +1,10 @@
-package ulcambridge.foundations.viewer.authentication;
+package ulcambridge.foundations.viewer.authentication.raven;
 
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationToken;
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
+import ulcambridge.foundations.viewer.authentication.Obfuscation;
 
 /**
  * This is responsible for mapping the CRSIDs received from Raven into the
