@@ -48,12 +48,11 @@ import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.Requ
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
 import uk.ac.cam.ucs.webauth.WebauthValidator;
 import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthenticationSuccessHandler;
-import ulcambridge.foundations.viewer.authentication.raven.CudlUserDetailsRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
+import ulcambridge.foundations.viewer.authentication.Obfuscation;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
-import ulcambridge.foundations.viewer.authentication.raven.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper;
 import ulcambridge.foundations.viewer.authentication.UrlQueryParamAuthenticationEntryPoint;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
@@ -63,6 +62,9 @@ import ulcambridge.foundations.viewer.authentication.oauth2.FacebookProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.GoogleProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.LinkedinProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.Oauth2AuthenticationFilter;
+import ulcambridge.foundations.viewer.authentication.raven.AutoRegisteringRavenTokenCreatorWrapper;
+import ulcambridge.foundations.viewer.authentication.raven.CrsidObfuscatingRavenTokenCreator;
+import ulcambridge.foundations.viewer.authentication.raven.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
 
 import javax.servlet.Filter;
@@ -170,10 +172,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     @Bean
     @Autowired
-    public UserDetailsRavenTokenCreator ravenTokenCreator(
-        UserDetailsService userDetailsService) {
+    public AuthenticatedRavenTokenCreator ravenTokenCreator(
+        UserDetailsService userDetailsService, UsersDao usersDao) {
 
-        return new CudlUserDetailsRavenTokenCreator(userDetailsService);
+        Function<String, String> usernameEncoder =
+            s -> Obfuscation.obfuscateUsername("raven", s);
+
+        AuthenticatedRavenTokenCreator tokenCreator =
+            new UserDetailsRavenTokenCreator(userDetailsService);
+
+        // CUDL obfuscates CRSIDs using sha256
+        tokenCreator = new CrsidObfuscatingRavenTokenCreator(
+            tokenCreator, usernameEncoder);
+
+        // Auto register users with the DAO when they log in for the first time
+        tokenCreator = new AutoRegisteringRavenTokenCreatorWrapper(
+            tokenCreator, usersDao, usernameEncoder, Obfuscation::obfuscate);
+
+        return tokenCreator;
     }
 
     @Bean
