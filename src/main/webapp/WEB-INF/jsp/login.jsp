@@ -29,35 +29,32 @@
                             <div class="campl-content-container">
                                 <c:set var="nextUrlQuerySegment"
                                        value="${not empty nextUrl ? '&next='.concat(cudlfn:uriEnc(nextUrl)) : ''}"/>
-                                <form:form class="openid_form" method="POST"
+                                <form:form method="POST"
                                     action="/auth/login?type=google${nextUrlQuerySegment}">
-                                    <a class="btn btn-block btn-social btn-google" href="/auth/oauth2/google"> <i
-                                        class="fa fa-google"></i> Sign In with Google
-                                    </a>
-                                    <button action="submit">Sign in with Google</button>
+                                    <button class="btn btn-block btn-social btn-google" action="submit">
+                                        <i class="fa fa-google"></i> Sign in with Google
+                                    </button>
                                 </form:form>
                                 <br />
-                                <form:form class="openid_form" method="POST"
+                                <form:form method="POST"
                                     action="/auth/login?type=facebook${nextUrlQuerySegment}">
-                                    <a class="btn btn-block btn-social btn-facebook" href="/auth/oauth2/facebook"> <i
-                                        class="fa fa-facebook"></i> Sign In with Facebook
-                                    </a>
-                                    <button action="submit">Sign in with Facebook</button>
+                                    <button class="btn btn-block btn-social btn-facebook" action="submit">
+                                        <i class="fa fa-facebook"></i> Sign in with Facebook
+                                    </button>
                                 </form:form>
                                 <br />
-                                <form:form class="openid_form" method="POST"
+                                <form:form method="POST"
                                     action="/auth/login?type=linkedin${nextUrlQuerySegment}">
-                                    <a class="btn btn-block btn-social btn-linkedin" href="/auth/oauth2/linkedin"> <i
-                                        class="fa fa-linkedin"></i> Sign In with LinkedIn
-                                    </a>
-                                    <button action="submit">Sign in with LinkedIn</button>
+                                    <button class="btn btn-block btn-social btn-linkedin" action="submit">
+                                        <i class="fa fa-linkedin"></i> Sign in with LinkedIn
+                                    </button>
                                 </form:form>
                                 <br />
-                                <form:form class="openid_form" method="POST"
+                                <form:form method="POST"
                                     action="/auth/login?type=raven${nextUrlQuerySegment}">
-                                    <a class="btn btn-block btn-social btn-raven" href="/raven/"> <img class="img-raven" src="/img/general/raven.png" /> Sign In with Raven
-                                    </a>
-                                    <button action="submit">Sign in with Raven</button>
+                                    <button class="btn btn-block btn-social btn-raven" action="submit">
+                                        <img class="img-raven" src="/img/general/raven.png"/> Sign in with Raven
+                                    </button>
                                 </form:form>
                             </div>
                         </div>
