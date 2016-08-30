@@ -422,7 +422,7 @@
         <dependency>
             <groupId>uk.ac.cam.lib</groupId>
             <artifactId>spring-security-raven</artifactId>
-            <version>0.0.0-SNAPSHOT</version>
+            <version>0.0.0</version>
         </dependency>
 
         <dependency>
