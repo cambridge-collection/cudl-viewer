@@ -92,6 +92,35 @@ public class EntryPointRequestFilters {
         };
     }
 
+    static String urlDecodeUtf8(String s) {
+        try {
+            return UriUtils.decode(s, "UTF-8");
+        }
+        catch (IllegalArgumentException e) {
+            return null;
+        }
+        catch (UnsupportedEncodingException e) {
+            return null;
+        }
+    }
+
+    static Optional<URI> getUrlFromQueryParam(HttpServletRequest req, String param) {
+        return Optional.ofNullable(req.getQueryString())
+            .map(qs -> "?" + qs)
+            .map(url -> UriComponentsBuilder.fromUriString(url))
+            .map(ucb -> ucb.build().getQueryParams())
+            .map(params -> params.getFirst(param))
+            .map(EntryPointRequestFilters::urlDecodeUtf8)
+            .map(url -> {
+                try {
+                    return new URI(url);
+                }
+                catch(URISyntaxException e) {
+                    return null;
+                }
+            });
+    }
+
     static class SaveRequestFromQueryParamUrlRequestFilter
         implements RequestFilter {
 
@@ -136,36 +165,10 @@ public class EntryPointRequestFilters {
                 .orElseGet(this::getDefaultUrl);
         }
 
-        private static String decodeUtf8(String s) {
-            try {
-                return UriUtils.decode(s, "UTF-8");
-            }
-            catch (IllegalArgumentException e) {
-                return null;
-            }
-            catch (UnsupportedEncodingException e) {
-                return null;
-            }
-        }
-
         protected Optional<URI> getSuggestedRedirectUrl(
             HttpServletRequest req) {
 
-            return Optional.ofNullable(
-                UriComponentsBuilder
-                    .fromUriString("?" + req.getQueryString())
-                    .build()
-                    .getQueryParams()
-                    .getFirst(this.getQueryParam()))
-                .map(SaveRequestFromQueryParamUrlRequestFilter::decodeUtf8)
-                .map(url -> {
-                    try {
-                        return new URI(url);
-                    }
-                    catch(URISyntaxException e) {
-                        return null;
-                    }
-                });
+            return getUrlFromQueryParam(req, this.getQueryParam());
         }
 
         @Override

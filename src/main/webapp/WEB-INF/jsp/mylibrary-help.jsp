@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 <h2>How do I add a bookmark?</h2>
 <div class="campl-content-container">
@@ -30,6 +31,5 @@
         bookmark from your collection.</p>
 </div>
 <div class="campl-content-container">
-
-    <p><a href="/auth/logout">Logout</a></p>
+    <cudl:logout/>
 </div>

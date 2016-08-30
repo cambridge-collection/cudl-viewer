@@ -27,6 +27,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
@@ -53,6 +54,7 @@ import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.En
 import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
 import ulcambridge.foundations.viewer.authentication.Obfuscation;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
+import ulcambridge.foundations.viewer.authentication.RedirectingLogoutSuccessHandler;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper;
 import ulcambridge.foundations.viewer.authentication.UrlQueryParamAuthenticationEntryPoint;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
@@ -520,6 +522,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         }
     }
 
+    @Bean
+    @Autowired
+    public LogoutSuccessHandler logoutSuccessHandler(
+        @Qualifier("homepageUrl") URI homepageUrl) {
+
+        return new RedirectingLogoutSuccessHandler(homepageUrl);
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         AuthenticationEntryPoint entryPoint = getBeanFactory().getBean(
@@ -582,10 +592,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                 .authenticationEntryPoint(entryPoint)
                 .and()
             .logout()
-                // FIXME: Should use .logoutUrl() which POST-only to prevent CSRF logout
-                .logoutRequestMatcher(new AntPathRequestMatcher("/auth/logout", "GET"))
-                // FIXME: This:
-                .logoutSuccessUrl("/auth/login?error=Successfully%20logged%20out &amp;access=/mylibrary/")
+                .logoutUrl("/auth/logout")
+                .logoutSuccessHandler(
+                    getBeanFactory().getBean(LogoutSuccessHandler.class))
                 .deleteCookies("JSESSIONID")
                 .and()
             .authorizeRequests()
