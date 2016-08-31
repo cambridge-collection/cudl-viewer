@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.authentication.AdminUser;
 import ulcambridge.foundations.viewer.authentication.User;
+import ulcambridge.foundations.viewer.authentication.Users;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -38,7 +39,7 @@ public class AdminController {
 
     // on path /admin/publishdb
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/publishdb", method = RequestMethod.GET)
+    @RequestMapping(value = "/publishdb", method = RequestMethod.POST)
     public ModelAndView handlePublishDbRequest(HttpSession session) throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminresult");
@@ -54,8 +55,7 @@ public class AdminController {
         GitHelper git = new GitHelper(localPathMasters,url);
 
         // Copy local DB tables to LIVE DB.
-        User user = (User) session.getAttribute("user");
-        AdminUser adminUser = usersDao.getAdminUserByUsername(user.getUsername());
+        AdminUser adminUser = Users.currentAdminUser(usersDao);
         DatabaseCopy copyClass = new DatabaseCopy(collectionFactory, filepath, git);
         boolean copySuccess = copyClass.copy(username, password, localBranch, adminUser.getAdminName(), adminUser.getAdminEmail());
 
@@ -69,7 +69,7 @@ public class AdminController {
     }
 
     // on path /admin/publishjson
-    @RequestMapping(value = "publishjson", method = RequestMethod.GET)
+    @RequestMapping(value = "publishjson", method = RequestMethod.POST)
     @Secured("hasRole('ROLE_ADMIN')")
     public ModelAndView handlePublishJsonRequest() throws Exception {
 
@@ -96,7 +96,7 @@ public class AdminController {
 
     // on path /admin/publishcontent
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/publishcontent", method = RequestMethod.GET)
+    @RequestMapping(value = "/publishcontent", method = RequestMethod.POST)
     public ModelAndView handlePublishContentRequest() throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminresult");
@@ -123,7 +123,7 @@ public class AdminController {
 
     // on path /admin/
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/refresh")
+    @RequestMapping(value = "/refresh", method = RequestMethod.POST)
     public ModelAndView handleRefreshRequest() {
 
         this.cacheRefresher.refreshDB();

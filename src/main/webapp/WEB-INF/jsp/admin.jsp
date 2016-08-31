@@ -1,6 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <cudl:generic-page pagetype="ADMIN">
@@ -24,10 +25,10 @@
                                         collections from the JSON and from the Database.
                                         </li>
                                     </ul>
-                                    <form method="get" action="/admin/refresh">
+                                    <form:form method="post" action="/admin/refresh">
                                         <button class="campl-primary-cta confirm" data-confirmation="Are you sure you want to refresh the cache?"
                                                  type="submit">Refresh Cache</button>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +53,11 @@
                                             appear in the search.</li>
                                         <li><b>THIS OPERATION CANNOT BE UNDONE</b>.</li>
                                     </ul>
-                                    <form method="get" action="/admin/publishjson">
+                                    <form:form method="post" action="/admin/publishjson">
                                         <button class="campl-primary-cta confirm" data-confirmation="Are you sure you want to copy data to live?"
                                                 type="submit"
                                                 >Publish JSON (cudl-data)</button>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
@@ -84,11 +85,11 @@
                                             the 'Publish JSON' button first.</li>
                                         <li><b>THIS OPERATION CANNOT BE UNDONE</b>.</li>
                                     </ul>
-                                    <form method="get" action="/admin/publishdb">
+                                    <form:form method="post" action="/admin/publishdb">
                                         <button type="submit" class="campl-primary-cta confirm"
                                                 data-confirmation="Are you sure you want to copy database from dev to live?"
                                                 >Publish Database Changes</button>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
@@ -117,11 +118,11 @@
                                             first.</li>
                                         <li><b>THIS OPERATION CANNOT BE UNDONE</b>.</li>
                                     </ul>
-                                    <form method="get" action="/admin/publishcontent">
+                                    <form:form method="post" action="/admin/publishcontent">
                                         <button type="submit" class="campl-primary-cta confirm"
                                                 data-confirmation="Are you sure you want to copy content to live?"
                                                 >Publish Website Content (cudl-viewer-content)</button>
-                                    </form>
+                                    </form:form>
                                 </div>
                             </div>
                         </div>
