@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,7 +58,7 @@ public class MyLibraryController {
     }
 
     // on path /mylibrary/addbookmark
-    @RequestMapping(value = "/addbookmark/*")
+    @RequestMapping(value = "/addbookmark/", method = RequestMethod.POST)
     public String handleAddBookmarkRequest(HttpServletResponse response,
             @RequestParam("itemId") String itemId,
             @RequestParam("page") int page, Principal principal,
@@ -94,7 +95,7 @@ public class MyLibraryController {
     }
 
     // on path /mylibrary/deletebookmark
-    @RequestMapping(value = "/deletebookmark/*")
+    @RequestMapping(value = "/deletebookmark/", method = RequestMethod.POST)
     public String handleDeleteBookmarkRequest(HttpServletResponse response,
             @RequestParam("itemId") String itemId,
             @RequestParam("page") int page, Principal principal,

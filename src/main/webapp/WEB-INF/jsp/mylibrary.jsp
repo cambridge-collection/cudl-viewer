@@ -2,6 +2,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
@@ -65,9 +66,9 @@
                                     <c:out value="${item.abstractShort}"/> &hellip;
                                     <a href="/view/${cudlfn:uriEnc(item.id)}/1">more</a>
                                 </div>
-                                <a class="bookmark-removelink"
-                                   href="/mylibrary/deletebookmark/?itemId=${cudlfn:uriEnc(item.id)}&page=${cudlfn:uriEnc(bookmark.page)}&redirect=true"
-                                   >remove</a>
+                                <form:form class="bookmark-removelink" method="POST" action="/mylibrary/deletebookmark/?itemId=${cudlfn:uriEnc(item.id)}&page=${cudlfn:uriEnc(bookmark.page)}&redirect=true">
+                                    <button class="campl-btn" type="submit">remove</button>
+                                </form:form>
                                 <div class='clear'></div>
                             </div>
                         </li>
