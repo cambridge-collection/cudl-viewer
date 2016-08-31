@@ -1,25 +1,5 @@
 package ulcambridge.foundations.viewer.admin;
 
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.StringReader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
 import org.apache.commons.io.output.StringBuilderWriter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,15 +12,34 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.tidy.Tidy;
-
 import ulcambridge.foundations.viewer.authentication.AdminUser;
-import ulcambridge.foundations.viewer.authentication.User;
+import ulcambridge.foundations.viewer.authentication.Users;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.io.StringReader;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Controller for editing content through CKEditor on path /editor
@@ -98,7 +97,7 @@ public class ContentEditorController {
      * @throws JSONException
      */
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/update/html")
+    @RequestMapping(value = "/update/html", method = RequestMethod.POST)
     public synchronized ModelAndView handleUpdateRequest(
             HttpServletResponse response, HttpSession session,
             @Valid @ModelAttribute() UpdateHTMLParameters writeParams,
@@ -112,10 +111,7 @@ public class ContentEditorController {
 
         boolean success = saveHTML(writeParams);
         if (success) {
-
-            User user = (User) session.getAttribute("user");
-            AdminUser adminUser = usersDao.getAdminUserByUsername(user
-                    .getUsername());
+            AdminUser adminUser = Users.currentAdminUser(usersDao);
 
             if (!git.commit(adminUser.getAdminName(),
                     adminUser.getAdminEmail(),
@@ -147,7 +143,7 @@ public class ContentEditorController {
      * @throws IOException
      */
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/add/image")
+    @RequestMapping(value = "/add/image", method = RequestMethod.POST)
     public ModelAndView handleAddImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
             @Valid @ModelAttribute() AddImagesParameters addParams,
@@ -170,10 +166,7 @@ public class ContentEditorController {
                 + File.separator + addParams.getDirectory(), filename, is);
 
         if (saveSuccessful) {
-
-            User user = (User) session.getAttribute("user");
-            AdminUser adminUser = usersDao.getAdminUserByUsername(user
-                    .getUsername());
+            AdminUser adminUser = Users.currentAdminUser(usersDao);
 
             if (!git.commit(adminUser.getAdminName(),
                     adminUser.getAdminEmail(), "cudl-viewer: Adding new image")
@@ -260,7 +253,7 @@ public class ContentEditorController {
      * @throws JSONException
      */
     @Secured("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/delete/image")
+    @RequestMapping(value = "/delete/image", method = RequestMethod.POST)
     public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
             @Valid @ModelAttribute() DeleteImagesParameters deleteParams,
@@ -285,10 +278,7 @@ public class ContentEditorController {
         }
 
         if (successful) {
-
-            User user = (User) session.getAttribute("user");
-            AdminUser adminUser = usersDao.getAdminUserByUsername(user
-                    .getUsername());
+            AdminUser adminUser = Users.currentAdminUser(usersDao);
 
             if (!git.delete(file.getPath(), adminUser.getAdminName(),
                     adminUser.getAdminEmail(), "cudl-viewer: Deleting image")
