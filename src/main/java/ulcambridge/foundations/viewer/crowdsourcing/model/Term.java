@@ -1,9 +1,8 @@
 package ulcambridge.foundations.viewer.crowdsourcing.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
-import com.google.gson.annotations.SerializedName;
 
 /**
  *
@@ -12,13 +11,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Term {
 
-    @SerializedName("name")
+    @JsonProperty("name")
     private String name;
 
-    @SerializedName("raw")
+    @JsonProperty("raw")
     private int raw;
 
-    @SerializedName("value")
+    @JsonProperty("value")
     private double value;
 
     public Term() {

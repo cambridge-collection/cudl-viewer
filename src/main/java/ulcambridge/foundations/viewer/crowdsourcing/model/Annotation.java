@@ -3,10 +3,11 @@ package ulcambridge.foundations.viewer.crowdsourcing.model;
 import java.util.Date;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-
-import com.google.gson.annotations.SerializedName;
 
 /**
  *
@@ -15,22 +16,24 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Annotation extends Term {
 
-    @SerializedName("target")
+    @JsonProperty("target")
     private String target;
 
-    @SerializedName("type")
+    @JsonProperty("type")
     private String type;
 
-    @SerializedName("page")
+    @JsonProperty("page")
     private int page;
 
-    @SerializedName("uuid")
+    @JsonProperty("uuid")
     private UUID uuid;
 
-    @SerializedName("date")
+    @JsonProperty("date")
+    @JsonSerialize(converter = JsonDateFormat.Serializer.class)
+    @JsonDeserialize(converter = JsonDateFormat.Deserializer.class)
     private Date date;
 
-    @SerializedName("position")
+    @JsonProperty("position")
     private Position position;
 
     private Annotation() {}

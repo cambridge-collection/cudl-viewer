@@ -3,7 +3,7 @@ package ulcambridge.foundations.viewer.crowdsourcing.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -12,10 +12,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Position {
 
-    @SerializedName("type")
+    @JsonProperty("type")
     private String type;
 
-    @SerializedName("coordinates")
+    @JsonProperty("coordinates")
     private List<Coordinates> coordinates = new ArrayList<Coordinates>();
 
     public Position() {

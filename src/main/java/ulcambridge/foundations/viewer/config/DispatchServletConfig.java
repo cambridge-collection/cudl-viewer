@@ -1,7 +1,6 @@
 package ulcambridge.foundations.viewer.config;
 
 import com.google.common.base.Charsets;
-import com.google.gson.Gson;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -13,10 +12,7 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.util.MimeType;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -27,8 +23,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
-
-import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -68,23 +62,6 @@ public class DispatchServletConfig
         c.setMaxUploadSize(1024 * 1024 * 20);
         c.setMaxInMemorySize(1024 * 1024);
         return c;
-    }
-
-    @Bean
-    @Autowired
-    public GsonHttpMessageConverter gsonHttpMessageConverter(Gson gson) {
-        Assert.notNull(gson);
-
-        GsonHttpMessageConverter ghmc = new GsonHttpMessageConverter();
-        ghmc.setGson(gson);
-        return ghmc;
-    }
-
-    @Override
-    public void extendMessageConverters(
-        List<HttpMessageConverter<?>> converters) {
-
-        converters.add(beanFactory.getBean(GsonHttpMessageConverter.class));
     }
 
     @Bean

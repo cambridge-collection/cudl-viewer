@@ -1,8 +1,8 @@
 package ulcambridge.foundations.viewer.crowdsourcing.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 /**
  *
@@ -11,13 +11,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserAnnotations {
 
-    @SerializedName("oid")
+    @JsonProperty("oid")
     private String userId;
 
-    @SerializedName("total")
+    @JsonProperty("total")
     private int total;
 
-    @SerializedName("annotations")
+    @JsonProperty("annotations")
     private List<DocumentAnnotations> documentAnnotations;
 
     public UserAnnotations() {

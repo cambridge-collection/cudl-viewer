@@ -1,6 +1,6 @@
 package ulcambridge.foundations.viewer.crowdsourcing.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -9,19 +9,19 @@ import com.google.gson.annotations.SerializedName;
  */
 public class JsonResponse {
 
-    @SerializedName("code")
+    @JsonProperty("code")
     private String status;
 
-    @SerializedName("msg")
+    @JsonProperty("msg")
     private String message;
 
-    @SerializedName("result")
+    @JsonProperty("result")
     private DocumentTerms terms;
 
-    @SerializedName("redirect")
+    @JsonProperty("redirect")
     private boolean redirect;
 
-    @SerializedName("redirectURL")
+    @JsonProperty("redirectURL")
     private String redirectURL;
 
     public boolean isRedirect() {

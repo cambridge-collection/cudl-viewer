@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -20,16 +20,16 @@ import com.google.gson.annotations.SerializedName;
 @XmlRootElement(name = "documentTerms")
 public class DocumentTerms {
 
-    @SerializedName("oid")
+    @JsonProperty("oid")
     private String userId;
 
-    @SerializedName("docId")
+    @JsonProperty("docId")
     private String documentId;
 
-    @SerializedName("total")
+    @JsonProperty("total")
     private int total;
 
-    @SerializedName("terms")
+    @JsonProperty("terms")
     private List<Term> terms;
 
     public DocumentTerms() {

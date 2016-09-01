@@ -1,6 +1,6 @@
 package ulcambridge.foundations.viewer.crowdsourcing.model;
 
-import com.google.gson.annotations.SerializedName;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Coordinates {
 
-    @SerializedName("x")
+    @JsonProperty("x")
     private double x;
 
-    @SerializedName("y")
+    @JsonProperty("y")
     private double y;
 
     public Coordinates() {
