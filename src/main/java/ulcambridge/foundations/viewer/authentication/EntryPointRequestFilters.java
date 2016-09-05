@@ -255,7 +255,19 @@ public class EntryPointRequestFilters {
 
         @Override
         public int getServerPort() {
-            return this.fullUrl.getPort();
+            int port = this.fullUrl.getPort();
+
+            // URIs represent the implied default port as -1 rather than the
+            // actual default value, so we have to provide that ourselves.
+            if(port == -1) {
+                String scheme = this.fullUrl.getScheme();
+                if("http".equals(scheme))
+                    return 80;
+                else if("https".equals(scheme))
+                    return 443;
+            }
+
+            return port;
         }
 
         @Override
