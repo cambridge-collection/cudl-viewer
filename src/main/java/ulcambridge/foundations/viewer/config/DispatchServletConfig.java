@@ -12,6 +12,8 @@ import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MimeType;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -23,6 +25,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
+
+import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -40,6 +44,31 @@ public class DispatchServletConfig
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         this.beanFactory = beanFactory;
+    }
+
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        // Register the UTF-8 message converter
+        converters.add(0, this.beanFactory.getBean(
+            StringHttpMessageConverter.class));
+
+        super.extendMessageConverters(converters);
+    }
+
+    /**
+     * A message converter which encodes strings using UTF-8. By default Spring
+     * uses latin-1 for some reason.
+     */
+    @Bean
+    public StringHttpMessageConverter stringHttpMessageConverter() {
+        StringHttpMessageConverter converter =
+            new StringHttpMessageConverter(Charsets.UTF_8);
+
+        // Don't write a massive Accept-Charset header with every charset
+        // imaginable.
+        converter.setWriteAcceptCharset(false);
+
+        return converter;
     }
 
     @Bean(name = "viewResolver")
