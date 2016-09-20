@@ -36,7 +36,7 @@ public class FormController {
             .getString("feedbackSubject");
 
     private ReCaptcha getReCaptcha() {
-        return ReCaptchaFactory.newReCaptcha(
+        return ReCaptchaFactory.newSecureReCaptcha(
                 RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY, false);
     }
 
