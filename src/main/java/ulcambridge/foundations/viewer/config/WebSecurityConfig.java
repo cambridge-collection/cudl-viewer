@@ -74,7 +74,6 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -99,7 +98,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
     public static final String RAVEN_RETURN_LOGIN_PATH = "/auth/raven/login";
 
-    private final DataSource dataSource;
     private Optional<BeanFactory> beanFactory = Optional.empty();
 
     @Override
@@ -120,18 +118,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     @Bean
     public RequestCache requestCache() {
         return new HttpSessionRequestCache();
-    }
-
-    @Autowired
-    public WebSecurityConfig(DataSource dataSource) {
-        Assert.notNull(dataSource);
-        this.dataSource = dataSource;
-    }
-
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-            .dataSource(this.dataSource);
     }
 
     /**
