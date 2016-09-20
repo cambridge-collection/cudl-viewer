@@ -39,6 +39,8 @@ public class DispatchServletConfig
     extends WebMvcConfigurerAdapter
     implements BeanFactoryAware {
 
+    public static final String EMBEDDED_VIEWER_PATTERN = "/embed/**";
+
     private BeanFactory beanFactory;
 
     @Override
@@ -159,7 +161,7 @@ public class DispatchServletConfig
             // Cache headers are not set here but in urlrewrite.xml. This is
             // because the viewer.html needs different cache-control values to
             // the rest of the assets.
-            registry.addResourceHandler("/embed/**")
+            registry.addResourceHandler(EMBEDDED_VIEWER_PATTERN)
                 .addResourceLocations(
                     "classpath:ulcambridge/foundations/embeddedviewer/assets/")
                 .resourceChain(true)

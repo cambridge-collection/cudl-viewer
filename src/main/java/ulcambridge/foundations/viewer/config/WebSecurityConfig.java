@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.config;
 
+import com.google.common.collect.ImmutableList;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -10,10 +11,11 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,7 +32,6 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.context.SecurityContextPersistenceFilter;
-import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.RequestCacheAwareFilter;
@@ -91,28 +92,27 @@ import java.util.function.Predicate;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Import(WebSecurityConfig.Oauth2AuthConfig.class)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter
-                               implements BeanFactoryAware {
+public class WebSecurityConfig {
 
     public static final String LOGIN_PATH = "/auth/login";
 
     public static final String RAVEN_RETURN_LOGIN_PATH = "/auth/raven/login";
 
-    private Optional<BeanFactory> beanFactory = Optional.empty();
-
-    @Override
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        this.beanFactory = Optional.of(beanFactory);
-    }
-
-    protected BeanFactory getBeanFactory() {
-        return this.beanFactory.get();
-    }
-
-    @Override
+    /**
+     * Create an AuthenticationManager bean without the use of Spring Sec's
+     * ridiculous config building spaghetti. Required as the manager has to
+     * exist outside the {@link GeneralSecurityConfig} and I don't feel like
+     * using 5 layers of delegated/lazily instantiated facades to achieve that.
+     */
     @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    @Autowired
+    public AuthenticationManager authenticationManager(
+        RavenAuthenticationProvider ravenAuthProvider,
+        @Qualifier("oauthAuthenticationProvider")
+            AuthenticationProvider oauthAuthenticationProvider) {
+
+        return new ProviderManager(ImmutableList.of(
+            ravenAuthProvider, oauthAuthenticationProvider));
     }
 
     @Bean
@@ -287,7 +287,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         return entryPointWrapper.apply(
             new RavenAuthenticationEntryPoint(requestCreator));
     }
-
 
     @Bean(name = "ravenEntryPointSelector")
     @Autowired
@@ -516,81 +515,126 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         return new RedirectingLogoutSuccessHandler(homepageUrl);
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        AuthenticationEntryPoint entryPoint = getBeanFactory().getBean(
-            "authenticationEntryPoint", AuthenticationEntryPoint.class);
+    private static abstract class AbstractWebSecurityConfig
+        extends WebSecurityConfigurerAdapter
+        implements BeanFactoryAware {
 
-        RequestCache requestCache = getBeanFactory().getBean(RequestCache.class);
+        private Optional<AuthenticationManager> authenticationManager =
+            Optional.empty();
 
-        RavenAuthenticationFilter ravenAuthFilter =
-            getBeanFactory().getBean(RavenAuthenticationFilter.class);
+        private Optional<BeanFactory> beanFactory = Optional.empty();
 
-        DeferredEntryPointFilter deferredEntryPointFilter =
-            getBeanFactory().getBean(DeferredEntryPointFilter.class);
+        @Autowired
+        public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+            this.authenticationManager = Optional.of(authenticationManager);
+        }
 
-        http
-            .addFilterBefore(
-                getBeanFactory().getBean(OAuth2ClientContextFilter.class),
-                SecurityContextPersistenceFilter.class)
+        @Override
+        protected AuthenticationManager authenticationManager() throws Exception {
+            return this.authenticationManager.get();
+        }
 
-            // Add our raven auth filter amongst the other auth filters. It has
-            // to be after the SECURITY_CONTEXT_FILTER otherwise the auth result
-            // doesn't get persisted.
-            .addFilterAfter(
-                restrictFilterToAntPattern(RAVEN_RETURN_LOGIN_PATH,
-                                           ravenAuthFilter),
-                AbstractPreAuthenticatedProcessingFilter.class)
+        protected BeanFactory getBeanFactory() {
+            return this.beanFactory.get();
+        }
 
-            // Add our deferred entry point filter after the
-            // ExceptionTranslationFilter as that's the spring filter that
-            // invokes the built-in entry points.
-            .addFilterAfter(
-                restrictFilterToAntPattern(LOGIN_PATH,
-                                           deferredEntryPointFilter),
-                ExceptionTranslationFilter.class)
+        @Override
+        public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+            this.beanFactory = Optional.of(beanFactory);
+        }
+    }
 
-            .addFilterAfter(
-                getBeanFactory().getBean("linkedinAuthFilter",
-                                    Oauth2AuthenticationFilter.class),
-                AbstractPreAuthenticatedProcessingFilter.class)
+    @Configuration
+    @Order(1)
+    public static class EmbeddedViewerSecurityConfig
+        extends AbstractWebSecurityConfig {
 
-            .addFilterAfter(
-                getBeanFactory().getBean("googleAuthFilter",
-                                    Oauth2AuthenticationFilter.class),
-                AbstractPreAuthenticatedProcessingFilter.class)
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http.antMatcher(DispatchServletConfig.EMBEDDED_VIEWER_PATTERN)
+                .authorizeRequests()
+                    .anyRequest().permitAll()
+                    .and()
+                .headers()
+                    // The embedded viewer has to be embeddable on external
+                    // domains.
+                    .frameOptions().disable();
+        }
+    }
 
-            .addFilterAfter(
-                getBeanFactory().getBean("facebookAuthFilter",
-                                    Oauth2AuthenticationFilter.class),
-                AbstractPreAuthenticatedProcessingFilter.class)
+    @Configuration
+    @Order(2)
+    public static class GeneralSecurityConfig
+        extends AbstractWebSecurityConfig {
 
-            // Add support for authenticating raven auth tokens
-            .authenticationProvider(
-                getBeanFactory().getBean(RavenAuthenticationProvider.class))
-            .authenticationProvider(
-                getBeanFactory().getBean("oauthAuthenticationProvider",
-                    AuthenticationProvider.class))
-            .requestCache()
-                .requestCache(requestCache)
-                .and()
-            .exceptionHandling()
-                .authenticationEntryPoint(entryPoint)
-                .and()
-            .logout()
-                .logoutUrl("/auth/logout")
-                .logoutSuccessHandler(
-                    getBeanFactory().getBean(LogoutSuccessHandler.class))
-                .deleteCookies("JSESSIONID")
-                .and()
-            .authorizeRequests()
-                .antMatchers("/admin/**", "/editor/**").hasRole("ADMIN")
-                .antMatchers("/mylibrary/**").hasAnyRole("USER", "ADMIN")
-                .anyRequest().hasAnyRole("ANONYMOUS", "USER", "ADMIN")
-                .and()
-            .headers()
-                .addHeaderWriter(
-                    new XFrameOptionsHeaderWriter(
-                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            AuthenticationEntryPoint entryPoint = getBeanFactory().getBean(
+                "authenticationEntryPoint", AuthenticationEntryPoint.class);
+
+            RequestCache requestCache = getBeanFactory().getBean(RequestCache.class);
+
+            RavenAuthenticationFilter ravenAuthFilter =
+                getBeanFactory().getBean(RavenAuthenticationFilter.class);
+
+            DeferredEntryPointFilter deferredEntryPointFilter =
+                getBeanFactory().getBean(DeferredEntryPointFilter.class);
+
+            http
+                .addFilterBefore(
+                    getBeanFactory().getBean(OAuth2ClientContextFilter.class),
+                    SecurityContextPersistenceFilter.class)
+
+                // Add our raven auth filter amongst the other auth filters. It has
+                // to be after the SECURITY_CONTEXT_FILTER otherwise the auth result
+                // doesn't get persisted.
+                .addFilterAfter(
+                    restrictFilterToAntPattern(RAVEN_RETURN_LOGIN_PATH,
+                                               ravenAuthFilter),
+                    AbstractPreAuthenticatedProcessingFilter.class)
+
+                // Add our deferred entry point filter after the
+                // ExceptionTranslationFilter as that's the spring filter that
+                // invokes the built-in entry points.
+                .addFilterAfter(
+                    restrictFilterToAntPattern(LOGIN_PATH,
+                                               deferredEntryPointFilter),
+                    ExceptionTranslationFilter.class)
+
+                .addFilterAfter(
+                    getBeanFactory().getBean("linkedinAuthFilter",
+                                             Oauth2AuthenticationFilter.class),
+                    AbstractPreAuthenticatedProcessingFilter.class)
+
+                .addFilterAfter(
+                    getBeanFactory().getBean("googleAuthFilter",
+                                             Oauth2AuthenticationFilter.class),
+                    AbstractPreAuthenticatedProcessingFilter.class)
+
+                .addFilterAfter(
+                    getBeanFactory().getBean("facebookAuthFilter",
+                                             Oauth2AuthenticationFilter.class),
+                    AbstractPreAuthenticatedProcessingFilter.class)
+
+                .requestCache()
+                    .requestCache(requestCache)
+                    .and()
+                .exceptionHandling()
+                    .authenticationEntryPoint(entryPoint)
+                    .and()
+                .logout()
+                    .logoutUrl("/auth/logout")
+                    .logoutSuccessHandler(
+                        getBeanFactory().getBean(LogoutSuccessHandler.class))
+                    .deleteCookies("JSESSIONID")
+                    .and()
+                .authorizeRequests()
+                    .antMatchers("/admin/**", "/editor/**").hasRole("ADMIN")
+                    .antMatchers("/mylibrary/**").hasAnyRole("USER", "ADMIN")
+                    .anyRequest().hasAnyRole("ANONYMOUS", "USER", "ADMIN")
+                    .and()
+                .headers()
+                    .frameOptions().sameOrigin();
+        }
     }
 }
