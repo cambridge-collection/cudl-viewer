@@ -1,6 +1,8 @@
 package ulcambridge.foundations.viewer.authentication;
 
+import com.github.jsonldjava.utils.Obj;
 import com.google.common.collect.ImmutableSet;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
@@ -61,8 +63,12 @@ public class Urls {
     }
 
     /**
-     * Create a Predicate which returns true for URLs which on the same
-     * domain/port the sample URL (optionally the same scheme too).
+     * Create a Predicate which returns true for URLs which use the same
+     * domain/port as the sample URL (optionally the same scheme too).
+     *
+     * <p>If the sample URL is protocol-relative (has no scheme, e.g.
+     * {@code //foo.com/}) then the predicate will match URLs with http/https
+     * schemes regardless of the value of {@code ignoreHttpsHttpChanges}.
      *
      * @param sample The URL defining the website that should be matched by URLs
      *               being tested by the returned predicate.
@@ -73,11 +79,17 @@ public class Urls {
     public static Predicate<URI> isSameSite(URI sample,
                                            boolean ignoreHttpsHttpChanges) {
         return url -> {
+            boolean sampleProtocolRelative = sample.getScheme() == null;
+
             boolean bothHttp = ignoreHttpsHttpChanges &&
                 HTTP_SCHEMES.contains(sample.getScheme()) &&
                 HTTP_SCHEMES.contains(url.getScheme());
 
-            return (bothHttp || equals(sample.getScheme(), url.getScheme())) &&
+            boolean protocolsMatch = (
+                sampleProtocolRelative || bothHttp ||
+                equals(sample.getScheme(), url.getScheme()));
+
+            return protocolsMatch &&
                    equals(sample.getAuthority(), url.getAuthority());
         };
     }
@@ -185,6 +197,10 @@ public class Urls {
         }
     }
 
+    private static boolean isNullOrEmpty(String s) {
+        return s == null || s.length() == 0;
+    }
+
     static class RelativisingUrlCodecStrategy implements UrlCodecStrategy {
 
         private final URI baseUrl;
@@ -196,12 +212,44 @@ public class Urls {
         }
 
         private URI getBaseUrl(URI requestUri) {
-            return requestUri.resolve(this.baseUrl);
+            URI baseUrl = requestUri.resolve(this.baseUrl);
+
+            // URI seems to incorrectly handle resolving a relative path against
+            // a URI with an empty path - resolving 'foo' against
+            // 'http://bar.com' results in http://bar.comfoo rather than
+            // http://bar.com/foo
+            if(isNullOrEmpty(baseUrl.getRawPath()))
+                return baseUrl.resolve("/");
+            return baseUrl;
         }
 
         @Override
         public String encodeUrl(URI requestUri, URI url) {
-            return getBaseUrl(requestUri).relativize(url).toString();
+            URI base = getBaseUrl(requestUri)
+                // Strip off trailing path segments after the last slash
+                // i.e. /foo/bar -> /foo/
+                // This is required as relativize doesn't handle these trailing
+                // sections correctly, and they're automatically stripped anyway
+                // when resolving.
+                .resolve("./");
+
+            // The path will always be at least "/"
+            assert base.isAbsolute() && !isNullOrEmpty(base.getRawPath());
+
+            URI relative = base.relativize(url);
+
+            // If the URL starts with a path, make the paths more obviously
+            // paths by having them start with / or ./
+            if(relative.getScheme() == null &&
+               relative.getRawAuthority() == null &&
+               !isNullOrEmpty(relative.getRawPath())) {
+
+                String prefix = base.getRawPath().equals("/") ? "/" : "./";
+
+                return prefix + relative.toString();
+            }
+
+            return relative.toString();
         }
 
         @Override
