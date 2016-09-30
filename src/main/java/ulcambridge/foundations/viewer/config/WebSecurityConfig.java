@@ -25,6 +25,7 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.access.ExceptionTranslationFilter;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
@@ -46,6 +47,7 @@ import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationFilter;
 import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationProvider;
 import uk.ac.cam.lib.spring.security.raven.RavenRequestCreator;
 import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator;
+import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.PerRequestParamProducer;
 import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.RequestParam;
 import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
 import uk.ac.cam.ucs.webauth.WebauthValidator;
@@ -54,6 +56,8 @@ import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
 import ulcambridge.foundations.viewer.authentication.Obfuscation;
+import ulcambridge.foundations.viewer.authentication.Urls;
+import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
 import ulcambridge.foundations.viewer.authentication.RedirectingLogoutSuccessHandler;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper;
@@ -69,6 +73,7 @@ import ulcambridge.foundations.viewer.authentication.raven.AutoRegisteringRavenT
 import ulcambridge.foundations.viewer.authentication.raven.CrsidObfuscatingRavenTokenCreator;
 import ulcambridge.foundations.viewer.authentication.raven.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
+import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -87,7 +92,6 @@ import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -214,32 +218,41 @@ public class WebSecurityConfig {
         return f;
     }
 
-    @Bean
-    public RavenRequestCreator ravenRequestCreator(
+    @Bean()
+    @Autowired
+    public PerRequestParamProducer ravenReturnUrlProducer(
         @Value("${rootURL}") String siteUrl) {
 
-        String returnUrl = UriComponentsBuilder
-            .fromUriString(siteUrl)
-            .replacePath(RAVEN_RETURN_LOGIN_PATH)
-            .toUriString();
+        UriComponentsBuilder b = UriComponentsBuilder.fromUriString(siteUrl)
+            .replacePath(RAVEN_RETURN_LOGIN_PATH);
 
-        return DefaultRavenRequestCreator.builder(returnUrl)
-            .set(RequestParam.desc,
-                 "Cambridge Digital Library")
+        String returnUrlHttp = b.scheme("http").toUriString();
+        String returnUrlHttps = b.scheme("https").toUriString();
+
+        return (p, r) -> r.isSecure() ? returnUrlHttps : returnUrlHttp;
+    }
+
+    @Bean
+    @Autowired
+    public RavenRequestCreator ravenRequestCreator(
+        PerRequestParamProducer ravenReturnUrlProducer) {
+
+        return DefaultRavenRequestCreator.builder(ravenReturnUrlProducer)
+            .withValue(RequestParam.desc, "Cambridge Digital Library")
             .build();
     }
 
     @Bean(name = "authenticationEntryPoint")
     @Autowired
     public AuthenticationEntryPoint authenticationEntryPoint(
-        @Value("${rootURL}") String siteUrl, RequestCache requestCache) {
+        @Qualifier("homepageUrl") URI homepage, RequestCache requestCache) {
 
-        URI loginPage = UriComponentsBuilder.fromUriString(siteUrl)
+        URI loginPage = UriComponentsBuilder.fromUri(homepage)
             .replacePath(LOGIN_PATH)
             .build().toUri();
 
         return new UrlQueryParamAuthenticationEntryPoint(
-            loginPage, requestCache);
+            homepage, loginPage, requestCache);
     }
 
     @Bean
@@ -253,10 +266,11 @@ public class WebSecurityConfig {
 
     @Bean
     @Autowired
-    public Predicate<URI> isSafeRedirectUrl(
+    public UrlCodecStrategy queryParamUrlCodec(
         @Qualifier("homepageUrl") URI homepage) {
 
-        return EntryPointRequestFilters.isSameSite(homepage, true);
+        return Urls.sameSiteCodecStrategy(
+            Urls.relativisingUrlCodec(homepage), homepage, false);
     }
 
     @Bean
@@ -264,11 +278,11 @@ public class WebSecurityConfig {
     public Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
     entryPointWrapper(
         RequestCache requestCache, @Qualifier("homepageUrl") URI homepage,
-        @Qualifier("isSafeRedirectUrl") Predicate<URI> isSafeRedirectUrl) {
+        UrlCodecStrategy urlCodec) {
 
         RequestFilterEntryPointWrapper.RequestFilter saveRequestFromQueryParam =
             EntryPointRequestFilters.saveRequestFromQueryParamUrl(
-                requestCache, homepage, isSafeRedirectUrl);
+                requestCache, homepage, urlCodec);
 
         return new RequestFilterEntryPointWrapper.Builder()
             .withFilter(saveRequestFromQueryParam)
@@ -515,6 +529,14 @@ public class WebSecurityConfig {
         return new RedirectingLogoutSuccessHandler(homepageUrl);
     }
 
+    // Issue: this gets called after security entry points.
+    // FIXME: register w/ spring security below
+    // Remove extra filter proxy definition from web.xml
+    @Bean(name = "secureRequestProxyHeaderFilter")
+    public SecureRequestProxyHeaderFilter secureRequestProxyHeaderFilter() {
+        return new SecureRequestProxyHeaderFilter();
+    }
+
     private static abstract class AbstractWebSecurityConfig
         extends WebSecurityConfigurerAdapter
         implements BeanFactoryAware {
@@ -581,6 +603,11 @@ public class WebSecurityConfig {
                 getBeanFactory().getBean(DeferredEntryPointFilter.class);
 
             http
+                // Mark proxied secure requests as being secure.
+                .addFilterBefore(
+                    getBeanFactory()
+                        .getBean(SecureRequestProxyHeaderFilter.class),
+                    ChannelProcessingFilter.class)
                 .addFilterBefore(
                     getBeanFactory().getBean(OAuth2ClientContextFilter.class),
                     SecurityContextPersistenceFilter.class)

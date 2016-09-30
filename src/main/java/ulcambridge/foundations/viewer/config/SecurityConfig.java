@@ -24,8 +24,7 @@ public class SecurityConfig {
     @Bean(name = "google")
     public static OAuth2ProtectedResourceDetails oauth2Google(
         @Value("${google.clientId}") String clientId,
-        @Value("${google.clientSecret}") String clientSecret,
-        @Value("${google.openid.realm}") String realm) {
+        @Value("${google.clientSecret}") String clientSecret) {
 
         AuthorizationCodeResourceDetails details =
             new ExtendedBaseOAuth2ProtectedResourceDetails();
@@ -37,7 +36,6 @@ public class SecurityConfig {
         details.setUserAuthorizationUri(
             UriComponentsBuilder
                 .fromUriString("https://accounts.google.com/o/oauth2/auth")
-                .queryParam("openid.realm", realm)
                 .build()
                 .toUriString());
 

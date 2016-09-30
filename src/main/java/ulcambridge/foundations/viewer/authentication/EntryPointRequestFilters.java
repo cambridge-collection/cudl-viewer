@@ -1,25 +1,20 @@
 package ulcambridge.foundations.viewer.authentication;
 
 
-import com.google.common.collect.ImmutableSet;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.UriUtils;
+import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper.RequestFilter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
 /**
  * Static methods to create {@link RequestFilter}s to be applied to
@@ -29,15 +24,15 @@ import java.util.function.Predicate;
 public class EntryPointRequestFilters {
 
     /**
-     * @see #saveRequestFromQueryParamUrl(RequestCache, String, URI, Predicate)
+     * @see #saveRequestFromQueryParamUrl(RequestCache, String, URI, UrlCodecStrategy)
      */
     public static RequestFilter saveRequestFromQueryParamUrl(
-        RequestCache requestCache, URI defaultUrl, Predicate<URI> isSafePredicate) {
+        RequestCache requestCache, URI defaultUrl, UrlCodecStrategy urlCodec) {
 
         return saveRequestFromQueryParamUrl(
             requestCache,
             UrlQueryParamAuthenticationEntryPoint.DEFAULT_PARAM_NAME,
-            defaultUrl, isSafePredicate);
+            defaultUrl, urlCodec);
     }
 
     /**
@@ -51,74 +46,14 @@ public class EntryPointRequestFilters {
      *                       destination URL.
      * @param defaultUrl The default URL to use if none is specified, or the
      *                   provided URL is not safe.
-     * @param isSafePredicate A predicate which decides if a provided URL is
-     *                        safe to redirect to (see defaultUrl).
+     * @param urlCodec The strategy to use to decode URLs from query parameters.
      */
     public static RequestFilter saveRequestFromQueryParamUrl(
         RequestCache requestCache, String queryParamName, URI defaultUrl,
-        Predicate<URI> isSafePredicate) {
+        UrlCodecStrategy urlCodec) {
 
         return new SaveRequestFromQueryParamUrlRequestFilter(
-            requestCache, isSafePredicate, queryParamName, defaultUrl);
-    }
-
-    /** null-safe .equals() check. */
-    private static boolean equals(Object a, Object b) {
-        return a == null ? b == null : a.equals(b);
-    }
-
-    private static final Set<String> HTTP_SCHEMES = ImmutableSet.of(
-        "http", "https");
-
-    /**
-     * Create a Predicate which returns true for URLs which on the same
-     * domain/port the sample URL (optionally the same scheme too).
-     *
-     * @param sample The URL defining the website that should be matched by URLs
-     *               being tested by the returned predicate.
-     * @param ignoreHttpsHttpChanges Allow the URLs to differ between https and
-     *                               http as long as they're both one or the
-     *                               other.
-     */
-    public static Predicate<URI> isSameSite(URI sample,
-                                            boolean ignoreHttpsHttpChanges) {
-        return url -> {
-            boolean bothHttp = ignoreHttpsHttpChanges &&
-                HTTP_SCHEMES.contains(sample.getScheme()) &&
-                HTTP_SCHEMES.contains(url.getScheme());
-
-            return (bothHttp || equals(sample.getScheme(), url.getScheme())) &&
-                   equals(sample.getAuthority(), url.getAuthority());
-        };
-    }
-
-    static String urlDecodeUtf8(String s) {
-        try {
-            return UriUtils.decode(s, "UTF-8");
-        }
-        catch (IllegalArgumentException e) {
-            return null;
-        }
-        catch (UnsupportedEncodingException e) {
-            return null;
-        }
-    }
-
-    static Optional<URI> getUrlFromQueryParam(HttpServletRequest req, String param) {
-        return Optional.ofNullable(req.getQueryString())
-            .map(qs -> "?" + qs)
-            .map(url -> UriComponentsBuilder.fromUriString(url))
-            .map(ucb -> ucb.build().getQueryParams())
-            .map(params -> params.getFirst(param))
-            .map(EntryPointRequestFilters::urlDecodeUtf8)
-            .map(url -> {
-                try {
-                    return new URI(url);
-                }
-                catch(URISyntaxException e) {
-                    return null;
-                }
-            });
+            requestCache, urlCodec, queryParamName, defaultUrl);
     }
 
     static class SaveRequestFromQueryParamUrlRequestFilter
@@ -127,25 +62,25 @@ public class EntryPointRequestFilters {
         private final RequestCache requestCache;
         private final String queryParam;
         private final URI defaultUrl;
-        private Predicate<URI> isValidRedirectUrl;
+        private final UrlCodecStrategy urlCodec;
 
         public SaveRequestFromQueryParamUrlRequestFilter(
-            RequestCache requestCache, Predicate<URI> isValidRedirectUrl,
+            RequestCache requestCache, UrlCodecStrategy urlCodec,
             String queryParam, URI defaultUrl) {
 
             Assert.notNull(requestCache);
             Assert.notNull(queryParam);
             Assert.notNull(defaultUrl);
-            Assert.notNull(isValidRedirectUrl);
+            Assert.notNull(urlCodec);
 
             this.requestCache = requestCache;
             this.queryParam = queryParam;
             this.defaultUrl = defaultUrl;
-            this.isValidRedirectUrl = isValidRedirectUrl;
+            this.urlCodec = urlCodec;
         }
 
-        public Predicate<URI> getIsValidRequestUrl() {
-            return this.isValidRedirectUrl;
+        public UrlCodecStrategy getUrlCodecStrategy() {
+            return this.urlCodec;
         }
 
         public RequestCache getRequestCache() {
@@ -160,24 +95,19 @@ public class EntryPointRequestFilters {
             return this.defaultUrl;
         }
 
-        protected URI getUrlToSave(Optional<URI> providedUrl) {
-            return providedUrl.filter(this.getIsValidRequestUrl())
+        protected URI getUrlToSave(HttpServletRequest req) {
+            return Urls
+                .getQueryParam(req, this.getQueryParam())
+                .flatMap(url ->
+                    this.getUrlCodecStrategy().decodeUrl(Urls.getUrl(req), url))
                 .orElseGet(this::getDefaultUrl);
-        }
-
-        protected Optional<URI> getSuggestedRedirectUrl(
-            HttpServletRequest req) {
-
-            return getUrlFromQueryParam(req, this.getQueryParam());
         }
 
         @Override
         public HttpServletRequest filter(
             HttpServletRequest req, HttpServletResponse resp) {
 
-            URI toSave = this.getUrlToSave(this.getSuggestedRedirectUrl(req));
-
-            saveRequest(toSave, req, resp, getRequestCache());
+            saveRequest(getUrlToSave(req), req, resp, this.getRequestCache());
 
             return req;
         }
@@ -188,12 +118,6 @@ public class EntryPointRequestFilters {
      *
      * <p>The current request and response are required to save the request,
      * but are not saved themselves.
-     *
-     * @param uri
-     * @param method
-     * @param currentReq
-     * @param currentResp
-     * @param requestCache
      */
     public static void saveRequest(
         URI url, String servletPath, HttpMethod method,
@@ -217,9 +141,6 @@ public class EntryPointRequestFilters {
 
     static class UrlChangingHttpServletRequestWrapper
         extends HttpServletRequestWrapper {
-
-        private String requestUri;
-        private String requestUrl;
 
         private final URI fullUrl;
         private final String servletPath;
@@ -260,7 +181,7 @@ public class EntryPointRequestFilters {
             // URIs represent the implied default port as -1 rather than the
             // actual default value, so we have to provide that ourselves.
             if(port == -1) {
-                String scheme = this.fullUrl.getScheme();
+                String scheme = this.getScheme();
                 if("http".equals(scheme))
                     return 80;
                 else if("https".equals(scheme))
@@ -268,6 +189,14 @@ public class EntryPointRequestFilters {
             }
 
             return port;
+        }
+
+        @Override
+        public String getScheme() {
+            String scheme = this.fullUrl.getScheme();
+            // If the full URL is not absolute ( //foo.com/blah ) the scheme
+            // will be drawn from the actual request.
+            return scheme == null ? super.getScheme() : scheme;
         }
 
         @Override

@@ -25,6 +25,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
+import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
 import java.util.List;
 

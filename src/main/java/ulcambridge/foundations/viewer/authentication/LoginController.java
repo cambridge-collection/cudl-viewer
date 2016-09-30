@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
 
-import java.net.URI;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 @Controller
 @RequestMapping("/auth")
@@ -27,7 +27,7 @@ public class LoginController {
     private final OAuth2RestOperations linkedinTemplate;
     private final BookmarkDao bookmarkDao;
     private final UsersDao usersDao;
-    private final Predicate<URI> isSafeRedirectUrl;
+    private final UrlCodecStrategy urlCodecStrategy;
 
     @Autowired
     public LoginController(
@@ -35,35 +35,37 @@ public class LoginController {
         @Qualifier("googleOauth") OAuth2RestOperations googleTemplate,
         @Qualifier("facebookOauth") OAuth2RestOperations facebookTemplate,
         @Qualifier("linkedinOauth") OAuth2RestOperations linkedinTemplate,
-        @Qualifier("isSafeRedirectUrl") Predicate<URI> isSafeRedirectUrl) {
+        UrlCodecStrategy urlCodec) {
 
         Assert.notNull(bookmarkDao);
         Assert.notNull(usersDao);
         Assert.notNull(googleTemplate);
         Assert.notNull(facebookTemplate);
         Assert.notNull(linkedinTemplate);
-        Assert.notNull(isSafeRedirectUrl);
+        Assert.notNull(urlCodec);
 
         this.bookmarkDao = bookmarkDao;
         this.usersDao = usersDao;
         this.googleTemplate = googleTemplate;
         this.facebookTemplate = facebookTemplate;
         this.linkedinTemplate = linkedinTemplate;
-        this.isSafeRedirectUrl = isSafeRedirectUrl;
+        this.urlCodecStrategy = urlCodec;
     }
 
     // on path /auth/login/
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView handleLoginRequest(
             @RequestParam(value = "error", required = false) String error,
-            @RequestParam("next") Optional<URI> nextUrl) {
+            @RequestParam("next") Optional<String> nextUrl,
+            HttpServletRequest req) {
 
 
         ModelAndView modelAndView = new ModelAndView("jsp/login")
             .addObject("error", error);
 
-        nextUrl.filter(this.isSafeRedirectUrl).ifPresent(
-            url -> modelAndView.addObject("nextUrl", url));
+        nextUrl.flatMap(next -> this.urlCodecStrategy
+                .decodeUrl(Urls.getUrl(req), next))
+            .ifPresent(url -> modelAndView.addObject("nextUrl", url));
 
         return modelAndView;
     }

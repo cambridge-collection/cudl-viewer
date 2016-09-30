@@ -19,6 +19,7 @@ import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
+import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
 import javax.sql.DataSource;
 

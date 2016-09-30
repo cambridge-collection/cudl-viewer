@@ -5,13 +5,13 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.util.Assert;
+import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.util.function.Predicate;
 
 /**
  * A {@link LogoutSuccessHandler} which redirects to a URL specified in a query
@@ -25,32 +25,33 @@ public class RedirectingLogoutSuccessHandler implements LogoutSuccessHandler {
 
     private final RedirectStrategy redirectStrategy;
     private final String paramName;
-    private final Predicate<URI> isValidRedirectUrl;
+    private final UrlCodecStrategy urlCodec;
     private final URI defaultRedirectUrl;
 
     public RedirectingLogoutSuccessHandler(URI defaultRedirectUrl) {
-        this(EntryPointRequestFilters.isSameSite(defaultRedirectUrl, false),
+        this(Urls.sameSiteCodecStrategy(
+                Urls.defaultUrlCodec(), defaultRedirectUrl, false),
              defaultRedirectUrl);
     }
 
     public RedirectingLogoutSuccessHandler(
-        Predicate<URI> isValidRedirectUrl, URI defaultRedirectUrl) {
-        this(isValidRedirectUrl, DEFAULT_PARAM_NAME,
+        UrlCodecStrategy urlCodec, URI defaultRedirectUrl) {
+        this(urlCodec, DEFAULT_PARAM_NAME,
              defaultRedirectUrl, DEFAULT_REDIRECT_STRATEGY);
     }
 
     public RedirectingLogoutSuccessHandler(
-        Predicate<URI> isValidRedirectUrl, String paramName, URI defaultRedirectUrl,
+        UrlCodecStrategy urlCodec, String paramName, URI defaultRedirectUrl,
         RedirectStrategy redirectStrategy) {
 
         Assert.notNull(redirectStrategy);
-        Assert.notNull(isValidRedirectUrl);
+        Assert.notNull(urlCodec);
         Assert.notNull(paramName);
         Assert.notNull(defaultRedirectUrl);
 
         this.redirectStrategy = redirectStrategy;
         this.paramName = paramName;
-        this.isValidRedirectUrl = isValidRedirectUrl;
+        this.urlCodec = urlCodec;
         this.defaultRedirectUrl = defaultRedirectUrl;
     }
 
@@ -62,24 +63,30 @@ public class RedirectingLogoutSuccessHandler implements LogoutSuccessHandler {
         return this.paramName;
     }
 
-    public Predicate<URI> getIsValidRedirectUrl() {
-        return this.isValidRedirectUrl;
+    public UrlCodecStrategy getUrlCodec() {
+        return this.urlCodec;
     }
 
     public URI getDefaultRedirectUrl() {
         return this.defaultRedirectUrl;
     }
 
-    public String getDefaultRedirectUrlString() {
-        return this.getDefaultRedirectUrl().toString();
+    public String getDefaultRedirectUrlString(HttpServletRequest req) {
+        URI url = this.getDefaultRedirectUrl();
+
+        if(!url.isAbsolute()) {
+            url = Urls.getUrl(req).resolve(url);
+        }
+
+        return url.toString();
     }
 
     public String getRedirectUrl(HttpServletRequest req) {
-        return EntryPointRequestFilters.getUrlFromQueryParam(
-            req, this.getParamName())
-            .filter(this.getIsValidRedirectUrl())
+        return Urls.getQueryParam(req, this.getParamName())
+            .flatMap(value -> this.getUrlCodec()
+                .decodeUrl(Urls.getUrl(req), value))
             .map(Object::toString)
-            .orElseGet(this::getDefaultRedirectUrlString);
+            .orElseGet(() -> getDefaultRedirectUrlString(req));
     }
 
     @Override

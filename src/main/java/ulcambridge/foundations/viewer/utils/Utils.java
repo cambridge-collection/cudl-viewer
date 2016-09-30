@@ -1,5 +1,8 @@
 package ulcambridge.foundations.viewer.utils;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -68,5 +71,11 @@ public class Utils {
 
     public static <T> Stream<T> stream(Iterable<T> i) {
         return StreamSupport.stream(i.spliterator(), false);
+    }
+
+    public static UriComponentsBuilder populateScheme(
+        UriComponentsBuilder b, HttpServletRequest request) {
+
+        return b.scheme(request.isSecure() ? "https" : "http");
     }
 }
