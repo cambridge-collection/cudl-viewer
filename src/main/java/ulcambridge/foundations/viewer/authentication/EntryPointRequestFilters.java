@@ -7,12 +7,13 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
-import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 import ulcambridge.foundations.viewer.authentication.RequestFilterEntryPointWrapper.RequestFilter;
+import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.Option;
 import java.net.URI;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ import java.util.Optional;
 public class EntryPointRequestFilters {
 
     /**
-     * @see #saveRequestFromQueryParamUrl(RequestCache, String, URI, UrlCodecStrategy)
+     * @see #saveRequestFromQueryParamUrl(RequestCache, String, URI, UrlCodecStrategy, Optional)
      */
     public static RequestFilter saveRequestFromQueryParamUrl(
         RequestCache requestCache, URI defaultUrl, UrlCodecStrategy urlCodec) {
@@ -32,7 +33,7 @@ public class EntryPointRequestFilters {
         return saveRequestFromQueryParamUrl(
             requestCache,
             UrlQueryParamAuthenticationEntryPoint.DEFAULT_PARAM_NAME,
-            defaultUrl, urlCodec);
+            defaultUrl, urlCodec, Optional.empty());
     }
 
     /**
@@ -50,10 +51,13 @@ public class EntryPointRequestFilters {
      */
     public static RequestFilter saveRequestFromQueryParamUrl(
         RequestCache requestCache, String queryParamName, URI defaultUrl,
-        UrlCodecStrategy urlCodec) {
+        UrlCodecStrategy urlCodec,
+        Optional<HttpServletRequestFragmentStorageStrategy>
+            fragmentStorageStrategy) {
 
         return new SaveRequestFromQueryParamUrlRequestFilter(
-            requestCache, urlCodec, queryParamName, defaultUrl);
+            requestCache, urlCodec, queryParamName, defaultUrl,
+            fragmentStorageStrategy);
     }
 
     static class SaveRequestFromQueryParamUrlRequestFilter
@@ -63,24 +67,36 @@ public class EntryPointRequestFilters {
         private final String queryParam;
         private final URI defaultUrl;
         private final UrlCodecStrategy urlCodec;
+        private final Optional<HttpServletRequestFragmentStorageStrategy>
+            fragmentStorageStrategy;
 
         public SaveRequestFromQueryParamUrlRequestFilter(
             RequestCache requestCache, UrlCodecStrategy urlCodec,
-            String queryParam, URI defaultUrl) {
+            String queryParam, URI defaultUrl,
+            Optional<HttpServletRequestFragmentStorageStrategy>
+                fragmentStorageStrategy) {
 
             Assert.notNull(requestCache);
             Assert.notNull(queryParam);
             Assert.notNull(defaultUrl);
             Assert.notNull(urlCodec);
+            Assert.notNull(fragmentStorageStrategy);
 
             this.requestCache = requestCache;
             this.queryParam = queryParam;
             this.defaultUrl = defaultUrl;
             this.urlCodec = urlCodec;
+            this.fragmentStorageStrategy = fragmentStorageStrategy;
         }
 
         public UrlCodecStrategy getUrlCodecStrategy() {
             return this.urlCodec;
+        }
+
+        public Optional<HttpServletRequestFragmentStorageStrategy>
+        getFragmentStorageStrategy() {
+
+            return this.fragmentStorageStrategy;
         }
 
         public RequestCache getRequestCache() {
@@ -107,7 +123,8 @@ public class EntryPointRequestFilters {
         public HttpServletRequest filter(
             HttpServletRequest req, HttpServletResponse resp) {
 
-            saveRequest(getUrlToSave(req), req, resp, this.getRequestCache());
+            saveRequest(getUrlToSave(req), "", HttpMethod.GET, req, resp,
+                        getRequestCache(), getFragmentStorageStrategy());
 
             return req;
         }
@@ -122,21 +139,33 @@ public class EntryPointRequestFilters {
     public static void saveRequest(
         URI url, String servletPath, HttpMethod method,
         HttpServletRequest currentReq, HttpServletResponse currentResp,
-        RequestCache requestCache) {
+        RequestCache requestCache,
+        Optional<HttpServletRequestFragmentStorageStrategy>
+            fragmentStorageStrategy) {
 
         HttpServletRequest toSave = new UrlChangingHttpServletRequestWrapper(
             currentReq, method, url, servletPath);
+
+        if(url.getRawFragment() != null &&
+            fragmentStorageStrategy.isPresent()) {
+
+            toSave = fragmentStorageStrategy.get()
+                .storeFragment(toSave, url.getFragment());
+        }
 
         requestCache.saveRequest(toSave, currentResp);
     }
 
     /**
-     * As {@link #saveRequest(URI, String, HttpMethod, HttpServletRequest, HttpServletResponse, RequestCache)}
+     * As {@link #saveRequest(URI, String, HttpMethod, HttpServletRequest, HttpServletResponse, RequestCache, Optional)}
      * with "" and GET as defaults for servletPath and method.
      */
-    public static void saveRequest(URI url, HttpServletRequest currentReq, HttpServletResponse currentResp, RequestCache requestCache) {
+    public static void saveRequest(
+        URI url, HttpServletRequest currentReq, HttpServletResponse currentResp,
+        RequestCache requestCache) {
+
         saveRequest(url, "", HttpMethod.GET,
-                    currentReq, currentResp, requestCache);
+                    currentReq, currentResp, requestCache, Optional.empty());
     }
 
     static class UrlChangingHttpServletRequestWrapper

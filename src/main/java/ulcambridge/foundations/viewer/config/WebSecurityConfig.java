@@ -55,6 +55,9 @@ import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthen
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
 import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
+import ulcambridge.foundations.viewer.authentication.FragmentAwareRequestCache;
+import ulcambridge.foundations.viewer.authentication.HeaderValueHttpServletRequestFragmentStorageStrategy;
+import ulcambridge.foundations.viewer.authentication.HttpServletRequestFragmentStorageStrategy;
 import ulcambridge.foundations.viewer.authentication.Obfuscation;
 import ulcambridge.foundations.viewer.authentication.Urls;
 import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
@@ -120,8 +123,17 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public RequestCache requestCache() {
-        return new HttpSessionRequestCache();
+    public HttpServletRequestFragmentStorageStrategy fragmentStorageStrategy() {
+        return new HeaderValueHttpServletRequestFragmentStorageStrategy();
+    }
+
+    @Bean
+    @Autowired
+    public RequestCache requestCache(
+        HttpServletRequestFragmentStorageStrategy fragmentStorageStrategy) {
+
+        return new FragmentAwareRequestCache(
+            new HttpSessionRequestCache(), fragmentStorageStrategy);
     }
 
     /**
@@ -245,14 +257,15 @@ public class WebSecurityConfig {
     @Bean(name = "authenticationEntryPoint")
     @Autowired
     public AuthenticationEntryPoint authenticationEntryPoint(
-        @Qualifier("homepageUrl") URI homepage, RequestCache requestCache) {
+        @Qualifier("homepageUrl") URI homepage, RequestCache requestCache,
+        UrlCodecStrategy urlCodec) {
 
         URI loginPage = UriComponentsBuilder.fromUri(homepage)
             .replacePath(LOGIN_PATH)
             .build().toUri();
 
         return new UrlQueryParamAuthenticationEntryPoint(
-            homepage, loginPage, requestCache);
+            loginPage, requestCache, urlCodec);
     }
 
     @Bean
@@ -274,15 +287,24 @@ public class WebSecurityConfig {
     }
 
     @Bean
+    public String nextPageQueryParam() {
+        return UrlQueryParamAuthenticationEntryPoint.DEFAULT_PARAM_NAME;
+    }
+
+    @Bean
     @Autowired
     public Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
     entryPointWrapper(
-        RequestCache requestCache, @Qualifier("homepageUrl") URI homepage,
-        UrlCodecStrategy urlCodec) {
+        RequestCache requestCache,
+        @Qualifier("nextPageQueryParam") String nextPageQueryParam,
+        @Qualifier("homepageUrl") URI homepage,
+        UrlCodecStrategy urlCodec,
+        HttpServletRequestFragmentStorageStrategy fragmentStorageStrategy) {
 
         RequestFilterEntryPointWrapper.RequestFilter saveRequestFromQueryParam =
             EntryPointRequestFilters.saveRequestFromQueryParamUrl(
-                requestCache, homepage, urlCodec);
+                requestCache, nextPageQueryParam, homepage, urlCodec,
+                Optional.of(fragmentStorageStrategy));
 
         return new RequestFilterEntryPointWrapper.Builder()
             .withFilter(saveRequestFromQueryParam)

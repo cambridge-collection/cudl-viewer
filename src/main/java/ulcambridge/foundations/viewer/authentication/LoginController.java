@@ -65,6 +65,7 @@ public class LoginController {
 
         nextUrl.flatMap(next -> this.urlCodecStrategy
                 .decodeUrl(Urls.getUrl(req), next))
+            .map(url -> urlCodecStrategy.encodeUrl(Urls.getUrl(req), url))
             .ifPresent(url -> modelAndView.addObject("nextUrl", url));
 
         return modelAndView;

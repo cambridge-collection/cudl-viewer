@@ -39,8 +39,15 @@ public class UrlQueryParamAuthenticationEntryPoint
     public UrlQueryParamAuthenticationEntryPoint(
         URI loginFormUrl, RequestCache requestCache) {
 
+        this(loginFormUrl, requestCache, Urls.defaultUrlCodec());
+    }
+
+    public UrlQueryParamAuthenticationEntryPoint(
+        URI loginFormUrl, RequestCache requestCache,
+        UrlCodecStrategy urlCodec) {
+
         this(loginFormUrl, requestCache, DEFAULT_PARAM_NAME,
-             DEFAULT_REDIRECT_STRATEGY, Urls.defaultUrlCodec());
+            DEFAULT_REDIRECT_STRATEGY, urlCodec);
     }
 
     public UrlQueryParamAuthenticationEntryPoint(
@@ -83,7 +90,7 @@ public class UrlQueryParamAuthenticationEntryPoint
         SavedRequest req = this.getRequestCache().getRequest(
             currentRequest, currentResponse);
 
-        URI nextUrl =  Optional.ofNullable(req)
+        URI nextUrl = Optional.ofNullable(req)
             .map(r -> r.getRedirectUrl())
             .flatMap(Urls::parseUri)
             .orElseGet(() -> Urls.getUrl(currentRequest));
