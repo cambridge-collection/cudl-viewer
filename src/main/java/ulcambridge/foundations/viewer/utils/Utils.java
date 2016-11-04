@@ -19,7 +19,6 @@ public class Utils {
     private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss z";
     private static final TimeZone TIME_ZONE = TimeZone.getTimeZone("UTC");
     private static final Locale LOCALE = Locale.UK;
-
     private static final ThreadLocal<DateFormat> DATE_FORMATS =
             new ThreadLocal<DateFormat>();
 
