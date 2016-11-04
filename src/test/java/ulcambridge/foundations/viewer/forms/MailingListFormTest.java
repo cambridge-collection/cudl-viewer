@@ -1,33 +1,17 @@
 package ulcambridge.foundations.viewer.forms;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test
  */
-public class MailingListFormTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public MailingListFormTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(MailingListFormTest.class);
-    }
-
+public class MailingListFormTest{
     /**
      * Tests the MailingListForm object
      */
+    @Test
     public void testMailingListForm() {
 
         MailingListForm f = new MailingListForm();
@@ -35,7 +19,7 @@ public class MailingListFormTest extends TestCase {
         f.setEmail("email");
         f.setName("name");
 
-        assertEquals(f.getEmail(),"email");
-        assertEquals(f.getName(),"name");
+        assertEquals("email", f.getEmail());
+        assertEquals("name", f.getName());
     }
 }

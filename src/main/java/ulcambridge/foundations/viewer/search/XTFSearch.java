@@ -18,7 +18,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @Component
 public class XTFSearch implements Search {
@@ -359,6 +358,7 @@ public class XTFSearch implements Search {
 
             final String startPageString = meta.getElementsByTagName("startPage")
                     .item(0).getFirstChild().getTextContent();
+
             if (Utils.isSimpleIntFormat(startPageString)){
                 startPage = Integer.parseInt(startPageString);
             }

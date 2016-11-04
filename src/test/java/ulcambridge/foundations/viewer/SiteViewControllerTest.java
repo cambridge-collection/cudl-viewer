@@ -1,17 +1,17 @@
 package ulcambridge.foundations.viewer;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
 
 import javax.servlet.RequestDispatcher;
 
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
 
-public class SiteViewControllerTest extends TestCase {
+public class SiteViewControllerTest{
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
@@ -20,42 +20,50 @@ public class SiteViewControllerTest extends TestCase {
         return new SiteViewController(collectionFactory);
     }
 
+    @Test
     public void testHandleRequest() {
 
         ModelAndView modelAndView = createController().handleRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandleNewsRequest() {
         ModelAndView modelAndView = createController().handleNewsRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandleAboutRequest() {
         ModelAndView modelAndView = createController().handleAboutRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandleHelpRequest() {
         ModelAndView modelAndView = createController().handleHelpRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandleTermsRequest() {
         ModelAndView modelAndView = createController().handleTermsRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandleContributorsRequest() {
         ModelAndView modelAndView = createController().handleContributorsRequest();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandle404() {
         ModelAndView modelAndView = createController().handle404();
         assertTrue(modelAndView!=null);
     }
 
+    @Test
     public void testHandle500() {
         MockHttpServletRequest req = new MockHttpServletRequest();
         req.setAttribute(RequestDispatcher.ERROR_EXCEPTION,

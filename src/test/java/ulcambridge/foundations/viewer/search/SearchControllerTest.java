@@ -1,21 +1,11 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
@@ -24,31 +14,22 @@ import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
 import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * Unit test
  *
  */
-public class SearchControllerTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public SearchControllerTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(SearchControllerTest.class);
-    }
-
+public class SearchControllerTest{
     /**
      * Tests the SearchController object
      */
+    @Test
     public void testSearchController() throws Throwable {
 
         JSONReader reader = new MockJSONReader();
@@ -77,7 +58,7 @@ public class SearchControllerTest extends TestCase {
         assertEquals(1, r.getNumberOfResults());
         assertEquals(1, r.getResults().size());
         assertEquals("spellingSuggestedTerm", r.getSpellingSuggestedTerm());
-        assertEquals(2.3f, r.getQueryTime());
+        assertEquals(2.3f, r.getQueryTime(), 0.01);
         assertEquals("error", r.getError());
         assertEquals("Elementary Mathematics", form.getKeyword());
 

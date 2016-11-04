@@ -1,41 +1,23 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.util.ArrayList;
+import org.junit.Test;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.util.ArrayList;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test
  */
-public class SearchResultSetTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public SearchResultSetTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(SearchResultSetTest.class);
-    }
-
+public class SearchResultSetTest{
     /**
      * Tests the SearchResult object
      */
+    @Test
     public void testSearchResult() {
 
         // Read document from File
@@ -77,12 +59,12 @@ public class SearchResultSetTest extends TestCase {
         SearchResultSet r = new SearchResultSet(1, "spellingSuggestedTerm", 2.3f,
                 results, facetGroups, "error");
 
-        assertEquals(r.getError(), "error");
-        assertEquals(r.getSpellingSuggestedTerm(), "spellingSuggestedTerm");
-        assertEquals(r.getQueryTime(), 2.3f);
-        assertEquals(r.getNumberOfResults(), 1);
-        assertEquals(r.getResults().size(), 1);
-        assertEquals(r.getFacets().size(), 1);
+        assertEquals("error", r.getError());
+        assertEquals("spellingSuggestedTerm", r.getSpellingSuggestedTerm());
+        assertEquals(2.3f, r.getQueryTime(), 0.01f);
+        assertEquals(1, r.getNumberOfResults());
+        assertEquals(1, r.getResults().size());
+        assertEquals(1, r.getFacets().size());
 
         // Build second facet list
         Facet f3 = new Facet("field2", "band3", 50, 3);
@@ -95,8 +77,6 @@ public class SearchResultSetTest extends TestCase {
         FacetGroup g2 = new FacetGroup("field2", facets2, 51);
 
         r.addFacetGroup(0, g2);
-        assertEquals(r.getFacets().size(),2);
-
-
+        assertEquals(2, r.getFacets().size());
     }
 }

@@ -1,8 +1,6 @@
 package ulcambridge.foundations.viewer;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
@@ -11,30 +9,17 @@ import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
 
 import java.net.URI;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Unit test for simple App.
  */
-public class DocumentViewControllerTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public DocumentViewControllerTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(DocumentViewControllerTest.class);
-    }
+public class DocumentViewControllerTest{
 
     /**
      * test the class DocumentViewController
      */
+    @Test
     public void testDocumentViewController() throws Throwable {
 
         JSONReader reader = new MockJSONReader();
