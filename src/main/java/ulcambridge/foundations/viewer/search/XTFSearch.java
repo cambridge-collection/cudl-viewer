@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer.search;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -7,6 +9,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.Utils;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,9 +18,14 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Component
 public class XTFSearch implements Search {
+
+    private static final Log LOG = LogFactory.getLog(XTFSearch.class.getName());
+
+
 
     private static final String INDEX_NAME_REGULAR = "index-cudl",
                                 INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
@@ -259,6 +267,7 @@ public class XTFSearch implements Search {
                 // these.
                 if (itemIdElement != null) {
                     String itemId = getValueInText(itemIdElement);
+                    System.out.println("itemId = " + itemId);
 
                     itemId = itemId.replaceAll("\\s+", ""); // remove whitespace
 
@@ -348,8 +357,16 @@ public class XTFSearch implements Search {
 
             score = Integer.parseInt(node.getAttribute("score"));
 
-            startPage = new Integer(meta.getElementsByTagName("startPage")
-                    .item(0).getFirstChild().getTextContent()).intValue();
+            final String startPageString = meta.getElementsByTagName("startPage")
+                    .item(0).getFirstChild().getTextContent();
+            if (Utils.isSimpleIntFormat(startPageString)){
+                startPage = Integer.parseInt(startPageString);
+            }
+            else{
+                // TODO Send email to dev team regarding incorrect data format
+                LOG.error("Possible data error - unable to parse string '" + startPageString + "' expected to be int format.  Doc title '" + title + "'");
+                startPage = 1;
+            }
 
             startPageLabel = node.getElementsByTagName("startPageLabel")
                     .item(0).getTextContent();

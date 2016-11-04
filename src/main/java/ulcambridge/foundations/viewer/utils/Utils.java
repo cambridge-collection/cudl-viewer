@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -19,6 +20,16 @@ public class Utils {
     private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss z";
     private static final TimeZone TIME_ZONE = TimeZone.getTimeZone("UTC");
     private static final Locale LOCALE = Locale.UK;
+    private static final Pattern INT_PATTERN = Pattern.compile("^(\\+|-)?\\d+$");
+
+    /**
+     * Utility method to test that a String conforms to a simple (no exponent) integer pattern.
+     * @param toTest null or String expected to be int format
+     * @return true of the String is not null and is int format.
+     */
+    public static boolean isSimpleIntFormat(final String toTest){
+        return toTest != null && INT_PATTERN.matcher(toTest).matches();
+    }
 
     private static final ThreadLocal<DateFormat> DATE_FORMATS =
             new ThreadLocal<DateFormat>();
