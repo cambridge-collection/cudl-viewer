@@ -21,10 +21,28 @@ public class Collection implements Comparable<Collection> {
     private String type;
     private String parentCollectionId;
 
+    /**
+     * Additional column added for HTML &lt;meta name="Description" .../&gt; tag
+     */
+    private String metaDescription;
+
+    /**
+     * Keeping the old constructor prior to the introduction of the metaDescription
+     * tag to avoid breaking code that is unable to populate this additional field.
+     */
+    public Collection(String collectionId, String collectionTitle,
+                      List<String> collectionItemIds,
+                      String collectionSummary, String collectionSponsors,
+                      String collectionType, String parentCollectionId) {
+        this(collectionId, collectionTitle, collectionItemIds,
+            collectionSummary, collectionSponsors, collectionType,
+            parentCollectionId, null);
+    }
+
     public Collection(String collectionId, String collectionTitle,
             List<String> collectionItemIds,
             String collectionSummary, String collectionSponsors,
-            String collectionType, String parentCollectionId) {
+            String collectionType, String parentCollectionId, String metaDescription) {
 
         this.id = collectionId;
         this.title = collectionTitle;
@@ -34,6 +52,7 @@ public class Collection implements Comparable<Collection> {
         this.sponsors = collectionSponsors;
         this.type = collectionType;
         this.parentCollectionId = parentCollectionId;
+        this.metaDescription = metaDescription;
 
         orderCount++;
         this.order = orderCount;
@@ -75,6 +94,9 @@ public class Collection implements Comparable<Collection> {
         return parentCollectionId;
     }
 
+    public String getMetaDescription() {
+        return metaDescription;
+    }
 
     @Override
     public int compareTo(Collection o) {
