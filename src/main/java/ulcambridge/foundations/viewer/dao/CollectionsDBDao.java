@@ -1,21 +1,19 @@
 package ulcambridge.foundations.viewer.dao;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
-
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Collection;
+
+import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CollectionsDBDao implements CollectionsDao {
@@ -42,7 +40,10 @@ public class CollectionsDBDao implements CollectionsDao {
 
     public Collection getCollection(String collectionId) {
 
-        String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid FROM collections WHERE collectionid = ? ORDER BY collectionorder";
+        String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid, metadescription " +
+            "FROM collections " +
+            "WHERE collectionid = ? " +
+            "ORDER BY collectionorder";
 
         return (Collection) jdbcTemplate.queryForObject(query, new Object[]{collectionId},
                 new RowMapper<Collection>() {
@@ -50,7 +51,8 @@ public class CollectionsDBDao implements CollectionsDao {
                         return new Collection(resultSet.getString("collectionid"),
                                 resultSet.getString("title"), getItemIds(resultSet.getString("collectionid")),
                                 resultSet.getString("summaryurl"), resultSet.getString("sponsorsurl"),
-                                resultSet.getString("type"), resultSet.getString("parentcollectionid"));
+                                resultSet.getString("type"), resultSet.getString("parentcollectionid"),
+                                resultSet.getString("metadescription"));
                     }
                 });
     }

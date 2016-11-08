@@ -1,13 +1,6 @@
 package ulcambridge.foundations.viewer;
 
-import java.io.BufferedOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
@@ -19,10 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Controller for viewing a collection.
@@ -37,6 +37,7 @@ public class CollectionViewController {
     protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
     private final ItemFactory itemFactory;
+    private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
@@ -48,17 +49,17 @@ public class CollectionViewController {
         this.itemFactory = itemFactory;
     }
 
+
     // on path /collections/
     @RequestMapping(value = "/")
-    public ModelAndView handleViewRequest(HttpServletResponse response)
+    public ModelAndView handleViewRequest()
             throws Exception {
 
-        ModelAndView modelAndView = new ModelAndView("jsp/collections");
-        ArrayList<Item> featuredItems = new ArrayList<Item>();
-        String[] itemIds = Properties.getString("collection.featuredItems")
-                .split("\\s*,\\s*");
-        for (int i = 0; i < itemIds.length; i++) {
-            String itemId = itemIds[i];
+        final ModelAndView modelAndView = new ModelAndView("jsp/collections");
+        final ArrayList<Item> featuredItems = new ArrayList<Item>();
+        final String itemIdString = Properties.getString("collection.featuredItems");
+        final String[] itemIds = SPLIT_RE.split(itemIdString);
+        for (final String itemId : itemIds) {
             featuredItems.add(itemFactory.getItemFromId(itemId));
         }
         modelAndView.addObject("featuredItems", featuredItems);
@@ -67,23 +68,24 @@ public class CollectionViewController {
 
     // on path /collections/{collectionId}
     @RequestMapping(value = "/{collectionId}")
-    public ModelAndView handleRequest(HttpServletResponse response,
-            @PathVariable("collectionId") String collectionId,
-            HttpServletRequest request) {
+    public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId ) {
 
-        Collection collection = collectionFactory
+        final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 
-        ModelAndView modelAndView = new ModelAndView("jsp/collection-"
+        final ModelAndView modelAndView = new ModelAndView("jsp/collection-"
                 + collection.getType());
 
         // Get imageServer
-        String imageServer = Properties.getString("imageServer");
+        final String imageServer = Properties.getString("imageServer");
 
         // Get content url
-        String contentHTMLURL = Properties.getString("cudl-viewer-content.html.url");
+        final String contentHTMLURL = Properties.getString("cudl-viewer-content.html.url");
 
         modelAndView.addObject("collection", collection);
+        if (collection.getMetaDescription() != null) {
+            modelAndView.addObject("metaDescription", collection.getMetaDescription());
+        }
         modelAndView.addObject("itemFactory", itemFactory);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
@@ -91,15 +93,11 @@ public class CollectionViewController {
 
         // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {
-
-            List<Collection> subCollections = this.collectionFactory
+            final List<Collection> subCollections = this.collectionFactory
                     .getSubCollections(collection);
             modelAndView.addObject("subCollections", subCollections);
-
         }
-
         return modelAndView;
-
     }
 
     // on path
@@ -113,11 +111,11 @@ public class CollectionViewController {
             @RequestParam("end") int endIndex, HttpServletRequest request)
             throws Exception {
 
-        Collection collection = collectionFactory
+        final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 
-        List<String> ids = collection.getItemIds();
-        List<Item> items = new ArrayList<Item>();
+        final List<String> ids = collection.getItemIds();
+        final List<Item> items = new ArrayList<Item>();
 
         if (startIndex < 0) {
             startIndex = 0;
@@ -128,24 +126,22 @@ public class CollectionViewController {
 
         for (int i = startIndex; i < endIndex; i++) {
             items.add(itemFactory.getItemFromId(ids.get(i)));
-
         }
 
-        JSONArray jsonArray = new JSONArray();
+        final JSONArray jsonArray = new JSONArray();
 
-        for (int i = 0; i < items.size(); i++) {
-            Item item = items.get(i);
+        for (final Item item : items) {
             jsonArray.add(item.getSimplifiedJSON());
         }
 
         // build the request object
-        JSONObject dataRequest = new JSONObject();
+        final JSONObject dataRequest = new JSONObject();
         dataRequest.put("start", startIndex);
         dataRequest.put("end", endIndex);
         dataRequest.put("collectionId", collectionId);
 
         // build the final returned JSON data
-        JSONObject data = new JSONObject();
+        final JSONObject data = new JSONObject();
         data.put("request", dataRequest);
         data.put("items", jsonArray);
 
@@ -161,13 +157,8 @@ public class CollectionViewController {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                out.close();
-            } catch (Exception e) {
-            }
+            IOUtils.closeQuietly(out);
         }
         return null;
-
     }
-
 }

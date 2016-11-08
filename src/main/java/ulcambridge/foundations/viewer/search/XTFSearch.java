@@ -363,9 +363,12 @@ public class XTFSearch implements Search {
                 startPage = Integer.parseInt(startPageString);
             }
             else{
-                // TODO Send email to dev team regarding incorrect data format
-                LOG.error("Possible data error - unable to parse string '" + startPageString + "' expected to be int format.  Doc title '" + title + "'");
-                // TODO - possibly the wrong thing to do, but to allow user to access
+                // TODO fix logging on AWS server, so data errors can be picked up.
+                LOG.error("Possible data error - unable to parse string '" + startPageString +
+                    "' expected to be int format.\nDoc title '" + title +
+                    "'\nError in item ID " + id + "\n\n");
+
+                // Possibly the wrong thing to do, but to allow user to access
                 // the page, set the page number to 1 rather than guessing a page number.
                 startPage = 1;
             }
