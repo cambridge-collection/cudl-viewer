@@ -1,5 +1,18 @@
 package ulcambridge.foundations.viewer;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -7,31 +20,13 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.dao.CollectionsDao;
-
-import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Properties;
-
 @Controller
 public class SiteViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private String showHoldingPage = Properties.getString("showHoldingPage");
     private final CollectionFactory collectionFactory;
+    private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
 
     @Autowired
     public SiteViewController(CollectionFactory collectionFactory) {
@@ -113,9 +108,7 @@ public class SiteViewController {
     // on path /errors/404.html
     @RequestMapping(value = "/errors/404.html")
     public ModelAndView handle404() {
-
-        ModelAndView modelAndView = new ModelAndView("jsp/errors/404");
-        return modelAndView;
+        return FOUR_OH_FOUR_MAV;
     }
 
     private String formatThrowable(Throwable t) {

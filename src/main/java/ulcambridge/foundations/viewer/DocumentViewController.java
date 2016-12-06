@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
@@ -86,7 +87,7 @@ public class DocumentViewController {
         // Show a different view based on the itemType for this item.
         Item item = itemFactory.getItemFromId(docId);
         if (item==null) {
-            return new ModelAndView("jsp/errors/404");
+            throw new ResourceNotFoundException();
         }
         String itemType = item.getType();
 
@@ -157,7 +158,7 @@ public class DocumentViewController {
           return null;
 
         } else {
-          return new ModelAndView("jsp/errors/404");
+            throw new ResourceNotFoundException();
         }
 
     }
@@ -197,7 +198,7 @@ public class DocumentViewController {
 
         // check doc exists, if not return 404 page.
         if (item == null || page > item.getPageLabels().size() || page < 0) {
-            return new ModelAndView("jsp/errors/404");
+            throw new ResourceNotFoundException();
         }
 
         String requestURL = request.getRequestURL().toString();
@@ -313,7 +314,7 @@ public class DocumentViewController {
             HttpServletRequest request) {
 
         if (item == null) {
-            return new ModelAndView("jsp/errors/404");
+            throw new ResourceNotFoundException();
         }
 
         List<Collection> docCollections = getCollection(item.getId());

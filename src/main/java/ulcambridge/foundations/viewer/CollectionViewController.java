@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -70,6 +71,10 @@ public class CollectionViewController {
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 
+        if (collection == null){
+            throw new ResourceNotFoundException();
+        }
+
         final ModelAndView modelAndView = new ModelAndView("jsp/collection-"
                 + collection.getType());
 
@@ -111,6 +116,10 @@ public class CollectionViewController {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
+
+        if (collection == null){
+            throw new ResourceNotFoundException();
+        }
 
         final List<String> ids = collection.getItemIds();
         final List<Item> items = new ArrayList<>();
