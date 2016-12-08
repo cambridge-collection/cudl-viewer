@@ -266,7 +266,7 @@ public class XTFSearch implements Search {
                 // these.
                 if (itemIdElement != null) {
                     String itemId = getValueInText(itemIdElement);
-                    System.out.println("itemId = " + itemId);
+                    LOG.debug("itemId = " + itemId);
 
                     itemId = itemId.replaceAll("\\s+", ""); // remove whitespace
 
@@ -365,6 +365,8 @@ public class XTFSearch implements Search {
             else{
                 // TODO Send email to dev team regarding incorrect data format
                 LOG.error("Possible data error - unable to parse string '" + startPageString + "' expected to be int format.  Doc title '" + title + "'");
+                // TODO - possibly the wrong thing to do, but to allow user to access
+                // the page, set the page number to 1 rather than guessing a page number.
                 startPage = 1;
             }
 
