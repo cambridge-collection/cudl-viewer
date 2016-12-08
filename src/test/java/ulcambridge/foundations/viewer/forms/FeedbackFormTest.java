@@ -1,33 +1,17 @@
 package ulcambridge.foundations.viewer.forms;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test
  */
-public class FeedbackFormTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public FeedbackFormTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(FeedbackFormTest.class);
-    }
-
+public class FeedbackFormTest {
     /**
      * Tests the FeedbackForm object
      */
+    @Test
     public void testFeedbackForm() {
 
         FeedbackForm f = new FeedbackForm();
@@ -35,8 +19,8 @@ public class FeedbackFormTest extends TestCase {
         f.setEmail("email");
         f.setName("name");
 
-        assertEquals(f.getComment(),"comment");
-        assertEquals(f.getEmail(),"email");
-        assertEquals(f.getName(),"name");
+        assertEquals("comment", f.getComment());
+        assertEquals("email", f.getEmail());
+        assertEquals("name", f.getName());
     }
 }

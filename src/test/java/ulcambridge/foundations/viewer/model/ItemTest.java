@@ -1,56 +1,37 @@
 package ulcambridge.foundations.viewer.model;
 
+import org.json.JSONObject;
+import org.junit.Test;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.json.JSONObject;
-
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Person;
+import static org.junit.Assert.*;
 
 /**
  * Unit test for testing individual items
  */
-public class ItemTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public ItemTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(ItemTest.class);
-    }
-
+public class ItemTest {
     /**
      * Tests the Item object
      */
+    @Test
     public void testItem() {
-        Person aut = new Person("Test Person, 2012", "Test Person",
+        final Person aut = new Person("Test Person, 2012", "Test Person",
                 "test authority ID", "test authority", "test value uri",
                 "test type", "aut");
 
-        ArrayList<Person> authors = new ArrayList<Person>();
-        authors.add(aut);
+        final List<Person> authors = Arrays.asList(aut);
 
-        List<String> pageLabels = new ArrayList<String>();
-        List<String> pageThumbnailURLs = new ArrayList<String>();
+        final List<String> pageLabels = new ArrayList<>();
+        final List<String> pageThumbnailURLs = new ArrayList<>();
 
-        Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
+        final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
                 "test thumbnail orientation", pageLabels, pageThumbnailURLs, new JSONObject());
 
-        Item item2 = new Item(
+        final Item item2 = new Item(
                 "Test-ID2",
                 "bookormanuscript",
                 "Test Title",
@@ -60,35 +41,32 @@ public class ItemTest extends TestCase {
                 "test thumbnail URL", "test thumbnail orientation",
                 pageLabels, pageThumbnailURLs, new JSONObject());
 
-        assertEquals(item.getId(), "Test-ID");
-        assertEquals(item.getAbstract(), "test abstract");
-        assertEquals(item.getAbstractShort(), "test abstract");
-        assertEquals(item2.getAbstractShort().length()<item2.getAbstract().length(), true);
-        assertEquals(item2.getAbstract().indexOf("this is a video caption")!=-1, true);
-        assertEquals(item2.getAbstractShort().indexOf("this is a video caption")!=-1, false);
+        assertEquals("Test-ID", item.getId());
+        assertEquals("test abstract", item.getAbstract());
+        assertEquals("test abstract", item.getAbstractShort());
+        assertTrue(item2.getAbstractShort().length() < item2.getAbstract().length());
+        assertFalse(item2.getAbstract().indexOf("this is a video caption") == -1);
+        assertTrue(item2.getAbstractShort().indexOf("this is a video caption") == -1);
+        assertEquals(1, item.getAuthors().size());
+        assertEquals("test shelfLocator", item.getShelfLocator());
+        assertEquals("test thumbnail orientation", item.getThumbnailOrientation());
+        assertEquals("test thumbnail URL", item.getThumbnailURL());
+        assertEquals("Test Title", item.getTitle());
 
-        assertEquals(item.getAuthors().size(), 1);
-        assertEquals(item.getShelfLocator(), "test shelfLocator");
-        assertEquals(item.getThumbnailOrientation(),
-                "test thumbnail orientation");
-        assertEquals(item.getThumbnailURL(), "test thumbnail URL");
-        assertEquals(item.getTitle(), "Test Title");
-
-        assertEquals(item.compareTo(item2) < 0, true);
-        assertEquals(item2.compareTo(item) > 0, true);
+        assertTrue(item.compareTo(item2) < 0);
+        assertTrue(item2.compareTo(item) > 0);
         assertEquals(item.compareTo(item), 0);
-        assertEquals(item.equals(item2), false);
-        assertEquals(item.equals(item), true);
-        assertEquals(item.hashCode() == item2.hashCode(), false);
+        assertFalse(item.equals(item2));
+        assertTrue(item.equals(item));
+        assertFalse(item.hashCode() == item2.hashCode());
 
-        Person a = item.getAuthors().get(0); // should be only one
-        assertEquals(a.getAuthority(), "test authority");
-        assertEquals(a.getAuthorityURI(), "test authority ID");
-        assertEquals(a.getDisplayForm(), "Test Person");
-        assertEquals(a.getFullForm(), "Test Person, 2012");
-        assertEquals(a.getRole(), "aut");
-        assertEquals(a.getType(), "test type");
-        assertEquals(a.getValueURI(), "test value uri");
-
+        final Person a = item.getAuthors().get(0); // should be only one
+        assertEquals("test authority", a.getAuthority());
+        assertEquals("test authority ID", a.getAuthorityURI());
+        assertEquals("Test Person", a.getDisplayForm());
+        assertEquals("Test Person, 2012", a.getFullForm());
+        assertEquals("aut", a.getRole());
+        assertEquals("test type", a.getType());
+        assertEquals("test value uri", a.getValueURI());
     }
 }

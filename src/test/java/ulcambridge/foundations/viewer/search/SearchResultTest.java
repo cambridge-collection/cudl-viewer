@@ -1,66 +1,45 @@
 package ulcambridge.foundations.viewer.search;
 
+import org.junit.Test;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test
  */
-public class SearchResultTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public SearchResultTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(SearchResultTest.class);
-    }
-
+public class SearchResultTest {
     /**
      * Tests the SearchResultSet object
      */
+    @Test
     public void testSearchResultSet() {
 
         // Read document from File
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        Element dom = null;
+        final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        Element dom;
         try {
-
-            DocumentBuilder db = dbf.newDocumentBuilder();
-
-            dom = (Element) db.parse("src/test/resources/Results.xml").getDocumentElement();
-
+            final DocumentBuilder db = dbf.newDocumentBuilder();
+            dom = db.parse("src/test/resources/Results.xml").getDocumentElement();
         } catch (Exception e) {
-            e.printStackTrace();
-
+            throw new RuntimeException(e);
         }
 
         // Get first result
-        NodeList docHits = dom.getElementsByTagName("docHit");
-        Element node = (Element) docHits.item(0);
+        final NodeList docHits = dom.getElementsByTagName("docHit");
+        final Element node = (Element) docHits.item(0);
 
-        XTFSearch xtfSearch = new XTFSearch();
-        SearchResult result = xtfSearch.createSearchResult(node);
+        final XTFSearch xtfSearch = new XTFSearch();
+        final SearchResult result = xtfSearch.createSearchResult(node);
 
-        assertEquals(result.getFileId(), "MS-ADD-04004");
-        assertEquals(result.getTitle(), "Newton's Waste Book");
-        assertEquals(result.getStartPage(), 1);
-        assertEquals(result.getStartPageLabel(), "front cover");
-        assertEquals(result.getSnippets().size(), 1);
+        assertEquals("MS-ADD-04004", result.getFileId());
+        assertEquals("Newton's Waste Book", result.getTitle());
+        assertEquals(1, result.getStartPage());
+        assertEquals("front cover", result.getStartPageLabel());
+        assertEquals(1, result.getSnippets().size());
     }
 }

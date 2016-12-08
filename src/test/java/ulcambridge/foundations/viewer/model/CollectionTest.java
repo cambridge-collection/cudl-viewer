@@ -1,92 +1,70 @@
 package ulcambridge.foundations.viewer.model;
 
+import org.json.JSONObject;
+import org.junit.Test;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.json.JSONObject;
+import static org.junit.Assert.*;
 
 /**
  * Unit test for testing individual collections
  */
-public class CollectionTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public CollectionTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(CollectionTest.class);
-    }
-
+public class CollectionTest {
     /**
      * Tests the Collection object
      */
+    @Test
     public void testCollection() {
 
-        Person p1 = new Person("Test Person 1, 2012", "Test Person 1",
+        final Person p1 = new Person("Test Person 1, 2012", "Test Person 1",
                 "test authority ID", "test authority", "test value uri",
                 "test type", "test role");
-        Person p2 = new Person("Test Person 2, 2012", "Test Person 2",
+        final Person p2 = new Person("Test Person 2, 2012", "Test Person 2",
                 "test authority ID", "test authority", "test value uri",
                 "test type", "test role");
-        Person aut = new Person("Test Person, 2012", "Test Person",
+        final Person aut = new Person("Test Person, 2012", "Test Person",
                 "test authority ID", "test authority", "test value uri",
                 "test type", "aut");
 
-        ArrayList<Person> people = new ArrayList<Person>();
-        people.add(p1);
-        people.add(p2);
-        people.add(aut);
+        final List<Person> people = Arrays.asList(p1, p2, aut);
 
-        List<String> pageLabels = new ArrayList<String>();
-        List<String> pageThumbnailURLs = new ArrayList<String>();
+        final List<String> pageLabels = new ArrayList<>();
+        final List<String> pageThumbnailURLs = new ArrayList<>();
 
-        Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
+        // Is this testing the constructor?  If not, can remove.
+        final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
                 "test thumbnail orientation",
                 pageLabels, pageThumbnailURLs, new JSONObject());
 
-        ArrayList<String> collectionIds = new ArrayList<String>();
-        collectionIds.add("Test-ID");
-        ArrayList<Item> collectionItems = new ArrayList<Item>();
-        collectionItems.add(item);
+        final List<String> collectionIds = Arrays.asList("Test-ID");
 
-        Collection c = new Collection("collectionID", "collectionTitle",
+        final Collection c = new Collection("collectionID", "collectionTitle",
                 collectionIds, "collectionSummary",
                 "collectionSponsors", "collectionType", "");
 
-        Collection c2 = new Collection(
+        final Collection c2 = new Collection(
                 "collectionID2",
                 "collectionTitle2",
                 collectionIds,
                 "collectionSummary",
                 "collectionSponsors2", "collectionType2", "");
 
-        assertEquals(c.getId(), "collectionID");
-        assertEquals(c.getSponsors(), "collectionSponsors");
-        assertEquals(c.getSummary(), "collectionSummary");
-        assertEquals(c.getTitle(), "collectionTitle");
-        assertEquals(c.getType(), "collectionType");
-        assertEquals(c.getURL(), "/collections/collectionID");
-        assertEquals(c.getItemIds(), collectionIds);
-        assertEquals(c.compareTo(c2) < 0, true);
-        assertEquals(c2.compareTo(c) > 0, true);
+        assertEquals("collectionID", c.getId());
+        assertEquals("collectionSponsors", c.getSponsors());
+        assertEquals("collectionSummary", c.getSummary());
+        assertEquals("collectionTitle", c.getTitle());
+        assertEquals("collectionType", c.getType());
+        assertEquals("/collections/collectionID", c.getURL());
+        assertEquals(collectionIds, c.getItemIds());
+        assertTrue(c.compareTo(c2) < 0);
+        assertTrue(c2.compareTo(c) > 0);
         assertEquals(c.compareTo(c), 0);
-        assertEquals(c.equals(c2), false);
-        assertEquals(c.equals(c), true);
-        assertEquals(c.hashCode() == c2.hashCode(), false);
-
+        assertFalse(c.equals(c2));
+        assertTrue(c.equals(c));
+        assertFalse(c.hashCode() == c2.hashCode());
     }
 }

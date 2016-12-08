@@ -1,42 +1,23 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.util.HashMap;
+import org.junit.Test;
+import org.w3c.dom.Document;
+import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.util.HashMap;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.w3c.dom.Document;
-
-import ulcambridge.foundations.viewer.forms.SearchForm;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Unit test
  */
-public class XTFSearchTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public XTFSearchTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(XTFSearchTest.class);
-    }
-
+public class XTFSearchTest {
     /**
      * Tests the SearchController object
      */
+    @Test
     public void testSearchController() {
 
         HashMap<String, String> facetMap = new HashMap<String, String>();
@@ -60,7 +41,6 @@ public class XTFSearchTest extends TestCase {
         assertEquals("", r.getError());
         assertEquals("MS-ADD-04004", r.getResults().get(0).getFileId());
         assertEquals(1, r.getResults().get(0).getSnippets().size());
-
     }
 
     /**

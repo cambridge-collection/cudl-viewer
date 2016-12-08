@@ -1,35 +1,20 @@
 package ulcambridge.foundations.viewer.search;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test
  */
-public class FacetGroupTest extends TestCase {
-    /**
-     * Create the test case
-     *
-     * @param testName
-     *            name of the test case
-     */
-    public FacetGroupTest(String testName) {
-        super(testName);
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite() {
-        return new TestSuite(FacetGroupTest.class);
-    }
-
+public class FacetGroupTest {
     /**
      * Tests the Facet Group object
      */
+    @Test
     public void testFacetGroup() {
 
         // Note a facet group should contain all the same field
@@ -42,15 +27,13 @@ public class FacetGroupTest extends TestCase {
 
         FacetGroup g = new FacetGroup("field", facets, 5);
 
-        assertEquals(g.getFacets().size(), 2);
-        assertEquals(g.getFacets().contains(f), true);
-        assertEquals(g.getFacets().contains(f2), true);
-        assertEquals(g.getField(), "field");
-        assertEquals(g.getBands().size(), 2);
-        assertEquals(g.getFacetWithBand("band2"), f2);
-        assertEquals(g.getFieldLabel(), "Field");
-        assertEquals(g.getNumBands(), 2);
-
-
+        assertEquals(2, g.getFacets().size());
+        assertTrue(g.getFacets().contains(f));
+        assertTrue(g.getFacets().contains(f2));
+        assertEquals("field", g.getField());
+        assertEquals(2, g.getBands().size());
+        assertEquals(f2, g.getFacetWithBand("band2"));
+        assertEquals("Field", g.getFieldLabel());
+        assertEquals(2, g.getNumBands());
     }
 }
