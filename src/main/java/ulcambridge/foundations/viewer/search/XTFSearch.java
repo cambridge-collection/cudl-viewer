@@ -150,11 +150,15 @@ public class XTFSearch implements Search {
         }
 
         if (searchForm.getYearStart() != null) {
-            uriB.queryParam("year", searchForm.getYearStart());
+            // Pad year to 4 digits, to allow years before 1000AD to be
+            // interpreted correctly by XTF.
+            uriB.queryParam("year", String.format("%04d", searchForm.getYearStart()));
         }
 
         if (searchForm.getYearEnd() != null) {
-            uriB.queryParam("year-max", searchForm.getYearEnd());
+            // Pad year to 4 digits, to allow years before 1000AD to be
+            // interpreted correctly by XTF.
+            uriB.queryParam("year-max", String.format("%04d", searchForm.getYearEnd()));
         }
 
         // Facets
