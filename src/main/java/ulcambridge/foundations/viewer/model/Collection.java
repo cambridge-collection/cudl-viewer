@@ -27,8 +27,7 @@ public class Collection implements Comparable<Collection> {
     private String metaDescription;
 
     /**
-     * Keeping the old constructor prior to the introduction of the metaDescription
-     * tag to avoid breaking code that is unable to populate this additional field.
+     * Constructor for a Collection setting the metaDescription to null.
      */
     public Collection(String collectionId, String collectionTitle,
                       List<String> collectionItemIds,

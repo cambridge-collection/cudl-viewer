@@ -6,11 +6,13 @@ import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
@@ -18,6 +20,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
 import java.io.BufferedOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -104,18 +107,19 @@ public class CollectionViewController {
     // /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
     // To get information for items 0 to 8 url would be
     // /collections/{collectionId}/itemJSON?start=0&end=8
-    @RequestMapping(value = "/{collectionId}/itemJSON")
-    public ModelAndView handleItemsAjaxRequest(HttpServletResponse response,
+    @RequestMapping(value = "/{collectionId}/itemJSON", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String handleItemsAjaxRequest(
             @PathVariable("collectionId") String collectionId,
             @RequestParam("start") int startIndex,
-            @RequestParam("end") int endIndex, HttpServletRequest request)
+            @RequestParam("end") int endIndex)
             throws Exception {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
 
         final List<String> ids = collection.getItemIds();
-        final List<Item> items = new ArrayList<Item>();
+        final List<Item> items = new ArrayList<>();
 
         if (startIndex < 0) {
             startIndex = 0;
@@ -145,20 +149,6 @@ public class CollectionViewController {
         data.put("request", dataRequest);
         data.put("items", jsonArray);
 
-        // Write out JSON file.
-        response.setContentType("application/json");
-        PrintStream out = null;
-
-        try {
-            out = new PrintStream(new BufferedOutputStream(
-                    response.getOutputStream()), true, "UTF-8");
-            out.print(data.toString());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            IOUtils.closeQuietly(out);
-        }
-        return null;
+        return data.toString();
     }
 }
