@@ -84,7 +84,7 @@ Once configured, the Viewer can be run using an embedded Tomcat 7 server by
 executing:
 
 ```
-$ mvn tomcat7:run
+$ mvn clean verify cargo:run
 ```
 
 You can then access the Viewer at

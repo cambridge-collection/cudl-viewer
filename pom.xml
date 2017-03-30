@@ -27,17 +27,37 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.6.2</version>
                 <configuration>
-                    <path>/</path>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
-                    <additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>
-                    <server>tomcat-development-server</server>
-                    <port>1111</port>
-                    <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
+                    <configuration>
+                        <type>standalone</type>
+                        <configfiles>
+                            <configfile>
+                                <file>${project.basedir}/src/main/resources/cudl-global.properties</file>
+                                <todir>shared/classes</todir>
+                            </configfile>
+                        </configfiles>
+                        <properties>
+                            <cargo.servlet.port>1111</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                    <container>
+                        <containerId>tomcat7x</containerId>
+                        <artifactInstaller>
+                            <groupId>org.apache.tomcat</groupId>
+                            <artifactId>tomcat</artifactId>
+                            <version>7.0.76</version>
+                        </artifactInstaller>
+                    </container>
+                    <deployables>
+                        <deployable>
+                            <properties>
+                                <context>ROOT</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
                 </configuration>
             </plugin>
 
