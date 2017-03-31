@@ -9,8 +9,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Properties;
-import ulcambridge.foundations.viewer.utils.Utils;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.UnsupportedEncodingException;
@@ -24,17 +22,15 @@ public class XTFSearch implements Search {
 
     private static final Log LOG = LogFactory.getLog(XTFSearch.class.getName());
 
-
-
     private static final String INDEX_NAME_REGULAR = "index-cudl",
-                                INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
+        INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
 
     /**
      * Returns the 'maxDocs' number of results starting at the first one.
      * Maxdocs is specified inside XTF configuration.
      */
     @Override
-    public SearchResultSet makeSearch(SearchForm searchForm) {
+    public SearchResultSet makeSearch(final SearchForm searchForm) {
         return makeSearch(searchForm, 1, 1);
     }
 
@@ -44,39 +40,38 @@ public class XTFSearch implements Search {
      * Maxdocs is specified inside XTF configuration.
      */
     @Override
-    public SearchResultSet makeSearch(SearchForm searchForm, int start, int end) {
+    public SearchResultSet makeSearch(final SearchForm searchForm,
+                                      final int start,
+                                      final int end) {
 
         // Construct the URL we are going to use to query XTF
-        String searchXTFURL = buildQueryURL(searchForm, start, end);
+        final String searchXTFURL = buildQueryURL(searchForm, start, end);
 
         // if the query URL is null return empty result set.
         if (searchXTFURL == null) {
             return new SearchResultSet(0, "", 0f,
-                    new ArrayList<SearchResult>(), new ArrayList<FacetGroup>(),
-                    "A problem occurred making the search (xtf).");
+                new ArrayList<>(), new ArrayList<>(),
+                "A problem occurred making the search (xtf).");
         }
 
         // parse search results into a SearchResultSet
         return parseSearchResults(getDocument(searchXTFURL));
-
     }
 
-    protected Document getDocument(String url) {
+
+    protected Document getDocument(final String url) {
 
         // Read document from URL and put results in Document.
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {
-            DocumentBuilder db = dbf.newDocumentBuilder();
+            final DocumentBuilder db = dbf.newDocumentBuilder();
 
             return db.parse(url);
 
         } catch (Exception e) {
-            e.printStackTrace();
-
+            throw new RuntimeException(e);
         }
-
-        return null;
     }
 
     /**
@@ -84,138 +79,146 @@ public class XTFSearch implements Search {
      */
     private String getIndexName(SearchForm searchForm) {
         return searchForm.hasRecallScale() ? INDEX_NAME_VARIABLE_RECALL
-                                           : INDEX_NAME_REGULAR;
+            : INDEX_NAME_REGULAR;
     }
 
-    protected String buildQueryURL(SearchForm searchForm, int start, int end) {
+    // TODO - the end parameter has never been used in this function.  Confirm behaviour
+    protected String buildQueryURL(final SearchForm searchForm, final int start, final int end) {
 
-        String xtfURL = Properties.getString("xtfURL");
-        String searchXTFURL = xtfURL + "search?";
+        final String xtfURL = Properties.getString("xtfURL");
+        final StringBuilder searchXTFURL = new StringBuilder(xtfURL);
+
+        searchXTFURL.append("search?");
 
         try {
-             searchXTFURL +=
-                    "indexName=" + URLEncoder.encode(getIndexName(searchForm), "UTF-8") +
-                    "&raw=1;smode=advanced;startDoc=" + start;
+            searchXTFURL
+                .append("indexName=")
+                .append(URLEncoder.encode(getIndexName(searchForm), "UTF-8"))
+                .append( "&raw=1;smode=advanced;startDoc=")
+                .append(start);
 
             // Keywords
             if (searchForm.getKeyword() != null) {
-
-                searchXTFURL += "&keyword="
-                        + URLEncoder.encode(searchForm.getKeyword(), "UTF-8");
+                searchXTFURL
+                    .append("&keyword=")
+                    .append(URLEncoder.encode(searchForm.getKeyword(), "UTF-8"));
             }
 
             if (searchForm.hasRecallScale()) {
-                searchXTFURL += String.format("&recallScale=%f",
-                                              searchForm.getRecallScale());
+                searchXTFURL
+                    .append(String.format("&recallScale=%f",
+                        searchForm.getRecallScale()));
             }
 
             if (searchForm.getFullText() != null) {
-
-                searchXTFURL += "&text="
-                        + URLEncoder.encode(searchForm.getFullText(), "UTF-8");
+                searchXTFURL
+                    .append("&text=")
+                    .append(URLEncoder.encode(searchForm.getFullText(), "UTF-8"));
             }
             if (searchForm.getExcludeText() != null) {
-
-                searchXTFURL += "&text-exclude="
-                        + URLEncoder.encode(searchForm.getExcludeText(),
-                                "UTF-8");
+                searchXTFURL
+                    .append("&text-exclude=")
+                    .append(URLEncoder.encode(searchForm.getExcludeText(),"UTF-8"));
             }
 
             // Join
             if (searchForm.getTextJoin() != null) {
-
-                if (searchForm.getTextJoin().equals("or")) {
-                    searchXTFURL += "&text-join=or";
+                if ("or".equals(searchForm.getTextJoin())) {
+                    searchXTFURL.append("&text-join=or");
                 } else {
-                    searchXTFURL += "&text-join=";
+                    searchXTFURL.append("&text-join=");
                 }
-
             }
 
             // File ID
             if (searchForm.getFileID() != null) {
-
-                searchXTFURL += "&fileID="
-                        + URLEncoder.encode(searchForm.getFileID(), "UTF-8");
+                searchXTFURL
+                    .append("&fileID=")
+                    .append(URLEncoder.encode(searchForm.getFileID(), "UTF-8"));
             }
 
             // Classmark
             if (searchForm.getShelfLocator() != null) {
-
                 // remove all punctuation and run a search-shelfLocator
                 // search (for full and partial classmark match)
-                String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
-
-                searchXTFURL += "&search-shelfLocator="
-                        + URLEncoder.encode(sLoc, "UTF-8");
+                final String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
+                searchXTFURL
+                    .append("&search-shelfLocator=")
+                    .append(URLEncoder.encode(sLoc, "UTF-8"));
             }
 
             // Metadata
             if (searchForm.getTitle() != null) {
-
-                searchXTFURL += "&title="
-                        + URLEncoder.encode(searchForm.getTitle(), "UTF-8");
+                searchXTFURL
+                    .append("&title=")
+                    .append(URLEncoder.encode(searchForm.getTitle(), "UTF-8"));
             }
+
             if (searchForm.getAuthor() != null) {
-
-                searchXTFURL += "&nameFullForm="
-                        + URLEncoder.encode(searchForm.getAuthor(), "UTF-8");
+                searchXTFURL
+                    .append("&nameFullForm=")
+                    .append(URLEncoder.encode(searchForm.getAuthor(), "UTF-8"));
             }
+
             if (searchForm.getSubject() != null) {
-
-                searchXTFURL += "&subjectFullForm="
-                        + URLEncoder.encode(searchForm.getSubject(), "UTF-8");
+                searchXTFURL
+                    .append("&subjectFullForm=")
+                    .append(URLEncoder.encode(searchForm.getSubject(), "UTF-8"));
             }
+
             if (searchForm.getLocation() != null) {
-
-                searchXTFURL += "&placeFullForm="
-                        + URLEncoder.encode(searchForm.getLocation(), "UTF-8");
+                searchXTFURL
+                    .append("&placeFullForm=")
+                    .append(URLEncoder.encode(searchForm.getLocation(), "UTF-8"));
             }
+
             if (searchForm.getYearStart() != null) {
-
-                searchXTFURL += "&year=" + searchForm.getYearStart();
+                searchXTFURL
+                    .append("&year=")
+                    .append(searchForm.getYearStart());
             }
-            if (searchForm.getYearEnd() != null) {
 
-                searchXTFURL += "&year-max=" + searchForm.getYearEnd();
+            if (searchForm.getYearEnd() != null) {
+                searchXTFURL
+                    .append("&year-max=")
+                    .append(searchForm.getYearEnd());
             }
 
             // Facets
             int facetCount = 0; // xtf needs to know order of facets.
             if (searchForm.getFacetCollection() != null) {
-
                 facetCount++;
-                searchXTFURL += "&f"
-                        + facetCount
-                        + "-collection="
-                        + URLEncoder.encode(searchForm.getFacetCollection(),
-                                "UTF-8");
+                searchXTFURL
+                    .append("&f")
+                    .append(facetCount)
+                    .append("-collection=")
+                    .append(URLEncoder.encode(searchForm.getFacetCollection(), "UTF-8"));
             }
 
             if (searchForm.getFacetSubject() != null) {
-
                 facetCount++;
-                searchXTFURL += "&f"
-                        + facetCount
-                        + "-subject="
-                        + URLEncoder.encode(searchForm.getFacetSubject(),
-                                "UTF-8");
+                searchXTFURL
+                    .append("&f")
+                    .append(facetCount)
+                    .append("-subject=")
+                    .append(URLEncoder.encode(searchForm.getFacetSubject(), "UTF-8"));
             }
 
             if (searchForm.getFacetDate() != null) {
 
                 facetCount++;
-                searchXTFURL += "&f" + facetCount + "-date="
-                        + URLEncoder.encode(searchForm.getFacetDate(), "UTF-8");
+                searchXTFURL
+                    .append("&f")
+                    .append(facetCount)
+                    .append("-date=")
+                    .append(URLEncoder.encode(searchForm.getFacetDate(), "UTF-8"));
             }
 
         } catch (UnsupportedEncodingException e) {
-
             e.printStackTrace();
         }
 
-        // System.out.println(searchXTFURL);
-        return searchXTFURL;
+        return searchXTFURL.toString();
     }
 
     /**
@@ -225,54 +228,46 @@ public class XTFSearch implements Search {
      * @param dom
      * @return List of the search results
      */
-    protected SearchResultSet parseSearchResults(Document dom) {
+    protected SearchResultSet parseSearchResults(final Document dom) {
 
         // Check input - XTF may be down.
         if (dom == null) {
             return new SearchResultSet(0, "", 0f,
-                    new ArrayList<SearchResult>(), new ArrayList<FacetGroup>(),
-                    "A problem occurred making the search (xtf).");
+                new ArrayList<>(), new ArrayList<>(),
+                "A problem occurred making the search (xtf).");
         }
 
         // Get the root element
-        Element docEle = dom.getDocumentElement();
-        ArrayList<SearchResult> results = new ArrayList<SearchResult>();
+        final Element docEle = dom.getDocumentElement();
+        final ArrayList<SearchResult> results = new ArrayList<>();
 
         // Catch any errors
-        if (!docEle.getNodeName().equals("crossQueryResult")) {
+        if (!"crossQueryResult".equals(docEle.getNodeName())) {
             return new SearchResultSet(
-                    0,
-                    "",
-                    0f,
-                    new ArrayList<SearchResult>(),
-                    new ArrayList<FacetGroup>(),
-                    "Too many results, try a smaller range, eliminating wildcards, or making them more specific. ");
+                0,
+                "",
+                0f,
+                new ArrayList<>(),
+                new ArrayList<>(),
+                "Too many results, try a smaller range, eliminating wildcards, or making them more specific. ");
         }
 
         // Add in all the (docHit) results into a Hashtable by Item Number
-        NodeList docHits = docEle.getElementsByTagName("docHit");
+        final NodeList docHits = docEle.getElementsByTagName("docHit");
 
         if (docHits != null) {
             for (int i = 0; i < docHits.getLength(); i++) {
+                final Element node = (Element) docHits.item(i);
+                final Element meta = (Element) node.getElementsByTagName("meta")
+                    .item(0);
 
-                Element node = (Element) docHits.item(i);
-                Element meta = (Element) node.getElementsByTagName("meta")
-                        .item(0);
-
-                Element itemIdElement = (Element) meta.getElementsByTagName(
-                        "fileID").item(0);
+                final Element itemIdElement = (Element) meta.getElementsByTagName(
+                    "fileID").item(0);
 
                 // Sometimes results may appear without any metadata, ignore
                 // these.
                 if (itemIdElement != null) {
-                    String itemId = getValueInText(itemIdElement);
-                    System.out.println("itemId = " + itemId);
-
-                    itemId = itemId.replaceAll("\\s+", ""); // remove whitespace
-
-                    SearchResult result = createSearchResult(node);
-                    results.add(result);
-
+                    results.add(createSearchResult(node));
                 }
             }
 
@@ -280,74 +275,73 @@ public class XTFSearch implements Search {
             if (results.size() > 0) {
                 Collections.sort(results);
             }
-
         }
 
         // Get general search result data
-        int totalDocs = Integer.parseInt(docEle.getAttribute("totalDocs"));
-        float queryTime = Float.parseFloat(docEle.getAttribute("queryTime"));
-        Element spelling = (Element) docEle.getElementsByTagName("spelling")
-                .item(0);
+        final int totalDocs = Integer.parseInt(docEle.getAttribute("totalDocs"));
+        final float queryTime = Float.parseFloat(docEle.getAttribute("queryTime"));
+        final Element spelling = (Element) docEle.getElementsByTagName("spelling")
+            .item(0);
         String suggestedTerm = "";
         if (spelling != null) {
             Element suggestion = (Element) spelling.getElementsByTagName(
-                    "suggestion").item(0);
+                "suggestion").item(0);
             suggestedTerm = suggestion.getAttribute("suggestedTerm");
         }
 
         // facets
-        ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup>();
+        final ArrayList<FacetGroup> facetGroups = new ArrayList<>();
         for (int i=0; i<docEle.getChildNodes().getLength(); i++) {
-            Node childNode = docEle.getChildNodes().item(i);
+            final Node childNode = docEle.getChildNodes().item(i);
 
-            if (childNode.getNodeName().equals("facet")) {
+            if ("facet".equals(childNode.getNodeName())) {
 
-                Element facetElement = (Element) childNode;
-                ArrayList<Facet> facets = new ArrayList<Facet>();
+                final Element facetElement = (Element) childNode;
+                final ArrayList<Facet> facets = new ArrayList<>();
                 String field = facetElement.getAttributes().getNamedItem("field").getTextContent();
                 field = field.replace("facet-", ""); // remove facet- from that start.
 
-                int facetGroupOccurances = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalDocs").getTextContent());
+                final int facetGroupOccurrences = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalDocs").getTextContent());
 
-                NodeList groups = facetElement.getElementsByTagName("group");
-                for (int j=0; j<groups.getLength(); j++) {
-                    Node facetNode = groups.item(j);
-                    String band = facetNode.getAttributes().getNamedItem("value").getTextContent();
-                    int occurances = Integer.parseInt(facetNode.getAttributes().getNamedItem("totalDocs").getTextContent());
-                    int rank = Integer.parseInt(facetNode.getAttributes().getNamedItem("rank").getTextContent());
-                    Facet facet = new Facet(field, band, occurances, rank);
+                final NodeList groups = facetElement.getElementsByTagName("group");
+                for (int j = 0; j < groups.getLength(); j++) {
+                    final Node facetNode = groups.item(j);
+                    final String band = facetNode.getAttributes().getNamedItem("value").getTextContent();
+                    final int occurrences = Integer.parseInt(facetNode.getAttributes().getNamedItem("totalDocs").getTextContent());
+                    final int rank = Integer.parseInt(facetNode.getAttributes().getNamedItem("rank").getTextContent());
+                    final Facet facet = new Facet(field, band, occurrences, rank);
                     facets.add(facet);
                 }
 
-                FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurances);
+                final FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurrences);
                 facetGroups.add(facetGroup);
             }
         }
 
         return new SearchResultSet(totalDocs, suggestedTerm, queryTime,
-                results, facetGroups, "");
+            results, facetGroups, "");
     }
 
     /**
      * Creates a new SearchResult from the given Node.
      */
-    public SearchResult createSearchResult(Element node) {
+    public SearchResult createSearchResult(final Element node) {
 
         String title = "";
         String id = "";
         int score = -1;
         int startPage = 0;
         String startPageLabel = "";
-        List<String> snippets = new ArrayList<String>();
+        List<String> snippets = new ArrayList<>();
         String itemType = "bookormanuscript"; // default
         String thumbnailURL = null;
         String thumbnailOrientation = null;
 
         // look at all the child tags
-        if (node.getNodeName().equals("docHit")) {
+        if ("docHit".equals(node.getNodeName())) {
 
             // META Search Info.
-            Element meta = (Element) node.getElementsByTagName("meta").item(0);
+            final Element meta = (Element) node.getElementsByTagName("meta").item(0);
 
             title = getValueInHTML(meta.getElementsByTagName("title").item(0));
             id = getValueInText(meta.getElementsByTagName("fileID").item(0));
@@ -357,12 +351,12 @@ public class XTFSearch implements Search {
             score = Integer.parseInt(node.getAttribute("score"));
 
             final String startPageString = meta.getElementsByTagName("startPage")
-                    .item(0).getFirstChild().getTextContent();
+                .item(0).getFirstChild().getTextContent();
 
-            if (Utils.isSimpleIntFormat(startPageString)){
+            try {
                 startPage = Integer.parseInt(startPageString);
             }
-            else{
+            catch(NumberFormatException e) {
                 // TODO Send email to dev team regarding incorrect data format
                 LOG.error("Possible data error - unable to parse string '" + startPageString +
                     "' expected to be int format.\nDoc title '" + title +
@@ -371,14 +365,13 @@ public class XTFSearch implements Search {
             }
 
             startPageLabel = node.getElementsByTagName("startPageLabel")
-                    .item(0).getTextContent();
+                .item(0).getTextContent();
 
-            NodeList snippetNodes = node.getElementsByTagName("snippet");
+            final NodeList snippetNodes = node.getElementsByTagName("snippet");
 
             for (int i = 0; i < snippetNodes.getLength(); i++) {
-                Node snippetNode = snippetNodes.item(i);
-                String snippet = getValueInHTML(snippetNode);
-                snippets.add(snippet);
+                final Node snippetNode = snippetNodes.item(i);
+                snippets.add(getValueInHTML(snippetNode));
             }
 
             // itemType
@@ -390,15 +383,14 @@ public class XTFSearch implements Search {
             if (node.getElementsByTagName("thumbnailUrl").item(0)!=null) {
                 thumbnailURL = getValueInText(node.getElementsByTagName("thumbnailUrl").item(0));
             }
+
             if (node.getElementsByTagName("thumbnailOrientation").item(0)!=null) {
                 thumbnailOrientation = getValueInText(node.getElementsByTagName("thumbnailOrientation").item(0));
             }
-
         }
 
         return new SearchResult(title, id, startPage, startPageLabel,
-                snippets, score, itemType, thumbnailURL, thumbnailOrientation);
-
+            snippets, score, itemType, thumbnailURL, thumbnailOrientation);
     }
 
     /**
@@ -408,23 +400,25 @@ public class XTFSearch implements Search {
      * @param node
      * @return
      */
-    public String getValueInText(Node node) {
+    public String getValueInText(final Node node) {
 
         if (node.getNodeType() == Node.TEXT_NODE) {
-            if (node.getParentNode().getNodeName().equals("term")) {
+            if ("term".equals(node.getParentNode().getNodeName())) {
                 return node.getNodeValue().replaceAll("<.*>", "");
             }
             // remove complete and partial tags as much as possible
-            String noCompleteTags = node.getNodeValue().replaceAll("<.*>", "");
-            return noCompleteTags.replaceAll("<\\w*|\\w*>", "");
+            return node.getNodeValue()
+                .replaceAll("<.*>", "")
+                .replaceAll("<\\w*|\\w*>", "");
         }
 
-        NodeList children = node.getChildNodes();
-        StringBuffer textValue = new StringBuffer();
+        final NodeList children = node.getChildNodes();
+        final StringBuilder textValue = new StringBuilder();
+
         if (node.getNodeValue() == null && children != null) {
 
             for (int i = 0; i < children.getLength(); i++) {
-                Node child = children.item(i);
+                final Node child = children.item(i);
                 textValue.append(getValueInText(child));
             }
 
@@ -432,7 +426,6 @@ public class XTFSearch implements Search {
         }
 
         return "";
-
     }
 
     /**
@@ -444,35 +437,35 @@ public class XTFSearch implements Search {
      * @param node
      * @return
      */
-    public String getValueInHTML(Node node) {
+    public String getValueInHTML(final Node node) {
 
         if (node == null)
             return "";
 
         if (node.getNodeType() == Node.TEXT_NODE) {
             // if this is a snippet, bold the matching word(s).
-            if (node.getParentNode().getNodeName().equals("term")) {
-                return "<b>" + node.getNodeValue().replaceAll("<.*>", "")
-                        + "</b>";
+            if ("term".equals(node.getParentNode().getNodeName())) {
+                return String.format(
+                    "<b>%s</b>",
+                    node.getNodeValue().replaceAll("<.*>", "")
+                );
             }
             // remove complete and partial tags as much as possible
-            String noCompleteTags = node.getNodeValue().replaceAll("<.*>", "");
-            return noCompleteTags.replaceAll("<\\w*|\\w*>", "");
+            return node.getNodeValue()
+                .replaceAll("<.*>", "")
+                .replaceAll("<\\w*|\\w*>", "");
         }
 
-        NodeList children = node.getChildNodes();
-        StringBuffer textValue = new StringBuffer();
+        final NodeList children = node.getChildNodes();
+        final StringBuilder textValue = new StringBuilder();
         if (node.getNodeValue() == null && children != null) {
-
             for (int i = 0; i < children.getLength(); i++) {
-                Node child = children.item(i);
+                final Node child = children.item(i);
                 textValue.append(getValueInHTML(child));
             }
 
             return textValue.toString();
         }
-
         return "";
-
     }
 }
