@@ -45,7 +45,7 @@ public class SearchUtilTest {
             form, "subject").contains("facetDate=test%20date")
         );
         assertFalse(SearchUtil.getURLParametersWithoutFacet(
-            form, "subject").contains("acetSubject=test%20subject")
+            form, "subject").contains("facetSubject=test%20subject")
         );
     }
 }
