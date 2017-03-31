@@ -15,6 +15,8 @@
         <spring.version>4.3.2.RELEASE</spring.version>
         <spring.security.version>4.1.2.RELEASE</spring.security.version>
         <cudl.viewer-ui-version>1.4.0</cudl.viewer-ui-version>
+        <versions.groovy>2.4.9</versions.groovy>
+        <versions.spock>1.1-groovy-2.4-rc-4</versions.spock>
     </properties>
 
     <scm>
@@ -114,6 +116,45 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Compile groovy code in test sources -->
+            <plugin>
+                <!-- The gmavenplus plugin is used to compile Groovy code. To learn more about this plugin,
+                visit https://github.com/groovy/GMavenPlus/wiki -->
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testSources>
+                        <testSource>
+                            <directory>${pom.basedir}/src/test/java</directory>
+                            <includes>
+                                <include>**/*.groovy</include>
+                            </includes>
+                        </testSource>
+                    </testSources>
+                </configuration>
+            </plugin>
+
+            <!-- Include Spock *Spec test classes in test runs -->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <includes>
+                        <include>**/Test*.*</include>
+                        <include>**/*Test.*</include>
+                        <include>**/*Spec.*</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -473,6 +514,25 @@
             <groupId>com.github.livesense</groupId>
             <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
             <version>1.0.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>${versions.groovy}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${versions.spock}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.4</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
