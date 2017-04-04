@@ -16,6 +16,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class XTFSearch implements Search {
@@ -86,139 +87,98 @@ public class XTFSearch implements Search {
     protected String buildQueryURL(final SearchForm searchForm, final int start, final int end) {
 
         final String xtfURL = Properties.getString("xtfURL");
-        final StringBuilder searchXTFURL = new StringBuilder(xtfURL);
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromHttpUrl(xtfURL + "search");
 
-        searchXTFURL.append("search?");
+        uriB.queryParam("indexName", getIndexName(searchForm));
+        uriB.queryParam("raw", "1");
+        uriB.queryParam("smode", "advanced");
+        uriB.queryParam("startDoc", start);
 
-        try {
-            searchXTFURL
-                .append("indexName=")
-                .append(URLEncoder.encode(getIndexName(searchForm), "UTF-8"))
-                .append( "&raw=1;smode=advanced;startDoc=")
-                .append(start);
-
-            // Keywords
-            if (searchForm.getKeyword() != null) {
-                searchXTFURL
-                    .append("&keyword=")
-                    .append(URLEncoder.encode(searchForm.getKeyword(), "UTF-8"));
-            }
-
-            if (searchForm.hasRecallScale()) {
-                searchXTFURL
-                    .append(String.format("&recallScale=%f",
-                        searchForm.getRecallScale()));
-            }
-
-            if (searchForm.getFullText() != null) {
-                searchXTFURL
-                    .append("&text=")
-                    .append(URLEncoder.encode(searchForm.getFullText(), "UTF-8"));
-            }
-            if (searchForm.getExcludeText() != null) {
-                searchXTFURL
-                    .append("&text-exclude=")
-                    .append(URLEncoder.encode(searchForm.getExcludeText(),"UTF-8"));
-            }
-
-            // Join
-            if (searchForm.getTextJoin() != null) {
-                if ("or".equals(searchForm.getTextJoin())) {
-                    searchXTFURL.append("&text-join=or");
-                } else {
-                    searchXTFURL.append("&text-join=");
-                }
-            }
-
-            // File ID
-            if (searchForm.getFileID() != null) {
-                searchXTFURL
-                    .append("&fileID=")
-                    .append(URLEncoder.encode(searchForm.getFileID(), "UTF-8"));
-            }
-
-            // Classmark
-            if (searchForm.getShelfLocator() != null) {
-                // remove all punctuation and run a search-shelfLocator
-                // search (for full and partial classmark match)
-                final String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
-                searchXTFURL
-                    .append("&search-shelfLocator=")
-                    .append(URLEncoder.encode(sLoc, "UTF-8"));
-            }
-
-            // Metadata
-            if (searchForm.getTitle() != null) {
-                searchXTFURL
-                    .append("&title=")
-                    .append(URLEncoder.encode(searchForm.getTitle(), "UTF-8"));
-            }
-
-            if (searchForm.getAuthor() != null) {
-                searchXTFURL
-                    .append("&nameFullForm=")
-                    .append(URLEncoder.encode(searchForm.getAuthor(), "UTF-8"));
-            }
-
-            if (searchForm.getSubject() != null) {
-                searchXTFURL
-                    .append("&subjectFullForm=")
-                    .append(URLEncoder.encode(searchForm.getSubject(), "UTF-8"));
-            }
-
-            if (searchForm.getLocation() != null) {
-                searchXTFURL
-                    .append("&placeFullForm=")
-                    .append(URLEncoder.encode(searchForm.getLocation(), "UTF-8"));
-            }
-
-            if (searchForm.getYearStart() != null) {
-                searchXTFURL
-                    .append("&year=")
-                    .append(searchForm.getYearStart());
-            }
-
-            if (searchForm.getYearEnd() != null) {
-                searchXTFURL
-                    .append("&year-max=")
-                    .append(searchForm.getYearEnd());
-            }
-
-            // Facets
-            int facetCount = 0; // xtf needs to know order of facets.
-            if (searchForm.getFacetCollection() != null) {
-                facetCount++;
-                searchXTFURL
-                    .append("&f")
-                    .append(facetCount)
-                    .append("-collection=")
-                    .append(URLEncoder.encode(searchForm.getFacetCollection(), "UTF-8"));
-            }
-
-            if (searchForm.getFacetSubject() != null) {
-                facetCount++;
-                searchXTFURL
-                    .append("&f")
-                    .append(facetCount)
-                    .append("-subject=")
-                    .append(URLEncoder.encode(searchForm.getFacetSubject(), "UTF-8"));
-            }
-
-            if (searchForm.getFacetDate() != null) {
-
-                facetCount++;
-                searchXTFURL
-                    .append("&f")
-                    .append(facetCount)
-                    .append("-date=")
-                    .append(URLEncoder.encode(searchForm.getFacetDate(), "UTF-8"));
-            }
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        // Keywords
+        if (searchForm.getKeyword() != null) {
+            uriB.queryParam("keyword",searchForm.getKeyword());
         }
 
-        return searchXTFURL.toString();
+        if (searchForm.hasRecallScale()) {
+            uriB.queryParam("recallScale", String.format("%f", searchForm.getRecallScale()));
+        }
+
+        if (searchForm.getFullText() != null) {
+            uriB.queryParam("text", searchForm.getFullText());
+        }
+        if (searchForm.getExcludeText() != null) {
+            uriB.queryParam("text-exclude", searchForm.getExcludeText());
+        }
+
+        // Join
+        if (searchForm.getTextJoin() != null) {
+            if ("or".equals(searchForm.getTextJoin())) {
+                uriB.queryParam("text-join", "or");
+            } else {
+                uriB.queryParam("text-join", "");
+            }
+        }
+
+        // File ID
+        if (searchForm.getFileID() != null) {
+            uriB.queryParam("fileID", searchForm.getFileID());
+        }
+
+        // Classmark
+        if (searchForm.getShelfLocator() != null) {
+            // remove all punctuation and run a search-shelfLocator
+            // search (for full and partial classmark match)
+            final String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
+            uriB.queryParam("search-shelfLocator", sLoc);
+        }
+
+        // Metadata
+        if (searchForm.getTitle() != null) {
+            uriB.queryParam("title", searchForm.getTitle());
+        }
+
+        if (searchForm.getAuthor() != null) {
+            uriB.queryParam("nameFullForm", searchForm.getAuthor());
+        }
+
+        if (searchForm.getSubject() != null) {
+            uriB.queryParam("subjectFullForm", searchForm.getSubject());
+        }
+
+        if (searchForm.getLocation() != null) {
+            uriB.queryParam("placeFullForm", searchForm.getLocation());
+        }
+
+        if (searchForm.getYearStart() != null) {
+            uriB.queryParam("year", searchForm.getYearStart());
+        }
+
+        if (searchForm.getYearEnd() != null) {
+            uriB.queryParam("year-max", searchForm.getYearEnd());
+        }
+
+        // Facets
+        int facetCount = 0; // xtf needs to know order of facets.
+        if (searchForm.getFacetCollection() != null) {
+            final String key = String.format("f%d-collection", ++facetCount);
+            uriB.queryParam(key, searchForm.getFacetCollection());
+        }
+
+        if (searchForm.getFacetSubject() != null) {
+            uriB.queryParam(
+                String.format("f%d-subject", ++facetCount),
+                searchForm.getFacetSubject()
+            );
+        }
+
+        if (searchForm.getFacetDate() != null) {
+            uriB.queryParam(
+                String.format("f%d-date", ++facetCount),
+                searchForm.getFacetDate()
+            );
+        }
+
+        return uriB.build().toUriString();
     }
 
     /**
