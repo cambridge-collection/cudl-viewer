@@ -19,10 +19,18 @@ $ psql -e -1 -f src/main/docs/database-setup.psql my-cudl-db
   if the script fails
 * `-f` executes commands from the provided SQL file
 
+### Apply migrations
+
+Apply all the migration scripts in `src/main/docs/db-migrations/`:
+
+```ShellSession
+$ find src/main/docs/db-migrations -name '*.psql' \
+    -exec psql -e -1 -f {} my-cudl-db \;
+```
 
 ## Import existing data
 
-Clone the [database] [snapshots repository](https://bitbucket.org/CUDL/snapshots)
+Clone the [database snapshots repository](https://bitbucket.org/CUDL/snapshots)
 from bitbucket:
 
 ```ShellSession
@@ -48,15 +56,15 @@ $ tree
 The data is created from SQL `COPY` commands:
 
 ```PLpgSQL
-\COPY collections (collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid) FROM './cudl-viewer-partial-dump/collections'
-\COPY items (itemid) FROM './cudl-viewer-partial-dump/items'
+\COPY collections FROM './cudl-viewer-partial-dump/collections'
+\COPY items FROM './cudl-viewer-partial-dump/items'
 \COPY itemsincollection FROM './cudl-viewer-partial-dump/itemsincollection'
 ```
 
 `copy.psql` in the snapshots repository contains these commands, so you can
-perform the copy as follows: 
+perform the copy as follows:
 ```ShellSession
-$ psql -e -1 -f copy.psql cudl-test
+$ psql -e -1 -f copy.psql my-cudl-db
 ```
 
 
