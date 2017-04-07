@@ -12,10 +12,11 @@
 <cudl:meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 <cudl:meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
 
-<%--  webmaster tools --%>
-<c:if test="${metaDescription != null}">
-    <cudl:meta name="Description" content="${metaDescription}"/>
+<c:if test="${not empty metaDescription}">
+    <cudl:meta name="description" content="${metaDescription}"/>
 </c:if>
+
+<%--  webmaster tools --%>
 <cudl:meta name="google-site-verification"
     content="asuuZDOIgJTwOZ0EfnrFe1hQ2A7q6uukh5ebEsciiNg" />
 <cudl:meta name="msvalidate.01" content="EF9291052C3CCD9E1AC12147B69C52C2"/>
