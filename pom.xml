@@ -190,6 +190,12 @@
         </dependency>
 
         <dependency>
+            <groupId>uk.ac.cam.lib.web.frontend</groupId>
+            <artifactId>spring-frontend-builds-jsp</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.tuckey</groupId>
             <artifactId>urlrewritefilter</artifactId>
             <version>4.0.4</version>

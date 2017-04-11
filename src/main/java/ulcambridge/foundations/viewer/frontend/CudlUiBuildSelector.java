@@ -6,14 +6,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-import ulcambridge.foundations.frontend.webpack.WebpackMetadataException;
+import uk.ac.cam.lib.web.frontend.BuildFactory;
+import uk.ac.cam.lib.web.frontend.webpack.DefaultBuildFactory;
+import uk.ac.cam.lib.web.frontend.webpack.WebpackMetadataException;
 
 import java.io.IOException;
 import java.net.URI;
 
-/**
- * This
- */
 @Component
 public class CudlUiBuildSelector {
     private final ResourceLoader resourceLoader;

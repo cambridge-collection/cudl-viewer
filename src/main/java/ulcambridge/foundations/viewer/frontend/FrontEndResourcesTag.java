@@ -2,8 +2,9 @@ package ulcambridge.foundations.viewer.frontend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-import ulcambridge.foundations.frontend.FrontEndBuild.Resource;
-import ulcambridge.foundations.viewer.tags.SpringTag;
+import uk.ac.cam.lib.web.frontend.BuildFactory;
+import uk.ac.cam.lib.web.frontend.FrontEndBuild;
+import uk.ac.cam.lib.web.frontend.jsp.tag.SpringTag;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -25,9 +26,9 @@ public class FrontEndResourcesTag extends SpringTag {
         Assert.notNull(this.buildFactory);
         Assert.notNull(this.pageType);
 
-        JspWriter out = this.getJspContext().getOut();
-        for(Resource resource :
-                this.buildFactory.getBuild(this.pageType).resources()) {
+        final JspWriter out = this.getJspContext().getOut();
+        for(final FrontEndBuild.Resource resource :
+                this.buildFactory.getBuild(this.pageType.getChunkName()).resources()) {
             out.write(resource.render());
         }
     }

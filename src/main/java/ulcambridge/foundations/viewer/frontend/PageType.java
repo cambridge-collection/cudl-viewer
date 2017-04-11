@@ -18,7 +18,7 @@ public enum PageType {
 
     private final String chunkName;
 
-    PageType(String chunkName) {
+    PageType(final String chunkName) {
         Assert.hasText(chunkName);
         this.chunkName = chunkName;
     }
