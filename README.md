@@ -80,14 +80,19 @@ even if `admin.enabled=false`.
 
 ### Running
 
-Once configured, the Viewer can be run using an embedded Tomcat 7 server by
-executing:
+Once configured, there are two embedded Tomcat servers that can be run. One will allow live editing of static resources (e.g. jsps) and can be run using the command: 
+
+```
+$ mvn tomcat7:run
+```
+
+Alternatively you can run the alternative embedded tomcat through that Cargo container that is setup to use the same version tomcat as the live/staging/dev servers for final testing.  This does not allow live editing. To run this you use the command:  
 
 ```
 $ mvn clean verify cargo:run
 ```
 
-You can then access the Viewer at
+For both servers, when running you can then access the Viewer at
 [http://localhost:1111/](http://localhost:1111/).
 
 ### Live updates from `cudl-viewer-ui`

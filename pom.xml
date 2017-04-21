@@ -26,6 +26,23 @@
 
     <build>
         <plugins>
+            <!--  this plugin is run by 'mvn tomcat7:run' and allow live reloads for static assets e.g. jsp changes. -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
+                    <additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>
+                    <server>tomcat-development-server</server>
+                    <port>1111</port>
+                    <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
+                </configuration>
+            </plugin>
+            
+            <!--  This plugin is run by 'mvn clean verify cargo:run' and does not allow live reloads -->
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
