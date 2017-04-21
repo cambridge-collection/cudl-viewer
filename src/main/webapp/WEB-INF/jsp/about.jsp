@@ -41,17 +41,16 @@
 				<img src="/img/general/introducingCUDL.jpg" alt="Introducing CUDL"
 					class="campl-scale-with-grid" />
 				<div class="campl-content-container">
-
-					<h2>Welcome to Cambridge Digital Library</h2>
-					<h4>A home for the discovery of digitised material and
-						research outputs from Cambridge University and beyond.</h4>
+					
+					<h4>Welcome to Cambridge Digital Library: A home for the discovery of digitised material and
+						research outputs from University of Cambridge and beyond.</h4>
 					<p>
 						We hope you find what you are looking for – please do <a
 							class="iframe" href="/feedbackform.html">contact us</a> if you
 						have any questions or comments.
 					</p>
 
-					<h2>Our Mission, Vision & Value</h2>
+					<h2>Our Mission, Vision & Values</h2>
 					<p>The mission of the University of Cambridge is to contribute
 						to society through the pursuit of education, learning, and
 						research at the highest international levels of excellence.</p>
@@ -61,7 +60,7 @@
 
 					<ul>
 						<li><b>Access</b> – We want our unique and distinctive collections
-							to be accessible to as many people as possible.</li>
+							to be openly accessible to as many people as possible.</li>
 						<li><b>Collaboration</b> – By working together with partners across
 							different local, national and international institutions we
 							foster a platform for sharing that benefits all and extends our
@@ -116,7 +115,7 @@
 					<p>Another goal is to make content from the Digital Library
 						freely available for use within teaching and research. Copyright
 						and licensing will not always permit this, but where it does we
-						are providing good quality image, texts and metadata for download
+						are providing good quality images, texts and metadata for download
 						and reuse. You can even embed our viewer straight into your own
 						webpages and blogs.</p>
 
