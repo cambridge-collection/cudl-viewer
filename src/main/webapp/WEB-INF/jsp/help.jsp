@@ -47,7 +47,7 @@
     
                             <p>
                                 Subscribe to our mailing list by sending an email to <a
-                                    href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&amp;body=I%20would%20like%20to%20receive%20update%20news%20from%20Cambridge%20University%20Digital%20Library.">cudl-updates-subscribe@caret.cam.ac.uk</a>
+                                    href="mailto:lib-cudl-news@lists.cam.ac.uk?subject=Subscribe&amp;body=I%20would%20like%20to%20receive%20update%20news%20from%20Cambridge%20University%20Digital%20Library.">lib-cudl-news@lists.cam.ac.uk</a>
                                 and we will do our best to keep you informed of updates.
                             </p>
     

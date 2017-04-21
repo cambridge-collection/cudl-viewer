@@ -48,7 +48,7 @@ body {
                 you when new material is added or significant changes made.</p>
             <p>
                 Just send an email to <a
-                    href="mailto:cudl-updates-subscribe@caret.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">cudl-updates-subscribe@caret.cam.ac.uk</a>
+                    href="mailto:lib-cudl-news@lists.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">lib-cudl-news@lists.cam.ac.uk</a>
                 to subscribe.
             <p>
                 You can also follow us on twitter <a
