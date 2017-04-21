@@ -43,7 +43,7 @@
 				<div class="campl-content-container">
 					
 					<h4>Welcome to Cambridge Digital Library: A home for the discovery of digitised material and
-						research outputs from University of Cambridge and beyond.</h4>
+						research outputs from the University of Cambridge and beyond.</h4>
 					<p>
 						We hope you find what you are looking for – please do <a
 							class="iframe" href="/feedbackform.html">contact us</a> if you
