@@ -41,7 +41,7 @@
 				<img src="/img/general/introducingCUDL.jpg" alt="Introducing CUDL"
 					class="campl-scale-with-grid" />
 				<div class="campl-content-container">
-					
+
 					<h4>Welcome to Cambridge Digital Library: A home for the discovery of digitised material and
 						research outputs from the University of Cambridge and beyond.</h4>
 					<p>
@@ -148,11 +148,12 @@
 			<div class="campl-column3 campl-secondary-content">
 				<div class="campl-content-container">
 					<blockquote class="grid_7 omega print">
-						Cambridge University Library contains evidence of some of the
-						greatest ideas and discoveries over two millennia. We want to make
-						our collections accessible to anyone, anywhere in the world with
-						an internet connection and a thirst for knowledge." <cite>Anne
-							Jarvis, University Librarian</cite>
+						Cambridge University Library collections represent an invaluable
+						contribution to world heritage spanning four thousand years of human
+						thought. Cambridge Digital Library seeks to open up this knowledge to the
+						widest possible global audience, for research, for education or for simple
+						curiosity and wonder.”
+						<cite>Dr Jessica Gardner, University Librarian and Director of Library Services</cite>
 					</blockquote>
 				</div>
 			</div>
