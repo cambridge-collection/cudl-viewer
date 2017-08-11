@@ -1,24 +1,27 @@
 package ulcambridge.foundations.viewer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Properties;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
 public class SiteViewController {
@@ -86,6 +89,20 @@ public class SiteViewController {
     public ModelAndView handleHelpRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/help");
+        return modelAndView;
+    }
+    
+    // on path /mirador/
+    @RequestMapping(value = "/mirador/view/{id}/{pagenum}")
+    public ModelAndView handleMiradorRequest(@PathVariable("id") String id, 
+            @PathVariable("pagenum") int pagenum, HttpServletRequest request) {
+
+        String baseURL = String.format("%s://%s:%d/", request.getScheme(), request.getServerName(), request.getServerPort());
+        
+        ModelAndView modelAndView = new ModelAndView("jsp/mirador");
+        modelAndView.addObject("id", id);
+        modelAndView.addObject("pagenum", pagenum);
+        modelAndView.addObject("baseURL", baseURL);
         return modelAndView;
     }
 

@@ -26,15 +26,15 @@ public class IIIFPresentation {
     JSONArray pages;
     JSONArray lsArray;
 
+    // https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=/mnt/delivery/JPEG2000/MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2/full/1000,/0/default.jpg
     String baseURL = "http://localhost:1111";
-    String imageServerURL = "http://localhost/~jlf44/fcgi/iipsrv.fcgi?IIIF=";
-    String imageFilePath = "/home/jlf44/public_html/";
+    String imageServerURL = "https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=";
+    String imageFilePath = "/mnt/delivery/JPEG2000/";
 
-    // MS-NN-00004-00001/TIFFS-DELIVERY/TIFFS/MS-NN-00004-00001-000-00001.tif
-
-    public IIIFPresentation(Item item) throws JSONException {
+    public IIIFPresentation(Item item, String baseURL) throws JSONException {
 
         id = item.getId();
+        this.baseURL = baseURL;
 
         /** TODO check if we are allowed to display this metadata in IIIF - downloadImageRights? **/
         /** TODO transcriptions **/
@@ -53,6 +53,7 @@ public class IIIFPresentation {
         // version of iiif presentation
         label = item.getTitle() + " (" + item.getShelfLocator() + ")";
 
+
         // Iterator keys = metadataObject.keys();
         // while (keys.hasNext()) {
 
@@ -60,7 +61,6 @@ public class IIIFPresentation {
 
         // metadataObject is an object containing key value pairs,
         // values could be strings/numbers or objects.
-        System.out.println(metadataObject);
 
         Iterator<String> keys = metadataObject.keys();
         while (keys.hasNext()) {
@@ -69,7 +69,6 @@ public class IIIFPresentation {
 
             // Ignore non-JSONObjects.
             if (value instanceof JSONObject) {
-                System.out.println("JSONObject found");
 
                 JSONObject valueObj = (JSONObject) value;
                 metadata.putAll(getMetadataFromJSON(null, valueObj));
@@ -137,7 +136,6 @@ public class IIIFPresentation {
                 JSONArray values = (JSONArray) value;
                 for (int i = 0; i < values.length(); i++) {
                     JSONObject valueObj = values.getJSONObject(i);
-                    System.out.println("in values: " + valueObj);
                     metadata = merge(metadata, getMetadataFromJSON(label, valueObj), "; ");
                 }
             }
@@ -214,9 +212,20 @@ public class IIIFPresentation {
             imageObj.put("motivation", "sc:painting");
             imageObj.put("on", baseURL + "/view/iiif/" + id + "/canvas/" + (i + 1));
 
-            String imageURL = imageServerURL + imageFilePath + id + "/TIFFS-DELIVERY/TIFFS/" + id + "-000-" + String.format("%05d", page.getInt("sequence")) + ".tif";
+            // MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
+            // get parts needed from ID
+            String[] idParts = id.split("-");
+
+            // build filePath of the form MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
+            String downloadImageUrl = page.getString("downloadImageURL");
+            String imageName = downloadImageUrl.substring(downloadImageUrl.lastIndexOf("/") + 1);
+            imageName = imageName.replaceAll(".jpg", ".jp2");
+            String filePath = idParts[0] + "/" + idParts[1] + "/" + id + "/JP2/" + imageName;
+
+            String imageURL = imageServerURL + imageFilePath + filePath;
             JSONObject resource = new JSONObject();
-            resource.put("@id", imageURL + "/full/,600/0/default.jpg");
+            // resource.put("@id", imageURL + "/full/,600/0/default.jpg");
+            resource.put("@id", imageURL);
             resource.put("@type", "dctypes:Image");
             resource.put("format", "image/jpg");
             resource.put("height", 1000); // FIXME placeholder
@@ -252,7 +261,7 @@ public class IIIFPresentation {
     }
 
     /**
-     * Generates a structure object with members array (of canvases and ranges together) as 2.1 spec. 
+     * Generates a structure object with members array (of canvases and ranges together) as 2.1 spec.
      * Some clients do not support this yet.
      * 
      * @param lsArray
