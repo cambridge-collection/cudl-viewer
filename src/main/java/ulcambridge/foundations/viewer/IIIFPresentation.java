@@ -21,13 +21,14 @@ public class IIIFPresentation {
     String description;
     Map<String, String> metadata = Collections.synchronizedMap(new LinkedHashMap<String, String>());
     String attribution;
+    String logoURL;
     int numberOfPages;
     String id;
     JSONArray pages;
     JSONArray lsArray;
 
     // https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=/mnt/delivery/JPEG2000/MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2/full/1000,/0/default.jpg
-    String baseURL = "http://localhost:1111";
+    String baseURL;
     String imageServerURL = "https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=";
     String imageFilePath = "/mnt/delivery/JPEG2000/";
 
@@ -36,6 +37,8 @@ public class IIIFPresentation {
         id = item.getId();
         this.baseURL = baseURL;
 
+        /** watermark **/
+        /** setup key for access to full images (image server)
         /** TODO check if we are allowed to display this metadata in IIIF - downloadImageRights? **/
         /** TODO transcriptions **/
         /** TODO rights **/
@@ -79,6 +82,7 @@ public class IIIFPresentation {
         // navDate?
         // license
         attribution = "Provided by Cambridge University Library";
+        logoURL = "/mirador/cu_logo.png";
 
         // seeAlso (source metadta)
         // within (collection?)
@@ -176,6 +180,7 @@ public class IIIFPresentation {
         output.put("label", label);
         output.put("description", description);
         output.put("attribution", attribution);
+        output.put("logo", logoURL);
 
         JSONArray meta = new JSONArray();
         for (String key : metadata.keySet()) {
@@ -250,8 +255,7 @@ public class IIIFPresentation {
 
         // Output structures
         JSONArray structures = new JSONArray(createRangeCanvasStructures(lsArray));
-        JSONObject first = structures.getJSONObject(0);
-        first.put("viewingHint", "top");
+        JSONObject first = structures.getJSONObject(0);        
         structures.put(0, first);
 
         output.put("structures", structures);
@@ -323,6 +327,7 @@ public class IIIFPresentation {
     private List<JSONObject> createRangeCanvasStructures(JSONArray lsArray) throws JSONException {
 
         ArrayList<JSONObject> output = new ArrayList<JSONObject>();
+        List<JSONObject> ranges = new ArrayList<JSONObject>();
         for (int i = 0; i < lsArray.length(); i++) {
 
             JSONObject structure = new JSONObject();
@@ -331,8 +336,8 @@ public class IIIFPresentation {
             structure.put("@id", baseURL + "/view/iiif/" + id + "/range/" + metaId);
             structure.put("@type", "sc:Range");
             structure.put("label", lsObject.get("label"));
-
-            JSONArray ranges = new JSONArray();
+            
+            JSONArray rangeIds = new JSONArray();
             JSONArray canvases = new JSONArray();
 
             int start = lsObject.getInt("startPagePosition");
@@ -344,23 +349,25 @@ public class IIIFPresentation {
                 JSONArray childArray = lsObject.getJSONArray("children");
                 List<JSONObject> children = createRangeCanvasStructures(childArray); // list of ranges
                 for (JSONObject o : children) {
-                    ranges.put(o.get("@id"));
+                    rangeIds.put(o.get("@id"));
+                    ranges.add(o);
                 }
-                structure.put("ranges", ranges);
+                structure.put("ranges", rangeIds);
 
-            } else {
+            } else { 
 
-                // list canvases in this range (only if no children)
-                for (int j = start; j <= end; j++) {
+              // list canvases in this range (only if no children)
+              for (int j = start; j <= end; j++) {
 
-                    String canvasId = baseURL + "/view/iiif/" + id + "/canvas/" + j;
-                    canvases.put(canvasId);
-                }
-                structure.put("canvases", canvases);
+                 String canvasId = baseURL + "/view/iiif/" + id + "/canvas/" + j;
+                 canvases.put(canvasId);
+              }
+              structure.put("canvases", canvases);
             }
 
             output.add(structure);
         }
+        output.addAll(ranges);
         return output;
 
     }
