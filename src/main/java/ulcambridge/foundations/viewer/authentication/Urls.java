@@ -53,7 +53,8 @@ public class Urls {
             .port(port)
             .path(req.getRequestURI())
             .query(req.getQueryString())
-            .build(true) // Path and query are not decoded
+            .build()
+            .encode()
             .toUri();
     }
 
@@ -145,7 +146,7 @@ public class Urls {
     static class DefaultUrlCodecStrategy implements UrlCodecStrategy {
         @Override
         public String encodeUrl(URI requestUri, URI url) {
-            return url.toString();
+            return url.toASCIIString();
         }
 
         @Override
@@ -246,10 +247,10 @@ public class Urls {
 
                 String prefix = base.getRawPath().equals("/") ? "/" : "./";
 
-                return prefix + relative.toString();
+                return prefix + relative.toASCIIString();
             }
 
-            return relative.toString();
+            return relative.toASCIIString();
         }
 
         @Override

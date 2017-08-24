@@ -36,7 +36,6 @@ public class SecurityConfig {
         details.setUserAuthorizationUri(
             UriComponentsBuilder
                 .fromUriString("https://accounts.google.com/o/oauth2/auth")
-                .build()
                 .toUriString());
 
         details.setScope(Arrays.asList("profile", "openid", "email"));

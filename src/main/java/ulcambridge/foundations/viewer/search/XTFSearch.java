@@ -182,7 +182,7 @@ public class XTFSearch implements Search {
             );
         }
 
-        return uriB.build().toUriString();
+        return uriB.toUriString();
     }
 
     /**

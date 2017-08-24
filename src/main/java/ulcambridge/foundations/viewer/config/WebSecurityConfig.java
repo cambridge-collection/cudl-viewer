@@ -262,7 +262,7 @@ public class WebSecurityConfig {
 
         URI loginPage = UriComponentsBuilder.fromUri(homepage)
             .replacePath(LOGIN_PATH)
-            .build().toUri();
+            .build().encode().toUri();
 
         return new UrlQueryParamAuthenticationEntryPoint(
             loginPage, requestCache, urlCodec);

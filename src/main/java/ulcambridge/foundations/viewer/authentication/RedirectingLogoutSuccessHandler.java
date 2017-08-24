@@ -78,7 +78,7 @@ public class RedirectingLogoutSuccessHandler implements LogoutSuccessHandler {
             url = Urls.getUrl(req).resolve(url);
         }
 
-        return url.toString();
+        return url.toASCIIString();
     }
 
     public String getRedirectUrl(HttpServletRequest req) {

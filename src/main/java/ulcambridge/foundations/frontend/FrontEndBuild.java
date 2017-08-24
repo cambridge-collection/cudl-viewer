@@ -99,7 +99,7 @@ public interface FrontEndBuild {
         protected String renderAttributes() {
             return String.format("%s=\"%s\"",
                     this.linkAttr,
-                    HtmlUtils.htmlEscape(this.getUri().toString()));
+                    HtmlUtils.htmlEscape(this.getUri().toASCIIString()));
         }
 
         @Override

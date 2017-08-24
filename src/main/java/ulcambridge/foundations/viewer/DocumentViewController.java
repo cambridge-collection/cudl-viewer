@@ -299,6 +299,7 @@ public class DocumentViewController {
                 .path(page < 2 ? PATH_DOC_NO_PAGE : PATH_DOC_WITH_PAGE)
                 .build()
                 .expand(itemId, page)
+                .encode()
                 .toUriString();
     }
 

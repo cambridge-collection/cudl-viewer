@@ -241,7 +241,7 @@ public class EntryPointRequestFilters {
         @Override
         public StringBuffer getRequestURL() {
             return new StringBuffer(UriComponentsBuilder.fromUri(this.fullUrl)
-                .replaceQuery(null).build().toUriString());}
+                .replaceQuery(null).toUriString());}
 
         @Override public String getServletPath() {
             return this.servletPath;

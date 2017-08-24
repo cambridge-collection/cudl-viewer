@@ -96,8 +96,7 @@ public class UrlQueryParamAuthenticationEntryPoint
             .orElseGet(() -> Urls.getUrl(currentRequest));
 
         return this.getUrlCodecStrategy()
-            .encodeUrl(Urls.getUrl(currentRequest), nextUrl)
-            .toString();
+            .encodeUrl(Urls.getUrl(currentRequest), nextUrl);
     }
 
     protected String getRedirectUrl(HttpServletRequest request,
@@ -107,7 +106,7 @@ public class UrlQueryParamAuthenticationEntryPoint
             UriComponentsBuilder.fromUri(this.getLoginFormUrl()), request)
             .queryParam(this.getParamName(),
                         this.getPostLoginPageUrl(request, response))
-            .build().toUriString();
+            .toUriString();
     }
 
     @Override
