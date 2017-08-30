@@ -26,6 +26,7 @@ public class IIIFPresentation {
     Map<String, String> metadata = Collections.synchronizedMap(new LinkedHashMap<String, String>());
     String attribution;
     String logoURL;
+    String sourceDataURL;
     int numberOfPages;
     String id;
     JSONArray pages;
@@ -36,25 +37,23 @@ public class IIIFPresentation {
     String imageServerURL = "https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=";
     String imageFilePath = "/mnt/delivery/JPEG2000/";
 
-    public IIIFPresentation(Item item, String baseURL) throws JSONException {
+    public IIIFPresentation(Item item, String baseURL, String servicesURL) throws JSONException {
 
         id = item.getId();
         this.baseURL = baseURL;
 
-        /** watermark **/
         /** setup key for access to full images (image server)
         /** TODO check if we are allowed to display this metadata in IIIF - downloadImageRights? **/
         /** TODO transcriptions **/
         /** TODO rights **/
         /** TODO remove extra html tags in text **/
-        /** TODO synchronisation **/
         JSONObject json = item.getJSON();
 
         /* Note only looking at descriptiveMetadata[0] as this holds metadata that applies to the whole document */
         JSONObject metadataObject = json.getJSONArray("descriptiveMetadata").getJSONObject(0);
         lsArray = json.getJSONArray("logicalStructures");
         numberOfPages = json.getInt("numberOfPages");
-        String sourceData = json.getString("sourceData");
+        sourceDataURL = servicesURL+json.getString("sourceData");
         pages = json.getJSONArray("pages");
 
         // version of iiif presentation
@@ -185,6 +184,7 @@ public class IIIFPresentation {
         output.put("description", description);
         output.put("attribution", attribution);
         output.put("logo", logoURL);
+        output.put("seeAlso", sourceDataURL);
 
         JSONArray meta = new JSONArray();
         for (String key : metadata.keySet()) {

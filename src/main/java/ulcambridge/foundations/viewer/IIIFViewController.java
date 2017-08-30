@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * Controller for viewing iiif metadata
@@ -54,11 +55,14 @@ public class IIIFViewController {
         // force docID to uppercase
         docId = docId.toUpperCase();
 
+        //Get services
+        String servicesURL = Properties.getString("services");
+        
         Item item = itemFactory.getItemFromId(docId);
         if (item != null) {
 
             String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-            IIIFPresentation pres = new IIIFPresentation(item, baseURL);
+            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL);
             JSONObject presJSON = pres.outputJSON();
 
             writeJSONOut(presJSON, response);
