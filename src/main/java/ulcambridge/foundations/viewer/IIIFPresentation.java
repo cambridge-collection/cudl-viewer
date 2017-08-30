@@ -15,6 +15,10 @@ import org.json.JSONObject;
 
 import ulcambridge.foundations.viewer.model.Item;
 
+/**
+ * This class is for converting the JSON metadata into IIIF presentation 2.0 api metadata. 
+ *
+ */
 public class IIIFPresentation {
 
     String label;
@@ -27,7 +31,7 @@ public class IIIFPresentation {
     JSONArray pages;
     JSONArray lsArray;
 
-    // https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=/mnt/delivery/JPEG2000/MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2/full/1000,/0/default.jpg
+    /** TODO move to global properties **/
     String baseURL;
     String imageServerURL = "https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=";
     String imageFilePath = "/mnt/delivery/JPEG2000/";
@@ -82,7 +86,7 @@ public class IIIFPresentation {
         // navDate?
         // license
         attribution = "Provided by Cambridge University Library";
-        logoURL = "/mirador/cu_logo.png";
+        logoURL = baseURL+"/mirador/cu_logo.png";
 
         // seeAlso (source metadta)
         // within (collection?)
@@ -176,7 +180,7 @@ public class IIIFPresentation {
         JSONObject output = new JSONObject();
         output.put("@context", "http://iiif.io/api/presentation/2/context.json");
         output.put("@type", "sc:Manifest");
-        output.put("@id", baseURL + "/view/iiif/" + id);
+        output.put("@id", baseURL + "/iiif/" + id);
         output.put("label", label);
         output.put("description", description);
         output.put("attribution", attribution);
@@ -197,7 +201,7 @@ public class IIIFPresentation {
         JSONObject seqObj = new JSONObject();
         JSONArray canvases = new JSONArray();
 
-        seqObj.put("@id", baseURL + "/view/iiif/" + id + "/sequence");
+        seqObj.put("@id", baseURL + "/iiif/" + id + "/sequence");
         seqObj.put("@type", "sc:Sequence");
         seqObj.put("label", "Current Page Order");
         for (int i = 0; i < pages.length(); i++) {
@@ -205,7 +209,7 @@ public class IIIFPresentation {
             JSONObject page = pages.getJSONObject(i);
 
             JSONObject canvas = new JSONObject();
-            canvas.put("@id", baseURL + "/view/iiif/" + id + "/canvas/" + (i + 1));
+            canvas.put("@id", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
             canvas.put("@type", "sc:Canvas");
             canvas.put("label", page.get("label"));
             canvas.put("height", 1000); // FIXME placeholder
@@ -215,7 +219,7 @@ public class IIIFPresentation {
             JSONObject imageObj = new JSONObject();
             imageObj.put("@type", "oa:Annotation");
             imageObj.put("motivation", "sc:painting");
-            imageObj.put("on", baseURL + "/view/iiif/" + id + "/canvas/" + (i + 1));
+            imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
             // MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
             // get parts needed from ID
@@ -280,7 +284,7 @@ public class IIIFPresentation {
             JSONObject structure = new JSONObject();
             JSONObject lsObject = lsArray.getJSONObject(i);
             String metaId = lsObject.getString("descriptiveMetadataID");
-            structure.put("@id", baseURL + "/view/iiif/" + id + "/range/" + metaId);
+            structure.put("@id", baseURL + "/iiif/" + id + "/range/" + metaId);
             structure.put("@type", "sc:Range");
             structure.put("label", lsObject.get("label"));
 
@@ -300,7 +304,7 @@ public class IIIFPresentation {
                 // list canvases in this range (only if no children)
                 for (int j = start; j <= end; j++) {
                     JSONObject member = new JSONObject();
-                    String canvasId = baseURL + "/view/iiif/" + id + "/canvas/" + j;
+                    String canvasId = baseURL + "/iiif/" + id + "/canvas/" + j;
                     member.put("@id", canvasId);
                     member.put("@type", "sc:Canvas");
                     member.put("label", pages.getJSONObject(j - 1).getString("label"));
@@ -333,7 +337,7 @@ public class IIIFPresentation {
             JSONObject structure = new JSONObject();
             JSONObject lsObject = lsArray.getJSONObject(i);
             String metaId = lsObject.getString("descriptiveMetadataID");
-            structure.put("@id", baseURL + "/view/iiif/" + id + "/range/" + metaId);
+            structure.put("@id", baseURL + "/iiif/" + id + "/range/" + metaId);
             structure.put("@type", "sc:Range");
             structure.put("label", lsObject.get("label"));
             
@@ -359,7 +363,7 @@ public class IIIFPresentation {
               // list canvases in this range (only if no children)
               for (int j = start; j <= end; j++) {
 
-                 String canvasId = baseURL + "/view/iiif/" + id + "/canvas/" + j;
+                 String canvasId = baseURL + "/iiif/" + id + "/canvas/" + j;
                  canvases.put(canvasId);
               }
               structure.put("canvases", canvases);

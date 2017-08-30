@@ -167,30 +167,6 @@ public class DocumentViewController {
 
     }
 
-    // on path /view/iiif/{docId}.json
-    @RequestMapping(value = "/iiif/{docId}.json")
-    public ModelAndView handleIIIFRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
-
-        // force docID to uppercase
-        docId = docId.toUpperCase();
-
-        Item item = itemFactory.getItemFromId(docId);
-        if (item != null) {
-
-            String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
-            IIIFPresentation pres = new IIIFPresentation(item, baseURL);
-            JSONObject presJSON = pres.outputJSON();
-
-            writeJSONOut(presJSON, response);
-
-            return null;
-
-        } else {
-            throw new ResourceNotFoundException();
-        }
-
-    }
-
     private void writeJSONOut(JSONObject json, HttpServletResponse response)
             throws JSONException {
 

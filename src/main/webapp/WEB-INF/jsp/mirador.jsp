@@ -26,12 +26,12 @@
           layout: "1x1",
           buildPath: "mirador/",
           data: [
-            { manifestUri: "<c:out value="${baseURL}"/>view/iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}
+            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}
             
           ],
           windowObjects: [{
-        	  loadedManifest: "<c:out value="${baseURL}"/>view/iiif/<c:out value="${id}"/>.json",
-        	  canvasID: "<c:out value="${baseURL}"/>view/iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
+        	  loadedManifest: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json",
+        	  canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
         	  viewType: "ImageView"
         	  }]
         });
