@@ -86,7 +86,7 @@ public class IIIFPresentation {
         // navDate?
         // license
         attribution = "Provided by Cambridge University Library";
-        logoURL = baseURL+"/mirador/cu_logo.png";
+        logoURL = baseURL+"/mirador-ui/cu_logo.png";
 
         // seeAlso (source metadta)
         // within (collection?)

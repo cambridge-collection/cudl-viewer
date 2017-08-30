@@ -93,7 +93,7 @@ public class SiteViewController {
     }
     
     // on path /mirador/
-    @RequestMapping(value = "/mirador/view/{id}/{pagenum}")
+    @RequestMapping(value = "/mirador/{id}/{pagenum}")
     public ModelAndView handleMiradorRequest(@PathVariable("id") String id, 
             @PathVariable("pagenum") int pagenum, HttpServletRequest request) {
 

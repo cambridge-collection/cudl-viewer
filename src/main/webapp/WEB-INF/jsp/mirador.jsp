@@ -13,8 +13,8 @@
         position: fixed;
       }
     </style>
-    <link rel="stylesheet" type="text/css" href="/mirador/css/mirador-combined.css">
-    <script src="/mirador/mirador.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/mirador-ui/css/mirador-combined.css">
+    <script src="/mirador-ui/mirador.min.js"></script>
   </head>
   <body>
   
@@ -24,7 +24,7 @@
         myMiradorInstance = Mirador({
           id: "viewer",
           layout: "1x1",
-          buildPath: "mirador/",
+          buildPath: "mirador-ui/",
           data: [
             { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}
             
