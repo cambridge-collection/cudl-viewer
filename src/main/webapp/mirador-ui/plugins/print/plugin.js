@@ -1,8 +1,8 @@
 /**
  * plugin.js
  *
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -20,13 +20,13 @@ tinymce.PluginManager.add('print', function(editor) {
 		cmd: 'mcePrint'
 	});
 
-	editor.addShortcut('Meta+P', '', 'mcePrint');
+	editor.addShortcut('Ctrl+P', '', 'mcePrint');
 
 	editor.addMenuItem('print', {
 		text: 'Print',
 		cmd: 'mcePrint',
 		icon: 'print',
-		shortcut: 'Meta+P',
+		shortcut: 'Ctrl+P',
 		context: 'file'
 	});
 });

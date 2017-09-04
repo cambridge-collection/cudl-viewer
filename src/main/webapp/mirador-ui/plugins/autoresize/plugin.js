@@ -1,8 +1,8 @@
 /**
  * plugin.js
  *
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -106,7 +106,7 @@ tinymce.PluginManager.add('autoresize', function(editor) {
 	 * the CSS files might load async.
 	 */
 	function wait(times, interval, callback) {
-		tinymce.util.Delay.setEditorTimeout(editor, function() {
+		setTimeout(function() {
 			resize({});
 
 			if (times--) {
@@ -125,23 +125,13 @@ tinymce.PluginManager.add('autoresize', function(editor) {
 
 	// Add padding at the bottom for better UX
 	editor.on("init", function() {
-		var overflowPadding, bottomMargin;
+		var overflowPadding = editor.getParam('autoresize_overflow_padding', 1);
 
-		overflowPadding = editor.getParam('autoresize_overflow_padding', 1);
-		bottomMargin = editor.getParam('autoresize_bottom_margin', 50);
-
-		if (overflowPadding !== false) {
-			editor.dom.setStyles(editor.getBody(), {
-				paddingLeft: overflowPadding,
-				paddingRight: overflowPadding
-			});
-		}
-
-		if (bottomMargin !== false) {
-			editor.dom.setStyles(editor.getBody(), {
-				paddingBottom: bottomMargin
-			});
-		}
+		editor.dom.setStyles(editor.getBody(), {
+			paddingBottom: editor.getParam('autoresize_bottom_margin', 50),
+			paddingLeft: overflowPadding,
+			paddingRight: overflowPadding
+		});
 	});
 
 	// Add appropriate listeners for resizing content area

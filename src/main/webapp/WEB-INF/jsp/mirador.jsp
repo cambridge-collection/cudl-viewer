@@ -37,15 +37,14 @@
                                This setting does NOT affect whether or not a user can edit an individual annotation that has already been created.*/
                   "annotationState" : 'off', //[_'off'_, 'on'] whether or not to turn on the annotation layer on window load
                   "annotationRefresh" : false, //whether or not to display the refresh icon for annotations
-            },
+            }
           }},
           windowObjects: [{
         	  loadedManifest: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json",
         	  canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
         	  viewType: "ImageView"
         	  }]
-        });
-        console.log(myMiradorInstance);
+        });        
       });
      
     </script>

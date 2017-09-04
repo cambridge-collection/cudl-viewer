@@ -1,8 +1,8 @@
 /**
  * plugin.js
  *
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -17,12 +17,7 @@ tinymce.PluginManager.add('template', function(editor) {
 		return function() {
 			var templateList = editor.settings.templates;
 
-			if (typeof templateList == "function") {
-				templateList(callback);
-				return;
-			}
-
-			if (typeof templateList == "string") {
+			if (typeof(templateList) == "string") {
 				tinymce.util.XHR.send({
 					url: templateList,
 					success: function(text) {
@@ -39,8 +34,7 @@ tinymce.PluginManager.add('template', function(editor) {
 		var win, values = [], templateHtml;
 
 		if (!templateList || templateList.length === 0) {
-			var message = editor.translate('No templates defined.');
-			editor.notificationManager.open({text: message, type: 'info'});
+			editor.windowManager.alert('No templates defined');
 			return;
 		}
 
@@ -67,19 +61,13 @@ tinymce.PluginManager.add('template', function(editor) {
 						contentCssLinks += '<link type="text/css" rel="stylesheet" href="' + editor.documentBaseURI.toAbsolute(url) + '">';
 					});
 
-					var bodyClass = editor.settings.body_class || '';
-					if (bodyClass.indexOf('=') != -1) {
-						bodyClass = editor.getParam('body_class', '', 'hash');
-						bodyClass = bodyClass[editor.id] || '';
-					}
-
 					html = (
 						'<!DOCTYPE html>' +
 						'<html>' +
 							'<head>' +
 								contentCssLinks +
 							'</head>' +
-							'<body class="' + bodyClass + '">' +
+							'<body>' +
 								html +
 							'</body>' +
 						'</html>'
@@ -132,8 +120,8 @@ tinymce.PluginManager.add('template', function(editor) {
 				insertTemplate(false, templateHtml);
 			},
 
-			minWidth: Math.min(tinymce.DOM.getViewPort().w, editor.getParam('template_popup_width', 600)),
-			minHeight: Math.min(tinymce.DOM.getViewPort().h, editor.getParam('template_popup_height', 500))
+			width: editor.getParam('template_popup_width', 600),
+			height: editor.getParam('template_popup_height', 500)
 		});
 
 		win.find('listbox')[0].fire('select');
@@ -185,7 +173,7 @@ tinymce.PluginManager.add('template', function(editor) {
 		each(dom.select('*', e), function(e) {
 			each(vl, function(v, k) {
 				if (dom.hasClass(e, k)) {
-					if (typeof vl[k] == 'function') {
+					if (typeof(vl[k]) == 'function') {
 						vl[k](e);
 					}
 				}
@@ -195,11 +183,9 @@ tinymce.PluginManager.add('template', function(editor) {
 
 	function replaceTemplateValues(html, templateValuesOptionName) {
 		each(editor.getParam(templateValuesOptionName), function(v, k) {
-			if (typeof v == 'function') {
-				v = v(k);
+			if (typeof(v) != 'function') {
+				html = html.replace(new RegExp('\\{\\$' + k + '\\}', 'g'), v);
 			}
-
-			html = html.replace(new RegExp('\\{\\$' + k + '\\}', 'g'), v);
 		});
 
 		return html;
@@ -253,7 +239,7 @@ tinymce.PluginManager.add('template', function(editor) {
 	});
 
 	editor.addMenuItem('template', {
-		text: 'Template',
+		text: 'Insert template',
 		onclick: createTemplateList(showDialog),
 		context: 'insert'
 	});

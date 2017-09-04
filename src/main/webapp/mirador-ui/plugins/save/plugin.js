@@ -1,8 +1,8 @@
 /**
  * plugin.js
  *
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -24,33 +24,29 @@ tinymce.PluginManager.add('save', function(editor) {
 
 		// Use callback instead
 		if (editor.getParam("save_onsavecallback")) {
-			editor.execCallback('save_onsavecallback', editor);
-			editor.nodeChanged();
+			if (editor.execCallback('save_onsavecallback', editor)) {
+				editor.startContent = tinymce.trim(editor.getContent({format: 'raw'}));
+				editor.nodeChanged();
+			}
+
 			return;
 		}
 
 		if (formObj) {
-			editor.setDirty(false);
+			editor.isNotDirty = true;
 
 			if (!formObj.onsubmit || formObj.onsubmit()) {
-				if (typeof formObj.submit == "function") {
+				if (typeof(formObj.submit) == "function") {
 					formObj.submit();
 				} else {
-					displayErrorMessage(editor.translate("Error: Form submit field collision."));
+					editor.windowManager.alert("Error: Form submit field collision.");
 				}
 			}
 
 			editor.nodeChanged();
 		} else {
-			displayErrorMessage(editor.translate("Error: No form element found."));
+			editor.windowManager.alert("Error: No form element found.");
 		}
-	}
-
-	function displayErrorMessage(message) {
-		editor.notificationManager.open({
-			text: message,
-			type: 'error'
-		});
 	}
 
 	function cancel() {
@@ -70,7 +66,7 @@ tinymce.PluginManager.add('save', function(editor) {
 	function stateToggle() {
 		var self = this;
 
-		editor.on('nodeChange dirty', function() {
+		editor.on('nodeChange', function() {
 			self.disabled(editor.getParam("save_enablewhendirty", true) && !editor.isDirty());
 		});
 	}
@@ -94,5 +90,5 @@ tinymce.PluginManager.add('save', function(editor) {
 		onPostRender: stateToggle
 	});
 
-	editor.addShortcut('Meta+S', '', 'mceSave');
+	editor.addShortcut('ctrl+s', '', 'mceSave');
 });

@@ -1,8 +1,8 @@
 /**
  * plugin.js
  *
+ * Copyright, Moxiecode Systems AB
  * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
@@ -17,9 +17,12 @@
 /*global tinymce:true */
 
 (function(tinymce) {
-	tinymce.PluginManager.add('legacyoutput', function(editor, url, $) {
-		editor.settings.inline_styles = false;
+	// Override inline_styles setting to force TinyMCE to produce deprecated contents
+	tinymce.on('AddEditor', function(e) {
+		e.editor.settings.inline_styles = false;
+	});
 
+	tinymce.PluginManager.add('legacyoutput', function(editor, url, $) {
 		editor.on('init', function() {
 			var alignElements = 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img',
 				fontSizes = tinymce.explode(editor.settings.font_size_style_values),
@@ -149,21 +152,21 @@
 			}
 
 			var defaultFontsFormats =
-				'Andale Mono=andale mono,monospace;' +
+				'Andale Mono=andale mono,times;' +
 				'Arial=arial,helvetica,sans-serif;' +
-				'Arial Black=arial black,sans-serif;' +
-				'Book Antiqua=book antiqua,palatino,serif;' +
+				'Arial Black=arial black,avant garde;' +
+				'Book Antiqua=book antiqua,palatino;' +
 				'Comic Sans MS=comic sans ms,sans-serif;' +
-				'Courier New=courier new,courier,monospace;' +
-				'Georgia=georgia,palatino,serif;' +
-				'Helvetica=helvetica,arial,sans-serif;' +
-				'Impact=impact,sans-serif;' +
+				'Courier New=courier new,courier;' +
+				'Georgia=georgia,palatino;' +
+				'Helvetica=helvetica;' +
+				'Impact=impact,chicago;' +
 				'Symbol=symbol;' +
 				'Tahoma=tahoma,arial,helvetica,sans-serif;' +
-				'Terminal=terminal,monaco,monospace;' +
-				'Times New Roman=times new roman,times,serif;' +
-				'Trebuchet MS=trebuchet ms,geneva,sans-serif;' +
-				'Verdana=verdana,geneva,sans-serif;' +
+				'Terminal=terminal,monaco;' +
+				'Times New Roman=times new roman,times;' +
+				'Trebuchet MS=trebuchet ms,geneva;' +
+				'Verdana=verdana,geneva;' +
 				'Webdings=webdings;' +
 				'Wingdings=wingdings,zapf dingbats';
 
