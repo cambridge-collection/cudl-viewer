@@ -20,22 +20,34 @@
   
     <div id="viewer"></div>
     <script type="text/javascript">
-    $(function() {
+    $(function() {    	
         myMiradorInstance = Mirador({
-          id: "viewer",
-          layout: "1x1",
-          buildPath: "mirador-ui/",
+          "id": "viewer",
+          "buildPath": "/mirador-ui/",          
+          "i18nPath": "locales/",
           data: [
-            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}
-            
+            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}            
           ],
+          'windowSettings' : {
+          "canvasControls": { 
+        	  "annotations" : {
+                  "annotationLayer" : false, //whether or not to make annotation layer available in this window
+                  "annotationCreation" : false, /*whether or not to make annotation creation available in this window,
+                               only valid if annotationLayer is set to True and an annotationEndpoint is defined.
+                               This setting does NOT affect whether or not a user can edit an individual annotation that has already been created.*/
+                  "annotationState" : 'off', //[_'off'_, 'on'] whether or not to turn on the annotation layer on window load
+                  "annotationRefresh" : false, //whether or not to display the refresh icon for annotations
+            },
+          }},
           windowObjects: [{
         	  loadedManifest: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json",
         	  canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
         	  viewType: "ImageView"
         	  }]
         });
-      });    
+        console.log(myMiradorInstance);
+      });
+     
     </script>
   </body>
 </html>
