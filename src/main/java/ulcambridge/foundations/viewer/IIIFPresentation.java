@@ -223,13 +223,19 @@ public class IIIFPresentation {
 
             // MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
             // get parts needed from ID
-            String[] idParts = id.split("-");
+            //String[] idParts = id.split("-");
 
             // build filePath of the form MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
-            String downloadImageUrl = page.getString("downloadImageURL");
-            String imageName = downloadImageUrl.substring(downloadImageUrl.lastIndexOf("/") + 1);
-            imageName = imageName.replaceAll(".jpg", ".jp2");
-            String filePath = idParts[0] + "/" + idParts[1] + "/" + id + "/JP2/" + imageName;
+            String displayImageUrl = page.getString("displayImageURL");
+            String imageName = displayImageUrl.substring(displayImageUrl.lastIndexOf("/") + 1);
+            imageName = imageName.replaceAll(".dzi", ".jp2");
+            
+            // Note on some occasions imageid is different to itemid (e.g. oracle bones).
+            String imageid = imageName.replaceFirst("-[0-9]{3}-[0-9]{5}.jp2",  "");            
+            
+            String[] idParts = imageid.split("-");
+            //String filePath = idParts[0] + "/" + idParts[1] + "/" + id + "/JP2/" + imageName;
+            String filePath = idParts[0] + "/" + idParts[1] + "/" + imageid + "/JP2/" + imageName;
 
             String imageURL = imageServerURL + imageFilePath + filePath;
             JSONObject resource = new JSONObject();
