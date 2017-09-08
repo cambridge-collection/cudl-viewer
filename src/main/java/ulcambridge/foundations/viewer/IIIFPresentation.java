@@ -42,7 +42,6 @@ public class IIIFPresentation {
 
         /** TODO restrict image server to IIIFEnabled items **/
         /** TODO transcriptions **/
-        /** TODO rights **/
         /** TODO remove extra html tags in text **/
         JSONObject json = item.getJSON();
 
@@ -85,7 +84,11 @@ public class IIIFPresentation {
         
         // navDate?
         // license
-        attribution = "Provided by Cambridge University Library";
+        attribution = "Provided by Cambridge University Library. ";
+        attribution += metadataObject.get("displayImageRights")+ "  ";
+        attribution += metadataObject.get("downloadImageRights")+ "  ";
+        attribution += metadataObject.get("metadataRights");
+        
         logoURL = baseURL+"/mirador-ui/cu_logo.png";
 
         // seeAlso (source metadta)
