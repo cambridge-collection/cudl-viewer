@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html lang="en">
   <head>
@@ -41,7 +42,9 @@
           }},
           windowObjects: [{
         	  loadedManifest: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json",
-        	  canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
+        	  <c:if test="${pagenum gt 0}">
+        	    canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
+        	  </c:if>
         	  viewType: "ImageView"
         	  }]
         });        
