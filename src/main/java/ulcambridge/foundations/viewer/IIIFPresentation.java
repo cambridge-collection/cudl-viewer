@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * This class is for converting the JSON metadata into IIIF presentation 2.0 api metadata. 
@@ -31,11 +32,8 @@ public class IIIFPresentation {
     String id;
     JSONArray pages;
     JSONArray lsArray;
-
-    /** TODO move to global properties **/
     String baseURL;
-    String imageServerURL = "https://image02.cudl.lib.cam.ac.uk/fcgi-bin/iipsrv.fcgi?IIIF=";
-    String imageFilePath = "/mnt/delivery/JPEG2000/";
+    String IIIFImageServer = Properties.getString("IIIFImageServer");
 
     public IIIFPresentation(Item item, String baseURL, String servicesURL) throws JSONException {
 
@@ -43,7 +41,6 @@ public class IIIFPresentation {
         this.baseURL = baseURL;
 
         /** setup key for access to full images (image server)
-        /** TODO check if we are allowed to display this metadata in IIIF - downloadImageRights? **/
         /** TODO transcriptions **/
         /** TODO rights **/
         /** TODO remove extra html tags in text **/
@@ -207,7 +204,9 @@ public class IIIFPresentation {
         for (int i = 0; i < pages.length(); i++) {
 
             JSONObject page = pages.getJSONObject(i);
-
+            //int imageWidth = page.getInt("imageWidth");
+            //int imageHeight = page.getInt("imageHeight");
+            
             JSONObject canvas = new JSONObject();
             canvas.put("@id", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
             canvas.put("@type", "sc:Canvas");
@@ -221,28 +220,14 @@ public class IIIFPresentation {
             imageObj.put("motivation", "sc:painting");
             imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
-            // MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
-            // get parts needed from ID
-            //String[] idParts = id.split("-");
-
-            // build filePath of the form MS/KK/MS-KK-00001-00024/JP2/MS-KK-00001-00024-000-00002.jp2
-            String displayImageUrl = page.getString("displayImageURL");
-            String imageName = displayImageUrl.substring(displayImageUrl.lastIndexOf("/") + 1);
-            imageName = imageName.replaceAll(".dzi", ".jp2");
-            
-            // Note on some occasions imageid is different to itemid (e.g. oracle bones).
-            String imageid = imageName.replaceFirst("-[0-9]{3}-[0-9]{5}.jp2",  "");            
-            
-            String[] idParts = imageid.split("-");
-            //String filePath = idParts[0] + "/" + idParts[1] + "/" + id + "/JP2/" + imageName;
-            String filePath = idParts[0] + "/" + idParts[1] + "/" + imageid + "/JP2/" + imageName;
-
-            String imageURL = imageServerURL + imageFilePath + filePath;
+            String IIIFImagePath = page.getString("IIIFImageURL");                        
+            String imageURL = IIIFImageServer + IIIFImagePath;
             JSONObject resource = new JSONObject();
-            // resource.put("@id", imageURL + "/full/,600/0/default.jpg");
             resource.put("@id", imageURL);
             resource.put("@type", "dctypes:Image");
-            resource.put("format", "image/jpg");
+            resource.put("format", "image/jpg");          
+            
+            // TODO Read Height / width 
             resource.put("height", 1000); // FIXME placeholder
             resource.put("width", 750); // FIXME placeholder
 

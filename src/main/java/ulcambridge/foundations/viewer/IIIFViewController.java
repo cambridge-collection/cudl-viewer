@@ -59,7 +59,7 @@ public class IIIFViewController {
         String servicesURL = Properties.getString("services");
         
         Item item = itemFactory.getItemFromId(docId);
-        if (item != null) {
+        if (item != null && item.getIIIFEnabled()) {
 
             String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
             IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL);

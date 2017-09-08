@@ -212,10 +212,12 @@
                                 </h3>
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
-                                    <a href="/mirador/${item.id}/${page}"><img src="/mirador-ui/mirador.png" title="View in Mirador Viewer"></a>
-                                    &nbsp;
-                                    <a href="/iiif/${item.id}.json"><img src="/mirador-ui/logo-iiif-34x30.png" title="View IIIF Manifest"></a>
-                                    <br/><br/>
+                                    <c:if test="${item['IIIFEnabled']}">
+                                      <a href="/mirador/${item.id}/${page}"><img src="/mirador-ui/mirador.png" title="View in Mirador Viewer"></a>
+                                      &nbsp;
+                                      <a href="/iiif/${item.id}.json"><img src="/mirador-ui/logo-iiif-34x30.png" title="View IIIF Manifest"></a>
+                                      <br/><br/>
+                                    </c:if>
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>

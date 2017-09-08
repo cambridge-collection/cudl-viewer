@@ -31,6 +31,7 @@ public class Item implements Comparable<Item> {
     protected String thumbnailURL;
     protected String thumbnailOrientation;
     protected String abstractShort;
+    protected boolean IIIFEnabled;
     protected List<String> pageLabels;
     protected List<String> pageThumbnailURLs;
     protected JSONObject json; // used for document view
@@ -67,7 +68,7 @@ public class Item implements Comparable<Item> {
             this.title = title.substring(0, 120 + title
                     .substring(120).indexOf(" "))+ "...";
         }
-
+        
         this.pageLabels = pageLabels;
         this.pageThumbnailURLs = pageThumbnailURLs;
 
@@ -85,6 +86,7 @@ public class Item implements Comparable<Item> {
             authorJSON.addAll(this.getAuthors());
             simplejson.append("authors", authorJSON);
 
+            IIIFEnabled = itemJson.getBoolean("IIIFEnabled");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -164,6 +166,10 @@ public class Item implements Comparable<Item> {
 
     public String getShelfLocator() {
         return shelfLocator;
+    }
+    
+    public boolean getIIIFEnabled() {
+        return IIIFEnabled;
     }
 
     public JSONObject getJSON() {
