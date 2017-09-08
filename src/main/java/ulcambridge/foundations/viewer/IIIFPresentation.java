@@ -40,7 +40,7 @@ public class IIIFPresentation {
         id = item.getId();
         this.baseURL = baseURL;
 
-        /** setup key for access to full images (image server)
+        /** TODO restrict image server to IIIFEnabled items **/
         /** TODO transcriptions **/
         /** TODO rights **/
         /** TODO remove extra html tags in text **/
@@ -79,6 +79,10 @@ public class IIIFPresentation {
         }
 
         description = item.getAbstract();
+        
+        // translate links in description        
+        description = description.replaceAll("<a href=\\'\\' onclick=\\'store.loadPage\\(([0-9]+)\\);return false;\\'>", "<a href='http://cudl.lib.cam.ac.uk/view/"+id+"/$1'>");        
+        
         // navDate?
         // license
         attribution = "Provided by Cambridge University Library";
@@ -89,15 +93,6 @@ public class IIIFPresentation {
         // sequences
         // label
         // viewingdirection
-        // canvases
-        // height
-        // width
-        // images
-        // label
-        // othercontent (transcriptions?)
-        // structures
-        // label
-        // canvases
 
     }
 
