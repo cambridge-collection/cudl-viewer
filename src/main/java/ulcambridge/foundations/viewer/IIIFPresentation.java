@@ -55,12 +55,6 @@ public class IIIFPresentation {
         // version of iiif presentation
         label = item.getTitle() + " (" + item.getShelfLocator() + ")";
 
-
-        // Iterator keys = metadataObject.keys();
-        // while (keys.hasNext()) {
-
-        // JSONObject obj = metadataObject.getJSONObject(key);
-
         // metadataObject is an object containing key value pairs,
         // values could be strings/numbers or objects.
 
@@ -202,15 +196,15 @@ public class IIIFPresentation {
         for (int i = 0; i < pages.length(); i++) {
 
             JSONObject page = pages.getJSONObject(i);
-            //int imageWidth = page.getInt("imageWidth");
-            //int imageHeight = page.getInt("imageHeight");
+            int imageWidth = page.getInt("imageWidth");
+            int imageHeight = page.getInt("imageHeight");
             
             JSONObject canvas = new JSONObject();
             canvas.put("@id", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
             canvas.put("@type", "sc:Canvas");
             canvas.put("label", page.get("label"));
-            canvas.put("height", 1000); // FIXME placeholder
-            canvas.put("width", 750); // FIXME placeholder
+            canvas.put("height", imageHeight);
+            canvas.put("width", imageWidth);
 
             JSONArray images = new JSONArray();
             JSONObject imageObj = new JSONObject();
@@ -224,10 +218,9 @@ public class IIIFPresentation {
             resource.put("@id", imageURL);
             resource.put("@type", "dctypes:Image");
             resource.put("format", "image/jpg");          
-            
-            // TODO Read Height / width 
-            resource.put("height", 1000); // FIXME placeholder
-            resource.put("width", 750); // FIXME placeholder
+             
+            resource.put("height", imageHeight); 
+            resource.put("width", imageWidth); 
 
             JSONObject service = new JSONObject();
             service.put("@context", "http://iiif.io/api/image/2/context.json");
