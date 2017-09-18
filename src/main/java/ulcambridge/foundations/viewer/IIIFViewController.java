@@ -57,6 +57,9 @@ public class IIIFViewController {
 
         //Get services
         String servicesURL = Properties.getString("services");
+        if (servicesURL.startsWith("//")) {
+            servicesURL = request.getScheme() + ":"+servicesURL;
+        }
         
         Item item = itemFactory.getItemFromId(docId);
         if (item != null && item.getIIIFEnabled()) {
