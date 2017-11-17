@@ -212,6 +212,10 @@
                                 </h3>
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
+                                    <c:if test="${item['IIIFEnabled']}">
+                                      <a href="/mirador/${item.id}/${page}?manifest=${rootURL}/iiif/${item.id}.json"><img src="/mirador-ui/logo-iiif-34x30.png" title="View in Mirador Viewer (or Drag n Drop into your IIIF viewer)"></a>
+                                      <br/><br/>
+                                    </c:if>
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
