@@ -31,7 +31,7 @@ public class Item implements Comparable<Item> {
     protected String thumbnailURL;
     protected String thumbnailOrientation;
     protected String abstractShort;
-    protected boolean IIIFEnabled;
+    protected boolean IIIFEnabled = false;
     protected List<String> pageLabels;
     protected List<String> pageThumbnailURLs;
     protected JSONObject json; // used for document view
@@ -85,8 +85,11 @@ public class Item implements Comparable<Item> {
             JSONArray authorJSON = new JSONArray();
             authorJSON.addAll(this.getAuthors());
             simplejson.append("authors", authorJSON);
-
-            IIIFEnabled = itemJson.getBoolean("IIIFEnabled");
+ 
+            if (itemJson.has("IIIFEnabled")) {            
+                IIIFEnabled = itemJson.getBoolean("IIIFEnabled");
+            }
+            
         } catch (JSONException e) {
             e.printStackTrace();
         }
