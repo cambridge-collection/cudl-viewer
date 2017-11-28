@@ -66,7 +66,8 @@ public class CollectionViewController {
 
     // on path /collections/{collectionId}
     @RequestMapping(value = "/{collectionId}")
-    public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId ) {
+    public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId,
+                                       @RequestParam(value = "page", required=false, defaultValue = "1") Integer pageNumber ) {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
@@ -92,6 +93,7 @@ public class CollectionViewController {
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHTMLURL);
+        modelAndView.addObject("pageNumber", pageNumber);
 
         // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {
