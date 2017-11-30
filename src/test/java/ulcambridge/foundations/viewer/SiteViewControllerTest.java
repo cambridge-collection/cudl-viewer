@@ -3,7 +3,7 @@ package ulcambridge.foundations.viewer;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.dao.CollectionsMockDao;
+import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
 import javax.servlet.RequestDispatcher;
 
@@ -15,7 +15,7 @@ public class SiteViewControllerTest {
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new CollectionsMockDao());
+            new MockCollectionsDao());
 
         return new SiteViewController(collectionFactory);
     }
