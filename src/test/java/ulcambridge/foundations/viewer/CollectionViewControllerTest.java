@@ -4,23 +4,32 @@ import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockItemsJSONDao;
+import ulcambridge.foundations.viewer.model.Collection;
 
-import static org.junit.Assert.assertTrue;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 public class CollectionViewControllerTest {
 
     @Test
     public void testHandleRequest_CollectionIdAndPageNumber() throws Exception {
         ModelAndView modelAndView = createController().handleRequest("treasures", 1);
-        assertTrue(modelAndView!=null);
+        Map<String,Object> modelMap = modelAndView.getModel();
+        Collection collection = (Collection)modelMap.get("collection");
 
+        assertEquals(1, modelMap.get("pageNumber"));
+        assertEquals("treasures", collection.getId());
     }
 
     @Test
     public void testHandleRequest_CollectionIdOnly() throws Exception {
         ModelAndView modelAndView = createController().handleRequest("treasures", null);
-        assertTrue(modelAndView!=null);
+        Map<String,Object> modelMap = modelAndView.getModel();
+        Collection collection = (Collection)modelMap.get("collection");
 
+        assertEquals(null, modelMap.get("pageNumber"));
+        assertEquals("treasures", collection.getId());
     }
 
     private CollectionViewController createController() {
