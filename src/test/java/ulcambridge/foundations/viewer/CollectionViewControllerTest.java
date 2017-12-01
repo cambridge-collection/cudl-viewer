@@ -24,11 +24,11 @@ public class CollectionViewControllerTest {
 
     @Test
     public void testHandleRequest_CollectionIdOnly() throws Exception {
-        ModelAndView modelAndView = createController().handleRequest("treasures", null);
+        ModelAndView modelAndView = createController().handleRequest("treasures");
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
-        assertEquals(null, modelMap.get("pageNumber"));
+        assertEquals(1, modelMap.get("pageNumber"));
         assertEquals("treasures", collection.getId());
     }
 

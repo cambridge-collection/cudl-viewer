@@ -37,6 +37,9 @@ public class CollectionViewController {
     private final ItemFactory itemFactory;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
+    private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
+    private static final String PATH_COLLECTION_WITH_PAGE = "/{collectionId}/{page}";
+
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
                                     ItemFactory itemFactory) {
@@ -65,9 +68,15 @@ public class CollectionViewController {
     }
 
     // on path /collections/{collectionId}
-    @RequestMapping(value = "/{collectionId}")
+    @RequestMapping(value = PATH_COLLECTION_NO_PAGE)
+    public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId) {
+        return handleRequest(collectionId, 1);
+    }
+
+    // on path /collections/{collectionId}/{page}
+    @RequestMapping(value = PATH_COLLECTION_WITH_PAGE)
     public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId,
-                                       @RequestParam(value = "page", required=false, defaultValue = "1") Integer pageNumber ) {
+                                       @PathVariable("page") Integer pageNumber) {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
