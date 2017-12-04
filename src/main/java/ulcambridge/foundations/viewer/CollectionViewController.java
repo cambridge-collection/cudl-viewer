@@ -102,7 +102,7 @@ public class CollectionViewController {
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHTMLURL);
-        modelAndView.addObject("pageNumber", pageNumber);
+        modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
 
         // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {

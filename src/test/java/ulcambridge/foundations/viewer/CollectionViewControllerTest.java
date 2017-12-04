@@ -13,8 +13,28 @@ import static org.junit.Assert.assertEquals;
 public class CollectionViewControllerTest {
 
     @Test
-    public void testHandleRequest_CollectionIdAndPageNumber() throws Exception {
+    public void testHandleRequest_CollectionIdAndPositivePageNumber() throws Exception {
         ModelAndView modelAndView = createController().handleRequest("treasures", 1);
+        Map<String,Object> modelMap = modelAndView.getModel();
+        Collection collection = (Collection)modelMap.get("collection");
+
+        assertEquals(1, modelMap.get("pageNumber"));
+        assertEquals("treasures", collection.getId());
+    }
+
+    @Test
+    public void testHandleRequest_CollectionIdAndZeroPageNumber() throws Exception {
+        ModelAndView modelAndView = createController().handleRequest("treasures", 0);
+        Map<String,Object> modelMap = modelAndView.getModel();
+        Collection collection = (Collection)modelMap.get("collection");
+
+        assertEquals(1, modelMap.get("pageNumber"));
+        assertEquals("treasures", collection.getId());
+    }
+
+    @Test
+    public void testHandleRequest_CollectionIdAndNegativePageNumber() throws Exception {
+        ModelAndView modelAndView = createController().handleRequest("treasures", -1);
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
