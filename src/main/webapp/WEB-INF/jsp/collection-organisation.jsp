@@ -11,9 +11,11 @@
 <cudl:generic-page pagetype="COLLECTION_ORGANISATION" title="${collection.title}">
     <jsp:attribute name="pageData">
         <cudl:default-context>
-            <json:property name="collectionCookieName" value="${collection.id}_pageNum"/>
+            <%--<json:property name="collectionCookieName" value="${collection.id}_pageNum"/>--%>
             <json:property name="collectionSize" value="${fn:length(collection.itemIds)}"/>
             <json:property name="collectionUrl" value="${collection.URL}"/>
+            <json:property name="collectionTitle" value="${collection.title}"/>
+            <json:property name="collectionPage" value="${pageNumber}"/>
             <cudl:context-editable-areas>
                 <cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
                 <cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>

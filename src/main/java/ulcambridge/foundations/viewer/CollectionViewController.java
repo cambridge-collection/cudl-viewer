@@ -37,6 +37,9 @@ public class CollectionViewController {
     private final ItemFactory itemFactory;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
+    private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
+    private static final String PATH_COLLECTION_WITH_PAGE = "/{collectionId}/{page}";
+
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
                                     ItemFactory itemFactory) {
@@ -65,8 +68,15 @@ public class CollectionViewController {
     }
 
     // on path /collections/{collectionId}
-    @RequestMapping(value = "/{collectionId}")
-    public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId ) {
+    @RequestMapping(value = PATH_COLLECTION_NO_PAGE)
+    public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId) {
+        return handleRequest(collectionId, 1);
+    }
+
+    // on path /collections/{collectionId}/{page}
+    @RequestMapping(value = PATH_COLLECTION_WITH_PAGE)
+    public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId,
+                                       @PathVariable("page") Integer pageNumber) {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
@@ -92,6 +102,7 @@ public class CollectionViewController {
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHTMLURL);
+        modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
 
         // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {
