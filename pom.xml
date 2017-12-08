@@ -14,7 +14,7 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <spring.version>4.3.2.RELEASE</spring.version>
         <spring.security.version>4.1.2.RELEASE</spring.security.version>
-        <cudl.viewer-ui-version>1.4.0</cudl.viewer-ui-version>
+        <cudl.viewer-ui-version>1.4.1</cudl.viewer-ui-version>
     </properties>
 
     <scm>
@@ -41,7 +41,7 @@
                     <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
                 </configuration>
             </plugin>
-            
+
             <!--  This plugin is run by 'mvn clean verify cargo:run' and does not allow live reloads -->
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
