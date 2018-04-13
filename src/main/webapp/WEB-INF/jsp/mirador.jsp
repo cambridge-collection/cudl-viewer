@@ -18,19 +18,19 @@
     <script src="/mirador-ui/mirador.min.js"></script>
   </head>
   <body>
-  
+
     <div id="viewer"></div>
     <script type="text/javascript">
-    $(function() {    	
+    $(function() {
         myMiradorInstance = Mirador({
           "id": "viewer",
-          "buildPath": "/mirador-ui/",          
+          "buildPath": "/mirador-ui/",
           "i18nPath": "locales/",
           data: [
-            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambirdge University Library"}            
+            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambridge University Library"}
           ],
           'windowSettings' : {
-          "canvasControls": { 
+          "canvasControls": {
         	  "annotations" : {
                   "annotationLayer" : false, //whether or not to make annotation layer available in this window
                   "annotationCreation" : false, /*whether or not to make annotation creation available in this window,
@@ -47,9 +47,9 @@
         	  </c:if>
         	  viewType: "ImageView"
         	  }]
-        });        
+        });
       });
-     
+
     </script>
   </body>
 </html>
