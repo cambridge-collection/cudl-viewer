@@ -214,7 +214,7 @@
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
                                     <c:if test="${item['IIIFEnabled']}">
                                       <span>
-                                          <a href="http://iiif.io/"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></a>
+                                          <a href="http://iiif.io/?manifest=${IIIFManifestURL}"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></a>
                                           <br/><br/>
                                           IIIF Manifest: <a href="${IIIFManifestURL}">${IIIFManifestURL}</a><br/>
                                           <a href="/mirador/${item.id}/${page}">Open in Mirador Viewer</a>
