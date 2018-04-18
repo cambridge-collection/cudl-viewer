@@ -10,6 +10,7 @@
 
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
+<c:set var="IIIFManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">
@@ -83,7 +84,6 @@
             <json:property name="itemTitle" value="${item.title}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
-
             <%-- Tagging related data --%>
             <sec:authorize access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
                 <json:property name="isUser" value="${true}"/>
@@ -213,8 +213,13 @@
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
                                     <c:if test="${item['IIIFEnabled']}">
-                                      <a href="/mirador/${item.id}/${page}?manifest=${rootURL}/iiif/${item.id}.json"><img src="/mirador-ui/logo-iiif-34x30.png" title="View in Mirador Viewer (or Drag n Drop into your IIIF viewer)"></a>
-                                      <br/><br/>
+                                      <span>
+                                          <a href="http://iiif.io/"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></a>
+                                          <br/><br/>
+                                          IIIF Manifest: <a href="${IIIFManifestURL}">${IIIFManifestURL}</a><br/>
+                                          <a href="/mirador/${item.id}/${page}">Open in Mirador Viewer</a>
+                                       </span>
+                                        <br/><br/>
                                     </c:if>
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
