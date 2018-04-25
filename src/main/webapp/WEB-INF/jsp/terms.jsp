@@ -46,7 +46,7 @@
                         <li><a href="#accessibility">Accessibility</a></li>
                         <li><a href="#privacy">Information we collect (privacy
                                 policy)</a></li>
-                        <li><a href="#protection">Access to information (data
+                        <li><a href="#protect">Access to information (data
                                 protection policy)</a></li>
                         <li><a href="#access">Accessing our site</a></li>
                         <li><a href="#ip">Intellectual property rights</a></li>
@@ -60,8 +60,7 @@
                     </ol>
 
 
-                    <a id="terms"></a>
-                    <h4>Terms of website use</h4>
+                    <h4 id="terms">Terms of website use</h4>
                     <p>These terms of use (together with the documents referred to
                         in them) set out the terms for use of the Cambridge Digital Library
                         website ('our/this/the site') and apply to all users of and
@@ -75,119 +74,34 @@
                         continued use of the site will be deemed acceptance of updated or
                         amended terms.</p>
 
-                    <a id="aboutus"></a>
-                    <h4>Information about us</h4>
+                    <h4 id="aboutus">Information about us</h4>
                     <p>The site is operated by Cambridge University Library
                         ('we','us' or the 'University'), whose postal address is Cambridge
                         University Library, West Road, Cambridge, United Kingdom CB3 9DR.
                         The registered address of the University is Cambridge, The Old
                         Schools, Trinity Lane, Cambridge, United Kingdom CB2 1TN.</p>
 
-                    <a id="accessibility"></a>
-                    <h4>Accessibility</h4>
+                    <h4 id="accessibility">Accessibility</h4>
                     <p>
                         Please see the <a
                             href="http://www.cam.ac.uk/site/accessibility.html">University
                             of Cambridge Web Accessibility Policy</a>.
                     </p>
 
-                    <a id="privacy"></a>
-                    <h4>Information we collect (privacy policy)</h4>
+                    <h4 id="privacy">Information we collect (privacy policy)</h4>
                     <p>
-                        <i>General</i>. This policy explains what information we gather
-                        when you visit the site, and explains how that information is used.
+                        For more information about how we handle your personal information,
+                        please see <a href="http://www.lib.cam.ac.uk/privacy-policy">
+                        University of Cambridge Privacy notice and web privacy policy</a>.
                     </p>
 
-                    <p>It is important for you to appreciate that the site provides
-                        links to other independent sites, both within the University and
-                        elsewhere. This policy applies only to direct accesses to the
-                        Cambridge Digital Library website - URLs starting
-                        http://cudl.lib.cam.ac.uk/ . You will need to consult the
-                        appropriate information on other sites for information on their
-                        policies.</p>
-
-                    <p>
-                        <i>Data collected</i>. In common with most websites, this site
-                        automatically logs certain information about every request made of
-                        it (see below for more details). This information is used for
-                        system administration, for bug tracking, for producing usage
-                        statistics, and for evaluating the usefulness of services offered.
-                        The logged information may be kept indefinitely.
-                    </p>
-
-                    <p>Relevant subsets of this data may be passed to computer
-                        security teams as part of investigations of computer misuse
-                        involving this site or other computing equipment in the University.
-                        Data may be passed to the administrators of other computer systems
-                        to enable investigation of problems accessing this site or of
-                        system misconfigurations. Data may incidentally be included in
-                        information passed to contractors and computer maintenance
-                        organisations working for the University, in which case it will be
-                        covered by appropriate non-disclosure agreements. Otherwise the
-                        logged information is not passed to any third party except if
-                        required by law. Summary statistics are extracted from this data
-                        and some of these may be made publicly available, but those that
-                        are do not include information from which individuals could be
-                        identified.</p>
-                    <p>You should appreciate that a log is a record of what a server
-                        sees, not necessarily what was initially sent. If a request is sent
-                        via a proxy the log file will show the proxy's address. If someone
-                        has forged your address the log file will show your address.</p>
-                    <p>
-                        This site may use web "cookies" as part of user authentication
-                        (login) and to store information needed by other facilities. More
-                        information on our use of cookies can be found in our <a
-                            href="/help#cookies">help section</a>.
-                    </p>
-
-                    <i>Logged data</i>. The following data is automatically logged for
-                    each request:
-                    <ul>
-                        <li>The name or network address of the computer making the
-                            request. Note that under some (but not all) circumstances it may
-                            be possible to infer from this the identity of the person making
-                            the request. Note also that the data recorded may be that of a web
-                            proxy rather than that of the originating client.</li>
-                        <li>The username, when known during authenticated (logged in)
-                            access to the site</li>
-                        <li>The date and time of connection</li>
-                        <li>The HTTP request, which contains the identification of the
-                            document requested</li>
-                        <li>The status code of the request (success or failure etc.)</li>
-                        <li>The number of data bytes sent in response</li>
-                        <li>The contents of the HTTP Referrer header supplied by the
-                            browser</li>
-                        <li>The content of the HTTP User-Agent header supplied by the
-                            browser.</li>
-                    </ul>
-
-                    <p>Logging of additional data may be enabled temporarily from
-                        time to time for specific purposes. In addition, the computers on
-                        which the site is hosted keep records of attempts (authorised and
-                        unauthorised) to use them for purposes other than access to the web
-                        server. This data typically includes the date and time of the
-                        attempt, the service to which access was attempted, the name or
-                        network address of the computer making the connection, and may
-                        include details of what was done or was attempted to be done.</p>
-
-                    <p>Access to personal data. For the purpose of the UK Data
-                        Protection Act 1998, the "Data Controller" for the processing of
-                        data collected by this site is the University of Cambridge, and the
-                        point of contact for subject access requests is the University Data
-                        Protection Officer (10 Peas Hill, Cambridge, CB2 3PN, tel. 01223
-                        339888, fax 01223 331200, email data.protection@admin.cam.ac.uk ).</p>
-                    <p>The University is also Data Controller in respect of any
-                        personal data served as content directly by this site.</p>
-
-                    <a id="protect"></a>
-                    <h4>Access to information (data protection policy)</h4>
+                    <h4 id="protect">Access to information (data protection policy)</h4>
                     <p>
                         Please see the <a
                             href="http://www.admin.cam.ac.uk/univ/information/">University
                             of Cambridge Information Compliance homepage</a>.
                     </p>
-                    <a id="access"></a>
-                    <h4>Accessing our site</h4>
+                    <h4 id="access">Accessing our site</h4>
                     <p>Access to the site is permitted on a temporary basis and the
                         University reserves the right to withdraw or amend the services
                         provided on the site without notice. The University will not be
@@ -236,8 +150,7 @@
                         use at: <a href="http://www.cam.ac.uk/cs/policies">http://www.cam.ac.uk/cs/policies</a>
                     </p>
 
-                    <a id="ip"></a>
-                    <h4>Intellectual property rights</h4>
+                    <h4 id="ip">Intellectual property rights</h4>
                     <p>The University is the owner or the licensee of all
                         intellectual property rights in the site and in the material
                         appearing on the site. The material includes but is not limited to
@@ -292,8 +205,7 @@
                         and acknowledged on this site so that we may make any necessary
                         corrections.</p>
 
-                    <a id="takedown"></a>
-                    <h4>Notice and takedown policy</h4>
+                    <h4 id="takedown">Notice and takedown policy</h4>
                     <p>If you are a rights holder and are concerned that you have
                         found material on our site for which you have not given permission
                         or is not covered by an exception or exemption in national law,
@@ -311,8 +223,8 @@
                         will make an initial assessment of the validity of the complaint.
                         Upon receipt of a valid complaint the material will be removed from
                         the site pending an agreed solution.</p>
-                    <a id="contribute"></a>
-                    <h4>Making contributions to the site</h4>
+
+                    <h4 id="contribute">Making contributions to the site</h4>
                     <p>In submitting a contribution to the site:</p>
                     <p>1. You grant to the University a non-exclusive, worldwide,
                         royalty-free licence to copy, reproduce, broadcast, transmit,
@@ -348,8 +260,8 @@
                         Property Rights, pp. 982-990: <a
                             href="http://www.admin.cam.ac.uk/univ/so/pdfs/ordinance13.pdf">http://www.admin.cam.ac.uk/univ/so/pdfs/ordinance13.pdf</a>.
                     </p>
-                    <a id="contentstandards"></a>
-                    <h4>Content standards</h4>
+
+                    <h4 id="contentstandards">Content standards</h4>
                     <p>These content standards apply to any and all material which
                         you contribute to the site ('Contributions') and to any interactive
                         services or features associated with it.</p>
@@ -400,8 +312,7 @@
                         responsibility or liability to any third party for the content or
                         accuracy of any material posted by any user of the site.</p>
 
-                    <a id="liability"></a>
-                    <h4>Limitation of liability</h4>
+                    <h4 id="liability">Limitation of liability</h4>
                     <p>The site and its Content and University Material is provided
                         on an 'AS IS' and 'AS AVAILABLE' basis. To the extent permitted by
                         law, the University excludes any representations or any warranties
@@ -434,8 +345,7 @@
                         University's liability for death or personal injury caused by the
                         University's proven negligence or fraudulent misrepresentation.</p>
 
-                    <a id="general"></a>
-                    <h4>General</h4>
+                    <h4 id="general">General</h4>
 
                     <p>Nothing in these terms of use is intended to nor shall it
                         confer any benefit on a third party whether under the Contracts
@@ -451,15 +361,15 @@
                         severed and deleted from these terms of use and the remaining terms
                         of use shall survive and remain in full force and effect and
                         continue to be binding and enforceable.</p>
-                    <a id="jurisdiction"></a>
-                    <h4>Jurisdiction</h4>
+
+                    <h4 id="jurisdiction">Jurisdiction</h4>
                     <p>These terms of use and all questions of construction,
                         interpretation, validity and performance under these terms
                         including non-contractual disputes or claims shall be governed by
                         English law and subject to the exclusive jurisdiction of the
                         English courts.</p>
-                    <a id="contact"></a>
-                    <h4>Contact details</h4>
+
+                    <h4 id="contact">Contact details</h4>
                     <p>
                         Project Manager<br /> Foundations Project<br /> Cambridge
                         University Library<br /> West Road<br /> Cambridge<br /> United
