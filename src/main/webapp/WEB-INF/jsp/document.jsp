@@ -10,7 +10,6 @@
 
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
-<c:set var="IIIFManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">
@@ -82,6 +81,9 @@
             <json:property name="parentCollectionURL" value="${parentCollection.URL}"/>
             <json:property name="parentCollectionTitle" value="${parentCollection.title}"/>
             <json:property name="itemTitle" value="${item.title}"/>
+            <json:property name="iiifEnabled" value="${item['IIIFEnabled']}"/>
+            <json:property name="iiifManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
+            <json:property name="iiifMiradorURL" value="/mirador/${item.id}/${page}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
             <%-- Tagging related data --%>
@@ -191,8 +193,8 @@
                                     data-toggle="tab" role="tab" tabindex="-1" href="#similaritems">Similar items</a>
                                 </li>
                                 <li><a id="downloadtab" aria-controls="downloadtab"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#download">Download
-                                        or share</a></li>
+                                    data-toggle="tab" role="tab" tabindex="-1" href="#download">Share
+                                        </a></li>
 
                                 <%-- genizah tagging --%>
                                 <li><a id="taggingtab" aria-controls="taggingtab"
@@ -212,15 +214,67 @@
                                 </h3>
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
-                                    <c:if test="${item['IIIFEnabled']}">
+
                                       <span>
-                                          <a href="http://iiif.io/?manifest=${IIIFManifestURL}"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></a>
-                                          <br/><br/>
-                                          IIIF Manifest: <a href="${IIIFManifestURL}">${IIIFManifestURL}</a><br/>
-                                          <a href="/mirador/${item.id}/${page}">Open in Mirador Viewer</a>
+                                          <div role="tabpanel" class="tab-pane" id="use">
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                   <h3 class="panel-title">Use</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                  <div id="downloadOption">
+                                                    <div class="button usebutton">
+                                                      <a class="btn btn-info left" href="#">
+                                                        <i class="fa fa-download fa-2x pull-left"></i>
+                                                            Download<br/>Image
+                                                      </a>
+                                                     </div>
+                                                   </div>
+                                                   <div id="rightsOption">
+                                                       <div class="button usebutton" >
+                                                         <a class="btn btn-info left"
+                                                         href="http://www.lib.cam.ac.uk/collections/departments/digital-content-unit/licensing-images"
+                                                         target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
+                                                       Request<br/>Rights
+                                                          </a>
+                                                       </div>
+                                                   </div>
+                                                    <div id="downloadMetadataOption">
+                                                      <div class="button usebutton">
+                                                        <a class="btn btn-info left" href="#">
+                                                          <i class="fa fa-file-code-o fa-2x pull-left"></i> Download<br>Metadata
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                    <div id="bookmarkOption">
+                                                      <div class="button usebutton">
+                                                        <a class="btn btn-info left" href="#">
+                                                          <i class="fa fa-bookmark fa-2x pull-left"></i>Bookmark<br/>Image
+                                                        </a>
+                                                      </div>
+                                                    </div>
+
+                                                    <div id="iiifOption">
+                                                      <div class="button usebutton">
+                                                        <a class="btn btn-info left" href="#">
+                                                          <span class="pull-left"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></span> IIIF<br>Manifest
+                                                        </a>
+                                                      </div>
+                                                    </div>
+                                                    <div id="miradorOption">
+                                                      <div class="button usebutton">
+                                                        <a class="btn btn-info left" href="#">
+                                                            <span class="pull-left"><img src="/mirador-ui/mirador.png" title="Open in Mirador"></span> Open in<br>Mirador
+                                                        </a>
+                                                      </div>
+                                                    </div>
+
+                                                </div>
+
+                                             </div>
+                                          </div>
                                        </span>
-                                        <br/><br/>
-                                    </c:if>
+
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
@@ -285,59 +339,6 @@
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="download">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Download</h3>
-                                </div>
-                                <div class="panel-body downloadpanel">
-                                    <div id="downloadOption">
-                                        <div class="button">
-                                            <a class="btn btn-info left" href="#">
-                                                <i class="fa fa-download fa-2x pull-left"></i>
-                                                  Download This<br>Image
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <p class="copyright text" id="downloadCopyright2"></p>
-                                        </div>
-                                    </div>
-                                    <div id="rightsOption">
-                                        <div class="button">
-                                            <a class="btn btn-info left"
-                                            href="http://www.lib.cam.ac.uk/collections/departments/digital-content-unit/licensing-images"
-                                            target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
-                                            Request Image<br>Rights
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <p class="copyright text">Request reproduction rights to this image</p>
-                                        </div>
-                                    </div>
-                                    <div id="bookmarkOption">
-                                        <div class="button">
-                                            <a class="btn btn-info left" href="#">
-                                                <i class="fa fa-bookmark fa-2x pull-left"></i>
-                                                Bookmark This<br>Image
-                                            </a>
-                                        </div>
-                                        <div>
-                                            <p class="copyright text">
-                                                Add this image / page to your personal bookmarks for quick access later.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div id="downloadMetadataOption">
-                                        <div class="button">
-                                            <a class="btn btn-info left" href="#">
-                                                <i class="fa fa-file-code-o fa-2x pull-left"></i> Download<br>Metadata
-                                             </a>
-                                        </div>
-                                        <div>
-                                            <p class="copyright text">Download original metadata for this document.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">Share</h3>
