@@ -109,6 +109,14 @@
                                 Library Team (see our <a href="/contributors/">Contributors
                                     Page</a> for details on how to do this).
                             </p>
+                            <p>
+                                We are currently working on implementing the IIIF technology to expand
+                                your experience using Cambridge Digital Library. If you want to know more
+                                about IIIF and what we’re working on, please see our
+                                <a href="http://www.lib.cam.ac.uk/research/digital-humanities/case-studies/dynamic-digital-library-iiif-scoping-project" target="_blank">
+                                    Dynamic digital library – a IIIF scoping project</a> article.
+
+                            </p>
 
                             <p>
                                 <span id="standards"><b>What kind of standards do you use
