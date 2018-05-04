@@ -9,11 +9,11 @@
         <div class="campl-wrap clearfix">
             <div class="campl-column9  campl-main-content" id="content">
                 <div class="campl-content-container">
-    
+
                     <div class="panel light faq">
-    
+
                         <div class="grid_11">
-    
+
                             <ol>
                                 <li><a href="#mailinglist"><b>How can I find out
                                             when new content is made available?</b> </a></li>
@@ -39,23 +39,23 @@
                             </ol>
                         </div>
                         <div class="grid_11">
-    
+
                             <p>
-                                <a id="mailinglist"><b>How can I find out when new
-                                        content is made available?</b> </a>
+                                <span id="mailinglist"><b>How can I find out when new
+                                        content is made available?</b> </span>
                             </p>
-    
+
                             <p>
                                 Subscribe to our mailing list by sending an email to <a
                                     href="mailto:lib-cudl-news@lists.cam.ac.uk?subject=Subscribe&amp;body=I%20would%20like%20to%20receive%20update%20news%20from%20Cambridge%20University%20Digital%20Library.">lib-cudl-news@lists.cam.ac.uk</a>
                                 and we will do our best to keep you informed of updates.
                             </p>
-    
+
                             <p>
-                                <a id="links"><b>How do I link to a specific page within
-                                        a book?</b> </a>
+                                <span id="links"><b>How do I link to a specific page within
+                                        a book?</b> </span>
                             </p>
-    
+
                             <p>Our website URLs have the format:</p>
                             <p>http://cudl.lib.cam.ac.uk/view/[item id]/[image number]</p>
                             <p>
@@ -63,35 +63,35 @@
                                 links to image 5 in item MS-ADD-03996 (The Trinity College
                                 Notebook).
                             </p>
-    
-    
+
+
                             <p>
-                                <a id="view"><b>How do I change page while seeing as much
-                                        of the manuscript as possible?</b> </a>
+                                <span id="view"><b>How do I change page while seeing as much
+                                        of the manuscript as possible?</b> </span>
                             </p>
-    
+
                             <p>The right panel, which shows some information about the
                                 item can be collapsed by clicking on the arrow icon in the far
                                 right of the screen. This will allow you to view more of the
                                 image while you can still page forward and backwards through the
                                 book. There is also a button within the viewer that allows you to
                                 expand it to cover the full screen.</p>
-    
+
                             <p>
-                                <a id="socialmedia"><b>How do I share a book on Facebook,
-                                        Twitter, etc.?</b> </a>
+                                <span id="socialmedia"><b>How do I share a book on Facebook,
+                                        Twitter, etc.?</b> </span>
                             </p>
-    
+
                             <p>When you are looking at an item, on the right hand panel
                                 select 'View more options' then 'Download or Share'. Under the
                                 Share section on this tab are there are icons which will let you
                                 share the page on facebook, twitter and a number of other social
                                 media sites.</p>
                             <p>
-                                <a id="tech"><b>What technologies are behind the
-                                        Cambridge Digital Library?</b> </a>
+                                <span id="tech"><b>What technologies are behind the
+                                        Cambridge Digital Library?</b> </span>
                             </p>
-    
+
                             <p>
                                 We aim to use primarily open source technologies, and to avoid
                                 the use of plugins to make the site accessible to as many people
@@ -109,10 +109,10 @@
                                 Library Team (see our <a href="/contributors/">Contributors
                                     Page</a> for details on how to do this).
                             </p>
-    
+
                             <p>
-                                <a id="standards"><b>What kind of standards do you use
-                                        for data?</b> </a>
+                                <span id="standards"><b>What kind of standards do you use
+                                        for data?</b> </span>
                             </p>
                             <p>
                                 Our data is primarily in METS, MODS and TEI formats. We are
@@ -120,21 +120,21 @@
                                 Please <a href="mailto:dl-feedback@lib.cam.ac.uk">let us know</a>
                                 what formats/APIs would be most useful to you.
                             </p>
-    
+
                             <p>
-                                <a id="pdf"><b>Will you be offering whole pdfs of the
-                                        manuscripts to download (for e-readers for example)?</b> </a>
+                                <span id="pdf"><b>Will you be offering whole pdfs of the
+                                        manuscripts to download (for e-readers for example)?</b> </span>
                             </p>
-    
+
                             <p>This is something which we would like to do, however this
                                 may result in very large files, so may not be suitable for all
                                 books.</p>
-    
+
                             <p>
-                                <a id="digitisation"><b>Why can't I see all books in
-                                        Cambridge University Library online?</b> </a>
+                                <span id="digitisation"><b>Why can't I see all books in
+                                        Cambridge University Library online?</b> </span>
                             </p>
-    
+
                             <p>
                                 We are just starting to build our online collection, so we only
                                 have a few works online at the moment. You may be able to find
@@ -142,14 +142,14 @@
                                     href="http://www.lib.cam.ac.uk/eresources/" target="_blank">eresources@cambridge
                                     website</a>.
                             </p>
-    
+
                             <p>
-                                <a id="searchexample"><b>What types of searches do you
-                                        support?</b> </a>
+                                <span id="searchexample"><b>What types of searches do you
+                                        support?</b> </span>
                             </p>
-    
+
                             <div class="searchexample">
-    
+
                                 <div>
                                     <p>
                                         Searching for <span class="search">newton</span> Searches the
@@ -165,18 +165,18 @@
                                         Try <a href="/search">searching our collections</a>.
                                     </p>
                                 </div>
-    
+
                             </div>
                             <p>
-                                <a id="cookies"><b>How are cookies are used on this site?</b>
-                                </a>
+                                <span id="cookies"><b>How are cookies are used on this site?</b>
+                                </span>
                             </p>
-    
+
                             <p>Cookies are used to provide the essential functionality
                                 provided by the Cambridge Digital Library website, to store your
                                 preferences and to monitor usage statistics, so we can improve
                                 performance.</p>
-    
+
                             <p>1. Essential Cookies</p>
                             <p>These cookies are essential for the running of our website.
                                 Without the use of these cookies parts of our website would not
@@ -216,10 +216,10 @@
                                         form</a>
                                 </b>
                             </p>
-    
+
                         </div>
                     </div>
-    
+
                 </div>
             </div>
         </div>
