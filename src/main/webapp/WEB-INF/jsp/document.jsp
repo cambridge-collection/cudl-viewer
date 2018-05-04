@@ -10,6 +10,7 @@
 
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
+<c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">
@@ -82,7 +83,7 @@
             <json:property name="parentCollectionTitle" value="${parentCollection.title}"/>
             <json:property name="itemTitle" value="${item.title}"/>
             <json:property name="iiifEnabled" value="${item['IIIFEnabled']}"/>
-            <json:property name="iiifManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
+            <json:property name="iiifManifestURL" value="${iiifManifestURL}"/>
             <json:property name="iiifMiradorURL" value="/mirador/${item.id}/${page}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
@@ -256,7 +257,7 @@
 
                                                     <div id="iiifOption">
                                                       <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
+                                                        <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}">
                                                           <span class="pull-left"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></span> IIIF<br>Manifest
                                                         </a>
                                                       </div>
