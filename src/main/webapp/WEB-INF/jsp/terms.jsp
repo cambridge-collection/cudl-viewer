@@ -92,7 +92,7 @@
                     <p>
                         For more information about how we handle your personal information,
                         please see <a href="http://www.lib.cam.ac.uk/privacy-policy">
-                        University of Cambridge Privacy notice and web privacy policy</a>.
+                        Cambridge University Library privacy notice and web privacy policy</a>.
                     </p>
 
                     <h4 id="protect">Access to information (data protection policy)</h4>
