@@ -11,7 +11,7 @@ import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDBDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -34,7 +34,7 @@ public class SearchControllerTest {
 
         JSONReader reader = new MockJSONReader();
 
-        ItemsJSONDao jsondao = new ItemsJSONDao(reader);
+        ItemsJSONDBDao jsondao = new ItemsJSONDBDao(reader);
 
         CollectionsDao collectionsdao = new MockCollectionsDao();
 

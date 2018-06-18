@@ -5,7 +5,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDao;
+import ulcambridge.foundations.viewer.dao.ItemsJSONDBDao;
 
 import java.net.URI;
 
@@ -24,7 +24,7 @@ public class DocumentViewControllerTest {
 
         JSONReader reader = new MockJSONReader();
 
-        ItemsJSONDao jsondao = new ItemsJSONDao(reader);
+        ItemsJSONDBDao jsondao = new ItemsJSONDBDao(reader);
 
         CollectionsDao collectionsdao = new MockCollectionsDao();
 

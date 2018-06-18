@@ -31,6 +31,12 @@ public class CollectionsDBDao implements CollectionsDao {
 
     public Collection getCollection(final String collectionId) {
 
+        final String itemQuery = "SELECT items.itemid as itemid FROM items, itemsincollection WHERE " +
+            "items.itemid = itemsincollection.itemid AND collectionid = ? AND iiifenabled = true ORDER BY itemorder";
+
+        List<String> iiifEnabledItemIds = jdbcTemplate.query(itemQuery, new Object[]{collectionId},
+            (resultSet, rowNum) -> resultSet.getString("itemid"));
+
         final String query = "SELECT collectionid, title, summaryurl, sponsorsurl, type, collectionorder, parentcollectionid, metadescription " +
             "FROM collections " +
             "WHERE collectionid = ? " +
@@ -45,6 +51,7 @@ public class CollectionsDBDao implements CollectionsDao {
                 resultSet.getString("sponsorsurl"),
                 resultSet.getString("type"),
                 resultSet.getString("parentcollectionid"),
+                iiifEnabledItemIds,
                 resultSet.getString("metadescription")));
     }
 
@@ -69,19 +76,6 @@ public class CollectionsDBDao implements CollectionsDao {
     public int getItemsRowCount() {
         final String query = "SELECT count(*) FROM items";
         return jdbcTemplate.queryForObject(query, Integer.class);
-    }
-
-    //
-    // XXX tagging switch
-    //
-
-    @Override
-    public boolean isItemTaggable(final String itemId) {
-
-        final String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
-
-        return jdbcTemplate.query(query, new Object[] { itemId },
-            rs -> rs.next() && rs.getBoolean("taggingstatus"));
     }
 
     @Override
