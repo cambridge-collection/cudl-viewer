@@ -28,7 +28,7 @@ public class MockItemsJSONDao implements ItemsDao {
         JSONObject json = new JSONObject();
 
         return new Item(
-            "Test-ID",
+            "MS-ADD-04004",
             "bookormanuscript",
             "Test Title", authors,
             "test shelfLocator",
@@ -37,13 +37,10 @@ public class MockItemsJSONDao implements ItemsDao {
             "test thumbnail orientation",
             pageLabels,
             pageThumbnailURLs,
+            true,
+            false,
             json);
 
-    }
-
-    @Override
-    public boolean getItemTaggingStatus(String itemId) {
-        return false;
     }
 
 }

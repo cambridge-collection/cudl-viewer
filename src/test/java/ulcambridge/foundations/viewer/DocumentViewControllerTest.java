@@ -2,10 +2,9 @@ package ulcambridge.foundations.viewer;
 
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.dao.CollectionsDao;
-import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
-import ulcambridge.foundations.viewer.dao.ItemsJSONDBDao;
+import ulcambridge.foundations.viewer.dao.*;
 
 import java.net.URI;
 
@@ -22,10 +21,7 @@ public class DocumentViewControllerTest {
     @Test
     public void testDocumentViewController() throws Throwable {
 
-        JSONReader reader = new MockJSONReader();
-
-        ItemsJSONDBDao jsondao = new ItemsJSONDBDao(reader);
-
+        ItemsDao jsondao = new MockItemsJSONDao();
         CollectionsDao collectionsdao = new MockCollectionsDao();
 
         ItemFactory itemFactory = new ItemFactory(jsondao);
@@ -39,7 +35,7 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao), collectionsdao, itemFactory,
+            new CollectionFactory(collectionsdao), itemFactory,
             URI.create("http://testurl.testingisthebest.com:8080"));
 
         ModelAndView mDoc = c.handleRequest("MS-ADD-04004", req);

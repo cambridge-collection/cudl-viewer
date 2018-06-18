@@ -28,7 +28,7 @@ public class MockCollectionsDao implements CollectionsDao {
             "collections/treasures/summary.html",
             "collections/treasures/sponsors.html",
             "virtual",
-            "");
+            "", collectionItemIds);
 
     }
 
@@ -46,9 +46,6 @@ public class MockCollectionsDao implements CollectionsDao {
     public int getItemsRowCount() {
         return 0;
     }
-
-    @Override
-    public boolean isItemTaggable(String itemId) { return false; }
 
     @Override
     public List<String> getCollectionId(String itemId) { return null; }
