@@ -28,11 +28,23 @@ public class IIIFCollection {
             collection, collection.getSubCollections(),
             collection.getIIIFEnabledItemIds(), baseURL);
 
-            //"All the available IIIF items available from Cambridge University Library."),
-            // baseURL);
-
     }
 
+    /**
+     * This is class for IIIF Collections of manifests as described in the
+     * http://iiif.io/api/presentation/
+     * This is based on the CUDL collections, but should only list items where
+     * IIIF has been enabled.
+     *
+     * @param collectionId
+     * @param label
+     * @param description
+     * @param collection
+     * @param subCollections
+     * @param itemIds
+     * @param baseURL
+     * @throws JSONException
+     */
     public IIIFCollection(String collectionId, String label, String description,
         Collection collection, List<Collection> subCollections,
                           List<String> itemIds, String baseURL) throws JSONException {
@@ -40,9 +52,8 @@ public class IIIFCollection {
         /** TODO add attribution for collections, when we have the data to do this. **/
         /** TODO add collection and item thumbnails **/
         /** TODO negotiation of which version to provide **/
+        /** TODO consider using lombok to generate getters (and other boilerplate). **/
 
-        // Only include items which have iiif enabled.
-        // Remember some collections also have sub-collections (e.g. board of longitude).
         this.baseURL = baseURL;
 
         // Find subcollections
@@ -52,11 +63,11 @@ public class IIIFCollection {
         }
 
         // Set variables
-            this.id = baseURL + "/iiif/collection/" + collectionId;
-            this.label = label;
-            this.description = description;
-            this.collection = collection;
-            this.itemIds = itemIds;
+        this.id = baseURL + "/iiif/collection/" + collectionId;
+        this.label = label;
+        this.description = description;
+        this.collection = collection;
+        this.itemIds = itemIds;
 
     }
 
@@ -97,25 +108,24 @@ public class IIIFCollection {
         output.put("label", label);
         output.put("description", description);
 
-        // We are hiding any collections with no IIIF manifests in.
         JSONArray collectJSON = new JSONArray();
-        if (getSubCollections()!=null) {
-            for (IIIFCollection subCollection : getSubCollections()) {
-                if (subCollection.getItemIds().size()>0) {
-                    JSONObject collectObj = new JSONObject();
-                    collectObj.put("label", subCollection.getLabel());
-                    collectObj.put("@type", "sc:Collection");
-                    collectObj.put("@id", subCollection.getId());
-                    collectJSON.put(collectObj);
-                }
-            }
-            if (collectJSON.length()>0) {
-                output.put("collections", collectJSON);
+        for (IIIFCollection subCollection : getSubCollections()) {
+            // We are hiding any collections with no IIIF manifests (items) in.
+            if (!subCollection.getItemIds().isEmpty()) {
+                JSONObject collectObj = new JSONObject();
+                collectObj.put("label", subCollection.getLabel());
+                collectObj.put("@type", "sc:Collection");
+                collectObj.put("@id", subCollection.getId());
+                collectJSON.put(collectObj);
             }
         }
+        if (collectJSON.length()>0) {
+            output.put("collections", collectJSON);
+        }
+
 
         JSONArray manifestJSON = new JSONArray();
-        if (collection!=null && collection.getIIIFEnabledItemIds()!=null) {
+        if (collection!=null) {
             for (String itemId : collection.getIIIFEnabledItemIds()) {
                 JSONObject itemObj = new JSONObject();
                 itemObj.put("label", itemId);
@@ -145,27 +155,26 @@ public class IIIFCollection {
         output.put("label", label);
         output.put("summary", description);
 
-        // We are hiding any collections with no IIIF manifests in.
-        // Also only outputting either collections (if available) or manifests.
+        // Only outputting either collections (if available) or manifests.
         JSONArray itemJSON = new JSONArray();
-        if (getSubCollections()!=null) {
-            for (IIIFCollection subCollection : getSubCollections()) {
-                if (subCollection.getItemIds().size()>0) {
-                    JSONObject collectObj = new JSONObject();
-                    collectObj.put("label", subCollection.getLabel());
-                    collectObj.put("type", "Collection");
-                    collectObj.put("id", subCollection.getId());
-                    itemJSON.put(collectObj);
-                }
-            }
-            if (itemJSON.length()>0) {
-                output.put("items", itemJSON);
-                return output;
-            }
+        for (IIIFCollection subCollection : getSubCollections()) {
+            // We are hiding any collections with no IIIF manifests (items) in.
+            if (!subCollection.getItemIds().isEmpty()) {
+                JSONObject collectObj = new JSONObject();
+                collectObj.put("label", subCollection.getLabel());
+                collectObj.put("type", "Collection");
+                collectObj.put("id", subCollection.getId());
+                itemJSON.put(collectObj);
+             }
+        }
+        if (itemJSON.length()>0) {
+            output.put("items", itemJSON);
+            return output;
         }
 
+
         JSONArray manifestJSON = new JSONArray();
-        if (collection!=null && collection.getIIIFEnabledItemIds()!=null) {
+        if (collection!=null) {
             for (String itemId : collection.getIIIFEnabledItemIds()) {
                 JSONObject itemObj = new JSONObject();
                 itemObj.put("label", itemId);

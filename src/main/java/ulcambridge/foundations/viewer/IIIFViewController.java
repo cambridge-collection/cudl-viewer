@@ -88,7 +88,7 @@ public class IIIFViewController {
                                                     String collectionId, HttpServletRequest request,
                                                     HttpServletResponse response) throws JSONException {
 
-        // force collectionId to uppercase
+        // force collectionId to lowercase
         collectionId = collectionId.toLowerCase();
 
         Collection collection = collectionFactory.getCollectionFromId(collectionId);
