@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.web.servlet.view.RedirectView;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
@@ -54,6 +55,12 @@ public class IIIFViewController {
 
     // on path /iiif/{docId}.json
     @RequestMapping(value = "/{docId}.json")
+    public RedirectView handleIIIFJSONRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
+        return new RedirectView(docId);
+    }
+
+    // on path /iiif/{docId}
+    @RequestMapping(value = "/{docId}")
     public ModelAndView handleIIIFRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
 
         docId = docId.toUpperCase();

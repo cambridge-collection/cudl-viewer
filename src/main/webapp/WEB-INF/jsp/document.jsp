@@ -10,7 +10,7 @@
 
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
-<c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}.json"/>
+<c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">

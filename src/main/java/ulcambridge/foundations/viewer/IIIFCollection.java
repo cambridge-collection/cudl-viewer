@@ -130,7 +130,7 @@ public class IIIFCollection {
                 JSONObject itemObj = new JSONObject();
                 itemObj.put("label", itemId);
                 itemObj.put("@type", "sc:Manifest");
-                itemObj.put("@id", baseURL+"/iiif/"+itemId+".json");
+                itemObj.put("@id", baseURL+"/iiif/"+itemId);
                 manifestJSON.put(itemObj);
             }
             if (manifestJSON.length()>0) {
