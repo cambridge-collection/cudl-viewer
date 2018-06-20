@@ -67,7 +67,10 @@ public class IIIFViewController {
         Item item = itemFactory.getItemFromId(docId);
         if (item != null && item.getIIIFEnabled()) {
 
-            String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+            String baseURL = request.getScheme() + "://" + request.getServerName();
+            if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
+                baseURL+= ":" + request.getServerPort();
+            }
             IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL);
             JSONObject presJSON = pres.outputJSON();
 
