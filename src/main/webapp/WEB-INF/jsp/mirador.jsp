@@ -27,7 +27,7 @@
           "buildPath": "/mirador-ui/",
           "i18nPath": "locales/",
           data: [
-            { manifestUri: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json", location: "Cambridge University Library"}
+            { manifestUri: "<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>", location: "Cambridge University Library"}
           ],
           'windowSettings' : {
           "canvasControls": {
@@ -41,9 +41,9 @@
             }
           }},
           windowObjects: [{
-        	  loadedManifest: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>.json",
+        	  loadedManifest: "<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>",
         	  <c:if test="${pagenum gt 0}">
-        	    canvasID: "<c:out value="${baseURL}"/>iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
+        	    canvasID: "<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>/canvas/<c:out value="${pagenum}"/>",
         	  </c:if>
         	  viewType: "ImageView"
         	  }]

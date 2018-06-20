@@ -91,14 +91,18 @@ public class SiteViewController {
         ModelAndView modelAndView = new ModelAndView("jsp/help");
         return modelAndView;
     }
-    
+
     // on path /mirador/
     @RequestMapping(value = "/mirador/{id}/{pagenum}")
-    public ModelAndView handleMiradorRequest(@PathVariable("id") String id, 
+    public ModelAndView handleMiradorRequest(@PathVariable("id") String id,
             @PathVariable("pagenum") int pagenum, HttpServletRequest request) {
 
-        String baseURL = String.format("%s://%s:%d/", request.getScheme(), request.getServerName(), request.getServerPort());
-        
+        // String baseURL = String.format("%s://%s:%d/", request.getScheme(), request.getServerName(), request.getServerPort());
+        String baseURL = request.getScheme() + "://" + request.getServerName();
+        if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
+            baseURL+= ":" + request.getServerPort();
+        }
+
         ModelAndView modelAndView = new ModelAndView("jsp/mirador");
         modelAndView.addObject("id", id);
         modelAndView.addObject("pagenum", pagenum);
