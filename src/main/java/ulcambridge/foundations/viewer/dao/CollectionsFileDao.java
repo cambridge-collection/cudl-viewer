@@ -28,8 +28,12 @@ public abstract class CollectionsFileDao implements CollectionsDao {
         String collectionType = Properties.getString(collectionId + ".type");
         String collectionParentId = Properties.getString(collectionId + ".parentId");
 
+        List<String> collectionIIIFItemIds = Arrays.asList(Properties.getString(
+            collectionId + ".iiifitems").split("\\s*,\\s*"));
+
         return new Collection(collectionId, collectionTitle, collectionItemIds,
-                collectionSummary, collectionSponsors, collectionType, collectionParentId);
+                collectionSummary, collectionSponsors, collectionType, collectionParentId,
+                collectionIIIFItemIds);
 
     }
 

@@ -82,7 +82,7 @@
             <json:property name="parentCollectionURL" value="${parentCollection.URL}"/>
             <json:property name="parentCollectionTitle" value="${parentCollection.title}"/>
             <json:property name="itemTitle" value="${item.title}"/>
-            <json:property name="iiifEnabled" value="${item['IIIFEnabled']}"/>
+            <json:property name="iiifEnabled" value="${item.IIIFEnabled}"/>
             <json:property name="iiifManifestURL" value="${iiifManifestURL}"/>
             <json:property name="iiifMiradorURL" value="/mirador/${item.id}/${page}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>

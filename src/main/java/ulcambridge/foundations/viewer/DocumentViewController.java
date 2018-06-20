@@ -26,14 +26,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
-
-import com.sun.net.httpserver.HttpServer;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -53,13 +50,12 @@ public class DocumentViewController {
 
     private final CollectionFactory collectionFactory;
     private final ItemFactory itemFactory;
-    private final CollectionsDao dataSource;
 
     private final URI rootURL;
 
     @Autowired
     public DocumentViewController(
-        CollectionFactory collectionFactory, CollectionsDao collectionsDao,
+        CollectionFactory collectionFactory,
         ItemFactory itemFactory, @Value("${rootURL}") URI rootUrl) {
 
         Assert.notNull(collectionFactory);
@@ -67,7 +63,6 @@ public class DocumentViewController {
         Assert.notNull(rootUrl);
 
         this.collectionFactory = collectionFactory;
-        this.dataSource = collectionsDao;
         this.itemFactory = itemFactory;
         this.rootURL = rootUrl;
     }
@@ -98,8 +93,7 @@ public class DocumentViewController {
         //
         // XXX check if tagging feature is enabled
         //
-        boolean itemTaggable = dataSource.isItemTaggable(docId);
-        request.getSession().setAttribute("taggable", itemTaggable);
+        request.getSession().setAttribute("taggable", item.getTaggingStatus());
 
         if (itemType.equals("essay")) {
             return setupEssayView((EssayItem) item, page, request);
@@ -192,7 +186,7 @@ public class DocumentViewController {
     /**
      * View for displaying documents or manuscripts.
      *
-     * @param docId
+     * @param item
      * @param page
      * @param request
      * @return
@@ -310,7 +304,7 @@ public class DocumentViewController {
     /**
      * View for displaying essay data.
      *
-     * @param docId
+     * @param item
      * @param page
      * @param request
      * @return

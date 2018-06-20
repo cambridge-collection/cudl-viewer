@@ -21,11 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
+import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
- * Controller for viewing iiif metadata
+ * Controller for viewing iiif metadata and collections
  *
  * @author jennie
  *
@@ -36,15 +37,18 @@ public class IIIFViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private final ItemFactory itemFactory;
+    private final CollectionFactory collectionFactory;
 
     @Autowired
-    public IIIFViewController(
-        ItemFactory itemFactory, @Value("${rootURL}") URI rootUrl) {
+    public IIIFViewController(ItemFactory itemFactory,
+                              CollectionFactory collectionFactory,
+                              @Value("${rootURL}") URI rootUrl) {
 
         Assert.notNull(itemFactory);
         Assert.notNull(rootUrl);
 
         this.itemFactory = itemFactory;
+        this.collectionFactory = collectionFactory;
 
     }
 
@@ -60,7 +64,7 @@ public class IIIFViewController {
         if (servicesURL.startsWith("//")) {
             servicesURL = request.getScheme() + ":"+servicesURL;
         }
-        
+
         Item item = itemFactory.getItemFromId(docId);
         if (item != null && item.getIIIFEnabled()) {
 
@@ -69,6 +73,37 @@ public class IIIFViewController {
             JSONObject presJSON = pres.outputJSON();
 
             writeJSONOut(presJSON, response);
+
+            return null;
+
+        } else {
+            throw new ResourceNotFoundException();
+        }
+
+    }
+
+    // on path /iiif/collection/{collectionId}
+    @RequestMapping(value = "/collection/{collectionId}")
+    public ModelAndView handleIIIFCollectionRequest(@PathVariable("collectionId")
+                                                    String collectionId, HttpServletRequest request,
+                                                    HttpServletResponse response) throws JSONException {
+
+        // force collectionId to lowercase
+        collectionId = collectionId.toLowerCase();
+
+        Collection collection = collectionFactory.getCollectionFromId(collectionId);
+        if (collection != null || collectionId.equals("all")) {
+
+            String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+            IIIFCollection coll;
+            if (collectionId.equals("all")) {
+                coll = new IIIFCollection("all", "Cambridge University IIIF Collections", "All the available IIIF items available from Cambridge University Library.", null, collectionFactory.getCollections(), null, baseURL);
+            } else  {
+                coll = new IIIFCollection(collection, baseURL);
+            }
+            JSONObject collJSON = coll.outputJSON();
+
+            writeJSONOut(collJSON, response);
 
             return null;
 

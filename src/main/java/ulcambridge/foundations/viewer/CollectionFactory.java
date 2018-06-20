@@ -66,6 +66,9 @@ public class CollectionFactory {
             if (parentId == null || parentId.length() == 0) {
                 rootCollections.add(c);
             }
+
+            // set subcollections for each collection
+            c.setSubCollections(getSubCollections(c));
         }
         Collections.sort(rootCollections);
         collectionsRowCount = collectionsDao.getCollectionsRowCount();

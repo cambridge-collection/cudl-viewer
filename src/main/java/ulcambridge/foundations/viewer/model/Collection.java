@@ -20,6 +20,8 @@ public class Collection implements Comparable<Collection> {
     private String sponsors;
     private String type;
     private String parentCollectionId;
+    private List<Collection> subCollections;
+    private List<String> IIIFEnabledItemIds;
 
     /**
      * Additional column added for HTML &lt;meta name="Description" .../&gt; tag
@@ -32,16 +34,18 @@ public class Collection implements Comparable<Collection> {
     public Collection(String collectionId, String collectionTitle,
                       List<String> collectionItemIds,
                       String collectionSummary, String collectionSponsors,
-                      String collectionType, String parentCollectionId) {
+                      String collectionType, String parentCollectionId,
+                      List<String> IIIFEnabledItemIds) {
         this(collectionId, collectionTitle, collectionItemIds,
             collectionSummary, collectionSponsors, collectionType,
-            parentCollectionId, null);
+            parentCollectionId, IIIFEnabledItemIds, null);
     }
 
     public Collection(String collectionId, String collectionTitle,
             List<String> collectionItemIds,
             String collectionSummary, String collectionSponsors,
-            String collectionType, String parentCollectionId, String metaDescription) {
+            String collectionType, String parentCollectionId,
+            List<String> IIIFEnabledItemIds, String metaDescription) {
 
         this.id = collectionId;
         this.title = collectionTitle;
@@ -52,6 +56,7 @@ public class Collection implements Comparable<Collection> {
         this.type = collectionType;
         this.parentCollectionId = parentCollectionId;
         this.metaDescription = metaDescription;
+        this.IIIFEnabledItemIds = IIIFEnabledItemIds;
 
         orderCount++;
         this.order = orderCount;
@@ -95,6 +100,16 @@ public class Collection implements Comparable<Collection> {
 
     public String getMetaDescription() {
         return metaDescription;
+    }
+
+    public void setSubCollections(List<Collection> subCollections) {
+        this.subCollections = subCollections;
+    }
+
+    public List<Collection> getSubCollections() { return subCollections; }
+
+    public List<String> getIIIFEnabledItemIds() {
+        return IIIFEnabledItemIds;
     }
 
     @Override

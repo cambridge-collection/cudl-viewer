@@ -38,20 +38,20 @@ public class CollectionTest {
         final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
                 "test thumbnail orientation",
-                pageLabels, pageThumbnailURLs, new JSONObject());
+                pageLabels, pageThumbnailURLs, true, false, new JSONObject());
 
         final List<String> collectionIds = Arrays.asList("Test-ID");
 
         final Collection c = new Collection("collectionID", "collectionTitle",
                 collectionIds, "collectionSummary",
-                "collectionSponsors", "collectionType", "");
+                "collectionSponsors", "collectionType", "", collectionIds);
 
         final Collection c2 = new Collection(
                 "collectionID2",
                 "collectionTitle2",
                 collectionIds,
                 "collectionSummary",
-                "collectionSponsors2", "collectionType2", "");
+                "collectionSponsors2", "collectionType2", "", collectionIds);
 
         assertEquals("collectionID", c.getId());
         assertEquals("collectionSponsors", c.getSponsors());
@@ -59,6 +59,7 @@ public class CollectionTest {
         assertEquals("collectionTitle", c.getTitle());
         assertEquals("collectionType", c.getType());
         assertEquals("/collections/collectionID", c.getURL());
+        assertEquals(collectionIds, c.getIIIFEnabledItemIds());
         assertEquals(collectionIds, c.getItemIds());
         assertTrue(c.compareTo(c2) < 0);
         assertTrue(c2.compareTo(c) > 0);

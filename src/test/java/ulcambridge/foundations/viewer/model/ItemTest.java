@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 public class ItemTest {
     /**
      * Tests the Item object
-     * @throws JSONException 
+     * @throws JSONException
      */
     @Test
     public void testItem() throws JSONException {
@@ -30,11 +30,11 @@ public class ItemTest {
         final List<String> pageThumbnailURLs = new ArrayList<>();
 
         JSONObject json = new JSONObject();
-        json.put("IIIFEnabled", true);
-        
+
         final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
-                "test thumbnail orientation", pageLabels, pageThumbnailURLs, json);
+                "test thumbnail orientation", pageLabels, pageThumbnailURLs,
+            true, false, json);
 
         final Item item2 = new Item(
                 "Test-ID2",
@@ -44,7 +44,7 @@ public class ItemTest {
                 "test shelfLocator",
                 "test abstract this is a longer abstract that will need to be shortened for display. <div class='videoCaption' > this is a video caption </div> this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display.",
                 "test thumbnail URL", "test thumbnail orientation",
-                pageLabels, pageThumbnailURLs, json);
+                pageLabels, pageThumbnailURLs, false, true, json);
 
         assertEquals("Test-ID", item.getId());
         assertEquals("test abstract", item.getAbstract());
@@ -57,6 +57,10 @@ public class ItemTest {
         assertEquals("test thumbnail orientation", item.getThumbnailOrientation());
         assertEquals("test thumbnail URL", item.getThumbnailURL());
         assertEquals("Test Title", item.getTitle());
+        assertEquals(true, item.getIIIFEnabled());
+        assertEquals(false, item2.getIIIFEnabled());
+        assertEquals(false, item.getTaggingStatus());
+        assertEquals(true, item2.getTaggingStatus());
 
         assertTrue(item.compareTo(item2) < 0);
         assertTrue(item2.compareTo(item) > 0);

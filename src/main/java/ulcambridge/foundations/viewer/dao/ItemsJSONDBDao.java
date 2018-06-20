@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.JSONReader;
@@ -17,15 +18,21 @@ import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import javax.sql.DataSource;
+
 @Component
-public class ItemsJSONDao implements ItemsDao {
+public class ItemsJSONDBDao implements ItemsDao {
 
     private final JSONReader reader;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public ItemsJSONDao(JSONReader reader) {
+    public ItemsJSONDBDao(JSONReader reader, DataSource dataSource) {
+        Assert.notNull(dataSource);
         Assert.notNull(reader);
+
         this.reader = reader;
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     /**
@@ -65,6 +72,22 @@ public class ItemsJSONDao implements ItemsDao {
             System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
             return null;
         }
+    }
+
+    private boolean getIIIFEnabled(String itemId) {
+
+        final String query = "SELECT iiifenabled FROM items WHERE itemid = ?";
+
+        return jdbcTemplate.queryForObject(query, new Object[]{itemId},
+            Boolean.class);
+    }
+
+    private boolean getTaggingStatus(String itemId) {
+
+        final String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
+
+        return jdbcTemplate.queryForObject(query, new Object[]{itemId},
+            Boolean.class);
     }
 
     /**
@@ -156,7 +179,8 @@ public class ItemsJSONDao implements ItemsDao {
 
         Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
                 itemAbstract, itemThumbnailURL, thumbnailOrientation,
-                pageLabels, pageThumbnailURLs, itemJson);
+                pageLabels, pageThumbnailURLs, getIIIFEnabled(itemId),
+                getTaggingStatus(itemId), itemJson);
 
         return item;
 
@@ -236,7 +260,8 @@ public class ItemsJSONDao implements ItemsDao {
      * This method takes a JSONArray and creates Person objects for each JSON
      * object in it.
      *
-     * @param names
+     * @param json
+     * @param role
      * @return
      */
     private List<Person> getPeopleFromJSON(JSONArray json, String role) {
@@ -316,12 +341,5 @@ public class ItemsJSONDao implements ItemsDao {
 
         return displayForms;
     }
-
-    @Override
-    public boolean getItemTaggingStatus(String itemId) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
 
 }

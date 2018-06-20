@@ -106,8 +106,7 @@ public class CollectionViewController {
 
         // append a list of this collections subcollections if this is a parent.
         if (collection.getType().equals("parent")) {
-            final List<Collection> subCollections = this.collectionFactory
-                    .getSubCollections(collection);
+            final List<Collection> subCollections = collection.getSubCollections();
             modelAndView.addObject("subCollections", subCollections);
         }
         return modelAndView;

@@ -30,7 +30,7 @@ public class EssayItem extends Item {
 
         super(itemId, itemType, itemTitle, authors, itemShelfLocator,
                 itemAbstract, itemThumbnailURL, thumbnailOrientation,
-                pageLabels, pageThumbnailURLs, itemJson);
+                pageLabels, pageThumbnailURLs, false, false, itemJson);
 
         this.content = content;
         this.itemReferences = itemReferences;
