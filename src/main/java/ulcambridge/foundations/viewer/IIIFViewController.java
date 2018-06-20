@@ -56,7 +56,6 @@ public class IIIFViewController {
     @RequestMapping(value = "/{docId}.json")
     public ModelAndView handleIIIFRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
 
-        // force docID to uppercase
         docId = docId.toUpperCase();
 
         //Get services
@@ -88,13 +87,15 @@ public class IIIFViewController {
                                                     String collectionId, HttpServletRequest request,
                                                     HttpServletResponse response) throws JSONException {
 
-        // force collectionId to lowercase
         collectionId = collectionId.toLowerCase();
 
         Collection collection = collectionFactory.getCollectionFromId(collectionId);
         if (collection != null || collectionId.equals("all")) {
 
-            String baseURL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+            String baseURL = request.getScheme() + "://" + request.getServerName();
+            if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
+                baseURL+= ":" + request.getServerPort();
+            }
             IIIFCollection coll;
             if (collectionId.equals("all")) {
                 coll = new IIIFCollection("all", "Cambridge University IIIF Collections", "All the available IIIF items available from Cambridge University Library.", null, collectionFactory.getCollections(), null, baseURL);
