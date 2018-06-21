@@ -56,9 +56,9 @@ $ tree
 The data is created from SQL `COPY` commands:
 
 ```PLpgSQL
-\COPY collections FROM './cudl-viewer-partial-dump/collections'
-\COPY items FROM './cudl-viewer-partial-dump/items'
-\COPY itemsincollection FROM './cudl-viewer-partial-dump/itemsincollection'
+\COPY collections FROM './cudl-viewer-partial-dump/collections' WITH ENCODING 'UTF8'
+\COPY items FROM './cudl-viewer-partial-dump/items' WITH ENCODING 'UTF8'
+\COPY itemsincollection FROM './cudl-viewer-partial-dump/itemsincollection' WITH ENCODING 'UTF8'
 ```
 
 `copy.psql` in the snapshots repository contains these commands, so you can
