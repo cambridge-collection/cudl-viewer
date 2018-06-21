@@ -40,6 +40,8 @@
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
+            <!-- All the JSP templates should be UTF-8. -->
+            <page-encoding>UTF-8</page-encoding>
             <!--
                 Disable scriptlets in JSP files. Scriptlets aren't allowed
                 inside custom tags anyway, and their use is discouraged since
@@ -50,9 +52,6 @@
                  - http://stackoverflow.com/questions/1296235/jsp-tricks-to-make-templating-easier
             -->
             <scripting-invalid>true</scripting-invalid>
-
-            <!-- All the JSP templates should be UTF-8. -->
-            <page-encoding>UTF-8</page-encoding>
         </jsp-property-group>
     </jsp-config>
 
