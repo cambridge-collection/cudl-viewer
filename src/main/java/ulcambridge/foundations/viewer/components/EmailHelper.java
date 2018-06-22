@@ -1,4 +1,7 @@
-package ulcambridge.foundations.viewer;
+package ulcambridge.foundations.viewer.components;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -7,25 +10,33 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import ulcambridge.foundations.viewer.model.Properties;
-
 /**
  * Allows the sending of email using the properties in the cudl_global.properties and the Amazon Simple
  * Email Service.
  *
+ * TODO: use {@code org.springframework.mail} instead
  * @author jlf44
  *
  */
+@Component
 public class EmailHelper {
 
-    protected final static String smtp_host = Properties
-            .getString("smtp_host");
-    protected final static String smtp_username = Properties
-            .getString("smtp_username");
-    protected final static String smtp_password = Properties
-            .getString("smtp_password");
-    protected final static int smtp_port = Integer.parseInt(Properties
-            .getString("smtp_port"));
+    private final String smtp_host;
+    private final String smtp_username;
+    private final String smtp_password;
+    private final int smtp_port;
+
+    public EmailHelper(
+        @Value("${smtp_host}") String smtp_host,
+        @Value("${smtp_username}") String smtp_username,
+        @Value("${smtp_password}") String smtp_password,
+        @Value("${smtp_port}") int smtp_port
+    ) {
+        this.smtp_host = smtp_host;
+        this.smtp_username = smtp_username;
+        this.smtp_password = smtp_password;
+        this.smtp_port = smtp_port;
+    }
 
     /**
      * Returns true if email is sent successfully and false otherwise.
@@ -37,7 +48,7 @@ public class EmailHelper {
      * @return
      * @throws MessagingException
      */
-    public static synchronized boolean sendEmail(String emailTo, String emailFrom, String subject, String content) throws MessagingException {
+    public synchronized boolean sendEmail(String emailTo, String emailFrom, String subject, String content) throws MessagingException {
 
         // Create a Properties object to contain connection configuration information.
         java.util.Properties props = System.getProperties();

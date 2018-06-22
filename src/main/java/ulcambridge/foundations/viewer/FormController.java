@@ -28,15 +28,18 @@ public class FormController {
     private final String feedbackEmail;
     private final String feedbackSubject;
     private final Captcha captcha;
+    private final EmailHelper emailHelper;
 
     public FormController(
         @Value("${feedbackEmail}") String feedbackEmail,
         @Value("${feedbackSubject}") String feedbackSubject,
-        @Autowired Captcha captcha
+        @Autowired Captcha captcha,
+        @Autowired EmailHelper emailHelper
     ) {
         this.feedbackEmail = feedbackEmail;
         this.feedbackSubject = feedbackSubject;
         this.captcha = captcha;
+        this.emailHelper = emailHelper;
     }
 
     private ModelAndView getFeedbackResponse(FeedbackForm form) {
@@ -86,8 +89,7 @@ public class FormController {
         }
 
         // send email with comment in.
-        // TODO: use a Spring MailSender bean instead
-        boolean success = EmailHelper.sendEmail(
+        boolean success = emailHelper.sendEmail(
                 feedbackEmail,
                 feedbackEmail,
                 feedbackSubject,
