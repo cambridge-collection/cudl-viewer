@@ -12,9 +12,29 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
-        <spring.version>4.3.2.RELEASE</spring.version>
-        <spring.security.version>4.1.2.RELEASE</spring.security.version>
-        <cudl.viewer-ui-version>1.4.4</cudl.viewer-ui-version>
+
+        <embedded-viewer-assets.version>0.1.0</embedded-viewer-assets.version>
+        <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
+        <cudl-viewer-ui.version>1.4.4</cudl-viewer-ui.version>
+        <spring-security-raven.version>1.0.0</spring-security-raven.version>
+
+        <commons-email.version>1.5</commons-email.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-logging.version>1.1</commons-logging.version>
+        <guava.version>18.0</guava.version>
+        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version> <!-- TODO: v5 -->
+        <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
+        <jgit.version>4.11.0.201803080745-r</jgit.version> <!-- TODO: v5 -->
+        <jsonatg.version>1.0.5</jsonatg.version>
+        <jtidy.version>r938</jtidy.version>
+        <log4j.version>1.2.17</log4j.version> <!-- TODO: v2 or logback -->
+        <owasp-encoder.version>1.2.1</owasp-encoder.version>
+        <recaptcha4j.version>0.0.7</recaptcha4j.version>
+        <spring-boot.version>1.5.14.RELEASE</spring-boot.version> <!-- TODO: v2 -->
+        <tomcat.version>7.0.76</tomcat.version> <!-- TODO: v9 -->
+        <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
     </properties>
 
     <scm>
@@ -65,7 +85,7 @@
                         <artifactInstaller>
                             <groupId>org.apache.tomcat</groupId>
                             <artifactId>tomcat</artifactId>
-                            <version>7.0.76</version>
+                            <version>${tomcat.version}</version>
                         </artifactInstaller>
                     </container>
                     <deployables>
@@ -173,11 +193,22 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <!-- Spring override -->
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -189,7 +220,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>viewer-ui</artifactId>
-            <version>${cudl.viewer-ui-version}</version>
+            <version>${cudl-viewer-ui.version}</version>
             <classifier>resources</classifier>
             <type>jar</type>
             <scope>compile</scope>
@@ -199,7 +230,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>viewer-ui</artifactId>
-            <version>${cudl.viewer-ui-version}</version>
+            <version>${cudl-viewer-ui.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -213,7 +244,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>embedded-viewer-assets</artifactId>
-            <version>0.1.0</version>
+            <version>${embedded-viewer-assets.version}</version>
             <scope>compile</scope>
         </dependency>
 
@@ -222,168 +253,145 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>embedded-viewer-configurer</artifactId>
-            <version>0.0.0</version>
+            <version>${embedded-viewer-configurer.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.tuckey</groupId>
             <artifactId>urlrewritefilter</artifactId>
-            <version>4.0.4</version>
+            <version>${urlrewritefilter.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit-addons</groupId>
-            <artifactId>junit-addons</artifactId>
-            <version>1.4</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
 
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>1.1</version>
         </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <version>${log4j.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging-api</artifactId>
-            <version>1.1</version>
+            <version>${commons-logging.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.5</version>
         </dependency>
 
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.2</version>
+            <version>${commons-fileupload.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.directory.studio</groupId>
-            <artifactId>org.apache.commons.io</artifactId>
-            <version>2.4</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.0</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
-            <version>1.1</version>
+            <version>${commons-email.version}</version>
         </dependency>
 
         <!-- DB Pool -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
         </dependency>
 
         <!-- for XML parsing -->
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
-            <version>1.0.b2</version>
         </dependency>
 
         <!-- for JSON parsing in Java -->
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20090211</version>
         </dependency>
 
         <!-- jtidy -->
         <dependency>
             <groupId>net.sf.jtidy</groupId>
             <artifactId>jtidy</artifactId>
-            <version>r938</version>
+            <version>${jtidy.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>4.0.2.GA</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <!-- <version>1.5.11</version> -->
-            <version>1.7.12</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <!-- <version>1.5.11</version> -->
-            <version>1.7.12</version>
         </dependency>
 
         <dependency>
             <groupId>net.tanesha.recaptcha4j</groupId>
             <artifactId>recaptcha4j</artifactId>
-            <version>0.0.7</version>
+            <version>${recaptcha4j.version}</version>
         </dependency>
 
         <!-- taglibs -->
         <dependency>
-            <groupId>jstl</groupId>
+            <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
         </dependency>
 
         <!-- PostgreSQL driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1209</version>
         </dependency>
 
         <!-- encoder to prevent XSS -->
         <dependency>
             <groupId>org.owasp.encoder</groupId>
             <artifactId>encoder</artifactId>
-            <version>1.2</version>
+            <version>${owasp-encoder.version}</version>
         </dependency>
 
         <!-- Spring Framework -->
@@ -422,86 +430,77 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${spring.security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${spring.security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${spring.security.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>2.0.7.RELEASE</version>
+        </dependency>
+
+        <!-- Test utilities -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
         </dependency>
 
         <!-- JSON reading/writing for oauth -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.7.4</version>
         </dependency>
 
         <!-- for decrypting web tokens (oauth) -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
-            <version>1.0.3.RELEASE</version>
         </dependency>
 
         <!-- raven auth, in cudl repo -->
         <dependency>
             <groupId>uk.ac.cam.lib</groupId>
             <artifactId>spring-security-raven</artifactId>
-            <version>1.0.0</version>
+            <version>${spring-security-raven.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
-            <version>4.0.1.201506240215-r</version>
+            <version>${jgit.version}</version>
         </dependency>
 
         <!-- for Genizah tagging, also upgrade org.slf4j version
         or it will conflict with Jena -->
 
-        <!-- Apache Commons IO -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
-
         <!-- Google GSON -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.3.1</version>
         </dependency>
 
         <!-- Google Guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- Apache Jena -->
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-core</artifactId>
-            <version>2.13.0</version>
+            <version>${jena.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
-            <version>2.13.0</version>
+            <version>${jena.version}</version>
         </dependency>
 
         <!-- for Genizah tagging end -->
@@ -509,7 +508,7 @@
         <dependency>
             <groupId>com.github.livesense</groupId>
             <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
-            <version>1.0.5</version>
+            <version>${jsonatg.version}</version>
         </dependency>
     </dependencies>
 
