@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.CheckoutConflictException;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.NoHeadException;
-import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
@@ -29,7 +26,7 @@ public class GitHelper {
     private Repository localRepomasters;
     private Git gitmasters;
     private String url;
-    Boolean success = false;
+    private boolean success = false;
     private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger
             .getLogger(GitHelper.class.getName());
 
@@ -47,13 +44,8 @@ public class GitHelper {
                 RevCommit commit = iter.next();
                 return ObjectId.toString(commit.getId());
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NoHeadException e) {
-            e.printStackTrace();
-        } catch (GitAPIException e) {
-            e.printStackTrace();
+        } catch (IOException | GitAPIException ex) {
+            logger.warn("Error in getLastRevision", ex);
         }
         return null;
     }
@@ -64,7 +56,7 @@ public class GitHelper {
      * @param refspec
      * @return
      */
-    protected Boolean push(String username, String password, String refspec) {
+    protected boolean push(String username, String password, String refspec) {
 
         try {
             // master
@@ -79,21 +71,8 @@ public class GitHelper {
                             new UsernamePasswordCredentialsProvider(username,
                                     password)).call();
             success = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.error("IO Exception" + ex);
-            success = false;
-        } catch (RefAlreadyExistsException ex) {
-            ex.printStackTrace();
-            logger.error("RefAlreadyExistsException" + ex);
-            success = false;
-        } catch (CheckoutConflictException ex) {
-            ex.printStackTrace();
-            logger.error("CheckoutConflictException" + ex);
-            success = false;
-        } catch (GitAPIException ex) {
-            ex.printStackTrace();
-            logger.error("GitAPIException" + ex);
+        } catch (IOException | GitAPIException ex) {
+            logger.error("Error in push", ex);
             success = false;
         }
         return success;
@@ -105,7 +84,7 @@ public class GitHelper {
      *
      * @return
      */
-    protected Boolean commit(String name, String email, String message) {
+    protected boolean commit(String name, String email, String message) {
 
         try {
             // master
@@ -116,21 +95,8 @@ public class GitHelper {
                     .setMessage(message).call();
 
             success = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.error("IO Exception" + ex);
-            success = false;
-        } catch (RefAlreadyExistsException ex) {
-            ex.printStackTrace();
-            logger.error("RefAlreadyExistsException" + ex);
-            success = false;
-        } catch (CheckoutConflictException ex) {
-            ex.printStackTrace();
-            logger.error("CheckoutConflictException" + ex);
-            success = false;
-        } catch (GitAPIException ex) {
-            ex.printStackTrace();
-            logger.error("GitAPIException" + ex);
+        } catch (IOException | GitAPIException ex) {
+            logger.error("Error in commit", ex);
             success = false;
         }
 
@@ -144,7 +110,7 @@ public class GitHelper {
      * @param filePath absolute path, MUST start with admin.git.content.localpath
      * @return
      */
-    protected Boolean delete(String filePath, String name, String email,
+    protected boolean delete(String filePath, String name, String email,
             String message) {
 
         try {
@@ -158,21 +124,8 @@ public class GitHelper {
             gitmasters.commit().setCommitter(new PersonIdent(name, email))
                     .setMessage(message).call();
             success = true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            logger.error("IO Exception" + ex);
-            success = false;
-        } catch (RefAlreadyExistsException ex) {
-            ex.printStackTrace();
-            logger.error("RefAlreadyExistsException" + ex);
-            success = false;
-        } catch (CheckoutConflictException ex) {
-            ex.printStackTrace();
-            logger.error("CheckoutConflictException" + ex);
-            success = false;
-        } catch (GitAPIException ex) {
-            ex.printStackTrace();
-            logger.error("GitAPIException" + ex);
+        } catch (IOException | GitAPIException ex) {
+            logger.error("Error in delete", ex);
             success = false;
         }
 
