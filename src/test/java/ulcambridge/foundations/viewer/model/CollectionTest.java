@@ -37,7 +37,7 @@ public class CollectionTest {
         // Is this testing the constructor?  If not, can remove.
         final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", people,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
-                "test thumbnail orientation",
+                "test thumbnail orientation", "http://example.com",
                 pageLabels, pageThumbnailURLs, true, false, new JSONObject());
 
         final List<String> collectionIds = Arrays.asList("Test-ID");
