@@ -12,13 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.authentication.AdminUser;
-import ulcambridge.foundations.viewer.authentication.User;
 import ulcambridge.foundations.viewer.authentication.Users;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
 @RequestMapping("/admin")
+@Secured("hasRole('ROLE_ADMIN')")
 public class AdminController {
 
     private final CollectionFactory collectionFactory;
@@ -38,7 +38,6 @@ public class AdminController {
     }
 
     // on path /admin/publishdb
-    @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/publishdb", method = RequestMethod.POST)
     public ModelAndView handlePublishDbRequest(HttpSession session) throws Exception {
 
@@ -70,7 +69,6 @@ public class AdminController {
 
     // on path /admin/publishjson
     @RequestMapping(value = "publishjson", method = RequestMethod.POST)
-    @Secured("hasRole('ROLE_ADMIN')")
     public ModelAndView handlePublishJsonRequest() throws Exception {
 
         ModelAndView mv = new ModelAndView("jsp/adminresult");
@@ -95,7 +93,7 @@ public class AdminController {
     }
 
     // on path /admin/publishcontent
-    @Secured("hasRole('ROLE_ADMIN')")
+
     @RequestMapping(value = "/publishcontent", method = RequestMethod.POST)
     public ModelAndView handlePublishContentRequest() throws Exception {
 
@@ -122,7 +120,6 @@ public class AdminController {
     }
 
     // on path /admin/
-    @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/refresh", method = RequestMethod.POST)
     public ModelAndView handleRefreshRequest() {
 
@@ -135,11 +132,9 @@ public class AdminController {
     }
 
     // on path /admin/
-    @Secured("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/")
     public ModelAndView handleAdminRequest() {
 
-        ModelAndView modelAndView = new ModelAndView("jsp/admin");
-        return modelAndView;
+        return new ModelAndView("jsp/admin");
     }
 }
