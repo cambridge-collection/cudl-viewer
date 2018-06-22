@@ -56,9 +56,9 @@ $ tree
 The data is created from SQL `COPY` commands:
 
 ```PLpgSQL
-\COPY collections FROM './cudl-viewer-partial-dump/collections' WITH ENCODING 'UTF8'
-\COPY items FROM './cudl-viewer-partial-dump/items' WITH ENCODING 'UTF8'
-\COPY itemsincollection FROM './cudl-viewer-partial-dump/itemsincollection' WITH ENCODING 'UTF8'
+\copy collections FROM './cudl-viewer-partial-dump/collections' WITH ENCODING 'UTF8'
+\copy items FROM './cudl-viewer-partial-dump/items' WITH ENCODING 'UTF8'
+\copy itemsincollection FROM './cudl-viewer-partial-dump/itemsincollection' WITH ENCODING 'UTF8'
 ```
 
 `copy.psql` in the snapshots repository contains these commands, so you can
@@ -78,7 +78,7 @@ Once the user is created, the authority value `ROLE_ADMIN` must be set in the
 
 ```PLpgSQL
 my-cudl-db=# CREATE EXTENSION pgcrypto;
-my-cudl-db=# INSERT INTO authorities (username, authority) VALUES ('raven:' || encode(digest('hwtb2', 'sha256'), 'hex'), 'ROLE_ADMIN');
+my-cudl-db=# UPDATE authorities SET authority = 'ROLE_ADMIN' WHERE username = 'raven:' || encode(digest('hwtb2', 'sha256'), 'hex');
 ```
 
 And the user's name and email needs to be added to the `adminusers` table:
