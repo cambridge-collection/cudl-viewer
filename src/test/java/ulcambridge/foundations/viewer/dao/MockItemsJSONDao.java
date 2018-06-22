@@ -35,6 +35,7 @@ public class MockItemsJSONDao implements ItemsDao {
             "test abstract",
             "test thumbnail URL",
             "test thumbnail orientation",
+            "http://example.com",
             pageLabels,
             pageThumbnailURLs,
             true,

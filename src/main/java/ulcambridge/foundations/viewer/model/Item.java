@@ -30,6 +30,7 @@ public class Item implements Comparable<Item> {
     protected String abstractText;
     protected String thumbnailURL;
     protected String thumbnailOrientation;
+    protected String imageReproPageURL;
     protected String abstractShort;
     protected boolean IIIFEnabled;
     protected boolean taggingStatus;
@@ -40,7 +41,7 @@ public class Item implements Comparable<Item> {
 
     public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
             String itemShelfLocator, String itemAbstract,
-            String itemThumbnailURL, String thumbnailOrientation,
+            String itemThumbnailURL, String thumbnailOrientation, String imageReproPageURL,
             List<String> pageLabels, List<String> pageThumbnailURLs,
             boolean IIIFEnabled, boolean taggingStatus, JSONObject itemJson) {
 
@@ -56,6 +57,7 @@ public class Item implements Comparable<Item> {
         this.authors = authors;
         this.IIIFEnabled = IIIFEnabled;
         this.taggingStatus = taggingStatus;
+        this.imageReproPageURL = imageReproPageURL;
 
         // default to placeholder image
         if (thumbnailURL == null ||thumbnailURL.equals("")) {
@@ -85,6 +87,7 @@ public class Item implements Comparable<Item> {
             simplejson.append("abstractShort", this.getAbstractShort());
             simplejson.append("thumbnailURL", this.getThumbnailURL());
             simplejson.append("thumbnailOrientation", this.getThumbnailOrientation());
+            simplejson.append("imageReproPageURL", this.getImageReproPageURL());
             JSONArray authorJSON = new JSONArray();
             authorJSON.addAll(this.getAuthors());
             simplejson.append("authors", authorJSON);
@@ -176,6 +179,10 @@ public class Item implements Comparable<Item> {
 
     public boolean getTaggingStatus() {
         return taggingStatus;
+    }
+
+    public String getImageReproPageURL() {
+        return imageReproPageURL;
     }
 
     public JSONObject getJSON() {

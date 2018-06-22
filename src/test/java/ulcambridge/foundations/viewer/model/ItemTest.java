@@ -33,8 +33,9 @@ public class ItemTest {
 
         final Item item = new Item("Test-ID", "bookormanuscript", "Test Title", authors,
                 "test shelfLocator", "test abstract", "test thumbnail URL",
-                "test thumbnail orientation", pageLabels, pageThumbnailURLs,
-            true, false, json);
+                "test thumbnail orientation", "http://example.com",
+                 pageLabels, pageThumbnailURLs,
+                true, false, json);
 
         final Item item2 = new Item(
                 "Test-ID2",
@@ -44,6 +45,7 @@ public class ItemTest {
                 "test shelfLocator",
                 "test abstract this is a longer abstract that will need to be shortened for display. <div class='videoCaption' > this is a video caption </div> this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display. this is a longer abstract that will need to be shortened for display.",
                 "test thumbnail URL", "test thumbnail orientation",
+                "http://example.com",
                 pageLabels, pageThumbnailURLs, false, true, json);
 
         assertEquals("Test-ID", item.getId());
@@ -55,6 +57,7 @@ public class ItemTest {
         assertEquals(1, item.getAuthors().size());
         assertEquals("test shelfLocator", item.getShelfLocator());
         assertEquals("test thumbnail orientation", item.getThumbnailOrientation());
+        assertEquals("http://example.com", item.getImageReproPageURL());
         assertEquals("test thumbnail URL", item.getThumbnailURL());
         assertEquals("Test Title", item.getTitle());
         assertEquals(true, item.getIIIFEnabled());

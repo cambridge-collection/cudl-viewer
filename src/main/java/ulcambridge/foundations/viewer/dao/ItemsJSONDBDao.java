@@ -109,6 +109,8 @@ public class ItemsJSONDBDao implements ItemsDao {
         List<String> pageLabels = new ArrayList<String>();
         List<String> pageThumbnailURLs = new ArrayList<String>();
 
+        String imageReproPageURL = "";
+
         try {
 
             // Pull out the information we want in our Item object
@@ -172,13 +174,19 @@ public class ItemsJSONDBDao implements ItemsDao {
 
             }
 
+            // Might have image rights reproduction URL
+            if (descriptiveMetadata.has("imageReproPageURL")) {
+                imageReproPageURL = descriptiveMetadata.getString("imageReproPageURL");
+            }
+
+
         } catch (JSONException e) {
             System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
             return null;
         }
 
         Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
-                itemAbstract, itemThumbnailURL, thumbnailOrientation,
+                itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
                 pageLabels, pageThumbnailURLs, getIIIFEnabled(itemId),
                 getTaggingStatus(itemId), itemJson);
 
@@ -252,6 +260,7 @@ public class ItemsJSONDBDao implements ItemsDao {
 
         return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
              parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
+             parent.getImageReproPageURL(),
              content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects,
              pageLabels, pageThumbnailURLs);
     }

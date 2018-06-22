@@ -280,6 +280,7 @@ public class DocumentViewController {
         } else {
             modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
         }
+        modelAndView.addObject("imageReproPageURL", item.getImageReproPageURL());
 
         return modelAndView;
     }

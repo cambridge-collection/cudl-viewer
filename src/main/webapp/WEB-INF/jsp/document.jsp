@@ -85,6 +85,7 @@
             <json:property name="iiifEnabled" value="${item.IIIFEnabled}"/>
             <json:property name="iiifManifestURL" value="${iiifManifestURL}"/>
             <json:property name="iiifMiradorURL" value="/mirador/${item.id}/${page}"/>
+            <json:property name="imageReproPageURL" value="${imageReproPageURL}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
             <%-- Tagging related data --%>
@@ -234,7 +235,7 @@
                                                    <div id="rightsOption">
                                                        <div class="button usebutton" >
                                                          <a class="btn btn-info left"
-                                                         href="http://www.lib.cam.ac.uk/collections/departments/digital-content-unit/licensing-images"
+                                                         href="${imageReproPageURL}"
                                                          target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
                                                        Request<br/>Rights
                                                           </a>

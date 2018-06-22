@@ -23,13 +23,14 @@ public class EssayItem extends Item {
     public EssayItem(String itemId, String itemType, String itemTitle,
             List<Person> authors, String itemShelfLocator, String itemAbstract,
             String itemThumbnailURL, String thumbnailOrientation,
-            JSONObject itemJson, String content, List<String> itemReferences,
+            JSONObject itemJson, String imageReproPageURL, String content, List<String> itemReferences,
             List<String> people, List<String> places,
             List<String> organisations, List<String> subjects,
             List<String> pageLabels, List<String> pageThumbnailURLs) {
 
         super(itemId, itemType, itemTitle, authors, itemShelfLocator,
                 itemAbstract, itemThumbnailURL, thumbnailOrientation,
+                imageReproPageURL,
                 pageLabels, pageThumbnailURLs, false, false, itemJson);
 
         this.content = content;
