@@ -11,3 +11,4 @@ src/main/resources/cudl-global.properties
 
 # Maven release plugin
 *.releaseBackup
+release.properties
