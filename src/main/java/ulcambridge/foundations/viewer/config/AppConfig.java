@@ -2,34 +2,37 @@ package ulcambridge.foundations.viewer.config;
 
 import com.google.gson.Gson;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.context.annotation.*;
+import org.springframework.http.client.BufferingClientHttpRequestFactory;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.util.StreamUtils;
+import org.springframework.web.client.RestTemplate;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
-import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
 import javax.sql.DataSource;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
 @ComponentScan({
-    "ulcambridge.foundations.viewer.frontend",
     "ulcambridge.foundations.viewer.admin",
+    "ulcambridge.foundations.viewer.crowdsourcing",
+    "ulcambridge.foundations.viewer.components",
+    "ulcambridge.foundations.viewer.frontend",
     "ulcambridge.foundations.viewer.search",
-    "ulcambridge.foundations.viewer.crowdsourcing"
 })
 @Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableScheduling
@@ -73,5 +76,24 @@ public class AppConfig {
     @Bean
     public Gson gson() {
         return GsonFactory.create();
+    }
+
+    @Bean
+    @Primary
+    public RestTemplate restTemplate() {
+        Logger log = LoggerFactory.getLogger(RestTemplate.class);
+        RestTemplate restTemplate = new RestTemplate();
+
+        if (log.isTraceEnabled()) {
+            restTemplate.setRequestFactory(new BufferingClientHttpRequestFactory(restTemplate.getRequestFactory()));
+            restTemplate.getInterceptors().add((request, body, execution) -> {
+                log.trace("{} {}: {}", request.getMethod(), request.getURI(), new String(body, UTF_8));
+                ClientHttpResponse response = execution.execute(request, body);
+                log.trace("Response: {}", StreamUtils.copyToString(response.getBody(), UTF_8));
+                return response;
+            });
+        }
+
+        return restTemplate;
     }
 }

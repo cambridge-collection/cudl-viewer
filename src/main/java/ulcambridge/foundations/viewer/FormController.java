@@ -1,47 +1,45 @@
 package ulcambridge.foundations.viewer;
 
-import net.tanesha.recaptcha.ReCaptcha;
-import net.tanesha.recaptcha.ReCaptchaFactory;
-import net.tanesha.recaptcha.ReCaptchaResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.apache.commons.mail.EmailException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.components.Captcha;
+import ulcambridge.foundations.viewer.components.EmailHelper;
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
 import ulcambridge.foundations.viewer.forms.MailingListForm;
-import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 public class FormController {
 
-    private static final String
-            RECAPTCHA_PUBLIC_KEY = "6Lfp19cSAAAAACCDpTi_8O1znKcR8boRacNb0NjC",
-            RECAPTCHA_PRIVATE_KEY = "6Lfp19cSAAAAACgXgRVTbk1m11OdFS8sttohEMDv";
+    private static final Logger logger = LoggerFactory.getLogger(FormController.class);
+    private final String feedbackEmail;
+    private final String feedbackSubject;
+    private final Captcha captcha;
+    private final EmailHelper emailHelper;
 
-    protected final Log logger = LogFactory.getLog(getClass());
-
-    protected final static String feedbackEmail = Properties
-            .getString("feedbackEmail");
-    protected final static String feedbackSubject = Properties
-            .getString("feedbackSubject");
-
-    private ReCaptcha getReCaptcha() {
-        return ReCaptchaFactory.newSecureReCaptcha(
-                RECAPTCHA_PUBLIC_KEY, RECAPTCHA_PRIVATE_KEY, false);
-    }
-
-    private String getReCaptchaHtml() {
-        return this.getReCaptcha().createRecaptchaHtml(null, null);
+    public FormController(
+        @Value("${feedbackEmail}") String feedbackEmail,
+        @Value("${feedbackSubject}") String feedbackSubject,
+        @Autowired Captcha captcha,
+        @Autowired EmailHelper emailHelper
+    ) {
+        this.feedbackEmail = feedbackEmail;
+        this.feedbackSubject = feedbackSubject;
+        this.captcha = captcha;
+        this.emailHelper = emailHelper;
     }
 
     private ModelAndView getFeedbackResponse(FeedbackForm form) {
@@ -58,7 +56,7 @@ public class FormController {
 
         return new ModelAndView("jsp/feedback")
                 .addObject("feedbackForm", form)
-                .addObject("captchaHtml", this.getReCaptchaHtml())
+                .addObject("captchaHtml", this.captcha.getHtml())
                 .addObject("errors", errors)
                 .addObject("submissionFailed", submissionFailed);
     }
@@ -69,9 +67,11 @@ public class FormController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/feedbackform.html")
-    public ModelAndView processSubmit(@Valid FeedbackForm feedbackForm,
-            BindingResult result, HttpServletRequest request)
-            throws AddressException, MessagingException {
+    public ModelAndView processSubmit(
+        @Valid FeedbackForm feedbackForm,
+        BindingResult result,
+        HttpServletRequest request
+    ) throws MessagingException {
 
         // validation for standard parameters
         if (result.hasErrors()) {
@@ -80,22 +80,16 @@ public class FormController {
 
         // validation for capcha
         String remoteAddr = request.getRemoteAddr();
-
-        String challenge = request.getParameter("recaptcha_challenge_field");
-        String uresponse = request.getParameter("recaptcha_response_field");
-        ReCaptchaResponse reCaptchaResponse = this.getReCaptcha()
-                .checkAnswer(remoteAddr, challenge, uresponse);
-
-        if (!reCaptchaResponse.isValid()) {
+        String responseToken = request.getParameter(this.captcha.getResponseParam());
+        if (!this.captcha.verify(responseToken, remoteAddr)) {
             ObjectError error = new ObjectError("FeedbackForm",
                     "The reCAPTCHA input was not correct, please try again");
             result.addError(error);
-
             return this.getFeedbackResponse(feedbackForm, result);
         }
 
         // send email with comment in.
-        boolean success = EmailHelper.sendEmail(
+        boolean success = emailHelper.sendEmail(
                 feedbackEmail,
                 feedbackEmail,
                 feedbackSubject,
@@ -131,10 +125,7 @@ public class FormController {
 
         // TODO sign up to mailing list.
 
-
-        ModelAndView modelAndView = new ModelAndView("jsp/feedback-success");
-        return modelAndView;
-
+        return new ModelAndView("jsp/feedback-success");
     }
 
 }
