@@ -1,35 +1,39 @@
 package ulcambridge.foundations.viewer.dao;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.sql.DataSource;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
-import javax.sql.DataSource;
-
 @Component
 public class ItemsJSONDBDao implements ItemsDao {
 
+    private final static Logger LOG = LoggerFactory.getLogger(ItemsJSONDBDao.class);
     private final JSONReader reader;
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public ItemsJSONDBDao(JSONReader reader, DataSource dataSource) {
-        Assert.notNull(dataSource);
-        Assert.notNull(reader);
+        Assert.notNull(dataSource, "dataSource is required");
+        Assert.notNull(reader, "reader is required");
 
         this.reader = reader;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -40,7 +44,7 @@ public class ItemsJSONDBDao implements ItemsDao {
      */
     public Item getItem(String itemId) {
 
-        JSONObject itemJson = null;
+        JSONObject itemJson;
         String itemType = "bookormanuscript"; // default
 
         if (itemId == null || itemId.equals("")) {
@@ -65,11 +69,8 @@ public class ItemsJSONDBDao implements ItemsDao {
                 return getBookItem(itemId, itemJson);
             }
 
-        } catch (IOException e) {
-            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
-            return null;
-        } catch (JSONException e) {
-            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+        } catch (IOException | JSONException e) {
+            LOG.error("Failed to load item: %s", itemId, e);
             return null;
         }
     }
@@ -92,22 +93,18 @@ public class ItemsJSONDBDao implements ItemsDao {
 
     /**
      * Parse the JSON into a Item object (default root object).
-     *
-     * @param itemId
-     * @param itemJson
-     * @return
      */
     private Item getBookItem(String itemId, JSONObject itemJson) {
 
         String itemType = "bookormanuscript";
-        String itemTitle = "";
-        List<Person> itemAuthors = new ArrayList<Person>();
+        String itemTitle;
+        List<Person> itemAuthors = new ArrayList<>();
         String itemShelfLocator = "";
         String itemAbstract = "";
         String itemThumbnailURL = "";
         String thumbnailOrientation = "";
-        List<String> pageLabels = new ArrayList<String>();
-        List<String> pageThumbnailURLs = new ArrayList<String>();
+        List<String> pageLabels = new ArrayList<>();
+        List<String> pageThumbnailURLs = new ArrayList<>();
 
         String imageReproPageURL = "";
 
@@ -166,7 +163,14 @@ public class ItemsJSONDBDao implements ItemsDao {
                 if (itemType.equals("essay")) {
                     itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
                 } else {
-                    itemThumbnailURL = Properties.getString("imageServer") + descriptiveMetadata.getString("thumbnailUrl");
+                    try {
+                        URL url = new URL(
+                            new URL(Properties.getString("imageServer")),
+                            descriptiveMetadata.getString("thumbnailUrl"));
+                        itemThumbnailURL = url.toString();
+                    } catch (MalformedURLException ex) {
+                        LOG.warn("Cannot construct valid thumbnail URL", ex);
+                    }
                 }
 
                 thumbnailOrientation = descriptiveMetadata
@@ -181,33 +185,30 @@ public class ItemsJSONDBDao implements ItemsDao {
 
 
         } catch (JSONException e) {
-            System.err.println("Failed to load item: "+itemId+" error:"+e.getMessage());
+            LOG.error("Failed to load item: %s", itemId, e);
             return null;
         }
 
-        Item item = new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
+        return new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
                 itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
                 pageLabels, pageThumbnailURLs, getIIIFEnabled(itemId),
                 getTaggingStatus(itemId), itemJson);
-
-        return item;
 
     }
 
     private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
 
         String content = "";
-        List<String> relatedItems = new ArrayList<String>();
-        List<String> associatedPeople = new ArrayList<String>();
-        List<String> associatedPlaces = new ArrayList<String>();
-        List<String> associatedOrganisations = new ArrayList<String>();
-        List<String> associatedSubjects = new ArrayList<String>();
+        List<String> relatedItems = new ArrayList<>();
+        List<String> associatedPeople = new ArrayList<>();
+        List<String> associatedPlaces = new ArrayList<>();
+        List<String> associatedOrganisations = new ArrayList<>();
+        List<String> associatedSubjects = new ArrayList<>();
         JSONObject descriptiveMetadata = null;
-        List<String> pageLabels = new ArrayList<String>();
-        List<String> pageThumbnailURLs = new ArrayList<String>();
+        List<String> pageLabels = new ArrayList<>();
+        List<String> pageThumbnailURLs = new ArrayList<>();
 
         try {
-
             JSONArray pages = itemJson.getJSONArray("pages");
             JSONObject page0 = pages.getJSONObject(0);
 
@@ -223,40 +224,40 @@ public class ItemsJSONDBDao implements ItemsDao {
                     "descriptiveMetadata").getJSONObject(0);
 
             // Get list of related items
-            relatedItems = new ArrayList<String>();
+            relatedItems = new ArrayList<>();
             JSONArray itemReferences = descriptiveMetadata.getJSONArray("itemReferences");
             for (int i=0; i<itemReferences.length(); i++) {
                 JSONObject itemRef = itemReferences.getJSONObject(i);
                 relatedItems.add(itemRef.getString("ID"));
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            // Associated people
-            associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
+            try {
+                // Associated people
+                associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
                     .getJSONObject("associated").getJSONArray("value"));
-        } catch (JSONException e) { /* not always present */ }
+            } catch (JSONException ignored) {}
 
-        try {
-            // Associated Places
-            associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
+            try {
+                // Associated Places
+                associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
                     .getJSONObject("places").getJSONArray("value"));
-        } catch (JSONException e) { /* not always present */ }
+            } catch (JSONException ignored) {}
 
-        try {
-            // Associated Organisations
-            associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
+            try {
+                // Associated Organisations
+                associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
                     .getJSONObject("associatedCorps").getJSONArray("value"));
-        } catch (JSONException e) { /* not always present */ }
+            } catch (JSONException ignored) {}
 
-        try {
-            // Associated Subjects
-            associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
+            try {
+                // Associated Subjects
+                associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
                     .getJSONObject("subjects").getJSONArray("value"));
-        } catch (JSONException e) { /* not always present */ }
+            } catch (JSONException ignored) {}
+
+        } catch (JSONException e) {
+            LOG.warn("Cannot load metadata", e);
+        }
 
         return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
              parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
@@ -268,14 +269,10 @@ public class ItemsJSONDBDao implements ItemsDao {
     /**
      * This method takes a JSONArray and creates Person objects for each JSON
      * object in it.
-     *
-     * @param json
-     * @param role
-     * @return
      */
     private List<Person> getPeopleFromJSON(JSONArray json, String role) {
 
-        ArrayList<Person> people = new ArrayList<Person>();
+        ArrayList<Person> people = new ArrayList<>();
 
         if (json == null) {
             return people;
@@ -307,9 +304,7 @@ public class ItemsJSONDBDao implements ItemsDao {
             }
 
         } catch (JSONException e) {
-
-            System.err.println("Error processing: " + json);
-            e.printStackTrace();
+            LOG.error("Error processing: %s", json, e);
         }
 
         return people;
@@ -318,13 +313,10 @@ public class ItemsJSONDBDao implements ItemsDao {
     /**
      * This method takes a JSONArray and returns a list of the displayForm for
      * each visible item.
-     *
-     * @param json
-     * @return
      */
     private List<String> getDisplayFormFromJSON(JSONArray json) {
 
-        ArrayList<String> displayForms = new ArrayList<String>();
+        ArrayList<String> displayForms = new ArrayList<>();
 
         if (json == null) {
             return displayForms;
@@ -343,9 +335,7 @@ public class ItemsJSONDBDao implements ItemsDao {
             }
 
         } catch (JSONException e) {
-
-            System.err.println("Error processing: " + json);
-            e.printStackTrace();
+            LOG.error("Error processing: %s", json, e);
         }
 
         return displayForms;
