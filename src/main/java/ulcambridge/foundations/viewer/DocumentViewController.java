@@ -3,16 +3,13 @@ package ulcambridge.foundations.viewer;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.UncheckedIOException;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,8 +43,6 @@ public class DocumentViewController {
     private static final String PATH_DOC_NO_PAGE = "/{docId}";
     private static final String PATH_DOC_WITH_PAGE = "/{docId}/{page}";
 
-    protected final Log logger = LogFactory.getLog(getClass());
-
     private final CollectionFactory collectionFactory;
     private final ItemFactory itemFactory;
 
@@ -58,9 +53,9 @@ public class DocumentViewController {
         CollectionFactory collectionFactory,
         ItemFactory itemFactory, @Value("${rootURL}") URI rootUrl) {
 
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
-        Assert.notNull(rootUrl);
+        Assert.notNull(collectionFactory, "collectionFactory required");
+        Assert.notNull(itemFactory, "itemFactory required");
+        Assert.notNull(rootUrl, "rootUrl required");
 
         this.collectionFactory = collectionFactory;
         this.itemFactory = itemFactory;
@@ -96,7 +91,7 @@ public class DocumentViewController {
         request.getSession().setAttribute("taggable", item.getTaggingStatus());
 
         if (itemType.equals("essay")) {
-            return setupEssayView((EssayItem) item, page, request);
+            return setupEssayView((EssayItem) item);
         } else {
             // default to document view.
             return setupDocumentView(item, page, request);
@@ -166,30 +161,17 @@ public class DocumentViewController {
 
         // Write out JSON file.
         response.setContentType("application/json");
-        PrintStream out = null;
-        try {
-            out = new PrintStream(new BufferedOutputStream(
-                    response.getOutputStream()), true, "UTF-8");
+        try (PrintStream out = new PrintStream(new BufferedOutputStream(
+            response.getOutputStream()), true, "UTF-8")) {
             out.print(json.toString(1));
             out.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                out.close();
-            } catch (Exception e) {
-            }
+        } catch (IOException ex) {
+            throw new UncheckedIOException(ex);
         }
     }
 
     /**
      * View for displaying documents or manuscripts.
-     *
-     * @param item
-     * @param page
-     * @param request
-     * @return
      */
     private ModelAndView setupDocumentView(Item item, int page,
             HttpServletRequest request) {
@@ -214,15 +196,9 @@ public class DocumentViewController {
         List<Collection> docCollections = getCollection(item.getId());
         Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
-        //Get imageServer
-        String imageServer = Properties.getString("imageServer");
-
-        //Get services
-        String services = Properties.getString("services");
-
         ModelAndView modelAndView = new ModelAndView("jsp/document");
 
-        /** URLs **/
+        // URLs
         modelAndView.addObject("rootURL", rootURL);
         modelAndView.addObject("docURL", docURL);
         modelAndView.addObject("jsonURL", jsonURL);
@@ -230,10 +206,10 @@ public class DocumentViewController {
         modelAndView.addObject("requestURL", requestURL);
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
-        modelAndView.addObject("imageServer", imageServer);
-        modelAndView.addObject("services", services);
+        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
+        modelAndView.addObject("services", Properties.getString("services"));
 
-        /** Collection information **/
+        // Collection information
         modelAndView.addObject("organisationalCollection",
                 organisationalCollection);
         modelAndView.addObject("collections", docCollections);
@@ -247,7 +223,7 @@ public class DocumentViewController {
         }
         modelAndView.addObject("parentCollection", parent);
 
-        /** Item Information **/
+        // Item Information
         modelAndView.addObject("item", item);
         modelAndView.addObject("docId", item.getId());
         modelAndView.addObject("itemTitle", item.getTitle());
@@ -259,7 +235,7 @@ public class DocumentViewController {
 
         modelAndView.addObject("itemFactory", itemFactory);
 
-        /** Page Information **/
+        // Page Information
         modelAndView.addObject("page", page);
 
         // get the page label, if not at the item-page
@@ -304,14 +280,8 @@ public class DocumentViewController {
 
     /**
      * View for displaying essay data.
-     *
-     * @param item
-     * @param page
-     * @param request
-     * @return
      */
-    private ModelAndView setupEssayView(EssayItem item, int page,
-            HttpServletRequest request) {
+    private ModelAndView setupEssayView(EssayItem item) {
 
         if (item == null) {
             throw new ResourceNotFoundException();
@@ -356,42 +326,22 @@ public class DocumentViewController {
 
     /**
      * Get a list of collections that this item is in.
-     *
-     * @param docId
-     * @return
      */
     private List<Collection> getCollection(String docId) {
-
-        List<Collection> docCollections = new ArrayList<Collection>();
-
-        Iterator<Collection> collectionIterator = collectionFactory
-                .getCollections().iterator();
-        while (collectionIterator.hasNext()) {
-            Collection thisCollection = collectionIterator.next();
-            if (thisCollection.getItemIds().contains(docId)) {
-                docCollections.add(thisCollection);
-            }
-        }
-
-        return docCollections;
+        return collectionFactory.getCollections().stream()
+            .filter(thisCollection -> thisCollection.getItemIds().contains(docId))
+            .collect(Collectors.toList());
     }
 
     /**
      * Get the collection from this list we want to appear in the breadcrumb
      * trail.
-     *
-     * @param collections
-     * @return
      */
     private Collection getBreadcrumbCollection(List<Collection> collections) {
 
         Collection collection = null;
 
-        Iterator<Collection> collectionIterator = collections.iterator();
-        while (collectionIterator.hasNext()) {
-
-            Collection thisCollection = collectionIterator.next();
-
+        for (Collection thisCollection : collections) {
             // Stop if this is an organisational collection, else keep
             // looking
             if (thisCollection.getType().startsWith("organisation")) {

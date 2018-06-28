@@ -1,10 +1,10 @@
 package ulcambridge.foundations.viewer.model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -110,19 +110,15 @@ public class Item implements Comparable<Item> {
     }
 
     public List<String> getAuthorNames() {
-        ArrayList<String> names = new ArrayList<String>();
-        for (int i = 0; i < authors.size(); i++) {
-            names.add(authors.get(i).getDisplayForm());
-        }
-        return names;
+        return authors.stream()
+            .map(Person::getDisplayForm)
+            .collect(Collectors.toList());
     }
 
     public List<String> getAuthorNamesFullForm() {
-        ArrayList<String> names = new ArrayList<String>();
-        for (int i = 0; i < authors.size(); i++) {
-            names.add(authors.get(i).getFullForm());
-        }
-        return names;
+        return authors.stream()
+            .map(Person::getFullForm)
+            .collect(Collectors.toList());
     }
 
     public int getOrder() {
@@ -195,34 +191,17 @@ public class Item implements Comparable<Item> {
 
     @Override
     public int compareTo(Item o) {
-        if (this.getOrder() > o.getOrder()) {
-            return 1;
-        } else if (this.getOrder() == o.getOrder()) {
-            return 0;
-        }
-        return -1;
-        // return getId().compareTo(o.getId());
+        return Comparator.comparingInt(Item::getOrder).compare(this, o);
     }
 
     /**
      * This method takes in a list of people and iterates through them to
      * produce a List of just the authors (role=aut) from that list.
-     *
-     * @param people
-     * @return
      */
     private List<Person> getPeopleByRole(List<Person> people, String role) {
-
-        ArrayList<Person> peopleWithRole = new ArrayList<Person>();
-        Iterator<Person> peopleIt = people.iterator();
-        while (peopleIt.hasNext()) {
-            Person person = peopleIt.next();
-            if (role.equals(person.getRole())) {
-                peopleWithRole.add(person);
-            }
-        }
-        return peopleWithRole;
-
+        return people.stream()
+            .filter(person -> role.equals(person.getRole()))
+            .collect(Collectors.toList());
     }
 
     private String makeShortAbstract(String fullAbstract) {
@@ -230,23 +209,23 @@ public class Item implements Comparable<Item> {
         String abstractShort = fullAbstract;
 
         // remove video captions
-        String[] captionParts = abstractShort
+        String[] captionParts = fullAbstract
                 .split("<div[^>]*class=['\"]videoCaption['\"][^>]*>");
         if (captionParts.length > 1) {
-
-            abstractShort = captionParts[0];
+            StringBuilder sb = new StringBuilder(captionParts[0]);
             for (int i = 1; i < captionParts.length; i++) {
                 int captionEnd = captionParts[i].indexOf("</div>");
                 if (captionEnd > -1) {
-                    abstractShort += captionParts[i].substring(captionEnd);
+                    sb.append(captionParts[i].substring(captionEnd));
                 } else {
-                    abstractShort += captionParts[i];
+                    sb.append(captionParts[i]);
                 }
             }
+            abstractShort = sb.toString();
         }
 
         // remove all tags
-        abstractShort = abstractShort.replaceAll("\\<.*?>", "");
+        abstractShort = abstractShort.replaceAll("<.*?>", "");
 
         // cut of next word after 120 characters in the abstract
         if (abstractShort.length() > 120) {
@@ -261,10 +240,6 @@ public class Item implements Comparable<Item> {
     /**
      * Returns the truncated version of the input if any words contained
      * in the input are more than specified length. Used in wrapping.
-     *
-     * @param input
-     * @param length
-     * @return
      */
     private String truncateLongWords(String input, int length) {
 
