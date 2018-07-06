@@ -1,6 +1,11 @@
 package ulcambridge.foundations.viewer;
 
 
+import java.util.Optional;
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import org.apache.commons.mail.EmailException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,31 +17,31 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
 import ulcambridge.foundations.viewer.components.Captcha;
 import ulcambridge.foundations.viewer.components.EmailHelper;
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
 import ulcambridge.foundations.viewer.forms.MailingListForm;
-
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 @Controller
 public class FormController {
 
     private static final Logger logger = LoggerFactory.getLogger(FormController.class);
     private final String feedbackEmail;
+    private final String feedbackSender;
     private final String feedbackSubject;
     private final Captcha captcha;
     private final EmailHelper emailHelper;
 
     public FormController(
         @Value("${feedbackEmail}") String feedbackEmail,
+        @Value("${feedbackSender:#{null}}") Optional<String> feedbackSender,
         @Value("${feedbackSubject}") String feedbackSubject,
         @Autowired Captcha captcha,
         @Autowired EmailHelper emailHelper
     ) {
         this.feedbackEmail = feedbackEmail;
+        this.feedbackSender = feedbackSender.orElse(feedbackEmail);
         this.feedbackSubject = feedbackSubject;
         this.captcha = captcha;
         this.emailHelper = emailHelper;
@@ -91,7 +96,7 @@ public class FormController {
         // send email with comment in.
         boolean success = emailHelper.sendEmail(
                 feedbackEmail,
-                feedbackEmail,
+                feedbackSender,
                 feedbackSubject,
                 "Feedback from the user '" + feedbackForm.getName() + "' ("
                         + feedbackForm.getEmail() + "):\n\n"
