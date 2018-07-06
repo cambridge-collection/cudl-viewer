@@ -112,8 +112,8 @@
                     <div class="navbar-header">
 
                         <a href="/"><img id="cam-logo" class="pull-left"
-                            src="/img/documentView/cudl-logo-1x.png"
-                            alt="Logo for Cambridge University" title="Cambridge University"></a>
+                            src="/img/documentView/main-logo-small-colourbg.png"
+                            alt="Logo for Manchester University" title="Manchester University"></a>
 
                         <div class="cudl-viewer-buttons-pagination">
                             <button id="prevPage" class="cudl-btn fa fa-arrow-left"
@@ -124,11 +124,6 @@
                                 title="Next Page"></button>
                             <br />
                         </div>
-
-                        <a href="http://www.lib.cam.ac.uk"><img id="ul-logo"
-                            class="pull-right" src="/img/header/ULLogowhite.gif"
-                            alt="Logo for Cambridge University Library"
-                            title="Cambridge University Library"></a>
 
                     </div>
                 </div>
