@@ -1,14 +1,6 @@
 <%@tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <div class="campl-row campl-local-footer">
     <div class="campl-wrap clearfix">
-        <div class="campl-column6 campl-footer-navigation">
-            <div class="region region-footer-2">
-                <div class="block block-menu campl-content-container campl-navigation-list">
-                    <a class="library-logo" href="http://www.lib.cam.ac.uk/" target="_blank"
-                        aria-label="Cambridge University Library 600 years 1416&ndash;2016"></a>
-                </div>
-            </div>
-        </div>
         <div class="campl-column3 campl-footer-navigation">
             <div class="region region-footer-2">
                 <div class="block block-menu campl-content-container campl-navigation-list">

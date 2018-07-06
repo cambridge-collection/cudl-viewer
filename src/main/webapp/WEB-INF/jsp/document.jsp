@@ -51,9 +51,8 @@
                 <cudl:meta property="twitter:image" content="${thumbnailURL}" />
                 <cudl:meta property="schema:thumbnailUrl" content="${thumbnailURL}" />
 
-                <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
-                <cudl:meta property="twitter:creator" content="@camdiglib" />
-                <cudl:meta property="twitter:site" content="@camdiglib" />
+                <cudl:meta property="og:site_name" content="Manchester Digital Library" />
+
             </jsp:attribute>
 
             <jsp:body>

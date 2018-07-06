@@ -8,7 +8,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-<c:set var="defaultTitle" value="Cambridge Digital Library"/>
+<c:set var="defaultTitle" value="Manchester Digital Library"/>
 
 
 <%-- TODO: Move this to main CSS --%>
@@ -56,8 +56,8 @@
             <div class="campl-content-container">
                 <div class="campl-breadcrumb" id="breadcrumb">
                     <ul class="campl-unstyled-list campl-horizontal-navigation clearfix">
-                        <li class='first-child'><a href="http://cam.ac.uk" class="campl-home ir">Home</a></li>
-                        <li><a href="http://www.lib.cam.ac.uk">University Library</a></li>
+                        <li class='first-child'><a href="http://www.manchester.ac.uk/" class="campl-home ir">Home</a></li>
+                        <li><a href="http://www.library.manchester.ac.uk/">University of Manchester Library</a></li>
 
                         <c:choose>
                             <c:when test="${not empty title}">

@@ -4,10 +4,14 @@ src/main/resources/cudl-global.properties
 /src/main/webapp/models/
 /.classpath
 /.project
+/lib
+
 
 # IntelliJ
 .idea
 *.iml
+FoundationsViewer.ipr
+FoundationsViewer.iws
 
 # Maven release plugin
 *.releaseBackup

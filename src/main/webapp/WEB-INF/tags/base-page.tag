@@ -12,7 +12,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-<c:set var="title" value="${(empty title) ? 'Cambridge Digital Library - University of Cambridge' : title}"/>
+<c:set var="title" value="${(empty title) ? 'Manchester Digital Library' : title}"/>
 
 <c:if test="${empty pageData}">
     <c:set var="pageData">
