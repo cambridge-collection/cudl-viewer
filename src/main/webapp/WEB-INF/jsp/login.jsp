@@ -49,13 +49,6 @@
                                         <i class="fa fa-linkedin"></i> Sign in with LinkedIn
                                     </button>
                                 </form:form>
-                                <br />
-                                <form:form method="POST"
-                                    action="/auth/login?type=raven${nextUrlQuerySegment}">
-                                    <button class="btn btn-block btn-social btn-raven" action="submit">
-                                        <img class="img-raven" src="/img/general/raven.png"/> Sign in with Raven
-                                    </button>
-                                </form:form>
                             </div>
                         </div>
                     </div>
