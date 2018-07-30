@@ -28,7 +28,7 @@
         </form:form>
         <div class="altsearchlink grid_5">
             <form:form commandName="searchForm" action="/search/advanced/query" method="GET">
-                <input type="hidden" value="${fn:escapeXml(form.keyword)}>" name="keyword">
+                <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
                 <input class="altsearchlink" type="submit" value="Advanced Search">
             </form:form>
         </div>
