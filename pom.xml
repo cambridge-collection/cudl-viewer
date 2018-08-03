@@ -26,12 +26,12 @@
         <guava.version>18.0</guava.version>
         <hibernate-validator.version>4.3.2.Final</hibernate-validator.version> <!-- TODO: v5 -->
         <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
-        <jgit.version>4.11.0.201803080745-r</jgit.version> <!-- TODO: v5 -->
+        <jgit.version>4.11.1.201807311124-r</jgit.version> <!-- TODO: v5 -->
         <jsonatg.version>1.0.5</jsonatg.version>
         <jtidy.version>r938</jtidy.version>
         <log4j.version>1.2.17</log4j.version> <!-- TODO: v2 or logback -->
         <owasp-encoder.version>1.2.1</owasp-encoder.version>
-        <spring-boot.version>1.5.14.RELEASE</spring-boot.version> <!-- TODO: v2 -->
+        <spring-boot.version>1.5.15.RELEASE</spring-boot.version> <!-- TODO: v2 -->
         <tomcat.version>7.0.76</tomcat.version> <!-- TODO: v9 -->
         <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
     </properties>
