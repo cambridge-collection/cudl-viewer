@@ -146,27 +146,36 @@ public class ItemsJSONDBDao implements ItemsDao {
                 itemAbstract = page0.getString("content");
             }
 
+            /**
+             * Add thumbnailURLs from the IIIFImageURLs.  These will need
+             * the iif image server prefixed and the IIIF request appended
+             * when used.
+             */
             for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
                 JSONObject page = pages.getJSONObject(pageIndex);
                 pageLabels.add(page.getString("label"));
-                if (page.has("thumbnailImageURL")) {
-                    pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
+                if (page.has("IIIFImageURL")) {
+                    pageThumbnailURLs.add(page.getString("IIIFImageURL"));
                 } else {
                     pageThumbnailURLs.add("");
                 }
             }
 
-            // Might have Thumbnail image
+            /**
+             * Usually there is a thumbnail image in descriptive data.
+             * itemThumbnailURL should be a relative or absolute URL to the image or a
+             * URL ending in .jp2 for the IIIF image server.
+             */
             if (descriptiveMetadata.has("thumbnailUrl")
                     && descriptiveMetadata.has("thumbnailOrientation")) {
-                if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
-                if (itemType.equals("essay")) {
-                    itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
-                } else {
+
+                itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
+                if (itemThumbnailURL.trim().endsWith(".jp2")) { // this is a IIIF thumbnail so prefix ImageServer
+
                     try {
                         URL url = new URL(
-                            new URL(Properties.getString("imageServer")),
-                            descriptiveMetadata.getString("thumbnailUrl"));
+                            new URL(Properties.getString("imageServer")+"/"),
+                            itemThumbnailURL);
                         itemThumbnailURL = url.toString();
                     } catch (MalformedURLException ex) {
                         LOG.warn("Cannot construct valid thumbnail URL", ex);
