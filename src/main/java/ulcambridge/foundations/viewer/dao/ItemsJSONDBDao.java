@@ -55,6 +55,7 @@ public class ItemsJSONDBDao implements ItemsDao {
             itemJson = reader.readJsonFromUrl(Properties.getString("jsonURL")
                     + itemId + ".json");
 
+
             // Might have type, might not.
             if (itemJson.has("itemType")) {
                 itemType = itemJson.getString("itemType");
@@ -174,7 +175,7 @@ public class ItemsJSONDBDao implements ItemsDao {
 
                     try {
                         URL url = new URL(
-                            new URL(Properties.getString("imageServer")+"/"),
+                            new URL(Properties.getString("IIIFImageServer")),
                             itemThumbnailURL);
                         itemThumbnailURL = url.toString();
                     } catch (MalformedURLException ex) {
