@@ -23,7 +23,7 @@
             <div class="campl-column7  campl-main-content" id="content">
                 <div class="campl-content-container">
 
-                    Create your own collection by bookmarking any page within Cambridge
+                    Create your own collection by bookmarking any page within Manchester
                     Digital Library, and it will appear here. <br /> <br />
                     <jsp:include page="mylibrary-help.jsp" />
 
