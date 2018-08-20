@@ -42,9 +42,11 @@
                         <c:choose>
                             <c:when test="${item.thumbnailOrientation == 'portrait'}">
                                 <c:set var="imageDimensions" value="height: 100%"/>
+                                <c:set var="width_height" value="175,"/>
                             </c:when>
                             <c:when test="${item.thumbnailOrientation == 'landscape'}">
                                 <c:set var="imageDimensions" value="width: 100%"/>
+                                <c:set var="width_height" value=",175"/>
                             </c:when>
                         </c:choose>
 
@@ -53,7 +55,7 @@
                                 <div class="collections_carousel_image_box">
                                     <div class="collections_carousel_image" id="collections_carousel_item${loop.index}">
                                         <a href="/view/${cudlfn:uriEnc(item.id)}/${cudlfn:uriEnc(bookmark.page)}">
-                                            <img src="${fn:escapeXml(bookmark.thumbnailURL)}"
+                                            <img src="${imageServer}${fn:escapeXml(bookmark.thumbnailURL)}/full/${fn:escapeXml(width_height)}/0/default.jpg"
                                                  alt="${fn:escapeXml(item.id)}"
                                                  style="${fn:escapeXml(imageDimensions)}">
                                         </a>
