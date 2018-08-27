@@ -70,10 +70,10 @@
                         <h2>Collections</h2>
                     </div>
                 </div>
-                <div class="campl-column8 campl-main-content">
+                <div class="campl-column12 campl-main-content">
 
                     <c:forEach items="${rootCollections}" var="c">
-                        <div class="campl-column6">
+                        <div class="campl-column4">
                             <div class="campl-content-container campl-side-padding">
                                 <div class="campl-horizontal-teaser campl-teaser clearfix campl-focus-teaser">
                                     <div class="campl-focus-teaser-img">
