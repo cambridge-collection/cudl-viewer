@@ -29,6 +29,7 @@ public class IIIFPresentation {
     String logoURL;
     String sourceDataURL;
     int numberOfPages;
+    String viewingDirection;
     String id;
     JSONArray pages;
     JSONArray lsArray;
@@ -55,6 +56,12 @@ public class IIIFPresentation {
         // version of iiif presentation
         label = item.getTitle() + " (" + item.getShelfLocator() + ")";
 
+        String td = json.getString("textDirection");
+        if (td!=null && td.equals("R")) {
+            viewingDirection = "right-to-left";
+        } else {
+            viewingDirection = "left-to-right";
+        }
         // metadataObject is an object containing key value pairs,
         // values could be strings/numbers or objects.
 
@@ -89,7 +96,6 @@ public class IIIFPresentation {
         // within (collection?)
         // sequences
         // label
-        // viewingdirection
 
     }
 
@@ -173,6 +179,7 @@ public class IIIFPresentation {
         output.put("description", description);
         output.put("attribution", attribution);
         output.put("logo", logoURL);
+        output.put("viewingDirection", viewingDirection);
         output.put("seeAlso", sourceDataURL);
 
         JSONArray meta = new JSONArray();
