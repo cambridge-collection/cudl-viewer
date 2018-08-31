@@ -199,7 +199,7 @@ public class SearchController {
                     pageThumbnail = page.get("IIIFImageURL")
                             .toString();
 
-                    pageThumbnail = Properties.getString("IIIFImageServer") + pageThumbnail;
+                    pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
 
                 }
             } catch (JSONException e) {

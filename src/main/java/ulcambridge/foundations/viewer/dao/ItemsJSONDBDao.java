@@ -175,7 +175,7 @@ public class ItemsJSONDBDao implements ItemsDao {
 
                     try {
                         URL url = new URL(
-                            new URL(Properties.getString("IIIFImageServer")),
+                            new URL(Properties.getString("imageServer")),
                             itemThumbnailURL);
                         itemThumbnailURL = url.toString();
                     } catch (MalformedURLException ex) {
