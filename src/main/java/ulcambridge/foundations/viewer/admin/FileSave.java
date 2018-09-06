@@ -9,7 +9,7 @@ public class FileSave {
 
     /**
      * Saves specified InputStream to the filename and directory path specified.
-     * Also commits to GIT any changes and rolls back if any of this process fails.
+     * Also rolls back if any of this process fails.
      *
      * Note: Does not validate params. This should occur before calling this
      * method.
@@ -22,7 +22,7 @@ public class FileSave {
     public static synchronized boolean save(String dirPath, String filename, InputStream is) throws IOException {
 
         // Setup variables
-        boolean task1done = false, task2done = false, task3done = false, task4done = false, task5done = false;
+        boolean task1done = false, task2done = false, task3done = false, task4done = false;
         File newFile = new File(dirPath, filename
                 + ".new_cudl_viewer_version").getCanonicalFile();
         File parentDir = new File(newFile.getParent()).getCanonicalFile();
@@ -51,9 +51,6 @@ public class FileSave {
             newFile.renameTo(file);
             task4done = true;
 
-            // TODO commit to git
-            task5done = true;
-
             // Clean up.
             if (oldFile.exists()) {
                 oldFile.delete();
@@ -69,18 +66,6 @@ public class FileSave {
 
         } finally {
 
-            if (!task5done) {
-                if (task4done) {
-                    // Rollback task 4
-                    Files.copy(file.toPath(), newFile.toPath());
-                    if (oldFile.exists()) {
-                        oldFile.renameTo(file);
-                    } else {
-                        file.delete();
-                    }
-                    task4done = false;
-                }
-            }
             if (!task4done) {
                 if (task3done) {
                     // Rollback task 3
