@@ -30,7 +30,7 @@
         <jsonatg.version>1.0.5</jsonatg.version>
         <jtidy.version>r938</jtidy.version>
         <log4j.version>1.2.17</log4j.version> <!-- TODO: v2 or logback -->
-        <owasp-encoder.version>1.2.1</owasp-encoder.version>
+        <owasp-encoder.version>1.2.2</owasp-encoder.version>
         <spring-boot.version>1.5.15.RELEASE</spring-boot.version> <!-- TODO: v2 -->
         <tomcat.version>7.0.76</tomcat.version> <!-- TODO: v9 -->
         <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
