@@ -1,6 +1,3 @@
-/*
- * copies json from master to branch in git- so puppet can pick up the json from branch for the live cudl website
- */
 package ulcambridge.foundations.viewer.admin;
 
 import java.io.IOException;
@@ -13,12 +10,15 @@ import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.RefSpec;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- *
- * @author rekha
+ * TODO: don't catch exceptions here - let the caller handle them instead of using C-style return values.
+ * TODO: don't mutate state in every method - either have final fields or local variables
  */
 public class GitHelper {
 
@@ -27,8 +27,7 @@ public class GitHelper {
     private Git gitmasters;
     private String url;
     private boolean success = false;
-    private static final org.apache.log4j.Logger logger = org.apache.log4j.Logger
-            .getLogger(GitHelper.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(GitHelper.class);
 
     public GitHelper(String localPathMasters, String url) {
         this.localPathMasters = localPathMasters;
@@ -52,24 +51,19 @@ public class GitHelper {
 
     /**
      * Pushes changes to remote repository using the specified refSpec.
-     *
-     * @param refspec
-     * @return
      */
     protected boolean push(String username, String password, String refspec) {
+        CredentialsProvider creds = new UsernamePasswordCredentialsProvider(username, password);
 
         try {
             // master
             localRepomasters = new FileRepository(localPathMasters + "/.git");
             gitmasters = new Git(localRepomasters);
-            // refspec = master:branch
-            gitmasters
-                    .push()
-                    .setRefSpecs(new RefSpec(refspec))
-                    .setRemote(url)
-                    .setCredentialsProvider(
-                            new UsernamePasswordCredentialsProvider(username,
-                                    password)).call();
+            gitmasters.push()
+                .setRefSpecs(new RefSpec(refspec))
+                .setRemote(url)
+                .setCredentialsProvider(creds)
+                .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
             logger.error("Error in push", ex);
@@ -81,8 +75,6 @@ public class GitHelper {
     /**
      * Commits *all* changed files and adds any new files to local repository. A
      * push is required to push these changes to BitBucket.
-     *
-     * @return
      */
     protected boolean commit(String name, String email, String message) {
 
@@ -91,9 +83,10 @@ public class GitHelper {
             localRepomasters = new FileRepository(localPathMasters + "/.git");
             gitmasters = new Git(localRepomasters);
             gitmasters.add().addFilepattern(".").call();
-            gitmasters.commit().setCommitter(new PersonIdent(name, email))
-                    .setMessage(message).call();
-
+            gitmasters.commit()
+                .setCommitter(new PersonIdent(name, email))
+                .setMessage(message)
+                .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
             logger.error("Error in commit", ex);
@@ -108,7 +101,6 @@ public class GitHelper {
      * required to push these changes to BitBucket.
      *
      * @param filePath absolute path, MUST start with admin.git.content.localpath
-     * @return
      */
     protected boolean delete(String filePath, String name, String email,
             String message) {
@@ -121,8 +113,10 @@ public class GitHelper {
             localRepomasters = new FileRepository(localPathMasters + "/.git");
             gitmasters = new Git(localRepomasters);
             gitmasters.rm().addFilepattern(filePath).call();
-            gitmasters.commit().setCommitter(new PersonIdent(name, email))
-                    .setMessage(message).call();
+            gitmasters.commit()
+                .setCommitter(new PersonIdent(name, email))
+                .setMessage(message)
+                .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
             logger.error("Error in delete", ex);
