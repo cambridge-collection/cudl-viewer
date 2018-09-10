@@ -5,7 +5,7 @@
 
 <head>
 
-<title>Cambridge Digital Library - Feedback</title>
+<title>Manchester Digital Library - Feedback</title>
 <link rel="stylesheet" href="/styles/uoc.min.css">
 <!--[if lt IE 9]>
    <link rel="stylesheet" href="/styles/ie.min.css"/>

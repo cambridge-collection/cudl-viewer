@@ -20,13 +20,9 @@
                 <cudl:about-nav />
                 <div class="campl-column6  campl-main-content" id="content">
                     <div class="campl-content-container news_items">
-
-
-                    <div id="newsDiv">
-                        <c:import charEncoding="UTF-8" url="/html/news.html" />
-                    </div>
-
-
+                        <div id="newsDiv">
+                            <c:import charEncoding="UTF-8" url="/html/news.html" />
+                        </div>
                     </div>
                 </div>
             </div>

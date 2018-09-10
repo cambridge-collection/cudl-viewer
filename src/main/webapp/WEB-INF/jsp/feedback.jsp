@@ -6,7 +6,7 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-<cudl:base-page title="Cambridge Digital Library - Feedback"
+<cudl:base-page title="Manchester Digital Library - Feedback"
                     pagetype="FEEDBACK">
 
     <div class="campl-row campl-content">

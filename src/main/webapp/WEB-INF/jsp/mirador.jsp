@@ -27,7 +27,7 @@
           "buildPath": "/mirador-ui/",
           "i18nPath": "locales/",
           data: [
-            { manifestUri: "<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>", location: "Cambridge University Library"}
+            { manifestUri: "<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>", location: "University of Manchester"}
           ],
           'windowSettings' : {
           "canvasControls": {

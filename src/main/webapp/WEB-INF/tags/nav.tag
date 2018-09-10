@@ -111,7 +111,7 @@
                 <li><a href="/mylibrary/" title="My Library" class="${activeMenuIndex == 3 ? 'campl-selected' : ''}"> My Library </a></li>
                 <li><a href="/about/" title="About" class="${(activeMenuIndex == 4) ? 'campl-selected' : ''}"> About </a>
                     <ul class="campl-unstyled-list local-dropdown-menu">
-                        <li><a href="/about/">Introducing the Cambridge Digital Library</a></li>
+                        <li><a href="/about/">Introducing the Digital Library</a></li>
                         <li><a href="/news/">News</a></li>
                         <li><a href="/contributors/">Contributors</a>
                         <li><a href="/terms/">Terms and Conditions</a></li>

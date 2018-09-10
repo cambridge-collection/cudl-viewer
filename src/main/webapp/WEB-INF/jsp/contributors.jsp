@@ -3,25 +3,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-
 <cudl:generic-page pagetype="STANDARD">
     <jsp:attribute name="pageData">
         <cudl:default-context>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <json:property name="isAdmin" value="${true}"/>
-                <json:array name="editableAreas">
-                    <json:object>
-                        <json:property name="id" value="contributorsDiv"/>
-                        <json:property name="filename" value="contributors.html"/>
-                    </json:object>
-                </json:array>
-            </sec:authorize>
+            <cudl:context-editable-areas>
+                <cudl:editable-area id="contributorsDiv" filename="contributors.html"/>
+            </cudl:context-editable-areas>
         </cudl:default-context>
     </jsp:attribute>
 
     <jsp:body>
         <cudl:nav activeMenuIndex="${4}" displaySearch="true"
-                  subtitle="Contributors to the Cambridge Digital Library"/>
+                  subtitle="Contributors to the Manchester Digital Library"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">

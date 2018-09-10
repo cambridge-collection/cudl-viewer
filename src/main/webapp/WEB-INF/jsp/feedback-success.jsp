@@ -3,7 +3,7 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 
-<cudl:base-page title="Cambridge Digital Library - Feedback"
+<cudl:base-page title="Manchester Digital Library - Feedback"
                     pagetype="FEEDBACK">
     <div class="campl-row campl-content">
         <div class="campl-content-container">

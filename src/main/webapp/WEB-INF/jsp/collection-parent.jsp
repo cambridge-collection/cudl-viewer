@@ -28,7 +28,7 @@
                     <div class="campl-tertiary-navigation">
                         <div class="campl-tertiary-navigation-structure">
                             <ul class="campl-unstyled-list campl-vertical-breadcrumb">
-                                <li><a href="/">Cambridge Digital Library<span
+                                <li><a href="/">Manchester Digital Library<span
                                         class="campl-vertical-breadcrumb-indicator"></span></a></li>
                             </ul>
                             <ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">
