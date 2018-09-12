@@ -69,7 +69,7 @@
                         <div class="campl-column8">
                             <p>
                                 Sorry there was a problem submitting your feedback, we'll be looking into it as soon as we can.
-                                Please email your comments directly to the team at <a href="mailto:dl-feedback@lib.cam.ac.uk?body=${cudlfn:uriEnc(feedbackForm.comment)}">dl-feedback@lib.cam.ac.uk</a>.
+                                Please email your comments directly to the team at <a href="mailto:digitalviewer@manchester.ac.uk?body=${cudlfn:uriEnc(feedbackForm.comment)}">dl-feedback@lib.cam.ac.uk</a>.
                             </p>
                         </div>
                     </div>
