@@ -144,14 +144,25 @@ public final class WebpackBuilds {
      *         "css": "css/bar.css"
      *     },
      *     "baz": { "js": "js/baz.js" },
-     *     "boz": { "css": "css/boz.css" }
+     *     "boz": { "css": "css/boz.css" },
+     *     "": {
+     *         "png": ["foo.png", "bar.png"],
+     *         "svg": ["foo.svg", "bar.svg"]
+     *     }
      * }
      * }</pre>
      *
      * <p>Each key of the root object defines a chunk with the key's name.
      * A {@code js} or {@code css} attribute defines the path to the chunk's
-     * javascript or css file. Each {@link MetadataRecord} represents a single
-     * css or js file, so a chunk can (currently) have one or two records.
+     * javascript or css file.
+     *
+     * Anonymous chunks (e.g. files referenced from but not contained in named
+     * chunks) are placed in a special section with an empty name. These
+     * anonymous chunks are ignored, as they're not entry points which will be
+     * explicitly loaded - they're referenced from other named chunks.
+     *
+     * Each {@link MetadataRecord} represents a single css or js file, so a
+     * chunk can (currently) have one or two records.
      *
      * @param input The JSON document to parse
      * @return A set of the js and css records defined in the metadata.
@@ -183,8 +194,9 @@ public final class WebpackBuilds {
             if(!chunkNode.isObject())
                 throw new WebpackMetadataException("Chunk was not a JSON object");
 
+            // Ignore the anonymous chunks
             if(name.length() == 0)
-                throw new WebpackMetadataException("Chunk name was empty");
+                continue;
 
             if(chunkNode.has("css")) {
                 records.add(MetadataRecord.fromFilename(
