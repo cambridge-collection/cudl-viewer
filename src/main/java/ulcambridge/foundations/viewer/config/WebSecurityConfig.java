@@ -96,6 +96,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Function;
 
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Import(WebSecurityConfig.Oauth2AuthConfig.class)
@@ -421,7 +422,7 @@ public class WebSecurityConfig {
         public static final URI GOOGLE_PROFILE_URL = URI.create(
             "https://www.googleapis.com/plus/v1/people/me/openIdConnect");
         public static final URI FACEBOOK_PROFILE_URL = URI.create(
-                "https://graph.facebook.com/me?fields=id,email");            
+                "https://graph.facebook.com/me?fields=id,email");
 
         public static final String TYPE_LINKEDIN = "linkedin";
         public static final String TYPE_GOOGLE = "google";

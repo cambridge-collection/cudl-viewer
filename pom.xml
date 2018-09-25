@@ -4,99 +4,41 @@
     <groupId>ulcambridge.foundations.viewer</groupId>
     <artifactId>FoundationsViewer</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <!-- WAR packaging is required for rendering JSP to work with embedded
+         tomcat. The war is executable like a JAR though, i.e:
+
+            $ java -jar target/FoundationsViewer-1.0-SNAPSHOT.war
+
+         This is documented here: https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#boot-features-jsp-limitations
+         -->
     <packaging>war</packaging>
 
     <name>CUDL Viewer</name>
     <url>https://bitbucket.org/CUDL/cudl-viewer</url>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.5.RELEASE</version>
+    </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
 
         <embedded-viewer-assets.version>0.1.0</embedded-viewer-assets.version>
-        <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
         <cudl-viewer-ui.version>1.4.5</cudl-viewer-ui.version>
-        <spring-security-raven.version>1.0.0</spring-security-raven.version>
-
-        <commons-email.version>1.5</commons-email.version>
-        <commons-fileupload.version>1.3.3</commons-fileupload.version>
-        <commons-io.version>2.6</commons-io.version>
-        <commons-lang3.version>3.7</commons-lang3.version>
-        <commons-logging.version>1.1</commons-logging.version>
-        <guava.version>18.0</guava.version>
-        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version> <!-- TODO: v5 -->
-        <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
-        <jgit.version>4.11.2.201809100523-r</jgit.version> <!-- TODO: v5 -->
-        <jsonatg.version>1.0.5</jsonatg.version>
-        <jtidy.version>r938</jtidy.version>
-        <log4j.version>1.2.17</log4j.version> <!-- TODO: v2 or logback -->
-        <owasp-encoder.version>1.2.2</owasp-encoder.version>
-        <spring-boot.version>1.5.16.RELEASE</spring-boot.version> <!-- TODO: v2 -->
-        <tomcat.version>7.0.76</tomcat.version> <!-- TODO: v9 -->
-        <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
     </properties>
 
     <scm>
         <connection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</connection>
         <developerConnection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</developerConnection>
         <url>https://bitbucket.org/CUDL/cudl-viewer</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <build>
         <plugins>
-            <!--  this plugin is run by 'mvn tomcat7:run' and allow live reloads for static assets e.g. jsp changes. -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <path>/</path>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
-                    <additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>
-                    <server>tomcat-development-server</server>
-                    <port>1111</port>
-                    <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
-                </configuration>
-            </plugin>
-
-            <!--  This plugin is run by 'mvn clean verify cargo:run' and does not allow live reloads -->
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.6.2</version>
-                <configuration>
-                    <configuration>
-                        <type>standalone</type>
-                        <configfiles>
-                            <configfile>
-                                <file>${project.basedir}/src/main/resources/cudl-global.properties</file>
-                                <todir>shared/classes</todir>
-                            </configfile>
-                        </configfiles>
-                        <properties>
-                            <cargo.servlet.port>1111</cargo.servlet.port>
-                        </properties>
-                    </configuration>
-                    <container>
-                        <containerId>tomcat7x</containerId>
-                        <artifactInstaller>
-                            <groupId>org.apache.tomcat</groupId>
-                            <artifactId>tomcat</artifactId>
-                            <version>${tomcat.version}</version>
-                        </artifactInstaller>
-                    </container>
-                    <deployables>
-                        <deployable>
-                            <properties>
-                                <context>ROOT</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -106,6 +48,11 @@
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
             <!-- We don't want to include the global properties file as this changes
@@ -189,29 +136,6 @@
         </extensions>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>${log4j.version}</version>
-            </dependency>
-            <dependency>
-                <!-- Spring override -->
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- Include the viewer UI's built assets. The resources jar contains
              the built files under META-INF/resources which gets served as if
@@ -222,7 +146,6 @@
             <version>${cudl-viewer-ui.version}</version>
             <classifier>resources</classifier>
             <type>jar</type>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Include the viewer UI's build metadata JSON files -->
@@ -230,7 +153,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>viewer-ui</artifactId>
             <version>${cudl-viewer-ui.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Include the embedded viewer's assets (html, css, js etc). -->
@@ -244,7 +166,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>embedded-viewer-assets</artifactId>
             <version>${embedded-viewer-assets.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Provides a ResourceTransformer which dynamically configures the
@@ -252,14 +173,13 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>embedded-viewer-configurer</artifactId>
-            <version>${embedded-viewer-configurer.version}</version>
-            <scope>compile</scope>
+            <version>0.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.tuckey</groupId>
             <artifactId>urlrewritefilter</artifactId>
-            <version>${urlrewritefilter.version}</version>
+            <version>4.0.4</version>
         </dependency>
 
         <dependency>
@@ -288,15 +208,13 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-            <scope>compile</scope>
+            <version>1.2.17</version>
         </dependency>
 
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging-api</artifactId>
-            <version>${commons-logging.version}</version>
-            <scope>compile</scope>
+            <version>1.1</version>
         </dependency>
 
         <dependency>
@@ -307,32 +225,30 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
+            <version>1.3.3</version>
         </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
+            <version>2.6</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
-            <version>${commons-email.version}</version>
+            <version>1.5</version>
         </dependency>
 
         <!-- DB Pool -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.5.0</version>
         </dependency>
 
         <!-- for XML parsing -->
@@ -345,17 +261,18 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
+            <version>20180813</version>
         </dependency>
 
         <!-- jtidy -->
         <dependency>
             <groupId>net.sf.jtidy</groupId>
             <artifactId>jtidy</artifactId>
-            <version>${jtidy.version}</version>
+            <version>r938</version>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
 
@@ -364,10 +281,10 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+        <!--</dependency>-->
 
         <!-- taglibs -->
         <dependency>
@@ -385,10 +302,24 @@
         <dependency>
             <groupId>org.owasp.encoder</groupId>
             <artifactId>encoder</artifactId>
-            <version>${owasp-encoder.version}</version>
+            <version>1.2.2</version>
         </dependency>
 
         <!-- Spring Framework -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -436,6 +367,7 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
+            <version>2.3.3.RELEASE</version>
         </dependency>
 
         <!-- Test utilities -->
@@ -458,19 +390,20 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-jwt</artifactId>
+            <version>1.0.9.RELEASE</version>
         </dependency>
 
         <!-- raven auth, in cudl repo -->
         <dependency>
             <groupId>uk.ac.cam.lib</groupId>
             <artifactId>spring-security-raven</artifactId>
-            <version>${spring-security-raven.version}</version>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
-            <version>${jgit.version}</version>
+            <version>4.11.2.201809100523-r</version> <!-- TODO: v5 -->
         </dependency>
 
         <!-- for Genizah tagging, also upgrade org.slf4j version
@@ -486,19 +419,37 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <version>18.0</version>
         </dependency>
 
         <!-- Apache Jena -->
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-core</artifactId>
-            <version>${jena.version}</version>
+            <version>2.13.0</version>  <!-- TODO: v3 -->
+
+            <exclusions>
+                <!-- Apache Jenna 2.x includes the concrete log4j12 binding, leading to
+                     multiple bindings (because spring boot includes logback).
+                     Manually exclude it until we upgrade to Jenna 3.x (which hopefully
+                     doesn't do this).-->
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-arq</artifactId>
-            <version>${jena.version}</version>
+            <version>2.13.0</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- for Genizah tagging end -->
@@ -506,7 +457,7 @@
         <dependency>
             <groupId>com.github.livesense</groupId>
             <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
-            <version>${jsonatg.version}</version>
+            <version>1.0.5</version>
         </dependency>
     </dependencies>
 

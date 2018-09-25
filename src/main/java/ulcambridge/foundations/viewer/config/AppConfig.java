@@ -27,14 +27,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
-@ComponentScan({
-    "ulcambridge.foundations.viewer.admin",
-    "ulcambridge.foundations.viewer.crowdsourcing",
-    "ulcambridge.foundations.viewer.components",
-    "ulcambridge.foundations.viewer.frontend",
-    "ulcambridge.foundations.viewer.search",
-})
-@Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableScheduling
 @EnableTransactionManagement
 public class AppConfig {

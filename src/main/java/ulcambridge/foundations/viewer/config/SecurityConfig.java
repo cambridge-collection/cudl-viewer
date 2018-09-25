@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
@@ -18,7 +17,6 @@ import java.util.Arrays;
 
 @Configuration
 @EnableOAuth2Client
-@Import(WebSecurityConfig.class)
 public class SecurityConfig {
 
     @Bean(name = "google")

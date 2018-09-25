@@ -67,12 +67,7 @@ public class FragmentAwareRequestCache extends AbstractRequestCacheWrapper {
         }
 
         private static String encodeFragment(String frag) {
-            try {
-                return "#" + UriUtils.encodeFragment(frag, "UTF-8");
-            }
-            catch (UnsupportedEncodingException e) {
-                throw new AssertionError(e);
-            }
+            return "#" + UriUtils.encodeFragment(frag, "UTF-8");
         }
 
         @Override

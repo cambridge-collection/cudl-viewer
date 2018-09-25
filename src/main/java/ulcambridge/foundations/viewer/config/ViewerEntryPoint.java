@@ -1,5 +1,8 @@
 package ulcambridge.foundations.viewer.config;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
@@ -19,7 +22,6 @@ import javax.servlet.ServletRegistration;
  */
 public class ViewerEntryPoint
     extends AbstractAnnotationConfigDispatcherServletInitializer {
-
 
     @Override
     public void onStartup(ServletContext container) throws ServletException {
@@ -57,6 +59,7 @@ public class ViewerEntryPoint
         };
     }
 
+    // FIXME: Probably need to register this somehow w/ spring boot
     private void registerProxyFilter(
         ServletContext servletContext, String name, String...patterns) {
 

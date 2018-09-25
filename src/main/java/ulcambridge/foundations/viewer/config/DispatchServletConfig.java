@@ -7,38 +7,25 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.MimeType;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.GzipResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
-import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
 import java.util.List;
 
 @Configuration
-@EnableWebMvc
-@ComponentScan(
-    basePackages = {"ulcambridge.foundations.viewer"},
-    useDefaultFilters = false,
-    includeFilters = {@Filter(Controller.class)})
-@Import(BeanFactoryPostProcessorConfig.class)
 public class DispatchServletConfig
-    extends WebMvcConfigurerAdapter
-    implements BeanFactoryAware {
+    implements WebMvcConfigurer, BeanFactoryAware {
 
     public static final String EMBEDDED_VIEWER_PATTERN = "/embed/**";
 
@@ -54,8 +41,6 @@ public class DispatchServletConfig
         // Register the UTF-8 message converter
         converters.add(0, this.beanFactory.getBean(
             StringHttpMessageConverter.class));
-
-        super.extendMessageConverters(converters);
     }
 
     /**
@@ -112,7 +97,7 @@ public class DispatchServletConfig
     }
 
     @Configuration
-    public static class ResourcesConfig extends WebMvcConfigurerAdapter {
+    public static class ResourcesConfig implements WebMvcConfigurer {
 
         @Autowired
         private Environment env;
@@ -141,9 +126,9 @@ public class DispatchServletConfig
 
             registry.addResourceHandler("/img/**")
                 .addResourceLocations("/img/");
-            
+
             registry.addResourceHandler("/mirador-ui/**")
-            .addResourceLocations("/mirador-ui/");
+                .addResourceLocations("/mirador-ui/");
 
             registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("/favicon.ico");

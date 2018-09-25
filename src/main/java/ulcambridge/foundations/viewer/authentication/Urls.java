@@ -102,9 +102,6 @@ public class Urls {
         catch (IllegalArgumentException e) {
             return null;
         }
-        catch (UnsupportedEncodingException e) {
-            return null;
-        }
     }
 
     public static Optional<String> getQueryParam(
