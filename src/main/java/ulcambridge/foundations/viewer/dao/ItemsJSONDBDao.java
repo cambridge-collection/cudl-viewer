@@ -1,27 +1,27 @@
 package ulcambridge.foundations.viewer.dao;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import javax.sql.DataSource;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ItemsJSONDBDao implements ItemsDao {
@@ -29,14 +29,17 @@ public class ItemsJSONDBDao implements ItemsDao {
     private final static Logger LOG = LoggerFactory.getLogger(ItemsJSONDBDao.class);
     private final JSONReader reader;
     private final JdbcTemplate jdbcTemplate;
+    private final URI imageServer;
 
     @Autowired
-    public ItemsJSONDBDao(JSONReader reader, DataSource dataSource) {
+    public ItemsJSONDBDao(JSONReader reader, DataSource dataSource,
+                          @Value("${imageServer}") URI imageServer) {
         Assert.notNull(dataSource, "dataSource is required");
         Assert.notNull(reader, "reader is required");
 
         this.reader = reader;
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.imageServer = imageServer;
     }
 
     /**
@@ -164,12 +167,11 @@ public class ItemsJSONDBDao implements ItemsDao {
                     itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
                 } else {
                     try {
-                        URL url = new URL(
-                            new URL(Properties.getString("imageServer")),
-                            descriptiveMetadata.getString("thumbnailUrl"));
-                        itemThumbnailURL = url.toString();
-                    } catch (MalformedURLException ex) {
-                        LOG.warn("Cannot construct valid thumbnail URL", ex);
+                        itemThumbnailURL = this.imageServer
+                            .resolve(new URI(descriptiveMetadata.getString("thumbnailUrl")))
+                            .toString();
+                    } catch (URISyntaxException e) {
+                        LOG.warn("Cannot construct valid thumbnail URL", e);
                     }
                 }
 
