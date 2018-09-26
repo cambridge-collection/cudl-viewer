@@ -64,8 +64,7 @@
                 <configuration>
                     <warName>FoundationsViewer</warName>
                     <packagingExcludes>
-                        WEB-INF/classes/cudl-global.properties,
-                        models/equatorie-src/**/*
+                        WEB-INF/classes/cudl-global.properties
                     </packagingExcludes>
                 </configuration>
             </plugin>
