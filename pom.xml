@@ -227,6 +227,8 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- Note that we only use the javax.mail API, not the simplified API
+             from commons-email.-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>

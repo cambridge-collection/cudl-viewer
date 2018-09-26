@@ -6,7 +6,6 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.apache.commons.mail.EmailException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,7 +119,7 @@ public class FormController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/mailinglistform.html")
     public ModelAndView processSubmit(@Valid MailingListForm mailingListForm,
-            BindingResult result) throws EmailException {
+            BindingResult result) {
 
         if (result.hasErrors()) {
             ModelAndView modelAndView = new ModelAndView("jsp/mailinglist");
