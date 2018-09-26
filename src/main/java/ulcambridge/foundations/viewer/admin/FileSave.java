@@ -16,7 +16,7 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class FileSave {
 
-    private static final Logger logger = LoggerFactory.getLogger(FileSave.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileSave.class);
 
     /**
      * Saves specified InputStream to the filename and directory path specified.
@@ -69,7 +69,7 @@ public class FileSave {
                 ex.addSuppressed(ex2);
             }
 
-            logger.error("Failed to save file {}", filename, ex);
+            LOG.error("Failed to save file {}", filename, ex);
             return false;
         }
 

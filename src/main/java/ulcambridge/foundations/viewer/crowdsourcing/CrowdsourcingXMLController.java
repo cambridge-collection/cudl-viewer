@@ -39,7 +39,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 @RequestMapping("/crowdsourcing/xtfxml")
 public class CrowdsourcingXMLController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
 
     private final CrowdsourcingDao dataSource;
 
@@ -75,7 +75,7 @@ public class CrowdsourcingXMLController {
         List<File> fragmentFiles = sr.listFragments();
 
         if (fragmentFiles == null) {
-            logger.error("Fragments not found");
+            LOG.error("Fragments not found");
             return new JsonResponse("400", "Fragments not found");
         }
 
@@ -86,7 +86,7 @@ public class CrowdsourcingXMLController {
             String documentId = FilenameUtils.getBaseName(fragmentFile.getName());
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info(counter + "/" + size + ": " + documentId);
 
             try {
                 // extract tags from file
@@ -104,7 +104,7 @@ public class CrowdsourcingXMLController {
                 e.printStackTrace();
             }
         }
-        logger.info("skip: " + counterSkip);
+        LOG.info("skip: " + counterSkip);
 
         return new JsonResponse("200", "Tags added/updated in database");
     }
@@ -137,7 +137,7 @@ public class CrowdsourcingXMLController {
                 List<File> metadataFiles = sr.listMetadata();
 
                 if (metadataFiles == null) {
-                    logger.error("Metadata not found, " + PATH_META);
+                    LOG.error("Metadata not found, " + PATH_META);
                     return new JsonResponse("400", "Metadata not found");
                 }
 
@@ -171,7 +171,7 @@ public class CrowdsourcingXMLController {
             List<File> metadataFiles = sr.listMetadata();
 
             if (metadataFiles == null) {
-                logger.error("Metadata not found");
+                LOG.error("Metadata not found");
                 return new JsonResponse("400", "Metadata not found");
             }
 
@@ -199,7 +199,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info(counter + "/" + size + ": " + documentId);
         }
     }
 
@@ -219,7 +219,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info(counter + "/" + size + ": " + documentId);
         }
     }
 
@@ -245,7 +245,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info(counter + "/" + size + ": " + documentId);
         }
     }
 
@@ -265,7 +265,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info(counter + "/" + size + ": " + metadataId);
         }
     }
 
@@ -286,7 +286,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info(counter + "/" + size + ": " + metadataId);
         }
     }
 
@@ -308,7 +308,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info(counter + "/" + size + ": " + metadataId);
         }
     }
 

@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer.authentication;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
@@ -21,7 +19,6 @@ import java.util.Optional;
 @RequestMapping("/auth")
 public class LoginController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final OAuth2RestOperations googleTemplate;
     private final OAuth2RestOperations facebookTemplate;
     private final OAuth2RestOperations linkedinTemplate;

@@ -1,7 +1,7 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -21,7 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Component
 public class XTFSearch implements Search {
 
-    private static final Log LOG = LogFactory.getLog(XTFSearch.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(XTFSearch.class);
 
     private static final String INDEX_NAME_REGULAR = "index-cudl",
         INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";

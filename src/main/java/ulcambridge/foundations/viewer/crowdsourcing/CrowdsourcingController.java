@@ -57,7 +57,7 @@ public class CrowdsourcingController {
     private static final Set<String> USER_ROLES = Collections.unmodifiableSet(
             new HashSet<String>(Arrays.asList("ROLE_USER", "ROLE_ADMIN")));
 
-    private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CrowdsourcingController.class);
 
     private final CrowdsourcingDao dataSource;
     private final Set<String> allowedRoles = USER_ROLES;
@@ -103,7 +103,7 @@ public class CrowdsourcingController {
 
     @ExceptionHandler(SQLException.class)
     private ResponseEntity<Void> handleSqlException(SQLException e) {
-        logger.error("Database operation failed", e);
+        LOG.error("Database operation failed", e);
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .build();

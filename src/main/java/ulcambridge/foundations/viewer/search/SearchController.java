@@ -9,8 +9,6 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -43,7 +41,6 @@ import ulcambridge.foundations.viewer.model.Properties;
 @RequestMapping("/search")
 public class SearchController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final Search search;
     private final ItemFactory itemFactory;
     private final CollectionFactory collectionFactory;

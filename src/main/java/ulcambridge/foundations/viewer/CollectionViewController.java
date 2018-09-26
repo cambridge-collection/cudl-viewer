@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +30,6 @@ import java.util.regex.Pattern;
 @RequestMapping("/collections")
 public class CollectionViewController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
     private final ItemFactory itemFactory;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");

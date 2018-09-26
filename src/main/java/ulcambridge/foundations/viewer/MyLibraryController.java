@@ -9,8 +9,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +27,6 @@ import ulcambridge.foundations.viewer.model.Item;
 @RequestMapping("/mylibrary")
 public class MyLibraryController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final ItemFactory itemFactory;
     private final BookmarkDao bookmarkDao;
 

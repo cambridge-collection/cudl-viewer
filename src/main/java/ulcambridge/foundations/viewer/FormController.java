@@ -6,8 +6,6 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -25,7 +23,6 @@ import ulcambridge.foundations.viewer.forms.MailingListForm;
 @Controller
 public class FormController {
 
-    private static final Logger logger = LoggerFactory.getLogger(FormController.class);
     private final String feedbackEmail;
     private final String feedbackSender;
     private final String feedbackSubject;
