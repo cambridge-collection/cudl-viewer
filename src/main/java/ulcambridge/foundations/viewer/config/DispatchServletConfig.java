@@ -6,6 +6,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -17,10 +18,13 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.GzipResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.tuckey.web.filters.urlrewrite.UrlRewriteFilter;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
 
+import javax.servlet.DispatcherType;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -159,5 +163,22 @@ public class DispatchServletConfig
                         new EmbeddedViewerConfiguringResourceTransformer(
                             embeddedViewerConfig));
         }
+    }
+
+    /**
+     * Register a URL rewriting filter, which applies rules from
+     * {@code src/main/webapp/WEB-INF/urlrewrite.xml}.
+     */
+    @Bean
+    public FilterRegistrationBean<UrlRewriteFilter> urlRewriteFilterRegistration() {
+        FilterRegistrationBean<UrlRewriteFilter> registration = new FilterRegistrationBean<>();
+
+        // see src/main/webapp/WEB-INF/urlrewrite.xml
+        registration.setFilter(new UrlRewriteFilter());
+        registration.setName("UrlRewriteFilter");
+        registration.setUrlPatterns(Arrays.asList("/*"));
+        registration.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD);
+
+        return registration;
     }
 }
