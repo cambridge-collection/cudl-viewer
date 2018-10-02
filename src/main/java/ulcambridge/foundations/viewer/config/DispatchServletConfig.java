@@ -6,10 +6,14 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.server.ErrorPage;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.MimeType;
@@ -180,5 +184,18 @@ public class DispatchServletConfig
         registration.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD);
 
         return registration;
+    }
+
+    /**
+     * Register custom error pages.
+     */
+    @Bean
+    public WebServerFactoryCustomizer<TomcatServletWebServerFactory> errorPageRegistration() {
+        return (factory) ->
+            factory.addErrorPages(
+                new ErrorPage(HttpStatus.NOT_FOUND, "/errors/404.html"),
+                new ErrorPage(
+                    HttpStatus.INTERNAL_SERVER_ERROR, "/errors/500.html")
+            );
     }
 }
