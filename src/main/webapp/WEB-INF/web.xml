@@ -44,47 +44,6 @@
         </jsp-property-group>
     </jsp-config>
 
-    <!-- mime types are required or the mvc:resources fails to ignore them -->
-    <mime-mapping>
-        <extension>json</extension>
-        <mime-type>application/json</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>glsl</extension>
-        <mime-type>application/x-glsl</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>dzi</extension>
-        <mime-type>text/xml</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>ttf</extension>
-        <mime-type>application/octet-stream</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>eot</extension>
-        <mime-type>application/octet-stream</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>woff</extension>
-        <mime-type>application/x-font-woff</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>map</extension>
-        <mime-type>application/json</mime-type>
-    </mime-mapping>
-
-    <mime-mapping>
-        <extension>ico</extension>
-        <mime-type>image/x-icon</mime-type>
-    </mime-mapping>
-
     <session-config>
         <session-timeout>240</session-timeout>
     </session-config>
