@@ -7,15 +7,9 @@
 <cudl:generic-page pagetype="STANDARD">
     <jsp:attribute name="pageData">
         <cudl:default-context>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <json:property name="isAdmin" value="${true}"/>
-                <json:array name="editableAreas">
-                    <json:object>
-                        <json:property name="id" value="contributorsDiv"/>
-                        <json:property name="filename" value="contributors.html"/>
-                    </json:object>
-                </json:array>
-            </sec:authorize>
+            <cudl:context-editable-areas>
+                <cudl:editable-area id="contributorsDiv" filename="contributors.html"/>
+            </cudl:context-editable-areas>
         </cudl:default-context>
     </jsp:attribute>
 
