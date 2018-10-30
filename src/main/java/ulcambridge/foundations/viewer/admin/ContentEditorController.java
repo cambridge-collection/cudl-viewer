@@ -53,8 +53,6 @@ public class ContentEditorController {
 
     protected final String contentHTMLPath = Properties
             .getString("cudl-viewer-content.html.path");
-    protected final String contentHTMLURL = Properties
-            .getString("cudl-viewer-content.html.url");
     protected final String contentImagesPath = Properties
             .getString("cudl-viewer-content.images.path");
     protected final String contentImagesURL = Properties
