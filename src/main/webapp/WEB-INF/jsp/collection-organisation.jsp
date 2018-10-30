@@ -44,9 +44,8 @@
                             </div>
                         </c:if>
 
-                        <c:set var="summaryURL" value="${contentHTMLURL}/${collection.summary}"/>
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
-                        <c:import charEncoding="UTF-8" url="${summaryURL}"/>
+                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
                     </div>
                 </div>
                 <div class="campl-column5 campl-secondary-content ">
@@ -59,8 +58,7 @@
                 </div>
 
                 <div id="sponsorDiv">
-                <c:set var="sponsorsURL" value="${contentHTMLURL}/${collection.sponsors}"/>
-                    <c:import charEncoding="UTF-8" url="${sponsorsURL}" />
+                    <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
                 </div>
             </div>
         </div>

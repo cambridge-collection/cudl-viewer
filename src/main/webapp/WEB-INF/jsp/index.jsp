@@ -37,19 +37,19 @@
                                     <li class="campl-slide campl-column12">
                                         <div id="index-carousel-1" style="position:relative">
                                             <c:import charEncoding="UTF-8"
-                                                url="/html/index-carousel-1.html" />
+                                                url="${contentHTMLURL}/index-carousel-1.html" />
                                         </div>
                                     </li>
                                     <li class="campl-slide campl-column12">
                                         <div id="index-carousel-2" style="position:relative">
                                             <c:import charEncoding="UTF-8"
-                                                url="/html/index-carousel-2.html" />
+                                                url="${contentHTMLURL}/index-carousel-2.html" />
                                         </div>
                                     </li>
                                     <li class="campl-slide campl-column12">
                                         <div id="index-carousel-3" style="position:relative">
                                             <c:import charEncoding="UTF-8"
-                                                url="/html/index-carousel-3.html" />
+                                                url="${contentHTMLURL}/index-carousel-3.html" />
                                         </div>
                                     </li>
                                 </ul>
@@ -119,7 +119,7 @@
 
                 <div class="campl-column4">
                     <div id="latestNewsDiv">
-                        <c:import charEncoding="UTF-8" url="/html/index-latest-news.html" />
+                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/index-latest-news.html" />
                     </div>
                 </div>
             </div>

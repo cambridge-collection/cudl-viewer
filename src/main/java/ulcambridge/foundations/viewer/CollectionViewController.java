@@ -1,10 +1,16 @@
 package ulcambridge.foundations.viewer;
 
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,14 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Controller for viewing a collection.
@@ -35,6 +38,7 @@ public class CollectionViewController {
     protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
     private final ItemFactory itemFactory;
+    private final String contentHtmlUrl;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
     private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
@@ -42,14 +46,16 @@ public class CollectionViewController {
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemFactory itemFactory) {
+                                    ItemFactory itemFactory,
+                                    @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
         Assert.notNull(collectionFactory);
         Assert.notNull(itemFactory);
+        Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
         this.itemFactory = itemFactory;
+        this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
-
 
     // on path /collections/
     @RequestMapping(value = "/")
@@ -91,9 +97,6 @@ public class CollectionViewController {
         // Get imageServer
         final String imageServer = Properties.getString("imageServer");
 
-        // Get content url
-        final String contentHTMLURL = Properties.getString("cudl-viewer-content.html.url");
-
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
@@ -101,7 +104,7 @@ public class CollectionViewController {
         modelAndView.addObject("itemFactory", itemFactory);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
-        modelAndView.addObject("contentHTMLURL", contentHTMLURL);
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
 
         // append a list of this collections subcollections if this is a parent.
