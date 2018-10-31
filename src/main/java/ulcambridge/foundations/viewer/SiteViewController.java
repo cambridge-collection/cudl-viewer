@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +32,16 @@ public class SiteViewController {
     private String showHoldingPage = Properties.getString("showHoldingPage");
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
+    private final String contentHtmlUrl;
 
     @Autowired
-    public SiteViewController(CollectionFactory collectionFactory) {
+    public SiteViewController(CollectionFactory collectionFactory,
+                              @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
         Assert.notNull(collectionFactory);
+        Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
+        this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 
     // on path /
@@ -49,6 +55,7 @@ public class SiteViewController {
         }
 
         ModelAndView modelAndView = new ModelAndView("jsp/index");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
 
         modelAndView.addObject("downtimeWarning",
                 Properties.getString("downtimeWarning"));
@@ -73,6 +80,7 @@ public class SiteViewController {
     public ModelAndView handleNewsRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/news");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
@@ -123,6 +131,7 @@ public class SiteViewController {
     public ModelAndView handleContributorsRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/contributors");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 

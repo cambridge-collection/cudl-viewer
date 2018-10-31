@@ -1,12 +1,13 @@
 package ulcambridge.foundations.viewer;
 
+import java.util.Map;
+
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
+
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockItemsJSONDao;
 import ulcambridge.foundations.viewer.model.Collection;
-
-import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -57,7 +58,7 @@ public class CollectionViewControllerTest {
             new MockCollectionsDao());
         ItemFactory itemFactory = new ItemFactory(
             new MockItemsJSONDao());
-        return new CollectionViewController(collectionFactory, itemFactory);
+        return new CollectionViewController(collectionFactory, itemFactory, "./html");
     }
 
 }
