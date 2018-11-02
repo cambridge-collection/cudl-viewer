@@ -12,6 +12,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 <cudl:tag name="meta" selfClose="${true}">
     <jsp:attribute name="attributes">
@@ -20,6 +21,6 @@
         <cudl:attr name="charset" value="${charset}" skipEmpty="${true}"/>
         <cudl:attr name="itemprop" value="${itemprop}" skipEmpty="${true}"/>
         <cudl:attr name="property" value="${property}" skipEmpty="${true}"/>
-        <cudl:attr name="content" value="${content}" skipEmpty="${true}"/>
+        <cudl:attr name="content" value="${cudlfn:stripTags(content)}" skipEmpty="${true}"/>
     </jsp:attribute>
 </cudl:tag>

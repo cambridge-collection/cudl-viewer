@@ -1,14 +1,16 @@
 package ulcambridge.foundations.viewer.tags;
 
+import java.io.UnsupportedEncodingException;
+
+import org.jsoup.Jsoup;
 import org.springframework.web.util.UriUtils;
+
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.search.SearchUtil;
-
-import java.io.UnsupportedEncodingException;
 
 /**
  * This class defines custom JSP Expression Language (EL) functions required to
@@ -82,6 +84,14 @@ public final class ElFunctions {
      */
     public static String urlParamsWithFacet(SearchForm form, String facet, String value) {
         return SearchUtil.getURLParametersWithExtraFacet(form, facet, value);
+    }
+
+    /**
+     * Strip HTML tags from input, returning the plain text content.
+     * @see org.jsoup.nodes.Element#text()
+     */
+    public static String stripTags(String html) {
+        return Jsoup.parse(html).text();
     }
 
     private ElFunctions() { throw new RuntimeException("No instantiation"); }

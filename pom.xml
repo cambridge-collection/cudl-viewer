@@ -28,6 +28,7 @@
         <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
         <jgit.version>4.11.2.201809100523-r</jgit.version> <!-- TODO: v5 -->
         <jsonatg.version>1.0.5</jsonatg.version>
+        <jsoup.version>1.11.3</jsoup.version>
         <jtidy.version>r938</jtidy.version>
         <log4j.version>1.2.17</log4j.version> <!-- TODO: v2 or logback -->
         <owasp-encoder.version>1.2.2</owasp-encoder.version>
@@ -507,6 +508,13 @@
             <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
             <version>${jsonatg.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
+        </dependency>
+
     </dependencies>
 
     <!-- Resolve private CUDL artifacts -->
