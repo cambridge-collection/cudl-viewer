@@ -1,17 +1,12 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -22,36 +17,42 @@ import ulcambridge.foundations.viewer.model.Properties;
  */
 public class IIIFPresentation {
 
-    String label;
-    String description;
-    Map<String, String> metadata = Collections.synchronizedMap(new LinkedHashMap<String, String>());
-    String attribution;
-    String logoURL;
-    String sourceDataURL;
-    int numberOfPages;
-    String viewingDirection = "left-to-right";
-    String id;
-    JSONArray pages;
-    JSONArray lsArray;
-    String baseURL;
-    String IIIFImageServer = Properties.getString("IIIFImageServer");
+    private final static String SEP = "; ";
+    private final static Logger LOG = LoggerFactory.getLogger(IIIFPresentation.class);
+
+    private final String label;
+    private String description;
+    private final Map<String, String> metadata = new HashMap<>();
+    private String attribution;
+    private final String logoURL;
+    private final String sourceDataURL;
+    private String viewingDirection = "left-to-right";
+    private final String id;
+    private final JSONArray pages;
+    private final JSONArray lsArray;
+    private final String baseURL;
+    private final String IIIFImageServer = Properties.getString("IIIFImageServer");
 
     public IIIFPresentation(Item item, String baseURL, String servicesURL) throws JSONException {
 
         id = item.getId();
         this.baseURL = baseURL;
 
-        /** TODO restrict image server to IIIFEnabled items **/
-        /** TODO transcriptions **/
-        /** TODO remove extra html tags in text **/
+        // TODO restrict image server to IIIFEnabled items
+        // TODO transcriptions
+        // TODO remove extra html tags in text
         JSONObject json = item.getJSON();
 
         /* Note only looking at descriptiveMetadata[0] as this holds metadata that applies to the whole document */
         JSONObject metadataObject = json.getJSONArray("descriptiveMetadata").getJSONObject(0);
         lsArray = json.getJSONArray("logicalStructures");
-        numberOfPages = json.getInt("numberOfPages");
-        sourceDataURL = servicesURL+json.getString("sourceData");
+        sourceDataURL = servicesURL + json.getString("sourceData");
         pages = json.getJSONArray("pages");
+
+        if (json.getInt("numberOfPages") != pages.length()) {
+            LOG.warn("Page count mismatch in {}: expected {}, actual {}",
+                id, json.getInt("numberOfPages"), pages.length());
+        }
 
         // version of iiif presentation
         label = item.getTitle() + " (" + item.getShelfLocator() + ")";
@@ -66,10 +67,8 @@ public class IIIFPresentation {
 
         // metadataObject is an object containing key value pairs,
         // values could be strings/numbers or objects.
-
-        Iterator<String> keys = metadataObject.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
+        //noinspection unchecked
+        for (String key : (Set<String>) metadataObject.keySet()) {
             Object value = metadataObject.get(key);
 
             // Ignore non-JSONObjects.
@@ -83,7 +82,10 @@ public class IIIFPresentation {
         description = item.getAbstract();
 
         // translate links in description
-        description = description.replaceAll("<a href=\\'\\' onclick=\\'store.loadPage\\(([0-9]+)\\);return false;\\'>", "<a href='http://cudl.lib.cam.ac.uk/view/"+id+"/$1'>");
+        description = description.replaceAll(
+            "<a href='' onclick='store.loadPage\\(([0-9]+)\\);return false;'>",
+            "<a href='http://cudl.lib.cam.ac.uk/view/" + id + "/$1'>"
+        );
 
         // navDate?
         // license
@@ -92,9 +94,9 @@ public class IIIFPresentation {
         attribution += metadataObject.get("downloadImageRights")+ "  ";
         attribution += metadataObject.get("metadataRights");
 
-        logoURL = baseURL+"/mirador-ui/cu_logo.png";
+        logoURL = baseURL + "/mirador-ui/cu_logo.png";
 
-        // seeAlso (source metadta)
+        // seeAlso (source metadata)
         // within (collection?)
         // sequences
         // label
@@ -103,12 +105,11 @@ public class IIIFPresentation {
 
     private Map<String, String> getMetadataFromJSON(String label, JSONObject json) throws JSONException {
 
-        Map<String, String> metadata = Collections.synchronizedMap(new LinkedHashMap<String, String>());
+        Map<String, String> metadata = new HashMap<>(json.length());
 
         // got through all JSONObjects that nested and call recursive function.
-        Iterator<String> keys = json.keys();
-        while (keys.hasNext()) {
-            String key = keys.next();
+        //noinspection unchecked
+        for (String key : (Set<String>) json.keySet()) {
             Object value = json.get(key);
 
             if (key.equals("display") && !value.equals("true")) {
@@ -131,7 +132,7 @@ public class IIIFPresentation {
             // if JSONObject found, call this function recursively.
             else if (value instanceof JSONObject) {
                 JSONObject valueObj = (JSONObject) value;
-                metadata = merge(metadata, getMetadataFromJSON(label, valueObj), "; ");
+                metadata = merge(metadata, getMetadataFromJSON(label, valueObj));
             }
 
             // nested array of values - should always be an array of JSONObjects.
@@ -140,7 +141,7 @@ public class IIIFPresentation {
                 JSONArray values = (JSONArray) value;
                 for (int i = 0; i < values.length(); i++) {
                     JSONObject valueObj = values.getJSONObject(i);
-                    metadata = merge(metadata, getMetadataFromJSON(label, valueObj), "; ");
+                    metadata = merge(metadata, getMetadataFromJSON(label, valueObj));
                 }
             }
         }
@@ -149,21 +150,21 @@ public class IIIFPresentation {
 
     }
 
-    private Map<String, String> merge(Map<String, String> one, Map<String, String> two, String separator) {
+    private Map<String, String> merge(Map<String, String> one, Map<String, String> two) {
 
-        Hashtable<String, String> output = new Hashtable<String, String>();
+        Map<String, String> output = new HashMap<>(one.size() + two.size());
         // Add all from map1 and merged records
-        for (Entry<String, String> entry : one.entrySet()) {
+        for (Map.Entry<String, String> entry : one.entrySet()) {
             if (two.containsKey(entry.getKey())) {
                 // merge
-                String merged = entry.getValue() + separator + two.get(entry.getKey());
+                String merged = entry.getValue() + SEP + two.get(entry.getKey());
                 output.put(entry.getKey(), merged);
             } else {
                 output.put(entry.getKey(), entry.getValue());
             }
         }
         // Add all remaining from map2
-        for (Entry<String, String> entry : two.entrySet()) {
+        for (Map.Entry<String, String> entry : two.entrySet()) {
             output.putIfAbsent(entry.getKey(), entry.getValue());
         }
 
@@ -202,46 +203,46 @@ public class IIIFPresentation {
         seqObj.put("@id", baseURL + "/iiif/" + id + "/sequence");
         seqObj.put("@type", "sc:Sequence");
         seqObj.put("label", "Current Page Order");
+
         for (int i = 0; i < pages.length(); i++) {
+            try {
+                JSONObject page = pages.getJSONObject(i);
 
-            JSONObject page = pages.getJSONObject(i);
-            int imageWidth = page.getInt("imageWidth");
-            int imageHeight = page.getInt("imageHeight");
+                JSONObject canvas = new JSONObject();
+                canvas.put("@id", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
+                canvas.put("@type", "sc:Canvas");
+                canvas.put("label", page.getString("label"));
+                canvas.put("height", page.getInt("imageHeight"));
+                canvas.put("width", page.getInt("imageWidth"));
 
-            JSONObject canvas = new JSONObject();
-            canvas.put("@id", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
-            canvas.put("@type", "sc:Canvas");
-            canvas.put("label", page.get("label"));
-            canvas.put("height", imageHeight);
-            canvas.put("width", imageWidth);
+                JSONArray images = new JSONArray();
+                JSONObject imageObj = new JSONObject();
+                imageObj.put("@type", "oa:Annotation");
+                imageObj.put("motivation", "sc:painting");
+                imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
-            JSONArray images = new JSONArray();
-            JSONObject imageObj = new JSONObject();
-            imageObj.put("@type", "oa:Annotation");
-            imageObj.put("motivation", "sc:painting");
-            imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
+                String IIIFImagePath = page.getString("IIIFImageURL");
+                String imageURL = IIIFImageServer + IIIFImagePath;
+                JSONObject resource = new JSONObject();
+                resource.put("@id", imageURL);
+                resource.put("@type", "dctypes:Image");
+                resource.put("format", "image/jpg");
+                resource.put("height", page.getInt("imageHeight"));
+                resource.put("width", page.getInt("imageWidth"));
 
-            String IIIFImagePath = page.getString("IIIFImageURL");
-            String imageURL = IIIFImageServer + IIIFImagePath;
-            JSONObject resource = new JSONObject();
-            resource.put("@id", imageURL);
-            resource.put("@type", "dctypes:Image");
-            resource.put("format", "image/jpg");
+                JSONObject service = new JSONObject();
+                service.put("@context", "http://iiif.io/api/image/2/context.json");
+                service.put("@id", imageURL);
+                service.put("profile", "http://iiif.io/api/image/2/level1.json");
 
-            resource.put("height", imageHeight);
-            resource.put("width", imageWidth);
-
-            JSONObject service = new JSONObject();
-            service.put("@context", "http://iiif.io/api/image/2/context.json");
-            service.put("@id", imageURL);
-            service.put("profile", "http://iiif.io/api/image/2/level1.json");
-
-            resource.put("service", service);
-            imageObj.put("resource", resource);
-            images.put(imageObj);
-            canvas.put("images", images);
-            canvases.put(canvas);
-
+                resource.put("service", service);
+                imageObj.put("resource", resource);
+                images.put(imageObj);
+                canvas.put("images", images);
+                canvases.put(canvas);
+            } catch (JSONException ex) {
+                LOG.warn("Invalid metadata for {} page {}", id, i, ex);
+            }
         }
 
         seqObj.put("canvases", canvases);
@@ -262,14 +263,12 @@ public class IIIFPresentation {
     /**
      * Generates a structure object with members array (of canvases and ranges together) as 2.1 spec.
      * Some clients do not support this yet.
-     *
-     * @param lsArray
-     * @return
-     * @throws JSONException
+     * <p>
+     * FIXME: this is never used
      */
     private List<JSONObject> createMemberStructures(JSONArray lsArray) throws JSONException {
 
-        ArrayList<JSONObject> output = new ArrayList<JSONObject>();
+        ArrayList<JSONObject> output = new ArrayList<>();
         for (int i = 0; i < lsArray.length(); i++) {
 
             JSONObject structure = new JSONObject();
@@ -314,15 +313,11 @@ public class IIIFPresentation {
 
     /**
      * Generates a structure object with canvases and ranges listed separately (as 2.0 spec)
-     *
-     * @param lsArray
-     * @return
-     * @throws JSONException
      */
     private List<JSONObject> createRangeCanvasStructures(JSONArray lsArray) throws JSONException {
 
-        ArrayList<JSONObject> output = new ArrayList<JSONObject>();
-        List<JSONObject> ranges = new ArrayList<JSONObject>();
+        List<JSONObject> output = new ArrayList<>();
+        List<JSONObject> ranges = new ArrayList<>();
         for (int i = 0; i < lsArray.length(); i++) {
 
             JSONObject structure = new JSONObject();
