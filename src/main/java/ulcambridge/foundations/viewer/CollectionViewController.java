@@ -69,6 +69,7 @@ public class CollectionViewController {
         for (final String itemId : itemIds) {
             featuredItems.add(itemFactory.getItemFromId(itemId));
         }
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("featuredItems", featuredItems);
         return modelAndView;
     }
