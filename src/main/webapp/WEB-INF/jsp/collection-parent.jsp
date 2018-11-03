@@ -46,11 +46,21 @@
                 </div>
 
                 <div id="summaryDiv">
-                    <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+                    <c:catch var="importException">
+                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+                    </c:catch>
+                    <c:if test="${importException != null}">
+                        <!-- No summary. -->
+                    </c:if>
                 </div>
 
                 <div id="sponsorDiv" class="campl-column12 campl-content-container">
-                    <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}"/>
+                    <c:catch var="importException">
+                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}"/>
+                    </c:catch>
+                    <c:if test="${importException != null}">
+                        <!-- No sponsors. -->
+                    </c:if>
                 </div>
             </div>
         </div>
