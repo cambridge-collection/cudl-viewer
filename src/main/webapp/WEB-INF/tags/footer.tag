@@ -35,7 +35,7 @@
         <div class="campl-column5 campl-footer-navigation">
                 <div class="campl-content-container campl-navigation-list cdl-logo-div-parent">
                    <div class="cdl-logo-div">
-                       <p>Powered by: </p>
+                       <p>Digital Library powered by </p>
                        <img src="/img/interface/cdl_logo_small.png">
                    </div>
                 </div>
