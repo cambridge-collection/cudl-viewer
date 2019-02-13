@@ -12,6 +12,7 @@
                 <li class="campl-selected"><a href="/about/">About</a>
                     <ul class='campl-unstyled-list campl-vertical-breadcrumb-children'>
                         <li><a href="/about/">Introducing the Digital Library</a></li>
+                        <li><a href="/about-dl-platform/">About the Cambridge Digital Library Platform</a></li>
                         <li><a href="/news/">News</a></li>
                         <li><a href="/contributors/">Contributors</a></li>
                         <li><a href="/terms/">Terms & Conditions</a></li>
