@@ -36,7 +36,7 @@
                 <div class="campl-content-container campl-navigation-list cdl-logo-div-parent">
                    <div class="cdl-logo-div">
                        <p>Digital Library powered by </p>
-                       <a href="/about-dl-platform">
+                       <a href="https://cudl.lib.cam.ac.uk/about-dl-platform">
                            <img src="/img/interface/cdl_logo_small.png">
                        </a>
                    </div>

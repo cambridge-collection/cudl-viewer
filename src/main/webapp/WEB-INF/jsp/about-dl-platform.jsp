@@ -14,11 +14,11 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="About the Cambridge Digital Library Platform"/>
+        <cudl:nav activeMenuIndex="${-1}" displaySearch="true" title="Cambridge Digital Library Platform"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
-                <cudl:about-nav/>
+
                 <div class="campl-column6  campl-main-content" id="content">
                     <div class="campl-content-container" id="mainContent">
                         <p>Cambridge Digital Library launched in 2011, seeking to open up Cambridge’s unique collections
