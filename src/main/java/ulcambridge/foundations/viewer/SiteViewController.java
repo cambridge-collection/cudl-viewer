@@ -92,6 +92,14 @@ public class SiteViewController {
         return modelAndView;
     }
 
+    // on path /dl-platform/
+    @RequestMapping(value = "/about-dl-platform")
+    public ModelAndView handleDLPlatformRequest() {
+
+        ModelAndView modelAndView = new ModelAndView("jsp/about-dl-platform");
+        return modelAndView;
+    }
+
     // on path /help/
     @RequestMapping(value = "/help")
     public ModelAndView handleHelpRequest() {
