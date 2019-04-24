@@ -15,7 +15,7 @@
 
         <embedded-viewer-assets.version>0.1.0</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
-        <mudl-viewer-ui.version>mudl-1.5.0</mudl-viewer-ui.version>
+        <mudl-viewer-ui.version>mudl-1.5.1</mudl-viewer-ui.version>
         <spring-security-raven.version>1.0.0</spring-security-raven.version>
 
         <commons-email.version>1.5</commons-email.version>
