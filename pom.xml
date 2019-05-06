@@ -15,7 +15,7 @@
 
         <embedded-viewer-assets.version>0.1.0</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
-        <cudl-viewer-ui.version>1.5.0</cudl-viewer-ui.version>
+        <cudl-viewer-ui.version>1.6.0-SNAPSHOT</cudl-viewer-ui.version>
         <spring-security-raven.version>1.0.0</spring-security-raven.version>
 
         <commons-email.version>1.5</commons-email.version>

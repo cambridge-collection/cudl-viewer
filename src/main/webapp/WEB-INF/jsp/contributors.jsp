@@ -23,7 +23,7 @@
                 <div class="campl-column8  campl-main-content" id="content">
                     <div class="campl-content-container">
                         <div id="contributorsDiv">
-                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/contributors.html" />
+                            <c:import charEncoding="UTF-8" url="/html/contributors.html" />
                         </div>
                     </div>
                 </div>

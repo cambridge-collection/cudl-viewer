@@ -44,13 +44,9 @@
                             </div>
                         </c:if>
 
+                        <c:set var="summaryURL" value="${contentHTMLURL}/${collection.summary}"/>
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
-                        <c:catch var="importException">
-                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
-                        </c:catch>
-                        <c:if test="${importException != null}">
-                            <!-- No summary. -->
-                        </c:if>
+                        <c:import charEncoding="UTF-8" url="${summaryURL}"/>
                     </div>
                 </div>
                 <div class="campl-column5 campl-secondary-content ">
@@ -63,12 +59,8 @@
                 </div>
 
                 <div id="sponsorDiv">
-                    <c:catch var="importException">
-                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
-                    </c:catch>
-                    <c:if test="${importException != null}">
-                        <!-- No sponsors. -->
-                    </c:if>
+                <c:set var="sponsorsURL" value="${contentHTMLURL}/${collection.sponsors}"/>
+                    <c:import charEncoding="UTF-8" url="${sponsorsURL}" />
                 </div>
             </div>
         </div>

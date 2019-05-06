@@ -2,9 +2,7 @@ package ulcambridge.foundations.viewer;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
-import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.Properties;
 
 @Controller
 @RequestMapping("/mylibrary")
@@ -54,6 +52,7 @@ public class MyLibraryController {
         modelAndView.addObject("username", id);
         modelAndView.addObject("bookmarks", bookmarks);
         modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
         return modelAndView;
     }
 
@@ -62,11 +61,11 @@ public class MyLibraryController {
     public String handleAddBookmarkRequest(HttpServletResponse response,
             @RequestParam("itemId") String itemId,
             @RequestParam("page") int page, Principal principal,
-            @RequestParam("thumbnailURL") String thumbnailURL,
+            @RequestParam("thumbnailImage") String thumbnailImage,
             @RequestParam(value = "redirect", required = false) boolean redirect) {
 
         Bookmark bookmark = new Bookmark(principal.getName(), itemId, page,
-                thumbnailURL, new Date());
+                thumbnailImage, new Date());
         String error = null;
 
         try {

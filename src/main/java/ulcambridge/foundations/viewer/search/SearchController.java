@@ -194,13 +194,10 @@ public class SearchController {
             }
 
             try {
-                if (page != null && page.get("displayImageURL") != null) {
+                if (page != null && page.get("IIIFImageURL") != null) {
 
-                    // FIXME super hacky way to get the page thumbnail
-                    // URL until we can read it from json.
-                    pageThumbnail = page.get("displayImageURL")
-                            .toString()
-                            .replace(".dzi", "_files/8/0_0.jpg");
+                    pageThumbnail = page.get("IIIFImageURL")
+                            .toString();
 
                     pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
 

@@ -23,7 +23,7 @@
             <div class="campl-wrap clearfix">
                 <div class="campl-column9  campl-main-content" id="content">
                     <div id="collectionsDiv">
-                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/collections/collections.html" />
+                        <c:import charEncoding="UTF-8" url="/html/collections/collections.html" />
                     </div>
                 </div>
             </div>

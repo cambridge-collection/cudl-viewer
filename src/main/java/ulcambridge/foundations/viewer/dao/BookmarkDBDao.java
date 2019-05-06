@@ -38,12 +38,19 @@ public class BookmarkDBDao implements BookmarkDao {
                     new Object[] { username }, new RowMapper<Bookmark>() {
                         public Bookmark mapRow(ResultSet resultSet, int rowNum)
                                 throws SQLException {
-                            return new Bookmark(
+                            Bookmark bookmark =  new Bookmark(
                                     resultSet.getString("username"), resultSet
                                             .getString("itemid"), resultSet
                                             .getInt("page"), resultSet
                                             .getString("thumbnailURL"),
                                     resultSet.getDate("dateadded"));
+
+                            // If bookmark is of the older format (dzi) rewrite to use the
+                            // new .jp2 format
+                            if (bookmark.getThumbnailURL().startsWith("http")) {
+                                // TODO for cudl replace existing dzi thumbnails with jp2 ones.
+                            }
+                            return bookmark;
                         }
                     });
 

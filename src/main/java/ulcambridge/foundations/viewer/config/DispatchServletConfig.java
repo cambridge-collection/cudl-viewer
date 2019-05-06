@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer.config;
 
-import java.util.List;
-
 import com.google.common.base.Charsets;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -24,10 +22,12 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.resource.GzipResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
+import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
+
+import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -134,9 +134,14 @@ public class DispatchServletConfig
                 .addResourceLocations(
                     resolve("file:${cudl-viewer-content.images.path}/"));
 
+            registry.addResourceHandler(
+                    resolve("${cudl-viewer-content.html.url}/**"))
+                .addResourceLocations(
+                    resolve("file:${cudl-viewer-content.html.path}/"));
+
             registry.addResourceHandler("/img/**")
                 .addResourceLocations("/img/");
-            
+
             registry.addResourceHandler("/mirador-ui/**")
             .addResourceLocations("/mirador-ui/");
 

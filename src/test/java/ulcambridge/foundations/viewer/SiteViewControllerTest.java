@@ -1,12 +1,11 @@
 package ulcambridge.foundations.viewer;
 
-import javax.servlet.RequestDispatcher;
-
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
+
+import javax.servlet.RequestDispatcher;
 
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
@@ -18,7 +17,7 @@ public class SiteViewControllerTest {
         CollectionFactory collectionFactory = new CollectionFactory(
             new MockCollectionsDao());
 
-        return new SiteViewController(collectionFactory, "./html");
+        return new SiteViewController(collectionFactory);
     }
 
     @Test

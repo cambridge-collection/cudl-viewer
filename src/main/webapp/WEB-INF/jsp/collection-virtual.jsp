@@ -27,12 +27,7 @@
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
                         <div id="summaryDiv" class="virtual_collection_summary">
-                            <c:catch var="importException">
-                                <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
-                            </c:catch>
-                            <c:if test="${importException != null}">
-                                <!-- No summary. -->
-                            </c:if>
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
                         </div>
                         <div class="campl-column12 virtual-collections-items">
 
@@ -74,12 +69,7 @@
                         </div>
 
                         <div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
-                            <c:catch var="importException">
-                                <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}"/>
-                            </c:catch>
-                            <c:if test="${importException != null}">
-                                <!-- No sponsors. -->
-                            </c:if>
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
                         </div>
                     </div>
                 </div>
