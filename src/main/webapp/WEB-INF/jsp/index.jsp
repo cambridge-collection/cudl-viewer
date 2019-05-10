@@ -6,8 +6,18 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
+<c:set var="pagetype" value="STANDARD"/>
+<c:set var="metaDescription">
+    A home for the discovery of digitised material and research
+    outputs from the University of Cambridge and beyond
+</c:set>
 
-<cudl:generic-page pagetype="STANDARD" title="${collection.title}">
+<cudl:generic-page pagetype="${pagetype}" title="${collection.title}">
+
+    <jsp:attribute name="head">
+        <cudl:head-content pagetype="${pagetype}" metaDescription="${metaDescription}"/>
+    </jsp:attribute>
+
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <cudl:context-editable-areas>
