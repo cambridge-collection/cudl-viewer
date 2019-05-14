@@ -111,19 +111,8 @@
 
                 <div class="campl-column4">
                     <!-- twitter feed -->
-                    <a class="twitter-timeline" href="https://twitter.com/CamDigLib"
-                        data-widget-id="309321526665154560">Tweets by @CamDigLib</a>
-                    <script>
-                        !function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (!d.getElementById(id)) {
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src = "//platform.twitter.com/widgets.js";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }
-                        }(document, "script", "twitter-wjs");
-                    </script>
+                    <a class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/CamDigLib">Tweets by CamDigLib</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     <!-- end of twitter feed -->
                 </div>
 
