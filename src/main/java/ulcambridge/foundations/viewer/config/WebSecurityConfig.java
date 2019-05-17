@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.annotation.Order;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -41,16 +40,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
-import uk.ac.cam.lib.spring.security.raven.AuthenticatedRavenTokenCreator;
-import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationEntryPoint;
-import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationFilter;
-import uk.ac.cam.lib.spring.security.raven.RavenAuthenticationProvider;
-import uk.ac.cam.lib.spring.security.raven.RavenRequestCreator;
-import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator;
-import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.PerRequestParamProducer;
-import uk.ac.cam.lib.spring.security.raven.hooks.DefaultRavenRequestCreator.RequestParam;
-import uk.ac.cam.lib.spring.security.raven.hooks.UserDetailsRavenTokenCreator;
-import uk.ac.cam.ucs.webauth.WebauthValidator;
 import ulcambridge.foundations.viewer.authentication.CudlSavedRequestAwareAuthenticationSuccessHandler;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter;
 import ulcambridge.foundations.viewer.authentication.DeferredEntryPointFilter.EntryPointSelector;
@@ -58,7 +47,6 @@ import ulcambridge.foundations.viewer.authentication.EntryPointRequestFilters;
 import ulcambridge.foundations.viewer.authentication.FragmentAwareRequestCache;
 import ulcambridge.foundations.viewer.authentication.HeaderValueHttpServletRequestFragmentStorageStrategy;
 import ulcambridge.foundations.viewer.authentication.HttpServletRequestFragmentStorageStrategy;
-import ulcambridge.foundations.viewer.authentication.Obfuscation;
 import ulcambridge.foundations.viewer.authentication.Urls;
 import ulcambridge.foundations.viewer.authentication.Urls.UrlCodecStrategy;
 import ulcambridge.foundations.viewer.authentication.QueryStringRequestMatcher;
@@ -72,9 +60,6 @@ import ulcambridge.foundations.viewer.authentication.oauth2.FacebookProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.GoogleProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.LinkedinProfile;
 import ulcambridge.foundations.viewer.authentication.oauth2.Oauth2AuthenticationFilter;
-import ulcambridge.foundations.viewer.authentication.raven.AutoRegisteringRavenTokenCreatorWrapper;
-import ulcambridge.foundations.viewer.authentication.raven.CrsidObfuscatingRavenTokenCreator;
-import ulcambridge.foundations.viewer.authentication.raven.RavenAuthCancellationFailureHandler;
 import ulcambridge.foundations.viewer.utils.RequestMatcherFilterFilter;
 import ulcambridge.foundations.viewer.utils.SecureRequestProxyHeaderFilter;
 
@@ -84,14 +69,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Function;
@@ -103,8 +81,6 @@ public class WebSecurityConfig {
 
     public static final String LOGIN_PATH = "/auth/login";
 
-    public static final String RAVEN_RETURN_LOGIN_PATH = "/auth/raven/login";
-
     /**
      * Create an AuthenticationManager bean without the use of Spring Sec's
      * ridiculous config building spaghetti. Required as the manager has to
@@ -114,12 +90,11 @@ public class WebSecurityConfig {
     @Bean
     @Autowired
     public AuthenticationManager authenticationManager(
-        RavenAuthenticationProvider ravenAuthProvider,
         @Qualifier("oauthAuthenticationProvider")
             AuthenticationProvider oauthAuthenticationProvider) {
 
         return new ProviderManager(ImmutableList.of(
-            ravenAuthProvider, oauthAuthenticationProvider));
+            oauthAuthenticationProvider));
     }
 
     @Bean
@@ -146,64 +121,6 @@ public class WebSecurityConfig {
         return new ViewerUserDetailsService(usersDao);
     }
 
-    @Bean(name = "ravenKeystore")
-    @Autowired
-    public KeyStore ravenKeys(ResourceLoader resourceLoader)
-        throws KeyStoreException, CertificateException,
-        NoSuchAlgorithmException, IOException {
-
-        KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-        keyStore.load(null, null);
-
-        InputStream ravenKey2 = resourceLoader.getResource(
-            "classpath:ulcambridge/foundations/viewer/raven-pubkey2.crt")
-            .getInputStream();
-
-        Certificate ravenKey2Cert = CertificateFactory.getInstance("X.509")
-            .generateCertificate(ravenKey2);
-
-        keyStore.setCertificateEntry("webauth-pubkey2", ravenKey2Cert);
-        return keyStore;
-    }
-
-    @Bean
-    @Autowired
-    public WebauthValidator ravenValidator(
-        @Qualifier("ravenKeystore") KeyStore ravenKeys) {
-
-        return new WebauthValidator(ravenKeys);
-    }
-
-    @Bean
-    @Autowired
-    public AuthenticatedRavenTokenCreator ravenTokenCreator(
-        UserDetailsService userDetailsService, UsersDao usersDao) {
-
-        Function<String, String> usernameEncoder =
-            s -> Obfuscation.obfuscateUsername("raven", s);
-
-        AuthenticatedRavenTokenCreator tokenCreator =
-            new UserDetailsRavenTokenCreator(userDetailsService);
-
-        // CUDL obfuscates CRSIDs using sha256
-        tokenCreator = new CrsidObfuscatingRavenTokenCreator(
-            tokenCreator, usernameEncoder);
-
-        // Auto register users with the DAO when they log in for the first time
-        tokenCreator = new AutoRegisteringRavenTokenCreatorWrapper(
-            tokenCreator, usersDao, usernameEncoder, Obfuscation::obfuscate);
-
-        return tokenCreator;
-    }
-
-    @Bean
-    @Autowired
-    public RavenAuthenticationProvider ravenAuthenticationProvider(
-        WebauthValidator ravenValidator,
-        AuthenticatedRavenTokenCreator tokenCreator) {
-
-        return new RavenAuthenticationProvider(ravenValidator, tokenCreator);
-    }
 
     @Bean
     public AuthenticationSuccessHandler authenticationSuccessHandler(
@@ -213,46 +130,6 @@ public class WebSecurityConfig {
             requestCache);
     }
 
-    @Bean(name = "ravenAuthenticationFilter")
-    @Autowired
-    public RavenAuthenticationFilter ravenAuthenticationFilter(
-        RavenRequestCreator requestCreator, RequestCache requestCache,
-        RavenAuthCancellationFailureHandler failureHandler,
-        AuthenticationSuccessHandler successHandler,
-        AuthenticationManager authenticationManager) {
-
-        RavenAuthenticationFilter f = new RavenAuthenticationFilter(
-            authenticationManager, requestCreator, requestCache);
-
-        f.setAuthenticationFailureHandler(failureHandler);
-        f.setAuthenticationSuccessHandler(successHandler);
-
-        return f;
-    }
-
-    @Bean()
-    @Autowired
-    public PerRequestParamProducer ravenReturnUrlProducer(
-        @Value("${rootURL}") String siteUrl) {
-
-        UriComponentsBuilder b = UriComponentsBuilder.fromUriString(siteUrl)
-            .replacePath(RAVEN_RETURN_LOGIN_PATH);
-
-        String returnUrlHttp = b.scheme("http").toUriString();
-        String returnUrlHttps = b.scheme("https").toUriString();
-
-        return (p, r) -> r.isSecure() ? returnUrlHttps : returnUrlHttp;
-    }
-
-    @Bean
-    @Autowired
-    public RavenRequestCreator ravenRequestCreator(
-        PerRequestParamProducer ravenReturnUrlProducer) {
-
-        return DefaultRavenRequestCreator.builder(ravenReturnUrlProducer)
-            .withValue(RequestParam.desc, "Cambridge Digital Library")
-            .build();
-    }
 
     @Bean(name = "authenticationEntryPoint")
     @Autowired
@@ -314,43 +191,12 @@ public class WebSecurityConfig {
 
     @Bean
     @Autowired
-    public AuthenticationEntryPoint ravenAuthEntryPoint(
-        RavenRequestCreator requestCreator,
-        @Qualifier("entryPointWrapper")
-        Function<AuthenticationEntryPoint, AuthenticationEntryPoint>
-            entryPointWrapper) {
-
-        return entryPointWrapper.apply(
-            new RavenAuthenticationEntryPoint(requestCreator));
-    }
-
-    @Bean(name = "ravenEntryPointSelector")
-    @Autowired
-    EntryPointSelector ravenEntryPointSelector(
-        @Qualifier("ravenAuthEntryPoint")
-            AuthenticationEntryPoint ravenEntryPoint) {
-
-        RequestMatcher queryMatcher = QueryStringRequestMatcher
-            .forKeyWithValue("type", "raven");
-
-        RequestMatcher pathMatcher = new AntPathRequestMatcher(
-            LOGIN_PATH, "POST");
-
-        RequestMatcher m = new AndRequestMatcher(pathMatcher, queryMatcher);
-
-        return req -> m.matches(req) ? Optional.of(ravenEntryPoint)
-                                     : Optional.empty();
-    }
-
-    @Bean
-    @Autowired
     public Iterable<EntryPointSelector> entryPointSelectors(
-        @Qualifier("ravenEntryPointSelector") EntryPointSelector raven,
         @Qualifier("linkedinEntryPointSelector") EntryPointSelector linkedin,
         @Qualifier("googleEntryPointSelector") EntryPointSelector google,
         @Qualifier("facebookEntryPointSelector") EntryPointSelector facebook) {
 
-        return Arrays.asList(raven, linkedin, google, facebook);
+        return Arrays.asList(linkedin, google, facebook);
     }
 
     @Bean(name = "deferredEntryPointFilter")
@@ -361,11 +207,6 @@ public class WebSecurityConfig {
         return new DeferredEntryPointFilter(entryPointSelectors);
     }
 
-    @Bean
-    public RavenAuthCancellationFailureHandler ravenAuthCancellationFailureHandler() {
-
-        return RavenAuthCancellationFailureHandler.redirectingTo(LOGIN_PATH);
-    }
 
     /**
      * Nullify the RequestCacheAwareFilter. I'm not really sure why it exists
@@ -421,7 +262,7 @@ public class WebSecurityConfig {
         public static final URI GOOGLE_PROFILE_URL = URI.create(
             "https://www.googleapis.com/plus/v1/people/me/openIdConnect");
         public static final URI FACEBOOK_PROFILE_URL = URI.create(
-                "https://graph.facebook.com/me?fields=id,email");            
+                "https://graph.facebook.com/me?fields=id,email");
 
         public static final String TYPE_LINKEDIN = "linkedin";
         public static final String TYPE_GOOGLE = "google";
@@ -618,8 +459,6 @@ public class WebSecurityConfig {
 
             RequestCache requestCache = getBeanFactory().getBean(RequestCache.class);
 
-            RavenAuthenticationFilter ravenAuthFilter =
-                getBeanFactory().getBean(RavenAuthenticationFilter.class);
 
             DeferredEntryPointFilter deferredEntryPointFilter =
                 getBeanFactory().getBean(DeferredEntryPointFilter.class);
@@ -634,13 +473,6 @@ public class WebSecurityConfig {
                     getBeanFactory().getBean(OAuth2ClientContextFilter.class),
                     SecurityContextPersistenceFilter.class)
 
-                // Add our raven auth filter amongst the other auth filters. It has
-                // to be after the SECURITY_CONTEXT_FILTER otherwise the auth result
-                // doesn't get persisted.
-                .addFilterAfter(
-                    restrictFilterToAntPattern(RAVEN_RETURN_LOGIN_PATH,
-                                               ravenAuthFilter),
-                    AbstractPreAuthenticatedProcessingFilter.class)
 
                 // Add our deferred entry point filter after the
                 // ExceptionTranslationFilter as that's the spring filter that
