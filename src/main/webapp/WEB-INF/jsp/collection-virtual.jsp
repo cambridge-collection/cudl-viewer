@@ -50,7 +50,7 @@
                                             <div class="virtual_collections_carousel_image_box campl-column6">
                                                 <div class="virtual_collections_carousel_image" id="virtual_collections_carousel_item${loop.index + 1}">
                                                     <a href="/view/${fn:escapeXml(item.id)}/1">
-                                                        <img src="${fn:escapeXml(item.thumbnailURL)}"
+                                                        <img src="${fn:escapeXml(item.thumbnailURL)}/full/,178/0/default.jpg"
                                                              alt="${fn:escapeXml(item.id)}"
                                                              style="${fn:escapeXml(imageDimensions)}">
                                                     </a>
