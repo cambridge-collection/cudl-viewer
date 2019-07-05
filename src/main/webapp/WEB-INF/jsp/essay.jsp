@@ -10,11 +10,11 @@
 <cudl:generic-page pagetype="STANDARD" title="${organisationalCollection.title}">
     <cudl:nav activeMenuIndex="${1}" displaySearch="true"
               title="${organisationalCollection.title}"/>
-    
+
     <div class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column12  campl-main-content" id="content">
-    
+
                 <div class="campl-column8">
                     <div class="campl-content-container">
                         <div class="campl-column10">
@@ -29,7 +29,7 @@
                                 <c:out value="${organisationalCollection.title}"/>
                             </a>
                             <br/><br/>
-    
+
                             <h2><c:out value="${itemTitle}"/></h2>
                             <div class="grid_12 essaytext">
                                 <img class="essay_image" src="${fn:escapeXml(itemThumbnailURL)}">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="campl-column4 campl-secondary-content">
                     <div class="campl-content-container">
-    
+
                         <h4>Related Items</h4>
 
                         <c:forEach items="${relatedItems}" var="itemId">
@@ -106,11 +106,11 @@
                                 </c:choose>
 
                                 <div class="left">
-                                    <div class="collections_carousel_image_box">
+                                    <div>
                                         <div class="collections_carousel_image">
                                             <a href="/view/${cudlfn:uriEnc(item.id)}/">
                                                 <img alt="${fn:escapeXml(item.id)}"
-                                                     src="${fn:escapeXml(item.thumbnailURL)}"
+                                                     src="${fn:escapeXml(item.thumbnailURL)}/full/,178/0/default.jpg"
                                                      style="${fn:escapeXml(imageDimensions)}">
                                             </a>
                                         </div>
@@ -122,5 +122,5 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </cudl:generic-page>
