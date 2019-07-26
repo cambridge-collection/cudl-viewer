@@ -25,6 +25,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 import ulcambridge.foundations.viewer.rdf.vocab.Content;
 import ulcambridge.foundations.viewer.rdf.vocab.Foaf;
 import ulcambridge.foundations.viewer.rdf.vocab.Oa;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 /**
  *
@@ -146,7 +147,9 @@ public class RDFReader {
             JSONArray pagesJA = docJson.getJSONArray("pages");
             JSONObject pageJ = (JSONObject) pagesJA.get(pageNo - 1);
             String imageUrl = pageJ.getString("displayImageURL");
-            dziUrl.append(Properties.getString("imageServer")).append(imageUrl.substring(1));
+            ImageServerHelper imageServerHelper = new ImageServerHelper();
+            final String imageServer = imageServerHelper.getRandomImageServer();
+            dziUrl.append(imageServer).append(imageUrl.substring(1));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {

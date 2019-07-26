@@ -28,6 +28,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -198,6 +199,10 @@ public class DocumentViewController {
 
         ModelAndView modelAndView = new ModelAndView("jsp/document");
 
+        // Get image Servers
+        ImageServerHelper imageServerHelper = new ImageServerHelper();
+        final String imageServers = imageServerHelper.getImageServersCSV();
+
         // URLs
         modelAndView.addObject("rootURL", rootURL);
         modelAndView.addObject("docURL", docURL);
@@ -206,7 +211,7 @@ public class DocumentViewController {
         modelAndView.addObject("requestURL", requestURL);
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
-        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
+        modelAndView.addObject("imageServers", imageServers);
         modelAndView.addObject("services", Properties.getString("services"));
 
         // Collection information

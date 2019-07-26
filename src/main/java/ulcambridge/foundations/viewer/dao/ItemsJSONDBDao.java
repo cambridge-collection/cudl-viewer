@@ -22,6 +22,7 @@ import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 @Component
 public class ItemsJSONDBDao implements ItemsDao {
@@ -174,8 +175,10 @@ public class ItemsJSONDBDao implements ItemsDao {
                 if (itemThumbnailURL.trim().endsWith(".jp2")) { // this is a IIIF thumbnail so prefix ImageServer
 
                     try {
+                        ImageServerHelper imageServerHelper = new ImageServerHelper();
+                        final String imageServer = imageServerHelper.getRandomImageServer();
                         URL url = new URL(
-                            new URL(Properties.getString("imageServer")),
+                            new URL(imageServer),
                             itemThumbnailURL);
                         itemThumbnailURL = url.toString();
                     } catch (MalformedURLException ex) {

@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
-import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 @Controller
 @RequestMapping("/mylibrary")
@@ -52,7 +52,11 @@ public class MyLibraryController {
         modelAndView.addObject("username", id);
         modelAndView.addObject("bookmarks", bookmarks);
         modelAndView.addObject("itemFactory", itemFactory);
-        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
+
+        ImageServerHelper imageServerHelper = new ImageServerHelper();
+        final String imageServer = imageServerHelper.getRandomImageServer();
+
+        modelAndView.addObject("imageServer", imageServer);
         return modelAndView;
     }
 

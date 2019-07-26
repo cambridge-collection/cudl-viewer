@@ -15,6 +15,7 @@ import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 @Controller
 @RequestMapping("/imageproxy/")
@@ -46,7 +47,10 @@ public class ImageProxy {
             return null;
         }
 
-        URL url = new URL(Properties.getString("imageServer") + imagePath);
+        ImageServerHelper imageServerHelper = new ImageServerHelper();
+        final String imageServer = imageServerHelper.getRandomImageServer();
+
+        URL url = new URL(imageServer + imagePath);
 
         BufferedOutputStream out = new BufferedOutputStream(
                 response.getOutputStream());

@@ -17,6 +17,7 @@ import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +90,8 @@ public class CollectionViewController {
                 + collection.getType());
 
         // Get imageServer
-        final String imageServer = Properties.getString("imageServer");
+        ImageServerHelper imageServerHelper = new ImageServerHelper();
+        final String imageServer = imageServerHelper.getRandomImageServer();
 
         // Get content url
         final String contentHTMLURL = Properties.getString("cudl-viewer-content.html.url");

@@ -31,7 +31,7 @@ import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.ImageServerHelper;
 
 /**
  * Controller for viewing a collection.
@@ -179,7 +179,9 @@ public class SearchController {
             if (pageThumbnail.contains("thumbnail")) {
                 itemJSON.put("pageThumbnailURL", pageThumbnail);
             } else {
-                pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
+                ImageServerHelper imageServerHelper = new ImageServerHelper();
+                final String imageServer = imageServerHelper.getRandomImageServer();
+                pageThumbnail = imageServer + pageThumbnail;
                 itemJSON.put("pageThumbnailURL", pageThumbnail);
             }
         } else {
@@ -199,7 +201,9 @@ public class SearchController {
                     pageThumbnail = page.get("IIIFImageURL")
                             .toString();
 
-                    pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
+                    ImageServerHelper imageServerHelper = new ImageServerHelper();
+                    final String imageServer = imageServerHelper.getRandomImageServer();
+                    pageThumbnail = imageServer + pageThumbnail;
 
                 }
             } catch (JSONException e) {

@@ -75,7 +75,7 @@
             <json:property name="pageNum" value="${page}"/>
             <json:property name="docId" value="${item.id}"/>
             <json:property name="docURL" value="${docURL}"/>
-            <json:property name="imageServer" value="${imageServer}"/>
+            <json:property name="imageServers" value="${imageServers}"/>
             <json:property name="services" value="${services}"/>
             <json:property name="collectionURL" value="${organisationalCollection.URL}"/>
             <json:property name="collectionTitle" value="${organisationalCollection.title}"/>
