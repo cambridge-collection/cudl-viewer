@@ -258,6 +258,9 @@ public class DocumentViewController {
         }
         modelAndView.addObject("imageReproPageURL", item.getImageReproPageURL());
 
+        // UI Configuration
+        modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
+
         return modelAndView;
     }
 
