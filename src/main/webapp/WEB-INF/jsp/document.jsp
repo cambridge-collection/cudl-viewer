@@ -149,6 +149,11 @@
                             title="Zoom in to the image"></button>
                         <button id="zoomOut" class="cudl-btn fa fa-minus"
                             title="Zoom out of the image"></button>
+                        <%-- Optional button set in properties --%>
+                        <c:if test="${zoomResetButton eq true}">
+                            <button id="zoomHome" class="cudl-btn fa fa-home"
+                                    title="Reset zoom to home view"></button>
+                        </c:if>
                     </div>
                     <div class="cudl-viewer-buttons-maximize">
                         <button id="fullscreen" class="cudl-btn fa fa-expand"
