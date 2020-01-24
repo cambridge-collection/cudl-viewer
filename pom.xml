@@ -3,7 +3,7 @@
 
     <groupId>ulcambridge.foundations.viewer</groupId>
     <artifactId>FoundationsViewer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>dev-2020012402</version>
     <packaging>war</packaging>
 
     <name>CUDL Viewer</name>
@@ -41,7 +41,7 @@
         <connection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</connection>
         <developerConnection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</developerConnection>
         <url>https://bitbucket.org/CUDL/cudl-viewer</url>
-      <tag>HEAD</tag>
+      <tag>dev-2020012402</tag>
   </scm>
 
     <build>
