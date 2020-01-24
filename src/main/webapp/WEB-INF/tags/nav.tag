@@ -113,6 +113,7 @@
                     <ul class="campl-unstyled-list local-dropdown-menu">
                         <li><a href="/about/">Introducing the Cambridge Digital Library</a></li>
                         <li><a href="/news/">News</a></li>
+                        <li><a href="/about-dl-platform">Community</a></li>
                         <li><a href="/contributors/">Contributors</a>
                         <li><a href="/terms/">Terms and Conditions</a></li>
                     </ul>

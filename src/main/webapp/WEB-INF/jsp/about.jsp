@@ -14,7 +14,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing Cambridge Digital Library"/>
+        <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing the Cambridge Digital Library"/>
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <cudl:about-nav/>
