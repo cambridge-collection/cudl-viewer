@@ -13,6 +13,7 @@
                     <ul class='campl-unstyled-list campl-vertical-breadcrumb-children'>
                         <li><a href="/about/">Introducing the Cambridge Digital Library</a></li>
                         <li><a href="/news/">News</a></li>
+                        <li><a href="/about-dl-platform">Community</a></li>
                         <li><a href="/contributors/">Contributors</a></li>
                         <li><a href="/terms/">Terms & Conditions</a></li>
                     </ul></li>
