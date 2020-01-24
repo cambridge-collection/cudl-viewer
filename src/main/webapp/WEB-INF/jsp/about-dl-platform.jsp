@@ -21,7 +21,7 @@
                 <div class="campl-column8  campl-main-content" id="content">
                     <div class="campl-content-container">
                         <div id="aboutDLPlatformDiv">
-                            <c:import charEncoding="UTF-8" url="/html/about-dl-platform.html"/>
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/about-dl-platform.html"/>
                         </div>
                     </div>
                 </div>

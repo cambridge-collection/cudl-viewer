@@ -21,14 +21,14 @@
                 <div class="campl-column6  campl-main-content" id="content">
                     <div class="campl-content-container">
                         <div id="aboutMainDiv">
-                            <c:import charEncoding="UTF-8" url="/html/about-main.html"/>
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/about-main.html"/>
                         </div>
                     </div>
                 </div>
                 <div class="campl-column3 campl-secondary-content">
                     <div class="campl-content-container">
                         <div id="aboutSideDiv">
-                            <c:import charEncoding="UTF-8" url="/html/about-side.html"/>
+                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/about-side.html"/>
                         </div>
                     </div>
                 </div>
