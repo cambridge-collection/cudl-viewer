@@ -89,6 +89,7 @@ public class SiteViewController {
     public ModelAndView handleAboutRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/about");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
@@ -97,6 +98,7 @@ public class SiteViewController {
     public ModelAndView handleDLPlatformRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/about-dl-platform");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
@@ -105,6 +107,7 @@ public class SiteViewController {
     public ModelAndView handleHelpRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/help");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
