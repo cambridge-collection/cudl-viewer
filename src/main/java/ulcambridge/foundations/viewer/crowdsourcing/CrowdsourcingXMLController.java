@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.crowdsourcing;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.google.common.base.Charsets;
 
 import ulcambridge.foundations.viewer.crowdsourcing.dao.CrowdsourcingDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentAnnotations;
@@ -260,7 +259,7 @@ public class CrowdsourcingXMLController {
             // combine annotations with metadata (level up raw)
             DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations);
 
-            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), StandardCharsets.UTF_8), docTerms.toJAXBString(docTerms));
             String path = (new File(PATH_ANNOMETA, metadataId + ".xml")).getPath();
             new FileReader().save(path, xml);
 
@@ -281,7 +280,7 @@ public class CrowdsourcingXMLController {
             // combine tags, removed tags with meta (level up raw)
             DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docTags, docRemovedTags);
 
-            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), StandardCharsets.UTF_8), docTerms.toJAXBString(docTerms));
             String path = (new File(PATH_TAGMETA, metadataId + ".xml")).getPath();
             new FileReader().save(path, xml);
 
@@ -303,7 +302,7 @@ public class CrowdsourcingXMLController {
             // combine annotations, tags, removed tags with meta (level up raw)
             DocumentTerms docTerms = new TermCombiner().updateToMetaLevel(docAnnotations, docTags, docRemovedTags);
 
-            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), Charsets.UTF_8), docTerms.toJAXBString(docTerms));
+            String xml = sr.combineXMLs(new FileReader().read(metadataFile.getPath(), StandardCharsets.UTF_8), docTerms.toJAXBString(docTerms));
             String path = (new File(PATH_ANNOTAGMETA, metadataId + ".xml")).getPath();
             new FileReader().save(path, xml);
 

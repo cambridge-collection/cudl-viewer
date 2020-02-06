@@ -23,7 +23,6 @@
         <commons-io.version>2.6</commons-io.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-logging.version>1.1</commons-logging.version>
-        <guava.version>18.0</guava.version>
         <hibernate-validator.version>4.3.2.Final</hibernate-validator.version> <!-- TODO: v5 -->
         <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
         <jgit.version>4.11.2.201809100523-r</jgit.version> <!-- TODO: v5 -->
@@ -518,7 +517,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <version>28.2-jre</version>
         </dependency>
 
         <!-- Apache Jena -->
