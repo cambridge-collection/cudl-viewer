@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.model.Item;
 
+// FIXME: Replace this with ItemsDAO
 @Component
 public class ItemFactory {
 

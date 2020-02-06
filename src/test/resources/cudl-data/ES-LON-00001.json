@@ -1,0 +1,243 @@
+{
+    "itemType": "essay",
+    "descriptiveMetadata": [
+        {
+            "ID": "essay",
+            "title": {
+                "display": true,
+                "displayForm": "Artificial Horizon",
+                "label": "Title",
+                "seq": 8
+            },
+            "authors": {
+                "display": true,
+                "seq": 36,
+                "listDisplay": "unordered",
+                "label": "Author(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Simon Schaffer",
+                        "seq": 37,
+                        "linktype": "keyword search",
+                        "shortForm": "Simon Schaffer"
+                    }
+                ]
+            },
+            "subjects": {
+                "display": true,
+                "seq": 20,
+                "listDisplay": "inline",
+                "label": "Subject(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Artificial horizons (Nautical instruments)",
+                        "seq": 21,
+                        "linktype": "keyword search",
+                        "fullForm": "Artificial horizons (Nautical instruments)",
+                        "authority": "http://id.loc.gov/authorities/subjects",
+                        "valueURI": "http://id.loc.gov/authorities/subjects/sh85061975"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Nautical instruments",
+                        "seq": 21,
+                        "linktype": "keyword search",
+                        "fullForm": "Nautical instruments",
+                        "authority": "http://id.loc.gov/authorities/subjects",
+                        "valueURI": "http://id.loc.gov/authorities/subjects/sh85090333"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Navigation",
+                        "seq": 21,
+                        "linktype": "keyword search",
+                        "fullForm": "Navigation",
+                        "authority": "http://id.loc.gov/authorities/subjects",
+                        "valueURI": "http://id.loc.gov/authorities/subjects/sh85090425"
+                    }
+                ]
+            },
+            "associated": {
+                "display": true,
+                "seq": 137,
+                "listDisplay": "unordered",
+                "label": "Associated Person(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "David Kirkpatrick",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "David Kirkpatrick"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "‬Adams‎, ‬George‎, ‬1750-1795",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "fullForm": "‬Adams‎, ‬George‎, ‬1750-1795",
+                        "authority": "http://viaf.org/",
+                        "valueURI": "http://viaf.org/viaf/77202684"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Henry Ould",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "Henry Ould"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "James Short",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "James Short"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "John Robertson",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "John Robertson"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "John Serson",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "John Serson"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Lewis Fitzmaurice",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "shortForm": "Lewis Fitzmaurice"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Wales, William, 1734?-1798",
+                        "seq": 138,
+                        "linktype": "keyword search",
+                        "fullForm": "Wales, William, 1734?-1798",
+                        "authority": "http://viaf.org/",
+                        "valueURI": "http://viaf.org/viaf/79174737"
+                    }
+                ]
+            },
+            "places": {
+                "display": true,
+                "seq": 155,
+                "label": "Associated Place(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Newfoundland",
+                        "seq": 156,
+                        "linktype": "keyword search",
+                        "fullForm": "Newfoundland",
+                        "authority": "Getty_thesaurus",
+                        "valueURI": "7005807"
+                    }
+                ]
+            },
+            "temporalCoverage": [
+                {
+                    "dateStart": "1738",
+                    "dateEnd": "1738",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1738",
+                        "seq": 97
+                    }
+                },
+                {
+                    "dateStart": "1754",
+                    "dateEnd": "1754",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1754",
+                        "seq": 97
+                    }
+                },
+                {
+                    "dateStart": "1752",
+                    "dateEnd": "1752",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1752",
+                        "seq": 97
+                    }
+                },
+                {
+                    "dateStart": "1780",
+                    "dateEnd": "1780",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1780",
+                        "seq": 97
+                    }
+                },
+                {
+                    "dateStart": "1826",
+                    "dateEnd": "1826",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1826",
+                        "seq": 97
+                    }
+                },
+                {
+                    "dateStart": "1825",
+                    "dateEnd": "1825",
+                    "dateDisplay": {
+                        "display": true,
+                        "displayForm": "1825",
+                        "seq": 97
+                    }
+                }
+            ],
+            "itemReferences": [
+                {
+                    "ID": "MS-RGO-00014-00045"
+                },
+                {
+                    "ID": "MS-RGO-00014-00035"
+                },
+                {
+                    "ID": "MS-RGO-00014-00029"
+                },
+                {
+                    "ID": "MS-RGO-00014-00052"
+                }
+            ],
+            "thumbnailUrl": "/images/thumbnails/longitude/ES-LON-00001.jpg",
+            "thumbnailOrientation": "portrait"
+        }
+    ],
+    "numberOfPages": 1,
+    "embeddable": false,
+    "sourceData": "/v1/metadata/essay/ES-LON-00001/",
+    "pages": [
+        {
+            "label": "1",
+            "physID": "PHYS-1",
+            "sequence": 1,
+            "content": "<div><p>Artificial horizons were fitted to observational instruments [<a target='_blank' class='externalLink' href='http://collections.rmg.co.uk/collections/objects/252418.html'><img title=\"Link to RMG\" alt='RMG icon' class='nmm_icon' src='/images/general/nmm_small.png'/></a>] to allow the measurement of celestial altitudes. As a separate device, the artificial horizon was designed to help determine the height of the Moon or a star above the horizon when the ship was becalmed and the horizon hidden by fog or cloud, so a normal sextant observation of the body's altitude could not be made. Since the ship was motionless, an image of the Moon or star could be formed in a tray of mercury or other reflecting substance, and the observer could then use a sextant to measure the angle between the Moon or star and its image on the mercury's surface. This angle would be twice the body's altitude. Versions of this device were proposed in 1738 by the London instrument maker <a href='/search?keyword=George%20Adams'>George Adams</a>, who suggested covering the tray with glass; in 1754 by the navigation writer <a href='/search?keyword=John%20Robertson'>John Robertson</a>; and in 1752 by the instrument maker <a href='/search?keyword=James%20Short'>James Short</a>, who adopted the scheme of the naval officer <a href='/search?keyword=John%20Serson'>John Serson</a> to replace mercury with a mirror spinning horizontally on an almost frictionless axis. None were entirely successful. In his 1780 edition of Robertson's account, the astronomer <a href='/search?keyword=William%20Wales'>William Wales</a> summarised these methods and recommended using a simple mercury trough, provided the ship were entirely still.</p> <p>A number of applicants tried to interest the Board of Longitude in versions of the artificial horizon, including <a href='/search?keyword=Henry%20Ould'>Henry Ould</a> [<a href='/view/MS-RGO-00014-00045/53'>RGO 14/45:260r</a>], who in December 1791 patented an artificial horizon to fix to a Hadley's quadrant. Ould grew impatient with the Board's lack of interest, claimed support from many naval officers, and sent the instrument on a sea trial to <a href='/search?keyword=Newfoundland'>Newfoundland</a>. Other proposals reached the Board from <a href='/search?keyword=David%20Kirkpatrick'>David Kirkpatrick</a> of Liverpool in 1812 to 1815 [<a href='/view/MS-RGO-00014-00035/361'>RGO 14/35:432r</a>] and again in 1826 [<a href='/view/MS-RGO-00014-00029/323'>RGO 14/29:159r</a>]. In 1825 [<a href='/view/MS-RGO-00014-00052/736'>RGO 14/52:371-7</a>] the naval surveyor <a href='/search?keyword=Lewis%20Fitzmaurice'>Lewis Fitzmaurice</a>, a veteran of African scientific expeditions, proposed an artificial horizon for measuring mountain heights.</p> <p>For further information see <i>Inventory of the Navigation and Astronomical Collections, volume 1, Artificial Horizons</i>. London: National Maritime Museum, 1970 </p> <p>Simon Schaffer<br /> History and Philosophy of Science<br /> University of Cambridge</p> </div>"
+        }
+    ],
+    "logicalStructures": [
+        {
+            "descriptiveMetadataID": "essay",
+            "label": "Artificial Horizon",
+            "startPageLabel": "1",
+            "startPagePosition": 1,
+            "startPageID": "1",
+            "endPageLabel": "1",
+            "endPagePosition": 1,
+            "endPageID": "1"
+        }
+    ]
+}

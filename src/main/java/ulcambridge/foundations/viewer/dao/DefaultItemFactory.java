@@ -1,94 +1,47 @@
 package ulcambridge.foundations.viewer.dao;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import javax.sql.DataSource;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
-@Component
-public class ItemsJSONDBDao implements ItemsDao {
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-    private final static Logger LOG = LoggerFactory.getLogger(ItemsJSONDBDao.class);
-    private final JSONReader reader;
-    private final JdbcTemplate jdbcTemplate;
+public final class DefaultItemFactory implements ItemFactory {
+    private static final Logger LOG = LoggerFactory.getLogger(DefaultItemFactory.class);
 
-    @Autowired
-    public ItemsJSONDBDao(JSONReader reader, DataSource dataSource) {
-        Assert.notNull(dataSource, "dataSource is required");
-        Assert.notNull(reader, "reader is required");
+    private final ItemStatusOracle itemStatusOracle;
 
-        this.reader = reader;
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public DefaultItemFactory(ItemStatusOracle itemStatusOracle) {
+        Assert.notNull(itemStatusOracle, "itemStatusOracle is required");
+        this.itemStatusOracle = itemStatusOracle;
     }
 
-    /**
-     * Get item information from the JSON file.
-     */
-    public Item getItem(String itemId) {
-
-        JSONObject itemJson;
+    public Item itemFromJSON(String itemId, JSONObject itemJson) {
         String itemType = "bookormanuscript"; // default
-
-        if (itemId == null || itemId.equals("")) {
-            throw new IllegalArgumentException("Invalid Item Id given.");
+        // Might have type, might not.
+        if (itemJson.has("itemType")) {
+            itemType = itemJson.getString("itemType");
         }
-        try {
 
-            itemJson = reader.readJsonFromUrl(Properties.getString("jsonURL")
-                    + itemId + ".json");
+        if (itemType.equals("essay")) {
 
-            // Might have type, might not.
-            if (itemJson.has("itemType")) {
-                itemType = itemJson.getString("itemType");
-            }
+            Item bookItem = getBookItem(itemId, itemJson);
+            return getEssayItem(itemId, itemJson, bookItem);
 
-            if (itemType.equals("essay")) {
-
-                Item bookItem = getBookItem(itemId, itemJson);
-                return getEssayItem(itemId, itemJson, bookItem);
-
-            } else {
-                return getBookItem(itemId, itemJson);
-            }
-
-        } catch (IOException | JSONException e) {
-            LOG.error("Failed to load item: %s", itemId, e);
-            return null;
+        } else {
+            return getBookItem(itemId, itemJson);
         }
-    }
-
-    private boolean getIIIFEnabled(String itemId) {
-
-        final String query = "SELECT iiifenabled FROM items WHERE itemid = ?";
-
-        return jdbcTemplate.queryForObject(query, new Object[]{itemId},
-            Boolean.class);
-    }
-
-    private boolean getTaggingStatus(String itemId) {
-
-        final String query = "SELECT taggingstatus FROM items WHERE itemid = ?";
-
-        return jdbcTemplate.queryForObject(query, new Object[]{itemId},
-            Boolean.class);
     }
 
     /**
@@ -112,29 +65,29 @@ public class ItemsJSONDBDao implements ItemsDao {
 
             // Pull out the information we want in our Item object
             JSONObject descriptiveMetadata = itemJson.getJSONArray(
-                    "descriptiveMetadata").getJSONObject(0);
+                "descriptiveMetadata").getJSONObject(0);
 
             // Should always have title
             itemTitle = descriptiveMetadata.getJSONObject("title").getString(
-                    "displayForm");
+                "displayForm");
 
             // Might have authors, might not.
             if (descriptiveMetadata.has("authors")) {
                 itemAuthors = getPeopleFromJSON(descriptiveMetadata
                         .getJSONObject("authors").getJSONArray("value"),
-                        "author");
+                    "author");
             }
 
             // Might have shelf locator, might not.
             if (descriptiveMetadata.has("shelfLocator")) {
                 itemShelfLocator = descriptiveMetadata.getJSONObject(
-                        "shelfLocator").getString("displayForm");
+                    "shelfLocator").getString("displayForm");
             }
 
             // Might have abstract, might not.
             if (descriptiveMetadata.has("abstract")) {
                 itemAbstract = descriptiveMetadata.getJSONObject("abstract")
-                        .getString("displayForm");
+                    .getString("displayForm");
             }
 
             // if not see if we have content (used in essay objects)
@@ -158,7 +111,7 @@ public class ItemsJSONDBDao implements ItemsDao {
 
             // Might have Thumbnail image
             if (descriptiveMetadata.has("thumbnailUrl")
-                    && descriptiveMetadata.has("thumbnailOrientation")) {
+                && descriptiveMetadata.has("thumbnailOrientation")) {
                 if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
                 if (itemType.equals("essay")) {
                     itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
@@ -174,7 +127,7 @@ public class ItemsJSONDBDao implements ItemsDao {
                 }
 
                 thumbnailOrientation = descriptiveMetadata
-                                                .getString("thumbnailOrientation");
+                    .getString("thumbnailOrientation");
 
             }
 
@@ -190,9 +143,9 @@ public class ItemsJSONDBDao implements ItemsDao {
         }
 
         return new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
-                itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
-                pageLabels, pageThumbnailURLs, getIIIFEnabled(itemId),
-                getTaggingStatus(itemId), itemJson);
+            itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
+            pageLabels, pageThumbnailURLs, this.itemStatusOracle.isIIIFEnabled(itemId),
+            this.itemStatusOracle.isTaggingEnabled(itemId), itemJson);
 
     }
 
@@ -221,7 +174,7 @@ public class ItemsJSONDBDao implements ItemsDao {
             content = page0.getString("content");
 
             descriptiveMetadata = itemJson.getJSONArray(
-                    "descriptiveMetadata").getJSONObject(0);
+                "descriptiveMetadata").getJSONObject(0);
 
             // Get list of related items
             relatedItems = new ArrayList<>();
@@ -260,10 +213,10 @@ public class ItemsJSONDBDao implements ItemsDao {
         }
 
         return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
-             parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
-             parent.getImageReproPageURL(),
-             content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects,
-             pageLabels, pageThumbnailURLs);
+            parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
+            parent.getImageReproPageURL(),
+            content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects,
+            pageLabels, pageThumbnailURLs);
     }
 
     /**
@@ -299,7 +252,7 @@ public class ItemsJSONDBDao implements ItemsDao {
                 }
                 new ArrayList<String>();
                 Person person = new Person(fullForm, shortForm, authority,
-                        authorityURI, valueURI, type, role);
+                    authorityURI, valueURI, type, role);
                 people.add(person);
             }
 
@@ -327,7 +280,7 @@ public class ItemsJSONDBDao implements ItemsDao {
                 JSONObject objectJSON = json.getJSONObject(i);
 
                 if (objectJSON.getString("display")!=null
-                        && objectJSON.getString("display").equals("true")) {
+                    && objectJSON.getString("display").equals("true")) {
 
                     String displayForm = objectJSON.getString("displayForm");
                     displayForms.add(displayForm);
