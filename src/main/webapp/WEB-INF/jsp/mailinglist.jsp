@@ -41,7 +41,7 @@ body {
 
 
 		<div class="mailinglistform">
-			<!--<form:form method="post" commandName="mailingListForm">-->
+			<!--<form:form method="post" modelAttribute="mailingListForm">-->
 
 			<p>If you would like to receive details of updates or changes to
 				this site, then join our mailing list. Our email service will alert

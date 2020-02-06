@@ -31,12 +31,7 @@ public abstract class QueryStringRequestMatcher implements RequestMatcher {
     protected abstract boolean matches(Stream<Map.Entry<String, Optional<String>>> query);
 
     private static String decode(String s) {
-        try {
-            return UriUtils.decode(s, "UTF-8");
-        }
-        catch (UnsupportedEncodingException e) {
-            throw new AssertionError("This won't happen", e);
-        }
+        return UriUtils.decode(s, "UTF-8");
     }
 
     public static QueryStringRequestMatcher from(

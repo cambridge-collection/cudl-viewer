@@ -11,7 +11,7 @@
 
     <div class="campl-row campl-content">
         <div class="campl-content-container">
-            <form:form method="post" commandName="feedbackForm">
+            <form:form method="post" modelAttribute="feedbackForm">
                 <fieldset>
                     <legend>Feedback</legend>
 

@@ -45,13 +45,7 @@ public final class ElFunctions {
      * @return s with reserved characters % encoded using UTF-8 encoding.
      */
     public static String uriEnc(String s) {
-        try {
-            return UriUtils.encode(s, "UTF-8");
-        }
-        catch (UnsupportedEncodingException e) {
-            // This will never happen
-            throw new AssertionError("UTF-8 did not exist", e);
-        }
+        return UriUtils.encode(s, "UTF-8");
     }
 
     public static String join(Iterable<Object> items, String separator) {

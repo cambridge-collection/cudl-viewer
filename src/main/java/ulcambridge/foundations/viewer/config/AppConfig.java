@@ -1,7 +1,7 @@
 package ulcambridge.foundations.viewer.config;
 
 import com.google.gson.Gson;
-import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,8 +56,6 @@ public class AppConfig {
             ds.setUrl(url);
             ds.setUsername(username);
             ds.setPassword(password);
-            ds.setMaxActive(8);
-            ds.setMaxIdle(8);
             ds.setValidationQuery("SELECT 1");
             ds.setTestOnBorrow(true);
 
