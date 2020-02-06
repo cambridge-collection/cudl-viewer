@@ -377,6 +377,20 @@
             <artifactId>postgresql</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.opentable.components</groupId>
+            <artifactId>otj-pg-embedded</artifactId>
+            <version>0.13.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>5.2.4</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- encoder to prevent XSS -->
         <dependency>
             <groupId>org.owasp.encoder</groupId>
