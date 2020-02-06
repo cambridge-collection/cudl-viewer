@@ -25,10 +25,11 @@ import ulcambridge.foundations.viewer.components.EmailHelper;
 import ulcambridge.foundations.viewer.config.AppConfig;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.isOneOf;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Matchers.eq;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.oneOf;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
@@ -115,7 +116,7 @@ public class FormControllerTest {
             .andExpect(status().isOk())
             .andExpect(view().name("jsp/feedback-success"))
             .andExpect(model().hasNoErrors())
-            .andExpect(model().attribute("submissionFailed", isOneOf(false, null)));
+            .andExpect(model().attribute("submissionFailed", is(oneOf(false, null))));
 
         String expectedMessage = "Feedback from the user 'Foo' (user@example.test):\n\nBar";
         verify(mockEmailHelper).sendEmail(anyString(), anyString(), anyString(), eq(expectedMessage));
@@ -144,7 +145,7 @@ public class FormControllerTest {
             .andExpect(status().isOk())
             .andExpect(view().name("jsp/feedback"))
             .andExpect(model().hasErrors())
-            .andExpect(model().attribute("submissionFailed", isOneOf(false, null)));
+            .andExpect(model().attribute("submissionFailed", is(oneOf(false, null))));
     }
 
     @Test
