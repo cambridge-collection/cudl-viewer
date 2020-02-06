@@ -478,6 +478,26 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.truth.extensions</groupId>
+            <artifactId>truth-java8-extension</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Truth can use this to create better error messages. -->
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>7.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- JSON reading/writing for oauth -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
