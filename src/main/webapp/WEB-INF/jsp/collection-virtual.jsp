@@ -38,7 +38,7 @@
 
                             <ol id="virtual_collections_carousel">
                                 <c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
-                                    <c:set var="item" value="${cudlfn:getItem(itemFactory, id)}"/>
+                                    <c:set var="item" value="${cudlfn:getItem(itemDAO, id)}"/>
 
                                     <%-- FIXME: move this inline style into CSS and apply a class here --%>
                                     <c:choose>

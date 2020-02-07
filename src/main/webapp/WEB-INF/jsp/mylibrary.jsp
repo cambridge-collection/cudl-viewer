@@ -37,7 +37,7 @@
 
                 <ol id="collections_carousel">
                     <c:forEach items="${bookmarks}" var="bookmark" varStatus="loop">
-                        <c:set var="item" value="${cudlfn:getItem(itemFactory, bookmark.itemId)}"/>
+                        <c:set var="item" value="${cudlfn:getItem(itemDAO, bookmark.itemId)}"/>
 
                         <c:choose>
                             <c:when test="${item.thumbnailOrientation == 'portrait'}">

@@ -1,14 +1,5 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.net.MalformedURLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
@@ -25,13 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.net.MalformedURLException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Controller for viewing a collection.
@@ -45,7 +43,7 @@ public class SearchController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private final Search search;
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
 
     /**
@@ -56,14 +54,14 @@ public class SearchController {
      */
     @Autowired
     public SearchController(CollectionFactory collectionFactory,
-                            ItemFactory itemFactory, Search search) {
+                            ItemsDao itemDAO, Search search) {
 
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
-        Assert.notNull(search);
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(search, "search is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.search = search;
     }
 
@@ -88,11 +86,6 @@ public class SearchController {
      * Advanced Search Query Page
      *
      * /search/advanced/query
-     *
-     * @param request
-     * @param response
-     * @return
-     * @throws MalformedURLException
      */
     @RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
     public ModelAndView advancedSearch(
@@ -115,11 +108,6 @@ public class SearchController {
      * Advanced Search Results Page Performs search and displays results.
      *
      * on /search/advanced/results path
-     *
-     * @param request
-     * @param response
-     * @return
-     * @throws MalformedURLException
      */
     @RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
     public ModelAndView processAdvancedSearch(
@@ -153,7 +141,7 @@ public class SearchController {
     }
 
     private JSONObject getResultItemJSON(SearchResult searchResult) {
-        Item item = itemFactory.getItemFromId(searchResult.getFileId());
+        Item item = itemDAO.getItem(searchResult.getFileId());
 
         // Make a JSON object that contains information about the
         // matching item and information about the result snippets

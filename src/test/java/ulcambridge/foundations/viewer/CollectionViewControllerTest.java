@@ -5,11 +5,12 @@ import java.util.Map;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
-import ulcambridge.foundations.viewer.dao.MockItemsJSONDao;
 import ulcambridge.foundations.viewer.model.Collection;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class CollectionViewControllerTest {
 
@@ -56,9 +57,7 @@ public class CollectionViewControllerTest {
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
             new MockCollectionsDao());
-        ItemFactory itemFactory = new ItemFactory(
-            new MockItemsJSONDao());
-        return new CollectionViewController(collectionFactory, itemFactory, "./html");
+        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html");
     }
 
 }

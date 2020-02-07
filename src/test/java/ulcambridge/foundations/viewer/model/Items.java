@@ -1,17 +1,18 @@
-package ulcambridge.foundations.viewer.dao;
+package ulcambridge.foundations.viewer.model;
+
+import org.json.JSONObject;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.json.JSONObject;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Person;
+public final class Items {
+    private Items() {}
 
-public class MockItemsJSONDao implements ItemsDao {
+    public static Item getExampleItem(String itemId) {
+        Assert.notNull(itemId, "itemId is required");
 
-    @Override
-    public Item getItem(String itemId) {
         final Person aut = new Person(
             "Test Person, 2012",
             "Test Person",
@@ -28,7 +29,7 @@ public class MockItemsJSONDao implements ItemsDao {
         JSONObject json = new JSONObject();
 
         return new Item(
-            "MS-ADD-04004",
+            itemId,
             "bookormanuscript",
             "Test Title", authors,
             "test shelfLocator",
@@ -43,5 +44,4 @@ public class MockItemsJSONDao implements ItemsDao {
             json);
 
     }
-
 }

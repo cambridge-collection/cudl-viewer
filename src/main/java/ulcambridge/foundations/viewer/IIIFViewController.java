@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import org.springframework.web.servlet.view.RedirectView;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
@@ -37,18 +38,18 @@ import ulcambridge.foundations.viewer.model.Properties;
 public class IIIFViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
 
     @Autowired
-    public IIIFViewController(ItemFactory itemFactory,
+    public IIIFViewController(ItemsDao itemDAO,
                               CollectionFactory collectionFactory,
                               @Value("${rootURL}") URI rootUrl) {
 
-        Assert.notNull(itemFactory);
-        Assert.notNull(rootUrl);
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(rootUrl, "rootUrl is required");
 
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.collectionFactory = collectionFactory;
 
     }
@@ -71,7 +72,7 @@ public class IIIFViewController {
             servicesURL = request.getScheme() + ":"+servicesURL;
         }
 
-        Item item = itemFactory.getItemFromId(docId);
+        Item item = itemDAO.getItem(docId);
         if (item != null && item.getIIIFEnabled()) {
 
             String baseURL = request.getScheme() + "://" + request.getServerName();

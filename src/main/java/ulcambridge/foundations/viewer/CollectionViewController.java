@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
@@ -37,7 +38,7 @@ public class CollectionViewController {
 
     protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final String contentHtmlUrl;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
@@ -46,14 +47,14 @@ public class CollectionViewController {
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemFactory itemFactory,
+                                    ItemsDao itemDAO,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 
@@ -67,7 +68,7 @@ public class CollectionViewController {
         final String itemIdString = Properties.getString("collection.featuredItems");
         final String[] itemIds = SPLIT_RE.split(itemIdString);
         for (final String itemId : itemIds) {
-            featuredItems.add(itemFactory.getItemFromId(itemId));
+            featuredItems.add(itemDAO.getItem(itemId));
         }
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("featuredItems", featuredItems);
@@ -102,7 +103,7 @@ public class CollectionViewController {
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
         }
-        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
@@ -146,7 +147,7 @@ public class CollectionViewController {
         }
 
         for (int i = startIndex; i < endIndex; i++) {
-            items.add(itemFactory.getItemFromId(ids.get(i)));
+            items.add(itemDAO.getItem(ids.get(i)));
         }
 
         final JSONArray jsonArray = new JSONArray();

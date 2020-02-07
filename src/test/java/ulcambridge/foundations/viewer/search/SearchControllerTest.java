@@ -7,9 +7,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
-import ulcambridge.foundations.viewer.dao.*;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
+import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 /**
  * Unit test
@@ -30,10 +32,7 @@ public class SearchControllerTest {
     @Test
     public void testSearchController() throws Throwable {
 
-        ItemsDao jsondao = new MockItemsJSONDao();
         CollectionsDao collectionsdao = new MockCollectionsDao();
-
-        ItemFactory itemFactory = new ItemFactory(jsondao);
 
         SearchForm form = new SearchForm();
         form.setKeyword("Elementary Mathematics");
@@ -43,7 +42,7 @@ public class SearchControllerTest {
         CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
         SearchController c = new SearchController(
-            collectionFactory, itemFactory, new MockSearch());
+            collectionFactory, mock(ItemsDao.class), new MockSearch());
 
         ModelAndView m = c.processSearch(form);
 
