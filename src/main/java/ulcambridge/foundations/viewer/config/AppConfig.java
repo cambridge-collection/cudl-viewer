@@ -1,14 +1,18 @@
 package ulcambridge.foundations.viewer.config;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.gson.Gson;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -16,12 +20,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
+import ulcambridge.foundations.viewer.dao.*;
+import ulcambridge.foundations.viewer.model.Item;
 
 import javax.sql.DataSource;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -40,9 +48,61 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class AppConfig {
 
     @Configuration
+    public static class ItemsConfig {
+        @Bean
+        @Qualifier("itemCache")
+        public Cache<String, Item> itemCache() {
+            return Caffeine.newBuilder().maximumSize(500).build();
+        }
+
+        @Autowired
+        @Bean
+        @Primary
+        public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache, @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO) {
+            return new CachingItemsDAO(itemCache, upstreamItemsDAO);
+        }
+
+        @Autowired
+        @Bean
+        public ItemsDao upstreamItemsDAO(ulcambridge.foundations.viewer.dao.ItemFactory itemFactory, @Qualifier("itemJSONLoader") JSONLoader itemJSONLoader) {
+            return new DefaultItemsDao(itemFactory, itemJSONLoader);
+        }
+
+        @Autowired
+        @Bean
+        public ulcambridge.foundations.viewer.dao.ItemFactory itemFactory(ItemStatusOracle itemStatusOracle) {
+            return new DefaultItemFactory(itemStatusOracle);
+        }
+
+        @Autowired
+        @Bean
+        public ItemStatusOracle itemStatusOracle(JdbcTemplate db) {
+            return new DatabaseItemStatusOracle(db);
+        }
+
+        @Autowired
+        @Bean
+        @Qualifier("itemJSONLoader")
+        public JSONLoader itemJSONLoader(@Qualifier("itemJSON") Path itemJSONDirectory) {
+            return new FilesystemDirectoryJSONLoader(itemJSONDirectory);
+        }
+
+        @Autowired
+        @Bean
+        @Qualifier("itemJSON")
+        public Path itemJSONDirectory(@Value("${itemJSONDirectory}") String itemJSONDirectory) {
+            Path dir = Paths.get(itemJSONDirectory);
+            if (!Files.isDirectory(dir)) {
+                throw new IllegalArgumentException("itemJSONDirectory is not a directory: " + itemJSONDirectory);
+            }
+            return dir;
+        }
+
+    }
+
+    @Configuration
     @ComponentScan("ulcambridge.foundations.viewer.dao")
-    @Import({CollectionFactory.class, ItemFactory.class, JSONReader.class,
-             UsersDBDao.class})
+    @Import({CollectionFactory.class, JSONReader.class, UsersDBDao.class})
     public static class DatabaseConfig {
         @Bean
         public DataSource dataSource(
@@ -60,6 +120,11 @@ public class AppConfig {
             ds.setTestOnBorrow(true);
 
             return ds;
+        }
+
+        @Bean
+        public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+            return new JdbcTemplate(dataSource);
         }
 
         @Bean
