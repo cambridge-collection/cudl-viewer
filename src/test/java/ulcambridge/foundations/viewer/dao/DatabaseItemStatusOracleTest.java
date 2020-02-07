@@ -6,6 +6,8 @@ import com.opentable.db.postgres.junit5.PreparedDbExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
@@ -34,7 +36,7 @@ public class DatabaseItemStatusOracleTest {
             new Object[]{"MS-FOO-004", false, false}
         ));
 
-        statusOracle = new DatabaseItemStatusOracle(jdbcTemplate);
+        statusOracle = new DatabaseItemStatusOracle(jdbcTemplate, false, false);
     }
 
     @Test
@@ -51,5 +53,21 @@ public class DatabaseItemStatusOracleTest {
         assertThat(statusOracle.isTaggingEnabled("MS-FOO-002")).isFalse();
         assertThat(statusOracle.isTaggingEnabled("MS-FOO-003")).isTrue();
         assertThat(statusOracle.isTaggingEnabled("MS-FOO-004")).isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void iiifDefaultIsUsedIfItemNotInDb(boolean isEnabled) {
+        statusOracle = new DatabaseItemStatusOracle(jdbcTemplate, isEnabled, false);
+
+        assertThat(statusOracle.isIIIFEnabled("UNKNOWN-ITEM")).isEqualTo(isEnabled);
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    public void taggingDefaultIsUsedIfItemNotInDb(boolean isEnabled) {
+        statusOracle = new DatabaseItemStatusOracle(jdbcTemplate, false, isEnabled);
+
+        assertThat(statusOracle.isTaggingEnabled("UNKNOWN-ITEM")).isEqualTo(isEnabled);
     }
 }

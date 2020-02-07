@@ -77,7 +77,7 @@ public class AppConfig {
         @Autowired
         @Bean
         public ItemStatusOracle itemStatusOracle(JdbcTemplate db) {
-            return new DatabaseItemStatusOracle(db);
+            return new DatabaseItemStatusOracle(db, false, false);
         }
 
         @Autowired
