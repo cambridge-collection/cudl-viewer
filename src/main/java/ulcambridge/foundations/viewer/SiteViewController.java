@@ -184,8 +184,7 @@ public class SiteViewController {
 
         Throwable t = this.getErrorException(request);
         if(t != null) {
-            mv.addObject("errorMessage", t.getMessage());
-            mv.addObject("errorTraceback", this.formatThrowable(t));
+            mv.addObject("exception", t);
         }
 
         return mv;

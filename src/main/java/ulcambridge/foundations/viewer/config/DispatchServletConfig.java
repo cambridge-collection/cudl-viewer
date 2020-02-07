@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.config;
 
 import java.util.List;
+import java.util.Properties;
 
 import com.google.common.base.Charsets;
 import org.springframework.beans.BeansException;
@@ -21,7 +22,9 @@ import org.springframework.util.MimeType;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.resource.GzipResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -37,8 +40,7 @@ import ulcambridge.foundations.viewer.embedded.Configs;
     includeFilters = {@Filter(Controller.class)})
 @Import(BeanFactoryPostProcessorConfig.class)
 public class DispatchServletConfig
-    extends WebMvcConfigurerAdapter
-    implements BeanFactoryAware {
+    implements WebMvcConfigurer, BeanFactoryAware {
 
     public static final String EMBEDDED_VIEWER_PATTERN = "/embed/**";
 
@@ -54,8 +56,6 @@ public class DispatchServletConfig
         // Register the UTF-8 message converter
         converters.add(0, this.beanFactory.getBean(
             StringHttpMessageConverter.class));
-
-        super.extendMessageConverters(converters);
     }
 
     /**
@@ -169,5 +169,24 @@ public class DispatchServletConfig
                         new EmbeddedViewerConfiguringResourceTransformer(
                             embeddedViewerConfig));
         }
+    }
+
+    @Bean(name="simpleMappingExceptionResolver")
+    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
+        SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
+
+        Properties mappings = new Properties();
+        mappings.setProperty("EmptyResultDataAccessException", "jsp/errors/404");
+        r.setExceptionMappings(mappings);  // None by default
+
+        Properties statusCodes = new Properties();
+        statusCodes.setProperty("jsp/errors/404", "404");
+        r.setStatusCodes(statusCodes);
+
+        r.setDefaultErrorView("jsp/errors/500");
+        r.setExceptionAttribute("exception");
+
+        r.setWarnLogCategory("ulcambridge.foundations.viewer.error");
+        return r;
     }
 }

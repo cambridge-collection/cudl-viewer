@@ -67,12 +67,11 @@ public class SiteViewControllerTest {
     @Test
     public void testHandle500() {
         MockHttpServletRequest req = new MockHttpServletRequest();
-        req.setAttribute(RequestDispatcher.ERROR_EXCEPTION,
-                new RuntimeException("boom"));
+        Exception e = new RuntimeException("boom");
+        req.setAttribute(RequestDispatcher.ERROR_EXCEPTION, e);
 
         ModelAndView mav = createController().handle500(req);
 
-        assertModelAttributeValue(mav, "errorMessage", "boom");
-        assertModelAttributeAvailable(mav, "errorTraceback");
+        assertModelAttributeValue(mav, "exception", e);
     }
 }

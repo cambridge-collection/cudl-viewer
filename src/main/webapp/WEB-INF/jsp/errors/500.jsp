@@ -5,7 +5,6 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-
 <c:set var="errorEmailSubject" value="500 Page - Error"/>
 
 <cudl:generic-page pagetype="ERROR_500" title="Error">
@@ -33,7 +32,7 @@
                             <p>
                                 <dl>
                                     <dt>Message</dt>
-                                    <dd><c:out value="${errorMessage}"/></dd>
+                                    <dd>${exception.message}</dd>
                                 </dl>
                             </p>
 
@@ -45,7 +44,7 @@
                             </p>
 
                             <p>
-                                <pre id="stacktrace" class="stacktrace collapse"><c:out value="${errorTraceback}"/></pre>
+                                <pre id="stacktrace" class="stacktrace collapse">${pageContext.out.flush();exception.printStackTrace(pageContext.response.writer)}</pre>
                             </p>
                         </div>
                     </div>
