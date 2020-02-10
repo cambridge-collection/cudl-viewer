@@ -52,6 +52,26 @@
                  - http://stackoverflow.com/questions/1296235/jsp-tricks-to-make-templating-easier
             -->
             <scripting-invalid>true</scripting-invalid>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+
+            <!--
+            Buffer size here is very important. All JSP pages (except error
+            pages) set autoFlush to false, which means that the rendered HTML
+            must fit within this buffer size, otherwise an error will be raised.
+
+            The reason for this is that if a JSP page is flushed as it's
+            rendered, errors that occur after the first flush cause the
+            rendering to stop. The client gets an incomplete page, and because
+            the response has already been started, the status is still HTTP 200.
+
+            Tomcat recommends disabling autoFlush when only complete page
+            content is acceptable:
+            https://tomcat.apache.org/tomcat-9.0-doc/jspapi/javax/servlet/jsp/JspWriter.html
+
+            Error pages do use autoFlush in an attempt to ensure error pages are
+            always rendered.
+            -->
+            <buffer>256kb</buffer>
         </jsp-property-group>
     </jsp-config>
 
