@@ -136,7 +136,7 @@ public class DispatchServletConfig
 
             registry.addResourceHandler("/img/**")
                 .addResourceLocations("/img/");
-            
+
             registry.addResourceHandler("/mirador-ui/**")
             .addResourceLocations("/mirador-ui/");
 

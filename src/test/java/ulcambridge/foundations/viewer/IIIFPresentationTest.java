@@ -67,7 +67,7 @@ public class IIIFPresentationTest {
         assertEquals("Item Title (LOC)", output.getString("label"));
         assertEquals("Item Abstract", output.getString("description"));
         assertThat(output.getString("attribution"), startsWith("Provided by Cambridge University Library."));
-        assertEquals("http://base.test/mirador-ui/cu_logo.png", output.getString("logo"));
+        assertEquals("http://base.test/img/cu_logo.png", output.getString("logo"));
         assertEquals("left-to-right", output.getString("viewingDirection"));
         assertEquals("http://service.test/v1/metadata/tei/MS-ADD-04004/", output.getString("seeAlso"));
         assertEquals(14, output.getJSONArray("metadata").length());

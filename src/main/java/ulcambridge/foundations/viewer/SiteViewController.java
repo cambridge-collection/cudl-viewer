@@ -1,17 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.nio.file.Paths;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Set;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +9,20 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.MiradorUtils;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.nio.file.Paths;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class SiteViewController {
@@ -116,16 +115,24 @@ public class SiteViewController {
     public ModelAndView handleMiradorRequest(@PathVariable("id") String id,
             @PathVariable("pagenum") int pagenum, HttpServletRequest request) {
 
-        // String baseURL = String.format("%s://%s:%d/", request.getScheme(), request.getServerName(), request.getServerPort());
         String baseURL = request.getScheme() + "://" + request.getServerName();
         if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
             baseURL+= ":" + request.getServerPort();
         }
 
+        // Show page 1 if anything below 1 is requested.
+        if (pagenum<1) { pagenum=1; }
+
+        String manifestId = baseURL+"/iiif/"+id;
+        String canvasId = manifestId + "/canvas/" +pagenum;
+
+        MiradorUtils miradorUtils = new MiradorUtils(id, manifestId, canvasId);
+
         ModelAndView modelAndView = new ModelAndView("jsp/mirador");
         modelAndView.addObject("id", id);
         modelAndView.addObject("pagenum", pagenum);
         modelAndView.addObject("baseURL", baseURL);
+        modelAndView.addObject("miradorUtils", miradorUtils);
         return modelAndView;
     }
 

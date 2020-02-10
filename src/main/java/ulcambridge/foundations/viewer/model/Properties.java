@@ -12,24 +12,28 @@ public class Properties {
     private final static ResourceBundle collectionConfig = ResourceBundle
             .getBundle("collections");
 
+    private final static ResourceBundle applicationConfig = ResourceBundle
+        .getBundle("application");
+
     public static String getString(String key) {
 
         // Check global properties
         try {
-            String globalValue = globalConfig.getString(key);
-            if (globalValue != null) {
-                return globalValue;
-            }
+            return globalConfig.getString(key);
         } catch (MissingResourceException e) {
             /* resource not found, look in next bundle */
         }
 
         // Check collection properties
         try {
-            String collectionValue = collectionConfig.getString(key);
-            if (collectionValue != null) {
-                return collectionValue;
-            }
+            return collectionConfig.getString(key);
+        } catch (MissingResourceException e) {
+            /* resource not found, look in next bundle */
+        }
+
+        // Check application properties
+        try {
+            return applicationConfig.getString(key);
         } catch (MissingResourceException e) {
             /* resource not found, look in next bundle */
         }
