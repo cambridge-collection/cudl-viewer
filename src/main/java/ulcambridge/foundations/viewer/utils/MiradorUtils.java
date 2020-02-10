@@ -34,7 +34,8 @@ public class MiradorUtils {
 
             assert propsPath != null;
 
-            String props = FileUtils.readFileToString(new File(propsPath), "UTF-8");
+            File file = new File(Objects.requireNonNull(getClass().getClassLoader().getResource(propsPath)).getFile());
+            String props = FileUtils.readFileToString(file, "UTF-8");
 
             // replace placeholders
             props = props.replaceAll("<!--manifestId-->", manifestId);
