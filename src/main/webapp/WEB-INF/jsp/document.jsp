@@ -264,14 +264,16 @@
                                                     <div id="iiifOption">
                                                       <div class="button usebutton">
                                                         <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}">
-                                                          <span class="pull-left"><img src="/mirador-ui/logo-iiif-34x30.png" title="International Image Interoperability Framework"></span> IIIF<br>Manifest
+                                                          <span class="pull-left"><img src="/img/logo-iiif-34x30.png"
+                                                                                       title="International Image Interoperability Framework"></span> IIIF<br>Manifest
                                                         </a>
                                                       </div>
                                                     </div>
                                                     <div id="miradorOption">
                                                       <div class="button usebutton">
                                                         <a class="btn btn-info left" href="#">
-                                                            <span class="pull-left"><img src="/mirador-ui/mirador.png" title="Open in Mirador"></span> Open in<br>Mirador
+                                                            <span class="pull-left"><img src="/img/mirador.png"
+                                                                                         title="Open in Mirador"></span> Open in<br>Mirador
                                                         </a>
                                                       </div>
                                                     </div>

@@ -1,0 +1,27 @@
+{
+    "id": "viewer",
+    "window": {
+        "allowClose": true,
+        "defaultSideBarPanel": "info",
+        "sideBarOpenByDefault": true
+    },
+    "workspace": {
+        "showZoomControls": true,
+        "type": "mosaic"
+    },
+    "workspaceControlPanel": {
+        "enabled": true
+    },
+    "windows": [
+        {
+            "manifestId": "<!--manifestId-->",
+            "thumbnailNavigationPosition": "far-bottom",
+            "canvasId": "<!--canvasId-->"
+        }
+    ],
+    "manifests": {
+        "manifestId": {
+            "provider": "Cambridge University Library"
+        }
+    }
+}

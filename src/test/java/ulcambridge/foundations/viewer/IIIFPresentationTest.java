@@ -39,6 +39,47 @@ public class IIIFPresentationTest {
     }
 
     @Test
+    public void testIIIFAnnotationListFromTranscription() throws Exception {
+        Item item = new Item(
+            "MS-ADD-03958",
+            "bookormanuscript",
+            "Item Title",
+            Collections.singletonList(PERSON),
+            "LOC",
+            "Item Abstract",
+            "thumb.jpg",
+            "portrait",
+            "rights.html",
+            Collections.nCopies(935, "Page Label"),
+            Collections.nCopies(935, "pagethumb.jpg"),
+            true,
+            false,
+            (JSONObject) parseResource("cudl-data/MS-ADD-03958.json")
+        );
+
+        assertEquals(item.getJSON().get("useTranscriptions"),true);
+        assertEquals(item.getJSON().get("useNormalisedTranscriptions"),true);
+        assertEquals(item.getJSON().get("useDiplomaticTranscriptions"),true);
+        assertEquals(item.getJSON().getJSONArray("pages").getJSONObject(110).get("transcriptionNormalisedURL"),
+            "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
+        assertEquals(item.getJSON().getJSONArray("pages").getJSONObject(110).get("transcriptionDiplomaticURL"),
+            "/v1/transcription/newton/diplomatic/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
+
+        IIIFPresentation presentation = new IIIFPresentation(
+            item, "http://base.test", "http://service.test"
+        );
+        JSONObject output = presentation.outputJSON();
+        JSONObject otherContentItem =
+            output.getJSONArray("sequences").getJSONObject(0).getJSONArray("canvases").getJSONObject(110)
+            .getJSONArray("otherContent").getJSONObject(0);
+
+        assertEquals("http://iiif.io/api/presentation/2/context.json", output.getString("@context"));
+        assertEquals("http://service.test/v1/iiif/annotation/MS-ADD-03958/111",
+            otherContentItem.get("@id"));
+        assertEquals("sc:AnnotationList", otherContentItem.get("@type"));
+    }
+
+    @Test
     public void fullItem() throws Exception {
         Item item = new Item(
             "MS-ADD-04004",
@@ -67,7 +108,7 @@ public class IIIFPresentationTest {
         assertEquals("Item Title (LOC)", output.getString("label"));
         assertEquals("Item Abstract", output.getString("description"));
         assertThat(output.getString("attribution"), startsWith("Provided by Cambridge University Library."));
-        assertEquals("http://base.test/mirador-ui/cu_logo.png", output.getString("logo"));
+        assertEquals("http://base.test/img/cu_logo.png", output.getString("logo"));
         assertEquals("left-to-right", output.getString("viewingDirection"));
         assertEquals("http://service.test/v1/metadata/tei/MS-ADD-04004/", output.getString("seeAlso"));
         assertEquals(14, output.getJSONArray("metadata").length());
