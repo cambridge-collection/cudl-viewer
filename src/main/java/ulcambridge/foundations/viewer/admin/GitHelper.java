@@ -37,6 +37,12 @@ public class GitHelper {
     protected String getLastRevision() {
         try {
             localRepomasters = new FileRepository(localPathMasters + "/.git");
+
+            if(!localRepomasters.getObjectDatabase().exists()) {
+                logger.debug("No revision available: Git repo does not exist at {}", localRepomasters.getDirectory());
+                return null;
+            }
+
             gitmasters = new Git(localRepomasters);
             Iterator<RevCommit> iter = gitmasters.log().call().iterator();
             if (iter.hasNext()) {
@@ -44,7 +50,7 @@ public class GitHelper {
                 return ObjectId.toString(commit.getId());
             }
         } catch (IOException | GitAPIException ex) {
-            logger.warn("Error in getLastRevision", ex);
+            logger.error("Error in getLastRevision", ex);
         }
         return null;
     }
