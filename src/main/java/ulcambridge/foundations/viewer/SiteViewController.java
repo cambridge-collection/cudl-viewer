@@ -1,7 +1,6 @@
 package ulcambridge.foundations.viewer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,8 +25,6 @@ import java.util.Set;
 
 @Controller
 public class SiteViewController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
     private String showHoldingPage = Properties.getString("showHoldingPage");
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");

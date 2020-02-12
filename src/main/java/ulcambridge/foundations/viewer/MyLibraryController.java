@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +22,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/mylibrary")
 public class MyLibraryController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
     private final ItemsDao itemDAO;
     private final BookmarkDao bookmarkDao;
 

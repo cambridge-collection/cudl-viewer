@@ -1,27 +1,26 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Properties;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.springframework.web.util.UriComponentsBuilder;
 
 @Component
 public class XTFSearch implements Search {
 
-    private static final Log LOG = LogFactory.getLog(XTFSearch.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(XTFSearch.class.getName());
 
     private static final String INDEX_NAME_REGULAR = "index-cudl",
         INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
@@ -322,9 +321,8 @@ public class XTFSearch implements Search {
             }
             catch(NumberFormatException e) {
                 // TODO Send email to dev team regarding incorrect data format
-                LOG.error("Possible data error - unable to parse string '" + startPageString +
-                    "' expected to be int format.\nDoc title '" + title +
-                    "'\nError in item ID " + id + "\n\n");
+                LOG.error("Error in item ID {}: Unable to parse value as an int: '{}' (Doc title: '{}')",
+                        id, startPageString, title);
                 startPage = 1;
             }
 

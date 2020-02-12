@@ -1,7 +1,5 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -41,7 +39,6 @@ import java.util.Map;
 @RequestMapping("/search")
 public class SearchController {
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final Search search;
     private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;

@@ -1,12 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Controller for viewing a collection.
@@ -35,8 +32,6 @@ import ulcambridge.foundations.viewer.model.Properties;
 @Controller
 @RequestMapping("/collections")
 public class CollectionViewController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
     private final ItemsDao itemDAO;
     private final String contentHtmlUrl;

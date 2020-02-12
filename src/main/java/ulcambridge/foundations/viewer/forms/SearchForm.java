@@ -1,20 +1,15 @@
 package ulcambridge.foundations.viewer.forms;
 
+import ulcambridge.foundations.viewer.model.Collection;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import ulcambridge.foundations.viewer.model.Collection;
-
 public class SearchForm {
 
     public static final double MIN_RECALL_SCALE = 0, MAX_RECALL_SCALE = 1;
-
-    protected final Log logger = LogFactory.getLog(getClass());
 
     // Keyword information
     private String keyword = "";

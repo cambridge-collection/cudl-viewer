@@ -1,12 +1,5 @@
 package ulcambridge.foundations.viewer.crowdsourcing;
 
-import java.io.File;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import ulcambridge.foundations.viewer.crowdsourcing.dao.CrowdsourcingDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentAnnotations;
 import ulcambridge.foundations.viewer.crowdsourcing.model.DocumentTags;
@@ -28,6 +20,13 @@ import ulcambridge.foundations.viewer.crowdsourcing.model.Tag;
 import ulcambridge.foundations.viewer.crowdsourcing.model.TermCombiner;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Handles requests for generating combined xmls for xtf search.
  *
@@ -38,7 +37,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 @RequestMapping("/crowdsourcing/xtfxml")
 public class CrowdsourcingXMLController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CrowdsourcingXMLController.class);
 
     private final CrowdsourcingDao dataSource;
 
@@ -74,7 +73,7 @@ public class CrowdsourcingXMLController {
         List<File> fragmentFiles = sr.listFragments();
 
         if (fragmentFiles == null) {
-            logger.error("Fragments not found");
+            LOG.error("Fragments not found");
             return new JsonResponse("400", "Fragments not found");
         }
 
@@ -85,7 +84,7 @@ public class CrowdsourcingXMLController {
             String documentId = FilenameUtils.getBaseName(fragmentFile.getName());
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info("{}/{}: {}", counter, size, documentId);
 
             try {
                 // extract tags from file
@@ -103,7 +102,7 @@ public class CrowdsourcingXMLController {
                 e.printStackTrace();
             }
         }
-        logger.info("skip: " + counterSkip);
+        LOG.info("skip: {}", counterSkip);
 
         return new JsonResponse("200", "Tags added/updated in database");
     }
@@ -136,7 +135,7 @@ public class CrowdsourcingXMLController {
                 List<File> metadataFiles = sr.listMetadata();
 
                 if (metadataFiles == null) {
-                    logger.error("Metadata not found, " + PATH_META);
+                    LOG.error("Metadata not found, {}", PATH_META);
                     return new JsonResponse("400", "Metadata not found");
                 }
 
@@ -170,7 +169,7 @@ public class CrowdsourcingXMLController {
             List<File> metadataFiles = sr.listMetadata();
 
             if (metadataFiles == null) {
-                logger.error("Metadata not found");
+                LOG.error("Metadata not found");
                 return new JsonResponse("400", "Metadata not found");
             }
 
@@ -198,7 +197,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info("{}/{}: {}", counter, size, documentId);
         }
     }
 
@@ -218,7 +217,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info("{}/{}: {}", counter, size, documentId);
         }
     }
 
@@ -244,7 +243,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, docTerms.toJAXBString(docTerms));
 
             counter++;
-            logger.info(counter + "/" + size + ": " + documentId);
+            LOG.info("{}/{}: {}", counter, size, documentId);
         }
     }
 
@@ -264,7 +263,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info("{}/{}: {}", counter, size, metadataId);
         }
     }
 
@@ -285,7 +284,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info("{}/{}: {}", counter, size, metadataId);
         }
     }
 
@@ -307,7 +306,7 @@ public class CrowdsourcingXMLController {
             new FileReader().save(path, xml);
 
             counter++;
-            logger.info(counter + "/" + size + ": " + metadataId);
+            LOG.info("{}/{}: {}", counter, size, metadataId);
         }
     }
 
