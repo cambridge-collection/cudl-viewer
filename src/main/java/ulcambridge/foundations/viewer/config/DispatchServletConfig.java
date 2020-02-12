@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
-import org.springframework.web.servlet.resource.GzipResourceResolver;
+import org.springframework.web.servlet.resource.EncodedResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
@@ -151,7 +151,7 @@ public class DispatchServletConfig
                     "classpath:ulcambridge/foundations/viewer/viewer-ui/assets/")
                 .setCachePeriod(60 * 60 * 24 * 365)  // 1 year
                 .resourceChain(true)
-                    .addResolver(new GzipResourceResolver());
+                    .addResolver(new EncodedResourceResolver());
         }
 
         private void addEmbeddedViewerAssets(ResourceHandlerRegistry registry) {
@@ -162,7 +162,7 @@ public class DispatchServletConfig
                 .addResourceLocations(
                     "classpath:ulcambridge/foundations/embeddedviewer/assets/")
                 .resourceChain(true)
-                    .addResolver(new GzipResourceResolver())
+                    .addResolver(new EncodedResourceResolver())
                     .addTransformer(
                         new EmbeddedViewerConfiguringResourceTransformer(
                             embeddedViewerConfig));
