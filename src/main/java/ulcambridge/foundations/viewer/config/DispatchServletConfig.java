@@ -1,8 +1,5 @@
 package ulcambridge.foundations.viewer.config;
 
-import java.util.List;
-import java.util.Properties;
-
 import com.google.common.base.Charsets;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
@@ -23,14 +20,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.resource.GzipResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
+
+import java.util.List;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
@@ -112,7 +110,7 @@ public class DispatchServletConfig
     }
 
     @Configuration
-    public static class ResourcesConfig extends WebMvcConfigurerAdapter {
+    public static class ResourcesConfig implements WebMvcConfigurer {
 
         @Autowired
         private Environment env;
