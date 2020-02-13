@@ -1,7 +1,6 @@
 package ulcambridge.foundations.viewer;
 
 import org.json.JSONObject;
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -145,10 +144,10 @@ public class CollectionViewController {
             items.add(itemDAO.getItem(ids.get(i)));
         }
 
-        final JSONArray jsonArray = new JSONArray();
+        final List<JSONObject> itemsJSON = new ArrayList<>(items.size());
 
         for (final Item item : items) {
-            jsonArray.add(item.getSimplifiedJSON());
+            itemsJSON.add(item.getSimplifiedJSON());
         }
 
         // build the request object
@@ -160,7 +159,7 @@ public class CollectionViewController {
         // build the final returned JSON data
         final JSONObject data = new JSONObject();
         data.put("request", dataRequest);
-        data.put("items", jsonArray);
+        data.put("items", itemsJSON);
 
         return data.toString();
     }
