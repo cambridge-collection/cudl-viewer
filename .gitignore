@@ -14,3 +14,6 @@ FoundationsViewer.iws
 # Maven release plugin
 *.releaseBackup
 release.properties
+
+# docker-compose local environment file
+.env

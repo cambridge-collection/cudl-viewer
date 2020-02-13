@@ -1,0 +1,3 @@
+[submodule "docker/db/snapshots"]
+	path = docker/db/snapshots
+	url = git@bitbucket.org:CUDL/snapshots.git

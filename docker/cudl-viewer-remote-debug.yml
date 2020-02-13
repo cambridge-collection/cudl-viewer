@@ -1,0 +1,15 @@
+# This is a docker-compose add-on config to enable remote debugging on the
+# cudl-viewer Tomcat JVM.
+#
+# To use:
+#   $ docker-compose -f docker-compose.yml -f docker/cudl-viewer-remote-debug.yml up
+# Then configure your IDE to connect to localhost:5005 using JDWP, e.g:
+# https://www.jetbrains.com/help/idea/run-debug-configuration-remote-debug.html
+version: "3.7"
+
+services:
+  cudl-viewer:
+    environment:
+      CATALINA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    ports:
+      - "5005:5005"
