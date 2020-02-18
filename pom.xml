@@ -23,7 +23,6 @@
         <commons-io.version>2.6</commons-io.version>
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-logging.version>1.1</commons-logging.version>
-        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version> <!-- TODO: v5 -->
         <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
         <jgit.version>4.11.2.201809100523-r</jgit.version> <!-- TODO: v5 -->
         <jsonatg.version>1.0.5</jsonatg.version>
@@ -202,12 +201,6 @@
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
-            <dependency>
-                <!-- Spring override -->
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${hibernate-validator.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -362,10 +355,30 @@
             <version>${jtidy.version}</version>
         </dependency>
 
+        <!-- Bean validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
+            <!-- Only required for running tests, as Tomcat provides a runtime
+                 implementation. -->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <exclusions>
+                <!-- jakarta.validation:jakarta.validation-api provides the current version of this -->
+                <exclusion>
+                    <groupId>javax.validation</groupId>
+                    <artifactId>validation-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- end Bean validation -->
 
         <dependency>
             <groupId>org.slf4j</groupId>
