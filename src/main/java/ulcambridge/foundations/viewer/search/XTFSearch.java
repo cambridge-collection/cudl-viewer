@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer.search;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.w3c.dom.Document;
@@ -18,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Component
+@Profile("!test")
 public class XTFSearch implements Search {
 
     private static final Logger LOG = LoggerFactory.getLogger(XTFSearch.class.getName());

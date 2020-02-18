@@ -8,6 +8,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import org.postgresql.util.PGobject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,6 +41,7 @@ import java.util.UUID;
  * @author Lei
  */
 @Component
+@Profile("!test")
 public class CrowdsourcingDBDao implements CrowdsourcingDao {
 
     private final JdbcTemplate jdbcTemplate;

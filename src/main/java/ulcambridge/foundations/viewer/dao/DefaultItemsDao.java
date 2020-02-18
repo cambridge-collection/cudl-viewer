@@ -5,12 +5,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Item;
 
-@Component
 public class DefaultItemsDao implements ItemsDao {
     private final ItemFactory itemFactory;
     private final JSONLoader itemJSONLoader;
 
-    @Autowired
     public DefaultItemsDao(ItemFactory itemFactory, JSONLoader itemJSONLoader) {
         Assert.notNull(itemFactory, "itemFactory is required");
         Assert.notNull(itemJSONLoader, "itemJSONLoader is required");

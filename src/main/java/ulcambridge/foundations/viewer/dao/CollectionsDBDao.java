@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Profile("!test")
 public class CollectionsDBDao implements CollectionsDao {
 
     private final JdbcTemplate jdbcTemplate;

@@ -15,6 +15,7 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
@@ -33,21 +34,31 @@ import java.nio.file.Paths;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+/**
+ * This configuration class defines the beans used in the Viewer's root
+ * {@link org.springframework.context.ApplicationContext}.
+ *
+ * @see DispatchServletConfig
+ */
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
-@ComponentScan({
+@ComponentScan(value = {
     "ulcambridge.foundations.viewer.admin",
     "ulcambridge.foundations.viewer.crowdsourcing",
     "ulcambridge.foundations.viewer.components",
     "ulcambridge.foundations.viewer.frontend",
     "ulcambridge.foundations.viewer.search",
-})
+},
+        // Controllers are excluded from the root context level as they should
+        // be registered in the child context of the DispatchServlet.
+        excludeFilters = {@ComponentScan.Filter(Controller.class)})
 @Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableScheduling
 @EnableTransactionManagement
 public class AppConfig {
 
     @Configuration
+    @Profile("!test")
     public static class ItemsConfig {
         @Bean
         @Qualifier("itemCache")
@@ -103,13 +114,14 @@ public class AppConfig {
     @Configuration
     @ComponentScan("ulcambridge.foundations.viewer.dao")
     @Import({CollectionFactory.class, JSONReader.class, UsersDBDao.class})
+    @Profile("!test")
     public static class DatabaseConfig {
         @Bean
         public DataSource dataSource(
-            @Value("${jdbc.driver}") String driverClassName,
-            @Value("${jdbc.url}") String url,
-            @Value("${jdbc.user}") String username,
-            @Value("${jdbc.password}") String password) {
+                @Value("${jdbc.driver}") String driverClassName,
+                @Value("${jdbc.url}") String url,
+                @Value("${jdbc.user}") String username,
+                @Value("${jdbc.password}") String password) {
 
             BasicDataSource ds = new BasicDataSource();
             ds.setDriverClassName(driverClassName);
@@ -130,7 +142,7 @@ public class AppConfig {
         @Bean
         @Autowired
         public PlatformTransactionManager transactionManager(
-            DataSource dataSource) {
+                DataSource dataSource) {
 
             return new DataSourceTransactionManager(dataSource);
         }

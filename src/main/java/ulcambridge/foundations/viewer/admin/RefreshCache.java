@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer.admin;
 import com.github.benmanes.caffeine.cache.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -14,6 +15,7 @@ import ulcambridge.foundations.viewer.model.Properties;
  * @author rekha
  */
 @Component
+@Profile("!test")
 public class RefreshCache {
 
     private final CollectionFactory collectionFactory;
