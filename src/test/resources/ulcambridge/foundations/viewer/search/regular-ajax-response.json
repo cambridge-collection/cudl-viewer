@@ -1,0 +1,32 @@
+[
+  {
+    "item": {
+      "thumbnailOrientation": "test thumbnail orientation",
+      "shelfLocator": "test shelfLocator",
+      "abstractText": "test abstract",
+      "abstractShort": "test abstract",
+      "id": "MS-ADD-04004",
+      "imageReproPageURL": "http://example.com",
+      "title": "Test Title",
+      "thumbnailURL": "test thumbnail URL",
+      "authors": [
+        {
+          "role": "aut",
+          "authorityURI": "test authority ID",
+          "authority": "test authority",
+          "valueURI": "test value uri",
+          "type": "test type",
+          "fullForm": "Test Person, 2012",
+          "displayForm": "Test Person"
+        }
+      ]
+    },
+    "startPage": 1,
+    "itemType": "bookormanuscript",
+    "snippets": [
+      "interested in his \n            <b>stepfather</b>’<b>s</b> \n            <b>jottings</b>\n         : its value to him"
+    ],
+    "startPageLabel": "front cover",
+    "pageThumbnailURL": ""
+  }
+]
