@@ -1,5 +1,9 @@
 package ulcambridge.foundations.viewer.testing;
 
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +19,8 @@ import ulcambridge.foundations.viewer.search.Search;
 
 import java.util.Collections;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.AdditionalAnswers.answer;
+import static org.mockito.Mockito.*;
 
 /**
  * This is is a Spring configuration class which extends/overrides the beans of
@@ -34,46 +38,63 @@ import static org.mockito.Mockito.when;
  */
 @Profile("test")
 public class ParentTestConfig {
+    private static final Logger LOG = LoggerFactory.getLogger(ParentTestConfig.class);
+
+    private static final Answer<Object> THROWS_ON_ANY_INTERACTION = invocation -> {
+        String msg = "Unexpected method invocation on unconfigured mock: " + invocation;
+        LOG.error(msg);
+        throw new IllegalStateException(msg);
+    };
+
+    /**
+     * Create a mock that throws an IllegalStateException by default, instead of returning null.
+     */
+    public static <T> T mockWithoutInteractions(Class<T> cls) {
+        return mock(cls, THROWS_ON_ANY_INTERACTION);
+    }
 
     @Bean
     public ItemsDao itemsDao() {
-        return mock(ItemsDao.class);
+        return mockWithoutInteractions(ItemsDao.class);
     }
 
     @Bean
     public Search search() {
-        return mock(Search.class);
+        return mockWithoutInteractions(Search.class);
     }
 
     @Bean
     public CollectionsDao emptyCollectionsDao() {
-        CollectionsDao collectionsDao =  mock(CollectionsDao.class);
-        when(collectionsDao.getCollectionIds()).thenReturn(Collections.emptyList());
+        CollectionsDao collectionsDao =  mockWithoutInteractions(CollectionsDao.class);
+        doReturn(Collections.emptyList()).when(collectionsDao).getCollectionIds();
+        doReturn(0).when(collectionsDao).getCollectionsRowCount();
+        doReturn(0).when(collectionsDao).getItemsRowCount();
+        doReturn(0).when(collectionsDao).getItemsInCollectionsRowCount();
         return collectionsDao;
     }
 
     @Bean
     public UsersDao usersDao() {
-        return mock(UsersDao.class);
+        return mockWithoutInteractions(UsersDao.class);
     }
 
     @Bean
     public Captcha captcha() {
-        return mock(Captcha.class);
+        return mockWithoutInteractions(Captcha.class);
     }
 
     @Bean
     public BookmarkDao bookmarkDao() {
-        return mock(BookmarkDao.class);
+        return mockWithoutInteractions(BookmarkDao.class);
     }
 
     @Bean
     public RefreshCache refreshCache() {
-        return mock(RefreshCache.class);
+        return mockWithoutInteractions(RefreshCache.class);
     }
 
     @Bean
     public CrowdsourcingDao crowdsourcingDao() {
-        return mock(CrowdsourcingDao.class);
+        return mockWithoutInteractions(CrowdsourcingDao.class);
     }
 }
