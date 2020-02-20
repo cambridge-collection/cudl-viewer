@@ -1,0 +1,16 @@
+configuration:
+  appenders:
+    Console:
+      name: STDOUT
+
+  loggers:
+    root:
+      level: error
+      AppenderRef:
+        ref: STDOUT
+    logger:
+      - name: ulcambridge.foundations.viewer
+        level: warn
+        additivity: false
+        AppenderRef:
+          ref: STDOUT
