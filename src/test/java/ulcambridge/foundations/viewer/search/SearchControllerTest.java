@@ -1,31 +1,57 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.junit.Test;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Items;
+import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTest;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.AdditionalAnswers.answer;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * Unit test
- *
- */
-public class SearchControllerTest {
+public class SearchControllerTest extends BaseCUDLApplicationContextTest {
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private Search search;
+
+    @Autowired
+    private ItemsDao itemsDao;
+
+    @AfterEach
+    public void resetMocks() {
+        // TODO: use @MockBean when we adopt spring-boot
+        reset(search, itemsDao);
+    }
+
     /**
      * Tests the SearchController object
      */
@@ -58,6 +84,38 @@ public class SearchControllerTest {
 
     }
 
+    private void configureMockSearch(int start, int end) {
+        doReturn(Items.getExampleItem("MS-ADD-04004")).when(itemsDao).getItem("MS-ADD-04004");
+        doAnswer(answer((SearchForm searchForm, Integer _start, Integer _end) ->
+            new MockSearch().makeSearch(searchForm, _start, _end)))
+            .when(search).makeSearch(any(), eq(start), eq(end));
+    }
+
+    @ParameterizedTest(name = "/JSON?{0} uses start={1} end={2}")
+    @CsvSource({
+        "start=0&end=8,0,8",
+        "'',0,8",
+        "start=1&end=12,1,12",
+    })
+    public void jsonSearchUsesStartEndQueryParameters(String query, int start, int end) throws Exception {
+        configureMockSearch(start, end);
+
+        this.mockMvc.perform(get("/search/JSON?" + query))
+            .andDo(MockMvcResultHandlers.log())
+            .andExpect(status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));
+
+        Mockito.verify(search).makeSearch(Mockito.any(), Mockito.eq(start), Mockito.eq(end));
+    }
+
+    @Test
+    public void jsonSearchRejectsNegativeStartValues() throws Exception {
+        this.mockMvc.perform(get("/search/JSON?start=-1&end=8"))
+            .andExpect(status().isBadRequest())
+            .andExpect(jsonPath("$.violations[0].fieldName", Matchers.equalTo("start")))
+            .andExpect(jsonPath("$.violations[0].message", Matchers.equalTo("must be greater than or equal to 0")));
+    }
+
     /**
      * Always returns the same result set to any query. Uses Results.xml instead
      * of connecting to a real search service.
@@ -65,7 +123,7 @@ public class SearchControllerTest {
      * @author jennie
      *
      */
-    private class MockSearch implements Search {
+    private static class MockSearch implements Search {
 
         @Override
         public SearchResultSet makeSearch(SearchForm searchForm) {

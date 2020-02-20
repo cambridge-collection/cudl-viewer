@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.net.MalformedURLException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -37,6 +39,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/search")
+@Validated
 public class SearchController {
 
     private final Search search;
@@ -286,21 +289,44 @@ public class SearchController {
         return o;
     }
 
+    public static class Range {
+        @Min(0)
+        public int start = 0;
+        @Min(0)
+        public int end = 8;
+
+        public void setStart(int start) {
+            this.start = start;
+        }
+
+        public void setEnd(int end) {
+            this.end = end;
+        }
+
+        public int getStart() {
+            return start;
+        }
+
+        public int getEnd() {
+            return end;
+        }
+    }
+
     // on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
     @RequestMapping(method = RequestMethod.GET, value = "/JSON",
             produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> handleItemsAjaxRequest(
             @Valid SearchForm searchForm,
-            @RequestParam("start") int startIndex,
-            @RequestParam("end") int endIndex) {
+            @Valid Range range) {
 
         SearchResultSet results = this.search.makeSearch(
-                searchForm, startIndex, endIndex);
+            searchForm, range.start, range.end);
 
         // Write out JSON file.
         return ResponseEntity.ok()
-                .header("Cache-Control", "public, max-age=60")
-                .body(getResultsJSON(results).toString());
+            .contentType(MediaType.APPLICATION_JSON)
+            .header("Cache-Control", "public, max-age=60")
+            .body(getResultsJSON(results).toString());
     }
 
     /**
