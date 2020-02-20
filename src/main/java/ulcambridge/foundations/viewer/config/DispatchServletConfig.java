@@ -17,6 +17,7 @@ import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.util.MimeType;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -41,7 +42,7 @@ import java.util.Properties;
 @EnableWebMvc
 @ComponentScan(
     basePackages = {"ulcambridge.foundations.viewer"},
-    includeFilters = {@Filter(Controller.class)})
+    includeFilters = {@Filter({Controller.class, ControllerAdvice.class})})
 @Import({BeanFactoryPostProcessorConfig.class})
 public class DispatchServletConfig
     implements WebMvcConfigurer, BeanFactoryAware {

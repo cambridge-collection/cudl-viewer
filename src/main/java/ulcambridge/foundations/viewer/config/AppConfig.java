@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.JSONReader;
@@ -51,7 +52,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 },
         // Controllers are excluded from the root context level as they should
         // be registered in the child context of the DispatchServlet.
-        excludeFilters = {@ComponentScan.Filter(Controller.class)})
+        excludeFilters = {@ComponentScan.Filter(classes = {Controller.class, ControllerAdvice.class})})
 @Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableScheduling
 @EnableTransactionManagement
