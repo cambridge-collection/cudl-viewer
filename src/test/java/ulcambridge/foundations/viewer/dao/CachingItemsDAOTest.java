@@ -58,7 +58,7 @@ public class CachingItemsDAOTest {
         Item a1 = cachedDAO.getItem("a");
         assertThat(a1).isSameInstanceAs(items.get("a"));
 
-        for(int i = 0; i < 10; ++i) {
+        for(int i = 0; i < 100; ++i) {
             Item b = cachedDAO.getItem("b");
             Item c = cachedDAO.getItem("c");
 
