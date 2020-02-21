@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
@@ -14,8 +15,7 @@ import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.model.Items;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTestTest.ParentOverrideConfiguration;
 import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTestTest.ChildOverrideConfiguration;
@@ -29,6 +29,13 @@ import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTestTest
         @ContextConfiguration(name = "child", classes = {ChildOverrideConfiguration.class})
 })
 public class BaseCUDLApplicationContextTestTest extends BaseCUDLApplicationContextTest {
+
+    class ExampleEntity {
+        public String foo() {
+            return "bar";
+        }
+    }
+
     public static class ParentOverrideConfiguration {
         @Bean
         public ItemsDao itemsDao() {
@@ -41,6 +48,12 @@ public class BaseCUDLApplicationContextTestTest extends BaseCUDLApplicationConte
         public String foo() {
             return "FOO!";
         }
+
+        @Bean
+        public ExampleEntity exampleEntity(ApplicationContext context) {
+            return ParentTestConfig.registerResettableMock(context, ExampleEntity.class,
+                exampleEntity -> doReturn("lol").when(exampleEntity).foo());
+        }
     }
 
     public static class ChildOverrideConfiguration {
@@ -52,6 +65,9 @@ public class BaseCUDLApplicationContextTestTest extends BaseCUDLApplicationConte
 
     @Autowired
     private WebApplicationContext wac;
+
+    @Autowired
+    private ExampleEntity exampleEntity;
 
     @Test
     public void twoContextLevelsExist() {
@@ -89,5 +105,19 @@ public class BaseCUDLApplicationContextTestTest extends BaseCUDLApplicationConte
         ItemsDao itemsDao = wac.getBean(ItemsDao.class);
         assertThat(itemsDao.getItem("ABCD").getId()).isEqualTo("ABCD");
         assertThat(itemsDao.getItem("FOO")).isNull();
+    }
+
+    @Test
+    public void mockBeansAreResetBetweenTests_1() {
+        // If mocks are not reset then this test or its pair would fail, depending on execution order
+        assertThat(exampleEntity.foo()).isEqualTo("lol");
+        verify(exampleEntity, times(1)).foo();
+    }
+
+    @Test
+    public void mockBeansAreResetBetweenTests_2() {
+        // If mocks are not reset then this test or its pair would fail, depending on execution order
+        assertThat(exampleEntity.foo()).isEqualTo("lol");
+        verify(exampleEntity, times(1)).foo();
     }
 }

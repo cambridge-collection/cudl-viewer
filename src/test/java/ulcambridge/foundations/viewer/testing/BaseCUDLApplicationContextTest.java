@@ -1,6 +1,8 @@
 package ulcambridge.foundations.viewer.testing;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.test.context.ActiveProfiles;
@@ -44,5 +46,13 @@ public abstract class BaseCUDLApplicationContextTest {
         public MockMvc mockMvc(WebApplicationContext wac) {
             return MockMvcBuilders.webAppContextSetup(wac).build();
         }
+    }
+
+    @Autowired
+    private ParentTestConfig.BeanResetter mockBeanResetter;
+
+    @AfterEach
+    public void resetMocks() {
+        mockBeanResetter.resetBeans();
     }
 }

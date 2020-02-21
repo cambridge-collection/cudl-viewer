@@ -46,12 +46,6 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
     @Autowired
     private ItemsDao itemsDao;
 
-    @AfterEach
-    public void resetMocks() {
-        // TODO: use @MockBean when we adopt spring-boot
-        reset(search, itemsDao);
-    }
-
     /**
      * Tests the SearchController object
      */
