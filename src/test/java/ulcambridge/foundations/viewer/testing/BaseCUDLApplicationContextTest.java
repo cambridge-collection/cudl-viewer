@@ -52,7 +52,8 @@ public abstract class BaseCUDLApplicationContextTest {
     private ParentTestConfig.BeanResetter mockBeanResetter;
 
     @AfterEach
-    public void resetMocks() {
+    // Named strangely to avoid subclasses accidentally preventing it being invoked by creating their own resetMocks() method
+    private void ulcambridge_foundations_viewer_testing_BaseCUDLApplicationContextTest_resetMocks() {
         mockBeanResetter.resetBeans();
     }
 }

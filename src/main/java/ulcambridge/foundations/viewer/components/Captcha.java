@@ -14,8 +14,8 @@ import java.util.Map;
 @Component
 @Profile("!test")
 public class Captcha {
-    private final static String RESPONSE_PARAM = "g-recaptcha-response";
-    private final static String VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
+    public final static String RESPONSE_PARAM = "g-recaptcha-response";
+    public final static String VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify";
     private final String siteKey;
     private final String secretKey;
     private final RestOperations operations;
