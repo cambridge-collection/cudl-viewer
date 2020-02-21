@@ -3,7 +3,7 @@ package ulcambridge.foundations.viewer;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,18 +34,21 @@ import java.net.URI;
 public class IIIFViewController {
     private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
+    private final URI iiifImageServer;
 
     @Autowired
     public IIIFViewController(ItemsDao itemDAO,
                               CollectionFactory collectionFactory,
-                              @Value("${rootURL}") URI rootUrl) {
+                              @Qualifier("rootUrl") URI rootUrl,
+                              @Qualifier("iiifImageServer")URI iiifImageServer) {
 
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(rootUrl, "rootUrl is required");
+        Assert.notNull(iiifImageServer, "iiifImageServer is required");
 
         this.itemDAO = itemDAO;
         this.collectionFactory = collectionFactory;
-
+        this.iiifImageServer = iiifImageServer;
     }
 
     // on path /iiif/{docId}.json
@@ -73,7 +76,7 @@ public class IIIFViewController {
             if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
                 baseURL+= ":" + request.getServerPort();
             }
-            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL);
+            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL, iiifImageServer);
             JSONObject presJSON = pres.outputJSON();
 
             writeJSONOut(presJSON, response);

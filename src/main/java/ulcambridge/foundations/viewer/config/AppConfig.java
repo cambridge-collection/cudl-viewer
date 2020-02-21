@@ -29,6 +29,7 @@ import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.sql.DataSource;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,6 +58,20 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @EnableScheduling
 @EnableTransactionManagement
 public class AppConfig {
+
+    @Configuration
+    @Profile("!test")
+    public static class UrlsConfig {
+        @Bean
+        public URI rootUrl(@Value("${rootURL}") URI url) {
+            return url;
+        }
+
+        @Bean
+        public URI iiifImageServer(@Value("${IIIFImageServer}") URI url) {
+            return url;
+        }
+    }
 
     @Configuration
     @Profile("!test")

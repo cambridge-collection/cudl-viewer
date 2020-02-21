@@ -1,15 +1,15 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.*;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
+
+import java.net.URI;
+import java.util.*;
 
 /**
  * This class is for converting the JSON metadata into IIIF presentation 2.0 api metadata.
@@ -32,13 +32,18 @@ public class IIIFPresentation {
     private final JSONArray lsArray;
     private final String baseURL;
     private final String servicesURL;
-    private final String IIIFImageServer = Properties.getString("IIIFImageServer");
+    private final URI iiifImageServer;
 
-    public IIIFPresentation(Item item, String baseURL, String servicesURL) throws JSONException {
+    public IIIFPresentation(Item item, String baseURL, String servicesURL, URI iiifImageServer) throws JSONException {
+        Assert.notNull(item, "item is required");
+        Assert.notNull(baseURL, "baseURL is required");
+        Assert.notNull(servicesURL, "servicesURL is required");
+        Assert.notNull(iiifImageServer, "iiifImageServer is required");
 
         id = item.getId();
         this.baseURL = baseURL;
         this.servicesURL = servicesURL;
+        this.iiifImageServer = iiifImageServer;
 
         // TODO restrict image server to IIIFEnabled items
         // TODO transcriptions
@@ -238,7 +243,7 @@ public class IIIFPresentation {
                 imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
                 String IIIFImagePath = page.getString("IIIFImageURL");
-                String imageURL = IIIFImageServer + IIIFImagePath;
+                String imageURL = this.iiifImageServer.resolve(IIIFImagePath).toString();
                 JSONObject resource = new JSONObject();
                 resource.put("@id", imageURL);
                 resource.put("@type", "dctypes:Image");

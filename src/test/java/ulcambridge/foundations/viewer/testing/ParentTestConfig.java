@@ -13,6 +13,7 @@ import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.admin.RefreshCache;
@@ -25,6 +26,7 @@ import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.search.Search;
 
+import java.net.URI;
 import java.util.Collections;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -49,6 +51,19 @@ import static org.mockito.Mockito.mock;
 @Profile("test")
 public class ParentTestConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ParentTestConfig.class);
+
+    @Configuration
+    public static class TestUrlsConfig {
+        @Bean
+        public URI rootUrl() {
+            return URI.create("http://digital.library.example.com");
+        }
+
+        @Bean
+        public URI iiifImageServer() {
+            return URI.create("http://images.digital.library.example.com/iiif/");
+        }
+    }
 
     private static final Answer<Object> THROWS_ON_ANY_INTERACTION = invocation -> {
         String msg = "Unexpected method invocation on unconfigured mock: " + invocation;
