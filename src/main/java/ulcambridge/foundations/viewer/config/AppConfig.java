@@ -55,9 +55,14 @@ import static java.nio.charset.StandardCharsets.UTF_8;
         // be registered in the child context of the DispatchServlet.
         excludeFilters = {@ComponentScan.Filter(classes = {Controller.class, ControllerAdvice.class})})
 @Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
-@EnableScheduling
 @EnableTransactionManagement
 public class AppConfig {
+
+    // Only enable scheduling when the test profile is not enabled
+    @Configuration
+    @Profile("!test")
+    @EnableScheduling
+    public class SchedulingConfig { }
 
     @Configuration
     @Profile("!test")
