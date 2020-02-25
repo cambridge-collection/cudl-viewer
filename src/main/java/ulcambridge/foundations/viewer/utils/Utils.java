@@ -1,5 +1,8 @@
 package ulcambridge.foundations.viewer.utils;
 
+import com.google.common.collect.ImmutableMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -76,5 +80,16 @@ public class Utils {
         UriComponentsBuilder b, HttpServletRequest request) {
 
         return b.scheme(request.isSecure() ? "https" : "http");
+    }
+
+    public static Map<String, ?> atomicValues(JSONObject obj) {
+        ImmutableMap.Builder<String, Object> values = ImmutableMap.builder();
+        for(String key : obj.keySet()) {
+            Object value = obj.get(key);
+            if(!(value instanceof JSONObject || value instanceof JSONArray)) {
+                values.put(key, value);
+            }
+        }
+        return values.build();
     }
 }

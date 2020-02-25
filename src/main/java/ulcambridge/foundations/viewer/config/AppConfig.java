@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,6 +27,7 @@ import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
+import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.sql.DataSource;
@@ -33,6 +35,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -80,6 +83,7 @@ public class AppConfig {
 
     @Configuration
     @Profile("!test")
+    @Import(ItemsConfig.ItemRewritingConfig.class)
     public static class ItemsConfig {
         @Bean
         @Qualifier("itemCache")
@@ -96,14 +100,26 @@ public class AppConfig {
 
         @Autowired
         @Bean
-        public ItemsDao upstreamItemsDAO(ulcambridge.foundations.viewer.dao.ItemFactory itemFactory, @Qualifier("itemJSONLoader") JSONLoader itemJSONLoader) {
+        public ItemsDao upstreamItemsDAO(ItemFactory itemFactory, @Qualifier("itemJSONLoader") JSONLoader itemJSONLoader) {
             return new DefaultItemsDao(itemFactory, itemJSONLoader);
         }
 
-        @Autowired
-        @Bean
-        public ulcambridge.foundations.viewer.dao.ItemFactory itemFactory(ItemStatusOracle itemStatusOracle) {
+        @Bean(name = {ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT})
+        public DefaultItemFactory defaultItemFactory(ItemStatusOracle itemStatusOracle) {
             return new DefaultItemFactory(itemStatusOracle);
+        }
+
+        @Import(ImageURLResolution.class)
+        public static class ItemRewritingConfig {
+            public static final String DECORATED_ITEM_FACTORY_PARENT = "ulcambridge.foundations.viewer.dao.DecoratedItemFactory#parent";
+
+            @Bean
+            @Primary
+            public DecoratedItemFactory rewritingItemFactory(@Qualifier(DECORATED_ITEM_FACTORY_PARENT) ItemFactory baseFactory,
+                                                             List<DecoratedItemFactory.ItemJSONPreProcessor> preProcessors,
+                                                             List<DecoratedItemFactory.ItemPostProcessor> postProcessors) {
+                return new DecoratedItemFactory(baseFactory, preProcessors, postProcessors);
+            }
         }
 
         @Autowired
