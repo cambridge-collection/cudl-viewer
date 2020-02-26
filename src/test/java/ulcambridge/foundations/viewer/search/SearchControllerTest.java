@@ -24,6 +24,7 @@ import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTest;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -156,7 +157,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
             NodeList docHits = dom.getElementsByTagName("docHit");
             Element node = (Element) docHits.item(0);
 
-            XTFSearch xtfSearch = new XTFSearch();
+            XTFSearch xtfSearch = new XTFSearch(URI.create("http://xtf.example.com"));
 
             SearchResult result = xtfSearch.createSearchResult(node);
             ArrayList<SearchResult> results = new ArrayList<SearchResult>();

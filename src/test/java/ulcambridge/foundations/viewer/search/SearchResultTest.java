@@ -7,6 +7,8 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import java.net.URI;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -33,7 +35,7 @@ public class SearchResultTest {
         final NodeList docHits = dom.getElementsByTagName("docHit");
         final Element node = (Element) docHits.item(0);
 
-        final XTFSearch xtfSearch = new XTFSearch();
+        final XTFSearch xtfSearch = new XTFSearch(URI.create("http://xtf.example.com"));
         final SearchResult result = xtfSearch.createSearchResult(node);
 
         assertEquals("MS-ADD-04004", result.getFileId());

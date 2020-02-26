@@ -6,17 +6,12 @@ import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.net.URI;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Unit test
- */
 public class XTFSearchTest {
-    /**
-     * Tests the SearchController object
-     */
     @Test
     public void testSearchController() {
 
@@ -51,6 +46,10 @@ public class XTFSearchTest {
      *
      */
     private class TestableXTFSearch extends XTFSearch {
+
+        public TestableXTFSearch() {
+            super(URI.create("http://xtf.example.com"));
+        }
 
         @Override
         protected Document getDocument(String url) {

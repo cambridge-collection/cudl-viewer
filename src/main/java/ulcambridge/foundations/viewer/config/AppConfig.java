@@ -46,7 +46,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  * @see DispatchServletConfig
  */
 @Configuration
-@PropertySource("classpath:cudl-global.properties")
 @ComponentScan(
     basePackages = "ulcambridge.foundations.viewer",
     excludeFilters = {
@@ -62,10 +61,15 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class AppConfig {
 
     // Only enable scheduling when the test profile is not enabled
+
+    /**
+     * Configuration that is not applied when unit testing.
+     */
     @Configuration
     @Profile("!test")
+    @PropertySource("classpath:cudl-global.properties")
     @EnableScheduling
-    public class SchedulingConfig { }
+    public class RuntimeConfig { }
 
     @Configuration
     @Profile("!test")
@@ -77,6 +81,11 @@ public class AppConfig {
 
         @Bean
         public URI iiifImageServer(@Value("${IIIFImageServer}") URI url) {
+            return url;
+        }
+
+        @Bean
+        public URI xtfURL(@Value("${xtfURL}") URI url) {
             return url;
         }
     }

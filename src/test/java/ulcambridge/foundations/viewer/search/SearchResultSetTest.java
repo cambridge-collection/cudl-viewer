@@ -6,6 +6,7 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.net.URI;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -38,7 +39,7 @@ public class SearchResultSetTest {
         NodeList docHits = dom.getElementsByTagName("docHit");
         Element node = (Element) docHits.item(0);
 
-        XTFSearch xtfSearch = new XTFSearch();
+        XTFSearch xtfSearch = new XTFSearch(URI.create("http://xtf.example.com"));
         SearchResult result = xtfSearch.createSearchResult(node);
         ArrayList<SearchResult> results = new ArrayList<SearchResult> ();
         results.add(result);

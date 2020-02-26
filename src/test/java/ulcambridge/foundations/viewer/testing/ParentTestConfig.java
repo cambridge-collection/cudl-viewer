@@ -15,6 +15,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.admin.RefreshCache;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
@@ -49,6 +50,7 @@ import static org.mockito.Mockito.mock;
  * @see BaseCUDLApplicationContextTest
  */
 @Profile("test")
+@PropertySource("classpath:/ulcambridge/foundations/viewer/test-defaults.properties")
 public class ParentTestConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ParentTestConfig.class);
 

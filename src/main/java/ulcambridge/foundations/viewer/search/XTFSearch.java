@@ -2,8 +2,10 @@ package ulcambridge.foundations.viewer.search;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,6 +16,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,6 +29,13 @@ public class XTFSearch implements Search {
 
     private static final String INDEX_NAME_REGULAR = "index-cudl",
         INDEX_NAME_VARIABLE_RECALL = "index-cudl-tagging";
+
+    private final URI xtfURL;
+
+    public XTFSearch(@Qualifier("xtfURL") URI xtfURL) {
+        Assert.notNull(xtfURL, "xtfURL is required");
+        this.xtfURL = xtfURL;
+    }
 
     /**
      * Returns the 'maxDocs' number of results starting at the first one.
@@ -86,9 +96,7 @@ public class XTFSearch implements Search {
 
     // TODO - the end parameter has never been used in this function.  Confirm behaviour
     protected String buildQueryURL(final SearchForm searchForm, final int start, final int end) {
-
-        final String xtfURL = Properties.getString("xtfURL");
-        final UriComponentsBuilder uriB = UriComponentsBuilder.fromHttpUrl(xtfURL + "search");
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.xtfURL.resolve("search"));
 
         uriB.queryParam("indexName", getIndexName(searchForm));
         uriB.queryParam("raw", "1");
