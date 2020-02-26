@@ -47,16 +47,16 @@ import static java.nio.charset.StandardCharsets.UTF_8;
  */
 @Configuration
 @PropertySource("classpath:cudl-global.properties")
-@ComponentScan(value = {
-    "ulcambridge.foundations.viewer.admin",
-    "ulcambridge.foundations.viewer.crowdsourcing",
-    "ulcambridge.foundations.viewer.components",
-    "ulcambridge.foundations.viewer.frontend",
-    "ulcambridge.foundations.viewer.search",
-},
+@ComponentScan(
+    basePackages = "ulcambridge.foundations.viewer",
+    excludeFilters = {
         // Controllers are excluded from the root context level as they should
         // be registered in the child context of the DispatchServlet.
-        excludeFilters = {@ComponentScan.Filter(classes = {Controller.class, ControllerAdvice.class})})
+        @ComponentScan.Filter(classes = {Controller.class, ControllerAdvice.class}),
+        // Config classes are manually included to keep the two contexts separate.
+        @ComponentScan.Filter(type = FilterType.REGEX, pattern = "ulcambridge\\.foundations\\.viewer\\.config\\..*")
+    }
+)
 @Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
 @EnableTransactionManagement
 public class AppConfig {
@@ -149,8 +149,6 @@ public class AppConfig {
     }
 
     @Configuration
-    @ComponentScan("ulcambridge.foundations.viewer.dao")
-    @Import({CollectionFactory.class, JSONReader.class, UsersDBDao.class})
     @Profile("!test")
     public static class DatabaseConfig {
         @Bean
