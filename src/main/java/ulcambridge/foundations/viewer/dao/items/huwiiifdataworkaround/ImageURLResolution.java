@@ -8,6 +8,11 @@ public final class ImageURLResolution {
     private ImageURLResolution() {}
 
     @Bean @Order(0)
+    public static DecoratedItemFactory.ItemJSONPreProcessor dmdSectionThumbnailURLResolver() {
+        return new DescriptiveMetadataImageURLResolver("thumbnailUrl", "content/images/{thumbnailUrl}_files/8/0_0.jpg");
+    }
+
+    @Bean @Order(0)
     public static DecoratedItemFactory.ItemJSONPreProcessor displayImageURLResolver() {
         return new PageImageURLResolver("displayImageURL", "content/images/{IIIFImageURL}.dzi");
     }

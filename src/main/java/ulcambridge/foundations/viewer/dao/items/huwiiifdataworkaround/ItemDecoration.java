@@ -18,39 +18,34 @@ public final class ItemDecoration {
      * Get a stream containing the individual page objects of an Item JSON object.
      */
     public static Stream<JSONObject> pages(String itemID, JSONObject itemJSON) {
-        Assert.notNull(itemJSON, "itemJSON is required");
-
-        Object pagesValue;
-        try { pagesValue = itemJSON.get("pages"); }
-        catch (JSONException e) {
-            assert !itemJSON.has("pages");
-            return Stream.of();
-        }
-        if(!(pagesValue instanceof JSONArray))
-            throw new ValueException(String.format("Invalid Item JSON for \"%s\": \"pages\" key is not an array: %s", itemID, pagesValue.getClass()));
-
-        JSONArray pages = (JSONArray)pagesValue;
-        return StreamSupport.stream(Spliterators.spliterator(pages.iterator(), pages.length(), 0), false)
-            .map(obj -> obj instanceof JSONObject ? (JSONObject)obj : null)
-            .filter(Objects::nonNull);
-    }
-
-    @FunctionalInterface
-    public interface ItemJSONHandler<T> {
-        void handle(String itemID, JSONObject itemRoot, T component);
+        return _itemArrayObjects(itemID, itemJSON, "pages");
     }
 
     /**
-     * Do something with each page of an Item JSON object.
-     *
-     * @param itemID The ID of the item
-     * @param itemJSON The Item's JSON
-     * @param pageHandler A function to be called for each page in the item
-     * @return The same instance as itemJSON, after invoking the pageHandler on each page
+     * Get a stream containing the individual descriptiveMetadata objects of an Item JSON object.
      */
-    public static JSONObject updatePages(String itemID, JSONObject itemJSON, ItemJSONHandler<JSONObject> pageHandler) {
-        pages(itemID, itemJSON).forEach(page -> pageHandler.handle(itemID, itemJSON, page));
-        return itemJSON;
+    public static Stream<JSONObject> descriptiveMetadata(String itemID, JSONObject itemJSON) {
+        return _itemArrayObjects(itemID, itemJSON, "descriptiveMetadata");
     }
 
+    /**
+     * Get a stream containing the descriptive metadata section objects of an Item JSON object.
+     */
+    static Stream<JSONObject> _itemArrayObjects(String itemID, JSONObject itemJSON, String key) {
+        Assert.notNull(itemJSON, "itemJSON is required");
+
+        Object value;
+        try { value = itemJSON.get(key); }
+        catch (JSONException e) {
+            assert !itemJSON.has(key);
+            return Stream.of();
+        }
+        if(!(value instanceof JSONArray))
+            throw new ValueException(String.format("Invalid Item JSON for \"%s\": \"%s\" key is not an array: %s", itemID, key, value.getClass()));
+
+        JSONArray objects = (JSONArray)value;
+        return StreamSupport.stream(Spliterators.spliterator(objects.iterator(), objects.length(), 0), false)
+            .map(obj -> obj instanceof JSONObject ? (JSONObject)obj : null)
+            .filter(Objects::nonNull);
+    }
 }
