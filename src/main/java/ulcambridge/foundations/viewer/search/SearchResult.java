@@ -73,10 +73,19 @@ public class SearchResult implements Comparable<SearchResult> {
         return type;
     }
 
+    /**
+     * @deprecated The thumbnail URL returned by XTF in search results is no longer correct. Use the page number to
+     * obtain a thumbnail from an {@link ulcambridge.foundations.viewer.model.Item} for the result.
+     */
+    @Deprecated
     public String getThumbnailURL() {
         return thumbnailURL;
     }
 
+    /**
+     * @deprecated See {{@link #getThumbnailURL()}}'s deprecation notice.
+     */
+    @Deprecated
     public String getThumbnailOrientation() {
         return thumbnailOrientation;
     }

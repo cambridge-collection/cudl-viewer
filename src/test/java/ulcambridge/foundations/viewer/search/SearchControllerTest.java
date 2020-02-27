@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
@@ -47,6 +48,9 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
     @Autowired
     private ItemsDao itemsDao;
 
+    @Autowired @Qualifier("imageServerURL")
+    private URI imageServerURL;
+
     /**
      * Tests the SearchController object
      */
@@ -63,7 +67,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
         CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
         SearchController c = new SearchController(
-            collectionFactory, mock(ItemsDao.class), new MockSearch());
+            collectionFactory, mock(ItemsDao.class), new MockSearch(), imageServerURL);
 
         ModelAndView m = c.processSearch(form);
 

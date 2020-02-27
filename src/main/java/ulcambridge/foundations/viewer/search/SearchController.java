@@ -3,7 +3,10 @@ package ulcambridge.foundations.viewer.search;
 import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -26,43 +29,37 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.net.MalformedURLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 
-/**
- * Controller for viewing a collection.
- *
- * @author jennie
- *
- */
 @Controller
 @RequestMapping("/search")
 @Validated
 public class SearchController {
+    private static final Logger LOG = LoggerFactory.getLogger(SearchController.class);
 
     private final Search search;
     private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
+    private final URI imageServerURL;
 
     /**
-     * Constructor, set in search-servlet.xml.
-     *
-     * @param search
-     *            to use for queries. e.g. SearchXTF.
+     * @param search to use for queries. e.g. SearchXTF
      */
     @Autowired
     public SearchController(CollectionFactory collectionFactory,
-                            ItemsDao itemDAO, Search search) {
+                            ItemsDao itemDAO, Search search, @Qualifier("imageServerURL") URI imageServerURL) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(search, "search is required");
+        Assert.notNull(imageServerURL, "imageServerURL is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = itemDAO;
         this.search = search;
+        this.imageServerURL = imageServerURL;
     }
 
     // on /search path
@@ -161,50 +158,28 @@ public class SearchController {
 
         itemJSON.put("snippets", resultsArray);
 
-        // Page Thumbnails.  Use specified thumbnail if possible.
-        if (searchResult.getThumbnailURL() != null) {
-            String pageThumbnail = searchResult.getThumbnailURL();
-            if (pageThumbnail.contains("thumbnail")) {
-                itemJSON.put("pageThumbnailURL", pageThumbnail);
-            } else {
-                pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-                itemJSON.put("pageThumbnailURL", pageThumbnail);
-            }
-        } else {
-            String pageThumbnail = "";
-            org.json.JSONObject page = null;
-            try {
-                page = (org.json.JSONObject) item.getJSON()
-                        .getJSONArray("pages")
-                        .get(searchResult.getStartPage() - 1);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                if (page != null && page.get("displayImageURL") != null) {
-
-                    // FIXME super hacky way to get the page thumbnail
-                    // URL until we can read it from json.
-                    pageThumbnail = page.get("displayImageURL")
-                            .toString()
-                            .replace(".dzi", "_files/8/0_0.jpg");
-
-                    pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-
-                }
-            } catch (JSONException e) {
-
-                // displayImageURL not found, which throws an exception.
-                pageThumbnail = "/img/no-thumbnail.jpg";
-
-            }
-
-            itemJSON.put("pageThumbnailURL", pageThumbnail);
-
-        }// End Page Thumbnails
+        itemJSON.put("pageThumbnailURL", getResultThumbnailURL(item, searchResult)
+            .map(url -> this.imageServerURL.resolve(url).toString()).orElse("/img/no-thumbnail.jpg"));
 
         return itemJSON;
+    }
+
+    private static Optional<URI> getResultThumbnailURL(Item item, SearchResult searchResult) {
+        int pageIndex = searchResult.getStartPage() - 1;
+        String url = null;
+        if(pageIndex >= 0 && pageIndex < item.getPageThumbnailURLs().size()) {
+            url = item.getPageThumbnailURLs().get(pageIndex);
+        }
+        // The list holds empty string for pages without thumbnails
+        if(url != null && !url.isEmpty()) {
+            try {
+                return Optional.of(new URI(url));
+            }
+            catch (URISyntaxException e) {
+                LOG.error("Invalid thumbnail URL in item '{}', page {}: '{}'", item.getId(), pageIndex, url);
+            }
+        }
+        return Optional.empty();
     }
 
     private JSONObject getFacetJson(Facet facet) {
