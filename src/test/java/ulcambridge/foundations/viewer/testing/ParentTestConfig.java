@@ -54,19 +54,6 @@ import static org.mockito.Mockito.mock;
 public class ParentTestConfig {
     private static final Logger LOG = LoggerFactory.getLogger(ParentTestConfig.class);
 
-    @Configuration
-    public static class TestUrlsConfig {
-        @Bean
-        public URI rootUrl() {
-            return URI.create("http://digital.library.example.com");
-        }
-
-        @Bean
-        public URI iiifImageServer() {
-            return URI.create("http://images.digital.library.example.com/iiif/");
-        }
-    }
-
     private static final Answer<Object> THROWS_ON_ANY_INTERACTION = invocation -> {
         String msg = "Unexpected method invocation on unconfigured mock: " + invocation;
         LOG.error(msg);

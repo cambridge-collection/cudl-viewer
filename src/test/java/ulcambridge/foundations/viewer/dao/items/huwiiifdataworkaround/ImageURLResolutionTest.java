@@ -5,8 +5,8 @@ import com.google.common.collect.ImmutableMap;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,19 +18,21 @@ import ulcambridge.foundations.viewer.dao.ItemStatusOracle;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTest;
 
+import java.net.URI;
 import java.util.Map;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.AdditionalAnswers.answer;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 import static ulcambridge.foundations.viewer.config.AppConfig.ItemsConfig.ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT;
 
 @ContextHierarchy({
     @ContextConfiguration(name = "parent", classes = {ImageURLResolutionTest.Config.class})
 })
 public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
-    private static final String DEFAULT_TEST_IMAGE_SERVER = "http://images.cudl-viewer.example.com/path/";
+    @Autowired @Qualifier("imageServerURL")
+    private URI imageServerURL;
 
     private static final Map<String, ?> ITEM = ImmutableMap.of(
         "descriptiveMetadata", ImmutableList.of(
@@ -144,7 +146,7 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
 
     @Test
     public void itemObjectsReportExpectedThumbnailURL() {
-        final String expectedURL = DEFAULT_TEST_IMAGE_SERVER + "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg";
+        final String expectedURL = imageServerURL.resolve("content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg").toString();
         assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
         assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
     }

@@ -8,6 +8,6 @@ public class PropertiesTest {
     @Test
     public void testProperties() {
         assertThat(Properties.getString("undefined.key")).isNull();
-        assertThat(Properties.getString("rootURL")).isEqualTo("http://cudl-viewer.example.com");
+        assertThat(Properties.getString("rootURL")).isEqualTo("http://digital.library.example.com");
     }
 }

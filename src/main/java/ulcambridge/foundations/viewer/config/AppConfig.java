@@ -72,10 +72,14 @@ public class AppConfig {
     public class RuntimeConfig { }
 
     @Configuration
-    @Profile("!test")
     public static class UrlsConfig {
         @Bean
         public URI rootUrl(@Value("${rootURL}") URI url) {
+            return url;
+        }
+
+        @Bean
+        public URI imageServerURL(@Value("${imageServer}") URI url) {
             return url;
         }
 
