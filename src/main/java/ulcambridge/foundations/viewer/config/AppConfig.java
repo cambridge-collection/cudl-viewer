@@ -29,6 +29,7 @@ import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.utils.Utils;
 
 import javax.sql.DataSource;
 import java.net.URI;
@@ -38,6 +39,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static ulcambridge.foundations.viewer.utils.Utils.ensureURLHasPath;
 
 /**
  * This configuration class defines the beans used in the Viewer's root
@@ -75,22 +77,22 @@ public class AppConfig {
     public static class UrlsConfig {
         @Bean
         public URI rootUrl(@Value("${rootURL}") URI url) {
-            return url;
+            return ensureURLHasPath(url);
         }
 
         @Bean
         public URI imageServerURL(@Value("${imageServer}") URI url) {
-            return url;
+            return ensureURLHasPath(url);
         }
 
         @Bean
         public URI iiifImageServer(@Value("${IIIFImageServer}") URI url) {
-            return url;
+            return ensureURLHasPath(url);
         }
 
         @Bean
         public URI xtfURL(@Value("${xtfURL}") URI url) {
-            return url;
+            return ensureURLHasPath(url);
         }
     }
 

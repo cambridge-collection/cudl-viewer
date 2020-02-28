@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -71,5 +72,18 @@ public class UtilsTest {
         ImmutableMap<String, ?> compositeValues = ImmutableMap.of("d", ImmutableMap.of(), "e", ImmutableList.of());
         ImmutableMap<String, ?> allValues = ImmutableMap.<String, Object>builder().putAll(atomicValues).putAll(compositeValues).build();
         assertThat(Utils.atomicValues(new JSONObject(allValues))).isEqualTo(atomicValues);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "http://foo.com,http://foo.com/",
+        "http://foo.com/,http://foo.com/",
+        "http://foo.com/blah/,http://foo.com/blah/",
+        "http://foo.com/blah,http://foo.com/blah",
+        "foo/bar.txt,foo/bar.txt",
+        "urn:isbn:0451450523,urn:isbn:0451450523"
+    })
+    public void ensureURLHasPath(URI input, URI expected) {
+        assertThat(Utils.ensureURLHasPath(input)).isEqualTo(expected);
     }
 }

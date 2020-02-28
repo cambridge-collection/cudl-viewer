@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -91,5 +92,19 @@ public class Utils {
             }
         }
         return values.build();
+    }
+
+    /**
+     * Give absolute URLs a path of / if they have no path.
+     *
+     * <p></p>The {@link URI#resolve(URI)} method produces a broken URL if you do
+     * {@code URI.create("http://foo").resolve("bar")}. This results in {@code "http://foobar"} not
+     * {@code "http://foo/bar"}.
+     */
+    public static URI ensureURLHasPath(URI url) {
+        if(!url.isOpaque() && url.isAbsolute() && url.getPath().equals("")) {
+            return url.resolve("/");
+        }
+        return url;
     }
 }
