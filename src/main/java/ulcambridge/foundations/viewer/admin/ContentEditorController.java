@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -92,7 +93,7 @@ public class ContentEditorController {
      * @throws IOException
      * @throws JSONException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/update/html", method = RequestMethod.POST)
     public synchronized ModelAndView handleUpdateRequest(
             HttpServletResponse response, HttpSession session,
@@ -138,7 +139,7 @@ public class ContentEditorController {
      * @return
      * @throws IOException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
     public ModelAndView handleAddImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
@@ -199,16 +200,13 @@ public class ContentEditorController {
      * @return
      * @throws IOException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/browse/images")
     public ModelAndView handleBrowseImagesRequest(
-            HttpServletRequest request,
-            HttpServletResponse response,
             @RequestParam("CKEditor") String ckEditor,
             @RequestParam("CKEditorFuncNum") String ckEditorFuncNum,
             @RequestParam("langCode") String langCode,
-            @RequestParam(value = "browseDir", required = false) String browseDir)
-            throws IOException {
+            @RequestParam(value = "browseDir", required = false) String browseDir) {
 
         // Get a list of images on the server.
         File imagesDir = new File(contentImagesPath);
@@ -248,7 +246,7 @@ public class ContentEditorController {
      * @throws IOException
      * @throws JSONException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/delete/image", method = RequestMethod.POST)
     public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
