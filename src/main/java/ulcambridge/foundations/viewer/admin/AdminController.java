@@ -1,24 +1,23 @@
 package ulcambridge.foundations.viewer.admin;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.authentication.AdminUser;
 import ulcambridge.foundations.viewer.authentication.Users;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/admin")
-@Secured("hasRole('ROLE_ADMIN')")
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminController {
 
     private final CollectionFactory collectionFactory;

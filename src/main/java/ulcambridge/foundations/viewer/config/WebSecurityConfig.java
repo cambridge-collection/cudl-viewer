@@ -97,7 +97,10 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
+@EnableGlobalMethodSecurity(
+    securedEnabled = true,
+    prePostEnabled = true
+)
 @Import(WebSecurityConfig.Oauth2AuthConfig.class)
 public class WebSecurityConfig {
 
