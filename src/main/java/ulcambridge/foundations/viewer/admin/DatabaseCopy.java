@@ -4,7 +4,6 @@ import org.postgresql.copy.CopyManager;
 import org.postgresql.core.BaseConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.annotation.Secured;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.model.Properties;
 
@@ -184,7 +183,6 @@ public class DatabaseCopy {
 
     }
 
-    @Secured("hasRole('ROLE_ADMIN')")
     public Boolean copy(String username, String password, String refspec, String adminName, String adminEmail) {
         ArrayList<String> tablename;
         Iterator<String> iterator;
