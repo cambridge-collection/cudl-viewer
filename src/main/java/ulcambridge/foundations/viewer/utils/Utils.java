@@ -1,14 +1,19 @@
 package ulcambridge.foundations.viewer.utils;
 
+import com.google.common.collect.ImmutableMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -76,5 +81,30 @@ public class Utils {
         UriComponentsBuilder b, HttpServletRequest request) {
 
         return b.scheme(request.isSecure() ? "https" : "http");
+    }
+
+    public static Map<String, ?> atomicValues(JSONObject obj) {
+        ImmutableMap.Builder<String, Object> values = ImmutableMap.builder();
+        for(String key : obj.keySet()) {
+            Object value = obj.get(key);
+            if(!(value instanceof JSONObject || value instanceof JSONArray)) {
+                values.put(key, value);
+            }
+        }
+        return values.build();
+    }
+
+    /**
+     * Give absolute URLs a path of / if they have no path.
+     *
+     * <p></p>The {@link URI#resolve(URI)} method produces a broken URL if you do
+     * {@code URI.create("http://foo").resolve("bar")}. This results in {@code "http://foobar"} not
+     * {@code "http://foo/bar"}.
+     */
+    public static URI ensureURLHasPath(URI url) {
+        if(!url.isOpaque() && url.isAbsolute() && url.getPath().equals("")) {
+            return url.resolve("/");
+        }
+        return url;
     }
 }

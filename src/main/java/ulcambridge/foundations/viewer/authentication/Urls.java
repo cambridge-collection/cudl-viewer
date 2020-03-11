@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.authentication;
 
-import com.github.jsonldjava.utils.Obj;
 import com.google.common.collect.ImmutableSet;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.Assert;
@@ -100,9 +99,6 @@ public class Urls {
             return UriUtils.decode(s, "UTF-8");
         }
         catch (IllegalArgumentException e) {
-            return null;
-        }
-        catch (UnsupportedEncodingException e) {
             return null;
         }
     }

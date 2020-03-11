@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
@@ -44,21 +45,21 @@ public class DocumentViewController {
     private static final String PATH_DOC_WITH_PAGE = "/{docId}/{page}";
 
     private final CollectionFactory collectionFactory;
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
 
     private final URI rootURL;
 
     @Autowired
     public DocumentViewController(
         CollectionFactory collectionFactory,
-        ItemFactory itemFactory, @Value("${rootURL}") URI rootUrl) {
+        ItemsDao itemDAO, @Value("${rootURL}") URI rootUrl) {
 
-        Assert.notNull(collectionFactory, "collectionFactory required");
-        Assert.notNull(itemFactory, "itemFactory required");
-        Assert.notNull(rootUrl, "rootUrl required");
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(rootUrl, "rootUrl is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.rootURL = rootUrl;
     }
 
@@ -79,7 +80,7 @@ public class DocumentViewController {
         docId = docId.toUpperCase();
 
         // Show a different view based on the itemType for this item.
-        Item item = itemFactory.getItemFromId(docId);
+        Item item = itemDAO.getItem(docId);
         if (item==null) {
             throw new ResourceNotFoundException();
         }
@@ -111,7 +112,7 @@ public class DocumentViewController {
         // force docID to uppercase
         docId = docId.toUpperCase();
 
-        Item item = itemFactory.getItemFromId(docId);
+        Item item = itemDAO.getItem(docId);
         JSONObject json = new JSONObject(item.getJSON(),
                 JSONObject.getNames(item.getJSON()));
         JSONArray pages = json.getJSONArray("pages");
@@ -142,7 +143,7 @@ public class DocumentViewController {
         // force docID to uppercase
         docId = docId.toUpperCase();
 
-        Item item = itemFactory.getItemFromId(docId);
+        Item item = itemDAO.getItem(docId);
         if (item!=null) {
           JSONObject json = item.getJSON();
 
@@ -233,7 +234,7 @@ public class DocumentViewController {
                 new JSONArray(item.getAuthorNamesFullForm()));
         modelAndView.addObject("itemAbstract", item.getAbstract());
 
-        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("itemDAO", itemDAO);
 
         // Page Information
         modelAndView.addObject("page", page);
@@ -318,7 +319,7 @@ public class DocumentViewController {
         modelAndView.addObject("itemThumbnailOrientation",
                 item.getThumbnailOrientation());
 
-        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("content", item.getContent());
         modelAndView.addObject("relatedItems", item.getItemReferences());
         modelAndView.addObject("parentCollection", parent);

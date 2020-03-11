@@ -1,0 +1,57 @@
+version: "3.7"
+
+services:
+  cudl-viewer:
+    image: tomcat:9.0.30-jdk11-openjdk
+    environment:
+      CATALINA_OPTS:
+    volumes:
+      # Create an exploded webapp up-to-date with the src JSP etc files, plus
+      # classes. Classes will be reloaded if your IDE auto re-compiles, or you
+      # run a maven build.
+      - ./src/main/webapp/:/usr/local/tomcat/webapps/ROOT/
+      - ./target/classes/:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes/
+      - ./target/FoundationsViewer-1.0-SNAPSHOT/WEB-INF/lib/:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+
+      # The config file used by the webapp
+      - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
+      # Configure the webapp's <Context>
+      - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+
+      - ${CUDL_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_VIEWER_CONTENT:-../cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
+    ports:
+      - ${CUDL_VIEWER_HOST_PORT:-1111}:8080
+    depends_on:
+      - cudl-db
+  cudl-db:
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    restart: always
+    environment:
+      POSTGRES_USER: cudl
+      POSTGRES_DB: cudl
+      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+    ports:
+      - ${CUDL_DB_HOST_PORT:-0}:5432
+
+  cudl-services:
+    image: camdl/cudl-services:6089
+    init: true
+    restart: always
+    volumes:
+      - ./docker/cudl-services-config.json5:/etc/cudl-services/conf.d/0_cudl-services-config.json5
+      - ${CUDL_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_LEGACY_DARWIN_DATA:-../legacy-darwin-letters/}:/srv/cudl-viewer/legacy-darwin-letters/
+    ports:
+      - ${CUDL_SERVICES_HOST_PORT:-1112:80}
+    depends_on:
+      - cudl-db
+
+  cudl-xtf:
+    image: camdl/cudl-xtf:dce0
+    volumes:
+      - ${CUDL_XTF_INDEX:-../xtf-index-cudl}:/srv/cudl/xtf/index-cudl
+    ports:
+      - ${CUDL_XTF_HOST_PORT:-0}:8080

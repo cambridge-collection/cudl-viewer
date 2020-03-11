@@ -19,7 +19,7 @@
     <function>
         <name>getItem</name>
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
-        <function-signature>ulcambridge.foundations.viewer.model.Item getItem(ulcambridge.foundations.viewer.ItemFactory, java.lang.String)</function-signature>
+        <function-signature>ulcambridge.foundations.viewer.model.Item getItem(ulcambridge.foundations.viewer.dao.ItemsDao, java.lang.String)</function-signature>
     </function>
 
     <function>

@@ -1,12 +1,9 @@
 package ulcambridge.foundations.viewer.tags;
 
-import java.io.UnsupportedEncodingException;
-
 import org.jsoup.Jsoup;
 import org.springframework.web.util.UriUtils;
-
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
@@ -28,11 +25,8 @@ public final class ElFunctions {
         return factory.getCollectionFromId(collectionId);
     }
 
-    /**
-     * @see ItemFactory#getItemFromId(String)
-     */
-    public static Item getItem(ItemFactory factory, String itemId) {
-        return factory.getItemFromId(itemId);
+    public static Item getItem(ItemsDao itemDAO, String itemId) {
+        return itemDAO.getItem(itemId);
     }
 
     /**
@@ -45,13 +39,7 @@ public final class ElFunctions {
      * @return s with reserved characters % encoded using UTF-8 encoding.
      */
     public static String uriEnc(String s) {
-        try {
-            return UriUtils.encode(s, "UTF-8");
-        }
-        catch (UnsupportedEncodingException e) {
-            // This will never happen
-            throw new AssertionError("UTF-8 did not exist", e);
-        }
+        return UriUtils.encode(s, "UTF-8");
     }
 
     public static String join(Iterable<Object> items, String separator) {

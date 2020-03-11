@@ -1,9 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Collections;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -11,9 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.springframework.core.io.ClassPathResource;
-
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.Collections;
 
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertEquals;
@@ -21,6 +21,8 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(JUnit4.class)
 public class IIIFPresentationTest {
+
+    private static final URI IIIF_URL = URI.create("https://image02.cudl.lib.cam.ac.uk/iiif/");
 
     private static final Person PERSON = new Person(
         "Mr Joe Bloggs",
@@ -66,7 +68,7 @@ public class IIIFPresentationTest {
             "/v1/transcription/newton/diplomatic/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
 
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test"
+            item, "http://base.test", "http://service.test", IIIF_URL
         );
         JSONObject output = presentation.outputJSON();
         JSONObject otherContentItem =
@@ -98,7 +100,7 @@ public class IIIFPresentationTest {
             (JSONObject) parseResource("cudl-data/MS-ADD-04004.json")
         );
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test"
+            item, "http://base.test", "http://service.test", IIIF_URL
         );
 
         JSONObject output = presentation.outputJSON();
@@ -167,7 +169,7 @@ public class IIIFPresentationTest {
             (JSONObject) parseResource("cudl-data/MS-ADD-01809.json")
         );
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test"
+            item, "http://base.test", "http://service.test", IIIF_URL
         );
 
         // TODO: use Logback backend for easy log assertions

@@ -1,70 +1,67 @@
 package ulcambridge.foundations.viewer.search;
 
-import java.net.MalformedURLException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriUtils;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
-/**
- * Controller for viewing a collection.
- *
- * @author jennie
- *
- */
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
+
 @Controller
 @RequestMapping("/search")
+@Validated
 public class SearchController {
+    private static final Logger LOG = LoggerFactory.getLogger(SearchController.class);
 
-    protected final Log logger = LogFactory.getLog(getClass());
     private final Search search;
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
+    private final URI imageServerURL;
 
     /**
-     * Constructor, set in search-servlet.xml.
-     *
-     * @param search
-     *            to use for queries. e.g. SearchXTF.
+     * @param search to use for queries. e.g. SearchXTF
      */
     @Autowired
     public SearchController(CollectionFactory collectionFactory,
-                            ItemFactory itemFactory, Search search) {
+                            ItemsDao itemDAO, Search search, @Qualifier("imageServerURL") URI imageServerURL) {
 
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
-        Assert.notNull(search);
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(search, "search is required");
+        Assert.notNull(imageServerURL, "imageServerURL is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.search = search;
+        this.imageServerURL = imageServerURL;
     }
 
     // on /search path
@@ -88,11 +85,6 @@ public class SearchController {
      * Advanced Search Query Page
      *
      * /search/advanced/query
-     *
-     * @param request
-     * @param response
-     * @return
-     * @throws MalformedURLException
      */
     @RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
     public ModelAndView advancedSearch(
@@ -115,11 +107,6 @@ public class SearchController {
      * Advanced Search Results Page Performs search and displays results.
      *
      * on /search/advanced/results path
-     *
-     * @param request
-     * @param response
-     * @return
-     * @throws MalformedURLException
      */
     @RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
     public ModelAndView processAdvancedSearch(
@@ -153,7 +140,7 @@ public class SearchController {
     }
 
     private JSONObject getResultItemJSON(SearchResult searchResult) {
-        Item item = itemFactory.getItemFromId(searchResult.getFileId());
+        Item item = itemDAO.getItem(searchResult.getFileId());
 
         // Make a JSON object that contains information about the
         // matching item and information about the result snippets
@@ -173,50 +160,28 @@ public class SearchController {
 
         itemJSON.put("snippets", resultsArray);
 
-        // Page Thumbnails.  Use specified thumbnail if possible.
-        if (searchResult.getThumbnailURL() != null) {
-            String pageThumbnail = searchResult.getThumbnailURL();
-            if (pageThumbnail.contains("thumbnail")) {
-                itemJSON.put("pageThumbnailURL", pageThumbnail);
-            } else {
-                pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-                itemJSON.put("pageThumbnailURL", pageThumbnail);
-            }
-        } else {
-            String pageThumbnail = "";
-            org.json.JSONObject page = null;
-            try {
-                page = (org.json.JSONObject) item.getJSON()
-                        .getJSONArray("pages")
-                        .get(searchResult.getStartPage() - 1);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                if (page != null && page.get("displayImageURL") != null) {
-
-                    // FIXME super hacky way to get the page thumbnail
-                    // URL until we can read it from json.
-                    pageThumbnail = page.get("displayImageURL")
-                            .toString()
-                            .replace(".dzi", "_files/8/0_0.jpg");
-
-                    pageThumbnail = Properties.getString("imageServer") + pageThumbnail;
-
-                }
-            } catch (JSONException e) {
-
-                // displayImageURL not found, which throws an exception.
-                pageThumbnail = "/img/no-thumbnail.jpg";
-
-            }
-
-            itemJSON.put("pageThumbnailURL", pageThumbnail);
-
-        }// End Page Thumbnails
+        itemJSON.put("pageThumbnailURL", getResultThumbnailURL(item, searchResult)
+            .map(url -> this.imageServerURL.resolve(url).toString()).orElse("/img/no-thumbnail.jpg"));
 
         return itemJSON;
+    }
+
+    private static Optional<URI> getResultThumbnailURL(Item item, SearchResult searchResult) {
+        int pageIndex = searchResult.getStartPage() - 1;
+        String url = null;
+        if(pageIndex >= 0 && pageIndex < item.getPageThumbnailURLs().size()) {
+            url = item.getPageThumbnailURLs().get(pageIndex);
+        }
+        // The list holds empty string for pages without thumbnails
+        if(url != null && !url.isEmpty()) {
+            try {
+                return Optional.of(new URI(url));
+            }
+            catch (URISyntaxException e) {
+                LOG.error("Invalid thumbnail URL in item '{}', page {}: '{}'", item.getId(), pageIndex, url);
+            }
+        }
+        return Optional.empty();
     }
 
     private JSONObject getFacetJson(Facet facet) {
@@ -301,21 +266,44 @@ public class SearchController {
         return o;
     }
 
+    public static class Range {
+        @Min(0)
+        public int start = 0;
+        @Min(0)
+        public int end = 8;
+
+        public void setStart(int start) {
+            this.start = start;
+        }
+
+        public void setEnd(int end) {
+            this.end = end;
+        }
+
+        public int getStart() {
+            return start;
+        }
+
+        public int getEnd() {
+            return end;
+        }
+    }
+
     // on path /search/JSON?start=<startIndex>&end=<endIndex>&search params
     @RequestMapping(method = RequestMethod.GET, value = "/JSON",
             produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> handleItemsAjaxRequest(
             @Valid SearchForm searchForm,
-            @RequestParam("start") int startIndex,
-            @RequestParam("end") int endIndex) {
+            @Valid Range range) {
 
         SearchResultSet results = this.search.makeSearch(
-                searchForm, startIndex, endIndex);
+            searchForm, range.start, range.end);
 
         // Write out JSON file.
         return ResponseEntity.ok()
-                .header("Cache-Control", "public, max-age=60")
-                .body(getResultsJSON(results).toString());
+            .contentType(MediaType.APPLICATION_JSON)
+            .header("Cache-Control", "public, max-age=60")
+            .body(getResultsJSON(results).toString());
     }
 
     /**

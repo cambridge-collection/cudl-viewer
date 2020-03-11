@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer.components;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.mail.Message;
@@ -22,6 +23,7 @@ import java.util.Properties;
  *
  */
 @Component
+@Profile("!test")
 public class EmailHelper {
 
     private static final Logger LOG = LoggerFactory.getLogger(EmailHelper.class);

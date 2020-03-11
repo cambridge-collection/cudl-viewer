@@ -1,30 +1,27 @@
 package ulcambridge.foundations.viewer;
 
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.net.URI;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import org.springframework.web.servlet.view.RedirectView;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.URI;
 
 /**
  * Controller for viewing iiif metadata and collections
@@ -35,22 +32,23 @@ import ulcambridge.foundations.viewer.model.Properties;
 @Controller
 @RequestMapping("/iiif")
 public class IIIFViewController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
+    private final URI iiifImageServer;
 
     @Autowired
-    public IIIFViewController(ItemFactory itemFactory,
+    public IIIFViewController(ItemsDao itemDAO,
                               CollectionFactory collectionFactory,
-                              @Value("${rootURL}") URI rootUrl) {
+                              @Qualifier("rootUrl") URI rootUrl,
+                              @Qualifier("iiifImageServer")URI iiifImageServer) {
 
-        Assert.notNull(itemFactory);
-        Assert.notNull(rootUrl);
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(rootUrl, "rootUrl is required");
+        Assert.notNull(iiifImageServer, "iiifImageServer is required");
 
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.collectionFactory = collectionFactory;
-
+        this.iiifImageServer = iiifImageServer;
     }
 
     // on path /iiif/{docId}.json
@@ -71,14 +69,14 @@ public class IIIFViewController {
             servicesURL = request.getScheme() + ":"+servicesURL;
         }
 
-        Item item = itemFactory.getItemFromId(docId);
+        Item item = itemDAO.getItem(docId);
         if (item != null && item.getIIIFEnabled()) {
 
             String baseURL = request.getScheme() + "://" + request.getServerName();
             if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
                 baseURL+= ":" + request.getServerPort();
             }
-            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL);
+            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL, iiifImageServer);
             JSONObject presJSON = pres.outputJSON();
 
             writeJSONOut(presJSON, response);

@@ -1,15 +1,12 @@
 package ulcambridge.foundations.viewer.crowdsourcing.model;
 
+import ulcambridge.foundations.viewer.model.Properties;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  *
@@ -17,8 +14,6 @@ import ulcambridge.foundations.viewer.model.Properties;
  *
  */
 public class TermCombiner {
-
-    private static final Logger logger = LoggerFactory.getLogger(TermCombiner.class);
 
     private int annoWeight;
 

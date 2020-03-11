@@ -27,7 +27,7 @@ public class GitHelper {
     private Git gitmasters;
     private String url;
     private boolean success = false;
-    private static final Logger logger = LoggerFactory.getLogger(GitHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GitHelper.class);
 
     public GitHelper(String localPathMasters, String url) {
         this.localPathMasters = localPathMasters;
@@ -37,6 +37,12 @@ public class GitHelper {
     protected String getLastRevision() {
         try {
             localRepomasters = new FileRepository(localPathMasters + "/.git");
+
+            if(!localRepomasters.getObjectDatabase().exists()) {
+                LOG.debug("No revision available: Git repo does not exist at {}", localRepomasters.getDirectory());
+                return null;
+            }
+
             gitmasters = new Git(localRepomasters);
             Iterator<RevCommit> iter = gitmasters.log().call().iterator();
             if (iter.hasNext()) {
@@ -44,7 +50,7 @@ public class GitHelper {
                 return ObjectId.toString(commit.getId());
             }
         } catch (IOException | GitAPIException ex) {
-            logger.warn("Error in getLastRevision", ex);
+            LOG.error("Error in getLastRevision", ex);
         }
         return null;
     }
@@ -66,7 +72,7 @@ public class GitHelper {
                 .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
-            logger.error("Error in push", ex);
+            LOG.error("Error in push", ex);
             success = false;
         }
         return success;
@@ -89,7 +95,7 @@ public class GitHelper {
                 .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
-            logger.error("Error in commit", ex);
+            LOG.error("Error in commit", ex);
             success = false;
         }
 
@@ -119,7 +125,7 @@ public class GitHelper {
                 .call();
             success = true;
         } catch (IOException | GitAPIException ex) {
-            logger.error("Error in delete", ex);
+            LOG.error("Error in delete", ex);
             success = false;
         }
 

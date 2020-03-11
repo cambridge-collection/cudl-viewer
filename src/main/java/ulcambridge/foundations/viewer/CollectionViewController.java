@@ -1,14 +1,6 @@
 package ulcambridge.foundations.viewer;
 
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONObject;
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -19,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Controller for viewing a collection.
@@ -34,10 +31,8 @@ import ulcambridge.foundations.viewer.model.Properties;
 @Controller
 @RequestMapping("/collections")
 public class CollectionViewController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
     private final CollectionFactory collectionFactory;
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final String contentHtmlUrl;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
@@ -46,14 +41,14 @@ public class CollectionViewController {
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemFactory itemFactory,
+                                    ItemsDao itemDAO,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 
@@ -67,7 +62,7 @@ public class CollectionViewController {
         final String itemIdString = Properties.getString("collection.featuredItems");
         final String[] itemIds = SPLIT_RE.split(itemIdString);
         for (final String itemId : itemIds) {
-            featuredItems.add(itemFactory.getItemFromId(itemId));
+            featuredItems.add(itemDAO.getItem(itemId));
         }
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("featuredItems", featuredItems);
@@ -102,7 +97,7 @@ public class CollectionViewController {
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
         }
-        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
@@ -146,13 +141,13 @@ public class CollectionViewController {
         }
 
         for (int i = startIndex; i < endIndex; i++) {
-            items.add(itemFactory.getItemFromId(ids.get(i)));
+            items.add(itemDAO.getItem(ids.get(i)));
         }
 
-        final JSONArray jsonArray = new JSONArray();
+        final List<JSONObject> itemsJSON = new ArrayList<>(items.size());
 
         for (final Item item : items) {
-            jsonArray.add(item.getSimplifiedJSON());
+            itemsJSON.add(item.getSimplifiedJSON());
         }
 
         // build the request object
@@ -164,7 +159,7 @@ public class CollectionViewController {
         // build the final returned JSON data
         final JSONObject data = new JSONObject();
         data.put("request", dataRequest);
-        data.put("items", jsonArray);
+        data.put("items", itemsJSON);
 
         return data.toString();
     }

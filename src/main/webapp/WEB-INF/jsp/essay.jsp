@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@page autoFlush="false" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -10,11 +10,11 @@
 <cudl:generic-page pagetype="STANDARD" title="${organisationalCollection.title}">
     <cudl:nav activeMenuIndex="${1}" displaySearch="true"
               title="${organisationalCollection.title}"/>
-    
+
     <div class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column12  campl-main-content" id="content">
-    
+
                 <div class="campl-column8">
                     <div class="campl-content-container">
                         <div class="campl-column10">
@@ -29,7 +29,7 @@
                                 <c:out value="${organisationalCollection.title}"/>
                             </a>
                             <br/><br/>
-    
+
                             <h2><c:out value="${itemTitle}"/></h2>
                             <div class="grid_12 essaytext">
                                 <img class="essay_image" src="${fn:escapeXml(itemThumbnailURL)}">
@@ -83,11 +83,11 @@
                 </div>
                 <div class="campl-column4 campl-secondary-content">
                     <div class="campl-content-container">
-    
+
                         <h4>Related Items</h4>
 
                         <c:forEach items="${relatedItems}" var="itemId">
-                            <c:set var="item" value="${cudlfn:getItem(itemFactory, itemId)}"/>
+                            <c:set var="item" value="${cudlfn:getItem(itemDAO, itemId)}"/>
 
                             <div class="relatedItem grid_6">
                                 <h5>
@@ -122,5 +122,5 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 </cudl:generic-page>

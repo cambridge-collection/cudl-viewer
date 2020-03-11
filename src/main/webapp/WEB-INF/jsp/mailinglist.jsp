@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page autoFlush="false" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
@@ -41,7 +41,7 @@ body {
 
 
 		<div class="mailinglistform">
-			<!--<form:form method="post" commandName="mailingListForm">-->
+			<!--<form:form method="post" modelAttribute="mailingListForm">-->
 
 			<p>If you would like to receive details of updates or changes to
 				this site, then join our mailing list. Our email service will alert

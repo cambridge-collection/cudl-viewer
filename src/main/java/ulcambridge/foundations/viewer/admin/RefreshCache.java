@@ -1,22 +1,25 @@
 package ulcambridge.foundations.viewer.admin;
 
+import com.github.benmanes.caffeine.cache.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
-
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.ItemFactory;
+import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
 /**
  * @author rekha
  */
 @Component
+@Profile("!test")
 public class RefreshCache {
 
     private final CollectionFactory collectionFactory;
-    private final ItemFactory itemFactory;
+    private final Cache<String, Item> itemCache;
 
     // FIXME: Inject this stuff
     private String jsonLocalPathMasters = Properties.getString("admin.git.json.localpath");
@@ -31,12 +34,12 @@ public class RefreshCache {
     private String lastDBRevision = dbGit.getLastRevision();
 
     @Autowired
-    public RefreshCache(CollectionFactory collectionFactory, ItemFactory itemFactory) {
-        Assert.notNull(collectionFactory);
-        Assert.notNull(itemFactory);
+    public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache) {
+        Assert.notNull(collectionFactory, "collectionFactory is required");
+        Assert.notNull(itemCache, "itemCache is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemFactory = itemFactory;
+        this.itemCache = itemCache;
     }
 
     @Scheduled(fixedRate = 1000 * 60 * 5)  // Check every 5 mins.
@@ -66,7 +69,7 @@ public class RefreshCache {
     }
 
     public void refreshJSON() {
-        itemFactory.clearItemCache();
+        itemCache.invalidateAll();
     }
 
 }

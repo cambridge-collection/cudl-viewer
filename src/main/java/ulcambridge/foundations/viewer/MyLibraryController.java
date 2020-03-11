@@ -1,16 +1,5 @@
 package ulcambridge.foundations.viewer;
 
-import java.io.IOException;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,27 +8,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.dao.BookmarkDao;
+import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.TooManyBookmarksException;
 import ulcambridge.foundations.viewer.model.Bookmark;
-import ulcambridge.foundations.viewer.model.Item;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.security.Principal;
+import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/mylibrary")
 public class MyLibraryController {
-
-    protected final Log logger = LogFactory.getLog(getClass());
-    private final ItemFactory itemFactory;
+    private final ItemsDao itemDAO;
     private final BookmarkDao bookmarkDao;
 
     @Autowired
-    public MyLibraryController(ItemFactory itemFactory,
+    public MyLibraryController(ItemsDao itemDAO,
                                BookmarkDao bookmarkDao) {
-        Assert.notNull(itemFactory);
-        Assert.notNull(bookmarkDao);
+        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(bookmarkDao, "bookmarkDao is required");
 
-        this.itemFactory = itemFactory;
+        this.itemDAO = itemDAO;
         this.bookmarkDao = bookmarkDao;
     }
 
@@ -53,7 +45,7 @@ public class MyLibraryController {
         ModelAndView modelAndView = new ModelAndView("jsp/mylibrary");
         modelAndView.addObject("username", id);
         modelAndView.addObject("bookmarks", bookmarks);
-        modelAndView.addObject("itemFactory", itemFactory);
+        modelAndView.addObject("itemDAO", itemDAO);
         return modelAndView;
     }
 

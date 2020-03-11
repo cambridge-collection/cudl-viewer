@@ -1,9 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ulcambridge.foundations.viewer.admin;
+
+import org.postgresql.copy.CopyManager;
+import org.postgresql.core.BaseConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ulcambridge.foundations.viewer.CollectionFactory;
+import ulcambridge.foundations.viewer.model.Properties;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,21 +19,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
-import org.postgresql.copy.CopyManager;
-import org.postgresql.core.BaseConnection;
-import org.springframework.security.access.annotation.Secured;
-
-import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.model.Properties;
-
 /**
  *
  * @author rekha
  */
 public class DatabaseCopy {
 
-    private static final Logger logger = Logger.getLogger(DatabaseCopy.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(DatabaseCopy.class.getName());
 
     private final String urlLive = Properties.getString("admin.db.jdbc.url.live");
     private final String userLive = Properties.getString("admin.db.jdbc.user.live");
@@ -103,28 +97,28 @@ public class DatabaseCopy {
             //the no of copied records == no of database table records?
             success = (copyOutRows > 0) && (copyOutRows == TableRowCount);
             if (success == false){
-                logger.error("Exception from writeToFile method - failure of (copyOutRows > 0) && (copyOutRows == TableRowCount)");
+                LOG.error("Exception from writeToFile method - failure of (copyOutRows > 0) && (copyOutRows == TableRowCount)");
             }
             fileWriter.flush();
 
         } catch (SQLException ex) {
-            logger.error("Exception from writeToFile method - writing from local db to file", ex);
+            LOG.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (FileNotFoundException ex) {
-            logger.error("Exception from writeToFile method - writing from local db to file", ex);
+            LOG.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (IOException ex) {
-            logger.error("Exception from writeToFile method - writing from local db to file", ex);
+            LOG.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (NullPointerException ex) {
-            logger.error("Exception from writeToFile method - writing from local db to file", ex);
+            LOG.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } catch (Exception ex) {
-            logger.error("Exception from writeToFile method - writing from local db to file", ex);
+            LOG.error("Exception from writeToFile method - writing from local db to file", ex);
             ex.printStackTrace();
             success = false;
         } finally {
@@ -138,12 +132,12 @@ public class DatabaseCopy {
                         fileWriter.close();
                     }
                 } catch (IOException ex) {
-                    logger.error("Exception from writing from local db to file - finally clause - filewriter close ", ex);
+                    LOG.error("Exception from writing from local db to file - finally clause - filewriter close ", ex);
                     ex.printStackTrace();
                     success = false;
                 }
             } catch (SQLException ex) {
-                logger.error("Exception from writing from local db to file - finally clause - connection close ", ex);
+                LOG.error("Exception from writing from local db to file - finally clause - connection close ", ex);
                 ex.printStackTrace();
                 success = false;
 
@@ -168,19 +162,19 @@ public class DatabaseCopy {
             copyManager.copyIn("COPY " + tablename + " FROM STDIN", fileReader);
 
         } catch (SQLException ex) {
-            logger.error("Exception from writing from file to live db -copy in method", ex);
+            LOG.error("Exception from writing from file to live db -copy in method", ex);
             ex.printStackTrace();
             success = false;
         } catch (FileNotFoundException ex) {
-            logger.error("Exception from writing from file to live db -copy in method", ex);
+            LOG.error("Exception from writing from file to live db -copy in method", ex);
             ex.printStackTrace();
             success = false;
         } catch (IOException ex) {
-            logger.error("Exception from writing from file to live db -copy in method", ex);
+            LOG.error("Exception from writing from file to live db -copy in method", ex);
             ex.printStackTrace();
             success = false;
         } catch (Exception ex) {
-            logger.error("Exception from writing from file to live db -copy in method", ex);
+            LOG.error("Exception from writing from file to live db -copy in method", ex);
             ex.printStackTrace();
             success = false;
         }
@@ -189,7 +183,6 @@ public class DatabaseCopy {
 
     }
 
-    @Secured("hasRole('ROLE_ADMIN')")
     public Boolean copy(String username, String password, String refspec, String adminName, String adminEmail) {
         ArrayList<String> tablename;
         Iterator<String> iterator;
@@ -231,14 +224,14 @@ public class DatabaseCopy {
                     dbsuccess = copyIn(table, conlive);
                     if (!dbsuccess) {
                         conlive.rollback();//rollback if any issues
-                        logger.error("Exception from copy method-copyIn failure-rollback done");
+                        LOG.error("Exception from copy method-copyIn failure-rollback done");
                         copysuccess = false;
                         break;//also stop the copy of remaining tables
 
                     }
                 } else {//copy to file not successful rollback
                     conlive.rollback();//rollback if any issues
-                    logger.error("Exception from copy method-copyOut failure-rollback done");
+                    LOG.error("Exception from copy method-copyOut failure-rollback done");
                     copysuccess = false;
                     break;//also stop the copy of remaining tables
                 }
@@ -248,7 +241,7 @@ public class DatabaseCopy {
                 // Commit to git
                 if (!git.commit(adminName, adminEmail, "cudl-viewer: commiting DB changes") || !git.push(username, password, refspec)) {
                     conlive.rollback();//rollback if any issues
-                    logger.error("Exception from copy method-git commit failure-rollback done");
+                    LOG.error("Exception from copy method-git commit failure-rollback done");
                     copysuccess = false;
                 } else {
                     conlive.commit();
@@ -257,27 +250,27 @@ public class DatabaseCopy {
             }
 
         } catch (SQLException ex) {
-            logger.error("Exception from copy method", ex);
+            LOG.error("Exception from copy method", ex);
             ex.printStackTrace();
             try {
                 if (conlive != null) {
                     conlive.rollback();//rollback if any issues
                 }
             } catch (SQLException ex1) {
-                logger.error("Exception from copy method - conlive.rollback", ex);
+                LOG.error("Exception from copy method - conlive.rollback", ex);
                 ex1.printStackTrace();
                 copysuccess = false;
             }
             copysuccess = false;
         } catch (Exception ex) {
-            logger.error("Exception from copy method", ex);
+            LOG.error("Exception from copy method", ex);
             ex.printStackTrace();
             try {
                 if (conlive != null) {
                     conlive.rollback();//rollback if any issues
                 }
             } catch (SQLException ex1) {
-                logger.error("Exception from copy method - conlive.rollback", ex1);
+                LOG.error("Exception from copy method - conlive.rollback", ex1);
                 ex1.printStackTrace();
                 copysuccess = false;
             }
@@ -290,7 +283,7 @@ public class DatabaseCopy {
                 }
 
             } catch (SQLException ex) {
-                logger.error("Exception from copy method - finally clause", ex);
+                LOG.error("Exception from copy method - finally clause", ex);
                 ex.printStackTrace();
             }
         }

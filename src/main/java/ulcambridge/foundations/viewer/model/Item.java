@@ -1,14 +1,13 @@
 package ulcambridge.foundations.viewer.model;
 
+import com.google.common.collect.ImmutableList;
+import org.json.JSONObject;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.JSONArray;
 
 /**
  * This class contains a subset of the data in the JSON file for an item, which
@@ -37,7 +36,6 @@ public class Item implements Comparable<Item> {
     protected List<String> pageLabels;
     protected List<String> pageThumbnailURLs;
     protected JSONObject json; // used for document view
-    protected JSONObject simplejson; // used for collection view
 
     public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
             String itemShelfLocator, String itemAbstract,
@@ -54,7 +52,7 @@ public class Item implements Comparable<Item> {
         this.abstractText = itemAbstract;
         this.thumbnailURL = itemThumbnailURL;
         this.thumbnailOrientation = thumbnailOrientation;
-        this.authors = authors;
+        this.authors = ImmutableList.copyOf(authors);
         this.IIIFEnabled = IIIFEnabled;
         this.taggingStatus = taggingStatus;
         this.imageReproPageURL = imageReproPageURL;
@@ -74,31 +72,11 @@ public class Item implements Comparable<Item> {
                     .substring(120).indexOf(" "))+ "...";
         }
 
-        this.pageLabels = pageLabels;
-        this.pageThumbnailURLs = pageThumbnailURLs;
-
-        // Make simple JSON
-        try {
-            simplejson = new JSONObject();
-            simplejson.append("id", this.getId());
-            simplejson.append("title", this.getTitle());
-            simplejson.append("shelfLocator", this.getShelfLocator());
-            simplejson.append("abstractText", this.getAbstract());
-            simplejson.append("abstractShort", this.getAbstractShort());
-            simplejson.append("thumbnailURL", this.getThumbnailURL());
-            simplejson.append("thumbnailOrientation", this.getThumbnailOrientation());
-            simplejson.append("imageReproPageURL", this.getImageReproPageURL());
-            JSONArray authorJSON = new JSONArray();
-            authorJSON.addAll(this.getAuthors());
-            simplejson.append("authors", authorJSON);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        this.pageLabels = ImmutableList.copyOf(pageLabels);
+        this.pageThumbnailURLs = ImmutableList.copyOf(pageThumbnailURLs);
 
         orderCount++;
         this.order = orderCount;
-
     }
 
     public List<String> getPageThumbnailURLs() {
@@ -186,7 +164,17 @@ public class Item implements Comparable<Item> {
     }
 
     public JSONObject getSimplifiedJSON() {
-        return simplejson;
+        JSONObject json = new JSONObject();
+        json.put("id", this.getId());
+        json.put("title", this.getTitle());
+        json.put("shelfLocator", this.getShelfLocator());
+        json.put("abstractText", this.getAbstract());
+        json.put("abstractShort", this.getAbstractShort());
+        json.put("thumbnailURL", this.getThumbnailURL());
+        json.put("thumbnailOrientation", this.getThumbnailOrientation());
+        json.put("imageReproPageURL", this.getImageReproPageURL());
+        json.put("authors", this.getAuthors());
+        return json;
     }
 
     @Override

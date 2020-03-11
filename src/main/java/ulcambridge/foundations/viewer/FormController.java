@@ -1,32 +1,29 @@
 package ulcambridge.foundations.viewer;
 
 
-import java.util.Optional;
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
 import org.apache.commons.mail.EmailException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import ulcambridge.foundations.viewer.components.Captcha;
 import ulcambridge.foundations.viewer.components.EmailHelper;
 import ulcambridge.foundations.viewer.forms.FeedbackForm;
 import ulcambridge.foundations.viewer.forms.MailingListForm;
 
-@Controller
-public class FormController {
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.Optional;
 
-    private static final Logger logger = LoggerFactory.getLogger(FormController.class);
+@Controller
+@Validated
+public class FormController {
     private final String feedbackEmail;
     private final String feedbackSender;
     private final String feedbackSubject;

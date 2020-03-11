@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  tomcat:
+    image: tomcat:9.0.30-jdk11-openjdk
+    volumes:
+      - ./target/FoundationsViewer.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+      - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
+      - ${CUDL_VIEWER_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+    ports:
+      - "8888:8080"
+    depends_on:
+      - db
+  db:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_USER: cudl
+      POSTGRES_DB: cudl
+      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+    ports:
+      - "${TEST_DB_PORT:-0}:5432"
+
+  flyway:
+    image: flyway/flyway:6.1.0
+    depends_on:
+      - db
+    volumes:
+      - ./src/main/resources/db/migration/:/flyway/sql/
+    environment:
+      FLYWAY_URL: jdbc:postgresql://db/cudl
+      FLYWAY_USER: cudl
+      FLYWAY_PASSWORD: ${TEST_DB_PASSWORD:-password}
+    command: migrate -connectRetries=60

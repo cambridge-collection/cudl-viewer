@@ -1,17 +1,21 @@
-package ulcambridge.foundations.viewer.dao;
+package ulcambridge.foundations.viewer.model;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import org.json.JSONObject;
+import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
-import org.json.JSONObject;
-import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Person;
+public final class Items {
+    private Items() {}
 
-public class MockItemsJSONDao implements ItemsDao {
+    public static Item getExampleItem(String itemId) {
+        Assert.notNull(itemId, "itemId is required");
 
-    @Override
-    public Item getItem(String itemId) {
         final Person aut = new Person(
             "Test Person, 2012",
             "Test Person",
@@ -22,13 +26,17 @@ public class MockItemsJSONDao implements ItemsDao {
             "aut");
 
         final List<Person> authors = Arrays.asList(aut);
-        final List<String> pageLabels = new ArrayList<>();
-        final List<String> pageThumbnailURLs = new ArrayList<>();
+        final List<String> pageLabels = ImmutableList.of("1", "2", "3");
+        final List<String> pageThumbnailURLs = ImmutableList.of(
+            String.format("%s-000-00001_files/8/0_0.jpg", itemId),
+            "", // Missing URLs are represented by empty strings
+            String.format("%s-000-00003_files/8/0_0.jpg", itemId)
+        );
 
         JSONObject json = new JSONObject();
 
         return new Item(
-            "MS-ADD-04004",
+            itemId,
             "bookormanuscript",
             "Test Title", authors,
             "test shelfLocator",
@@ -43,5 +51,4 @@ public class MockItemsJSONDao implements ItemsDao {
             json);
 
     }
-
 }

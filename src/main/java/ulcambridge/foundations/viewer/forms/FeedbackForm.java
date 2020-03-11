@@ -1,15 +1,10 @@
 package ulcambridge.foundations.viewer.forms;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class FeedbackForm {
-
-    protected final Log logger = LogFactory.getLog(getClass());
 
     @NotEmpty
     @Size(max = 100)

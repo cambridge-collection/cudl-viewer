@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@page autoFlush="false" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -17,7 +17,7 @@
                     <div class="grid_18">
                         <div class="advancedsearchform box">
 
-                            <form:form commandName="searchForm" method="GET" action="/search/advanced/results">
+                            <form:form modelAttribute="searchForm" method="GET" action="/search/advanced/results">
 
                                 <div class="advancedsearch-section campl-column6 clearfix">
                                     <h2>Find metadata with &hellip;</h2>
@@ -187,7 +187,7 @@
                             </div>
 
                             <div class="altsearchlink grid_4 right">
-                                <form:form commandName="searchForm" action="/search" method="GET">
+                                <form:form modelAttribute="searchForm" action="/search" method="GET">
                                     <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword" />
                                     <input class="altsearchlink" type="submit" value="back to simple search" />
                                 </form:form>

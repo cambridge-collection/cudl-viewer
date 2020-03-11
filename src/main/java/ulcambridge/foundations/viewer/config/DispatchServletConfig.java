@@ -1,44 +1,51 @@
 package ulcambridge.foundations.viewer.config;
 
-import java.util.List;
-
 import com.google.common.base.Charsets;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.util.MimeType;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.resource.GzipResourceResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.springframework.web.servlet.resource.EncodedResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
 import ulcambridge.foundations.embeddedviewer.configuration.Config;
 import ulcambridge.foundations.embeddedviewer.configuration.EmbeddedViewerConfiguringResourceTransformer;
 import ulcambridge.foundations.viewer.embedded.Configs;
 
+import java.util.List;
+import java.util.Properties;
+
+/**
+ * This configuration class defines the beans used in the Viewer's child
+ * {@link org.springframework.context.ApplicationContext} which contains the
+ * Spring Web MVC DispatchServlet, with which the various Controller classes are
+ * registered.
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(
     basePackages = {"ulcambridge.foundations.viewer"},
-    useDefaultFilters = false,
-    includeFilters = {@Filter(Controller.class)})
-@Import(BeanFactoryPostProcessorConfig.class)
+    includeFilters = {@Filter({Controller.class, ControllerAdvice.class})})
+@Import({BeanFactoryPostProcessorConfig.class})
 public class DispatchServletConfig
-    extends WebMvcConfigurerAdapter
-    implements BeanFactoryAware {
+    implements WebMvcConfigurer, BeanFactoryAware {
 
     public static final String EMBEDDED_VIEWER_PATTERN = "/embed/**";
 
@@ -54,8 +61,6 @@ public class DispatchServletConfig
         // Register the UTF-8 message converter
         converters.add(0, this.beanFactory.getBean(
             StringHttpMessageConverter.class));
-
-        super.extendMessageConverters(converters);
     }
 
     /**
@@ -96,29 +101,18 @@ public class DispatchServletConfig
         return c;
     }
 
-    @Bean
-    public Config embeddedViewerConfig(
-        @Value("${cudl.viewer.analytics.embedded.gaid:}") String gaTrackingId,
-        @Value("${services://services.cudl.lib.cam.ac.uk}/v1/metadata/json/")
-        String metadataUrlPrefix,
-        @Value("${metadataUrlSuffix:}") String metadataUrlSuffix,
-        @Value("${imageServer://image01.cudl.lib.cam.ac.uk/}")
-        String dziUrlPrefix,
-        @Value("${rootURL://cudl.lib.cam.ac.uk}") String metadataUrlHost) {
-
-        return Configs.createEmbeddedViewerConfig(
-            gaTrackingId, metadataUrlPrefix, metadataUrlSuffix, dziUrlPrefix,
-            metadataUrlHost);
-    }
-
     @Configuration
-    public static class ResourcesConfig extends WebMvcConfigurerAdapter {
+    public static class StaticResourcesConfigurer implements WebMvcConfigurer {
 
-        @Autowired
-        private Environment env;
+        private final Environment env;
+        private final Config embeddedViewerConfig;
 
-        @Autowired
-        private Config embeddedViewerConfig;
+        public StaticResourcesConfigurer(Environment env, Config embeddedViewerConfig) {
+            Assert.notNull(env, "env is required");
+            Assert.notNull(embeddedViewerConfig, "embeddedViewerConfig is required");
+            this.env = env;
+            this.embeddedViewerConfig = embeddedViewerConfig;
+        }
 
         private String resolve(String text) {
             return env.resolveRequiredPlaceholders(text);
@@ -153,7 +147,7 @@ public class DispatchServletConfig
                     "classpath:ulcambridge/foundations/viewer/viewer-ui/assets/")
                 .setCachePeriod(60 * 60 * 24 * 365)  // 1 year
                 .resourceChain(true)
-                    .addResolver(new GzipResourceResolver());
+                    .addResolver(new EncodedResourceResolver());
         }
 
         private void addEmbeddedViewerAssets(ResourceHandlerRegistry registry) {
@@ -164,10 +158,48 @@ public class DispatchServletConfig
                 .addResourceLocations(
                     "classpath:ulcambridge/foundations/embeddedviewer/assets/")
                 .resourceChain(true)
-                    .addResolver(new GzipResourceResolver())
+                    .addResolver(new EncodedResourceResolver())
                     .addTransformer(
                         new EmbeddedViewerConfiguringResourceTransformer(
                             embeddedViewerConfig));
+        }
+    }
+
+    @Bean(name="simpleMappingExceptionResolver")
+    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
+        SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
+
+        Properties mappings = new Properties();
+        mappings.setProperty("EmptyResultDataAccessException", "jsp/errors/404");
+        r.setExceptionMappings(mappings);  // None by default
+
+        Properties statusCodes = new Properties();
+        statusCodes.setProperty("jsp/errors/404", "404");
+        r.setStatusCodes(statusCodes);
+
+        r.setDefaultErrorView("jsp/errors/500");
+        r.setExceptionAttribute("exception");
+
+        r.setWarnLogCategory("ulcambridge.foundations.viewer.error");
+        return r;
+    }
+
+    @Configuration
+    @Profile("!test")
+    public static class RuntimeConfigurableBeans {
+        @Bean
+        public Config embeddedViewerConfig(
+                @Value("${cudl.viewer.analytics.embedded.gaid:}") String gaTrackingId,
+                @Value("${services://services.cudl.lib.cam.ac.uk}/v1/metadata/json/")
+                        String metadataUrlPrefix,
+                @Value("${metadataUrlSuffix:}") String metadataUrlSuffix,
+                @Value("${imageServer://image01.cudl.lib.cam.ac.uk/}")
+                        String dziUrlPrefix,
+                @Value("${rootURL://cudl.lib.cam.ac.uk}") String metadataUrlHost) {
+
+            return Configs.createEmbeddedViewerConfig(
+                    gaTrackingId, metadataUrlPrefix, metadataUrlSuffix, dziUrlPrefix,
+                    metadataUrlHost);
         }
     }
 }

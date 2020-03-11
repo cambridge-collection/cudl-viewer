@@ -1,10 +1,9 @@
-<%@page isErrorPage="true" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%@page isErrorPage="true" autoFlush="true" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
-
 
 <c:set var="errorEmailSubject" value="500 Page - Error"/>
 
@@ -33,7 +32,7 @@
                             <p>
                                 <dl>
                                     <dt>Message</dt>
-                                    <dd><c:out value="${errorMessage}"/></dd>
+                                    <dd>${exception.message}</dd>
                                 </dl>
                             </p>
 
@@ -45,7 +44,7 @@
                             </p>
 
                             <p>
-                                <pre id="stacktrace" class="stacktrace collapse"><c:out value="${errorTraceback}"/></pre>
+                                <pre id="stacktrace" class="stacktrace collapse">${pageContext.out.flush();exception.printStackTrace(pageContext.response.writer)}</pre>
                             </p>
                         </div>
                     </div>

@@ -1,12 +1,13 @@
 package ulcambridge.foundations.viewer.admin;
 
 import org.apache.commons.io.output.StringBuilderWriter;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -72,8 +73,6 @@ public class ContentEditorController {
     protected final GitHelper git = new GitHelper(gitLocalPath, gitUrl);
     private final UsersDao usersDao;
 
-    protected final Log logger = LogFactory.getLog(getClass());
-
     @Autowired
     public ContentEditorController(UsersDao usersDao) {
         Assert.notNull(usersDao);
@@ -94,7 +93,7 @@ public class ContentEditorController {
      * @throws IOException
      * @throws JSONException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/update/html", method = RequestMethod.POST)
     public synchronized ModelAndView handleUpdateRequest(
             HttpServletResponse response, HttpSession session,
@@ -140,7 +139,7 @@ public class ContentEditorController {
      * @return
      * @throws IOException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/add/image", method = RequestMethod.POST)
     public ModelAndView handleAddImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
@@ -201,16 +200,13 @@ public class ContentEditorController {
      * @return
      * @throws IOException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/browse/images")
     public ModelAndView handleBrowseImagesRequest(
-            HttpServletRequest request,
-            HttpServletResponse response,
             @RequestParam("CKEditor") String ckEditor,
             @RequestParam("CKEditorFuncNum") String ckEditorFuncNum,
             @RequestParam("langCode") String langCode,
-            @RequestParam(value = "browseDir", required = false) String browseDir)
-            throws IOException {
+            @RequestParam(value = "browseDir", required = false) String browseDir) {
 
         // Get a list of images on the server.
         File imagesDir = new File(contentImagesPath);
@@ -250,7 +246,7 @@ public class ContentEditorController {
      * @throws IOException
      * @throws JSONException
      */
-    @Secured("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/delete/image", method = RequestMethod.POST)
     public ModelAndView handleDeleteImageRequest(HttpServletRequest request,
             HttpServletResponse response, HttpSession session,
@@ -478,7 +474,7 @@ public class ContentEditorController {
     // Performs validation on parameters used for writing html.
     public static class UpdateHTMLParameters {
 
-        private static final Log logger = LogFactory.getLog(UpdateHTMLParameters.class);
+        private static final Logger LOG = LoggerFactory.getLogger(UpdateHTMLParameters.class);
 
         @NotNull
         @Pattern(regexp = "^[-_/A-Za-z0-9]+\\.html$", message = "Invalid filename")
@@ -500,9 +496,9 @@ public class ContentEditorController {
         }
 
         public void setHtml(String html) {
-            logger.debug("setHtml() before tidy: " + html);
+            LOG.debug("setHtml() before tidy: {}", html);
             this.html = tidyHTML(html);
-            logger.debug("setHtml() after tidy: " + this.html);
+            LOG.debug("setHtml() after tidy: {}", this.html);
         }
 
         private String tidyHTML(String input) {
@@ -531,7 +527,7 @@ public class ContentEditorController {
                 }
 
             } catch (Exception e) {
-                logger.error("Tidying HTML failed", e);
+                LOG.error("Tidying HTML failed", e);
             }
 
             // default to return input in event of any

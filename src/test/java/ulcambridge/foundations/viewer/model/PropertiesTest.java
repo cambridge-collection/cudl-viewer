@@ -1,20 +1,13 @@
 package ulcambridge.foundations.viewer.model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
-/**
- * Unit test for testing properties object
- */
 public class PropertiesTest {
-
-    /**
-     * Tests the Properties object
-     */
     @Test
     public void testProperties() {
-        assertEquals("UA-10976633-2", Properties.getString("GoogleAnalyticsId"));
-        assertEquals("Newton Papers", Properties.getString("newton.title"));
+        assertThat(Properties.getString("undefined.key")).isNull();
+        assertThat(Properties.getString("rootURL")).isEqualTo("http://digital.library.example.com");
     }
 }
