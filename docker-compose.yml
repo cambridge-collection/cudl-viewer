@@ -11,8 +11,8 @@ services:
     ports:
       - "8888:8080"
     depends_on:
-      - db
-  db:
+      - cudl-db
+  cudl-db:
     image: postgres:12
     restart: always
     environment:
@@ -25,11 +25,11 @@ services:
   flyway:
     image: flyway/flyway:6.1.0
     depends_on:
-      - db
+      - cudl-db
     volumes:
       - ./src/main/resources/db/migration/:/flyway/sql/
     environment:
-      FLYWAY_URL: jdbc:postgresql://db/cudl
+      FLYWAY_URL: jdbc:postgresql://cudl-db/cudl
       FLYWAY_USER: cudl
       FLYWAY_PASSWORD: ${TEST_DB_PASSWORD:-password}
     command: migrate -connectRetries=60
