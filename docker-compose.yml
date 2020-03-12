@@ -14,23 +14,13 @@ services:
     depends_on:
       - cudl-db
   cudl-db:
-    image: postgres:12
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
     restart: always
     environment:
       POSTGRES_USER: cudl
       POSTGRES_DB: cudl
       POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
     ports:
-      - "${TEST_DB_PORT:-0}:5432"
-
-  flyway:
-    image: flyway/flyway:6.1.0
-    depends_on:
-      - cudl-db
-    volumes:
-      - ./src/main/resources/db/migration/:/flyway/sql/
-    environment:
-      FLYWAY_URL: jdbc:postgresql://cudl-db/cudl
-      FLYWAY_USER: cudl
-      FLYWAY_PASSWORD: ${TEST_DB_PASSWORD:-password}
-    command: migrate -connectRetries=60
+      - ${CUDL_DB_HOST_PORT:-0}:5432
