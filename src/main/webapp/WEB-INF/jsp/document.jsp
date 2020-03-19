@@ -140,20 +140,28 @@
 
                     <span id="pageLabel"></span>
 
-                    <div class="cudl-viewer-buttons-zoom">
-                        <button id="rotateLeft" class="cudl-btn fa fa-rotate-left"
-                            title="Rotate the image 90° left"></button>
-                        <button id="rotateRight" class="cudl-btn fa fa-rotate-right"
-                            title="Rotate the image 90° right"></button>
-                        <button id="zoomIn" class="cudl-btn fa fa-plus"
-                            title="Zoom in to the image"></button>
-                        <button id="zoomOut" class="cudl-btn fa fa-minus"
-                            title="Zoom out of the image"></button>
-                        <%-- Optional button set in properties --%>
-                        <c:if test="${zoomResetButton eq true}">
-                            <button id="zoomHome" class="cudl-btn fa fa-home"
-                                    title="Reset zoom to home view"></button>
-                        </c:if>
+                    <div class="cudl-viewer-zoom">
+                        <div class="cudl-viewer-buttons-zoom">
+                            <button id="rotateLeft" class="cudl-btn fa fa-rotate-left"
+                                title="Rotate the image 90° left"></button>
+                            <button id="rotateRight" class="cudl-btn fa fa-rotate-right"
+                                title="Rotate the image 90° right"></button>
+                            <button id="zoomIn" class="cudl-btn fa fa-plus"
+                                title="Zoom in to the image"></button>
+                            <button id="zoomOut" class="cudl-btn fa fa-minus"
+                                title="Zoom out of the image"></button>
+                            <%-- Optional zoom reset button set in properties --%>
+                            <c:if test="${zoomResetButton eq true}">
+                                <button id="zoomHome" class="cudl-btn fa fa-home"
+                                        title="Reset zoom to home view"></button>
+                            </c:if>
+                        </div>
+                        <div class="cudl-viewer-zoom-info">
+                            <%-- Optional zoom factor set in properties --%>
+                            <c:if test="${zoomFactor eq true}">
+                                <span id="zoomFactor"></span>
+                            </c:if>
+                        </div>
                     </div>
                     <div class="cudl-viewer-buttons-maximize">
                         <button id="fullscreen" class="cudl-btn fa fa-expand"
