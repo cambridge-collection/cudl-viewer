@@ -87,6 +87,7 @@
             <json:property name="iiifManifestURL" value="${iiifManifestURL}"/>
             <json:property name="iiifMiradorURL" value="/mirador/${item.id}/${page}"/>
             <json:property name="imageReproPageURL" value="${imageReproPageURL}"/>
+            <json:property name="viewportNavigatorEnabled" value="${!!viewportNavigator}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
             <%-- Tagging related data --%>

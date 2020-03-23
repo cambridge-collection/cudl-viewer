@@ -276,6 +276,7 @@ public class DocumentViewController {
         // UI Configuration
         modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
         modelAndView.addObject("zoomFactor", Properties.getString("ui.options.buttons.zoomFactor"));
+        modelAndView.addObject("viewportNavigator", Properties.getString("ui.options.viewportNavigator"));
         modelAndView.addObject("downloadSizes", downloadSizes);
 
         return modelAndView;
