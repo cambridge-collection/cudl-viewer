@@ -230,68 +230,6 @@
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
 
-                                      <span>
-                                          <div role="tabpanel" class="tab-pane" id="use">
-                                             <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                   <h3 class="panel-title">Use</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                  <div id="downloadOption">
-                                                    <div class="button usebutton">
-                                                      <a class="btn btn-info left" href="#">
-                                                        <i class="fa fa-download fa-2x pull-left"></i>
-                                                            Download<br/>Image
-                                                      </a>
-                                                     </div>
-                                                   </div>
-                                                   <div id="rightsOption">
-                                                       <div class="button usebutton" >
-                                                         <a class="btn btn-info left"
-                                                         href="${imageReproPageURL}"
-                                                         target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
-                                                       Request<br/>Rights
-                                                          </a>
-                                                       </div>
-                                                   </div>
-                                                    <div id="downloadMetadataOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                          <i class="fa fa-file-code-o fa-2x pull-left"></i> Download<br>Metadata
-                                                        </a>
-                                                      </div>
-                                                    </div>
-                                                    <div id="bookmarkOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                          <i class="fa fa-bookmark fa-2x pull-left"></i>Bookmark<br/>Image
-                                                        </a>
-                                                      </div>
-                                                    </div>
-
-                                                    <div id="iiifOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}">
-                                                          <span class="pull-left"><img src="/img/logo-iiif-34x30.png"
-                                                                                       title="International Image Interoperability Framework"></span> IIIF<br>Manifest
-                                                        </a>
-                                                      </div>
-                                                    </div>
-                                                    <div id="miradorOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                            <span class="pull-left"><img src="/img/mirador.png"
-                                                                                         title="Open in Mirador"></span> Open in<br>Mirador
-                                                        </a>
-                                                      </div>
-                                                    </div>
-
-                                                </div>
-
-                                             </div>
-                                          </div>
-                                       </span>
-
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
@@ -386,6 +324,67 @@
                         <%-- genizah tagging --%>
                         <div role="tabpanel" class="tab-pane" id="tagging"></div>
                     </div>
+                </div>
+                <!-- Usage buttons -->
+                <div id="use" class="bottom-panel">
+<%--                    <div class="panel panel-default">--%>
+                        <div class="panel-body">
+                            <div id="downloadOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Download Image">
+                                        <i class="fa fa-download fa-2x"></i>
+                                        <span>Download<br/>Image</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="rightsOption">
+                                <div class="button usebutton" >
+                                    <a class="btn btn-info left"
+                                       href="${imageReproPageURL}"
+                                       target="_blank"
+                                       title="Request Rights">
+                                        <i class="fa fa-gavel fa-2x"></i>
+                                        <span>Request<br/>Rights</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="downloadMetadataOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Download Metadata">
+                                        <i class="fa fa-file-code-o fa-2x"></i>
+                                        <span>Download<br>Metadata</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="bookmarkOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Bookmark Image">
+                                        <i class="fa fa-bookmark fa-2x"></i>
+                                        <span>Bookmark<br/>Image</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="iiifOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}"
+                                       title="View IIIF Manifest">
+                                                          <img src="/img/logo-iiif-34x30.png"
+                                                               title="International Image Interoperability Framework">
+                                        <span>IIIF<br>Manifest</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="miradorOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Open in Mirador">
+                                                            <img src="/img/mirador.png" title="Open in Mirador">
+                                        <span>Open in<br>Mirador</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+<%--                    </div>--%>
                 </div>
             </div>
 
