@@ -12,8 +12,12 @@ import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Items;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 /**
@@ -35,6 +39,8 @@ public class DocumentViewControllerTest {
         CollectionsDao collectionsdao = new MockCollectionsDao();
 
         URI rootUri = URI.create("http://testurl.testingisthebest.com:8080");
+        URI iiifImageServer = URI.create("http://images.digital.library.example.com/iiif/");
+        Optional<Map<String, String>> downloadSizes = Optional.empty();
 
         MockHttpServletRequest req = new MockHttpServletRequest();
         req.setRequestURI("/view/" + ITEM_ID);
@@ -43,8 +49,12 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao), itemsDao,
-            URI.create("http://testurl.testingisthebest.com:8080"));
+            new CollectionFactory(collectionsdao),
+            itemsDao,
+            rootUri,
+            iiifImageServer,
+            downloadSizes
+        );
 
         ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
 
@@ -52,6 +62,8 @@ public class DocumentViewControllerTest {
         assertEquals(0, mDoc.getModelMap().get("page"));
         assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("docURL"));
         assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
+        assertNotNull(mDoc.getModelMap().get("downloadSizes"));
+        assertEquals(new HashMap<>(), mDoc.getModelMap().get("downloadSizes"));
     }
 
 }
