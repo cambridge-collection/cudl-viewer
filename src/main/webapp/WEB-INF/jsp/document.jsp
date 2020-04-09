@@ -117,12 +117,12 @@
                             alt="Logo for Cambridge University" title="Cambridge University"></a>
 
                         <div class="cudl-viewer-buttons-pagination">
-                            <button id="prevPage" class="cudl-btn fa fa-arrow-left"
-                                title="Previous Page"></button>
+                            <button id="${textDirectionRightToLeft ? 'nextPage' : 'prevPage'}" class="cudl-btn fa fa-arrow-left"
+                                title="${textDirectionRightToLeft ? 'Next Page' : 'Previous Page'}"></button>
                             <input id="pageInput" type="text" value="1" size="4"> of <span
                                 id="maxPage"></span>
-                            <button id="nextPage" class="cudl-btn fa fa-arrow-right"
-                                title="Next Page"></button>
+                            <button id="${textDirectionRightToLeft ? 'prevPage' : 'nextPage'}" class="cudl-btn fa fa-arrow-right"
+                                title="${textDirectionRightToLeft ? 'Previous Page' : 'Next Page'}"></button>
                             <br />
                         </div>
 

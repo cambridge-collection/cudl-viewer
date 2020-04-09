@@ -236,6 +236,15 @@ public class DocumentViewController {
 
         modelAndView.addObject("itemDAO", itemDAO);
 
+        // Item Text Direction
+        JSONObject json = item.getJSON();
+        if (json.has("textDirection")) {
+            String td = json.getString("textDirection");
+            if (td != null && td.equals("R")) {
+                modelAndView.addObject("textDirectionRightToLeft", true);
+            }
+        }
+
         // Page Information
         modelAndView.addObject("page", page);
 
@@ -258,6 +267,7 @@ public class DocumentViewController {
             modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
         }
         modelAndView.addObject("imageReproPageURL", item.getImageReproPageURL());
+
 
         // UI Configuration
         modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
