@@ -76,6 +76,7 @@
             <json:property name="docId" value="${item.id}"/>
             <json:property name="docURL" value="${docURL}"/>
             <json:property name="imageServer" value="${imageServer}"/>
+            <json:property name="iiifImageServer" value="${iiifImageServer}"/>
             <json:property name="services" value="${services}"/>
             <json:property name="collectionURL" value="${organisationalCollection.URL}"/>
             <json:property name="collectionTitle" value="${organisationalCollection.title}"/>
@@ -402,9 +403,25 @@
                 <a href="#" class="close">&times;</a>
                 <p>This image has the following copyright:</p>
                 <div class="well" id="downloadCopyright"></div>
-                <p>Do you want to download this image?</p>
-                <button type="button" class="btn btn-default btn-success">Yes</button>
-                <button type="button" class="btn btn-default">No</button>
+                <c:if test="${!empty downloadSizes}">
+                    <p>Choose one of the available sizes to download:
+                    <select id="downloadSizes" name="downloadSizes">
+                        <c:forEach var="downloadSize" items="${downloadSizes}">
+                            <option value="${downloadSize.value}">
+                                <c:out value="${downloadSize.key}"/>
+                                (<c:out value="${downloadSize.value}"/>px)
+                            </option>
+                        </c:forEach>
+                    </select>
+                    <button type="button" class="btn btn-default btn-success">Download</button>
+                    <button type="button" class="btn btn-default">Cancel</button>
+                </c:if>
+
+
+                <c:if test="${empty downloadSizes}">
+                    <p>Sorry, there are no available sizes to download.</p>
+                </c:if>
+
             </div>
             <div id="downloadMetadataConfirmation" class="alert alert-info"
                 style="display: none">

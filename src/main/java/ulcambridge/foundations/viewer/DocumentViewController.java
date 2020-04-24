@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,19 +51,29 @@ public class DocumentViewController {
     private final ItemsDao itemDAO;
 
     private final URI rootURL;
+    private final URI iiifImageServer;
+
+    private final Map<String, String> downloadSizes;
 
     @Autowired
     public DocumentViewController(
         CollectionFactory collectionFactory,
-        ItemsDao itemDAO, @Value("${rootURL}") URI rootUrl) {
+        ItemsDao itemDAO,
+        URI rootUrl,
+        URI iiifImageServer,
+        @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(rootUrl, "rootUrl is required");
+        Assert.notNull(iiifImageServer, "iiifImageServer is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = itemDAO;
         this.rootURL = rootUrl;
+        this.iiifImageServer = iiifImageServer;
+        this.downloadSizes = downloadSizes.orElseGet(HashMap::new);
+
     }
 
     // on path /view/{docId}
@@ -258,10 +271,12 @@ public class DocumentViewController {
             modelAndView.addObject("thumbnailURL", item.getThumbnailURL());
         }
         modelAndView.addObject("imageReproPageURL", item.getImageReproPageURL());
+        modelAndView.addObject("iiifImageServer", iiifImageServer);
 
         // UI Configuration
         modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
         modelAndView.addObject("zoomFactor", Properties.getString("ui.options.buttons.zoomFactor"));
+        modelAndView.addObject("downloadSizes", downloadSizes);
 
         return modelAndView;
     }
