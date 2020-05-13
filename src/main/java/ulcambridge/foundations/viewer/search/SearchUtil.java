@@ -35,6 +35,7 @@ public final class SearchUtil {
                 .queryParam("title", searchForm.getTitle())
                 .queryParam("author", searchForm.getAuthor())
                 .queryParam("subject", searchForm.getSubject())
+                .queryParam("language", searchForm.getLanguage())
                 .queryParam("location", searchForm.getLocation());
 
         if(searchForm.hasRecallScale()) {

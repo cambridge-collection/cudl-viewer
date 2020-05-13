@@ -23,6 +23,7 @@ public class SearchForm {
     private String title = "";
     private String author = "";
     private String subject = "";
+    private String language = "";
     private String location = "";
     private Integer yearStart = null;
     private Integer yearEnd = null;
@@ -118,6 +119,10 @@ public class SearchForm {
     public void setSubject(String subject) {
         this.subject = subject;
     }
+
+    public String getLanguage() { return language; }
+
+    public void setLanguage(String language) { this.language = language; }
 
     public String getLocation() {
         return location;
@@ -232,6 +237,7 @@ public class SearchForm {
         this.title = input.title;
         this.author = input.author;
         this.subject = input.subject;
+        this.language = input.language;
         this.location = input.location;
         this.yearStart = input.yearStart;
         this.yearEnd = input.yearEnd;

@@ -154,6 +154,10 @@ public class XTFSearch implements Search {
             uriB.queryParam("subjectFullForm", searchForm.getSubject());
         }
 
+        if (searchForm.getLanguage() != null) {
+            uriB.queryParam("languageString", searchForm.getLanguage());
+        }
+
         if (searchForm.getLocation() != null) {
             uriB.queryParam("placeFullForm", searchForm.getLocation());
         }

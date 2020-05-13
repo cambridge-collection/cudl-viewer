@@ -141,6 +141,17 @@
 
                                     <div class="campl-column12">
                                         <div class="campl-column2">
+                                            <form:label class="right" path="language">Language</form:label>
+                                        </div>
+                                        <div class="campl-column10">
+                                            <span class="hint--right" data-hint="Search for items in a particular language, e.g. Latin">
+                                                <form:input path="language" type="text" size="35" value="" name="language" />
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="campl-column12">
+                                        <div class="campl-column2">
                                             <form:label class="right" path="location">Location</form:label>
                                         </div>
                                         <div class="campl-column10">
