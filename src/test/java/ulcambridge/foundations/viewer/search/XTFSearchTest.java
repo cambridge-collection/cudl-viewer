@@ -19,12 +19,14 @@ public class XTFSearchTest {
         facetMap.put("subject", "test subject");
         facetMap.put("date", "test date");
         facetMap.put("collection", "test collection");
+        facetMap.put("language", "test language");
 
         SearchForm form = new SearchForm();
         form.setKeyword("keyword");
         form.setFacetSubject("test subject");
         form.setFacetDate("test date");
         form.setFacetCollection("test collection");
+        form.setFacetCollection("test language");
 
         XTFSearch s = new TestableXTFSearch();
         SearchResultSet r = s.makeSearch(form);

@@ -20,10 +20,12 @@ public class SearchUtilTest {
         form.setKeyword("keyword");
         form.setFacetSubject("test subject");
         form.setFacetDate("test date");
+        form.setFacetLanguage("test language");
 
         assertTrue(SearchUtil.getURLParameters(form).contains("keyword=keyword"));
         assertTrue(SearchUtil.getURLParameters(form).contains("facetDate=test%20date"));
         assertTrue(SearchUtil.getURLParameters(form).contains("facetSubject=test%20subject"));
+        assertTrue(SearchUtil.getURLParameters(form).contains("facetLanguage=test%20language"));
 
         assertTrue(SearchUtil.getURLParametersWithExtraFacet(
             form, "bob", "bobvalue").contains("facetBob=bobvalue")
@@ -37,6 +39,9 @@ public class SearchUtilTest {
         assertTrue(SearchUtil.getURLParametersWithExtraFacet(
             form, "bob", "bobvalue").contains("facetSubject=test%20subject")
         );
+        assertTrue(SearchUtil.getURLParametersWithExtraFacet(
+            form, "bob", "bobvalue").contains("facetLanguage=test%20language")
+        );
 
         assertTrue(SearchUtil.getURLParametersWithoutFacet(
             form, "subject").contains("keyword=keyword")
@@ -45,7 +50,10 @@ public class SearchUtilTest {
             form, "subject").contains("facetDate=test%20date")
         );
         assertFalse(SearchUtil.getURLParametersWithoutFacet(
-            form, "subject").contains("acetSubject=test%20subject")
+            form, "subject").contains("facetSubject=test%20subject")
+        );
+        assertFalse(SearchUtil.getURLParametersWithoutFacet(
+            form, "language").contains("facetLanguage=test%20language")
         );
     }
 }

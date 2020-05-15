@@ -63,6 +63,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
         form.setKeyword("Elementary Mathematics");
         form.setFacetCollection("Newton Papers");
         form.setFacetSubject("Algebra - Early works to 1800");
+        form.setFacetLanguage("English, Latin and Greek");
 
         CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
