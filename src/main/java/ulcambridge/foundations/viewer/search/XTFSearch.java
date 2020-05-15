@@ -188,6 +188,13 @@ public class XTFSearch implements Search {
             );
         }
 
+        if (searchForm.getFacetLanguage() != null) {
+            uriB.queryParam(
+                String.format("f%d-language", ++facetCount),
+                searchForm.getFacetLanguage()
+            );
+        }
+
         if (searchForm.getFacetDate() != null) {
             uriB.queryParam(
                 String.format("f%d-date", ++facetCount),
