@@ -24,6 +24,7 @@ public class SearchForm {
     private String author = "";
     private String subject = "";
     private String language = "";
+    private String place = "";
     private String location = "";
     private Integer yearStart = null;
     private Integer yearEnd = null;
@@ -124,6 +125,14 @@ public class SearchForm {
     public String getLanguage() { return language; }
 
     public void setLanguage(String language) { this.language = language; }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
 
     public String getLocation() {
         return location;
@@ -248,6 +257,7 @@ public class SearchForm {
         this.author = input.author;
         this.subject = input.subject;
         this.language = input.language;
+        this.place = input.place;
         this.location = input.location;
         this.yearStart = input.yearStart;
         this.yearEnd = input.yearEnd;

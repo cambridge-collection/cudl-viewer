@@ -32,7 +32,8 @@
             <cudl:search-result-param form="${form}" label="Title" attr="title"/>
             <cudl:search-result-param form="${form}" label="Subject" attr="subject"/>
             <cudl:search-result-param form="${form}" label="Language" attr="language"/>
-            <cudl:search-result-param form="${form}" label="Location" attr="location"/>
+            <cudl:search-result-param form="${form}" label="Associated Place or Origin" attr="place"/>
+            <cudl:search-result-param form="${form}" label="Current Location" attr="location"/>
             <c:if test="${not (empty form.yearStart or empty form.yearEnd)}">
                 <li>
                     <span>Year: <b><c:out value="${form.yearStart}"/></b> to <b><c:out value="${form.yearEnd}"/></b></span>

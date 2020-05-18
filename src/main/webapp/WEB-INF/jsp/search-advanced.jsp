@@ -152,10 +152,21 @@
 
                                     <div class="campl-column12">
                                         <div class="campl-column2">
+                                            <form:label class="right" path="place">Place</form:label>
+                                        </div>
+                                        <div class="campl-column10">
+                                            <span class="hint--right" data-hint="Search for items associated with or originating in a specific place, e.g. London">
+                                                <form:input path="place" type="text" size="35" value="" name="place" />
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="campl-column12">
+                                        <div class="campl-column2">
                                             <form:label class="right" path="location">Location</form:label>
                                         </div>
                                         <div class="campl-column10">
-                                            <span class="hint--right" data-hint="Search for items related to a specific place, e.g. London">
+                                            <span class="hint--right" data-hint="Search for items deposited in a particular location, e.g. Cambridge University Library">
                                                 <form:input path="location" type="text" size="35" value="" name="location" />
                                             </span>
                                         </div>
