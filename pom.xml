@@ -659,6 +659,18 @@
             <version>2.8.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.11</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>html2pdf</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <!-- Resolve private CUDL artifacts -->
