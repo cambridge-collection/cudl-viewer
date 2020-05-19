@@ -37,6 +37,7 @@ public class SearchForm {
     private String facetCollection;
     private String facetLanguage;
     private String facetPlace;
+    private String facetLocation;
 
     // Variable recall
     /**
@@ -216,6 +217,15 @@ public class SearchForm {
         facets.put("place", facetPlace);
     }
 
+    public String getFacetLocation() {
+        return facetLocation;
+    }
+
+    public void setFacetLocation(String facetLocation) {
+        this.facetLocation = facetLocation;
+        facets.put("location", facetLocation);
+    }
+
     public Map<String, String> getFacets() {
 
         return facets;
@@ -267,6 +277,7 @@ public class SearchForm {
         this.facetSubject = input.facetSubject;
         this.facetLanguage = input.facetLanguage;
         this.facetPlace = input.facetPlace;
+        this.facetLocation = input.facetLocation;
         Hashtable<String, String> facets = new Hashtable<String, String>();
         facets.putAll(input.facets);
         this.facets = facets;

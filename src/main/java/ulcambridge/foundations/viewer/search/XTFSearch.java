@@ -199,6 +199,20 @@ public class XTFSearch implements Search {
             );
         }
 
+        if (searchForm.getFacetPlace() != null) {
+            uriB.queryParam(
+                String.format("f%d-place", ++facetCount),
+                searchForm.getFacetPlace()
+            );
+        }
+
+        if (searchForm.getFacetLocation() != null) {
+            uriB.queryParam(
+                String.format("f%d-location", ++facetCount),
+                searchForm.getFacetLocation()
+            );
+        }
+
         if (searchForm.getFacetDate() != null) {
             uriB.queryParam(
                 String.format("f%d-date", ++facetCount),

@@ -21,11 +21,15 @@ public class SearchUtilTest {
         form.setFacetSubject("test subject");
         form.setFacetDate("test date");
         form.setFacetLanguage("test language");
+        form.setFacetPlace("test place");
+        form.setFacetLocation("test location");
 
         assertTrue(SearchUtil.getURLParameters(form).contains("keyword=keyword"));
         assertTrue(SearchUtil.getURLParameters(form).contains("facetDate=test%20date"));
         assertTrue(SearchUtil.getURLParameters(form).contains("facetSubject=test%20subject"));
         assertTrue(SearchUtil.getURLParameters(form).contains("facetLanguage=test%20language"));
+        assertTrue(SearchUtil.getURLParameters(form).contains("facetPlace=test%20place"));
+        assertTrue(SearchUtil.getURLParameters(form).contains("facetLocation=test%20location"));
 
         assertTrue(SearchUtil.getURLParametersWithExtraFacet(
             form, "bob", "bobvalue").contains("facetBob=bobvalue")
@@ -42,6 +46,12 @@ public class SearchUtilTest {
         assertTrue(SearchUtil.getURLParametersWithExtraFacet(
             form, "bob", "bobvalue").contains("facetLanguage=test%20language")
         );
+        assertTrue(SearchUtil.getURLParametersWithExtraFacet(
+            form, "bob", "bobvalue").contains("facetPlace=test%20place")
+        );
+        assertTrue(SearchUtil.getURLParametersWithExtraFacet(
+            form, "bob", "bobvalue").contains("facetLocation=test%20location")
+        );
 
         assertTrue(SearchUtil.getURLParametersWithoutFacet(
             form, "subject").contains("keyword=keyword")
@@ -54,6 +64,12 @@ public class SearchUtilTest {
         );
         assertFalse(SearchUtil.getURLParametersWithoutFacet(
             form, "language").contains("facetLanguage=test%20language")
+        );
+        assertFalse(SearchUtil.getURLParametersWithoutFacet(
+            form, "place").contains("facetPlace=test%20place")
+        );
+        assertFalse(SearchUtil.getURLParametersWithoutFacet(
+            form, "location").contains("facetLocation=test%20location")
         );
     }
 }
