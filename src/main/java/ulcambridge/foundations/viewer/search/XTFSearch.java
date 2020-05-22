@@ -103,6 +103,11 @@ public class XTFSearch implements Search {
         uriB.queryParam("smode", "advanced");
         uriB.queryParam("startDoc", start);
 
+        // Expand/contract facet
+        if (searchForm.getExpandFacet() != null) {
+            uriB.queryParam("expand", searchForm.getExpandFacet());
+        }
+
         // Keywords
         if (searchForm.getKeyword() != null) {
             uriB.queryParam("keyword",searchForm.getKeyword());

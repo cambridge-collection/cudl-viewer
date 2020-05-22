@@ -39,6 +39,9 @@ public class SearchForm {
     private String facetPlace;
     private String facetLocation;
 
+    // Expand facet results
+    private String expandFacet = "";
+
     // Variable recall
     /**
      * The recallScale controls the variable recall in keyword searches
@@ -231,6 +234,14 @@ public class SearchForm {
         return facets;
     }
 
+    /** Expand Facet **/
+
+    public String getExpandFacet() { return expandFacet; }
+
+    public void setExpandFacet(String expandFacet) {
+        this.expandFacet = expandFacet;
+    }
+
     public boolean hasRecallScale() {
         return recallScale != null;
     }
@@ -281,6 +292,8 @@ public class SearchForm {
         Hashtable<String, String> facets = new Hashtable<String, String>();
         facets.putAll(input.facets);
         this.facets = facets;
+
+        this.expandFacet = input.expandFacet;
     }
 
 

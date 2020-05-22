@@ -37,7 +37,8 @@ public final class SearchUtil {
                 .queryParam("subject", searchForm.getSubject())
                 .queryParam("language", searchForm.getLanguage())
                 .queryParam("place", searchForm.getPlace())
-                .queryParam("location", searchForm.getLocation());
+                .queryParam("location", searchForm.getLocation())
+                .queryParam("expandFacet", searchForm.getExpandFacet());
 
         if(searchForm.hasRecallScale()) {
             builder.queryParam("tagging", 1)
