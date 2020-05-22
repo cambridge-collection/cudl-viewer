@@ -1,8 +1,9 @@
 package ulcambridge.foundations.viewer.pdf;
 
-import com.itextpdf.io.font.FontProgram;
-import com.itextpdf.io.font.FontProgramFactory;
-import com.itextpdf.io.font.PdfEncodings;
+import com.google.common.io.Files;
+import com.itextpdf.html2pdf.ConverterProperties;
+import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.html2pdf.resolver.font.DefaultFontProvider;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
@@ -14,35 +15,50 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.Image;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.property.*;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 public class SinglePagePdf {
 
-    private final String IIIF_ROOT = "https://images.lib.cam.ac.uk/iiif/";
-    private final String HEADER_TEXT = "Manchester University";
+    private final String IIIFImageServer;
+    private final String baseURL;
+    private final String headerText;
+    private final int[] pdfColour;
+    private final String defaultFont;
+    private final String[] fontDirectories;
 
-    // Fonts
-    private final String JUNICODE = "/usr/local/tomcat/webapps/ROOT/fonts/junicode/Junicode.ttf";
-    private final String CHARISSIL = "/usr/local/tomcat/webapps/ROOT/fonts/CharisSIL/CharisSIL-R.ttf";
-    private final String NOTOSANS = "/usr/local/tomcat/webapps/ROOT/fonts/noto-sans/NotoSans-Regular.ttf";
-    private final String NOTOSANSARABIC = "/usr/local/tomcat/webapps/ROOT/fonts/noto-sans-arabic/NotoSansArabic-Regular.ttf";
-    private final String NOTOSANSHEBREW = "/usr/local/tomcat/webapps/ROOT/fonts/noto-sans-hebrew/NotoSansHebrew-Regular.ttf";
-    private final String NOTOSANSCHINESE = "/usr/local/tomcat/webapps/ROOT/fonts/noto-sans-chinese/NotoSansCJKtc-Regular.otf";
-    private final String NOTOSANSJAPANESE = "/usr/local/tomcat/webapps/ROOT/fonts/noto-sans-japanese/NotoSansCJKjp-Regular.otf";
+    public SinglePagePdf(String IIIFImageServer, String baseURL,
+                         String headerText, int[] pdfColour,
+                         String[] urlsForFontZips, String defaultFont) throws MalformedURLException {
+        this.IIIFImageServer = IIIFImageServer;
+        this.baseURL = baseURL;
+        this.headerText = headerText;
+        this.pdfColour = pdfColour;
+        this.defaultFont = defaultFont;
+        this.fontDirectories = new String[urlsForFontZips.length];
+        for (int i=0; i<urlsForFontZips.length; i++) {
+            fontDirectories[i] = ExtractZipToTempDirectory(new URL(urlsForFontZips[i]));
+        }
+    }
 
-
-    // A4 595 pixels x 842 pixels
     public void writePdf(Item item, String docId, String page, HttpServletResponse response) {
 
         try {
@@ -51,33 +67,16 @@ public class SinglePagePdf {
             response.setContentType("application/pdf");
             PdfDocument pdf = new PdfDocument(new PdfWriter(response.getOutputStream()));
             Document document = new Document(pdf, PageSize.A4, false);
-            document.setMargins(10f, 10f, 100f, 10f);
+            document.setMargins(30f, 30f, 100f, 30f);
 
             // Set font
-            FontProgram fontProgram1 = FontProgramFactory.createFont(NOTOSANS);
-            FontProgram fontProgram2 = FontProgramFactory.createFont(NOTOSANSARABIC);
-            FontProgram fontProgram3 = FontProgramFactory.createFont(NOTOSANSHEBREW);
-            FontProgram fontProgram4 = FontProgramFactory.createFont(NOTOSANSCHINESE);
-            FontProgram fontProgram5 = FontProgramFactory.createFont(NOTOSANSJAPANESE);
-            //PdfFont font = PdfFontFactory.createFont(fontProgram, PdfEncodings.IDENTITY_H, true);
-            //font.setSubset(false);
-
+            // Setup font provider, note: FIRST listed font is always default.
             FontProvider fontProvider = new FontProvider();
-            fontProvider.addFont(fontProgram1, PdfEncodings.IDENTITY_H);
-            fontProvider.addFont(fontProgram2, PdfEncodings.IDENTITY_H);
-            fontProvider.addFont(fontProgram3, PdfEncodings.IDENTITY_H);
-            fontProvider.addFont(fontProgram4, PdfEncodings.IDENTITY_H);
-            fontProvider.addFont(fontProgram5, PdfEncodings.IDENTITY_H);
-
-/*            ConverterProperties properties = new ConverterProperties();
-            properties.setFontProvider(fontProvider);
-            List<IElement> iElements = HtmlConverter.convertToElements(item.getAbstract());
-            for (IElement element : iElements) {
-                document.add((IBlockElement)element);
-            }*/
-
+            for (String fontDir: fontDirectories) {
+                fontProvider.addDirectory(fontDir);
+            }
             document.setFontProvider(fontProvider);
-            document.setFont(NOTOSANS); // needed to initalise fontProvider
+            document.setFont(defaultFont); // needed to initalise fontProvider
 
             // Formatting
             document.setProperty(Property.LEADING, new Leading(Leading.MULTIPLIED, 1.02f));
@@ -86,16 +85,26 @@ public class SinglePagePdf {
             JSONObject pageJSON = item.getJSON().getJSONArray("pages").getJSONObject(Integer.parseInt(page) - 1);
             String iiifImageURL = pageJSON.getString("IIIFImageURL");
 
-            String imageURL = IIIF_ROOT + iiifImageURL + "/full/400,/0/default.jpg";
+            String imageURL = IIIFImageServer + iiifImageURL + "/full/,1000/0/default.jpg";
+            if (pageJSON.getInt("imageWidth") > pageJSON.getInt("imageHeight")) {
+                imageURL = IIIFImageServer + iiifImageURL + "/full/1000,/0/default.jpg";
+            }
             Image image = new Image(ImageDataFactory.create(imageURL));
 
-            document.add(new Paragraph(item.getTitle() +" ("+item.getId()+")").setFontSize(14).setBold());
-            document.add(new Paragraph(Jsoup.parse(item.getAbstract()).text()));
+            // Title
+            document.add(new Paragraph(item.getTitle() + " (" + item.getId() + ")")
+                .setFontColor(new DeviceRgb(pdfColour[0], pdfColour[1], pdfColour[2])).setFontSize(14).setBold());
 
-            document.add(image.setMargins(10f, 10f, 20f, 10f));
+            document.add(image.setMargins(10f, 0f, 30f, 0f)
+                .scaleToFit(PageSize.A4.getWidth() - 60f, PageSize.A4.getHeight() - 220f));
+
+            // Abstract
+            List<IBlockElement> elements = parseHTML(item.getAbstract(), fontProvider);
+            for (IBlockElement e : elements) {
+                document.add(e);
+            }
 
             // Metadata Table
-            // Table table = new Table(UnitValue.createPercentArray(8)).useAllAvailableWidth();
             float[] columnWidths = {5, 10};
             Table table = new Table(UnitValue.createPercentArray(columnWidths));
 
@@ -114,13 +123,18 @@ public class SinglePagePdf {
                         Cell labelCell = new Cell();
                         labelCell.add(new Paragraph(jsonObj.getString("label")).setFontSize(10)
                             .setFontColor(ColorConstants.WHITE));
-                        labelCell.setBackgroundColor(new DeviceRgb(30, 118, 128));
+                        labelCell.setBackgroundColor(new DeviceRgb(pdfColour[0], pdfColour[1], pdfColour[2]));
                         labelCell.setBorder(Border.NO_BORDER);
                         table.addCell(labelCell);
 
                         // value(s)
                         if (jsonObj.has("displayForm")) {
-                            table.addCell(Jsoup.parse(jsonObj.getString("displayForm")).text()).setFontSize(10);
+                            List<IBlockElement> displayElements = parseHTML(jsonObj.getString("displayForm"), fontProvider);
+                            Div div = new Div();
+                            for (IBlockElement e : displayElements) {
+                                div.add(e);
+                            }
+                            table.addCell(div).setFontSize(10);
                         }
 
                         if (jsonObj.has("value")) {
@@ -131,10 +145,15 @@ public class SinglePagePdf {
                                     valueString.append(value.getString("displayForm")).append(" ; ");
                                 }
                             }
-                            table.addCell(Jsoup.parse(valueString.toString()).text()).setFontSize(10);
+                            valueString.replace(valueString.lastIndexOf(" ;"), valueString.lastIndexOf(" ;") + 2, "");
+                            List<IBlockElement> valueElements = parseHTML(valueString.toString(), fontProvider);
+                            Div div = new Div();
+                            for (IBlockElement e : valueElements) {
+                                div.add(e);
+                            }
+                            table.addCell(div).setFontSize(10);
                         }
                     }
-
                 }
             }
 
@@ -142,7 +161,7 @@ public class SinglePagePdf {
             document.add(table);
 
             // Set Header
-            Paragraph header = getHeader(HEADER_TEXT);
+            Paragraph header = getHeader(headerText);
 
             for (int i = 1; i <= document.getPdfDocument().getNumberOfPages(); i++) {
                 Rectangle pageSize = document.getPdfDocument().getPage(i).getPageSize();
@@ -152,30 +171,27 @@ public class SinglePagePdf {
             }
 
             // Set Footer
-            StringBuilder footerString = new StringBuilder();
-            if (pageMetadata.has("displayImageRights")) {
-                footerString.append(pageMetadata.getString("displayImageRights"));
-            }
-            if (pageMetadata.has("metadataImageRights")) {
-                footerString.append(pageMetadata.getString("metadataRights"));
-            }
-
-            Paragraph footer = getFooter(footerString.toString());
             for (int i = 1; i <= document.getPdfDocument().getNumberOfPages(); i++) {
                 Rectangle pageSize = document.getPdfDocument().getPage(i).getPageSize();
                 float x = pageSize.getWidth() - 20;
                 float y = pageSize.getBottom() + 20;
-                document.showTextAligned(footer, x, y, i, TextAlignment.RIGHT, VerticalAlignment.BOTTOM, 0);
+                if (pageMetadata.has("displayImageRights")) {
+                    Paragraph p = getFooter(pageMetadata.getString("displayImageRights"));
+                    document.showTextAligned(p, x, y, i, TextAlignment.RIGHT, VerticalAlignment.BOTTOM, 0);
+                }
+                if (pageMetadata.has("metadataRights")) {
+                    Paragraph p = getFooter(pageMetadata.getString("metadataRights"));
+                    document.showTextAligned(p, x, y - 14, i, TextAlignment.RIGHT, VerticalAlignment.BOTTOM, 0);
+                }
             }
 
             document.flush();
             document.close();
             response.flushBuffer();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -211,4 +227,61 @@ public class SinglePagePdf {
 
     }
 
+    private List<IBlockElement> parseHTML(String input, FontProvider provider) {
+
+        // Update internal links
+        org.jsoup.nodes.Document html = Jsoup.parse(input);
+        Elements links = html.select("a");
+        for (Element link : links) {
+            if (!link.attr("href").trim().equals("") &&
+                !link.attr("href").startsWith("http") &&
+                !link.attr("href").startsWith("//")) {
+                // add external url to relative links
+                link.attr("href", baseURL + link.attr("href"));
+            }
+        }
+
+        ConverterProperties properties = new ConverterProperties();
+        properties.setFontProvider(provider);
+        properties.setImmediateFlush(false);
+
+        List<IBlockElement> elements = new ArrayList<>();
+        List<IElement> iElements = HtmlConverter.convertToElements(html.body().toString(), properties);
+        for (IElement element : iElements) {
+            IBlockElement e = (IBlockElement) element;
+            elements.add((IBlockElement) element);
+        }
+        return elements;
+    }
+
+    private static String ExtractZipToTempDirectory(URL zipURL) {
+        try {
+            File f = File.createTempFile(zipURL.toString(), "zip");
+            File dir = Files.createTempDir();
+            FileUtils.copyURLToFile(
+                zipURL, f);
+
+            ZipFile zipFile = new ZipFile(f);
+            Enumeration<? extends ZipEntry> entries = zipFile.entries();
+            while (entries.hasMoreElements()) {
+                ZipEntry entry = entries.nextElement();
+                File entryDestination = new File(dir, entry.getName());
+                if (entry.isDirectory()) {
+                    entryDestination.mkdirs();
+                } else {
+                    entryDestination.getParentFile().mkdirs();
+                    try (InputStream in = zipFile.getInputStream(entry);
+                         OutputStream out = new FileOutputStream(entryDestination)) {
+                        IOUtils.copy(in, out);
+                    }
+                }
+            }
+            return dir.getCanonicalPath();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
 }

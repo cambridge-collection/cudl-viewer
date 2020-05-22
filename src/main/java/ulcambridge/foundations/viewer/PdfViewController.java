@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,23 +34,27 @@ public class PdfViewController {
 
     private final URI rootURL;
     private final URI iiifImageServer;
+    private final SinglePagePdf singlePagePdf;
 
     @Autowired
     public PdfViewController(
         CollectionFactory collectionFactory,
         ItemsDao itemDAO,
         URI rootUrl,
-        URI iiifImageServer) {
+        URI iiifImageServer,
+        @Qualifier("singlePagePdf") SinglePagePdf singlePagePdf) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(rootUrl, "rootUrl is required");
         Assert.notNull(iiifImageServer, "iiifImageServer is required");
+        Assert.notNull(singlePagePdf, "singlePagePdf is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = itemDAO;
         this.rootURL = rootUrl;
         this.iiifImageServer = iiifImageServer;
+        this.singlePagePdf = singlePagePdf;
 
     }
 
@@ -62,11 +67,8 @@ public class PdfViewController {
 
         Item item = itemDAO.getItem(docId);
         if (item != null) {
-            System.out.println("Making pdf...");
 
-            SinglePagePdf singlePagePdf = new SinglePagePdf();
             singlePagePdf.writePdf(item, docId, page, response);
-
 
         } else {
             throw new ResourceNotFoundException();

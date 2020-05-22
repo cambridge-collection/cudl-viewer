@@ -131,9 +131,6 @@ public class DispatchServletConfig
             registry.addResourceHandler("/img/**")
                 .addResourceLocations("/img/");
 
-            registry.addResourceHandler("/fonts/**")
-                .addResourceLocations("/fonts/");
-
             registry.addResourceHandler("/mirador-ui/**")
             .addResourceLocations("/mirador-ui/");
 
