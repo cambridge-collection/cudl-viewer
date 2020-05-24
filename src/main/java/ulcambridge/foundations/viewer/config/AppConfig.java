@@ -25,6 +25,7 @@ import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
 import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
 import javax.sql.DataSource;
@@ -230,5 +231,16 @@ public class AppConfig {
                                        @Value("${pdf.fonts.default}") String defaultFont) throws IOException {
 
         return new SinglePagePdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont);
+    }
+
+    @Bean
+    public FullDocumentPdf fullDocumentPdf(@Value("${IIIFImageServer}") String IIIFImageServer,
+                                           @Value("${rootURL}") String baseURL,
+                                           @Value("${pdf.header.text}") String headerText,
+                                           @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
+                                           @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
+                                           @Value("${pdf.fonts.default}") String defaultFont) throws IOException {
+
+        return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont);
     }
 }

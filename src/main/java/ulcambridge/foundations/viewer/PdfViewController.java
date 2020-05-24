@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
 import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,22 +24,25 @@ public class PdfViewController {
 
     private final ItemsDao itemDAO;
     private final SinglePagePdf singlePagePdf;
+    private final FullDocumentPdf fullDocumentPdf;
 
     @Autowired
     public PdfViewController(
         ItemsDao itemDAO,
-        SinglePagePdf singlePagePdf) {
+        SinglePagePdf singlePagePdf,
+        FullDocumentPdf fullDocumentPdf) {
 
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(singlePagePdf, "singlePagePdf is required");
 
         this.itemDAO = itemDAO;
         this.singlePagePdf = singlePagePdf;
+        this.fullDocumentPdf = fullDocumentPdf;
     }
 
     // on path /pdf/{docId}/{page}
     @RequestMapping(value = "/{docId}/{page}")
-    public void handleJSONRequest(@PathVariable("docId") String docId,
+    public void handleSinglePagePDF(@PathVariable("docId") String docId,
                                           @PathVariable("page") String page,
                                           HttpServletResponse response) throws JSONException {
         docId = docId.toUpperCase();
@@ -47,6 +51,22 @@ public class PdfViewController {
         if (item != null) {
 
             singlePagePdf.writePdf(item, page, response);
+
+        } else {
+            throw new ResourceNotFoundException();
+        }
+    }
+
+    // on path /pdf/{docId}/
+    @RequestMapping(value = "/{docId}")
+    public void handleFullDocumentPDF(@PathVariable("docId") String docId,
+                                  HttpServletResponse response) throws JSONException {
+        docId = docId.toUpperCase();
+
+        Item item = itemDAO.getItem(docId);
+        if (item != null) {
+
+           fullDocumentPdf.writePdf(item, response);
 
         } else {
             throw new ResourceNotFoundException();
