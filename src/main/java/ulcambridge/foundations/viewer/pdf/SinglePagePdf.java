@@ -56,7 +56,7 @@ public class SinglePagePdf {
         }
     }
 
-    public void writePdf(Item item, String docId, String page, HttpServletResponse response) {
+    public void writePdf(Item item, String page, HttpServletResponse response) {
 
         try {
             JSONObject pageMetadata = item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0);
@@ -250,7 +250,7 @@ public class SinglePagePdf {
         return elements;
     }
 
-    private static String ExtractZipToTempDirectory(URL zipURL) {
+    private String ExtractZipToTempDirectory(URL zipURL) {
         try {
             // Get Zip File
             File f = File.createTempFile(zipURL.toString(), "zip");
