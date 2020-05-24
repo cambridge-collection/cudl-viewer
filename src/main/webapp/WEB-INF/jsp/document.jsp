@@ -288,6 +288,16 @@
                                                       </div>
                                                     </div>
 
+                                                    <%-- Optional zoom factor set in properties --%>
+                                                    <c:if test="${pdfSinglePage eq true}">
+                                                        <div id="pdfSinglePage">
+                                                          <div class="button usebutton">
+                                                            <a class="btn btn-info left" href="/pdf/${docId}/${page}" download="${docId}-${page}.pdf">
+                                                                <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
+                                                            </a>
+                                                          </div>
+                                                        </div>
+                                                    </c:if>
                                                 </div>
 
                                              </div>
