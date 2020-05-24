@@ -1,9 +1,7 @@
 package ulcambridge.foundations.viewer.pdf;
 
-import com.google.common.io.Files;
 import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
-import com.itextpdf.html2pdf.resolver.font.DefaultFontProvider;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.colors.ColorConstants;
@@ -18,8 +16,8 @@ import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.property.*;
+import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -27,14 +25,13 @@ import org.jsoup.select.Elements;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 public class SinglePagePdf {
 
@@ -248,7 +245,6 @@ public class SinglePagePdf {
         List<IBlockElement> elements = new ArrayList<>();
         List<IElement> iElements = HtmlConverter.convertToElements(html.body().toString(), properties);
         for (IElement element : iElements) {
-            IBlockElement e = (IBlockElement) element;
             elements.add((IBlockElement) element);
         }
         return elements;
@@ -256,26 +252,15 @@ public class SinglePagePdf {
 
     private static String ExtractZipToTempDirectory(URL zipURL) {
         try {
+            // Get Zip File
             File f = File.createTempFile(zipURL.toString(), "zip");
-            File dir = Files.createTempDir();
-            FileUtils.copyURLToFile(
-                zipURL, f);
+            File dir = Files.createTempDirectory("PDFFontZip").toFile();
+            FileUtils.copyURLToFile(zipURL, f);
 
+            // Extract zip
             ZipFile zipFile = new ZipFile(f);
-            Enumeration<? extends ZipEntry> entries = zipFile.entries();
-            while (entries.hasMoreElements()) {
-                ZipEntry entry = entries.nextElement();
-                File entryDestination = new File(dir, entry.getName());
-                if (entry.isDirectory()) {
-                    entryDestination.mkdirs();
-                } else {
-                    entryDestination.getParentFile().mkdirs();
-                    try (InputStream in = zipFile.getInputStream(entry);
-                         OutputStream out = new FileOutputStream(entryDestination)) {
-                        IOUtils.copy(in, out);
-                    }
-                }
-            }
+            zipFile.extractAll(dir.getCanonicalPath());
+
             return dir.getCanonicalPath();
         } catch (IOException e) {
             e.printStackTrace();
