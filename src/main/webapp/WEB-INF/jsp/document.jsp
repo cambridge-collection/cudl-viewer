@@ -298,6 +298,17 @@
                                                           </div>
                                                         </div>
                                                     </c:if>
+
+                                                    <%-- Optional zoom factor set in properties --%>
+                                                    <c:if test="${pdfFullDocument eq true}">
+                                                        <div id="pdfFullDocument">
+                                                          <div class="button usebutton">
+                                                            <a class="btn btn-info left" href="/pdf/${docId}/" download="${docId}">
+                                                                <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Document<br/>PDF
+                                                            </a>
+                                                          </div>
+                                                        </div>
+                                                    </c:if>
                                                 </div>
 
                                              </div>

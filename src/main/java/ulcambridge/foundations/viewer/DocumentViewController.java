@@ -278,6 +278,7 @@ public class DocumentViewController {
         modelAndView.addObject("zoomFactor", Properties.getString("ui.options.buttons.zoomFactor"));
         modelAndView.addObject("viewportNavigator", Properties.getString("ui.options.viewportNavigator"));
         modelAndView.addObject("pdfSinglePage", Properties.getString("ui.options.buttons.about.pdfSinglePage"));
+        modelAndView.addObject("pdfFullDocument", Properties.getString("ui.options.buttons.about.pdfFullDocument"));
 
         modelAndView.addObject("downloadSizes", downloadSizes);
 
