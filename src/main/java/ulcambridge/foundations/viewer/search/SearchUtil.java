@@ -119,4 +119,16 @@ public final class SearchUtil {
         builder.queryParam(getFacetName(facetName), facetValue);
         return getQuery(builder);
     }
+
+    public static String getURLParametersWithFacetExpanded(
+        SearchForm searchForm, String facetName) {
+
+        UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
+        builder = addBaseQueryParams(builder, searchForm);
+        builder = addFacetQueryParams(builder,
+            searchForm.getFacets().entrySet());
+        builder.replaceQueryParam("expandFacet", facetName);
+        return getQuery(builder);
+    }
+
 }

@@ -6,6 +6,9 @@ import ulcambridge.foundations.viewer.forms.SearchForm;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Unit test
  */
@@ -13,6 +16,9 @@ public class SearchUtilTest {
     /**
      * Tests the SearchUtil object
      */
+
+    private static final Logger LOG = LoggerFactory.getLogger(SearchUtilTest.class.getName());
+
     @Test
     public void testSearchUtil() {
 
@@ -70,6 +76,10 @@ public class SearchUtilTest {
         );
         assertFalse(SearchUtil.getURLParametersWithoutFacet(
             form, "location").contains("facetLocation=test%20location")
+        );
+
+        assertTrue(SearchUtil.getURLParametersWithFacetExpanded(
+            form, "location").contains("expandFacet=location")
         );
     }
 }

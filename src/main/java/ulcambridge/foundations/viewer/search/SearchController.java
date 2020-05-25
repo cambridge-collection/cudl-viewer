@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.json.JSONException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
@@ -18,14 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.UriUtils;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -188,7 +184,7 @@ public class SearchController {
         JSONObject o = new JSONObject();
 
         o.put("value", facet.getBand());
-        o.put("occurrences", facet.getOccurences());
+        o.put("occurrences", facet.getOccurrences());
 
         return o;
     }
@@ -208,6 +204,7 @@ public class SearchController {
 
         o.put("label", group.getFieldLabel());
         o.put("field", group.getField());
+        o.put("totalFacets", group.getTotalGroups());
         o.put("facets", getGroupFacetsJSON(group));
 
         return o;

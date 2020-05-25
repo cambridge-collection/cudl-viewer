@@ -304,6 +304,7 @@ public class XTFSearch implements Search {
                 String field = facetElement.getAttributes().getNamedItem("field").getTextContent();
                 field = field.replace("facet-", ""); // remove facet- from that start.
 
+                final int facetGroupTotalGroups = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalGroups").getTextContent());
                 final int facetGroupOccurrences = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalDocs").getTextContent());
 
                 final NodeList groups = facetElement.getElementsByTagName("group");
@@ -316,7 +317,7 @@ public class XTFSearch implements Search {
                     facets.add(facet);
                 }
 
-                final FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurrences);
+                final FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurrences, facetGroupTotalGroups);
                 facetGroups.add(facetGroup);
             }
         }

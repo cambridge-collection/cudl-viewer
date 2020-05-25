@@ -176,7 +176,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
             facets.add(f);
             facets.add(f2);
 
-            FacetGroup g = new FacetGroup("field", facets, 5);
+            FacetGroup g = new FacetGroup("field", facets, 5, 12);
 
             ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup>();
             facetGroups.add(g);

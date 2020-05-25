@@ -5,8 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Holds a set of search facets for one field, e.g. date.
- * Holds a number of bands within that (1800s,1900s,etc)
+ * Holds a set of search facets for one field, e.g. collection.
  *
  * @author jennie
  *
@@ -16,7 +15,8 @@ public class FacetGroup {
     private List<Facet> facets;
     private String field;
     private String fieldLabel;
-    private int occurences;
+    private int occurrences;
+    private int totalGroups;
 
     /**
      * Facets are sorted after the group is created
@@ -26,12 +26,13 @@ public class FacetGroup {
      * @param field
      * @param facets
      */
-    public FacetGroup(String field, List<Facet> facets, int occurances) {
+    public FacetGroup(String field, List<Facet> facets, int occurrences, int totalGroups) {
 
         this.field = field;
         this.fieldLabel = field.substring(0, 1).toUpperCase() + field.substring(1);
-        this.occurences = occurances;
         this.facets = facets;
+        this.occurrences = occurrences;
+        this.totalGroups = totalGroups;
 
     }
 
@@ -43,9 +44,11 @@ public class FacetGroup {
         return fieldLabel;
     }
 
-    public int getOccurances() {
-        return this.occurences;
+    public int getOccurrences() {
+        return this.occurrences;
     }
+
+    public int getTotalGroups() { return totalGroups; }
 
     public int getNumBands() {
         return facets.size();
@@ -75,31 +78,5 @@ public class FacetGroup {
         }
         return null;
     }
-
-    /**
-     * Adds a new facet (band) if one does not already exist in this group
-     * else adds one to the occurrences of that facet in this group.
-     *
-     * @param band
-     *//*
-    public void add(Facet newFacet) throws Exception {
-
-        if (!newFacet.getField().equals(this.field)) {
-            throw new Exception ("Can't add facet, it has a different field to this facet group");
-        }
-
-        Facet facet = getFacetWithBand(newFacet.getBand());
-        if (facet!=null) {
-            // add one to count
-            facet.setOccurences(facet.getOccurences()+1);
-
-        } else {
-            // add new band
-            facets.add(newFacet);
-
-        }
-        Collections.sort(facets);
-
-    }*/
 
 }

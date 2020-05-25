@@ -25,7 +25,7 @@ public class FacetGroupTest {
         facets.add(f);
         facets.add(f2);
 
-        FacetGroup g = new FacetGroup("field", facets, 5);
+        FacetGroup g = new FacetGroup("field", facets, 5, 12);
 
         assertEquals(2, g.getFacets().size());
         assertTrue(g.getFacets().contains(f));
@@ -35,5 +35,6 @@ public class FacetGroupTest {
         assertEquals(f2, g.getFacetWithBand("band2"));
         assertEquals("Field", g.getFieldLabel());
         assertEquals(2, g.getNumBands());
+        assertEquals(12, g.getTotalGroups());
     }
 }

@@ -19,11 +19,11 @@ public class FacetTest {
         assertEquals("band", f.getBand());
         assertEquals("field", f.getField());
         assertEquals("Field", f.getFieldLabel());
-        assertEquals(3, f.getOccurences());
+        assertEquals(3, f.getOccurrences());
         assertEquals(1, f.getRank());
 
         Facet f2 = new Facet("field2", "band2", 2, 2);
-        assertEquals(2, f2.getOccurences());
+        assertEquals(2, f2.getOccurrences());
         assertFalse(f.equals(f2));
         assertTrue(f.equals(f));
         assertTrue(f.compareTo(f2)<0);

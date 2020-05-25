@@ -20,10 +20,10 @@
           startDoc="1"
           maxDocs="500">
       <facet field="facet-collection" select="*" sortGroupsBy="value"/>
-      <facet field="facet-subject" select="*[1-5]" sortGroupsBy="totalDocs"/>
-      <facet field="facet-language" select="*" sortGroupsBy="totalDocs"/>
-      <facet field="facet-place" select="*" sortGroupsBy="totalDocs"/>
-      <facet field="facet-location" select="*" sortGroupsBy="totalDocs"/>
+      <facet field="facet-subject" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-language" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-place" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-location" select="*[1-10]" sortGroupsBy="totalDocs"/>
       <facet field="facet-date" select="*" sortGroupsBy="value"/>
       <spellcheck/>
       <and>
