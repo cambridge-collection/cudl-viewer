@@ -228,9 +228,10 @@ public class AppConfig {
                                        @Value("${pdf.header.text}") String headerText,
                                        @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
                                        @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
-                                       @Value("${pdf.fonts.default}") String defaultFont) throws IOException {
+                                       @Value("${pdf.fonts.default}") String defaultFont,
+                                       @Value("${pdf.cache.path}") String cachePath) throws IOException {
 
-        return new SinglePagePdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont);
+        return new SinglePagePdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
     }
 
     @Bean
@@ -239,8 +240,9 @@ public class AppConfig {
                                            @Value("${pdf.header.text}") String headerText,
                                            @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
                                            @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
-                                           @Value("${pdf.fonts.default}") String defaultFont) throws IOException {
+                                           @Value("${pdf.fonts.default}") String defaultFont,
+                                           @Value("${pdf.cache.path}") String cachePath) throws IOException {
 
-        return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont);
+        return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
     }
 }

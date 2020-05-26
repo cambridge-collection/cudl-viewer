@@ -17,6 +17,7 @@ import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.property.*;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -24,11 +25,10 @@ import org.jsoup.select.Elements;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Files;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,27 +39,50 @@ class BasicTemplatePdf {
     private final int[] pdfColour;
     private final String defaultFont;
     private final String[] fontDirectories;
+    private final String cachePath;
 
     BasicTemplatePdf(String baseURL,
                      String headerText, int[] pdfColour,
-                     String[] urlsForFontZips, String defaultFont) throws MalformedURLException {
+                     String[] urlsForFontZips, String defaultFont,
+                     String cachePath) throws MalformedURLException {
         this.baseURL = baseURL;
         this.headerText = headerText;
         this.pdfColour = pdfColour;
         this.defaultFont = defaultFont;
+        this.cachePath = cachePath;
         this.fontDirectories = new String[urlsForFontZips.length];
         for (int i=0; i<urlsForFontZips.length; i++) {
             fontDirectories[i] = ExtractZipToTempDirectory(new URL(urlsForFontZips[i]));
         }
+        // create cache dir if not exists
+        File dir = new File(this.cachePath);
+        if (!this.cachePath.trim().equals("") && !dir.exists()){
+            dir.mkdirs();
+        }
     }
 
-    void writePdf(Item item, Div images, HttpServletResponse response) {
+    void writePdf(Item item, Div images, HttpServletResponse response, boolean cache) {
 
         try {
-            JSONObject pageMetadata = item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0);
-
             response.setContentType("application/pdf");
-            PdfDocument pdf = new PdfDocument(new PdfWriter(response.getOutputStream()));
+
+            OutputStream os;
+            // Return version from cache if possible
+            if (cache) {
+                if (existsInCache(item.getId()+".pdf")) {
+                    streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
+                    return;
+                }
+
+                File f = getCacheFile(item.getId()+".pdf");
+                os = new FileOutputStream(f); // write to file instead of stream
+            } else {
+                // default to stream out pdf
+                os = response.getOutputStream();
+            }
+
+            JSONObject pageMetadata = item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0);
+            PdfDocument pdf = new PdfDocument(new PdfWriter(os));
             Document document = new Document(pdf, PageSize.A4, false);
             document.setMargins(30f, 30f, 100f, 30f);
 
@@ -170,6 +193,12 @@ class BasicTemplatePdf {
 
             document.flush();
             document.close();
+
+            // Cache
+            if (cache) {
+                streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
+            }
+
             response.flushBuffer();
 
         } catch (Exception e) {
@@ -238,10 +267,17 @@ class BasicTemplatePdf {
 
     private String ExtractZipToTempDirectory(URL zipURL) {
         try {
+            // Return version from cache if possible
+            String filename = URLEncoder.encode(zipURL.toString(), "UTF-8");
+            if (existsInCache(filename)) {
+                return getCacheFile(filename).getCanonicalPath();
+            }
+
             // Get Zip File
-            File f = File.createTempFile(zipURL.toString(), "zip");
-            File dir = Files.createTempDirectory("PDFFontZip").toFile();
-            FileUtils.copyURLToFile(zipURL, f);
+            File f = getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8") +".zip");
+            File dir = getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8"));
+
+            FileUtils.copyURLToFile(zipURL,f);
 
             // Extract zip
             ZipFile zipFile = new ZipFile(f);
@@ -254,6 +290,22 @@ class BasicTemplatePdf {
 
         return null;
 
+    }
+
+    private boolean existsInCache(String filename) {
+        File file = getCacheFile(filename);
+        return file.exists() && file.canRead();
+    }
+
+    private File getCacheFile(String filename) {
+        return new File(this.cachePath+File.separator+filename);
+    }
+
+    private void streamPdfFromCache(String filename, OutputStream outputStream) throws IOException {
+        InputStream inputStream = FileUtils.openInputStream(getCacheFile(filename));
+        IOUtils.copy(inputStream,outputStream);
+        outputStream.flush();;
+        outputStream.close();
     }
 }
 

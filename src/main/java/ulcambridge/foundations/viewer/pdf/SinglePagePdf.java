@@ -17,9 +17,10 @@ public class SinglePagePdf {
 
     public SinglePagePdf(String IIIFImageServer, String baseURL,
                          String headerText, int[] pdfColour,
-                         String[] urlsForFontZips, String defaultFont) throws MalformedURLException {
+                         String[] urlsForFontZips, String defaultFont, String cachePath) throws MalformedURLException {
         this.IIIFImageServer = IIIFImageServer;
-        this.basicTemplatePdf = new BasicTemplatePdf(baseURL, headerText, pdfColour, urlsForFontZips, defaultFont);
+        this.basicTemplatePdf = new BasicTemplatePdf(baseURL, headerText, pdfColour,
+            urlsForFontZips, defaultFont, cachePath);
     }
 
     public void writePdf(Item item, String page, HttpServletResponse response) {
@@ -39,7 +40,7 @@ public class SinglePagePdf {
             div.add(image.setMargins(10f, 0f, 30f, 0f)
                 .scaleToFit(PageSize.A4.getWidth() - 60f, PageSize.A4.getHeight() - 220f));
 
-            basicTemplatePdf.writePdf(item, div, response);
+            basicTemplatePdf.writePdf(item, div, response, false);
 
         } catch (Exception e) {
             e.printStackTrace();

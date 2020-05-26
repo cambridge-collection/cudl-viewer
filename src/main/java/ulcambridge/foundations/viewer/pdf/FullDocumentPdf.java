@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.pdf;
 
+import com.itextpdf.io.IOException;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.borders.Border;
@@ -20,10 +21,11 @@ public class FullDocumentPdf {
 
     public FullDocumentPdf(String IIIFImageServer, String baseURL,
                            String headerText, int[] pdfColour,
-                           String[] urlsForFontZips, String defaultFont) throws MalformedURLException {
+                           String[] urlsForFontZips, String defaultFont, String cachePath) throws MalformedURLException {
         this.IIIFImageServer = IIIFImageServer;
         this.baseURL = baseURL;
-        this.basicTemplatePdf = new BasicTemplatePdf(baseURL, headerText, pdfColour, urlsForFontZips, defaultFont);
+        this.basicTemplatePdf = new BasicTemplatePdf(baseURL, headerText, pdfColour, urlsForFontZips, defaultFont,
+            cachePath);
     }
 
     public void writePdf(Item item, HttpServletResponse response) {
@@ -41,10 +43,18 @@ public class FullDocumentPdf {
                 if (pageJSON.getInt("imageWidth") > pageJSON.getInt("imageHeight")) {
                     imageURL = IIIFImageServer + iiifImageURL + "/full/"+MAX_THUMBNAIL_WIDTH_HEIGHT+",/0/default.jpg";
                 }
-                Image image = new Image(ImageDataFactory.create(imageURL));
+
+                Image image;
+                try {
+                    image = new Image(ImageDataFactory.create(imageURL));
+                } catch (IOException e) {
+                    // we are getting occasional 500 errors from the image server so try again...
+                    image = new Image(ImageDataFactory.create(imageURL));
+                }
 
                 Cell cell = new Cell();
                 cell.add(image.setMargins(0f, 0f, 0f, 0f)
+                    .setMaxHeight(MAX_THUMBNAIL_WIDTH_HEIGHT)
                     .setAutoScaleWidth(true)
                     .setAction(PdfAction.createURI(baseURL+"/view/"+item.getId()+"/"+pageJSON.getInt("sequence"))));
                 cell.add(new Paragraph(pageJSON.getString("label")).setOpacity(0.5f));
@@ -54,7 +64,7 @@ public class FullDocumentPdf {
             Div div = new Div();
             div.add(table);
 
-            basicTemplatePdf.writePdf(item, div, response);
+            basicTemplatePdf.writePdf(item, div, response, true);
 
         } catch (Exception e) {
             e.printStackTrace();
