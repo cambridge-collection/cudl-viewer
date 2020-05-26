@@ -12,6 +12,12 @@ import ulcambridge.foundations.viewer.model.Item;
 import javax.servlet.http.HttpServletResponse;
 import java.net.MalformedURLException;
 
+/**
+ * This is used to generate a PDF with thumbnails for all pages in the document and links to the viewer for
+ * more detail on these pages.  Also includes document metadata.
+ *
+ * These classes could be moved out to a separate service.
+ */
 public class FullDocumentPdf {
 
     private final String IIIFImageServer;

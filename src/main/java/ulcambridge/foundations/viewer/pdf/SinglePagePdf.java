@@ -15,6 +15,11 @@ public class SinglePagePdf {
     private final String IIIFImageServer;
     private final BasicTemplatePdf basicTemplatePdf;
 
+    /**
+     * This is used to generate a PDF with a large image of a single page and document metadata.
+     *
+     * These classes could be moved out to a separate service.
+     */
     public SinglePagePdf(String IIIFImageServer, String baseURL,
                          String headerText, int[] pdfColour,
                          String[] urlsForFontZips, String defaultFont, String cachePath) throws MalformedURLException {

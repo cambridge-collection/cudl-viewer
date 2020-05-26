@@ -17,7 +17,6 @@ import com.itextpdf.layout.font.FontProvider;
 import com.itextpdf.layout.property.*;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -32,6 +31,9 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is used by single and full document pdfs, for shared style of the title, and metadata and font setup.
+ */
 class BasicTemplatePdf {
 
     private final String baseURL;
@@ -39,7 +41,7 @@ class BasicTemplatePdf {
     private final int[] pdfColour;
     private final String defaultFont;
     private final String[] fontDirectories;
-    private final String cachePath;
+    private final PdfCache cache;
 
     BasicTemplatePdf(String baseURL,
                      String headerText, int[] pdfColour,
@@ -49,32 +51,27 @@ class BasicTemplatePdf {
         this.headerText = headerText;
         this.pdfColour = pdfColour;
         this.defaultFont = defaultFont;
-        this.cachePath = cachePath;
+        this.cache = new PdfCache(cachePath);
         this.fontDirectories = new String[urlsForFontZips.length];
         for (int i=0; i<urlsForFontZips.length; i++) {
             fontDirectories[i] = ExtractZipToTempDirectory(new URL(urlsForFontZips[i]));
         }
-        // create cache dir if not exists
-        File dir = new File(this.cachePath);
-        if (!this.cachePath.trim().equals("") && !dir.exists()){
-            dir.mkdirs();
-        }
     }
 
-    void writePdf(Item item, Div images, HttpServletResponse response, boolean cache) {
+    void writePdf(Item item, Div images, HttpServletResponse response, boolean cacheEnabled) {
 
         try {
             response.setContentType("application/pdf");
 
             OutputStream os;
             // Return version from cache if possible
-            if (cache) {
-                if (existsInCache(item.getId()+".pdf")) {
-                    streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
+            if (cacheEnabled) {
+                if (cache.existsInCache(item.getId()+".pdf")) {
+                    cache.streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
                     return;
                 }
 
-                File f = getCacheFile(item.getId()+".pdf");
+                File f = cache.getCacheFile(item.getId()+".pdf");
                 os = new FileOutputStream(f); // write to file instead of stream
             } else {
                 // default to stream out pdf
@@ -195,8 +192,8 @@ class BasicTemplatePdf {
             document.close();
 
             // Cache
-            if (cache) {
-                streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
+            if (cacheEnabled) {
+                cache.streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
             }
 
             response.flushBuffer();
@@ -269,13 +266,13 @@ class BasicTemplatePdf {
         try {
             // Return version from cache if possible
             String filename = URLEncoder.encode(zipURL.toString(), "UTF-8");
-            if (existsInCache(filename)) {
-                return getCacheFile(filename).getCanonicalPath();
+            if (cache.existsInCache(filename)) {
+                return cache.getCacheFile(filename).getCanonicalPath();
             }
 
             // Get Zip File
-            File f = getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8") +".zip");
-            File dir = getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8"));
+            File f = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8") +".zip");
+            File dir = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8"));
 
             FileUtils.copyURLToFile(zipURL,f);
 
@@ -290,22 +287,6 @@ class BasicTemplatePdf {
 
         return null;
 
-    }
-
-    private boolean existsInCache(String filename) {
-        File file = getCacheFile(filename);
-        return file.exists() && file.canRead();
-    }
-
-    private File getCacheFile(String filename) {
-        return new File(this.cachePath+File.separator+filename);
-    }
-
-    private void streamPdfFromCache(String filename, OutputStream outputStream) throws IOException {
-        InputStream inputStream = FileUtils.openInputStream(getCacheFile(filename));
-        IOUtils.copy(inputStream,outputStream);
-        outputStream.flush();;
-        outputStream.close();
     }
 }
 
