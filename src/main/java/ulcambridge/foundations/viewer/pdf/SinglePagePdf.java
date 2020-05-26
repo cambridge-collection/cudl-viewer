@@ -28,11 +28,15 @@ public class SinglePagePdf {
             urlsForFontZips, defaultFont, cachePath);
     }
 
-    public void writePdf(Item item, String page, HttpServletResponse response) {
+    public void writePdf(Item item, String pageInput, HttpServletResponse response) {
 
         try {
+            int page = Integer.parseInt(pageInput);
+            int numPages = item.getJSON().getJSONArray("pages").length();
+            if (page < 1) { page = 1; }
+            if (page > numPages) { page = numPages; }
 
-            JSONObject pageJSON = item.getJSON().getJSONArray("pages").getJSONObject(Integer.parseInt(page) - 1);
+            JSONObject pageJSON = item.getJSON().getJSONArray("pages").getJSONObject(page - 1);
             String iiifImageURL = pageJSON.getString("IIIFImageURL");
 
             String imageURL = IIIFImageServer + iiifImageURL + "/full/,1000/0/default.jpg";
