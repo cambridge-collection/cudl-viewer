@@ -37,6 +37,12 @@ public class FullDocumentPdf {
     public void writePdf(Item item, HttpServletResponse response) {
 
         try {
+            // stream from cache if available
+            if (basicTemplatePdf.existsInCache(item)) {
+                basicTemplatePdf.streamFromCache(item, response);
+                return;
+            }
+
             // Images
             float[] columnWidths = {3, 3, 3, 3, 3};
             Table table = new Table(UnitValue.createPercentArray(columnWidths));

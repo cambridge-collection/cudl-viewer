@@ -58,19 +58,29 @@ class BasicTemplatePdf {
         }
     }
 
+    boolean existsInCache(Item item) {
+        return cache.existsInCache(item.getId()+".pdf");
+    }
+
+    void streamFromCache(Item item, HttpServletResponse response) {
+        try {
+            if (existsInCache(item)) {
+                response.setContentType("application/pdf");
+                cache.streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     void writePdf(Item item, Div images, HttpServletResponse response, boolean cacheEnabled) {
 
         try {
             response.setContentType("application/pdf");
 
             OutputStream os;
-            // Return version from cache if possible
             if (cacheEnabled) {
-                if (cache.existsInCache(item.getId()+".pdf")) {
-                    cache.streamPdfFromCache(item.getId()+".pdf", response.getOutputStream());
-                    return;
-                }
-
+                // stream to file for caching
                 File f = cache.getCacheFile(item.getId()+".pdf");
                 os = new FileOutputStream(f); // write to file instead of stream
             } else {
