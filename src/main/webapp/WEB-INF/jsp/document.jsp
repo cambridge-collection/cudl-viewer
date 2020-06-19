@@ -144,12 +144,12 @@
                         <div class="cudl-viewer-buttons-zoom">
                             <button id="rotateLeft" class="cudl-btn fa fa-rotate-left"
                                 title="Rotate the image 90° left"></button>
-                            <button id="rotateRight" class="cudl-btn fa fa-rotate-right"
-                                title="Rotate the image 90° right"></button>
-                                <%-- Optional rotation slider set in properties --%>
+                            <%-- Optional rotation slider set in properties --%>
                             <c:if test="${rotationSlider eq true}">
                                 <div id="rotationSlider"></div>
                             </c:if>
+                            <button id="rotateRight" class="cudl-btn fa fa-rotate-right"
+                                title="Rotate the image 90° right"></button>
 
                             <button id="zoomIn" class="cudl-btn fa fa-plus"
                                 title="Zoom in to the image"></button>
