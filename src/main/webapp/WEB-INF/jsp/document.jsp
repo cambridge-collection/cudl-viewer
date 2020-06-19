@@ -263,6 +263,29 @@
                                                         </a>
                                                       </div>
                                                     </div>
+
+                                                    <%-- Optional PDF Single Page button set in properties --%>
+                                                    <c:if test="${pdfSinglePage eq true}">
+                                                         <div id="pdfSinglePage">
+                                                            <div class="button usebutton">
+                                                                <a class="btn btn-info left" href="/pdf/${docId}/${page}" download="${docId}-${page}.pdf">
+                                                                    <i class="fa fa-file-pdf-o fa-2x"></i><span>Page<br/>PDF</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+
+                                                    <%-- Optional PDF Full Document button set in properties --%>
+                                                    <c:if test="${pdfFullDocument eq true}">
+                                                        <div id="pdfFullDocument">
+                                                            <div class="button usebutton">
+                                                                <a class="btn btn-info left" href="" download="${docId}.pdf">
+                                                                    <i class="fa fa-files-o fa-2x"></i><span>All Pages<br/>PDF</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
+
                                                     <div id="bookmarkOption">
                                                       <div class="button usebutton">
                                                         <a class="btn btn-info left" href="#">
@@ -287,28 +310,6 @@
                                                         </a>
                                                       </div>
                                                     </div>
-
-                                                    <%-- Optional zoom factor set in properties --%>
-                                                    <c:if test="${pdfSinglePage eq true}">
-                                                        <div id="pdfSinglePage">
-                                                          <div class="button usebutton">
-                                                            <a class="btn btn-info left" href="/pdf/${docId}/${page}" download="${docId}-${page}.pdf">
-                                                                <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
-                                                            </a>
-                                                          </div>
-                                                        </div>
-                                                    </c:if>
-
-                                                    <%-- Optional zoom factor set in properties --%>
-                                                    <c:if test="${pdfFullDocument eq true}">
-                                                        <div id="pdfFullDocument">
-                                                          <div class="button usebutton">
-                                                            <a class="btn btn-info left" href="" download="${docId}.pdf">
-                                                                <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Document<br/>PDF
-                                                            </a>
-                                                          </div>
-                                                        </div>
-                                                    </c:if>
                                                 </div>
 
                                              </div>
