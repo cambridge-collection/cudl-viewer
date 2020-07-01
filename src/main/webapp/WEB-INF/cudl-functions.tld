@@ -47,6 +47,12 @@
     </function>
 
     <function>
+        <name>urlParamsWithFacetExpanded</name>
+        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
+        <function-signature>java.lang.String urlParamsWithFacetExpanded(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String)</function-signature>
+    </function>
+
+    <function>
         <name>stripTags</name>
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
         <function-signature>java.lang.String stripTags(java.lang.String)</function-signature>

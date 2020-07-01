@@ -1,1 +1,1 @@
-<p class="box">We couldn't find any items your query.</p>
+<p class="box">No items found for your query.</p>

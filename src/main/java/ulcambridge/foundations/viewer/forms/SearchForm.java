@@ -23,6 +23,8 @@ public class SearchForm {
     private String title = "";
     private String author = "";
     private String subject = "";
+    private String language = "";
+    private String place = "";
     private String location = "";
     private Integer yearStart = null;
     private Integer yearEnd = null;
@@ -33,7 +35,12 @@ public class SearchForm {
     private String facetDate;
     private String facetSubject;
     private String facetCollection;
+    private String facetLanguage;
     private String facetPlace;
+    private String facetLocation;
+
+    // Expand facet results
+    private String expandFacet = "";
 
     // Variable recall
     /**
@@ -119,6 +126,18 @@ public class SearchForm {
         this.subject = subject;
     }
 
+    public String getLanguage() { return language; }
+
+    public void setLanguage(String language) { this.language = language; }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -172,6 +191,15 @@ public class SearchForm {
         facets.put("subject", facetSubject);
     }
 
+    public String getFacetLanguage() {
+        return facetLanguage;
+    }
+
+    public void setFacetLanguage(String facetLanguage) {
+        this.facetLanguage = facetLanguage;
+        facets.put("language", facetLanguage);
+    }
+
     public String getFacetCollection() {
         return facetCollection;
     }
@@ -192,9 +220,26 @@ public class SearchForm {
         facets.put("place", facetPlace);
     }
 
+    public String getFacetLocation() {
+        return facetLocation;
+    }
+
+    public void setFacetLocation(String facetLocation) {
+        this.facetLocation = facetLocation;
+        facets.put("location", facetLocation);
+    }
+
     public Map<String, String> getFacets() {
 
         return facets;
+    }
+
+    /** Expand Facet **/
+
+    public String getExpandFacet() { return expandFacet; }
+
+    public void setExpandFacet(String expandFacet) {
+        this.expandFacet = expandFacet;
     }
 
     public boolean hasRecallScale() {
@@ -232,6 +277,8 @@ public class SearchForm {
         this.title = input.title;
         this.author = input.author;
         this.subject = input.subject;
+        this.language = input.language;
+        this.place = input.place;
         this.location = input.location;
         this.yearStart = input.yearStart;
         this.yearEnd = input.yearEnd;
@@ -239,10 +286,14 @@ public class SearchForm {
         this.facetCollection = input.facetCollection;
         this.facetDate = input.facetDate;
         this.facetSubject = input.facetSubject;
+        this.facetLanguage = input.facetLanguage;
         this.facetPlace = input.facetPlace;
+        this.facetLocation = input.facetLocation;
         Hashtable<String, String> facets = new Hashtable<String, String>();
         facets.putAll(input.facets);
         this.facets = facets;
+
+        this.expandFacet = input.expandFacet;
     }
 
 

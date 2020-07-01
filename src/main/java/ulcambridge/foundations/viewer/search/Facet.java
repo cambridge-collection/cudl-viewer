@@ -12,16 +12,16 @@ public class Facet implements Comparable<Facet> {
     private String field; // like "subject" or "date"
     private String fieldLabel; // for display - like "Subject" or "Date".
     private String band; // like "Algebra - Early works to 1800"
-    private int occurences = 1; // amount of times this facet appears in
+    private int occurrences = 1; // amount of times this facet appears in
                                 // results.
     private int rank = 0; //rank of this facet within the facetgroup.
 
-    public Facet(String field, String band, int occurances, int rank) {
+    public Facet(String field, String band, int occurrences, int rank) {
 
         this.field = field;
         this.fieldLabel = field.substring(0, 1).toUpperCase() + field.substring(1);
         this.band = band;
-        this.occurences = occurances;
+        this.occurrences = occurrences;
         this.rank = rank;
     }
 
@@ -38,8 +38,8 @@ public class Facet implements Comparable<Facet> {
         return band;
     }
 
-    public int getOccurences() {
-        return occurences;
+    public int getOccurrences() {
+        return occurrences;
     }
 
     @Override

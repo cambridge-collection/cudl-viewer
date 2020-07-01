@@ -24,9 +24,9 @@
     "startPage": 1,
     "itemType": "bookormanuscript",
     "snippets": [
-      "interested in his \n            <b>stepfather</b>’<b>s</b> \n            <b>jottings</b>\n         : its value to him"
+      "interested in his \n            <b>stepfather</b>’<b>s</b>\n            <b>jottings</b>\n         : its value to him"
     ],
-    "startPageLabel": "front cover",
+    "startPageLabel": "cover",
     "pageThumbnailURL": "http://images.digital.library.example.com/simple/MS-ADD-04004-000-00001_files/8/0_0.jpg"
   }
 ]

@@ -111,7 +111,7 @@
                                             <form:label class="right" path="title">Title</form:label>
                                         </div>
                                         <div class="campl-column10">
-                                            <span class="hint--right" data-hint="Search for titles that includes these words, e.g. Letter">
+                                            <span class="hint--right" data-hint="Search for titles that include these words, e.g. Letter">
                                                 <form:input path="title" type="text" size="35" value="" name="title" />
                                             </span>
                                         </div>
@@ -141,10 +141,32 @@
 
                                     <div class="campl-column12">
                                         <div class="campl-column2">
+                                            <form:label class="right" path="language">Language</form:label>
+                                        </div>
+                                        <div class="campl-column10">
+                                            <span class="hint--right" data-hint="Search for items in a language, e.g. Latin">
+                                                <form:input path="language" type="text" size="35" value="" name="language" />
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="campl-column12">
+                                        <div class="campl-column2">
+                                            <form:label class="right" path="place">Place</form:label>
+                                        </div>
+                                        <div class="campl-column10">
+                                            <span class="hint--right" data-hint="Search for items from (or associated with) a place, e.g. London">
+                                                <form:input path="place" type="text" size="35" value="" name="place" />
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="campl-column12">
+                                        <div class="campl-column2">
                                             <form:label class="right" path="location">Location</form:label>
                                         </div>
                                         <div class="campl-column10">
-                                            <span class="hint--right" data-hint="Search for items related to a specific place, e.g. London">
+                                            <span class="hint--right" data-hint="Search for items in a physical location, e.g. Cambridge University Library">
                                                 <form:input path="location" type="text" size="35" value="" name="location" />
                                             </span>
                                         </div>
@@ -155,7 +177,7 @@
                                             <form:label class="right" path="yearStart">Year</form:label>
                                         </div>
                                         <div class="campl-column10">
-                                            <span class="hint--right" data-hint="Limit results to this range of years" style="display:table;">
+                                            <span class="hint--right" data-hint="Search for items created in a year (or range of years) e.g. 1200" style="display:table;">
                                                 <div style="display:table-cell;">
                                                     <form:input path="yearStart" type="text" value="" name="yearStart" />
                                                 </div>
@@ -163,7 +185,7 @@
                                                     <form:label path="yearEnd"> to </form:label>
                                                 </div>
                                                 <div style="display:table-cell;">
-                                                    <form:input path="yearEnd" type="text" value="" name="yearEnd" />
+                                                    <form:input path="yearEnd" type="text" value="" placeholder="optional" name="yearEnd" />
                                                 </div>
                                             </span>
                                         </div>

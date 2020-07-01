@@ -103,6 +103,11 @@ public class XTFSearch implements Search {
         uriB.queryParam("smode", "advanced");
         uriB.queryParam("startDoc", start);
 
+        // Expand/contract facet
+        if (searchForm.getExpandFacet() != null) {
+            uriB.queryParam("expand", searchForm.getExpandFacet());
+        }
+
         // Keywords
         if (searchForm.getKeyword() != null) {
             uriB.queryParam("keyword",searchForm.getKeyword());
@@ -154,20 +159,24 @@ public class XTFSearch implements Search {
             uriB.queryParam("subjectFullForm", searchForm.getSubject());
         }
 
+        if (searchForm.getLanguage() != null) {
+            uriB.queryParam("languageString", searchForm.getLanguage());
+        }
+
+        if (searchForm.getPlace() != null) {
+            uriB.queryParam("placeFullForm", searchForm.getPlace());
+        }
+
         if (searchForm.getLocation() != null) {
-            uriB.queryParam("placeFullForm", searchForm.getLocation());
+            uriB.queryParam("physicalLocation", searchForm.getLocation());
         }
 
         if (searchForm.getYearStart() != null) {
-            // Pad year to 4 digits, to allow years before 1000AD to be
-            // interpreted correctly by XTF.
-            uriB.queryParam("year", String.format("%04d", searchForm.getYearStart()));
+            uriB.queryParam("year", searchForm.getYearStart());
         }
 
         if (searchForm.getYearEnd() != null) {
-            // Pad year to 4 digits, to allow years before 1000AD to be
-            // interpreted correctly by XTF.
-            uriB.queryParam("year-max", String.format("%04d", searchForm.getYearEnd()));
+            uriB.queryParam("year-max", searchForm.getYearEnd());
         }
 
         // Facets
@@ -181,6 +190,27 @@ public class XTFSearch implements Search {
             uriB.queryParam(
                 String.format("f%d-subject", ++facetCount),
                 searchForm.getFacetSubject()
+            );
+        }
+
+        if (searchForm.getFacetLanguage() != null) {
+            uriB.queryParam(
+                String.format("f%d-language", ++facetCount),
+                searchForm.getFacetLanguage()
+            );
+        }
+
+        if (searchForm.getFacetPlace() != null) {
+            uriB.queryParam(
+                String.format("f%d-place", ++facetCount),
+                searchForm.getFacetPlace()
+            );
+        }
+
+        if (searchForm.getFacetLocation() != null) {
+            uriB.queryParam(
+                String.format("f%d-location", ++facetCount),
+                searchForm.getFacetLocation()
             );
         }
 
@@ -274,6 +304,7 @@ public class XTFSearch implements Search {
                 String field = facetElement.getAttributes().getNamedItem("field").getTextContent();
                 field = field.replace("facet-", ""); // remove facet- from that start.
 
+                final int facetGroupTotalGroups = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalGroups").getTextContent());
                 final int facetGroupOccurrences = Integer.parseInt(facetElement.getAttributes().getNamedItem("totalDocs").getTextContent());
 
                 final NodeList groups = facetElement.getElementsByTagName("group");
@@ -286,7 +317,7 @@ public class XTFSearch implements Search {
                     facets.add(facet);
                 }
 
-                final FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurrences);
+                final FacetGroup facetGroup = new FacetGroup(field, facets, facetGroupOccurrences, facetGroupTotalGroups);
                 facetGroups.add(facetGroup);
             }
         }

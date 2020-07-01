@@ -63,6 +63,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
         form.setKeyword("Elementary Mathematics");
         form.setFacetCollection("Newton Papers");
         form.setFacetSubject("Algebra - Early works to 1800");
+        form.setFacetLanguage("English, Latin and Greek");
 
         CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
 
@@ -175,7 +176,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
             facets.add(f);
             facets.add(f2);
 
-            FacetGroup g = new FacetGroup("field", facets, 5);
+            FacetGroup g = new FacetGroup("field", facets, 5, 12);
 
             ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup>();
             facetGroups.add(g);
