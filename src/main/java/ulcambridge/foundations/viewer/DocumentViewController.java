@@ -286,6 +286,7 @@ public class DocumentViewController {
         // UI Configuration
         modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
         modelAndView.addObject("zoomFactor", Properties.getString("ui.options.buttons.zoomFactor"));
+        modelAndView.addObject("rotationSlider", Properties.getString("ui.options.buttons.rotationSlider"));
         modelAndView.addObject("viewportNavigator", Properties.getString("ui.options.viewportNavigator"));
         modelAndView.addObject("pdfSinglePage", Properties.getString("ui.options.buttons.about.pdfSinglePage"));
         modelAndView.addObject("pdfFullDocument", Properties.getString("ui.options.buttons.about.pdfFullDocument"));
