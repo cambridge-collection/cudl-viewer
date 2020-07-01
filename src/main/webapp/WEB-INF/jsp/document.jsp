@@ -344,6 +344,24 @@
                                     </a>
                                 </div>
                             </div>
+                            <c:if test="${pdfSinglePage eq true}">
+                                <div id="pdfSinglePage">
+                                    <div class="button usebutton">
+                                        <a class="btn btn-info left" href="/pdf/${docId}/${page}" download="${docId}-${page}.pdf">
+                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${pdfFullDocument eq true}">
+                                <div id="pdfFullDocument">
+                                    <div class="button usebutton">
+                                        <a class="btn btn-info left" href="" download="${docId}.pdf">
+                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Document<br/>PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </c:if>
                             <div id="rightsOption">
                                 <div class="button usebutton" >
                                     <a class="btn btn-info left"
