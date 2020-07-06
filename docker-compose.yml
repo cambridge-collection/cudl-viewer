@@ -2,13 +2,14 @@ version: "3"
 
 services:
   tomcat:
-    image: tomcat:9.0.30-jdk11-openjdk
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cudl/cudl-viewer
     volumes:
-      - ./target/FoundationsViewer.war:/usr/local/tomcat/webapps/ROOT.war
-      - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
-      - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
-      - ${CUDL_VIEWER_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
-      - ${CUDL_VIEWER_CONTENT:-../cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
+ #     - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
+      - ${CUDL_VIEWER_DATA:-/home/digilib/cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_VIEWER_CONTENT:-/home/digilib/cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
     ports:
       - "8888:8080"
     depends_on:
