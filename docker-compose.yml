@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   tomcat:
@@ -7,21 +7,53 @@ services:
       dockerfile: Dockerfile
     image: cudl/cudl-viewer
     volumes:
- #     - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
-      - ${CUDL_VIEWER_DATA:-/home/digilib/cudl-data/}:/srv/cudl-viewer/cudl-data/
-      - ${CUDL_VIEWER_CONTENT:-/home/digilib/cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
+      - cudl-data:/srv/cudl-viewer/cudl-data/
+      - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
     ports:
       - "8888:8080"
     depends_on:
       - cudl-db
+      - cudl-deploy-data
+
+  cudl-deploy-data:
+    build:
+      context: .
+      dockerfile: docker/deploy-data/Dockerfile
+      args:
+        SSH_PUB_KEY: |-
+          ${SSH_PUB_KEY}
+        SSH_PRV_KEY: |-
+          ${SSH_PRV_KEY}
+    volumes:
+       - cudl-data:/srv/cudl-viewer/cudl-data/
+       - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
+    depends_on:
+      - cudl-db
+
   cudl-db:
     build:
       context: .
       dockerfile: docker/db/Dockerfile
     restart: always
+    volumes:
+      - /usr/local/cudl-db/data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: cudl
       POSTGRES_DB: cudl
       POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
     ports:
       - ${CUDL_DB_HOST_PORT:-0}:5432
+
+
+#  imageserver:
+#    image: klokantech/iiifserver-iipimage-jpeg2000:latest
+#    ports:
+#      - 80:80
+#    volumes:
+#      - ./dropzone/:/dropzone/
+#      - ./data/:/data/
+
+volumes:
+  cudl-data:
+  cudl-viewer-content:
+
