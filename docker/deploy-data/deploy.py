@@ -10,6 +10,7 @@ import shutil
 import glob
 from distutils.dir_util import copy_tree
 import configparser
+import requests
 
 
 # Write docker-compose to ensure python and libs installed, script is copied and to set cron job
@@ -22,7 +23,6 @@ import configparser
 # NOTE: Requires ssh key setup with access to read repo
 
 def main():
-
     config = configparser.ConfigParser()
     config.read('/usr/local/deploy-data/config.ini')
 
@@ -41,10 +41,12 @@ def main():
     db_dl_passwd = config['CUDL']['DB_PASSWORD']
     content_dir = config['CUDL']['CONTENT_DIR']
     data_dir = config['CUDL']['DATA_DIR']
+    refresh_url = config['CUDL']['REFRESH_URL']
 
     required_version = _get_required_version_from_db(title, db_deploy_database, db_deploy_user, db_deploy_host,
                                                      db_deploy_passwd, db_deploy_port)
 
+    print(required_version)
     # If git_data_repo_dir does not exist or is empty clone repo, create dir and git clone
     if not os.path.isdir(git_data_repo_dir):
         os.makedirs(git_data_repo_dir)
@@ -82,7 +84,7 @@ def main():
 
         # Copy data from pages dir into content dir
         if os.path.isdir(content_dir):
-            files = glob.glob(content_dir+'*')
+            files = glob.glob(content_dir + '*')
             for f in files:
                 if f == content_dir:
                     continue
@@ -94,7 +96,7 @@ def main():
 
         # Copy data from items dir into data
         if os.path.isdir(data_dir):
-            files = glob.glob(data_dir+'*')
+            files = glob.glob(data_dir + '*')
             for f in files:
                 if f == data_dir:
                     continue
@@ -104,8 +106,9 @@ def main():
                     os.remove(f)
         copy_tree(git_data_repo_dir + os.sep + "items" + os.sep + "json", data_dir + os.sep + "json")
         copy_tree(git_data_repo_dir + os.sep + "items" + os.sep + "tei",
-                        data_dir + os.sep + "data" + os.sep + "tei")
+                  data_dir + os.sep + "data" + os.sep + "tei")
 
+        _refresh_viewer_cache(refresh_url)
         print("Done.")
 
 
@@ -212,6 +215,12 @@ def _update_collections_in_db(dldatabase, dbdluser, dbdlhost, dbdlpasswd, collec
     finally:
         if conn is not None:
             conn.close()
+
+
+def _refresh_viewer_cache(refresh_url):
+    url = refresh_url
+    response = requests.get(url)
+    print(response)
 
 
 if __name__ == '__main__':
