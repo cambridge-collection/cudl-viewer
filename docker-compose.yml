@@ -24,6 +24,7 @@ services:
           ${SSH_PUB_KEY}
         SSH_PRV_KEY: |-
           ${SSH_PRV_KEY}
+    image: cudl/cudl-deploy-data
     volumes:
        - cudl-data:/srv/cudl-viewer/cudl-data/
        - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
@@ -34,9 +35,10 @@ services:
     build:
       context: .
       dockerfile: docker/db/Dockerfile
+    image: cudl/cudl-db
     restart: always
     volumes:
-      - /usr/local/cudl-db/data:/var/lib/postgresql/data
+      - cudl-db:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: cudl
       POSTGRES_DB: cudl
@@ -56,4 +58,5 @@ services:
 volumes:
   cudl-data:
   cudl-viewer-content:
+  cudl-db:
 
