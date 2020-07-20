@@ -1,12 +1,15 @@
 package ulcambridge.foundations.viewer;
 
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -15,6 +18,7 @@ import ulcambridge.foundations.viewer.utils.MiradorUtils;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -29,15 +33,19 @@ public class SiteViewController {
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
     private final String contentHtmlUrl;
+    private final String dataReleasesFile;
 
     @Autowired
     public SiteViewController(CollectionFactory collectionFactory,
-                              @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
+                              @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
+                              @Value("${dataReleasesFile}") String dataReleasesFile) {
         Assert.notNull(collectionFactory);
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
+        Assert.notNull(dataReleasesFile, "dataReleasesFile property is required");
 
         this.collectionFactory = collectionFactory;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
+        this.dataReleasesFile = dataReleasesFile;
     }
 
     // on path /
@@ -105,6 +113,15 @@ public class SiteViewController {
         ModelAndView modelAndView = new ModelAndView("jsp/help");
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
+    }
+
+    // on path /data/status
+    @GetMapping("/data/status")
+    @ResponseBody
+    public String handleDataStatus() throws IOException {
+
+        // Get version of data being used
+        return FileUtils.readFileToString(new File(dataReleasesFile), "UTF-8");
     }
 
     // on path /mirador/

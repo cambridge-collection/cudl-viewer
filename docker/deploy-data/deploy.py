@@ -108,6 +108,12 @@ def main():
         copy_tree(git_data_repo_dir + os.sep + "items" + os.sep + "tei",
                   data_dir + os.sep + "data" + os.sep + "tei")
 
+        # Write out current version to data folder.
+        version_path = data_dir + os.sep + "_current_data_version"
+        version_file = open(version_path, 'w')
+        version_file.write("{ tag: " + required_version + ", hexsha:" + new_tag + " }")
+        version_file.close()
+
         _refresh_viewer_cache(refresh_url)
         print("Done.")
 

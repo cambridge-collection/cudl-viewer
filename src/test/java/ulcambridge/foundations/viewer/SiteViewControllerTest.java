@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
 import static org.junit.Assert.assertTrue;
-import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
 
 public class SiteViewControllerTest {
@@ -18,7 +17,7 @@ public class SiteViewControllerTest {
         CollectionFactory collectionFactory = new CollectionFactory(
             new MockCollectionsDao());
 
-        return new SiteViewController(collectionFactory, "./html");
+        return new SiteViewController(collectionFactory, "./html", null);
     }
 
     @Test
