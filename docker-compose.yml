@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
   tomcat:
@@ -14,6 +14,7 @@ services:
     depends_on:
       - cudl-db
       - cudl-deploy-data
+      - cudl-xtf
 
   cudl-deploy-data:
     build:
@@ -55,8 +56,28 @@ services:
 #      - ./dropzone/:/dropzone/
 #      - ./data/:/data/
 
+  cudl-xtf:
+    image: cudl/cudl-xtf:latest
+    ports:
+      - 8082:8080
+    volumes:
+      - cudl-data:/srv/cudl/cudl-data/json
+      - xtf-webapp:/opt/xtf/
+      - cudl-indices:/srv/cudl/xtf/
+
+  xtf-indexer-cron:
+    image: cudl/xtf-indexer-cron:latest
+    depends_on:
+      - cudl-xtf
+    volumes:
+      - cudl-data:/srv/cudl/cudl-data/json
+      - xtf-webapp:/opt/xtf/
+      - cudl-indices:/srv/cudl/xtf/
+
 volumes:
   cudl-data:
   cudl-viewer-content:
   cudl-db:
+  xtf-webapp:
+  cudl-indices:
 
