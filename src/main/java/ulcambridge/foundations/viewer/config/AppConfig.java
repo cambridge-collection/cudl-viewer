@@ -123,7 +123,10 @@ public class AppConfig {
             return new DefaultItemFactory(itemStatusOracle);
         }
 
-        @Import(ImageURLResolution.class)
+        @Import({
+            ImageURLResolution.DziAndIiifImageURLResolution.class,
+            ImageURLResolution.IIIFImageURLResolution.class
+        })
         public static class ItemRewritingConfig {
             public static final String DECORATED_ITEM_FACTORY_PARENT = "ulcambridge.foundations.viewer.dao.DecoratedItemFactory#parent";
 

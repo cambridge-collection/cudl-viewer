@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
+import org.springframework.test.context.TestPropertySource;
 import ulcambridge.foundations.viewer.config.AppConfig;
 import ulcambridge.foundations.viewer.dao.DefaultItemFactory;
 import ulcambridge.foundations.viewer.dao.ItemFactory;
@@ -27,13 +29,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static ulcambridge.foundations.viewer.config.AppConfig.ItemsConfig.ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT;
 
-@ContextHierarchy({
-    @ContextConfiguration(name = "parent", classes = {ImageURLResolutionTest.Config.class})
-})
-public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
-    @Autowired @Qualifier("imageServerURL")
-    private URI imageServerURL;
-
+public class ImageURLResolutionTest {
     private static final Map<String, ?> ITEM = ImmutableMap.of(
         "descriptiveMetadata", ImmutableList.of(
             ImmutableMap.builder()
@@ -94,60 +90,125 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
     private static Item itemFromJSON(String id, JSONObject json) {
         return new Item(id, "", "", ImmutableList.of(), "", "", "", "", "", ImmutableList.of(), ImmutableList.of(), false, false, json);
     }
-    @Autowired
-    private ItemFactory itemFactory;
-    private Item item;
+
+    public static class AbstractImageURLResolutionTest extends BaseCUDLApplicationContextTest {
+        @Autowired
+        @Qualifier("imageServerURL")
+        protected URI imageServerURL;
+
+        @Autowired
+        protected ItemFactory itemFactory;
+        protected Item item;
 
 
-    @BeforeEach
-    private void beforeEach() {
-        JSONObject itemJSON = new JSONObject(ITEM);
-        item = itemFactory.itemFromJSON("EXAMPLE", itemJSON);
+        @BeforeEach
+        protected void beforeEach() {
+            JSONObject itemJSON = new JSONObject(ITEM);
+            item = itemFactory.itemFromJSON("EXAMPLE", itemJSON);
+        }
     }
 
-    @Test
-    public void itemPagesHaveDZIAndIIIFImageURLsGenerated() {
-        assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
-            "displayImageURL", "content/images/MS-ADD-03419-000-00001.dzi",
-            "downloadImageURL", "content/images/MS-ADD-03419-000-00001.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00001.jp2",
-            "thumbnailImageURL", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
-        );
+    @ContextHierarchy({
+        @ContextConfiguration(name = "parent", classes = {ImageURLResolutionTest.Config.class})
+    })
+    @TestPropertySource(properties = {
+        "images.server.type=iiif"
+    })
+    public static class IiifImageURLResolutionTest extends AbstractImageURLResolutionTest {
+        @Test
+        public void itemPagesHaveIIIFImageURLsGenerated() {
+            assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
+                "thumbnailImageURL", "MS-ADD-03419-000-00001.jp2/full/!178,178/0/default.jpg",
+                "IIIFImageURL", "MS-ADD-03419-000-00001.jp2"
+            );
 
-        assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
-            "displayImageURL", "content/images/MS-ADD-03419-000-00002.dzi",
-            "downloadImageURL", "content/images/MS-ADD-03419-000-00002.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00002.jp2",
-            "thumbnailImageURL", "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
-        );
+            assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
+                "IIIFImageURL", "MS-ADD-03419-000-00002.jp2"
+            );
+        }
+
+        @Test
+        public void itemObjectReportsExpectedPageThumbnailURLs() {
+            assertThat(item.getPageThumbnailURLs()).containsExactly(
+                "MS-ADD-03419-000-00001.jp2/full/!178,178/0/default.jpg",
+                "MS-ADD-03419-000-00002.jp2/full/!178,178/0/default.jpg"
+            );
+        }
+
+        @Test
+        public void descriptiveMetadataSectionsHaveThumbnailURLGenerated() {
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).toMap()).containsAtLeast(
+                "thumbnailUrl", "MS-ADD-03419-000-00001.jp2/full/!178,178/0/default.jpg"
+            );
+
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(1).toMap())
+                .doesNotContainKey("thumbnailUrl");
+
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(2).toMap()).containsAtLeast(
+                "thumbnailUrl", "MS-ADD-03419-000-00034.jp2/full/!178,178/0/default.jpg"
+            );
+        }
+
+        @Test
+        public void itemObjectsReportExpectedThumbnailURL() {
+            final String expectedURL = imageServerURL.resolve("MS-ADD-03419-000-00001.jp2/full/!178,178/0/default.jpg").toString();
+            assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
+            assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
+        }
+
     }
 
-    @Test
-    public void itemObjectReportsExpectedPageThumbnailURLs() {
-        assertThat(item.getPageThumbnailURLs()).containsExactly(
-            "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg",
-            "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
-        );
-    }
+    @ContextHierarchy({
+        @ContextConfiguration(name = "parent", classes = {ImageURLResolutionTest.Config.class})
+    })
+    @TestPropertySource(properties = {
+        "images.server.type=dzi-and-iiif"
+    })
+    public static class DziAndIiifImageURLResolutionTest extends AbstractImageURLResolutionTest {
+        @Test
+        public void itemPagesHaveDZIAndIIIFImageURLsGenerated() {
+            assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
+                "displayImageURL", "content/images/MS-ADD-03419-000-00001.dzi",
+                "downloadImageURL", "content/images/MS-ADD-03419-000-00001.jpg",
+                "IIIFImageURL", "MS-ADD-03419-000-00001.jp2",
+                "thumbnailImageURL", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
+            );
 
-    @Test
-    public void descriptiveMetadataSectionsHaveThumbnailURLGenerated() {
-        assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).toMap()).containsAtLeast(
-            "thumbnailUrl", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
-        );
+            assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
+                "displayImageURL", "content/images/MS-ADD-03419-000-00002.dzi",
+                "downloadImageURL", "content/images/MS-ADD-03419-000-00002.jpg",
+                "IIIFImageURL", "MS-ADD-03419-000-00002.jp2",
+                "thumbnailImageURL", "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
+            );
+        }
 
-        assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(1).toMap())
-            .doesNotContainKey("thumbnailUrl");
+        @Test
+        public void itemObjectReportsExpectedPageThumbnailURLs() {
+            assertThat(item.getPageThumbnailURLs()).containsExactly(
+                "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg",
+                "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
+            );
+        }
 
-        assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(2).toMap()).containsAtLeast(
-            "thumbnailUrl", "content/images/MS-ADD-03419-000-00034_files/8/0_0.jpg"
-        );
-    }
+        @Test
+        public void descriptiveMetadataSectionsHaveThumbnailURLGenerated() {
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).toMap()).containsAtLeast(
+                "thumbnailUrl", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
+            );
 
-    @Test
-    public void itemObjectsReportExpectedThumbnailURL() {
-        final String expectedURL = imageServerURL.resolve("content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg").toString();
-        assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
-        assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(1).toMap())
+                .doesNotContainKey("thumbnailUrl");
+
+            assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(2).toMap()).containsAtLeast(
+                "thumbnailUrl", "content/images/MS-ADD-03419-000-00034_files/8/0_0.jpg"
+            );
+        }
+
+        @Test
+        public void itemObjectsReportExpectedThumbnailURL() {
+            final String expectedURL = imageServerURL.resolve("content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg").toString();
+            assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
+            assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
+        }
     }
 }
