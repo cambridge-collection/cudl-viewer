@@ -47,14 +47,13 @@ services:
     ports:
       - ${CUDL_DB_HOST_PORT:-0}:5432
 
-
-#  imageserver:
-#    image: klokantech/iiifserver-iipimage-jpeg2000:latest
-#    ports:
-#      - 80:80
-#    volumes:
-#      - ./dropzone/:/dropzone/
-#      - ./data/:/data/
+  cudl-image-server:
+    image: iublibtech/cantaloupe:latest
+    ports:
+      - "8182:8182"
+    volumes:
+      - ${IMAGES_DIR:-./cudl-images}:/var/lib/images
+      - ${CANTALOUPE_PROPERTIES:-./docker/image-server/cantaloupe.properties}:/cantaloupe/cantaloupe.properties.sample
 
   cudl-xtf:
     image: cudl/cudl-xtf:latest
