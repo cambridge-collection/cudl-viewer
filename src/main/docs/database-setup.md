@@ -28,7 +28,8 @@ $ find src/main/docs/db-migrations -name '*.psql' \
     -exec psql -e -1 -f {} my-cudl-db \;
 ```
 
-## Import existing data
+## Import existing data 
+### [DEPRECATED: THIS HAS BEEN REMOVED BECAUSE DATA IS IMPORTED FROM GIT REPO RELEASES DATA]
 
 Clone the [database snapshots repository](https://bitbucket.org/CUDL/snapshots)
 from bitbucket:

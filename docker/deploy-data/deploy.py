@@ -23,25 +23,22 @@ import requests
 # NOTE: Requires ssh key setup with access to read repo
 
 def main():
-    config = configparser.ConfigParser()
-    config.read('/usr/local/deploy-data/config.ini')
-
-    title = config['DEPLOY']['INSTANCE_NAME']
-    git_data_repo_dir = config['DEPLOY']['GIT_DATA_REPO_DIR']
-    git_data_repo_url = config['DEPLOY']['GIT_DATA_REPO_URL']
-    db_deploy_host = config['DEPLOY']['DB_HOST']
-    db_deploy_port = config['DEPLOY']['DB_PORT']
-    db_deploy_database = config['DEPLOY']['DB_DATABASE']
-    db_deploy_user = config['DEPLOY']['DB_USER']
-    db_deploy_passwd = config['DEPLOY']['DB_PASSWORD']
-    db_dl_host = config['CUDL']['DB_HOST']
-    db_dl_port = config['CUDL']['DB_PORT']
-    db_dl_database = config['CUDL']['DB_DATABASE']
-    db_dl_user = config['CUDL']['DB_USER']
-    db_dl_passwd = config['CUDL']['DB_PASSWORD']
-    content_dir = config['CUDL']['CONTENT_DIR']
-    data_dir = config['CUDL']['DATA_DIR']
-    refresh_url = config['CUDL']['REFRESH_URL']
+    title = os.getenv('INSTANCE_NAME', 'dev')
+    git_data_repo_dir = os.getenv('GIT_DATA_REPO_DIR', '')
+    git_data_repo_url = os.getenv('GIT_DATA_REPO_URL', '')
+    db_deploy_host = os.getenv('DEPLOY_DB_HOST', '')
+    db_deploy_port = os.getenv('DEPLOY_DB_PORT_EXT', '3333')
+    db_deploy_database = os.getenv('DEPLOY_DB_NAME', 'dl-deployment-db')
+    db_deploy_user = os.getenv('DEPLOY_DB_USER', 'dl-deployment-db')
+    db_deploy_passwd = os.getenv('DEPLOY_DB_PASSWORD', 'password')
+    db_dl_host = os.getenv('CUDL_DB_HOST', 'cudl-db')
+    db_dl_port = os.getenv('CUDL_DB_PORT_INT', '5432')
+    db_dl_database = os.getenv('CUDL_DB_NAME', 'cudl')
+    db_dl_user = os.getenv('CUDL_DB_USER', 'cudl')
+    db_dl_passwd = os.getenv('CUDL_DB_PASSWORD', 'password')
+    content_dir = os.getenv('CONTENT_DIR', '/srv/cudl-viewer/cudl-viewer-content/')
+    data_dir = os.getenv('DATA_DIR', '/srv/cudl-viewer/cudl-data/')
+    refresh_url = os.getenv('REFRESH_URL', 'http://tomcat:8080/cache/refresh')
 
     required_version = _get_required_version_from_db(title, db_deploy_database, db_deploy_user, db_deploy_host,
                                                      db_deploy_passwd, db_deploy_port)

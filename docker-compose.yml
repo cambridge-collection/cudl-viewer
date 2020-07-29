@@ -1,20 +1,28 @@
 version: "3.8"
 
+## Requires setting ENV_FILE global variable to the version of the .env file you want to use.
+## Run with .env file e.g. docker-compose --env-file=example.env up --build -d
 services:
-  tomcat:
+  cudl-viewer:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        CUDL_GLOBAL_PROPERTIES_PATH: |-
+          ${CUDL_GLOBAL_PROPERTIES_PATH:-./docker/cudl-global.properties}
     image: cudl/cudl-viewer
+    env_file:
+      - ${ENV_FILE}
     volumes:
       - cudl-data:/srv/cudl-viewer/cudl-data/
       - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
     ports:
-      - "8080:8080"
+      - ${CUDL_VIEWER_PORT_EXT:-8080}:${CUDL_VIEWER_PORT_INT:-8080}
     depends_on:
       - cudl-db
       - cudl-deploy-data
       - cudl-xtf
+      - cudl-image-server
 
   cudl-deploy-data:
     build:
@@ -26,6 +34,8 @@ services:
         SSH_PRV_KEY: |-
           ${SSH_PRV_KEY}
     image: cudl/cudl-deploy-data
+    env_file:
+      - ${ENV_FILE}
     volumes:
        - cudl-data:/srv/cudl-viewer/cudl-data/
        - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
@@ -41,29 +51,31 @@ services:
     volumes:
       - cudl-db:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: cudl
-      POSTGRES_DB: cudl
-      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+      POSTGRES_USER: ${CUDL_DB_USER:-cudl}
+      POSTGRES_DB: ${CUDL_DB_NAME:-cudl}
+      POSTGRES_PASSWORD: ${CUDL_DB_PASSWORD:-password}
     ports:
-      - ${CUDL_DB_HOST_PORT:-0}:5432
+      - ${CUDL_DB_PORT_EXT:-0}:${CUDL_DB_PORT_INT:-5432}
 
   cudl-image-server:
     build:
       context: .
       dockerfile: docker/image-server/Dockerfile
+      args:
+        CUDL_IMAGE_SERVER_CONFIG: |-
+          ${CUDL_IMAGE_SERVER_CONFIG:-./docker/image-server/cantaloupe.properties}
     image: cudl/cudl-image-server
     environment:
-      CANTALOUPE_VERSION: 4.1.6
+      CANTALOUPE_VERSION: ${CANTALOUPE_VERSION}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-
     ports:
-      - "8182:8182"
+      - ${CUDL_IMAGE_SERVER_PORT_EXT:-8182}:${CUDL_IMAGE_SERVER_PORT_INT:-8182}
 
   cudl-xtf:
     image: cudl/cudl-xtf:latest
     ports:
-      - 8082:8080
+      - ${CUDL_XTF_PORT_EXT:-8082}:${CUDL_XTF_PORT_INT:-8080}
     volumes:
       - cudl-data:/srv/cudl/cudl-data/json
       - xtf-webapp:/opt/xtf/

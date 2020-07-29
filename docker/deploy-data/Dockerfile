@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 COPY docker/deploy-data/deploy.py /usr/local/deploy-data/deploy.py
-COPY docker/deploy-data/config.ini /usr/local/deploy-data/config.ini
+#COPY docker/deploy-data/config.ini /usr/local/deploy-data/config.ini
 
 RUN chmod u+x /usr/local/deploy-data/deploy.py
 RUN apt update && apt install -y python3 python3-pip libpq-dev cron openssh-client git

@@ -1,4 +1,6 @@
 FROM iublibtech/cantaloupe:latest
 
-COPY ./docker/image-server/cantaloupe.properties /cantaloupe/cantaloupe.properties.sample
+ARG CUDL_IMAGE_SERVER_CONFIG
+
+COPY ${CUDL_IMAGE_SERVER_CONFIG} /cantaloupe/cantaloupe.properties.sample
 
