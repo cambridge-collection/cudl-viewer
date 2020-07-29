@@ -4,11 +4,13 @@ import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.HandlerMapping;
@@ -36,7 +38,7 @@ public class ImageProxy {
     // on path /imageproxy/
     @RequestMapping(value = "/**")
     public ModelAndView handleViewRequest(HttpServletRequest request,
-            HttpServletResponse response) throws Exception {
+            HttpServletResponse response, @Value("${imageServer}") URI imageServer) throws Exception {
 
         String imagePath = (String) request
                 .getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
@@ -46,7 +48,7 @@ public class ImageProxy {
             return null;
         }
 
-        URL url = new URL(Properties.getString("imageServer") + imagePath);
+        URL url = new URL(imageServer + imagePath);
 
         BufferedOutputStream out = new BufferedOutputStream(
                 response.getOutputStream());

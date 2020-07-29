@@ -119,8 +119,9 @@ public class AppConfig {
         }
 
         @Bean(name = {ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT})
-        public DefaultItemFactory defaultItemFactory(ItemStatusOracle itemStatusOracle) {
-            return new DefaultItemFactory(itemStatusOracle);
+        public DefaultItemFactory defaultItemFactory(ItemStatusOracle itemStatusOracle,
+                                                     @Value("${imageServer}") URI imageServer) {
+            return new DefaultItemFactory(itemStatusOracle, imageServer);
         }
 
         @Import({

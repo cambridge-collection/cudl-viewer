@@ -9,10 +9,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -29,6 +33,10 @@ public class DefaultItemFactoryTest {
     private static final String ESSAY_ITEM_ID = "ES-LON-00001";
 
     @Mock ItemStatusOracle itemStatusOracle;
+
+    @Autowired
+    @Qualifier("imageServerURL")
+    protected URI imageServerURL;
 
     private static JSONObject getTestItemJSON(String itemID) {
         String itemJSONText;
@@ -52,8 +60,13 @@ public class DefaultItemFactoryTest {
     }
 
     private Item createItem(String id) {
-        DefaultItemFactory f = new DefaultItemFactory(itemStatusOracle);
-        return f.itemFromJSON(id, getTestItemJSON(id));
+        try {
+            DefaultItemFactory f = new DefaultItemFactory(itemStatusOracle, new URI("http://imageServer"));
+            return f.itemFromJSON(id, getTestItemJSON(id));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @ParameterizedTest

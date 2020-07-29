@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.Assert;
 
 import ulcambridge.foundations.viewer.model.EssayItem;
@@ -13,6 +14,7 @@ import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
 
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +23,12 @@ public final class DefaultItemFactory implements ItemFactory {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultItemFactory.class);
 
     private final ItemStatusOracle itemStatusOracle;
+    private final URI imageServer;
 
-    public DefaultItemFactory(ItemStatusOracle itemStatusOracle) {
+    public DefaultItemFactory(ItemStatusOracle itemStatusOracle, @Value("${imageServer}") URI imageServer) {
         Assert.notNull(itemStatusOracle, "itemStatusOracle is required");
         this.itemStatusOracle = itemStatusOracle;
+        this.imageServer = imageServer;
     }
 
     public Item itemFromJSON(String itemId, JSONObject itemJson) {
@@ -36,18 +40,18 @@ public final class DefaultItemFactory implements ItemFactory {
 
         if (itemType.equals("essay")) {
 
-            Item bookItem = getBookItem(itemId, itemJson);
+            Item bookItem = getBookItem(itemId, itemJson, imageServer);
             return getEssayItem(itemId, itemJson, bookItem);
 
         } else {
-            return getBookItem(itemId, itemJson);
+            return getBookItem(itemId, itemJson, imageServer);
         }
     }
 
     /**
      * Parse the JSON into a Item object (default root object).
      */
-    private Item getBookItem(String itemId, JSONObject itemJson) {
+    private Item getBookItem(String itemId, JSONObject itemJson, URI imageServer) {
 
         String itemType = "bookormanuscript";
         String itemTitle;
@@ -118,7 +122,7 @@ public final class DefaultItemFactory implements ItemFactory {
                 } else {
                     try {
                         URL url = new URL(
-                            new URL(Properties.getString("imageServer")),
+                            imageServer.toURL(),
                             descriptiveMetadata.getString("thumbnailUrl"));
                         itemThumbnailURL = url.toString();
                     } catch (MalformedURLException ex) {

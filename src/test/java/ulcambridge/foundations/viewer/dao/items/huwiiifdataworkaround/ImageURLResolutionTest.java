@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -21,6 +22,7 @@ import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTest;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -73,6 +75,10 @@ public class ImageURLResolutionTest {
 
     @Import(AppConfig.ItemsConfig.ItemRewritingConfig.class)
     public static class Config {
+        @Autowired
+        @Qualifier("imageServerURL")
+        protected URI imageServerURL;
+
         @Bean
         public ItemStatusOracle itemStatusOracle() {
             ItemStatusOracle itemStatusOracle = mock(ItemStatusOracle.class);
@@ -83,7 +89,7 @@ public class ImageURLResolutionTest {
 
         @Bean(name = DECORATED_ITEM_FACTORY_PARENT)
         public ItemFactory parentItemFactory(ItemStatusOracle itemStatusOracle) {
-            return new DefaultItemFactory(itemStatusOracle);
+            return new DefaultItemFactory(itemStatusOracle, imageServerURL);
         }
     }
 

@@ -65,10 +65,8 @@ services:
         CUDL_IMAGE_SERVER_CONFIG: |-
           ${CUDL_IMAGE_SERVER_CONFIG:-./docker/image-server/cantaloupe.properties}
     image: cudl/cudl-image-server
-    environment:
-      CANTALOUPE_VERSION: ${CANTALOUPE_VERSION}
-      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    env_file:
+      - ${ENV_FILE}
     ports:
       - ${CUDL_IMAGE_SERVER_PORT_EXT:-8182}:${CUDL_IMAGE_SERVER_PORT_INT:-8182}
 

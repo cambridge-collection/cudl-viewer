@@ -79,15 +79,16 @@ public class DocumentViewController {
     // on path /view/{docId}
     @RequestMapping(value = PATH_DOC_NO_PAGE)
     public ModelAndView handleRequest(@PathVariable("docId") String docId,
-            HttpServletRequest request) {
+            HttpServletRequest request, @Value("${imageServer}") URI imageServer) {
         // '0' is special page value indicating the item-level view
-        return handleRequest(docId, 0, request);
+        return handleRequest(docId, 0, request, imageServer);
     }
 
     // on path /view/{docId}/{page}
     @RequestMapping(value = "/{docId}/{page}")
     public ModelAndView handleRequest(@PathVariable("docId") String docId,
-            @PathVariable("page") int page, HttpServletRequest request) {
+            @PathVariable("page") int page, HttpServletRequest request,
+                                      @Value("${imageServer}") URI imageServer) {
 
         // force docID to uppercase
         docId = docId.toUpperCase();
@@ -108,7 +109,7 @@ public class DocumentViewController {
             return setupEssayView((EssayItem) item);
         } else {
             // default to document view.
-            return setupDocumentView(item, page, request);
+            return setupDocumentView(item, page, request, imageServer);
         }
 
     }
@@ -188,7 +189,7 @@ public class DocumentViewController {
      * View for displaying documents or manuscripts.
      */
     private ModelAndView setupDocumentView(Item item, int page,
-            HttpServletRequest request) {
+            HttpServletRequest request, @Value("${imageServer}") URI imageServer) {
 
         // check doc exists, if not return 404 page.
         if (item == null || page > item.getPageLabels().size() || page < 0) {
@@ -220,7 +221,7 @@ public class DocumentViewController {
         modelAndView.addObject("requestURL", requestURL);
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
-        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
+        modelAndView.addObject("imageServer", imageServer);
         modelAndView.addObject("services", Properties.getString("services"));
 
         // Collection information

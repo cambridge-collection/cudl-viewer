@@ -17,6 +17,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import java.net.URI;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,14 +72,15 @@ public class CollectionViewController {
 
     // on path /collections/{collectionId}
     @RequestMapping(value = PATH_COLLECTION_NO_PAGE)
-    public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId) {
-        return handleRequest(collectionId, 1);
+    public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId, @Value("${imageServer}") URI imageServer) {
+        return handleRequest(collectionId, 1, imageServer);
     }
 
     // on path /collections/{collectionId}/{page}
     @RequestMapping(value = PATH_COLLECTION_WITH_PAGE)
     public ModelAndView handleRequest( @PathVariable("collectionId") String collectionId,
-                                       @PathVariable("page") Integer pageNumber) {
+                                       @PathVariable("page") Integer pageNumber,
+                                       @Value("${imageServer}") URI imageServer) {
 
         final Collection collection = collectionFactory
                 .getCollectionFromId(collectionId);
@@ -90,8 +92,6 @@ public class CollectionViewController {
         final ModelAndView modelAndView = new ModelAndView("jsp/collection-"
                 + collection.getType());
 
-        // Get imageServer
-        final String imageServer = Properties.getString("imageServer");
 
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {

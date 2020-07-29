@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
@@ -12,6 +14,7 @@ import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Items;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -30,11 +33,15 @@ public class DocumentViewControllerTest {
 
     @Mock ItemsDao itemsDao;
 
+    @Autowired
+    @Qualifier("imageServerURL")
+    protected URI imageServerURL;
+
     /**
      * test the class DocumentViewController
      */
     @Test
-    public void testDocumentViewController() {
+    public void testDocumentViewController() throws URISyntaxException {
         when(itemsDao.getItem(ITEM_ID)).thenReturn(Items.getExampleItem(ITEM_ID));
         CollectionsDao collectionsdao = new MockCollectionsDao();
 
@@ -56,7 +63,7 @@ public class DocumentViewControllerTest {
             downloadSizes
         );
 
-        ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
+        ModelAndView mDoc = c.handleRequest(ITEM_ID, req, imageServerURL);
 
         assertEquals(ITEM_ID, mDoc.getModelMap().get("docId"));
         assertEquals(0, mDoc.getModelMap().get("page"));

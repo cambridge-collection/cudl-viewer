@@ -1,8 +1,11 @@
 package ulcambridge.foundations.viewer;
 
+import java.net.URI;
 import java.util.Map;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.ItemsDao;
@@ -14,9 +17,13 @@ import static org.mockito.Mockito.mock;
 
 public class CollectionViewControllerTest {
 
+    @Autowired
+    @Qualifier("imageServerURL")
+    protected URI imageServerURL;
+
     @Test
-    public void testHandleRequest_CollectionIdAndPositivePageNumber() throws Exception {
-        ModelAndView modelAndView = createController().handleRequest("treasures", 1);
+    public void testHandleRequest_CollectionIdAndPositivePageNumber() {
+        ModelAndView modelAndView = createController().handleRequest("treasures", 1, imageServerURL);
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
@@ -25,8 +32,8 @@ public class CollectionViewControllerTest {
     }
 
     @Test
-    public void testHandleRequest_CollectionIdAndZeroPageNumber() throws Exception {
-        ModelAndView modelAndView = createController().handleRequest("treasures", 0);
+    public void testHandleRequest_CollectionIdAndZeroPageNumber() {
+        ModelAndView modelAndView = createController().handleRequest("treasures", 0, imageServerURL);
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
@@ -35,8 +42,8 @@ public class CollectionViewControllerTest {
     }
 
     @Test
-    public void testHandleRequest_CollectionIdAndNegativePageNumber() throws Exception {
-        ModelAndView modelAndView = createController().handleRequest("treasures", -1);
+    public void testHandleRequest_CollectionIdAndNegativePageNumber() {
+        ModelAndView modelAndView = createController().handleRequest("treasures", -1, imageServerURL);
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
@@ -45,8 +52,8 @@ public class CollectionViewControllerTest {
     }
 
     @Test
-    public void testHandleRequest_CollectionIdOnly() throws Exception {
-        ModelAndView modelAndView = createController().handleRequest("treasures");
+    public void testHandleRequest_CollectionIdOnly() {
+        ModelAndView modelAndView = createController().handleRequest("treasures", imageServerURL);
         Map<String,Object> modelMap = modelAndView.getModel();
         Collection collection = (Collection)modelMap.get("collection");
 
