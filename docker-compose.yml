@@ -52,7 +52,7 @@ services:
       - cudl-db:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${CUDL_DB_USER:-cudl}
-      POSTGRES_DB: ${CUDL_DB_NAME:-cudl}
+      POSTGRES_DB: ${CUDL_DB_DATABASE:-cudl}
       POSTGRES_PASSWORD: ${CUDL_DB_PASSWORD:-password}
     ports:
       - ${CUDL_DB_PORT_EXT:-0}:${CUDL_DB_PORT_INT:-5432}
