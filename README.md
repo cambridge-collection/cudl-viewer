@@ -179,3 +179,18 @@ $ mvn release:perform
 ## More information
 
 For more information, see the [CUDL Wiki](https://wiki.cam.ac.uk/cudl-docs/).
+
+
+## Running with docker
+
+To run the application using docker, you will need to pass in a .env file with the required properties.
+e.g.
+```
+docker-compose --env-file=example.env up --build -d 
+```
+
+and bring down with
+```
+docker-compose --env-file=example.env down
+```
+
