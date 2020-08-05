@@ -37,7 +37,7 @@ def main():
     db_dl_user = os.getenv('CUDL_DB_USER', 'cudl')
     db_dl_passwd = os.getenv('CUDL_DB_PASSWORD', 'password')
     content_dir = os.getenv('CONTENT_DIR', '/srv/cudl-viewer/cudl-viewer-content/')
-    data_dir = os.getenv('DATA_DIR', '/srv/cudl-viewer/cudl-data/')
+    data_dir = os.getenv('DATA_DIR', '/mnt/cudl-data/')
     refresh_url = os.getenv('REFRESH_URL', 'http://tomcat:8080/cache/refresh')
 
     required_version = _get_required_version_from_db(title, db_deploy_database, db_deploy_user, db_deploy_host,

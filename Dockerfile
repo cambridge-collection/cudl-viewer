@@ -12,4 +12,4 @@ COPY ${CUDL_GLOBAL_PROPERTIES_PATH} /etc/cudl-viewer/cudl-global.properties
 COPY ./docker/startup.sh /usr/local/startup.sh
 RUN chmod u+x /usr/local/startup.sh
 
-CMD ["/usr/local/startup.sh", "/srv/cudl-viewer/cudl-data/", "catalina.sh", "run"]
+CMD ["/usr/local/startup.sh", "/mnt/cudl-data/", "catalina.sh", "run"]

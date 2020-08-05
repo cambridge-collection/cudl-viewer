@@ -37,6 +37,11 @@ public class DocumentViewControllerTest {
     @Qualifier("imageServerURL")
     protected URI imageServerURL;
 
+    @Autowired
+    @Qualifier("servicesURL")
+    protected URI servicesURL;
+
+
     /**
      * test the class DocumentViewController
      */
@@ -60,6 +65,7 @@ public class DocumentViewControllerTest {
             itemsDao,
             rootUri,
             iiifImageServer,
+            servicesURL,
             downloadSizes
         );
 

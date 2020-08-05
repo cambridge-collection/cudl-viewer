@@ -52,6 +52,7 @@ public class DocumentViewController {
 
     private final URI rootURL;
     private final URI iiifImageServer;
+    private final URI servicesUrl;
 
     private final Map<String, String> downloadSizes;
 
@@ -61,16 +62,19 @@ public class DocumentViewController {
         ItemsDao itemDAO,
         URI rootUrl,
         URI iiifImageServer,
+        @Value("${services}") URI servicesUrl,
         @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(rootUrl, "rootUrl is required");
+        //Assert.notNull(servicesUrl, "servicesUrl is required");
         Assert.notNull(iiifImageServer, "iiifImageServer is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = itemDAO;
         this.rootURL = rootUrl;
+        this.servicesUrl = servicesUrl;
         this.iiifImageServer = iiifImageServer;
         this.downloadSizes = downloadSizes.orElseGet(HashMap::new);
 
@@ -222,7 +226,7 @@ public class DocumentViewController {
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
         modelAndView.addObject("imageServer", imageServer);
-        modelAndView.addObject("services", Properties.getString("services"));
+        modelAndView.addObject("services", servicesUrl);
 
         // Collection information
         modelAndView.addObject("organisationalCollection",

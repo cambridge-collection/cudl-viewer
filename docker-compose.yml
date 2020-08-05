@@ -14,7 +14,7 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-      - cudl-data:/srv/cudl-viewer/cudl-data/
+      - cudl-data:/mnt/cudl-data/
       - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
     ports:
       - ${CUDL_VIEWER_PORT_EXT:-8080}:${CUDL_VIEWER_PORT_INT:-8080}
@@ -23,6 +23,7 @@ services:
       - cudl-deploy-data
       - cudl-xtf
       - cudl-image-server
+      - cudl-services
 
   cudl-deploy-data:
     build:
@@ -37,7 +38,7 @@ services:
     env_file:
       - ${ENV_FILE}
     volumes:
-       - cudl-data:/srv/cudl-viewer/cudl-data/
+       - cudl-data:/mnt/cudl-data/
        - cudl-viewer-content:/srv/cudl-viewer/cudl-viewer-content/
     depends_on:
       - cudl-db
@@ -70,6 +71,7 @@ services:
     ports:
       - ${CUDL_IMAGE_SERVER_PORT_EXT:-8182}:${CUDL_IMAGE_SERVER_PORT_INT:-8182}
 
+  # Uses image built from cudl-xtf repo
   cudl-xtf:
     image: cudl/cudl-xtf:latest
     ports:
@@ -79,6 +81,7 @@ services:
       - xtf-webapp:/opt/xtf/
       - cudl-indices:/srv/cudl/xtf/
 
+  # Uses image built from cudl-xtf repo
   xtf-indexer-cron:
     image: cudl/xtf-indexer-cron:latest
     depends_on:
@@ -88,10 +91,28 @@ services:
       - xtf-webapp:/opt/xtf/
       - cudl-indices:/srv/cudl/xtf/
 
+  # Uses image built from cudl-services repo
+  cudl-services:
+    env_file:
+      - ${ENV_FILE}
+    image: cudl/cudl-services:latest
+    restart: always
+    depends_on:
+      - cudl-db
+    ports:
+      - ${CUDL_SERVICES_PORT_EXT:-3000}:3000
+    volumes:
+      - cudl-data:/mnt/cudl-data
+      - cudl-data-dcp:/mnt/dcp-data
+      - cudl-services-cache:/mnt/cache
+
+
 volumes:
   cudl-data:
   cudl-viewer-content:
   cudl-db:
   xtf-webapp:
   cudl-indices:
+  cudl-services-cache:
+  cudl-data-dcp:
 

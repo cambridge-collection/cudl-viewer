@@ -85,6 +85,11 @@ public class AppConfig {
         }
 
         @Bean
+        public URI servicesURL(@Value("${services}") URI url) {
+            return ensureURLHasPath(url);
+        }
+
+        @Bean
         public URI iiifImageServer(@Value("${IIIFImageServer}") URI url) {
             return ensureURLHasPath(url);
         }

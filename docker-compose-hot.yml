@@ -18,7 +18,7 @@ services:
       # Configure the webapp's <Context>
       - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
 
-      - ${CUDL_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_DATA:-../cudl-data/}:/mnt/cudl-data/
       - ${CUDL_VIEWER_CONTENT:-../cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
     ports:
       - ${CUDL_VIEWER_HOST_PORT:-1111}:8080
@@ -42,7 +42,7 @@ services:
     restart: always
     volumes:
       - ./docker/cudl-services-config.json5:/etc/cudl-services/conf.d/0_cudl-services-config.json5
-      - ${CUDL_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_DATA:-../cudl-data/}:/mnt/cudl-data/
       - ${CUDL_LEGACY_DARWIN_DATA:-../legacy-darwin-letters/}:/srv/cudl-viewer/legacy-darwin-letters/
     ports:
       - ${CUDL_SERVICES_HOST_PORT:-1112:80}
