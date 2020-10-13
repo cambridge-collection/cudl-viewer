@@ -74,6 +74,8 @@ services:
   # Uses image built from cudl-xtf repo
   cudl-xtf:
     image: cudl/cudl-xtf:latest
+    depends_on:
+      - cudl-services
     ports:
       - ${CUDL_XTF_PORT_EXT:-8082}:${CUDL_XTF_PORT_INT:-8080}
     volumes:

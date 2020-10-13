@@ -2,6 +2,7 @@
 FROM tomcat:9.0.30-jdk11-openjdk
 
 ARG CUDL_GLOBAL_PROPERTIES_PATH
+ARG JAVA_OPTS
 
 RUN echo "Using cudl-global.properties at:  ${CUDL_GLOBAL_PROPERTIES_PATH}"
 
