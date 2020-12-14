@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  tomcat:
+    image: tomcat:9.0.30-jdk11-openjdk
+    volumes:
+      - ./target/FoundationsViewer.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
+      - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
+      - ${CUDL_VIEWER_DATA:-../cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_VIEWER_CONTENT:-../cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
+    environment:
+      CATALINA_OPTS: "-Dcom.sun.management.jmxremote=true  -Dcom.sun.management.jmxremote.port=9010         -Dcom.sun.management.jmxremote.local.only=false        -Dcom.sun.management.jmxremote.authenticate=false        -Dcom.sun.management.jmxremote.ssl=false        -Dcom.sun.management.jmxremote.rmi.port=9010        -Djava.rmi.server.hostname=localhost"
+    ports:
+      - 8888:8080
+      - 9010:9010
+    depends_on:
+      - cudl-db
+  cudl-db:
+    build:
+      context: .
+      dockerfile: docker/db/Dockerfile
+    restart: always
+    environment:
+      POSTGRES_USER: cudl
+      POSTGRES_DB: cudl
+      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+    ports:
+      - ${CUDL_DB_HOST_PORT:-5555}:5432
+
+
