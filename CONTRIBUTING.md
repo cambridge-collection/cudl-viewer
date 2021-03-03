@@ -1,0 +1,1 @@
+For contribution guidelines, code of conduct and other documents for contributors to Cambridge Digital Collection Platform repositories, please see https://github.com/cambridge-collection/contributions
