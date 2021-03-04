@@ -178,4 +178,4 @@ $ mvn release:perform
 
 ## More information
 
-For more information, see the [Wiki](https://github.com/cambridge-collection/docs/wiki).
+For more information, see the [Documentation](https://cambridge-collection.github.io).
