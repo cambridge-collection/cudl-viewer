@@ -178,4 +178,4 @@ $ mvn release:perform
 
 ## More information
 
-For more information, see the [CUDL Wiki](https://wiki.cam.ac.uk/cudl-docs/).
+For more information, see the [Wiki](https://github.com/cambridge-collection/docs/wiki).
