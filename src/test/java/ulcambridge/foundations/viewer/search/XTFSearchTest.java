@@ -8,9 +8,14 @@ import com.google.common.collect.ImmutableList;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import ulcambridge.foundations.viewer.forms.SearchForm;
@@ -91,5 +96,25 @@ public class XTFSearchTest {
             "Letter from <b>Joseph</b> <b>Dalton</b> <b>Hooker</b> to C. R. Darwin [c. April",
             "<b>Hooker</b> , <b>Joseph</b> <b>Dalton</b>"
         ));
+    }
+
+    @ParameterizedTest
+    @MethodSource("emptyDocHits")
+    public void createSearchResultHandlesMissingResultData(Element docHitWithMissingData, SearchResult expected) throws ParserConfigurationException {
+        XTFSearch xtf = new XTFSearch(URI.create("http://example/"));
+        assertThat(xtf.createSearchResult(docHitWithMissingData)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> emptyDocHits() {
+        Document doc = getTestXml(XTFSearchTest.class, "docHitsWithMissingData.xml");
+        Element docHit1 = (Element)doc.getElementsByTagName("docHit").item(0);
+        Element docHit2 = (Element)doc.getElementsByTagName("docHit").item(1);
+        Element docHit3 = (Element)doc.getElementsByTagName("docHit").item(2);
+        SearchResult empty = new SearchResult("", "", 1, "", ImmutableList.of(), -1, "bookormanuscript", null, null);
+        return Stream.of(
+            Arguments.of(docHit1, empty),
+            Arguments.of(docHit2, empty),
+            Arguments.of(docHit3, empty)
+        );
     }
 }
