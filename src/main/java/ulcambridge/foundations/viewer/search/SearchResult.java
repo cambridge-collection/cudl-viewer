@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.search;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class SearchResult implements Comparable<SearchResult> {
     private final String startPageLabel;
     private final String thumbnailURL;
     private final String thumbnailOrientation;
+
     private final List<String> snippets;
     private final int score; // how relevant is this result, used for ordering.
 
@@ -125,6 +127,21 @@ public class SearchResult implements Comparable<SearchResult> {
             .hash(title, type, fileId, startPage, startPageLabel, thumbnailURL,
                 thumbnailOrientation,
                 snippets, score);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("title", title)
+            .add("type", type)
+            .add("fileId", fileId)
+            .add("startPage", startPage)
+            .add("startPageLabel", startPageLabel)
+            .add("thumbnailURL", thumbnailURL)
+            .add("thumbnailOrientation", thumbnailOrientation)
+            .add("snippets", snippets)
+            .add("score", score)
+            .toString();
     }
 }
 
