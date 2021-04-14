@@ -1,0 +1,32 @@
+<examples>
+    <docHit rank="1" path="index-cudl-tagging:MS-DAR-00100-00164.json" subDocument="DOCUMENT"></docHit>
+    <docHit rank="1" path="index-cudl-tagging:MS-DAR-00100-00164.json" score="" totalHits="" subDocument="DOCUMENT"></docHit>
+
+    <docHit rank="1" path="index-cudl-tagging:MS-DAR-00100-00164.json" subDocument="DOCUMENT">
+        <meta>
+            <display/>
+            <fileID/>
+            <startPageLabel/>
+            <startPage/>
+            <itemType/>
+            <title/>
+            <sort-title/>
+            <nameFullForm/>
+            <languageCode/>
+            <languageString/>
+            <physicalLocation/>
+            <shelfLocator/>
+            <search-shelfLocator/>
+            <eventCreationDateStart/>
+            <eventCreationDateEnd/>
+            <eventCreationDateDisplay/>
+            <placeFullForm/>
+            <sort-year/>
+            <year/>
+            <facet-date/>
+            <thumbnailUrl/>
+            <thumbnailOrientation/>
+            <facet-collection/>
+        </meta>
+    </docHit>
+</examples>
