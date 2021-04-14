@@ -1,15 +1,20 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.junit.Test;
-import org.w3c.dom.Document;
-import ulcambridge.foundations.viewer.forms.SearchForm;
+import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.assertEquals;
+import static ulcambridge.foundations.viewer.testing.XMLTesting.getTestXml;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import com.google.common.collect.ImmutableList;
 import java.net.URI;
 import java.util.HashMap;
-
-import static org.junit.Assert.assertEquals;
+import java.util.stream.Collectors;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.junit.jupiter.api.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.testing.XMLTesting;
 
 public class XTFSearchTest {
     @Test
@@ -64,7 +69,27 @@ public class XTFSearchTest {
             }
             return null;
         }
-
     }
 
+    @Test
+    public void createSearchResultParsesValidDocHit() {
+        Element docHit = (Element)getTestXml(this, "docHit.xml")
+            .getElementsByTagName("docHit").item(0);
+
+        SearchResult result = new XTFSearch(URI.create("http://example")).createSearchResult(docHit);
+
+        assertThat(XMLTesting.normaliseSpace(result.getTitle())).isEqualTo(
+            "Letter from <b>Joseph</b> <b>Dalton</b> <b>Hooker</b> to C. R. Darwin [c. April 1851]");
+        assertThat(result.getType()).isEqualTo("example-type");
+        assertThat(result.getFileId()).isEqualTo("MS-DAR-00100-00164");
+        assertThat(result.getStartPage()).isEqualTo(1);
+        assertThat(result.getStartPageLabel()).isEqualTo("164r");
+        assertThat(result.getSnippets().stream()
+            .map(XMLTesting::normaliseSpace)
+            .collect(Collectors.toList())
+        ).isEqualTo(ImmutableList.of(
+            "Letter from <b>Joseph</b> <b>Dalton</b> <b>Hooker</b> to C. R. Darwin [c. April",
+            "<b>Hooker</b> , <b>Joseph</b> <b>Dalton</b>"
+        ));
+    }
 }
