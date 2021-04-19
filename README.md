@@ -14,7 +14,7 @@ Ensure you have a recent JDK and version of Maven installed before continuing.
 You'll need to
 [add credentials for the CUDL Maven repository](https://wiki.cam.ac.uk/cudl-docs/CUDL_Maven_Repository#Credentials)
 in order to resolve internal dependencies such as
-[cudl-viewer-ui](https://bitbucket.org/CUDL/cudl-viewer-ui).
+[cudl-viewer-ui](https://github.com/cambridge-collection/cudl-viewer-ui).
 
 ### Database Setup
 
@@ -45,7 +45,7 @@ acceptable to get the Viewer running, but some must be changed:
 * `cudl-viewer-content.images.path`
 
 These must point to the `html/` and `images/` directories in a local checkout of
-the [cudl-viewer-content](https://bitbucket.org/CUDL/cudl-viewer-content)
+the [cudl-viewer-content](https://github.com/cambridge-collection/cudl-viewer-content)
 repository.
 
 ```
@@ -71,11 +71,11 @@ The above settings are sufficient to get the Viewer running, but you'll see
 numerous stack traces in the console if you don't configure the admin settings,
 even if `admin.enabled=false`.
 
-1. Clone [cudl-data](https://bitbucket.org/CUDL/cudl-data), and set
+1. Clone [cudl-data](https://github.com/cambridge-collection/cudl-data), and set
    `admin.git.json.localpath` to the clone's location
 2. Set `admin.git.content.localpath` to the location of the cudl-viewer-content
    clone you made in the previous section
-3. Clone [snapshots](https://bitbucket.org/CUDL/snapshots), and set
+3. Clone [snapshots](https://github.com/cambridge-collection/snapshots), and set
    `admin.git.db.localpath` to the clone's location
 
 ### Running
@@ -108,7 +108,7 @@ of `http://localhost:8080/` is not right for you.
 Once enabled, the viewer will link to the UI's devserver instead of serving
 Javascript/CSS from the dependency JARs.
 
-See the [cudl-viewer-ui's README](https://bitbucket.org/CUDL/cudl-viewer-ui) for
+See the [cudl-viewer-ui's README](https://github.com/cambridge-collection/cudl-viewer-ui) for
 instructions on running the UI devserver.
 
 ## Building
@@ -178,4 +178,4 @@ $ mvn release:perform
 
 ## More information
 
-For more information, see the [CUDL Wiki](https://wiki.cam.ac.uk/cudl-docs/).
+For more information, see the [Documentation](https://cambridge-collection.github.io).
