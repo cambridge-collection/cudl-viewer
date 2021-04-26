@@ -347,7 +347,7 @@
                             <c:if test="${pdfSinglePage eq true}">
                                 <div id="pdfSinglePage">
                                     <div class="button usebutton">
-                                        <a class="btn btn-info left" href="/pdf/${docId}/${page}" download="${docId}-${page}.pdf">
+                                        <a class="btn btn-info left" href="" download="${docId}-${page}.pdf">
                                             <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
                                         </a>
                                     </div>
@@ -421,10 +421,22 @@
                 <button type="button" class="btn btn-default btn-success">Yes</button>
                 <button type="button" class="btn btn-default">Cancel</button>
             </div>
+            <div id="singlePagePdfConfirmation" class="alert alert-info"
+                 style="display: none">
+                <a href="#" class="close">&times;</a>
+                <p>The images contained in the pdf download have the following copyright:</p>
+                <div class="well" id="pdfSinglePageDownloadCopyright"></div>
+                <p>
+                    <button type="button" class="btn btn-default btn-success">Download</button>
+                    <button type="button" class="btn btn-default">Cancel</button>
+                </p>
+            </div>
             <div id="fullDocumentPdfConfirmation" class="alert alert-info"
                  style="display: none">
                 <a href="#" class="close">&times;</a>This will create a PDF with thumbnail images for all pages, and
-                may take some time for large documents.<br /> <br />
+                may take some time for large documents.  The images contained in this document have the following
+                copyright: <br /> <br />
+                <div class="well" id="pdfFullDocumentDownloadCopyright"></div>
                 <button type="button" class="btn btn-default btn-success">Continue</button>
                 <button type="button" class="btn btn-default">Cancel</button>
             </div>

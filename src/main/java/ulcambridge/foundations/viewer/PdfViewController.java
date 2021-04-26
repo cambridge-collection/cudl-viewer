@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -48,7 +49,9 @@ public class PdfViewController {
         docId = docId.toUpperCase();
 
         Item item = itemDAO.getItem(docId);
-        if (item != null) {
+
+        // Check metadata for permission to download pdf
+        if (item != null && hasPermissionForPDFDownload(item)) {
 
             singlePagePdf.writePdf(item, page, response);
 
@@ -64,13 +67,34 @@ public class PdfViewController {
         docId = docId.toUpperCase();
 
         Item item = itemDAO.getItem(docId);
-        if (item != null) {
+
+        // Check metadata for permission to download pdf
+        if (item != null && hasPermissionForPDFDownload(item)) {
 
            fullDocumentPdf.writePdf(item, response);
 
         } else {
             throw new ResourceNotFoundException();
         }
+    }
+
+    /**
+     * Like the download image functionality, the download pdf functionality is limited to items which have a
+     * downloadImageRights property.
+     *
+     * @param item
+     * @return
+     */
+    private boolean hasPermissionForPDFDownload(Item item) {
+        if (item!=null) {
+            JSONObject descriptiveMetadata = item.getJSON().getJSONArray("descriptiveMetadata")
+                .getJSONObject(0);
+
+            // has downloadImageRights property that is not empty.
+            return descriptiveMetadata.has("downloadImageRights") &&
+                !descriptiveMetadata.getString("downloadImageRights").trim().equals("");
+        }
+        return false;
     }
 
 }
