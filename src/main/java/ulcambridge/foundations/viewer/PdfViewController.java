@@ -85,8 +85,8 @@ public class PdfViewController {
      * @param item
      * @return
      */
-    private boolean hasPermissionForPDFDownload(Item item) {
-        if (item!=null) {
+    public static boolean hasPermissionForPDFDownload(Item item) {
+        if (item!=null && item.getJSON().has("descriptiveMetadata")) {
             JSONObject descriptiveMetadata = item.getJSON().getJSONArray("descriptiveMetadata")
                 .getJSONObject(0);
 
