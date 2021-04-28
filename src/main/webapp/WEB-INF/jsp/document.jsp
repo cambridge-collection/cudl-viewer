@@ -241,10 +241,9 @@
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
                                         <p>
-                                            Under the 'More' menu you can find <a class="show-metadata" href="#">metadata
+                                            Under the 'View more options' menu you can find <a class="show-metadata" href="#">metadata
                                                 about the item</a>, any transcription and translation we have of
-                                            the text and find out about <a class="show-download" href="#">downloading
-                                                or sharing this image</a>.
+                                            the text and find out about <a class="show-download" href="#">sharing this image</a>.
                                         </p>
                                     </div>
                                     <div id="zoomRights">
