@@ -97,9 +97,10 @@ public class IIIFPresentation {
         // navDate?
         // license
         attribution = "Provided by Cambridge University Library. ";
-        attribution += metadataObject.get("displayImageRights")+ "  ";
-        attribution += metadataObject.get("downloadImageRights")+ "  ";
-        attribution += metadataObject.get("metadataRights");
+        if (metadataObject.has("displayImageRights")) { attribution += metadataObject.get("displayImageRights")+ "  "; }
+        if (metadataObject.has("downloadImageRights")) { attribution += metadataObject.get("downloadImageRights")+ "  "; }
+        if (metadataObject.has("pdfRights")) { attribution += metadataObject.get("pdfRights")+ " "; }
+        if (metadataObject.has("metadataRights")) { attribution += metadataObject.get("metadataRights"); }
 
         logoURL = baseURL + "/img/cu_logo.png";
 

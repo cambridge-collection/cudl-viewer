@@ -35,6 +35,7 @@ public class PdfViewController {
 
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(singlePagePdf, "singlePagePdf is required");
+        Assert.notNull(fullDocumentPdf, "fullDocumentPdf is required");
 
         this.itemDAO = itemDAO;
         this.singlePagePdf = singlePagePdf;
@@ -80,7 +81,7 @@ public class PdfViewController {
 
     /**
      * Like the download image functionality, the download pdf functionality is limited to items which have a
-     * downloadImageRights property.
+     * pdfRights property.
      *
      * @param item
      * @return
@@ -90,9 +91,9 @@ public class PdfViewController {
             JSONObject descriptiveMetadata = item.getJSON().getJSONArray("descriptiveMetadata")
                 .getJSONObject(0);
 
-            // has downloadImageRights property that is not empty.
-            return descriptiveMetadata.has("downloadImageRights") &&
-                !descriptiveMetadata.getString("downloadImageRights").trim().equals("");
+            // has pdfRights property that is not empty.
+            return descriptiveMetadata.has("pdfRights") &&
+                !descriptiveMetadata.getString("pdfRights").trim().equals("");
         }
         return false;
     }
