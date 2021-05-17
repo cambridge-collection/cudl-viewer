@@ -52,7 +52,7 @@ public class SearchResultSetTest {
         facets.add(f);
         facets.add(f2);
 
-        FacetGroup g = new FacetGroup("field", facets, 5);
+        FacetGroup g = new FacetGroup("field", facets, 5, 12);
 
         ArrayList<FacetGroup> facetGroups = new ArrayList<FacetGroup> ();
         facetGroups.add(g);
@@ -75,7 +75,7 @@ public class SearchResultSetTest {
         facets2.add(f3);
         facets2.add(f4);
 
-        FacetGroup g2 = new FacetGroup("field2", facets2, 51);
+        FacetGroup g2 = new FacetGroup("field2", facets2, 51, 60);
 
         r.addFacetGroup(0, g2);
         assertEquals(2, r.getFacets().size());

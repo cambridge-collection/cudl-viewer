@@ -7,7 +7,7 @@
     <packaging>war</packaging>
 
     <name>CUDL Viewer</name>
-    <url>https://bitbucket.org/CUDL/cudl-viewer</url>
+    <url>https://github.com/cambridge-collection/cudl-viewer</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -15,7 +15,7 @@
 
         <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
-        <cudl-viewer-ui.version>2.0.1</cudl-viewer-ui.version>
+        <cudl-viewer-ui.version>2.0.3</cudl-viewer-ui.version>
         <spring-security-raven.version>1.0.0</spring-security-raven.version>
 
         <commons-email.version>1.5</commons-email.version>
@@ -34,9 +34,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/CUDL/cudl-viewer.git</developerConnection>
-        <url>https://bitbucket.org/CUDL/cudl-viewer</url>
+        <connection>scm:git:ssh://git@github.com:cambridge-collection/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:cambridge-collection/cudl-viewer.git</developerConnection>
+        <url>https://github.com/cambridge-collection/cudl-viewer</url>
       <tag>HEAD</tag>
   </scm>
 
@@ -657,6 +657,23 @@
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
             <version>2.8.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.1.11</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>html2pdf</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>2.5.2</version>
         </dependency>
 
     </dependencies>

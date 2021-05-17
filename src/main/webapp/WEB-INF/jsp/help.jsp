@@ -1,4 +1,4 @@
-<%@page autoFlush="false" %>
+<%@page autoFlush="true" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 

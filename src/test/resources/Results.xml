@@ -20,7 +20,10 @@
           startDoc="1"
           maxDocs="500">
       <facet field="facet-collection" select="*" sortGroupsBy="value"/>
-      <facet field="facet-subject" select="*[1-5]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-subject" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-language" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-place" select="*[1-10]" sortGroupsBy="totalDocs"/>
+      <facet field="facet-location" select="*[1-10]" sortGroupsBy="totalDocs"/>
       <facet field="facet-date" select="*" sortGroupsBy="value"/>
       <spellcheck/>
       <and>
@@ -47,34 +50,38 @@
       <meta>
          <display>dynaxml</display>
          <fileID>MS-ADD-04004</fileID>
+         <startPageLabel>cover</startPageLabel>
          <startPage>1</startPage>
-         <startPageLabel>front cover</startPageLabel>
          <title display="false" displayForm="Newton's Waste Book">Newton's Waste Book</title>
          <sort-title>newtons waste book</sort-title>
-         <nameFullForm>Newton, Isaac, Sir, 1642-1727</nameFullForm>
-         <nameFullForm>Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891</nameFullForm>
-         <facet-subject>Mathematics - Early works to 1800</facet-subject>
-         <subjectFullForm>Mathematics - Early works to 1800</subjectFullForm>
-         <placeFullForm>Woolsthorpe-by-Colsterworth</placeFullForm>
-         <eventCreationDateStart>1612-01-01</eventCreationDateStart>
-         <eventCreationDateEnd>1653-12-31</eventCreationDateEnd>
-         <eventCreationDateDisplay>c. 1612 - c. 1653</eventCreationDateDisplay>
-         <sort-year>1612</sort-year>
-         <year>1612-1653</year>
-         <facet-date>1600s C.E.</facet-date>
-         <languageCode>eng</languageCode>
-         <languageCode>lat</languageCode>
-         <languageCode>gre</languageCode>
-         <languageString display="true" displayForm="English, Latin and Greek">English, Latin and Greek</languageString>
+         <languageCode>enl</languageCode>
+         <facet-language>English, Latin and Greek</facet-language>
+         <languageString>English, Latin and Greek</languageString>
          <physicalLocation display="true" displayForm="Cambridge University Library">Cambridge University Library</physicalLocation>
+         <physicalLocation>Cambridge University Library</physicalLocation>
+         <facet-location>Cambridge University Library</facet-location>
          <shelfLocator display="true" displayForm="MS Add.4004">MS Add.4004</shelfLocator>
-         <search-shelfLocator>MS Add 4004</search-shelfLocator>
-         <type>text</type>
+         <search-shelfLocator>MS Add.4004</search-shelfLocator>
+         <nameFullForm>Newton, Isaac, Sir, 1642-1727</nameFullForm>
+         <nameFullForm>
+             Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891
+         </nameFullForm>
+         <facet-subject>Mathematics -- Early works to 1800</facet-subject>
+         <subjectFullForm>Mathematics -- Early works to 1800</subjectFullForm>
+         <eventCreationDateStart>1612-01-01</eventCreationDateStart>
+         <eventCreationDateEnd>1612-01-01</eventCreationDateEnd>
+         <eventCreationDateDisplay>c. 1612-c. 1690</eventCreationDateDisplay>
+         <placeFullForm/>
+         <sort-year>1612</sort-year>
+         <year>1612-1612</year>
+         <facet-date>1600s C.E.</facet-date>
+         <thumbnailUrl>MS-ADD-04004-001-00001</thumbnailUrl>
+         <thumbnailOrientation>portrait</thumbnailOrientation>
          <facet-collection>Treasures of the Library</facet-collection>
          <facet-collection>Newton Papers</facet-collection>
       </meta>
       <snippet rank="1" score="100">interested in his <hit>
-            <term>stepfather</term>’<term>s</term> 
+            <term>stepfather</term>’<term>s</term>
             <term>jottings</term>
          </hit>: its value to him</snippet>
    </docHit>
@@ -90,6 +97,15 @@
              totalDocs="1"
              startDoc="0"
              endDoc="0"/>
+   </facet>
+   <facet field="facet-language" totalGroups="1" totalDocs="1">
+       <group value="English, Latin and Greek" rank="1" totalSubGroups="0" totalDocs="1" startDoc="0" endDoc="0"/>
+   </facet>
+   <facet field="facet-place" totalGroups="1" totalDocs="1">
+       <group value="" rank="1" totalSubGroups="0" totalDocs="1" startDoc="0" endDoc="0"/>
+   </facet>
+   <facet field="facet-location" totalGroups="1" totalDocs="1">
+       <group value="Cambridge University Library" rank="1" totalSubGroups="0" totalDocs="1" startDoc="0" endDoc="0"/>
    </facet>
    <facet field="facet-date" totalGroups="1" totalDocs="1">
       <group value="1600s C.E." rank="1" totalSubGroups="0" totalDocs="1" startDoc="0"

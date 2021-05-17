@@ -1,0 +1,3212 @@
+
+         {
+            "descriptiveMetadata":
+               [
+
+         {
+            "thumbnailUrl": "MS-DD-00004-00017-000-00001",
+            "thumbnailOrientation": "portrait",
+            "displayImageRights": "Zooming image © University Library, All rights reserved.",
+            "downloadImageRights": "Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License (CC BY-NC 3.0)",
+            "imageReproPageURL": "https://imagingservices.lib.cam.ac.uk/",
+            "metadataRights": "This metadata is licensed under a Creative Commons Attribution-NonCommercial 3.0 Unported License.",
+            "pdfRights": "PDF made available for download is licensed under a Creative Commons Attribution-NonCommercial 4.0 Unported License (CC BY-NC 4.0)",
+            "watermarkStatement": "Cambridge University Library (CC BY-NC 4.0)",
+            "docAuthority": "",
+            "fundings":
+               {
+               "display": true,
+               "seq": 208,
+                  "label": "Funding",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "",
+               "seq": 209
+               }
+               ]
+               },
+            "subjects":
+               {
+               "display": true,
+               "seq": 22,
+                  "listDisplay": "inline",
+                  "label": "Subject(s)",
+               "value": [
+
+         {
+               "display": true,
+                  "displayForm": "Books of Hours",
+               "seq": 23,
+                  "linktype": "keyword search",
+            "fullForm": "Books of Hours",
+            "authority": "Library of Congress Subject Headings",
+            "authorityURI": "http://id.loc.gov/authorities/about.html#lcsh",
+            "valueURI": "subject_sh85062530"
+         }
+               ]
+               },
+            "dataSources":
+               {
+               "display": true,
+               "seq": 210,
+                  "label": "Data Source(s)",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "This catalogue entry draws substantially on Paul Binski, Patrick Zutshi and Stella Panayotova, Western Illuminated Manuscripts: A Catalogue of the Collection in Cambridge University Library (Cambridge, 2011).",
+               "seq": 211
+               }
+               ]
+               },
+            "dataRevisions":
+               {
+               "display": true,
+                  "displayForm": "Arthur Westwell, Suzanne Paul, James Freeman",
+                  "label": "Author(s) of the Record",
+               "seq": 212
+               },
+            "ID": "DOCUMENT",
+            "abstract":
+               {
+               "display": false,
+                  "displayForm": "<p style='text-align: justify;'> A fourteenth-century English <i>Book of Hours</i>, according to the Sarum Rite, stunningly illustrated with several full-page saints' portraits opening the work and the main text accompanied by a dazzling flurry of borders, marginalia and initials. Some saints' names featuring in the calendar with which the book opens suggest that it may have been originally produced according to practice local to the East Midlands, perhaps Lincoln, but the additions made to the calendar very early on in its life locate it firmly in East Anglia, and particularly, perhaps, around Ely and Huntingdon. The names of owners, Alice de Reydon, and John and Matilda Stranle, with their birth and death dates added alongside those saints, tell a story of continual spiritual practice and personal devotion as it passed from hand to hand. </p><p style='text-align: justify;'>This item was included in the Library’s 600th anniversary exhibition <a target='_blank' class='externalLink' href='https://exhibitions.lib.cam.ac.uk/linesofthought/artifacts/personalising-a-prayer-book/'><i>Lines of Thought: Discoveries that changed the world</i></a>.</p>",
+                  "label": "Abstract",
+               "seq": 11
+               },
+            "creations":
+               {
+               "display": true,
+               "seq": 65,
+               "value": [
+
+         {
+            "type": "creation",
+            "places":
+               {
+               "display": true,
+               "seq": 70,
+                  "label": "Origin Place",
+               "value": [
+
+         {
+               "display": true,
+                  "displayForm": "East Anglia",
+               "seq": 71,
+                  "linktype": "keyword search",
+            "shortForm": "East Anglia",
+            "fullForm": "East Anglia"
+         }
+               ]
+               },
+            "dateStart": "1300",
+            "dateEnd": "1300",
+            "dateDisplay":
+               {
+               "display": true,
+                  "displayForm": "First quarter of the 14th Century C.E.",
+                  "linktype": "keyword search",
+                  "label": "Date of Creation",
+               "seq": 79
+               }
+         }
+               ]
+               },
+            "physicalLocation":
+               {
+               "display": true,
+                  "displayForm": "Cambridge University Library",
+                  "label": "Physical Location",
+               "seq": 4
+               },
+            "shelfLocator":
+               {
+               "display": true,
+                  "displayForm": "MS Dd.4.17",
+                  "label": "Classmark",
+               "seq": 5
+               },
+            "form":
+               {
+               "display": true,
+                  "displayForm": "Codex",
+                  "label": "Format",
+               "seq": 178
+               },
+            "material":
+               {
+               "display": true,
+                  "displayForm": "Parchment",
+                  "label": "Material",
+               "seq": 177
+               },
+            "extent":
+               {
+               "display": true,
+                  "displayForm": "i + 135 + i fols Leaf height: 215 mm, width: 155 mm. Written height: 150 mm, width: 105 mm.",
+                  "label": "Extent",
+               "seq": 173
+               },
+            "foliation":
+               {
+               "display": true,
+                  "displayForm": "<p></p><p>Modern pencil foliation in the top right corner of each recto, unless prevented by illustration.</p>",
+                  "label": "Foliation",
+               "seq": 189
+               },
+            "collation":
+               {
+               "display": true,
+                  "displayForm": "<p>The MS consists of 12 quires as follows: <div>1 modern paper flyleaf<br />Quire 1<sup>6</sup> (fols 1-6)<br />Quires 2-6<sup>12</sup> (fols 7-78)<br />Quire 7<sup>10</sup> (fols 79-88)<br /> Quire 8<sup>12</sup> (2 leaves inserted after 6; fols 89-100)<br /> Quire 9-10 <sup>10</sup> (fols 101-120)<br />Quire 11 <sup>8</sup> (fols 121-128)<br />Quire 12<sup>6</sup> (fols 129-135; wanting folios 136-8)<br />1 modern paper flyleaf<br /></div><br /></p>",
+                  "label": "Collation",
+               "seq": 174
+               },
+            "conditions":
+               {
+               "display": true,
+               "seq": 179,
+                  "label": "Condition",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "Generally superb condition, both of illumination and of script. Some staining on final three folios, <a href='' onclick='store.loadPage(270);return false;'>132v-135v</a>. Parts of miniatures have been cut off in the binding process, see for example <a href='' onclick='store.loadPage(114);return false;'>54v-55r</a>",
+               "seq": 180
+               }
+               ]
+               },
+            "layouts":
+               {
+               "display": true,
+               "seq": 190,
+                  "label": "Layout",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<p>16 lines.</p><p>Ruling is distinct in brown ink, throughout, except for on <a href='' onclick='store.loadPage(156);return false;'>75v-78r</a>, where French prayers were added to presumably blank folios, but pricking is not visible anywhere.</p><p>The calendar, comprising folios <a href='' onclick='store.loadPage(31);return false;'>13r-18v</a> is presented in four columns, comprising the dates, days of the week, and particular saints' days.</p><p>The remainder of the book is in one column.</p>",
+               "seq": 191
+               }
+               ]
+               },
+            "scripts":
+               {
+               "display": true,
+               "seq": 185,
+                  "label": "Script",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<div style='list-style-type: disc;'><div style='display: list-item; margin-left: 20px;'><p>Written in <i>Gothic Textualis</i>, generally by a single scribe.</p></div><div style='display: list-item; margin-left: 20px;'><p>However the prayers in French, on <a href='' onclick='store.loadPage(156);return false;'>75v-78r</a> are added by two later hands, but the second hand only inscribes <a href='' onclick='store.loadPage(161);return false;'>78r</a></p><p>Folios <a href='' onclick='store.loadPage(195);return false;'>95r-96v</a> written in a 16th-century hand.</p></div></div>",
+               "seq": 186
+               }
+               ]
+               },
+            "decorations":
+               {
+               "display": true,
+               "seq": 192,
+                  "label": "Decoration",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<p>Twelve full-page framed miniatures on tooled gold or diapered pink and blue ground, in pairs at alternating openings before Calendar: <div><a href='' onclick='store.loadPage(8);return false;'>1v</a> woman kneeling before a sainted archbishop<br /><a href='' onclick='store.loadPage(9);return false;'>2r</a> St Catherine and St Margaret<br /><a href='' onclick='store.loadPage(12);return false;'>3v</a> St George<br /><a href='' onclick='store.loadPage(13);return false;'>4r</a> St Christopher <br /><a href='' onclick='store.loadPage(16);return false;'>5v</a> Annunciation <br /><a href='' onclick='store.loadPage(17);return false;'>6r</a> Nativity<br /><a href='' onclick='store.loadPage(20);return false;'>7v</a> Resurrection <br /><a href='' onclick='store.loadPage(21);return false;'>8r</a> Ascension <br /><a href='' onclick='store.loadPage(24);return false;'>9v</a> Coronation of Virgin <br /><a href='' onclick='store.loadPage(25);return false;'>10r</a> Christ in Majesty with Evangelists' symbols<br /><a href='' onclick='store.loadPage(28);return false;'>11v</a> Virgin and Child <br /><a href='' onclick='store.loadPage(29);return false;'>12r</a> Crucifixion <br /></div><br /></p><br /><p><a href='' onclick='store.loadPage(30);return false;'>12v</a> Rough drawing of St John the Baptist with Lamb, probably added in the 14th century.</p><br /><p>Calendar miniatures depicting zodiac signs and occupations of months on punched gold ground under canopies, in outer margins: <div><a href='' onclick='store.loadPage(31);return false;'>13r</a> Janus feasting, Aquarius (January)<br /><a href='' onclick='store.loadPage(32);return false;'>13v</a> man warming himself by fire, Pisces (February)<br /><a href='' onclick='store.loadPage(33);return false;'>14r</a> pruning, Aries (March)<br /><a href='' onclick='store.loadPage(34);return false;'>14v</a> hawking, Taurus (April)<br /><a href='' onclick='store.loadPage(35);return false;'>15r</a> Maying, Gemini (May)<br /><a href='' onclick='store.loadPage(36);return false;'>15v</a> mowing, Cancer (June)<br /><a href='' onclick='store.loadPage(37);return false;'>16r</a> reaping, Leo (July)<br /><a href='' onclick='store.loadPage(38);return false;'>16v</a> threshing, Virgo (August)<br /><a href='' onclick='store.loadPage(39);return false;'>17r</a> harvesting grapes, Libra (September)<br /><a href='' onclick='store.loadPage(40);return false;'>17v</a> sowing, Scorpio (October)<br /><a href='' onclick='store.loadPage(41);return false;'>18r</a> beating for acorns, Sagittarius (November)<br /><a href='' onclick='store.loadPage(42);return false;'>18v</a> slaughtering pig, Capricorn (December)<br /></div><br /></p><br /><p>Historiated initials: <div><a href='' onclick='store.loadPage(43);return false;'>19r</a> Woman praying to Virgin and Child on punched gold ground (9 lines, Matins)<br /><a href='' onclick='store.loadPage(163);return false;'>79r</a> Christ seated holding book and blessing on blue and red chequeboard ground (7 lines, Penitential Psalms)<br /></div><br /></p><br /><p>Figural, ornamental and minor initials: <div>Initials (3-6 lines) filled with foliated and zoomorphic spirals, on tooled gold ground, to remaining Hours of Virgin (<a href='' onclick='store.loadPage(58);return false;'>26v</a>, <a href='' onclick='store.loadPage(80);return false;'>37v</a>, <a href='' onclick='store.loadPage(87);return false;'>41r</a>, <a href='' onclick='store.loadPage(92);return false;'>43v</a>, <a href='' onclick='store.loadPage(96);return false;'>45v</a>, <a href='' onclick='store.loadPage(101);return false;'>48r</a>, <a href='' onclick='store.loadPage(109);return false;'>52r</a>) and at beginning of Hours of Holy Spirit (<a href='' onclick='store.loadPage(141);return false;'>68r</a>)<br />blue Calendar initials (4 lines) with red and green foliage infill on gold ground<br />blue initials (2-7 lines) filled with foliage, human heads or grotesques on gold ground<br />alternating gold and blue one-line verse initials with blue and red penwork flourishes<br /></div><br /></p><br /><p>Border decoration of rich foliage in blue, red, green and gold extending from letter finials and forming full or partial frames; heraldic shields with arms of England and Aymer de Valence, one shield effaced and three further shields to right cropped (<a href='' onclick='store.loadPage(43);return false;'>19r</a>); marginal grotesques and drolleries.</p><br /><p>Linefillers of vegetation, geometric and zoomorphic designs in blue or turquoise and red, some forming frames.</p>",
+               "seq": 193
+               }
+               ]
+               },
+            "additions":
+               {
+               "display": true,
+               "seq": 194,
+                  "label": "Additions",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<p>Folio <a href='' onclick='store.loadPage(7);return false;'>1r</a> has an additional prayer in French.</p><p>Under the illustration on <a href='' onclick='store.loadPage(13);return false;'>4r</a>, a Latin collect has been added</p><p>On folios <a href='' onclick='store.loadPage(127);return false;'>61r-74r</a>, the rubrics have been erased and written over in French.</p><p>Folios <a href='' onclick='store.loadPage(195);return false;'>95r-96v</a> were added later, written in a 16th-century hand, presumably due to loss of these folios in the original.</p><p>Additions have been made to the calendar, <a href='' onclick='store.loadPage(31);return false;'>13r-18v</a>, by several hands dating variously to the early fourteenth to the fifteenth century. These include obits and saints' days (see Provenance for further details) and notes by two hands that mark the beginning and end of the 'dies caniculares' (or 'dog days'; <a href='' onclick='store.loadPage(37);return false;'>16r</a>, <a href='' onclick='store.loadPage(39);return false;'>17r</a>), the hottest period of the year.</p>",
+               "seq": 195
+               }
+               ]
+               },
+            "bindings":
+               {
+               "display": true,
+               "seq": 181,
+                  "label": "Binding",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<p>Full brown leather over wooden boards, marked as from 1962</p>",
+               "seq": 182
+               }
+               ]
+               },
+            "provenances":
+               {
+               "display": true,
+               "seq": 196,
+                  "label": "Provenance",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<p>Probably owned by Alice de Reydon, wife of Robert de Reydon, whose obituary is added to the Calendar in a contemporary hand, on the 5th July (fol. <a href='' onclick='store.loadPage(37);return false;'>16r</a>), \"Obitus Alicie de Reidon anno domini mccc...\" but the rest of the date is cropped. The coat of arms of her own family, Reymes, also appear on fol. <a href='' onclick='store.loadPage(43);return false;'>19r</a>, a cross engraved in gules inside initial V. Alice may be the donor depicted on <a href='' onclick='store.loadPage(8);return false;'>1v</a> and <a href='' onclick='store.loadPage(43);return false;'>19r</a>. In any case she was certainly deceased by 1323.</p><p>Two early or mid-fourteenth century hands have inserted additional feast days that confirm an East Anglian provenance: St Winwaloe ('Sancti Winewaloei') on 3rd March (<a href='' onclick='store.loadPage(33);return false;'>14r</a>) and St Ethelbert on 21st May (usually 20th; <a href='' onclick='store.loadPage(35);return false;'>15r</a>). Winwaloe is more commonly patron saint of foundations in the south-west, his reputed homeland, however a Benedictine priory dedicated to him was founded at Wereham in 1199; it was later dissolved in 1321 and given to nearby abbey of West Dereham.</p><p>The manuscript was then owned by Stranle family: the birth dates of John Stranle (17th February) and Matilda Stranle (9th April) were inserted in the calendar by perhaps the same hand (<a href='' onclick='store.loadPage(32);return false;'>13v</a>, <a href='' onclick='store.loadPage(34);return false;'>14v</a>). Another, later hand glossed the entry for John Stranle with the year of his birth: 'anno Regis Ricardi secundi quarto' (1380/81).</p><p>It is not known how or when the manuscript entered the University Library collection but it does appear in the catalogue written in 1754-6, now CUL MS Oo.7.53.</p>",
+               "seq": 197
+               }
+               ]
+               },
+            "bibliographies":
+               {
+               "display": true,
+               "seq": 214,
+                  "label": "Bibliography",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "<div style='list-style-type: disc;'><div style='display: list-item; margin-left: 20px;' id=\"Cambridge_University_Library.1856\">Cambridge University Library., Charles, Hardwick and Henry Richards, Luard, <i>A catalogue of the manuscripts preserved in the Library of the University of Cambridge</i> (Cambridge: Cambridge University Press, 1856).</div><div style='display: list-item; margin-left: 20px;' id=\"Raimes1908\">Raimes, F., \"Robert de Reymes of Bolam, Shortflat and Aydon Castle, and his connections with Suffolk\", <i>Archaeologia Aeliana</i> 313-18, 3rd series. 4 (1908).</div><div style='display: list-item; margin-left: 20px;' id=\"Millar1928\">Millar, E. G., <i>English illuminated manuscripts from the XIVth to the XVth centuries</i> (Paris; Brussels: 1928).</div><div style='display: list-item; margin-left: 20px;' id=\"Raimes1939\">Raimes, A. L., \"The family of Reymes of Wherstead in Suffolk\", <i>Proceedings of the Suffolk Institute of Archaeology</i> 23 89-115 (1939).</div><div style='display: list-item; margin-left: 20px;' id=\"Victoria_and_Albert_Museum.1952\">Victoria and Albert Museum, <i>English medieval silver</i> (London: HMSO, 1952).</div><div style='display: list-item; margin-left: 20px;' id=\"Montpetit1972\">Montpetit, Marie, \"Canada's first exhibition of mediaeval art: France and England (1259-1328)\", <i>Connoisseur</i> 179 266-72 (1972).</div><div style='display: list-item; margin-left: 20px;' id=\"Verdier1972\">Verdier, Philippe, Peter H. Brieger and Marie Farquhar Montpetit, <i>Art and the courts: France and England from 1259 to 1328</i> (Ottawa: National Gallery of Canada, 1972).</div><div style='display: list-item; margin-left: 20px;' id=\"Watson1979\">Watson, Bruce, \"The artists of the Tiptoft Missal and the court style: Perspectives from the techniques of the book\", <i>Scriptorium</i> 33 25-39 (1979).</div><div style='display: list-item; margin-left: 20px;' id=\"Yapp1979\">Yapp, W. Brunsdon, \"The birds of English medieval manuscripts\", <i>Journal of Medieval History</i> 5 315-349 (1979).</div><div style='display: list-item; margin-left: 20px;' id=\"Harris-Matthews1980\">Harris-Matthews, J. M., <i>Lay devotions in late medieval English manuscripts</i> (M.Litt. thesis Cambridge: University of Cambridge, 1980).</div><div style='display: list-item; margin-left: 20px;' id=\"Michael1981\">Michael, Michael A., \"The Harnhulle psalter-hours: an early fourteenth-century English illuminated manuscript at Downside Abbey\", <i>Journal of the British Archaeological Association</i> 134 81-99 (1981).</div><div style='display: list-item; margin-left: 20px;' id=\"Sinclair1982\">Sinclair, Keith Val, <i>French devotional texts of the Middle Ages: a bibliographic manuscript guide</i> (Westport, CN: Greenwood Press, 1982).</div><div style='display: list-item; margin-left: 20px;' id=\"Sandler1986\">Sandler, Lucy Freeman, <i>Gothic manuscripts 1285-1385</i>, A survey of manuscripts illuminated in the British Isles vol.5 (London: Oxford: Harvey Miller; Oxford University Press, 1986).</div><div style='display: list-item; margin-left: 20px;' id=\"Michael_A.1987\">Michael A., Michael, <i>The artists of the treatise of Walter Milmete and the Holkham Secretum</i> (Ph.D. thesis London: Westfield College, University of London, 1987).</div><div style='display: list-item; margin-left: 20px;' id=\"Robinson1988\">Robinson, P. R., <i>Catalogue of dated and datable manuscripts c. 737-1600 in Cambridge libraries</i> (Cambridge: D.S. Brewer, 1988).</div><div style='display: list-item; margin-left: 20px;' id=\"Dennison1990\">Dennison, Lynda, \"Liber Horn, Liber Custumarum and other manuscripts of the Queen Mary Psalter workshop\", in <i>Medieval Art, Architecture and Archaeology in London</i>, British Archaeological Association Conference Transactions 10 (London: 1990) 118-39.</div><div style='display: list-item; margin-left: 20px;' id=\"Stanton2001\">Stanton, Anne Rudloff, \"The Queen Mary Psalter: a study of affect and audience\", <i>Transactions of the American Philosophical Society</i> 91 i-287 (2001) <a target='_blank' class='externalLink' href='http://www.jstor.org/stable/3655114'>http://www.jstor.org/stable/3655114</a>.</div><div style='display: list-item; margin-left: 20px;' id=\"Manzari2002\">Manzari, Francesca, \"“Rudes autem erudiri debent in libris laycorum, id est in picturis”. Il ciclo biblico di uno Speculum humanae salvationis avignonese\", <i>Rivista di storia della miniatura</i> 6-7 145-156 (2002).</div><div style='display: list-item; margin-left: 20px;' id=\"Binski2005\">Binski, Paul and Stella Panayotova, <i>The Cambridge illuminations: ten centuries of book production in the medieval West</i> (London: Harvey Miller, 2005).</div><div style='display: list-item; margin-left: 20px;' id=\"Binski2011\">Binski, Paul and P. N. R. Zutshi, <i>Western illuminated manuscripts: a catalogue of the collection in Cambridge University Library</i> (Cambridge: Cambridge University Press, 2011).</div></div><br />",
+               "seq": 215
+               }
+               ]
+               },
+            "title":
+               {
+               "display": false,
+                  "displayForm": "Book of Hours (Sarum Use)",
+                  "label": "Title",
+               "seq": 10
+               },
+            "alternativeTitles":
+               {
+               "display": true,
+               "seq": 16,
+                  "label": "Alternative Title(s)",
+               "value": [
+
+               ]
+               },
+            "languageCodes":
+               [
+            "lat"
+               ],
+            "languageStrings":
+               {
+               "display": true,
+               "seq": 119,
+                  "label": "Language(s)",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "Latin",
+               "seq": 120
+               }
+               ]
+               }
+         },
+         {
+            "ID": "ITEM-2",
+            "title":
+               {
+               "display": true,
+                  "displayForm": "Calendar",
+                  "label": "Title",
+               "seq": 10
+               },
+            "alternativeTitles":
+               {
+               "display": true,
+               "seq": 16,
+                  "label": "Alternative Title(s)",
+               "value": [
+
+               ]
+               },
+            "languageCodes":
+               [
+            "lat"
+               ],
+            "languageStrings":
+               {
+               "display": true,
+               "seq": 119,
+                  "label": "Language(s)",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "Latin",
+               "seq": 120
+               }
+               ]
+               },
+            "excerpts":
+               {
+               "display": true,
+                  "displayForm": "<div><b>Rubric:</b> <a href='' onclick='store.loadPage(31);return false;'>13r</a> Pridies mensis autem VII truncat ut ensis</div><div><b>Incipit:</b> <a href='' onclick='store.loadPage(31);return false;'>13r</a> Circumcisio Domini</div><div><b>Explicit:</b> <a href='' onclick='store.loadPage(42);return false;'>18v</a> Sancti Siluestri</div>",
+                  "label": "Excerpts",
+               "seq": 213
+               }
+         },
+         {
+            "ID": "ITEM-3",
+            "title":
+               {
+               "display": true,
+                  "displayForm": "Book of Hours",
+                  "label": "Title",
+               "seq": 10
+               },
+            "alternativeTitles":
+               {
+               "display": true,
+               "seq": 16,
+                  "label": "Alternative Title(s)",
+               "value": [
+
+               ]
+               },
+            "languageCodes":
+               [
+            "lat"
+               ],
+            "languageStrings":
+               {
+               "display": true,
+               "seq": 119,
+                  "label": "Language(s)",
+               "value": [
+
+               {
+               "display": true,
+                  "displayForm": "Latin",
+               "seq": 120
+               }
+               ]
+               },
+            "excerpts":
+               {
+               "display": true,
+                  "displayForm": "<div><b>Incipit:</b> <a href='' onclick='store.loadPage(43);return false;'>19r</a> Domine labia mea aperies</div><div><b>Explicit:</b> <a href='' onclick='store.loadPage(276);return false;'>135v</a> ut eas a peccatis exuas et tue redempcionis facias esse participes per dominum</div>",
+                  "label": "Excerpts",
+               "seq": 213
+               }
+         }
+               ],
+            "numberOfPages": 283,
+            "embeddable": true,
+            "textDirection": "L",
+            "sourceData": "/v1/metadata/tei/MS-DD-00004-00017/",
+            "pages":
+               [
+
+         {
+            "label": "cover",
+            "physID": "PHYS-1",
+            "sequence": 1,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00001",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "cover (inside)",
+            "physID": "PHYS-2",
+            "sequence": 2,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00002",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "blank(r)",
+            "physID": "PHYS-3",
+            "sequence": 3,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00003",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "blank(v)",
+            "physID": "PHYS-4",
+            "sequence": 4,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00004",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "i(r)",
+            "physID": "PHYS-5",
+            "sequence": 5,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00005",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "i(v)",
+            "physID": "PHYS-6",
+            "sequence": 6,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00006",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "1r",
+            "physID": "PHYS-7",
+            "sequence": 7,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00007",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "1v",
+            "physID": "PHYS-8",
+            "sequence": 8,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00008",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "2r",
+            "physID": "PHYS-9",
+            "sequence": 9,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00009",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "2v",
+            "physID": "PHYS-10",
+            "sequence": 10,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00010",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "3r",
+            "physID": "PHYS-11",
+            "sequence": 11,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00011",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "3v",
+            "physID": "PHYS-12",
+            "sequence": 12,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00012",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "4r",
+            "physID": "PHYS-13",
+            "sequence": 13,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00013",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4311,
+            "imageHeight": 6949
+         },
+         {
+            "label": "4v",
+            "physID": "PHYS-14",
+            "sequence": 14,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00014",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "5r",
+            "physID": "PHYS-15",
+            "sequence": 15,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00015",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "5v",
+            "physID": "PHYS-16",
+            "sequence": 16,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00016",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "6r",
+            "physID": "PHYS-17",
+            "sequence": 17,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00017",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4211,
+            "imageHeight": 6949
+         },
+         {
+            "label": "6v",
+            "physID": "PHYS-18",
+            "sequence": 18,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00018",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "7r",
+            "physID": "PHYS-19",
+            "sequence": 19,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00019",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "7v",
+            "physID": "PHYS-20",
+            "sequence": 20,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00020",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "8r",
+            "physID": "PHYS-21",
+            "sequence": 21,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00021",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4228,
+            "imageHeight": 6949
+         },
+         {
+            "label": "8v",
+            "physID": "PHYS-22",
+            "sequence": 22,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00022",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "9r",
+            "physID": "PHYS-23",
+            "sequence": 23,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00023",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4505,
+            "imageHeight": 6949
+         },
+         {
+            "label": "9v",
+            "physID": "PHYS-24",
+            "sequence": 24,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00024",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "10r",
+            "physID": "PHYS-25",
+            "sequence": 25,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00025",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4383,
+            "imageHeight": 6949
+         },
+         {
+            "label": "10v",
+            "physID": "PHYS-26",
+            "sequence": 26,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00026",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "11r",
+            "physID": "PHYS-27",
+            "sequence": 27,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00027",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "11v",
+            "physID": "PHYS-28",
+            "sequence": 28,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00028",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "12r",
+            "physID": "PHYS-29",
+            "sequence": 29,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00029",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4080,
+            "imageHeight": 6949
+         },
+         {
+            "label": "12v",
+            "physID": "PHYS-30",
+            "sequence": 30,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00030",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "13r",
+            "physID": "PHYS-31",
+            "sequence": 31,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00031",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "13v",
+            "physID": "PHYS-32",
+            "sequence": 32,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00032",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "14r",
+            "physID": "PHYS-33",
+            "sequence": 33,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00033",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "14v",
+            "physID": "PHYS-34",
+            "sequence": 34,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00034",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "15r",
+            "physID": "PHYS-35",
+            "sequence": 35,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00035",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "15v",
+            "physID": "PHYS-36",
+            "sequence": 36,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00036",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "16r",
+            "physID": "PHYS-37",
+            "sequence": 37,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00037",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "16v",
+            "physID": "PHYS-38",
+            "sequence": 38,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00038",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4518,
+            "imageHeight": 6949
+         },
+         {
+            "label": "17r",
+            "physID": "PHYS-39",
+            "sequence": 39,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00039",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "17v",
+            "physID": "PHYS-40",
+            "sequence": 40,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00040",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4574,
+            "imageHeight": 6949
+         },
+         {
+            "label": "18r",
+            "physID": "PHYS-41",
+            "sequence": 41,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00041",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "18v",
+            "physID": "PHYS-42",
+            "sequence": 42,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00042",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "19r",
+            "physID": "PHYS-43",
+            "sequence": 43,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00043",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "19v",
+            "physID": "PHYS-44",
+            "sequence": 44,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00044",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "20r",
+            "physID": "PHYS-45",
+            "sequence": 45,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00045",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "20v",
+            "physID": "PHYS-46",
+            "sequence": 46,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00046",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "21r",
+            "physID": "PHYS-47",
+            "sequence": 47,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00047",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "21v",
+            "physID": "PHYS-48",
+            "sequence": 48,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00048",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "22r",
+            "physID": "PHYS-49",
+            "sequence": 49,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00049",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "22v",
+            "physID": "PHYS-50",
+            "sequence": 50,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00050",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "23r",
+            "physID": "PHYS-51",
+            "sequence": 51,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00051",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "23v",
+            "physID": "PHYS-52",
+            "sequence": 52,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00052",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "24r",
+            "physID": "PHYS-53",
+            "sequence": 53,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00053",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "24v",
+            "physID": "PHYS-54",
+            "sequence": 54,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00054",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "25r",
+            "physID": "PHYS-55",
+            "sequence": 55,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00055",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "25v",
+            "physID": "PHYS-56",
+            "sequence": 56,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00056",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "26r",
+            "physID": "PHYS-57",
+            "sequence": 57,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00057",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "26v",
+            "physID": "PHYS-58",
+            "sequence": 58,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00058",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "27r",
+            "physID": "PHYS-59",
+            "sequence": 59,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00059",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "27v",
+            "physID": "PHYS-60",
+            "sequence": 60,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00060",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "28r",
+            "physID": "PHYS-61",
+            "sequence": 61,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00061",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "28v",
+            "physID": "PHYS-62",
+            "sequence": 62,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00062",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "29r",
+            "physID": "PHYS-63",
+            "sequence": 63,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00063",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "29v",
+            "physID": "PHYS-64",
+            "sequence": 64,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00064",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "30r",
+            "physID": "PHYS-65",
+            "sequence": 65,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00065",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "30v",
+            "physID": "PHYS-66",
+            "sequence": 66,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00066",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "31r",
+            "physID": "PHYS-67",
+            "sequence": 67,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00067",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "31v",
+            "physID": "PHYS-68",
+            "sequence": 68,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00068",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "32r",
+            "physID": "PHYS-69",
+            "sequence": 69,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00069",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "32v",
+            "physID": "PHYS-70",
+            "sequence": 70,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00070",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "33r",
+            "physID": "PHYS-71",
+            "sequence": 71,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00071",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "33v",
+            "physID": "PHYS-72",
+            "sequence": 72,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00072",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "34r",
+            "physID": "PHYS-73",
+            "sequence": 73,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00073",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "34v",
+            "physID": "PHYS-74",
+            "sequence": 74,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00074",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "35r",
+            "physID": "PHYS-75",
+            "sequence": 75,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00075",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "35v",
+            "physID": "PHYS-76",
+            "sequence": 76,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00076",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "36r",
+            "physID": "PHYS-77",
+            "sequence": 77,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00077",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "36v",
+            "physID": "PHYS-78",
+            "sequence": 78,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00078",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "37r",
+            "physID": "PHYS-79",
+            "sequence": 79,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00079",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "37v",
+            "physID": "PHYS-80",
+            "sequence": 80,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00080",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "38r",
+            "physID": "PHYS-81",
+            "sequence": 81,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00081",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "38v",
+            "physID": "PHYS-82",
+            "sequence": 82,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00082",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "39r",
+            "physID": "PHYS-83",
+            "sequence": 83,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00083",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "39v",
+            "physID": "PHYS-84",
+            "sequence": 84,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00084",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "40r",
+            "physID": "PHYS-85",
+            "sequence": 85,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00085",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "40v",
+            "physID": "PHYS-86",
+            "sequence": 86,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00086",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "41r",
+            "physID": "PHYS-87",
+            "sequence": 87,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00087",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "41v",
+            "physID": "PHYS-88",
+            "sequence": 88,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00088",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "42r",
+            "physID": "PHYS-89",
+            "sequence": 89,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00089",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "42v",
+            "physID": "PHYS-90",
+            "sequence": 90,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00090",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "43r",
+            "physID": "PHYS-91",
+            "sequence": 91,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00091",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "43v",
+            "physID": "PHYS-92",
+            "sequence": 92,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00092",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "44r",
+            "physID": "PHYS-93",
+            "sequence": 93,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00093",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "44v",
+            "physID": "PHYS-94",
+            "sequence": 94,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00094",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "45r",
+            "physID": "PHYS-95",
+            "sequence": 95,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00095",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "45v",
+            "physID": "PHYS-96",
+            "sequence": 96,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00096",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "46r",
+            "physID": "PHYS-97",
+            "sequence": 97,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00097",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "46v",
+            "physID": "PHYS-98",
+            "sequence": 98,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00098",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "47r",
+            "physID": "PHYS-99",
+            "sequence": 99,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00099",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "47v",
+            "physID": "PHYS-100",
+            "sequence": 100,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00100",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "48r",
+            "physID": "PHYS-101",
+            "sequence": 101,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00101",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "48v",
+            "physID": "PHYS-102",
+            "sequence": 102,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00102",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "49r",
+            "physID": "PHYS-103",
+            "sequence": 103,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00103",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "49v",
+            "physID": "PHYS-104",
+            "sequence": 104,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00104",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "50r",
+            "physID": "PHYS-105",
+            "sequence": 105,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00105",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "50v",
+            "physID": "PHYS-106",
+            "sequence": 106,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00106",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "51r",
+            "physID": "PHYS-107",
+            "sequence": 107,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00107",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "51v",
+            "physID": "PHYS-108",
+            "sequence": 108,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00108",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "52r",
+            "physID": "PHYS-109",
+            "sequence": 109,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00109",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "52v",
+            "physID": "PHYS-110",
+            "sequence": 110,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00110",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "53r",
+            "physID": "PHYS-111",
+            "sequence": 111,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00111",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "53v",
+            "physID": "PHYS-112",
+            "sequence": 112,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00112",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "54r",
+            "physID": "PHYS-113",
+            "sequence": 113,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00113",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "54v",
+            "physID": "PHYS-114",
+            "sequence": 114,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00114",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "55r",
+            "physID": "PHYS-115",
+            "sequence": 115,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00115",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "55v",
+            "physID": "PHYS-116",
+            "sequence": 116,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00116",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "56r",
+            "physID": "PHYS-117",
+            "sequence": 117,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00117",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "56v",
+            "physID": "PHYS-118",
+            "sequence": 118,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00118",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "57r",
+            "physID": "PHYS-119",
+            "sequence": 119,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00119",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "57v",
+            "physID": "PHYS-120",
+            "sequence": 120,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00120",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "58r",
+            "physID": "PHYS-121",
+            "sequence": 121,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00121",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "58v",
+            "physID": "PHYS-122",
+            "sequence": 122,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00122",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "59r",
+            "physID": "PHYS-123",
+            "sequence": 123,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00123",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "59v",
+            "physID": "PHYS-124",
+            "sequence": 124,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00124",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "60r",
+            "physID": "PHYS-125",
+            "sequence": 125,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00125",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "60v",
+            "physID": "PHYS-126",
+            "sequence": 126,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00126",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "61r",
+            "physID": "PHYS-127",
+            "sequence": 127,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00127",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "61v",
+            "physID": "PHYS-128",
+            "sequence": 128,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00128",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "62r",
+            "physID": "PHYS-129",
+            "sequence": 129,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00129",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "62v",
+            "physID": "PHYS-130",
+            "sequence": 130,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00130",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "63r",
+            "physID": "PHYS-131",
+            "sequence": 131,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00131",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "63v",
+            "physID": "PHYS-132",
+            "sequence": 132,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00132",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "64r",
+            "physID": "PHYS-133",
+            "sequence": 133,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00133",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "64v",
+            "physID": "PHYS-134",
+            "sequence": 134,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00134",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "65r",
+            "physID": "PHYS-135",
+            "sequence": 135,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00135",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "65v",
+            "physID": "PHYS-136",
+            "sequence": 136,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00136",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "66r",
+            "physID": "PHYS-137",
+            "sequence": 137,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00137",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "66v",
+            "physID": "PHYS-138",
+            "sequence": 138,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00138",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "67r",
+            "physID": "PHYS-139",
+            "sequence": 139,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00139",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "67v",
+            "physID": "PHYS-140",
+            "sequence": 140,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00140",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "68r",
+            "physID": "PHYS-141",
+            "sequence": 141,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00141",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "68v",
+            "physID": "PHYS-142",
+            "sequence": 142,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00142",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4504,
+            "imageHeight": 6949
+         },
+         {
+            "label": "69r",
+            "physID": "PHYS-143",
+            "sequence": 143,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00143",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "69v",
+            "physID": "PHYS-144",
+            "sequence": 144,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00144",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "70r",
+            "physID": "PHYS-145",
+            "sequence": 145,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00145",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "70v",
+            "physID": "PHYS-146",
+            "sequence": 146,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00146",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "71r",
+            "physID": "PHYS-147",
+            "sequence": 147,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00147",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "71v",
+            "physID": "PHYS-148",
+            "sequence": 148,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00148",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "72r",
+            "physID": "PHYS-149",
+            "sequence": 149,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00149",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "72v",
+            "physID": "PHYS-150",
+            "sequence": 150,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00150",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "73r",
+            "physID": "PHYS-151",
+            "sequence": 151,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00151",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "73v",
+            "physID": "PHYS-152",
+            "sequence": 152,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00152",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "74r",
+            "physID": "PHYS-153",
+            "sequence": 153,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00153",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "74v",
+            "physID": "PHYS-154",
+            "sequence": 154,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00154",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "75r",
+            "physID": "PHYS-155",
+            "sequence": 155,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00155",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "75v",
+            "physID": "PHYS-156",
+            "sequence": 156,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00156",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "76r",
+            "physID": "PHYS-157",
+            "sequence": 157,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00157",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "76v",
+            "physID": "PHYS-158",
+            "sequence": 158,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00158",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "77r",
+            "physID": "PHYS-159",
+            "sequence": 159,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00159",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "77v",
+            "physID": "PHYS-160",
+            "sequence": 160,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00160",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "78r",
+            "physID": "PHYS-161",
+            "sequence": 161,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00161",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "78v",
+            "physID": "PHYS-162",
+            "sequence": 162,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00162",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "79r",
+            "physID": "PHYS-163",
+            "sequence": 163,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00163",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "79v",
+            "physID": "PHYS-164",
+            "sequence": 164,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00164",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "80r",
+            "physID": "PHYS-165",
+            "sequence": 165,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00165",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "80v",
+            "physID": "PHYS-166",
+            "sequence": 166,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00166",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "81r",
+            "physID": "PHYS-167",
+            "sequence": 167,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00167",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "81v",
+            "physID": "PHYS-168",
+            "sequence": 168,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00168",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "82r",
+            "physID": "PHYS-169",
+            "sequence": 169,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00169",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "82v",
+            "physID": "PHYS-170",
+            "sequence": 170,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00170",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "83r",
+            "physID": "PHYS-171",
+            "sequence": 171,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00171",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "83v",
+            "physID": "PHYS-172",
+            "sequence": 172,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00172",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4372,
+            "imageHeight": 6949
+         },
+         {
+            "label": "84r",
+            "physID": "PHYS-173",
+            "sequence": 173,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00173",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "84v",
+            "physID": "PHYS-174",
+            "sequence": 174,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00174",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "85r",
+            "physID": "PHYS-175",
+            "sequence": 175,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00175",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "85v",
+            "physID": "PHYS-176",
+            "sequence": 176,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00176",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4563,
+            "imageHeight": 6949
+         },
+         {
+            "label": "86r",
+            "physID": "PHYS-177",
+            "sequence": 177,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00177",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "86v",
+            "physID": "PHYS-178",
+            "sequence": 178,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00178",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "87r",
+            "physID": "PHYS-179",
+            "sequence": 179,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00179",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "87v",
+            "physID": "PHYS-180",
+            "sequence": 180,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00180",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4564,
+            "imageHeight": 6949
+         },
+         {
+            "label": "88r",
+            "physID": "PHYS-181",
+            "sequence": 181,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00181",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "88v",
+            "physID": "PHYS-182",
+            "sequence": 182,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00182",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4512,
+            "imageHeight": 6949
+         },
+         {
+            "label": "89r",
+            "physID": "PHYS-183",
+            "sequence": 183,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00183",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "89v",
+            "physID": "PHYS-184",
+            "sequence": 184,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00184",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4487,
+            "imageHeight": 6949
+         },
+         {
+            "label": "90r",
+            "physID": "PHYS-185",
+            "sequence": 185,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00185",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "90v",
+            "physID": "PHYS-186",
+            "sequence": 186,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00186",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4543,
+            "imageHeight": 6949
+         },
+         {
+            "label": "91r",
+            "physID": "PHYS-187",
+            "sequence": 187,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00187",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "91v",
+            "physID": "PHYS-188",
+            "sequence": 188,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00188",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4442,
+            "imageHeight": 6949
+         },
+         {
+            "label": "92r",
+            "physID": "PHYS-189",
+            "sequence": 189,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00189",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "92v",
+            "physID": "PHYS-190",
+            "sequence": 190,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00190",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4200,
+            "imageHeight": 6949
+         },
+         {
+            "label": "93r",
+            "physID": "PHYS-191",
+            "sequence": 191,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00191",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "93v",
+            "physID": "PHYS-192",
+            "sequence": 192,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00192",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "94r",
+            "physID": "PHYS-193",
+            "sequence": 193,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00193",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "94v",
+            "physID": "PHYS-194",
+            "sequence": 194,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00194",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "95r",
+            "physID": "PHYS-195",
+            "sequence": 195,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00195",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "95v",
+            "physID": "PHYS-196",
+            "sequence": 196,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00196",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "96r",
+            "physID": "PHYS-197",
+            "sequence": 197,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00197",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "96v",
+            "physID": "PHYS-198",
+            "sequence": 198,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00198",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "97r",
+            "physID": "PHYS-199",
+            "sequence": 199,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00199",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "97v",
+            "physID": "PHYS-200",
+            "sequence": 200,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00200",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4491,
+            "imageHeight": 6949
+         },
+         {
+            "label": "98r",
+            "physID": "PHYS-201",
+            "sequence": 201,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00201",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "98v",
+            "physID": "PHYS-202",
+            "sequence": 202,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00202",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4381,
+            "imageHeight": 6949
+         },
+         {
+            "label": "99r",
+            "physID": "PHYS-203",
+            "sequence": 203,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00203",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "99v",
+            "physID": "PHYS-204",
+            "sequence": 204,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00204",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4443,
+            "imageHeight": 6949
+         },
+         {
+            "label": "100r",
+            "physID": "PHYS-205",
+            "sequence": 205,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00205",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "100v",
+            "physID": "PHYS-206",
+            "sequence": 206,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00206",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4563,
+            "imageHeight": 6949
+         },
+         {
+            "label": "101r",
+            "physID": "PHYS-207",
+            "sequence": 207,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00207",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "101v",
+            "physID": "PHYS-208",
+            "sequence": 208,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00208",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4542,
+            "imageHeight": 6949
+         },
+         {
+            "label": "102r",
+            "physID": "PHYS-209",
+            "sequence": 209,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00209",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "102v",
+            "physID": "PHYS-210",
+            "sequence": 210,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00210",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "103r",
+            "physID": "PHYS-211",
+            "sequence": 211,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00211",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "103v",
+            "physID": "PHYS-212",
+            "sequence": 212,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00212",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "104r",
+            "physID": "PHYS-213",
+            "sequence": 213,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00213",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "104v",
+            "physID": "PHYS-214",
+            "sequence": 214,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00214",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4463,
+            "imageHeight": 6949
+         },
+         {
+            "label": "105r",
+            "physID": "PHYS-215",
+            "sequence": 215,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00215",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "105v",
+            "physID": "PHYS-216",
+            "sequence": 216,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00216",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4421,
+            "imageHeight": 6949
+         },
+         {
+            "label": "106r",
+            "physID": "PHYS-217",
+            "sequence": 217,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00217",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "106v",
+            "physID": "PHYS-218",
+            "sequence": 218,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00218",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4342,
+            "imageHeight": 6949
+         },
+         {
+            "label": "107r",
+            "physID": "PHYS-219",
+            "sequence": 219,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00219",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "107v",
+            "physID": "PHYS-220",
+            "sequence": 220,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00220",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4446,
+            "imageHeight": 6949
+         },
+         {
+            "label": "108r",
+            "physID": "PHYS-221",
+            "sequence": 221,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00221",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "108v",
+            "physID": "PHYS-222",
+            "sequence": 222,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00222",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4129,
+            "imageHeight": 6949
+         },
+         {
+            "label": "109r",
+            "physID": "PHYS-223",
+            "sequence": 223,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00223",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "109v",
+            "physID": "PHYS-224",
+            "sequence": 224,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00224",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4355,
+            "imageHeight": 6949
+         },
+         {
+            "label": "110r",
+            "physID": "PHYS-225",
+            "sequence": 225,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00225",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "110v",
+            "physID": "PHYS-226",
+            "sequence": 226,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00226",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4483,
+            "imageHeight": 6949
+         },
+         {
+            "label": "111r",
+            "physID": "PHYS-227",
+            "sequence": 227,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00227",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "111v",
+            "physID": "PHYS-228",
+            "sequence": 228,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00228",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "112r",
+            "physID": "PHYS-229",
+            "sequence": 229,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00229",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "112v",
+            "physID": "PHYS-230",
+            "sequence": 230,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00230",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "113r",
+            "physID": "PHYS-231",
+            "sequence": 231,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00231",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "113v",
+            "physID": "PHYS-232",
+            "sequence": 232,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00232",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "114r",
+            "physID": "PHYS-233",
+            "sequence": 233,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00233",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "114v",
+            "physID": "PHYS-234",
+            "sequence": 234,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00234",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4366,
+            "imageHeight": 6949
+         },
+         {
+            "label": "115r",
+            "physID": "PHYS-235",
+            "sequence": 235,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00235",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "115v",
+            "physID": "PHYS-236",
+            "sequence": 236,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00236",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4512,
+            "imageHeight": 6949
+         },
+         {
+            "label": "116r",
+            "physID": "PHYS-237",
+            "sequence": 237,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00237",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "116v",
+            "physID": "PHYS-238",
+            "sequence": 238,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00238",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4093,
+            "imageHeight": 6949
+         },
+         {
+            "label": "117r",
+            "physID": "PHYS-239",
+            "sequence": 239,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00239",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "117v",
+            "physID": "PHYS-240",
+            "sequence": 240,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00240",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4377,
+            "imageHeight": 6949
+         },
+         {
+            "label": "118r",
+            "physID": "PHYS-241",
+            "sequence": 241,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00241",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "118v",
+            "physID": "PHYS-242",
+            "sequence": 242,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00242",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4403,
+            "imageHeight": 6949
+         },
+         {
+            "label": "119r",
+            "physID": "PHYS-243",
+            "sequence": 243,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00243",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "119v",
+            "physID": "PHYS-244",
+            "sequence": 244,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00244",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4307,
+            "imageHeight": 6949
+         },
+         {
+            "label": "120r",
+            "physID": "PHYS-245",
+            "sequence": 245,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00245",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "120v",
+            "physID": "PHYS-246",
+            "sequence": 246,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00246",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "121r",
+            "physID": "PHYS-247",
+            "sequence": 247,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00247",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "121v",
+            "physID": "PHYS-248",
+            "sequence": 248,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00248",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4365,
+            "imageHeight": 6949
+         },
+         {
+            "label": "122r",
+            "physID": "PHYS-249",
+            "sequence": 249,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00249",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "122v",
+            "physID": "PHYS-250",
+            "sequence": 250,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00250",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4458,
+            "imageHeight": 6949
+         },
+         {
+            "label": "123r",
+            "physID": "PHYS-251",
+            "sequence": 251,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00251",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "123v",
+            "physID": "PHYS-252",
+            "sequence": 252,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00252",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "124r",
+            "physID": "PHYS-253",
+            "sequence": 253,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00253",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "124v",
+            "physID": "PHYS-254",
+            "sequence": 254,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00254",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "125r",
+            "physID": "PHYS-255",
+            "sequence": 255,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00255",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "125v",
+            "physID": "PHYS-256",
+            "sequence": 256,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00256",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "126r",
+            "physID": "PHYS-257",
+            "sequence": 257,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00257",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "126v",
+            "physID": "PHYS-258",
+            "sequence": 258,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00258",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "127r",
+            "physID": "PHYS-259",
+            "sequence": 259,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00259",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "127v",
+            "physID": "PHYS-260",
+            "sequence": 260,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00260",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "128r",
+            "physID": "PHYS-261",
+            "sequence": 261,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00261",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "128v",
+            "physID": "PHYS-262",
+            "sequence": 262,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00262",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "129r",
+            "physID": "PHYS-263",
+            "sequence": 263,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00263",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "129v",
+            "physID": "PHYS-264",
+            "sequence": 264,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00264",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "130r",
+            "physID": "PHYS-265",
+            "sequence": 265,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00265",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "130v",
+            "physID": "PHYS-266",
+            "sequence": 266,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00266",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "131r",
+            "physID": "PHYS-267",
+            "sequence": 267,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00267",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "131v",
+            "physID": "PHYS-268",
+            "sequence": 268,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00268",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "132r",
+            "physID": "PHYS-269",
+            "sequence": 269,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00269",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "132v",
+            "physID": "PHYS-270",
+            "sequence": 270,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00270",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "133r",
+            "physID": "PHYS-271",
+            "sequence": 271,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00271",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "133v",
+            "physID": "PHYS-272",
+            "sequence": 272,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00272",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "134r",
+            "physID": "PHYS-273",
+            "sequence": 273,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00273",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "134v",
+            "physID": "PHYS-274",
+            "sequence": 274,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00274",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "135r",
+            "physID": "PHYS-275",
+            "sequence": 275,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00275",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "135v",
+            "physID": "PHYS-276",
+            "sequence": 276,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00276",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "ii(r)",
+            "physID": "PHYS-277",
+            "sequence": 277,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00277",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "ii(v)",
+            "physID": "PHYS-278",
+            "sequence": 278,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00278",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "iii(r)",
+            "physID": "PHYS-279",
+            "sequence": 279,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00279",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4241,
+            "imageHeight": 6949
+         },
+         {
+            "label": "iii(v)",
+            "physID": "PHYS-280",
+            "sequence": 280,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00280",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "back cover (inside)",
+            "physID": "PHYS-281",
+            "sequence": 281,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00281",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "back cover",
+            "physID": "PHYS-282",
+            "sequence": 282,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00282",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 4612,
+            "imageHeight": 6949
+         },
+         {
+            "label": "spine",
+            "physID": "PHYS-283",
+            "sequence": 283,
+            "IIIFImageURL": "MS-DD-00004-00017-000-00283",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 2972,
+            "imageHeight": 6949
+         }
+               ],
+            "logicalStructures":
+               [
+
+         {
+            "descriptiveMetadataID": "DOCUMENT",
+            "label": "Book of Hours (Sarum Use)",
+            "startPageLabel": "cover",
+            "startPagePosition": 1,
+            "startPageID": "PHYS-1",
+            "endPageLabel": "spine",
+            "endPagePosition": 283,
+            "children":
+               [
+
+         {
+            "descriptiveMetadataID": "ITEM-2",
+            "label": "Calendar",
+            "startPageLabel": "13r",
+            "startPagePosition": 31,
+            "startPageID": "PHYS-31",
+            "endPageLabel": "18v",
+            "endPagePosition": 42
+         },
+         {
+            "descriptiveMetadataID": "ITEM-3",
+            "label": "Book of Hours",
+            "startPageLabel": "19r",
+            "startPagePosition": 43,
+            "startPageID": "PHYS-43",
+            "endPageLabel": "135v",
+            "endPagePosition": 276
+         }
+               ]
+         }
+               ],
+            "listItemPages":
+               [
+
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "1v",
+            "startPage": 8,
+            "title": "1v",
+            "listItemText": "1v woman kneeling before a sainted archbishop"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "2r",
+            "startPage": 9,
+            "title": "2r",
+            "listItemText": "2r St Catherine and St Margaret"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "3v",
+            "startPage": 12,
+            "title": "3v",
+            "listItemText": "3v St George"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "4r",
+            "startPage": 13,
+            "title": "4r",
+            "listItemText": "4r St Christopher"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "5v",
+            "startPage": 16,
+            "title": "5v",
+            "listItemText": "5v Annunciation"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "6r",
+            "startPage": 17,
+            "title": "6r",
+            "listItemText": "6r Nativity"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "7v",
+            "startPage": 20,
+            "title": "7v",
+            "listItemText": "7v Resurrection"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "8r",
+            "startPage": 21,
+            "title": "8r",
+            "listItemText": "8r Ascension"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "9v",
+            "startPage": 24,
+            "title": "9v",
+            "listItemText": "9v Coronation of Virgin"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "10r",
+            "startPage": 25,
+            "title": "10r",
+            "listItemText": "10r Christ in Majesty with Evangelists' symbols"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "11v",
+            "startPage": 28,
+            "title": "11v",
+            "listItemText": "11v Virgin and Child"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "12r",
+            "startPage": 29,
+            "title": "12r",
+            "listItemText": "12r Crucifixion"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "13r",
+            "startPage": 31,
+            "title": "13r",
+            "listItemText": "13r Janus feasting, Aquarius (January)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "13v",
+            "startPage": 32,
+            "title": "13v",
+            "listItemText": "13v man warming himself by fire, Pisces (February)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "14r",
+            "startPage": 33,
+            "title": "14r",
+            "listItemText": "14r pruning, Aries (March)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "14v",
+            "startPage": 34,
+            "title": "14v",
+            "listItemText": "14v hawking, Taurus (April)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "15r",
+            "startPage": 35,
+            "title": "15r",
+            "listItemText": "15r Maying, Gemini (May)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "15v",
+            "startPage": 36,
+            "title": "15v",
+            "listItemText": "15v mowing, Cancer (June)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "16r",
+            "startPage": 37,
+            "title": "16r",
+            "listItemText": "16r reaping, Leo (July)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "16v",
+            "startPage": 38,
+            "title": "16v",
+            "listItemText": "16v threshing, Virgo (August)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "17r",
+            "startPage": 39,
+            "title": "17r",
+            "listItemText": "17r harvesting grapes, Libra (September)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "17v",
+            "startPage": 40,
+            "title": "17v",
+            "listItemText": "17v sowing, Scorpio (October)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "18r",
+            "startPage": 41,
+            "title": "18r",
+            "listItemText": "18r beating for acorns, Sagittarius (November)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "18v",
+            "startPage": 42,
+            "title": "18v",
+            "listItemText": "18v slaughtering pig, Capricorn (December)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "19r",
+            "startPage": 43,
+            "title": "19r",
+            "listItemText": "19r Woman praying to Virgin and Child on punched gold ground (9 lines, Matins)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "79r",
+            "startPage": 163,
+            "title": "79r",
+            "listItemText": "79r Christ seated holding book and blessing on blue and red chequeboard ground (7 lines, Penitential Psalms)"
+         },
+         {
+            "fileID": "MS-DD-00004-00017",
+            "dmdID": "DOCUMENT",
+            "startPageLabel": "26v",
+            "startPage": 58,
+            "title": "26v",
+            "listItemText": "Initials (3-6 lines) filled with foliated and zoomorphic spirals, on tooled gold ground, to remaining Hours of Virgin (26v, 37v, 41r, 43v, 45v, 48r, 52r) and at beginning of Hours of Holy Spirit (68r)"
+         }
+               ]
+         }

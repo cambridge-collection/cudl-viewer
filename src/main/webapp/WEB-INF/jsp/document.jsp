@@ -1,4 +1,4 @@
-<%@page autoFlush="false" %>
+<%@page autoFlush="true" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -119,12 +119,12 @@
                             alt="Logo for Cambridge University" title="Cambridge University"></a>
 
                         <div class="cudl-viewer-buttons-pagination">
-                            <button id="prevPage" class="cudl-btn fa fa-arrow-left"
-                                title="Previous Page"></button>
+                            <button id="${textDirectionRightToLeft ? 'nextPage' : 'prevPage'}" class="cudl-btn fa fa-arrow-left"
+                                title="${textDirectionRightToLeft ? 'Next Page' : 'Previous Page'}"></button>
                             <input id="pageInput" type="text" value="1" size="4"> of <span
                                 id="maxPage"></span>
-                            <button id="nextPage" class="cudl-btn fa fa-arrow-right"
-                                title="Next Page"></button>
+                            <button id="${textDirectionRightToLeft ? 'prevPage' : 'nextPage'}" class="cudl-btn fa fa-arrow-right"
+                                title="${textDirectionRightToLeft ? 'Previous Page' : 'Next Page'}"></button>
                             <br />
                         </div>
 
@@ -146,8 +146,13 @@
                         <div class="cudl-viewer-buttons-zoom">
                             <button id="rotateLeft" class="cudl-btn fa fa-rotate-left"
                                 title="Rotate the image 90° left"></button>
+                            <%-- Optional rotation slider set in properties --%>
+                            <c:if test="${rotationSlider eq true}">
+                                <div id="rotationSlider"></div>
+                            </c:if>
                             <button id="rotateRight" class="cudl-btn fa fa-rotate-right"
                                 title="Rotate the image 90° right"></button>
+
                             <button id="zoomIn" class="cudl-btn fa fa-plus"
                                 title="Zoom in to the image"></button>
                             <button id="zoomOut" class="cudl-btn fa fa-minus"
@@ -232,76 +237,13 @@
                                 <div>
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
 
-                                      <span>
-                                          <div role="tabpanel" class="tab-pane" id="use">
-                                             <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                   <h3 class="panel-title">Use</h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                  <div id="downloadOption">
-                                                    <div class="button usebutton">
-                                                      <a class="btn btn-info left" href="#">
-                                                        <i class="fa fa-download fa-2x pull-left"></i>
-                                                            Download<br/>Image
-                                                      </a>
-                                                     </div>
-                                                   </div>
-                                                   <div id="rightsOption">
-                                                       <div class="button usebutton" >
-                                                         <a class="btn btn-info left"
-                                                         href="${imageReproPageURL}"
-                                                         target="_blank"> <i class="fa fa-gavel fa-2x pull-left"></i>
-                                                       Request<br/>Rights
-                                                          </a>
-                                                       </div>
-                                                   </div>
-                                                    <div id="downloadMetadataOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                          <i class="fa fa-file-code-o fa-2x pull-left"></i> Download<br>Metadata
-                                                        </a>
-                                                      </div>
-                                                    </div>
-                                                    <div id="bookmarkOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                          <i class="fa fa-bookmark fa-2x pull-left"></i>Bookmark<br/>Image
-                                                        </a>
-                                                      </div>
-                                                    </div>
-
-                                                    <div id="iiifOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}">
-                                                          <span class="pull-left"><img src="/img/logo-iiif-34x30.png"
-                                                                                       title="International Image Interoperability Framework"></span> IIIF<br>Manifest
-                                                        </a>
-                                                      </div>
-                                                    </div>
-                                                    <div id="miradorOption">
-                                                      <div class="button usebutton">
-                                                        <a class="btn btn-info left" href="#">
-                                                            <span class="pull-left"><img src="/img/mirador.png"
-                                                                                         title="Open in Mirador"></span> Open in<br>Mirador
-                                                        </a>
-                                                      </div>
-                                                    </div>
-
-                                                </div>
-
-                                             </div>
-                                          </div>
-                                       </span>
-
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
                                         <p>
-                                            Under the 'More' menu you can find <a class="show-metadata" href="#">metadata
+                                            Under the 'View more options' menu you can find <a class="show-metadata" href="#">metadata
                                                 about the item</a>, any transcription and translation we have of
-                                            the text and find out about <a class="show-download" href="#">downloading
-                                                or sharing this image</a>.
+                                            the text and find out about <a class="show-download" href="#">sharing this image</a>.
                                         </p>
                                     </div>
                                     <div id="zoomRights">
@@ -389,6 +331,85 @@
                         <div role="tabpanel" class="tab-pane" id="tagging"></div>
                     </div>
                 </div>
+                <!-- Usage buttons -->
+                <div id="use" class="bottom-panel">
+<%--                    <div class="panel panel-default">--%>
+                        <div class="panel-body">
+                            <div id="downloadOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Download Image">
+                                        <i class="fa fa-download fa-2x"></i>
+                                        <span>Download<br/>Image</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <c:if test="${pdfSinglePage eq true}">
+                                <div id="singlePagePdfDownloadOption">
+                                    <div class="button usebutton">
+                                        <a class="btn btn-info left" href="" download="${docId}-${page}.pdf">
+                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${pdfFullDocument eq true}">
+                                <div id="fullDocumentPdfDownloadOption">
+                                    <div class="button usebutton">
+                                        <a class="btn btn-info left" href="" download="${docId}.pdf">
+                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Document<br/>PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <div id="rightsOption">
+                                <div class="button usebutton" >
+                                    <a class="btn btn-info left"
+                                       href="${imageReproPageURL}"
+                                       target="_blank"
+                                       title="Request Rights">
+                                        <i class="fa fa-gavel fa-2x"></i>
+                                        <span>Request<br/>Rights</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="downloadMetadataOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Download Metadata">
+                                        <i class="fa fa-file-code-o fa-2x"></i>
+                                        <span>Download<br>Metadata</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="bookmarkOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Bookmark Image">
+                                        <i class="fa fa-bookmark fa-2x"></i>
+                                        <span>Bookmark<br/>Image</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div id="iiifOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="${iiifManifestURL}?manifest=${iiifManifestURL}"
+                                       title="View IIIF Manifest">
+                                                          <img src="/img/logo-iiif-34x30.png"
+                                                               title="International Image Interoperability Framework">
+                                        <span>IIIF<br>Manifest</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="miradorOption">
+                                <div class="button usebutton">
+                                    <a class="btn btn-info left" href="#" title="Open in Mirador">
+                                                            <img src="/img/mirador.png" title="Open in Mirador">
+                                        <span>Open in<br>Mirador</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+<%--                    </div>--%>
+                </div>
             </div>
 
             <!--  Confirmation pop ups -->
@@ -397,6 +418,25 @@
                 <a href="#" class="close">&times;</a> Do
                 you want to create a bookmark for this page in 'My Library'?<br /> <br />
                 <button type="button" class="btn btn-default btn-success">Yes</button>
+                <button type="button" class="btn btn-default">Cancel</button>
+            </div>
+            <div id="singlePagePdfConfirmation" class="alert alert-info"
+                 style="display: none">
+                <a href="#" class="close">&times;</a>
+                <p>The images contained in the pdf download have the following copyright:</p>
+                <div class="well" id="pdfSinglePageDownloadCopyright"></div>
+                <button type="button" class="btn btn-default btn-success">Download</button>
+                <button type="button" class="btn btn-default">Cancel</button>
+            </div>
+            <div id="fullDocumentPdfConfirmation" class="alert alert-info"
+                 style="display: none">
+                <a href="#" class="close">&times;</a>
+                <p>This will create a PDF with thumbnail images for all pages, and
+                    may take some time for large documents.</p>
+                <p>The images contained in this document have the following
+                    copyright: </p>
+                <div class="well" id="pdfFullDocumentDownloadCopyright"></div>
+                <button type="button" class="btn btn-default btn-success">Download</button>
                 <button type="button" class="btn btn-default">Cancel</button>
             </div>
             <div id="downloadConfirmation" class="alert alert-info"

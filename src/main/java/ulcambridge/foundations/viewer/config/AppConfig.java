@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
-import org.springframework.core.annotation.Order;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,16 +21,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
-import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.JSONReader;
-import ulcambridge.foundations.viewer.authentication.UsersDBDao;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.utils.Utils;
+import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
+import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -221,5 +219,30 @@ public class AppConfig {
         }
 
         return restTemplate;
+    }
+
+
+    @Bean
+    public SinglePagePdf singlePagePdf(@Value("${IIIFImageServer}") String IIIFImageServer,
+                                       @Value("${rootURL}") String baseURL,
+                                       @Value("${pdf.header.text}") String headerText,
+                                       @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
+                                       @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
+                                       @Value("${pdf.fonts.default}") String defaultFont,
+                                       @Value("${pdf.cache.path}") String cachePath) throws IOException {
+
+        return new SinglePagePdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
+    }
+
+    @Bean
+    public FullDocumentPdf fullDocumentPdf(@Value("${IIIFImageServer}") String IIIFImageServer,
+                                           @Value("${rootURL}") String baseURL,
+                                           @Value("${pdf.header.text}") String headerText,
+                                           @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
+                                           @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
+                                           @Value("${pdf.fonts.default}") String defaultFont,
+                                           @Value("${pdf.cache.path}") String cachePath) throws IOException {
+
+        return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
     }
 }

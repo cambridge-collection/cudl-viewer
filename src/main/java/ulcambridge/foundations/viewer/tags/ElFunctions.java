@@ -75,6 +75,13 @@ public final class ElFunctions {
     }
 
     /**
+     * @see SearchUtil#getURLParametersWithFacetExpanded(SearchForm, String)
+     */
+    public static String urlParamsWithFacetExpanded(SearchForm form, String facet) {
+        return SearchUtil.getURLParametersWithFacetExpanded(form, facet);
+    }
+
+    /**
      * Strip HTML tags from input, returning the plain text content.
      * @see org.jsoup.nodes.Element#text()
      */

@@ -249,6 +249,15 @@ public class DocumentViewController {
 
         modelAndView.addObject("itemDAO", itemDAO);
 
+        // Item Text Direction
+        JSONObject json = item.getJSON();
+        if (json.has("textDirection")) {
+            String td = json.getString("textDirection");
+            if (td != null && td.equals("R")) {
+                modelAndView.addObject("textDirectionRightToLeft", true);
+            }
+        }
+
         // Page Information
         modelAndView.addObject("page", page);
 
@@ -273,10 +282,21 @@ public class DocumentViewController {
         modelAndView.addObject("imageReproPageURL", item.getImageReproPageURL());
         modelAndView.addObject("iiifImageServer", iiifImageServer);
 
+        // Test for display of pdf download
+        boolean hasRightsForPdfDownload = PdfViewController.hasPermissionForPDFDownload(item);
+        boolean singlePagePdfEnabled = Properties.getString("ui.options.buttons.about.pdfSinglePage").equals("true")
+            && hasRightsForPdfDownload;
+        boolean fullDocumentPdfEnabled = Properties.getString("ui.options.buttons.about.pdfFullDocument").equals("true")
+            && hasRightsForPdfDownload;
+
         // UI Configuration
         modelAndView.addObject("zoomResetButton", Properties.getString("ui.options.buttons.zoomResetButton"));
         modelAndView.addObject("zoomFactor", Properties.getString("ui.options.buttons.zoomFactor"));
+        modelAndView.addObject("rotationSlider", Properties.getString("ui.options.buttons.rotationSlider"));
         modelAndView.addObject("viewportNavigator", Properties.getString("ui.options.viewportNavigator"));
+        modelAndView.addObject("pdfSinglePage", singlePagePdfEnabled);
+        modelAndView.addObject("pdfFullDocument", fullDocumentPdfEnabled);
+
         modelAndView.addObject("downloadSizes", downloadSizes);
 
         return modelAndView;

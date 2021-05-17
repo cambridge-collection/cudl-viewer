@@ -41,7 +41,7 @@ public class SearchResultTest {
         assertEquals("MS-ADD-04004", result.getFileId());
         assertEquals("Newton's Waste Book", result.getTitle());
         assertEquals(1, result.getStartPage());
-        assertEquals("front cover", result.getStartPageLabel());
+        assertEquals("cover", result.getStartPageLabel());
         assertEquals(1, result.getSnippets().size());
     }
 }
