@@ -1,4 +1,4 @@
-<%@page autoFlush="false" %>
+<%@page autoFlush="true" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>

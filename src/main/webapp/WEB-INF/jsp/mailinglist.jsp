@@ -1,4 +1,4 @@
-<%@page autoFlush="false" %>
+<%@page autoFlush="true" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>

@@ -158,7 +158,9 @@ class BasicTemplatePdf {
                                     valueString.append(value.getString("displayForm")).append(" ; ");
                                 }
                             }
-                            valueString.replace(valueString.lastIndexOf(" ;"), valueString.lastIndexOf(" ;") + 2, "");
+                            if (valueString.lastIndexOf(" ;")!=-1) {
+                                valueString.replace(valueString.lastIndexOf(" ;"), valueString.lastIndexOf(" ;") + 2, "");
+                            }
                             List<IBlockElement> valueElements = parseHTML(valueString.toString(), fontProvider);
                             Div div = new Div();
                             for (IBlockElement e : valueElements) {
