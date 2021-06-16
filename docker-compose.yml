@@ -17,6 +17,8 @@ services:
     build:
       context: .
       dockerfile: docker/db/Dockerfile
+      args:
+        DBPATH: ${DBPATH:-./docker/db/dl-data-samples/processed-data/database-snapshots}
     restart: always
     environment:
       POSTGRES_USER: cudl
