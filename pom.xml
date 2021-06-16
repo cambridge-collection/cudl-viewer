@@ -3,7 +3,7 @@
 
     <groupId>ulcambridge.foundations.viewer</groupId>
     <artifactId>FoundationsViewer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>CUDL Viewer</name>
@@ -16,7 +16,7 @@
         <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
         <cudl-viewer-ui.version>2.0.3</cudl-viewer-ui.version>
-        <spring-security-raven.version>1.0.0</spring-security-raven.version>
+        <spring-security-raven.version>1.0.1</spring-security-raven.version>
 
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
@@ -681,28 +681,20 @@
     <!-- Resolve private CUDL artifacts -->
     <repositories>
         <repository>
-            <id>cudl-aws-release</id>
-            <name>AWS Release Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/release</url>
-        </repository>
-        <repository>
-            <id>cudl-aws-snapshot</id>
-            <name>AWS Snapshot Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/snapshot</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/cambridge-collection/*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
     <!-- Use CUDL's private repo to deploy artifacts -->
     <distributionManagement>
         <repository>
-            <id>cudl-aws-release</id>
-            <name>AWS Release Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/release</url>
+            <id>github</id>
+            <name>GitHub cambridge-collection Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cambridge-collection/cudl-viewer</url>
         </repository>
-        <snapshotRepository>
-            <id>cudl-aws-snapshot</id>
-            <name>AWS Snapshot Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/snapshot</url>
-        </snapshotRepository>
     </distributionManagement>
 </project>

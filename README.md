@@ -2,6 +2,54 @@
 
 The CUDL Viewer is a [Spring](https://spring.io/)-powered java web application.
 
+## Building
+
+To build a WAR file, run:
+
+```
+$ mvn clean package
+```
+
+The war file will be created under `target/`.
+
+When deployed, the Viewer requires `cudl-global.properties` to exist on the
+classpath.
+
+This file will be excluded from any WAR file generated as it contains the properties
+that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
+classpath for your web container (e.g. `lib` directory in Tomcat).
+
+## Run locally
+
+### Using sample data
+
+Check the git submodules are present: dl-data-samples should be at:
+
+    docker/db/dl-data-samples
+
+To run the viewer:
+
+    docker-compose up
+
+### Using cudl data
+
+Check the cudl database snapshots are available here:
+ (NOTE: These are held in Bitbucket and are available to Cambridge developers)
+
+    docker/db/snapshots
+
+To run the viewer:
+
+    docker-compose --env-file cudl-data.env up
+
+Note: if switching between data sets you may have to remove the old cudl-db images.
+e.g.
+
+    docker image rm cudl-viewer-master_cudl-db:latest
+
+
+# Below sections require reviewing!, they may be out of date
+
 ## Developing
 
 The Viewer uses [Maven](https://maven.apache.org/) for dependency management
@@ -80,13 +128,13 @@ even if `admin.enabled=false`.
 
 ### Running
 
-Once configured, there are two embedded Tomcat servers that can be run. One will allow live editing of static resources (e.g. jsps) and can be run using the command: 
+Once configured, there are two embedded Tomcat servers that can be run. One will allow live editing of static resources (e.g. jsps) and can be run using the command:
 
 ```
 $ mvn tomcat7:run
 ```
 
-Alternatively you can run the alternative embedded tomcat through that Cargo container that is setup to use the same version tomcat as the live/staging/dev servers for final testing.  This does not allow live editing. To run this you use the command:  
+Alternatively you can run the alternative embedded tomcat through that Cargo container that is setup to use the same version tomcat as the live/staging/dev servers for final testing.  This does not allow live editing. To run this you use the command:
 
 ```
 $ mvn clean verify cargo:run
@@ -111,22 +159,7 @@ Javascript/CSS from the dependency JARs.
 See the [cudl-viewer-ui's README](https://github.com/cambridge-collection/cudl-viewer-ui) for
 instructions on running the UI devserver.
 
-## Building
 
-To build a WAR file, run:
-
-```
-$ mvn clean package
-```
-
-The war file will be created under `target/`.
-
-When deployed, the Viewer requires `cudl-global.properties` to exist on on the
-classpath.
-
-This file will be excluded from any WAR file generated as it contains the properties
-that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
-classpath for your web container (e.g. `lib` directory in Tomcat).
 
 ## Making a release
 

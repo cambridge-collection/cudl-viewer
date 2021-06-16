@@ -59,13 +59,13 @@ public class CollectionViewController {
 
         final ModelAndView modelAndView = new ModelAndView("jsp/collections");
         final ArrayList<Item> featuredItems = new ArrayList<Item>();
-        final String itemIdString = Properties.getString("collection.featuredItems");
-        final String[] itemIds = SPLIT_RE.split(itemIdString);
-        for (final String itemId : itemIds) {
-            featuredItems.add(itemDAO.getItem(itemId));
-        }
+        //final String itemIdString = Properties.getString("collection.featuredItems");
+        //final String[] itemIds = SPLIT_RE.split(itemIdString);
+        //for (final String itemId : itemIds) {
+        //    featuredItems.add(itemDAO.getItem(itemId));
+       // }
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
-        modelAndView.addObject("featuredItems", featuredItems);
+        //modelAndView.addObject("featuredItems", featuredItems);
         return modelAndView;
     }
 
