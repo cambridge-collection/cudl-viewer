@@ -3,11 +3,15 @@ package ulcambridge.foundations.viewer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.admin.RefreshCache;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 import ulcambridge.foundations.viewer.utils.MiradorUtils;
@@ -29,15 +33,18 @@ public class SiteViewController {
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
     private final String contentHtmlUrl;
+    private final RefreshCache cacheRefresher;
 
     @Autowired
     public SiteViewController(CollectionFactory collectionFactory,
-                              @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
+                              @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
+                              RefreshCache cacheRefresher) {
         Assert.notNull(collectionFactory);
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
+        this.cacheRefresher = cacheRefresher;
     }
 
     // on path /
@@ -131,6 +138,22 @@ public class SiteViewController {
         modelAndView.addObject("baseURL", baseURL);
         modelAndView.addObject("miradorUtils", miradorUtils);
         return modelAndView;
+    }
+
+    // Enable from properties. Should only be enabled on staging / dev
+    @RequestMapping(value = "/refresh", method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String handleRefreshRequest() {
+
+        if (Properties.getString("enable.refresh").toLowerCase().equals("true")) {
+            this.cacheRefresher.refreshDB();
+            this.cacheRefresher.refreshJSON();
+
+            return "{ \"refresh_successful\":true }";
+        } else {
+            return "{ \"refresh_successful\":false }";
+        }
     }
 
     // on path /terms/

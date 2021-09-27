@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import ulcambridge.foundations.viewer.admin.RefreshCache;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
 import static org.junit.Assert.assertTrue;
@@ -18,7 +19,7 @@ public class SiteViewControllerTest {
         CollectionFactory collectionFactory = new CollectionFactory(
             new MockCollectionsDao());
 
-        return new SiteViewController(collectionFactory, "./html");
+        return new SiteViewController(collectionFactory, "./html", null);
     }
 
     @Test
