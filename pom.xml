@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ulcambridge.foundations.viewer</groupId>
-    <artifactId>FoundationsViewer</artifactId>
+    <artifactId>foundationsviewer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
