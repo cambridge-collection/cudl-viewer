@@ -29,7 +29,7 @@ Check the git submodules are present: dl-data-samples should be at:
 
 To run the viewer:
 
-    docker-compose up
+    docker-compose --env-file sample-data.env up
 
 ### Using cudl data
 
