@@ -23,6 +23,12 @@ classpath for your web container (e.g. `lib` directory in Tomcat).
 
 ### Using sample data
 
+The sample data is linked as a git submodule so we need to initalise
+it and download the data.  Do this with the following commands:
+
+    git submodule init
+    git submodule update
+
 Check the git submodules are present: dl-data-samples should be at:
 
     docker/db/dl-data-samples
