@@ -677,28 +677,20 @@
     <!-- Resolve private CUDL artifacts -->
     <repositories>
         <repository>
-            <id>cudl-aws-release</id>
-            <name>AWS Release Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/release</url>
-        </repository>
-        <repository>
-            <id>cudl-aws-snapshot</id>
-            <name>AWS Snapshot Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/snapshot</url>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/cambridge-collection/*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
 
     <!-- Use CUDL's private repo to deploy artifacts -->
     <distributionManagement>
         <repository>
-            <id>cudl-aws-release</id>
-            <name>AWS Release Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/release</url>
+            <id>github</id>
+            <name>GitHub cambridge-collection Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/cambridge-collection/cudl-viewer</url>
         </repository>
-        <snapshotRepository>
-            <id>cudl-aws-snapshot</id>
-            <name>AWS Snapshot Repository</name>
-            <url>s3://mvn.cudl.lib.cam.ac.uk/snapshot</url>
-        </snapshotRepository>
     </distributionManagement>
 </project>
