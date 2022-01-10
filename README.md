@@ -40,7 +40,7 @@ To run the viewer:
 ### Using cudl data
 
 Check the cudl database snapshots are available here:
- (NOTE: These are held in Bitbucket and are available to Cambridge developers)
+(NOTE: These are held in Bitbucket and are available to Cambridge developers)
 
     docker/db/snapshots
 
@@ -206,10 +206,41 @@ Assuming your CUDL remote is `cudl`, and your created tag was
 $ git push cudl master production-2015062100
 ```
 
-### Step 2: Perform (deploy to CUDL repository)
+### Step 2: CAMBRIDGE ONLY: deploy to Maven repo on S3
 
+Once the release has been tagged you can upload this version to our internal s3 repo
+which is where the code is deployed from using Puppet.
+
+First ensure that you have the aws credentials in your ~/.m2/settings.xml
+
+```
+  <servers>
+	<server>
+	<id>github</id>
+	<username>YOUR_GITHUB_USERNAME</username>
+	<password>YOUR_GITHUB_ACCESS_TOKEN></password>
+	</server>
+	<server>
+	<id>cudl-aws-release</id>
+	<username>YOUR_AWS_ACCESS_TOKEN_NAME</username>
+	<password>YOUR_AWS_ACCESS_TOKEN_VALUE</password>
+	</server>
+  </servers>
+```
+
+Then run the following command to upload to the s3 repository for release
+so that puppet can find and deploy the code.
+
+```
+$mvn release:stage -DstagingRepository=s3://mvn.cudl.lib.cam.ac.uk/release
+```
+
+You then need to **repeat the release:prepare (stage 1)** with the same info for releasing
+to the github repo.
+
+### Step 3: Perform
 Once the release has been tagged you can finish off by deploying the artifacts
-to the CUDL repository:
+to the CUDL packages repository in github using the command:
 
 ```
 $ mvn release:perform
