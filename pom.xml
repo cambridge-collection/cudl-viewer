@@ -31,7 +31,7 @@
         <owasp-encoder.version>1.2.2</owasp-encoder.version>
         <tomcat.version>7.0.76</tomcat.version> <!-- TODO: v9 -->
         <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
-        <log4j.version>2.15.0</log4j.version>
+        <log4j.version>2.17.2</log4j.version>
     </properties>
 
     <scm>
