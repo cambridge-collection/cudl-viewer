@@ -1,4 +1,4 @@
-package ulcambridge.foundations.viewer.admin;
+package ulcambridge.foundations.viewer.utils;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import org.apache.commons.io.comparator.LastModifiedFileComparator;
@@ -62,7 +62,6 @@ public class RefreshCache {
 
                     // If file has changed in JSON refresh cache.
                     if (lastModifiedFile>lastModified) {
-                        System.out.println("refreshing...");
 
                         lastModified = lastModifiedFile;
                         refreshDB();

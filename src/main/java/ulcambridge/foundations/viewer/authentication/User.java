@@ -40,14 +40,7 @@ public class User implements Serializable {
 
     public List<String> getUserRoles() {
 
-        // If admin is disabled remove ROLE_ADMIN from the user.
-        boolean adminEnabled = new Boolean(Properties.getString("admin.enabled"));
-        List<String> userRoles = this.userRoles;
-        if (!adminEnabled && userRoles.contains("ROLE_ADMIN")) {
-            userRoles.remove("ROLE_ADMIN");
-        }
-
-        return userRoles;
+        return this.userRoles;
     }
 
     public boolean isEnabled() {

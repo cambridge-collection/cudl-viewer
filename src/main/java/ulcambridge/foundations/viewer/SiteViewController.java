@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.admin.RefreshCache;
+import ulcambridge.foundations.viewer.utils.RefreshCache;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
 import ulcambridge.foundations.viewer.utils.MiradorUtils;

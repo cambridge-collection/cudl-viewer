@@ -6,11 +6,9 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.admin.RefreshCache;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
 import static org.junit.Assert.assertTrue;
-import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
 
 public class SiteViewControllerTest {
