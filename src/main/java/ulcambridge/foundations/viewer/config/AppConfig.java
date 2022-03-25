@@ -108,8 +108,17 @@ public class AppConfig {
         @Autowired
         @Bean
         @Primary
-        public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache, @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO) {
-            return new CachingItemsDAO(itemCache, upstreamItemsDAO);
+        public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache,
+                                       @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO,
+                                       @Value("${caching.enabled}") String cacheEnabled) {
+            if ("true".equalsIgnoreCase(cacheEnabled)) {
+                System.out.println("using ITEM CACHE");
+                return new CachingItemsDAO(itemCache, upstreamItemsDAO);
+            } else {
+                System.out.println("not using ITEM CACHE");
+                return upstreamItemsDAO;
+            }
+
         }
 
         @Autowired

@@ -1,67 +1,87 @@
 package ulcambridge.foundations.viewer.admin;
 
 import com.github.benmanes.caffeine.cache.Cache;
+import org.apache.commons.io.comparator.LastModifiedFileComparator;
+import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.model.Properties;
 
-/**
- * @author rekha
- */
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.Date;
+
+
 @Component
 @Profile("!test")
 public class RefreshCache {
 
     private final CollectionFactory collectionFactory;
     private final Cache<String, Item> itemCache;
-
-    // FIXME: Inject this stuff
-    private String jsonLocalPathMasters = Properties.getString("admin.git.json.localpath");
-    private String jsonUrl = Properties.getString("admin.git.json.url");
-    private GitHelper jsonGit = new GitHelper(jsonLocalPathMasters,jsonUrl);
-
-    private String dbLocalPathMasters = Properties.getString("admin.git.db.localpath");
-    private String dbUrl = Properties.getString("admin.git.db.url");
-    private GitHelper dbGit = new GitHelper(dbLocalPathMasters,dbUrl);
-
-    private String lastJSONRevision = jsonGit.getLastRevision();
-    private String lastDBRevision = dbGit.getLastRevision();
+    private final String cachingEnabled;
+    private final String itemJSONDirectory;
+    private long lastModified;
 
     @Autowired
-    public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache) {
+    public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache,
+                        @Value("${caching.enabled}") String cachingEnabled, @Value("${itemJSONDirectory}") String itemJSONDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemCache, "itemCache is required");
 
         this.collectionFactory = collectionFactory;
         this.itemCache = itemCache;
+        this.cachingEnabled = cachingEnabled;
+        this.itemJSONDirectory = itemJSONDirectory;
+        lastModified = (new Date()).getTime();
     }
 
-    @Scheduled(fixedRate = 1000 * 60 * 5)  // Check every 5 mins.
+    /**
+     * NOTE: refreshing the cache only when the JSON has changed (so if only DB
+     * has changed it will not update).
+     */
+    @Scheduled(fixedRate = 1000 * 60 * 10)  // Check every 10 mins.
     public void checkForUpdates() {
 
-            String latestDBRevision = dbGit.getLastRevision();
-            String latestJSONRevision = jsonGit.getLastRevision();
+        try {
 
-            if (latestDBRevision != null &&
-                !lastDBRevision.equals(latestDBRevision)) {
-                // Get fresh collections from the database
-                refreshDB();
-                lastDBRevision = latestDBRevision;
+            File dir = new File(itemJSONDirectory);
+            if (dir.isDirectory()) {
+                File[] dirFiles = dir.listFiles((FileFilter) FileFilterUtils.fileFileFilter());
+                if (dirFiles != null && dirFiles.length > 0) {
+                    Arrays.sort(dirFiles, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
+                    long lastModifiedFile = Files.getLastModifiedTime(dirFiles[0].toPath()).toMillis();
+
+                    // If file has changed in JSON refresh cache.
+                    if (lastModifiedFile>lastModified) {
+                        System.out.println("refreshing...");
+
+                        lastModified = lastModifiedFile;
+                        refreshDB();
+                        refreshJSON();
+                    }
+
+                }
             }
 
-            if (latestJSONRevision != null &&
-                !lastJSONRevision.equals(latestJSONRevision)) {
-                // empty item cache
-                refreshJSON();
-                lastJSONRevision = latestJSONRevision;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            }
+    }
+
+    // Regularly clear DB if cache is disabled.
+    @Scheduled(fixedRate = 1000 * 60 * 5)  // Check every 5 mins.
+    private void scheduledRefresh() {
+        if (!"true".equalsIgnoreCase(cachingEnabled)) { refreshDB(); }
     }
 
     public void refreshDB() {
