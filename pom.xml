@@ -24,7 +24,6 @@
         <commons-lang3.version>3.7</commons-lang3.version>
         <commons-logging.version>1.1</commons-logging.version>
         <jena.version>2.13.0</jena.version> <!-- TODO: v3 -->
-        <jgit.version>4.11.2.201809100523-r</jgit.version> <!-- TODO: v5 -->
         <jsonatg.version>1.0.5</jsonatg.version>
         <jsoup.version>1.11.3</jsoup.version>
         <jtidy.version>r938</jtidy.version>
@@ -573,12 +572,6 @@
             <groupId>uk.ac.cam.lib</groupId>
             <artifactId>spring-security-raven</artifactId>
             <version>${spring-security-raven.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.jgit</groupId>
-            <artifactId>org.eclipse.jgit</artifactId>
-            <version>${jgit.version}</version>
         </dependency>
 
         <!-- for Genizah tagging, also upgrade org.slf4j version
