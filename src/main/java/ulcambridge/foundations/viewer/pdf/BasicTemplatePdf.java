@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,7 @@ class BasicTemplatePdf {
     private final String defaultFont;
     private final String[] fontDirectories;
     private final PdfCache cache;
+    private static final Logger LOG = LoggerFactory.getLogger(BasicTemplatePdf.class);
 
     BasicTemplatePdf(String baseURL,
                      String headerText, int[] pdfColour,
@@ -286,12 +289,14 @@ class BasicTemplatePdf {
             File f = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8") +".zip");
             File dir = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8"));
 
+            LOG.info("Getting resource for pdf.. "+zipURL);
             FileUtils.copyURLToFile(zipURL,f);
 
             // Extract zip
             ZipFile zipFile = new ZipFile(f);
             zipFile.extractAll(dir.getCanonicalPath());
 
+            LOG.info("done");
             return dir.getCanonicalPath();
         } catch (IOException e) {
             e.printStackTrace();

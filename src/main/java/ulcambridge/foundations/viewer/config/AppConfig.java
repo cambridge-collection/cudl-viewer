@@ -111,7 +111,7 @@ public class AppConfig {
         @Primary
         public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache,
                                        @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO,
-                                       @Value("${caching.enabled}") String cacheEnabled) {
+                                       @Value("${caching.enabled:true}") String cacheEnabled) {
             if ("true".equalsIgnoreCase(cacheEnabled)) {
                 LOG.info("using ITEM CACHE");
                 return new CachingItemsDAO(itemCache, upstreamItemsDAO);

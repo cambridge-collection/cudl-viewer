@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
@@ -23,18 +24,18 @@ public class CollectionFactory {
 
     private static Map<String, Collection> collections;
     private static List<Collection> rootCollections;
-    private static boolean initialised = false;
     private CollectionsDao collectionsDao;
     private static int collectionsRowCount;
     private static int itemsRowCount;
     private static int itemsinCollectionRowCount;
     private static Set<String> allItemIds;
-
+    private final String cachingEnabled;
 
     @Autowired
-    public CollectionFactory(CollectionsDao dao) {
+    public CollectionFactory(CollectionsDao dao, @Value("${caching.enabled:true}") String cachingEnabled) {
         Assert.notNull(dao);
         setCollectionsDao(dao);
+        this.cachingEnabled = cachingEnabled;
     }
 
     private void setCollectionsDao(CollectionsDao dao) {
@@ -45,22 +46,19 @@ public class CollectionFactory {
     public synchronized void init() {
 
         // Create a new instance of cached items.
-        collections = new Hashtable<String, Collection>();
-        rootCollections = new Vector<Collection>();
-        allItemIds =  Collections.synchronizedSet(new HashSet<String>());
+        collections = new Hashtable<>();
+        rootCollections = new Vector<>();
+        allItemIds =  Collections.synchronizedSet(new HashSet<>());
 
         List<String> collectionIds = collectionsDao.getCollectionIds();
-        for (int i = 0; i < collectionIds.size(); i++) {
-            String collectionId = collectionIds.get(i);
+        for (String collectionId : collectionIds) {
             Collection collection = collectionsDao.getCollection(collectionId);
             collections.put(collectionId, collection);
             allItemIds.addAll(collection.getItemIds());
         }
 
         // Setup the list of root collections used on the homescreen.
-        Iterator<Collection> iter = collections.values().iterator();
-        while (iter.hasNext()) {
-            Collection c = iter.next();
+        for (Collection c : collections.values()) {
             String parentId = c.getParentCollectionId();
 
             if (parentId == null || parentId.length() == 0) {
@@ -75,39 +73,25 @@ public class CollectionFactory {
         itemsRowCount = collectionsDao.getItemsRowCount();
         itemsinCollectionRowCount = collectionsDao
                 .getItemsInCollectionsRowCount();
-        initialised = true;
+
     }
 
     public Collection getCollectionFromId(String id) {
 
+        if (!"true".equalsIgnoreCase(cachingEnabled)) {
+            return collectionsDao.getCollection(id);
+        }
         return collections.get(id);
 
     }
 
-    /**
-     * Returns the first collection with the given title or null if no
-     * collections exist with that title.
-     *
-     * @param title
-     * @return
-     */
-    public Collection getCollectionFromTitle(String title) {
-
-        Iterator<Collection> c = getCollections().iterator();
-
-        while (c.hasNext()) {
-            Collection collection = c.next();
-            if (collection.getTitle().equals(title)) {
-                return collection;
-            }
-        }
-
-        return null;
-    }
-
     public List<Collection> getCollections() {
 
-        ArrayList<Collection> list = new ArrayList<Collection>(
+        if (!"true".equalsIgnoreCase(cachingEnabled)) {
+            init();
+        }
+
+        ArrayList<Collection> list = new ArrayList<>(
                 collections.values());
         Collections.sort(list);
         return list;
@@ -116,16 +100,18 @@ public class CollectionFactory {
 
     public List<Collection> getRootCollections() {
 
+        if (!"true".equalsIgnoreCase(cachingEnabled)) {
+            init();
+        }
+
         return rootCollections;
 
     }
 
     public List<Collection> getSubCollections(Collection collection) {
 
-        List<Collection> output = new ArrayList<Collection>();
-        Iterator<Collection> iter = collections.values().iterator();
-        while (iter.hasNext()) {
-            Collection c = iter.next();
+        List<Collection> output = new ArrayList<>();
+        for (Collection c : collections.values()) {
             String parentId = c.getParentCollectionId();
 
             if (parentId != null && parentId.equals(collection.getId())) {
@@ -137,7 +123,6 @@ public class CollectionFactory {
     }
 
     public Set<String> getAllItemIds() {
-
         return allItemIds;
     }
 

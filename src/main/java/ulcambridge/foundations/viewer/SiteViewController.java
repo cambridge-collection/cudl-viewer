@@ -144,7 +144,7 @@ public class SiteViewController {
     @RequestMapping(value = "/refresh", method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String handleRefreshRequest(@Value("${enable.refresh}") String enableRefresh) {
+    public String handleRefreshRequest(@Value("${enable.refresh:false}") String enableRefresh) {
 
         if ("true".equals(enableRefresh)) {
             this.cacheRefresher.refreshDB();

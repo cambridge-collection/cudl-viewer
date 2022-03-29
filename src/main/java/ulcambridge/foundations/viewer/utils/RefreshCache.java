@@ -33,7 +33,7 @@ public class RefreshCache {
 
     @Autowired
     public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache,
-                        @Value("${caching.enabled}") String cachingEnabled, @Value("${itemJSONDirectory}") String itemJSONDirectory) {
+                        @Value("${caching.enabled:true}") String cachingEnabled, @Value("${itemJSONDirectory}") String itemJSONDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemCache, "itemCache is required");
 
@@ -75,12 +75,6 @@ public class RefreshCache {
             e.printStackTrace();
         }
 
-    }
-
-    // Regularly clear DB if cache is disabled.
-    @Scheduled(fixedRate = 1000 * 60 * 5)  // Check every 5 mins.
-    private void scheduledRefresh() {
-        if (!"true".equalsIgnoreCase(cachingEnabled)) { refreshDB(); }
     }
 
     public void refreshDB() {

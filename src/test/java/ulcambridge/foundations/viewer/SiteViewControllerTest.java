@@ -15,7 +15,7 @@ public class SiteViewControllerTest {
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao());
+            new MockCollectionsDao(), "true");
 
         return new SiteViewController(collectionFactory, "./html", null);
     }
