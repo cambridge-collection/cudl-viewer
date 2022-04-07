@@ -23,7 +23,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <commons-logging.version>1.1</commons-logging.version>
-        <jena.version>2.13.0</jena.version> <!-- TODO: v4 -->
+        <jena.version>4.4.0</jena.version> <!-- TODO: v4 -->
         <jsonatg.version>1.0.5</jsonatg.version>
         <jsoup.version>1.14.3</jsoup.version>
         <jtidy.version>r938</jtidy.version>
@@ -55,7 +55,7 @@
                 <configuration>
                     <toolchains>
                         <jdk>
-                            <version>1.8</version>
+                            <version>11</version>
                             <vendor>openjdk</vendor>
                         </jdk>
                     </toolchains>
@@ -83,8 +83,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>11</release>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -622,6 +621,13 @@
             <groupId>net.lingala.zip4j</groupId>
             <artifactId>zip4j</artifactId>
             <version>2.10.0</version>
+        </dependency>
+
+        <!-- Used by crowdsourcing -->
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
     </dependencies>

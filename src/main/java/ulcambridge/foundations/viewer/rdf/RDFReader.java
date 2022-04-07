@@ -11,13 +11,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.DC;
-import com.hp.hpl.jena.vocabulary.DCTerms;
-import com.hp.hpl.jena.vocabulary.DCTypes;
-import com.hp.hpl.jena.vocabulary.RDF;
+import org.apache.jena.rdf.model.*;
+import org.apache.jena.vocabulary.*;
 
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
