@@ -14,7 +14,7 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.font.FontProvider;
-import com.itextpdf.layout.property.*;
+import com.itextpdf.layout.properties.*;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
@@ -103,7 +103,7 @@ class BasicTemplatePdf {
                 fontProvider.addDirectory(fontDir);
             }
             document.setFontProvider(fontProvider);
-            document.setFont(defaultFont); // needed to initalise fontProvider
+            document.setFontFamily(defaultFont); // needed to initalise fontProvider
 
             // Formatting
             document.setProperty(Property.LEADING, new Leading(Leading.MULTIPLIED, 1.02f));
