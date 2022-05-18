@@ -1,22 +1,13 @@
 package ulcambridge.foundations.viewer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
+
+import java.util.*;
 
 
 @Component
@@ -33,7 +24,7 @@ public class CollectionFactory {
 
     @Autowired
     public CollectionFactory(CollectionsDao dao, @Value("${caching.enabled:true}") String cachingEnabled) {
-        Assert.notNull(dao);
+        Assert.notNull(dao, "CollectionsDao cannot be null");
         setCollectionsDao(dao);
         this.cachingEnabled = cachingEnabled;
     }
@@ -79,7 +70,11 @@ public class CollectionFactory {
     public Collection getCollectionFromId(String id) {
 
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
-            return collectionsDao.getCollection(id);
+            Collection collection = collectionsDao.getCollection(id);
+            if (collection!=null && "parent".equals(collection.getType())) {
+                collection.setSubCollections(getSubCollections(collection));
+            }
+            return collection;
         }
         return collections.get(id);
 
