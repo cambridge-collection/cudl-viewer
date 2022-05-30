@@ -2,6 +2,11 @@
 
 The CUDL Viewer is a [Spring](https://spring.io/)-powered java web application.
 
+The Viewer uses [Maven](https://maven.apache.org/) for dependency management
+of 3rd party Java libraries, and build automation.
+
+Ensure you have a recent JDK and version of Maven installed before continuing.
+
 ## Building
 
 To build a WAR file, run:
@@ -37,6 +42,10 @@ To run the viewer:
 
     docker-compose --env-file sample-data.env up
 
+When running you can then access the Viewer at
+[http://localhost:8888/](http://localhost:8888/).
+
+
 ### Using cudl data
 
 Check the cudl database snapshots are available here:
@@ -53,44 +62,10 @@ e.g.
 
     docker image rm cudl-viewer-master_cudl-db:latest
 
-
-# Below sections require reviewing!, they may be out of date
-
-## Developing
-
-The Viewer uses [Maven](https://maven.apache.org/) for dependency management
-of 3rd party Java libraries, and build automation. Non-java internal
-dependencies are not managed as Maven dependencies and need to be setup
-manually.
-
-Ensure you have a recent JDK and version of Maven installed before continuing.
-
-You'll need to
-[add credentials for the CUDL Maven repository](https://wiki.cam.ac.uk/cudl-docs/CUDL_Maven_Repository#Credentials)
-in order to resolve internal dependencies such as
-[cudl-viewer-ui](https://github.com/cambridge-collection/cudl-viewer-ui).
-
-### Database Setup
-
-See the [database setup](src/main/docs/database-setup.md) document for
-instructions on creating a Postgres database for use with CUDL Viewer. It also
-covers importing data and creating admin users.
-
-
-### Setup
-
-Before running the Viewer, some setup and configuration is needed to obtain
-dependencies not manged by Maven.
-
-#### Required Configuration
+### Required Configuration
 
 The Viewer is configured in the `cudl-global.properties` file. A template is
-available at `src/test/resources/cudl-global.properties`. Copy this to
-`src/main/resources`:
-
-```
-$ cp src/test/resources/cudl-global.properties src/main/resources/
-```
+available at `docker/cudl-global.properties`.
 
 Go through the file, updating defaults as desired. Most of the defaults are
 acceptable to get the Viewer running, but some must be changed:
@@ -99,55 +74,13 @@ acceptable to get the Viewer running, but some must be changed:
 * `cudl-viewer-content.images.path`
 
 These must point to the `html/` and `images/` directories in a local checkout of
-the [cudl-viewer-content](https://github.com/cambridge-collection/cudl-viewer-content)
-repository.
+the data you're using (see above for details).
 
-```
-$ git clone git@bitbucket.org:CUDL/cudl-viewer-content.git
-[...]
-$ cd cudl-viewer-content/
-$ ls
-html  images
-$ pwd
-/home/hal/projects/cudl-viewer/cudl-viewer-content
-```
 
-In the above example, the following settings would be used:
+## Development
 
-```
-cudl-viewer-content.html.path=/home/hal/projects/cudl-viewer/cudl-viewer-content/html
-cudl-viewer-content.images.path=/home/hal/projects/cudl-viewer/cudl-viewer-content/images
-```
-
-### Semi-optional configuration
-
-The above settings are sufficient to get the Viewer running, but you'll see
-numerous stack traces in the console if you don't configure the admin settings,
-even if `admin.enabled=false`.
-
-1. Clone [cudl-data](https://github.com/cambridge-collection/cudl-data), and set
-   `admin.git.json.localpath` to the clone's location
-2. Set `admin.git.content.localpath` to the location of the cudl-viewer-content
-   clone you made in the previous section
-3. Clone [snapshots](https://github.com/cambridge-collection/snapshots), and set
-   `admin.git.db.localpath` to the clone's location
-
-### Running
-
-Once configured, there are two embedded Tomcat servers that can be run. One will allow live editing of static resources (e.g. jsps) and can be run using the command:
-
-```
-$ mvn tomcat7:run
-```
-
-Alternatively you can run the alternative embedded tomcat through that Cargo container that is setup to use the same version tomcat as the live/staging/dev servers for final testing.  This does not allow live editing. To run this you use the command:
-
-```
-$ mvn clean verify cargo:run
-```
-
-For both servers, when running you can then access the Viewer at
-[http://localhost:1111/](http://localhost:1111/).
+It uses the separate repository cudl-viewer-ui for all the javascript and css dependencies,
+so this is a good thing to look at if you want to start customising your viewer instance.
 
 ### Live updates from `cudl-viewer-ui`
 
@@ -164,7 +97,6 @@ Javascript/CSS from the dependency JARs.
 
 See the [cudl-viewer-ui's README](https://github.com/cambridge-collection/cudl-viewer-ui) for
 instructions on running the UI devserver.
-
 
 
 ## Making a release
@@ -260,6 +192,8 @@ git reset HEAD~2
 
 Now you can update the development puppet to pull in the new version.
 See https://gitlab.developers.cam.ac.uk/lib/dev/dev-puppet/
+
+Don't forget to push your changes to git using `git push` and `git push --tags`.
 
 ## More information
 

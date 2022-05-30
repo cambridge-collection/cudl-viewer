@@ -120,10 +120,6 @@
                 </li>
                 <li><a href="/help/" title="Help" class="${activeMenuIndex == 5 ? 'campl-selected' : ''}"> Help </a></li>
 
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a style="background:#ff4444" href="/admin/" title="Admin"> Admin </a></li>
-                </sec:authorize>
-
             </ul>
         </div>
     </div>

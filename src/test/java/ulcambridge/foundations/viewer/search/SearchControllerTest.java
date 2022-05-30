@@ -65,7 +65,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
         form.setFacetSubject("Algebra - Early works to 1800");
         form.setFacetLanguage("English, Latin and Greek");
 
-        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao);
+        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao, "true");
 
         SearchController c = new SearchController(
             collectionFactory, mock(ItemsDao.class), new MockSearch(), imageServerURL);

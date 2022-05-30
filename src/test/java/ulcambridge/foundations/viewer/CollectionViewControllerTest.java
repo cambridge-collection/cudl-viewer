@@ -56,7 +56,7 @@ public class CollectionViewControllerTest {
 
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao());
+            new MockCollectionsDao(), "true");
         return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html");
     }
 

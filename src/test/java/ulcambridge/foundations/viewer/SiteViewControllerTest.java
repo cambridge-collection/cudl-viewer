@@ -9,16 +9,15 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
 import static org.junit.Assert.assertTrue;
-import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeAvailable;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
 
 public class SiteViewControllerTest {
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao());
+            new MockCollectionsDao(), "true");
 
-        return new SiteViewController(collectionFactory, "./html");
+        return new SiteViewController(collectionFactory, "./html", null);
     }
 
     @Test

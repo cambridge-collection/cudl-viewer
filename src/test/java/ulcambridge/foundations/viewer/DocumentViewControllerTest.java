@@ -49,7 +49,7 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao),
+            new CollectionFactory(collectionsdao, "true"),
             itemsDao,
             rootUri,
             iiifImageServer,

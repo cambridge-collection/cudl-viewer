@@ -14,13 +14,15 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.font.FontProvider;
-import com.itextpdf.layout.property.*;
+import com.itextpdf.layout.properties.*;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ulcambridge.foundations.viewer.model.Item;
 
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,7 @@ class BasicTemplatePdf {
     private final String defaultFont;
     private final String[] fontDirectories;
     private final PdfCache cache;
+    private static final Logger LOG = LoggerFactory.getLogger(BasicTemplatePdf.class);
 
     BasicTemplatePdf(String baseURL,
                      String headerText, int[] pdfColour,
@@ -100,7 +103,7 @@ class BasicTemplatePdf {
                 fontProvider.addDirectory(fontDir);
             }
             document.setFontProvider(fontProvider);
-            document.setFont(defaultFont); // needed to initalise fontProvider
+            document.setFontFamily(defaultFont); // needed to initalise fontProvider
 
             // Formatting
             document.setProperty(Property.LEADING, new Leading(Leading.MULTIPLIED, 1.02f));
@@ -286,12 +289,14 @@ class BasicTemplatePdf {
             File f = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8") +".zip");
             File dir = cache.getCacheFile(URLEncoder.encode(zipURL.toString(), "UTF-8"));
 
+            LOG.info("Getting resource for pdf.. "+zipURL);
             FileUtils.copyURLToFile(zipURL,f);
 
             // Extract zip
             ZipFile zipFile = new ZipFile(f);
             zipFile.extractAll(dir.getCanonicalPath());
 
+            LOG.info("done");
             return dir.getCanonicalPath();
         } catch (IOException e) {
             e.printStackTrace();

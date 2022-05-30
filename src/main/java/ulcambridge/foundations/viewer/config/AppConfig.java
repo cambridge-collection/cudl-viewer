@@ -60,8 +60,9 @@ import static ulcambridge.foundations.viewer.utils.Utils.ensureURLHasPath;
 @EnableTransactionManagement
 public class AppConfig {
 
-    // Only enable scheduling when the test profile is not enabled
+    private static final Logger LOG = LoggerFactory.getLogger(AppConfig.class);
 
+    // Only enable scheduling when the test profile is not enabled
     /**
      * Configuration that is not applied when unit testing.
      */
@@ -108,8 +109,17 @@ public class AppConfig {
         @Autowired
         @Bean
         @Primary
-        public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache, @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO) {
-            return new CachingItemsDAO(itemCache, upstreamItemsDAO);
+        public ItemsDao cachedItemsDAO(@Qualifier("itemCache") Cache<String, Item> itemCache,
+                                       @Qualifier("upstreamItemsDAO") ItemsDao upstreamItemsDAO,
+                                       @Value("${caching.enabled:true}") String cacheEnabled) {
+            if ("true".equalsIgnoreCase(cacheEnabled)) {
+                LOG.info("using ITEM CACHE");
+                return new CachingItemsDAO(itemCache, upstreamItemsDAO);
+            } else {
+                LOG.info("not using ITEM CACHE");
+                return upstreamItemsDAO;
+            }
+
         }
 
         @Autowired
