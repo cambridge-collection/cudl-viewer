@@ -51,7 +51,12 @@ When running you can then access the Viewer at
 Check the cudl database snapshots are available here:
 (NOTE: These are held in Bitbucket and are available to Cambridge developers)
 
-    docker/db/snapshots
+    git submodule init docker/db/snapshots
+
+Also checkout the cambridge processed data from Bitbucket into the parent dir:
+
+    cd ..
+    git clone git@bitbucket.org:CUDL/cudl-data-releases.git cudl-data-releases
 
 To run the viewer:
 
