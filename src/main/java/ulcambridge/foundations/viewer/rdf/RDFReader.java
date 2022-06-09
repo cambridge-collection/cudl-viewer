@@ -5,18 +5,14 @@ import java.util.Date;
 import java.util.Locale;
 
 import org.apache.commons.io.Charsets;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.MediaType;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.DC;
-import com.hp.hpl.jena.vocabulary.DCTerms;
-import com.hp.hpl.jena.vocabulary.DCTypes;
-import com.hp.hpl.jena.vocabulary.RDF;
+import org.apache.jena.rdf.model.*;
+import org.apache.jena.vocabulary.*;
 
 import ulcambridge.foundations.viewer.JSONReader;
 import ulcambridge.foundations.viewer.crowdsourcing.model.Annotation;
@@ -73,8 +69,9 @@ public class RDFReader {
     }
 
     public void addElement(Annotation annotation, String documentId) {
-        if (model == null)
+        if (model == null) {
             return;
+        }
 
         String name = annotation.getName();
         String type = annotation.getType();
@@ -147,9 +144,7 @@ public class RDFReader {
             JSONObject pageJ = (JSONObject) pagesJA.get(pageNo - 1);
             String imageUrl = pageJ.getString("displayImageURL");
             dziUrl.append(Properties.getString("imageServer")).append(imageUrl.substring(1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
 

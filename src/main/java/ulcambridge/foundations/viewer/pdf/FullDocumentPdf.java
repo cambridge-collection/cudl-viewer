@@ -1,11 +1,12 @@
 package ulcambridge.foundations.viewer.pdf;
 
-import com.itextpdf.io.IOException;
+
+import com.itextpdf.io.exceptions.IOException;
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.action.PdfAction;
 import com.itextpdf.layout.borders.Border;
 import com.itextpdf.layout.element.*;
-import com.itextpdf.layout.property.UnitValue;
+import com.itextpdf.layout.properties.UnitValue;
 import org.json.JSONObject;
 import ulcambridge.foundations.viewer.model.Item;
 

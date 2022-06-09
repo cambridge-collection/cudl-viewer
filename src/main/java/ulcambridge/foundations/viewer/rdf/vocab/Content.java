@@ -2,7 +2,7 @@ package ulcambridge.foundations.viewer.rdf.vocab;
 
 /* CVS $Id: $ */
 
-import com.hp.hpl.jena.rdf.model.*;
+import org.apache.jena.rdf.model.*;
 
 /**
  * Vocabulary definitions from file:/home/kevin/git/gdfeedback-vxtf/src/main/vocabs/content.ttl
