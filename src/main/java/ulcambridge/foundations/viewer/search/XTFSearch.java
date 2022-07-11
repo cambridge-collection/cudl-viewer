@@ -1,5 +1,13 @@
 package ulcambridge.foundations.viewer.search;
 
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,14 +20,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import ulcambridge.foundations.viewer.forms.SearchForm;
-import ulcambridge.foundations.viewer.model.Properties;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 @Component
 @Profile("!test")
@@ -326,6 +326,16 @@ public class XTFSearch implements Search {
             results, facetGroups, "");
     }
 
+    private static int tryParseInt(String value, int _default, String itemId) {
+        try {
+            return Integer.parseInt(value);
+        }
+        catch(NumberFormatException e) {
+            LOG.error("Error in item ID {}: Unable to parse value as an int: '{}'", itemId, value);
+            return _default;
+        }
+    }
+
     /**
      * Creates a new SearchResult from the given Node.
      */
@@ -334,7 +344,7 @@ public class XTFSearch implements Search {
         String title = "";
         String id = "";
         int score = -1;
-        int startPage = 0;
+        int startPage = 1;
         String startPageLabel = "";
         List<String> snippets = new ArrayList<>();
         String itemType = "bookormanuscript"; // default
@@ -343,32 +353,24 @@ public class XTFSearch implements Search {
 
         // look at all the child tags
         if ("docHit".equals(node.getNodeName())) {
-
             // META Search Info.
-            final Element meta = (Element) node.getElementsByTagName("meta").item(0);
+            final Optional<Element> meta = Optional.ofNullable((Element) node.getElementsByTagName("meta").item(0));
 
-            title = getValueInHTML(meta.getElementsByTagName("title").item(0));
-            id = getValueInText(meta.getElementsByTagName("fileID").item(0));
+            title = getValueInHTML(meta.map(m -> m.getElementsByTagName("title").item(0)).orElse(null));
+            id = getValueInText(
+                meta.map(m -> m.getElementsByTagName("fileID").item(0)).orElse(null))
+                .replaceAll("\\s+", "");
 
-            id = id.replaceAll("\\s+", ""); // remove whitespace
+            score = tryParseInt(node.getAttribute("score"), -1, id);
 
-            score = Integer.parseInt(node.getAttribute("score"));
+            startPage = tryParseInt(meta.map(m -> m.getElementsByTagName("startPage").item(0))
+                .map(Node::getFirstChild)
+                .map(Node::getTextContent)
+                .orElse(""), 1, id);
 
-            final String startPageString = meta.getElementsByTagName("startPage")
-                .item(0).getFirstChild().getTextContent();
-
-            try {
-                startPage = Integer.parseInt(startPageString);
-            }
-            catch(NumberFormatException e) {
-                // TODO Send email to dev team regarding incorrect data format
-                LOG.error("Error in item ID {}: Unable to parse value as an int: '{}' (Doc title: '{}')",
-                        id, startPageString, title);
-                startPage = 1;
-            }
-
-            startPageLabel = node.getElementsByTagName("startPageLabel")
-                .item(0).getTextContent();
+            startPageLabel = Optional.ofNullable(
+                node.getElementsByTagName("startPageLabel").item(0))
+                .map(Node::getTextContent).orElse("");
 
             final NodeList snippetNodes = node.getElementsByTagName("snippet");
 
@@ -377,19 +379,14 @@ public class XTFSearch implements Search {
                 snippets.add(getValueInHTML(snippetNode));
             }
 
-            // itemType
-            if (node.getElementsByTagName("itemType").item(0)!=null) {
-                itemType = getValueInText(node.getElementsByTagName("itemType").item(0));
-            }
+            itemType = Optional.ofNullable(node.getElementsByTagName("itemType").item(0))
+                .map(this::getValueInText).filter(s -> s.length() > 0).orElse(itemType);
 
-            // Thumbnail
-            if (node.getElementsByTagName("thumbnailUrl").item(0)!=null) {
-                thumbnailURL = getValueInText(node.getElementsByTagName("thumbnailUrl").item(0));
-            }
+            thumbnailURL = Optional.ofNullable(node.getElementsByTagName("thumbnailUrl").item(0))
+                .map(this::getValueInText).filter(s -> s.length() > 0).orElse(null);
 
-            if (node.getElementsByTagName("thumbnailOrientation").item(0)!=null) {
-                thumbnailOrientation = getValueInText(node.getElementsByTagName("thumbnailOrientation").item(0));
-            }
+            thumbnailOrientation = Optional.ofNullable(node.getElementsByTagName("thumbnailOrientation").item(0))
+                .map(this::getValueInText).filter(s -> s.length() > 0).orElse(null);
         }
 
         return new SearchResult(title, id, startPage, startPageLabel,
@@ -403,7 +400,10 @@ public class XTFSearch implements Search {
      * @param node
      * @return
      */
-    public String getValueInText(final Node node) {
+    public String getValueInText(final @Nullable Node node) {
+        if(node == null) {
+            return "";
+        }
 
         if (node.getNodeType() == Node.TEXT_NODE) {
             if ("term".equals(node.getParentNode().getNodeName())) {

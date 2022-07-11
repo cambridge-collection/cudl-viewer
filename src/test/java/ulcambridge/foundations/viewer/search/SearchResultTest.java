@@ -1,15 +1,15 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.junit.Test;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import static org.junit.Assert.assertEquals;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.truth.Truth;
+import java.net.URI;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
-import java.net.URI;
-
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 /**
  * Unit test
@@ -43,5 +43,31 @@ public class SearchResultTest {
         assertEquals(1, result.getStartPage());
         assertEquals("cover", result.getStartPageLabel());
         assertEquals(1, result.getSnippets().size());
+    }
+
+    private static SearchResult newSearchResult(String title) {
+        return new SearchResult(title, "", 0, "", ImmutableList.of(), -1, "", null, null);
+    }
+
+    @Test
+    public void testEqualsIsTrueForDistinctMatchingObjects() {
+        Truth.assertThat(newSearchResult("foo")).isEqualTo(newSearchResult("foo"));
+    }
+
+    @Test
+    public void testEqualsIsFalseForDistinctNonMatchingObjects() {
+        Truth.assertThat(newSearchResult("foo")).isNotEqualTo(newSearchResult("bar"));
+    }
+
+    @Test
+    public void testHashCodeIsEqualForMatchingObjects() {
+        Truth.assertThat(newSearchResult("foo").hashCode())
+            .isEqualTo(newSearchResult("foo").hashCode());
+    }
+
+    @Test
+    public void testHashCodeIsNotEqualForNonMatchingObjects() {
+        Truth.assertThat(newSearchResult("foo").hashCode())
+            .isNotEqualTo(newSearchResult("bar").hashCode());
     }
 }

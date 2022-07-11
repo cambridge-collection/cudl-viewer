@@ -1,6 +1,11 @@
 package ulcambridge.foundations.viewer.search;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
 /**
  * Holds information for an individual search result. Item id can be used to
@@ -11,28 +16,36 @@ import java.util.List;
  */
 public class SearchResult implements Comparable<SearchResult> {
 
-    private String title;
-    private String type;
-    private String fileId;
-    private int startPage;
-    private String startPageLabel;
-    private String thumbnailURL;
-    private String thumbnailOrientation;
-    private List<String> snippets;
-    private int score; // how relevant is this result, used for ordering.
+    private final String title;
+    private final String type;
+    private final String fileId;
+    private final int startPage;
+    private final String startPageLabel;
+    private final String thumbnailURL;
+    private final String thumbnailOrientation;
+
+    private final List<String> snippets;
+    private final int score; // how relevant is this result, used for ordering.
 
     // DocHits for all the matches found for this item.
     // private List<DocHit> docHits = new ArrayList<DocHit>();
 
     public SearchResult(String title, String fileId, int startPage,
-            String startPageLabel, List<String> snippets,
-            int score, String type, String thumbnailURL, String thumbnailOrientation) {
+            String startPageLabel, Iterable<String> snippets,
+            int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation) {
+
+        Preconditions.checkNotNull(title);
+        Preconditions.checkNotNull(fileId);
+        Preconditions.checkNotNull(startPageLabel);
+        Preconditions.checkNotNull(snippets);
+        Preconditions.checkNotNull(type);
 
         this.title = title;
         this.fileId = fileId;
         this.startPage = startPage;
         this.startPageLabel = startPageLabel;
-        this.snippets = snippets;
+        this.snippets = ImmutableList.copyOf(snippets);
+        this.snippets.forEach(Preconditions::checkNotNull);
         this.score = score;
         this.type = type;
         this.thumbnailURL = thumbnailURL;
@@ -90,20 +103,45 @@ public class SearchResult implements Comparable<SearchResult> {
         return thumbnailOrientation;
     }
 
-    /**
-     * Search Results are considered the same if they have the same ID. So are
-     * about the same book. There should be only one SearchResult object per
-     * item (book).
-     */
-    /*
-     * @Override public boolean equals(Object o) { if (o instanceof
-     * SearchResult) { SearchResult r = (SearchResult) o; return this.id ==
-     * r.id; } return false; }
-     *
-     * @Override public int hashCode(Object o) { if (o instanceof SearchResult)
-     * { SearchResult r = (SearchResult) o; return this.id == r.id; } return
-     * false; }
-     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        SearchResult that = (SearchResult) o;
+        return startPage == that.startPage && score == that.score && title.equals(that.title)
+            && type
+            .equals(that.type) && fileId.equals(that.fileId) && startPageLabel
+            .equals(that.startPageLabel)
+            && Objects.equals(thumbnailURL, that.thumbnailURL) && Objects
+            .equals(thumbnailOrientation, that.thumbnailOrientation) && snippets
+            .equals(that.snippets);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects
+            .hash(title, type, fileId, startPage, startPageLabel, thumbnailURL,
+                thumbnailOrientation,
+                snippets, score);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+            .add("title", title)
+            .add("type", type)
+            .add("fileId", fileId)
+            .add("startPage", startPage)
+            .add("startPageLabel", startPageLabel)
+            .add("thumbnailURL", thumbnailURL)
+            .add("thumbnailOrientation", thumbnailOrientation)
+            .add("snippets", snippets)
+            .add("score", score)
+            .toString();
+    }
 }
 

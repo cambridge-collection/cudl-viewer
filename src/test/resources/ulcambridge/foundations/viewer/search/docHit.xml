@@ -1,0 +1,50 @@
+<crossQueryResult queryTime="0.014" totalDocs="1547" startDoc="1" endDoc="20">
+    <docHit rank="1" path="index-cudl-tagging:MS-DAR-00100-00164.json" score="100" totalHits="0" subDocument="DOCUMENT">
+        <meta>
+            <display>dynaxml</display>
+            <fileID>MS-DAR-00100-00164</fileID>
+            <startPageLabel>164r</startPageLabel>
+            <startPage>1</startPage>
+            <itemType>example-type</itemType>
+            <title display="false" displayForm="Letter from Joseph Dalton Hooker to C. R. Darwin   [c. April 1851]">
+                <snippet rank="1" score="100">
+                    Letter from
+                    <hit>
+                        <term>Joseph</term>
+                        <term>Dalton</term>
+                        <term>Hooker</term>
+                    </hit>
+                    to C. R. Darwin   [c. April
+                </snippet>
+                1851]
+            </title>
+            <sort-title>letter from joseph dalton hooker to c r darwin c april 1851</sort-title>
+            <nameFullForm>Darwin, Charles Robert</nameFullForm>
+            <nameFullForm>
+                <snippet rank="1" score="100">
+                    <hit>
+                        <term>Hooker</term>
+                        ,
+                        <term>Joseph</term>
+                        <term>Dalton</term>
+                    </hit>
+                </snippet>
+            </nameFullForm>
+            <languageCode>eng</languageCode>
+            <languageString>English</languageString>
+            <physicalLocation display="true" displayForm="Cambridge University Library">Cambridge University Library</physicalLocation>
+            <shelfLocator display="true" displayForm="MS DAR 100: 164">MS DAR 100: 164</shelfLocator>
+            <search-shelfLocator>MS DAR 100: 164</search-shelfLocator>
+            <eventCreationDateStart>1851-04-01</eventCreationDateStart>
+            <eventCreationDateEnd>1851-04-01</eventCreationDateEnd>
+            <eventCreationDateDisplay>[c. Apr 1851]</eventCreationDateDisplay>
+            <placeFullForm>Kew</placeFullForm>
+            <sort-year>1851</sort-year>
+            <year>1851-1851</year>
+            <facet-date>1800s C.E.</facet-date>
+            <thumbnailUrl>MS-DAR-00100-000-00341</thumbnailUrl>
+            <thumbnailOrientation>portrait</thumbnailOrientation>
+            <facet-collection>Darwin-Hooker Letters</facet-collection>
+        </meta>
+    </docHit>
+</crossQueryResult>
