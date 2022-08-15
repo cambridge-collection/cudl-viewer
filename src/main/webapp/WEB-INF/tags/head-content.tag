@@ -25,6 +25,8 @@
 
 <jsp:invoke fragment="metaTags"/>
 
+<cudl:google-analytics />
+
 <%-- load Project Light Font. This is not loaded with the webpack build as
      the fonts are external. Could do async load in future. --%>
 <script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
