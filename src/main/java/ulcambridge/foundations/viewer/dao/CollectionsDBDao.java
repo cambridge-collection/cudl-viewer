@@ -8,6 +8,8 @@ import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Collection;
 
 import javax.sql.DataSource;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +18,16 @@ import java.util.List;
 public class CollectionsDBDao implements CollectionsDao {
 
     private final JdbcTemplate jdbcTemplate;
+    private final Path jsonDirectory;
 
     @Autowired
-    public CollectionsDBDao(final DataSource dataSource) {
+    public CollectionsDBDao(final DataSource dataSource, Path jsonDirectory) {
         Assert.notNull(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.jsonDirectory = jsonDirectory;
     }
 
+    @Override
     public List<String> getCollectionIds() {
 
         final String query = "SELECT collectionid FROM collections ORDER BY collectionorder";
@@ -31,6 +36,7 @@ public class CollectionsDBDao implements CollectionsDao {
             (resultSet, rowNum) -> resultSet.getString("collectionid"));
     }
 
+    @Override
     public Collection getCollection(final String collectionId) {
 
         final String itemQuery = "SELECT items.itemid as itemid FROM items, itemsincollection WHERE " +
@@ -61,20 +67,26 @@ public class CollectionsDBDao implements CollectionsDao {
 
         final String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? AND visible=true ORDER BY itemorder";
 
-        return jdbcTemplate.query(query, new Object[]{collectionId},
+        List<String> itemids = jdbcTemplate.query(query, new Object[]{collectionId},
             (resultSet, rowNum) -> resultSet.getString("itemid"));
+
+        itemids.removeIf(itemid -> !existsJSON(itemid));
+        return itemids;
     }
 
+    @Override
     public int getCollectionsRowCount() {
         final String query = "SELECT count(*) FROM collections";
         return jdbcTemplate.queryForObject(query, Integer.class);
     }
 
+    @Override
     public int getItemsInCollectionsRowCount() {
         final String query = "SELECT count(*) FROM itemsincollection";
         return jdbcTemplate.queryForObject(query, Integer.class);
     }
 
+    @Override
     public int getItemsRowCount() {
         final String query = "SELECT count(*) FROM items";
         return jdbcTemplate.queryForObject(query, Integer.class);
@@ -96,4 +108,10 @@ public class CollectionsDBDao implements CollectionsDao {
             });
     }
 
+    private boolean existsJSON(String id) {
+        if (id==null) { return false; }
+        Path filename = Paths.get(String.format("%s.json", id));
+        Path path = this.jsonDirectory.resolve(filename);
+        return path.toFile().exists();
+    }
 }
