@@ -28,6 +28,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -65,7 +66,7 @@ public class SearchControllerTest extends BaseCUDLApplicationContextTest {
         form.setFacetSubject("Algebra - Early works to 1800");
         form.setFacetLanguage("English, Latin and Greek");
 
-        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao, "true");
+        CollectionFactory collectionFactory = new CollectionFactory(collectionsdao, "true", Path.of("cudl-data/"));
 
         SearchController c = new SearchController(
             collectionFactory, mock(ItemsDao.class), new MockSearch(), imageServerURL);

@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 
+import java.nio.file.Path;
+
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.ModelAndViewAssert.assertModelAttributeValue;
 
@@ -15,7 +17,7 @@ public class SiteViewControllerTest {
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"));
 
         return new SiteViewController(collectionFactory, "./html", null);
     }

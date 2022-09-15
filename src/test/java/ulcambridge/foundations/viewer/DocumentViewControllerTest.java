@@ -12,6 +12,7 @@ import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Items;
 
 import java.net.URI;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -49,7 +50,7 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao, "true"),
+            new CollectionFactory(collectionsdao, "true", Path.of("cudl-data/")),
             itemsDao,
             rootUri,
             iiifImageServer,

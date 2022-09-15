@@ -1,13 +1,19 @@
 package ulcambridge.foundations.viewer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Component
@@ -21,12 +27,16 @@ public class CollectionFactory {
     private static int itemsinCollectionRowCount;
     private static Set<String> allItemIds;
     private final String cachingEnabled;
+    private final Path jsonDirPath;
 
     @Autowired
-    public CollectionFactory(CollectionsDao dao, @Value("${caching.enabled:true}") String cachingEnabled) {
+    public CollectionFactory(CollectionsDao dao, @Value("${caching.enabled:true}")
+        String cachingEnabled, @Qualifier("itemJSON") Path jsonDirPath) {
         Assert.notNull(dao, "CollectionsDao cannot be null");
+        Assert.notNull(jsonDirPath, "itemJSONDirectory should not be null");
         setCollectionsDao(dao);
         this.cachingEnabled = cachingEnabled;
+        this.jsonDirPath = jsonDirPath;
     }
 
     private void setCollectionsDao(CollectionsDao dao) {
@@ -133,4 +143,32 @@ public class CollectionFactory {
         return itemsinCollectionRowCount;
     }
 
+
+    /*
+This method removes any items from collections if they do not exist as JSON on the file system.
+This takes a while to run so runs async and infrequently.
+ */
+    @Scheduled(fixedDelay = 1000 * 60 * 60)
+    public synchronized void removeItemsWithMissingJSON() {
+        System.out.println("Scheduled removeItemsWithMissingJSON from all collections...");
+        List<Collection> collections = getCollections();
+        for (Collection c: collections) {
+            c.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
+        }
+        System.out.println("Scheduled removeItemsWithMissingJSON complete.");
+    }
+
+
+    private boolean existsJSON(String id) {
+        if (id == null) { return false; }
+        return getJSONFiles().contains(id);
+    }
+
+    private Set<String> getJSONFiles() {
+
+        return Stream.of(Objects.requireNonNull(jsonDirPath.toFile().listFiles()))
+            .filter(file -> !file.isDirectory())
+            .map(File::getName)
+            .collect(Collectors.toSet());
+    }
 }
