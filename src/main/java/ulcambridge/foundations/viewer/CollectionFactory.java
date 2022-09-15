@@ -42,16 +42,23 @@ public class CollectionFactory {
 
     private void setCollectionsDao(CollectionsDao dao) {
         collectionsDao = dao;
-        init();
+        init(false);
     }
 
-    public synchronized void init() {
+    /**
+     * Resetting JSON files reads from disk which makes this very slow for large collections
+     * so only use if manually called using /refresh url or on startup.
+     * @param resetJSONFiles
+     */
+    public synchronized void init(boolean resetJSONFiles) {
 
         // Create a new instance of cached items.
         collections = new Hashtable<>();
         rootCollections = new Vector<>();
         allItemIds =  Collections.synchronizedSet(new HashSet<>());
-        jsonFiles = getJSONFiles();
+        if (jsonFiles==null || resetJSONFiles) {
+            jsonFiles = getJSONFiles();
+        }
 
         List<String> collectionIds = collectionsDao.getCollectionIds();
         for (String collectionId : collectionIds) {
@@ -100,7 +107,7 @@ public class CollectionFactory {
     public List<Collection> getCollections() {
 
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
-            init();
+            init(false);
         }
 
         ArrayList<Collection> list = new ArrayList<>(
@@ -113,7 +120,7 @@ public class CollectionFactory {
     public List<Collection> getRootCollections() {
 
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
-            init();
+            init(false);
         }
 
         return rootCollections;

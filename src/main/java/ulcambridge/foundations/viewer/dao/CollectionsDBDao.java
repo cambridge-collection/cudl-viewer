@@ -8,8 +8,6 @@ import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Collection;
 
 import javax.sql.DataSource;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 

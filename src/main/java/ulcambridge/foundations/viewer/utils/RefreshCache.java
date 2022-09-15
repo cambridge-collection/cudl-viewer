@@ -78,7 +78,7 @@ public class RefreshCache {
     }
 
     public void refreshDB() {
-        collectionFactory.init();
+        collectionFactory.init(true);
     }
 
     public void refreshJSON() {
