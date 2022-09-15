@@ -150,12 +150,12 @@ This takes a while to run so runs async and infrequently.
  */
     @Scheduled(fixedDelay = 1000 * 60 * 60)
     public synchronized void removeItemsWithMissingJSON() {
-        System.out.println("****Scheduled removeItemsWithMissingJSON from all collections...");
+        System.out.println("Scheduled removeItemsWithMissingJSON from all collections...");
         List<Collection> collections = getCollections();
         for (Collection c: collections) {
             c.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
         }
-        System.out.println("****Scheduled removeItemsWithMissingJSON complete.");
+        System.out.println("Scheduled removeItemsWithMissingJSON complete.");
     }
 
 
