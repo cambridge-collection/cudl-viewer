@@ -50,7 +50,7 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao, "true", Path.of("cudl-data/")),
+            new CollectionFactory(collectionsdao, "true", Path.of("src/test/resources/cudl-data/")),
             itemsDao,
             rootUri,
             iiifImageServer,
