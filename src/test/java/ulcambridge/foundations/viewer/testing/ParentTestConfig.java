@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
@@ -16,7 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
-import ulcambridge.foundations.viewer.utils.RefreshCache;
 import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.components.Captcha;
 import ulcambridge.foundations.viewer.components.EmailHelper;
@@ -25,7 +26,11 @@ import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.search.Search;
+import ulcambridge.foundations.viewer.utils.RefreshCache;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -122,6 +127,17 @@ public class ParentTestConfig {
         T initialise();
         void reInitialise(BeanFactory beanFactory);
         void registerInitialiser(BeanDefinitionRegistry registry);
+    }
+
+
+    @Bean
+    @Qualifier("itemJSON")
+    public Path itemJSONDirectory(@Value("${itemJSONDirectory}") String itemJSONDirectory) {
+        Path dir = Paths.get(itemJSONDirectory);
+        if (!Files.isDirectory(dir)) {
+            throw new IllegalArgumentException("itemJSONDirectory is not a directory: " + itemJSONDirectory);
+        }
+        return dir;
     }
 
     public static class SingletonMockMockBeanInitialiser<T> implements BeanInitialiser<T> {

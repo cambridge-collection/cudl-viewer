@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer;
 
+import java.nio.file.Path;
 import java.util.Map;
 
 import org.junit.Test;
@@ -56,7 +57,7 @@ public class CollectionViewControllerTest {
 
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"));
         return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html");
     }
 
