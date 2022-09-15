@@ -18,13 +18,11 @@ import java.util.List;
 public class CollectionsDBDao implements CollectionsDao {
 
     private final JdbcTemplate jdbcTemplate;
-    private final Path jsonDirectory;
 
     @Autowired
-    public CollectionsDBDao(final DataSource dataSource, Path jsonDirectory) {
+    public CollectionsDBDao(final DataSource dataSource) {
         Assert.notNull(dataSource);
         this.jdbcTemplate = new JdbcTemplate(dataSource);
-        this.jsonDirectory = jsonDirectory;
     }
 
     @Override
@@ -67,11 +65,9 @@ public class CollectionsDBDao implements CollectionsDao {
 
         final String query = "SELECT itemid FROM itemsincollection WHERE collectionid = ? AND visible=true ORDER BY itemorder";
 
-        List<String> itemids = jdbcTemplate.query(query, new Object[]{collectionId},
+         return jdbcTemplate.query(query, new Object[]{collectionId},
             (resultSet, rowNum) -> resultSet.getString("itemid"));
 
-        itemids.removeIf(itemid -> !existsJSON(itemid));
-        return itemids;
     }
 
     @Override
@@ -106,12 +102,5 @@ public class CollectionsDBDao implements CollectionsDao {
                 }
                 return colIds;
             });
-    }
-
-    private boolean existsJSON(String id) {
-        if (id==null) { return false; }
-        Path filename = Paths.get(String.format("%s.json", id));
-        Path path = this.jsonDirectory.resolve(filename);
-        return path.toFile().exists();
     }
 }
