@@ -62,8 +62,6 @@ public class IIIFPresentationTest {
         assertEquals(item.getJSON().get("useTranscriptions"),true);
         assertEquals(item.getJSON().get("useNormalisedTranscriptions"),true);
         assertEquals(item.getJSON().get("useDiplomaticTranscriptions"),true);
-        assertEquals(item.getJSON().getJSONArray("pages").getJSONObject(110).get("transcriptionNormalisedURL"),
-            "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
         assertEquals(item.getJSON().getJSONArray("pages").getJSONObject(110).get("transcriptionDiplomaticURL"),
             "/v1/transcription/newton/diplomatic/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
 

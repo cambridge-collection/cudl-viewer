@@ -39,8 +39,7 @@ if (!($ARGV[1] =~ m/http.*/)) {
   foreach $line (split("\n", $jsonhtml)) {
 
       # cache normaised/diplomatic  transcriptions
-      if ($line =~ m/.*\"transcriptionNormalisedURL\":.*\"(.*)\",*/ || 
-          $line =~ m/.*\"transcriptionDiplomaticURL\":.*\"(.*)\",*/) {
+      if ($line =~ m/.*\"transcriptionDiplomaticURL\":.*\"(.*)\",*/) {
 
         $url = $1;
         $urlParam = "/transcription?url=".uri_escape($url)."&doc=$docId";
