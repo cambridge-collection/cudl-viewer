@@ -200,14 +200,9 @@
                                 aria-labelledby="moreDropDown" role="menu">
                                 <li><a id="moreinfotab" aria-controls="moreinfo"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#metadata">Item metadata</a></li>
-                                <li><a id="transcriptionnormtab"
-                                    aria-controls="transcriptionnormtab" data-toggle="tab" role="tab"
-                                    tabindex="-1" href="#transcriptionnorm">Transcription
-                                        (normalised)</a></li>
                                 <li><a id="transcriptiondiplotab"
                                     aria-controls="transcriptiondiplotab" data-toggle="tab"
-                                    role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription
-                                        (diplomatic)</a></li>
+                                    role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription</a></li>
                                 <li><a id="translationtab" aria-controls="translationtab"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
                                     </li>
@@ -267,17 +262,9 @@
                             </ol>
                             <div id="metadatacontent">No Metadata Available</div>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="transcriptionnorm">
-                            <div class="breadcrumbdiv"><ol class="breadcrumb">
-                                <li class="active">Transcription (normalised)</li>
-                            </ol></div>
-                            <div class="framediv">
-                            <iframe id="transcriptionnormframe" src=""></iframe>
-                            </div>
-                        </div>
                         <div role="tabpanel" class="tab-pane" id="transcriptiondiplo">
                             <div class="breadcrumbdiv"><ol class="breadcrumb">
-                                <li class="active">Transcription (diplomatic)</li>
+                                <li class="active">Transcription</li>
                             </ol></div>
                             <div class="framediv">
                             <iframe id="transcriptiondiploframe" src=""></iframe>
