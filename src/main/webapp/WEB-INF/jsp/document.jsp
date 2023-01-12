@@ -206,9 +206,6 @@
                                 <li><a id="translationtab" aria-controls="translationtab"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
                                     </li>
-                                <li><a id="similaritemstab" aria-controls="similaritemstab"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#similaritems">Similar items</a>
-                                </li>
                                 <li><a id="downloadtab" aria-controls="downloadtab"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#download">Share
                                         </a></li>
@@ -277,13 +274,6 @@
                             </ol></div>
                             <div class="framediv">
                             <iframe id="translationframe" src=""></iframe>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="similaritems">
-                            <div class="breadcrumbdiv"><ol class="breadcrumb">
-                                <li class="active">Similar items</li>
-                            </ol></div>
-                            <div class="similarity-container">
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="download">
