@@ -37,13 +37,6 @@
                                 </form:form>
                                 <br />
                                 <form:form method="POST"
-                                    action="/auth/login?type=facebook${nextUrlQuerySegment}">
-                                    <button class="btn btn-block btn-social btn-facebook" action="submit">
-                                        <i class="fa fa-facebook"></i> Sign in with Facebook
-                                    </button>
-                                </form:form>
-                                <br />
-                                <form:form method="POST"
                                     action="/auth/login?type=linkedin${nextUrlQuerySegment}">
                                     <button class="btn btn-block btn-social btn-linkedin" action="submit">
                                         <i class="fa fa-linkedin"></i> Sign in with LinkedIn
