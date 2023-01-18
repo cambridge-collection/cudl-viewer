@@ -122,7 +122,7 @@ to manually specify the tag value each time you tag.
 
 ### Step 1: Prepare
 
-After committing and testing all changes, switch to the `master` branch and
+After committing and testing all changes, switch to the `main` branch and
 run:
 
 ```
@@ -131,21 +131,22 @@ $ mvn release:prepare
 
 You'll be prompted for the version and tag to use for the release, and the
 version to use for the next version. Use a tag in the above format for the first
-two, and accept the default for the next version, which should be
+two. The third must be
 `1.0-SNAPSHOT`.
 
-After this finishes, you'll have two new commits on your `master` branch and
+After this finishes, you'll have two new commits on your `main` branch and
 a new tag in your local repo. You need to push all of these to the CUDL repo.
 Assuming your CUDL remote is `cudl`, and your created tag was
 `production-2022062100`, you'd run:
 
 ```
-$ git push cudl master production-2022062100
+$ git push cudl main production-2022062100
 ```
 
 ### Step 2: Perform
+
 Once the release has been tagged you can finish off by deploying the artifacts
-to the CUDL packages repository in github using the command:
+to the CUDL packages repository in GitHub using the command:
 
 ```
 $ mvn release:perform
@@ -186,19 +187,20 @@ Then run the following command to upload to the Cambridge s3 repository for rele
 so that puppet can find and deploy the code.
 
 ```
-$mvn release:stage -DstagingRepository=cudl-aws-release::default::s3://mvn.cudl.lib.cam.ac.uk/release
+mvn release:stage -DstagingRepository=cudl-aws-release::default::s3://mvn.cudl.lib.cam.ac.uk/release
 ```
 
-Now just delete that last couple of local commits as they are duplicates
+If it runs correctly, you should have two new commits that are duplicates of the ones you made when building the release for GitHub. One of them should also have the tag you defined above. All that remains is to delete that tag and reset those two commits.
 
 ```
+git tag --delete <TAG NAME>
 git reset HEAD~2
 ```
 
+Once you have confirmed that those two commits have been removed, don't forget to `git pull`. This will restore the original tag you deleted, as well as bring over any other changes that might have been pushed by others to `main`.
+
 Now you can update the development puppet to pull in the new version.
 See https://gitlab.developers.cam.ac.uk/lib/dev/dev-puppet/
-
-Don't forget to push your changes to git using `git push` and `git push --tags`.
 
 ## More information
 
