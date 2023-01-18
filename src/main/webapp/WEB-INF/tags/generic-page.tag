@@ -14,13 +14,11 @@
 <cudl:base-page title="${title}" pagetype="${pagetype}" bodyAttrs="${bodyAttrs}"
                 pageData="${pageData}" head="${head}">
     <cudl:ie-div>
-        <cudl:projectlight-header/>
 
         <%-- Pass through body --%>
         <jsp:doBody/>
 
         <cudl:cookie-notice/>
         <cudl:footer/>
-        <cudl:projectlight-footer/>
     </cudl:ie-div>
 </cudl:base-page>
