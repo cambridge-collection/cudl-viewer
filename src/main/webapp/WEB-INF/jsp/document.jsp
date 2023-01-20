@@ -11,6 +11,7 @@
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
 <c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}"/>
+<c:set var="fullThumbnailURL" value="${imageServer}/${thumbnailURL}"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">
@@ -46,10 +47,10 @@
                 </c:if>
 
                 <!-- Image URI (Thumbnail) -->
-                <cudl:meta property="schema:image" content="${thumbnailURL}" />
-                <cudl:meta property="og:image" content="http://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
-                <cudl:meta property="twitter:image" content="${thumbnailURL}" />
-                <cudl:meta property="schema:thumbnailUrl" content="${thumbnailURL}" />
+                <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="og:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
 
                 <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
                 <cudl:meta property="twitter:creator" content="@camdiglib" />
