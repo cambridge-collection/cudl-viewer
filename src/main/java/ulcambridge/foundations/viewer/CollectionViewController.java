@@ -57,15 +57,12 @@ public class CollectionViewController {
     public ModelAndView handleViewRequest()
             throws Exception {
 
+        List<Collection> collections = collectionFactory.getCollections();
         final ModelAndView modelAndView = new ModelAndView("jsp/collections");
-        final ArrayList<Item> featuredItems = new ArrayList<Item>();
-        //final String itemIdString = Properties.getString("collection.featuredItems");
-        //final String[] itemIds = SPLIT_RE.split(itemIdString);
-        //for (final String itemId : itemIds) {
-        //    featuredItems.add(itemDAO.getItem(itemId));
-       // }
+
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
-        //modelAndView.addObject("featuredItems", featuredItems);
+        modelAndView.addObject("collections", collections);
+
         return modelAndView;
     }
 
