@@ -37,20 +37,34 @@
                 <cudl:meta property="og:type" content="website"/>
                 <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
                 <cudl:meta property="og:title" content="${title}"/>
-                <cudl:meta property="og:description" content="${item['abstract']}" />
-                <cudl:meta property="og:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="og:description" content="${item.abstractShort}" />
                 <cudl:meta property="og:locale" content="en_GB"/>
+                <c:choose>
+                    <c:when test="${socialIIIFUrl != null}">
+                        <cudl:meta property="og:image" content="${socialIIIFUrl}" />
 <%--                <cudl:meta property="og:image:width" content="1200"/>--%>
 <%--                <cudl:meta property="og:image:height" content="630"/>--%>
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="og:image" content="${fullThumbnailURL}" />
+                    </c:otherwise>
+                </c:choose>
 
                 <!-- Tags for Twitter -->
-                <cudl:meta property="twitter:card" content="summary"/>
-<%--                <cudl:meta property="twitter:card" content="summary_large_image"/>--%>
                 <cudl:meta property="twitter:title" content="${title}"/>
-                <cudl:meta property="twitter:description" content="${item['abstract']}" />
-                <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="twitter:description" content="${item.abstractShort}" />
                 <cudl:meta property="twitter:creator" content="@camdiglib" />
                 <cudl:meta property="twitter:site" content="@camdiglib" />
+                <c:choose>
+                    <c:when test="${socialIIIFUrl != null}">
+                        <cudl:meta property="twitter:card" content="summary_large_image"/>
+                        <cudl:meta property="twitter:image" content="${socialIIIFUrl}" />
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="twitter:card" content="summary"/>
+                        <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                    </c:otherwise>
+                </c:choose>
 
             </jsp:attribute>
 

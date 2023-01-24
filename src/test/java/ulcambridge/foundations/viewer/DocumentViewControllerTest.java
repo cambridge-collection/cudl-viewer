@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -42,6 +43,7 @@ public class DocumentViewControllerTest {
         URI rootUri = URI.create("http://testurl.testingisthebest.com:8080");
         URI iiifImageServer = URI.create("http://images.digital.library.example.com/iiif/");
         Optional<Map<String, String>> downloadSizes = Optional.empty();
+        Optional<String> socialIIIFParams = Optional.of("/pct:0,25,100,50/1200,630/0/default.jpg");
 
         MockHttpServletRequest req = new MockHttpServletRequest();
         req.setRequestURI("/view/" + ITEM_ID);
@@ -54,7 +56,8 @@ public class DocumentViewControllerTest {
             itemsDao,
             rootUri,
             iiifImageServer,
-            downloadSizes
+            downloadSizes,
+            socialIIIFParams
         );
 
         ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
@@ -65,6 +68,10 @@ public class DocumentViewControllerTest {
         assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
         assertNotNull(mDoc.getModelMap().get("downloadSizes"));
         assertEquals(new HashMap<>(), mDoc.getModelMap().get("downloadSizes"));
+        Assertions.assertNotNull(mDoc.getModelMap().get("socialIIIFUrl"));
+        Assertions.assertEquals(
+            "http://images.digital.library.example.com/iiif/MS-ADD-04004-000-00001.jp2/pct:0,25,100,50/1200,630/0/default.jpg",
+            mDoc.getModelMap().get("socialIIIFUrl"));
     }
 
 }
