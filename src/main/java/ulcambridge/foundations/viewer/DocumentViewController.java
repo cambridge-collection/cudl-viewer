@@ -55,7 +55,7 @@ public class DocumentViewController {
 
     private final Map<String, String> downloadSizes;
 
-    private final String socialIIIFParams;
+    private final Map<String, String> socialImageDimensions;
 
     @Autowired
     public DocumentViewController(
@@ -64,7 +64,7 @@ public class DocumentViewController {
         URI rootUrl,
         URI iiifImageServer,
         @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes,
-        @Value("#{ ${social.options.image.iiifRequestParams:null} }") Optional<String> socialIIIFParams) {
+        @Value("#{ ${social.options.image.dimensions:null} }") Optional<Map<String, String>> socialImageDimensions ) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
@@ -76,7 +76,7 @@ public class DocumentViewController {
         this.rootURL = rootUrl;
         this.iiifImageServer = iiifImageServer;
         this.downloadSizes = downloadSizes.orElseGet(HashMap::new);
-        this.socialIIIFParams = socialIIIFParams.orElseGet(String::new);
+        this.socialImageDimensions = socialImageDimensions.orElseGet(HashMap::new);
 
     }
 
@@ -305,8 +305,10 @@ public class DocumentViewController {
         modelAndView.addObject("downloadSizes", downloadSizes);
 
         // Social media link preview images
-        if (!socialIIIFParams.isBlank()) {
-            modelAndView.addObject("socialIIIFUrl", this.getSocialIIIFUrl(json, page, socialIIIFParams));
+        if (!socialImageDimensions.isEmpty()) {
+            modelAndView.addObject("socialIIIFUrl", this.getSocialIIIFUrl(json, page, socialImageDimensions));
+            modelAndView.addObject("socialImageWidth", socialImageDimensions.get("width"));
+            modelAndView.addObject("socialImageHeight", socialImageDimensions.get("height"));
         }
 
         return modelAndView;
@@ -334,17 +336,74 @@ public class DocumentViewController {
      *
      * @param json The item JSON.
      * @param page The page of the item to get the image URL for.
-     * @param requestParams The IIIF request parameters for the image.
-     * @return The URL
+     * @param imgDims The dimensions (width, height) of image to request.
+     * @return The IIIF URL
      */
-    private String getSocialIIIFUrl(JSONObject json, int page, String requestParams) {
+    private String getSocialIIIFUrl(JSONObject json, int page, Map<String, String> imgDims) {
         Object pageJSONObj = json.getJSONArray("pages").get((page < 2 ? 0 : page - 1));
         JSONObject pageJSON = (JSONObject) pageJSONObj;
         String IIIFImageURL = pageJSON.getString("IIIFImageURL");
 
+        String requestParams = getCentreCutIIIFRequestParams(pageJSON, imgDims);
+
         return UriComponentsBuilder.fromUri(this.iiifImageServer)
             .path(IIIFImageURL)
             .path(requestParams)
+            .build()
+            .encode()
+            .toUriString();
+    }
+
+    /**
+     * Calculate the IIIF request parameters needed to make a maximal centre cut of an image.
+     *
+     * @param pageJSON The item page JSON.
+     * @param imgDims The dimensions (width, height) of image to request.
+     * @return The IIIF URL
+     */
+    private static String getCentreCutIIIFRequestParams(JSONObject pageJSON, Map<String, String> imgDims) {
+        int regionX = 0, regionY = 0, regionW = 0, regionH = 0, sizeW = 0, sizeH = 0;
+
+        try {
+            int imgWidth = pageJSON.getInt("imageWidth");
+            int imgHeight = pageJSON.getInt("imageHeight");
+            int socWidth = Integer.parseInt(imgDims.get("width"));
+            int socHeight = Integer.parseInt(imgDims.get("height"));
+            sizeW = socWidth;
+            sizeH = socHeight;
+
+            float imgRatio = (float) imgHeight / imgWidth;
+            float socRatio = (float) socHeight / socWidth;
+
+            if (imgRatio > socRatio) {
+                // Image is more portrait relative to social dimensions
+                regionW = imgWidth;
+                regionH = Math.round(regionW * socRatio);
+                regionY = (imgHeight - regionH) / 2;
+
+            } else if (imgRatio < socRatio) {
+                // Image is more landscape relative to social dimensions
+                regionH = imgHeight;
+                regionW = Math.round(regionH / socRatio);
+                regionX = (imgWidth - regionW) / 2;
+
+            } else {
+                // Both probably square, so serve whole image
+                regionW = imgWidth;
+                regionH = imgHeight;
+                regionY = imgWidth;
+            }
+
+        } catch (NumberFormatException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        String region = String.format("/%d,%d,%d,%d", regionX, regionY, regionW, regionH);
+        String size = String.format("/%d,%d", sizeW, sizeH);
+
+        return UriComponentsBuilder.newInstance()
+            .path(region).path(size)
+            .path("/0").path("/default.jpg")
             .build()
             .encode()
             .toUriString();

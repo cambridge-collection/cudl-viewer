@@ -42,8 +42,8 @@
                 <c:choose>
                     <c:when test="${socialIIIFUrl != null}">
                         <cudl:meta property="og:image" content="${socialIIIFUrl}" />
-<%--                <cudl:meta property="og:image:width" content="1200"/>--%>
-<%--                <cudl:meta property="og:image:height" content="630"/>--%>
+                        <cudl:meta property="og:image:width" content="${socialImageWidth}"/>
+                        <cudl:meta property="og:image:height" content="${socialImageHeight}"/>
                     </c:when>
                     <c:otherwise>
                         <cudl:meta property="og:image" content="${fullThumbnailURL}" />

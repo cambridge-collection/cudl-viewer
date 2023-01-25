@@ -43,7 +43,7 @@ public class DocumentViewControllerTest {
         URI rootUri = URI.create("http://testurl.testingisthebest.com:8080");
         URI iiifImageServer = URI.create("http://images.digital.library.example.com/iiif/");
         Optional<Map<String, String>> downloadSizes = Optional.empty();
-        Optional<String> socialIIIFParams = Optional.of("/pct:0,25,100,50/1200,630/0/default.jpg");
+        Optional<Map<String, String>> socialImageDimensions = Optional.empty();
 
         MockHttpServletRequest req = new MockHttpServletRequest();
         req.setRequestURI("/view/" + ITEM_ID);
@@ -57,7 +57,7 @@ public class DocumentViewControllerTest {
             rootUri,
             iiifImageServer,
             downloadSizes,
-            socialIIIFParams
+            socialImageDimensions
         );
 
         ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
@@ -68,10 +68,7 @@ public class DocumentViewControllerTest {
         assertEquals("http://testurl.testingisthebest.com:8080/view/MS-ADD-04004", mDoc.getModelMap().get("canonicalURL"));
         assertNotNull(mDoc.getModelMap().get("downloadSizes"));
         assertEquals(new HashMap<>(), mDoc.getModelMap().get("downloadSizes"));
-        Assertions.assertNotNull(mDoc.getModelMap().get("socialIIIFUrl"));
-        Assertions.assertEquals(
-            "http://images.digital.library.example.com/iiif/MS-ADD-04004-000-00001.jp2/pct:0,25,100,50/1200,630/0/default.jpg",
-            mDoc.getModelMap().get("socialIIIFUrl"));
+        Assertions.assertNull(mDoc.getModelMap().get("socialImageDimensions"));
     }
 
 }
