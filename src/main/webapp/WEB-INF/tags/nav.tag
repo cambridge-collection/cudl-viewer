@@ -70,7 +70,7 @@
     <div class="container">
 
         <div class="cudl-banner">
-            <div class="banner-part"><h1>Cambridge Digital Library</h1></div>
+            <div class="banner-part"><h1><a href="/">Cambridge Digital Library</a></h1></div>
 
         </div>
     </div>
