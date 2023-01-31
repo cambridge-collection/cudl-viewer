@@ -27,6 +27,7 @@
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
                         <div id="summaryDiv" class="virtual_collection_summary">
+                            <cudl:page-title title="${collection.title}"/>
                             <c:catch var="importException">
                                 <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
                             </c:catch>

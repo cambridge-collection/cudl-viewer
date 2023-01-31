@@ -14,6 +14,7 @@
 
     <jsp:body>
         <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing the Cambridge Digital Library"/>
+        <cudl:page-title title="Introducing the Cambridge Digital Library" additionalClasses="campl-wrap clearfix" />
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <cudl:about-nav/>
