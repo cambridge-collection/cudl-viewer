@@ -8,15 +8,17 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
+<c:set var="pagetitle" value="Browse our collections"/>
+
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
     <jsp:body>
-        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
+        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="${pagetitle}"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <div class="campl-column12  campl-main-content" id="content">
                     <div id="collectionsDiv">
-                        <h2>Browse our collections</h2>
+                        <cudl:page-title title="${pagetitle}"/>
                         <c:forEach items="${collections}" var="c">
                             <c:if test="${empty c.parentCollectionId}">
                                 <div class="campl-column4">

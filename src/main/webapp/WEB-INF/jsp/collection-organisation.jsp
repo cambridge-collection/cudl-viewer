@@ -24,10 +24,11 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
+        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections" collection="${collection}"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
+                <cudl:page-title title="${collection.title}"/>
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
