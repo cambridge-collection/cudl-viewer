@@ -30,20 +30,6 @@
             <div class="campl-wrap clearfix">
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">
-
-                        <%-- If this collection has a parent show breadcrumb --%>
-                        <c:if test="${fn:length(collection.parentCollectionId) > 0}">
-                            <c:set var="parentCollection" value="${cudlfn:getCollection(collectionFactory, collection.parentCollectionId)}"/>
-
-                            <div class="campl-breadcrumb" id="subcollection-breadcrumb">
-                                <ul class="campl-unstyled-list campl-horizontal-navigation clearfix">
-                                    <li><a href="${fn:escapeXml(parentCollection.URL)}"><c:out value="${parentCollection.title}"/></a></li>
-                                    <li>/</li>
-                                    <li><p class="campl-current"><c:out value="${collection.title}"/></p></li>
-                                </ul>
-                            </div>
-                        </c:if>
-
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
                         <c:catch var="importException">
                             <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
