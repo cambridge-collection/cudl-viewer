@@ -32,6 +32,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.IIIFUtils;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -339,74 +340,32 @@ public class DocumentViewController {
      * @param imgDims The dimensions (width, height) of image to request.
      * @return The IIIF URL
      */
-    private String getSocialIIIFUrl(JSONObject json, int page, Map<String, String> imgDims) {
+    private String getSocialIIIFUrl(JSONObject json, int page, Map<String, String> imgDims)
+        throws JSONException {
+
         Object pageJSONObj = json.getJSONArray("pages").get((page < 2 ? 0 : page - 1));
         JSONObject pageJSON = (JSONObject) pageJSONObj;
         String IIIFImageURL = pageJSON.getString("IIIFImageURL");
-
-        String requestParams = getCentreCutIIIFRequestParams(pageJSON, imgDims);
-
-        return UriComponentsBuilder.fromUri(this.iiifImageServer)
-            .path(IIIFImageURL)
-            .path(requestParams)
-            .build()
-            .encode()
-            .toUriString();
-    }
-
-    /**
-     * Calculate the IIIF request parameters needed to make a maximal centre cut of an image.
-     *
-     * @param pageJSON The item page JSON.
-     * @param imgDims The dimensions (width, height) of image to request.
-     * @return The IIIF URL
-     */
-    private static String getCentreCutIIIFRequestParams(JSONObject pageJSON, Map<String, String> imgDims) {
-        int regionX = 0, regionY = 0, regionW = 0, regionH = 0, sizeW = 0, sizeH = 0;
 
         try {
             int imgWidth = pageJSON.getInt("imageWidth");
             int imgHeight = pageJSON.getInt("imageHeight");
             int socWidth = Integer.parseInt(imgDims.get("width"));
             int socHeight = Integer.parseInt(imgDims.get("height"));
-            sizeW = socWidth;
-            sizeH = socHeight;
 
-            float imgRatio = (float) imgHeight / imgWidth;
-            float socRatio = (float) socHeight / socWidth;
+            String requestParams = IIIFUtils.getCentreCutIIIFRequestParams(imgWidth, imgHeight, socWidth, socHeight);
 
-            if (imgRatio > socRatio) {
-                // Image is more portrait relative to social dimensions
-                regionW = imgWidth;
-                regionH = Math.round(regionW * socRatio);
-                regionY = (imgHeight - regionH) / 2;
+            return UriComponentsBuilder.fromUri(this.iiifImageServer)
+                .path(IIIFImageURL)
+                .path(requestParams)
+                .build()
+                .encode()
+                .toUriString();
 
-            } else if (imgRatio < socRatio) {
-                // Image is more landscape relative to social dimensions
-                regionH = imgHeight;
-                regionW = Math.round(regionH / socRatio);
-                regionX = (imgWidth - regionW) / 2;
-
-            } else {
-                // Both probably square, so serve whole image
-                regionW = imgWidth;
-                regionH = imgHeight;
-                regionY = imgWidth;
-            }
-
-        } catch (NumberFormatException | JSONException e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-
-        String region = String.format("/%d,%d,%d,%d", regionX, regionY, regionW, regionH);
-        String size = String.format("/%d,%d", sizeW, sizeH);
-
-        return UriComponentsBuilder.newInstance()
-            .path(region).path(size)
-            .path("/0").path("/default.jpg")
-            .build()
-            .encode()
-            .toUriString();
+        return "";
     }
 
     /**
