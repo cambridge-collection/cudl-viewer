@@ -18,11 +18,11 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${1}" displaySearch="true" subtitle="${collection.title}"/>
+        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
-
+                <cudl:page-title title="${collection.title}"/>
                 <!-- side nav -->
                 <div class="campl-column3">
                     <div class="campl-tertiary-navigation">
