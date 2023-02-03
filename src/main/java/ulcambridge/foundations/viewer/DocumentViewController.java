@@ -32,6 +32,7 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.utils.IIIFUtils;
 
 /**
  * Controller for viewing a specific document or a specific page within a
@@ -55,13 +56,16 @@ public class DocumentViewController {
 
     private final Map<String, String> downloadSizes;
 
+    private final Map<String, String> socialImageDimensions;
+
     @Autowired
     public DocumentViewController(
         CollectionFactory collectionFactory,
         ItemsDao itemDAO,
         URI rootUrl,
         URI iiifImageServer,
-        @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes) {
+        @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes,
+        @Value("#{ ${social.options.image.dimensions:null} }") Optional<Map<String, String>> socialImageDimensions ) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
@@ -73,6 +77,7 @@ public class DocumentViewController {
         this.rootURL = rootUrl;
         this.iiifImageServer = iiifImageServer;
         this.downloadSizes = downloadSizes.orElseGet(HashMap::new);
+        this.socialImageDimensions = socialImageDimensions.orElseGet(HashMap::new);
 
     }
 
@@ -246,6 +251,7 @@ public class DocumentViewController {
         modelAndView.addObject("itemAuthorsFullform",
                 new JSONArray(item.getAuthorNamesFullForm()));
         modelAndView.addObject("itemAbstract", item.getAbstract());
+        modelAndView.addObject("itemAbstractShort", item.getAbstractShort());
 
         modelAndView.addObject("itemDAO", itemDAO);
 
@@ -299,6 +305,13 @@ public class DocumentViewController {
 
         modelAndView.addObject("downloadSizes", downloadSizes);
 
+        // Social media link preview images
+        if (!socialImageDimensions.isEmpty()) {
+            modelAndView.addObject("socialIIIFUrl", this.getSocialIIIFUrl(json, page, socialImageDimensions));
+            modelAndView.addObject("socialImageWidth", socialImageDimensions.get("width"));
+            modelAndView.addObject("socialImageHeight", socialImageDimensions.get("height"));
+        }
+
         return modelAndView;
     }
 
@@ -317,6 +330,42 @@ public class DocumentViewController {
                 .expand(itemId, page)
                 .encode()
                 .toUriString();
+    }
+
+    /**
+     * Get the IIIF URL for a social media link preview image at a specific page.
+     *
+     * @param json The item JSON.
+     * @param page The page of the item to get the image URL for.
+     * @param imgDims The dimensions (width, height) of image to request.
+     * @return The IIIF URL
+     */
+    private String getSocialIIIFUrl(JSONObject json, int page, Map<String, String> imgDims)
+        throws JSONException {
+
+        Object pageJSONObj = json.getJSONArray("pages").get((page < 2 ? 0 : page - 1));
+        JSONObject pageJSON = (JSONObject) pageJSONObj;
+        String IIIFImageURL = pageJSON.getString("IIIFImageURL");
+
+        try {
+            int imgWidth = pageJSON.getInt("imageWidth");
+            int imgHeight = pageJSON.getInt("imageHeight");
+            int socWidth = Integer.parseInt(imgDims.get("width"));
+            int socHeight = Integer.parseInt(imgDims.get("height"));
+
+            String requestParams = IIIFUtils.getCentreCutIIIFRequestParams(imgWidth, imgHeight, socWidth, socHeight);
+
+            return UriComponentsBuilder.fromUri(this.iiifImageServer)
+                .path(IIIFImageURL)
+                .path(requestParams)
+                .build()
+                .encode()
+                .toUriString();
+
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     /**

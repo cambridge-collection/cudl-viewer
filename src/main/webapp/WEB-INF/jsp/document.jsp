@@ -11,49 +11,61 @@
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
 <c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}"/>
+<c:set var="fullThumbnailURL" value="${imageServer}/${thumbnailURL}"/>
 
 <cudl:base-page title="${title}">
     <jsp:attribute name="head">
         <cudl:head-content pagetype="DOCUMENT"
                            viewport="width=device-width, maximum-scale=1, initial-scale=1">
             <jsp:attribute name="metaTags">
-                <!-- page metadata tags -->
-                <cudl:meta property="og:type" content="website"/>
-                <cudl:meta property="twitter:card" content="summary"/>
-
-                <!-- Item URI -->
-                <cudl:meta property="schema:url" content="${canonicalURL}" />
-                <cudl:meta property="og:url" content="${canonicalURL}" />
                 <link rel="canonical" href="${fn:escapeXml(canonicalURL)}" />
+                <cudl:meta name="keywords" content="${item['abstract']}" />
+                <cudl:meta name="description" content="${item['abstract']}" />
 
-                <!-- Item Title -->
+                <!-- Tags for search engines -->
+                <cudl:meta property="schema:url" content="${canonicalURL}" />
                 <cudl:meta property="schema:name rdfs:label dcterms:title" content="${title}"/>
-                <cudl:meta property="og:title" content="${title}"/>
-                <cudl:meta property="twitter:title" content="${title}"/>
-                <cudl:meta name="keywords" property="schema:keywords"
-                           content="${authors}" />
+                <cudl:meta property="schema:keywords" name="keywords"  content="${authors}" />
+                <cudl:meta property="schema:keywords" content="${item['abstract']}" />
+                <cudl:meta property="schema:description rdfs:comment dcterms:description"
+                           content="${item['abstract']}"/>
+                <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
+                <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
 
-                <!-- Item Description -->
-                <%-- Tomcat 7 seems to reserve the .abstract property... --%>
-                <c:if test="${fn:length(fn:trim(item['abstract'])) > 0}">
-                    <cudl:meta property="schema:description rdfs:comment dcterms:description"
-                               content="${item['abstract']}"/>
-                    <cudl:meta property="og:description" content="${item['abstract']}" />
-                    <cudl:meta property="twitter:description" content="${item['abstract']}" />
-                    <cudl:meta name="description" content="${item['abstract']}" />
-                    <cudl:meta property="schema:keywords" content="${item['abstract']}" />
-                    <cudl:meta name="keywords" content="${item['abstract']}" />
-                </c:if>
-
-                <!-- Image URI (Thumbnail) -->
-                <cudl:meta property="schema:image" content="${thumbnailURL}" />
-                <cudl:meta property="og:image" content="http://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
-                <cudl:meta property="twitter:image" content="${thumbnailURL}" />
-                <cudl:meta property="schema:thumbnailUrl" content="${thumbnailURL}" />
-
+                <!-- Tags for general social media, including Facebook -->
+                <cudl:meta property="og:url" content="${canonicalURL}" />
+                <cudl:meta property="og:type" content="website"/>
                 <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
+                <cudl:meta property="og:title" content="${title}"/>
+                <cudl:meta property="og:description" content="${item.abstractShort}" />
+                <cudl:meta property="og:locale" content="en_GB"/>
+                <c:choose>
+                    <c:when test="${socialIIIFUrl != null}">
+                        <cudl:meta property="og:image" content="${socialIIIFUrl}" />
+                        <cudl:meta property="og:image:width" content="${socialImageWidth}"/>
+                        <cudl:meta property="og:image:height" content="${socialImageHeight}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="og:image" content="${fullThumbnailURL}" />
+                    </c:otherwise>
+                </c:choose>
+
+                <!-- Tags for Twitter -->
+                <cudl:meta property="twitter:title" content="${title}"/>
+                <cudl:meta property="twitter:description" content="${item.abstractShort}" />
                 <cudl:meta property="twitter:creator" content="@camdiglib" />
                 <cudl:meta property="twitter:site" content="@camdiglib" />
+                <c:choose>
+                    <c:when test="${socialIIIFUrl != null}">
+                        <cudl:meta property="twitter:card" content="summary_large_image"/>
+                        <cudl:meta property="twitter:image" content="${socialIIIFUrl}" />
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="twitter:card" content="summary"/>
+                        <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                    </c:otherwise>
+                </c:choose>
+
             </jsp:attribute>
 
             <jsp:body>

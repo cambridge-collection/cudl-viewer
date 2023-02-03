@@ -1,14 +1,12 @@
 package ulcambridge.foundations.viewer.model;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.util.Assert;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public final class Items {
     private Items() {}
@@ -34,6 +32,9 @@ public final class Items {
         );
 
         JSONObject json = new JSONObject();
+        JSONArray pages = new JSONArray();
+        pages.put(new JSONObject().put("IIIFImageURL", String.format("%s-000-00001.jp2", itemId)));
+        json.put("pages", pages);
 
         return new Item(
             itemId,
