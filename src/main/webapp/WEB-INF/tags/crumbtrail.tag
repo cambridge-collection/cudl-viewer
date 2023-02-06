@@ -13,27 +13,24 @@
 
 <c:set var = "uriArray" value = "${fn:split(requestScope['javax.servlet.forward.request_uri'],'/,')}"/>
 <c:if test="${fn:length(uriArray) gt 0}">
-    <div class="container crumbtrail">
-        <a href="/">
-            <i class="fa fa-home" title="Home" aria-hidden="true"></i>
-            <span class="sr-only">Home</span>
-        </a>
-        >
+    <ul class="container crumbtrail">
+        <li><a href="/"><i class="fa fa-home" title="Home" aria-hidden="true"></i><span class="sr-only">Home</span></a></li>
         <c:choose>
-            <c:when test="${fn:length(uriArray) == 1}">
-                ${(not empty title) ? title : subtitle}
+            <c:when test="${fn:length(uriArray) == 1 or fn:length(uriArray) > 1 && uriArray[0] != 'collections'}">
+                <li>${(not empty title) ? title : subtitle}</li>
             </c:when>
             <c:when test="${fn:length(uriArray) > 1 && uriArray[0] == 'collections'}">
-                <a href="/${uriArray[0]}/">${(not empty title) ? title : subtitle}</a>
+                <li><a href="/${uriArray[0]}/">${(not empty title) ? title : subtitle}</a></li>
                 <c:if test="${fn:length(collection.parentCollectionId) > 0}">
                     <c:set var="parentCollection" value="${cudlfn:getCollection(collectionFactory, collection.parentCollectionId)}"/>
-                    >
-                    <a href="${fn:escapeXml(parentCollection.URL)}">
-                        <c:out value="${parentCollection.title}"/></a>
+                    <li><a href="${fn:escapeXml(parentCollection.URL)}">
+                        <c:out value="${parentCollection.title}"/></a></li>
                 </c:if>
-                <c:if test="${not empty collection}"> > ${collection.title}</c:if>
+                <c:if test="${not empty collection}">
+                    <li>${collection.title}</li>
+                </c:if>
             </c:when>
             <c:otherwise/>
         </c:choose>
-    </div>
+    </ul>
 </c:if>

@@ -23,25 +23,26 @@
                             <c:if test="${empty c.parentCollectionId}">
                                 <div class="campl-column4">
                                     <div class="campl-content-container campl-side-padding">
-                                        <div class="campl-horizontal-teaser campl-teaser clearfix campl-focus-teaser">
-                                            <div class="campl-focus-teaser-img">
-                                                <div class="campl-content-container campl-horizontal-teaser-img">
-                                                    <a href="${fn:escapeXml(c.URL)}" class="campl-teaser-img-link"><img
-                                                        alt=""
-                                                        src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
-                                                        class="campl-scale-with-grid"/></a>
+                                        <a href="${fn:escapeXml(c.URL)}" class="collection campl-teaser-img-link">
+                                            <div class="campl-horizontal-teaser campl-teaser clearfix campl-focus-teaser table">
+                                                <div class="tr">
+                                                    <div class="td campl-focus-teaser-img">
+                                                        <div class="campl-content-container campl-horizontal-teaser-img">
+                                                            <img alt=""
+                                                                src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
+                                                                class="campl-scale-with-grid"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="td campl-focus-teaser-txt">
+                                                        <div class="campl-content-container campl-horizontal-teaser-txt">
+                                                            <h3 class="campl-teaser-title">
+                                                                <c:out value="${c.title}"/>
+                                                            </h3>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="campl-focus-teaser-txt">
-                                                <div class="campl-content-container campl-horizontal-teaser-txt">
-                                                    <h3 class="campl-teaser-title">
-                                                        <a href="${fn:escapeXml(c.URL)}"><c:out value="${c.title}"/></a>
-                                                    </h3>
-                                                    <a href="${fn:escapeXml(c.URL)}" class="ir campl-focus-link">Read
-                                                        more</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </c:if>

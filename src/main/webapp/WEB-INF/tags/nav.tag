@@ -13,37 +13,50 @@
 
 <c:set var="defaultTitle" value="Cambridge Digital Library"/>
 
-<div class="content">
+<div class="content main-nav-section">
 
     <div class="container clearfix">
-        <nav class="row justify-content-between main-nav">
-            <a class="item" href="http://www.cam.ac.uk">
-                <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg" />
-            </a>
-            <div class="item text-white nav-right-items">
-                <a href="/search">
-                    <span class="icon icon-search"></span>
+        <div class="fixed-top">
+            <nav class="row justify-content-between main-nav">
+                <a class="item" href="http://www.cam.ac.uk">
+                    <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
                 </a>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="bg-white"><span class="icon icon-menu dropbtn"></span></button></div>
-
+                <div class="item text-white nav-right-items">
+                    <a href="/search">
+                        <span class="icon icon-search"></span>
+                    </a>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="bg-white">
+                            <span class="icon icon-menu dropbtn"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <div id="myDropdown" class="dropdown-content">
+                <div class="clearfix">
+                    <button onclick="myFunction()" class="closebtn icon"/>
+                </div>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/collections/">Browse</a></li>
+                    <li><a href="/search">Search</a>
+                        <ul>
+                            <li><a href="/search?">Simple Search</a></li>
+                            <li><a href="/search/advanced/query?">Advanced Search</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/about/">About</a>
+                        <ul>
+                            <li><a href="/about/">Introducing</a></li>
+                            <li><a href="/news/">News</a></li>
+                            <li><a href="/about-dl-platform">Community</a></li>
+                            <li><a href="/terms/">Terms and Conditions</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/help/">Help</a></li>
+                </ul>
             </div>
-        </nav>
-    </div>
-    <div id="myDropdown" class="dropdown-content">
-        <div class="clearfix">     <button onclick="myFunction()" class="closebtn"></button></div>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/collections/">Browse</a></li>
-            <li><a href="/search">Search</a><ul><li><a href="/search?">Simple Search</a></li><li><a href="/search/advanced/query?">Advanced Search</a></li></ul></li>
-            <li><a href="/about/">About</a>
-                <ul><li><a href="/about/">Introducing</a></li>
-                    <li><a href="/news/">News</a></li>
-                    <li><a href="/about-dl-platform">Community</a></li>
-                    <li><a href="/terms/">Terms and Conditions</a></li>
-
-                </ul></li>
-            <li><a href="/help/">Help</a></li></ul>
+        </div>
     </div>
     <script>
         /* When the user clicks on the button,
