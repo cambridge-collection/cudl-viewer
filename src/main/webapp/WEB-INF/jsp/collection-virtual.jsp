@@ -27,7 +27,6 @@
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
                         <div id="summaryDiv" class="virtual_collection_summary">
-                            <cudl:page-title title="${collection.title}"/>
                             <c:catch var="importException">
                                 <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
                             </c:catch>
@@ -81,6 +80,10 @@
                             <c:if test="${importException != null}">
                                 <!-- No sponsors. -->
                             </c:if>
+                        </div>
+                        <div class="button usebutton">
+                            <c:set var = "uriArray" value = "${fn:split(collection.URL,'/,')}"/>
+                            <a class="btn btn-info left" href="/iiif/collection/${uriArray[fn:length(uriArray)-1]}" title="Download Collection IIIF Manifest" download><img src="/img/logo-iiif-34x30.png" title="International Image Interoperability Framework"><span>Collection IIIF Manifest</span></a>
                         </div>
                     </div>
                 </div>

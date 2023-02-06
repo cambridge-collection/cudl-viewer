@@ -28,7 +28,6 @@
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
-                <cudl:page-title title="${collection.title}"/>
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
@@ -49,13 +48,17 @@
                     <div class="pagination toppagination"></div>
                 </div>
 
-                <div id="sponsorDiv">
+                <div id="sponsorDiv" class="campl-column12 campl-content-container">
                     <c:catch var="importException">
                         <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
                     </c:catch>
                     <c:if test="${importException != null}">
                         <!-- No sponsors. -->
                     </c:if>
+                </div>
+                <div class="button usebutton">
+                    <c:set var = "uriArray" value = "${fn:split(collection.URL,'/,')}"/>
+                    <a class="btn btn-info left" href="/iiif/collection/${uriArray[fn:length(uriArray)-1]}" title="Download Collection IIIF Manifest" download><img src="/img/logo-iiif-34x30.png" title="International Image Interoperability Framework"><span>Collection IIIF Manifest</span></a>
                 </div>
             </div>
         </div>

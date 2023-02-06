@@ -8,5 +8,5 @@
 <c:set var="defaultTitle" value="Cambridge Digital Library"/>
 
 <div class="pagetitle ${additionalClasses}">
-    <h1>${(not empty title) ? title : defaultTitle}</h1>
+    <h2>${(not empty title) ? title : defaultTitle}</h2>
 </div>

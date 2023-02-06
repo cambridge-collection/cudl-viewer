@@ -8,7 +8,7 @@
 
 
 <cudl:generic-page pagetype="LOGIN">
-    <cudl:nav activeMenuIndex="${3}" displaySearch="true" title="Login"/>
+    <cudl:nav activeMenuIndex="${3}" displaySearch="true" title="Sign in to My Library"/>
 
     <div class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
