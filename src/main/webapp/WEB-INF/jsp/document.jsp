@@ -276,9 +276,7 @@
                                 <li class="active">Transcription</li>
                             </ol></div>
                             <div class="framediv">
-                            <iframe id="transcriptiondiploframe"
-                                    src="" srcdoc="<html><head></head><body></body></html>">
-                            </iframe>
+                            <iframe id="transcriptiondiploframe" src=""></iframe>
                             </div>
 
                         </div>
@@ -287,9 +285,7 @@
                                 <li class="active">Translation</li>
                             </ol></div>
                             <div class="framediv">
-                            <iframe id="translationframe"
-                                    src="" srcdoc="<html><head></head><body></body></html>">
-                            </iframe>
+                            <iframe id="translationframe" src=""></iframe>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="download">
