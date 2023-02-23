@@ -13,7 +13,7 @@
 
 <c:set var="defaultTitle" value="Cambridge Digital Library"/>
 
-<div class="content main-nav-section">
+<div class="content main-nav-section ${(activeMenuIndex == 0) ? 'home' : ''}">
 
     <div class="container clearfix">
         <div class="fixed-top">
