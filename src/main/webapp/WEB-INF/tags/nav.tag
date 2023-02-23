@@ -39,20 +39,8 @@
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/collections/">Browse</a></li>
-                    <li><a href="/search">Search</a>
-                        <ul>
-                            <li><a href="/search?">Simple Search</a></li>
-                            <li><a href="/search/advanced/query?">Advanced Search</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/about/">About</a>
-                        <ul>
-                            <li><a href="/about/">Introducing</a></li>
-                            <li><a href="/news/">News</a></li>
-                            <li><a href="/about-dl-platform">Community</a></li>
-                            <li><a href="/terms/">Terms and Conditions</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/about/">About</a></li>
                     <li><a href="/help/">Help</a></li>
                 </ul>
             </div>
