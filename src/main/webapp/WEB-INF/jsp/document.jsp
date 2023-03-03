@@ -29,8 +29,15 @@
                 <cudl:meta property="schema:keywords" content="${item['abstract']}" />
                 <cudl:meta property="schema:description rdfs:comment dcterms:description"
                            content="${item['abstract']}"/>
-                <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
-                <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
+                <c:choose>
+                    <c:when test="${not empty thumbnailURL}">
+                        <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
+                        <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
+                    </c:when>
+                    <c:otherwise>
+                        <!-- No thumbnail but we could put a placeholder -->
+                    </c:otherwise>
+                </c:choose>
 
                 <!-- Tags for general social media, including Facebook -->
                 <cudl:meta property="og:url" content="${canonicalURL}" />
@@ -40,13 +47,16 @@
                 <cudl:meta property="og:description" content="${item.abstractShort}" />
                 <cudl:meta property="og:locale" content="en_GB"/>
                 <c:choose>
-                    <c:when test="${socialIIIFUrl != null}">
+                    <c:when test="${not empty socialIIIFUrl}">
                         <cudl:meta property="og:image" content="${socialIIIFUrl}" />
                         <cudl:meta property="og:image:width" content="${socialImageWidth}"/>
                         <cudl:meta property="og:image:height" content="${socialImageHeight}"/>
                     </c:when>
-                    <c:otherwise>
+                    <c:when test="${not empty thumbnailURL}">
                         <cudl:meta property="og:image" content="${fullThumbnailURL}" />
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="og:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
                     </c:otherwise>
                 </c:choose>
 
@@ -56,13 +66,17 @@
                 <cudl:meta property="twitter:creator" content="@camdiglib" />
                 <cudl:meta property="twitter:site" content="@camdiglib" />
                 <c:choose>
-                    <c:when test="${socialIIIFUrl != null}">
+                    <c:when test="${not empty socialIIIFUrl}">
                         <cudl:meta property="twitter:card" content="summary_large_image"/>
                         <cudl:meta property="twitter:image" content="${socialIIIFUrl}" />
                     </c:when>
-                    <c:otherwise>
+                    <c:when test="${not empty thumbnailURL}">
                         <cudl:meta property="twitter:card" content="summary"/>
                         <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                    </c:when>
+                    <c:otherwise>
+                        <cudl:meta property="twitter:card" content="summary"/>
+                        <cudl:meta property="twitter:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
                     </c:otherwise>
                 </c:choose>
 
