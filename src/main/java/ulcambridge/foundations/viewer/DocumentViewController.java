@@ -345,23 +345,23 @@ public class DocumentViewController {
 
         Object pageJSONObj = json.getJSONArray("pages").get((page < 2 ? 0 : page - 1));
         JSONObject pageJSON = (JSONObject) pageJSONObj;
-        String IIIFImageURL = pageJSON.getString("IIIFImageURL");
-
+        String IIIFImageURL = pageJSON.has("IIIFImageURL") ? pageJSON.getString("IIIFImageURL"): null;
         try {
-            int imgWidth = pageJSON.getInt("imageWidth");
-            int imgHeight = pageJSON.getInt("imageHeight");
-            int socWidth = Integer.parseInt(imgDims.get("width"));
-            int socHeight = Integer.parseInt(imgDims.get("height"));
+            if (pageJSON.has("IIIFImageURL")) {
+                int imgWidth = pageJSON.getInt("imageWidth");
+                int imgHeight = pageJSON.getInt("imageHeight");
+                int socWidth = Integer.parseInt(imgDims.get("width"));
+                int socHeight = Integer.parseInt(imgDims.get("height"));
 
-            String requestParams = IIIFUtils.getCentreCutIIIFRequestParams(imgWidth, imgHeight, socWidth, socHeight);
+                String requestParams = IIIFUtils.getCentreCutIIIFRequestParams(imgWidth, imgHeight, socWidth, socHeight);
 
-            return UriComponentsBuilder.fromUri(this.iiifImageServer)
-                .path(IIIFImageURL)
-                .path(requestParams)
-                .build()
-                .encode()
-                .toUriString();
-
+                return UriComponentsBuilder.fromUri(this.iiifImageServer)
+                    .path(IIIFImageURL)
+                    .path(requestParams)
+                    .build()
+                    .encode()
+                    .toUriString();
+            }
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
