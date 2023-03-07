@@ -19,6 +19,7 @@ import ulcambridge.foundations.viewer.model.Properties;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -59,6 +60,9 @@ public class CollectionViewController {
 
         List<Collection> collections = collectionFactory.getCollections();
         final ModelAndView modelAndView = new ModelAndView("jsp/collections");
+
+        // order by alphabetical title for this page
+        Collections.sort(collections, Collection.SORT_BY_TITLE);
 
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("collections", collections);

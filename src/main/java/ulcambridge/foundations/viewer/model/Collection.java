@@ -1,5 +1,6 @@
 package ulcambridge.foundations.viewer.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -22,6 +23,9 @@ public class Collection implements Comparable<Collection> {
     private String parentCollectionId;
     private List<Collection> subCollections;
     private List<String> IIIFEnabledItemIds;
+
+    public static final Comparator<Collection> SORT_BY_TITLE = (t1, t2) -> t1.title.compareTo(t2.title);
+    public static final Comparator<Collection> SORT_BY_ORDER = (t1, t2) -> t1.order-t2.order;
 
     /**
      * Additional column added for HTML &lt;meta name="Description" .../&gt; tag

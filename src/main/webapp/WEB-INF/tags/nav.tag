@@ -26,15 +26,15 @@
                         <span class="icon icon-search"></span>
                     </a>
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="bg-white">
+                        <a href="#" onclick="toggleDropdown()" class="bg-white">
                             <span class="icon icon-menu dropbtn"></span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </nav>
             <div id="myDropdown" class="dropdown-content">
                 <div class="clearfix">
-                    <button onclick="myFunction()" class="closebtn icon"/>
+                    <button onclick="toggleDropdown()" class="closebtn icon"/>
                 </div>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -49,7 +49,7 @@
     <script>
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
-        function myFunction() {
+        function toggleDropdown() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
