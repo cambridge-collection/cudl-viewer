@@ -22,9 +22,11 @@
                     <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
                 </a>
                 <div class="item text-white nav-right-items">
-                    <a href="/search">
-                        <span class="icon icon-search"></span>
-                    </a>
+                    <div class="search">
+                        <a href="/search">
+                            <span class="icon icon-search"></span>
+                        </a>
+                    </div>
                     <div class="dropdown">
                         <a href="#" onclick="toggleDropdown()" class="bg-white">
                             <span class="icon icon-menu dropbtn"></span>
