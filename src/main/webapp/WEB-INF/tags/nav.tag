@@ -22,9 +22,11 @@
                     <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
                 </a>
                 <div class="item text-white nav-right-items">
-                    <a href="/search">
-                        <span class="icon icon-search"></span>
-                    </a>
+                    <div class="search">
+                        <a href="/search">
+                            <span class="icon icon-search"></span>
+                        </a>
+                    </div>
                     <div class="dropdown">
                         <a href="#" onclick="toggleDropdown()" class="bg-white">
                             <span class="icon icon-menu dropbtn"></span>
@@ -38,7 +40,7 @@
                 </div>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/collections/">Browse</a></li>
+                    <li><a href="/collections/">View all collections</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/about/">About</a></li>
                     <li><a href="/help/">Help</a></li>
