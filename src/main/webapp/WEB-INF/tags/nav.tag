@@ -73,7 +73,7 @@
     <!--end of Uni of Cam banner-->
     <!--CUDL banner-->
 
-    <div class="container">
+    <div class="container banner">
 
         <div class="cudl-banner">
             <div class="banner-part"><h1><a href="/">Cambridge Digital Library</a></h1></div>

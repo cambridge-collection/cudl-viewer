@@ -8,7 +8,7 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-<c:set var="pagetitle" value="Browse our collections"/>
+<c:set var="pagetitle" value="View all collections"/>
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
     <jsp:body>
