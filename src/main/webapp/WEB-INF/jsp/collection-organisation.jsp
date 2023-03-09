@@ -24,7 +24,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections" collection="${collection}"/>
+        <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections" collection="${collection}"/>
 
         <div class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
