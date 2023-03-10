@@ -161,6 +161,7 @@ public class SiteViewController {
     public ModelAndView handleTermsRequest() {
 
         ModelAndView modelAndView = new ModelAndView("jsp/terms");
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
