@@ -23,16 +23,16 @@
                 <cudl:meta name="description" content="${item['abstract']}" />
 
                 <!-- Tags for search engines -->
-                <cudl:meta property="schema:url" content="${canonicalURL}" />
-                <cudl:meta property="schema:name rdfs:label dcterms:title" content="${title}"/>
-                <cudl:meta property="schema:keywords" name="keywords"  content="${authors}" />
-                <cudl:meta property="schema:keywords" content="${item['abstract']}" />
+                <cudl:meta itemprop="url" property="schema:url" content="${canonicalURL}" />
+                <cudl:meta itemprop="name" property="schema:name rdfs:label dcterms:title" content="${title}"/>
+                <cudl:meta itemprop="keywords" property="schema:keywords" name="keywords"  content="${authors}" />
+                <cudl:meta itemprop="keywords" property="schema:keywords" content="${item['abstract']}" />
                 <cudl:meta property="schema:description rdfs:comment dcterms:description"
                            content="${item['abstract']}"/>
                 <c:choose>
                     <c:when test="${not empty thumbnailURL}">
                         <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
-                        <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
+                        <cudl:meta itemprop="thumbnailUrl" property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
                     </c:when>
                     <c:otherwise>
                         <!-- No thumbnail but we could put a placeholder -->
@@ -40,7 +40,7 @@
                 </c:choose>
 
                 <!-- Tags for general social media, including Facebook -->
-                <cudl:meta property="og:url" content="${canonicalURL}" />
+                <cudl:meta itemprop="mainEntityOfPage" property="og:url" content="${canonicalURL}" />
                 <cudl:meta property="og:type" content="website"/>
                 <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
                 <cudl:meta property="og:title" content="${title}"/>

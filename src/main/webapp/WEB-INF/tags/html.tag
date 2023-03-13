@@ -8,7 +8,7 @@
 
 <!doctype html>
 <html>
-<head>
+<head itemscope itemtype="http://schema.org/Article">
     <title><c:out value="${title}"/></title>
     <jsp:invoke fragment="head"/>
 </head>
