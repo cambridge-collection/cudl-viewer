@@ -61,22 +61,22 @@
                 </c:choose>
 
                 <!-- Tags for Twitter -->
-                <cudl:meta property="twitter:title" content="${title}"/>
-                <cudl:meta property="twitter:description" content="${item.abstractShort}" />
-                <cudl:meta property="twitter:creator" content="@camdiglib" />
-                <cudl:meta property="twitter:site" content="@camdiglib" />
+                <cudl:meta name="twitter:title" content="${title}"/>
+                <cudl:meta name="twitter:description" content="${item.abstractShort}" />
+                <cudl:meta name="twitter:creator" content="@camdiglib" />
+                <cudl:meta name="twitter:site" content="@camdiglib" />
                 <c:choose>
                     <c:when test="${not empty socialIIIFUrl}">
-                        <cudl:meta property="twitter:card" content="summary_large_image"/>
-                        <cudl:meta property="twitter:image" content="${socialIIIFUrl}" />
+                        <cudl:meta name="twitter:card" content="summary_large_image"/>
+                        <cudl:meta name="twitter:image" content="${socialIIIFUrl}" />
                     </c:when>
                     <c:when test="${not empty thumbnailURL}">
-                        <cudl:meta property="twitter:card" content="summary"/>
-                        <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                        <cudl:meta name="twitter:card" content="summary"/>
+                        <cudl:meta name="twitter:image" content="${fullThumbnailURL}" />
                     </c:when>
                     <c:otherwise>
-                        <cudl:meta property="twitter:card" content="summary"/>
-                        <cudl:meta property="twitter:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
+                        <cudl:meta name="twitter:card" content="summary"/>
+                        <cudl:meta name="twitter:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
                     </c:otherwise>
                 </c:choose>
 
