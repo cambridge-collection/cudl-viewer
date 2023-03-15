@@ -18,7 +18,7 @@
             </cudl:default-context>
         </jsp:attribute>
         <jsp:body>
-            <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="Browse our collections"/>
+            <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections"/>
 
             <div class="clear"></div>
 
@@ -81,6 +81,7 @@
                                 <!-- No sponsors. -->
                             </c:if>
                         </div>
+                        <cudl:collection-manifest-button/>
                     </div>
                 </div>
             </div>

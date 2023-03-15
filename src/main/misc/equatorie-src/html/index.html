@@ -6,7 +6,7 @@ equatorie.html
 
 <!doctype html>
 
-<!--[if lt IE 7]> 
+<!--[if lt IE 7]>
   <meta http-equiv="refresh" content="5;url=http://www.webstandards.org/action/previous-campaigns/buc/upgrade/" />
  <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
@@ -24,7 +24,7 @@ equatorie.html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="/favicon.ico">
 
-<link href="/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+<!--<link href="/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />-->
 <link href="/css/datepicker.css" media="all" rel="stylesheet" type="text/css" />
 <link href="/css/slider.css" media="all" rel="stylesheet" type="text/css" />
 <link href="/css/equatorie.css" media="all" rel="stylesheet" type="text/css" />
@@ -34,7 +34,7 @@ equatorie.html
 </head>
 
 <body>
-    
+
 <header>
 </header>
 
@@ -52,9 +52,9 @@ equatorie.html
   // WebGL not supported goes in here. Will basically delete the canvas and load a video
   window.webGLSupported = true;
   window.notSupported = function() {
-    
+
     $('#webgl-canvas').remove();
-   
+
     $('body').append('<iframe width="960" height="720" src="//www.youtube.com/embed/LNyOJthDPpc" frameborder="0" allowfullscreen></iframe>');
 
     window.webGLSupported = false;
@@ -177,7 +177,7 @@ equatorie.html
 
     };
 
-    function detectmob() { 
+    function detectmob() {
       if( navigator.userAgent.match(/Android/i)
       || navigator.userAgent.match(/webOS/i)
       || navigator.userAgent.match(/iPhone/i)
@@ -352,7 +352,7 @@ goForIt = function () {
   activatePopup = function (text) {
 
     $container.popover('destroy');
-        
+
     $container.popover($.extend({}, {
         content: text
     }, options)).popover('show');
@@ -407,7 +407,7 @@ goForIt = function () {
       d.setHours(d.getHours() + 12); // Go to midday on each day
       window.Equatorie.setDate(d);
       if (window.Equatorie.stack_idx > 0){
-        nd = window.Equatorie.solveImmediate(); 
+        nd = window.Equatorie.solveImmediate();
         if (nd.text !== undefined){
           activatePopup(nd.text);
 
@@ -418,9 +418,9 @@ goForIt = function () {
     });
 
 
-  
 
-  $('#dp1').on('change', function() {  
+
+  $('#dp1').on('change', function() {
     var datetxt = $('#dp1').val();
     parts = datetxt.split("/");
     if (parts.length === 3){
@@ -434,17 +434,17 @@ goForIt = function () {
 
           if (nd.text !== undefined){
             $container.popover('destroy');
-          
+
             activatePopup(nd.text);
 
 
           } else {
             $container.popover('destroy');
-         
+
           }
         }
       }
-      
+
     } else {
        $('#dp1').val("31/12/1392");
     }
@@ -460,7 +460,7 @@ goForIt = function () {
   // Functions for selectors for the planets
 
   $("#selectMercury").click(function(){
-    window.Equatorie.chosen_planet = "mercury"; 
+    window.Equatorie.chosen_planet = "mercury";
     _initButtons();
   });
 
@@ -499,7 +499,7 @@ goForIt = function () {
     _initButtons();
   });
 
-     
+
 
   var $container = $('#popupContainer');
 
@@ -513,7 +513,7 @@ goForIt = function () {
   $('#button_prev').click( function() {
 
     if(window.Equatorie !== undefined) {
-    
+
 
       nd = window.Equatorie.stepBackward();
 
@@ -527,12 +527,12 @@ goForIt = function () {
 
       if (nd.text !== undefined){
         $container.popover('destroy');
-      
+
         activatePopup(nd.text);
 
       } else {
         $container.popover('destroy');
-     
+
       }
 
       // Next button activation
@@ -578,13 +578,13 @@ goForIt = function () {
 
       if (nd.text !== undefined){
         $container.popover('destroy');
-      
+
         activatePopup(nd.text);
 
 
       } else {
         $container.popover('destroy');
-     
+
       }
 
       // Next button activation

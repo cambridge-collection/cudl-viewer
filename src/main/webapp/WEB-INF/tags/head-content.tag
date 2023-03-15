@@ -29,8 +29,8 @@
 
 <%-- load Project Light Font. This is not loaded with the webpack build as
      the fonts are external. Could do async load in future. --%>
-<script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>
-<script type="text/javascript">try { Typekit.load(); } catch (e) {}</script>
+<%--<script type="text/javascript" src="//use.typekit.com/hyb5bko.js"></script>--%>
+<%--<script type="text/javascript">try { Typekit.load(); } catch (e) {}</script>--%>
 
 <%-- Tell our webpack bundle about the path we serve it from. This is required
      as we don't hard-code this in the webpack build. --%>

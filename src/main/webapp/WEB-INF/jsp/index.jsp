@@ -13,20 +13,16 @@
 </c:set>
 
 <cudl:generic-page pagetype="${pagetype}" title="${collection.title}">
-
-    <jsp:attribute name="head">
-        <cudl:head-content pagetype="${pagetype}" metaDescription="${metaDescription}"/>
-    </jsp:attribute>
-
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <cudl:context-editable-areas>
-                <cudl:editable-area id="latestNewsDiv" filename="index-latest-news.html"/>
-                <cudl:editable-area id="index-carousel-1" filename="index-carousel-1.html"/>
-                <cudl:editable-area id="index-carousel-2" filename="index-carousel-2.html"/>
-                <cudl:editable-area id="index-carousel-3" filename="index-carousel-3.html"/>
+                <cudl:editable-area id="indexDiv" filename="index.html"/>
             </cudl:context-editable-areas>
         </cudl:default-context>
+    </jsp:attribute>
+
+    <jsp:attribute name="head">
+        <cudl:head-content pagetype="${pagetype}" metaDescription="${metaDescription}"/>
     </jsp:attribute>
 
     <jsp:body>
@@ -36,92 +32,8 @@
             <c:out value="${downtimeWarning}" escapeXml="false"/>
         </c:if>
 
-        <div class="campl-row campl-page-header" id="content">
-            <div class="campl-wrap clearfix">
-                <div class="campl-column12">
-                    <div class="campl-recessed-carousel">
-                        <div class="section-carousel campl-carousel clearfix campl-banner">
-                            <div class="campl-carousel-container">
-
-                                <ul class="campl-unstyled-list campl-slides">
-                                    <li class="campl-slide campl-column12">
-                                        <div id="index-carousel-1" style="position:relative">
-                                            <c:import charEncoding="UTF-8"
-                                                url="${contentHTMLURL}/index-carousel-1.html" />
-                                        </div>
-                                    </li>
-                                    <li class="campl-slide campl-column12">
-                                        <div id="index-carousel-2" style="position:relative">
-                                            <c:import charEncoding="UTF-8"
-                                                url="${contentHTMLURL}/index-carousel-2.html" />
-                                        </div>
-                                    </li>
-                                    <li class="campl-slide campl-column12">
-                                        <div id="index-carousel-3" style="position:relative">
-                                            <c:import charEncoding="UTF-8"
-                                                url="${contentHTMLURL}/index-carousel-3.html" />
-                                        </div>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="campl-column4">&nbsp;</div>
-                </div>
-            </div>
-        </div>
-        <div class="campl-row campl-content campl-recessed-content">
-            <div class="campl-wrap clearfix">
-
-                <div class="campl-column12">
-                    <div class="campl-side-padding ">
-                        <h2>Collections</h2>
-                    </div>
-                </div>
-                <div class="campl-column12 campl-main-content">
-
-                    <c:forEach items="${rootCollections}" var="c">
-                        <div class="campl-column4">
-                            <div class="campl-content-container campl-side-padding">
-                                <div class="campl-horizontal-teaser campl-teaser clearfix campl-focus-teaser">
-                                    <div class="campl-focus-teaser-img">
-                                        <div class="campl-content-container campl-horizontal-teaser-img">
-                                            <a href="${fn:escapeXml(c.URL)}" class="campl-teaser-img-link"><img
-                                                alt=""
-                                                src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
-                                                class="campl-scale-with-grid" /></a>
-                                        </div>
-                                    </div>
-                                    <div class="campl-focus-teaser-txt">
-                                        <div class="campl-content-container campl-horizontal-teaser-txt">
-                                            <h3 class='campl-teaser-title'>
-                                                <a href="${fn:escapeXml(c.URL)}"><c:out value="${c.title}"/></a>
-                                            </h3>
-                                            <a href="${fn:escapeXml(c.URL)}" class="ir campl-focus-link">Read
-                                                more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-
-                <div class="campl-column4">
-                    <!-- twitter feed -->
-                    <a class="twitter-timeline" data-dnt="true" data-theme="light" href="https://twitter.com/CamDigLib">Tweets by CamDigLib</a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <!-- end of twitter feed -->
-                </div>
-
-                <div class="campl-column4">
-                    <div id="latestNewsDiv">
-                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/index-latest-news.html" />
-                    </div>
-                </div>
-            </div>
+        <div id="indexDiv">
+            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/index.html" />
         </div>
     </jsp:body>
 </cudl:generic-page>
