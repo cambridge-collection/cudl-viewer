@@ -22,7 +22,7 @@
 
             <div class="clear"></div>
 
-            <div class="campl-row campl-content campl-recessed-content">
+            <div id="main_content" class="campl-row campl-content campl-recessed-content">
                 <div class="campl-wrap clearfix">
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">

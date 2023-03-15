@@ -17,7 +17,7 @@
         <cudl:nav activeMenuIndex="${4}" displaySearch="true"
                   subtitle="Contributors to the Cambridge Digital Library"/>
 
-        <div class="campl-row campl-content campl-recessed-content">
+        <div id="main_content" class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <cudl:about-nav />
                 <div class="campl-column8  campl-main-content" id="content">
