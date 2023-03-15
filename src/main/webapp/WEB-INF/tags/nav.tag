@@ -28,7 +28,7 @@
                         </a>
                     </div>
                     <div class="dropdown">
-                        <a href="#" onclick="toggleDropdown()" class="bg-white">
+                        <a href="#" id="menuDropdownOpenButton" class="bg-white">
                             <span class="icon icon-menu dropbtn"></span>
                         </a>
                     </div>
@@ -36,7 +36,7 @@
             </nav>
             <div id="myDropdown" class="dropdown-content">
                 <div class="clearfix">
-                    <button onclick="toggleDropdown()" class="closebtn icon"/>
+                    <button id="menuDropdownCloseButton" class="closebtn icon"/>
                 </div>
                 <ul>
                     <li><a href="/">Home</a></li>
@@ -48,27 +48,6 @@
             </div>
         </div>
     </div>
-    <script>
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function toggleDropdown() {
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-    </script>
 
     <!--end of Uni of Cam banner-->
     <!--CUDL banner-->
