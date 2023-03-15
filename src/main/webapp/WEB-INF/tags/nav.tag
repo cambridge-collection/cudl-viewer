@@ -36,7 +36,9 @@
             </nav>
             <div id="myDropdown" class="dropdown-content">
                 <div class="clearfix">
-                    <button id="menuDropdownCloseButton" class="closebtn icon"/>
+                    <a href="#" id="menuDropdownCloseButton" class="bg-white">
+                        <span class="closebtn icon"></span>
+                    </a>
                 </div>
                 <ul>
                     <li><a href="/">Home</a></li>
