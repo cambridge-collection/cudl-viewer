@@ -61,7 +61,7 @@
                         <!-- No sponsors. -->
                     </c:if>
                 </div>
-                <cudl:collection-manifest-button collectionId="${collection.id}"/>
+                <cudl:collection-manifest-button/>
             </div>
         </div>
     </jsp:body>
