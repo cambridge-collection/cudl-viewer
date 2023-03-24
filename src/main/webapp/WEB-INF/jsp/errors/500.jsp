@@ -10,7 +10,7 @@
 <cudl:generic-page pagetype="ERROR_500" title="Error">
     <cudl:nav activeMenuIndex="${0}" displaySearch="true" title="Error"/>
 
-    <div class="campl-row campl-content campl-recessed-content">
+    <div id="main_content" class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column9  campl-main-content" id="content">
                 <div class="campl-content-container">

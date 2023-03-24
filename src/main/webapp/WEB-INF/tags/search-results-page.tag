@@ -23,7 +23,7 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="${title}"/>
 
-        <div class="campl-row campl-content campl-recessed-content">
+        <div id="main_content" class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <div class="campl-main-content" id="content">
                     <div class="campl-column4 campl-secondary-content">

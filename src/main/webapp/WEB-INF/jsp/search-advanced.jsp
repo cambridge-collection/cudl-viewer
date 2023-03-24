@@ -10,7 +10,7 @@
 <cudl:generic-page pagetype="ADVANCED_SEARCH" title="${collection.title}">
     <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Advanced Search"/>
 
-    <div class="campl-row campl-content campl-recessed-content">
+    <div id="main_content" class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column12  campl-main-content" id="content">
                 <div class="campl-content-container">

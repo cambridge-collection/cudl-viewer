@@ -26,7 +26,7 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections" collection="${collection}"/>
 
-        <div class="campl-row campl-content campl-recessed-content">
+        <div id="main_content" class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">

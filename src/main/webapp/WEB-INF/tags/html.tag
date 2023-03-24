@@ -13,6 +13,7 @@
     <jsp:invoke fragment="head"/>
 </head>
 <body<jsp:invoke fragment="bodyAttrs"/>>
+  <a href="#main_content" class="campl-skipTo">skip to content</a>
   <jsp:doBody/>
 </body>
 </html>
