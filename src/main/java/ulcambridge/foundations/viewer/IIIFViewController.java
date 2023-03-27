@@ -61,31 +61,25 @@ public class IIIFViewController {
     @RequestMapping(value = "/{docId}")
     public ModelAndView handleIIIFRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
 
-        docId = docId.toUpperCase();
+        IIIFPresentation pres = getIIIFPresentation(docId, request);
+        JSONObject presJSON = pres.outputJSON();
 
-        //Get services
-        String servicesURL = Properties.getString("services");
-        if (servicesURL.startsWith("//")) {
-            servicesURL = request.getScheme() + ":"+servicesURL;
-        }
+        writeJSONOut(presJSON, response);
 
-        Item item = itemDAO.getItem(docId);
-        if (item != null && item.getIIIFEnabled()) {
+        return null;
+    }
 
-            String baseURL = request.getScheme() + "://" + request.getServerName();
-            if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
-                baseURL+= ":" + request.getServerPort();
-            }
-            IIIFPresentation pres = new IIIFPresentation(item, baseURL, servicesURL, iiifImageServer);
-            JSONObject presJSON = pres.outputJSON();
+    // on path /iiif/{docId}/simple
+    @RequestMapping(value = "/{docId}/simple")
+    public ModelAndView handleSimpleIIIFRequest(@PathVariable("docId") String docId, HttpServletRequest request, HttpServletResponse response) throws JSONException {
 
-            writeJSONOut(presJSON, response);
 
-            return null;
+        IIIFPresentation pres = getIIIFPresentation(docId, request);
+        JSONObject presJSON = pres.outputSimpleJSON();
 
-        } else {
-            throw new ResourceNotFoundException();
-        }
+        writeJSONOut(presJSON, response);
+
+        return null;
 
     }
 
@@ -115,6 +109,31 @@ public class IIIFViewController {
             writeJSONOut(collJSON, response);
 
             return null;
+
+        } else {
+            throw new ResourceNotFoundException();
+        }
+
+    }
+
+    private IIIFPresentation getIIIFPresentation(String docId, HttpServletRequest request) {
+
+        docId = docId.toUpperCase();
+
+        //Get services
+        String servicesURL = Properties.getString("services");
+        if (servicesURL.startsWith("//")) {
+            servicesURL = request.getScheme() + ":"+servicesURL;
+        }
+
+        Item item = itemDAO.getItem(docId);
+        if (item != null && item.getIIIFEnabled()) {
+
+            String baseURL = request.getScheme() + "://" + request.getServerName();
+            if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
+                baseURL+= ":" + request.getServerPort();
+            }
+            return new IIIFPresentation(item, baseURL, servicesURL, iiifImageServer);
 
         } else {
             throw new ResourceNotFoundException();
