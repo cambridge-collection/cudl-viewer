@@ -57,9 +57,11 @@ public class IIIFCollection {
         this.baseURL = baseURL;
 
         // Find subcollections
-        for (Collection c : subCollections) {
-            IIIFCollection ic = new IIIFCollection(c, baseURL);
-            this.subCollections.add(ic);
+        if (subCollections != null) {
+            for (Collection c : subCollections) {
+                IIIFCollection ic = new IIIFCollection(c, baseURL);
+                this.subCollections.add(ic);
+            }
         }
 
         // Set variables

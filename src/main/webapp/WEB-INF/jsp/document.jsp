@@ -23,16 +23,16 @@
                 <cudl:meta name="description" content="${item['abstract']}" />
 
                 <!-- Tags for search engines -->
-                <cudl:meta property="schema:url" content="${canonicalURL}" />
-                <cudl:meta property="schema:name rdfs:label dcterms:title" content="${title}"/>
-                <cudl:meta property="schema:keywords" name="keywords"  content="${authors}" />
-                <cudl:meta property="schema:keywords" content="${item['abstract']}" />
+                <cudl:meta itemprop="url" property="schema:url" content="${canonicalURL}" />
+                <cudl:meta itemprop="name" property="schema:name rdfs:label dcterms:title" content="${title}"/>
+                <cudl:meta itemprop="keywords" property="schema:keywords" name="keywords"  content="${authors}" />
+                <cudl:meta itemprop="keywords" property="schema:keywords" content="${item['abstract']}" />
                 <cudl:meta property="schema:description rdfs:comment dcterms:description"
                            content="${item['abstract']}"/>
                 <c:choose>
                     <c:when test="${not empty thumbnailURL}">
                         <cudl:meta property="schema:image" content="${fullThumbnailURL}" />
-                        <cudl:meta property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
+                        <cudl:meta itemprop="thumbnailUrl" property="schema:thumbnailUrl" content="${fullThumbnailURL}" />
                     </c:when>
                     <c:otherwise>
                         <!-- No thumbnail but we could put a placeholder -->
@@ -40,7 +40,7 @@
                 </c:choose>
 
                 <!-- Tags for general social media, including Facebook -->
-                <cudl:meta property="og:url" content="${canonicalURL}" />
+                <cudl:meta itemprop="mainEntityOfPage" property="og:url" content="${canonicalURL}" />
                 <cudl:meta property="og:type" content="website"/>
                 <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
                 <cudl:meta property="og:title" content="${title}"/>
@@ -61,22 +61,22 @@
                 </c:choose>
 
                 <!-- Tags for Twitter -->
-                <cudl:meta property="twitter:title" content="${title}"/>
-                <cudl:meta property="twitter:description" content="${item.abstractShort}" />
-                <cudl:meta property="twitter:creator" content="@camdiglib" />
-                <cudl:meta property="twitter:site" content="@camdiglib" />
+                <cudl:meta name="twitter:title" content="${title}"/>
+                <cudl:meta name="twitter:description" content="${item.abstractShort}" />
+                <cudl:meta name="twitter:creator" content="@camdiglib" />
+                <cudl:meta name="twitter:site" content="@camdiglib" />
                 <c:choose>
                     <c:when test="${not empty socialIIIFUrl}">
-                        <cudl:meta property="twitter:card" content="summary_large_image"/>
-                        <cudl:meta property="twitter:image" content="${socialIIIFUrl}" />
+                        <cudl:meta name="twitter:card" content="summary_large_image"/>
+                        <cudl:meta name="twitter:image" content="${socialIIIFUrl}" />
                     </c:when>
                     <c:when test="${not empty thumbnailURL}">
-                        <cudl:meta property="twitter:card" content="summary"/>
-                        <cudl:meta property="twitter:image" content="${fullThumbnailURL}" />
+                        <cudl:meta name="twitter:card" content="summary"/>
+                        <cudl:meta name="twitter:image" content="${fullThumbnailURL}" />
                     </c:when>
                     <c:otherwise>
-                        <cudl:meta property="twitter:card" content="summary"/>
-                        <cudl:meta property="twitter:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
+                        <cudl:meta name="twitter:card" content="summary"/>
+                        <cudl:meta name="twitter:image" content="https://cudl.lib.cam.ac.uk/images/index/carousel-treasures.jpg" />
                     </c:otherwise>
                 </c:choose>
 
@@ -290,9 +290,7 @@
                                 <li class="active">Transcription</li>
                             </ol></div>
                             <div class="framediv">
-                            <iframe id="transcriptiondiploframe"
-                                    src="" srcdoc="<html><head></head><body></body></html>">
-                            </iframe>
+                            <iframe id="transcriptiondiploframe" src=""></iframe>
                             </div>
 
                         </div>
@@ -301,9 +299,7 @@
                                 <li class="active">Translation</li>
                             </ol></div>
                             <div class="framediv">
-                            <iframe id="translationframe"
-                                    src="" srcdoc="<html><head></head><body></body></html>">
-                            </iframe>
+                            <iframe id="translationframe" src=""></iframe>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="download">

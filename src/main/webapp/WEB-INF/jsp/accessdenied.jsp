@@ -6,7 +6,7 @@
 <cudl:generic-page pagetype="STANDARD">
     <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Access Denied"/>
 
-    <div class="campl-row campl-content campl-recessed-content">
+    <div id="main_content" class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column12  campl-main-content" id="content">
                 <div class="campl-content-container">

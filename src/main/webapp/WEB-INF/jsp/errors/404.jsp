@@ -6,7 +6,7 @@
 <cudl:generic-page pagetype="STANDARD">
     <cudl:nav activeMenuIndex="${0}" displaySearch="true" title="Page not found"/>
 
-    <div class="campl-row campl-content campl-recessed-content">
+    <div id="main_content" class="campl-row campl-content campl-recessed-content">
         <div class="campl-wrap clearfix">
             <div class="campl-column9  campl-main-content" id="content">
                 <div class="campl-content-container">

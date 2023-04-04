@@ -16,7 +16,7 @@
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <cudl:context-editable-areas>
-                <cudl:editable-area id="indexDiv" filename="index.html"/>
+                <cudl:editable-area id="main_content" filename="index.html"/>
             </cudl:context-editable-areas>
         </cudl:default-context>
     </jsp:attribute>
@@ -32,7 +32,7 @@
             <c:out value="${downtimeWarning}" escapeXml="false"/>
         </c:if>
 
-        <div id="indexDiv">
+        <div id="main_content">
             <c:import charEncoding="UTF-8" url="${contentHTMLURL}/index.html" />
         </div>
     </jsp:body>
