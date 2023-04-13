@@ -17,36 +17,40 @@
 
     <div class="container clearfix">
         <div class="fixed-top">
-            <nav class="row justify-content-between main-nav">
-                <a class="item" href="http://www.cam.ac.uk">
-                    <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
-                </a>
-                <div class="item text-white nav-right-items">
-                    <div class="search">
-                        <a href="/search">
-                            <span class="icon icon-search"></span>
+            <div class="masthead-container">
+                <div class="flex-center">
+                    <nav class="row justify-content-between main-nav">
+                        <a class="item" href="http://www.cam.ac.uk">
+                            <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
+                        </a>
+                        <div class="item text-white nav-right-items">
+                            <div class="search">
+                                <a href="/search">
+                                    <span class="icon icon-search"></span>
+                                </a>
+                            </div>
+                            <div class="dropdown">
+                                <a href="#" id="menuDropdownOpenButton" class="bg-white">
+                                    <span class="icon icon-menu dropbtn"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div id="myDropdown" class="dropdown-content">
+                    <div class="clearfix">
+                        <a href="#" id="menuDropdownCloseButton" class="bg-white">
+                            <span class="closebtn icon"></span>
                         </a>
                     </div>
-                    <div class="dropdown">
-                        <a href="#" id="menuDropdownOpenButton" class="bg-white">
-                            <span class="icon icon-menu dropbtn"></span>
-                        </a>
-                    </div>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/collections/">View all collections</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/help/">Help</a></li>
+                    </ul>
                 </div>
-            </nav>
-            <div id="myDropdown" class="dropdown-content">
-                <div class="clearfix">
-                    <a href="#" id="menuDropdownCloseButton" class="bg-white">
-                        <span class="closebtn icon"></span>
-                    </a>
-                </div>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/collections/">View all collections</a></li>
-                    <li><a href="/search">Search</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/help/">Help</a></li>
-                </ul>
             </div>
         </div>
     </div>

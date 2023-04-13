@@ -21,7 +21,7 @@
     content="asuuZDOIgJTwOZ0EfnrFe1hQ2A7q6uukh5ebEsciiNg" />
 <cudl:meta name="msvalidate.01" content="EF9291052C3CCD9E1AC12147B69C52C2"/>
 
-<cudl:meta name="viewport" content="${(empty viewport) ? \"width=device-width, initial-scale=1.0\" : viewport}"/>
+<cudl:meta name="viewport" content="${(empty viewport) ? \"width=device-width, initial-scale=1.0, minimum-scale=1\" : viewport}"/>
 
 <jsp:invoke fragment="metaTags"/>
 
