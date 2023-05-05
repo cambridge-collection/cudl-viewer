@@ -102,8 +102,8 @@ public final class DefaultItemFactory implements ItemFactory {
             for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
                 JSONObject page = pages.getJSONObject(pageIndex);
                 pageLabels.add(page.getString("label"));
-                if (page.has("IIIFImageURL")) {
-                    pageThumbnailURLs.add(page.getString("IIIFImageURL"));
+                if (page.has("thumbnailImageURL")) {
+                    pageThumbnailURLs.add(page.getString("thumbnailImageURL"));
                 } else {
                     pageThumbnailURLs.add("");
                 }
