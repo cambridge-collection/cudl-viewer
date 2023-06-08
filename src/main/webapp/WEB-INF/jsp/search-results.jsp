@@ -15,7 +15,7 @@
     <jsp:attribute name="queryInfo">
         <form:form modelAttribute="searchForm" class="grid_5" action="/search" method="GET">
 
-            <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search"/>
+            <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search" autofocus="autofocus"/>
             <input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
             <c:forEach items="${form.facets}" var="facet">
                 <%-- FIXME: Should this be using form:input? --%>
