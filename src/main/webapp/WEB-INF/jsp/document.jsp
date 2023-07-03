@@ -218,23 +218,30 @@
                             aria-controls="contents" role="tab" data-toggle="tab">Contents</a></li>
                         <li role="presentation"><a href="#thumbnailstab"
                             aria-controls="thumbnails" role="tab" data-toggle="tab">Thumbnails</a></li>
+                        <li role="presentation"><a href="#transcriptiondiplo"
+                            aria-controls="transcriptiondiplotab" role="tab" data-toggle="tab">Transcription</a></li>
+                        <li role="presentation"><a href="#translation"
+                            aria-controls="translationtab" role="tab" data-toggle="tab">Translation</a></li>
+
+
                         <li class="dropdown" role="presentation"><a id="moreDropDown"
                             class="dropdown-toggle" aria-controls="moreDropDown-contents"
-                            data-toggle="dropdown" href="#"> View more options <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            data-toggle="dropdown" href="#"> More <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                             <ul id="moreDropDown-contents" class="dropdown-menu"
                                 aria-labelledby="moreDropDown" role="menu">
                                 <li><a id="moreinfotab" aria-controls="moreinfo"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#metadata">Item metadata</a></li>
-                                <li><a id="transcriptiondiplotab"
+                                <!-- <li><a id="transcriptiondiplotab"
                                     aria-controls="transcriptiondiplotab" data-toggle="tab"
                                     role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription</a></li>
                                 <li><a id="translationtab" aria-controls="translationtab"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
-                                    </li>
+                                    </li>-->
                                 <li><a id="downloadtab" aria-controls="downloadtab"
                                     data-toggle="tab" role="tab" tabindex="-1" href="#download">Share
                                         </a></li>
+
 
                                 <%-- genizah tagging --%>
                                 <li><a id="taggingtab" aria-controls="taggingtab"
@@ -259,9 +266,8 @@
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
                                         <p>
-                                            Under the 'View more options' menu you can find <a class="show-metadata" href="#">metadata
-                                                about the item</a>, any transcription and translation we have of
-                                            the text and find out about <a class="show-download" href="#">sharing this image</a>.
+                                            Under the 'More' menu you can find <a class="show-metadata" href="#">metadata
+                                                about the item</a>, and information about <a class="show-download" href="#">sharing this image</a>.
                                         </p>
                                     </div>
                                     <div id="zoomRights">
