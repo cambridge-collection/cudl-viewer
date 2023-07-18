@@ -218,9 +218,9 @@
                             aria-controls="contents" role="tab" data-toggle="tab">Contents</a></li>
                         <li role="presentation"><a href="#thumbnailstab"
                             aria-controls="thumbnails" role="tab" data-toggle="tab">Thumbnails</a></li>
-                        <li role="presentation"><a href="#transcriptiondiplo"
+                        <li role="presentation"><a id="transcriptiondiplotab" href="#transcriptiondiplo"
                             aria-controls="transcriptiondiplotab" role="tab" data-toggle="tab">Transcription</a></li>
-                        <li role="presentation"><a href="#translation"
+                        <li role="presentation"><a id="translationtab" href="#translation"
                             aria-controls="translationtab" role="tab" data-toggle="tab">Translation</a></li>
 
 
