@@ -118,7 +118,7 @@
 
     <mime-mapping>
         <extension>css</extension>
-        <mime-type>text/htmlc</mime-type>
+        <mime-type>text/css</mime-type>
     </mime-mapping>
 
     <error-page>
