@@ -116,6 +116,11 @@
         <mime-type>image/x-icon</mime-type>
     </mime-mapping>
 
+    <mime-mapping>
+        <extension>css</extension>
+        <mime-type>text/htmlc</mime-type>
+    </mime-mapping>
+
     <error-page>
         <error-code>404</error-code>
         <location>/errors/404.html</location>

@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box; /* Includes padding and border in total width and height */
+}
+
+/* Cards. Ratio image:text 5:7 */
+
+.card {
+    border-radius: 0px; /* Overrides Bootstrap default rounded corners. Makes card square */
+    box-sizing: border-box;
+    background-color: #106470;
+    height: 150px; /* height: 150px prevents layout from breaking when there's no image */
+}
+
+.card img {
+    height: 150px; /*fits the height of the card container */
+    width: auto; /*intrinsic width */
+    object-fit: cover; /* maintains the aspect-ratio but clips the image to fit */
+
+}
+
+/* card text : max chars to avoid text wrapping into three lines which breaks the layout */
+
+.card-title {
+    font-size: 1.1875em; /*16px equival or 1118.75% */
+    font-weight: 500; /* Medium: between "normal" (400) and "semibold" (600) */
+}
