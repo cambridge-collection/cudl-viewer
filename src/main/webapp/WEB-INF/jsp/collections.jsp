@@ -27,10 +27,10 @@
                 <div class="container bg-white border" id="content">
                     <div id="collectionsDiv">
                         <cudl:page-title title="${pagetitle}"/>
-                        <c:forEach items="${collections}" var="c">
-                            <c:if test="${empty c.parentCollectionId}">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
+                            <c:forEach items="${collections}" var="c">
+                              <c:if test="${empty c.parentCollectionId}">
 
-                                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
                                     <div class="col">
                                         <a href="${fn:escapeXml(c.URL)}" class="collection campl-teaser-img-link">
                                             <div class="card my-2 mx-2 text-white border-0 px-0 py-0">
@@ -41,7 +41,7 @@
                                                                 src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
                                                                 class="img-fluid"/>
 
-                                                    </div>
+                                                     </div>
                                                     <div class="col-7">
                                                         <div class="card-body">
                                                             <h3 class="card-title">
@@ -53,10 +53,9 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-
-                            </c:if>
-                        </c:forEach>
+                              </c:if>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
             </div>
