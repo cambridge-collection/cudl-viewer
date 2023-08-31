@@ -19,7 +19,7 @@
         <div class="fixed-top">
             <div class="masthead-container">
                 <div class="flex-center">
-                    <nav class="row justify-content-between main-nav">
+                    <nav class="justify-content-between main-nav">
                         <a class="item" href="http://www.cam.ac.uk">
                             <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
                         </a>

@@ -1,8 +1,8 @@
 <%@tag description="Navigation for the About section" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
 <!-- side nav -->
-<div class="campl-column3">
-    <div class="campl-tertiary-navigation">
+
+     <div class="tertiary-navigation">
         <div class="campl-tertiary-navigation-structure">
             <ul class="campl-unstyled-list campl-vertical-breadcrumb">
                 <li><a href="/">Cambridge Digital Library<span
@@ -19,5 +19,5 @@
                     </ul></li>
             </ul>
         </div>
-    </div>
-</div>
+     </div>
+

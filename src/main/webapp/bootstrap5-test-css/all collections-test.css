@@ -24,3 +24,16 @@
     font-size: 1.1875em; /*16px equival or 1118.75% */
     font-weight: 500; /* Medium: between "normal" (400) and "semibold" (600) */
 }
+
+/* tertiary navigation classes */
+
+.tertiary-navigation {
+    font-size: 14px;
+    line-height: 20px;
+    border: 1px solid #e4e4e4;
+}
+
+.tertiary-navigation li a {
+    display: inline-block;
+    width: 100%
+}
