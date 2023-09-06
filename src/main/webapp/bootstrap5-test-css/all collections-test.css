@@ -37,3 +37,11 @@
     display: inline-block;
     width: 100%
 }
+/* TO DO
+.card-body:link, .card-body:hover {
+    color: #000000;
+    text-decoration-line: none;
+    background: #6BBBAE;
+
+}
+ */
