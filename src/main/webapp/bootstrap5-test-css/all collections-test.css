@@ -45,3 +45,14 @@
 
 }
  */
+
+/* Carousel indicators on home page : change to dots */
+
+.carousel .carousel-indicators button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
