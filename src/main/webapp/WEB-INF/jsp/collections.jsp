@@ -22,8 +22,8 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="${pagetitle}"/>
 
-        <div id="main_content" class="container bg-white border">
-            <div class="campl-wrap clearfix">
+
+
                 <div class="container bg-white border" id="content">
                     <div id="collectionsDiv">
                         <cudl:page-title title="${pagetitle}"/>
@@ -32,14 +32,14 @@
                               <c:if test="${empty c.parentCollectionId}">
 
                                     <div class="col">
-                                        <a href="${fn:escapeXml(c.URL)}" class="collection campl-teaser-img-link">
+                                        <a href="${fn:escapeXml(c.URL)}">
                                             <div class="card my-2 mx-2 text-white border-0 px-0 py-0">
                                                 <div class="row g-0">
                                                     <div class="col-5">
 
                                                             <img alt=""
                                                                 src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
-                                                                class="img-fluid"/>
+                                                                class="img-link img-fluid"/>
 
                                                      </div>
                                                     <div class="col-7">
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+
     </jsp:body>
 </cudl:generic-page>
 

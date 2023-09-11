@@ -2,6 +2,8 @@
     box-sizing: border-box; /* Includes padding and border in total width and height */
 }
 
+/* Classes for the "View all collections" page. */
+
 /* Cards. Ratio image:text 5:7 */
 
 .card {
@@ -18,12 +20,25 @@
 
 }
 
+.card:link, .card:hover {
+    background: #6BBBAE;
+    color: #000 !important;
+}
+
+.col a:link {
+    text-decoration: none;
+}
+
+
 /* card text : max chars to avoid text wrapping into three lines which breaks the layout */
 
 .card-title {
     font-size: 1.1875em; /*16px equival or 1118.75% */
     font-weight: 500; /* Medium: between "normal" (400) and "semibold" (600) */
+    line-height: 1.5;
 }
+
+/* Classes for the about-nav.tag */
 
 /* tertiary navigation classes */
 
@@ -37,27 +52,18 @@
     display: inline-block;
     width: 100%
 }
-/* TO DO
-.card-body:link, .card-body:hover {
-    color: #000000;
-    text-decoration-line: none;
-    background: #6BBBAE;
 
-}
- */
+/* Classes for the home page */
 
 /* Carousel indicators on home page : change to dots */
-
 .carousel .carousel-indicators button {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    margin: 0 2px;
-    background-color: red; /* #bbb */
-    display: inline-block;
-    transition: background-color 0.6s ease;
-
+    background-color: red; /* using red for testing use "#bbb" on live site */
 }
+
+/* Places carousel indicators under the carousel itself */
  .carousel-indicators {
      bottom: -3rem;
  }
