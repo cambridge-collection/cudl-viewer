@@ -18,7 +18,6 @@
         <%-- Pass through body --%>
         <jsp:doBody/>
 
-        <cudl:cookie-notice/>
         <cudl:footer/>
     </cudl:ie-div>
 </cudl:base-page>
