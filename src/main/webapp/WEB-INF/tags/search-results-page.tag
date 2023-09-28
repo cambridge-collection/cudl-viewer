@@ -12,6 +12,12 @@
 <%@attribute name="resultInfo" required="false" fragment="true" %>
 <%@attribute name="queryHelp" required="false" fragment="true" %>
 
+<!--Links to a temporary directory created just for testing -->
+
+<link type="text/css" href="${pageContext.request.contextPath}/bootstrap5-test-css/bootstrap.min.css" rel="stylesheet">
+<link  type="text/css" href="${pageContext.request.contextPath}/bootstrap5-test-css/all%20collections-test.css" rel="stylesheet">
+<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap5-test-css/bootstrap.bundle.min.js"></script>
+
 <cudl:generic-page pagetype="ADVANCED_SEARCH_RESULTS" title="${title}">
     <jsp:attribute name="pageData">
         <cudl:default-context>
@@ -23,10 +29,10 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="${title}"/>
 
-        <div id="main_content" class="campl-row campl-content campl-recessed-content">
-            <div class="campl-wrap clearfix">
-                <div class="campl-main-content" id="content">
-                    <div class="campl-column4 campl-secondary-content">
+        <div id="main_content" class="container bg-white border">
+
+                <div class="row" id="content">
+                    <div class="col-md-4 campl-secondary-content">
 
                         <div class="searchform box">
 
@@ -99,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="campl-column8 camp-content">
+                    <div class="col-md-8 camp-content">
                         <c:if test="${empty results.results}">
                             <div class="searchexample campl-content-container">
                                 <c:choose>
@@ -122,7 +128,7 @@
                         <div class="pagination toppagination"></div>
                     </div>
                 </div>
-            </div>
+
         </div>
     </jsp:body>
 </cudl:generic-page>
