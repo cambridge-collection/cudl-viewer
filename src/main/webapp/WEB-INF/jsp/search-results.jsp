@@ -13,7 +13,7 @@
 
 <cudl:search-results-page title="Search">
     <jsp:attribute name="queryInfo">
-        <form:form modelAttribute="searchForm" class="grid_5" action="/search" method="GET">
+        <form:form modelAttribute="searchForm" class="" action="/search" method="GET">
 
             <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search" autofocus="autofocus"/>
             <input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
@@ -26,7 +26,7 @@
             </c:forEach>
             <form:input path="fileID" type="hidden" name="fileID" value="${form.fileID}"/>
         </form:form>
-        <div class="altsearchlink grid_5">
+        <div class="altsearchlink">
             <form:form modelAttribute="searchForm" action="/search/advanced/query" method="GET">
                 <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
                 <input class="altsearchlink" type="submit" value="Advanced Search">
