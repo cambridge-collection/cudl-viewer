@@ -15,11 +15,13 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="News"/>
 
-        <div id="main_content" class="campl-row campl-content campl-recessed-content">
-            <div class="campl-wrap clearfix">
-                <cudl:about-nav />
-                <div class="campl-column6  campl-main-content" id="content">
-                    <div class="campl-content-container news_items">
+        <div id="main_content" class="container">
+            <div class="row">
+                <div class="col-md-3">
+                  <cudl:about-nav />
+                </div>
+                <div class="col-md-7 p-auto" id="content">
+                    <div class="news_items">
 
                     <div id="newsDiv">
                         <c:import charEncoding="UTF-8" url="${contentHTMLURL}/news.html" />

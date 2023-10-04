@@ -23,10 +23,10 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="${title}"/>
 
-        <div id="main_content" class="campl-row campl-content campl-recessed-content">
-            <div class="campl-wrap clearfix">
-                <div class="campl-main-content" id="content">
-                    <div class="campl-column4 campl-secondary-content">
+        <div id="main_content" class="container">
+
+                <div class="row" id="content">
+                    <div class="col-md-4 campl-secondary-content">
 
                         <div class="searchform box">
 
@@ -99,7 +99,7 @@
                         </div>
                     </div>
 
-                    <div class="campl-column8 camp-content">
+                    <div class="col-md-8 camp-content">
                         <c:if test="${empty results.results}">
                             <div class="searchexample campl-content-container">
                                 <c:choose>
@@ -122,7 +122,7 @@
                         <div class="pagination toppagination"></div>
                     </div>
                 </div>
-            </div>
+
         </div>
     </jsp:body>
 </cudl:generic-page>
