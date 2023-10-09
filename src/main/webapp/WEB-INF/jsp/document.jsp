@@ -457,7 +457,7 @@
                             </option>
                         </c:forEach>
                     </select>
-                    <button type="button" class="btn btn-default btn-success">Download</button>
+                    <button type="button" class="btn btn-success">Download</button>
                     <button type="button" class="btn btn-default">Cancel</button>
                 </c:if>
 
