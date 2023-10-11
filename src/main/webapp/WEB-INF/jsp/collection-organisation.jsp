@@ -40,12 +40,12 @@
                     </div>
                 </div>
                 <div class="campl-column5 campl-secondary-content ">
-                    <div class="pagination toppagination"></div>
+                    <div id="topPagination" class="pagination"></div>
                     <!-- start of list -->
                     <div id="collections_carousel"
                         class="collections_carousel campl-related-links"></div>
                     <!-- end of list -->
-                    <div class="pagination toppagination"></div>
+                    <div id="bottomPagination" class="pagination"></div>
                 </div>
 
                 <div id="sponsorDiv" class="campl-column12 campl-content-container">
