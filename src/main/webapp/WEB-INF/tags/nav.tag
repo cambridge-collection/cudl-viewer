@@ -20,8 +20,8 @@
             <div class="masthead-container">
                 <div class="flex-center">
                     <nav class="justify-content-between main-nav">
-                        <a class="item" href="http://www.cam.ac.uk">
-                            <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
+                        <a id="dl-logo-link" class="item" href="#">
+                            <div id="dl-logo" class="cam-logo"></div>
                         </a>
                         <div class="item text-white nav-right-items">
                             <div class="search">
@@ -61,7 +61,7 @@
     <div class="container banner">
 
         <div class="cudl-banner">
-            <div class="banner-part"><h1><a href="/">Cambridge Digital Library</a></h1></div>
+            <div class="banner-part"><h1><a id="dl-header-link" href="/"></a></h1></div>
 
         </div>
 
