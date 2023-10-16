@@ -25,6 +25,7 @@ import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.UI;
 import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
 import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
@@ -254,5 +255,11 @@ public class AppConfig {
                                            @Value("${pdf.cache.path}") String cachePath) throws IOException {
 
         return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
+    }
+
+    @Bean (name = "uiThemeBean")
+    public UI getUI(@Value("${dataUIFile}") String uiFilepath) {
+        UIDao uiDao = new UIDao();
+        return uiDao.getUITheme(Paths.get(uiFilepath));
     }
 }

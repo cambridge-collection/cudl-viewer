@@ -4,9 +4,10 @@
 <%@attribute name="class" required="false" type="java.lang.String" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:if test="${fn:length(name) gt 0}">
-    <c:set var = "img" value = "${get_image('logo')}"/>
+    <c:set var = "img" value = "${uiThemeBean.getThemeUI().getImage('logo')}"/>
     <c:choose>
         <c:when test="${fn:length(obj.href) gt 0}">
             <a href="${img.href}" class="${class}">
