@@ -1,0 +1,1283 @@
+{
+  "@type" : "https://schemas.cudl.lib.cam.ac.uk/cudl/ui/v1/json",
+  "theme-name" : "cudl",
+  "theme-data" : {
+    "collections": [
+      {
+        "collection": {
+          "@id": "collections/landscapehistories.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-landscapehistories.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/poultrynotebooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-poultrynotebooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_notebooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_notebooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rgo14.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-rgo14.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_1.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_1.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/schroder.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-schroder.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_plans.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_plans.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/deadbooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-deadbooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rgo4.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-rgo4.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_2.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_2.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/treasures.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-treasures.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_3.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_3.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rabbitnotebooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-rabbitnotebooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/cavendish.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-cavendish.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_drawings.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_drawings.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rgo5.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-rgo5.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/newton.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-newton.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rgo6.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-rgo6.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sweetpeanotebooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sweetpeanotebooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_tomb_photographs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_tomb_photographs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_4.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_4.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_site_photographs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_site_photographs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_5.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_5.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/tov.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-tov.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rcs150.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-rcs150.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/nmm_mss.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-nmm_mss.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_6.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_6.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_small_finds_photographs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_small_finds_photographs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/therisingtide.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-therisingtide.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/nmm_print.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-nmm_print.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_7.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_7.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_bsa_myc.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_bsa_myc.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/newmuseums.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-newmuseums.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae_bsa_sphs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae_bsa_sphs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rogart.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-rogart.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_8.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_8.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/landscapes.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-landscapes.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_9.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_9.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/longitudeessays.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude-longitudeessays.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/pembroke.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-pembroke.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sidneysussex.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sidneysussex.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_10.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_10.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sassoon.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sassoon.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_11.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_11.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_12.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_12.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/maps.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-maps.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_13.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_13.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/chinese.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-chinese.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_14.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_14.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/minganalewis.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-minganalewis.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/casebooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-casebooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_15.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_15.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/darwin_mss.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-darwin_mss.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_16.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_16.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rcs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-rcs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_17.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_17.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_18.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_18.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/lewisgibson.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-lewisgibson.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/longitude.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-longitude.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson_19.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson_19.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/rackham.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-rackham.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/christian.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-christian.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/music.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-music.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/islamic.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-islamic.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/needham.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-needham.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/hebrew.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-hebrew.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/darwinhooker.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-darwinhooker.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/genizah.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-genizah.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sanskrit.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sanskrit.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/japanese.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-japanese.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/peterhouse.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-peterhouse.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/spanishchapbooks.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-spanishchapbooks.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/exhibitions.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-exhibitions.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/royallibrary.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-royallibrary.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/waterloo.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-waterloo.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/downing.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-downing.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/fairbank.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-fairbank.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/michaelides.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-michaelides.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/curiousobjects.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-curiousobjects.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/batesonpunnett.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-batesonpunnett.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/tennyson.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-tennyson.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/montaignelibrary.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-montaignelibrary.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/stjohns.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-stjohns.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/stcatharines.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-stcatharines.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/christs.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-christs.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/queens.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-queens.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/kings.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-kings.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/marshall.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-marshall.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/ras.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-ras.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/scriptorium.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-scriptorium.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/westminster.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-westminster.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/newnham.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-newnham.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/linesofthought.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-linesofthought.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/trinityhall.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-trinityhall.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/civilianinternment.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-civilianinternment.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/batesonarchive.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-batesonarchive.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/cuarchives.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-cuarchives.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/aiit.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-aiit.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sterne.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sterne.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/engineering.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-engineering.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/clare.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-clare.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/universitylibrary.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-universitylibrary.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/codexzacynthius.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-codexzacynthius.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/greekmanuscripts.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-greekmanuscripts.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/skillitercentre.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-skillitercentre.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/mycenae.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-mycenae.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/dorothyneedham.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-dorothyneedham.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/girton.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-girton.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/arthurschnitzler.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-arthurschnitzler.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/caricatures.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-caricatures.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/shahnama.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-shahnama.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/macclesfield.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-macclesfield.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/astronomicalimages.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-astronomicalimages.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/ghostwords.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-ghostwords.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomashobson.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomashobson.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/davidjones.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-davidjones.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/campesino.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-campesino.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/constable.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-constable.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/relhan.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-relhan.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/leopardi.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-leopardi.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/ethiopianmanuscripts.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-ethiopianmanuscripts.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/sandbachtinne.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-sandbachtinne.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/kettlesyard.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-kettlesyard.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/medievalmedicalrecipes.collection.json"
+        },
+        "layout": "virtual",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-medievalmedicalrecipes.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/southernafricancollections.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-southernafricancollections.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/kingsrarebooksandmanuscripts.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-kingsrarebooksandmanuscripts.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/thomasgray.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-thomasgray.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/cambridgebindings.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/Collections-Cambridge-Bindings-390x400.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/herbarium.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "./pages/images/collectionsView/collection-blank.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/digitalthessaly.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "./pages/images/collectionsView/collection-blank.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/explosivewace.collection.json"
+        },
+        "layout": "organisation",
+        "thumbnail": {
+          "@id": "./pages/images/collectionsView/collection-blank.jpg"
+        }
+      },
+      {
+        "collection": {
+          "@id": "collections/facultyofclassics.collection.json"
+        },
+        "layout": "parent",
+        "thumbnail": {
+          "@id": "pages/images/collectionsView/collection-facultyofclassics.jpg"
+        }
+      }
+    ],
+    "pages": [
+      {
+        "name": "home",
+        "html": {
+          "@id": "pages/html/index.html"
+        }
+      },
+      {
+        "name": "about",
+        "html": {
+          "@id": "pages/html/about-main.html"
+        }
+      },
+      {
+        "name": "about-main-side",
+        "html": {
+          "@id": "pages/html/about-side.html"
+        }
+      },
+      {
+        "name": "about-community",
+        "html": {
+          "@id": "pages/html/about-main.html"
+        }
+      },
+      {
+        "name": "about-news",
+        "html": {
+          "@id": "pages/html/news.html"
+        }
+      },
+      {
+        "name": "about-contributors",
+        "html": {
+          "@id": "pages/html/contributors.html"
+        }
+      },
+      {
+        "name": "about-terms-conditions",
+        "html": {
+          "@id": "pages/html/terms.html"
+        }
+      },
+      {
+        "name": "help",
+        "html": {
+          "@id": "pages/html/help.html"
+        }
+      }
+    ]
+  },
+  "theme-ui": {
+      "css": [
+          "ui/theme/css/theme1.css",
+          "ui/theme/css/theme2.css"
+      ],
+      "js": [
+          "ui/theme/js/js1.js",
+          "ui/theme/js/js2.js"
+      ],
+      "images": [
+          {
+              "logo": {
+                    "src": "ui/theme/images/logo.png",
+                    "alt": "This is a lovely cat.",
+                    "href": "https://genrandom.com/cats/"
+              },
+              "logo_additional": {
+                  "src": "ui/theme/images/additional-800w.jpg",
+                  "alt": "Alt text",
+                  "imageset": [
+                      {
+                          "media": "(max-width: 799px)",
+                          "src": "ui/theme/images/additional-799w.jpg"
+                      },
+                      {
+                          "media": "(min-width: 800px)",
+                          "src": "ui/theme/images/additional-800w.jpg"
+                      }
+                  ]
+              },
+              "some-other-global-ui-image": {
+                  "src": "ui/theme/images/something-else-global.jpg",
+                  "alt": "Alt text"
+              }
+          }
+      ]
+  }
+}

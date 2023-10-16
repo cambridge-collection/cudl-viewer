@@ -1,8 +1,11 @@
 package ulcambridge.foundations.viewer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * This class represents an theme image as defined in the cudl.ui.json5 file.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UIThemeImage {
     protected String src;
     protected String alt;
@@ -11,10 +14,7 @@ public class UIThemeImage {
         ignore ImageSet at this time.
      */
 
-    public UIThemeImage(String src, String alt, String href) {
-        this.src = src;
-        this.alt = alt;
-        this.href = href;
+    public UIThemeImage() {
     }
 
     public String getSrc() {

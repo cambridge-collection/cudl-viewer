@@ -1,17 +1,17 @@
 package ulcambridge.foundations.viewer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.HashMap;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UITheme {
     protected List<String> css;
     protected List<String> js;
     protected HashMap<String,UIThemeImage> images;
 
-    public UITheme(List<String> css, List<String> js, HashMap<String,UIThemeImage> images) {
-        this.css = css;
-        this.js = js;
-        this.images = images;
+    public UITheme() {
     }
 
     public List<String> getCss() {
