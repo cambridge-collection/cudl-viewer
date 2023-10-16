@@ -137,6 +137,9 @@ public class DispatchServletConfig
             registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("/favicon.ico");
 
+            registry.addResourceHandler("/themeui/**")
+                .addResourceLocations(resolve("file:${dataUIThemeResources}/"));
+
             addViewerUiAssets(registry);
             addEmbeddedViewerAssets(registry);
         }

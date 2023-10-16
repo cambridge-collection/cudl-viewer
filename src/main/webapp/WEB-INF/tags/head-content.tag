@@ -38,7 +38,7 @@
 
 <cudl-frontend:fontend-resources pagetype="${pagetype}"/>
 
-<cudl:ui-js/>
+<%--<cudl:ui-js/>--%>
 <cudl:ui-css/>
 
 <jsp:doBody/>

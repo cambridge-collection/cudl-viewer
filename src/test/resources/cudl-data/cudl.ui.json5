@@ -1252,32 +1252,32 @@
           "ui/theme/js/js1.js",
           "ui/theme/js/js2.js"
       ],
-      "images": [
-          {
-              "logo": {
-                    "src": "ui/theme/images/logo.png",
-                    "alt": "This is a lovely cat.",
-                    "href": "https://genrandom.com/cats/"
-              },
-              "logo_additional": {
-                  "src": "ui/theme/images/additional-800w.jpg",
-                  "alt": "Alt text",
-                  "imageset": [
-                      {
-                          "media": "(max-width: 799px)",
-                          "src": "ui/theme/images/additional-799w.jpg"
-                      },
-                      {
-                          "media": "(min-width: 800px)",
-                          "src": "ui/theme/images/additional-800w.jpg"
-                      }
-                  ]
-              },
-              "some-other-global-ui-image": {
-                  "src": "ui/theme/images/something-else-global.jpg",
-                  "alt": "Alt text"
-              }
+      "images":
+      {
+          "logo": {
+                "src": "ui/theme/images/logo.png",
+                "alt": "This is a lovely cat.",
+                "href": "https://genrandom.com/cats/"
+          },
+          "logo_additional": {
+              "src": "ui/theme/images/additional-800w.jpg",
+              "alt": "Alt text",
+              "imageset": [
+                  {
+                      "media": "(max-width: 799px)",
+                      "src": "ui/theme/images/additional-799w.jpg"
+                  },
+                  {
+                      "media": "(min-width: 800px)",
+                      "src": "ui/theme/images/additional-800w.jpg"
+                  }
+              ]
+          },
+          "some-other-global-ui-image": {
+              "src": "ui/theme/images/something-else-global.jpg",
+              "alt": "Alt text"
           }
-      ]
+      }
+
   }
 }

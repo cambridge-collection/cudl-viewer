@@ -6,8 +6,13 @@ import ulcambridge.foundations.viewer.model.UI;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class UIDao {
+
+    public UI getUITheme(String jsonFilepath) {
+        return getUITheme(Paths.get(jsonFilepath));
+    }
 
     public UI getUITheme(Path jsonFilepath) {
 
