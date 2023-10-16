@@ -1,5 +1,7 @@
 <%@tag description="The standard project light navigation header" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
+<%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+
 <a href="#primary-nav" class="campl-skipTo">skip to primary
         navigation</a>
 <a href="#content" class="campl-skipTo">skip to content</a>
@@ -8,10 +10,11 @@
     <div class="campl-wrap clearfix">
         <div class="campl-header-container campl-column8"
             id="global-header-controls">
-            <a href="http://www.cam.ac.uk" class="campl-main-logo"> <img
-                alt="University of Cambridge"
-                src="/img/interface/main-logo-small.png" />
-            </a>
+            <%-- class attr added because it's presently needed for the site logo
+                 There's no reason it should be once the css is refactored
+            --%>
+            <cudl:ui-image name="logo"  class="campl-main-logo"/>
+
 
             <ul
                 class="campl-unstyled-list campl-horizontal-navigation campl-global-navigation clearfix">
