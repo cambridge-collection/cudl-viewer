@@ -9,6 +9,7 @@ import org.junit.runners.JUnit4;
 import org.springframework.core.io.ClassPathResource;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
+import ulcambridge.foundations.viewer.model.UI;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,6 +34,8 @@ public class IIIFPresentationTest {
         "person",
         "aut"
     );
+
+    private static final UI themeUI = new UI();
 
     private Object parseResource(String path) throws IOException {
         try (InputStreamReader in = new InputStreamReader(new ClassPathResource(path).getInputStream())) {
@@ -66,8 +69,8 @@ public class IIIFPresentationTest {
             "/v1/transcription/newton/diplomatic/external/NATP00093/NATP00100-p058r/NATP00100-p058r");
 
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test", IIIF_URL
-        );
+            item, "http://base.test", "http://service.test", IIIF_URL,
+            themeUI);
         JSONObject output = presentation.outputJSON();
         JSONObject otherContentItem =
             output.getJSONArray("sequences").getJSONObject(0).getJSONArray("canvases").getJSONObject(110)
@@ -98,8 +101,8 @@ public class IIIFPresentationTest {
             (JSONObject) parseResource("cudl-data/MS-ADD-04004.json")
         );
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test", IIIF_URL
-        );
+            item, "http://base.test", "http://service.test", IIIF_URL,
+            themeUI);
 
         JSONObject output = presentation.outputJSON();
         assertEquals("http://iiif.io/api/presentation/2/context.json", output.getString("@context"));
@@ -167,8 +170,8 @@ public class IIIFPresentationTest {
             (JSONObject) parseResource("cudl-data/MS-ADD-01809.json")
         );
         IIIFPresentation presentation = new IIIFPresentation(
-            item, "http://base.test", "http://service.test", IIIF_URL
-        );
+            item, "http://base.test", "http://service.test", IIIF_URL,
+            themeUI);
 
         // TODO: use Logback backend for easy log assertions
         JSONObject output = presentation.outputJSON();

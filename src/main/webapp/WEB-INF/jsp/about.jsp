@@ -1,6 +1,10 @@
 <%@page autoFlush="true" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD">
     <jsp:attribute name="pageData">
@@ -13,7 +17,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing the Cambridge Digital Library"/>
+        <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing ${defaultTitle}"/>
         <div id="main_content" class="container">
 
                 <div class="row">

@@ -5,8 +5,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.model.Item;
+import ulcambridge.foundations.viewer.model.UI;
+import ulcambridge.foundations.viewer.model.UIThemeImage;
 
 import java.net.URI;
 import java.util.*;
@@ -34,16 +39,24 @@ public class IIIFPresentation {
     private final String servicesURL;
     private final URI iiifImageServer;
 
-    public IIIFPresentation(Item item, String baseURL, String servicesURL, URI iiifImageServer) throws JSONException {
+    @Value("${iiifpres.attribution}")
+    String defaultAttribution;
+
+    private final UI themeUI;
+
+    public IIIFPresentation(Item item, String baseURL, String servicesURL, URI iiifImageServer, UI themeUI) throws JSONException {
+
         Assert.notNull(item, "item is required");
         Assert.notNull(baseURL, "baseURL is required");
         Assert.notNull(servicesURL, "servicesURL is required");
         Assert.notNull(iiifImageServer, "iiifImageServer is required");
+        Assert.notNull(themeUI, "UI is required");
 
         id = item.getId();
         this.baseURL = baseURL;
         this.servicesURL = servicesURL;
         this.iiifImageServer = iiifImageServer;
+        this.themeUI = themeUI;
 
         // TODO restrict image server to IIIFEnabled items
         // TODO transcriptions
@@ -91,18 +104,24 @@ public class IIIFPresentation {
         // translate links in description
         description = description.replaceAll(
             "<a href='' onclick='store.loadPage\\(([0-9]+)\\);return false;'>",
-            "<a href='http://cudl.lib.cam.ac.uk/view/" + id + "/$1'>"
+            "<a href='"+baseURL+"/view/" + id + "/$1'>"
         );
 
         // navDate?
         // license
-        attribution = "Provided by Cambridge University Library. ";
+        attribution = "";
+        if (defaultAttribution!=null) { attribution += defaultAttribution+" "; }
         if (metadataObject.has("displayImageRights")) { attribution += metadataObject.get("displayImageRights")+ "  "; }
         if (metadataObject.has("downloadImageRights")) { attribution += metadataObject.get("downloadImageRights")+ "  "; }
         if (metadataObject.has("pdfRights")) { attribution += metadataObject.get("pdfRights")+ " "; }
         if (metadataObject.has("metadataRights")) { attribution += metadataObject.get("metadataRights"); }
 
-        logoURL = baseURL + "/img/cu_logo.png";
+        String logo = "";
+        if (this.themeUI.getThemeUI()!=null && this.themeUI.getThemeUI().getImage("logo")!=null) {
+            UIThemeImage logoImage = themeUI.getThemeUI().getImage("logo");
+            logo = baseURL + logoImage.getSrc();
+        }
+        logoURL = logo;
 
         // seeAlso (source metadata)
         // within (collection?)
