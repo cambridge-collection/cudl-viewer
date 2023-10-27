@@ -39,9 +39,6 @@ public class IIIFPresentation {
     private final String servicesURL;
     private final URI iiifImageServer;
 
-    @Value("${iiifpres.attribution}")
-    String defaultAttribution;
-
     private final UI themeUI;
 
     public IIIFPresentation(Item item, String baseURL, String servicesURL, URI iiifImageServer, UI themeUI) throws JSONException {
@@ -110,6 +107,7 @@ public class IIIFPresentation {
         // navDate?
         // license
         attribution = "";
+        String defaultAttribution = this.themeUI.getThemeUI().getAttribution();
         if (defaultAttribution!=null) { attribution += defaultAttribution+" "; }
         if (metadataObject.has("displayImageRights")) { attribution += metadataObject.get("displayImageRights")+ "  "; }
         if (metadataObject.has("downloadImageRights")) { attribution += metadataObject.get("downloadImageRights")+ "  "; }

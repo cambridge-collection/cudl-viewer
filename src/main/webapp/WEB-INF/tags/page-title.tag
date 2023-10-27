@@ -6,7 +6,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
 <c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <div class="pagetitle ${additionalClasses}">

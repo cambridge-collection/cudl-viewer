@@ -1,9 +1,6 @@
 <%@tag description="Navigation for the About section" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
-<c:set var="defaultTitle" value="${defaultTitle}"/>
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
 
 <!-- side nav -->
 

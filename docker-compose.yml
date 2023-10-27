@@ -9,6 +9,7 @@ services:
       - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
       - ${CUDL_VIEWER_DATA:-../dl-data-samples/processed-data/cudl-data/}:/srv/cudl-viewer/cudl-data/
       - ${CUDL_VIEWER_CONTENT:-../dl-data-samples/processed-data/cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
+      - ${CUDL_VIEWER_CONTENT_UI:-../dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
     ports:
       - "8888:8080"
     depends_on:

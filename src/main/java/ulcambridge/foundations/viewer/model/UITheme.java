@@ -12,6 +12,9 @@ public class UITheme {
     protected List<String> css;
     protected List<String> js;
     protected HashMap<String,UIThemeImage> images;
+    protected String title;
+    protected String description;
+    protected String attribution;
 
     public UITheme() {
     }
@@ -59,5 +62,29 @@ public class UITheme {
 
     public UIThemeImage getImage(String name) {
         return images.get(name);
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAttribution() {
+        return attribution;
+    }
+
+    public void setAttribution(String attribution) {
+        this.attribution = attribution;
     }
 }

@@ -12,7 +12,7 @@
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
 <c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <div class="content main-nav-section ${(activeMenuIndex == 0) ? 'home' : ''}">

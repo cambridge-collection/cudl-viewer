@@ -4,7 +4,7 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
 <c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD">
