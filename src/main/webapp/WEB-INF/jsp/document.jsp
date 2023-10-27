@@ -7,7 +7,10 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
 <c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}"/>
@@ -42,7 +45,7 @@
                 <!-- Tags for general social media, including Facebook -->
                 <cudl:meta itemprop="mainEntityOfPage" property="og:url" content="${canonicalURL}" />
                 <cudl:meta property="og:type" content="website"/>
-                <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
+                <cudl:meta property="og:site_name" content="${defaultTitle}" />
                 <cudl:meta property="og:title" content="${title}"/>
                 <cudl:meta property="og:description" content="${item.abstractShort}" />
                 <cudl:meta property="og:locale" content="en_GB"/>
@@ -125,7 +128,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div id="container">
+        <div id="container" class="document-page">
 
             <!--  hidden section for the search engines to index -->
             <div style="display: none">
@@ -140,9 +143,7 @@
                 <div class="container">
                     <div class="navbar-header">
 
-                        <a href="/"><img id="cam-logo" class="pull-left"
-                            src="/img/documentView/cudl-logo-1x.png"
-                            alt="Logo for Cambridge University" title="Cambridge University"></a>
+                        <cudl:ui-image name="logo_document_page" cssClass="pull-left document-cam-logo-left" id="cam-logo"/>
 
                         <div class="cudl-viewer-buttons-pagination">
                             <button id="${textDirectionRightToLeft ? 'nextPage' : 'prevPage'}" class="cudl-btn fa fa-arrow-left"
@@ -154,10 +155,7 @@
                             <br />
                         </div>
 
-                        <a href="http://www.lib.cam.ac.uk"><img id="ul-logo"
-                            class="pull-right" src="/img/header/ULLogowhite.gif"
-                            alt="Logo for Cambridge University Library"
-                            title="Cambridge University Library"></a>
+                        <cudl:ui-image name="logo_document_page_right" cssClass="pull-right document-cam-logo-right" id="ul-logo"/>
 
                     </div>
                 </div>

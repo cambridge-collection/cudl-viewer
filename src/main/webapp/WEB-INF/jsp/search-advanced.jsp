@@ -172,7 +172,7 @@
                                             <form:label class="right" path="location">Location</form:label>
                                         </div>
                                         <div class="col-md-10">
-                                            <span class="hint--right" data-hint="Search for items in a physical location, e.g. Cambridge University Library">
+                                            <span class="hint--right" data-hint="Search for items in a physical location, e.g. University Library">
                                                 <form:input path="location" type="text" size="35" value="" name="location" />
                                             </span>
                                         </div>

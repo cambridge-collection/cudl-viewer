@@ -8,8 +8,10 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:set var="defaultTitle" value="Cambridge Digital Library"/>
+<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <c:set var = "uriArray" value = "${fn:split(requestScope['javax.servlet.forward.request_uri'],'/,')}"/>
 <c:if test="${fn:length(uriArray) gt 0}">

@@ -10,8 +10,10 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:set var="defaultTitle" value="Cambridge Digital Library"/>
+<spring:eval expression="@environment.getProperty('default.title')" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <div class="content main-nav-section ${(activeMenuIndex == 0) ? 'home' : ''}">
 
@@ -20,9 +22,10 @@
             <div class="masthead-container">
                 <div class="flex-center">
                     <nav class="justify-content-between main-nav">
-                        <a id="dl-logo-link" class="item" href="#">
-                            <div id="dl-logo" class="cam-logo"></div>
-                        </a>
+                        <cudl:ui-image name="logo" cssClass="cam-logo" />
+<%--                        <a id="dl-logo-link" class="item" href="${themeUI.getImage("logo").src}">--%>
+<%--                            <div id="dl-logo" class="cam-logo"></div>--%>
+<%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
                                 <a href="/search">
@@ -61,7 +64,7 @@
     <div class="container banner">
 
         <div class="cudl-banner">
-            <div class="banner-part"><h1><a id="dl-header-link" href="/"></a></h1></div>
+            <div class="banner-part"><h1><a id="dl-header-link" href="/">${defaultTitle}</a></h1></div>
 
         </div>
 
