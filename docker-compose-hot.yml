@@ -34,3 +34,12 @@ services:
       POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
     ports:
       - ${CUDL_DB_HOST_PORT:-0}:5432
+
+  # dropzone is where you can put TIFFS or JPGs for automatic conversion
+  iipsrv:
+    image: klokantech/iiifserver-iipimage-jpeg2000
+    ports:
+      - 1114:80
+    volumes:
+      - ./docker/iiif/jp2:/data/
+      - ./docker/iiif/dropzone:/dropzone/

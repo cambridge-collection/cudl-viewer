@@ -260,7 +260,7 @@ public class AppConfig {
     }
 
     @Bean (name = "uiThemeBean")
-    //@RequestScope // temporary for demo
+    @RequestScope // temporary for demo
     public UI getUI(@Value("${dataUIFile}") String uiFilepath) {
         UIDao uiDao = new UIDao();
         return uiDao.getUITheme(Paths.get(uiFilepath));
