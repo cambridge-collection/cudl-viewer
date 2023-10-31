@@ -17,6 +17,7 @@ services:
       - ${CUDL_VIEWER_DATA:-../dl-data-samples/processed-data/cudl-data/}:/srv/cudl-viewer/cudl-data/
       - ${CUDL_VIEWER_CONTENT:-../dl-data-samples/processed-data/cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
       - ${CUDL_VIEWER_CONTENT_UI:-../dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
+      - ${CUDL_VIEWER_CONTENT_DATA:-../dl-data-samples/processed-data/cudl-data/sample.dl-dataset.json}:/srv/cudl-viewer/cudl-data/cudl.dl-dataset.json
     ports:
       - ${CUDL_VIEWER_HOST_PORT:-8888}:8080
     depends_on:

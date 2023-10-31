@@ -22,7 +22,6 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
 import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
@@ -172,8 +171,8 @@ public class AppConfig {
             }
             return dir;
         }
-
     }
+
 
     @Configuration
     @Profile("!test")
@@ -260,9 +259,19 @@ public class AppConfig {
     }
 
     @Bean (name = "uiThemeBean")
-    @RequestScope // temporary for demo
     public UI getUI(@Value("${dataUIFile}") String uiFilepath) {
         UIDao uiDao = new UIDao();
         return uiDao.getUITheme(Paths.get(uiFilepath));
     }
+
+    @Bean (name = "collectionDaoBean")
+    @Profile("!test")
+    @Primary
+    public CollectionsDao getCollectionDao(@Value("${datasetFile}") String datasetFile,
+                                           @Value("${dataDirectory}") String dataDirectory,
+                                           @Qualifier("uiThemeBean") UI ui) {
+
+        return new CollectionsJSONDao(datasetFile,dataDirectory,ui);
+    }
+
 }

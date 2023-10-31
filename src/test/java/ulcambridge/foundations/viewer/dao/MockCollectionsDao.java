@@ -33,17 +33,12 @@ public class MockCollectionsDao implements CollectionsDao {
     }
 
     @Override
-    public int getCollectionsRowCount() {
+    public int getTotalNumberOfCollections() {
         return 0;
     }
 
     @Override
-    public int getItemsInCollectionsRowCount() {
-        return 0;
-    }
-
-    @Override
-    public int getItemsRowCount() {
+    public int getTotalNumberOfItems() {
         return 0;
     }
 

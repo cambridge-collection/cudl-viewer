@@ -10,11 +10,9 @@ public interface CollectionsDao {
 
     public Collection getCollection(String collectionId);
 
-    public int getCollectionsRowCount();
+    public int getTotalNumberOfCollections();
 
-    public int getItemsInCollectionsRowCount();
-
-    public int getItemsRowCount();
+    public int getTotalNumberOfItems();
 
     public List<String> getCollectionId(String itemId);
 

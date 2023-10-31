@@ -69,19 +69,13 @@ public class CollectionsDBDao implements CollectionsDao {
     }
 
     @Override
-    public int getCollectionsRowCount() {
+    public int getTotalNumberOfCollections() {
         final String query = "SELECT count(*) FROM collections";
         return jdbcTemplate.queryForObject(query, Integer.class);
     }
 
     @Override
-    public int getItemsInCollectionsRowCount() {
-        final String query = "SELECT count(*) FROM itemsincollection";
-        return jdbcTemplate.queryForObject(query, Integer.class);
-    }
-
-    @Override
-    public int getItemsRowCount() {
+    public int getTotalNumberOfItems() {
         final String query = "SELECT count(*) FROM items";
         return jdbcTemplate.queryForObject(query, Integer.class);
     }

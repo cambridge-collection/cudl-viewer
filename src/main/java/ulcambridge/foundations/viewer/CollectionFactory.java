@@ -24,7 +24,7 @@ public class CollectionFactory {
     private CollectionsDao collectionsDao;
     private static int collectionsRowCount;
     private static int itemsRowCount;
-    private static int itemsinCollectionRowCount;
+   // private static int itemsinCollectionRowCount;
     private static Set<String> allItemIds;
     private final String cachingEnabled;
     private final Path jsonDirPath;
@@ -83,9 +83,8 @@ public class CollectionFactory {
             c.setSubCollections(getSubCollections(c));
         }
         Collections.sort(rootCollections);
-        collectionsRowCount = collectionsDao.getCollectionsRowCount();
-        itemsRowCount = collectionsDao.getItemsRowCount();
-        itemsinCollectionRowCount = collectionsDao.getItemsInCollectionsRowCount();
+        collectionsRowCount = collectionsDao.getTotalNumberOfCollections();
+        itemsRowCount = collectionsDao.getTotalNumberOfItems();
 
     }
 
@@ -151,10 +150,6 @@ public class CollectionFactory {
 
     public int getItemsRowCount() {
         return itemsRowCount;
-    }
-
-    public int getItemsInCollectionsRowCount() {
-        return itemsinCollectionRowCount;
     }
 
     private boolean existsJSON(String id) {

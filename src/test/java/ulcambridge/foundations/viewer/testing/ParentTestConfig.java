@@ -84,9 +84,8 @@ public class ParentTestConfig {
     public CollectionsDao emptyCollectionsDao(ApplicationContext context) {
         return registerResettableMock(context, CollectionsDao.class, collectionsDao -> {
             doReturn(Collections.emptyList()).when(collectionsDao).getCollectionIds();
-            doReturn(0).when(collectionsDao).getCollectionsRowCount();
-            doReturn(0).when(collectionsDao).getItemsRowCount();
-            doReturn(0).when(collectionsDao).getItemsInCollectionsRowCount();
+            doReturn(0).when(collectionsDao).getTotalNumberOfCollections();
+            doReturn(0).when(collectionsDao).getTotalNumberOfItems();
         });
     }
 

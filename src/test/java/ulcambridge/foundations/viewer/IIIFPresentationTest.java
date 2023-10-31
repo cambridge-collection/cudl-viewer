@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.UI;
+import ulcambridge.foundations.viewer.model.UIThemeData;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -35,7 +36,7 @@ public class IIIFPresentationTest {
         "aut"
     );
 
-    private static final UI themeUI = new UI();
+    private static final UI themeUI = new UI("","", null,null);
 
     private Object parseResource(String path) throws IOException {
         try (InputStreamReader in = new InputStreamReader(new ClassPathResource(path).getInputStream())) {
