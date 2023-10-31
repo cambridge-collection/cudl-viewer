@@ -13,21 +13,7 @@ services:
       - ${CUDL_VIEWER_CONTENT_DATA:-../dl-data-samples/processed-data/cudl-data/sample.dl-dataset.json}:/srv/cudl-viewer/cudl-data/cudl.dl-dataset.json
     ports:
       - "8888:8080"
-    depends_on:
-      - cudl-db
-  cudl-db:
-    build:
-      context: .
-      dockerfile: docker/db/Dockerfile
-      args:
-        DBPATH: ${DBPATH:-./docker/db/dl-data-samples/processed-data/database-snapshots}
-    restart: always
-    environment:
-      POSTGRES_USER: cudl
-      POSTGRES_DB: cudl
-      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
-    ports:
-      - ${CUDL_DB_HOST_PORT:-0}:5432
+
   iipsrv:
     image: klokantech/iiifserver-iipimage-jpeg2000
     ports:

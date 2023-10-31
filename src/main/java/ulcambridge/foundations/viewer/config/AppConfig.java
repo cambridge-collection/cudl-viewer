@@ -131,8 +131,8 @@ public class AppConfig {
         }
 
         @Bean(name = {ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT})
-        public DefaultItemFactory defaultItemFactory(ItemStatusOracle itemStatusOracle) {
-            return new DefaultItemFactory(itemStatusOracle);
+        public DefaultItemFactory defaultItemFactory() {
+            return new DefaultItemFactory();
         }
 
         @Import(ImageURLResolution.class)
@@ -148,11 +148,11 @@ public class AppConfig {
             }
         }
 
-        @Autowired
-        @Bean
-        public ItemStatusOracle itemStatusOracle(JdbcTemplate db) {
-            return new DatabaseItemStatusOracle(db, false, false);
-        }
+//        @Autowired
+//        @Bean
+//        public ItemStatusOracle itemStatusOracle(JdbcTemplate db) {
+//            return new DatabaseItemStatusOracle(db, false, false);
+//        }
 
         @Autowired
         @Bean

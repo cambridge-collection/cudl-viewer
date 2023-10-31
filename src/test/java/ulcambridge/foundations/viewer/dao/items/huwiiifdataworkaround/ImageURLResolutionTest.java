@@ -14,7 +14,6 @@ import org.springframework.test.context.ContextHierarchy;
 import ulcambridge.foundations.viewer.config.AppConfig;
 import ulcambridge.foundations.viewer.dao.DefaultItemFactory;
 import ulcambridge.foundations.viewer.dao.ItemFactory;
-import ulcambridge.foundations.viewer.dao.ItemStatusOracle;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.testing.BaseCUDLApplicationContextTest;
 
@@ -77,17 +76,17 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
 
     @Import(AppConfig.ItemsConfig.ItemRewritingConfig.class)
     public static class Config {
-        @Bean
-        public ItemStatusOracle itemStatusOracle() {
-            ItemStatusOracle itemStatusOracle = mock(ItemStatusOracle.class);
-            doReturn(false).when(itemStatusOracle).isTaggingEnabled(any());
-            doReturn(false).when(itemStatusOracle).isIIIFEnabled(any());
-            return itemStatusOracle;
-        }
+//        @Bean
+//        public ItemStatusOracle itemStatusOracle() {
+//            ItemStatusOracle itemStatusOracle = mock(ItemStatusOracle.class);
+//            doReturn(false).when(itemStatusOracle).isTaggingEnabled(any());
+//            doReturn(false).when(itemStatusOracle).isIIIFEnabled(any());
+//            return itemStatusOracle;
+//        }
 
         @Bean(name = DECORATED_ITEM_FACTORY_PARENT)
-        public ItemFactory parentItemFactory(ItemStatusOracle itemStatusOracle) {
-            return new DefaultItemFactory(itemStatusOracle);
+        public ItemFactory parentItemFactory() {
+            return new DefaultItemFactory();
         }
     }
 

@@ -20,11 +20,11 @@ import java.util.List;
 public final class DefaultItemFactory implements ItemFactory {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultItemFactory.class);
 
-    private final ItemStatusOracle itemStatusOracle;
+    //private final ItemStatusOracle itemStatusOracle;
 
-    public DefaultItemFactory(ItemStatusOracle itemStatusOracle) {
-        Assert.notNull(itemStatusOracle, "itemStatusOracle is required");
-        this.itemStatusOracle = itemStatusOracle;
+    public DefaultItemFactory() {
+      //  Assert.notNull(itemStatusOracle, "itemStatusOracle is required");
+      //  this.itemStatusOracle = itemStatusOracle;
     }
 
     public Item itemFromJSON(String itemId, JSONObject itemJson) {
@@ -144,9 +144,11 @@ public final class DefaultItemFactory implements ItemFactory {
 
         return new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
             itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
-            pageLabels, pageThumbnailURLs, this.itemStatusOracle.isIIIFEnabled(itemId),
-            this.itemStatusOracle.isTaggingEnabled(itemId), itemJson);
+            pageLabels, pageThumbnailURLs, true,
+            false, itemJson);
 
+        // NOTE IIIFEnabled is always true
+        // tagging enabled is always false
     }
 
     private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
