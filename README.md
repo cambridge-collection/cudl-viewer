@@ -157,7 +157,14 @@ $ mvn release:perform
 Once the release has been tagged you can upload this version to our internal s3 repo
 which is where the code is deployed from using Puppet.
 
-First ensure that you have the aws credentials in your ~/.m2/settings.xml
+You first need to log into AWS console (account cul-main) and ensure you have a user
+in the group "CUDL-MAVEN-RELEASES-s3".  This will ensure that you have permission to write
+to our s3 maven repository.
+
+Once you have an account you should create an access key for it in the section
+IAM -> <your account> -> Security Credentials -> Access Keys.
+
+Then ensure that you have the aws credentials in your ~/.m2/settings.xml
 
 ```
   <servers>
@@ -174,7 +181,7 @@ First ensure that you have the aws credentials in your ~/.m2/settings.xml
   </servers>
 ```
 
-Then we need to delete the tag (local only) so that we can run perform again
+After, we need to delete the tag (local only) so that we can run perform again
 to publish the code to another repository.  You then need to input the same information
 again (same tag name etc).
 
