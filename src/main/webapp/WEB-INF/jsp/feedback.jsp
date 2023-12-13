@@ -5,8 +5,12 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<cudl:base-page title="Cambridge Digital Library - Feedback"
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
+
+<cudl:base-page title="${defaultTitle} - Feedback"
                     pagetype="FEEDBACK">
 
     <div class="campl-row campl-content">

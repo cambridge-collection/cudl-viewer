@@ -7,7 +7,10 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 <c:set var="title" value="${organisationalCollection.title} : ${item.title}"/>
 <c:set var="authors" value="${cudlfn:join(item.authorNames, ', ')}"/>
 <c:set var="iiifManifestURL" value="${rootURL}/iiif/${item.id}"/>
@@ -42,7 +45,7 @@
                 <!-- Tags for general social media, including Facebook -->
                 <cudl:meta itemprop="mainEntityOfPage" property="og:url" content="${canonicalURL}" />
                 <cudl:meta property="og:type" content="website"/>
-                <cudl:meta property="og:site_name" content="Cambridge Digital Library" />
+                <cudl:meta property="og:site_name" content="${defaultTitle}" />
                 <cudl:meta property="og:title" content="${title}"/>
                 <cudl:meta property="og:description" content="${item.abstractShort}" />
                 <cudl:meta property="og:locale" content="en_GB"/>
@@ -125,7 +128,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div id="container">
+        <div id="container" class="document-page">
 
             <!--  hidden section for the search engines to index -->
             <div style="display: none">
@@ -140,9 +143,7 @@
                 <div class="container">
                     <div class="navbar-header">
 
-                        <a href="/"><img id="cam-logo" class="pull-left"
-                            src="/img/documentView/cudl-logo-1x.png"
-                            alt="Logo for Cambridge University" title="Cambridge University"></a>
+                        <cudl:ui-image name="logo_document_page" cssClass="pull-left document-cam-logo-left" id="cam-logo"/>
 
                         <div class="cudl-viewer-buttons-pagination">
                             <button id="${textDirectionRightToLeft ? 'nextPage' : 'prevPage'}" class="cudl-btn fa fa-arrow-left"
@@ -154,10 +155,7 @@
                             <br />
                         </div>
 
-                        <a href="http://www.lib.cam.ac.uk"><img id="ul-logo"
-                            class="pull-right" src="/img/header/ULLogowhite.gif"
-                            alt="Logo for Cambridge University Library"
-                            title="Cambridge University Library"></a>
+                        <cudl:ui-image name="logo_document_page_right" cssClass="pull-right document-cam-logo-right" id="ul-logo"/>
 
                     </div>
                 </div>
@@ -212,48 +210,42 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#abouttab"
-                            aria-controls="about" role="tab" data-toggle="tab">About</a></li>
-                        <li role="presentation"><a href="#contentstab"
-                            aria-controls="contents" role="tab" data-toggle="tab">Contents</a></li>
-                        <li role="presentation"><a href="#thumbnailstab"
-                            aria-controls="thumbnails" role="tab" data-toggle="tab">Thumbnails</a></li>
-                        <li role="presentation"><a id="transcriptiondiplotab" href="#transcriptiondiplo"
-                            aria-controls="transcriptiondiplotab" role="tab" data-toggle="tab">Transcription</a></li>
-                        <li role="presentation"><a id="translationtab" href="#translation"
-                            aria-controls="translationtab" role="tab" data-toggle="tab">Translation</a></li>
+                        <li role="presentation" class="nav-item active"><a href="#abouttab"
+                        class="nav-link active" aria-controls="about" role="tab" data-bs-toggle="tab" data-bs-target="#abouttab">About</a></li>
+                        <li role="presentation" class="nav-item"><a href="#contentstab"
+                        class="nav-link" aria-controls="contents" role="tab" data-bs-toggle="tab" data-bs-target="#contentstab">Contents</a></li>
+                        <li role="presentation" class="nav-item"><a href="#thumbnailstab"
+                        class="nav-link" aria-controls="thumbnails" role="tab" data-bs-toggle="tab" data-bs-target="#thumbnailstab">Thumbnails</a></li>
+                        <li role="presentation" class="nav-item"><a id="transcriptiondiplotab" href="#transcriptiondiplo"
+                        class="nav-link" aria-controls="transcriptiondiplotab" role="tab" data-bs-toggle="tab" data-bs-target="#transcriptiondiplo">Transcription</a></li>
+                        <li role="presentation" class="nav-item"><a id="translationtab" href="#translation"
+                        class="nav-link" aria-controls="translationtab" role="tab" data-bs-toggle="tab" data-bs-target="#translation">Translation</a></li>
 
-
-                        <li class="dropdown" role="presentation"><a id="moreDropDown"
-                            class="dropdown-toggle" aria-controls="moreDropDown-contents"
-                            data-toggle="dropdown" href="#"> More <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li class="nav-item dropdown" role="presentation"><a id="moreDropDown"
+                            class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-controls="moreDropDown-contents"
+                            href="#"> More <span class="caret"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </a>
                             <ul id="moreDropDown-contents" class="dropdown-menu"
                                 aria-labelledby="moreDropDown" role="menu">
-                                <li><a id="moreinfotab" aria-controls="moreinfo"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#metadata">Item metadata</a></li>
+                                <li><a id="moreinfotab" class="dropdown-item" aria-controls="moreinfo"
+                                    data-bs-toggle="tab" role="tab" tabindex="-1" href="#metadata">Item metadata</a></li>
                                 <!-- <li><a id="transcriptiondiplotab"
-                                    aria-controls="transcriptiondiplotab" data-toggle="tab"
+                                    aria-controls="transcriptiondiplotab" data-bs-toggle="tab"
                                     role="tab" tabindex="-1" href="#transcriptiondiplo">Transcription</a></li>
                                 <li><a id="translationtab" aria-controls="translationtab"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
+                                    data-bs-toggle="tab" role="tab" tabindex="-1" href="#translation">Translation</a>
                                     </li>-->
-                                <li><a id="downloadtab" aria-controls="downloadtab"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#download">Share
+                                <li><a id="downloadtab" class="dropdown-item" aria-controls="downloadtab"
+                                    data-bs-toggle="tab" role="tab" tabindex="-1" href="#download">Share
                                         </a></li>
-
-
-                                <%-- genizah tagging --%>
-                                <li><a id="taggingtab" aria-controls="taggingtab"
-                                    data-toggle="tab" role="tab" tabindex="-1" href="#tagging">Tagging</a></li>
-                            </ul></li>
-
+                            </ul>
+                        </li>
                     </ul>
                     <!-- End of nav tabs -->
 
                     <!-- Tab panes -->
                     <div id="tab-content" class="tab-content"
-                        style="overflow-x: auto; overflow-y: auto">
+                        style="overflow-x: hidden; overflow-y: auto">
                         <div role="tabpanel" class="tab-pane active" id="abouttab">
                             <div id='about-content'>
                                 <h3>
@@ -463,7 +455,7 @@
                             </option>
                         </c:forEach>
                     </select>
-                    <button type="button" class="btn btn-default btn-success">Download</button>
+                    <button type="button" class="btn btn-success">Download</button>
                     <button type="button" class="btn btn-default">Cancel</button>
                 </c:if>
 

@@ -21,7 +21,7 @@
     ],
     "manifests": {
         "manifestId": {
-            "provider": "Cambridge University Library"
+            "provider": "<!--defaultTitle-->"
         }
     }
 }

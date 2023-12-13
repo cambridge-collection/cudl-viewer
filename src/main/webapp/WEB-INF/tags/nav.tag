@@ -10,8 +10,10 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:set var="defaultTitle" value="Cambridge Digital Library"/>
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <div class="content main-nav-section ${(activeMenuIndex == 0) ? 'home' : ''}">
 
@@ -19,10 +21,11 @@
         <div class="fixed-top">
             <div class="masthead-container">
                 <div class="flex-center">
-                    <nav class="row justify-content-between main-nav">
-                        <a class="item" href="http://www.cam.ac.uk">
-                            <img class="cam-logo" alt="University of Cambridge" src="/img/interface/uoc_logo.svg"/>
-                        </a>
+                    <nav class="justify-content-between main-nav">
+                        <cudl:ui-image name="logo" cssClass="cam-logo" />
+<%--                        <a id="dl-logo-link" class="item" href="${themeUI.getImage("logo").src}">--%>
+<%--                            <div id="dl-logo" class="cam-logo"></div>--%>
+<%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
                                 <a href="/search">
@@ -61,7 +64,7 @@
     <div class="container banner">
 
         <div class="cudl-banner">
-            <div class="banner-part"><h1><a href="/">Cambridge Digital Library</a></h1></div>
+            <div class="banner-part"><h1><a id="dl-header-link" href="/">${defaultTitle}</a></h1></div>
 
         </div>
 

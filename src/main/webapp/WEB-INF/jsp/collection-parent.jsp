@@ -5,7 +5,10 @@
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
     <jsp:attribute name="pageData">
@@ -27,7 +30,7 @@
                     <div class="campl-tertiary-navigation">
                         <div class="campl-tertiary-navigation-structure">
                             <ul class="campl-unstyled-list campl-vertical-breadcrumb">
-                                <li><a href="/">Cambridge Digital Library<span
+                                <li><a href="/">${defaultTitle}<span
                                         class="campl-vertical-breadcrumb-indicator"></span></a></li>
                             </ul>
                             <ul class="campl-unstyled-list campl-vertical-breadcrumb-navigation">

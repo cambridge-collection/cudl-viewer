@@ -4,6 +4,7 @@ import javax.servlet.RequestDispatcher;
 
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockServletContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
@@ -25,6 +26,7 @@ public class SiteViewControllerTest {
     @Test
     public void testHandleRequest() {
 
+        //MockServletContext context = new MockServletContext();
         ModelAndView modelAndView = createController().handleRequest();
         assertTrue(modelAndView!=null);
     }

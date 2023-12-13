@@ -1,11 +1,17 @@
 <%@page autoFlush="true" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
-<title>Cambridge Digital Library - Feedback</title>
+<title>${defaultTitle} - Feedback</title>
 <link rel="stylesheet" href="/styles/uoc.min.css">
 <!--[if lt IE 9]>
    <link rel="stylesheet" href="/styles/ie.min.css"/>
@@ -48,7 +54,7 @@ body {
 				you when new material is added or significant changes made.</p>
 			<p>
 				Just send an email to <a
-					href="mailto:lib-cudl-news@lists.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from Cambridge University Digital Library.">lib-cudl-news@lists.cam.ac.uk</a>
+					href="mailto:lib-cudl-news@lists.cam.ac.uk?subject=Subscribe&body=I would like to receive update news from ${defaultTitle}.">lib-cudl-news@lists.cam.ac.uk</a>
 				to subscribe.
 			<p>
 				You can also follow us on <a target="_blank"

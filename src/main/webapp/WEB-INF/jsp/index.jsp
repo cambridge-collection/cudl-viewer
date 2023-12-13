@@ -5,12 +5,11 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<spring:eval expression="@environment.getProperty('metaDescription')" var="metaDescription" />
 <c:set var="pagetype" value="STANDARD"/>
-<c:set var="metaDescription">
-    A home for the discovery of digitised material and research
-    outputs from the University of Cambridge and beyond
-</c:set>
+<c:set var="metaDescription" value="${metaDescription}"/>
 
 <cudl:generic-page pagetype="${pagetype}" title="${collection.title}">
     <jsp:attribute name="pageData">

@@ -1,0 +1,85 @@
+/* Basic styles we might want to override for theming */
+
+#dl-header-link:before {
+    content: "My Digital Library";
+}
+
+.main-nav {
+    background-color: #fff;
+}
+
+.cudl-banner{
+    background-color: #FF6666;
+    color:#fff;
+}
+
+.cudl-banner:hover {
+    background-color: #00FFFF;
+}
+
+.home .cudl-banner:hover {
+    background-color: #00FFFF;
+}
+
+.cudl-banner:hover a, .cudl-banner a:hover {
+    color: #fff !important;
+}
+
+/* buttons on index page */
+.xl-button-caption {
+    background-color: #FF6666;
+    color: #fff;
+}
+.xl-button-caption:hover {
+    background-color: #00FFFF;
+}
+
+/* Cards on Browse page */
+
+.card {
+    background-color: #FF6666;
+}
+
+.card:link, .card:hover {
+    background: #00FFFF;
+    color: #000 !important;
+}
+
+/* dropdown menu */
+.dropdown-content {
+    background-color: #FF6666;
+}
+
+/* close button */
+.closebtn.icon {
+    background-color: #FF6666;
+}
+
+/* logo */
+.cam-logo {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    width: 600px;
+    height: 200px;
+}
+
+@media only screen and (max-width: 576px) {
+    .main-nav .cam-logo {
+        height: 24px;
+        transition: height 1s;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .main-nav .cam-logo {
+        height: 24px;
+        transition: height 1s;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .main-nav .cam-logo {
+        height: 48px;
+        transition: height 1s;
+    }
+}

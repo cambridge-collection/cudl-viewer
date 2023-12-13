@@ -11,8 +11,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<c:set var="title" value="${(empty title) ? 'Cambridge Digital Library ― University of Cambridge' : title}"/>
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
+
+
+<c:set var="title" value="${(empty title) ? defaultTitle : title}"/>
 
 <c:if test="${empty pageData}">
     <c:set var="pageData">

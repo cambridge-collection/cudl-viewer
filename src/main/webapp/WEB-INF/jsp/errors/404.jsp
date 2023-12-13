@@ -1,7 +1,10 @@
 <%@page isErrorPage="true" autoFlush="true" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD">
     <cudl:nav activeMenuIndex="${0}" displaySearch="true" title="Page not found"/>
@@ -21,7 +24,7 @@
                                     href="mailto:dl-support@lib.cam.ac.uk"
                                     title="404 Page - Resource Missing">Contact Us</a> so we can
                                 resolve the issue or click on the link below to go to our home
-                                page. <br /> <br /> <a href="/">Cambridge Digital Library</a>.
+                                page. <br /> <br /> <a href="/">${defaultTitle}</a>.
                             </p>
                         </div>
                     </div>

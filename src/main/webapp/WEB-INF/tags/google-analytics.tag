@@ -8,10 +8,3 @@
 <c:set var="gid" value="${(empty ga4TrackingId) ? 'G-89DQZCHV21' : ga4TrackingId}" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=${gid}"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '${gid}');
-</script>

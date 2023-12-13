@@ -8,7 +8,6 @@
 <%-- We don't want to escape the output of json:object because it
      goes into the page via cudl:attr which escapes the value. --%>
 <json:object escapeXml="false">
-    <cudl:context-ga-tracking-code/>
     <cudl:context-csrf/>
     <jsp:doBody/>
 </json:object>

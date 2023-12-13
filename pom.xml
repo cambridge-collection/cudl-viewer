@@ -15,7 +15,7 @@
 
         <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
-        <cudl-viewer-ui.version>3.0.14</cudl-viewer-ui.version>
+        <cudl-viewer-ui.version>4.0.1</cudl-viewer-ui.version>
         <spring-security-raven.version>1.0.1</spring-security-raven.version>
 
         <commons-email.version>1.5</commons-email.version>
@@ -33,8 +33,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com:cambridge-collection/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com:cambridge-collection/cudl-viewer.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</developerConnection>
         <url>https://github.com/cambridge-collection/cudl-viewer</url>
         <tag>production-2023081700</tag>
     </scm>
@@ -118,14 +118,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M5</version>
-                <configuration>
-                    <!-- Don't automatically push changes to the remote repo
-                         while executing release:prepare. -->
-                    <pushChanges>false</pushChanges>
-                    <!-- Use the local repo with release:perform instead of the
-                         upstream repository specified in <scm>. -->
-                    <localCheckout>true</localCheckout>
-                </configuration>
+<!--                <configuration>-->
+<!--                    &lt;!&ndash; Don't automatically push changes to the remote repo-->
+<!--                         while executing release:prepare. &ndash;&gt;-->
+<!--                    <pushChanges>false</pushChanges>-->
+<!--                    &lt;!&ndash; Use the local repo with release:perform instead of the-->
+<!--                         upstream repository specified in <scm>. &ndash;&gt;-->
+<!--                    <localCheckout>true</localCheckout>-->
+<!--                </configuration>-->
             </plugin>
 
             <plugin>
