@@ -1,8 +1,6 @@
 package ulcambridge.foundations.viewer.utils;
 
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import ulcambridge.foundations.viewer.model.Properties;
 
 import java.io.File;
@@ -25,12 +23,11 @@ public class MiradorUtils {
         this.canvasId = canvasId;
     }
 
-    public String getMiradorConfig() {
+    public String getMiradorConfig(String defaultTitle) {
 
         try {
             String propsPath = Properties.getString("mirador.options.default.config");
             String itemProps = Properties.getString("mirador.options."+id+".config");
-            String defaultTitle = Properties.getString("default.title");
 
             if (itemProps!=null) {
                 propsPath = itemProps;

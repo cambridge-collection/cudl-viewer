@@ -1,6 +1,11 @@
 <%@page autoFlush="true" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<spring:eval expression="@uiThemeBean.themeUI.title" var="defaultTitle" />
+<c:set var="defaultTitle" value="${defaultTitle}"/>
+
 
 <html lang="en">
 <head>
@@ -22,13 +27,12 @@
 <div id="viewer"></div>
 
 <script type="text/javascript">
+        const manifestId = '<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>';
 
-    const manifestId = '<c:out value="${baseURL}"/>/iiif/<c:out value="${id}"/>';
+        let miradorInstance = Mirador.viewer(${miradorUtils.getMiradorConfig(defaultTitle)});
 
-    let miradorInstance = Mirador.viewer(${miradorUtils.getMiradorConfig()});
-
-    const windows = miradorInstance.store.getState().windows;
-    const windowId = Object.values(windows)
+        const windows = miradorInstance.store.getState().windows;
+        const windowId = Object.values(windows)
             .find(w => w.manifestId === manifestId).id;
 
     // Add the right hand annotations panels.
