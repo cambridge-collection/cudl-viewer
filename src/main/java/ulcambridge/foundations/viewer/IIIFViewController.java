@@ -90,8 +90,7 @@ public class IIIFViewController {
     @RequestMapping(value = "/collection/{collectionId}")
     public ModelAndView handleIIIFCollectionRequest(@PathVariable("collectionId")
                                                     String collectionId, HttpServletRequest request,
-                                                    HttpServletResponse response,
-                                                    @Value("${default.title}") String defaultTitle) throws JSONException {
+                                                    HttpServletResponse response) throws JSONException {
 
         collectionId = collectionId.toLowerCase();
 
@@ -104,7 +103,7 @@ public class IIIFViewController {
             }
             IIIFCollection coll;
             if (collectionId.equals("all")) {
-                coll = new IIIFCollection("all", defaultTitle+" IIIF Collections", "All the available IIIF items available on this platform.", null, collectionFactory.getCollections(), null, baseURL);
+                coll = new IIIFCollection("all", themeUI.getThemeUI().getTitle()+" IIIF Collections", "All the available IIIF items available on this platform.", null, collectionFactory.getCollections(), null, baseURL);
             } else  {
                 coll = new IIIFCollection(collection, baseURL);
             }
