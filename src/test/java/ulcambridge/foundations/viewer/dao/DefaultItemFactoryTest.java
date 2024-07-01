@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.dao;
 
-import org.apache.jena.atlas.RuntimeIOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -40,7 +39,7 @@ public class DefaultItemFactoryTest {
             itemJSONText = new String(Files.readAllBytes(Paths.get(resourceURL.getPath())), StandardCharsets.UTF_8);
         }
         catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new RuntimeException(e);
         }
 
         try {

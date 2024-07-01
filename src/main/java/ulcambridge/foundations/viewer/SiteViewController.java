@@ -29,7 +29,7 @@ import java.util.Set;
 
 @Controller
 public class SiteViewController {
-    private String showHoldingPage = Properties.getString("showHoldingPage");
+
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
     private final String contentHtmlUrl;
@@ -50,12 +50,6 @@ public class SiteViewController {
     // on path /
     @RequestMapping(value = "/")
     public ModelAndView handleRequest() {
-
-        if (showHoldingPage != null && showHoldingPage.equals("true")) {
-            ModelAndView modelAndView = new ModelAndView(
-                    "jsp/errors/holdingpage");
-            return modelAndView;
-        }
 
         ModelAndView modelAndView = new ModelAndView("jsp/index");
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);

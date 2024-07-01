@@ -119,11 +119,6 @@
             <json:property name="viewportNavigatorEnabled" value="${!!viewportNavigator}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
-            <%-- Tagging related data --%>
-            <sec:authorize access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
-                <json:property name="isUser" value="${true}"/>
-            </sec:authorize>
-            <json:property name="taggingEnabled" value="${!!taggable}"/>
         </cudl:default-context>
     </jsp:attribute>
 
@@ -328,8 +323,6 @@
 
                             </div>
                         </div>
-                        <%-- genizah tagging --%>
-                        <div role="tabpanel" class="tab-pane" id="tagging"></div>
                     </div>
                 </div>
                 <!-- Usage buttons -->

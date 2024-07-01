@@ -16,10 +16,6 @@
             <json:property name="collectionUrl" value="${collection.URL}"/>
             <json:property name="collectionTitle" value="${collection.title}"/>
             <json:property name="collectionPage" value="${pageNumber}"/>
-            <cudl:context-editable-areas>
-                <cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
-                <cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>
-            </cudl:context-editable-areas>
         </cudl:default-context>
     </jsp:attribute>
 
