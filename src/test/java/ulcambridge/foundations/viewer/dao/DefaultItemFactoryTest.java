@@ -8,7 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 
 import java.io.IOException;
@@ -76,20 +75,10 @@ public class DefaultItemFactoryTest {
     }
 
     @Test
-    public void essayItem() {
-        Item item = createItem(ESSAY_ITEM_ID);
-
-        assertTrue(item instanceof EssayItem);
-        assertEquals(ESSAY_ITEM_ID, item.getId());
-        assertEquals("Artificial Horizon", item.getTitle());
-    }
-
-    @Test
     public void item() {
         Item item = createItem(ID_A);
 
         assertNotNull(item);
-        assertFalse(item instanceof EssayItem);
         assertEquals(ID_A, item.getId());
         assertEquals("Daśāśrutaskandhasūtraṭīkā", item.getTitle());
     }

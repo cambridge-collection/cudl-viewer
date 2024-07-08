@@ -1,13 +1,16 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.springframework.util.ObjectUtils;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Used for facet refinement in search results.
@@ -26,30 +29,25 @@ public final class SearchUtil {
             UriComponentsBuilder builder,
             SearchForm searchForm) {
 
-        builder.queryParam("keyword", searchForm.getKeyword())
-                .queryParam("fullText", searchForm.getFullText())
-                .queryParam("excludeText", searchForm.getExcludeText())
-                .queryParam("textJoin", searchForm.getTextJoin())
-                .queryParam("fileID", searchForm.getFileID())
-                .queryParam("shelfLocator", searchForm.getShelfLocator())
-                .queryParam("title", searchForm.getTitle())
-                .queryParam("author", searchForm.getAuthor())
-                .queryParam("subject", searchForm.getSubject())
-                .queryParam("language", searchForm.getLanguage())
-                .queryParam("place", searchForm.getPlace())
-                .queryParam("location", searchForm.getLocation())
-                .queryParam("expandFacet", searchForm.getExpandFacet());
-
-        if(searchForm.hasRecallScale()) {
-            builder.queryParam("tagging", 1)
-                    .queryParam("recallScale", searchForm.getRecallScale());
-        }
-
-        if (searchForm.getYearStart() != null &&
-                searchForm.getYearEnd() != null) {
-            builder.queryParam("yearStart", searchForm.getYearStart())
-                    .queryParam("yearEnd", searchForm.getYearEnd());
-        }
+        builder.queryParam("keyword", searchForm.getKeyword());
+//                .queryParam("fullText", searchForm.getFullText())
+//                .queryParam("excludeText", searchForm.getExcludeText())
+//                .queryParam("textJoin", searchForm.getTextJoin())
+//                .queryParam("fileID", searchForm.getFileID())
+//                .queryParam("shelfLocator", searchForm.getShelfLocator())
+//                .queryParam("title", searchForm.getTitle())
+//                .queryParam("author", searchForm.getAuthor())
+//                .queryParam("subjects", searchForm.getSubjects())
+//                .queryParam("language", searchForm.getLanguage())
+//                .queryParam("place", searchForm.getPlace())
+//                .queryParam("location", searchForm.getLocation())
+//                .queryParam("expandFacet", searchForm.getExpandFacet());
+//
+//        if (searchForm.getYearStart() != null &&
+//                searchForm.getYearEnd() != null) {
+//            builder.queryParam("yearStart", searchForm.getYearStart())
+//                    .queryParam("yearEnd", searchForm.getYearEnd());
+//        }
 
         return builder;
     }
@@ -59,31 +57,27 @@ public final class SearchUtil {
             Iterable<Map.Entry<String, String>> facets) {
 
         for(Map.Entry<String, String> facet : facets) {
-            String value = facet.getValue();
 
-            if(value == null) {
-                builder.queryParam(facet.getKey());
-            }
-            else {
-                builder.queryParam(getFacetName(facet.getKey()), value);
-            }
+            builder.queryParam("facets",getFacetString(facet.getKey(), facet.getValue()));
         }
 
         return builder;
     }
 
-    private static final String getFacetName(String name) {
-        if(name == null || name.length() == 0)
-            throw new IllegalArgumentException("name was empty: " + name);
+    private static String getFacetString(String name, String value) {
+        if(name == null || name.isEmpty() || value == null || value.isEmpty()) {
+            throw new IllegalArgumentException("name or value was empty: " + name + ": " + value);
+        }
 
-        return "facet" + name.substring(0, 1).toUpperCase() + name.substring(1);
+        return name+ "::" + value;
+
     }
 
     private static Iterable<Map.Entry<String, String>> removeFacet(
             Iterable<Map.Entry<String, String>> facets, String excludedName) {
 
         List<Map.Entry<String, String>> filtered =
-                new ArrayList<Map.Entry<String, String>>();
+                new ArrayList<>();
         for(Map.Entry<String, String> facet : facets) {
             if(!facet.getKey().equals(excludedName))
                 filtered.add(facet);
@@ -111,12 +105,11 @@ public final class SearchUtil {
 
     public static String getURLParametersWithExtraFacet(
             SearchForm searchForm, String facetName, String facetValue) {
-
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
         builder = addBaseQueryParams(builder, searchForm);
         builder = addFacetQueryParams(builder,
                 searchForm.getFacets().entrySet());
-        builder.queryParam(getFacetName(facetName), facetValue);
+        builder.queryParam("facets",getFacetString(facetName,facetValue));
         return getQuery(builder);
     }
 

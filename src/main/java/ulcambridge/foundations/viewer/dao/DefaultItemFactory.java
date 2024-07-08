@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
-import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -34,14 +33,8 @@ public final class DefaultItemFactory implements ItemFactory {
             itemType = itemJson.getString("itemType");
         }
 
-        if (itemType.equals("essay")) {
+        return getBookItem(itemId, itemJson);
 
-            Item bookItem = getBookItem(itemId, itemJson);
-            return getEssayItem(itemId, itemJson, bookItem);
-
-        } else {
-            return getBookItem(itemId, itemJson);
-        }
     }
 
     /**
@@ -113,17 +106,13 @@ public final class DefaultItemFactory implements ItemFactory {
             if (descriptiveMetadata.has("thumbnailUrl")
                 && descriptiveMetadata.has("thumbnailOrientation")) {
                 if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
-                if (itemType.equals("essay")) {
-                    itemThumbnailURL = descriptiveMetadata.getString("thumbnailUrl");
-                } else {
-                    try {
-                        URL url = new URL(
-                            new URL(Properties.getString("imageServer")),
-                            descriptiveMetadata.getString("thumbnailUrl"));
-                        itemThumbnailURL = url.toString();
-                    } catch (MalformedURLException ex) {
-                        LOG.warn("Cannot construct valid thumbnail URL", ex);
-                    }
+                try {
+                    URL url = new URL(
+                        new URL(Properties.getString("imageServer")),
+                        descriptiveMetadata.getString("thumbnailUrl"));
+                    itemThumbnailURL = url.toString();
+                } catch (MalformedURLException ex) {
+                    LOG.warn("Cannot construct valid thumbnail URL", ex);
                 }
 
                 thumbnailOrientation = descriptiveMetadata
@@ -147,76 +136,6 @@ public final class DefaultItemFactory implements ItemFactory {
             pageLabels, pageThumbnailURLs, this.itemStatusOracle.isIIIFEnabled(itemId),
             this.itemStatusOracle.isTaggingEnabled(itemId), itemJson);
 
-    }
-
-    private EssayItem getEssayItem(String itemId, JSONObject itemJson, Item parent) {
-
-        String content = "";
-        List<String> relatedItems = new ArrayList<>();
-        List<String> associatedPeople = new ArrayList<>();
-        List<String> associatedPlaces = new ArrayList<>();
-        List<String> associatedOrganisations = new ArrayList<>();
-        List<String> associatedSubjects = new ArrayList<>();
-        JSONObject descriptiveMetadata = null;
-        List<String> pageLabels = new ArrayList<>();
-        List<String> pageThumbnailURLs = new ArrayList<>();
-
-        try {
-            JSONArray pages = itemJson.getJSONArray("pages");
-            JSONObject page0 = pages.getJSONObject(0);
-
-            for (int pageIndex = 0; pageIndex < pages.length(); pageIndex++) {
-                JSONObject page = pages.getJSONObject(pageIndex);
-                pageLabels.add(page.getString("label"));
-            }
-
-            // Get essay content
-            content = page0.getString("content");
-
-            descriptiveMetadata = itemJson.getJSONArray(
-                "descriptiveMetadata").getJSONObject(0);
-
-            // Get list of related items
-            relatedItems = new ArrayList<>();
-            JSONArray itemReferences = descriptiveMetadata.getJSONArray("itemReferences");
-            for (int i=0; i<itemReferences.length(); i++) {
-                JSONObject itemRef = itemReferences.getJSONObject(i);
-                relatedItems.add(itemRef.getString("ID"));
-            }
-
-            try {
-                // Associated people
-                associatedPeople = getDisplayFormFromJSON(descriptiveMetadata
-                    .getJSONObject("associated").getJSONArray("value"));
-            } catch (JSONException ignored) {}
-
-            try {
-                // Associated Places
-                associatedPlaces = getDisplayFormFromJSON(descriptiveMetadata
-                    .getJSONObject("places").getJSONArray("value"));
-            } catch (JSONException ignored) {}
-
-            try {
-                // Associated Organisations
-                associatedOrganisations = getDisplayFormFromJSON(descriptiveMetadata
-                    .getJSONObject("associatedCorps").getJSONArray("value"));
-            } catch (JSONException ignored) {}
-
-            try {
-                // Associated Subjects
-                associatedSubjects = getDisplayFormFromJSON(descriptiveMetadata
-                    .getJSONObject("subjects").getJSONArray("value"));
-            } catch (JSONException ignored) {}
-
-        } catch (JSONException e) {
-            LOG.warn("Cannot load metadata", e);
-        }
-
-        return new EssayItem(itemId, "essay", parent.getTitle(), parent.getAuthors(), parent.getShelfLocator(),
-            parent.getAbstract(), parent.getThumbnailURL(), parent.getThumbnailOrientation(), parent.getJSON(),
-            parent.getImageReproPageURL(),
-            content, relatedItems, associatedPeople, associatedPlaces, associatedOrganisations, associatedSubjects,
-            pageLabels, pageThumbnailURLs);
     }
 
     /**

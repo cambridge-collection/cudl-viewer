@@ -90,7 +90,7 @@ public class AppConfig {
         }
 
         @Bean
-        public URI xtfURL(@Value("${xtfURL}") URI url) {
+        public URI searchURL(@Value("${searchURL}") URI url) {
             return ensureURLHasPath(url);
         }
     }

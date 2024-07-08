@@ -71,25 +71,30 @@
                                                 <li>
                                                     <%-- FIXME: Add these arrows in CSS instead --%>
                                                     <strong>
-                                                        <span>▾</span> <c:out value="${facetGroup.fieldLabel}"/>
+                                                        <div id="facetToggle${facetGroup.fieldLabel}" data-toggle="collapse"><span>&#x25BE;</span>
+                                                        <c:out value="${facetGroup.fieldLabel}"/>
+                                                        </div>
                                                     </strong>
-                                                    <ul class="campl-unstyled-list">
-                                                        <c:forEach items="${facetGroup.facets}" var="facet">
-                                                            <li>
-                                                                <a href="?${fn:escapeXml(cudlfn:urlParamsWithFacet(form, facetGroup.field, facet.band))}">
-                                                                    <c:out value="${facet.band}"/>
+                                                        <div class="collapse" id="facetToggle${facetGroup.field}Div">
+                                                            <ul class="campl-unstyled-list">
+                                                                <c:forEach items="${facetGroup.facets}" var="facet">
+                                                                    <li>
+                                                                        <a href="?${fn:escapeXml(cudlfn:urlParamsWithFacet(form, facetGroup.field, facet.band))}">
+                                                                            <c:out value="${facet.band}"/>
+                                                                        </a>
+                                                                        (<c:out value="${facet.occurrences}"/>)
+                                                                    </li>
+                                                                </c:forEach>
+                                                            </ul>
+
+                                                            <div class="search-facet-expansion">
+                                                    <c:if test="${facetGroup.facets.size() < facetGroup.totalGroups}">
+                                                                <a href="?${fn:escapeXml(cudlfn:urlParamsWithFacetExpanded(form, facetGroup.field))}" title="More ${facetGroup.field} facets">
+                                                                    more
                                                                 </a>
-                                                                (<c:out value="${facet.occurrences}"/>)
-                                                            </li>
-                                                        </c:forEach>
-                                                    </ul>
-                                                    <div class="search-facet-expansion">
-                                            <c:if test="${facetGroup.facets.size() < facetGroup.totalGroups}">
-                                                        <a href="?${fn:escapeXml(cudlfn:urlParamsWithFacetExpanded(form, facetGroup.field))}" title="More ${facetGroup.field} facets">
-                                                            more
-                                                        </a>
-                                            </c:if>
-                                                    </div>
+                                                    </c:if>
+                                                            </div>
+                                                        </div>
                                                 </li>
                                             </c:if>
                                         </c:forEach>
