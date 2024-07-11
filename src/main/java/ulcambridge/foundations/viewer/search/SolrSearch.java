@@ -90,7 +90,8 @@ public class SolrSearch implements Search {
             in = new URL( url ).openStream();
             return new JSONObject(IOUtils.toString( in , StandardCharsets.UTF_8));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            // error from Solr API - e.g. {"detail":"Query contains too many nested clauses; maxClauseCount is set to 1024"}
+            return null;
         } finally {
             IOUtils.closeQuietly(in);
         }
