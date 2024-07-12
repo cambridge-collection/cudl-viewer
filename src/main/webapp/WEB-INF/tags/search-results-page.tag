@@ -75,7 +75,7 @@
                                                         <c:out value="${facetGroup.fieldLabel}"/>
                                                         </div>
                                                     </strong>
-                                                        <div class="collapse" id="facetToggle${facetGroup.field}Div">
+                                                        <div class="collapse" id="divfacetToggle${facetGroup.field}">
                                                             <ul class="campl-unstyled-list">
                                                                 <c:forEach items="${facetGroup.facets}" var="facet">
                                                                     <li>
