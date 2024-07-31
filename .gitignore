@@ -17,3 +17,6 @@ release.properties
 
 # docker-compose local environment file
 .env
+
+.terraform
+.terraform.lock.hcl
