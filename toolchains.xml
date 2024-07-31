@@ -6,7 +6,7 @@
       <vendor>openjdk</vendor>
     </provides>
     <configuration>
-      <jdkHome>/opt/java/openjdk</jdkHome>
+      <jdkHome>/usr/lib/jvm/java-11-amazon-corretto</jdkHome>
     </configuration>
   </toolchain>
 </toolchains>
