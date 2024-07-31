@@ -6,11 +6,11 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - mvn -s settings.xml dependency:resolve
+      - mvn -s settings.xml -t toolchains.xml dependency:resolve
   build:
     commands:
       - echo Build started on `date`
-      - mvn -s settings.xml clean package
+      - mvn -s settings.xml -t toolchains.xml clean package
   post_build:
     commands:
       - echo Build completed on `date`
