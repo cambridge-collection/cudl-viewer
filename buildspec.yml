@@ -6,6 +6,7 @@ phases:
       java: corretto11
   pre_build:
     commands:
+      - echo JAVA_HOME set to $JAVA_HOME
       - mvn -s settings.xml -t toolchains.xml dependency:resolve
   build:
     commands:
