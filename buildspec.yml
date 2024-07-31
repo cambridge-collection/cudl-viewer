@@ -6,11 +6,11 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - mvn -s settings.xml dependency:resolve
   build:
     commands:
       - echo Build started on `date`
-      - mvn clean package
+      - mvn -s settings.xml clean package
   post_build:
     commands:
       - echo Build completed on `date`
