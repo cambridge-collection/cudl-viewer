@@ -41,8 +41,8 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Date", "creations-century_str");
         this.displayNameToFacetNameMap.put("Place","creations-places_str");
         this.displayNameToFacetNameMap.put("Languages","languageStrings_str");
-        this.displayNameToFacetNameMap.put("Transcription","pageHasTranscription");
-        this.displayNameToFacetNameMap.put("Translation","pageHasTranslation");
+        this.displayNameToFacetNameMap.put("Page_Has_Transcription","pageHasTranscription");
+        this.displayNameToFacetNameMap.put("Page_Has_Translation","pageHasTranslation");
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
         this.thumbnailImageURLResolver = thumbnailImageURLResolver;
     }

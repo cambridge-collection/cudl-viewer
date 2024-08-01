@@ -29,7 +29,7 @@
         <div class="altsearchlink">
             <form:form modelAttribute="searchForm" action="/search/advanced/query" method="GET">
                 <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
-                <input class="altsearchlink" type="submit" value="Advanced Search">
+                <input class="altsearchlink" type="submit" disabled value="Advanced Search (Coming Soon)">
             </form:form>
         </div>
     </jsp:attribute>
