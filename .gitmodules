@@ -4,3 +4,6 @@
 [submodule "docker/db/dl-data-samples"]
 	path = docker/db/dl-data-samples
 	url = git@github.com:cambridge-collection/dl-data-samples.git
+[submodule "docker/db/dl-data-samples-http"]
+	path = docker/db/dl-data-samples-http
+	url = https://github.com/cambridge-collection/dl-data-samples.git
