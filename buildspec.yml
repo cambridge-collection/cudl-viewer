@@ -8,12 +8,12 @@ phases:
     commands: 
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
-      - git submodule update --init docker/db/dl-data-samples-http
+      - git submodule update --init $GIT_SUBMODULE_DATA_SAMPLES
   pre_build:
     commands:
       - echo Logging in to Amazon ECR.... 
       - aws --version
-      - $(aws ecr get-login --no-include-email --region $AWS_REGION)
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
       - echo JAVA_HOME set to $JAVA_HOME
@@ -23,13 +23,18 @@ phases:
       - echo Maven build started on `date`
       - mvn -s settings.xml -t toolchains.xml clean package
       - echo Docker build started on `date`
-      - docker build -t $REPOSITORY_URI:latest -f docker/ui/Dockerfile .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG 
+      - docker build -t $REPOSITORY_URI_VIEWER:latest -f docker/ui/Dockerfile .
+      - docker tag $REPOSITORY_URI_VIEWER:latest $REPOSITORY_URI_VIEWER:$IMAGE_TAG
+      - docker build -t $REPOSITORY_URI_VIEWER_DB:latest --build-arg DBPATH=./$GIT_SUBMODULE_DATA_SAMPLES/processed-data/database-snapshots -f docker/db/Dockerfile .
+      - docker tag $REPOSITORY_URI_VIEWER_DB:latest $REPOSITORY_URI_VIEWER_DB:$IMAGE_TAG
   post_build:
     commands:
-      - echo Pushing to $REPOSITORY_URI
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Pushing to $REPOSITORY_URI_VIEWER
+      - docker push $REPOSITORY_URI_VIEWER:latest
+      - docker push $REPOSITORY_URI_VIEWER:$IMAGE_TAG
+      - echo Pushing to $REPOSITORY_URI_VIEWER_DB
+      - docker push $REPOSITORY_URI_VIEWER_DB:latest
+      - docker push $REPOSITORY_URI_VIEWER_DB:$IMAGE_TAG
       - echo Build completed on `date`
 
 artifacts:
