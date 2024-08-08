@@ -34,7 +34,7 @@
                                             <span class="d-none">Search</span>
                                         </button>
                                     </span>
-                                    <input name="keyword" placeholder="Search" type="text" autofocus="autofocus" class="search form-control border border border-start-0  rounded-start-0 rounded-end-2" value="">
+                                    <input name="keyword" placeholder="Search" type="text" class="search form-control border border border-start-0  rounded-start-0 rounded-end-2" value="">
                                 </form>
                             </div>
                             <div class="dropdown">
