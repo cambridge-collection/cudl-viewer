@@ -18,11 +18,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
-import ulcambridge.foundations.viewer.authentication.UsersDao;
 import ulcambridge.foundations.viewer.components.Captcha;
 import ulcambridge.foundations.viewer.components.EmailHelper;
-import ulcambridge.foundations.viewer.crowdsourcing.dao.CrowdsourcingDao;
-import ulcambridge.foundations.viewer.dao.BookmarkDao;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.search.Search;
@@ -91,11 +88,6 @@ public class ParentTestConfig {
     }
 
     @Bean
-    public UsersDao usersDao(ApplicationContext context) {
-        return registerResettableMock(context, UsersDao.class);
-    }
-
-    @Bean
     public Captcha captcha(ApplicationContext context) {
         return registerResettableMock(context, Captcha.class, captcha -> {
             doReturn(Captcha.RESPONSE_PARAM).when(captcha).getResponseParam();
@@ -104,18 +96,8 @@ public class ParentTestConfig {
     }
 
     @Bean
-    public BookmarkDao bookmarkDao(ApplicationContext context) {
-        return registerResettableMock(context, BookmarkDao.class);
-    }
-
-    @Bean
     public RefreshCache refreshCache(ApplicationContext context) {
         return registerResettableMock(context, RefreshCache.class);
-    }
-
-    @Bean
-    public CrowdsourcingDao crowdsourcingDao(ApplicationContext context) {
-        return registerResettableMock(context, CrowdsourcingDao.class);
     }
 
     @Bean

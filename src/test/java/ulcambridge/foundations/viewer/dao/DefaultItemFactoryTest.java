@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.dao;
 
-import org.apache.jena.atlas.RuntimeIOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 
 import java.io.IOException;
@@ -40,7 +38,7 @@ public class DefaultItemFactoryTest {
             itemJSONText = new String(Files.readAllBytes(Paths.get(resourceURL.getPath())), StandardCharsets.UTF_8);
         }
         catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new RuntimeException(e);
         }
 
         try {
@@ -77,20 +75,10 @@ public class DefaultItemFactoryTest {
     }
 
     @Test
-    public void essayItem() {
-        Item item = createItem(ESSAY_ITEM_ID);
-
-        assertTrue(item instanceof EssayItem);
-        assertEquals(ESSAY_ITEM_ID, item.getId());
-        assertEquals("Artificial Horizon", item.getTitle());
-    }
-
-    @Test
     public void item() {
         Item item = createItem(ID_A);
 
         assertNotNull(item);
-        assertFalse(item instanceof EssayItem);
         assertEquals(ID_A, item.getId());
         assertEquals("Daśāśrutaskandhasūtraṭīkā", item.getTitle());
     }

@@ -12,13 +12,6 @@
 <c:set var="metaDescription" value="${metaDescription}"/>
 
 <cudl:generic-page pagetype="${pagetype}" title="${collection.title}">
-    <jsp:attribute name="pageData">
-        <cudl:default-context>
-            <cudl:context-editable-areas>
-                <cudl:editable-area id="main_content" filename="index.html"/>
-            </cudl:context-editable-areas>
-        </cudl:default-context>
-    </jsp:attribute>
 
     <jsp:attribute name="head">
         <cudl:head-content pagetype="${pagetype}" metaDescription="${metaDescription}"/>

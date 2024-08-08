@@ -2,7 +2,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
@@ -119,11 +118,6 @@
             <json:property name="viewportNavigatorEnabled" value="${!!viewportNavigator}"/>
             <json:array name="itemAuthors" items="${item.authorNames}"/>
             <json:array name="itemAuthorsFullForm" items="${item.authorNamesFullForm}"/>
-            <%-- Tagging related data --%>
-            <sec:authorize access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')">
-                <json:property name="isUser" value="${true}"/>
-            </sec:authorize>
-            <json:property name="taggingEnabled" value="${!!taggable}"/>
         </cudl:default-context>
     </jsp:attribute>
 
@@ -328,8 +322,6 @@
 
                             </div>
                         </div>
-                        <%-- genizah tagging --%>
-                        <div role="tabpanel" class="tab-pane" id="tagging"></div>
                     </div>
                 </div>
                 <!-- Usage buttons -->

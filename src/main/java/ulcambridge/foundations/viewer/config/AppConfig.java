@@ -2,7 +2,6 @@ package ulcambridge.foundations.viewer.config;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.google.gson.Gson;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +20,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
-import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
@@ -59,7 +55,7 @@ import static ulcambridge.foundations.viewer.utils.Utils.ensureURLHasPath;
         @ComponentScan.Filter(type = FilterType.REGEX, pattern = "ulcambridge\\.foundations\\.viewer\\.config\\..*")
     }
 )
-@Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
+@Import({BeanFactoryPostProcessorConfig.class})
 @EnableTransactionManagement
 public class AppConfig {
 
@@ -94,7 +90,7 @@ public class AppConfig {
         }
 
         @Bean
-        public URI xtfURL(@Value("${xtfURL}") URI url) {
+        public URI searchURL(@Value("${searchURL}") URI url) {
             return ensureURLHasPath(url);
         }
     }
@@ -208,11 +204,6 @@ public class AppConfig {
 
             return new DataSourceTransactionManager(dataSource);
         }
-    }
-
-    @Bean
-    public Gson gson() {
-        return GsonFactory.create();
     }
 
     @Bean

@@ -29,7 +29,7 @@
         <div class="altsearchlink">
             <form:form modelAttribute="searchForm" action="/search/advanced/query" method="GET">
                 <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
-                <input class="altsearchlink" type="submit" value="Advanced Search">
+                <input class="altsearchlink" type="submit" disabled value="Advanced Search (Coming Soon)">
             </form:form>
         </div>
     </jsp:attribute>
@@ -41,7 +41,7 @@
     </jsp:attribute>
     <jsp:attribute name="queryHelp">
         <%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
-        <c:if test="${userHasSearched}">
+        <c:if test="${userHasSearched} && ${results!=null}">
             <cudl:search-no-results/>
         </c:if>
         <cudl:search-examples/>

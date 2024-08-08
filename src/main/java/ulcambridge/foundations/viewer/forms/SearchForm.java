@@ -2,14 +2,9 @@ package ulcambridge.foundations.viewer.forms;
 
 import ulcambridge.foundations.viewer.model.Collection;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SearchForm {
-
-    public static final double MIN_RECALL_SCALE = 0, MAX_RECALL_SCALE = 1;
 
     // Keyword information
     private String keyword = "";
@@ -31,25 +26,10 @@ public class SearchForm {
     private List<Collection> collections = new ArrayList<Collection>();
 
     // Search Facets
-    private Map<String, String> facets = new Hashtable<String,String>();
-    private String facetDate;
-    private String facetSubject;
-    private String facetCollection;
-    private String facetLanguage;
-    private String facetPlace;
-    private String facetLocation;
+    private Map<String,String> facets = new Hashtable<>();
 
     // Expand facet results
     private String expandFacet = "";
-
-    // Variable recall
-    /**
-     * The recallScale controls the variable recall in keyword searches
-     * against tagging data.
-     */
-    // Note that Double is used over double as we need to be able to represent
-    // the absence of a recallScale value as null.
-    private Double recallScale = MIN_RECALL_SCALE;
 
     public String getKeyword() {
         return keyword;
@@ -118,7 +98,7 @@ public class SearchForm {
         this.author = author;
     }
 
-    public String getSubject() {
+    public String getSubjects() {
         return subject;
     }
 
@@ -172,66 +152,19 @@ public class SearchForm {
     }
 
     /** Facets **/
-
-    public String getFacetDate() {
-        return facetDate;
-    }
-
-    public void setFacetDate(String facetDate) {
-        this.facetDate = facetDate;
-        facets.put("date", facetDate);
-    }
-
-    public String getFacetSubject() {
-        return facetSubject;
-    }
-
-    public void setFacetSubject(String facetSubject) {
-        this.facetSubject = facetSubject;
-        facets.put("subject", facetSubject);
-    }
-
-    public String getFacetLanguage() {
-        return facetLanguage;
-    }
-
-    public void setFacetLanguage(String facetLanguage) {
-        this.facetLanguage = facetLanguage;
-        facets.put("language", facetLanguage);
-    }
-
-    public String getFacetCollection() {
-        return facetCollection;
-    }
-
-    public void setFacetCollection(String facetCollection) {
-        if (facetCollection!=null && !facetCollection.trim().equals("")) {
-          this.facetCollection = facetCollection;
-          facets.put("collection", facetCollection);
+    /* We are assuming the facets are specified in the format key:value||key:value */
+    public void setFacets(String facetString) {
+        Map<String,String> facets = new Hashtable<>();
+        String[] pairs = facetString.split("\\|\\|");
+        for (String pair : pairs) {
+            String[] keyValue = pair.split("::");
+            facets.put(keyValue[0],keyValue[1]);
         }
-    }
-
-    public String getFacetPlace() {
-        return facetPlace;
-    }
-
-    public void setFacetPlace(String facetPlace) {
-        this.facetPlace = facetPlace;
-        facets.put("place", facetPlace);
-    }
-
-    public String getFacetLocation() {
-        return facetLocation;
-    }
-
-    public void setFacetLocation(String facetLocation) {
-        this.facetLocation = facetLocation;
-        facets.put("location", facetLocation);
+        this.facets = facets;
     }
 
     public Map<String, String> getFacets() {
-
-        return facets;
+        return this.facets;
     }
 
     /** Expand Facet **/
@@ -240,24 +173,6 @@ public class SearchForm {
 
     public void setExpandFacet(String expandFacet) {
         this.expandFacet = expandFacet;
-    }
-
-    public boolean hasRecallScale() {
-        return recallScale != null;
-    }
-
-    /**
-     * @return The recall scale, always between {@link #MIN_RECALL_SCALE} and
-     *             {@link #MAX_RECALL_SCALE}.
-     */
-    public Double getRecallScale() {
-        assert recallScale == null || recallScale >= MIN_RECALL_SCALE && recallScale < MAX_RECALL_SCALE;
-        return recallScale;
-    }
-
-    public void setRecallScale(Double recallScale) {
-        this.recallScale = Math.min(MAX_RECALL_SCALE,
-                Math.max(MIN_RECALL_SCALE, recallScale));
     }
 
     /**
@@ -282,16 +197,7 @@ public class SearchForm {
         this.location = input.location;
         this.yearStart = input.yearStart;
         this.yearEnd = input.yearEnd;
-
-        this.facetCollection = input.facetCollection;
-        this.facetDate = input.facetDate;
-        this.facetSubject = input.facetSubject;
-        this.facetLanguage = input.facetLanguage;
-        this.facetPlace = input.facetPlace;
-        this.facetLocation = input.facetLocation;
-        Hashtable<String, String> facets = new Hashtable<String, String>();
-        facets.putAll(input.facets);
-        this.facets = facets;
+        this.facets = input.facets;
 
         this.expandFacet = input.expandFacet;
     }

@@ -7,14 +7,6 @@
 <c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD">
-    <jsp:attribute name="pageData">
-        <cudl:default-context>
-            <cudl:context-editable-areas>
-                <cudl:editable-area id="aboutMainDiv" filename="about-main.html"/>
-                <cudl:editable-area id="aboutSideDiv" filename="about-side.html"/>
-            </cudl:context-editable-areas>
-        </cudl:default-context>
-    </jsp:attribute>
 
     <jsp:body>
         <cudl:nav activeMenuIndex="${4}" displaySearch="true" subtitle="Introducing ${defaultTitle}"/>

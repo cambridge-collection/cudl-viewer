@@ -136,11 +136,11 @@
 
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <form:label class="right" path="subject">Subject</form:label>
+                                            <form:label class="right" path="subjects">Subjects</form:label>
                                         </div>
                                         <div class="col-md-10">
                                             <span class="hint--right" data-hint="Search for items about this subject, e.g. Mathematics">
-                                                <form:input path="subject" type="text" size="35" value="" name="subject" />
+                                                <form:input path="subjects" type="text" size="35" value="" name="subjects" />
                                             </span>
                                         </div>
                                     </div>
