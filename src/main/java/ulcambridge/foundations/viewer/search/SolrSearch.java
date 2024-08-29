@@ -31,20 +31,29 @@ public class SolrSearch implements Search {
     private final URI searchURL;
     private final BiMap<String, String> displayNameToFacetNameMap = HashBiMap.create();
     private final BiMap<String, String> facetNameToDisplayNameMap;
+    private final ArrayList<String> facetNamesInOrder = new ArrayList<>();
     private final DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver;
 
     public SolrSearch(@Qualifier("searchURL") URI searchURL, @Qualifier("thumbnailImageURLResolver") DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver) {
         Assert.notNull(searchURL, "searchURL is required");
         this.searchURL = searchURL;
-        this.displayNameToFacetNameMap.put("Collection", "collection_str");
-        this.displayNameToFacetNameMap.put("Subject", "subjects_str");
-        this.displayNameToFacetNameMap.put("Date", "creations-century_str");
-        this.displayNameToFacetNameMap.put("Place","creations-places_str");
-        this.displayNameToFacetNameMap.put("Languages","languageStrings_str");
-        this.displayNameToFacetNameMap.put("Page_Has_Transcription","pageHasTranscription");
-        this.displayNameToFacetNameMap.put("Page_Has_Translation","pageHasTranslation");
+        this.displayNameToFacetNameMap.put("Collection", "facet-collection");
+        this.displayNameToFacetNameMap.put("Subject", "facet-subjects");
+        this.displayNameToFacetNameMap.put("Date", "facet-creations-century");
+        this.displayNameToFacetNameMap.put("Place","facet-origin-place");
+        this.displayNameToFacetNameMap.put("Languages","facet-languages");
+        this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
+        this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
         this.thumbnailImageURLResolver = thumbnailImageURLResolver;
+
+        this.facetNamesInOrder.add("facet-collection");
+        this.facetNamesInOrder.add("facet-subjects");
+        this.facetNamesInOrder.add("facet-pageHasTranscription");
+        this.facetNamesInOrder.add("facet-pageHasTranslation");
+        this.facetNamesInOrder.add("facet-origin-place");
+        this.facetNamesInOrder.add("facet-languages");
+        this.facetNamesInOrder.add("facet-creations-century");
     }
 
     /**
@@ -273,15 +282,18 @@ public class SolrSearch implements Search {
         final ArrayList<FacetGroup> facetGroups = new ArrayList<>();
 
         JSONObject facetFields = json.getJSONObject("facet_counts").getJSONObject("facet_fields");
-        for (String key: facetFields.keySet()) {
-            JSONArray fields = facetFields.getJSONArray(key);
+        for (String facetName: facetNamesInOrder) {
+
+            if (!facetFields.has(facetName)) { continue; }
+
+            JSONArray fields = facetFields.getJSONArray(facetName);
             final ArrayList<Facet> facets = new ArrayList<>();
 
             final int facetGroupTotalGroups = 0;// TODO
             final int facetGroupOccurrences = 0;// TODO
 
             // Find out if this is a supported facet, and if not discard:
-            String displayName = facetNameToDisplayNameMap.get(key);
+            String displayName = facetNameToDisplayNameMap.get(facetName);
             if (displayName==null || displayName.isEmpty()) {
                 continue;
             }
