@@ -26,7 +26,7 @@ public class IIIFCollection {
 
         this(collection.getId(),collection.getTitle(),collection.getMetaDescription(),
             collection, collection.getSubCollections(),
-            collection.getIIIFEnabledItemIds(), baseURL);
+            collection.getItemIds(), baseURL);
 
     }
 
@@ -128,7 +128,7 @@ public class IIIFCollection {
 
         JSONArray manifestJSON = new JSONArray();
         if (collection!=null) {
-            for (String itemId : collection.getIIIFEnabledItemIds()) {
+            for (String itemId : collection.getItemIds()) {
                 JSONObject itemObj = new JSONObject();
                 itemObj.put("label", itemId);
                 itemObj.put("@type", "sc:Manifest");
@@ -177,7 +177,7 @@ public class IIIFCollection {
 
         JSONArray manifestJSON = new JSONArray();
         if (collection!=null) {
-            for (String itemId : collection.getIIIFEnabledItemIds()) {
+            for (String itemId : collection.getItemIds()) {
                 JSONObject itemObj = new JSONObject();
                 itemObj.put("label", itemId);
                 itemObj.put("type", "Manifest");

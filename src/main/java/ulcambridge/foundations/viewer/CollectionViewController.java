@@ -87,7 +87,6 @@ public class CollectionViewController {
         if (collection == null){
             throw new ResourceNotFoundException();
         }
-
         final ModelAndView modelAndView = new ModelAndView("jsp/collection-"
                 + collection.getType());
 

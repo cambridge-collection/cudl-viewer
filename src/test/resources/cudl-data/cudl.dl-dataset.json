@@ -1,0 +1,259 @@
+{
+  "@type" : "https://schemas.cudl.lib.cam.ac.uk/package/v1/dl-dataset.json",
+  "name" : "Cambridge Digital Library Data",
+  "collections" : [ {
+    "@id" : "collections/landscapehistories.collection.json"
+  }, {
+    "@id" : "collections/poultrynotebooks.collection.json"
+  }, {
+    "@id" : "collections/mycenae_notebooks.collection.json"
+  }, {
+    "@id" : "collections/rgo14.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_1.collection.json"
+  }, {
+    "@id" : "collections/schroder.collection.json"
+  }, {
+    "@id" : "collections/mycenae_plans.collection.json"
+  }, {
+    "@id" : "collections/deadbooks.collection.json"
+  }, {
+    "@id" : "collections/rgo4.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_2.collection.json"
+  }, {
+    "@id" : "collections/treasures.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_3.collection.json"
+  }, {
+    "@id" : "collections/rabbitnotebooks.collection.json"
+  }, {
+    "@id" : "collections/cavendish.collection.json"
+  }, {
+    "@id" : "collections/mycenae_drawings.collection.json"
+  }, {
+    "@id" : "collections/rgo5.collection.json"
+  }, {
+    "@id" : "collections/newton.collection.json"
+  }, {
+    "@id" : "collections/rgo6.collection.json"
+  }, {
+    "@id" : "collections/sweetpeanotebooks.collection.json"
+  }, {
+    "@id" : "collections/mycenae_tomb_photographs.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_4.collection.json"
+  }, {
+    "@id" : "collections/mycenae_site_photographs.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_5.collection.json"
+  }, {
+    "@id" : "collections/tov.collection.json"
+  }, {
+    "@id" : "collections/rcs150.collection.json"
+  }, {
+    "@id" : "collections/nmm_mss.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_6.collection.json"
+  }, {
+    "@id" : "collections/mycenae_small_finds_photographs.collection.json"
+  }, {
+    "@id" : "collections/therisingtide.collection.json"
+  }, {
+    "@id" : "collections/nmm_print.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_7.collection.json"
+  }, {
+    "@id" : "collections/mycenae_bsa_myc.collection.json"
+  }, {
+    "@id" : "collections/newmuseums.collection.json"
+  }, {
+    "@id" : "collections/mycenae_bsa_sphs.collection.json"
+  }, {
+    "@id" : "collections/rogart.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_8.collection.json"
+  }, {
+    "@id" : "collections/landscapes.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_9.collection.json"
+  }, {
+    "@id" : "collections/longitudeessays.collection.json"
+  }, {
+    "@id" : "collections/pembroke.collection.json"
+  }, {
+    "@id" : "collections/sidneysussex.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_10.collection.json"
+  }, {
+    "@id" : "collections/sassoon.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_11.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_12.collection.json"
+  }, {
+    "@id" : "collections/maps.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_13.collection.json"
+  }, {
+    "@id" : "collections/chinese.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_14.collection.json"
+  }, {
+    "@id" : "collections/minganalewis.collection.json"
+  }, {
+    "@id" : "collections/casebooks.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_15.collection.json"
+  }, {
+    "@id" : "collections/darwin_mss.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_16.collection.json"
+  }, {
+    "@id" : "collections/rcs.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_17.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_18.collection.json"
+  }, {
+    "@id" : "collections/lewisgibson.collection.json"
+  }, {
+    "@id" : "collections/longitude.collection.json"
+  }, {
+    "@id" : "collections/thomashobson_19.collection.json"
+  }, {
+    "@id" : "collections/rackham.collection.json"
+  }, {
+    "@id" : "collections/christian.collection.json"
+  }, {
+    "@id" : "collections/music.collection.json"
+  }, {
+    "@id" : "collections/islamic.collection.json"
+  }, {
+    "@id" : "collections/needham.collection.json"
+  }, {
+    "@id" : "collections/hebrew.collection.json"
+  }, {
+    "@id" : "collections/darwinhooker.collection.json"
+  }, {
+    "@id" : "collections/genizah.collection.json"
+  }, {
+    "@id" : "collections/sanskrit.collection.json"
+  }, {
+    "@id" : "collections/japanese.collection.json"
+  }, {
+    "@id" : "collections/peterhouse.collection.json"
+  }, {
+    "@id" : "collections/spanishchapbooks.collection.json"
+  }, {
+    "@id" : "collections/exhibitions.collection.json"
+  }, {
+    "@id" : "collections/royallibrary.collection.json"
+  }, {
+    "@id" : "collections/waterloo.collection.json"
+  }, {
+    "@id" : "collections/downing.collection.json"
+  }, {
+    "@id" : "collections/fairbank.collection.json"
+  }, {
+    "@id" : "collections/michaelides.collection.json"
+  }, {
+    "@id" : "collections/curiousobjects.collection.json"
+  }, {
+    "@id" : "collections/batesonpunnett.collection.json"
+  }, {
+    "@id" : "collections/tennyson.collection.json"
+  }, {
+    "@id" : "collections/montaignelibrary.collection.json"
+  }, {
+    "@id" : "collections/stjohns.collection.json"
+  }, {
+    "@id" : "collections/stcatharines.collection.json"
+  }, {
+    "@id" : "collections/christs.collection.json"
+  }, {
+    "@id" : "collections/queens.collection.json"
+  }, {
+    "@id" : "collections/kings.collection.json"
+  }, {
+    "@id" : "collections/marshall.collection.json"
+  }, {
+    "@id" : "collections/ras.collection.json"
+  }, {
+    "@id" : "collections/scriptorium.collection.json"
+  }, {
+    "@id" : "collections/westminster.collection.json"
+  }, {
+    "@id" : "collections/newnham.collection.json"
+  }, {
+    "@id" : "collections/linesofthought.collection.json"
+  }, {
+    "@id" : "collections/trinityhall.collection.json"
+  }, {
+    "@id" : "collections/civilianinternment.collection.json"
+  }, {
+    "@id" : "collections/batesonarchive.collection.json"
+  }, {
+    "@id" : "collections/cuarchives.collection.json"
+  }, {
+    "@id" : "collections/aiit.collection.json"
+  }, {
+    "@id" : "collections/sterne.collection.json"
+  }, {
+    "@id" : "collections/engineering.collection.json"
+  }, {
+    "@id" : "collections/clare.collection.json"
+  }, {
+    "@id" : "collections/universitylibrary.collection.json"
+  }, {
+    "@id" : "collections/codexzacynthius.collection.json"
+  }, {
+    "@id" : "collections/greekmanuscripts.collection.json"
+  }, {
+    "@id" : "collections/skillitercentre.collection.json"
+  }, {
+    "@id" : "collections/mycenae.collection.json"
+  }, {
+    "@id" : "collections/dorothyneedham.collection.json"
+  }, {
+    "@id" : "collections/girton.collection.json"
+  }, {
+    "@id" : "collections/arthurschnitzler.collection.json"
+  }, {
+    "@id" : "collections/caricatures.collection.json"
+  }, {
+    "@id" : "collections/shahnama.collection.json"
+  }, {
+    "@id" : "collections/macclesfield.collection.json"
+  }, {
+    "@id" : "collections/astronomicalimages.collection.json"
+  }, {
+    "@id" : "collections/ghostwords.collection.json"
+  }, {
+    "@id" : "collections/thomashobson.collection.json"
+  }, {
+    "@id" : "collections/campesino.collection.json"
+  }, {
+    "@id" : "collections/constable.collection.json"
+  }, {
+    "@id" : "collections/relhan.collection.json"
+  }, {
+    "@id" : "collections/leopardi.collection.json"
+  }, {
+    "@id" : "collections/ethiopianmanuscripts.collection.json"
+  }, {
+    "@id" : "collections/kettlesyard.collection.json"
+  }, {
+    "@id" : "collections/medievalmedicalrecipes.collection.json"
+  }, {
+    "@id" : "collections/southernafricancollections.collection.json"
+  }, {
+    "@id" : "collections/kingsrarebooksandmanuscripts.collection.json"
+  }, {
+    "@id" : "collections/thomasgray.collection.json"
+  }, {
+    "@id" : "collections/cambridgebindings.collection.json"
+  }, {
+    "@id" : "collections/sandbachtinne.collection.json"
+  } ]
+}

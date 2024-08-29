@@ -26,8 +26,6 @@ public class DefaultItemFactoryTest {
     private static final String ID_B = "MS-ADD-04004";
     private static final String ESSAY_ITEM_ID = "ES-LON-00001";
 
-    @Mock ItemStatusOracle itemStatusOracle;
-
     private static JSONObject getTestItemJSON(String itemID) {
         String itemJSONText;
         try {
@@ -50,29 +48,10 @@ public class DefaultItemFactoryTest {
     }
 
     private Item createItem(String id) {
-        DefaultItemFactory f = new DefaultItemFactory(itemStatusOracle);
+        DefaultItemFactory f = new DefaultItemFactory();
         return f.itemFromJSON(id, getTestItemJSON(id));
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true, false})
-    public void iiifEnabled(boolean isIIIFEnabled) {
-        when(itemStatusOracle.isIIIFEnabled(ID_A)).thenReturn(isIIIFEnabled);
-        Item item = createItem(ID_A);
-
-        assertEquals(isIIIFEnabled, item.getIIIFEnabled());
-        verify(itemStatusOracle).isIIIFEnabled(ID_A);
-    }
-
-    @ParameterizedTest
-    @ValueSource(booleans = {true, false})
-    public void taggingStatus(boolean isTaggingEnabled) {
-        when(itemStatusOracle.isTaggingEnabled(ID_A)).thenReturn(isTaggingEnabled);
-        Item item = createItem(ID_A);
-
-        assertEquals(isTaggingEnabled, item.getTaggingStatus());
-        verify(itemStatusOracle).isTaggingEnabled(ID_A);
-    }
 
     @Test
     public void item() {

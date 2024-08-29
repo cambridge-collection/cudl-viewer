@@ -22,9 +22,6 @@ public class CollectionFactory {
     private static Map<String, Collection> collections;
     private static List<Collection> rootCollections;
     private CollectionsDao collectionsDao;
-    private static int collectionsRowCount;
-    private static int itemsRowCount;
-    private static int itemsinCollectionRowCount;
     private static Set<String> allItemIds;
     private final String cachingEnabled;
     private final Path jsonDirPath;
@@ -63,7 +60,6 @@ public class CollectionFactory {
         List<String> collectionIds = collectionsDao.getCollectionIds();
         for (String collectionId : collectionIds) {
             Collection collection = collectionsDao.getCollection(collectionId);
-
             // Check for missing JSON on disk and remove
             collection.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
 
@@ -83,9 +79,6 @@ public class CollectionFactory {
             c.setSubCollections(getSubCollections(c));
         }
         Collections.sort(rootCollections);
-        collectionsRowCount = collectionsDao.getCollectionsRowCount();
-        itemsRowCount = collectionsDao.getItemsRowCount();
-        itemsinCollectionRowCount = collectionsDao.getItemsInCollectionsRowCount();
 
     }
 
@@ -143,18 +136,6 @@ public class CollectionFactory {
 
     public Set<String> getAllItemIds() {
         return allItemIds;
-    }
-
-    public int getCollectionsRowCount() {
-        return collectionsRowCount;
-    }
-
-    public int getItemsRowCount() {
-        return itemsRowCount;
-    }
-
-    public int getItemsInCollectionsRowCount() {
-        return itemsinCollectionRowCount;
     }
 
     private boolean existsJSON(String id) {

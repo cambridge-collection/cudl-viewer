@@ -44,14 +44,14 @@ public class CollectionTest {
 
         final Collection c = new Collection("collectionID", "collectionTitle",
                 collectionIds, "collectionSummary",
-                "collectionSponsors", "collectionType", "", collectionIds);
+                "collectionSponsors", "collectionType", "", "");
 
         final Collection c2 = new Collection(
                 "collectionID2",
                 "collectionTitle2",
                 collectionIds,
                 "collectionSummary",
-                "collectionSponsors2", "collectionType2", "", collectionIds);
+                "collectionSponsors2", "collectionType2", "", "");
 
         assertEquals("collectionID", c.getId());
         assertEquals("collectionSponsors", c.getSponsors());
@@ -59,7 +59,7 @@ public class CollectionTest {
         assertEquals("collectionTitle", c.getTitle());
         assertEquals("collectionType", c.getType());
         assertEquals("/collections/collectionID", c.getURL());
-        assertEquals(collectionIds, c.getIIIFEnabledItemIds());
+        assertEquals(collectionIds, c.getItemIds());
         assertEquals(collectionIds, c.getItemIds());
         assertTrue(c.compareTo(c2) < 0);
         assertTrue(c2.compareTo(c) > 0);

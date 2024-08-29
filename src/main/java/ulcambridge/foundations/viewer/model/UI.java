@@ -13,8 +13,8 @@ import org.json.JSONPropertyName;
 public class UI {
 
     protected String themeName;
-
     protected UITheme themeUI;
+    protected UIData themeData;
 
     public UI() {
     }
@@ -37,5 +37,15 @@ public class UI {
     @JsonProperty("theme-ui")
     public void setThemeUI(UITheme themeUI) {
         this.themeUI = themeUI;
+    }
+
+    @JsonProperty("theme-data")
+    public UIData getThemeData() {
+        return themeData;
+    }
+
+    @JsonProperty("theme-data")
+    public void setThemeData(UIData themeData) {
+        this.themeData = themeData;
     }
 }

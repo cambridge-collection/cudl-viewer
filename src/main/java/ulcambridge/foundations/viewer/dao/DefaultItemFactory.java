@@ -5,8 +5,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.Assert;
-
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -19,11 +17,7 @@ import java.util.List;
 public final class DefaultItemFactory implements ItemFactory {
     private static final Logger LOG = LoggerFactory.getLogger(DefaultItemFactory.class);
 
-    private final ItemStatusOracle itemStatusOracle;
-
-    public DefaultItemFactory(ItemStatusOracle itemStatusOracle) {
-        Assert.notNull(itemStatusOracle, "itemStatusOracle is required");
-        this.itemStatusOracle = itemStatusOracle;
+    public DefaultItemFactory() {
     }
 
     public Item itemFromJSON(String itemId, JSONObject itemJson) {
@@ -133,8 +127,8 @@ public final class DefaultItemFactory implements ItemFactory {
 
         return new Item(itemId, itemType, itemTitle, itemAuthors, itemShelfLocator,
             itemAbstract, itemThumbnailURL, thumbnailOrientation, imageReproPageURL,
-            pageLabels, pageThumbnailURLs, this.itemStatusOracle.isIIIFEnabled(itemId),
-            this.itemStatusOracle.isTaggingEnabled(itemId), itemJson);
+            pageLabels, pageThumbnailURLs, true,
+            false, itemJson);
 
     }
 

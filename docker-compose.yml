@@ -12,18 +12,18 @@ services:
       - ${CUDL_VIEWER_CONTENT_UI:-../dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
     ports:
       - "8888:8080"
-    depends_on:
-      - cudl-db
-  cudl-db:
-    build:
-      context: .
-      dockerfile: docker/db/Dockerfile
-      args:
-        DBPATH: ${DBPATH:-./docker/db/dl-data-samples/processed-data/database-snapshots}
-    restart: always
-    environment:
-      POSTGRES_USER: cudl
-      POSTGRES_DB: cudl
-      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
-    ports:
-      - ${CUDL_DB_HOST_PORT:-0}:5432
+#    depends_on:
+#      - cudl-db
+#  cudl-db:
+#    build:
+#      context: .
+#      dockerfile: docker/db/Dockerfile
+#      args:
+#        DBPATH: ${DBPATH:-./docker/db/dl-data-samples/processed-data/database-snapshots}
+#    restart: always
+#    environment:
+#      POSTGRES_USER: cudl
+#      POSTGRES_DB: cudl
+#      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+#    ports:
+#      - ${CUDL_DB_HOST_PORT:-0}:5432
