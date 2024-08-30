@@ -61,7 +61,7 @@ public class CollectionsJSONDao implements CollectionsDao {
         String collectionSummary = description.getJSONObject("full").getString("@id");
         String collectionSponsors = credit.getJSONObject("prose").getString("@id");
         String collectionType =  getCollectionType(collectionId);
-        String parentCollectionId = "";
+        String parentCollectionId = null;
 
         String metaDescription = description.getString("medium");
 

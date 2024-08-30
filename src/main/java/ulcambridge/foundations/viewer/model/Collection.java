@@ -100,7 +100,11 @@ public class Collection implements Comparable<Collection> {
     }
 
     public void setParentCollectionId(String parentCollectionId) {
-        this.parentCollectionId = parentCollectionId;
+        if (parentCollectionId == null || parentCollectionId.trim().isEmpty()) {
+            this.parentCollectionId = null;
+        } else {
+            this.parentCollectionId = parentCollectionId;
+        }
     }
 
     public String getMetaDescription() {
