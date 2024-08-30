@@ -1,12 +1,20 @@
 resource "aws_codebuild_project" "maven" {
-  name          = join("-", [var.tag_environment, var.codebuild_project_name])
-  build_timeout = 5
-  service_role  = aws_iam_role.code_build.arn
+  name                   = join("-", [var.tag_environment, var.codebuild_project_name])
+  build_timeout          = 5
+  service_role           = aws_iam_role.code_build.arn
+  concurrent_build_limit = 1
 
   artifacts {
-    type     = "S3"
-    location = var.s3_bucket_name
-    path     = "codebuild/cudl-viewer"
+    type           = "S3"
+    location       = var.s3_bucket_name
+    namespace_type = "NONE"
+    packaging      = "NONE"
+    path           = "codebuild/cudl-viewer"
+  }
+
+  cache {
+    modes = []
+    type  = "NO_CACHE"
   }
 
   environment {
@@ -53,16 +61,24 @@ resource "aws_codebuild_project" "maven" {
     cloudwatch_logs {
       group_name  = var.cloudwatch_log_group_name
       stream_name = var.cloudwatch_log_stream_name
+      status      = "ENABLED"
+    }
+
+    s3_logs {
+      encryption_disabled = false
+      status              = "DISABLED"
     }
   }
 
   source {
-    type            = "GITHUB"
-    location        = "https://github.com/cambridge-collection/cudl-viewer.git"
-    git_clone_depth = 1
+    type                = "GITHUB"
+    location            = "https://github.com/cambridge-collection/cudl-viewer.git"
+    git_clone_depth     = 1
+    insecure_ssl        = false
+    report_build_status = false
   }
 
-  source_version = "feature/codebuild"
+  source_version = var.codebuild_git_source_version
 
   # vpc_config {
   #   vpc_id = data.aws_vpc.code_build.id

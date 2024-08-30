@@ -18,7 +18,7 @@ variable "cloudwatch_log_stream_name" {
 
 variable "codebuild_project_name" {
   type        = string
-  default     = "cudl-viewer"
+  default     = "cudl-viewer-no-db"
   description = "Name of the CodeBuild Build Project"
 }
 
@@ -56,6 +56,12 @@ variable "codebuild_git_submodule_data_samples" {
   type        = string
   default     = "docker/db/dl-data-samples-http"
   description = "Path to the data-samples git submodule used in DB Docker build"
+}
+
+variable "codebuild_git_source_version" {
+  type        = string
+  default     = "feature/codebuild-with-removed-db"
+  description = "Git branch to use in CodeBuild project"
 }
 
 variable "codebuild_github_user" {
