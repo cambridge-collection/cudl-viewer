@@ -25,16 +25,11 @@ phases:
       - echo Docker build started on `date`
       - docker build -t $REPOSITORY_URI_VIEWER:latest -f docker/ui/Dockerfile .
       - docker tag $REPOSITORY_URI_VIEWER:latest $REPOSITORY_URI_VIEWER:$IMAGE_TAG
-      - docker build -t $REPOSITORY_URI_VIEWER_DB:latest --build-arg DBPATH=./$GIT_SUBMODULE_DATA_SAMPLES/processed-data/database-snapshots -f docker/db/Dockerfile .
-      - docker tag $REPOSITORY_URI_VIEWER_DB:latest $REPOSITORY_URI_VIEWER_DB:$IMAGE_TAG
   post_build:
     commands:
       - echo Pushing to $REPOSITORY_URI_VIEWER
       - docker push $REPOSITORY_URI_VIEWER:latest
       - docker push $REPOSITORY_URI_VIEWER:$IMAGE_TAG
-      - echo Pushing to $REPOSITORY_URI_VIEWER_DB
-      - docker push $REPOSITORY_URI_VIEWER_DB:latest
-      - docker push $REPOSITORY_URI_VIEWER_DB:$IMAGE_TAG
       - echo Build completed on `date`
 
 artifacts:
