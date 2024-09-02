@@ -27,9 +27,14 @@
 <%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
-                                <form id="headerSearchForm" action="/search" method="GET">
-                                    <input id="keyword" name="keyword" placeholder="Search" type="text" autofocus="autofocus" class="search" value="">
-                                    <input type="image" class="icon icon-search" alt="" />
+                                <form action="/search" method="GET" class="search-form d-flex flex-row rounded-2">
+                                    <span class="input-group-prepend">
+                                        <button type="submit" id="search-label" class="btn btn-light border rounded-start-2 rounded-end-0 ms-n5 border">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                            <span class="d-none">Search</span>
+                                        </button>
+                                    </span>
+                                    <input name="keyword" placeholder="Search" type="text" class="search form-control border border border-start-0  rounded-start-0 rounded-end-2" value="">
                                 </form>
                             </div>
                             <div class="dropdown">
