@@ -27,6 +27,7 @@ public class SearchForm {
 
     // Search Facets
     private Map<String,String> facets = new Hashtable<>();
+    private String facetCollection;
 
     // Expand facet results
     private String expandFacet = "";
@@ -165,6 +166,18 @@ public class SearchForm {
 
     public Map<String, String> getFacets() {
         return this.facets;
+    }
+
+    // Hard coded collection facet - for advanced search.
+    public String getFacetCollection() {
+        return facetCollection;
+    }
+
+    public void setFacetCollection(String facetCollection) {
+        if (facetCollection!=null && !facetCollection.trim().isEmpty()) {
+            this.facetCollection = facetCollection;
+            facets.put("collection", facetCollection);
+        }
     }
 
     /** Expand Facet **/
