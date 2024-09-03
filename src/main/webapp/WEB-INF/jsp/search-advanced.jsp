@@ -16,10 +16,10 @@
 
                         <div class="advancedsearchform box">
 
-                            <form:form modelAttribute="searchForm" method="GET" action="/search/advanced/results">
+                            <form:form modelAttribute="searchForm" method="GET" action="/search">
 
                                 <div class="advancedsearch-section col-md-6">
-                                    <h2>Find metadata with &hellip;</h2>
+                                    <h2>Advanced Search</h2>
 
 
                                         <div class="row">
@@ -52,8 +52,8 @@
                                             <form:label class="right" path="fullText">Full Text</form:label>
                                         </div>
                                         <div class="col-md-10">
-                                            <span class="hint--right" data-hint="Search transcription data">
-                                                <form:input path="fullText" type="text" value="" name="fullText" />
+                                            <span class="hint--right" data-hint="Search transcription/translation data">
+                                                <form:input path="fullText" type="text" value="" name="textual_content" />
                                             </span>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <span class="hint--right" data-hint="Search for items by this person, e.g. Darwin">
-                                                <form:input path="author" type="text" size="35" value="" name="author" />
+                                                <form:input path="author" type="text" size="35" value="" name="name" />
                                             </span>
                                         </div>
                                     </div>
@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <span class="hint--right" data-hint="Search for items in a language, e.g. Latin">
-                                                <form:input path="language" type="text" size="35" value="" name="language" />
+                                                <form:input path="language" type="text" size="35" value="" name="languages" />
                                             </span>
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <span class="hint--right" data-hint="Search for items from (or associated with) a place, e.g. London">
-                                                <form:input path="place" type="text" size="35" value="" name="place" />
+                                                <form:input path="place" type="text" size="35" value="" name="origin-place" />
                                             </span>
                                         </div>
                                     </div>
@@ -173,7 +173,7 @@
                                         </div>
                                         <div class="col-md-10">
                                             <span class="hint--right" data-hint="Search for items in a physical location, e.g. University Library">
-                                                <form:input path="location" type="text" size="35" value="" name="location" />
+                                                <form:input path="location" type="text" size="35" value="" name="physicalLocation" />
                                             </span>
                                         </div>
                                     </div>
