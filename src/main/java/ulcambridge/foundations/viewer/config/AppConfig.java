@@ -63,8 +63,8 @@ public class AppConfig {
      */
     @Configuration
     @Profile("!test")
-    // @PropertySource("classpath:cudl-global.properties")
-    // @PropertySource("classpath:application.properties")
+    @PropertySource("classpath:cudl-global.properties")
+    @PropertySource("classpath:application.properties")
     @EnableScheduling
     public class RuntimeConfig { }
 
