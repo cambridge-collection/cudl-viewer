@@ -9,21 +9,21 @@ ENV JAVA_OPTS="-server -Djava.awt.headless=true -Xms512m -Xmx2560m" \
 COPY target/FoundationsViewer.war $CATALINA_HOME/webapps/ROOT.war
 COPY docker/ui/server.xml $CATALINA_HOME/conf/server.xml
 COPY docker/ui/context.xml $CATALINA_HOME/conf/Catalina/localhost/ROOT.xml
+COPY docker/ui/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-RUN set -eu; \
+RUN set -ex; \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; \
     unzip awscliv2.zip; \
     ./aws/install; \
     aws --version;
 
 RUN set -ex; \
+    chmod 0755 /usr/local/bin/entrypoint.sh; \
     groupadd -r --gid "$VIEWER_GID" "$VIEWER_GROUP"; \
     useradd -r --uid "$VIEWER_UID" --gid "$VIEWER_GID" "$VIEWER_USER"; \
     chown -R $VIEWER_USER:$VIEWER_GROUP $CATALINA_HOME;
 
 USER digilib
-
-COPY --chmod=755 docker/ui/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT [ "entrypoint.sh" ]
 CMD [ "catalina.sh", "run" ]
