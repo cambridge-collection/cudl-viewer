@@ -13,24 +13,44 @@
 
 <cudl:search-results-page title="Search">
     <jsp:attribute name="queryInfo">
-        <form:form modelAttribute="searchForm" class="" action="/search" method="GET">
+        <ul>
+            <cudl:search-result-param form="${form}" label="Keyword" attr="keyword"/>
+            <c:if test="${not empty form['keyword'] and enableTagging}">
+                <div class="recall-slider">
+                    <input id="recall-slider-input" type="text" name="recallScale"
+                           data-slider-value="${fn:escapeXml(form.recallScale)}"
+                           data-slider-min="0"
+                           data-slider-max="1"
+                           data-slider-step="0.1"
+                           data-slider-ticks="[0, 0.5, 1]"
+                           data-slider-ticks-labels='["Curated<br>metadata", "Secondary<br>literature", "Crowd-<br>sourced"]'
+                           data-slider-tooltip="hide">
+                    <input type="hidden" name="tagging" value="1">
+                </div>
+            </c:if>
+            <cudl:search-result-param form="${form}" label="Full Text" attr="fullText"/>
+            <cudl:search-result-param form="${form}" label="Exclude Text" attr="excludeText"/>
+            <cudl:search-result-param form="${form}" label="Classmark" attr="shelfLocator"/>
+            <cudl:search-result-param form="${form}" label="CUDL ID" attr="fileID"/>
+            <cudl:search-result-param form="${form}" label="Title" attr="title"/>
+            <cudl:search-result-param form="${form}" label="Author" attr="author"/>
+            <cudl:search-result-param form="${form}" label="Subjects" attr="subjects"/>
+            <cudl:search-result-param form="${form}" label="Language" attr="language"/>
+            <cudl:search-result-param form="${form}" label="Associated Place or Origin" attr="place"/>
+            <cudl:search-result-param form="${form}" label="Current Location" attr="location"/>
+            <c:if test="${(not empty form.yearStart) and (empty form.yearEnd)}">
+                <cudl:search-result-param form="${form}" label="Exact Year" attr="yearStart"/>
+            </c:if>
+            <c:if test="${not (empty form.yearStart or empty form.yearEnd)}">
+                <cudl:search-result-param form="${form}" label="Year from" attr="yearStart"/>
+                <cudl:search-result-param form="${form}" label="Year to" attr="yearEnd"/>
+            </c:if>
+        </ul>
 
-            <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search" autofocus="autofocus"/>
-            <input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
-            <c:forEach items="${form.facets}" var="facet">
-                <%-- FIXME: Should this be using form:input? --%>
-                <input path="${fn:escapeXml(facet.key)}"
-                       type="hidden"
-                       name="facet-${fn:escapeXml(facet.key)}"
-                       value="${fn:escapeXml(facet.value)}">
-            </c:forEach>
-            <form:input path="fileID" type="hidden" name="fileID" value="${form.fileID}"/>
-        </form:form>
-        <div class="altsearchlink">
-            <form:form modelAttribute="searchForm" action="/search/advanced/query" method="GET">
-                <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
-                <input class="altsearchlink" type="submit" disabled value="Advanced Search (Coming Soon)">
-            </form:form>
+        <div class="query-actions">
+            <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">
+                Change Query
+            </a>
         </div>
     </jsp:attribute>
     <jsp:attribute name="resultInfo">
