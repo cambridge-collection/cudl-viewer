@@ -21,7 +21,9 @@ RUN set -ex; \
     chmod 0755 /usr/local/bin/entrypoint.sh; \
     groupadd -r --gid "$VIEWER_GID" "$VIEWER_GROUP"; \
     useradd -r --uid "$VIEWER_UID" --gid "$VIEWER_GID" "$VIEWER_USER"; \
-    chown -R $VIEWER_USER:$VIEWER_GROUP $CATALINA_HOME;
+    chown -R $VIEWER_USER:$VIEWER_GROUP $CATALINA_HOME; \
+    mkdir -p /etc/cudl-viewer; \
+    chown -R $VIEWER_USER:$VIEWER_GROUP /etc/cudl-viewer;
 
 USER digilib
 
