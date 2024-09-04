@@ -187,36 +187,6 @@ public class SolrSearch implements Search {
             QueryTerms.put("yearEnd", Integer.toString(searchForm.getYearEnd()));
         }
 
-        // Facets
-//        if (searchForm.getFacetCollection() != null) {
-//            uriB.queryParam("fq", String.format("collection_str:\"%s\"", searchForm.getFacetCollection()));
-//        }
-//
-//        if (searchForm.getFacetSubjects() != null) {
-//            uriB.queryParam("fq", String.format("subjects_str:\"%s\"", searchForm.getFacetSubjects()));
-//        }
-
-//        if (searchForm.getFacetLanguage() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-language", ++facetCount),
-//                searchForm.getFacetLanguage()
-//            );
-//        }
-//
-//        if (searchForm.getFacetPlace() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-place", ++facetCount),
-//                searchForm.getFacetPlace()
-//            );
-//        }
-//
-//        if (searchForm.getFacetLocation() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-location", ++facetCount),
-//                searchForm.getFacetLocation()
-//            );
-//        }
-
         if (searchForm.getFacets() != null) {
             for (Map.Entry<String,String> facet: searchForm.getFacets().entrySet()) {
                 uriB.queryParam("fq", String.format("%s:\"%s\"",displayNameToFacetNameMap.get(facet.getKey()),facet.getValue()));
