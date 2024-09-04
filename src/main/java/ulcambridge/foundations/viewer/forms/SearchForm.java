@@ -176,7 +176,7 @@ public class SearchForm {
     public void setFacetCollection(String facetCollection) {
         if (facetCollection!=null && !facetCollection.trim().isEmpty()) {
             this.facetCollection = facetCollection;
-            facets.put("collection", facetCollection);
+            facets.put("Collection", facetCollection);
         }
     }
 
