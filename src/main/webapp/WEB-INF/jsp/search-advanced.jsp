@@ -95,8 +95,8 @@
                                         </div>
                                         <div class="col-md-10">
                                             <form:select path="FacetCollection">
-                                            <form:option value="" label="--- Select ---"/>
-                                            <form:options items="${form.collections}" itemValue="title" itemLabel="title" multiple="false"/>
+                                                <form:option value="" label="--- Select ---"/>
+                                                <form:options items="${form.collections}" itemValue="title" itemLabel="title" multiple="false"/>
                                             </form:select>
                                         </div>
                                     </div>

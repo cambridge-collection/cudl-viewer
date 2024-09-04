@@ -116,7 +116,6 @@ public class SolrSearch implements Search {
 
         // Expand/contract facet
         if (searchForm.getExpandFacet() != null) {
-
             uriB.queryParam("expand", searchForm.getExpandFacet());
         }
 
@@ -148,8 +147,8 @@ public class SolrSearch implements Search {
 
         // Classmark
         if (searchForm.getShelfLocator() != null) {
-//            // remove all punctuation and run a search-shelfLocator
-//            // search (for full and partial classmark match)
+            // remove all punctuation and run a search-shelfLocator
+            // search (for full and partial classmark match)
 //            final String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
             QueryTerms.put("shelfLocator", searchForm.getShelfLocator());
         }
@@ -188,8 +187,8 @@ public class SolrSearch implements Search {
         }
 
         if (searchForm.getFacets() != null) {
-            for (Map.Entry<String,String> facet: searchForm.getFacets().entrySet()) {
-                uriB.queryParam("fq", String.format("%s:\"%s\"",displayNameToFacetNameMap.get(facet.getKey()),facet.getValue()));
+            for (Map.Entry<String, String> facet : searchForm.getFacets().entrySet()) {
+                uriB.queryParam("fq", String.format("%s:\"%s\"", displayNameToFacetNameMap.get(facet.getKey()), facet.getValue()));
             }
         }
 
@@ -219,8 +218,7 @@ public class SolrSearch implements Search {
         }
         uriB.queryParam("q", query);
 
-
-        System.out.println("****** URL: "+uriB.toUriString());
+        System.out.println("****** URL: " + uriB.toUriString());
         return uriB.toUriString();
     }
 
