@@ -124,21 +124,22 @@ public class SolrSearch implements Search {
             QueryTerms.put("keyword", searchForm.getKeyword());
         }
 
-//        if (searchForm.getFullText() != null) {
-//            uriB.queryParam("text", searchForm.getFullText());
-//        }
-//        if (searchForm.getExcludeText() != null) {
-//            uriB.queryParam("text-exclude", searchForm.getExcludeText());
-//        }
+        if (searchForm.getFullText() != null) {
+            QueryTerms.put("textual_content", searchForm.getFullText());
+        }
 
         // Join
-//        if (searchForm.getTextJoin() != null) {
-//            if ("or".equals(searchForm.getTextJoin())) {
-//                uriB.queryParam("text-join", "or");
-//            } else {
-//                uriB.queryParam("text-join", "");
-//            }
-//        }
+        String textJoin = "AND";
+        if (searchForm.getTextJoin() != null) {
+            if ("or".equals(searchForm.getTextJoin())) {
+                textJoin = "OR";
+            }
+        }
+
+        if (searchForm.getExcludeText() != null) {
+            // Form field currently does not appear
+            //QueryTerms.put("text-exclude", searchForm.getExcludeText());
+        }
 
         // File ID
 //        if (searchForm.getFileID() != null) {
@@ -207,12 +208,31 @@ public class SolrSearch implements Search {
             String value = entry.getValue();
             String field_prefix = "";
             if (value != "") {
-                if (key != "keyword") {
-                    field_prefix = key + ":";
+                String search_clause = "";
+                String[] tokens =value.split("\\s+");
+                Iterator<String> words = Arrays.asList(tokens).iterator();
+                while (words.hasNext()) {
+                    String word = words.next();
+                    if (key != "keyword") {
+                        field_prefix = key + ":";
+                    }
+                    search_clause += field_prefix + word;
+                    if (words.hasNext()) {
+                        if (key == "textual_content") {
+                            search_clause += " " + textJoin + " ";
+                        } else {
+                            search_clause += " AND ";
+                        }
+                    }
                 }
-                query += field_prefix + '"' + value + '"';
+                String result = "";
+                if ( key == "textual_content" ) {
+                    query += "(" + search_clause + ")";
+                } else {
+                    query += search_clause;
+                }
                 if (iterator.hasNext()) {
-                    query += " AND ";
+                     query += " AND ";
                 }
             }
         }
