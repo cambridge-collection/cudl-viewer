@@ -32,6 +32,10 @@ public class SearchForm {
     // Expand facet results
     private String expandFacet = "";
 
+    public boolean hasQueryParams() {
+        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getKeyword() != "" || this.getKeyword() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubjects() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
+    }
+
     public String getKeyword() {
         return keyword;
     }

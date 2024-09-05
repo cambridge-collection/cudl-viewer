@@ -9,13 +9,13 @@
 <%-- Unlike the advanced search page, the regular search page uses the same
      template for the query definition page and result page. Certain things have
      to be hidden on the query page. --%>
-<c:set var="userHasSearched" value="${not empty form.keyword}"/>
+<c:set var="userHasSearched" value="${form.hasQueryParams()}"/>
 
 <cudl:search-results-page title="Search">
     <jsp:attribute name="queryInfo">
         <ul>
             <cudl:search-result-param form="${form}" label="Keyword" attr="keyword"/>
-            <c:if test="${not empty form['keyword'] and enableTagging}">
+            <c:if test="${userHasSearched and enableTagging}">
                 <div class="recall-slider">
                     <input id="recall-slider-input" type="text" name="recallScale"
                            data-slider-value="${fn:escapeXml(form.recallScale)}"
@@ -46,12 +46,11 @@
                 <cudl:search-result-param form="${form}" label="Year to" attr="yearEnd"/>
             </c:if>
         </ul>
-
-        <div class="query-actions">
-            <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">
-                Change Query
-            </a>
-        </div>
+        <c:if test="${userHasSearched}">
+            <div class="query-actions">
+                <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">Change Query</a>
+            </div>
+        </c:if>
     </jsp:attribute>
     <jsp:attribute name="resultInfo">
         <%-- Don't show the result count before the user has performed a search --%>
