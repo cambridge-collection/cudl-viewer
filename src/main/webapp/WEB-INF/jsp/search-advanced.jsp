@@ -7,21 +7,17 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 <cudl:generic-page pagetype="ADVANCED_SEARCH" title="${collection.title}">
-    <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Advanced Search"/>
+    <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Search"/>
 
     <div id="main_content" class="container">
         <div class="row">
             <div class="container" id="content">
-                <h2>Advanced Search</h2>
                 <div class="advancedsearchform box">
 
                     <form:form modelAttribute="searchForm" method="GET" action="/search">
                         <div class="advancedsearch-section col-md-6">
-                            <h3>General</h3>
+                            <h3>Search</h3>
                             <div class="row">
-                                <div class="col-md-2">
-                                    <form:label class="right" path="keyword">Keywords</form:label>
-                                </div>
                                 <div class="col-md-10">
                                     <span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
                                         <form:input path="keyword" type="text" value="" name="keyword"/>
@@ -198,7 +194,7 @@
                             <div class="row">
                                 <div class="col-12 text-end mt-3">
                                     <button type="reset" class="campl-btn">Reset</button>
-                                    <button type="submit" class="campl-btn campl-primary-cta">Advanced Search</button>
+                                    <button type="submit" class="campl-btn campl-primary-cta">Search</button>
                                 </div>
                             </div>
                         </div>
@@ -211,12 +207,6 @@
                         characters.
                     </div>
 
-                    <div class="altsearchlink right">
-                        <form:form modelAttribute="searchForm" action="/search" method="GET">
-                            <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword"/>
-                            <input class="altsearchlink" type="submit" value="back to simple search"/>
-                        </form:form>
-                    </div>
                 </div>
             </div>
         </div>
