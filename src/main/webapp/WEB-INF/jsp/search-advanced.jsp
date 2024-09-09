@@ -53,7 +53,7 @@
                             <h2 class="accordion-header mt-0" id="advanced-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#advanced-search" aria-expanded="false" aria-controls="collapseOne">Advanced options</button>
                             </h2>
-                            <div id="advanced-search" class="accordion-collapse collapse" aria-labelledby="advanced-header" >
+                            <div id="advanced-search" class="accordion-collapse collapse ${form.hasAdvancedParams() ? 'show' : ''}" aria-labelledby="advanced-header" >
                                 <div class="accordion-body">
                                     <div class="advancedsearch-section">
                                         <h3>Search transcription/translation</h3>
