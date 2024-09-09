@@ -27,10 +27,9 @@
 <%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
-                                <form id="headerSearchForm" action="/search" method="GET">
-                                    <input id="keyword" name="keyword" placeholder="Search" type="text" autofocus="autofocus" class="search" value="">
-                                    <input type="image" class="icon icon-search" alt="" />
-                                </form>
+                                <a href="/search/advanced/query">
+                                    <span class="icon icon-search"></span>
+                                </a>
                             </div>
                             <div class="dropdown">
                                 <a href="#" id="menuDropdownOpenButton" class="bg-white">
