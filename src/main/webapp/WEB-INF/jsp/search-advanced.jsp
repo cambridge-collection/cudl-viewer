@@ -7,26 +7,21 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
 <cudl:generic-page pagetype="ADVANCED_SEARCH" title="${collection.title}">
-    <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Advanced Search"/>
+    <cudl:nav activeMenuIndex="${2}" displaySearch="true" title="Search"/>
 
     <div id="main_content" class="container">
         <div class="row">
             <div class="container" id="content">
                 <div class="advancedsearchform box">
+                    <h2>Search</h2>
                     <form:form modelAttribute="searchForm" method="GET" action="/search">
-                    <div id="search" class="accordion col-md-6">
+                    <div id="search" class="accordion col-md-6 accordion-flush">
                         <div class="accordion-item">
-                            <h2 class="accordion-header mt-0" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="" data-bs-target="#general" aria-expanded="false" aria-controls="collapseOne">Basic search</button>
-                            </h2>
                             <div id="general" class="accordion-collapse collapse show">
-                                <div class="accordion-body">
+                                <div class="accordion-body px-0">
                                     <div id="basic-search" class="advancedsearch-section">
                                         <div class="row">
-                                            <div class="col-md-2">
-                                                <form:label class="right" path="keyword">Keywords</form:label>
-                                            </div>
-                                            <div class="col-md-10">
+                                            <div class="col-md-12">
                                     <span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
                                         <form:input path="keyword" type="text" value="" name="keyword"/>
                                     </span>
@@ -51,12 +46,11 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header mt-0" id="advanced-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#advanced-search" aria-expanded="false" aria-controls="collapseOne">Advanced options</button>
+                                <button class="accordion-button collapsed px-0 pb-0 h3" type="button" data-bs-toggle="collapse" data-bs-target="#advanced-search" aria-expanded="false" aria-controls="collapseOne">Advanced options</button>
                             </h2>
                             <div id="advanced-search" class="accordion-collapse collapse ${form.hasAdvancedParams() ? 'show' : ''}" aria-labelledby="advanced-header" >
-                                <div class="accordion-body">
+                                <div class="accordion-body px-0">
                                     <div class="advancedsearch-section">
-                                        <h3>Search transcription/translation</h3>
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <form:label class="right" path="fullText">Full Text</form:label>
@@ -96,8 +90,6 @@
                                     <div class="_mib"></div>
 
                                     <div class="advancedsearch-section clearfix">
-                                        <h3>Narrow your results by &hellip;</h3>
-
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <form:label class="right" path="FacetCollection">Collection</form:label>
@@ -210,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="search-buttons" class="advancedsearch-section col-md-6 clearfix text-end mt-3 px-0">
+                    <div id="search-buttons" class="advancedsearch-section col-md-6 clearfix text-end mt-4 px-0">
                         <button type="reset" class="campl-btn">Reset</button>
                         <button type="submit" class="campl-btn campl-primary-cta">Search</button>
                     </div>
@@ -222,13 +214,6 @@
                     wildcards in your search.<br/> Use <b>?</b> to represent one
                     unknown character and <b>*</b> to represent any number of unknown
                     characters.
-                </div>
-
-                <div class="altsearchlink right">
-                    <form:form modelAttribute="searchForm" action="/search" method="GET">
-                        <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword"/>
-                        <input class="altsearchlink" type="submit" value="back to simple search"/>
-                    </form:form>
                 </div>
             </div>
         </div>

@@ -45,7 +45,7 @@
         </ul>
 
         <div class="query-actions">
-            <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">
+            <a class="change-query campl-btn campl-primary-cta" href="/search/query?${fn:escapeXml(queryString)}">
                 Change Query
             </a>
         </div>

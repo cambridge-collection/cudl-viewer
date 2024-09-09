@@ -48,7 +48,7 @@
         </ul>
         <c:if test="${userHasSearched}">
             <div class="query-actions">
-                <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">Change Query</a>
+                <a class="change-query campl-btn campl-primary-cta" href="/search/query?${fn:escapeXml(queryString)}">Change Query</a>
             </div>
         </c:if>
     </jsp:attribute>
