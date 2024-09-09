@@ -27,7 +27,7 @@
 <%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
-                                <a href="/search/advanced/query">
+                                <a href="/search/query">
                                     <span class="icon icon-search"></span>
                                 </a>
                             </div>
@@ -48,7 +48,7 @@
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/collections/">View all collections</a></li>
-                        <li><a href="#"><span style="color:#444">Advanced Search (Coming Soon)</span></a></li>
+                        <li><a href="/search/query">Search</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="/help/">Help</a></li>
                     </ul>
