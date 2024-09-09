@@ -98,7 +98,11 @@ public class SearchForm {
     }
 
     public boolean hasQueryParams() {
-        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getKeyword() != "" || this.getKeyword() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubjects() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
+        return (this.getKeyword() != "" || this.hasAdvancedParams());
+    }
+
+    public boolean hasAdvancedParams() {
+        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubjects() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
     }
 
     public String getKeyword() {
