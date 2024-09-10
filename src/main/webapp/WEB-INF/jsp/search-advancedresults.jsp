@@ -31,7 +31,7 @@
             <cudl:search-result-param form="${form}" label="CUDL ID" attr="fileID"/>
             <cudl:search-result-param form="${form}" label="Title" attr="title"/>
             <cudl:search-result-param form="${form}" label="Author" attr="author"/>
-            <cudl:search-result-param form="${form}" label="Subjects" attr="subjects"/>
+            <cudl:search-result-param form="${form}" label="Subject" attr="subject"/>
             <cudl:search-result-param form="${form}" label="Language" attr="language"/>
             <cudl:search-result-param form="${form}" label="Associated Place or Origin" attr="place"/>
             <cudl:search-result-param form="${form}" label="Current Location" attr="location"/>

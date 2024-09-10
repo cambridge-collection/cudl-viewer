@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import org.apache.commons.io.IOUtils;
-import org.apache.logging.log4j.util.Strings;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -163,8 +162,8 @@ public class SolrSearch implements Search {
             QueryTerms.put("name", searchForm.getAuthor());
         }
 
-        if (searchForm.getSubjects() != null) {
-            QueryTerms.put("subjects", searchForm.getSubjects());
+        if (searchForm.getSubject() != null) {
+            QueryTerms.put("subjects", searchForm.getSubject());
         }
 
         if (searchForm.getLanguage() != null) {
