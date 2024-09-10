@@ -3,14 +3,9 @@ package ulcambridge.foundations.viewer.search;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Used for facet refinement in search results.
@@ -37,7 +32,7 @@ public final class SearchUtil {
             .queryParam("shelfLocator", searchForm.getShelfLocator())
             .queryParam("title", searchForm.getTitle())
             .queryParam("author", searchForm.getAuthor())
-            .queryParam("subjects", searchForm.getSubjects())
+            .queryParam("subject", searchForm.getSubject())
             .queryParam("language", searchForm.getLanguage())
             .queryParam("place", searchForm.getPlace())
             .queryParam("location", searchForm.getLocation())
