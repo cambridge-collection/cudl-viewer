@@ -99,29 +99,6 @@ public class SearchController {
         return modelAndView;
     }
 
-    /**
-     * Advanced Search Results Page Performs search and displays results.
-     *
-     * on /search/advanced/results path
-     */
-    @RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
-    public ModelAndView processAdvancedSearch(
-            @ModelAttribute @Valid SearchForm searchForm,
-            @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
-            BindingResult bindingResult, HttpSession session)
-            throws MalformedURLException {
-
-        // Perform XTF Search
-        SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
-
-        return new ModelAndView("jsp/search-advancedresults")
-                .addObject("form", searchForm)
-                .addObject("results", results)
-                .addObject("queryString",
-                        SearchUtil.getURLParameters(searchForm))
-                .addObject("enableTagging", enableTagging);
-    }
-
     private JSONArray getResultsJSON(SearchResultSet results) {
         Assert.notNull(results);
 
