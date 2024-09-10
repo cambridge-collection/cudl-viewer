@@ -163,8 +163,8 @@ public class SolrSearch implements Search {
             QueryTerms.put("name", searchForm.getAuthor());
         }
 
-        if (searchForm.getSubjects() != null) {
-            QueryTerms.put("subjects", searchForm.getSubjects());
+        if (searchForm.getSubject() != null) {
+            QueryTerms.put("subjects", searchForm.getSubject());
         }
 
         if (searchForm.getLanguage() != null) {

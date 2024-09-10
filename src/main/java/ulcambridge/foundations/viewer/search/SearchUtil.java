@@ -37,7 +37,7 @@ public final class SearchUtil {
             .queryParam("shelfLocator", searchForm.getShelfLocator())
             .queryParam("title", searchForm.getTitle())
             .queryParam("author", searchForm.getAuthor())
-            .queryParam("subjects", searchForm.getSubjects())
+            .queryParam("subject", searchForm.getSubject())
             .queryParam("language", searchForm.getLanguage())
             .queryParam("place", searchForm.getPlace())
             .queryParam("location", searchForm.getLocation())
