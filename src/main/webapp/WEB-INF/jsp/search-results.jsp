@@ -60,10 +60,15 @@
     </jsp:attribute>
     <jsp:attribute name="queryHelp">
         <%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
-        <c:if test="${userHasSearched} && ${results!=null}">
-            <cudl:search-no-results/>
+        <c:if test="${userHasSearched}">
+            <c:choose>
+                <c:when test="${results.numberOfResults==0}">
+                    <cudl:search-no-results/>
+                    <cudl:search-examples/>
+                </c:when>
+                <c:otherwise/>
+            </c:choose>
         </c:if>
-        <cudl:search-examples/>
     </jsp:attribute>
     <jsp:body/>
 </cudl:search-results-page>
