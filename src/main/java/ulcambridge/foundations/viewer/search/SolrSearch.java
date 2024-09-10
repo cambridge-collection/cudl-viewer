@@ -1,8 +1,10 @@
 package ulcambridge.foundations.viewer.search;
 
+import java.util.stream.Collectors;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 import org.apache.commons.io.IOUtils;
+import org.apache.logging.log4j.util.Strings;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -108,6 +110,7 @@ public class SolrSearch implements Search {
 
     protected String buildQueryURL(final SearchForm searchForm, final int start, final int end) {
         final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
+        HashMap<String, String> QueryTerms = new HashMap<String, String>();
 
         uriB.queryParam("start", start);
 
@@ -118,24 +121,25 @@ public class SolrSearch implements Search {
 
         // Keywords
         if (searchForm.getKeyword() != null) {
-            uriB.queryParam("q",searchForm.getKeyword());
+            QueryTerms.put("keyword", searchForm.getKeyword());
         }
 
-//        if (searchForm.getFullText() != null) {
-//            uriB.queryParam("text", searchForm.getFullText());
-//        }
-//        if (searchForm.getExcludeText() != null) {
-//            uriB.queryParam("text-exclude", searchForm.getExcludeText());
-//        }
+        if (searchForm.getFullText() != null) {
+            QueryTerms.put("textual_content", searchForm.getFullText());
+        }
 
         // Join
-//        if (searchForm.getTextJoin() != null) {
-//            if ("or".equals(searchForm.getTextJoin())) {
-//                uriB.queryParam("text-join", "or");
-//            } else {
-//                uriB.queryParam("text-join", "");
-//            }
-//        }
+        String textJoin = "AND";
+        if (searchForm.getTextJoin() != null) {
+            if ("or".equals(searchForm.getTextJoin())) {
+                textJoin = "OR";
+            }
+        }
+
+        if (searchForm.getExcludeText() != null) {
+            // Form field currently does not appear
+            //QueryTerms.put("text-exclude", searchForm.getExcludeText());
+        }
 
         // File ID
 //        if (searchForm.getFileID() != null) {
@@ -143,83 +147,98 @@ public class SolrSearch implements Search {
 //        }
 
         // Classmark
-//        if (searchForm.getShelfLocator() != null) {
-//            // remove all punctuation and run a search-shelfLocator
-//            // search (for full and partial classmark match)
+        if (searchForm.getShelfLocator() != null) {
+            // remove all punctuation and run a search-shelfLocator
+            // search (for full and partial classmark match)
 //            final String sLoc = searchForm.getShelfLocator().replaceAll("\\W+", " ");
-//            uriB.queryParam("search-shelfLocator", sLoc);
-//        }
+            QueryTerms.put("shelfLocator", searchForm.getShelfLocator());
+        }
 
         // Metadata
-//        if (searchForm.getTitle() != null) {
-//            uriB.queryParam("title", searchForm.getTitle());
-//        }
-//
-//        if (searchForm.getAuthor() != null) {
-//            uriB.queryParam("nameFullForm", searchForm.getAuthor());
-//        }
-//
-//        if (searchForm.getSubject() != null) {
-//            uriB.queryParam("subjectFullForm", searchForm.getSubject());
-//        }
-//
-//        if (searchForm.getLanguage() != null) {
-//            uriB.queryParam("languageString", searchForm.getLanguage());
-//        }
-//
-//        if (searchForm.getPlace() != null) {
-//            uriB.queryParam("placeFullForm", searchForm.getPlace());
-//        }
-//
-//        if (searchForm.getLocation() != null) {
-//            uriB.queryParam("physicalLocation", searchForm.getLocation());
-//        }
-//
-//        if (searchForm.getYearStart() != null) {
-//            uriB.queryParam("year", searchForm.getYearStart());
-//        }
-//
-//        if (searchForm.getYearEnd() != null) {
-//            uriB.queryParam("year-max", searchForm.getYearEnd());
-//        }
+        if (searchForm.getTitle() != null) {
+            QueryTerms.put("title", searchForm.getTitle());
+        }
 
-        // Facets
-//        if (searchForm.getFacetCollection() != null) {
-//            uriB.queryParam("fq", String.format("collection_str:\"%s\"", searchForm.getFacetCollection()));
-//        }
-//
-//        if (searchForm.getFacetSubjects() != null) {
-//            uriB.queryParam("fq", String.format("subjects_str:\"%s\"", searchForm.getFacetSubjects()));
-//        }
+        if (searchForm.getAuthor() != null) {
+            QueryTerms.put("name", searchForm.getAuthor());
+        }
 
-//        if (searchForm.getFacetLanguage() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-language", ++facetCount),
-//                searchForm.getFacetLanguage()
-//            );
-//        }
-//
-//        if (searchForm.getFacetPlace() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-place", ++facetCount),
-//                searchForm.getFacetPlace()
-//            );
-//        }
-//
-//        if (searchForm.getFacetLocation() != null) {
-//            uriB.queryParam(
-//                String.format("f%d-location", ++facetCount),
-//                searchForm.getFacetLocation()
-//            );
-//        }
+        if (searchForm.getSubjects() != null) {
+            QueryTerms.put("subjects", searchForm.getSubjects());
+        }
+
+        if (searchForm.getLanguage() != null) {
+            QueryTerms.put("languages", searchForm.getLanguage());
+        }
+
+        if (searchForm.getPlace() != null) {
+            QueryTerms.put("origin-place", searchForm.getPlace());
+        }
+
+        if (searchForm.getLocation() != null) {
+            QueryTerms.put("physicalLocation", searchForm.getLocation());
+        }
+
+        if (searchForm.getYearStart() != null) {
+            QueryTerms.put("yearStart", Integer.toString(searchForm.getYearStart()));
+        }
+
+        if (searchForm.getYearEnd() != null) {
+            QueryTerms.put("yearEnd", Integer.toString(searchForm.getYearEnd()));
+        }
 
         if (searchForm.getFacets() != null) {
-            for (Map.Entry<String,String> facet: searchForm.getFacets().entrySet()) {
-                uriB.queryParam("fq", String.format("%s:\"%s\"",displayNameToFacetNameMap.get(facet.getKey()),facet.getValue()));
+            for (Map.Entry<String, String> facet : searchForm.getFacets().entrySet()) {
+                uriB.queryParam("fq", String.format("%s:\"%s\"", displayNameToFacetNameMap.get(facet.getKey()), facet.getValue()));
             }
         }
 
-        System.out.println("****** URL: "+uriB.toUriString());
+        String query = "";
+
+        Map<String, String> QueryTermsFiltered = QueryTerms.entrySet()
+            .stream()
+            .filter(map -> map.getValue() != "")
+            .collect(Collectors.toMap(map -> map.getKey(), map -> map.getValue()));
+
+        Iterator<Map.Entry<String, String>> iterator = QueryTermsFiltered.entrySet().iterator();
+
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> entry = iterator.next();
+            String key = entry.getKey();
+            String value = entry.getValue();
+            String field_prefix = "";
+            if (value != "") {
+                String search_clause = "";
+                String[] tokens =value.split("\\s+");
+                Iterator<String> words = Arrays.asList(tokens).iterator();
+                while (words.hasNext()) {
+                    String word = words.next();
+                    if (key != "keyword") {
+                        field_prefix = key + ":";
+                    }
+                    search_clause += field_prefix + word;
+                    if (words.hasNext()) {
+                        if (key == "textual_content") {
+                            search_clause += " " + textJoin + " ";
+                        } else {
+                            search_clause += " AND ";
+                        }
+                    }
+                }
+                String result = "";
+                if ( key == "textual_content" ) {
+                    query += "(" + search_clause + ")";
+                } else {
+                    query += search_clause;
+                }
+                if (iterator.hasNext()) {
+                     query += " AND ";
+                }
+            }
+        }
+        uriB.queryParam("q", query);
+
+        System.out.println("****** URL: " + uriB.toUriString());
         return uriB.toUriString();
     }
 

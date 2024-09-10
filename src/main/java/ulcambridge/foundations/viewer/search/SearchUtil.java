@@ -29,25 +29,25 @@ public final class SearchUtil {
             UriComponentsBuilder builder,
             SearchForm searchForm) {
 
-        builder.queryParam("keyword", searchForm.getKeyword());
-//                .queryParam("fullText", searchForm.getFullText())
-//                .queryParam("excludeText", searchForm.getExcludeText())
-//                .queryParam("textJoin", searchForm.getTextJoin())
-//                .queryParam("fileID", searchForm.getFileID())
-//                .queryParam("shelfLocator", searchForm.getShelfLocator())
-//                .queryParam("title", searchForm.getTitle())
-//                .queryParam("author", searchForm.getAuthor())
-//                .queryParam("subjects", searchForm.getSubjects())
-//                .queryParam("language", searchForm.getLanguage())
-//                .queryParam("place", searchForm.getPlace())
-//                .queryParam("location", searchForm.getLocation())
-//                .queryParam("expandFacet", searchForm.getExpandFacet());
-//
-//        if (searchForm.getYearStart() != null &&
-//                searchForm.getYearEnd() != null) {
-//            builder.queryParam("yearStart", searchForm.getYearStart())
-//                    .queryParam("yearEnd", searchForm.getYearEnd());
-//        }
+        builder.queryParam("keyword", searchForm.getKeyword())
+            .queryParam("fullText", searchForm.getFullText())
+            .queryParam("excludeText", searchForm.getExcludeText())
+            .queryParam("textJoin", searchForm.getTextJoin())
+            .queryParam("fileID", searchForm.getFileID())
+            .queryParam("shelfLocator", searchForm.getShelfLocator())
+            .queryParam("title", searchForm.getTitle())
+            .queryParam("author", searchForm.getAuthor())
+            .queryParam("subjects", searchForm.getSubjects())
+            .queryParam("language", searchForm.getLanguage())
+            .queryParam("place", searchForm.getPlace())
+            .queryParam("location", searchForm.getLocation())
+            .queryParam("expandFacet", searchForm.getExpandFacet());
+
+        if (searchForm.getYearStart() != null &&
+                searchForm.getYearEnd() != null) {
+            builder.queryParam("yearStart", searchForm.getYearStart())
+                    .queryParam("yearEnd", searchForm.getYearEnd());
+        }
 
         return builder;
     }

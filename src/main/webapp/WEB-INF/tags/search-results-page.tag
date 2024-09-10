@@ -107,15 +107,7 @@
                     <div class="col-md-8 camp-content">
                         <c:if test="${empty results.results}">
                             <div class="searchexample campl-content-container">
-                                <c:choose>
-                                    <c:when test="${empty queryHelp}">
-                                        <cudl:search-no-results/>
-                                        <cudl:search-examples/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <jsp:invoke fragment="queryHelp"/>
-                                    </c:otherwise>
-                                </c:choose>
+                                <jsp:invoke fragment="queryHelp"/>
                             </div>
                         </c:if>
 

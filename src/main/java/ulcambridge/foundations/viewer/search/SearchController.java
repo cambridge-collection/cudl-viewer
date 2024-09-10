@@ -82,7 +82,7 @@ public class SearchController {
      *
      * /search/advanced/query
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
+    @RequestMapping(method = RequestMethod.GET, value = "/query")
     public ModelAndView advancedSearch(
             @Valid @ModelAttribute SearchForm searchForm,
             @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,

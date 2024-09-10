@@ -9,29 +9,35 @@
 <%-- Unlike the advanced search page, the regular search page uses the same
      template for the query definition page and result page. Certain things have
      to be hidden on the query page. --%>
-<c:set var="userHasSearched" value="${not empty form.keyword}"/>
+<c:set var="userHasSearched" value="${form.hasQueryParams()}"/>
 
 <cudl:search-results-page title="Search">
     <jsp:attribute name="queryInfo">
-        <form:form modelAttribute="searchForm" class="" action="/search" method="GET">
-
-            <form:input path="keyword" class="search" type="text" value="${form.keyword}" name="keyword" placeholder="Search" autofocus="autofocus"/>
-            <input class="campl-search-submit " src="/img/interface/btn-search-header.png" type="image">
-            <c:forEach items="${form.facets}" var="facet">
-                <%-- FIXME: Should this be using form:input? --%>
-                <input path="${fn:escapeXml(facet.key)}"
-                       type="hidden"
-                       name="facet-${fn:escapeXml(facet.key)}"
-                       value="${fn:escapeXml(facet.value)}">
-            </c:forEach>
-            <form:input path="fileID" type="hidden" name="fileID" value="${form.fileID}"/>
-        </form:form>
-        <div class="altsearchlink">
-            <form:form modelAttribute="searchForm" action="/search/advanced/query" method="GET">
-                <input type="hidden" value="${fn:escapeXml(form.keyword)}" name="keyword">
-                <input class="altsearchlink" type="submit" disabled value="Advanced Search (Coming Soon)">
-            </form:form>
-        </div>
+        <ul>
+            <cudl:search-result-param form="${form}" label="Keyword" attr="keyword"/>
+            <cudl:search-result-param form="${form}" label="Full Text" attr="fullText"/>
+            <cudl:search-result-param form="${form}" label="Exclude Text" attr="excludeText"/>
+            <cudl:search-result-param form="${form}" label="Classmark" attr="shelfLocator"/>
+            <cudl:search-result-param form="${form}" label="CUDL ID" attr="fileID"/>
+            <cudl:search-result-param form="${form}" label="Title" attr="title"/>
+            <cudl:search-result-param form="${form}" label="Author" attr="author"/>
+            <cudl:search-result-param form="${form}" label="Subjects" attr="subjects"/>
+            <cudl:search-result-param form="${form}" label="Language" attr="language"/>
+            <cudl:search-result-param form="${form}" label="Associated Place or Origin" attr="place"/>
+            <cudl:search-result-param form="${form}" label="Current Location" attr="location"/>
+            <c:if test="${(not empty form.yearStart) and (empty form.yearEnd)}">
+                <cudl:search-result-param form="${form}" label="Exact Year" attr="yearStart"/>
+            </c:if>
+            <c:if test="${not (empty form.yearStart or empty form.yearEnd)}">
+                <cudl:search-result-param form="${form}" label="Year from" attr="yearStart"/>
+                <cudl:search-result-param form="${form}" label="Year to" attr="yearEnd"/>
+            </c:if>
+        </ul>
+        <c:if test="${userHasSearched}">
+            <div class="query-actions">
+                <a class="change-query campl-btn campl-primary-cta" href="/search/query?${fn:escapeXml(form.getQueryParams())}">Change Query</a>
+            </div>
+        </c:if>
     </jsp:attribute>
     <jsp:attribute name="resultInfo">
         <%-- Don't show the result count before the user has performed a search --%>
@@ -41,10 +47,15 @@
     </jsp:attribute>
     <jsp:attribute name="queryHelp">
         <%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
-        <c:if test="${userHasSearched} && ${results!=null}">
-            <cudl:search-no-results/>
+        <c:if test="${userHasSearched}">
+            <c:choose>
+                <c:when test="${results.numberOfResults==0}">
+                    <cudl:search-no-results/>
+                    <cudl:search-examples/>
+                </c:when>
+                <c:otherwise/>
+            </c:choose>
         </c:if>
-        <cudl:search-examples/>
     </jsp:attribute>
     <jsp:body/>
 </cudl:search-results-page>
