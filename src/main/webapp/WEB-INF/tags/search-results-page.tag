@@ -72,7 +72,7 @@
                                                     <%-- FIXME: Add these arrows in CSS instead --%>
                                                     <strong>
                                                         <div id="facetToggle${facetGroup.fieldLabel}" data-toggle="collapse"><span>▸&nbsp;</span>
-                                                        <c:out value="${facetGroup.fieldLabel}"/>
+                                                            <c:out value="${facetGroup.displayLabel}"/>
                                                         </div>
                                                     </strong>
                                                         <div class="collapse" id="divfacetToggle${facetGroup.field}">
