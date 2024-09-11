@@ -102,7 +102,7 @@ public class SearchForm {
     }
 
     public boolean hasAdvancedParams() {
-        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubjects() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
+        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubject() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
     }
 
     public String getKeyword() {
@@ -172,7 +172,7 @@ public class SearchForm {
         this.author = author;
     }
 
-    public String getSubjects() {
+    public String getSubject() {
         return subject;
     }
 
