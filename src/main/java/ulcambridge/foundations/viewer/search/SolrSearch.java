@@ -168,7 +168,7 @@ public class SolrSearch implements Search {
         }
 
         if (searchForm.getLanguage() != null) {
-            QueryTerms.put("languages", searchForm.getLanguage());
+            QueryTerms.put("languageStrings", searchForm.getLanguage());
         }
 
         if (searchForm.getPlace() != null) {
