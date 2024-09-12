@@ -16,6 +16,8 @@ import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.dao.DecoratedItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -205,34 +207,54 @@ public class SolrSearch implements Search {
         while (iterator.hasNext()) {
             Map.Entry<String, String> entry = iterator.next();
             String key = entry.getKey();
-            String value = entry.getValue();
+            String value = entry.getValue().trim();
             String field_prefix = "";
             if (value != "") {
                 String search_clause = "";
-                String[] tokens =value.split("\\s+");
-                Iterator<String> words = Arrays.asList(tokens).iterator();
-                while (words.hasNext()) {
-                    String word = words.next();
-                    if (key != "keyword") {
-                        field_prefix = key + ":";
-                    }
-                    search_clause += field_prefix + word;
-                    if (words.hasNext()) {
-                        if (key == "textual_content") {
-                            search_clause += " " + textJoin + " ";
-                        } else {
-                            search_clause += " AND ";
+
+                // Get all quote-delimited phrases
+                List<String> phrases = new ArrayList<String>();
+                Matcher m = Pattern.compile("\"[^\"]*\"")
+                    .matcher(value);
+                while (m.find()) {
+                    phrases.add(m.group());
+                }
+
+                // Remove quote-delimited phrases and trim space on param value
+                // Process any non-quoted words
+                value = value.replaceAll("\"[^\"]*\"", "").trim();
+                ArrayList<String> tokens = new ArrayList<String>(Arrays.asList(value.split("\\s+")));
+                tokens.removeAll(Arrays.asList("", null));
+
+                ArrayList<String> searchTokens = new ArrayList<String>();
+                searchTokens.addAll(phrases);
+                searchTokens.addAll(tokens);
+
+                if (searchTokens.size() != 0) {
+                    Iterator<String> words = searchTokens.iterator();
+                    while (words.hasNext()) {
+                        String word = words.next();
+                        if (key != "keyword") {
+                            field_prefix = key + ":";
+                        }
+                        search_clause += field_prefix + word;
+                        if (words.hasNext()) {
+                            if (key == "textual_content") {
+                                search_clause += " " + textJoin + " ";
+                            } else {
+                                search_clause += " AND ";
+                            }
                         }
                     }
-                }
-                String result = "";
-                if ( key == "textual_content" ) {
-                    query += "(" + search_clause + ")";
-                } else {
-                    query += search_clause;
-                }
-                if (iterator.hasNext()) {
-                     query += " AND ";
+                    String result = "";
+                    if (key == "textual_content") {
+                        query += "(" + search_clause + ")";
+                    } else {
+                        query += search_clause;
+                    }
+                    if (iterator.hasNext()) {
+                        query += " AND ";
+                    }
                 }
             }
         }
