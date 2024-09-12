@@ -90,7 +90,7 @@ public class SearchController {
             throws MalformedURLException {
 
         ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
-        List<Collection> collectionList = collectionFactory.getCollections();
+        List<Collection> collectionList = collectionFactory.getRootCollections();
         Collections.sort(collectionList, collectionTitleComparator);
          // order alphabetically by title
         searchForm.setCollections(collectionList);
