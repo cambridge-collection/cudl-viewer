@@ -95,9 +95,9 @@
                                                 <form:label class="right" path="FacetCollection">Collection</form:label>
                                             </div>
                                             <div class="col-md-10">
-                                                <form:select path="FacetCollection">
+                                                <form:select path="FacetCollection" multiple="false">
                                                     <form:option value="" label="--- Select ---"/>
-                                                    <form:options items="${form.collections}" itemValue="title" itemLabel="title" multiple="false"/>
+                                                    <form:options items="${form.collections}" itemValue="title" itemLabel="title"/>
                                                 </form:select>
                                             </div>
                                         </div>
