@@ -95,9 +95,9 @@
                                                 <form:label class="right" path="FacetCollection">Collection</form:label>
                                             </div>
                                             <div class="col-md-10">
-                                                <form:select path="FacetCollection">
+                                                <form:select path="FacetCollection" multiple="false">
                                                     <form:option value="" label="--- Select ---"/>
-                                                    <form:options items="${form.collections}" itemValue="title" itemLabel="title" multiple="false"/>
+                                                    <form:options items="${form.collections}" itemValue="title" itemLabel="title"/>
                                                 </form:select>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <div id="search-buttons" class="advancedsearch-section col-md-6 clearfix text-end mt-4 px-0">
-                        <button type="reset" class="campl-btn">Reset</button>
+                        <button type="reset"  class="campl-btn">Reset</button>
                         <button type="submit" class="campl-btn campl-primary-cta">Search</button>
                     </div>
                 </div>
