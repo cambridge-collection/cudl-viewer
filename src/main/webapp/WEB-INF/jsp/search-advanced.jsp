@@ -203,7 +203,7 @@
                         </div>
                     </div>
                     <div id="search-buttons" class="advancedsearch-section col-md-6 clearfix text-end mt-4 px-0">
-                        <button type="reset" class="campl-btn">Reset</button>
+                        <button type="reset"  class="campl-btn">Reset</button>
                         <button type="submit" class="campl-btn campl-primary-cta">Search</button>
                     </div>
                 </div>
