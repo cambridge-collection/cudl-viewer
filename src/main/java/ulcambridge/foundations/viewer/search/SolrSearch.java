@@ -320,6 +320,11 @@ public class SolrSearch implements Search {
             for (int i = 0; i < fields.length(); i=i+2) {
                 String band = fields.getString(i);
                 int band_count = fields.getInt(i+1);
+                // Note: Do not show any bands that contain ::
+                // e.g. Ignore sub-collections that will be Collection::subcollection
+                if (band.contains("::")) {
+                    continue;
+                }
                 final Facet facet = new Facet(displayName, band, band_count, i);
                 facets.add(facet);
             }
