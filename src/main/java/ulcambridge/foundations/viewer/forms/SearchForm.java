@@ -27,7 +27,7 @@ public class SearchForm {
 
     // Search Facets
     private Map<String,String> facets = new Hashtable<>();
-    private String facetCollection;
+  //  private String facetCollection;
 
     // Expand facet results
     private String expandFacet = "";
@@ -81,8 +81,8 @@ public class SearchForm {
         if (expandFacet!=null && !expandFacet.isEmpty()) {
             queryParams.append("expandFacet=" + expandFacet + "&");
         }
-        if (facetCollection!=null && !facetCollection.isEmpty()) {
-            queryParams.append("facetCollection=" + facetCollection + "&");
+        if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
+            queryParams.append("facetCollection=" + facets.get("Collection") + "&");
         }
 
         // Facets
@@ -257,12 +257,12 @@ public class SearchForm {
 
     // Hard coded collection facet - for advanced search.
     public String getFacetCollection() {
-        return facetCollection;
+        return facets.get("Collection");
     }
 
     public void setFacetCollection(String facetCollection) {
         if (facetCollection!=null && !facetCollection.trim().isEmpty()) {
-            this.facetCollection = facetCollection;
+            //this.facetCollection = facetCollection;
             facets.put("Collection", facetCollection);
         }
     }
