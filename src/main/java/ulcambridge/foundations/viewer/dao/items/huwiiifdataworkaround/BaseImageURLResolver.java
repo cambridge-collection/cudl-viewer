@@ -49,7 +49,7 @@ public abstract class BaseImageURLResolver implements DecoratedItemFactory.ItemJ
         Map<String, ?> values = Utils.atomicValues(object);
         Set<String> missingVars = Sets.difference(ImmutableSet.copyOf(this.imageURLValueTemplate.getVariableNames()), values.keySet());
         if(!missingVars.isEmpty()) {
-            LOG.warn("Not rendering template \"{}\" for {} property: \"{}\" of item ID: \"{}\"; referenced keys are missing: {}",
+            LOG.trace("Not rendering template \"{}\" for {} property: \"{}\" of item ID: \"{}\"; referenced keys are missing: {}",
                 this.imageURLValueTemplate, this.objectName, this.imageURLPropertyName, itemID, missingVars);
             return;
         }

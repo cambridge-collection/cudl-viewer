@@ -44,6 +44,10 @@ public class FacetGroup {
         return fieldLabel;
     }
 
+    public String getDisplayLabel() {
+        return (field.substring(0, 1).toUpperCase() + field.substring(1).toLowerCase()).replace('_', ' ');
+    }
+
     public int getOccurrences() {
         return this.occurrences;
     }

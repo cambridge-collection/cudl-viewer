@@ -1,1 +1,1 @@
-<p class="box">No items found for your query.</p>
+<p class="box h5">No items found for your query.</p>

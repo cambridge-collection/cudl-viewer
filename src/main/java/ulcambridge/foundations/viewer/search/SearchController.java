@@ -82,7 +82,7 @@ public class SearchController {
      *
      * /search/advanced/query
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
+    @RequestMapping(method = RequestMethod.GET, value = "/query")
     public ModelAndView advancedSearch(
             @Valid @ModelAttribute SearchForm searchForm,
             @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
@@ -90,7 +90,7 @@ public class SearchController {
             throws MalformedURLException {
 
         ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
-        List<Collection> collectionList = collectionFactory.getCollections();
+        List<Collection> collectionList = collectionFactory.getRootCollections();
         Collections.sort(collectionList, collectionTitleComparator);
          // order alphabetically by title
         searchForm.setCollections(collectionList);

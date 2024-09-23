@@ -1,5 +1,4 @@
-<h5>Example Searches</h5>
-<br>
+<h4 class="fw-bold pt-4">Example Searches</h4>
 <p>
     Searching for <span class="search">newton</span> Searches the metadata for 'newton'<br>
     Searching for <span class="search">isaac newton</span> Searches for 'isaac' AND 'newton'<br>

@@ -3,14 +3,10 @@ package ulcambridge.foundations.viewer.search;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Used for facet refinement in search results.
@@ -29,25 +25,25 @@ public final class SearchUtil {
             UriComponentsBuilder builder,
             SearchForm searchForm) {
 
-        builder.queryParam("keyword", searchForm.getKeyword());
-//                .queryParam("fullText", searchForm.getFullText())
-//                .queryParam("excludeText", searchForm.getExcludeText())
-//                .queryParam("textJoin", searchForm.getTextJoin())
-//                .queryParam("fileID", searchForm.getFileID())
-//                .queryParam("shelfLocator", searchForm.getShelfLocator())
-//                .queryParam("title", searchForm.getTitle())
-//                .queryParam("author", searchForm.getAuthor())
-//                .queryParam("subjects", searchForm.getSubjects())
-//                .queryParam("language", searchForm.getLanguage())
-//                .queryParam("place", searchForm.getPlace())
-//                .queryParam("location", searchForm.getLocation())
-//                .queryParam("expandFacet", searchForm.getExpandFacet());
-//
-//        if (searchForm.getYearStart() != null &&
-//                searchForm.getYearEnd() != null) {
-//            builder.queryParam("yearStart", searchForm.getYearStart())
-//                    .queryParam("yearEnd", searchForm.getYearEnd());
-//        }
+        builder.queryParam("keyword", searchForm.getKeyword())
+            .queryParam("fullText", searchForm.getFullText())
+            .queryParam("excludeText", searchForm.getExcludeText())
+            .queryParam("textJoin", searchForm.getTextJoin())
+            .queryParam("fileID", searchForm.getFileID())
+            .queryParam("shelfLocator", searchForm.getShelfLocator())
+            .queryParam("title", searchForm.getTitle())
+            .queryParam("author", searchForm.getAuthor())
+            .queryParam("subject", searchForm.getSubject())
+            .queryParam("language", searchForm.getLanguage())
+            .queryParam("place", searchForm.getPlace())
+            .queryParam("location", searchForm.getLocation())
+            .queryParam("expandFacet", searchForm.getExpandFacet());
+
+        if (searchForm.getYearStart() != null &&
+                searchForm.getYearEnd() != null) {
+            builder.queryParam("yearStart", searchForm.getYearStart())
+                    .queryParam("yearEnd", searchForm.getYearEnd());
+        }
 
         return builder;
     }
@@ -56,9 +52,14 @@ public final class SearchUtil {
             UriComponentsBuilder builder,
             Iterable<Map.Entry<String, String>> facets) {
 
+        StringBuilder facetString = new StringBuilder();
         for(Map.Entry<String, String> facet : facets) {
 
-            builder.queryParam("facets",getFacetString(facet.getKey(), facet.getValue()));
+            facetString.append(getFacetString(facet.getKey(), facet.getValue()));
+            facetString.append("||");
+        }
+        if (facetString.length() > 0) {
+            builder.queryParam("facets",facetString.toString().substring(0, facetString.length() - 2));
         }
 
         return builder;
@@ -107,9 +108,9 @@ public final class SearchUtil {
             SearchForm searchForm, String facetName, String facetValue) {
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
         builder = addBaseQueryParams(builder, searchForm);
-        builder = addFacetQueryParams(builder,
-                searchForm.getFacets().entrySet());
-        builder.queryParam("facets",getFacetString(facetName,facetValue));
+        HashMap<String,String> facets = new HashMap<>(searchForm.getFacets());
+        facets.put(facetName, facetValue);
+        builder = addFacetQueryParams(builder,facets.entrySet());
         return getQuery(builder);
     }
 

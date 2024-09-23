@@ -27,9 +27,83 @@ public class SearchForm {
 
     // Search Facets
     private Map<String,String> facets = new Hashtable<>();
+  //  private String facetCollection;
 
     // Expand facet results
     private String expandFacet = "";
+
+    // This translates the form object into GET request parameters
+    public String getQueryParams() {
+
+        StringBuffer queryParams = new StringBuffer();
+        if (keyword!=null && !keyword.isEmpty()) {
+            queryParams.append("keyword=" + keyword +"&");
+        }
+        if (fullText!=null && !fullText.isEmpty()) {
+            queryParams.append("fullText=" + fullText + "&");
+        }
+        if (excludeText!=null && !excludeText.isEmpty()) {
+            queryParams.append("excludeText=" + excludeText + "&");
+        }
+        if (textJoin!=null && !textJoin.isEmpty()) {
+            queryParams.append("textJoin=" + textJoin + "&");
+        }
+        if (shelfLocator!=null && !shelfLocator.isEmpty()) {
+            queryParams.append("shelfLocator=" + shelfLocator + "&");
+        }
+        if (fileID!=null && !fileID.isEmpty()) {
+            queryParams.append("fileID=" + fileID + "&");
+        }
+        if (title!=null && !title.isEmpty()) {
+            queryParams.append("title=" + title + "&");
+        }
+        if (author!=null && !author.isEmpty()) {
+            queryParams.append("author=" + author + "&");
+        }
+        if (subject!=null && !subject.isEmpty()) {
+            queryParams.append("subject=" + subject + "&");
+        }
+        if (language!=null && !language.isEmpty()) {
+            queryParams.append("language=" + language + "&");
+        }
+        if (place!=null && !place.isEmpty()) {
+            queryParams.append("place=" + place + "&");
+        }
+        if (location!=null && !location.isEmpty()) {
+            queryParams.append("location=" + location + "&");
+        }
+        if (yearStart!=null) {
+            queryParams.append("yearStart=" + yearStart.toString() + "&");
+        }
+        if (yearEnd!=null) {
+            queryParams.append("yearEnd=" + yearEnd.toString() + "&");
+        }
+        if (expandFacet!=null && !expandFacet.isEmpty()) {
+            queryParams.append("expandFacet=" + expandFacet + "&");
+        }
+        if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
+            queryParams.append("facetCollection=" + facets.get("Collection") + "&");
+        }
+
+        // Facets
+        if (!facets.isEmpty()) {
+            queryParams.append("facets=" + getFacetsAsString() + "&");
+        }
+
+        if (queryParams.toString().endsWith("&")) {
+            queryParams.deleteCharAt(queryParams.toString().length() - 1);
+        }
+
+        return queryParams.toString();
+    }
+
+    public boolean hasQueryParams() {
+        return (this.getKeyword() != "" || this.hasAdvancedParams());
+    }
+
+    public boolean hasAdvancedParams() {
+        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubject() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
+    }
 
     public String getKeyword() {
         return keyword;
@@ -98,7 +172,7 @@ public class SearchForm {
         this.author = author;
     }
 
-    public String getSubjects() {
+    public String getSubject() {
         return subject;
     }
 
@@ -165,6 +239,32 @@ public class SearchForm {
 
     public Map<String, String> getFacets() {
         return this.facets;
+    }
+
+    public String getFacetsAsString() {
+        StringBuilder facets = new StringBuilder();
+        for (String key : this.facets.keySet()) {
+            String value = this.facets.get(key);
+            if (value != null && !value.isEmpty()) {
+                facets.append(key + "::" + this.facets.get(key) + "||");
+            }
+        }
+        if (facets.toString().endsWith("||")) {
+            facets.delete(facets.length() - 2, facets.length());
+        }
+        return facets.toString();
+    }
+
+    // Hard coded collection facet - for advanced search.
+    public String getFacetCollection() {
+        return facets.get("Collection");
+    }
+
+    public void setFacetCollection(String facetCollection) {
+        if (facetCollection!=null && !facetCollection.trim().isEmpty()) {
+            //this.facetCollection = facetCollection;
+            facets.put("Collection", facetCollection);
+        }
     }
 
     /** Expand Facet **/

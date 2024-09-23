@@ -72,7 +72,7 @@
                                                     <%-- FIXME: Add these arrows in CSS instead --%>
                                                     <strong>
                                                         <div id="facetToggle${facetGroup.fieldLabel}" data-toggle="collapse"><span>▸&nbsp;</span>
-                                                        <c:out value="${facetGroup.fieldLabel}"/>
+                                                            <c:out value="${facetGroup.displayLabel}"/>
                                                         </div>
                                                     </strong>
                                                         <div class="collapse" id="divfacetToggle${facetGroup.field}">
@@ -107,15 +107,7 @@
                     <div class="col-md-8 camp-content">
                         <c:if test="${empty results.results}">
                             <div class="searchexample campl-content-container">
-                                <c:choose>
-                                    <c:when test="${empty queryHelp}">
-                                        <cudl:search-no-results/>
-                                        <cudl:search-examples/>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <jsp:invoke fragment="queryHelp"/>
-                                    </c:otherwise>
-                                </c:choose>
+                                <jsp:invoke fragment="queryHelp"/>
                             </div>
                         </c:if>
 
