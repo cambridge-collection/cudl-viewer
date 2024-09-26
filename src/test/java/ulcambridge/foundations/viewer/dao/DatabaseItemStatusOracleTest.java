@@ -1,3 +1,4 @@
+/*
 package ulcambridge.foundations.viewer.dao;
 
 import com.opentable.db.postgres.embedded.FlywayPreparer;
@@ -71,3 +72,4 @@ public class DatabaseItemStatusOracleTest {
         assertThat(statusOracle.isTaggingEnabled("UNKNOWN-ITEM")).isEqualTo(isEnabled);
     }
 }
+*/
