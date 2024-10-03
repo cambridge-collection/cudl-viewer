@@ -23,7 +23,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                     <span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
-                                        <form:input path="keyword" type="text" value="" name="keyword"/>
+                                        <form:input path="keyword" type="text" value="" name="keyword" autofocus="autofocus"/>
                                     </span>
                                                 <c:if test="${enableTagging}">
                                                     <div class="recall-slider">
