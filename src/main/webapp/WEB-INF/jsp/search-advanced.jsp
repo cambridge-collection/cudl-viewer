@@ -23,7 +23,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                     <span class="hint--right" data-hint="Search keywords in metadata or transcriptions">
-                                        <form:input path="keyword" type="text" value="" name="keyword"/>
+                                        <form:input path="keyword" type="text" value="" name="keyword" autofocus="autofocus"/>
                                     </span>
                                                 <c:if test="${enableTagging}">
                                                     <div class="recall-slider">
@@ -179,7 +179,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        <!--<div class="row">
                                             <div class="col-md-2">
                                                 <form:label class="right" path="yearStart">Year</form:label>
                                             </div>
@@ -196,7 +196,7 @@
                                         </div>
                                     </span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
