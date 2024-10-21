@@ -18,6 +18,6 @@ release.properties
 # docker-compose local environment file
 .env
 /FoundationsViewer.iml
-/foundationsviewer.iml
+/foundationsviewer.imlad
 /foundationsviewer.ipr
 /foundationsviewer.iws
