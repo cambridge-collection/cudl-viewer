@@ -53,6 +53,21 @@ When running you can then access the Viewer at
 [http://localhost:8888/](http://localhost:8888/).
 
 
+### Want to use your images?
+
+You may want to take a look at the data under out `data` directory, you can drag JPG or TIFF images into the folder
+`data/dl-data-samples/iiif-images/dropzone` while the application is running to automatically convert them to JP2 for
+zoomable images via IIIF. You can then reference them in any of the json file at
+`data/dl-data-samples/processed-data/cudl-data/json` by editing the `thumbnailImageURL` and `IIIFImageURL` properties.
+
+NOTE: You will need to restart the application to pick up your changes.
+
+### Want to use your own style?
+
+The main theme, website name, colour and images are configured in the data under the `data/dl-data-samples/processed-data/ui` directory.
+
+NOTE: You will need to restart the application to pick up your changes.
+
 ### Configuration
 
 The Viewer is configured in the `cudl-global.properties` file. A template is
