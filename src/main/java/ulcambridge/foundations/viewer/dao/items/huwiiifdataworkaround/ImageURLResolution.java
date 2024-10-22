@@ -9,12 +9,12 @@ public final class ImageURLResolution {
 
     @Bean @Order(0)
     public static DecoratedItemFactory.ItemJSONPreProcessor dmdSectionThumbnailURLResolver() {
-        return new DescriptiveMetadataImageURLResolver("thumbnailUrl", "content/images/{thumbnailUrl}_files/8/0_0.jpg");
+        return new DescriptiveMetadataImageURLResolver("thumbnailUrl", "{thumbnailUrl}");
     }
 
     @Bean @Order(0)
     public static DecoratedItemFactory.ItemJSONPreProcessor displayImageURLResolver() {
-        return new PageImageURLResolver("displayImageURL", "content/images/{IIIFImageURL}.dzi");
+        return new PageImageURLResolver("displayImageURL", "content/images/{IIIFImageURL}");
     }
 
     @Bean @Order(0)
@@ -24,11 +24,11 @@ public final class ImageURLResolution {
 
     @Bean @Order(0)
     public static  DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver() {
-        return new PageImageURLResolver("thumbnailImageURL", "content/images/{IIIFImageURL}_files/8/0_0.jpg");
+        return new PageImageURLResolver("thumbnailImageURL", "{IIIFImageURL}/full/,180/0/default.jpg");
     }
 
     @Bean @Order(1)
     public static DecoratedItemFactory.ItemJSONPreProcessor iiifImageURLResolver() {
-        return new PageImageURLResolver("IIIFImageURL", "{IIIFImageURL}.jp2");
+        return new PageImageURLResolver("IIIFImageURL", "{IIIFImageURL}");
     }
 }

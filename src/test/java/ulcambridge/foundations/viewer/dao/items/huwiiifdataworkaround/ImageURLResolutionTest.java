@@ -100,45 +100,45 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
     @Test
     public void itemPagesHaveDZIAndIIIFImageURLsGenerated() {
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
-            "displayImageURL", "content/images/MS-ADD-03419-000-00001.dzi",
+            "displayImageURL", "content/images/MS-ADD-03419-000-00001",
             "downloadImageURL", "content/images/MS-ADD-03419-000-00001.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00001.jp2",
-            "thumbnailImageURL", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
+            "IIIFImageURL", "MS-ADD-03419-000-00001",
+            "thumbnailImageURL", "MS-ADD-03419-000-00001/full/,180/0/default.jpg"
         );
 
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
-            "displayImageURL", "content/images/MS-ADD-03419-000-00002.dzi",
+            "displayImageURL", "content/images/MS-ADD-03419-000-00002",
             "downloadImageURL", "content/images/MS-ADD-03419-000-00002.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00002.jp2",
-            "thumbnailImageURL", "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
+            "IIIFImageURL", "MS-ADD-03419-000-00002",
+            "thumbnailImageURL", "MS-ADD-03419-000-00002/full/,180/0/default.jpg"
         );
     }
 
     @Test
     public void itemObjectReportsExpectedPageThumbnailURLs() {
         assertThat(item.getPageThumbnailURLs()).containsExactly(
-            "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg",
-            "content/images/MS-ADD-03419-000-00002_files/8/0_0.jpg"
+            "MS-ADD-03419-000-00001/full/,180/0/default.jpg",
+            "MS-ADD-03419-000-00002/full/,180/0/default.jpg"
         );
     }
 
     @Test
     public void descriptiveMetadataSectionsHaveThumbnailURLGenerated() {
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).toMap()).containsAtLeast(
-            "thumbnailUrl", "content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg"
+            "thumbnailUrl", "MS-ADD-03419-000-00001"
         );
 
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(1).toMap())
             .doesNotContainKey("thumbnailUrl");
 
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(2).toMap()).containsAtLeast(
-            "thumbnailUrl", "content/images/MS-ADD-03419-000-00034_files/8/0_0.jpg"
+            "thumbnailUrl", "MS-ADD-03419-000-00034"
         );
     }
 
     @Test
     public void itemObjectsReportExpectedThumbnailURL() {
-        final String expectedURL = imageServerURL.resolve("content/images/MS-ADD-03419-000-00001_files/8/0_0.jpg").toString();
+        final String expectedURL = imageServerURL.resolve("MS-ADD-03419-000-00001").toString();
         assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
         assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
     }
