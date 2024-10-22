@@ -14,23 +14,17 @@ services:
 
       - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
       - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
-      - ${CUDL_VIEWER_DATA:-../dl-data-samples/processed-data/cudl-data/}:/srv/cudl-viewer/cudl-data/
-      - ${CUDL_VIEWER_CONTENT:-../dl-data-samples/processed-data/cudl-viewer-content/}:/srv/cudl-viewer/cudl-viewer-content/
-      - ${CUDL_VIEWER_CONTENT_UI:-../dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
+      - ${CUDL_VIEWER_DATA:-./data/dl-data-samples/processed-data/cudl-data/}:/srv/cudl-viewer/cudl-data/
+      - ${CUDL_VIEWER_CONTENT_UI_FILE:-./data/dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
+      - ${CUDL_VIEWER_DATASET_FILE:-./data/dl-data-samples/processed-data/cudl-data/sample.dl-dataset.json}:/srv/cudl-viewer/cudl-data/cudl.dl-dataset.json
     ports:
       - ${CUDL_VIEWER_HOST_PORT:-8888}:8080
-    depends_on:
-      - cudl-db
-  cudl-db:
-    build:
-      context: .
-      dockerfile: docker/db/Dockerfile
-      args:
-        DBPATH: ${DBPATH:-./docker/db/dl-data-samples/processed-data/database-snapshots}
-    restart: always
-    environment:
-      POSTGRES_USER: cudl
-      POSTGRES_DB: cudl
-      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
+
+  # dropzone is where you can put TIFFS or JPGs for automatic conversion
+  iipsrv:
+    image: klokantech/iiifserver-iipimage-jpeg2000
     ports:
-      - ${CUDL_DB_HOST_PORT:-0}:5432
+      - 1114:80
+    volumes:
+      - ./data/dl-data-samples/iiif-images/jp2:/data/
+      - ./data/dl-data-samples/iiif-images/dropzone:/dropzone/

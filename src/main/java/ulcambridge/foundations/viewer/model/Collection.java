@@ -22,7 +22,6 @@ public class Collection implements Comparable<Collection> {
     private String type;
     private String parentCollectionId;
     private List<Collection> subCollections;
-    private List<String> IIIFEnabledItemIds;
 
     public static final Comparator<Collection> SORT_BY_TITLE = (t1, t2) -> t1.title.compareTo(t2.title);
     public static final Comparator<Collection> SORT_BY_ORDER = (t1, t2) -> t1.order-t2.order;
@@ -38,18 +37,17 @@ public class Collection implements Comparable<Collection> {
     public Collection(String collectionId, String collectionTitle,
                       List<String> collectionItemIds,
                       String collectionSummary, String collectionSponsors,
-                      String collectionType, String parentCollectionId,
-                      List<String> IIIFEnabledItemIds) {
+                      String collectionType, String parentCollectionId) {
         this(collectionId, collectionTitle, collectionItemIds,
             collectionSummary, collectionSponsors, collectionType,
-            parentCollectionId, IIIFEnabledItemIds, null);
+            parentCollectionId, null);
     }
 
     public Collection(String collectionId, String collectionTitle,
             List<String> collectionItemIds,
             String collectionSummary, String collectionSponsors,
             String collectionType, String parentCollectionId,
-            List<String> IIIFEnabledItemIds, String metaDescription) {
+            String metaDescription) {
 
         this.id = collectionId;
         this.title = collectionTitle;
@@ -60,7 +58,6 @@ public class Collection implements Comparable<Collection> {
         this.type = collectionType;
         this.parentCollectionId = parentCollectionId;
         this.metaDescription = metaDescription;
-        this.IIIFEnabledItemIds = IIIFEnabledItemIds;
 
         orderCount++;
         this.order = orderCount;
@@ -102,6 +99,14 @@ public class Collection implements Comparable<Collection> {
         return parentCollectionId;
     }
 
+    public void setParentCollectionId(String parentCollectionId) {
+        if (parentCollectionId == null || parentCollectionId.trim().isEmpty()) {
+            this.parentCollectionId = null;
+        } else {
+            this.parentCollectionId = parentCollectionId;
+        }
+    }
+
     public String getMetaDescription() {
         return metaDescription;
     }
@@ -111,10 +116,6 @@ public class Collection implements Comparable<Collection> {
     }
 
     public List<Collection> getSubCollections() { return subCollections; }
-
-    public List<String> getIIIFEnabledItemIds() {
-        return IIIFEnabledItemIds;
-    }
 
     @Override
     public int compareTo(Collection o) {

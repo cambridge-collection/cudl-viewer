@@ -1,0 +1,1808 @@
+{
+    "responseHeader": {
+        "status": 0,
+        "QTime": 5,
+        "params": {
+            "q": "*",
+            "fq": "*",
+            "rows": "20"
+        }
+    },
+    "response": {
+        "numFound": 2284,
+        "start": 0,
+        "numFoundExact": true,
+        "docs": [
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    true
+                ],
+                "documentThumbnailUrl": [
+                    "MS-ADD-03996-000-00001"
+                ],
+                "documentThumbnailOrientation": [
+                    "portrait"
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-1",
+                "label": [
+                    "cover"
+                ],
+                "physID": [
+                    "PHYS-1"
+                ],
+                "sequence": [
+                    1
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/1"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00001"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    4032
+                ],
+                "imageHeight": [
+                    5829
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "authors": [
+                    "Newton, Isaac, Sir, 1642-1727"
+                ],
+                "donors": [
+                    "Portsmouth, Isaac Newton Wallop, Earl of, 1825-1891"
+                ],
+                "creations-places": [
+                    "Cambridge"
+                ],
+                "creations-dateDisplay": [
+                    "c. 1661 - c. 1665"
+                ],
+                "physicalLocation": [
+                    "Cambridge University Library"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ],
+                "material": [
+                    "Paper"
+                ],
+                "extent": [
+                    "140 ff. [quarto]"
+                ],
+                "provenances": [
+                    "From the Portsmouth Collection, donated by the fifth Earl of Portsmouth, 1872."
+                ],
+                "title": [
+                    "Trinity College Notebook"
+                ],
+                "languageStrings": [
+                    "English, Latin and Greek"
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "abstract": [
+                    "<p style='text-align: justify;'>Add. 3996 is a notebook that Newton used as a young student. Newton’s youthful interest in learning was encouraged by his uncle, William Ayscough, and by the schoolmaster at Grantham, John Stokes. Despite opposition from his mother, who wanted him to stay at home and farm, Newton was admitted to Trinity College, Cambridge, on 5 June 1661, and matriculated on 8 July. His uncle had been educated at Trinity and one of the fellows of the College, Humphrey Babington, was related to a family with whom Newton had lodged while at school in Grantham. Perhaps because of some reluctance of his mother’s to waste money on education, perhaps in order to assist Babington, Newton entered Trinity as a sub-sizar, that is a student who was to supplement his income by acting as a servant either for the fellows or for other wealthier students, and who was allowed to pay lower fees for attending lectures.</p><p style='text-align: justify;'> Newton’s ‘Trinity College Notebook’ MS Add. 3996 was used by him as an undergraduate, from about 1661 to 1665. It includes his notes on books he was recommended to read for his studies, but it also shows him starting to read for himself and comment not only on classical sources, but also contemporary natural philosophical writing, such as the works of René Descartes or the Dutch mathematician Willebrord Snell. Newton also makes his own observations on a comet. In this notebook we see Newton, in his independent reading, reflection and observations of the world around him embarking on his career as a natural philosopher.</p><p style='text-align: justify;'> Although this is not the earliest of Newton’s surviving notebooks, it may well be the one that he purchased, together with some ink, on his arrival in Cambridge. Undergraduate education at this time consisted largely of following courses of reading directed by a tutor, in Newton’s case Benjamin Pulleyn. These initially focussed on the traditional skills of grammar, logic, and rhetoric. At Cambridge, it was also usual for undergraduates to study ethics, metaphysics, physics, and mathematics. Together with some books that he bought in the early 1660s, this notebook bears witness to Newton’s first steps in the Aristotelian curriculum of the early modern university. It is dated on the flyleaf, ‘Isaac Newton/ Trin: Coll Cant/ 1661’ [<a href='' onclick='store.loadPage(3);return false;'>fol 1r</a>] and contains notes and occasional exercises relating to Newton’s reading, compiled in the manner of summarising and glossing recommended by most tutors. Many of these notes are written in the rather crude form of secretary hand that the young Newton practised. They cover his study of Aristotle’s <i>Organon</i> and Porphyry’s <i>Isagoge</i>; the scholastic compendium, <i>Physiologiae peripateticae</i>, by Joannes Magirus; Aristotle’s <i>Ethics</i> and the <i>Ethica</i> of Eustachius of St. Paul; the <i>Axiomata</i> of Daniel Stahl, which introduced him to Aristotelian metaphysics, and, finally, a text-book of rhetoric by the great humanist scholar, Gerardus Joannes Vossius.</p><p style='text-align: justify;'> By about the beginning of 1664, Newton’s writing had matured into the neat, if slightly spindly, italic hand that he would continue to develop over the rest of his life. His reading and thinking had also taken a new course, albeit one that was promoted by many of the best tutors in contemporary Cambridge. Newton had begun to reflect for himself on the metaphysical and natural philosophical terms and concepts deployed by the scholastic authors that he had been studying. Prompted perhaps by the scholarship to which he was elected in April 1664, Newton had started to read for himself both in the classical sources and commentaries and in contemporary philosophical and scientific writing, notably the works of Walter Charleton and René Descartes. Within the confines of a traditional commonplace book, and deploying many of the categories of renaissance philosophy, Newton had thus embarked through reading on his career as a mechanical, and eventually experimental, philosopher. Quoting portentously from Charleton, he headed his remarks ‘Amicus Plato amicus Aristoteles magis amica veritas’ (Plato is my friend, Aristotle is my friend, but my greatest friend is truth) [<a href='' onclick='store.loadPage(179);return false;'>fol 88r</a>]. This marks the beginning of a famous section of the manuscript where Newton organised his notetaking according to ‘Qu[a]estiones quaedam Philosophiae’ (certain philosophical questions) [<a href='' onclick='store.loadPage(179);return false;'>fols 88r-135r</a>], where he listed the subjects that interested him, and intended to study in greater depth – not only through the reading of Aristotelian and anti-Aristotelian texts, but also by means of experiments.</p><p style='text-align: justify;'>Niccolò Guicciardini, Università degli Studi di Milano, and Scott Mandelbrote, Peterhouse, Cambridge.</p>"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-2",
+                "label": [
+                    "cover (inside)"
+                ],
+                "physID": [
+                    "PHYS-2"
+                ],
+                "sequence": [
+                    2
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/2"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00002"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3946
+                ],
+                "imageHeight": [
+                    5429
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-3",
+                "label": [
+                    "1r"
+                ],
+                "physID": [
+                    "PHYS-3"
+                ],
+                "sequence": [
+                    3
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/3"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00003"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-4",
+                "label": [
+                    "1v"
+                ],
+                "physID": [
+                    "PHYS-4"
+                ],
+                "sequence": [
+                    4
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/4"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00004"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-5",
+                "label": [
+                    "2r"
+                ],
+                "physID": [
+                    "PHYS-5"
+                ],
+                "sequence": [
+                    5
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/5"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00005"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-6",
+                "label": [
+                    "2v"
+                ],
+                "physID": [
+                    "PHYS-6"
+                ],
+                "sequence": [
+                    6
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/6"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00006"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-7",
+                "label": [
+                    "3r"
+                ],
+                "physID": [
+                    "PHYS-7"
+                ],
+                "sequence": [
+                    7
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/7"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00007"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-8",
+                "label": [
+                    "3v"
+                ],
+                "physID": [
+                    "PHYS-8"
+                ],
+                "sequence": [
+                    8
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/8"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00008"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-9",
+                "label": [
+                    "4r"
+                ],
+                "physID": [
+                    "PHYS-9"
+                ],
+                "sequence": [
+                    9
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/9"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00009"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-10",
+                "label": [
+                    "4v"
+                ],
+                "physID": [
+                    "PHYS-10"
+                ],
+                "sequence": [
+                    10
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/10"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00010"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-11",
+                "label": [
+                    "5r"
+                ],
+                "physID": [
+                    "PHYS-11"
+                ],
+                "sequence": [
+                    11
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/11"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00011"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-12",
+                "label": [
+                    "5v"
+                ],
+                "physID": [
+                    "PHYS-12"
+                ],
+                "sequence": [
+                    12
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/12"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00012"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-13",
+                "label": [
+                    "6r"
+                ],
+                "physID": [
+                    "PHYS-13"
+                ],
+                "sequence": [
+                    13
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/13"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00013"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-14",
+                "label": [
+                    "6v"
+                ],
+                "physID": [
+                    "PHYS-14"
+                ],
+                "sequence": [
+                    14
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/14"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00014"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-15",
+                "label": [
+                    "7r"
+                ],
+                "physID": [
+                    "PHYS-15"
+                ],
+                "sequence": [
+                    15
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/15"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00015"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-16",
+                "label": [
+                    "7v"
+                ],
+                "physID": [
+                    "PHYS-16"
+                ],
+                "sequence": [
+                    16
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/16"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00016"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-17",
+                "label": [
+                    "8r"
+                ],
+                "physID": [
+                    "PHYS-17"
+                ],
+                "sequence": [
+                    17
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/17"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00017"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-18",
+                "label": [
+                    "8v"
+                ],
+                "physID": [
+                    "PHYS-18"
+                ],
+                "sequence": [
+                    18
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/18"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00018"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-19",
+                "label": [
+                    "9r"
+                ],
+                "physID": [
+                    "PHYS-19"
+                ],
+                "sequence": [
+                    19
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/19"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00019"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3756
+                ],
+                "imageHeight": [
+                    5144
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            },
+            {
+                "fileID": "MS-ADD-03996",
+                "numberOfPages": [
+                    285
+                ],
+                "embeddable": [
+                    true
+                ],
+                "textDirection": [
+                    "L"
+                ],
+                "useTranscriptions": [
+                    true
+                ],
+                "useDiplomaticTranscriptions": [
+                    true
+                ],
+                "sourceData": [
+                    "/v1/metadata/tei/MS-ADD-03996/"
+                ],
+                "hasPage": [
+                    true
+                ],
+                "hasImage": [
+                    true
+                ],
+                "firstPage": [
+                    false
+                ],
+                "lastPage": [
+                    false
+                ],
+                "id": "MS-ADD-03996-20",
+                "label": [
+                    "9v"
+                ],
+                "physID": [
+                    "PHYS-20"
+                ],
+                "sequence": [
+                    20
+                ],
+                "itemURL": [
+                    "MS-ADD-03996/20"
+                ],
+                "IIIFImageURL": [
+                    "MS-ADD-03996-000-00020"
+                ],
+                "thumbnailImageOrientation": [
+                    "portrait"
+                ],
+                "imageWidth": [
+                    3575
+                ],
+                "imageHeight": [
+                    5372
+                ],
+                "pageHasTranscription": [
+                    false
+                ],
+                "pageHasTranslation": [
+                    false
+                ],
+                "creations-century": [
+                    "1600s C.E."
+                ],
+                "yearStart": [
+                    1661
+                ],
+                "years": [
+                    1661,
+                    1665
+                ],
+                "yearEnd": [
+                    1665
+                ],
+                "subjects": [
+                    "Science -- Mathematics"
+                ],
+                "shelfLocator": [
+                    "MS Add. 3996"
+                ]
+            }
+        ]
+    },
+    "facet_counts": {
+        "facet_queries": {},
+        "facet_fields": {
+            "collection_str": [],
+            "subjects_str": [
+                "Alchemy -- Early works to 1800",
+                357,
+                "Chemistry -- Early works to 1800",
+                357,
+                "Optics -- Early works to 1800",
+                357,
+                "Science -- Mathematics",
+                285,
+                "Antarctica",
+                264,
+                "Antarctica -- Discovery and exploration -- British",
+                264,
+                "Manuscripts, Sanskrit",
+                2,
+                "Purāṇa",
+                2
+            ],
+            "creations-century_str": [
+                "1600s C.E.",
+                642,
+                "1900s C.E.",
+                265,
+                "1800s C.E.",
+                33,
+                "1700s C.E.",
+                2
+            ],
+            "pageHasTranscription": [
+                "false",
+                2153,
+                "true",
+                129
+            ],
+            "pageHasTranslation": [
+                "false",
+                2282
+            ],
+            "firstPage": [
+                "false",
+                2251,
+                "true",
+                33
+            ],
+            "lastPage": [
+                "false",
+                2251,
+                "true",
+                33
+            ],
+            "hasPage": [
+                "true",
+                2284
+            ],
+            "hasImage": [
+                "true",
+                2282,
+                "false",
+                2
+            ]
+        },
+        "facet_ranges": {},
+        "facet_intervals": {},
+        "facet_heatmaps": {}
+    },
+    "highlighting": {
+        "MS-ADD-03996-1": {},
+        "MS-ADD-03996-2": {},
+        "MS-ADD-03996-3": {},
+        "MS-ADD-03996-4": {},
+        "MS-ADD-03996-5": {},
+        "MS-ADD-03996-6": {},
+        "MS-ADD-03996-7": {},
+        "MS-ADD-03996-8": {},
+        "MS-ADD-03996-9": {},
+        "MS-ADD-03996-10": {},
+        "MS-ADD-03996-11": {},
+        "MS-ADD-03996-12": {},
+        "MS-ADD-03996-13": {},
+        "MS-ADD-03996-14": {},
+        "MS-ADD-03996-15": {},
+        "MS-ADD-03996-16": {},
+        "MS-ADD-03996-17": {},
+        "MS-ADD-03996-18": {},
+        "MS-ADD-03996-19": {},
+        "MS-ADD-03996-20": {}
+    }
+}

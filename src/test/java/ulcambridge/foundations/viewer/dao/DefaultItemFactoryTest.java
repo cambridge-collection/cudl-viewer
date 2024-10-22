@@ -1,6 +1,5 @@
 package ulcambridge.foundations.viewer.dao;
 
-import org.apache.jena.atlas.RuntimeIOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 
 import java.io.IOException;
@@ -28,8 +26,6 @@ public class DefaultItemFactoryTest {
     private static final String ID_B = "MS-ADD-04004";
     private static final String ESSAY_ITEM_ID = "ES-LON-00001";
 
-    @Mock ItemStatusOracle itemStatusOracle;
-
     private static JSONObject getTestItemJSON(String itemID) {
         String itemJSONText;
         try {
@@ -40,7 +36,7 @@ public class DefaultItemFactoryTest {
             itemJSONText = new String(Files.readAllBytes(Paths.get(resourceURL.getPath())), StandardCharsets.UTF_8);
         }
         catch (IOException e) {
-            throw new RuntimeIOException(e);
+            throw new RuntimeException(e);
         }
 
         try {
@@ -52,45 +48,16 @@ public class DefaultItemFactoryTest {
     }
 
     private Item createItem(String id) {
-        DefaultItemFactory f = new DefaultItemFactory(itemStatusOracle);
+        DefaultItemFactory f = new DefaultItemFactory();
         return f.itemFromJSON(id, getTestItemJSON(id));
     }
 
-    @ParameterizedTest
-    @ValueSource(booleans = {true, false})
-    public void iiifEnabled(boolean isIIIFEnabled) {
-        when(itemStatusOracle.isIIIFEnabled(ID_A)).thenReturn(isIIIFEnabled);
-        Item item = createItem(ID_A);
-
-        assertEquals(isIIIFEnabled, item.getIIIFEnabled());
-        verify(itemStatusOracle).isIIIFEnabled(ID_A);
-    }
-
-    @ParameterizedTest
-    @ValueSource(booleans = {true, false})
-    public void taggingStatus(boolean isTaggingEnabled) {
-        when(itemStatusOracle.isTaggingEnabled(ID_A)).thenReturn(isTaggingEnabled);
-        Item item = createItem(ID_A);
-
-        assertEquals(isTaggingEnabled, item.getTaggingStatus());
-        verify(itemStatusOracle).isTaggingEnabled(ID_A);
-    }
-
-    @Test
-    public void essayItem() {
-        Item item = createItem(ESSAY_ITEM_ID);
-
-        assertTrue(item instanceof EssayItem);
-        assertEquals(ESSAY_ITEM_ID, item.getId());
-        assertEquals("Artificial Horizon", item.getTitle());
-    }
 
     @Test
     public void item() {
         Item item = createItem(ID_A);
 
         assertNotNull(item);
-        assertFalse(item instanceof EssayItem);
         assertEquals(ID_A, item.getId());
         assertEquals("Daśāśrutaskandhasūtraṭīkā", item.getTitle());
     }

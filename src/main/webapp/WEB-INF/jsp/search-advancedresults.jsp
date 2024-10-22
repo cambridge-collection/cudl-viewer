@@ -31,7 +31,7 @@
             <cudl:search-result-param form="${form}" label="CUDL ID" attr="fileID"/>
             <cudl:search-result-param form="${form}" label="Title" attr="title"/>
             <cudl:search-result-param form="${form}" label="Author" attr="author"/>
-            <cudl:search-result-param form="${form}" label="Subject" attr="subject"/>
+            <cudl:search-result-param form="${form}" label="Subjects" attr="subject"/>
             <cudl:search-result-param form="${form}" label="Language" attr="language"/>
             <cudl:search-result-param form="${form}" label="Associated Place or Origin" attr="place"/>
             <cudl:search-result-param form="${form}" label="Current Location" attr="location"/>
@@ -45,7 +45,7 @@
         </ul>
 
         <div class="query-actions">
-            <a class="change-query campl-btn campl-primary-cta" href="/search/advanced/query?${fn:escapeXml(queryString)}">
+            <a class="change-query campl-btn campl-primary-cta" href="/search/query?${fn:escapeXml(queryString)}">
                 Change Query
             </a>
         </div>

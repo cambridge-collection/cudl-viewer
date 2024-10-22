@@ -2,8 +2,6 @@ package ulcambridge.foundations.viewer.config;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.google.gson.Gson;
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
-import ulcambridge.foundations.viewer.crowdsourcing.model.GsonFactory;
 import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
@@ -31,7 +23,7 @@ import ulcambridge.foundations.viewer.model.UI;
 import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
 import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
-import javax.sql.DataSource;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -59,7 +51,7 @@ import static ulcambridge.foundations.viewer.utils.Utils.ensureURLHasPath;
         @ComponentScan.Filter(type = FilterType.REGEX, pattern = "ulcambridge\\.foundations\\.viewer\\.config\\..*")
     }
 )
-@Import({BeanFactoryPostProcessorConfig.class, SecurityConfig.class})
+@Import({BeanFactoryPostProcessorConfig.class})
 @EnableTransactionManagement
 public class AppConfig {
 
@@ -94,7 +86,7 @@ public class AppConfig {
         }
 
         @Bean
-        public URI xtfURL(@Value("${xtfURL}") URI url) {
+        public URI searchURL(@Value("${searchURL}") URI url) {
             return ensureURLHasPath(url);
         }
     }
@@ -132,8 +124,8 @@ public class AppConfig {
         }
 
         @Bean(name = {ItemRewritingConfig.DECORATED_ITEM_FACTORY_PARENT})
-        public DefaultItemFactory defaultItemFactory(ItemStatusOracle itemStatusOracle) {
-            return new DefaultItemFactory(itemStatusOracle);
+        public DefaultItemFactory defaultItemFactory() {
+            return new DefaultItemFactory();
         }
 
         @Import(ImageURLResolution.class)
@@ -147,12 +139,6 @@ public class AppConfig {
                                                              List<DecoratedItemFactory.ItemPostProcessor> postProcessors) {
                 return new DecoratedItemFactory(baseFactory, preProcessors, postProcessors);
             }
-        }
-
-        @Autowired
-        @Bean
-        public ItemStatusOracle itemStatusOracle(JdbcTemplate db) {
-            return new DatabaseItemStatusOracle(db, false, false);
         }
 
         @Autowired
@@ -173,46 +159,6 @@ public class AppConfig {
             return dir;
         }
 
-    }
-
-    @Configuration
-    @Profile("!test")
-    public static class DatabaseConfig {
-        @Bean
-        public DataSource dataSource(
-                @Value("${jdbc.driver}") String driverClassName,
-                @Value("${jdbc.url}") String url,
-                @Value("${jdbc.user}") String username,
-                @Value("${jdbc.password}") String password) {
-
-            BasicDataSource ds = new BasicDataSource();
-            ds.setDriverClassName(driverClassName);
-            ds.setUrl(url);
-            ds.setUsername(username);
-            ds.setPassword(password);
-            ds.setValidationQuery("SELECT 1");
-            ds.setTestOnBorrow(true);
-
-            return ds;
-        }
-
-        @Bean
-        public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-            return new JdbcTemplate(dataSource);
-        }
-
-        @Bean
-        @Autowired
-        public PlatformTransactionManager transactionManager(
-                DataSource dataSource) {
-
-            return new DataSourceTransactionManager(dataSource);
-        }
-    }
-
-    @Bean
-    public Gson gson() {
-        return GsonFactory.create();
     }
 
     @Bean
@@ -265,4 +211,24 @@ public class AppConfig {
         UIDao uiDao = new UIDao();
         return uiDao.getUITheme(Paths.get(uiFilepath));
     }
+
+    @Bean(name = "datasetFile")
+    public File datasetFile(@Value("${datasetFile}") String datasetFile) {
+        return new File(datasetFile);
+    }
+
+    @Configuration
+    public static class CollectionsConfig {
+
+        @Autowired
+        private UI uiThemeBean;
+
+        @Bean (name = "collectionsDao")
+        @Profile("!test")
+        public CollectionsDao getCollectionsDao(@Qualifier("datasetFile") File datasetFile) throws IOException {
+            return new CollectionsJSONDao(datasetFile, uiThemeBean);
+        }
+
+    }
+
 }

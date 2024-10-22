@@ -2,14 +2,9 @@ package ulcambridge.foundations.viewer.forms;
 
 import ulcambridge.foundations.viewer.model.Collection;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SearchForm {
-
-    public static final double MIN_RECALL_SCALE = 0, MAX_RECALL_SCALE = 1;
 
     // Keyword information
     private String keyword = "";
@@ -31,25 +26,84 @@ public class SearchForm {
     private List<Collection> collections = new ArrayList<Collection>();
 
     // Search Facets
-    private Map<String, String> facets = new Hashtable<String,String>();
-    private String facetDate;
-    private String facetSubject;
-    private String facetCollection;
-    private String facetLanguage;
-    private String facetPlace;
-    private String facetLocation;
+    private Map<String,String> facets = new Hashtable<>();
+  //  private String facetCollection;
 
     // Expand facet results
     private String expandFacet = "";
 
-    // Variable recall
-    /**
-     * The recallScale controls the variable recall in keyword searches
-     * against tagging data.
-     */
-    // Note that Double is used over double as we need to be able to represent
-    // the absence of a recallScale value as null.
-    private Double recallScale = MIN_RECALL_SCALE;
+    // This translates the form object into GET request parameters
+    public String getQueryParams() {
+
+        StringBuffer queryParams = new StringBuffer();
+        if (keyword!=null && !keyword.isEmpty()) {
+            queryParams.append("keyword=" + keyword +"&");
+        }
+        if (fullText!=null && !fullText.isEmpty()) {
+            queryParams.append("fullText=" + fullText + "&");
+        }
+        if (excludeText!=null && !excludeText.isEmpty()) {
+            queryParams.append("excludeText=" + excludeText + "&");
+        }
+        if (textJoin!=null && !textJoin.isEmpty()) {
+            queryParams.append("textJoin=" + textJoin + "&");
+        }
+        if (shelfLocator!=null && !shelfLocator.isEmpty()) {
+            queryParams.append("shelfLocator=" + shelfLocator + "&");
+        }
+        if (fileID!=null && !fileID.isEmpty()) {
+            queryParams.append("fileID=" + fileID + "&");
+        }
+        if (title!=null && !title.isEmpty()) {
+            queryParams.append("title=" + title + "&");
+        }
+        if (author!=null && !author.isEmpty()) {
+            queryParams.append("author=" + author + "&");
+        }
+        if (subject!=null && !subject.isEmpty()) {
+            queryParams.append("subject=" + subject + "&");
+        }
+        if (language!=null && !language.isEmpty()) {
+            queryParams.append("language=" + language + "&");
+        }
+        if (place!=null && !place.isEmpty()) {
+            queryParams.append("place=" + place + "&");
+        }
+        if (location!=null && !location.isEmpty()) {
+            queryParams.append("location=" + location + "&");
+        }
+        if (yearStart!=null) {
+            queryParams.append("yearStart=" + yearStart.toString() + "&");
+        }
+        if (yearEnd!=null) {
+            queryParams.append("yearEnd=" + yearEnd.toString() + "&");
+        }
+        if (expandFacet!=null && !expandFacet.isEmpty()) {
+            queryParams.append("expandFacet=" + expandFacet + "&");
+        }
+        if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
+            queryParams.append("facetCollection=" + facets.get("Collection") + "&");
+        }
+
+        // Facets
+        if (!facets.isEmpty()) {
+            queryParams.append("facets=" + getFacetsAsString() + "&");
+        }
+
+        if (queryParams.toString().endsWith("&")) {
+            queryParams.deleteCharAt(queryParams.toString().length() - 1);
+        }
+
+        return queryParams.toString();
+    }
+
+    public boolean hasQueryParams() {
+        return (this.getKeyword() != "" || this.hasAdvancedParams());
+    }
+
+    public boolean hasAdvancedParams() {
+        return (this.getAuthor() != "" || this.getFacetCollection() != null || this.getFullText() != "" || this.getLanguage() != "" || this.getLocation() != "" || this.getPlace() != "" || this.getShelfLocator() != "" || this.getSubject() != "" || this.getTitle() != "" || this.getYearEnd() != null || this.getYearStart() != null);
+    }
 
     public String getKeyword() {
         return keyword;
@@ -172,66 +226,45 @@ public class SearchForm {
     }
 
     /** Facets **/
-
-    public String getFacetDate() {
-        return facetDate;
-    }
-
-    public void setFacetDate(String facetDate) {
-        this.facetDate = facetDate;
-        facets.put("date", facetDate);
-    }
-
-    public String getFacetSubject() {
-        return facetSubject;
-    }
-
-    public void setFacetSubject(String facetSubject) {
-        this.facetSubject = facetSubject;
-        facets.put("subject", facetSubject);
-    }
-
-    public String getFacetLanguage() {
-        return facetLanguage;
-    }
-
-    public void setFacetLanguage(String facetLanguage) {
-        this.facetLanguage = facetLanguage;
-        facets.put("language", facetLanguage);
-    }
-
-    public String getFacetCollection() {
-        return facetCollection;
-    }
-
-    public void setFacetCollection(String facetCollection) {
-        if (facetCollection!=null && !facetCollection.trim().equals("")) {
-          this.facetCollection = facetCollection;
-          facets.put("collection", facetCollection);
+    /* We are assuming the facets are specified in the format key:value||key:value */
+    public void setFacets(String facetString) {
+        Map<String,String> facets = new Hashtable<>();
+        String[] pairs = facetString.split("\\|\\|");
+        for (String pair : pairs) {
+            String[] keyValue = pair.split("::");
+            facets.put(keyValue[0],keyValue[1]);
         }
-    }
-
-    public String getFacetPlace() {
-        return facetPlace;
-    }
-
-    public void setFacetPlace(String facetPlace) {
-        this.facetPlace = facetPlace;
-        facets.put("place", facetPlace);
-    }
-
-    public String getFacetLocation() {
-        return facetLocation;
-    }
-
-    public void setFacetLocation(String facetLocation) {
-        this.facetLocation = facetLocation;
-        facets.put("location", facetLocation);
+        this.facets = facets;
     }
 
     public Map<String, String> getFacets() {
+        return this.facets;
+    }
 
-        return facets;
+    public String getFacetsAsString() {
+        StringBuilder facets = new StringBuilder();
+        for (String key : this.facets.keySet()) {
+            String value = this.facets.get(key);
+            if (value != null && !value.isEmpty()) {
+                facets.append(key + "::" + this.facets.get(key) + "||");
+            }
+        }
+        if (facets.toString().endsWith("||")) {
+            facets.delete(facets.length() - 2, facets.length());
+        }
+        return facets.toString();
+    }
+
+    // Hard coded collection facet - for advanced search.
+    public String getFacetCollection() {
+        return facets.get("Collection");
+    }
+
+    public void setFacetCollection(String facetCollection) {
+        if (facetCollection!=null && !facetCollection.trim().isEmpty()) {
+            //this.facetCollection = facetCollection;
+            facets.put("Collection", facetCollection);
+        }
     }
 
     /** Expand Facet **/
@@ -240,24 +273,6 @@ public class SearchForm {
 
     public void setExpandFacet(String expandFacet) {
         this.expandFacet = expandFacet;
-    }
-
-    public boolean hasRecallScale() {
-        return recallScale != null;
-    }
-
-    /**
-     * @return The recall scale, always between {@link #MIN_RECALL_SCALE} and
-     *             {@link #MAX_RECALL_SCALE}.
-     */
-    public Double getRecallScale() {
-        assert recallScale == null || recallScale >= MIN_RECALL_SCALE && recallScale < MAX_RECALL_SCALE;
-        return recallScale;
-    }
-
-    public void setRecallScale(Double recallScale) {
-        this.recallScale = Math.min(MAX_RECALL_SCALE,
-                Math.max(MIN_RECALL_SCALE, recallScale));
     }
 
     /**
@@ -282,16 +297,7 @@ public class SearchForm {
         this.location = input.location;
         this.yearStart = input.yearStart;
         this.yearEnd = input.yearEnd;
-
-        this.facetCollection = input.facetCollection;
-        this.facetDate = input.facetDate;
-        this.facetSubject = input.facetSubject;
-        this.facetLanguage = input.facetLanguage;
-        this.facetPlace = input.facetPlace;
-        this.facetLocation = input.facetLocation;
-        Hashtable<String, String> facets = new Hashtable<String, String>();
-        facets.putAll(input.facets);
-        this.facets = facets;
+        this.facets = input.facets;
 
         this.expandFacet = input.expandFacet;
     }

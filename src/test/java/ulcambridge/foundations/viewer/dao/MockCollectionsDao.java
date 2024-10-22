@@ -28,26 +28,8 @@ public class MockCollectionsDao implements CollectionsDao {
             "collections/treasures/summary.html",
             "collections/treasures/sponsors.html",
             "virtual",
-            "", collectionItemIds);
+            "", "");
 
     }
-
-    @Override
-    public int getCollectionsRowCount() {
-        return 0;
-    }
-
-    @Override
-    public int getItemsInCollectionsRowCount() {
-        return 0;
-    }
-
-    @Override
-    public int getItemsRowCount() {
-        return 0;
-    }
-
-    @Override
-    public List<String> getCollectionId(String itemId) { return null; }
 
 }

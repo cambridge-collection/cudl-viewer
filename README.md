@@ -1,32 +1,30 @@
 # CUDL Viewer
 
-The CUDL Viewer is a [Spring](https://spring.io/)-powered java web application.
+The CUDL viewer provides a frontend display for the [Cambridge Digital Library](https://cudl.lib.cam.ac.uk/),
+allowing you to view books, manuscripts and other content with a full zoomable viewer and detailed metadata
+display.
 
-The Viewer uses [Maven](https://maven.apache.org/) for dependency management
-of 3rd party Java libraries, and build automation.
+It relies on data converted from [standard TEI](https://github.com/tei-for-special-collections/consolidated-schema) into a JSON format for display. This is done by Cambridge using [XSLT
+transformations](https://github.com/cambridge-collection/xslt-transformation-engine).  We have some [example data](https://github.com/cambridge-collection/dl-data-samples)
+for you to have a look and get started.
 
-Ensure you have a recent JDK and version of Maven installed before continuing.
+The viewer uses Java Spring and maven, you can see more instructions on getting the dependencies setup in our
+github documentation. **To build and run this
+you will need to be able to access public packages on GitHub using maven - full instructions to do this are on this page.**
+- https://cambridge-collection.github.io/setup-local-viewer.html.
 
-## Building
+![CUDLViewer.png](src/main/docs/images/CUDLViewer.png)
 
-To build a WAR file, run:
-
-```
-$ mvn clean package
-```
-
-The war file will be created under `target/`.
-
-When deployed, the Viewer requires `cudl-global.properties` to exist on the
-classpath.
-
-This file will be excluded from any WAR file generated as it contains the properties
-that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
-classpath for your web container (e.g. `lib` directory in Tomcat).
-
-## Run locally
+## Building and Running
 
 ### Using sample data
+
+Once you have setup the required  [dependencies](https://cambridge-collection.github.io/setup-local-viewer.html) you are
+ready to build and run the CUDL viewer.
+
+First make sure you have a copy of this repository using git:
+
+    git clone git@github.com:cambridge-collection/cudl-viewer.git
 
 The sample data is linked as a git submodule so we need to initalise
 it and download the data.  Do this with the following commands:
@@ -34,9 +32,18 @@ it and download the data.  Do this with the following commands:
     git submodule init
     git submodule update
 
-Check the git submodules are present: dl-data-samples should be at:
+Check the git data submodule are present: dl-data-samples should be at the directory:
 
-    docker/db/dl-data-samples
+    data/dl-data-samples
+
+
+### Building the application
+
+To build the application into a WAR packaged file, to run locally run:
+
+    mvn clean package
+
+The war file will be created under `target/`.
 
 To run the viewer:
 
@@ -46,28 +53,22 @@ When running you can then access the Viewer at
 [http://localhost:8888/](http://localhost:8888/).
 
 
-### Using cudl data
+### Want to use your images?
 
-Check the cudl database snapshots are available here:
-(NOTE: These are held in Bitbucket and are available to Cambridge developers)
+You may want to take a look at the data under out `data` directory, you can drag JPG or TIFF images into the folder
+`data/dl-data-samples/iiif-images/dropzone` while the application is running to automatically convert them to JP2 for
+zoomable images via IIIF. You can then reference them in any of the json file at
+`data/dl-data-samples/processed-data/cudl-data/json` by editing the `thumbnailImageURL` and `IIIFImageURL` properties.
 
-    git submodule init docker/db/snapshots
+NOTE: You will need to restart the application to pick up your changes.
 
-Also checkout the cambridge processed data from Bitbucket into the parent dir:
+### Want to use your own style?
 
-    cd ..
-    git clone git@bitbucket.org:CUDL/cudl-data-releases.git cudl-data-releases
+The main theme, website name, colour and images are configured in the data under the `data/dl-data-samples/processed-data/ui` directory.
 
-To run the viewer:
+NOTE: You will need to restart the application to pick up your changes.
 
-    docker-compose --env-file cudl-data.env up
-
-Note: if switching between data sets you may have to remove the old cudl-db images.
-e.g.
-
-    docker image rm cudl-viewer-master_cudl-db:latest
-
-### Required Configuration
+### Configuration
 
 The Viewer is configured in the `cudl-global.properties` file. A template is
 available at `docker/cudl-global.properties`.
@@ -80,7 +81,6 @@ acceptable to get the Viewer running, but some must be changed:
 
 These must point to the `html/` and `images/` directories in a local checkout of
 the data you're using (see above for details).
-
 
 ## Development
 
@@ -104,6 +104,28 @@ See the [cudl-viewer-ui's README](https://github.com/cambridge-collection/cudl-v
 instructions on running the UI devserver.
 
 
+# Cambridge Development
+
+## Using Cambridge CUDL data
+
+Download a sample of the cudl data from s3 at e.g. s3://staging-cul-cudl-data-releases or from Bitbucket.
+This should be placed in a separate directory at the same level as the cudl-data-viewer.
+
+    cd ..
+    git clone git@bitbucket.org:CUDL/cudl-data-releases.git cudl-data-releases
+
+To run the viewer:
+
+    docker-compose --env-file cudl-data.env up
+
+## Deployment
+When deployed, the Viewer requires `cudl-global.properties` to exist on the
+classpath.
+
+This file will be excluded from any WAR file generated as it contains the properties
+that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
+classpath for your web container (e.g. `lib` directory in Tomcat).
+
 ## Making a release
 
 Releasing is using the Maven release plugin.
@@ -114,8 +136,8 @@ Releases are tagged using the old CARET Ops tag format, which is
 `<server-class>-<date-yyyymmdd><release-in-day>`. `<release-in-day>` is a two
 digit number, starting from `00` which increments after each release in one day.
 
-For example, for the 1st release on `21/06/2015` for a production deployment
-we'd use `production-2015062100`.
+For example, for the 1st release on `21/06/2024` for a production deployment
+we'd use `production-2024062100`.
 
 Note that the last two digits make tags a pain to auto-generate, so you'll have
 to manually specify the tag value each time you tag.
@@ -137,10 +159,10 @@ two. The third must be
 After this finishes, you'll have two new commits on your `main` branch and
 a new tag in your local repo. You need to push all of these to the CUDL repo.
 Assuming your CUDL remote is `cudl`, and your created tag was
-`production-2022062100`, you'd run:
+`production-2024062100`, you'd run:
 
 ```
-$ git push cudl main production-2022062100
+$ git push cudl main production-2024062100
 ```
 
 ### Step 2: Perform
@@ -152,62 +174,8 @@ to the CUDL packages repository in GitHub using the command:
 $ mvn release:perform
 ```
 
-### Step 3: CAMBRIDGE ONLY: deploy to Maven repo on S3
-
-Once the release has been tagged you can upload this version to our internal s3 repo
-which is where the code is deployed from using Puppet.
-
-You first need to log into AWS console (account cul-main) and ensure you have a user
-in the group "CUDL-MAVEN-RELEASES-s3".  This will ensure that you have permission to write
-to our s3 maven repository.
-
-Once you have an account you should create an access key for it in the section
-IAM -> <your account> -> Security Credentials -> Access Keys.
-
-Then ensure that you have the aws credentials in your ~/.m2/settings.xml
-
-```
-  <servers>
-	<server>
-	<id>github</id>
-	<username>YOUR_GITHUB_USERNAME</username>
-	<password>YOUR_GITHUB_ACCESS_TOKEN></password>
-	</server>
-	<server>
-	<id>cudl-aws-release</id>
-	<username>YOUR_AWS_ACCESS_TOKEN_NAME</username>
-	<password>YOUR_AWS_ACCESS_TOKEN_VALUE</password>
-	</server>
-  </servers>
-```
-
-After, we need to delete the tag (local only) so that we can run perform again
-to publish the code to another repository.  You then need to input the same information
-again (same tag name etc).
-
-```
-git tag --delete <TAG NAME>
-mvn release:prepare -DpushChanges=false
-```
-
-Then run the following command to upload to the Cambridge s3 repository for release
-so that puppet can find and deploy the code.
-
-```
-mvn release:stage -DstagingRepository=cudl-aws-release::default::s3://mvn.cudl.lib.cam.ac.uk/release
-```
-
-If it runs correctly, you should have two new commits that are duplicates of the ones you made when building the release for GitHub. One of them should also have the tag you defined above. All that remains is to delete that tag and reset those two commits.
-
-```
-git tag --delete <TAG NAME>
-git reset HEAD~2
-```
-
-Once you have confirmed that those two commits have been removed, don't forget to `git pull`. This will restore the original tag you deleted, as well as bring over any other changes that might have been pushed by others to `main`.
-
-Now you can update the development puppet to pull in the new version.
-See https://gitlab.developers.cam.ac.uk/lib/dev/dev-puppet/
+Once you have performed the release, the latest version of your application will be automatically built into a Docker
+image using AWS CodeDeploy and is then available in the [sandbox ECR](https://eu-west-1.console.aws.amazon.com/ecr/repositories/private/563181399728/sandbox-cudl-viewer?region=eu-west-1).
 
 ## More information
 

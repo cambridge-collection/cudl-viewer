@@ -29,7 +29,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.EssayItem;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 import ulcambridge.foundations.viewer.utils.IIIFUtils;
@@ -109,12 +108,8 @@ public class DocumentViewController {
         //
         request.getSession().setAttribute("taggable", item.getTaggingStatus());
 
-        if (itemType.equals("essay")) {
-            return setupEssayView((EssayItem) item);
-        } else {
-            // default to document view.
-            return setupDocumentView(item, page, request);
-        }
+        // default to document view.
+        return setupDocumentView(item, page, request);
 
     }
 
@@ -366,52 +361,6 @@ public class DocumentViewController {
             e.printStackTrace();
         }
         return "";
-    }
-
-    /**
-     * View for displaying essay data.
-     */
-    private ModelAndView setupEssayView(EssayItem item) {
-
-        if (item == null) {
-            throw new ResourceNotFoundException();
-        }
-
-        List<Collection> docCollections = getCollection(item.getId());
-        Collection organisationalCollection = getBreadcrumbCollection(docCollections);
-
-        // Get parent collection if there is one.
-        Collection parent = null;
-        if (organisationalCollection.getParentCollectionId() != null) {
-            parent = collectionFactory
-                    .getCollectionFromId(organisationalCollection
-                            .getParentCollectionId());
-        }
-
-        ModelAndView modelAndView = new ModelAndView("jsp/essay");
-
-        modelAndView.addObject("docId", item.getId());
-        modelAndView.addObject("organisationalCollection",
-                organisationalCollection);
-        modelAndView.addObject("collections", docCollections);
-
-        modelAndView.addObject("itemTitle", item.getTitle());
-        modelAndView.addObject("itemAuthors",
-                new JSONArray(item.getAuthorNames()));
-        modelAndView.addObject("itemAuthorsFullform",
-                new JSONArray(item.getAuthorNamesFullForm()));
-        modelAndView.addObject("itemAbstract", item.getAbstract());
-        modelAndView.addObject("itemThumbnailURL", item.getThumbnailURL());
-        modelAndView.addObject("itemThumbnailOrientation",
-                item.getThumbnailOrientation());
-
-        modelAndView.addObject("itemDAO", itemDAO);
-        modelAndView.addObject("content", item.getContent());
-        modelAndView.addObject("relatedItems", item.getItemReferences());
-        modelAndView.addObject("parentCollection", parent);
-
-        modelAndView.addObject("essayItem", item);
-        return modelAndView;
     }
 
     /**

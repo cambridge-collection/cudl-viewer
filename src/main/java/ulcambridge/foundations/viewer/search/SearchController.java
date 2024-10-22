@@ -10,23 +10,22 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -62,17 +61,22 @@ public class SearchController {
 
     // on /search path
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView processSearch(@Valid SearchForm searchForm)
-            throws MalformedURLException {
+    public ModelAndView processSearch(@Valid SearchForm searchForm,
+        @RequestParam(required=false) Map<String,String> qparams) {
 
-        // Perform XTF Search
+        // if empty URL, forward to search query form
+        if (qparams.isEmpty()) {
+            return new ModelAndView("forward:/search/query");
+        }
+
+        // Perform Search
         SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
 
         ModelAndView modelAndView = new ModelAndView("jsp/search-results");
         modelAndView.addObject("form", searchForm);
         modelAndView.addObject("results", results);
         modelAndView.addObject("queryString",
-                SearchUtil.getURLParameters(searchForm));
+            SearchUtil.getURLParameters(searchForm));
 
         return modelAndView;
     }
@@ -82,15 +86,13 @@ public class SearchController {
      *
      * /search/advanced/query
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/advanced/query")
+    @RequestMapping(method = RequestMethod.GET, value = "/query")
     public ModelAndView advancedSearch(
             @Valid @ModelAttribute SearchForm searchForm,
-            @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
-            BindingResult bindingResult, HttpSession session)
-            throws MalformedURLException {
+            @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging) {
 
         ModelAndView modelAndView = new ModelAndView("jsp/search-advanced");
-        List<Collection> collectionList = collectionFactory.getCollections();
+        List<Collection> collectionList = collectionFactory.getRootCollections();
         Collections.sort(collectionList, collectionTitleComparator);
          // order alphabetically by title
         searchForm.setCollections(collectionList);
@@ -107,9 +109,7 @@ public class SearchController {
     @RequestMapping(method = RequestMethod.GET, value = "/advanced/results")
     public ModelAndView processAdvancedSearch(
             @ModelAttribute @Valid SearchForm searchForm,
-            @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging,
-            BindingResult bindingResult, HttpSession session)
-            throws MalformedURLException {
+            @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging) {
 
         // Perform XTF Search
         SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);

@@ -1,6 +1,6 @@
-[submodule "docker/db/snapshots"]
-	path = docker/db/snapshots
-	url = git@bitbucket.org:CUDL/snapshots.git
-[submodule "docker/db/dl-data-samples"]
-	path = docker/db/dl-data-samples
+[submodule "data/dl-data-samples"]
+	path = data/dl-data-samples
 	url = git@github.com:cambridge-collection/dl-data-samples.git
+[submodule "docker/db/dl-data-samples-http"]
+	path = docker/db/dl-data-samples-http
+	url = https://github.com/cambridge-collection/dl-data-samples.git

@@ -17,3 +17,13 @@ release.properties
 
 # docker-compose local environment file
 .env
+
+/FoundationsViewer.iml
+/foundationsviewer.imlad
+/foundationsviewer.ipr
+/foundationsviewer.iws
+
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

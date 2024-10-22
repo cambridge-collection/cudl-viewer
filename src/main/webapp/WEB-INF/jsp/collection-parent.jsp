@@ -11,14 +11,6 @@
 <c:set var="defaultTitle" value="${defaultTitle}"/>
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
-    <jsp:attribute name="pageData">
-        <cudl:default-context>
-            <cudl:context-editable-areas>
-                <cudl:editable-area id="summaryDiv" filename="${collection.summary}"/>
-                <cudl:editable-area id="sponsorDiv" filename="${collection.sponsors}"/>
-            </cudl:context-editable-areas>
-        </cudl:default-context>
-    </jsp:attribute>
 
     <jsp:body>
         <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections"/>

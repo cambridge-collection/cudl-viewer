@@ -6,7 +6,6 @@
 <%@attribute name="collection" required="false" type="java.lang.Object" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
@@ -28,7 +27,7 @@
 <%--                        </a>--%>
                         <div class="item text-white nav-right-items">
                             <div class="search">
-                                <a href="/search">
+                                <a href="/search/query">
                                     <span class="icon icon-search"></span>
                                 </a>
                             </div>
@@ -49,7 +48,7 @@
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/collections/">View all collections</a></li>
-                        <li><a href="/search">Search</a></li>
+                        <li><a href="/search/query">Search</a></li>
                         <li><a href="/about/">About</a></li>
                         <li><a href="/help/">Help</a></li>
                     </ul>

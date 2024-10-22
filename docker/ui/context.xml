@@ -1,0 +1,17 @@
+<!--
+This is a Context file used when deploying the viewer webapp in the development
+Tomcat docker container.
+-->
+<Context reloadable="true">
+    <Resources>
+        <!-- Map the global properties file into the Viewer webapp's classpath
+             so that it can load it.
+             NOTE this file is not present in the image and must be obtained at
+             runtime using the entrypoint script
+        -->
+        <PreResources base="/etc/cudl-viewer/cudl-global.properties"
+                       className="org.apache.catalina.webresources.FileResourceSet"
+                       webAppMount="/WEB-INF/classes/cudl-global.properties"/>
+    </Resources>
+    <WatchedResource>/etc/cudl-viewer/cudl-global.properties</WatchedResource>
+</Context>
