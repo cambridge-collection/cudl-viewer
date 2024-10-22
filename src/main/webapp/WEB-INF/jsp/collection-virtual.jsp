@@ -37,9 +37,11 @@
                                     <c:choose>
                                         <c:when test="${item.thumbnailOrientation == 'portrait'}">
                                             <c:set var="imageDimensions" value="height: 100%"/>
+                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}.jp2/full/,180/0/default.jpg"/>
                                         </c:when>
                                         <c:when test="${item.thumbnailOrientation == 'landscape'}">
                                             <c:set var="imageDimensions" value="width: 100%"/>
+                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}.jp2/full/180,/0/default.jpg"/>
                                         </c:when>
                                     </c:choose>
 
@@ -48,7 +50,7 @@
                                             <div class="virtual_collections_carousel_image_box campl-column6">
                                                 <div class="virtual_collections_carousel_image" id="virtual_collections_carousel_item${loop.index + 1}">
                                                     <a href="/view/${fn:escapeXml(item.id)}/1">
-                                                        <img src="${fn:escapeXml(item.thumbnailURL)}"
+                                                        <img src="${thumbnailUrl}"
                                                              alt="${fn:escapeXml(item.id)}"
                                                              style="${fn:escapeXml(imageDimensions)}">
                                                     </a>

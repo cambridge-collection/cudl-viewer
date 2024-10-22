@@ -102,23 +102,23 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
             "displayImageURL", "content/images/MS-ADD-03419-000-00001",
             "downloadImageURL", "content/images/MS-ADD-03419-000-00001.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00001",
-            "thumbnailImageURL", "MS-ADD-03419-000-00001/full/,180/0/default.jpg"
+            "IIIFImageURL", "MS-ADD-03419-000-00001.jp2",
+            "thumbnailImageURL", "MS-ADD-03419-000-00001.jp2/full/,180/0/default.jpg"
         );
 
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
             "displayImageURL", "content/images/MS-ADD-03419-000-00002",
             "downloadImageURL", "content/images/MS-ADD-03419-000-00002.jpg",
-            "IIIFImageURL", "MS-ADD-03419-000-00002",
-            "thumbnailImageURL", "MS-ADD-03419-000-00002/full/,180/0/default.jpg"
+            "IIIFImageURL", "MS-ADD-03419-000-00002.jp2",
+            "thumbnailImageURL", "MS-ADD-03419-000-00002.jp2/full/,180/0/default.jpg"
         );
     }
 
     @Test
     public void itemObjectReportsExpectedPageThumbnailURLs() {
         assertThat(item.getPageThumbnailURLs()).containsExactly(
-            "MS-ADD-03419-000-00001/full/,180/0/default.jpg",
-            "MS-ADD-03419-000-00002/full/,180/0/default.jpg"
+            "MS-ADD-03419-000-00001.jp2/full/,180/0/default.jpg",
+            "MS-ADD-03419-000-00002.jp2/full/,180/0/default.jpg"
         );
     }
 

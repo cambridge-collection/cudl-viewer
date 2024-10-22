@@ -76,7 +76,7 @@ public class AppConfig {
         }
 
         @Bean
-        public URI imageServerURL(@Value("${imageServer}") URI url) {
+        public URI imageServerURL(@Value("${IIIFImageServer}") URI url) {
             return ensureURLHasPath(url);
         }
 

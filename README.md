@@ -70,8 +70,8 @@ NOTE: You will need to restart the application to pick up your changes.
 
 ### Configuration
 
-The Viewer is configured in the `cudl-global.properties` file. A template is
-available at `docker/cudl-global.properties`.
+The Viewer is configured in the `sample-global.properties` file. A template is
+available at `docker/sample-global.properties`.
 
 Go through the file, updating defaults as desired. Most of the defaults are
 acceptable to get the Viewer running, but some must be changed:
@@ -117,6 +117,11 @@ This should be placed in a separate directory at the same level as the cudl-data
 To run the viewer:
 
     docker-compose --env-file cudl-data.env up
+
+## Cambridge config file
+
+This configuration uses the properties file at `./docker/cudl-global.properties` instead of the sample-global.properties
+file, so any tweaks to the config when running locally should be made to this file.
 
 ## Deployment
 When deployed, the Viewer requires `cudl-global.properties` to exist on the

@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Person;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -102,7 +103,7 @@ public final class DefaultItemFactory implements ItemFactory {
                 if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
                 try {
                     URL url = new URL(
-                        new URL(Properties.getString("imageServer")),
+                        new URL(Properties.getString("IIIFImageServer")),
                         descriptiveMetadata.getString("thumbnailUrl"));
                     itemThumbnailURL = url.toString();
                 } catch (MalformedURLException ex) {

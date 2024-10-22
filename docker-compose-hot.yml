@@ -13,7 +13,7 @@ services:
       - ./target/foundationsviewer-1.0-SNAPSHOT/WEB-INF/lib/:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
       - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml
-      - ${CUDL_VIEWER_CONFIG:-./docker/cudl-global.properties}:/etc/cudl-viewer/cudl-global.properties
+      - ${CUDL_VIEWER_CONFIG:-./docker/sample-global.properties}:/etc/cudl-viewer/cudl-global.properties
       - ${CUDL_VIEWER_DATA:-./data/dl-data-samples/processed-data/cudl-data/}:/srv/cudl-viewer/cudl-data/
       - ${CUDL_VIEWER_CONTENT_UI_FILE:-./data/dl-data-samples/processed-data/cudl-data/sample.ui.json5}:/srv/cudl-viewer/cudl-data/cudl.ui.json5
       - ${CUDL_VIEWER_DATASET_FILE:-./data/dl-data-samples/processed-data/cudl-data/sample.dl-dataset.json}:/srv/cudl-viewer/cudl-data/cudl.dl-dataset.json

@@ -24,11 +24,11 @@ public final class ImageURLResolution {
 
     @Bean @Order(0)
     public static  DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver() {
-        return new PageImageURLResolver("thumbnailImageURL", "{IIIFImageURL}/full/,180/0/default.jpg");
+        return new PageImageURLResolver("thumbnailImageURL", "{IIIFImageURL}.jp2/full/,180/0/default.jpg");
     }
 
     @Bean @Order(1)
     public static DecoratedItemFactory.ItemJSONPreProcessor iiifImageURLResolver() {
-        return new PageImageURLResolver("IIIFImageURL", "{IIIFImageURL}");
+        return new PageImageURLResolver("IIIFImageURL", "{IIIFImageURL}.jp2");
     }
 }

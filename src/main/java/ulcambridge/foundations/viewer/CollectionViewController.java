@@ -91,7 +91,7 @@ public class CollectionViewController {
                 + collection.getType());
 
         // Get imageServer
-        final String imageServer = Properties.getString("imageServer");
+        final String iiifImageServer = Properties.getString("IIIFImageServer");
 
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {
@@ -99,7 +99,7 @@ public class CollectionViewController {
         }
         modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
-        modelAndView.addObject("imageServer", imageServer);
+        modelAndView.addObject("imageServer", iiifImageServer);
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
 
