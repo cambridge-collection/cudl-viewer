@@ -50,7 +50,7 @@
                             </h2>
                             <div id="advanced-search" class="accordion-collapse collapse ${form.hasAdvancedParams() ? 'show' : ''}" aria-labelledby="advanced-header" >
                                 <div class="accordion-body px-0">
-                                    <div class="advancedsearch-section">
+                                    <%--<div class="advancedsearch-section">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <form:label class="right" path="fullText">Full Text</form:label>
@@ -75,7 +75,7 @@
                                 </span>
                                         </div>
 
-                                            <%--<div class="row">
+                                            <div class="row">
                                                 <div class="col-md-2 ps-4 text-end">
                                                     <form:label path="excludeText"> excluding </form:label>
                                                 </div>
@@ -84,10 +84,10 @@
                                                             <form:input path="excludeText" type="text" value="" name="excludeText" />
                                                     </span>
                                                 </div>
-                                            </div>--%>
+                                            </div>
                                     </div>
 
-                                    <div class="_mib"></div>
+                                    <div class="_mib"></div>--%>
 
                                     <div class="advancedsearch-section clearfix">
                                         <div class="row">
