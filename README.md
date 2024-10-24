@@ -166,6 +166,10 @@ docker push "$AWS_ACCOUNT_ID_B.dkr.ecr.$AWS_REGION_B.amazonaws.com/cudl/viewer:l
 
 where `AWS_ACCOUNT_ID_B`, `ENVIRONMENT_B` and `AWS_REGION_B` all refer to the target repository.
 
+As previously noted the WAR file needs to be deployed to Tomcat with a properties file `cudl-global.properties`. An example can be seen [here](https://github.com/cambridge-collection/cudl-viewer/blob/main/docker/cudl-global.properties). This file also needs to be available to the ECS deployment.
+
+The image is built with an `entrypoint.sh` script that reads the value of an environment variable `S3_URL` and uses the AWS CLI to copy the file indicated to the path `/etc/cudl-viewer/cudl-global.properties`. This will be read by the Viewer application on startup. This can be configured in ECS by setting an environment variable `S3_URL` in the container definition and giving the ECS task permission to access the S3 location specified.
+
 ### Errors running CodeBuild
 
 We have seen a frequent error during the docker build step e.g.
