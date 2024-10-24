@@ -160,13 +160,15 @@ public class IIIFPresentation {
                 metadata = merge(metadata, getMetadataFromJSON(label, valueObj));
             }
 
-            // nested array of values - should always be an array of JSONObjects.
-            // Call this function recursively. Usually called 'values'.
+            // nested array of values
+            // Call this function recursively if an array of objects.
             else if (value instanceof JSONArray) {
                 JSONArray values = (JSONArray) value;
                 for (int i = 0; i < values.length(); i++) {
-                    JSONObject valueObj = values.getJSONObject(i);
-                    metadata = merge(metadata, getMetadataFromJSON(label, valueObj));
+                    if (values.get(i) instanceof JSONObject ) {
+                        JSONObject valueObj = values.getJSONObject(i);
+                        metadata = merge(metadata, getMetadataFromJSON(label, valueObj));
+                    }
                 }
             }
         }
