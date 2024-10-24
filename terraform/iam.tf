@@ -106,7 +106,6 @@ data "aws_iam_policy_document" "code_build" {
     ]
     resources = [
       aws_ecr_repository.cudl_viewer.arn,
-      aws_ecr_repository.cudl_viewer_db.arn,
     ]
   }
 
