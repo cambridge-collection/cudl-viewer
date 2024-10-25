@@ -60,7 +60,7 @@ variable "codebuild_git_submodule_data_samples" {
 
 variable "codebuild_git_source_version" {
   type        = string
-  default     = "feature/codebuild-with-removed-db"
+  default     = "main"
   description = "Git branch to use in CodeBuild project"
 }
 
