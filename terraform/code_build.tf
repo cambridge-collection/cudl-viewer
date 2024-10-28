@@ -47,11 +47,6 @@ resource "aws_codebuild_project" "maven" {
     }
 
     environment_variable {
-      name  = "REPOSITORY_URI_VIEWER_DB"
-      value = aws_ecr_repository.cudl_viewer_db.repository_url
-    }
-
-    environment_variable {
       name  = "GIT_SUBMODULE_DATA_SAMPLES"
       value = var.codebuild_git_submodule_data_samples
     }

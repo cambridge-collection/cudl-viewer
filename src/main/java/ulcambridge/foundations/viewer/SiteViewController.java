@@ -111,12 +111,8 @@ public class SiteViewController {
     // on path /mirador/
     @RequestMapping(value = "/mirador/{id}/{pagenum}")
     public ModelAndView handleMiradorRequest(@PathVariable("id") String id,
-            @PathVariable("pagenum") int pagenum, HttpServletRequest request) {
-
-        String baseURL = request.getScheme() + "://" + request.getServerName();
-        if (!(request.getServerPort()==443)&&!(request.getServerPort()==80)) {
-            baseURL+= ":" + request.getServerPort();
-        }
+            @PathVariable("pagenum") int pagenum, HttpServletRequest request,
+                                    @Value("${rootURL}") String baseURL) {
 
         // Show page 1 if anything below 1 is requested.
         if (pagenum<1) { pagenum=1; }

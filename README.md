@@ -131,11 +131,45 @@ This file will be excluded from any WAR file generated as it contains the proper
 that vary between systems (DEV, BETA, LIVE etc). This file should be copied into the
 classpath for your web container (e.g. `lib` directory in Tomcat).
 
-### Deploying to ECS
+### Manually creating the Docker image:
+
+You can run the following command to manually create the docker image and follow the instructions at the
+ECR repository on aws to manually upload it.
+
+    docker build -t $REPOSITORY_URI_VIEWER:latest -f docker/ui/Dockerfile .
+
+e.g.
+
+```sh
+docker build -t 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest -f docker/ui/Dockerfile .
+```
+
+Then push to the sandbox ECR using
+e.g.
+
+```sh
+aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 563181399728.dkr.ecr.eu-west-1.amazonaws.com
+docker push 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest
+```
+
+and to the cul-cudl ECR using
+
+```sh
+docker tag 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest 438117829123.dkr.ecr.eu-west-1.amazonaws.com/cudl/viewer:latest
+aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 438117829123.dkr.ecr.eu-west-1.amazonaws.com
+docker push 438117829123.dkr.ecr.eu-west-1.amazonaws.com/cudl/viewer:latest
+```
+### Automatically creating image and Deploying to ECS
 
 The Live site is deployed to AWS ECS. This uses an Apache Tomcat container image to run the WAR file. To deploy a new version of the Viewer to ECS, a new Docker Image will need to be built. Currently images for the Live site are built using AWS CodeBuild.
 
 Infrastructure supporting the CodeBuild project can be built using the Terraform code in the `terraform/` subdirectory. This code will create the CodeBuild project, ECR Repository, SSM Parameters and IAM permissions. The CodeBuild project is configured to build the project https://github.com/cambridge-collection/cudl-viewer.git and the `main` branch.
+
+Commands to run the Terraform from this directory are:
+
+    terraform init
+    terraform plan
+    terraform apply
 
 CodeBuild will automatically detect the `buildspec.yml` file contained at the root of this project. This describes the steps that CodeBuild will run as part of a build. Currently CodeBuild will build the WAR file using Maven, build the container image using Docker, and push the image to the ECR repository.
 
@@ -185,6 +219,12 @@ Phase complete: BUILD State: FAILED
 ```
 
 As can be seen this is due to rate throttling in DockerHub, presumably due to the shared addresses used by CodeBuild to access DockerHub leading to a high volume of requests. We have found the build will succeed after a few reattempts.
+
+### Deploying the image
+
+Once you have the new image for the viewer in ECR you can get the sha value for this image, and update the value in
+`terraform.tfvars` in cudl-terraform - https://github.com/cambridge-collection/cudl-terraform repository, and see that
+repo for details on how to apply the changes.
 
 ## Making a release
 
