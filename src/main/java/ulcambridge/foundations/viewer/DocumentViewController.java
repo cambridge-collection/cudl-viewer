@@ -220,7 +220,7 @@ public class DocumentViewController {
         modelAndView.addObject("requestURL", requestURL);
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
-        modelAndView.addObject("imageServer", Properties.getString("IIIFImageServer"));
+        modelAndView.addObject("imageServer", Properties.getString("imageServer"));
         modelAndView.addObject("services", Properties.getString("services"));
 
         // Collection information
