@@ -225,9 +225,11 @@ public class AppConfig {
 
         @Bean (name = "collectionsDao")
         @Profile("!test")
-        public CollectionsDao getCollectionsDao(@Qualifier("datasetFile") File datasetFile, @Value("${caching.enabled:true}")
+        public CollectionsDao getCollectionsDao(@Qualifier("datasetFile") File datasetFile,
+                                                @Value("${dataUIFile}") String uiFilepath,
+                                                @Value("${caching.enabled:true}")
         String cachingEnabled) throws IOException {
-            return new CollectionsJSONDao(datasetFile, uiThemeBean, cachingEnabled);
+            return new CollectionsJSONDao(datasetFile, uiFilepath, cachingEnabled);
         }
 
     }

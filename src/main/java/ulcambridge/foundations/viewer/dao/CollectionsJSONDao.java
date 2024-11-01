@@ -5,6 +5,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.UI;
 import ulcambridge.foundations.viewer.model.UIDataCollection;
@@ -12,6 +14,7 @@ import ulcambridge.foundations.viewer.model.UIDataCollection;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -19,16 +22,22 @@ import java.util.List;
 public class CollectionsJSONDao implements CollectionsDao {
 
     private Hashtable<String,Collection> collections;
-    private final UI uiTheme;
     private final File datasetFile;
+    private final File uiFile;
+    private UI uiTheme;
     private final String cachingEnabled;
 
-    public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,  @Qualifier("uiThemeBean") UI uiTheme,
-                              String cachingEnabled) throws IOException {
+    public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,
+                              @Value("${dataUIFile}") String uiFilepath, String cachingEnabled) throws IOException {
 
+        System.out.println("uiFilepath: "+uiFilepath);
         this.cachingEnabled = cachingEnabled;
-        this.uiTheme = uiTheme;
         this.datasetFile = datasetFile;
+        this.uiFile = new File(uiFilepath);
+        UIDao uiDao = new UIDao();
+        this.uiTheme =  uiDao.getUITheme(Paths.get(uiFilepath));
+        System.out.println("uiTheme: "+uiTheme);
+
         this.collections = readCollectionsFromFiles(datasetFile);
 
     }
@@ -134,16 +143,27 @@ public class CollectionsJSONDao implements CollectionsDao {
         return collections;
     }
 
-    @Override
-    public List<String> getCollectionIds() {
+    // Reload every 10 seconds.
+    @Scheduled(fixedDelay = 1000 * 10)
+    private void refreshData() {
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
+            // Reload dataset
             try {
                 this.collections = readCollectionsFromFiles(datasetFile);
             } catch (IOException e) {
                 System.err.println("Error in reading collections from dataset file: ");
                 e.printStackTrace(System.err);
             }
+
+            // Reload UI
+            UIDao uiDao = new UIDao();
+            this.uiTheme =  uiDao.getUITheme(Paths.get(uiFile.getPath()));
+
         }
+    }
+
+    @Override
+    public List<String> getCollectionIds() {
         return new ArrayList<>(collections.keySet());
     }
 
