@@ -13,19 +13,31 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
 
 public class CollectionsJSONDao implements CollectionsDao {
 
-    private final Hashtable<String,Collection> collections = new Hashtable<>();
+    private Hashtable<String,Collection> collections;
     private final UI uiTheme;
-    private final Hashtable<String, List<String>> subCollections = new Hashtable<>();
+    private final File datasetFile;
+    private final String cachingEnabled;
 
-    public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,  @Qualifier("uiThemeBean") UI uiTheme) throws IOException {
+    public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,  @Qualifier("uiThemeBean") UI uiTheme,
+                              String cachingEnabled) throws IOException {
 
+        this.cachingEnabled = cachingEnabled;
         this.uiTheme = uiTheme;
+        this.datasetFile = datasetFile;
+        this.collections = readCollectionsFromFiles(datasetFile);
+
+    }
+
+    private Hashtable<String,Collection> readCollectionsFromFiles(File datasetFile)
+        throws IOException {
+
+        Hashtable<String,Collection> collections = new Hashtable<>();
+        Hashtable<String, List<String>> subCollections = new Hashtable<>();
 
         // Go through all the collections listed and setup collection objects
         String dataset = FileUtils.readFileToString(datasetFile, StandardCharsets.UTF_8);
@@ -39,15 +51,18 @@ public class CollectionsJSONDao implements CollectionsDao {
             String collectionId = FilenameUtils.getName(collectionFilePath).replace(".collection.json", "");
 
             // Read collection file into a collection object
-            this.collections.put(collectionId,getCollectionFromFile(new File(collectionFilePath)));
+            collections.put(collectionId,getCollectionFromFile(new File(collectionFilePath), subCollections));
         }
 
         // Set the subcollections and parent collections on collection objects (all currently empty string)
         // This requires the collections hashtable to be populated.
-        setupParentAndSubCollections();
+        return setupParentAndSubCollections(collections, subCollections);
+
     }
 
-    private Collection getCollectionFromFile(File file) throws IOException {
+    private Collection getCollectionFromFile(File file, Hashtable<String, List<String>> subCollections)
+        throws IOException {
+
         String collection = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
         JSONObject collectionJson = new JSONObject(collection);
 
@@ -72,7 +87,7 @@ public class CollectionsJSONDao implements CollectionsDao {
                 String subCollectionId = FilenameUtils.getName(subCollectionPath).replace(".collection.json", "");
                 subcollectionIds.add(subCollectionId);
             }
-            this.subCollections.put(collectionId, subcollectionIds);
+            subCollections.put(collectionId, subcollectionIds);
         }
 
         return new Collection(collectionId, collectionTitle, collectionItemIds, collectionSummary,
@@ -102,23 +117,33 @@ public class CollectionsJSONDao implements CollectionsDao {
         return null;
     }
 
-    private void setupParentAndSubCollections() {
+    private Hashtable<String,Collection> setupParentAndSubCollections(Hashtable<String,Collection> collections,
+                                                                      Hashtable<String, List<String>> subCollections) {
         for (String collectionId : subCollections.keySet()) {
             List<String> subCollectionIds = subCollections.get(collectionId);
-            List<Collection> subCollections = new ArrayList<>();
+            List<Collection> subCollectionsList = new ArrayList<>();
             for (String subCollectionId : subCollectionIds) {
                 // set Parent Collections
                 Collection subCollection = collections.get(subCollectionId);
                 subCollection.setParentCollectionId(collectionId);
-                subCollections.add(subCollection);
+                subCollectionsList.add(subCollection);
             }
             // set Sub Collections
-            collections.get(collectionId).setSubCollections(subCollections);
+            collections.get(collectionId).setSubCollections(subCollectionsList);
         }
+        return collections;
     }
 
     @Override
     public List<String> getCollectionIds() {
+        if (!"true".equalsIgnoreCase(cachingEnabled)) {
+            try {
+                this.collections = readCollectionsFromFiles(datasetFile);
+            } catch (IOException e) {
+                System.err.println("Error in reading collections from dataset file: ");
+                e.printStackTrace(System.err);
+            }
+        }
         return new ArrayList<>(collections.keySet());
     }
 
