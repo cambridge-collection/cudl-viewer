@@ -30,13 +30,11 @@ public class CollectionsJSONDao implements CollectionsDao {
     public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,
                               @Value("${dataUIFile}") String uiFilepath, String cachingEnabled) throws IOException {
 
-        System.out.println("uiFilepath: "+uiFilepath);
         this.cachingEnabled = cachingEnabled;
         this.datasetFile = datasetFile;
         this.uiFile = new File(uiFilepath);
         UIDao uiDao = new UIDao();
         this.uiTheme =  uiDao.getUITheme(Paths.get(uiFilepath));
-        System.out.println("uiTheme: "+uiTheme);
 
         this.collections = readCollectionsFromFiles(datasetFile);
 
