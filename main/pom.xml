@@ -9,6 +9,12 @@
     <name>CUDL Viewer</name>
     <url>https://github.com/cambridge-collection/cudl-viewer</url>
 
+    <parent>
+        <groupId>ulcambridge.foundations.viewer</groupId>
+        <artifactId>cudl-viewer</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -16,7 +22,7 @@
         <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
 
-        <cudl-viewer-ui.version>4.1.2</cudl-viewer-ui.version>
+        <cudl-viewer-ui.version>4.1.3-SNAPSHOT</cudl-viewer-ui.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-io.version>2.11.0</commons-io.version>
@@ -181,7 +187,6 @@
             <artifactId>viewer-ui</artifactId>
             <version>${cudl-viewer-ui.version}</version>
             <classifier>resources</classifier>
-            <type>jar</type>
             <scope>compile</scope>
         </dependency>
 
