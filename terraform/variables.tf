@@ -58,6 +58,12 @@ variable "codebuild_git_submodule_data_samples" {
   description = "Path to the data-samples git submodule used in DB Docker build"
 }
 
+variable "codebuild_git_submodule_cudl_viewer_ui" {
+  type        = string
+  default     = "cudl-viewer-ui"
+  description = "Path to the cudl-viewer-ui git submodule used in Maven build"
+}
+
 variable "codebuild_git_source_version" {
   type        = string
   default     = "main"

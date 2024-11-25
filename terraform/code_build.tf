@@ -50,6 +50,11 @@ resource "aws_codebuild_project" "maven" {
       name  = "GIT_SUBMODULE_DATA_SAMPLES"
       value = var.codebuild_git_submodule_data_samples
     }
+
+    environment_variable {
+      name  = "GIT_SUBMODULE_CUDL_VIEWER_UI"
+      value = var.codebuild_git_submodule_cudl_viewer_ui
+    }
   }
 
   logs_config {
