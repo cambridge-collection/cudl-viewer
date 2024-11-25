@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ulcambridge.foundations.viewer</groupId>
-    <artifactId>foundationsviewer</artifactId>
+    <artifactId>cudl-viewer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>CUDL Viewer</name>
     <url>https://github.com/cambridge-collection/cudl-viewer</url>
 
     <modules>
-        <module>cudl-viewer</module>
+        <module>main</module>
         <module>cudl-viewer-ui</module>
     </modules>
 
