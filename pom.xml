@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ulcambridge.foundations.viewer</groupId>
@@ -9,562 +12,68 @@
     <name>CUDL Viewer</name>
     <url>https://github.com/cambridge-collection/cudl-viewer</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.javadoc.skip>true</maven.javadoc.skip>
-
-        <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
-        <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
-
-        <cudl-viewer-ui.version>4.1.2</cudl-viewer-ui.version>
-        <commons-email.version>1.5</commons-email.version>
-        <commons-fileupload.version>1.5</commons-fileupload.version>
-        <commons-io.version>2.11.0</commons-io.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
-        <commons-logging.version>1.1</commons-logging.version>
-        <jena.version>4.4.0</jena.version>
-        <jsonatg.version>1.0.5</jsonatg.version>
-        <jsoup.version>1.15.3</jsoup.version>
-        <jtidy.version>r938</jtidy.version>
-        <owasp-encoder.version>1.2.3</owasp-encoder.version>
-        <urlrewritefilter.version>4.0.4</urlrewritefilter.version>
-        <log4j.version>2.17.2</log4j.version>
-    </properties>
-
-    <scm>
-        <connection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</developerConnection>
-        <url>https://github.com/cambridge-collection/cudl-viewer</url>
-        <tag>production-2023081700</tag>
-    </scm>
+    <modules>
+        <module>cudl-viewer</module>
+        <module>cudl-viewer-ui</module>
+    </modules>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-toolchains-plugin</artifactId>
-                <version>3.0.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>toolchain</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <toolchains>
-                        <jdk>
-                            <version>11</version>
-                            <vendor>openjdk</vendor>
-                        </jdk>
-                    </toolchains>
-                </configuration>
-            </plugin>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-toolchains-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>toolchain</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <toolchains>
+                            <jdk>
+                                <version>11</version>
+                                <vendor>openjdk</vendor>
+                            </jdk>
+                        </toolchains>
+                    </configuration>
+                </plugin>
 
-            <!--  this plugin is run by 'mvn tomcat7:run' and allow live reloads for static assets e.g. jsp changes. -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <path>/</path>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
-                    <additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>
-                    <server>tomcat-development-server</server>
-                    <port>1111</port>
-                    <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <release>11</release>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-
-            <!-- We don't want to include the global properties file as this changes
-                 depending on the environment - dev, beta live etc. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-                <configuration>
-                    <warName>FoundationsViewer</warName>
-                    <packagingExcludes>
-                        WEB-INF/classes/cudl-global.properties,
-                        models/equatorie-src/**/*
-                    </packagingExcludes>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>3.0.0-M5</version>
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; Don't automatically push changes to the remote repo-->
-<!--                         while executing release:prepare. &ndash;&gt;-->
-<!--                    <pushChanges>false</pushChanges>-->
-<!--                    &lt;!&ndash; Use the local repo with release:perform instead of the-->
-<!--                         upstream repository specified in <scm>. &ndash;&gt;-->
-<!--                    <localCheckout>true</localCheckout>-->
-<!--                </configuration>-->
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <rules>
-                        <requireMavenVersion>
-                            <version>3.6.3</version>
-                        </requireMavenVersion>
-                        <requireJavaVersion>
-                            <version>1.11</version>
-                        </requireJavaVersion>
-                        <requireUpperBoundDeps />
-                    </rules>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M5</version>
-            </plugin>
-        </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources/</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
-        <extensions>
-            <extension>
-                <groupId>org.springframework.build</groupId>
-                <artifactId>aws-maven</artifactId>
-                <version>5.0.0.RELEASE</version>
-            </extension>
-        </extensions>
+                <!--  this plugin is run by 'mvn tomcat7:run' and allow live reloads for static assets e.g. jsp changes. -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <path>/</path>
+                        <uriEncoding>UTF-8</uriEncoding>
+                        <additionalConfigFilesDir>${basedir}/src/main/resources/</additionalConfigFilesDir>
+                        <additionalConfigFilesDir>${basedir}/src/test/resources/</additionalConfigFilesDir>
+                        <server>tomcat-development-server</server>
+                        <port>1111</port>
+                        <contextFile>${basedir}/src/main/resources/context.xml</contextFile>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.5</source>
+                        <target>1.5</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.6.15</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <!-- Include the viewer UI's built assets. The resources jar contains
-             the built files under META-INF/resources which gets served as if
-             they were in the war's root. -->
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>viewer-ui</artifactId>
-            <version>${cudl-viewer-ui.version}</version>
-            <classifier>resources</classifier>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Include the viewer UI's build metadata JSON files -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>viewer-ui</artifactId>
-            <version>${cudl-viewer-ui.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Include the embedded viewer's assets (html, css, js etc). -->
-        <!-- TODO: I've not tested it, but it should be possible to include the
-             previous version of the embedded viewer after this in order to have
-             assets resolve for both versions. This would be required when
-             updating the viewer so that people using cached viewer HTML could
-             still resolve assets. As long as the new version is earlier on the
-             classpath the correct viewer html should be used. -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>embedded-viewer-assets</artifactId>
-            <version>${embedded-viewer-assets.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <!-- Provides a ResourceTransformer which dynamically configures the
-             embedded viewer HTML. -->
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>embedded-viewer-configurer</artifactId>
-            <version>${embedded-viewer-configurer.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.tuckey</groupId>
-            <artifactId>urlrewritefilter</artifactId>
-            <version>${urlrewritefilter.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
-            <version>5.8.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-web</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-email</artifactId>
-            <version>${commons-email.version}</version>
-        </dependency>
-
-        <!-- DB Pool -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-        </dependency>
-
-
-        <!-- for JSON parsing in Java -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20220320</version>
-        </dependency>
-
-        <!-- jtidy -->
-        <dependency>
-            <groupId>net.sf.jtidy</groupId>
-            <artifactId>jtidy</artifactId>
-            <version>${jtidy.version}</version>
-        </dependency>
-
-        <!-- Bean validation -->
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-el</artifactId>
-            <!-- Only required for running tests, as Tomcat provides a runtime
-                 implementation. -->
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <exclusions>
-                <!-- jakarta.validation:jakarta.validation-api provides the current version of this -->
-                <exclusion>
-                    <groupId>javax.validation</groupId>
-                    <artifactId>validation-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- end Bean validation -->
-
-        <!-- taglibs -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-
-        <!-- PostgreSQL driver -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.opentable.components</groupId>
-            <artifactId>otj-pg-embedded</artifactId>
-            <version>1.1.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-            <version>8.5.11</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- encoder to prevent XSS -->
-        <dependency>
-            <groupId>org.owasp.encoder</groupId>
-            <artifactId>encoder</artifactId>
-            <version>${owasp-encoder.version}</version>
-        </dependency>
-
-        <!-- Spring Framework -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-oxm</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-        </dependency>
-        <!-- Optional dependency of spring-test to use MockMvcResultMatchers.jsonPath() -->
-        <dependency>
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-        </dependency>
-        <!-- Optional dependency of spring-test to use MockMvcResultMatchers.json() -->
-        <dependency>
-            <groupId>org.skyscreamer</groupId>
-            <artifactId>jsonassert</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!-- Test utilities -->
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>4.3.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.truth</groupId>
-            <artifactId>truth</artifactId>
-            <version>1.4.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.truth.extensions</groupId>
-            <artifactId>truth-java8-extension</artifactId>
-            <version>1.4.3</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Truth can use this to create better error messages. -->
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>9.7</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Required for log4j2 YAML support -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.13.2</version>
-        </dependency>
-        <!-- Required for log4j2 YAML support -->
-        <!-- JSON reading/writing for oauth -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.13.2.2</version>
-        </dependency>
-        <!-- Required for log4j2 YAML support -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>2.13.2</version>
-        </dependency>
-
-
-        <!-- for Genizah tagging, also upgrade org.slf4j version
-        or it will conflict with Jena -->
-
-        <!-- Google GSON -->
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-
-        <!-- Google Guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>33.2.1-jre</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.livesense</groupId>
-            <artifactId>org.liveSense.scripting.jsp.taglib.jsonatg</artifactId>
-            <version>${jsonatg.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>${jsoup.version}</version>
-        </dependency>
-
-        <!-- Cache -->
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-            <version>3.0.6</version>
-        </dependency>
-
-        <!-- Required by PDF -->
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext7-core</artifactId>
-            <version>8.0.4</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>html2pdf</artifactId>
-            <version>5.0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-            <version>2.11.5</version>
-        </dependency>
-
-
     </dependencies>
-
-    <!-- Resolve private CUDL artifacts -->
-    <repositories>
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/cambridge-collection/*</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <!-- Use CUDL's private repo to deploy artifacts -->
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub cambridge-collection Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/cambridge-collection/cudl-viewer</url>
-        </repository>
-    </distributionManagement>
 </project>
