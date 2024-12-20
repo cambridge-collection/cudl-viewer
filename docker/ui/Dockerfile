@@ -1,4 +1,15 @@
-FROM tomcat:9.0.30-jdk11-openjdk
+FROM maven:3.9.9-amazoncorretto-11 as maven
+
+WORKDIR /opt/build
+
+COPY pom.xml toolchains.xml .
+COPY main/pom.xml ./main/pom.xml
+COPY cudl-viewer-ui ./cudl-viewer-ui/
+COPY src ./src/
+
+RUN mvn dependency:resolve;
+
+FROM tomcat:9.0.30-jdk11-openjdk as tomcat
 
 ENV JAVA_OPTS="-server -Djava.awt.headless=true -Xms512m -Xmx2560m" \
     VIEWER_USER="digilib" \
@@ -6,7 +17,7 @@ ENV JAVA_OPTS="-server -Djava.awt.headless=true -Xms512m -Xmx2560m" \
     VIEWER_GROUP="digilib" \
     VIEWER_GID="1729"
 
-COPY target/FoundationsViewer.war $CATALINA_HOME/webapps/ROOT.war
+COPY --from=maven /opt/build/target/FoundationsViewer.war $CATALINA_HOME/webapps/ROOT.war
 COPY docker/ui/server.xml $CATALINA_HOME/conf/server.xml
 COPY docker/ui/context.xml $CATALINA_HOME/conf/Catalina/localhost/ROOT.xml
 COPY docker/ui/entrypoint.sh /usr/local/bin/entrypoint.sh

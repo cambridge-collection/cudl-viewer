@@ -13,8 +13,8 @@
     <url>https://github.com/cambridge-collection/cudl-viewer</url>
 
     <modules>
-        <module>main</module>
         <module>cudl-viewer-ui</module>
+        <module>main</module>
     </modules>
 
     <build>
