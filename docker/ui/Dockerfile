@@ -5,7 +5,9 @@ ARG GITHUB_USER GITHUB_TOKEN
 WORKDIR /opt/build
 
 COPY pom.xml toolchains.xml settings.xml .
-COPY src ./src/
+COPY src ./src
+COPY cudl-viewer-ui ./cudl-viewer-ui
+COPY main ./main
 
 RUN mvn -s settings.xml -t toolchains.xml clean package;
 
