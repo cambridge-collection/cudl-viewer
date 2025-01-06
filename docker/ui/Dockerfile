@@ -1,13 +1,13 @@
 FROM maven:3.9.9-amazoncorretto-11 as maven
 
+ARG GITHUB_USER GITHUB_TOKEN
+
 WORKDIR /opt/build
 
-COPY pom.xml toolchains.xml .
-COPY main/pom.xml ./main/pom.xml
-COPY cudl-viewer-ui ./cudl-viewer-ui/
+COPY pom.xml toolchains.xml settings.xml .
 COPY src ./src/
 
-RUN mvn dependency:resolve;
+RUN mvn -s settings.xml -t toolchains.xml clean package;
 
 FROM tomcat:9.0.30-jdk11-openjdk as tomcat
 
