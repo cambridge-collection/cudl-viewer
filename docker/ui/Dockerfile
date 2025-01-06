@@ -1,4 +1,4 @@
-FROM maven:3.9.9-amazoncorretto-11 as maven
+FROM maven:3.9.9-amazoncorretto-11 AS maven
 
 ARG GITHUB_USER GITHUB_TOKEN
 
@@ -9,7 +9,7 @@ COPY src ./src/
 
 RUN mvn -s settings.xml -t toolchains.xml clean package;
 
-FROM tomcat:9.0.30-jdk11-openjdk as tomcat
+FROM tomcat:9.0.30-jdk11-openjdk AS tomcat
 
 ENV JAVA_OPTS="-server -Djava.awt.headless=true -Xms512m -Xmx2560m" \
     VIEWER_USER="digilib" \
