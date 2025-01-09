@@ -137,7 +137,7 @@ public class SiteViewController {
     public String handleRefreshRequest(@Value("${enable.refresh:false}") String enableRefresh) {
 
         if ("true".equals(enableRefresh)) {
-            this.cacheRefresher.refreshDB();
+            this.cacheRefresher.refreshCollectionData();
             this.cacheRefresher.refreshJSON();
 
             return "{ \"refresh_successful\":true }";

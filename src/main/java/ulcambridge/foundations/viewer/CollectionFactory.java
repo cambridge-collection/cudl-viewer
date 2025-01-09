@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
+import ulcambridge.foundations.viewer.dao.CollectionsJSONDao;
 import ulcambridge.foundations.viewer.model.Collection;
 
 import java.io.IOException;
@@ -53,6 +54,12 @@ public class CollectionFactory {
         collections = new Hashtable<>();
         rootCollections = new Vector<>();
         allItemIds =  Collections.synchronizedSet(new HashSet<>());
+
+        if (collectionsDao instanceof CollectionsJSONDao) {
+            CollectionsJSONDao jsonDao = (CollectionsJSONDao) collectionsDao;
+            jsonDao.refreshData(true);
+        }
+
         if (jsonFiles==null || resetJSONFiles) {
             jsonFiles = getJSONFiles();
         }

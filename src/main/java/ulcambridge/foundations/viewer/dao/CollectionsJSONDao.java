@@ -141,10 +141,14 @@ public class CollectionsJSONDao implements CollectionsDao {
         return collections;
     }
 
-    // Reload every 10 seconds.
-    @Scheduled(fixedDelay = 1000 * 10)
+    // Reload every 15 seconds if caching disabled.
+    @Scheduled(fixedDelay = 1000 * 15)
     private void refreshData() {
-        if (!"true".equalsIgnoreCase(cachingEnabled)) {
+        refreshData(false);
+    }
+
+    public void refreshData(boolean force) {
+        if (!"true".equalsIgnoreCase(cachingEnabled) || force) {
             // Reload dataset
             try {
                 this.collections = readCollectionsFromFiles(datasetFile);

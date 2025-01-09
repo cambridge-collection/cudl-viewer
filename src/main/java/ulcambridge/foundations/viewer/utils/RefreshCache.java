@@ -64,7 +64,7 @@ public class RefreshCache {
                     if (lastModifiedFile>lastModified) {
 
                         lastModified = lastModifiedFile;
-                        refreshDB();
+                        refreshCollectionData();
                         refreshJSON();
                     }
 
@@ -77,7 +77,7 @@ public class RefreshCache {
 
     }
 
-    public void refreshDB() {
+    public void refreshCollectionData() {
         collectionFactory.init(true);
     }
 
