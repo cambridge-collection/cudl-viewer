@@ -58,7 +58,7 @@ public class Item implements Comparable<Item> {
         this.imageReproPageURL = imageReproPageURL;
 
         // default to placeholder image
-        if (thumbnailURL == null ||thumbnailURL.equals("")) {
+        if (thumbnailURL == null || thumbnailURL.isEmpty()) {
             this.thumbnailURL = "/img/no-thumbnail.jpg";
             this.thumbnailOrientation =    "landscape";
         }

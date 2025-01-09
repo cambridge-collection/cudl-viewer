@@ -125,20 +125,20 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
     @Test
     public void descriptiveMetadataSectionsHaveThumbnailURLGenerated() {
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).toMap()).containsAtLeast(
-            "thumbnailUrl", "MS-ADD-03419-000-00001"
+            "thumbnailUrl", "MS-ADD-03419-000-00001.jp2/full/,180/0/default.jpg"
         );
 
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(1).toMap())
             .doesNotContainKey("thumbnailUrl");
 
         assertThat(item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(2).toMap()).containsAtLeast(
-            "thumbnailUrl", "MS-ADD-03419-000-00034"
+            "thumbnailUrl", "MS-ADD-03419-000-00034.jp2/full/,180/0/default.jpg"
         );
     }
 
     @Test
     public void itemObjectsReportExpectedThumbnailURL() {
-        final String expectedURL = imageServerURL.resolve("MS-ADD-03419-000-00001").toString();
+        final String expectedURL = imageServerURL.resolve("MS-ADD-03419-000-00001.jp2/full/,180/0/default.jpg").toString();
         assertThat(item.getThumbnailURL()).isEqualTo(expectedURL);
         assertThat(item.getSimplifiedJSON().getString("thumbnailURL")).isEqualTo(expectedURL);
     }

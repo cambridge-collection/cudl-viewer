@@ -37,11 +37,11 @@
                                     <c:choose>
                                         <c:when test="${item.thumbnailOrientation == 'portrait'}">
                                             <c:set var="imageDimensions" value="height: 100%"/>
-                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}.jp2/full/,180/0/default.jpg"/>
+                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}"/>
                                         </c:when>
                                         <c:when test="${item.thumbnailOrientation == 'landscape'}">
                                             <c:set var="imageDimensions" value="width: 100%"/>
-                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}.jp2/full/180,/0/default.jpg"/>
+                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}"/>
                                         </c:when>
                                     </c:choose>
 

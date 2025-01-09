@@ -42,14 +42,14 @@ public class CollectionViewController {
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemsDao itemDAO,
+                                    ItemsDao collectionItemsDao,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
-        Assert.notNull(itemDAO, "itemDAO is required");
+        Assert.notNull(collectionItemsDao, "itemDAO is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemDAO = itemDAO;
+        this.itemDAO = collectionItemsDao;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 

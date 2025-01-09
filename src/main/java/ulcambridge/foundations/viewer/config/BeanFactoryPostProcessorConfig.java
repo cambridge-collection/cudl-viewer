@@ -3,6 +3,7 @@ package ulcambridge.foundations.viewer.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.PropertySources;
 
 /**
  * Definitions for BeanFactoryPostProocessors which don't get inherited by child
