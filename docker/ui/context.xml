@@ -3,7 +3,7 @@ This is a Context file used when deploying the viewer webapp in the development
 Tomcat docker container.
 -->
 <Context reloadable="true">
-    <Resources>
+    <Resources cachingAllowed="true" cacheMaxSize="100000">
         <!-- Map the global properties file into the Viewer webapp's classpath
              so that it can load it.
              NOTE this file is not present in the image and must be obtained at
