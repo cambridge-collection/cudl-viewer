@@ -141,8 +141,8 @@ public class CollectionsJSONDao implements CollectionsDao {
         return collections;
     }
 
-    // Reload every 15 seconds if caching disabled.
-    @Scheduled(fixedDelay = 1000 * 15)
+    // Reload every 5 mins if caching disabled.
+    @Scheduled(fixedDelay = 1000 * 60 * 5)
     private void refreshData() {
         refreshData(false);
     }
