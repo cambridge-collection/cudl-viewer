@@ -55,11 +55,6 @@ public class CollectionFactory {
         rootCollections = new Vector<>();
         allItemIds =  Collections.synchronizedSet(new HashSet<>());
 
-        if (collectionsDao instanceof CollectionsJSONDao) {
-            CollectionsJSONDao jsonDao = (CollectionsJSONDao) collectionsDao;
-            jsonDao.refreshData(true);
-        }
-
         if (jsonFiles==null || resetJSONFiles) {
             jsonFiles = getJSONFiles();
         }
@@ -87,6 +82,13 @@ public class CollectionFactory {
         }
         Collections.sort(rootCollections);
 
+    }
+
+    public synchronized void refreshCollections() {
+        if (collectionsDao instanceof CollectionsJSONDao) {
+            CollectionsJSONDao jsonDao = (CollectionsJSONDao) collectionsDao;
+            jsonDao.refreshData(true);
+        }
     }
 
     public Collection getCollectionFromId(String id) {

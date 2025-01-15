@@ -78,6 +78,7 @@ public class RefreshCache {
     }
 
     public void refreshCollectionData() {
+        collectionFactory.refreshCollections();
         collectionFactory.init(true);
     }
 
