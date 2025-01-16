@@ -51,30 +51,31 @@ public class RefreshCache {
     @Scheduled(fixedRate = 1000 * 60 * 10)  // Check every 10 mins.
     public void checkForUpdates() {
 
-        try {
+        if (!cachingEnabled.equals("true")) {
+            try {
 
-            File dir = new File(itemJSONDirectory);
-            if (dir.isDirectory()) {
-                File[] dirFiles = dir.listFiles((FileFilter) FileFilterUtils.fileFileFilter());
-                if (dirFiles != null && dirFiles.length > 0) {
-                    Arrays.sort(dirFiles, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
-                    long lastModifiedFile = Files.getLastModifiedTime(dirFiles[0].toPath()).toMillis();
+                File dir = new File(itemJSONDirectory);
+                if (dir.isDirectory()) {
+                    File[] dirFiles = dir.listFiles((FileFilter) FileFilterUtils.fileFileFilter());
+                    if (dirFiles != null && dirFiles.length > 0) {
+                        Arrays.sort(dirFiles, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
+                        long lastModifiedFile = Files.getLastModifiedTime(dirFiles[0].toPath()).toMillis();
 
-                    // If file has changed in JSON refresh cache.
-                    if (lastModifiedFile>lastModified) {
+                        // If file has changed in JSON refresh cache.
+                        if (lastModifiedFile > lastModified) {
 
-                        lastModified = lastModifiedFile;
-                        refreshCollectionData();
-                        refreshJSON();
+                            lastModified = lastModifiedFile;
+                            refreshCollectionData();
+                            refreshJSON();
+                        }
+
                     }
-
                 }
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-
     }
 
     public void refreshCollectionData() {
