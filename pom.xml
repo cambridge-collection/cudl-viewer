@@ -16,7 +16,7 @@
         <embedded-viewer-assets.version>0.1.3</embedded-viewer-assets.version>
         <embedded-viewer-configurer.version>0.0.0</embedded-viewer-configurer.version>
 
-        <cudl-viewer-ui.version>4.2.0</cudl-viewer-ui.version>
+        <cudl-viewer-ui.version>4.2.1</cudl-viewer-ui.version>
         <commons-email.version>1.5</commons-email.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-io.version>2.11.0</commons-io.version>

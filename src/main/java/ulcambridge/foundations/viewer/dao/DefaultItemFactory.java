@@ -102,9 +102,17 @@ public final class DefaultItemFactory implements ItemFactory {
                 && descriptiveMetadata.has("thumbnailOrientation")) {
                 if (itemJson.has("itemType")) { itemType = itemJson.getString("itemType"); }
                 try {
-                    URL url = new URL(
-                        new URL(Properties.getString("IIIFImageServer")),
-                        descriptiveMetadata.getString("thumbnailUrl"));
+                    String thumbnailUrl = descriptiveMetadata.getString("thumbnailUrl");
+
+                    URL url = null;
+                    if (!thumbnailUrl.startsWith("http")) {
+                        url = new URL(
+                            new URL(Properties.getString("IIIFImageServer")),
+                            thumbnailUrl);
+                    } else {
+                        url = new URL(thumbnailUrl);
+                    }
+
                     itemThumbnailURL = url.toString();
                 } catch (MalformedURLException ex) {
                     LOG.warn("Cannot construct valid thumbnail URL", ex);

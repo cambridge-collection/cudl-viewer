@@ -249,7 +249,11 @@ public class IIIFPresentation {
                 imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
                 String IIIFImagePath = page.getString("IIIFImageURL");
-                String imageURL = this.iiifImageServer.resolve(IIIFImagePath).toString();
+                String imageURL = IIIFImagePath;
+                if (!IIIFImagePath.startsWith("http")) {
+                    imageURL = this.iiifImageServer.resolve(IIIFImagePath).toString();
+                }
+
                 JSONObject resource = new JSONObject();
                 resource.put("@id", imageURL);
                 resource.put("@type", "dctypes:Image");
@@ -344,7 +348,10 @@ public class IIIFPresentation {
                 imageObj.put("on", baseURL + "/iiif/" + id + "/canvas/" + (i + 1));
 
                 String IIIFImagePath = page.getString("IIIFImageURL");
-                String imageURL = this.iiifImageServer.resolve(IIIFImagePath).toString();
+                String imageURL = IIIFImagePath;
+                if (!IIIFImagePath.startsWith("http")) {
+                    imageURL = this.iiifImageServer.resolve(IIIFImagePath).toString();
+                }
                 JSONObject resource = new JSONObject();
                 resource.put("@id", imageURL);
                 resource.put("@type", "dctypes:Image");

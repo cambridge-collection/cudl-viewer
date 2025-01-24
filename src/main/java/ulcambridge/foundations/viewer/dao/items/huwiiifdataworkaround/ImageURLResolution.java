@@ -42,7 +42,7 @@ public final class ImageURLResolution {
 
     @Bean @Order(0)
     public static DecoratedItemFactory.ItemJSONPreProcessor downloadImageURLResolver() {
-        return new PageImageURLResolver("downloadImageURL", "content/images/{IIIFImageURL}.jpg");
+        return new PageImageURLResolver("downloadImageURL", "{IIIFImageURL}");
     }
 
     @Bean @Order(0)

@@ -58,6 +58,7 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
                 .put("physID", "PHYS-1")
                 .put("sequence", 1)
                 .put("IIIFImageURL", "MS-ADD-03419-000-00001")
+                .put("downloadImageURL", "MS-ADD-03419-000-00001")
                 .put("thumbnailImageOrientation", "portrait")
                 .put("imageWidth", 4355)
                 .put("imageHeight", 5449)
@@ -67,6 +68,7 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
                 .put("physID", "PHYS-2")
                 .put("sequence", 2)
                 .put("IIIFImageURL", "MS-ADD-03419-000-00002")
+                .put("downloadImageURL", "MS-ADD-03419-000-00002")
                 .put("thumbnailImageOrientation", "portrait")
                 .put("imageWidth", 4365)
                 .put("imageHeight", 5419)
@@ -101,14 +103,14 @@ public class ImageURLResolutionTest extends BaseCUDLApplicationContextTest {
     public void itemPagesHaveDZIAndIIIFImageURLsGenerated() {
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(0).toMap()).containsAtLeast(
             "displayImageURL", "content/images/MS-ADD-03419-000-00001",
-            "downloadImageURL", "content/images/MS-ADD-03419-000-00001.jpg",
+            "downloadImageURL", "MS-ADD-03419-000-00001",
             "IIIFImageURL", "MS-ADD-03419-000-00001.jp2",
             "thumbnailImageURL", "MS-ADD-03419-000-00001.jp2/full/,180/0/default.jpg"
         );
 
         assertThat(item.getJSON().getJSONArray("pages").getJSONObject(1).toMap()).containsAtLeast(
             "displayImageURL", "content/images/MS-ADD-03419-000-00002",
-            "downloadImageURL", "content/images/MS-ADD-03419-000-00002.jpg",
+            "downloadImageURL", "MS-ADD-03419-000-00002",
             "IIIFImageURL", "MS-ADD-03419-000-00002.jp2",
             "thumbnailImageURL", "MS-ADD-03419-000-00002.jp2/full/,180/0/default.jpg"
         );
