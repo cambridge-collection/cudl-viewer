@@ -54,6 +54,12 @@ public abstract class BaseImageURLResolver implements DecoratedItemFactory.ItemJ
             return;
         }
 
+        if (object.has(this.imageURLPropertyName) && object.get(this.imageURLPropertyName).toString().startsWith("http")) {
+            LOG.trace("Not rendering template \"{}\" for {} property: \"{}\" of item ID: \"{}\"; value is external url",
+                this.imageURLValueTemplate, this.objectName, this.imageURLPropertyName, itemID);
+            return;
+        }
+
         LOG.trace("Rendering template: \"{}\" with values: {} for {} property: \"{}\" of item ID: \"{}\"",
             this.imageURLValueTemplate, values, this.objectName, this.imageURLPropertyName, itemID);
         URI result = this.imageURLValueTemplate.expand(values);
