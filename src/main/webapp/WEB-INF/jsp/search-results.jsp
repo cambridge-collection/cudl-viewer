@@ -6,11 +6,6 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-<%-- Unlike the advanced search page, the regular search page uses the same
-     template for the query definition page and result page. Certain things have
-     to be hidden on the query page. --%>
-<c:set var="userHasSearched" value="${form.hasQueryParams()}"/>
-
 <cudl:search-results-page title="Search">
     <jsp:attribute name="queryInfo">
         <ul>
@@ -33,21 +28,19 @@
                 <cudl:search-result-param form="${form}" label="Year to" attr="yearEnd"/>
             </c:if>
         </ul>
-        <c:if test="${userHasSearched}">
+
             <div class="query-actions">
                 <a class="change-query campl-btn campl-primary-cta" href="/search/query?${fn:escapeXml(form.getQueryParams())}">Change Query</a>
             </div>
-        </c:if>
+
     </jsp:attribute>
     <jsp:attribute name="resultInfo">
-        <%-- Don't show the result count before the user has performed a search --%>
-        <c:if test="${userHasSearched}">
+
             <cudl:search-result-info results="${results}"/>
-        </c:if>
+
     </jsp:attribute>
     <jsp:attribute name="queryHelp">
-        <%-- Don't show the "couldn't find any items" text before the user has performed a search --%>
-        <c:if test="${userHasSearched}">
+
             <c:choose>
                 <c:when test="${results.numberOfResults==0}">
                     <cudl:search-no-results/>
@@ -55,7 +48,7 @@
                 </c:when>
                 <c:otherwise/>
             </c:choose>
-        </c:if>
+
     </jsp:attribute>
     <jsp:body/>
 </cudl:search-results-page>
