@@ -249,6 +249,21 @@
                                     <span id="about-completeness"></span> <span id="about-abstract"></span>
 
                                     <span id="about-metadata"></span><span id="about-docAuthority"></span> <br>
+
+                                    <c:if test="${item.JSON.has('pids')}">
+                                    <div class="panel panel-default " >
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Cite this item</h4></div>
+                                            <c:forEach begin="0" end="${item.JSON.get('pids').length()-1}" varStatus="loop">
+                                          <div class="panel-body " >
+                                                <c:set var="pid" value="${item.JSON.get('pids').get(loop.index)}" />
+                                                <p id="ark-text">Permanent link: <a href="${pid}" target="_blank">${pid}</a></p>
+                                                <button onclick="copyARK()">Copy Citation</button>
+                                          </div>
+                                            </c:forEach>
+                                    </div>
+                                    </c:if>
+
                                     <div id="know-more" class="well">
                                         <h4>Want to know more?</h4>
                                         <p>
@@ -304,6 +319,7 @@
                                         If you want to share this page with others you can send them a
                                         link to this individual page: <div class="displaybox" id="currentURL"></div>
                                     </div>
+
                                     <div>Alternatively please share this page on
                                         social media</div>
                                     <div class="addthis_sharing_toolbox col-md-12">
