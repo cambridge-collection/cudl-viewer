@@ -257,8 +257,8 @@
                                             <c:forEach begin="0" end="${item.JSON.get('pids').length()-1}" varStatus="loop">
                                           <div class="panel-body " >
                                                 <c:set var="pid" value="${item.JSON.get('pids').get(loop.index)}" />
-                                                <p id="ark-text">${pid.get("name")}: <a href="${pid.get("uri")}" target="_blank">${pid.get("uri")}</a></p>
-                                                <button onclick="copyARK()">Copy Citation</button>
+                                                <p id="ark-text-${loop.index}">${pid.get("name")}: <a href="${pid.get("uri")}" target="_blank">${pid.get("uri")}</a></p>
+                                                <button id="ark-button-${loop.index}">Copy Citation</button>
                                           </div>
                                             </c:forEach>
                                     </div>
