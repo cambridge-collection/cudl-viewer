@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   tomcat:
-    image: tomcat:9.0.30-jdk11-openjdk
+    image: tomcat:9.0.99-jdk11
     volumes:
       - ./target/FoundationsViewer.war:/usr/local/tomcat/webapps/ROOT.war
       - ./docker/tomcat-context.xml:/usr/local/tomcat/conf/Catalina/localhost/ROOT.xml

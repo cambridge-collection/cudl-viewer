@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   tomcat:
-    image: tomcat:9.0.30-jdk11-openjdk
+    image: tomcat:9.0.99-jdk11
     environment:
       CATALINA_OPTS:
     volumes:
