@@ -253,12 +253,12 @@
                                     <c:if test="${item.JSON.has('pids')}">
                                     <div class="panel panel-default " >
                                         <div class="panel-heading">
-                                            <h4 class="panel-title">Cite this item</h4></div>
+                                            <h4 class="panel-title">Persistent Identifiers</h4></div>
                                             <c:forEach begin="0" end="${item.JSON.get('pids').length()-1}" varStatus="loop">
                                           <div class="panel-body " >
                                                 <c:set var="pid" value="${item.JSON.get('pids').get(loop.index)}" />
-                                                <p id="ark-text-${loop.index}">${pid.get("name")}: <a href="${pid.get("uri")}" target="_blank">${pid.get("uri")}</a></p>
-                                                <button id="ark-button-${loop.index}">Copy Citation</button>
+                                                <p>${pid.get("name")}: <a id="ark-text-${loop.index}" href="${pid.get("uri")}" target="_blank">${pid.get("uri")}</a></p>
+                                                <button id="ark-button-${loop.index}">Copy Link</button>
                                           </div>
                                             </c:forEach>
                                     </div>

@@ -142,6 +142,7 @@ e.g.
 
 ```sh
 docker build -t 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest -f docker/ui/Dockerfile .
+docker tag dl-loader-db:latest 563181399728.dkr.ecr.eu-west-1.amazonaws.com/dl-loader-db:latest
 ```
 
 Then push to the sandbox ECR using
