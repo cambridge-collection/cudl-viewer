@@ -141,7 +141,7 @@ ECR repository on aws to manually upload it.
 e.g.
 
 ```sh
-docker build -t 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest -f docker/ui/Dockerfile .
+docker build --network=host -t 563181399728.dkr.ecr.eu-west-1.amazonaws.com/sandbox-cudl-viewer:latest -f docker/ui/Dockerfile .
 ```
 
 Then push to the sandbox ECR using
