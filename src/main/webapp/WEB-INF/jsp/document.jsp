@@ -155,8 +155,9 @@
                 </div>
             </div>
             <!-- /.container -->
-            <div id="seadragonImage">
-                <div id="doc">
+            <div id="mainViewContainer">
+              <div id="mainView">
+                <div id="seadragon">
 
                     <span id="pageLabel"></span>
 
@@ -193,7 +194,8 @@
                             title="Toggle fullscreen view"></button>
                     </div>
                 </div>
-
+                <div id="rti"></div>
+              </div>
             </div>
             <div id="right-panel" class="right-panel">
                 <div id="doc-breadcrumb"></div>
