@@ -437,7 +437,7 @@
             <div id="downloadConfirmation" class="alert alert-info"
                 style="display: none">
                 <a href="#" class="close">&times;</a>
-                <p>This image has the following copyright:</p>
+                <p>Terms and Conditions:</p>
                 <div class="well" id="downloadCopyright"></div>
                 <c:if test="${!empty downloadSizes}">
                     <p>Choose one of the available sizes to download:
