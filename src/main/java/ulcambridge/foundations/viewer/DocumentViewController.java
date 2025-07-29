@@ -221,6 +221,7 @@ public class DocumentViewController {
         modelAndView.addObject(
                 "canonicalURL", this.getCanonicalItemUrl(item.getId(), page));
         modelAndView.addObject("imageServer", Properties.getString("imageServer"));
+        modelAndView.addObject("rtiImageServer", Properties.getString("RTIImageServer"));
         modelAndView.addObject("services", Properties.getString("services"));
 
         // Collection information
