@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.model;
 
 import com.google.common.collect.ImmutableList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Comparator;
@@ -36,6 +37,7 @@ public class Item implements Comparable<Item> {
     protected List<String> pageLabels;
     protected List<String> pageThumbnailURLs;
     protected JSONObject json; // used for document view
+    protected String mainDisplay;
 
     public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
             String itemShelfLocator, String itemAbstract,
@@ -56,7 +58,6 @@ public class Item implements Comparable<Item> {
         this.IIIFEnabled = IIIFEnabled;
         this.taggingStatus = taggingStatus;
         this.imageReproPageURL = imageReproPageURL;
-
         // default to placeholder image
         if (thumbnailURL == null || thumbnailURL.isEmpty()) {
             this.thumbnailURL = "/img/no-thumbnail.jpg";
@@ -74,6 +75,19 @@ public class Item implements Comparable<Item> {
 
         this.pageLabels = ImmutableList.copyOf(pageLabels);
         this.pageThumbnailURLs = ImmutableList.copyOf(pageThumbnailURLs);
+
+        // default mainDisplay to IIIF
+        this.mainDisplay = "iiif";
+
+        if (itemJson.has("pages")) {
+            JSONArray pages = itemJson.getJSONArray("pages");
+            if (!pages.isEmpty()) {
+                JSONObject firstPage = pages.getJSONObject(0);
+                if (firstPage.has("mainDisplay")) {
+                    this.mainDisplay = firstPage.getString("mainDisplay");
+                }
+            }
+        }
 
         orderCount++;
         this.order = orderCount;
@@ -163,6 +177,8 @@ public class Item implements Comparable<Item> {
         return json;
     }
 
+    public String getMainDisplay() { return mainDisplay; }
+
     public JSONObject getSimplifiedJSON() {
         JSONObject json = new JSONObject();
         json.put("id", this.getId());
@@ -174,6 +190,7 @@ public class Item implements Comparable<Item> {
         json.put("thumbnailOrientation", this.getThumbnailOrientation());
         json.put("imageReproPageURL", this.getImageReproPageURL());
         json.put("authors", this.getAuthors());
+        json.put("mainDisplay", this.getMainDisplay());
         return json;
     }
 
