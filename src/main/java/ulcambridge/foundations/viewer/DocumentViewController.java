@@ -28,6 +28,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
+import ulcambridge.foundations.viewer.exceptions.ValueException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -168,6 +169,49 @@ public class DocumentViewController {
             throw new ResourceNotFoundException();
         }
 
+    }
+
+    // on path /view/rti/{docId}/{page}
+    @RequestMapping(value = "/rti/{docId}/{page}")
+    public ModelAndView handleRTIRequest(@PathVariable("docId") String docId,
+                                      @PathVariable("page") int page, HttpServletRequest request) {
+        docId = docId.toUpperCase();
+        Item item = itemDAO.getItem(docId);
+        if (item==null) {
+            throw new ResourceNotFoundException();
+        }
+        if (page <= 0) {
+            page = 1;
+        } else if (page > item.getPageLabels().size()) {
+            page = item.getPageLabels().size();
+        }
+
+        // Check is mainview RTI page
+        JSONObject pageJSON = item.getJSON().getJSONArray("pages").getJSONObject(page-1);
+
+        if (!pageJSON.has("mainDisplay") || !pageJSON.get("mainDisplay").equals("rti") ||
+            !pageJSON.has("RTIImageURL")) {
+            throw new ValueException("This page is not a valid RTI page.");
+        }
+
+        String rtiImageServer = Properties.getString("RTIImageServer");
+        String imageServer = Properties.getString("IIIFImageServer");
+
+        String displayImageRights = item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).getString("displayImageRights");
+        String rtiURL = pageJSON.getString("RTIImageURL") + "/HSH27/info.json";
+        if (!rtiURL.startsWith("http")) {
+            rtiURL = rtiImageServer + rtiURL;
+        }
+
+        ModelAndView modelAndView = new ModelAndView("jsp/document-mainview-rti");
+        modelAndView.addObject("docId", docId);
+        modelAndView.addObject("pageNum", page);
+        modelAndView.addObject("pageJSON", pageJSON);
+        modelAndView.addObject("displayImageRights", displayImageRights);
+        modelAndView.addObject("rtiURL", rtiURL);
+        modelAndView.addObject("rtiImageServer", rtiImageServer);
+        modelAndView.addObject("iiifImageServer", imageServer);
+        return modelAndView;
     }
 
     private void writeJSONOut(JSONObject json, HttpServletResponse response)
