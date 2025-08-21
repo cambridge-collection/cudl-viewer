@@ -2,6 +2,9 @@ package ulcambridge.foundations.viewer.forms;
 
 import ulcambridge.foundations.viewer.model.Collection;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class SearchForm {
@@ -37,52 +40,52 @@ public class SearchForm {
 
         StringBuffer queryParams = new StringBuffer();
         if (keyword!=null && !keyword.isEmpty()) {
-            queryParams.append("keyword=" + keyword +"&");
+            queryParams.append("keyword=" + URLEncoder.encode(keyword, StandardCharsets.UTF_8) +"&");
         }
         if (fullText!=null && !fullText.isEmpty()) {
-            queryParams.append("fullText=" + fullText + "&");
+            queryParams.append("fullText=" + URLEncoder.encode(fullText, StandardCharsets.UTF_8)  + "&");
         }
         if (excludeText!=null && !excludeText.isEmpty()) {
-            queryParams.append("excludeText=" + excludeText + "&");
+            queryParams.append("excludeText=" + URLEncoder.encode(excludeText, StandardCharsets.UTF_8)  + "&");
         }
         if (textJoin!=null && !textJoin.isEmpty()) {
-            queryParams.append("textJoin=" + textJoin + "&");
+            queryParams.append("textJoin=" + URLEncoder.encode(textJoin, StandardCharsets.UTF_8)  + "&");
         }
         if (shelfLocator!=null && !shelfLocator.isEmpty()) {
-            queryParams.append("shelfLocator=" + shelfLocator + "&");
+            queryParams.append("shelfLocator=" + URLEncoder.encode(shelfLocator, StandardCharsets.UTF_8)  + "&");
         }
         if (fileID!=null && !fileID.isEmpty()) {
-            queryParams.append("fileID=" + fileID + "&");
+            queryParams.append("fileID=" + URLEncoder.encode(fileID, StandardCharsets.UTF_8)  + "&");
         }
         if (title!=null && !title.isEmpty()) {
-            queryParams.append("title=" + title + "&");
+            queryParams.append("title=" + URLEncoder.encode(title, StandardCharsets.UTF_8)  + "&");
         }
         if (author!=null && !author.isEmpty()) {
-            queryParams.append("author=" + author + "&");
+            queryParams.append("author=" + URLEncoder.encode(author, StandardCharsets.UTF_8)  + "&");
         }
         if (subject!=null && !subject.isEmpty()) {
-            queryParams.append("subject=" + subject + "&");
+            queryParams.append("subject=" + URLEncoder.encode(subject, StandardCharsets.UTF_8)  + "&");
         }
         if (language!=null && !language.isEmpty()) {
-            queryParams.append("language=" + language + "&");
+            queryParams.append("language=" + URLEncoder.encode(language, StandardCharsets.UTF_8)  + "&");
         }
         if (place!=null && !place.isEmpty()) {
-            queryParams.append("place=" + place + "&");
+            queryParams.append("place=" + URLEncoder.encode(place, StandardCharsets.UTF_8)  + "&");
         }
         if (location!=null && !location.isEmpty()) {
-            queryParams.append("location=" + location + "&");
+            queryParams.append("location=" + URLEncoder.encode(location, StandardCharsets.UTF_8)  + "&");
         }
         if (yearStart!=null) {
-            queryParams.append("yearStart=" + yearStart.toString() + "&");
+            queryParams.append("yearStart=" + URLEncoder.encode(yearStart.toString(), StandardCharsets.UTF_8)  + "&");
         }
         if (yearEnd!=null) {
-            queryParams.append("yearEnd=" + yearEnd.toString() + "&");
+            queryParams.append("yearEnd=" + URLEncoder.encode(yearEnd.toString(), StandardCharsets.UTF_8)  + "&");
         }
         if (expandFacet!=null && !expandFacet.isEmpty()) {
-            queryParams.append("expandFacet=" + expandFacet + "&");
+            queryParams.append("expandFacet=" + URLEncoder.encode(expandFacet, StandardCharsets.UTF_8)  + "&");
         }
         if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
-            queryParams.append("facetCollection=" + facets.get("Collection") + "&");
+            queryParams.append("facetCollection=" + URLEncoder.encode(facets.get("Collection"), StandardCharsets.UTF_8) + "&");
         }
 
         // Facets
