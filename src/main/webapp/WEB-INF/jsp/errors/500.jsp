@@ -19,7 +19,7 @@
                             <h2>Error occurred</h2>
                             <p>
                                 Sorry, there has been an error displaying the page you requested.
-                                Please <a href="mailto:dl-support@lib.cam.ac.uk?subject=${cudlfn:uriEnc(errorEmailSubject)}"
+                                Please <a href="mailto:dl-feedback@lib.cam.ac.uk?subject=${cudlfn:uriEnc(errorEmailSubject)}"
                                     title="Email us">Contact Us</a> so we can resolve the
                                 issue.
                             </p>
