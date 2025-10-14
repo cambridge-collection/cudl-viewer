@@ -14,18 +14,4 @@ services:
     ports:
       - 8888:8080
       - 9010:9010
-    depends_on:
-      - cudl-db
-  cudl-db:
-    build:
-      context: .
-      dockerfile: docker/db/Dockerfile
-    restart: always
-    environment:
-      POSTGRES_USER: cudl
-      POSTGRES_DB: cudl
-      POSTGRES_PASSWORD: ${TEST_DB_PASSWORD:-password}
-    ports:
-      - ${CUDL_DB_HOST_PORT:-5555}:5432
-
 

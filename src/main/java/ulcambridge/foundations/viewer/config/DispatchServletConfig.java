@@ -134,6 +134,9 @@ public class DispatchServletConfig
             registry.addResourceHandler("/mirador-ui/**")
             .addResourceLocations("/mirador-ui/");
 
+            registry.addResourceHandler("/document-views/**")
+                .addResourceLocations("/document-views/");
+
             registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("/favicon.ico");
 

@@ -102,7 +102,7 @@ public class ItemTest {
     public void simpleJSON() {
         JSONObject item = getTestItem1().getSimplifiedJSON();
 
-        assertThat(item.length()).isEqualTo(9);
+        assertThat(item.length()).isEqualTo(10);
         assertThat(item.getJSONArray("authors").length()).isEqualTo(1);
         JSONObject author = item.getJSONArray("authors").getJSONObject(0);
         assertThat(author.length()).isEqualTo(7);
@@ -123,5 +123,6 @@ public class ItemTest {
         assertThat(item.getString("thumbnailURL")).isEqualTo("test thumbnail URL");
         assertThat(item.getString("thumbnailOrientation")).isEqualTo("test thumbnail orientation");
         assertThat(item.getString("imageReproPageURL")).isEqualTo("http://example.com");
+        assertThat(item.getString("mainDisplay")).isEqualTo("iiif");
     }
 }

@@ -85,11 +85,6 @@
             </jsp:attribute>
 
             <jsp:body>
-                <script type="text/javascript">
-                    var addthis_config = addthis_config||{};
-                    addthis_config.data_track_addressbar = false;
-                    addthis_config.data_track_clickback = false;
-                </script>
             </jsp:body>
         </cudl:head-content>
     </jsp:attribute>
@@ -104,6 +99,7 @@
             <json:property name="docId" value="${item.id}"/>
             <json:property name="docURL" value="${docURL}"/>
             <json:property name="imageServer" value="${imageServer}"/>
+            <json:property name="rtiImageServer" value="${rtiImageServer}"/>
             <json:property name="iiifImageServer" value="${iiifImageServer}"/>
             <json:property name="services" value="${services}"/>
             <json:property name="collectionURL" value="${organisationalCollection.URL}"/>
@@ -155,8 +151,9 @@
                 </div>
             </div>
             <!-- /.container -->
-            <div id="seadragonImage">
-                <div id="doc">
+            <div id="mainViewContainer">
+              <div id="mainView">
+                <div id="seadragon">
 
                     <span id="pageLabel"></span>
 
@@ -193,7 +190,8 @@
                             title="Toggle fullscreen view"></button>
                     </div>
                 </div>
-
+                <div id="rti"></div>
+              </div>
             </div>
             <div id="right-panel" class="right-panel">
                 <div id="doc-breadcrumb"></div>
@@ -303,14 +301,6 @@
                                     <div>
                                         If you want to share this page with others you can send them a
                                         link to this individual page: <div class="displaybox" id="currentURL"></div>
-                                    </div>
-                                    <div>Alternatively please share this page on
-                                        social media</div>
-                                    <div class="addthis_sharing_toolbox col-md-12">
-                                        <script type="text/javascript"
-                                                src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54886fc8007cb9c4"
-                                                async="async"></script>
-
                                     </div>
                                     <div id="embedOption">
                                         <br />You can also embed the viewer into your own website or
@@ -435,7 +425,7 @@
             <div id="downloadConfirmation" class="alert alert-info"
                 style="display: none">
                 <a href="#" class="close">&times;</a>
-                <p>This image has the following copyright:</p>
+                <p>Terms and Conditions:</p>
                 <div class="well" id="downloadCopyright"></div>
                 <c:if test="${!empty downloadSizes}">
                     <p>Choose one of the available sizes to download:

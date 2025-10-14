@@ -54,6 +54,11 @@
                                                              alt="${fn:escapeXml(item.id)}"
                                                              style="${fn:escapeXml(imageDimensions)}">
                                                     </a>
+                                                    <c:if test="${item.mainDisplay == 'rti'}">
+                                                        <span class="virtual_collections_carousel-lightbulb-icon">
+                                                            <img alt="RTI Item" height="30px" src="/document-views/rti/rti-light-bulb.png"/>
+                                                        </span>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>

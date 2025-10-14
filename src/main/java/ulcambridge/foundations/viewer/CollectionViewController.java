@@ -104,7 +104,7 @@ public class CollectionViewController {
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
 
         // append a list of this collections subcollections if this is a parent.
-        if (collection.getType().equals("parent")) {
+        if ("parent".equals(collection.getType())) {
             final List<Collection> subCollections = collection.getSubCollections();
             modelAndView.addObject("subCollections", subCollections);
         }
