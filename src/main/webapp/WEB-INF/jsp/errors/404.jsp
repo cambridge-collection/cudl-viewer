@@ -21,7 +21,7 @@
                             <h4>Page Not Found.</h4>
                             <p>
                                 Sorry, the page you requested has not been found. Please <a
-                                    href="mailto:dl-support@lib.cam.ac.uk"
+                                    href="mailto:dl-feedback@lib.cam.ac.uk"
                                     title="404 Page - Resource Missing">Contact Us</a> so we can
                                 resolve the issue or click on the link below to go to our home
                                 page. <br /> <br /> <a href="/">${defaultTitle}</a>.
