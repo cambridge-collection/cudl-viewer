@@ -3,7 +3,7 @@
 
     <groupId>ulcambridge.foundations.viewer</groupId>
     <artifactId>foundationsviewer</artifactId>
-    <version>production-2025101700</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>CUDL Viewer</name>
@@ -35,7 +35,7 @@
         <connection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/cambridge-collection/cudl-viewer.git</developerConnection>
         <url>https://github.com/cambridge-collection/cudl-viewer</url>
-        <tag> production-2025101700</tag>
+        <tag>production-2023081700</tag>
     </scm>
 
     <build>
@@ -106,14 +106,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>3.0.0-M5</version>
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; Don't automatically push changes to the remote repo-->
-<!--                         while executing release:prepare. &ndash;&gt;-->
-<!--                    <pushChanges>false</pushChanges>-->
-<!--                    &lt;!&ndash; Use the local repo with release:perform instead of the-->
-<!--                         upstream repository specified in <scm>. &ndash;&gt;-->
-<!--                    <localCheckout>true</localCheckout>-->
-<!--                </configuration>-->
+                <!--                <configuration>-->
+                <!--                    &lt;!&ndash; Don't automatically push changes to the remote repo-->
+                <!--                         while executing release:prepare. &ndash;&gt;-->
+                <!--                    <pushChanges>false</pushChanges>-->
+                <!--                    &lt;!&ndash; Use the local repo with release:perform instead of the-->
+                <!--                         upstream repository specified in <scm>. &ndash;&gt;-->
+                <!--                    <localCheckout>true</localCheckout>-->
+                <!--                </configuration>-->
             </plugin>
 
             <plugin>
@@ -465,17 +465,17 @@
         </dependency>
         <!-- Required for log4j2 YAML support -->
         <!-- JSON reading/writing for oauth -->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-databind</artifactId>-->
-<!--            <version>2.17.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-databind</artifactId>-->
+        <!--            <version>2.17.1</version>-->
+        <!--        </dependency>-->
         <!-- Required for log4j2 YAML support -->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
-<!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
-<!--            <version>2.17.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+        <!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
+        <!--            <version>2.17.1</version>-->
+        <!--        </dependency>-->
 
 
         <!-- for Genizah tagging, also upgrade org.slf4j version
