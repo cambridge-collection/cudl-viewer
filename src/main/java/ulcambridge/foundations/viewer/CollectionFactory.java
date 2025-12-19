@@ -20,10 +20,10 @@ import java.util.*;
 @Component
 public class CollectionFactory {
 
-    private static Map<String, Collection> collections;
-    private static List<Collection> rootCollections;
+    private Map<String, Collection> collections = Collections.emptyMap();
+    private List<Collection> rootCollections = Collections.emptyList();
     private CollectionsDao collectionsDao;
-    private static Set<String> allItemIds;
+    private Set<String> allItemIds = Collections.emptySet();
     private final String cachingEnabled;
     private final Path jsonDirPath;
     private Set<String> jsonFiles;
@@ -48,39 +48,48 @@ public class CollectionFactory {
      * so only use if manually called using /refresh url or on startup.
      * @param resetJSONFiles
      */
-    public synchronized void init(boolean resetJSONFiles) {
+    public void init(boolean resetJSONFiles) {
 
-        // Create a new instance of cached items.
-        collections = new Hashtable<>();
-        rootCollections = new Vector<>();
-        allItemIds =  Collections.synchronizedSet(new HashSet<>());
+        // Build new instances so other threads can keep using the existing
+        // collections while a refresh is in progress.
+        Map<String, Collection> newCollections = new HashMap<>();
+        List<Collection> newRootCollections = new ArrayList<>();
+        Set<String> newAllItemIds = new HashSet<>();
 
-        if (jsonFiles==null || resetJSONFiles) {
-            jsonFiles = getJSONFiles();
+        Set<String> newJsonFiles = jsonFiles;
+        if (newJsonFiles == null || resetJSONFiles) {
+            newJsonFiles = getJSONFiles();
         }
+        final Set<String> jsonFilesSnapshot = newJsonFiles;
 
         List<String> collectionIds = collectionsDao.getCollectionIds();
         for (String collectionId : collectionIds) {
             Collection collection = collectionsDao.getCollection(collectionId);
             // Check for missing JSON on disk and remove
-            collection.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
+            collection.getItemIds().removeIf(itemid -> !jsonFilesSnapshot.contains(itemid + ".json"));
 
-            collections.put(collectionId, collection);
-            allItemIds.addAll(collection.getItemIds());
+            newCollections.put(collectionId, collection);
+            newAllItemIds.addAll(collection.getItemIds());
         }
 
         // Setup the list of root collections used on the homescreen.
-        for (Collection c : collections.values()) {
+        for (Collection c : newCollections.values()) {
             String parentId = c.getParentCollectionId();
 
             if (parentId == null || parentId.length() == 0) {
-                rootCollections.add(c);
+                newRootCollections.add(c);
             }
 
             // set subcollections for each collection
-            c.setSubCollections(getSubCollections(c));
+            c.setSubCollections(getSubCollections(c, newCollections));
         }
-        Collections.sort(rootCollections);
+        Collections.sort(newRootCollections);
+
+        // Atomically publish the new snapshots.
+        jsonFiles = newJsonFiles;
+        collections = newCollections;
+        rootCollections = newRootCollections;
+        allItemIds = Collections.unmodifiableSet(newAllItemIds);
 
     }
 
@@ -133,6 +142,20 @@ public class CollectionFactory {
 
         List<Collection> output = new ArrayList<>();
         for (Collection c : collections.values()) {
+            String parentId = c.getParentCollectionId();
+
+            if (parentId != null && parentId.equals(collection.getId())) {
+                output.add(c);
+            }
+        }
+        Collections.sort(output);
+        return output;
+    }
+
+    private List<Collection> getSubCollections(Collection collection, Map<String, Collection> sourceCollections) {
+
+        List<Collection> output = new ArrayList<>();
+        for (Collection c : sourceCollections.values()) {
             String parentId = c.getParentCollectionId();
 
             if (parentId != null && parentId.equals(collection.getId())) {
