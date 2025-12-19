@@ -137,12 +137,15 @@ public class SiteViewController {
     public String handleRefreshRequest(@Value("${enable.refresh:false}") String enableRefresh) {
 
         if ("true".equals(enableRefresh)) {
-            this.cacheRefresher.refreshCollectionData();
-            this.cacheRefresher.refreshJSON();
+            if (this.cacheRefresher.isRefreshInProgress()) {
+                return "{ \"refresh_started\":false, \"refresh_in_progress\":true }";
+            }
 
-            return "{ \"refresh_successful\":true }";
+            this.cacheRefresher.refreshAllAsync();
+
+            return "{ \"refresh_started\":true, \"refresh_in_progress\":true }";
         } else {
-            return "{ \"refresh_successful\":false }";
+            return "{ \"refresh_started\":false, \"refresh_in_progress\":false }";
         }
     }
 

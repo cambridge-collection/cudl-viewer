@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 @Component
@@ -30,6 +32,7 @@ public class RefreshCache {
     private final String cachingEnabled;
     private final String itemJSONDirectory;
     private long lastModified;
+    private final AtomicBoolean refreshInProgress = new AtomicBoolean(false);
 
     @Autowired
     public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache,
@@ -65,8 +68,7 @@ public class RefreshCache {
                         if (lastModifiedFile > lastModified) {
 
                             lastModified = lastModifiedFile;
-                            refreshCollectionData();
-                            refreshJSON();
+                            refreshAllAsync();
                         }
 
                     }
@@ -76,6 +78,28 @@ public class RefreshCache {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Trigger a full cache refresh asynchronously. If a refresh is already in
+     * progress this call is a no-op.
+     */
+    @Async
+    public void refreshAllAsync() {
+        if (!refreshInProgress.compareAndSet(false, true)) {
+            return;
+        }
+
+        try {
+            refreshCollectionData();
+            refreshJSON();
+        } finally {
+            refreshInProgress.set(false);
+        }
+    }
+
+    public boolean isRefreshInProgress() {
+        return refreshInProgress.get();
     }
 
     public void refreshCollectionData() {

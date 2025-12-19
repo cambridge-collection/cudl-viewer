@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -53,6 +54,7 @@ import static ulcambridge.foundations.viewer.utils.Utils.ensureURLHasPath;
 )
 @Import({BeanFactoryPostProcessorConfig.class})
 @EnableTransactionManagement
+@EnableAsync
 public class AppConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(AppConfig.class);
