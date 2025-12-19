@@ -33,6 +33,9 @@ public class RefreshCache {
     private final String itemJSONDirectory;
     private long lastModified;
     private final AtomicBoolean refreshInProgress = new AtomicBoolean(false);
+    private volatile long lastRefreshStartTime;
+    private volatile long lastRefreshEndTime;
+    private volatile boolean lastRefreshSuccessful;
 
     @Autowired
     public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache,
@@ -90,16 +93,33 @@ public class RefreshCache {
             return;
         }
 
+        lastRefreshStartTime = System.currentTimeMillis();
+        boolean success = false;
         try {
             refreshCollectionData();
             refreshJSON();
+            success = true;
         } finally {
+            lastRefreshSuccessful = success;
+            lastRefreshEndTime = System.currentTimeMillis();
             refreshInProgress.set(false);
         }
     }
 
     public boolean isRefreshInProgress() {
         return refreshInProgress.get();
+    }
+
+    public long getLastRefreshStartTime() {
+        return lastRefreshStartTime;
+    }
+
+    public long getLastRefreshEndTime() {
+        return lastRefreshEndTime;
+    }
+
+    public boolean isLastRefreshSuccessful() {
+        return lastRefreshSuccessful;
     }
 
     public void refreshCollectionData() {

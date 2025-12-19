@@ -24,11 +24,19 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
 
 @Controller
 public class SiteViewController {
+
+    private static final DateTimeFormatter REFRESH_STATUS_TIME_FORMATTER =
+        DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.systemDefault());
 
     private final CollectionFactory collectionFactory;
     private static final ModelAndView FOUR_OH_FOUR_MAV = new ModelAndView("jsp/errors/404");
@@ -147,6 +155,34 @@ public class SiteViewController {
         } else {
             return "{ \"refresh_started\":false, \"refresh_in_progress\":false }";
         }
+    }
+
+    @RequestMapping(value = "/refresh/status", method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Map<String, Object> handleRefreshStatusRequest(@Value("${enable.refresh:false}") String enableRefresh) {
+
+        boolean enabled = "true".equals(enableRefresh);
+
+        Map<String, Object> status = new HashMap<>();
+        status.put("enabled", enabled);
+        status.put("refresh_in_progress", enabled && this.cacheRefresher.isRefreshInProgress());
+        long lastStarted = this.cacheRefresher.getLastRefreshStartTime();
+        long lastCompleted = this.cacheRefresher.getLastRefreshEndTime();
+        status.put("last_started", lastStarted);
+        status.put("last_completed", lastCompleted);
+        status.put("last_started_iso", formatMillisAsIso(lastStarted));
+        status.put("last_completed_iso", formatMillisAsIso(lastCompleted));
+        status.put("last_successful", this.cacheRefresher.isLastRefreshSuccessful());
+
+        return status;
+    }
+
+    private String formatMillisAsIso(long millis) {
+        if (millis <= 0L) {
+            return null;
+        }
+        return REFRESH_STATUS_TIME_FORMATTER.format(Instant.ofEpochMilli(millis));
     }
 
     // on path /terms/
