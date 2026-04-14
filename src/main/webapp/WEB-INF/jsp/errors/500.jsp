@@ -27,14 +27,14 @@
                             <p>
                                 Use the navigation above or or <a href="/">return to the home page</a>.
                             </p>
-
+<!-- 
                             <h3>Details</h3>
                             <p>
                                 <dl>
                                     <dt>Message</dt>
                                     <dd>${exception.message}</dd>
                                 </dl>
-                            </p>
+                            </p> -->
 
                             <p>
                                 <a href="#stacktrace" data-toggle="collapse"
