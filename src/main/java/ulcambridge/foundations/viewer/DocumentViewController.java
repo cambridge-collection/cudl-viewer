@@ -275,7 +275,8 @@ public class DocumentViewController {
 
         // Get parent collection if there is one.
         Collection parent = null;
-        if (organisationalCollection.getParentCollectionId() != null) {
+        if (organisationalCollection != null
+                && organisationalCollection.getParentCollectionId() != null) {
             parent = collectionFactory
                     .getCollectionFromId(organisationalCollection
                             .getParentCollectionId());

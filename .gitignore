@@ -11,6 +11,9 @@ FoundationsViewer.iws
 .idea
 *.iml
 
+# VSCode
+.vscode/
+
 # Maven release plugin
 *.releaseBackup
 release.properties
@@ -28,3 +31,4 @@ release.properties
 terraform.tfstate
 terraform.tfstate.backup
 /cudl-release.md
+
