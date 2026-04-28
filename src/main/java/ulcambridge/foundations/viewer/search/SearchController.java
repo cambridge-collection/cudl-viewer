@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.*;
 
 @Controller
@@ -40,23 +42,28 @@ public class SearchController {
     private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
     private final URI imageServerURL;
+    private final String contentHtmlUrl;
 
     /**
      * @param search to use for queries. e.g. SearchXTF
      */
     @Autowired
     public SearchController(CollectionFactory collectionFactory,
-                            ItemsDao itemDAO, Search search, @Qualifier("imageServerURL") URI imageServerURL) {
+                            ItemsDao itemDAO, Search search,
+                            @Qualifier("imageServerURL") URI imageServerURL,
+                            @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(search, "search is required");
         Assert.notNull(imageServerURL, "imageServerURL is required");
+        Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = itemDAO;
         this.search = search;
         this.imageServerURL = imageServerURL;
+        this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 
     // on /search path
@@ -77,6 +84,7 @@ public class SearchController {
         modelAndView.addObject("results", results);
         modelAndView.addObject("queryString",
             SearchUtil.getURLParameters(searchForm));
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
 
         return modelAndView;
     }
@@ -98,6 +106,7 @@ public class SearchController {
         searchForm.setCollections(collectionList);
         modelAndView.addObject("form", searchForm);
         modelAndView.addObject("enableTagging", enableTagging);
+        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
         return modelAndView;
     }
 
@@ -119,7 +128,8 @@ public class SearchController {
                 .addObject("results", results)
                 .addObject("queryString",
                         SearchUtil.getURLParameters(searchForm))
-                .addObject("enableTagging", enableTagging);
+                .addObject("enableTagging", enableTagging)
+                .addObject("contentHTMLURL", contentHtmlUrl);
     }
 
     private JSONArray getResultsJSON(SearchResultSet results) {
