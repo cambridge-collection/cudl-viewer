@@ -31,6 +31,7 @@ public class RefreshCache {
     private final Cache<String, Item> itemCache;
     private final String cachingEnabled;
     private final String itemJSONDirectory;
+    private final String unreleasedDataDirectory;
     private long lastModified;
     private final AtomicBoolean refreshInProgress = new AtomicBoolean(false);
     private volatile long lastRefreshStartTime;
@@ -39,7 +40,9 @@ public class RefreshCache {
 
     @Autowired
     public RefreshCache(CollectionFactory collectionFactory, @Qualifier("itemCache") Cache<String, Item> itemCache,
-                        @Value("${caching.enabled:true}") String cachingEnabled, @Value("${itemJSONDirectory}") String itemJSONDirectory) {
+                        @Value("${caching.enabled:true}") String cachingEnabled,
+                        @Value("${itemJSONDirectory}") String itemJSONDirectory,
+                        @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemCache, "itemCache is required");
 
@@ -47,6 +50,7 @@ public class RefreshCache {
         this.itemCache = itemCache;
         this.cachingEnabled = cachingEnabled;
         this.itemJSONDirectory = itemJSONDirectory;
+        this.unreleasedDataDirectory = unreleasedDataDirectory;
         lastModified = (new Date()).getTime();
     }
 
@@ -59,28 +63,38 @@ public class RefreshCache {
 
         if (!cachingEnabled.equals("true")) {
             try {
+                long latestModified = latestModifiedInDir(new File(itemJSONDirectory));
 
-                File dir = new File(itemJSONDirectory);
-                if (dir.isDirectory()) {
-                    File[] dirFiles = dir.listFiles((FileFilter) FileFilterUtils.fileFileFilter());
-                    if (dirFiles != null && dirFiles.length > 0) {
-                        Arrays.sort(dirFiles, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
-                        long lastModifiedFile = Files.getLastModifiedTime(dirFiles[0].toPath()).toMillis();
+                // Also check the unreleased json and collections directories so
+                // that new unreleased content triggers an auto-refresh too.
+                if (!unreleasedDataDirectory.isBlank()) {
+                    latestModified = Math.max(latestModified,
+                        latestModifiedInDir(new File(unreleasedDataDirectory, "json")));
+                    latestModified = Math.max(latestModified,
+                        latestModifiedInDir(new File(unreleasedDataDirectory, "collections")));
+                }
 
-                        // If file has changed in JSON refresh cache.
-                        if (lastModifiedFile > lastModified) {
-
-                            lastModified = lastModifiedFile;
-                            refreshAllAsync();
-                        }
-
-                    }
+                if (latestModified > lastModified) {
+                    lastModified = latestModified;
+                    refreshAllAsync();
                 }
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**
+     * Returns the last-modified time (millis) of the most recently changed file
+     * in the given directory, or 0 if the directory is absent or empty.
+     */
+    private long latestModifiedInDir(File dir) throws IOException {
+        if (!dir.isDirectory()) return 0;
+        File[] files = dir.listFiles((FileFilter) FileFilterUtils.fileFileFilter());
+        if (files == null || files.length == 0) return 0;
+        Arrays.sort(files, LastModifiedFileComparator.LASTMODIFIED_REVERSE);
+        return Files.getLastModifiedTime(files[0].toPath()).toMillis();
     }
 
     /**

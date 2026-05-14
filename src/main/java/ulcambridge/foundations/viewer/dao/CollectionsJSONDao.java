@@ -4,6 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,30 +16,40 @@ import ulcambridge.foundations.viewer.model.UIDataCollection;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 public class CollectionsJSONDao implements CollectionsDao {
+
+    private static final Logger log = LoggerFactory.getLogger(CollectionsJSONDao.class);
 
     private Hashtable<String,Collection> collections;
     private final File datasetFile;
     private final File uiFile;
     private UI uiTheme;
     private final String cachingEnabled;
+    private final boolean showUnreleasedContent;
+    private final Path unreleasedCollectionsDir;
 
     public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,
-                              @Value("${dataUIFile}") String uiFilepath, String cachingEnabled) throws IOException {
+                              @Value("${dataUIFile}") String uiFilepath,
+                              String cachingEnabled,
+                              boolean showUnreleasedContent,
+                              Path unreleasedCollectionsDir) throws IOException {
 
         this.cachingEnabled = cachingEnabled;
+        this.showUnreleasedContent = showUnreleasedContent;
+        this.unreleasedCollectionsDir = unreleasedCollectionsDir;
         this.datasetFile = datasetFile;
         this.uiFile = new File(uiFilepath);
         UIDao uiDao = new UIDao();
-        this.uiTheme =  uiDao.getUITheme(Paths.get(uiFilepath));
+        this.uiTheme = uiDao.getUITheme(Paths.get(uiFilepath));
 
         this.collections = readCollectionsFromFiles(datasetFile);
-
     }
 
     private Hashtable<String,Collection> readCollectionsFromFiles(File datasetFile)
@@ -46,25 +58,57 @@ public class CollectionsJSONDao implements CollectionsDao {
         Hashtable<String,Collection> collections = new Hashtable<>();
         Hashtable<String, List<String>> subCollections = new Hashtable<>();
 
-        // Go through all the collections listed and setup collection objects
         String dataset = FileUtils.readFileToString(datasetFile, StandardCharsets.UTF_8);
         JSONObject datasetJson = new JSONObject(dataset);
         JSONArray collectionArray = datasetJson.getJSONArray("collections");
 
+        // Load collections listed in the dataset file. Missing files are skipped
+        // with a warning rather than aborting startup — this allows the dataset
+        // to reference collections that only exist in the unreleased directory.
         for (int i = 0; i < collectionArray.length(); i++) {
-            String collectionFilePath = datasetFile.getParent()+File.separator+collectionArray.getJSONObject(i).getString("@id");
-
-            // Assume collection filename is of form urlslug.collection.json
+            String collectionFilePath = datasetFile.getParent() + File.separator + collectionArray.getJSONObject(i).getString("@id");
+            File collectionFile = new File(collectionFilePath);
             String collectionId = FilenameUtils.getName(collectionFilePath).replace(".collection.json", "");
-
-            // Read collection file into a collection object
-            collections.put(collectionId,getCollectionFromFile(new File(collectionFilePath), subCollections));
+            try {
+                Collection c = getCollectionFromFile(collectionFile, subCollections);
+                if (c != null) {
+                    collections.put(collectionId, c);
+                }
+            } catch (IOException e) {
+                log.warn("Skipping collection file that could not be read: {} — {}", collectionFile.getPath(), e.getMessage());
+            }
         }
 
-        // Set the subcollections and parent collections on collection objects (all currently empty string)
-        // This requires the collections hashtable to be populated.
-        return setupParentAndSubCollections(collections, subCollections);
+        // When unreleased content is enabled, scan the unreleased collections
+        // directory and merge any collections not already loaded above.
+        if (showUnreleasedContent && unreleasedCollectionsDir != null) {
+            log.debug("[showUnreleasedContent] scanning unreleased collections dir: {}", unreleasedCollectionsDir);
+            File[] files = unreleasedCollectionsDir.toFile()
+                .listFiles((dir, name) -> name.endsWith(".collection.json"));
 
+            log.debug("[showUnreleasedContent] found {} unreleased collection files", files == null ? 0 : files.length);
+            if (files != null) {
+                Set<String> loadedIds = collections.keySet();
+
+                for (File file : files) {
+                    try {
+                        Collection c = getCollectionFromFile(file, subCollections);
+                        // Skip if this collection id was already loaded from the main dataset.
+                        if (c != null && !loadedIds.contains(c.getId())) {
+                            c.setUnreleased(true);
+                            collections.put(c.getId(), c);
+                            log.debug("[showUnreleasedContent] added unreleased collection: id={} type={}", c.getId(), c.getType());
+                        } else if (c != null) {
+                            log.debug("[showUnreleasedContent] skipping unreleased collection (already loaded): {}", c.getId());
+                        }
+                    } catch (IOException e) {
+                        log.warn("Skipping unreadable unreleased collection file: {} — {}", file.getName(), e.getMessage());
+                    }
+                }
+            }
+        }
+
+        return setupParentAndSubCollections(collections, subCollections);
     }
 
     private Collection getCollectionFromFile(File file, Hashtable<String, List<String>> subCollections)
@@ -82,7 +126,7 @@ public class CollectionsJSONDao implements CollectionsDao {
         List<String> collectionItemIds = getItemIds(collectionJson);
         String collectionSummary = description.getJSONObject("full").getString("@id");
         String collectionSponsors = credit.getJSONObject("prose").getString("@id");
-        String collectionType =  getCollectionType(collectionId);
+        String collectionType = getCollectionType(collectionId);
         String parentCollectionId = null;
 
         String metaDescription = description.getString("medium");
@@ -99,9 +143,7 @@ public class CollectionsJSONDao implements CollectionsDao {
 
         return new Collection(collectionId, collectionTitle, collectionItemIds, collectionSummary,
             collectionSponsors, collectionType, parentCollectionId, metaDescription);
-
     }
-
 
     private List<String> getItemIds(JSONObject collectionJson) {
         List<String> itemIds = new ArrayList<>();
@@ -117,7 +159,7 @@ public class CollectionsJSONDao implements CollectionsDao {
 
         List<UIDataCollection> uiCollections = uiTheme.getThemeData().getCollections();
         for (UIDataCollection uiCollection : uiCollections) {
-            if (uiCollection.getCollection().getId().endsWith(File.separator+collectionId+".collection.json")) {
+            if (uiCollection.getCollection().getId().endsWith(File.separator + collectionId + ".collection.json")) {
                 return uiCollection.getLayout();
             }
         }
@@ -130,12 +172,10 @@ public class CollectionsJSONDao implements CollectionsDao {
             List<String> subCollectionIds = subCollections.get(collectionId);
             List<Collection> subCollectionsList = new ArrayList<>();
             for (String subCollectionId : subCollectionIds) {
-                // set Parent Collections
                 Collection subCollection = collections.get(subCollectionId);
                 subCollection.setParentCollectionId(collectionId);
                 subCollectionsList.add(subCollection);
             }
-            // set Sub Collections
             collections.get(collectionId).setSubCollections(subCollectionsList);
         }
         return collections;
@@ -149,7 +189,6 @@ public class CollectionsJSONDao implements CollectionsDao {
 
     public void refreshData(boolean force) {
         if (!"true".equalsIgnoreCase(cachingEnabled) || force) {
-            // Reload dataset
             try {
                 this.collections = readCollectionsFromFiles(datasetFile);
             } catch (IOException e) {
@@ -157,10 +196,8 @@ public class CollectionsJSONDao implements CollectionsDao {
                 e.printStackTrace(System.err);
             }
 
-            // Reload UI
             UIDao uiDao = new UIDao();
-            this.uiTheme =  uiDao.getUITheme(Paths.get(uiFile.getPath()));
-
+            this.uiTheme = uiDao.getUITheme(Paths.get(uiFile.getPath()));
         }
     }
 
@@ -173,5 +210,4 @@ public class CollectionsJSONDao implements CollectionsDao {
     public Collection getCollection(final String collectionId) {
         return collections.get(collectionId);
     }
-
 }

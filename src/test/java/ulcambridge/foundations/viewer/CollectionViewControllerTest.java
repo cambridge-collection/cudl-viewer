@@ -57,8 +57,8 @@ public class CollectionViewControllerTest {
 
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"));
-        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html", false, "");
     }
 
 }

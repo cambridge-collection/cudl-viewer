@@ -31,6 +31,9 @@ public class Collection implements Comparable<Collection> {
      */
     private String metaDescription;
 
+    /** True when this collection was loaded from the unreleased data directory. */
+    private boolean unreleased = false;
+
     /**
      * Constructor for a Collection setting the metaDescription to null.
      */
@@ -109,6 +112,14 @@ public class Collection implements Comparable<Collection> {
 
     public String getMetaDescription() {
         return metaDescription;
+    }
+
+    public boolean isUnreleased() {
+        return unreleased;
+    }
+
+    public void setUnreleased(boolean unreleased) {
+        this.unreleased = unreleased;
     }
 
     public void setSubCollections(List<Collection> subCollections) {
