@@ -298,6 +298,8 @@ public class DocumentViewController {
                 new JSONArray(item.getAuthorNamesFullForm()));
         modelAndView.addObject("itemAbstract", item.getAbstract());
         modelAndView.addObject("itemAbstractShort", item.getAbstractShort());
+        modelAndView.addObject("itemUnreleased",
+                collectionFactory.getUnreleasedItemIds(List.of(item.getId())).contains(item.getId()));
 
         modelAndView.addObject("itemDAO", itemDAO);
 

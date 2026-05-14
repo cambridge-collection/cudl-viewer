@@ -17,10 +17,12 @@ import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -34,7 +36,9 @@ import java.util.regex.Pattern;
 public class CollectionViewController {
     private final CollectionFactory collectionFactory;
     private final ItemsDao itemDAO;
-    private final String contentHtmlUrl;
+    private final String contentHtmlPath;
+    private final boolean showUnreleasedContent;
+    private final String unreleasedDataDirectory;
     private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
     private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
@@ -43,14 +47,40 @@ public class CollectionViewController {
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
                                     ItemsDao collectionItemsDao,
-                                    @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
+                                    @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
+                                    @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
+                                    @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(collectionItemsDao, "itemDAO is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = collectionItemsDao;
-        this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
+        this.contentHtmlPath = contentHtmlPath;
+        this.showUnreleasedContent = showUnreleasedContent;
+        this.unreleasedDataDirectory = unreleasedDataDirectory;
+    }
+
+    /**
+     * Returns the base URL directory that contains the given collection HTML file
+     * (e.g. {@code collections/newton/summary.html}). Checks the main pages/html
+     * directory first; if the file is absent and unreleased content is enabled,
+     * falls back to the unreleased pages/html directory. This lets collection
+     * summary and sponsor pages be served from the unreleased data without
+     * changing where general pages (footer, etc.) are looked up.
+     */
+    private String resolveHtmlBaseUrl(String relativePath) {
+        Path mainFile = Paths.get(contentHtmlPath, relativePath);
+        if (mainFile.toFile().exists()) {
+            return Paths.get(contentHtmlPath).toUri().toString();
+        }
+        if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+            Path unreleasedBase = Path.of(unreleasedDataDirectory, "pages", "html");
+            if (unreleasedBase.resolve(relativePath).toFile().exists()) {
+                return unreleasedBase.toUri().toString();
+            }
+        }
+        return Paths.get(contentHtmlPath).toUri().toString();
     }
 
     // on path /collections/
@@ -64,7 +94,7 @@ public class CollectionViewController {
         // order by alphabetical title for this page
         Collections.sort(collections, Collection.SORT_BY_TITLE);
 
-        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
+        modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collections", collections);
 
         return modelAndView;
@@ -93,6 +123,15 @@ public class CollectionViewController {
         // Get imageServer
         final String iiifImageServer = Properties.getString("IIIFImageServer");
 
+        String summaryPath = collection.getSummary();
+        String collectionHtmlBase = (summaryPath != null)
+            ? resolveHtmlBaseUrl(summaryPath)
+            : Paths.get(contentHtmlPath).toUri().toString();
+
+        Set<String> unreleasedItemIds = showUnreleasedContent
+            ? collectionFactory.getUnreleasedItemIds(collection.getItemIds())
+            : Collections.emptySet();
+
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
@@ -100,8 +139,14 @@ public class CollectionViewController {
         modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", iiifImageServer);
-        modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
+        // contentHTMLURL always points to the main pages/html directory so that
+        // global includes (footer, etc.) resolve correctly for all collections.
+        // collectionHTMLURL is the resolved base for this collection's own HTML
+        // (summary, sponsors) and may point to the unreleased directory instead.
+        modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
+        modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
+        modelAndView.addObject("unreleasedItemIds", unreleasedItemIds);
 
         // append a list of this collections subcollections if this is a parent.
         if ("parent".equals(collection.getType())) {
@@ -144,10 +189,18 @@ public class CollectionViewController {
             items.add(itemDAO.getItem(ids.get(i)));
         }
 
+        final Set<String> unreleasedItemIds = showUnreleasedContent
+            ? collectionFactory.getUnreleasedItemIds(ids)
+            : Collections.emptySet();
+
         final List<JSONObject> itemsJSON = new ArrayList<>(items.size());
 
         for (final Item item : items) {
-            itemsJSON.add(item.getSimplifiedJSON());
+            JSONObject json = item.getSimplifiedJSON();
+            if (unreleasedItemIds.contains(item.getId())) {
+                json.put("unreleased", true);
+            }
+            itemsJSON.add(json);
         }
 
         // build the request object

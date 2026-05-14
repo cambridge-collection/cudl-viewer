@@ -97,6 +97,7 @@ public class AppConfig {
     @Profile("!test")
     @Import(ItemsConfig.ItemRewritingConfig.class)
     public static class ItemsConfig {
+
         @Bean
         @Qualifier("itemCache")
         public Cache<String, Item> itemCache() {
@@ -146,8 +147,20 @@ public class AppConfig {
         @Autowired
         @Bean
         @Qualifier("itemJSONLoader")
-        public JSONLoader itemJSONLoader(@Qualifier("itemJSON") Path itemJSONDirectory) {
-            return new FilesystemDirectoryJSONLoader(itemJSONDirectory);
+        public JSONLoader itemJSONLoader(@Qualifier("itemJSON") Path itemJSONDirectory,
+                                         @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
+                                         @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
+            FilesystemDirectoryJSONLoader primary = new FilesystemDirectoryJSONLoader(itemJSONDirectory);
+            // When unreleased content is enabled, wrap the primary loader with a
+            // FallbackJSONLoader so items absent from the main directory are
+            // transparently served from the unreleased directory instead.
+            if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+                Path unreleasedJsonDir = Path.of(unreleasedDataDirectory).resolve("json");
+                if (Files.isDirectory(unreleasedJsonDir)) {
+                    return new FallbackJSONLoader(primary, new FilesystemDirectoryJSONLoader(unreleasedJsonDir));
+                }
+            }
+            return primary;
         }
 
         @Autowired
@@ -229,9 +242,17 @@ public class AppConfig {
         @Profile("!test")
         public CollectionsDao getCollectionsDao(@Qualifier("datasetFile") File datasetFile,
                                                 @Value("${dataUIFile}") String uiFilepath,
-                                                @Value("${caching.enabled:true}")
-        String cachingEnabled) throws IOException {
-            return new CollectionsJSONDao(datasetFile, uiFilepath, cachingEnabled);
+                                                @Value("${caching.enabled:true}") String cachingEnabled,
+                                                @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
+                                                @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) throws IOException {
+            Path unreleasedCollectionsDir = null;
+            if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+                Path candidate = Path.of(unreleasedDataDirectory).resolve("collections");
+                if (Files.isDirectory(candidate)) {
+                    unreleasedCollectionsDir = candidate;
+                }
+            }
+            return new CollectionsJSONDao(datasetFile, uiFilepath, cachingEnabled, showUnreleasedContent, unreleasedCollectionsDir);
         }
 
     }

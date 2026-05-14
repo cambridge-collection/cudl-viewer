@@ -197,6 +197,11 @@
                 <div id="doc-breadcrumb"></div>
                 <button id="right-panel-toggle" class="btn toggle-btn fa fa-bars"
                      aria-label="Toggle sidebar"></button>
+                <c:if test="${itemUnreleased}">
+                    <div class="alert alert-warning" role="alert" style="margin: 8px;">
+                        <strong>Unreleased:</strong> This item is not yet publicly available.
+                    </div>
+                </c:if>
 
                 <div role="tabpanel" id="rightTabs">
 
