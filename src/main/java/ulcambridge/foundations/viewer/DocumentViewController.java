@@ -195,13 +195,16 @@ public class DocumentViewController {
         }
 
         String rtiImageServer = Properties.getString("RTIImageServer");
+        String rtiLayout = Properties.getString("RTILayout");
         String imageServer = Properties.getString("IIIFImageServer");
 
         String displayImageRights = item.getJSON().getJSONArray("descriptiveMetadata").getJSONObject(0).getString("displayImageRights");
-        String rtiURL = pageJSON.getString("RTIImageURL") + "/HSH27/info.json";
-        if (!rtiURL.startsWith("http")) {
-            rtiURL = rtiImageServer + rtiURL;
+        String baseRTIURL = pageJSON.getString("RTIImageURL");
+        if (!baseRTIURL.startsWith("http")) {
+            baseRTIURL = rtiImageServer + baseRTIURL;
         }
+        String rtiURL = baseRTIURL + "/HSH27/info.json";
+        String rtiURLFallback = baseRTIURL + "/info.json";
 
         ModelAndView modelAndView = new ModelAndView("jsp/document-mainview-rti");
         modelAndView.addObject("docId", docId);
@@ -209,6 +212,8 @@ public class DocumentViewController {
         modelAndView.addObject("pageJSON", pageJSON);
         modelAndView.addObject("displayImageRights", displayImageRights);
         modelAndView.addObject("rtiURL", rtiURL);
+        modelAndView.addObject("rtiURLFallback", rtiURLFallback);
+        modelAndView.addObject("rtiLayout", rtiLayout);
         modelAndView.addObject("rtiImageServer", rtiImageServer);
         modelAndView.addObject("iiifImageServer", imageServer);
         return modelAndView;
