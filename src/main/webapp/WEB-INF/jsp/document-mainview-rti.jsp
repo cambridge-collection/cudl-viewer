@@ -24,6 +24,8 @@
                 <json:property name="pageNum" value="${page}"/>
                 <json:property name="pageJSON" value="${pageJSON}"/>
                 <json:property name="rtiURL" value="${rtiURL}"/>
+                <json:property name="rtiURLFallback" value="${rtiURLFallback}"/>
+                <json:property name="rtiLayout" value="${rtiLayout}"/>
                 <json:property name="displayImageRights" value="${displayImageRights}"/>
                 <json:property name="rtiImageServer" value="${rtiImageServer}"/>
                 <json:property name="iiifImageServer" value="${iiifImageServer}"/>
@@ -43,10 +45,18 @@
     <script src="/document-views/rti/openlime.min.js"></script>
     <script>
         async function init() {
-            let layout = "tarzoom";
+            let layout = "${rtiLayout}";
             const lime = new OpenLIME.Viewer('#openlime', { background: 'black' });
 
-            const rtiUrl = "${rtiURL}";
+            let rtiUrl = "${rtiURL}";
+            try {
+                const probe = await fetch(rtiUrl, { method: 'HEAD' });
+                if (!probe.ok) {
+                    rtiUrl = "${rtiURLFallback}";
+                }
+            } catch (e) {
+                rtiUrl = "${rtiURLFallback}";
+            }
 
             const layer = new OpenLIME.Layer({
                 layout: layout,
