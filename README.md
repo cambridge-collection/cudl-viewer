@@ -9,13 +9,26 @@ transformations](https://github.com/cambridge-collection/xslt-transformation-eng
 for you to have a look and get started.
 
 The viewer uses Java Spring and maven, you can see more instructions on getting the dependencies setup in our
-github documentation. **To build and run this
+GitHub documentation. **To build and run this
 you will need to be able to access public packages on GitHub using maven - full instructions to do this are on this page.**
 - https://cambridge-collection.github.io/setup-local-viewer.html.
 
 ![CUDLViewer.png](src/main/docs/images/CUDLViewer.png)
 
 ## Building and Running
+
+### Prerequisites
+
+To build and run the viewer locally you'll need:
+
+* **Java 11** (JDK) — the build is pinned to JDK 11 via Maven toolchains.
+* **Maven 3.6.3+**
+* **Docker**, with the **Docker Compose v2** plugin (`docker compose`).
+* **git**
+
+Maven requires two local configuration changes outlined in our GitHub Pages documentation:
+- [JDK Maven Toolchain](https://cambridge-collection.github.io/setup-local-viewer.html#jdk-maven-toolchain) explains how to configure Java 11 in `~/.m2/toolchains.xml`
+- [Maven Dependencies](https://cambridge-collection.github.io/setup-local-viewer.html#maven-dependencies) explains how to configure `~/.m2/settings.xml` to access the public `cudl-viewer-ui` packages on GitHub.
 
 ### Using sample data
 
@@ -43,19 +56,29 @@ To build the application into a WAR packaged file, to run locally run:
 
     mvn clean package
 
+Or, you can use the Makefile shortcut:
+
+    make build
+
 The war file will be created under `target/`.
 
 To run the viewer:
 
-    docker-compose --env-file sample-data.env up
+    docker compose --env-file sample-data.env up
+
+or, you can use the Makefile shortcut:
+
+    make run-sample
 
 When running you can then access the Viewer at
 [http://localhost:8888/](http://localhost:8888/).
 
+Note that search is served by a separate backend ([CUDL Search API](https://github.com/cambridge-collection/cudl-search) fronting [Solr](https://github.com/cambridge-collection/cudl-solr)), configured via `searchURL` — which the local stack doesn't run, and the sample data is never indexed into it, so search is not functional in the default local sample-data run.
+
 
 ### Want to use your images?
 
-You may want to take a look at the data under out `data` directory, you can drag JPG or TIFF images into the folder
+You may want to take a look at the data under the `data` directory. You can drag JPG or TIFF images into the folder
 `data/dl-data-samples/iiif-images/dropzone` while the application is running to automatically convert them to JP2 for
 zoomable images via IIIF. You can then reference them in any of the json file at
 `data/dl-data-samples/processed-data/cudl-data/json` by editing the `thumbnailImageURL` and `IIIFImageURL` properties.
@@ -70,39 +93,91 @@ NOTE: You will need to restart the application to pick up your changes.
 
 ### Configuration
 
-The Viewer is configured in the `sample-global.properties` file. A template is
-available at `docker/sample-global.properties`.
+The viewer’s settings are configured within your properties file (chosen by Docker Compose environment variables).
 
-Go through the file, updating defaults as desired. Most of the defaults are
-acceptable to get the Viewer running, but some must be changed:
+#### Selecting the config and data (`.env` files)
 
-* `cudl-viewer-content.html.path`
-* `cudl-viewer-content.images.path`
+The Docker Compose files read a set of `CUDL_VIEWER_*` environment variables to
+decide what to mount into the container. These are supplied by the `--env-file`
+you pass to `docker compose`:
 
-These must point to the `html/` and `images/` directories in a local checkout of
-the data you're using (see above for details).
+| Variable                      | Mounted to (in container)                          | Purpose                            |
+|-------------------------------|----------------------------------------------------|------------------------------------|
+| `CUDL_VIEWER_CONFIG`          | `/etc/cudl-viewer/cudl-global.properties`          | the Viewer properties file         |
+| `CUDL_VIEWER_DATA`            | `/srv/cudl-viewer/cudl-data/`                      | the data directory (JSON, pages)   |
+| `CUDL_VIEWER_CONTENT_UI_FILE` | `/srv/cudl-viewer/cudl-data/cudl.ui.json5`         | UI / theme config                  |
+| `CUDL_VIEWER_DATASET_FILE`    | `/srv/cudl-viewer/cudl-data/cudl.dl-dataset.json`  | dataset definition                 |
+
+Two env files are provided:
+
+* [`sample-data.env`](sample-data.env) — points at the bundled sample data
+  (`data/dl-data-samples`) and `docker/sample-global.properties`.
+* [`cudl-data.env`](cudl-data.env) — points at a local `cudl-data-releases`
+  checkout and `docker/cudl-global.properties` (Cambridge use; see below).
+
+Running `docker compose` without an `--env-file` falls back to the sample-data
+defaults baked into the compose files.
+
+#### The Viewer properties file
+
+The properties file selected by `CUDL_VIEWER_CONFIG` (e.g.
+`docker/sample-global.properties`) holds the Viewer's own settings — image and
+search server URLs, analytics IDs, the feedback email, PDF options, and so on.
+Go through it and update defaults as desired; most are fine for a local run.
+
+`cudl-viewer-content.html.path` and `cudl-viewer-content.images.path` point at
+the `html/` and `images/` content directories. In the dockerised flows above
+they already point at the correct in-container locations
+(`/srv/cudl-viewer/cudl-data/pages/…`) and do **not** need changing. You only
+need to adjust them if you run the Viewer outside Docker, or mount your content
+somewhere else.
 
 ## Development
 
 It uses the separate repository cudl-viewer-ui for all the javascript and css dependencies,
 so this is a good thing to look at if you want to start customising your viewer instance.
 
-### Live updates from `cudl-viewer-ui`
+### Hot reloading during development
 
-All the Javascript, CSS etc used by the viewer comes from `cudl-viewer-ui`
-via a Maven dependency. You can make live changes to the UI Javascript etc
-without rebuilding each time by using the UI's devserver.
+To run a development setup where both front-end (UI) and back-end (JSP) changes
+appear without repackaging the viewer each time, you need to:
 
-This requires setting the `cudl.ui.dev` property to `true` in
-`cudl-global.properties`. You can also set `cudl.ui.dev.baseUrl` if the default
-of `http://localhost:8080/` is not right for you.
+**1. Set up and run the `cudl-viewer-ui` devserver.** All the JavaScript, CSS
+etc. used by the viewer comes from
+[`cudl-viewer-ui`](https://github.com/cambridge-collection/cudl-viewer-ui). Follow the
+[Developing instructions in the cudl-viewer-ui README](https://github.com/cambridge-collection/cudl-viewer-ui#developing)
+to clone it, install its prerequisites, build/install its Maven artefact and
+start its webpack devserver — run `make dev` **in the `cudl-viewer-ui` repo**.
+Once running, its assets are served at `http://localhost:8080/` and recompile as
+you edit.
 
-Once enabled, the viewer will link to the UI's devserver instead of serving
-Javascript/CSS from the dependency JARs.
+**2. Update two files in this (`cudl-viewer`) repo.**
 
-See the [cudl-viewer-ui's README](https://github.com/cambridge-collection/cudl-viewer-ui) for
-instructions on running the UI devserver.
+* set `cudl-viewer-ui.version` in the viewer’s `pom.xml` so that it matches the `<version>` in
+  `cudl-viewer-ui`’s `pom.xml`, so the build uses your locally-generated UI artefact, e.g.:
 
+      <cudl-viewer-ui.version>4.2.18-SNAPSHOT</cudl-viewer-ui.version>
+
+  Don't commit this version change.
+
+* the global properties file you run with (e.g. `docker/sample-global.properties`
+  or `docker/cudl-global.properties`) — set `cudl.ui.dev = true`, so the viewer
+  links to the devserver instead of serving the built-in assets.
+
+**3. Build and run the viewer with hot reloading.** Rebuild, then start it with
+`docker-compose-hot.yml`, which mounts the webapp such that JSP/static changes appear on browser reloads. Point `--env-file` at whichever data you're using
+(`sample-data.env`, `cudl-data.env`, or your own):
+
+    mvn clean package
+    docker compose --file docker-compose-hot.yml --env-file sample-data.env up
+
+Cambridge developers can do both steps at once with `make dev-cudl-data`, which runs `mvn clean package` and then brings up the
+hot-reload stack against the Cambridge dataset (`cudl-data.env`). This requires a
+`cudl-data-releases` checkout alongside this repository — see
+[Using Cambridge CUDL data](#using-cambridge-cudl-data).
+
+Changes to Java classes still require a Maven build (`mvn package` /
+`make build`) to refresh `target/classes/`.
 
 # Cambridge Development
 
@@ -116,7 +191,11 @@ This should be placed in a separate directory at the same level as the cudl-data
 
 To run the viewer:
 
-    docker-compose --env-file cudl-data.env up
+    docker compose --env-file cudl-data.env up
+
+or, using the Makefile:
+
+    make run-cudl-data
 
 ## Cambridge config file
 
@@ -267,7 +346,7 @@ $ git push cudl main production-2024062100
 
 ### Step 2: Perform
 
-Once the release has been tagged you can finish off by deploying the artifacts
+Once the release has been tagged you can finish off by deploying the artefacts
 to the CUDL packages repository in GitHub using the command:
 
 ```
