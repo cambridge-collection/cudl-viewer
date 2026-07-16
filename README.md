@@ -21,7 +21,8 @@ you will need to be able to access public packages on GitHub using maven - full 
 
 To build and run the viewer locally you'll need:
 
-* **Java 11** (JDK) — the build is pinned to JDK 11 via Maven toolchains.
+* **Java 11** (JDK) — the active Java runtime and compiler must be version 11,
+  and the build is pinned to an `openjdk` 11 Maven toolchain.
 * **Maven 3.6.3+**
 * **Docker**, with the **Docker Compose v2** plugin (`docker compose`).
 * **git**
@@ -51,6 +52,10 @@ Check the git data submodule are present: dl-data-samples should be at the direc
 
 
 ### Building the application
+
+This workflow builds and runs a packaged local Viewer without hot reloading.
+For active Viewer or UI development, use the separate
+[development workflow](#development) below.
 
 To build the application into a WAR packaged file, to run locally run:
 
@@ -134,52 +139,105 @@ somewhere else.
 
 ## Development
 
-It uses the separate repository cudl-viewer-ui for all the javascript and css dependencies,
-so this is a good thing to look at if you want to start customising your viewer instance.
+The Viewer uses the separate `cudl-viewer-ui` repository for its JavaScript and
+CSS. For local hot development, the two repositories must be alongside each
+other:
+
+```text
+parent/
+├── cudl-viewer/
+└── cudl-viewer-ui/
+```
+
+The sibling `cudl-data-releases` directory is also required when using
+`cudl-data.env`. Solr and `cudl-search-api` are optional and run separately;
+this workflow does not start or stop them.
 
 ### Hot reloading during development
 
-To run a development setup where both front-end (UI) and back-end (JSP) changes
-appear without repackaging the viewer each time, you need to:
+Run the UI and Viewer in separate terminals so that either process can be
+stopped or restarted independently.
 
-**1. Set up and run the `cudl-viewer-ui` devserver.** All the JavaScript, CSS
-etc. used by the viewer comes from
-[`cudl-viewer-ui`](https://github.com/cambridge-collection/cudl-viewer-ui). Follow the
-[Developing instructions in the cudl-viewer-ui README](https://github.com/cambridge-collection/cudl-viewer-ui#developing)
-to clone it, install its prerequisites, build/install its Maven artefact and
-start its webpack devserver — run `make dev` **in the `cudl-viewer-ui` repo**.
-Once running, its assets are served at `http://localhost:8080/` and recompile as
-you edit.
+First, activate Node 24.18.0 and npm 11.16.0. Starting from the `cudl-viewer`
+directory, move into the sibling UI repository before running its development
+command:
 
-**2. Update two files in this (`cudl-viewer`) repo.**
+    cd ../cudl-viewer-ui
+    make dev
 
-* set `cudl-viewer-ui.version` in the viewer’s `pom.xml` so that it matches the `<version>` in
-  `cudl-viewer-ui`’s `pom.xml`, so the build uses your locally-generated UI artefact, e.g.:
+The command checks the active tool versions and port 8080, prepares dependencies
+when needed, installs the UI Maven artefact and starts webpack. Leave it running;
+the webpack development server listens at
+[http://localhost:8080/](http://localhost:8080/).
 
-      <cudl-viewer-ui.version>4.2.18-SNAPSHOT</cudl-viewer-ui.version>
+In another terminal, activate JDK 11, move into the `cudl-viewer` directory and
+run the Viewer with the environment file that selects your configuration and
+data:
 
-  Don't commit this version change.
+    make dev ENV_FILE=sample-data.env
 
-* the global properties file you run with (e.g. `docker/sample-global.properties`
-  or `docker/cudl-global.properties`) — set `cudl.ui.dev = true`, so the viewer
-  links to the devserver instead of serving the built-in assets.
+For Cambridge data, use:
 
-**3. Build and run the viewer with hot reloading.** Rebuild, then start it with
-`docker-compose-hot.yml`, which mounts the webapp such that JSP/static changes appear on browser reloads. Point `--env-file` at whichever data you're using
-(`sample-data.env`, `cudl-data.env`, or your own):
+    make dev ENV_FILE=cudl-data.env
 
-    mvn clean package
-    docker compose --file docker-compose-hot.yml --env-file sample-data.env up
+or the equivalent convenience target:
 
-Cambridge developers can do both steps at once with `make dev-cudl-data`, which runs `mvn clean package` and then brings up the
-hot-reload stack against the Cambridge dataset (`cudl-data.env`). This requires a
-`cudl-data-releases` checkout alongside this repository — see
-[Using Cambridge CUDL data](#using-cambridge-cudl-data).
+    make dev-cudl-data
 
-Changes to Java classes still require a Maven build (`mvn package` /
-`make build`) to refresh `target/classes/`.
+A custom environment file can be supplied in the same way. It should normally
+define the config, data, UI configuration and dataset paths using the
+`CUDL_VIEWER_*` variables described above. Omitted values use the sample-data
+defaults in the Compose file. Paths are resolved by Docker Compose relative to
+this repository, and all resolved paths must be readable.
 
-# Cambridge Development
+This command automates two steps that developers familiar with earlier releases
+had to perform manually. There is no longer any need to edit
+`cudl-viewer-ui.version` in `pom.xml` or set `cudl.ui.dev` in the selected global
+properties file; those values are supplied automatically for the development run
+without changing either file. The development workflow supplies its override
+only to the hot-loading run; normal runs continue to use the values configured
+in `pom.xml` and the global properties file.
+
+The Viewer command checks its prerequisites, selected environment and data,
+local UI artefact and webpack server. It then builds against that UI version and
+starts `docker-compose-hot.yml`, which enables UI development mode. It does not
+start the UI's webpack development server or rebuild the UI. Start it beforehand
+using the instructions above.
+
+Once started, the Viewer is available at
+[http://localhost:8888/](http://localhost:8888/) unless
+`CUDL_VIEWER_HOST_PORT` changes the port. Stop either terminal with `Ctrl-C`.
+Stopping the Viewer does not stop webpack, and stopping webpack does not stop
+the Viewer.
+
+The reload boundaries are:
+
+* JavaScript and CSS source changes are rebuilt and served by webpack while it
+  is running.
+* JSP and static Viewer files are bind-mounted and appear on browser reload.
+* Changes to the UI version or packaged metadata require restarting the UI
+  command, followed by the Viewer command.
+* Viewer Java or Maven dependency changes require stopping and rerunning
+  `make dev ENV_FILE=<path>`.
+
+Search remains a separate service. To use a locally running `cudl-search-api`,
+set `searchURL` in the global properties file selected by your environment file
+to that service's URL. This workflow does not manage Solr or the Search API.
+
+### Development troubleshooting
+
+The development commands report missing tools and unsupported versions before
+building; they do not install or switch versions. If port 8080 or the Viewer
+port is occupied, stop the process using it before trying again. If the Viewer
+cannot find the UI repository, Maven artefact or webpack server, run `make dev`
+in the sibling `cudl-viewer-ui` repository first.
+
+The Maven build also requires the Java 11 toolchain and GitHub Packages settings
+described under [Prerequisites](#prerequisites). Use
+`make dev-check ENV_FILE=<path>` to rerun the prerequisite checks without
+starting the Viewer.
+
+# Cambridge Data and Configuration
 
 ## Using Cambridge CUDL data
 
@@ -189,13 +247,18 @@ This should be placed in a separate directory at the same level as the cudl-data
     cd ..
     git clone git@bitbucket.org:CUDL/cudl-data-releases.git cudl-data-releases
 
-To run the viewer:
+To run the packaged Viewer without hot reloading:
 
     docker compose --env-file cudl-data.env up
 
 or, using the Makefile:
 
     make run-cudl-data
+
+For hot development, first start `make dev` in `../cudl-viewer-ui` as described
+above, then run:
+
+    make dev-cudl-data
 
 ## Cambridge config file
 
