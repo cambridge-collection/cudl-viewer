@@ -158,9 +158,10 @@ this workflow does not start or stop them.
 Run the UI and Viewer in separate terminals so that either process can be
 stopped or restarted independently.
 
-First, activate Node 24.18.0 and npm 11.16.0. Starting from the `cudl-viewer`
-directory, move into the sibling UI repository before running its development
-command:
+First, activate Node 24 or newer and npm 11 or newer. These are the minimums for
+local UI development; the UI Maven build pins the exact versions used for
+packaged artefacts. Starting from the `cudl-viewer` directory, move into the
+sibling UI repository before running its development command:
 
     cd ../cudl-viewer-ui
     make dev
