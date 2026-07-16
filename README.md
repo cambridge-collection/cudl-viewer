@@ -19,13 +19,22 @@ you will need to be able to access public packages on GitHub using maven - full 
 
 ### Prerequisites
 
-To build and run the viewer locally you'll need:
+To build and run the packaged viewer locally you'll need:
 
 * **Java 11** (JDK) — the active Java runtime and compiler must be version 11,
   and the build is pinned to an `openjdk` 11 Maven toolchain.
 * **Maven 3.6.3+**
 * **Docker**, with the **Docker Compose v2** plugin (`docker compose`).
 * **git**
+
+For the hot-reloading [development workflow](#development) below you'll also need:
+
+* **Node 24+** and **npm 11+** — required by the sibling `cudl-viewer-ui`
+  repository, not this one (see [Development](#development)).
+* **curl** — used to check the UI development server.
+* **xmllint** or **python3** — used to read the UI version from the
+  `cudl-viewer-ui` `pom.xml`.
+* **lsof** (optional) — enables the Viewer port-in-use check.
 
 Maven requires two local configuration changes outlined in our GitHub Pages documentation:
 - [JDK Maven Toolchain](https://cambridge-collection.github.io/setup-local-viewer.html#jdk-maven-toolchain) explains how to configure Java 11 in `~/.m2/toolchains.xml`
@@ -158,10 +167,10 @@ this workflow does not start or stop them.
 Run the UI and Viewer in separate terminals so that either process can be
 stopped or restarted independently.
 
-First, activate Node 24 or newer and npm 11 or newer. These are the minimums for
-local UI development; the UI Maven build pins the exact versions used for
-packaged artefacts. Starting from the `cudl-viewer` directory, move into the
-sibling UI repository before running its development command:
+First, activate Node and npm (see [Prerequisites](#prerequisites) for the
+minimum versions; the UI Maven build pins the exact versions used for packaged
+artefacts). Starting from the `cudl-viewer` directory, move into the sibling UI
+repository before running its development command:
 
     cd ../cudl-viewer-ui
     make dev
