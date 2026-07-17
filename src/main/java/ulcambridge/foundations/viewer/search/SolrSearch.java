@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -38,7 +39,9 @@ public class SolrSearch implements Search {
     private final ArrayList<String> facetNamesInOrder = new ArrayList<>();
     private final DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver;
 
-    public SolrSearch(@Qualifier("searchURL") URI searchURL, @Qualifier("thumbnailImageURLResolver") DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver) {
+    public SolrSearch(@Qualifier("searchURL") URI searchURL,
+                      @Qualifier("thumbnailImageURLResolver") DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver,
+                      @Value("${facets.itemStatus.enabled:false}") boolean itemStatusFacetEnabled) {
         Assert.notNull(searchURL, "searchURL is required");
         this.searchURL = searchURL;
         this.displayNameToFacetNameMap.put("Collection", "facet-collection");
@@ -48,6 +51,9 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Languages","facet-languages");
         this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
         this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
+        if (itemStatusFacetEnabled) {
+            this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
+        }
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
         this.thumbnailImageURLResolver = thumbnailImageURLResolver;
 
@@ -58,6 +64,9 @@ public class SolrSearch implements Search {
         this.facetNamesInOrder.add("facet-origin-place");
         this.facetNamesInOrder.add("facet-languages");
         this.facetNamesInOrder.add("facet-creations-century");
+        if (itemStatusFacetEnabled) {
+            this.facetNamesInOrder.add("facet-itemStatus");
+        }
     }
 
     /**
