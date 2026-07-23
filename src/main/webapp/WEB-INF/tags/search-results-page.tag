@@ -66,8 +66,8 @@
 
                                     <ol id="tree" class="campl-unstyled-list">
                                         <c:forEach items="${results.facets}" var="facetGroup">
-                                            <%-- Do not show a facet for a field we're already faceting on --%>
-                                            <c:if test="${empty form.facets[facetGroup.field]}">
+                                            <%-- Do not show a facet for a field we're already faceting on, or one with no entries --%>
+                                            <c:if test="${empty form.facets[facetGroup.field] and not empty facetGroup.facets}">
                                                 <li>
                                                     <%-- FIXME: Add these arrows in CSS instead --%>
                                                     <strong>

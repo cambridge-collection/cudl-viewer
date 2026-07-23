@@ -22,40 +22,6 @@
     <jsp:body>
         <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections" collection="${collection}"/>
 
-        <c:if test="${not empty unreleasedItemIds}">
-            <script type="application/json" id="unreleased-item-ids">
-                [<c:forEach items="${unreleasedItemIds}" var="uid" varStatus="s">"${fn:escapeXml(uid)}"<c:if test="${!s.last}">,</c:if></c:forEach>]
-            </script>
-            <script>
-            // DOMContentLoaded ensures the collections_carousel element exists before
-            // we attach the observer; the items themselves arrive later via AJAX.
-            document.addEventListener('DOMContentLoaded', function() {
-                var ids = JSON.parse(document.getElementById('unreleased-item-ids').textContent);
-                var unreleasedSet = new Set(ids);
-                var carousel = document.getElementById('collections_carousel');
-                if (!carousel || unreleasedSet.size === 0) return;
-                new MutationObserver(function(mutations) {
-                    mutations.forEach(function(m) {
-                        m.addedNodes.forEach(function(node) {
-                            if (node.nodeType !== 1) return;
-                            var link = node.querySelector('a[href^="/view/"]');
-                            if (!link) return;
-                            var itemId = link.getAttribute('href').replace(/^\/view\//, '').replace(/\/.*$/, '');
-                            if (unreleasedSet.has(itemId)) {
-                                var badge = document.createElement('span');
-                                badge.className = 'badge bg-warning text-dark';
-                                badge.textContent = 'Unreleased';
-                                badge.style.cssText = 'position:absolute;top:4px;left:4px;z-index:1';
-                                var imgBox = node.querySelector('.collections_carousel_image_box');
-                                if (imgBox) { imgBox.style.position = 'relative'; imgBox.appendChild(badge); }
-                            }
-                        });
-                    });
-                }).observe(carousel, { childList: true });
-            });
-            </script>
-        </c:if>
-
         <div id="main_content" class="campl-row campl-content campl-recessed-content">
             <div class="campl-wrap clearfix">
                 <div class="campl-column7  campl-main-content" id="content">

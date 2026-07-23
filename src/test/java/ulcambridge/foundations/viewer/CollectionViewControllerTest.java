@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.search.Search;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -58,7 +59,7 @@ public class CollectionViewControllerTest {
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
             new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
-        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), "./html", false, "");
+        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), mock(Search.class), "./html", false, "");
     }
 
 }

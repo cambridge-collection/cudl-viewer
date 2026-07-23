@@ -62,8 +62,13 @@ public class CudlUiBuildSelector {
      */
     @Bean
     public BuildFactory getBuildFactory(
-            @Value("${cudl.ui.dev:false}") boolean useDevserver)
+            @Value("#{systemProperties['cudl.ui.dev.override'] ?: ''}")
+            String developmentOverride,
+            @Value("${cudl.ui.dev:false}") boolean configuredDevelopmentMode)
             throws IOException, WebpackMetadataException {
+
+        boolean useDevserver = resolveDevelopmentMode(
+                developmentOverride, configuredDevelopmentMode);
 
         String metadataPath;
         URI base;
@@ -79,5 +84,17 @@ public class CudlUiBuildSelector {
         return new DefaultBuildFactory(
                 this.resourceLoader, metadataPath,
                 this.dependenciesResourcePath, base);
+    }
+
+    private static boolean resolveDevelopmentMode(
+            String developmentOverride, boolean configuredDevelopmentMode) {
+
+        if("true".equals(developmentOverride)) {
+            return true;
+        }
+        if("false".equals(developmentOverride)) {
+            return false;
+        }
+        return configuredDevelopmentMode;
     }
 }

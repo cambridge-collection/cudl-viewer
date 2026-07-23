@@ -14,16 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.search.Search;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 /**
  * Controller for viewing a collection.
@@ -36,10 +34,10 @@ import java.util.regex.Pattern;
 public class CollectionViewController {
     private final CollectionFactory collectionFactory;
     private final ItemsDao itemDAO;
+    private final Search search;
     private final String contentHtmlPath;
     private final boolean showUnreleasedContent;
     private final String unreleasedDataDirectory;
-    private static final Pattern SPLIT_RE = Pattern.compile("\\s*,\\s*");
 
     private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
     private static final String PATH_COLLECTION_WITH_PAGE = "/{collectionId}/{page}";
@@ -47,15 +45,18 @@ public class CollectionViewController {
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
                                     ItemsDao collectionItemsDao,
+                                    Search search,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
                                     @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                                     @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(collectionItemsDao, "itemDAO is required");
+        Assert.notNull(search, "search is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
         this.itemDAO = collectionItemsDao;
+        this.search = search;
         this.contentHtmlPath = contentHtmlPath;
         this.showUnreleasedContent = showUnreleasedContent;
         this.unreleasedDataDirectory = unreleasedDataDirectory;
@@ -128,7 +129,11 @@ public class CollectionViewController {
             ? resolveHtmlBaseUrl(summaryPath)
             : Paths.get(contentHtmlPath).toUri().toString();
 
-        Set<String> unreleasedItemIds = showUnreleasedContent
+        // Virtual collections render their item tiles server-side (see
+        // collection-virtual.jsp) and badge from this set. Organisation collections
+        // render via the AJAX carousel and now badge per-item from the Solr response,
+        // so we skip the expensive whole-collection filesystem scan for them.
+        Set<String> unreleasedItemIds = (showUnreleasedContent && "virtual".equals(collection.getType()))
             ? collectionFactory.getUnreleasedItemIds(collection.getItemIds())
             : Collections.emptySet();
 
@@ -175,33 +180,15 @@ public class CollectionViewController {
             throw new ResourceNotFoundException();
         }
 
-        final List<String> ids = collection.getItemIds();
-        final List<Item> items = new ArrayList<>();
-
         if (startIndex < 0) {
             startIndex = 0;
-        } else if (endIndex >= ids.size()) {
-            endIndex = ids.size(); // if end Index is too large cap at max
-            // size
         }
+        final int rows = Math.max(0, endIndex - startIndex);
 
-        for (int i = startIndex; i < endIndex; i++) {
-            items.add(itemDAO.getItem(ids.get(i)));
-        }
-
-        final Set<String> unreleasedItemIds = showUnreleasedContent
-            ? collectionFactory.getUnreleasedItemIds(ids)
-            : Collections.emptySet();
-
-        final List<JSONObject> itemsJSON = new ArrayList<>(items.size());
-
-        for (final Item item : items) {
-            JSONObject json = item.getSimplifiedJSON();
-            if (unreleasedItemIds.contains(item.getId())) {
-                json.put("unreleased", true);
-            }
-            itemsJSON.add(json);
-        }
+        // Replaces the per-item filesystem item load and the whole-collection
+        // unreleased scan; unreleased badging now rides on each item's Solr data.
+        final List<JSONObject> itemsJSON =
+            search.getCollectionItems(collectionId, startIndex, rows);
 
         // build the request object
         final JSONObject dataRequest = new JSONObject();

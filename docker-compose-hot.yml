@@ -4,7 +4,7 @@ services:
   tomcat:
     image: tomcat:9.0.99-jdk11
     environment:
-      CATALINA_OPTS:
+      CATALINA_OPTS: "-Dcudl.ui.dev.override=true"
     volumes:
       # Use exploded webapp files, instead of packaged WAR, to allow hot reloading of source JSPs etc.
       - ./src/main/webapp/:/usr/local/tomcat/webapps/ROOT/
