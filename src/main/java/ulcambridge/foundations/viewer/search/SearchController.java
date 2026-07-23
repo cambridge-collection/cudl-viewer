@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,18 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Item;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -39,30 +32,23 @@ public class SearchController {
     private static final Logger LOG = LoggerFactory.getLogger(SearchController.class);
 
     private final Search search;
-    private final ItemsDao itemDAO;
     private final CollectionFactory collectionFactory;
-    private final URI imageServerURL;
     private final String contentHtmlUrl;
 
     /**
-     * @param search to use for queries. e.g. SearchXTF
+     * @param search to use for queries. e.g. SolrSearch
      */
     @Autowired
     public SearchController(CollectionFactory collectionFactory,
-                            ItemsDao itemDAO, Search search,
-                            @Qualifier("imageServerURL") URI imageServerURL,
+                            Search search,
                             @Value("${cudl-viewer-content.html.path}") String contentHtmlPath) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
-        Assert.notNull(itemDAO, "itemDAO is required");
         Assert.notNull(search, "search is required");
-        Assert.notNull(imageServerURL, "imageServerURL is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemDAO = itemDAO;
         this.search = search;
-        this.imageServerURL = imageServerURL;
         this.contentHtmlUrl = Paths.get(contentHtmlPath).toUri().toString();
     }
 
@@ -139,20 +125,36 @@ public class SearchController {
         JSONArray jsonArray = new JSONArray();
 
         for(SearchResult searchResult : results.getResults()) {
-            jsonArray.add(getResultItemJSON(searchResult));
+            // Isolate each result: a single bad result must not abort the whole
+            // batch (this is the regression that used to 500 the /search/JSON list).
+            try {
+                jsonArray.add(getResultItemJSON(searchResult));
+            } catch (Exception e) {
+                LOG.warn("Skipping search result '{}': {}",
+                    searchResult != null ? searchResult.getFileId() : null, e.getMessage());
+            }
         }
 
         return jsonArray;
     }
 
+    /**
+     * Builds the per-result JSON entirely from the Solr-sourced {@link SearchResult}
+     * (no filesystem item load). The nested {@code item} object keeps the shape the
+     * client already renders, plus the {@code unreleased} flag for badging.
+     */
     private JSONObject getResultItemJSON(SearchResult searchResult) {
-        Item item = itemDAO.getItem(searchResult.getFileId());
 
-        // Make a JSON object that contains information about the
-        // matching item and information about the result snippets
-        // and pages that match.
+        JSONObject item = new JSONObject();
+        item.put("id", searchResult.getFileId());
+        item.put("title", searchResult.getTitle());
+        item.put("shelfLocator", searchResult.getShelfLocator());
+        item.put("abstractShort", searchResult.getAbstractShort());
+        item.put("mainDisplay", searchResult.getMainDisplay());
+        item.put("unreleased", !searchResult.isReleased());
+
         JSONObject itemJSON = new JSONObject();
-        itemJSON.put("item", item.getSimplifiedJSON());
+        itemJSON.put("item", item);
         itemJSON.put("startPage", searchResult.getStartPage());
         itemJSON.put("startPageLabel", searchResult.getStartPageLabel());
         itemJSON.put("itemType", searchResult.getType());
@@ -166,28 +168,10 @@ public class SearchController {
 
         itemJSON.put("snippets", resultsArray);
 
-        itemJSON.put("pageThumbnailURL", getResultThumbnailURL(item, searchResult)
-            .map(url -> this.imageServerURL.resolve(url).toString()).orElse("/img/no-thumbnail.jpg"));
+        // The matched-page thumbnail was already resolved from Solr's IIIFImageURL.
+        itemJSON.put("pageThumbnailURL", searchResult.getThumbnailURL());
 
         return itemJSON;
-    }
-
-    private static Optional<URI> getResultThumbnailURL(Item item, SearchResult searchResult) {
-        int pageIndex = searchResult.getStartPage() - 1;
-        String url = null;
-        if(pageIndex >= 0 && pageIndex < item.getPageThumbnailURLs().size()) {
-            url = item.getPageThumbnailURLs().get(pageIndex);
-        }
-        // The list holds empty string for pages without thumbnails
-        if(url != null && !url.isEmpty()) {
-            try {
-                return Optional.of(new URI(url));
-            }
-            catch (URISyntaxException e) {
-                LOG.error("Invalid thumbnail URL in item '{}', page {}: '{}'", item.getId(), pageIndex, url);
-            }
-        }
-        return Optional.empty();
     }
 
     private JSONObject getFacetJson(Facet facet) {
