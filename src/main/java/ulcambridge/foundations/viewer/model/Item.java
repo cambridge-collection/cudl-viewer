@@ -209,7 +209,15 @@ public class Item implements Comparable<Item> {
             .collect(Collectors.toList());
     }
 
-    private String makeShortAbstract(String fullAbstract) {
+    /**
+     * Static so the Solr-sourced result lists (search + collection) can build the
+     * same {@code abstractShort} value without loading a full {@link Item}.
+     */
+    public static String makeShortAbstract(String fullAbstract) {
+
+        if (fullAbstract == null) {
+            return "";
+        }
 
         String abstractShort = fullAbstract;
 

@@ -23,6 +23,10 @@ public class SearchResult implements Comparable<SearchResult> {
     private final String startPageLabel;
     private final String thumbnailURL;
     private final String thumbnailOrientation;
+    private final String shelfLocator;
+    private final String abstractShort;
+    private final String mainDisplay;
+    private final boolean released;
 
     private final List<String> snippets;
     private final int score; // how relevant is this result, used for ordering.
@@ -32,7 +36,9 @@ public class SearchResult implements Comparable<SearchResult> {
 
     public SearchResult(String title, String fileId, int startPage,
             String startPageLabel, Iterable<String> snippets,
-            int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation) {
+            int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation,
+            @Nullable String shelfLocator, @Nullable String abstractShort, @Nullable String mainDisplay,
+            boolean released) {
 
         Preconditions.checkNotNull(title);
         Preconditions.checkNotNull(fileId);
@@ -50,10 +56,30 @@ public class SearchResult implements Comparable<SearchResult> {
         this.type = type;
         this.thumbnailURL = thumbnailURL;
         this.thumbnailOrientation = thumbnailOrientation;
+        this.shelfLocator = shelfLocator;
+        this.abstractShort = abstractShort;
+        this.mainDisplay = mainDisplay;
+        this.released = released;
     }
 
     public String getTitle() {
         return this.title;
+    }
+
+    public String getShelfLocator() {
+        return shelfLocator;
+    }
+
+    public String getAbstractShort() {
+        return abstractShort;
+    }
+
+    public String getMainDisplay() {
+        return mainDisplay;
+    }
+
+    public boolean isReleased() {
+        return released;
     }
 
 
@@ -87,18 +113,13 @@ public class SearchResult implements Comparable<SearchResult> {
     }
 
     /**
-     * @deprecated The thumbnail URL returned by XTF in search results is no longer correct. Use the page number to
-     * obtain a thumbnail from an {@link ulcambridge.foundations.viewer.model.Item} for the result.
+     * The fully-resolved thumbnail URL for the matched page, built from the Solr
+     * {@code IIIFImageURL} field.
      */
-    @Deprecated
     public String getThumbnailURL() {
         return thumbnailURL;
     }
 
-    /**
-     * @deprecated See {{@link #getThumbnailURL()}}'s deprecation notice.
-     */
-    @Deprecated
     public String getThumbnailOrientation() {
         return thumbnailOrientation;
     }
@@ -112,12 +133,16 @@ public class SearchResult implements Comparable<SearchResult> {
             return false;
         }
         SearchResult that = (SearchResult) o;
-        return startPage == that.startPage && score == that.score && title.equals(that.title)
+        return startPage == that.startPage && score == that.score && released == that.released
+            && title.equals(that.title)
             && type
             .equals(that.type) && fileId.equals(that.fileId) && startPageLabel
             .equals(that.startPageLabel)
             && Objects.equals(thumbnailURL, that.thumbnailURL) && Objects
-            .equals(thumbnailOrientation, that.thumbnailOrientation) && snippets
+            .equals(thumbnailOrientation, that.thumbnailOrientation)
+            && Objects.equals(shelfLocator, that.shelfLocator)
+            && Objects.equals(abstractShort, that.abstractShort)
+            && Objects.equals(mainDisplay, that.mainDisplay) && snippets
             .equals(that.snippets);
     }
 
@@ -125,7 +150,7 @@ public class SearchResult implements Comparable<SearchResult> {
     public int hashCode() {
         return Objects
             .hash(title, type, fileId, startPage, startPageLabel, thumbnailURL,
-                thumbnailOrientation,
+                thumbnailOrientation, shelfLocator, abstractShort, mainDisplay, released,
                 snippets, score);
     }
 
@@ -139,6 +164,10 @@ public class SearchResult implements Comparable<SearchResult> {
             .add("startPageLabel", startPageLabel)
             .add("thumbnailURL", thumbnailURL)
             .add("thumbnailOrientation", thumbnailOrientation)
+            .add("shelfLocator", shelfLocator)
+            .add("abstractShort", abstractShort)
+            .add("mainDisplay", mainDisplay)
+            .add("released", released)
             .add("snippets", snippets)
             .add("score", score)
             .toString();

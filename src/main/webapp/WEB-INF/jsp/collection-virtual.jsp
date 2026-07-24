@@ -19,9 +19,14 @@
                 <div class="campl-wrap clearfix">
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
+                        <c:if test="${collection.unreleased}">
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Unreleased content:</strong> This collection is not yet publicly available.
+                            </div>
+                        </c:if>
                         <div id="summaryDiv" class="virtual_collection_summary">
                             <c:catch var="importException">
-                                <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+                                <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.summary}"/>
                             </c:catch>
                             <c:if test="${importException != null}">
                                 <!-- No summary. -->
@@ -63,6 +68,9 @@
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>
                                                 <h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
+                                                <c:if test="${unreleasedItemIds.contains(id)}">
+                                                    <span class="badge bg-warning text-dark">Unreleased</span>
+                                                </c:if>
                                                 <c:out value="${item.abstractShort}"/> &hellip;
                                                 <a href="/view/${fn:escapeXml(item.id)}/1">more</a>
                                             </div>
@@ -75,7 +83,7 @@
 
                         <div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">
                             <c:catch var="importException">
-                                <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}"/>
+                                <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.sponsors}"/>
                             </c:catch>
                             <c:if test="${importException != null}">
                                 <!-- No sponsors. -->

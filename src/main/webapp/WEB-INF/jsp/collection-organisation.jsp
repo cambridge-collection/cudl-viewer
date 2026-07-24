@@ -26,9 +26,14 @@
             <div class="campl-wrap clearfix">
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">
+                        <c:if test="${collection.unreleased}">
+                            <div class="alert alert-warning" role="alert">
+                                <strong>Unreleased content:</strong> This collection is not yet publicly available.
+                            </div>
+                        </c:if>
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
                         <c:catch var="importException">
-                            <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.summary}"/>
+                            <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.summary}"/>
                         </c:catch>
                         <c:if test="${importException != null}">
                             <!-- No summary. -->
@@ -46,7 +51,7 @@
 
                 <div id="sponsorDiv" class="campl-column12 campl-content-container">
                     <c:catch var="importException">
-                        <c:import charEncoding="UTF-8" url="${contentHTMLURL}/${collection.sponsors}" />
+                        <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.sponsors}" />
                     </c:catch>
                     <c:if test="${importException != null}">
                         <!-- No sponsors. -->

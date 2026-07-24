@@ -26,15 +26,31 @@ public class CollectionFactory {
     private Set<String> allItemIds = Collections.emptySet();
     private final String cachingEnabled;
     private final Path jsonDirPath;
+    private final Path unreleasedItemJSONDirectory;
     private Set<String> jsonFiles;
 
     @Autowired
-    public CollectionFactory(CollectionsDao dao, @Value("${caching.enabled:true}")
-        String cachingEnabled, @Qualifier("itemJSON") Path jsonDirPath) {
+    public CollectionFactory(CollectionsDao dao,
+                             @Value("${caching.enabled:true}") String cachingEnabled,
+                             @Qualifier("itemJSON") Path jsonDirPath,
+                             @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
+                             @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(dao, "CollectionsDao cannot be null");
         Assert.notNull(jsonDirPath, "itemJSONDirectory should not be null");
         this.cachingEnabled = cachingEnabled;
         this.jsonDirPath = jsonDirPath;
+
+        // Resolve the unreleased item JSON directory once at startup.
+        // Null means unreleased content is disabled or the directory is absent.
+        Path unreleasedPath = null;
+        if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+            Path candidate = Path.of(unreleasedDataDirectory).resolve("json");
+            if (Files.isDirectory(candidate)) {
+                unreleasedPath = candidate;
+            }
+        }
+        this.unreleasedItemJSONDirectory = unreleasedPath;
+
         setCollectionsDao(dao);
     }
 
@@ -170,9 +186,31 @@ public class CollectionFactory {
         return allItemIds;
     }
 
-    private boolean existsJSON(String id) {
-        if (id == null) { return false; }
-        return jsonFiles.contains(id);
+    /**
+     * Returns the subset of the given item IDs whose JSON exists only in the
+     * unreleased directory (i.e. not yet present in the main item JSON directory).
+     * Items that exist in both directories are treated as released.
+     */
+    public Set<String> getUnreleasedItemIds(List<String> itemIds) {
+        if (unreleasedItemJSONDirectory == null) return Collections.emptySet();
+        Set<String> result = new HashSet<>();
+        for (String id : itemIds) {
+            String filename = id + ".json";
+            if (!jsonDirPath.resolve(filename).toFile().exists()
+                    && unreleasedItemJSONDirectory.resolve(filename).toFile().exists()) {
+                result.add(id);
+            }
+        }
+        return result;
+    }
+
+    private boolean existsJSON(String filename) {
+        if (filename == null) { return false; }
+        if (jsonDirPath.resolve(filename).toFile().exists()) return true;
+        if (unreleasedItemJSONDirectory != null) {
+            return unreleasedItemJSONDirectory.resolve(filename).toFile().exists();
+        }
+        return false;
     }
 
     /**
@@ -180,14 +218,17 @@ public class CollectionFactory {
      * @return
      */
     private Set<String> getJSONFiles() {
-        final Path dir = Paths.get(String.valueOf(jsonDirPath));
-        final Set<String> names = new HashSet<>();
+        Set<String> names = listJsonFilenames(jsonDirPath);
+        if (unreleasedItemJSONDirectory != null && Files.isDirectory(unreleasedItemJSONDirectory)) {
+            names.addAll(listJsonFilenames(unreleasedItemJSONDirectory));
+        }
+        return names;
+    }
 
-        try (
-            final DirectoryStream<Path> dirstream
-                = Files.newDirectoryStream(dir);
-        ) {
-            for (final Path entry: dirstream) {
+    private Set<String> listJsonFilenames(Path dir) {
+        final Set<String> names = new HashSet<>();
+        try (DirectoryStream<Path> dirstream = Files.newDirectoryStream(Paths.get(String.valueOf(dir)))) {
+            for (final Path entry : dirstream) {
                 names.add(entry.getFileName().toString());
             }
         } catch (IOException e) {

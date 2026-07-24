@@ -38,6 +38,9 @@
                                                             <h3 class="card-title">
                                                                 <c:out value="${c.title}"/>
                                                             </h3>
+                                                            <c:if test="${c.unreleased}">
+                                                                <span class="badge bg-warning text-dark">Unreleased</span>
+                                                            </c:if>
                                                         </div>
                                                     </div>
                                                 </div>

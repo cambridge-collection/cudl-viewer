@@ -10,12 +10,13 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
-import ulcambridge.foundations.viewer.dao.DecoratedItemFactory;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Item;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,14 +34,22 @@ public class SolrSearch implements Search {
     private static final Logger LOG = LoggerFactory.getLogger(SolrSearch.class.getName());
 
     private final URI searchURL;
+    private final URI imageServerURL;
+    private final String appendToThumbnail;
     private final BiMap<String, String> displayNameToFacetNameMap = HashBiMap.create();
     private final BiMap<String, String> facetNameToDisplayNameMap;
     private final ArrayList<String> facetNamesInOrder = new ArrayList<>();
-    private final DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver;
 
-    public SolrSearch(@Qualifier("searchURL") URI searchURL, @Qualifier("thumbnailImageURLResolver") DecoratedItemFactory.ItemJSONPreProcessor thumbnailImageURLResolver) {
+    public SolrSearch(@Qualifier("searchURL") URI searchURL,
+                      @Qualifier("imageServerURL") URI imageServerURL,
+                      @Value("${appendToThumbnail}") String appendToThumbnail,
+                      @Value("${facets.itemStatus.enabled:false}") boolean itemStatusFacetEnabled) {
         Assert.notNull(searchURL, "searchURL is required");
+        Assert.notNull(imageServerURL, "imageServerURL is required");
+        Assert.notNull(appendToThumbnail, "appendToThumbnail is required");
         this.searchURL = searchURL;
+        this.imageServerURL = imageServerURL;
+        this.appendToThumbnail = appendToThumbnail;
         this.displayNameToFacetNameMap.put("Collection", "facet-collection");
         this.displayNameToFacetNameMap.put("Subject", "facet-subjects");
         this.displayNameToFacetNameMap.put("Date", "facet-creations-century");
@@ -48,8 +57,10 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Languages","facet-languages");
         this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
         this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
+        if (itemStatusFacetEnabled) {
+            this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
+        }
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
-        this.thumbnailImageURLResolver = thumbnailImageURLResolver;
 
         this.facetNamesInOrder.add("facet-collection");
         this.facetNamesInOrder.add("facet-subjects");
@@ -58,6 +69,9 @@ public class SolrSearch implements Search {
         this.facetNamesInOrder.add("facet-origin-place");
         this.facetNamesInOrder.add("facet-languages");
         this.facetNamesInOrder.add("facet-creations-century");
+        if (itemStatusFacetEnabled) {
+            this.facetNamesInOrder.add("facet-itemStatus");
+        }
     }
 
     /**
@@ -296,10 +310,18 @@ public class SolrSearch implements Search {
         // Add in all the (docs) results into a Hashtable by Item Number
         final JSONArray docs = json.getJSONObject("response").getJSONArray("docs");
 
+        final JSONObject highlighting = json.optJSONObject("highlighting");
+
         if (docs != null) {
             for (int i = 0; i < docs.length(); i++) {
-                final JSONObject doc = docs.getJSONObject(i);
-                results.add(createSearchResult(doc, json.getJSONObject("highlighting")));
+                // Isolate each document: a single malformed/unresolvable doc must
+                // not abort the whole result set (previously this 500'd the list).
+                try {
+                    final JSONObject doc = docs.getJSONObject(i);
+                    results.add(createSearchResult(doc, highlighting));
+                } catch (Exception e) {
+                    LOG.warn("Skipping malformed Solr search doc at index {}: {}", i, e.getMessage());
+                }
             }
 
             // ensure results are in the right order by score.
@@ -360,38 +382,173 @@ public class SolrSearch implements Search {
     }
 
     /**
-     * Creates a new SearchResult from the given JSON result
+     * Creates a new SearchResult for a matched page from the given Solr document.
+     * All display fields are sourced from the Solr doc itself (no filesystem item
+     * load); reads are guarded so a doc missing an expected field can't NPE.
      */
     public SearchResult createSearchResult(final JSONObject result, final JSONObject highlighting) {
-
 
         int score = 0;
         String itemType = "bookormanuscript"; // default
 
-        // Build a title from available data:
-        String title = "Unknown";
-        String id = result.getString("fileID");
+        String id = firstString(result, "fileID");
+        if (id == null) { id = ""; }
 
-        int startPage = result.getJSONArray("sequence").getInt(0);
-        String startPageLabel = result.getJSONArray("label").getString(0);
+        int startPage = 1;
+        JSONArray sequence = result.optJSONArray("sequence");
+        if (sequence != null && sequence.length() > 0) {
+            startPage = sequence.optInt(0, 1);
+        }
+
+        String startPageLabel = firstString(result, "label");
+        if (startPageLabel == null) { startPageLabel = ""; }
 
         List<String> snippets = new ArrayList<>();
-        JSONObject highlights = highlighting.getJSONObject(result.getString("id"));
-        for (String key: highlights.keySet()) {
-            snippets.add(highlights.getJSONArray(key).getString(0));
+        String docId = firstString(result, "id");
+        JSONObject highlights = (highlighting != null && docId != null)
+            ? highlighting.optJSONObject(docId) : null;
+        if (highlights != null) {
+            for (String key : highlights.keySet()) {
+                JSONArray snippetArr = highlights.optJSONArray(key);
+                if (snippetArr != null && snippetArr.length() > 0) {
+                    snippets.add(snippetArr.getString(0));
+                }
+            }
         }
 
-        String thumbnailURL = "/img/no-thumbnail.jpg";
-        if (result.has("IIIFImageURL")) {
-            thumbnailURL = result.getJSONArray("IIIFImageURL").getString(0);
-        }
-        String thumbnailOrientation = "landscape";
-        if (result.has("thumbnailImageOrientation")) {
-            thumbnailOrientation = result.getJSONArray("thumbnailImageOrientation").getString(0);
-        }
+        // Search hits are per-page, so the thumbnail and mainDisplay come from the
+        // matched page doc (IIIFImageURL / per-page mainDisplay).
+        String title = firstString(result, "documentTitle");
+        if (title == null) { title = firstString(result, "title"); }
+        if (title == null) { title = "Unknown"; }
+
+        String shelfLocator = firstString(result, "documentShelfLocator");
+        if (shelfLocator == null) { shelfLocator = ""; }
+
+        String abstractShort = Item.makeShortAbstract(firstString(result, "documentAbstract"));
+
+        String mainDisplay = firstString(result, "mainDisplay");
+        if (mainDisplay == null) { mainDisplay = "iiif"; }
+
+        boolean released = result.optBoolean("isReleased", true);
+
+        String thumbnailURL = resolveThumbnail(firstString(result, "IIIFImageURL"));
+
+        String thumbnailOrientation = firstString(result, "thumbnailImageOrientation");
+        if (thumbnailOrientation == null) { thumbnailOrientation = "landscape"; }
 
         return new SearchResult(title, id, startPage, startPageLabel,
-            snippets, score, itemType, thumbnailURL, thumbnailOrientation);
+            snippets, score, itemType, thumbnailURL, thumbnailOrientation,
+            shelfLocator, abstractShort, mainDisplay, released);
+    }
 
+    /**
+     * Fetches one page of a collection's items directly from Solr, in collection
+     * order. Returns one {@code item} JSON object per item-level (cover) doc, ready
+     * for the collection carousel client. This replaces the per-item filesystem
+     * item load and the whole-collection unreleased scan.
+     *
+     * <p>Note: this parses only {@code response.docs}. The collection query returns
+     * no {@code highlighting} or {@code facet_counts}, so {@link #parseSearchResults}
+     * cannot be reused here.
+     */
+    @Override
+    public List<JSONObject> getCollectionItems(final String slug, final int start, final int rows) {
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
+        uriB.queryParam("fq", "collection-slug:" + slug);
+        uriB.queryParam("fq", "itemLevel:true");
+        uriB.queryParam("sort", "collection_sort asc");
+        uriB.queryParam("start", Math.max(0, start));
+        uriB.queryParam("rows", Math.max(0, rows));
+
+        final List<JSONObject> items = new ArrayList<>();
+        final JSONObject json = getJSON(uriB.toUriString());
+        if (json == null) { return items; }
+
+        final JSONObject response = json.optJSONObject("response");
+        if (response == null) { return items; }
+        final JSONArray docs = response.optJSONArray("docs");
+        if (docs == null) { return items; }
+
+        for (int i = 0; i < docs.length(); i++) {
+            try {
+                items.add(itemObjectFromSolrDoc(docs.getJSONObject(i), true));
+            } catch (Exception e) {
+                LOG.warn("Skipping malformed collection Solr doc at index {}: {}", i, e.getMessage());
+            }
+        }
+        return items;
+    }
+
+    /**
+     * Builds the per-item {@code item} JSON object (the shape both result-list
+     * clients render) from a Solr doc. When {@code itemLevelThumbnail} is true the
+     * item-level cover thumbnail ({@code documentThumbnailUrl}) is used; otherwise
+     * the matched-page thumbnail ({@code IIIFImageURL}).
+     */
+    public JSONObject itemObjectFromSolrDoc(final JSONObject doc, final boolean itemLevelThumbnail) {
+        final JSONObject item = new JSONObject();
+
+        String id = firstString(doc, "fileID");
+        item.put("id", id != null ? id : "");
+
+        String title = firstString(doc, "documentTitle");
+        if (title == null) { title = firstString(doc, "title"); }
+        item.put("title", title != null ? title : "Unknown");
+
+        String shelfLocator = firstString(doc, "documentShelfLocator");
+        item.put("shelfLocator", shelfLocator != null ? shelfLocator : "");
+
+        item.put("abstractShort", Item.makeShortAbstract(firstString(doc, "documentAbstract")));
+
+        String mainDisplay = firstString(doc, "mainDisplay");
+        item.put("mainDisplay", mainDisplay != null ? mainDisplay : "iiif");
+
+        item.put("unreleased", !doc.optBoolean("isReleased", true));
+
+        String rawThumbnail = itemLevelThumbnail
+            ? firstString(doc, "documentThumbnailUrl")
+            : firstString(doc, "IIIFImageURL");
+        item.put("thumbnailURL", resolveThumbnail(rawThumbnail));
+
+        String orientation = itemLevelThumbnail
+            ? firstString(doc, "documentThumbnailOrientation")
+            : firstString(doc, "thumbnailImageOrientation");
+        item.put("thumbnailOrientation", orientation != null ? orientation : "landscape");
+
+        if (doc.has("authors")) {
+            item.put("authors", doc.get("authors"));
+        }
+
+        return item;
+    }
+
+    /**
+     * Resolves a raw Solr image id (e.g. {@code MS-ADD-03958-001-00001}, with no
+     * suffix) to a display thumbnail URL, mirroring the item path's
+     * {@code {IIIFImageURL}+appendToThumbnail} then {@code imageServerURL.resolve(...)}.
+     */
+    private String resolveThumbnail(final String rawImageId) {
+        if (rawImageId == null || rawImageId.isEmpty()) {
+            return "/img/no-thumbnail.jpg";
+        }
+        return this.imageServerURL.resolve(rawImageId + this.appendToThumbnail).toString();
+    }
+
+    /**
+     * Reads the first value of a Solr field as a String. Solr returns most fields
+     * as single-element arrays but some (e.g. {@code id}, {@code isReleased}) as
+     * scalars, so both shapes are handled. Returns null when the field is absent
+     * or empty.
+     */
+    private static String firstString(final JSONObject doc, final String key) {
+        if (doc == null || !doc.has(key)) { return null; }
+        final Object value = doc.opt(key);
+        if (value == null || JSONObject.NULL.equals(value)) { return null; }
+        if (value instanceof JSONArray) {
+            final JSONArray array = (JSONArray) value;
+            return array.length() > 0 ? String.valueOf(array.get(0)) : null;
+        }
+        return String.valueOf(value);
     }
 }
