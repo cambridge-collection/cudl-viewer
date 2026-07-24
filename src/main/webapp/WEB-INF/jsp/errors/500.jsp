@@ -27,25 +27,10 @@
                             <p>
                                 Use the navigation above or or <a href="/">return to the home page</a>.
                             </p>
-<!-- 
-                            <h3>Details</h3>
-                            <p>
-                                <dl>
-                                    <dt>Message</dt>
-                                    <dd>${exception.message}</dd>
-                                </dl>
-                            </p> -->
 
-                            <p>
-                                <a href="#stacktrace" data-toggle="collapse"
-                                    class="toggle-error-traceback campl-primary-cta"
-                                    aria-expanded="false"
-                                    aria-controls="#stacktrace">More</a>
-                            </p>
-
-                            <p>
-                                <pre id="stacktrace" class="stacktrace collapse">${pageContext.out.flush();exception.printStackTrace(pageContext.response.writer)}</pre>
-                            </p>
+                            <c:if test="${not empty exception}">
+                                <pre id="stacktrace" style="display:none">${pageContext.out.flush();exception.printStackTrace(pageContext.response.writer)}</pre>
+                            </c:if>
                         </div>
                     </div>
                 </div>
