@@ -3,10 +3,8 @@ package ulcambridge.foundations.viewer.tags;
 import org.jsoup.Jsoup;
 import org.springframework.web.util.UriUtils;
 import ulcambridge.foundations.viewer.CollectionFactory;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
-import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.search.SearchUtil;
 
 /**
@@ -23,10 +21,6 @@ public final class ElFunctions {
      */
     public static Collection getCollection(CollectionFactory factory, String collectionId) {
         return factory.getCollectionFromId(collectionId);
-    }
-
-    public static Item getItem(ItemsDao itemDAO, String itemId) {
-        return itemDAO.getItem(itemId);
     }
 
     /**

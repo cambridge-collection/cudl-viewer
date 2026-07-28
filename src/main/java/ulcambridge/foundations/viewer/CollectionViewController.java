@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -21,7 +20,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controller for viewing a collection.
@@ -33,7 +33,6 @@ import java.util.Set;
 @RequestMapping("/collections")
 public class CollectionViewController {
     private final CollectionFactory collectionFactory;
-    private final ItemsDao itemDAO;
     private final Search search;
     private final String contentHtmlPath;
     private final boolean showUnreleasedContent;
@@ -44,18 +43,15 @@ public class CollectionViewController {
 
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemsDao collectionItemsDao,
                                     Search search,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
                                     @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                                     @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
-        Assert.notNull(collectionItemsDao, "itemDAO is required");
         Assert.notNull(search, "search is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemDAO = collectionItemsDao;
         this.search = search;
         this.contentHtmlPath = contentHtmlPath;
         this.showUnreleasedContent = showUnreleasedContent;
@@ -129,19 +125,10 @@ public class CollectionViewController {
             ? resolveHtmlBaseUrl(summaryPath)
             : Paths.get(contentHtmlPath).toUri().toString();
 
-        // Virtual collections render their item tiles server-side (see
-        // collection-virtual.jsp) and badge from this set. Organisation collections
-        // render via the AJAX carousel and now badge per-item from the Solr response,
-        // so we skip the expensive whole-collection filesystem scan for them.
-        Set<String> unreleasedItemIds = (showUnreleasedContent && "virtual".equals(collection.getType()))
-            ? collectionFactory.getUnreleasedItemIds(collection.getItemIds())
-            : Collections.emptySet();
-
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
         }
-        modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", iiifImageServer);
         // contentHTMLURL always points to the main pages/html directory so that
@@ -151,7 +138,20 @@ public class CollectionViewController {
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
-        modelAndView.addObject("unreleasedItemIds", unreleasedItemIds);
+
+        // Virtual collections render their item tiles server-side (see
+        // collection-virtual.jsp); source them from Solr - same as the
+        // organisation carousel's AJAX endpoint - instead of loading each
+        // item from the filesystem via ItemsDao. The Solr doc already carries
+        // per-item "unreleased" status, so no separate filesystem scan is needed.
+        if ("virtual".equals(collection.getType())) {
+            final List<Map<String, Object>> items = search
+                .getCollectionItems(collectionId, 0, collection.getItemIds().size())
+                .stream()
+                .map(JSONObject::toMap)
+                .collect(Collectors.toList());
+            modelAndView.addObject("items", items);
+        }
 
         // append a list of this collections subcollections if this is a parent.
         if ("parent".equals(collection.getType())) {

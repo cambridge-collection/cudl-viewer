@@ -124,7 +124,8 @@ public class CollectionFactory {
             if ("parent".equals(collection.getType())) {
                 collection.setSubCollections(getSubCollections(collection));
             }
-            collection.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
+            final Set<String> jsonFilesSnapshot = jsonFiles;
+            collection.getItemIds().removeIf(itemid -> !jsonFilesSnapshot.contains(itemid + ".json"));
             return collection;
         }
         return collections.get(id);
@@ -202,15 +203,6 @@ public class CollectionFactory {
             }
         }
         return result;
-    }
-
-    private boolean existsJSON(String filename) {
-        if (filename == null) { return false; }
-        if (jsonDirPath.resolve(filename).toFile().exists()) return true;
-        if (unreleasedItemJSONDirectory != null) {
-            return unreleasedItemJSONDirectory.resolve(filename).toFile().exists();
-        }
-        return false;
     }
 
     /**

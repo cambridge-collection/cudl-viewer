@@ -84,4 +84,19 @@ public class CollectionFactoryTest {
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("main-item");
     }
+
+    @Test
+    public void filtersOutItemsAbsentFromBothDirectoriesWhenCachingDisabled() throws IOException {
+        // Regression test: getCollectionFromId's caching.enabled=false path used to
+        // stat the filesystem for every item on every request (O(items) syscalls,
+        // ~142k of them for the largest production collection). It must prune
+        // against the in-memory jsonFiles snapshot instead, with identical results.
+        Files.createFile(mainJsonDir.resolve("present-item.json"));
+
+        CollectionFactory factory = new CollectionFactory(
+            daoWithItems("present-item", "absent-item"), "false", mainJsonDir, false, "");
+
+        assertThat(factory.getCollectionFromId("test-collection").getItemIds())
+            .containsExactly("present-item");
+    }
 }

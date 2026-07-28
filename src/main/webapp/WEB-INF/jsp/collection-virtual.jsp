@@ -5,7 +5,6 @@
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 
 <cudl:generic-page pagetype="STANDARD" title="${collection.title}">
@@ -35,8 +34,7 @@
                         <div class="campl-column12 virtual-collections-items">
 
                             <ol id="virtual_collections_carousel">
-                                <c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
-                                    <c:set var="item" value="${cudlfn:getItem(itemDAO, id)}"/>
+                                <c:forEach items="${items}" var="item" varStatus="loop">
 
                                     <%-- FIXME: move this inline style into CSS and apply a class here --%>
                                     <c:choose>
@@ -68,7 +66,7 @@
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>
                                                 <h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
-                                                <c:if test="${unreleasedItemIds.contains(id)}">
+                                                <c:if test="${item.unreleased}">
                                                     <span class="badge bg-warning text-dark">Unreleased</span>
                                                 </c:if>
                                                 <c:out value="${item.abstractShort}"/> &hellip;
