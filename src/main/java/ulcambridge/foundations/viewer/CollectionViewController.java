@@ -101,6 +101,21 @@ public class CollectionViewController {
         return modelAndView;
     }
 
+    /**
+     * The item total the organisation-collection carousel paginates against. The
+     * carousel's tiles come from Solr, so its total must too — the collection file on
+     * disk can list items that were never indexed, which would leave trailing pages
+     * empty. Falls back to the collection's own item count if Solr is unreachable, and
+     * skips the query entirely for collection types that don't use the carousel.
+     */
+    private int collectionSize(Collection collection) {
+        if (!"organisation".equals(collection.getType())) {
+            return collection.getItemIds().size();
+        }
+        int solrCount = search.getCollectionItemCount(collection.getId());
+        return solrCount >= 0 ? solrCount : collection.getItemIds().size();
+    }
+
     // on path /collections/{collectionId}
     @RequestMapping(value = PATH_COLLECTION_NO_PAGE)
     public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId) {
@@ -152,6 +167,7 @@ public class CollectionViewController {
         modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
         modelAndView.addObject("unreleasedItemIds", unreleasedItemIds);
+        modelAndView.addObject("collectionSize", collectionSize(collection));
 
         // append a list of this collections subcollections if this is a parent.
         if ("parent".equals(collection.getType())) {

@@ -84,4 +84,47 @@ public class CollectionFactoryTest {
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("main-item");
     }
+
+    @Test
+    public void filtersOutAbsentItemsWithCachingDisabled() throws IOException {
+        Files.createFile(mainJsonDir.resolve("present-item.json"));
+
+        CollectionFactory factory = new CollectionFactory(
+            daoWithItems("present-item", "absent-item"), "false", mainJsonDir, false, "");
+
+        assertThat(factory.getCollectionFromId("test-collection").getItemIds())
+            .containsExactly("present-item");
+    }
+
+    @Test
+    public void retainsUnreleasedOnlyItemsWithCachingDisabled() throws IOException {
+        Files.createFile(mainJsonDir.resolve("main-item.json"));
+        Files.createFile(unreleasedJsonDir.resolve("unreleased-item.json"));
+
+        CollectionFactory factory = new CollectionFactory(
+            daoWithItems("main-item", "unreleased-item"), "false", mainJsonDir,
+            true, workDir.resolve("unreleased").toString());
+
+        assertThat(factory.getCollectionFromId("test-collection").getItemIds())
+            .containsExactly("main-item", "unreleased-item");
+    }
+
+    @Test
+    public void picksUpItemsAddedAfterStartupOnlyOnceTheListingIsRefreshed() throws IOException {
+        Files.createFile(mainJsonDir.resolve("main-item.json"));
+
+        CollectionFactory factory = new CollectionFactory(
+            daoWithItems("main-item", "late-item"), "false", mainJsonDir, false, "");
+        Files.createFile(mainJsonDir.resolve("late-item.json"));
+
+        // Requests filter against the cached directory listing rather than stat-ing each
+        // item, so a file added since the last listing is not visible yet...
+        assertThat(factory.getCollectionFromId("test-collection").getItemIds())
+            .containsExactly("main-item");
+
+        // ...until the listing is rebuilt (startup, /refresh, or the RefreshCache poll).
+        factory.init(true);
+        assertThat(factory.getCollectionFromId("test-collection").getItemIds())
+            .containsExactly("main-item", "late-item");
+    }
 }

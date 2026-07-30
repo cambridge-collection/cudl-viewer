@@ -18,4 +18,10 @@ public interface Search {
      */
     public List<JSONObject> getCollectionItems(String slug, int start, int rows);
 
+    /**
+     * Returns the total number of item-level docs held for a collection, or -1 if
+     * that total is unavailable. Callers should fall back to their own count on -1.
+     */
+    public int getCollectionItemCount(String slug);
+
 }

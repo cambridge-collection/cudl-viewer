@@ -27,7 +27,8 @@ public class CollectionFactory {
     private final String cachingEnabled;
     private final Path jsonDirPath;
     private final Path unreleasedItemJSONDirectory;
-    private Set<String> jsonFiles;
+    // Read on request threads by getCollectionFromId, republished by init().
+    private volatile Set<String> jsonFiles;
 
     @Autowired
     public CollectionFactory(CollectionsDao dao,
@@ -124,11 +125,27 @@ public class CollectionFactory {
             if ("parent".equals(collection.getType())) {
                 collection.setSubCollections(getSubCollections(collection));
             }
-            collection.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
+            pruneItemsWithNoJSON(collection);
             return collection;
         }
         return collections.get(id);
 
+    }
+
+    /**
+     * Drops item ids that have no JSON on disk, checking the cached directory listing
+     * rather than stat-ing each item individually.
+     *
+     * <p>With caching disabled this runs on every collection request (page render and
+     * each carousel AJAX call), so a per-item {@code File.exists()} costs one syscall
+     * per item every time — tens of seconds for Genizah's ~142k items, which is enough
+     * to exceed a gateway timeout. The listing is rebuilt by {@link #init(boolean)} at
+     * startup and on /refresh, so newly added items appear after the next refresh.
+     */
+    private void pruneItemsWithNoJSON(Collection collection) {
+        final Set<String> snapshot = jsonFiles;
+        if (snapshot == null) { return; }
+        collection.getItemIds().removeIf(itemid -> !snapshot.contains(itemid + ".json"));
     }
 
     public List<Collection> getCollections() {
@@ -202,15 +219,6 @@ public class CollectionFactory {
             }
         }
         return result;
-    }
-
-    private boolean existsJSON(String filename) {
-        if (filename == null) { return false; }
-        if (jsonDirPath.resolve(filename).toFile().exists()) return true;
-        if (unreleasedItemJSONDirectory != null) {
-            return unreleasedItemJSONDirectory.resolve(filename).toFile().exists();
-        }
-        return false;
     }
 
     /**

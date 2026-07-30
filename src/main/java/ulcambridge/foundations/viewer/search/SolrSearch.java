@@ -425,12 +425,12 @@ public class SolrSearch implements Search {
         String shelfLocator = firstString(result, "documentShelfLocator");
         if (shelfLocator == null) { shelfLocator = ""; }
 
-        String abstractShort = Item.makeShortAbstract(firstString(result, "documentAbstract"));
+        String abstractShort = Item.makeShortAbstract(firstAbstract(result));
 
         String mainDisplay = firstString(result, "mainDisplay");
         if (mainDisplay == null) { mainDisplay = "iiif"; }
 
-        boolean released = result.optBoolean("isReleased", true);
+        boolean released = isReleased(result);
 
         String thumbnailURL = resolveThumbnail(firstString(result, "IIIFImageURL"));
 
@@ -454,15 +454,8 @@ public class SolrSearch implements Search {
      */
     @Override
     public List<JSONObject> getCollectionItems(final String slug, final int start, final int rows) {
-        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
-        uriB.queryParam("fq", "collection-slug:" + slug);
-        uriB.queryParam("fq", "itemLevel:true");
-        uriB.queryParam("sort", "collection_sort asc");
-        uriB.queryParam("start", Math.max(0, start));
-        uriB.queryParam("rows", Math.max(0, rows));
-
         final List<JSONObject> items = new ArrayList<>();
-        final JSONObject json = getJSON(uriB.toUriString());
+        final JSONObject json = getJSON(collectionItemsURL(slug, start, rows));
         if (json == null) { return items; }
 
         final JSONObject response = json.optJSONObject("response");
@@ -478,6 +471,34 @@ public class SolrSearch implements Search {
             }
         }
         return items;
+    }
+
+    /**
+     * Returns the number of item-level docs Solr holds for a collection, or -1 if
+     * Solr could not be reached. This is the total the carousel must paginate
+     * against; the collection file on disk can list items that were never indexed.
+     */
+    @Override
+    public int getCollectionItemCount(final String slug) {
+        final JSONObject json = getJSON(collectionItemsURL(slug, 0, 0));
+        if (json == null) { return -1; }
+        final JSONObject response = json.optJSONObject("response");
+        return response == null ? -1 : response.optInt("numFound", -1);
+    }
+
+    /**
+     * Query for a collection's item-level docs in collection order. Note the search
+     * API rewrites {@code collection_sort} to the collection's own sort field
+     * ({@code {slug}_sort}); Solr itself has no {@code collection_sort} field.
+     */
+    private String collectionItemsURL(final String slug, final int start, final int rows) {
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
+        uriB.queryParam("fq", "collection-slug:" + slug);
+        uriB.queryParam("fq", "itemLevel:true");
+        uriB.queryParam("sort", "collection_sort asc");
+        uriB.queryParam("start", Math.max(0, start));
+        uriB.queryParam("rows", Math.max(0, rows));
+        return uriB.toUriString();
     }
 
     /**
@@ -499,12 +520,12 @@ public class SolrSearch implements Search {
         String shelfLocator = firstString(doc, "documentShelfLocator");
         item.put("shelfLocator", shelfLocator != null ? shelfLocator : "");
 
-        item.put("abstractShort", Item.makeShortAbstract(firstString(doc, "documentAbstract")));
+        item.put("abstractShort", Item.makeShortAbstract(firstAbstract(doc)));
 
         String mainDisplay = firstString(doc, "mainDisplay");
         item.put("mainDisplay", mainDisplay != null ? mainDisplay : "iiif");
 
-        item.put("unreleased", !doc.optBoolean("isReleased", true));
+        item.put("unreleased", !isReleased(doc));
 
         String rawThumbnail = itemLevelThumbnail
             ? firstString(doc, "documentThumbnailUrl")
@@ -536,8 +557,29 @@ public class SolrSearch implements Search {
     }
 
     /**
+     * Reads an item's abstract. The index populates {@code abstract}; the
+     * {@code documentAbstract} variant is set on only a handful of docs, so it is
+     * preferred when present but cannot be relied on alone.
+     */
+    private static String firstAbstract(final JSONObject doc) {
+        final String value = firstString(doc, "documentAbstract");
+        return value != null ? value : firstString(doc, "abstract");
+    }
+
+    /**
+     * Reads an item's release flag. The index populates {@code itemReleased};
+     * {@code isReleased} is present on only a handful of docs, so it is a fallback.
+     * Absent on both means released — unreleased content is the exception.
+     */
+    private static boolean isReleased(final JSONObject doc) {
+        String value = firstString(doc, "itemReleased");
+        if (value == null) { value = firstString(doc, "isReleased"); }
+        return !"false".equalsIgnoreCase(value);
+    }
+
+    /**
      * Reads the first value of a Solr field as a String. Solr returns most fields
-     * as single-element arrays but some (e.g. {@code id}, {@code isReleased}) as
+     * as single-element arrays but some (e.g. {@code id}, {@code itemReleased}) as
      * scalars, so both shapes are handled. Returns null when the field is absent
      * or empty.
      */
