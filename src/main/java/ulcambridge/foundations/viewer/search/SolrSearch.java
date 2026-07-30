@@ -547,9 +547,8 @@ public class SolrSearch implements Search {
     }
 
     /**
-     * Reads an item's abstract. The index populates {@code abstract}; the
-     * {@code documentAbstract} variant is set on only a handful of docs, so it is
-     * preferred when present but cannot be relied on alone.
+     * Reads an item's abstract. {@code documentAbstract} is the item-level field and is
+     * preferred; {@code abstract} is the fallback for indexes built before it was added.
      */
     private static String firstAbstract(final JSONObject doc) {
         final String value = firstString(doc, "documentAbstract");
