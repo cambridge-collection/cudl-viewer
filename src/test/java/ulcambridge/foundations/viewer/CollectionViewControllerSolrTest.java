@@ -8,6 +8,7 @@ import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
 import java.nio.file.Path;
@@ -17,17 +18,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 /**
  * Verifies the collection carousel AJAX endpoint sources its tiles from Solr
- * (via {@link Search#getCollectionItems}), preserves the {@code {request, items}}
- * response shape, and no longer performs the whole-collection filesystem scan.
+ * (via {@link Search#getCollectionItems}), returns the {@code {request, items,
+ * total}} response shape, and that rendering the page itself makes no Solr query.
  */
 public class CollectionViewControllerSolrTest {
 
@@ -38,7 +38,7 @@ public class CollectionViewControllerSolrTest {
         Search search = mock(Search.class);
         JSONObject item = new JSONObject().put("id", "MS-1").put("title", "T").put("unreleased", true);
         when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
-            .thenReturn(List.of(item));
+            .thenReturn(new CollectionItemsPage(List.of(item), 1));
 
         CollectionViewController controller = new CollectionViewController(
             collectionFactory, mock(ItemsDao.class), search, "./html", false, "");
@@ -57,41 +57,44 @@ public class CollectionViewControllerSolrTest {
     }
 
     @Test
-    public void handleRequest_paginatesOrganisationCarouselAgainstSolrItemCount() {
+    public void handleItemsAjaxRequest_reportsTheSolrTotalForPagination() throws Exception {
         Search search = mock(Search.class);
-        when(search.getCollectionItemCount("genizah")).thenReturn(141368);
+        when(search.getCollectionItems(eq("genizah"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(new JSONObject().put("id", "MS-1")), 141368));
 
-        ModelAndView modelAndView = organisationController(search).handleRequest("genizah", 1);
+        String body = organisationController(search).handleItemsAjaxRequest("genizah", 0, 8);
 
         // Not the 2 ids listed in the collection file: the carousel's tiles come from
         // Solr, so its page count has to come from the same place or trailing pages
-        // render empty.
-        assertEquals(141368, modelAndView.getModel().get("collectionSize"));
+        // render empty. It rides on the response that carries the tiles.
+        assertEquals(141368, new JSONObject(body).getInt("total"));
     }
 
     @Test
-    public void handleRequest_fallsBackToCollectionItemCountWhenSolrUnavailable() {
+    public void handleItemsAjaxRequest_reportsZeroTotalWhenSolrUnavailable() throws Exception {
         Search search = mock(Search.class);
-        when(search.getCollectionItemCount("genizah")).thenReturn(-1);
+        when(search.getCollectionItems(eq("genizah"), anyInt(), anyInt()))
+            .thenReturn(CollectionItemsPage.empty());
+
+        JSONObject data = new JSONObject(
+            organisationController(search).handleItemsAjaxRequest("genizah", 0, 8));
+
+        // No items to paginate over, so no pages; must not throw or omit the field.
+        assertEquals(0, data.getInt("total"));
+        assertEquals(0, data.getJSONArray("items").length());
+    }
+
+    @Test
+    public void handleRequest_rendersTheCollectionPageWithoutQueryingSolr() {
+        // The carousel fetches its items and its total together over AJAX, so the
+        // render must not query Solr — this is where the count query used to run.
+        Search search = mock(Search.class);
 
         ModelAndView modelAndView = organisationController(search).handleRequest("genizah", 1);
 
-        assertEquals(2, modelAndView.getModel().get("collectionSize"));
-    }
-
-    @Test
-    public void handleRequest_doesNotQuerySolrForCollectionTypesWithoutACarousel() {
-        // MockCollectionsDao's collection is "virtual" — tiles are rendered server-side.
-        Search search = mock(Search.class);
-        CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", TEST_JSON_DIR, false, "");
-        CollectionViewController controller = new CollectionViewController(
-            collectionFactory, mock(ItemsDao.class), search, "./html", false, "");
-
-        ModelAndView modelAndView = controller.handleRequest("treasures", 1);
-
-        assertEquals(1, modelAndView.getModel().get("collectionSize"));
-        verify(search, never()).getCollectionItemCount(anyString());
+        assertEquals("genizah",
+            ((Collection) modelAndView.getModel().get("collection")).getId());
+        verifyNoInteractions(search);
     }
 
     private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");

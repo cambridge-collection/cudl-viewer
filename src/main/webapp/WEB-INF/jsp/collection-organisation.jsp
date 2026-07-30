@@ -11,7 +11,6 @@
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <%--<json:property name="collectionCookieName" value="${collection.id}_pageNum"/>--%>
-            <json:property name="collectionSize" value="${collectionSize}"/>
             <json:property name="collectionUrl" value="${collection.URL}"/>
             <json:property name="collectionTitle" value="${collection.title}"/>
             <json:property name="collectionPage" value="${pageNumber}"/>

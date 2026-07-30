@@ -15,6 +15,7 @@ import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
 import java.nio.file.Path;
@@ -101,21 +102,6 @@ public class CollectionViewController {
         return modelAndView;
     }
 
-    /**
-     * The item total the organisation-collection carousel paginates against. The
-     * carousel's tiles come from Solr, so its total must too — the collection file on
-     * disk can list items that were never indexed, which would leave trailing pages
-     * empty. Falls back to the collection's own item count if Solr is unreachable, and
-     * skips the query entirely for collection types that don't use the carousel.
-     */
-    private int collectionSize(Collection collection) {
-        if (!"organisation".equals(collection.getType())) {
-            return collection.getItemIds().size();
-        }
-        int solrCount = search.getCollectionItemCount(collection.getId());
-        return solrCount >= 0 ? solrCount : collection.getItemIds().size();
-    }
-
     // on path /collections/{collectionId}
     @RequestMapping(value = PATH_COLLECTION_NO_PAGE)
     public ModelAndView handleRequest(@PathVariable("collectionId") String collectionId) {
@@ -167,7 +153,6 @@ public class CollectionViewController {
         modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
         modelAndView.addObject("unreleasedItemIds", unreleasedItemIds);
-        modelAndView.addObject("collectionSize", collectionSize(collection));
 
         // append a list of this collections subcollections if this is a parent.
         if ("parent".equals(collection.getType())) {
@@ -203,7 +188,7 @@ public class CollectionViewController {
 
         // Replaces the per-item filesystem item load and the whole-collection
         // unreleased scan; unreleased badging now rides on each item's Solr data.
-        final List<JSONObject> itemsJSON =
+        final CollectionItemsPage page =
             search.getCollectionItems(collectionId, startIndex, rows);
 
         // build the request object
@@ -215,7 +200,11 @@ public class CollectionViewController {
         // build the final returned JSON data
         final JSONObject data = new JSONObject();
         data.put("request", dataRequest);
-        data.put("items", itemsJSON);
+        data.put("items", page.getItems());
+        // The carousel paginates against this rather than the collection file's item
+        // count, which can list items that were never indexed. It comes back on the
+        // same Solr response as the items, so it costs no extra query.
+        data.put("total", page.getTotal());
 
         return data.toString();
     }

@@ -157,7 +157,7 @@ public class SolrSearchTest {
 
         String[] capturedUrl = new String[1];
         List<JSONObject> items = withStubbedResponse(response, capturedUrl)
-            .getCollectionItems("newton", 8, 8);
+            .getCollectionItems("newton", 8, 8).getItems();
 
         // The query targets item-level docs in collection order, paginated.
         assertTrue(capturedUrl[0].contains("collection-slug:newton"));
@@ -192,7 +192,7 @@ public class SolrSearchTest {
                 .put("docs", new JSONArray().put(itemDoc)));
 
         List<JSONObject> items = withStubbedResponse(response, new String[1])
-            .getCollectionItems("newton", 0, 8);
+            .getCollectionItems("newton", 0, 8).getItems();
 
         assertTrue(items.get(0).getBoolean("unreleased"));
     }
@@ -205,38 +205,37 @@ public class SolrSearchTest {
                 .put("docs", new JSONArray().put(itemDoc)));
 
         List<JSONObject> items = withStubbedResponse(response, new String[1])
-            .getCollectionItems("newton", 0, 8);
+            .getCollectionItems("newton", 0, 8).getItems();
 
         assertFalse(items.get(0).getBoolean("unreleased"));
     }
 
     @Test
-    public void getCollectionItems_returnsEmptyListWhenSolrUnavailable() {
-        // getJSON returns null on IO error; must not throw.
-        List<JSONObject> items = withStubbedResponse(null, new String[1])
-            .getCollectionItems("newton", 0, 8);
-        assertTrue(items.isEmpty());
-    }
-
-    @Test
-    public void getCollectionItemCount_readsNumFoundFromACountOnlyQuery() {
+    public void getCollectionItems_reportsWholeCollectionTotalAlongsideThePage() {
+        // numFound is the collection total, not the page size: one page of 8 out of
+        // 141368. The carousel paginates against it, so it must survive the mapping.
+        JSONArray docs = new JSONArray();
+        for (int i = 0; i < 8; i++) {
+            docs.put(new JSONObject().put("fileID", "MS-ADD-0000" + i));
+        }
         JSONObject response = new JSONObject()
-            .put("response", new JSONObject().put("numFound", 141368)
-                .put("docs", new JSONArray()));
+            .put("response", new JSONObject().put("numFound", 141368).put("docs", docs));
 
-        String[] capturedUrl = new String[1];
-        int count = withStubbedResponse(response, capturedUrl).getCollectionItemCount("genizah");
+        CollectionItemsPage page = withStubbedResponse(response, new String[1])
+            .getCollectionItems("genizah", 0, 8);
 
-        assertEquals(141368, count);
-        // No documents needed, just the total for the same item-level filter.
-        assertTrue(capturedUrl[0].contains("collection-slug:genizah"));
-        assertTrue(capturedUrl[0].contains("itemLevel:true"));
-        assertTrue(capturedUrl[0].contains("rows=0"));
+        assertEquals(141368, page.getTotal());
+        assertEquals(8, page.getItems().size());
     }
 
     @Test
-    public void getCollectionItemCount_returnsMinusOneWhenSolrUnavailable() {
-        // -1 signals "unknown" so callers can fall back rather than paginate against 0.
-        assertEquals(-1, withStubbedResponse(null, new String[1]).getCollectionItemCount("genizah"));
+    public void getCollectionItems_returnsEmptyPageWhenSolrUnavailable() {
+        // getJSON returns null on IO error; must not throw. A zero total means the
+        // client renders no pagination rather than paginating over nothing.
+        CollectionItemsPage page = withStubbedResponse(null, new String[1])
+            .getCollectionItems("newton", 0, 8);
+
+        assertTrue(page.getItems().isEmpty());
+        assertEquals(0, page.getTotal());
     }
 }

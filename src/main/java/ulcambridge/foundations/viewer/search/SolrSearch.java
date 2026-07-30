@@ -448,42 +448,32 @@ public class SolrSearch implements Search {
      * for the collection carousel client. This replaces the per-item filesystem
      * item load and the whole-collection unreleased scan.
      *
-     * <p>Note: this parses only {@code response.docs}. The collection query returns
-     * no {@code highlighting} or {@code facet_counts}, so {@link #parseSearchResults}
-     * cannot be reused here.
+     * <p>Note: this parses only {@code response.docs} and {@code response.numFound}.
+     * The collection query returns no {@code highlighting} or {@code facet_counts},
+     * so {@link #parseSearchResults} cannot be reused here.
      */
     @Override
-    public List<JSONObject> getCollectionItems(final String slug, final int start, final int rows) {
-        final List<JSONObject> items = new ArrayList<>();
+    public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows) {
         final JSONObject json = getJSON(collectionItemsURL(slug, start, rows));
-        if (json == null) { return items; }
+        if (json == null) { return CollectionItemsPage.empty(); }
 
         final JSONObject response = json.optJSONObject("response");
-        if (response == null) { return items; }
-        final JSONArray docs = response.optJSONArray("docs");
-        if (docs == null) { return items; }
+        if (response == null) { return CollectionItemsPage.empty(); }
 
-        for (int i = 0; i < docs.length(); i++) {
+        // numFound is the total for the whole collection, not just this page: it is
+        // what the carousel paginates against, and it rides on this same response.
+        final int total = response.optInt("numFound", 0);
+
+        final List<JSONObject> items = new ArrayList<>();
+        final JSONArray docs = response.optJSONArray("docs");
+        for (int i = 0; docs != null && i < docs.length(); i++) {
             try {
                 items.add(itemObjectFromSolrDoc(docs.getJSONObject(i), true));
             } catch (Exception e) {
                 LOG.warn("Skipping malformed collection Solr doc at index {}: {}", i, e.getMessage());
             }
         }
-        return items;
-    }
-
-    /**
-     * Returns the number of item-level docs Solr holds for a collection, or -1 if
-     * Solr could not be reached. This is the total the carousel must paginate
-     * against; the collection file on disk can list items that were never indexed.
-     */
-    @Override
-    public int getCollectionItemCount(final String slug) {
-        final JSONObject json = getJSON(collectionItemsURL(slug, 0, 0));
-        if (json == null) { return -1; }
-        final JSONObject response = json.optJSONObject("response");
-        return response == null ? -1 : response.optInt("numFound", -1);
+        return new CollectionItemsPage(items, total);
     }
 
     /**
