@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -237,5 +238,65 @@ public class SolrSearchTest {
 
         assertTrue(page.getItems().isEmpty());
         assertEquals(0, page.getTotal());
+        // Distinguishable from a collection that simply has no indexed items, which
+        // the server-side rendered virtual pages need in order to report an outage.
+        assertFalse(page.isAvailable());
+    }
+
+    @Test
+    public void getCollectionItems_reportsAnEmptyButAnsweredCollectionAsAvailable() {
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 0).put("docs", new JSONArray()));
+
+        CollectionItemsPage page = withStubbedResponse(response, new String[1])
+            .getCollectionItems("newton", 0, 8);
+
+        assertTrue(page.getItems().isEmpty());
+        assertTrue(page.isAvailable());
+    }
+
+    @Test
+    public void getCollectionItems_retriesUnsortedWhenTheCollectionHasNoSortField() {
+        // The API rejects the sorted query with 400 when {slug}_sort does not exist,
+        // which is how a collection with no indexed items behaves. getJSON returns null
+        // for that just as it does for an outage, so the unsorted retry is what tells
+        // "empty collection" apart from "Solr is down".
+        List<String> urls = new ArrayList<>();
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+            @Override
+            protected JSONObject getJSON(String url) {
+                urls.add(url);
+                if (url.contains("sort")) { return null; }
+                return new JSONObject().put("response",
+                    new JSONObject().put("numFound", 0).put("docs", new JSONArray()));
+            }
+        };
+
+        CollectionItemsPage page = solr.getCollectionItems("arthurschnitzler", 0, 20);
+
+        assertEquals(2, urls.size());
+        assertTrue(urls.get(0).contains("sort"));
+        assertFalse(urls.get(1).contains("sort"));
+        // Answered, just empty: no outage to report.
+        assertTrue(page.isAvailable());
+        assertTrue(page.getItems().isEmpty());
+    }
+
+    @Test
+    public void getCollectionItems_isUnavailableWhenTheUnsortedRetryAlsoFails() {
+        // Both attempts failing is a real outage, not a missing sort field.
+        List<String> urls = new ArrayList<>();
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+            @Override
+            protected JSONObject getJSON(String url) {
+                urls.add(url);
+                return null;
+            }
+        };
+
+        CollectionItemsPage page = solr.getCollectionItems("treasures", 0, 20);
+
+        assertEquals(2, urls.size());
+        assertFalse(page.isAvailable());
     }
 }

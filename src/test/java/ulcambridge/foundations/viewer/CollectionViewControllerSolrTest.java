@@ -5,7 +5,6 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.search.CollectionItemsPage;
@@ -14,6 +13,7 @@ import ulcambridge.foundations.viewer.search.Search;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -41,7 +41,7 @@ public class CollectionViewControllerSolrTest {
             .thenReturn(new CollectionItemsPage(List.of(item), 1));
 
         CollectionViewController controller = new CollectionViewController(
-            collectionFactory, mock(ItemsDao.class), search, "./html", false, "");
+            collectionFactory, search, "./html", false, "");
 
         String body = controller.handleItemsAjaxRequest("treasures", 0, 8);
         JSONObject data = new JSONObject(body);
@@ -97,13 +97,101 @@ public class CollectionViewControllerSolrTest {
         verifyNoInteractions(search);
     }
 
+    @Test
+    public void handleRequest_sourcesVirtualCollectionTilesFromSolr() {
+        // Virtual collections render their first batch of tiles server-side, so that
+        // item list has to be in the model — and it comes from Solr, not from item
+        // JSON on disk.
+        Search search = mock(Search.class);
+        JSONObject item = new JSONObject()
+            .put("id", "MS-ADD-04004").put("title", "Waste Book")
+            .put("shelfLocator", "MS Add. 4004").put("abstractShort", "A notebook.")
+            .put("thumbnailURL", "http://images/MS-ADD-04004.jpg")
+            .put("thumbnailOrientation", "portrait")
+            .put("mainDisplay", "rti").put("unreleased", true);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(item), 1));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        // One batch from the start of the collection, matching what the search API
+        // serves for a single request; the client appends the rest.
+        verify(search).getCollectionItems("treasures", 0, 20);
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> items =
+            (List<Map<String, Object>>) modelAndView.getModel().get("items");
+        assertEquals(1, items.size());
+        // Exposed as maps because EL cannot read properties off a JSONObject.
+        assertEquals("MS-ADD-04004", items.get(0).get("id"));
+        assertEquals("Waste Book", items.get(0).get("title"));
+        assertEquals("MS Add. 4004", items.get(0).get("shelfLocator"));
+        assertEquals("A notebook.", items.get(0).get("abstractShort"));
+        assertEquals("http://images/MS-ADD-04004.jpg", items.get(0).get("thumbnailURL"));
+        assertEquals("portrait", items.get(0).get("thumbnailOrientation"));
+        assertEquals("rti", items.get(0).get("mainDisplay"));
+        // Badging rides on the Solr doc, replacing the per-item filesystem exists() scan.
+        assertEquals(Boolean.TRUE, items.get(0).get("unreleased"));
+        assertEquals(Boolean.FALSE, modelAndView.getModel().get("itemsUnavailable"));
+    }
+
+    @Test
+    public void handleRequest_flagsVirtualCollectionItemsUnavailableWhenSolrIsDown() {
+        // A Solr outage must be reported rather than silently rendering a collection
+        // that looks empty.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(CollectionItemsPage.empty());
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(Boolean.TRUE, modelAndView.getModel().get("itemsUnavailable"));
+        assertTrue(((List<?>) modelAndView.getModel().get("items")).isEmpty());
+    }
+
+    @Test
+    public void handleRequest_doesNotFlagAnEmptyButIndexedVirtualCollection() {
+        // Distinct from the outage above: Solr answered, this collection just has no
+        // indexed items, so there is nothing to report.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(), 0));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(Boolean.FALSE, modelAndView.getModel().get("itemsUnavailable"));
+    }
+
+    @Test
+    public void handleRequest_publishesTheSolrTotalForTheClientToAppendAgainst() {
+        // The client keeps appending batches until it has this many tiles, so it has to
+        // be Solr's total and not the collection file's, which can list items that were
+        // never indexed.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(
+                List.of(new JSONObject().put("id", "MS-1")), 425));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(425, modelAndView.getModel().get("collectionTotal"));
+        assertEquals(20, modelAndView.getModel().get("collectionBatchSize"));
+    }
+
     private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");
+
+    /** MockCollectionsDao's collection is virtual. */
+    private CollectionViewController virtualController(Search search) {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+        return new CollectionViewController(
+            collectionFactory, search, "./html", false, "");
+    }
 
     private CollectionViewController organisationController(Search search) {
         CollectionFactory collectionFactory = new CollectionFactory(
             new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, false, "");
         return new CollectionViewController(
-            collectionFactory, mock(ItemsDao.class), search, "./html", false, "");
+            collectionFactory, search, "./html", false, "");
     }
 
     /** An organisation collection whose two item ids both have JSON in test resources. */

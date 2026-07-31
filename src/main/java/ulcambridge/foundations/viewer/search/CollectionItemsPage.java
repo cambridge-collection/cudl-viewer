@@ -13,14 +13,21 @@ import java.util.List;
 public final class CollectionItemsPage {
 
     private static final CollectionItemsPage EMPTY =
-        new CollectionItemsPage(Collections.emptyList(), 0);
+        new CollectionItemsPage(Collections.emptyList(), 0, false);
 
     private final List<JSONObject> items;
     private final int total;
+    private final boolean available;
 
     public CollectionItemsPage(final List<JSONObject> items, final int total) {
+        this(items, total, true);
+    }
+
+    private CollectionItemsPage(final List<JSONObject> items, final int total,
+                                final boolean available) {
         this.items = Collections.unmodifiableList(items);
         this.total = total;
+        this.available = available;
     }
 
     /**
@@ -40,5 +47,15 @@ public final class CollectionItemsPage {
 
     public int getTotal() {
         return total;
+    }
+
+    /**
+     * False only when Solr could not be reached. A page that is available but empty
+     * means the collection has no indexed items — callers that render items
+     * server-side need to tell those two apart to report an outage without also
+     * reporting one for a genuinely empty collection.
+     */
+    public boolean isAvailable() {
+        return available;
     }
 }

@@ -5,10 +5,19 @@
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
 
-<cudl:generic-page pagetype="STANDARD" title="${collection.title}">
+<%-- Shares the organisation collections' chunk: both page types load their tiles
+     from the same itemJSON endpoint, and both bundles carry the same stylesheet. --%>
+<cudl:generic-page pagetype="COLLECTION_ORGANISATION" title="${collection.title}">
+    <jsp:attribute name="pageData">
+        <cudl:default-context>
+            <json:property name="collectionUrl" value="${collection.URL}"/>
+            <json:property name="collectionTitle" value="${collection.title}"/>
+            <json:property name="collectionTotal" value="${collectionTotal}"/>
+            <json:property name="collectionBatchSize" value="${collectionBatchSize}"/>
+        </cudl:default-context>
+    </jsp:attribute>
 
         <jsp:body>
             <cudl:nav activeMenuIndex="${1}" displaySearch="true" title="View all collections"/>
@@ -34,21 +43,30 @@
                         </div>
                         <div class="campl-column12 virtual-collections-items">
 
+                            <c:if test="${itemsUnavailable}">
+                                <div class="alert alert-warning" role="alert">
+                                    <strong>Items temporarily unavailable:</strong> this collection's
+                                    items could not be retrieved. Please try again shortly.
+                                </div>
+                            </c:if>
+
                             <ol id="virtual_collections_carousel">
-                                <c:forEach items="${collection.itemIds}" var="id" varStatus="loop">
-                                    <c:set var="item" value="${cudlfn:getItem(itemDAO, id)}"/>
+                                <%-- Tiles come from Solr (see CollectionViewController), not from
+                                     item JSON on disk, so they match the organisation carousel's.
+                                     Only the first batch is here; the rest are appended by the
+                                     client from the same itemJSON endpoint as it scrolls. --%>
+                                <c:forEach items="${items}" var="item" varStatus="loop">
 
                                     <%-- FIXME: move this inline style into CSS and apply a class here --%>
                                     <c:choose>
                                         <c:when test="${item.thumbnailOrientation == 'portrait'}">
                                             <c:set var="imageDimensions" value="height: 100%"/>
-                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}"/>
                                         </c:when>
-                                        <c:when test="${item.thumbnailOrientation == 'landscape'}">
+                                        <c:otherwise>
                                             <c:set var="imageDimensions" value="width: 100%"/>
-                                            <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}"/>
-                                        </c:when>
+                                        </c:otherwise>
                                     </c:choose>
+                                    <c:set var="thumbnailUrl" value="${fn:escapeXml(item.thumbnailURL)}"/>
 
                                     <li class="campl-column5">
                                         <div class="virtual_collections_carousel_item">
@@ -68,7 +86,7 @@
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>
                                                 <h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
-                                                <c:if test="${unreleasedItemIds.contains(id)}">
+                                                <c:if test="${item.unreleased}">
                                                     <span class="badge bg-warning text-dark">Unreleased</span>
                                                 </c:if>
                                                 <c:out value="${item.abstractShort}"/> &hellip;
@@ -79,6 +97,11 @@
                                     </li>
                                 </c:forEach>
                             </ol>
+
+                            <%-- Watched by the client; scrolling it into view appends the next
+                                 batch. Left in place with no Javascript, where it renders as
+                                 nothing and the server-rendered first batch stands alone. --%>
+                            <div id="virtual_collections_sentinel"></div>
                         </div>
 
                         <div id="sponsorDiv" class="campl-column12 virtual_collection_sponsor">

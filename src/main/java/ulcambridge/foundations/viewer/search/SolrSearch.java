@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -32,6 +33,9 @@ import java.util.*;
 public class SolrSearch implements Search {
 
     private static final Logger LOG = LoggerFactory.getLogger(SolrSearch.class.getName());
+
+    private static final int SOLR_CONNECT_TIMEOUT_MS = 5_000;
+    private static final int SOLR_READ_TIMEOUT_MS = 15_000;
 
     private final URI searchURL;
     private final URI imageServerURL;
@@ -114,10 +118,18 @@ public class SolrSearch implements Search {
 
         InputStream in = null;
         try {
-            in = new URL( url ).openStream();
+            // Timeouts are explicit because HttpURLConnection defaults to waiting
+            // indefinitely: a Solr that accepts the connection then stalls would
+            // otherwise hang a page render, and virtual collections query Solr on
+            // the render path.
+            final URLConnection connection = new URL(url).openConnection();
+            connection.setConnectTimeout(SOLR_CONNECT_TIMEOUT_MS);
+            connection.setReadTimeout(SOLR_READ_TIMEOUT_MS);
+            in = connection.getInputStream();
             return new JSONObject(IOUtils.toString( in , StandardCharsets.UTF_8));
         } catch (IOException e) {
             // error from Solr API - e.g. {"detail":"Query contains too many nested clauses; maxClauseCount is set to 1024"}
+            LOG.warn("Solr request failed: {} — {}", url, e.getMessage());
             return null;
         } finally {
             IOUtils.closeQuietly(in);
@@ -454,7 +466,15 @@ public class SolrSearch implements Search {
      */
     @Override
     public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows) {
-        final JSONObject json = getJSON(collectionItemsURL(slug, start, rows));
+        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true));
+        if (json == null) {
+            // The search API rejects the sorted query outright when the collection has
+            // no {slug}_sort field, which is the case for a collection it has never
+            // indexed any items for. Retrying unsorted tells that apart from Solr being
+            // unreachable: an answer of no items is an empty collection, not an outage.
+            LOG.info("Sorted item query failed for collection '{}'; retrying unsorted", slug);
+            json = getJSON(collectionItemsURL(slug, start, rows, false));
+        }
         if (json == null) { return CollectionItemsPage.empty(); }
 
         final JSONObject response = json.optJSONObject("response");
@@ -477,15 +497,19 @@ public class SolrSearch implements Search {
     }
 
     /**
-     * Query for a collection's item-level docs in collection order. Note the search
-     * API rewrites {@code collection_sort} to the collection's own sort field
-     * ({@code {slug}_sort}); Solr itself has no {@code collection_sort} field.
+     * Query for a collection's item-level docs, in collection order when {@code sorted}.
+     * Note the search API rewrites {@code collection_sort} to the collection's own sort
+     * field ({@code {slug}_sort}); Solr itself has no {@code collection_sort} field, and
+     * the API rejects the query when the collection's field does not exist.
      */
-    private String collectionItemsURL(final String slug, final int start, final int rows) {
+    private String collectionItemsURL(final String slug, final int start, final int rows,
+                                      final boolean sorted) {
         final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
         uriB.queryParam("fq", "collection-slug:" + slug);
         uriB.queryParam("fq", "itemLevel:true");
-        uriB.queryParam("sort", "collection_sort asc");
+        if (sorted) {
+            uriB.queryParam("sort", "collection_sort asc");
+        }
         uriB.queryParam("start", Math.max(0, start));
         uriB.queryParam("rows", Math.max(0, rows));
         return uriB.toUriString();

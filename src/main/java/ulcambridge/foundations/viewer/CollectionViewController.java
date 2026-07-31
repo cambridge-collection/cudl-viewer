@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
@@ -20,9 +19,10 @@ import ulcambridge.foundations.viewer.search.Search;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * Controller for viewing a collection.
@@ -34,7 +34,6 @@ import java.util.Set;
 @RequestMapping("/collections")
 public class CollectionViewController {
     private final CollectionFactory collectionFactory;
-    private final ItemsDao itemDAO;
     private final Search search;
     private final String contentHtmlPath;
     private final boolean showUnreleasedContent;
@@ -43,20 +42,24 @@ public class CollectionViewController {
     private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
     private static final String PATH_COLLECTION_WITH_PAGE = "/{collectionId}/{page}";
 
+    /**
+     * How many virtual collection tiles are rendered server-side, and the batch size
+     * the client appends in thereafter. 20 matches what the search API serves for a
+     * single request, so a batch never costs more than one query.
+     */
+    private static final int VIRTUAL_COLLECTION_BATCH_SIZE = 20;
+
     @Autowired
     public CollectionViewController(CollectionFactory collectionFactory,
-                                    ItemsDao collectionItemsDao,
                                     Search search,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
                                     @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                                     @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
-        Assert.notNull(collectionItemsDao, "itemDAO is required");
         Assert.notNull(search, "search is required");
         Assert.notNull(contentHtmlPath, "cudl-viewer-content.html.path is required");
 
         this.collectionFactory = collectionFactory;
-        this.itemDAO = collectionItemsDao;
         this.search = search;
         this.contentHtmlPath = contentHtmlPath;
         this.showUnreleasedContent = showUnreleasedContent;
@@ -130,19 +133,10 @@ public class CollectionViewController {
             ? resolveHtmlBaseUrl(summaryPath)
             : Paths.get(contentHtmlPath).toUri().toString();
 
-        // Virtual collections render their item tiles server-side (see
-        // collection-virtual.jsp) and badge from this set. Organisation collections
-        // render via the AJAX carousel and now badge per-item from the Solr response,
-        // so we skip the expensive whole-collection filesystem scan for them.
-        Set<String> unreleasedItemIds = (showUnreleasedContent && "virtual".equals(collection.getType()))
-            ? collectionFactory.getUnreleasedItemIds(collection.getItemIds())
-            : Collections.emptySet();
-
         modelAndView.addObject("collection", collection);
         if (collection.getMetaDescription() != null) {
             modelAndView.addObject("metaDescription", collection.getMetaDescription());
         }
-        modelAndView.addObject("itemDAO", itemDAO);
         modelAndView.addObject("collectionFactory", collectionFactory);
         modelAndView.addObject("imageServer", iiifImageServer);
         // contentHTMLURL always points to the main pages/html directory so that
@@ -152,7 +146,12 @@ public class CollectionViewController {
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
-        modelAndView.addObject("unreleasedItemIds", unreleasedItemIds);
+
+        // Virtual collections render their first batch of tiles server-side rather than
+        // waiting on AJAX, so that batch has to be in the model at render time.
+        if ("virtual".equals(collection.getType())) {
+            addVirtualCollectionItems(modelAndView, collectionId);
+        }
 
         // append a list of this collections subcollections if this is a parent.
         if ("parent".equals(collection.getType())) {
@@ -160,6 +159,35 @@ public class CollectionViewController {
             modelAndView.addObject("subCollections", subCollections);
         }
         return modelAndView;
+    }
+
+    /**
+     * Adds a virtual collection's first batch of item tiles, sourced from Solr like
+     * the organisation carousel's, so the two page types cannot disagree about an
+     * item's title, abstract, thumbnail or release state.
+     *
+     * <p>Only the first batch is rendered server-side: it keeps the page crawlable and
+     * useful without Javascript, while the client lazily appends the rest from the
+     * same {@code itemJSON} endpoint the organisation carousel uses. The items are
+     * exposed as maps because EL cannot read properties off a {@code JSONObject}.
+     */
+    private void addVirtualCollectionItems(ModelAndView modelAndView, String collectionId) {
+        final CollectionItemsPage page =
+            search.getCollectionItems(collectionId, 0, VIRTUAL_COLLECTION_BATCH_SIZE);
+
+        final List<Map<String, Object>> items = new ArrayList<>();
+        for (JSONObject item : page.getItems()) {
+            items.add(item.toMap());
+        }
+
+        modelAndView.addObject("items", items);
+        // The client appends batches until it has this many, so it has to come from
+        // Solr rather than the collection file, which can list unindexed items.
+        modelAndView.addObject("collectionTotal", page.getTotal());
+        modelAndView.addObject("collectionBatchSize", VIRTUAL_COLLECTION_BATCH_SIZE);
+        // The JSP has to tell a Solr outage apart from a collection with no indexed
+        // items: the first is a temporary error worth reporting, the second is not.
+        modelAndView.addObject("itemsUnavailable", !page.isAvailable());
     }
 
     // on path
