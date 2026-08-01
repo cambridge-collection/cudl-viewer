@@ -1,6 +1,7 @@
 package ulcambridge.foundations.viewer.model;
 
 import com.google.common.collect.ImmutableList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -124,5 +125,59 @@ public class ItemTest {
         assertThat(item.getString("thumbnailOrientation")).isEqualTo("test thumbnail orientation");
         assertThat(item.getString("imageReproPageURL")).isEqualTo("http://example.com");
         assertThat(item.getString("mainDisplay")).isEqualTo("iiif");
+    }
+
+    /**
+     * Builds an item whose first page is the given JSON, or which has no pages at all
+     * when passed null.
+     */
+    private Item itemWithFirstPage(JSONObject firstPage) {
+        JSONObject json = new JSONObject();
+        if (firstPage != null) {
+            json.put("pages", new JSONArray().put(firstPage));
+        }
+        return new Item("Test-ID", "bookormanuscript", "Test Title",
+                ImmutableList.of(getTestPerson()), "test shelfLocator", "test abstract",
+                "test thumbnail URL", "test thumbnail orientation", "http://example.com",
+                Collections.emptyList(), Collections.emptyList(), true, false, json);
+    }
+
+    @Test
+    public void releaseStateIsReadFromTheFirstPage() {
+        assertTrue(itemWithFirstPage(new JSONObject().put("isReleased", true)).isReleased());
+        assertFalse(itemWithFirstPage(new JSONObject().put("isReleased", false)).isReleased());
+    }
+
+    @Test
+    public void anItemWithNoReleaseFieldIsUnreleased() {
+        assertFalse(itemWithFirstPage(new JSONObject()).isReleased());
+        assertFalse(itemWithFirstPage(null).isReleased());
+        assertFalse(itemWithFirstPage(new JSONObject().put("isReleased", JSONObject.NULL)).isReleased());
+    }
+
+    /**
+     * The build emits a JSON boolean, but a string is the shape most likely to appear if
+     * that ever changes, and only an explicit true may read as released.
+     */
+    @Test
+    public void releaseStateToleratesAStringValued() {
+        assertTrue(itemWithFirstPage(new JSONObject().put("isReleased", "true")).isReleased());
+        assertFalse(itemWithFirstPage(new JSONObject().put("isReleased", "false")).isReleased());
+        assertFalse(itemWithFirstPage(new JSONObject().put("isReleased", "yes")).isReleased());
+    }
+
+    @Test
+    public void onlyTheFirstPageDecidesReleaseState() {
+        JSONObject json = new JSONObject();
+        json.put("pages", new JSONArray()
+            .put(new JSONObject().put("isReleased", false))
+            .put(new JSONObject().put("isReleased", true)));
+
+        Item item = new Item("Test-ID", "bookormanuscript", "Test Title",
+                ImmutableList.of(getTestPerson()), "test shelfLocator", "test abstract",
+                "test thumbnail URL", "test thumbnail orientation", "http://example.com",
+                Collections.emptyList(), Collections.emptyList(), true, false, json);
+
+        assertFalse(item.isReleased());
     }
 }

@@ -188,6 +188,8 @@
     "useTranscriptions": true,
     "pages": [
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00001.dzi",
             "imageWidth": 4421,
             "sequence": 1,
@@ -201,6 +203,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00002.dzi",
             "imageWidth": 4347,
             "sequence": 2,
@@ -214,6 +218,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00003.dzi",
             "imageWidth": 4421,
             "sequence": 3,
@@ -227,6 +233,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00004.dzi",
             "imageWidth": 4347,
             "sequence": 4,
@@ -240,6 +248,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00005.dzi",
             "imageWidth": 4421,
             "sequence": 5,
@@ -253,6 +263,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00006.dzi",
             "imageWidth": 4347,
             "sequence": 6,
@@ -266,6 +278,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00007.dzi",
             "imageWidth": 4421,
             "sequence": 7,
@@ -279,6 +293,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00008.dzi",
             "imageWidth": 4347,
             "sequence": 8,
@@ -292,6 +308,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00009.dzi",
             "imageWidth": 4421,
             "sequence": 9,
@@ -305,6 +323,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00010.dzi",
             "imageWidth": 4347,
             "sequence": 10,
@@ -318,6 +338,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00011.dzi",
             "imageWidth": 4421,
             "sequence": 11,
@@ -331,6 +353,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00012.dzi",
             "imageWidth": 4347,
             "sequence": 12,
@@ -344,6 +368,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00013.dzi",
             "imageWidth": 4421,
             "sequence": 13,
@@ -357,6 +383,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00014.dzi",
             "imageWidth": 4347,
             "sequence": 14,
@@ -370,6 +398,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00015.dzi",
             "imageWidth": 4421,
             "sequence": 15,
@@ -383,6 +413,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00016.dzi",
             "imageWidth": 4347,
             "sequence": 16,
@@ -396,6 +428,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00017.dzi",
             "imageWidth": 4421,
             "sequence": 17,
@@ -409,6 +443,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00018.dzi",
             "imageWidth": 4347,
             "sequence": 18,
@@ -422,6 +458,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00019.dzi",
             "imageWidth": 4421,
             "sequence": 19,
@@ -435,6 +473,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00020.dzi",
             "imageWidth": 4347,
             "sequence": 20,
@@ -448,6 +488,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00021.dzi",
             "imageWidth": 4421,
             "sequence": 21,
@@ -461,6 +503,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00022.dzi",
             "imageWidth": 4347,
             "sequence": 22,
@@ -474,6 +518,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00023.dzi",
             "imageWidth": 4421,
             "sequence": 23,
@@ -487,6 +533,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00024.dzi",
             "imageWidth": 4347,
             "sequence": 24,
@@ -500,6 +548,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00025.dzi",
             "imageWidth": 4421,
             "sequence": 25,
@@ -513,6 +563,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00026.dzi",
             "imageWidth": 4347,
             "sequence": 26,
@@ -526,6 +578,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00027.dzi",
             "imageWidth": 4421,
             "sequence": 27,
@@ -539,6 +593,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00028.dzi",
             "imageWidth": 4347,
             "sequence": 28,
@@ -552,6 +608,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00029.dzi",
             "imageWidth": 4421,
             "sequence": 29,
@@ -565,6 +623,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00030.dzi",
             "imageWidth": 4347,
             "sequence": 30,
@@ -578,6 +638,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00031.dzi",
             "imageWidth": 4421,
             "sequence": 31,
@@ -591,6 +653,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00032.dzi",
             "imageWidth": 4347,
             "sequence": 32,
@@ -604,6 +668,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00033.dzi",
             "imageWidth": 4421,
             "sequence": 33,
@@ -617,6 +683,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00034.dzi",
             "imageWidth": 4347,
             "sequence": 34,
@@ -630,6 +698,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00035.dzi",
             "imageWidth": 4421,
             "sequence": 35,
@@ -643,6 +713,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00036.dzi",
             "imageWidth": 4347,
             "sequence": 36,
@@ -656,6 +728,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00037.dzi",
             "imageWidth": 4421,
             "sequence": 37,
@@ -669,6 +743,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00038.dzi",
             "imageWidth": 4347,
             "sequence": 38,
@@ -682,6 +758,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00039.dzi",
             "imageWidth": 10069,
             "sequence": 39,
@@ -695,6 +773,8 @@
             "imageHeight": 7839
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00040.dzi",
             "imageWidth": 10309,
             "sequence": 40,
@@ -708,6 +788,8 @@
             "imageHeight": 7812
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00041.dzi",
             "imageWidth": 10424,
             "sequence": 41,
@@ -721,6 +803,8 @@
             "imageHeight": 7856
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00042.dzi",
             "imageWidth": 10257,
             "sequence": 42,
@@ -734,6 +818,8 @@
             "imageHeight": 7787
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00043.dzi",
             "imageWidth": 10313,
             "sequence": 43,
@@ -747,6 +833,8 @@
             "imageHeight": 7992
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00044.dzi",
             "imageWidth": 10160,
             "sequence": 44,
@@ -760,6 +848,8 @@
             "imageHeight": 7773
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00045.dzi",
             "imageWidth": 10244,
             "sequence": 45,
@@ -773,6 +863,8 @@
             "imageHeight": 7898
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00046.dzi",
             "imageWidth": 10202,
             "sequence": 46,
@@ -786,6 +878,8 @@
             "imageHeight": 7870
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00047.dzi",
             "imageWidth": 4018,
             "sequence": 47,
@@ -799,6 +893,8 @@
             "imageHeight": 4890
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00048.dzi",
             "imageWidth": 4347,
             "sequence": 48,
@@ -812,6 +908,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00049.dzi",
             "imageWidth": 4102,
             "sequence": 49,
@@ -825,6 +923,8 @@
             "imageHeight": 5466
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00050.dzi",
             "imageWidth": 5336,
             "sequence": 50,
@@ -838,6 +938,8 @@
             "imageHeight": 4330
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00051.dzi",
             "imageWidth": 5629,
             "sequence": 51,
@@ -851,6 +953,8 @@
             "imageHeight": 4449
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00052.dzi",
             "imageWidth": 5001,
             "sequence": 52,
@@ -864,6 +968,8 @@
             "imageHeight": 4081
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00053.dzi",
             "imageWidth": 4421,
             "sequence": 53,
@@ -877,6 +983,8 @@
             "imageHeight": 5742
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-001-00054.dzi",
             "imageWidth": 4347,
             "sequence": 54,
@@ -890,6 +998,8 @@
             "imageHeight": 5383
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00001.dzi",
             "imageWidth": 4027,
             "sequence": 55,
@@ -903,6 +1013,8 @@
             "imageHeight": 4881
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00002.dzi",
             "imageWidth": 4027,
             "sequence": 56,
@@ -916,6 +1028,8 @@
             "imageHeight": 4881
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00003.dzi",
             "imageWidth": 2621,
             "sequence": 57,
@@ -929,6 +1043,8 @@
             "imageHeight": 5350
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00004.dzi",
             "imageWidth": 2523,
             "sequence": 58,
@@ -942,6 +1058,8 @@
             "imageHeight": 5333
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00005.dzi",
             "imageWidth": 4142,
             "sequence": 59,
@@ -955,6 +1073,8 @@
             "imageHeight": 5185
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00006.dzi",
             "imageWidth": 4142,
             "sequence": 60,
@@ -968,6 +1088,8 @@
             "imageHeight": 5185
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00007.dzi",
             "imageWidth": 4191,
             "sequence": 61,
@@ -981,6 +1103,8 @@
             "imageHeight": 5268
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00008.dzi",
             "imageWidth": 4528,
             "sequence": 62,
@@ -994,6 +1118,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00009.dzi",
             "imageWidth": 4273,
             "sequence": 63,
@@ -1007,6 +1133,8 @@
             "imageHeight": 2925
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00010.dzi",
             "imageWidth": 4405,
             "sequence": 64,
@@ -1020,6 +1148,8 @@
             "imageHeight": 2925
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00011.dzi",
             "imageWidth": 4339,
             "sequence": 65,
@@ -1033,6 +1163,8 @@
             "imageHeight": 2942
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00012.dzi",
             "imageWidth": 4347,
             "sequence": 66,
@@ -1046,6 +1178,8 @@
             "imageHeight": 2934
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00013.dzi",
             "imageWidth": 4216,
             "sequence": 67,
@@ -1059,6 +1193,8 @@
             "imageHeight": 2819
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00014.dzi",
             "imageWidth": 2934,
             "sequence": 68,
@@ -1072,6 +1208,8 @@
             "imageHeight": 4314
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00015.dzi",
             "imageWidth": 2991,
             "sequence": 69,
@@ -1085,6 +1223,8 @@
             "imageHeight": 4388
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00016.dzi",
             "imageWidth": 3065,
             "sequence": 70,
@@ -1098,6 +1238,8 @@
             "imageHeight": 4380
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00017.dzi",
             "imageWidth": 4027,
             "sequence": 71,
@@ -1111,6 +1253,8 @@
             "imageHeight": 5054
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00018.dzi",
             "imageWidth": 4002,
             "sequence": 72,
@@ -1124,6 +1268,8 @@
             "imageHeight": 4914
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00019.dzi",
             "imageWidth": 4528,
             "sequence": 73,
@@ -1137,6 +1283,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00020.dzi",
             "imageWidth": 4528,
             "sequence": 74,
@@ -1150,6 +1298,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00021.dzi",
             "imageWidth": 4528,
             "sequence": 75,
@@ -1163,6 +1313,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00022.dzi",
             "imageWidth": 4528,
             "sequence": 76,
@@ -1176,6 +1328,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00023.dzi",
             "imageWidth": 4528,
             "sequence": 77,
@@ -1189,6 +1343,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00024.dzi",
             "imageWidth": 4528,
             "sequence": 78,
@@ -1202,6 +1358,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00025.dzi",
             "imageWidth": 3895,
             "sequence": 79,
@@ -1215,6 +1373,8 @@
             "imageHeight": 4955
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00026.dzi",
             "imageWidth": 4528,
             "sequence": 80,
@@ -1228,6 +1388,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00027.dzi",
             "imageWidth": 4010,
             "sequence": 81,
@@ -1241,6 +1403,8 @@
             "imageHeight": 5046
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00028.dzi",
             "imageWidth": 4109,
             "sequence": 82,
@@ -1254,6 +1418,8 @@
             "imageHeight": 5087
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00029.dzi",
             "imageWidth": 4528,
             "sequence": 83,
@@ -1267,6 +1433,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00030.dzi",
             "imageWidth": 4528,
             "sequence": 84,
@@ -1280,6 +1448,8 @@
             "imageHeight": 5670
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00031.dzi",
             "imageWidth": 7970,
             "sequence": 85,
@@ -1293,6 +1463,8 @@
             "imageHeight": 5747
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-002-00032.dzi",
             "imageWidth": 5841,
             "sequence": 86,
@@ -1306,6 +1478,8 @@
             "imageHeight": 8142
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00001.dzi",
             "imageWidth": 4979,
             "sequence": 87,
@@ -1319,6 +1493,8 @@
             "imageHeight": 2000
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00002.dzi",
             "imageWidth": 5074,
             "sequence": 88,
@@ -1332,6 +1508,8 @@
             "imageHeight": 1944
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00003.dzi",
             "imageWidth": 4829,
             "sequence": 89,
@@ -1345,6 +1523,8 @@
             "imageHeight": 1209
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00004.dzi",
             "imageWidth": 4916,
             "sequence": 90,
@@ -1358,6 +1538,8 @@
             "imageHeight": 1359
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00005.dzi",
             "imageWidth": 4602,
             "sequence": 91,
@@ -1371,6 +1553,8 @@
             "imageHeight": 5711
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p048v/NATP00100-p048v",
             "label": "48v",
@@ -1386,6 +1570,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p049r/NATP00100-p049r",
             "label": "49r",
@@ -1401,6 +1587,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p049v/NATP00100-p049v",
             "label": "49v",
@@ -1416,6 +1604,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p050r/NATP00100-p050r",
             "label": "50r",
@@ -1431,6 +1621,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p050v/NATP00100-p050v",
             "label": "50v",
@@ -1446,6 +1638,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00011.dzi",
             "imageWidth": 4602,
             "sequence": 97,
@@ -1459,6 +1653,8 @@
             "imageHeight": 5711
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00012.dzi",
             "imageWidth": 4602,
             "sequence": 98,
@@ -1472,6 +1668,8 @@
             "imageHeight": 5711
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p052r/NATP00100-p052r",
             "label": "52r",
@@ -1487,6 +1685,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p052v/NATP00100-p052v",
             "label": "52v",
@@ -1502,6 +1702,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00015.dzi",
             "imageWidth": 4602,
             "sequence": 101,
@@ -1515,6 +1717,8 @@
             "imageHeight": 5711
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p053v/NATP00100-p053v",
             "label": "53v",
@@ -1530,6 +1734,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p054r/NATP00100-p054r",
             "label": "54r",
@@ -1545,6 +1751,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p054v/NATP00100-p054v",
             "label": "54v",
@@ -1560,6 +1768,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p055r/NATP00100-p055r",
             "label": "55r",
@@ -1575,6 +1785,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p055v/NATP00100-p055v",
             "label": "55v",
@@ -1590,6 +1802,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p056r/NATP00100-p056r",
             "label": "56r",
@@ -1605,6 +1819,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p056v/NATP00100-p056v",
             "label": "56v",
@@ -1620,6 +1836,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p057r/NATP00100-p057r",
             "label": "57r",
@@ -1635,6 +1853,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p057v/NATP00100-p057v",
             "label": "57v",
@@ -1650,6 +1870,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p058r/NATP00100-p058r",
             "label": "58r",
@@ -1665,6 +1887,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00026.dzi",
             "imageWidth": 4602,
             "sequence": 112,
@@ -1678,6 +1902,8 @@
             "imageHeight": 5711
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p059r/NATP00100-p059r",
             "label": "59r",
@@ -1693,6 +1919,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p059v/NATP00100-p059v",
             "label": "59v",
@@ -1708,6 +1936,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4602,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p060r/NATP00100-p060r",
             "label": "60r",
@@ -1723,6 +1953,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p060v/NATP00100-p060v",
             "label": "60v",
@@ -1738,6 +1970,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p061r/NATP00100-p061r",
             "label": "61r",
@@ -1753,6 +1987,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p061v/NATP00100-p061v",
             "label": "61v",
@@ -1768,6 +2004,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p062r/NATP00100-p062r",
             "label": "62r",
@@ -1783,6 +2021,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p062v/NATP00100-p062v",
             "label": "62v",
@@ -1798,6 +2038,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p063r/NATP00100-p063r",
             "label": "63r",
@@ -1813,6 +2055,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00100-p063v/NATP00100-p063v",
             "label": "63v",
@@ -1828,6 +2072,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00037.dzi",
             "imageWidth": 4232,
             "sequence": 123,
@@ -1841,6 +2087,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00038.dzi",
             "imageWidth": 4232,
             "sequence": 124,
@@ -1854,6 +2102,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00039.dzi",
             "imageWidth": 4232,
             "sequence": 125,
@@ -1867,6 +2117,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00040.dzi",
             "imageWidth": 4232,
             "sequence": 126,
@@ -1880,6 +2132,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00041.dzi",
             "imageWidth": 4232,
             "sequence": 127,
@@ -1893,6 +2147,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00042.dzi",
             "imageWidth": 4232,
             "sequence": 128,
@@ -1906,6 +2162,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00043.dzi",
             "imageWidth": 4232,
             "sequence": 129,
@@ -1919,6 +2177,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00044.dzi",
             "imageWidth": 4232,
             "sequence": 130,
@@ -1932,6 +2192,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p068r/NATP00101-p068r",
             "label": "68r",
@@ -1947,6 +2209,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p068v/NATP00101-p068v",
             "label": "68v",
@@ -1962,6 +2226,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p069r/NATP00101-p069r",
             "label": "69r",
@@ -1977,6 +2243,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00048.dzi",
             "imageWidth": 4232,
             "sequence": 134,
@@ -1990,6 +2258,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p070r/NATP00101-p070r",
             "label": "70r",
@@ -2005,6 +2275,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p070v/NATP00101-p070v",
             "label": "70v",
@@ -2020,6 +2292,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p071r/NATP00101-p071r",
             "label": "71r",
@@ -2035,6 +2309,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00052.dzi",
             "imageWidth": 4232,
             "sequence": 138,
@@ -2048,6 +2324,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p072r/NATP00101-p072r",
             "label": "72r",
@@ -2063,6 +2341,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00054.dzi",
             "imageWidth": 4232,
             "sequence": 140,
@@ -2076,6 +2356,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p073r/NATP00101-p073r",
             "label": "73r",
@@ -2091,6 +2373,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00056.dzi",
             "imageWidth": 4232,
             "sequence": 142,
@@ -2104,6 +2388,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p074r/NATP00101-p074r",
             "label": "74r",
@@ -2119,6 +2405,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-003-00058.dzi",
             "imageWidth": 4232,
             "sequence": 144,
@@ -2132,6 +2420,8 @@
             "imageHeight": 5317
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p075r/NATP00101-p075r",
             "label": "75r",
@@ -2147,6 +2437,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p075v/NATP00101-p075v",
             "label": "75v",
@@ -2162,6 +2454,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p076r/NATP00101-p076r",
             "label": "76r",
@@ -2177,6 +2471,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4232,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00101-p076v/NATP00101-p076v",
             "label": "76v",
@@ -2192,6 +2488,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00001.dzi",
             "imageWidth": 5470,
             "sequence": 149,
@@ -2205,6 +2503,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00002.dzi",
             "imageWidth": 5470,
             "sequence": 150,
@@ -2218,6 +2518,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00003.dzi",
             "imageWidth": 5470,
             "sequence": 151,
@@ -2231,6 +2533,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00004.dzi",
             "imageWidth": 5470,
             "sequence": 152,
@@ -2244,6 +2548,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00005.dzi",
             "imageWidth": 4151,
             "sequence": 153,
@@ -2257,6 +2563,8 @@
             "imageHeight": 5470
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00006.dzi",
             "imageWidth": 5470,
             "sequence": 154,
@@ -2270,6 +2578,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00007.dzi",
             "imageWidth": 4151,
             "sequence": 155,
@@ -2283,6 +2593,8 @@
             "imageHeight": 5470
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-004-00008.dzi",
             "imageWidth": 5470,
             "sequence": 156,
@@ -2296,6 +2608,8 @@
             "imageHeight": 4151
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p081r/NATP00105-p081r",
             "label": "81r",
@@ -2311,6 +2625,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p081v/NATP00105-p081v",
             "label": "81v",
@@ -2326,6 +2642,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p082r/NATP00105-p082r",
             "label": "82r",
@@ -2341,6 +2659,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p082v/NATP00105-p082v",
             "label": "82v",
@@ -2356,6 +2676,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p083r-n/NATP00105-p083r-n",
             "label": "83r",
@@ -2371,6 +2693,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "imageWidth": 4512,
             "transcriptionNormalisedURL": "/v1/transcription/newton/normalized/external/NATP00093/NATP00105-p083v/NATP00105-p083v",
             "label": "83v",
@@ -2386,6 +2710,8 @@
             "thumbnailImageOrientation": "portrait"
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00007.dzi",
             "imageWidth": 4512,
             "sequence": 163,
@@ -2399,6 +2725,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00008.dzi",
             "imageWidth": 4512,
             "sequence": 164,
@@ -2412,6 +2740,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00009.dzi",
             "imageWidth": 4512,
             "sequence": 165,
@@ -2425,6 +2755,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00010.dzi",
             "imageWidth": 4512,
             "sequence": 166,
@@ -2438,6 +2770,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00011.dzi",
             "imageWidth": 4512,
             "sequence": 167,
@@ -2451,6 +2785,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00012.dzi",
             "imageWidth": 4512,
             "sequence": 168,
@@ -2464,6 +2800,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00013.dzi",
             "imageWidth": 4512,
             "sequence": 169,
@@ -2477,6 +2815,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00014.dzi",
             "imageWidth": 4512,
             "sequence": 170,
@@ -2490,6 +2830,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00015.dzi",
             "imageWidth": 4512,
             "sequence": 171,
@@ -2503,6 +2845,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00016.dzi",
             "imageWidth": 4512,
             "sequence": 172,
@@ -2516,6 +2860,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00017.dzi",
             "imageWidth": 4512,
             "sequence": 173,
@@ -2529,6 +2875,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00018.dzi",
             "imageWidth": 4512,
             "sequence": 174,
@@ -2542,6 +2890,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00019.dzi",
             "imageWidth": 4512,
             "sequence": 175,
@@ -2555,6 +2905,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00020.dzi",
             "imageWidth": 4512,
             "sequence": 176,
@@ -2568,6 +2920,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00021.dzi",
             "imageWidth": 4512,
             "sequence": 177,
@@ -2581,6 +2935,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00022.dzi",
             "imageWidth": 4512,
             "sequence": 178,
@@ -2594,6 +2950,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00023.dzi",
             "imageWidth": 4512,
             "sequence": 179,
@@ -2607,6 +2965,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-005-00024.dzi",
             "imageWidth": 4512,
             "sequence": 180,
@@ -2620,6 +2980,8 @@
             "imageHeight": 5642
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00001.dzi",
             "imageWidth": 4643,
             "sequence": 181,
@@ -2633,6 +2995,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00002.dzi",
             "imageWidth": 5715,
             "sequence": 182,
@@ -2646,6 +3010,8 @@
             "imageHeight": 4643
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00003.dzi",
             "imageWidth": 4643,
             "sequence": 183,
@@ -2659,6 +3025,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00004.dzi",
             "imageWidth": 4643,
             "sequence": 184,
@@ -2672,6 +3040,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00005.dzi",
             "imageWidth": 4643,
             "sequence": 185,
@@ -2685,6 +3055,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00006.dzi",
             "imageWidth": 4643,
             "sequence": 186,
@@ -2698,6 +3070,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00007.dzi",
             "imageWidth": 4643,
             "sequence": 187,
@@ -2711,6 +3085,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00008.dzi",
             "imageWidth": 4643,
             "sequence": 188,
@@ -2724,6 +3100,8 @@
             "imageHeight": 5715
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00009.dzi",
             "imageWidth": 4102,
             "sequence": 189,
@@ -2737,6 +3115,8 @@
             "imageHeight": 4495
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "displayImageURL": "/content/images/MS-ADD-03958-006-00010.dzi",
             "imageWidth": 4069,
             "sequence": 190,

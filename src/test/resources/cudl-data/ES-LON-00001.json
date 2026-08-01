@@ -222,6 +222,8 @@
     "sourceData": "/v1/metadata/essay/ES-LON-00001/",
     "pages": [
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "1",
             "physID": "PHYS-1",
             "sequence": 1,

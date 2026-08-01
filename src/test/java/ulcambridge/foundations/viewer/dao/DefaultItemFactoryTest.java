@@ -25,6 +25,7 @@ public class DefaultItemFactoryTest {
     private static final String ID_A = "MS-ADD-01809";
     private static final String ID_B = "MS-ADD-04004";
     private static final String ESSAY_ITEM_ID = "ES-LON-00001";
+    private static final String UNRELEASED_ITEM_ID = "MS-ADD-00269";
 
     private static JSONObject getTestItemJSON(String itemID) {
         String itemJSONText;
@@ -60,5 +61,15 @@ public class DefaultItemFactoryTest {
         assertNotNull(item);
         assertEquals(ID_A, item.getId());
         assertEquals("Daśāśrutaskandhasūtraṭīkā", item.getTitle());
+    }
+
+    @Test
+    public void releasedItemJSONYieldsAReleasedItem() {
+        assertTrue(createItem(ID_A).isReleased());
+    }
+
+    @Test
+    public void unreleasedItemJSONYieldsAnUnreleasedItem() {
+        assertFalse(createItem(UNRELEASED_ITEM_ID).isReleased());
     }
 }

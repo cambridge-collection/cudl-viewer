@@ -1,0 +1,611 @@
+{
+    "descriptiveMetadata": [
+        {
+            "thumbnailUrl": "MS-ADD-00269-000-00001",
+            "thumbnailOrientation": "portrait",
+            "displayImageRights": "Cambridge University Library",
+            "downloadImageRights": "Images made available for download are licensed under a Creative Commons Attribution-NonCommercial 4.0 Unported License (CC BY-NC 4.0)",
+            "imageReproPageURL": "https://imagingservices.lib.cam.ac.uk/",
+            "metadataRights": "This metadata is licensed under a Creative Commons Attribution-NonCommercial 4.0 Unported License.",
+            "transcriptionRights": "",
+            "pdfRights": "",
+            "watermarkStatement": "Cambridge University Library (CC BY-NC 4.0)",
+            "docAuthority": "",
+            "fundings": {
+                "display": true,
+                "seq": 209,
+                "label": "Funding",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "JISC",
+                        "seq": 210
+                    }
+                ]
+            },
+            "subjects": {
+                "display": true,
+                "seq": 23,
+                "listDisplay": "inline",
+                "label": "Subject(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Persian poetry--747-1500",
+                        "seq": 24,
+                        "linktype": "keyword search",
+                        "fullForm": "Persian poetry--747-1500",
+                        "authority": "Library of Congress Subject Headings",
+                        "authorityURI": "http://id.loc.gov/authorities/about.html#lcsh",
+                        "valueURI": "subject_sh85100085"
+                    },
+                    {
+                        "display": true,
+                        "displayForm": "Epic poetry, Persian",
+                        "seq": 24,
+                        "linktype": "keyword search",
+                        "fullForm": "Epic poetry, Persian",
+                        "authority": "Library of Congress Subject Headings",
+                        "authorityURI": "http://id.loc.gov/authorities/about.html#lcsh",
+                        "valueURI": "subject_sh2006007951#concept"
+                    }
+                ]
+            },
+            "dataSources": {
+                "display": true,
+                "seq": 211,
+                "label": "Data Source(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Manuscript description based on E. G. Browne: A hand-list of the Muhammadan manuscripts, including all those written in the Arabic character, preserved in the Library of the University of Cambridge. Cambridge, 1900 and E. G. Browne: A catalogue of the Persian manuscripts in the Library of the University of Cambridge. Cambridge, 1896 abbreviated by the OCIMCO project team. Image descriptions are courtesy of the <a target='_blank' class='externalLink' href='http://shahnama.caret.cam.ac.uk/new/jnama/card/cemanuscript:-393831421'>Cambridge Shahnama Project</a>. Substantial enhancements to the bibilographical and codicological decriptions have been provided by Dr. Firuza Melville of Cambridge University.",
+                        "seq": 212
+                    }
+                ]
+            },
+            "dataRevisions": {
+                "display": true,
+                "displayForm": "Yasmin Faghihi, CUDL PID Workflow",
+                "label": "Author(s) of the Record",
+                "seq": 213
+            },
+            "ID": "DOCUMENT",
+            "collections": {
+                "display": true,
+                "displayForm": "<ul class=\"collections\"><li><a href=\"/collections/islamic/1\">Islamic Manuscripts</a></li><li><a href=\"/collections/linesofthought/1\">Lines of Thought</a></li><li><a href=\"/collections/treasures/1\">Treasures of the Library</a></li></ul>",
+                "label": "Member of",
+                "seq": 4
+            },
+            "abstract": {
+                "display": false,
+                "displayForm": "<p style='text-align: justify;'> A richly illuminated and almost complete copy of the Shahnamah with less than a page missing of its prose introduction, probably copied in the 16th/17th Century C.E. The drop-shaped <a href='' onclick='store.loadPage(11);return false;'>Golkonda seal</a> on the first page appears to be that of Muhammad Quli Qutb Shah, Sultan of Golkunda, 1565-1612 with the date 1012 [1603/4 C.E.] and a later inscription dated 1091 [1610/11 C.E.]. There is no indication of when the manuscript was completed and no mention of its place of production. The <a href='' onclick='store.loadPage(11);return false;'>ex libris</a> on the first page is signed by Chas Wilkins, librarian of the East India Company with the date 15th August 1806, which indicates the manuscript's provenance.<br /><br /> The double page frontispiece depicting <a href='' onclick='store.loadPage(12);return false;'>Sulayman enthroned</a> and <a href='' onclick='store.loadPage(13);return false;'>Bilqis enthroned</a> is followed by a luxuriously executed double page illumination in gold and polychrome <a href='' onclick='store.loadPage(14);return false;'>[2v, 3r]</a>, which ornates the beginning of the introduction and also includes an <a href='' onclick='store.loadPage(14);return false;'> ex libris of a royal library</a>. The following eleven miniatures found in the text suggest an unusual choice of scenes and depict in order of their appearance: <a href='' onclick='store.loadPage(47);return false;'>Kayumars enthroned</a>, <a href='' onclick='store.loadPage(213);return false;'>Guruy executing Siyavusha</a>, <a href='' onclick='store.loadPage(263);return false;'>Kay Khusrau appointing Tus to lead an expedition to Turan</a>, <a href='' onclick='store.loadPage(318);return false;'>Kamus fighting Giv and Tus</a>, <a href='' onclick='store.loadPage(366);return false;'>a full scale battle between the armies of Iran and Turan</a>, <a href='' onclick='store.loadPage(448);return false;'>Rustam rescuing Bizhan from the pit</a>, <a href='' onclick='store.loadPage(559);return false;'>Luhrasp enthroned</a>, <a href='' onclick='store.loadPage(613);return false;'>Isfandiyar's second labour: fighting the lions</a>, <a href='' onclick='store.loadPage(683);return false;'>Rustam killing Shaghad before dying</a> and <a href='' onclick='store.loadPage(855);return false;'>Bahram Gur killing a dragon in India</a>.<br /><br /> The manuscript is bound in multi-coloured leather with gilded medallions and ornations on the <a href='' onclick='store.loadPage(1);return false;'>front</a> and <a href='' onclick='store.loadPage(1139);return false;'>back</a> cover and on the <a href='' onclick='store.loadPage(1140);return false;'>flap</a>. </p><p style='text-align: justify;'> This item was included in the Library’s 600th anniversary exhibition <a target='_blank' class='externalLink' href='https://exhibitions.lib.cam.ac.uk/linesofthought/artifacts/shahnamah/'><i>Lines of Thought: Discoveries that changed the world</i></a>. </p><p style='text-align: justify;'>Transcription produced by <a target='_blank' class='externalLink' href='https://kairawan.org/'>Kairawan AI</a></p>",
+                "label": "Abstract",
+                "seq": 12
+            },
+            "arkPid": {
+                "display": true,
+                "displayForm": "<a href=\"https://resolver.ark.lib.cam.ac.uk/ark:/12090/cula/tjp84k0rj\">ark:/12090/cula/tjp84k0rj</a>",
+                "label": "Persistent Identifier (ARK)",
+                "seq": 217
+            },
+            "authors": {
+                "display": true,
+                "seq": 39,
+                "listDisplay": "unordered",
+                "label": "Author(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Firdawsī",
+                        "seq": 40,
+                        "linktype": "keyword search",
+                        "fullForm": "Firdawsī",
+                        "shortForm": "Firdawsī",
+                        "role": "aut"
+                    }
+                ]
+            },
+            "donors": {
+                "display": true,
+                "seq": 122,
+                "label": "Donor(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "East India Company",
+                        "seq": 123,
+                        "linktype": "keyword search",
+                        "fullForm": "East India Company",
+                        "shortForm": "East India Company",
+                        "type": "org",
+                        "role": "dnr",
+                        "authority": "VIAF",
+                        "authorityURI": "http://viaf.org/",
+                        "valueURI": "http://viaf.org/viaf/152524782"
+                    }
+                ]
+            },
+            "associated": {
+                "display": true,
+                "seq": 140,
+                "listDisplay": "unordered",
+                "label": "Associated Name(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Muhammad Quli Qutb Shah, Sultan of Golkunda, 1565-1612",
+                        "seq": 141,
+                        "linktype": "keyword search",
+                        "fullForm": "Muhammad Quli Qutb Shah, Sultan of Golkunda, 1565-1612",
+                        "shortForm": "Muhammad Quli Qutb Shah, Sultan of Golkunda, 1565-1612",
+                        "type": "person",
+                        "role": "oth"
+                    }
+                ]
+            },
+            "creations": {
+                "display": true,
+                "seq": 66,
+                "value": [
+                    {
+                        "type": "creation",
+                        "dateStart": "1000-01-01",
+                        "yearStart": 1000,
+                        "dateEnd": "1610-12-31",
+                        "yearEnd": 1610,
+                        "century": [
+                            "1000s C.E.",
+                            "1100s C.E.",
+                            "1200s C.E.",
+                            "1300s C.E.",
+                            "1400s C.E.",
+                            "1500s C.E.",
+                            "1600s C.E."
+                        ],
+                        "dateRange": [
+                            "[1000-01-01 TO 1610-12-31]"
+                        ],
+                        "dateDisplay": {
+                            "display": true,
+                            "displayForm": "Not after 1019/1610 C.E.",
+                            "linktype": "keyword search",
+                            "label": "Date of Creation",
+                            "seq": 80
+                        }
+                    }
+                ]
+            },
+            "acquisitions": {
+                "display": true,
+                "seq": 203,
+                "value": [
+                    {
+                        "type": "acquisition",
+                        "dateStart": "1806-01-01",
+                        "dateEnd": "1806-12-31",
+                        "dateDisplay": {
+                            "display": true,
+                            "displayForm": "1806",
+                            "seq": 208,
+                            "label": "Date of Acquisition"
+                        }
+                    }
+                ]
+            },
+            "physicalLocation": {
+                "display": true,
+                "displayForm": "Cambridge University Library",
+                "label": "Physical Location",
+                "seq": 5
+            },
+            "shelfLocator": {
+                "display": true,
+                "displayForm": "MS Add.269",
+                "label": "Classmark",
+                "seq": 6
+            },
+            "form": {
+                "display": true,
+                "displayForm": "Codex",
+                "label": "Format",
+                "seq": 179
+            },
+            "material": {
+                "display": true,
+                "displayForm": "Oriental cream paper, thin and slightly glossy",
+                "label": "Material",
+                "seq": 178
+            },
+            "extent": {
+                "display": true,
+                "displayForm": "559 ff. Leaf height: 368 mm, width: 232 mm. Written height: 239 mm, width: 125 mm.",
+                "label": "Extent",
+                "seq": 174
+            },
+            "layouts": {
+                "display": true,
+                "seq": 191,
+                "label": "Layout",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "The text of the poem is written in 4 columns, 25 lines<a href='' onclick='store.loadPage(1);return false;'></a> Line-height height: mm.",
+                        "seq": 192
+                    }
+                ]
+            },
+            "decorations": {
+                "display": true,
+                "seq": 193,
+                "label": "Decoration",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Double page frontispiece depicting Sulayman enthroned <a href='' onclick='store.loadPage(12);return false;'>[1v]</a> and Bilqis enthroned <a href='' onclick='store.loadPage(13);return false;'>[2r]</a><br />Luxuriously executed double page shamsas in gold and polychrome containing the Baysunghur version of the prose introduction to the Shahnamah <a href='' onclick='store.loadPage(14);return false;'>[2v, 3r]</a><br />Margins decorated with feathery large blossoms in gold <a href='' onclick='store.loadPage(46);return false;'>[18v, 19r]</a><br />Unwan executed in a contrasting palette of blue, ark ultramarine blue, lilac-oinc, yellow, red, black, white and gold <a href='' onclick='store.loadPage(42);return false;'>[16v]</a><br />Text frames in red, yellow, brown and gold.<br />Headings in white or multicoloured are enclosed in rectangular frames filled in with floral design in polychrome <a href='' onclick='store.loadPage(49);return false;'>[20r]</a>.",
+                        "seq": 194
+                    }
+                ]
+            },
+            "additions": {
+                "display": true,
+                "seq": 195,
+                "label": "Additions",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "<i class='delim' style='font-style:normal; color:red'>\\</i><i class='add' style='font-style:normal;' title='This text added'></i><i class='delim' style='font-style:normal; color:red'>/</i>",
+                        "seq": 196
+                    }
+                ]
+            },
+            "bindings": {
+                "display": true,
+                "seq": 182,
+                "label": "Binding",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "<p>A multicoloured leather binding with gilded medallions and ornations. The spine was a later addition during a restoration in the 19th Century. The binding was restored in 1999-2002, when the codex underwent a throrough restoration and conservation in Cambridge University Library's Conservation Department by Kristine Rose and Deborah Farndell.</p>",
+                        "seq": 183
+                    }
+                ]
+            },
+            "provenances": {
+                "display": true,
+                "seq": 197,
+                "label": "Provenance",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "The <a href='' onclick='store.loadPage(11);return false;'>ex libris</a> on the first page is signed by Chas Wilkins, librarian of the East India Company with the date 15th August 1806.",
+                        "seq": 198
+                    }
+                ]
+            },
+            "acquisitionTexts": {
+                "display": true,
+                "seq": 201,
+                "label": "Acquisition",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Donated by the East India Company in 1806.",
+                        "seq": 202
+                    }
+                ]
+            },
+            "bibliographies": {
+                "display": true,
+                "seq": 215,
+                "label": "Bibliography",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "<p><b>Manuscripts</b></p><div style='list-style-type: disc;'><div style='display: list-item; margin-left: 20px;'>Cambridge,Cambridge University Library: Nn.1.20, Add.312, Add.835. </div></div><br /><p><b>Descriptions of the manuscript</b></p><div style='list-style-type: disc;'><div style='display: list-item; margin-left: 20px;' id=\"Arberry1900\">Cambridge University Library, <i>A hand-list of the Muḥammadan manuscripts: including all those written in the Arabic character, preserved in the library of the University of Cambridge</i> contributor: Edward Granville Browne (Cambridge: University Press, 1900) pp. 69.</div><div style='display: list-item; margin-left: 20px;' id=\"Browne1896\">Cambridge University Library, <i>A catalogue of the Persian manuscripts in the library of the University of Cambridge</i> contributor: Edward Granville Browne (Cambridge: University Press, 1896) pp. 305.</div></div><br />",
+                        "seq": 216
+                    }
+                ]
+            },
+            "title": {
+                "display": false,
+                "displayForm": "Shāhnāmah",
+                "label": "Title",
+                "seq": 11
+            },
+            "uniformTitle": {
+                "display": true,
+                "displayForm": "شاهنامه",
+                "label": "Uniform Title",
+                "seq": 21
+            },
+            "languageCodes": [
+                "per"
+            ],
+            "languages": [
+                "Persian"
+            ],
+            "languageStrings": {
+                "display": true,
+                "seq": 120,
+                "label": "Language(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Persian",
+                        "seq": 121
+                    }
+                ]
+            },
+            "excerpts": {
+                "display": true,
+                "displayForm": "<div><b>Incipit:</b> <a href='' onclick='store.loadPage(42);return false;'>[16v]</a>بنام خداوند جهان خرد کزین برتر اندیشه برنگذرد</div><div><b>Explicit:</b> <a href='' onclick='store.loadPage(1127);return false;'>[559r]</a>هرآنکس که دارد هش و رای دین پساز مرگ بر من کند آفرین.</div><div><b>Colophon:</b> <a href='' onclick='store.loadPage(1127);return false;'>[559r]</a> تمام شد کتاب شاهنامه حکیم فردوسی طوسی علیه الرحمة و الغرفان.</div>",
+                "label": "Excerpts",
+                "seq": 214
+            }
+        },
+        {
+            "ID": "ITEM-2",
+            "title": {
+                "display": true,
+                "displayForm": "Frontispiece depicting Sulayman enthroned",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-3",
+            "title": {
+                "display": true,
+                "displayForm": "Frontispiece depicting Bilqis enthroned",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-4",
+            "title": {
+                "display": true,
+                "displayForm": "Decorated prose introduction",
+                "label": "Title",
+                "seq": 11
+            },
+            "excerpts": {
+                "display": true,
+                "displayForm": "<div><b>Incipit:</b> افتتاح سخن آن که کند اهل کمال</div>",
+                "label": "Excerpts",
+                "seq": 214
+            }
+        },
+        {
+            "ID": "ITEM-5",
+            "title": {
+                "display": true,
+                "displayForm": "Continuation of the prose introduction following a gap after the decorated introduction",
+                "label": "Title",
+                "seq": 11
+            },
+            "excerpts": {
+                "display": true,
+                "displayForm": "<div><b>Incipit:</b> فریدون خورسید جمشید شان</div>",
+                "label": "Excerpts",
+                "seq": 214
+            }
+        },
+        {
+            "ID": "ITEM-6",
+            "title": {
+                "display": true,
+                "displayForm": "کتاب شاهنامه من کلام فردوسی",
+                "label": "Title",
+                "seq": 11
+            },
+            "alternativeTitles": {
+                "display": true,
+                "seq": 17,
+                "label": "Alternative Title(s)",
+                "value": [
+                    {
+                        "display": true,
+                        "displayForm": "Title page and beginning of the poem",
+                        "seq": 18
+                    }
+                ]
+            },
+            "excerpts": {
+                "display": true,
+                "displayForm": "<div><b>Incipit, basmallah:</b> بنام خداوند جهان خرد کزین برتر اندیشه برنگذرد</div>",
+                "label": "Excerpts",
+                "seq": 214
+            }
+        },
+        {
+            "ID": "ITEM-7",
+            "title": {
+                "display": true,
+                "displayForm": "Kayumars enthroned",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-8",
+            "title": {
+                "display": true,
+                "displayForm": "Guruy executing Siyavusha",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-9",
+            "title": {
+                "display": true,
+                "displayForm": "Kay Khusrau appointing Tus to lead an expedition to Turan",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-10",
+            "title": {
+                "display": true,
+                "displayForm": "Kamus fighting Giv and Tus",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-11",
+            "title": {
+                "display": true,
+                "displayForm": "A full scale battle between the armies of Iran and Turan",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-12",
+            "title": {
+                "display": true,
+                "displayForm": "Rustam rescuing Bizhan from the pit",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-13",
+            "title": {
+                "display": true,
+                "displayForm": "Piran escapes from Gudarz up the mountainside",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-14",
+            "title": {
+                "display": true,
+                "displayForm": "Luhrasp enthroned",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-15",
+            "title": {
+                "display": true,
+                "displayForm": "Isfandiyar's second labour: fighting the lions",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-16",
+            "title": {
+                "display": true,
+                "displayForm": "Rustam killing Shaghad before dying",
+                "label": "Title",
+                "seq": 11
+            }
+        },
+        {
+            "ID": "ITEM-17",
+            "title": {
+                "display": true,
+                "displayForm": "Bahram Gur killing a dragon in India",
+                "label": "Title",
+                "seq": 11
+            }
+        }
+    ],
+    "fileID": "MS-ADD-00269",
+    "teiSha256": "323f431a1c6c461f104716ca358bf2e10e44bc0989d5e69c962962a2a2b2e90d",
+    "collection": [
+        {
+            "url-slug": "islamic",
+            "name-short": "Islamic Manuscripts",
+            "sort": {
+                "name": "islamic_sort",
+                "value": "000057"
+            }
+        },
+        {
+            "url-slug": "linesofthought",
+            "name-short": "Lines of Thought",
+            "sort": {
+                "name": "linesofthought_sort",
+                "value": "000001"
+            }
+        },
+        {
+            "url-slug": "treasures",
+            "name-short": "Treasures of the Library",
+            "sort": {
+                "name": "treasures_sort",
+                "value": "000001"
+            }
+        }
+    ],
+    "numberOfPages": 3,
+    "embeddable": true,
+    "textDirection": "L",
+    "useTranscriptions": true,
+    "useDiplomaticTranscriptions": true,
+    "sourceData": "/v1/metadata/tei/MS-ADD-00269/",
+    "arkcam": [
+        {
+            "name": "cudl",
+            "value": "ark:/12090/cula/tjp84k0rj"
+        },
+        {
+            "name": "tei",
+            "value": "ark:/12090/cula/6053ps1pr"
+        },
+        {
+            "name": "iiif",
+            "value": "ark:/12090/cula/j6nc4qzcb"
+        }
+    ],
+    "pages": [
+        {
+            "id": "MS-ADD-00269-1",
+            "label": "cover",
+            "physID": "PHYS-1",
+            "sequence": 1,
+            "itemURL": "MS-ADD-00269/1",
+            "IIIFImageURL": "MS-ADD-00269-000-00001",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 7247,
+            "imageHeight": 10100,
+            "isReleased": false,
+            "itemStatus": "draft",
+            "itemReleased": false
+        },
+        {
+            "id": "MS-ADD-00269-2",
+            "label": "cover (inside)",
+            "physID": "PHYS-2",
+            "sequence": 2,
+            "itemURL": "MS-ADD-00269/2",
+            "IIIFImageURL": "MS-ADD-00269-000-00002",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 6365,
+            "imageHeight": 9841,
+            "isReleased": false,
+            "itemStatus": "draft"
+        },
+        {
+            "id": "MS-ADD-00269-3",
+            "label": "[unnumbered page]r",
+            "physID": "PHYS-3",
+            "sequence": 3,
+            "itemURL": "MS-ADD-00269/3",
+            "IIIFImageURL": "MS-ADD-00269-000-00003",
+            "thumbnailImageOrientation": "portrait",
+            "imageWidth": 6365,
+            "imageHeight": 9968,
+            "isReleased": false,
+            "itemStatus": "draft"
+        }
+    ]
+}

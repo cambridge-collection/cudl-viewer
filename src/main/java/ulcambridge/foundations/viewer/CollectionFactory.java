@@ -204,24 +204,6 @@ public class CollectionFactory {
     }
 
     /**
-     * Returns the subset of the given item IDs whose JSON exists only in the
-     * unreleased directory (i.e. not yet present in the main item JSON directory).
-     * Items that exist in both directories are treated as released.
-     */
-    public Set<String> getUnreleasedItemIds(List<String> itemIds) {
-        if (unreleasedItemJSONDirectory == null) return Collections.emptySet();
-        Set<String> result = new HashSet<>();
-        for (String id : itemIds) {
-            String filename = id + ".json";
-            if (!jsonDirPath.resolve(filename).toFile().exists()
-                    && unreleasedItemJSONDirectory.resolve(filename).toFile().exists()) {
-                result.add(id);
-            }
-        }
-        return result;
-    }
-
-    /**
      * Careful with this, it can be expensive to build a list of all items on disk.
      * @return
      */

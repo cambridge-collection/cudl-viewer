@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
+import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Items;
 
 import java.net.URI;
@@ -57,7 +60,8 @@ public class DocumentViewControllerTest {
             rootUri,
             iiifImageServer,
             downloadSizes,
-            socialImageDimensions
+            socialImageDimensions,
+            false
         );
 
         ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
@@ -69,6 +73,57 @@ public class DocumentViewControllerTest {
         assertNotNull(mDoc.getModelMap().get("downloadSizes"));
         assertEquals(new HashMap<>(), mDoc.getModelMap().get("downloadSizes"));
         Assertions.assertNull(mDoc.getModelMap().get("socialImageDimensions"));
+    }
+
+    private ModelAndView renderItem(Item item, boolean showUnreleasedContent) {
+        when(itemsDao.getItem(ITEM_ID)).thenReturn(item);
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setRequestURI("/view/" + ITEM_ID);
+
+        DocumentViewController c = new DocumentViewController(
+            new CollectionFactory(new MockCollectionsDao(), "true",
+                Path.of("src/test/resources/cudl-data/"), false, ""),
+            itemsDao,
+            URI.create("http://testurl.testingisthebest.com:8080"),
+            URI.create("http://images.digital.library.example.com/iiif/"),
+            Optional.empty(),
+            Optional.empty(),
+            showUnreleasedContent
+        );
+
+        return c.handleRequest(ITEM_ID, req);
+    }
+
+    /**
+     * The notice is driven by the item JSON, not by which directory the file was loaded
+     * from, so an item with no isReleased is reported unreleased.
+     */
+    @Test
+    public void itemUnreleasedComesFromTheItemJSON() {
+        assertEquals(true, renderItem(Items.getExampleItem(ITEM_ID), true)
+            .getModelMap().get("itemUnreleased"));
+    }
+
+    @Test
+    public void releasedItemIsNotReportedUnreleased() {
+        JSONObject json = new JSONObject().put("pages",
+            new JSONArray().put(new JSONObject().put("isReleased", true)));
+
+        assertEquals(false, renderItem(Items.getExampleItem(ITEM_ID, json), true)
+            .getModelMap().get("itemUnreleased"));
+    }
+
+    /**
+     * The item now loads whatever the flag says, so the flag has to reach the JSP for it
+     * to gate the notice.
+     */
+    @Test
+    public void theFlagReachesTheModelSoTheNoticeCanBeGated() {
+        assertEquals(true, renderItem(Items.getExampleItem(ITEM_ID), true)
+            .getModelMap().get("showUnreleasedContent"));
+        assertEquals(false, renderItem(Items.getExampleItem(ITEM_ID), false)
+            .getModelMap().get("showUnreleasedContent"));
     }
 
 }
