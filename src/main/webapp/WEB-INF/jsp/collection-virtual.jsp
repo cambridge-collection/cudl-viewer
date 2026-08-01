@@ -27,7 +27,7 @@
                 <div class="campl-wrap clearfix">
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
-                        <c:if test="${collection.unreleased}">
+                        <c:if test="${showUnreleasedContent and collection.unreleased}">
                             <div class="alert alert-warning" role="alert">
                                 <strong>Unreleased content:</strong> This collection is not yet publicly available.
                             </div>

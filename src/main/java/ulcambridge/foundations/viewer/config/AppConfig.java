@@ -148,13 +148,14 @@ public class AppConfig {
         @Bean
         @Qualifier("itemJSONLoader")
         public JSONLoader itemJSONLoader(@Qualifier("itemJSON") Path itemJSONDirectory,
-                                         @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                                          @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
             FilesystemDirectoryJSONLoader primary = new FilesystemDirectoryJSONLoader(itemJSONDirectory);
-            // When unreleased content is enabled, wrap the primary loader with a
-            // FallbackJSONLoader so items absent from the main directory are
-            // transparently served from the unreleased directory instead.
-            if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+            // Wrap the primary loader with a FallbackJSONLoader so items absent from the
+            // main directory are transparently served from the unreleased directory.
+            // Not gated on showUnreleasedContent: an unreleased item page stays reachable
+            // whatever the flag says, as an unreleased collection page does. The flag
+            // gates the notice at the render site instead.
+            if (!unreleasedDataDirectory.isBlank()) {
                 Path unreleasedJsonDir = Path.of(unreleasedDataDirectory).resolve("json");
                 if (Files.isDirectory(unreleasedJsonDir)) {
                     return new FallbackJSONLoader(primary, new FilesystemDirectoryJSONLoader(unreleasedJsonDir));
@@ -243,16 +244,18 @@ public class AppConfig {
         public CollectionsDao getCollectionsDao(@Qualifier("datasetFile") File datasetFile,
                                                 @Value("${dataUIFile}") String uiFilepath,
                                                 @Value("${caching.enabled:true}") String cachingEnabled,
-                                                @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                                                 @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) throws IOException {
+            // Not gated on showUnreleasedContent: the collections load either way and
+            // their release state comes from their own JSON. The flag gates the badge
+            // and the notice at the render sites instead.
             Path unreleasedCollectionsDir = null;
-            if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+            if (!unreleasedDataDirectory.isBlank()) {
                 Path candidate = Path.of(unreleasedDataDirectory).resolve("collections");
                 if (Files.isDirectory(candidate)) {
                     unreleasedCollectionsDir = candidate;
                 }
             }
-            return new CollectionsJSONDao(datasetFile, uiFilepath, cachingEnabled, showUnreleasedContent, unreleasedCollectionsDir);
+            return new CollectionsJSONDao(datasetFile, uiFilepath, cachingEnabled, unreleasedCollectionsDir);
         }
 
     }

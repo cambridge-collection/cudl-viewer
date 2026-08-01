@@ -53,33 +53,38 @@ public class CollectionFactoryTest {
         Files.createFile(mainJsonDir.resolve("present-item.json"));
 
         CollectionFactory factory = new CollectionFactory(
-            daoWithItems("present-item", "absent-item"), "true", mainJsonDir, false, "");
+            daoWithItems("present-item", "absent-item"), "true", mainJsonDir, "");
 
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("present-item");
     }
 
+    /**
+     * The unreleased listing is merged whatever showUnreleasedContent says, so an
+     * unreleased item keeps its id in the collection and hence its breadcrumb, its place
+     * in the IIIF collection, and its entry in the homepage count and sitemap.xml.
+     */
     @Test
-    public void retainsItemsPresentOnlyInUnreleasedDirWhenEnabled() throws IOException {
+    public void retainsItemsPresentOnlyInUnreleasedDir() throws IOException {
         Files.createFile(mainJsonDir.resolve("main-item.json"));
         Files.createFile(unreleasedJsonDir.resolve("unreleased-item.json"));
 
         String unreleasedDataDir = workDir.resolve("unreleased").toString();
         CollectionFactory factory = new CollectionFactory(
-            daoWithItems("main-item", "unreleased-item"), "true", mainJsonDir,
-            true, unreleasedDataDir);
+            daoWithItems("main-item", "unreleased-item"), "true", mainJsonDir, unreleasedDataDir);
 
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("main-item", "unreleased-item");
     }
 
+    /** Only an unconfigured unreleased directory drops those items now. */
     @Test
-    public void removesItemsPresentOnlyInUnreleasedDirWhenDisabled() throws IOException {
+    public void removesItemsPresentOnlyInUnreleasedDirWhenNoUnreleasedDirIsConfigured() throws IOException {
         Files.createFile(mainJsonDir.resolve("main-item.json"));
         Files.createFile(unreleasedJsonDir.resolve("unreleased-item.json"));
 
         CollectionFactory factory = new CollectionFactory(
-            daoWithItems("main-item", "unreleased-item"), "true", mainJsonDir, false, "");
+            daoWithItems("main-item", "unreleased-item"), "true", mainJsonDir, "");
 
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("main-item");
@@ -90,7 +95,7 @@ public class CollectionFactoryTest {
         Files.createFile(mainJsonDir.resolve("present-item.json"));
 
         CollectionFactory factory = new CollectionFactory(
-            daoWithItems("present-item", "absent-item"), "false", mainJsonDir, false, "");
+            daoWithItems("present-item", "absent-item"), "false", mainJsonDir, "");
 
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("present-item");
@@ -103,7 +108,7 @@ public class CollectionFactoryTest {
 
         CollectionFactory factory = new CollectionFactory(
             daoWithItems("main-item", "unreleased-item"), "false", mainJsonDir,
-            true, workDir.resolve("unreleased").toString());
+            workDir.resolve("unreleased").toString());
 
         assertThat(factory.getCollectionFromId("test-collection").getItemIds())
             .containsExactly("main-item", "unreleased-item");
@@ -114,7 +119,7 @@ public class CollectionFactoryTest {
         Files.createFile(mainJsonDir.resolve("main-item.json"));
 
         CollectionFactory factory = new CollectionFactory(
-            daoWithItems("main-item", "late-item"), "false", mainJsonDir, false, "");
+            daoWithItems("main-item", "late-item"), "false", mainJsonDir, "");
         Files.createFile(mainJsonDir.resolve("late-item.json"));
 
         // Requests filter against the cached directory listing rather than stat-ing each

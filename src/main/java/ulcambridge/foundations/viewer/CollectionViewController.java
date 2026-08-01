@@ -69,17 +69,19 @@ public class CollectionViewController {
     /**
      * Returns the base URL directory that contains the given collection HTML file
      * (e.g. {@code collections/newton/summary.html}). Checks the main pages/html
-     * directory first; if the file is absent and unreleased content is enabled,
-     * falls back to the unreleased pages/html directory. This lets collection
-     * summary and sponsor pages be served from the unreleased data without
-     * changing where general pages (footer, etc.) are looked up.
+     * directory first and falls back to the unreleased pages/html directory. This
+     * lets collection summary and sponsor pages be served from the unreleased data
+     * without changing where general pages (footer, etc.) are looked up.
+     *
+     * <p>Not gated on {@code showUnreleasedContent}: an unreleased collection page
+     * stays reachable whatever the flag says, so it needs its summary either way.
      */
     private String resolveHtmlBaseUrl(String relativePath) {
         Path mainFile = Paths.get(contentHtmlPath, relativePath);
         if (mainFile.toFile().exists()) {
             return Paths.get(contentHtmlPath).toUri().toString();
         }
-        if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+        if (!unreleasedDataDirectory.isBlank()) {
             Path unreleasedBase = Path.of(unreleasedDataDirectory, "pages", "html");
             if (unreleasedBase.resolve(relativePath).toFile().exists()) {
                 return unreleasedBase.toUri().toString();
@@ -101,6 +103,9 @@ public class CollectionViewController {
 
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collections", collections);
+        // Unreleased collections are listed whatever this deployment shows, so the
+        // badge gates on the flag rather than on the collection being absent.
+        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
 
         return modelAndView;
     }
@@ -146,6 +151,9 @@ public class CollectionViewController {
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collectionHTMLURL", collectionHtmlBase);
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
+        // Both page types carry the collection-level notice, and the virtual one also
+        // gates its tiles on this, so it belongs here rather than with the tiles.
+        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
 
         // Virtual collections render their first batch of tiles server-side rather than
         // waiting on AJAX, so that batch has to be in the model at render time.
@@ -181,10 +189,6 @@ public class CollectionViewController {
         }
 
         modelAndView.addObject("items", items);
-        // Solr reports an item's release state whatever this deployment shows, so the
-        // server-rendered tiles gate their badge on the flag, as the client does for
-        // the batches it appends.
-        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
         // The client appends batches until it has this many, so it has to come from
         // Solr rather than the collection file, which can list unindexed items.
         modelAndView.addObject("collectionTotal", page.getTotal());

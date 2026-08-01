@@ -31,8 +31,16 @@ public class Collection implements Comparable<Collection> {
      */
     private String metaDescription;
 
-    /** True when this collection was loaded from the unreleased data directory. */
-    private boolean unreleased = false;
+    /**
+     * Release state read from the collection JSON. Absent means unreleased: a
+     * collection built without the field must not be presented as public.
+     */
+    private boolean released = false;
+
+    /** The collection-level spelling of {@code itemStatus}. Absent means draft. */
+    private String status = DEFAULT_STATUS;
+
+    public static final String DEFAULT_STATUS = "draft";
 
     /**
      * Constructor for a Collection setting the metaDescription to null.
@@ -114,12 +122,25 @@ public class Collection implements Comparable<Collection> {
         return metaDescription;
     }
 
-    public boolean isUnreleased() {
-        return unreleased;
+    public boolean isReleased() {
+        return released;
     }
 
-    public void setUnreleased(boolean unreleased) {
-        this.unreleased = unreleased;
+    public boolean isUnreleased() {
+        return !released;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * Sets the release state read from the collection JSON. A null or blank status
+     * falls back to {@link #DEFAULT_STATUS} so callers can pass the raw value.
+     */
+    public void setReleaseState(boolean released, String status) {
+        this.released = released;
+        this.status = (status == null || status.isBlank()) ? DEFAULT_STATUS : status;
     }
 
     public void setSubCollections(List<Collection> subCollections) {

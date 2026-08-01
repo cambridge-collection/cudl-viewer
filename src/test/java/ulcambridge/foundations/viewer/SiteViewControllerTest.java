@@ -18,7 +18,7 @@ public class SiteViewControllerTest {
 
     private SiteViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
 
         return new SiteViewController(collectionFactory, "./html", null);
     }

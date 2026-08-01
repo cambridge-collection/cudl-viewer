@@ -34,7 +34,7 @@ public class CollectionViewControllerSolrTest {
     @Test
     public void handleItemsAjaxRequest_sourcesTilesFromSolrAndPreservesShape() throws Exception {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
         Search search = mock(Search.class);
         JSONObject item = new JSONObject().put("id", "MS-1").put("title", "T").put("unreleased", true);
         when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
@@ -177,21 +177,58 @@ public class CollectionViewControllerSolrTest {
         assertEquals(20, modelAndView.getModel().get("collectionBatchSize"));
     }
 
+    /**
+     * The collection notice lives on both page types, and an unreleased collection now
+     * loads whatever the flag says, so the gate has to reach the organisation page too —
+     * not only the virtual one, where it used to ride along with the tiles.
+     */
+    @Test
+    public void handleRequest_publishesTheFlagToBothCollectionPageTypes() {
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(), 0));
+
+        assertEquals(Boolean.FALSE,
+            organisationController(search).handleRequest("genizah", 1)
+                .getModel().get("showUnreleasedContent"));
+        assertEquals(Boolean.TRUE,
+            organisationController(search, true).handleRequest("genizah", 1)
+                .getModel().get("showUnreleasedContent"));
+        assertEquals(Boolean.FALSE,
+            virtualController(search).handleRequest("treasures", 1)
+                .getModel().get("showUnreleasedContent"));
+    }
+
+    /** The listing badges unreleased collections, which are now listed either way. */
+    @Test
+    public void handleViewRequest_publishesTheFlagToTheCollectionsListing() throws Exception {
+        Search search = mock(Search.class);
+
+        assertEquals(Boolean.FALSE, organisationController(search)
+            .handleViewRequest().getModel().get("showUnreleasedContent"));
+        assertEquals(Boolean.TRUE, organisationController(search, true)
+            .handleViewRequest().getModel().get("showUnreleasedContent"));
+    }
+
     private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");
 
     /** MockCollectionsDao's collection is virtual. */
     private CollectionViewController virtualController(Search search) {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
         return new CollectionViewController(
             collectionFactory, search, "./html", false, "");
     }
 
     private CollectionViewController organisationController(Search search) {
+        return organisationController(search, false);
+    }
+
+    private CollectionViewController organisationController(Search search, boolean showUnreleasedContent) {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, false, "");
+            new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, "");
         return new CollectionViewController(
-            collectionFactory, search, "./html", false, "");
+            collectionFactory, search, "./html", showUnreleasedContent, "");
     }
 
     /** An organisation collection whose two item ids both have JSON in test resources. */

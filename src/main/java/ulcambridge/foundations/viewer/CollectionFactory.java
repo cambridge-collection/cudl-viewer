@@ -34,17 +34,19 @@ public class CollectionFactory {
     public CollectionFactory(CollectionsDao dao,
                              @Value("${caching.enabled:true}") String cachingEnabled,
                              @Qualifier("itemJSON") Path jsonDirPath,
-                             @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                              @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(dao, "CollectionsDao cannot be null");
         Assert.notNull(jsonDirPath, "itemJSONDirectory should not be null");
         this.cachingEnabled = cachingEnabled;
         this.jsonDirPath = jsonDirPath;
 
-        // Resolve the unreleased item JSON directory once at startup.
-        // Null means unreleased content is disabled or the directory is absent.
+        // Resolve the unreleased item JSON directory once at startup. Null means no
+        // unreleased directory is configured or it is absent. Not gated on
+        // showUnreleasedContent: an unreleased item keeps its id in the collection, so
+        // its page keeps its breadcrumb and it stays present in the IIIF collection,
+        // the homepage count and sitemap.xml. The flag gates the notice, not the data.
         Path unreleasedPath = null;
-        if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+        if (!unreleasedDataDirectory.isBlank()) {
             Path candidate = Path.of(unreleasedDataDirectory).resolve("json");
             if (Files.isDirectory(candidate)) {
                 unreleasedPath = candidate;

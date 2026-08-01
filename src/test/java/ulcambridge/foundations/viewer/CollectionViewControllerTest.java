@@ -61,7 +61,7 @@ public class CollectionViewControllerTest {
 
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
         // MockCollectionsDao's collection is virtual, so rendering it fetches its
         // first batch of tiles from Solr.
         Search search = mock(Search.class);

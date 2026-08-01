@@ -55,7 +55,7 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao, "true", Path.of("src/test/resources/cudl-data/"), false, ""),
+            new CollectionFactory(collectionsdao, "true", Path.of("src/test/resources/cudl-data/"), ""),
             itemsDao,
             rootUri,
             iiifImageServer,
@@ -83,7 +83,7 @@ public class DocumentViewControllerTest {
 
         DocumentViewController c = new DocumentViewController(
             new CollectionFactory(new MockCollectionsDao(), "true",
-                Path.of("src/test/resources/cudl-data/"), false, ""),
+                Path.of("src/test/resources/cudl-data/"), ""),
             itemsDao,
             URI.create("http://testurl.testingisthebest.com:8080"),
             URI.create("http://images.digital.library.example.com/iiif/"),

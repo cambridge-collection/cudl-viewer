@@ -26,11 +26,15 @@
                                         <a href="${fn:escapeXml(c.URL)}">
                                             <div class="card my-2 mx-2 text-white border-0 px-0 py-0">
                                                 <div class="row g-0">
-                                                    <div class="col-5">
+                                                    <div class="col-5 collections_listing_image">
 
                                                             <img alt=""
                                                                 src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
                                                                 class="img-link img-fluid"/>
+
+                                                            <c:if test="${showUnreleasedContent and c.unreleased}">
+                                                                <span class="badge bg-warning text-dark">Unreleased</span>
+                                                            </c:if>
 
                                                      </div>
                                                     <div class="col-7">
@@ -38,9 +42,6 @@
                                                             <h3 class="card-title">
                                                                 <c:out value="${c.title}"/>
                                                             </h3>
-                                                            <c:if test="${c.unreleased}">
-                                                                <span class="badge bg-warning text-dark">Unreleased</span>
-                                                            </c:if>
                                                         </div>
                                                     </div>
                                                 </div>
