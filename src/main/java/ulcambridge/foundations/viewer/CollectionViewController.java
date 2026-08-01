@@ -181,6 +181,10 @@ public class CollectionViewController {
         }
 
         modelAndView.addObject("items", items);
+        // Solr reports an item's release state whatever this deployment shows, so the
+        // server-rendered tiles gate their badge on the flag, as the client does for
+        // the batches it appends.
+        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
         // The client appends batches until it has this many, so it has to come from
         // Solr rather than the collection file, which can list unindexed items.
         modelAndView.addObject("collectionTotal", page.getTotal());

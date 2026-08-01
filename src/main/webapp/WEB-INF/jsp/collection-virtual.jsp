@@ -6,7 +6,6 @@
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 
-
 <%-- Shares the organisation collections' chunk: both page types load their tiles
      from the same itemJSON endpoint, and both bundles carry the same stylesheet. --%>
 <cudl:generic-page pagetype="COLLECTION_ORGANISATION" title="${collection.title}">
@@ -82,13 +81,13 @@
                                                             <img alt="RTI Item" height="30px" src="/document-views/rti/rti-light-bulb.png"/>
                                                         </span>
                                                     </c:if>
+                                                    <c:if test="${showUnreleasedContent and item.unreleased}">
+                                                        <span class="badge bg-warning text-dark">Unreleased</span>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>
                                                 <h5><c:out value="${item.title} (${item.shelfLocator})"/></h5>
-                                                <c:if test="${item.unreleased}">
-                                                    <span class="badge bg-warning text-dark">Unreleased</span>
-                                                </c:if>
                                                 <c:out value="${item.abstractShort}"/> &hellip;
                                                 <a href="/view/${fn:escapeXml(item.id)}/1">more</a>
                                             </div>
