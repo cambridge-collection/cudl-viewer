@@ -49,7 +49,7 @@ public class SolrSearchTest {
             .put("abstract", new JSONArray().put("<p>A gathering of notes.</p>"))
             .put("IIIFImageURL", new JSONArray().put("MS-ADD-03958-000-00005"))
             .put("thumbnailImageOrientation", new JSONArray().put("portrait"))
-            .put("itemReleased", true);
+            .put("isReleased", true);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class SolrSearchTest {
     @Test
     public void createSearchResult_guardsMissingFields() {
         // Only a fileID present; everything else must fall back safely, not NPE.
-        JSONObject doc = new JSONObject().put("fileID", "MS-EMPTY").put("itemReleased", false);
+        JSONObject doc = new JSONObject().put("fileID", "MS-EMPTY").put("isReleased", false);
         SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
 
         assertEquals("MS-EMPTY", r.getFileId());
@@ -92,7 +92,7 @@ public class SolrSearchTest {
     public void createSearchResult_readsPerPageMainDisplayAndReleaseFlag() {
         JSONObject doc = pageHitDoc()
             .put("mainDisplay", new JSONArray().put("rti"))
-            .put("itemReleased", false);
+            .put("isReleased", false);
         SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
 
         assertEquals("rti", r.getMainDisplay());
@@ -102,23 +102,30 @@ public class SolrSearchTest {
     @Test
     public void createSearchResult_readsReleaseFlagWrappedInArray() {
         // Solr returns most fields as single-element arrays; optBoolean would miss this.
-        JSONObject doc = pageHitDoc().put("itemReleased", new JSONArray().put(false));
+        JSONObject doc = pageHitDoc().put("isReleased", new JSONArray().put(false));
         assertFalse(newSolr().createSearchResult(doc, new JSONObject()).isReleased());
     }
 
     @Test
-    public void createSearchResult_fallsBackToDocumentPrefixedFields() {
-        // The documentAbstract/isReleased spellings are set on only a handful of docs
-        // but must still be honoured where they are.
+    public void createSearchResult_treatsADocWithNoReleaseFieldAsUnreleased() {
+        // Every page doc should carry isReleased. If one does not, withhold it rather
+        // than presenting unreleased content as released.
+        JSONObject doc = pageHitDoc();
+        doc.remove("isReleased");
+
+        assertFalse(newSolr().createSearchResult(doc, new JSONObject()).isReleased());
+    }
+
+    @Test
+    public void createSearchResult_fallsBackToDocumentPrefixedAbstract() {
+        // The documentAbstract spelling is set on only a handful of docs but must
+        // still be honoured where it is.
         JSONObject doc = pageHitDoc();
         doc.remove("abstract");
-        doc.remove("itemReleased");
-        doc.put("documentAbstract", new JSONArray().put("<p>Legacy field.</p>"))
-           .put("isReleased", false);
+        doc.put("documentAbstract", new JSONArray().put("<p>Legacy field.</p>"));
         SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
 
         assertEquals("Legacy field.", r.getAbstractShort());
-        assertFalse(r.isReleased());
     }
 
     @Test
@@ -150,7 +157,7 @@ public class SolrSearchTest {
             .put("documentThumbnailUrl", new JSONArray().put("MS-CHI-BONES-CUL-00297-000-00001"))
             .put("documentThumbnailOrientation", new JSONArray().put("portrait"))
             .put("mainDisplay", new JSONArray().put("rti"))
-            .put("itemReleased", true);
+            .put("isReleased", true);
 
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 1)
@@ -187,7 +194,7 @@ public class SolrSearchTest {
         JSONObject itemDoc = new JSONObject()
             .put("fileID", "MS-ADD-03975")
             .put("documentTitle", new JSONArray().put("Unreleased item"))
-            .put("itemReleased", false);
+            .put("isReleased", false);
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 1)
                 .put("docs", new JSONArray().put(itemDoc)));
@@ -199,7 +206,7 @@ public class SolrSearchTest {
     }
 
     @Test
-    public void getCollectionItems_treatsDocWithNoReleaseFieldAsReleased() {
+    public void getCollectionItems_treatsDocWithNoReleaseFieldAsUnreleased() {
         JSONObject itemDoc = new JSONObject().put("fileID", "MS-ADD-03975");
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 1)
@@ -208,7 +215,7 @@ public class SolrSearchTest {
         List<JSONObject> items = withStubbedResponse(response, new String[1])
             .getCollectionItems("newton", 0, 8).getItems();
 
-        assertFalse(items.get(0).getBoolean("unreleased"));
+        assertTrue(items.get(0).getBoolean("unreleased"));
     }
 
     @Test

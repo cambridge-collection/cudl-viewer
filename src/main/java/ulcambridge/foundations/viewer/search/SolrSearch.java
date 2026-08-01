@@ -580,19 +580,18 @@ public class SolrSearch implements Search {
     }
 
     /**
-     * Reads an item's release flag. The index populates {@code itemReleased};
-     * {@code isReleased} is present on only a handful of docs, so it is a fallback.
-     * Absent on both means released — unreleased content is the exception.
+     * Reads an item's release flag from {@code isReleased}. Every page doc carries it, and
+     * an item-level doc is that item's first page, so it is present on both doc shapes.
+     * Only an explicit true counts as released; anything else falls back to unreleased,
+     * which badges the result rather than hiding it.
      */
     private static boolean isReleased(final JSONObject doc) {
-        String value = firstString(doc, "itemReleased");
-        if (value == null) { value = firstString(doc, "isReleased"); }
-        return !"false".equalsIgnoreCase(value);
+        return "true".equalsIgnoreCase(firstString(doc, "isReleased"));
     }
 
     /**
      * Reads the first value of a Solr field as a String. Solr returns most fields
-     * as single-element arrays but some (e.g. {@code id}, {@code itemReleased}) as
+     * as single-element arrays but some (e.g. {@code id}, {@code isReleased}) as
      * scalars, so both shapes are handled. Returns null when the field is absent
      * or empty.
      */
