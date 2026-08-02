@@ -117,6 +117,21 @@ public class SolrSearchTest {
     }
 
     @Test
+    public void createSearchResult_readsItemStatusForTheBadgeWording() {
+        JSONObject doc = pageHitDoc().put("itemStatus", new JSONArray().put("released"));
+        assertEquals("released", newSolr().createSearchResult(doc, new JSONObject()).getItemStatus());
+
+        assertEquals("embargoed", newSolr()
+            .createSearchResult(pageHitDoc().put("itemStatus", "embargoed"), new JSONObject())
+            .getItemStatus());
+    }
+
+    @Test
+    public void createSearchResult_treatsADocWithNoItemStatusAsDraft() {
+        assertEquals("draft", newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getItemStatus());
+    }
+
+    @Test
     public void createSearchResult_fallsBackToDocumentPrefixedAbstract() {
         // The documentAbstract spelling is set on only a handful of docs but must
         // still be honoured where it is.
@@ -206,6 +221,22 @@ public class SolrSearchTest {
     }
 
     @Test
+    public void getCollectionItems_carriesItemStatusForTheTileBadge() {
+        JSONObject itemDoc = new JSONObject()
+            .put("fileID", "MS-ADD-03975")
+            .put("isReleased", false)
+            .put("itemStatus", new JSONArray().put("draft"));
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 1)
+                .put("docs", new JSONArray().put(itemDoc)));
+
+        List<JSONObject> items = withStubbedResponse(response, new String[1])
+            .getCollectionItems("newton", 0, 8).getItems();
+
+        assertEquals("draft", items.get(0).getString("itemStatus"));
+    }
+
+    @Test
     public void getCollectionItems_treatsDocWithNoReleaseFieldAsUnreleased() {
         JSONObject itemDoc = new JSONObject().put("fileID", "MS-ADD-03975");
         JSONObject response = new JSONObject()
@@ -216,6 +247,7 @@ public class SolrSearchTest {
             .getCollectionItems("newton", 0, 8).getItems();
 
         assertTrue(items.get(0).getBoolean("unreleased"));
+        assertEquals("draft", items.get(0).getString("itemStatus"));
     }
 
     @Test

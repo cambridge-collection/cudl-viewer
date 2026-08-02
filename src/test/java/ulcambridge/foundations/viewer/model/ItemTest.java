@@ -167,6 +167,30 @@ public class ItemTest {
     }
 
     @Test
+    public void itemStatusIsReadFromTheFirstPage() {
+        assertEquals("released",
+            itemWithFirstPage(new JSONObject().put("itemStatus", "released")).getItemStatus());
+        assertEquals("draft",
+            itemWithFirstPage(new JSONObject().put("itemStatus", "draft")).getItemStatus());
+    }
+
+    @Test
+    public void anItemWithNoItemStatusIsDraft() {
+        assertEquals("draft", itemWithFirstPage(new JSONObject()).getItemStatus());
+        assertEquals("draft", itemWithFirstPage(null).getItemStatus());
+        assertEquals("draft", itemWithFirstPage(new JSONObject().put("itemStatus", "")).getItemStatus());
+        assertEquals("draft",
+            itemWithFirstPage(new JSONObject().put("itemStatus", JSONObject.NULL)).getItemStatus());
+    }
+
+    /** More status values may be added upstream, and the value is only ever displayed. */
+    @Test
+    public void anUnrecognisedItemStatusIsPassedThrough() {
+        assertEquals("embargoed",
+            itemWithFirstPage(new JSONObject().put("itemStatus", "embargoed")).getItemStatus());
+    }
+
+    @Test
     public void onlyTheFirstPageDecidesReleaseState() {
         JSONObject json = new JSONObject();
         json.put("pages", new JSONArray()

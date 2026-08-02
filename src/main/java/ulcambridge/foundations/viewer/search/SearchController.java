@@ -152,6 +152,7 @@ public class SearchController {
         item.put("abstractShort", searchResult.getAbstractShort());
         item.put("mainDisplay", searchResult.getMainDisplay());
         item.put("unreleased", !searchResult.isReleased());
+        item.put("itemStatus", searchResult.getItemStatus());
 
         JSONObject itemJSON = new JSONObject();
         itemJSON.put("item", item);

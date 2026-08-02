@@ -27,11 +27,8 @@
                 <div class="campl-wrap clearfix">
 
                     <div class="campl-column12  campl-main-content campl-content-container" id="content">
-                        <c:if test="${showUnreleasedContent and collection.unreleased}">
-                            <div class="alert alert-warning" role="alert">
-                                <strong>Unreleased content:</strong> This collection is not yet publicly available.
-                            </div>
-                        </c:if>
+                        <cudl:release-status type="notice" subject="collection"
+                                             unreleased="${collection.unreleased}" status="${collection.status}"/>
                         <div id="summaryDiv" class="virtual_collection_summary">
                             <c:catch var="importException">
                                 <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.summary}"/>
@@ -81,9 +78,8 @@
                                                             <img alt="RTI Item" height="30px" src="/document-views/rti/rti-light-bulb.png"/>
                                                         </span>
                                                     </c:if>
-                                                    <c:if test="${showUnreleasedContent and item.unreleased}">
-                                                        <span class="badge bg-warning text-dark">Unreleased</span>
-                                                    </c:if>
+                                                    <cudl:release-status type="badge"
+                                                        unreleased="${item.unreleased}" status="${item.itemStatus}"/>
                                                 </div>
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>

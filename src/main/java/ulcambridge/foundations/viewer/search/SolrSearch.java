@@ -443,6 +443,7 @@ public class SolrSearch implements Search {
         if (mainDisplay == null) { mainDisplay = "iiif"; }
 
         boolean released = isReleased(result);
+        String itemStatus = itemStatus(result);
 
         String thumbnailURL = resolveThumbnail(firstString(result, "IIIFImageURL"));
 
@@ -451,7 +452,7 @@ public class SolrSearch implements Search {
 
         return new SearchResult(title, id, startPage, startPageLabel,
             snippets, score, itemType, thumbnailURL, thumbnailOrientation,
-            shelfLocator, abstractShort, mainDisplay, released);
+            shelfLocator, abstractShort, mainDisplay, released, itemStatus);
     }
 
     /**
@@ -540,6 +541,7 @@ public class SolrSearch implements Search {
         item.put("mainDisplay", mainDisplay != null ? mainDisplay : "iiif");
 
         item.put("unreleased", !isReleased(doc));
+        item.put("itemStatus", itemStatus(doc));
 
         String rawThumbnail = itemLevelThumbnail
             ? firstString(doc, "documentThumbnailUrl")
@@ -587,6 +589,15 @@ public class SolrSearch implements Search {
      */
     private static boolean isReleased(final JSONObject doc) {
         return "true".equalsIgnoreCase(firstString(doc, "isReleased"));
+    }
+
+    /**
+     * Reads an item's release status from {@code itemStatus}. Unrecognised values are
+     * passed through: more may be added upstream, and this only reaches badge wording.
+     */
+    private static String itemStatus(final JSONObject doc) {
+        final String status = firstString(doc, "itemStatus");
+        return (status == null || status.isBlank()) ? Item.DEFAULT_STATUS : status;
     }
 
     /**

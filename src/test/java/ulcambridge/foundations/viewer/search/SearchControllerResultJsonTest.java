@@ -31,7 +31,8 @@ public class SearchControllerResultJsonTest {
             "Title " + fileId, fileId, 3, "3r",
             ImmutableList.of("a <b>snippet</b>"), 0, "bookormanuscript",
             "http://img/" + fileId + ".jp2/full/!180,180/0/default.jpg", "portrait",
-            "Shelf " + fileId, "Short abstract", mainDisplay, released);
+            "Shelf " + fileId, "Short abstract", mainDisplay, released,
+            released ? "released" : "draft");
     }
 
     private SearchController controller(SearchResultSet resultSet) {
@@ -64,12 +65,15 @@ public class SearchControllerResultJsonTest {
         assertEquals("Short abstract", item.getString("abstractShort"));
         assertEquals("iiif", item.getString("mainDisplay"));
         assertFalse(item.getBoolean("unreleased"));
+        assertEquals("released", item.getString("itemStatus"));
         assertEquals(3, first.getInt("startPage"));
         assertEquals("3r", first.getString("startPageLabel"));
         assertEquals("http://img/MS-A.jp2/full/!180,180/0/default.jpg", first.getString("pageThumbnailURL"));
 
         // Second result is unreleased -> badged.
-        assertTrue(items.getJSONObject(1).getJSONObject("item").getBoolean("unreleased"));
+        JSONObject second = items.getJSONObject(1).getJSONObject("item");
+        assertTrue(second.getBoolean("unreleased"));
+        assertEquals("draft", second.getString("itemStatus"));
     }
 
     @Test
@@ -80,7 +84,7 @@ public class SearchControllerResultJsonTest {
         results.add(result("MS-GOOD-1", true, "iiif"));
         results.add(new SearchResult(
             "boom", "MS-BAD", 1, "1r", ImmutableList.of(), 0, "bookormanuscript",
-            null, null, null, null, null, true) {
+            null, null, null, null, null, true, "released") {
             @Override
             public String getTitle() {
                 throw new RuntimeException("simulated bad result");

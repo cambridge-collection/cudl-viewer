@@ -89,5 +89,13 @@ public final class ElFunctions {
         return Jsoup.parse(html).text();
     }
 
+    /** Upper-case the first letter, for displaying the lower-case release status values. */
+    public static String capitalise(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        return Character.toUpperCase(s.charAt(0)) + s.substring(1);
+    }
+
     private ElFunctions() { throw new RuntimeException("No instantiation"); }
 }

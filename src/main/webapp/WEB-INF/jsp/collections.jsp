@@ -32,9 +32,8 @@
                                                                 src="/images/collectionsView/collection-${cudlfn:uriEnc(c.id)}.jpg"
                                                                 class="img-link img-fluid"/>
 
-                                                            <c:if test="${showUnreleasedContent and c.unreleased}">
-                                                                <span class="badge bg-warning text-dark">Unreleased</span>
-                                                            </c:if>
+                                                            <cudl:release-status type="badge"
+                                                                unreleased="${c.unreleased}" status="${c.status}"/>
 
                                                      </div>
                                                     <div class="col-7">
