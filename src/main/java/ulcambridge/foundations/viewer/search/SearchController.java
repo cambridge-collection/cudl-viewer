@@ -263,11 +263,9 @@ public class SearchController {
     }
 
     private JSONObject getJSON(SearchResultSet results, SearchForm form) {
-        JSONObject o = new JSONObject();
+        JSONObject o = getItemsJSON(results);
 
-        o.put("items", getResultsJSON(results));
         o.put("facets", getFacetsJSON(results, form));
-        o.put("info", getInfoJSON(results));
 
         return o;
     }
