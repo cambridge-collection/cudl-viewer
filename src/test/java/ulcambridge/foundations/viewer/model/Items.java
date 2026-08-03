@@ -16,6 +16,10 @@ public final class Items {
         JSONArray pages = new JSONArray();
         pages.put(new JSONObject().put("IIIFImageURL", String.format("%s-000-00001.jp2", itemId)));
         json.put("pages", pages);
+        // The document view finds an item's collections from here, and "treasures" is the
+        // slug MockCollectionsDao resolves.
+        json.put("collection", new JSONArray()
+            .put(new JSONObject().put("url-slug", "treasures")));
 
         return getExampleItem(itemId, json);
     }

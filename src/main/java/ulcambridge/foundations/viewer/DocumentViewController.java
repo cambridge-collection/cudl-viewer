@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UncheckedIOException;
 import java.net.URI;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -260,7 +263,7 @@ public class DocumentViewController {
         String jsonURL = "/view/" + item.getId() + ".json";
         String jsonThumbnailsURL = "/view/thumbnails/" + item.getId() + ".json";
 
-        List<Collection> docCollections = getCollection(item.getId());
+        List<Collection> docCollections = getCollections(item);
         Collection organisationalCollection = getBreadcrumbCollection(docCollections);
 
         ModelAndView modelAndView = new ModelAndView("jsp/document");
@@ -424,10 +427,32 @@ public class DocumentViewController {
 
     /**
      * Get a list of collections that this item is in.
+     *
+     * <p>Sorted by {@link Collection#getOrder()}: {@link #getBreadcrumbCollection(List)}
+     * keeps the last organisational collection it sees, so the pick must not depend on
+     * the order the item JSON happens to list its collections in.
+     *
+     * <p>The {@code type} in the item JSON is ignored — the layout that decides the
+     * breadcrumb comes from the UI theme, via the {@link Collection} the factory builds.
+     * Parent-layout collections are dropped: an item's JSON names both the subcollection
+     * it belongs to and that subcollection's parent, but a parent holds no items itself.
      */
-    private List<Collection> getCollection(String docId) {
-        return collectionFactory.getCollections().stream()
-            .filter(thisCollection -> thisCollection.getItemIds().contains(docId))
+    private List<Collection> getCollections(Item item) {
+        JSONArray collectionJSON = item.getJSON().optJSONArray("collection");
+        if (collectionJSON == null) {
+            return List.of();
+        }
+
+        return IntStream.range(0, collectionJSON.length())
+            .mapToObj(collectionJSON::optJSONObject)
+            .filter(Objects::nonNull)
+            .map(collection -> collection.optString("url-slug", null))
+            .filter(slug -> slug != null && !slug.isBlank())
+            .distinct()
+            .map(collectionFactory::getCollectionFromId)
+            .filter(Objects::nonNull)
+            .filter(collection -> !"parent".equals(collection.getType()))
+            .sorted(Comparator.comparingInt(Collection::getOrder))
             .collect(Collectors.toList());
     }
 

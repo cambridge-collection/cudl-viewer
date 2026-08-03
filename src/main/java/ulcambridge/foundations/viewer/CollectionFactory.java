@@ -123,7 +123,11 @@ public class CollectionFactory {
 
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
             Collection collection = collectionsDao.getCollection(id);
-            assert collection != null;
+            // An id from item JSON may not resolve; the cached branch below returns null
+            // for an unknown id rather than throwing, so match it.
+            if (collection == null) {
+                return null;
+            }
             if ("parent".equals(collection.getType())) {
                 collection.setSubCollections(getSubCollections(collection));
             }
