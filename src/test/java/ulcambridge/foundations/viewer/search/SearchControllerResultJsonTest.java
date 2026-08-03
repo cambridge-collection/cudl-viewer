@@ -23,6 +23,9 @@ import static org.mockito.Mockito.when;
  * Verifies that {@code /search/JSON} builds each result tile purely from the
  * Solr-sourced {@link SearchResult} (no {@code itemDAO}), with the expected shape
  * and {@code unreleased} flag, and that one bad result cannot abort the batch.
+ *
+ * <p>Also covers the facet payload of {@code /search/JSONAdvanced}, which is the
+ * sole source of the results page's facet tree.
  */
 public class SearchControllerResultJsonTest {
 
@@ -43,6 +46,14 @@ public class SearchControllerResultJsonTest {
 
     private SearchResultSet resultSetOf(List<SearchResult> results) {
         return new SearchResultSet(results.size(), "", 1f, results, new ArrayList<>(), "");
+    }
+
+    private FacetGroup facetGroup(String field, String... bands) {
+        List<Facet> facets = new ArrayList<>();
+        for (int i = 0; i < bands.length; i++) {
+            facets.add(new Facet(field, bands[i], i + 1, i));
+        }
+        return new FacetGroup(field, facets, 0, 0);
     }
 
     @Test
@@ -74,6 +85,90 @@ public class SearchControllerResultJsonTest {
         JSONObject second = items.getJSONObject(1).getJSONObject("item");
         assertTrue(second.getBoolean("unreleased"));
         assertEquals("draft", second.getString("itemStatus"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_omitsFacetGroupsWithNoEntries() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
+            ImmutableList.of(
+                facetGroup("Collection", "Darwin Manuscripts", "Sanskrit"),
+                facetGroup("Subject"),
+                facetGroup("Languages"),
+                facetGroup("Place", "Cambridge")),
+            "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONArray available = new JSONObject(response.getBody())
+            .getJSONObject("facets").getJSONArray("available");
+
+        assertEquals(2, available.length());
+        assertEquals("Collection", available.getJSONObject(0).getString("field"));
+        assertEquals("Place", available.getJSONObject(1).getString("field"));
+    }
+
+    /** An unreachable Solr produces 0 hits and an error, not a failed request. */
+    @Test
+    public void searchJsonAdvanced_surfacesTheSearchError() throws Exception {
+        SearchResultSet failed = new SearchResultSet(
+            0, "", 0f, new ArrayList<>(), new ArrayList<>(),
+            "A problem occurred making the search (solr).");
+
+        ResponseEntity<String> response = controller(failed)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(0, info.getInt("hits"));
+        assertEquals("A problem occurred making the search (solr).", info.getString("error"));
+    }
+
+    /** The client displays this, so it must be Solr's QTime rather than a client timing. */
+    @Test
+    public void searchJsonAdvanced_reportsSolrQueryTime() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            749, "", 74f, ImmutableList.of(result("MS-A", true, "iiif")),
+            new ArrayList<>(), "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(749, info.getInt("hits"));
+        assertEquals(74d, info.getDouble("queryTime"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_reportsNoErrorForAGenuinelyEmptyResultSet() throws Exception {
+        ResponseEntity<String> response = controller(resultSetOf(new ArrayList<>()))
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(0, info.getInt("hits"));
+        assertEquals("", info.getString("error"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_omitsFacetGroupsAlreadySelected() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
+            ImmutableList.of(
+                facetGroup("Collection", "Darwin Manuscripts"),
+                facetGroup("Place", "Cambridge")),
+            "");
+
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection::Darwin Manuscripts");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(form, 0, 20);
+
+        JSONArray available = new JSONObject(response.getBody())
+            .getJSONObject("facets").getJSONArray("available");
+
+        assertEquals(1, available.length());
+        assertEquals("Place", available.getJSONObject(0).getString("field"));
     }
 
     @Test

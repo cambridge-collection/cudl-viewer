@@ -235,6 +235,11 @@ public class SearchForm {
         String[] pairs = facetString.split("\\|\\|");
         for (String pair : pairs) {
             String[] keyValue = pair.split("::");
+            // split() drops trailing empty strings, so "Collection::" yields one
+            // element and "::" none. A malformed facet must not 400 the request.
+            if (keyValue.length < 2 || keyValue[0].isEmpty() || keyValue[1].isEmpty()) {
+                continue;
+            }
             facets.put(keyValue[0],keyValue[1]);
         }
         this.facets = facets;
