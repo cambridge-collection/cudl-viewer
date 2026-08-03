@@ -152,7 +152,7 @@ public class AppConfig {
             FilesystemDirectoryJSONLoader primary = new FilesystemDirectoryJSONLoader(itemJSONDirectory);
             // Wrap the primary loader with a FallbackJSONLoader so items absent from the
             // main directory are transparently served from the unreleased directory.
-            // Not gated on showUnreleasedContent: an unreleased item page stays reachable
+            // Not gated on showReleaseStatus: an unreleased item page stays reachable
             // whatever the flag says, as an unreleased collection page does. The flag
             // gates the notice at the render site instead.
             if (!unreleasedDataDirectory.isBlank()) {
@@ -245,7 +245,7 @@ public class AppConfig {
                                                 @Value("${dataUIFile}") String uiFilepath,
                                                 @Value("${caching.enabled:true}") String cachingEnabled,
                                                 @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) throws IOException {
-            // Not gated on showUnreleasedContent: the collections load either way and
+            // Not gated on showReleaseStatus: the collections load either way and
             // their release state comes from their own JSON. The flag gates the badge
             // and the notice at the render sites instead.
             Path unreleasedCollectionsDir = null;

@@ -36,7 +36,7 @@ public class CollectionViewController {
     private final CollectionFactory collectionFactory;
     private final Search search;
     private final String contentHtmlPath;
-    private final boolean showUnreleasedContent;
+    private final boolean showReleaseStatus;
     private final String unreleasedDataDirectory;
 
     private static final String PATH_COLLECTION_NO_PAGE = "/{collectionId}";
@@ -53,7 +53,7 @@ public class CollectionViewController {
     public CollectionViewController(CollectionFactory collectionFactory,
                                     Search search,
                                     @Value("${cudl-viewer-content.html.path}") String contentHtmlPath,
-                                    @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
+                                    @Value("${showReleaseStatus:false}") boolean showReleaseStatus,
                                     @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(search, "search is required");
@@ -62,7 +62,7 @@ public class CollectionViewController {
         this.collectionFactory = collectionFactory;
         this.search = search;
         this.contentHtmlPath = contentHtmlPath;
-        this.showUnreleasedContent = showUnreleasedContent;
+        this.showReleaseStatus = showReleaseStatus;
         this.unreleasedDataDirectory = unreleasedDataDirectory;
     }
 
@@ -73,7 +73,7 @@ public class CollectionViewController {
      * lets collection summary and sponsor pages be served from the unreleased data
      * without changing where general pages (footer, etc.) are looked up.
      *
-     * <p>Not gated on {@code showUnreleasedContent}: an unreleased collection page
+     * <p>Not gated on {@code showReleaseStatus}: an unreleased collection page
      * stays reachable whatever the flag says, so it needs its summary either way.
      */
     private String resolveHtmlBaseUrl(String relativePath) {
@@ -105,7 +105,7 @@ public class CollectionViewController {
         modelAndView.addObject("collections", collections);
         // Unreleased collections are listed whatever this deployment shows, so the
         // badge gates on the flag rather than on the collection being absent.
-        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
+        modelAndView.addObject("showReleaseStatus", showReleaseStatus);
 
         return modelAndView;
     }
@@ -153,7 +153,7 @@ public class CollectionViewController {
         modelAndView.addObject("pageNumber", pageNumber <= 0 ? 1 : pageNumber);
         // Both page types carry the collection-level notice, and the virtual one also
         // gates its tiles on this, so it belongs here rather than with the tiles.
-        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
+        modelAndView.addObject("showReleaseStatus", showReleaseStatus);
 
         // Virtual collections render their first batch of tiles server-side rather than
         // waiting on AJAX, so that batch has to be in the model at render time.

@@ -58,7 +58,7 @@ public class DocumentViewController {
 
     private final Map<String, String> socialImageDimensions;
 
-    private final boolean showUnreleasedContent;
+    private final boolean showReleaseStatus;
 
     @Autowired
     public DocumentViewController(
@@ -68,7 +68,7 @@ public class DocumentViewController {
         URI iiifImageServer,
         @Value("#{ ${ui.options.image.downloadSizes:null} }") Optional<Map<String, String>> downloadSizes,
         @Value("#{ ${social.options.image.dimensions:null} }") Optional<Map<String, String>> socialImageDimensions,
-        @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent ) {
+        @Value("${showReleaseStatus:false}") boolean showReleaseStatus ) {
 
         Assert.notNull(collectionFactory, "collectionFactory is required");
         Assert.notNull(itemDAO, "itemDAO is required");
@@ -81,7 +81,7 @@ public class DocumentViewController {
         this.iiifImageServer = iiifImageServer;
         this.downloadSizes = downloadSizes.orElseGet(HashMap::new);
         this.socialImageDimensions = socialImageDimensions.orElseGet(HashMap::new);
-        this.showUnreleasedContent = showUnreleasedContent;
+        this.showReleaseStatus = showReleaseStatus;
 
     }
 
@@ -305,7 +305,7 @@ public class DocumentViewController {
         // Release state comes from the item JSON, so an unreleased item now loads
         // whatever the deployment shows; the notice gates on the flag instead.
         modelAndView.addObject("itemUnreleased", !item.isReleased());
-        modelAndView.addObject("showUnreleasedContent", showUnreleasedContent);
+        modelAndView.addObject("showReleaseStatus", showReleaseStatus);
 
         modelAndView.addObject("itemDAO", itemDAO);
 

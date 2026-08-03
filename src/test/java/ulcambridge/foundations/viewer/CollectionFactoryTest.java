@@ -60,7 +60,7 @@ public class CollectionFactoryTest {
     }
 
     /**
-     * The unreleased listing is merged whatever showUnreleasedContent says, so an
+     * The unreleased listing is merged whatever showReleaseStatus says, so an
      * unreleased item keeps its id in the collection and hence its breadcrumb, its place
      * in the IIIF collection, and its entry in the homepage count and sitemap.xml.
      */

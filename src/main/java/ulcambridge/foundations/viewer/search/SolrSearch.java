@@ -47,7 +47,7 @@ public class SolrSearch implements Search {
     public SolrSearch(@Qualifier("searchURL") URI searchURL,
                       @Qualifier("imageServerURL") URI imageServerURL,
                       @Value("${appendToThumbnail}") String appendToThumbnail,
-                      @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent) {
+                      @Value("${showReleaseStatus:false}") boolean showReleaseStatus) {
         Assert.notNull(searchURL, "searchURL is required");
         Assert.notNull(imageServerURL, "imageServerURL is required");
         Assert.notNull(appendToThumbnail, "appendToThumbnail is required");
@@ -61,7 +61,7 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Languages","facet-languages");
         this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
         this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
-        if (showUnreleasedContent) {
+        if (showReleaseStatus) {
             this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
         }
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
@@ -73,7 +73,7 @@ public class SolrSearch implements Search {
         this.facetNamesInOrder.add("facet-origin-place");
         this.facetNamesInOrder.add("facet-languages");
         this.facetNamesInOrder.add("facet-creations-century");
-        if (showUnreleasedContent) {
+        if (showReleaseStatus) {
             this.facetNamesInOrder.add("facet-itemStatus");
         }
     }

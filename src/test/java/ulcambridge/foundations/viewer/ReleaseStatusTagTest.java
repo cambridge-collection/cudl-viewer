@@ -33,7 +33,7 @@ public class ReleaseStatusTagTest {
 
     @Test
     public void theGateLivesOnlyInTheTag() throws IOException {
-        assertThat(filesContaining("showUnreleasedContent"))
+        assertThat(filesContaining("showReleaseStatus"))
             .containsExactly(TAG, CONTEXT_TAG);
     }
 

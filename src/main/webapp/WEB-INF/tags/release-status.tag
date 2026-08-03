@@ -11,9 +11,9 @@
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="cudlfn" uri="/WEB-INF/cudl-functions.tld" %>
 
-<%-- showUnreleasedContent is a request attribute published by the controller of each
+<%-- showReleaseStatus is a request attribute published by the controller of each
      page that renders one of these. It suppresses the indicator, not the content. --%>
-<c:if test="${showUnreleasedContent and unreleased}">
+<c:if test="${showReleaseStatus and unreleased}">
     <c:choose>
         <c:when test="${type eq 'badge'}">
             <span class="badge bg-warning text-dark"><c:out value="${cudlfn:capitalise(status)}"/></span>

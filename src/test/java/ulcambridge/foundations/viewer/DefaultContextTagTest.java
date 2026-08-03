@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import static com.google.common.truth.Truth.assertThat;
 
 /**
- * default-context.tag publishes showUnreleasedContent into the page's data-context,
+ * default-context.tag publishes showReleaseStatus into the page's data-context,
  * where the UI's badge renderers gate on it. json:property renders a String value as a
  * JSON string and "false" is truthy in Javascript, so the flag has to reach the JSON as
  * a boolean or the gate silently does nothing. This evaluates the expression the tag
@@ -47,7 +47,7 @@ public class DefaultContextTagTest {
     private static Object evaluate(String propertyValue) throws IOException {
         MockEnvironment environment = new MockEnvironment();
         if (propertyValue != null) {
-            environment.setProperty("showUnreleasedContent", propertyValue);
+            environment.setProperty("showReleaseStatus", propertyValue);
         }
 
         StandardEvaluationContext evaluationContext = new StandardEvaluationContext();

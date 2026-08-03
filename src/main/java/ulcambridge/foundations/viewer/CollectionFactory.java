@@ -42,7 +42,7 @@ public class CollectionFactory {
 
         // Resolve the unreleased item JSON directory once at startup. Null means no
         // unreleased directory is configured or it is absent. Not gated on
-        // showUnreleasedContent: an unreleased item keeps its id in the collection, so
+        // showReleaseStatus: an unreleased item keeps its id in the collection, so
         // its page keeps its breadcrumb and it stays present in the IIIF collection,
         // the homepage count and sitemap.xml. The flag gates the notice, not the data.
         Path unreleasedPath = null;

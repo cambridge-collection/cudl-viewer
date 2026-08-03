@@ -77,7 +77,7 @@ public class CollectionsJSONDao implements CollectionsDao {
         }
 
         // Scan the unreleased collections directory and merge any collections not
-        // already loaded above. This is not gated on showUnreleasedContent: the flag
+        // already loaded above. This is not gated on showReleaseStatus: the flag
         // governs whether the badge and notice render, not whether the collection
         // loads, so an unreleased collection page stays reachable either way.
         if (unreleasedCollectionsDir != null) {

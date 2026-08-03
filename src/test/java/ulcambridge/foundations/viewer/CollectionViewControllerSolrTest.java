@@ -190,13 +190,13 @@ public class CollectionViewControllerSolrTest {
 
         assertEquals(Boolean.FALSE,
             organisationController(search).handleRequest("genizah", 1)
-                .getModel().get("showUnreleasedContent"));
+                .getModel().get("showReleaseStatus"));
         assertEquals(Boolean.TRUE,
             organisationController(search, true).handleRequest("genizah", 1)
-                .getModel().get("showUnreleasedContent"));
+                .getModel().get("showReleaseStatus"));
         assertEquals(Boolean.FALSE,
             virtualController(search).handleRequest("treasures", 1)
-                .getModel().get("showUnreleasedContent"));
+                .getModel().get("showReleaseStatus"));
     }
 
     /** The listing badges unreleased collections, which are now listed either way. */
@@ -205,9 +205,9 @@ public class CollectionViewControllerSolrTest {
         Search search = mock(Search.class);
 
         assertEquals(Boolean.FALSE, organisationController(search)
-            .handleViewRequest().getModel().get("showUnreleasedContent"));
+            .handleViewRequest().getModel().get("showReleaseStatus"));
         assertEquals(Boolean.TRUE, organisationController(search, true)
-            .handleViewRequest().getModel().get("showUnreleasedContent"));
+            .handleViewRequest().getModel().get("showReleaseStatus"));
     }
 
     private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");
@@ -224,11 +224,11 @@ public class CollectionViewControllerSolrTest {
         return organisationController(search, false);
     }
 
-    private CollectionViewController organisationController(Search search, boolean showUnreleasedContent) {
+    private CollectionViewController organisationController(Search search, boolean showReleaseStatus) {
         CollectionFactory collectionFactory = new CollectionFactory(
             new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, "");
         return new CollectionViewController(
-            collectionFactory, search, "./html", showUnreleasedContent, "");
+            collectionFactory, search, "./html", showReleaseStatus, "");
     }
 
     /** An organisation collection whose two item ids both have JSON in test resources. */

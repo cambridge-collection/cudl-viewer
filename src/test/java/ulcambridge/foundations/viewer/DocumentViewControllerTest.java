@@ -75,7 +75,7 @@ public class DocumentViewControllerTest {
         Assertions.assertNull(mDoc.getModelMap().get("socialImageDimensions"));
     }
 
-    private ModelAndView renderItem(Item item, boolean showUnreleasedContent) {
+    private ModelAndView renderItem(Item item, boolean showReleaseStatus) {
         when(itemsDao.getItem(ITEM_ID)).thenReturn(item);
 
         MockHttpServletRequest req = new MockHttpServletRequest();
@@ -89,7 +89,7 @@ public class DocumentViewControllerTest {
             URI.create("http://images.digital.library.example.com/iiif/"),
             Optional.empty(),
             Optional.empty(),
-            showUnreleasedContent
+            showReleaseStatus
         );
 
         return c.handleRequest(ITEM_ID, req);
@@ -121,9 +121,9 @@ public class DocumentViewControllerTest {
     @Test
     public void theFlagReachesTheModelSoTheNoticeCanBeGated() {
         assertEquals(true, renderItem(Items.getExampleItem(ITEM_ID), true)
-            .getModelMap().get("showUnreleasedContent"));
+            .getModelMap().get("showReleaseStatus"));
         assertEquals(false, renderItem(Items.getExampleItem(ITEM_ID), false)
-            .getModelMap().get("showUnreleasedContent"));
+            .getModelMap().get("showReleaseStatus"));
     }
 
 }

@@ -84,7 +84,7 @@ public class CollectionsJSONDaoTest {
     }
 
     /**
-     * The unreleased directory is merged whatever showUnreleasedContent says — the flag
+     * The unreleased directory is merged whatever showReleaseStatus says — the flag
      * gates the badge and notice at the render sites, not whether the collection loads.
      */
     @Test
