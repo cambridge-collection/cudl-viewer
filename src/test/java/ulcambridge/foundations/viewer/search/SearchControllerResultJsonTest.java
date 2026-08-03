@@ -65,7 +65,7 @@ public class SearchControllerResultJsonTest {
         ResponseEntity<String> response =
             controller(resultSetOf(results)).handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
 
-        JSONArray items = new JSONArray(response.getBody());
+        JSONArray items = new JSONObject(response.getBody()).getJSONArray("items");
         assertEquals(2, items.length());
 
         JSONObject first = items.getJSONObject(0);
@@ -190,8 +190,43 @@ public class SearchControllerResultJsonTest {
         ResponseEntity<String> response =
             controller(resultSetOf(results)).handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
 
-        JSONArray items = new JSONArray(response.getBody());
+        JSONArray items = new JSONObject(response.getBody()).getJSONArray("items");
         // The bad result is skipped; the two good results still render.
         assertEquals(2, items.length());
+    }
+
+    /**
+     * A page turn reports its own query time, and has to be able to tell an
+     * unreachable Solr from a page with nothing on it, so it carries the same
+     * {@code info} block as the full query.
+     */
+    @Test
+    public void searchJson_carriesTheQueryInfo() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            749, "", 74f, ImmutableList.of(result("MS-A", true, "iiif")),
+            new ArrayList<>(), "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(749, info.getInt("hits"));
+        assertEquals(74d, info.getDouble("queryTime"));
+        assertEquals("", info.getString("error"));
+    }
+
+    @Test
+    public void searchJson_surfacesTheSearchError() throws Exception {
+        SearchResultSet failed = new SearchResultSet(
+            0, "", 0f, new ArrayList<>(), new ArrayList<>(),
+            "A problem occurred making the search (solr).");
+
+        ResponseEntity<String> response = controller(failed)
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject body = new JSONObject(response.getBody());
+        assertEquals(0, body.getJSONArray("items").length());
+        assertEquals("A problem occurred making the search (solr).",
+            body.getJSONObject("info").getString("error"));
     }
 }

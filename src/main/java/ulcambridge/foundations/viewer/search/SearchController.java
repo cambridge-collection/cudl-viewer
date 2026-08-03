@@ -252,6 +252,16 @@ public class SearchController {
         return o;
     }
 
+    /** The info block lets a page turn report its own query time and spot an outage. */
+    private JSONObject getItemsJSON(SearchResultSet results) {
+        JSONObject o = new JSONObject();
+
+        o.put("items", getResultsJSON(results));
+        o.put("info", getInfoJSON(results));
+
+        return o;
+    }
+
     private JSONObject getJSON(SearchResultSet results, SearchForm form) {
         JSONObject o = new JSONObject();
 
@@ -299,7 +309,7 @@ public class SearchController {
         return ResponseEntity.ok()
             .contentType(MediaType.APPLICATION_JSON)
             .header("Cache-Control", "public, max-age=60")
-            .body(getResultsJSON(results).toString());
+            .body(getItemsJSON(results).toString());
     }
 
     /**
