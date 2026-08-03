@@ -4,10 +4,8 @@ import org.jsoup.Jsoup;
 import org.springframework.web.util.UriUtils;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
-import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.search.SearchUtil;
 
 /**
  * This class defines custom JSP Expression Language (EL) functions required to
@@ -58,27 +56,6 @@ public final class ElFunctions {
             sb.append(item);
         }
         return sb.toString();
-    }
-
-    /**
-     * @see SearchUtil#getURLParametersWithoutFacet(SearchForm, String)
-     */
-    public static String urlParamsWithoutFacet(SearchForm form, String facet) {
-        return SearchUtil.getURLParametersWithoutFacet(form, facet);
-    }
-
-    /**
-     * @see SearchUtil#getURLParametersWithExtraFacet(SearchForm, String, String)
-     */
-    public static String urlParamsWithFacet(SearchForm form, String facet, String value) {
-        return SearchUtil.getURLParametersWithExtraFacet(form, facet, value);
-    }
-
-    /**
-     * @see SearchUtil#getURLParametersWithFacetExpanded(SearchForm, String)
-     */
-    public static String urlParamsWithFacetExpanded(SearchForm form, String facet) {
-        return SearchUtil.getURLParametersWithFacetExpanded(form, facet);
     }
 
     /**

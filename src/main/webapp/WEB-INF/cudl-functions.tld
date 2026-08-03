@@ -35,24 +35,6 @@
     </function>
 
     <function>
-        <name>urlParamsWithoutFacet</name>
-        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
-        <function-signature>java.lang.String urlParamsWithoutFacet(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String)</function-signature>
-    </function>
-
-    <function>
-        <name>urlParamsWithFacet</name>
-        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
-        <function-signature>java.lang.String urlParamsWithFacet(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String, java.lang.String)</function-signature>
-    </function>
-
-    <function>
-        <name>urlParamsWithFacetExpanded</name>
-        <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
-        <function-signature>java.lang.String urlParamsWithFacetExpanded(ulcambridge.foundations.viewer.forms.SearchForm, java.lang.String)</function-signature>
-    </function>
-
-    <function>
         <name>capitalise</name>
         <function-class>ulcambridge.foundations.viewer.tags.ElFunctions</function-class>
         <function-signature>java.lang.String capitalise(java.lang.String)</function-signature>
