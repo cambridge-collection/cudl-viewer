@@ -83,7 +83,7 @@
                                                 </div>
                                             </div>
                                             <div class='virtual_collections_carousel_text campl-column6'>
-                                                <%-- Unescaped: titles and abstracts carry TEI markup that nothing strips. --%>
+                                                <%-- Unescaped: titles carry TEI markup that nothing strips. --%>
                                                 <h5>${item.title}<c:if test="${not empty item.shelfLocator}"> (${item.shelfLocator})</c:if></h5>
                                                 <c:if test="${not empty item.abstractShort}">${item.abstractShort} &hellip;</c:if>
                                                 <a href="/view/${fn:escapeXml(item.id)}/1">more</a>
