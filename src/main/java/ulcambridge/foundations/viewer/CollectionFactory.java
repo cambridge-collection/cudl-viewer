@@ -27,23 +27,26 @@ public class CollectionFactory {
     private final String cachingEnabled;
     private final Path jsonDirPath;
     private final Path unreleasedItemJSONDirectory;
-    private Set<String> jsonFiles;
+    // Read on request threads by getCollectionFromId, republished by init().
+    private volatile Set<String> jsonFiles;
 
     @Autowired
     public CollectionFactory(CollectionsDao dao,
                              @Value("${caching.enabled:true}") String cachingEnabled,
                              @Qualifier("itemJSON") Path jsonDirPath,
-                             @Value("${showUnreleasedContent:false}") boolean showUnreleasedContent,
                              @Value("${unreleasedDataDirectory:}") String unreleasedDataDirectory) {
         Assert.notNull(dao, "CollectionsDao cannot be null");
         Assert.notNull(jsonDirPath, "itemJSONDirectory should not be null");
         this.cachingEnabled = cachingEnabled;
         this.jsonDirPath = jsonDirPath;
 
-        // Resolve the unreleased item JSON directory once at startup.
-        // Null means unreleased content is disabled or the directory is absent.
+        // Resolve the unreleased item JSON directory once at startup. Null means no
+        // unreleased directory is configured or it is absent. Not gated on
+        // showReleaseStatus: an unreleased item keeps its id in the collection, so
+        // its page keeps its breadcrumb and it stays present in the IIIF collection,
+        // the homepage count and sitemap.xml. The flag gates the notice, not the data.
         Path unreleasedPath = null;
-        if (showUnreleasedContent && !unreleasedDataDirectory.isBlank()) {
+        if (!unreleasedDataDirectory.isBlank()) {
             Path candidate = Path.of(unreleasedDataDirectory).resolve("json");
             if (Files.isDirectory(candidate)) {
                 unreleasedPath = candidate;
@@ -120,15 +123,35 @@ public class CollectionFactory {
 
         if (!"true".equalsIgnoreCase(cachingEnabled)) {
             Collection collection = collectionsDao.getCollection(id);
-            assert collection != null;
+            // An id from item JSON may not resolve; the cached branch below returns null
+            // for an unknown id rather than throwing, so match it.
+            if (collection == null) {
+                return null;
+            }
             if ("parent".equals(collection.getType())) {
                 collection.setSubCollections(getSubCollections(collection));
             }
-            collection.getItemIds().removeIf(itemid -> !existsJSON(itemid + ".json"));
+            pruneItemsWithNoJSON(collection);
             return collection;
         }
         return collections.get(id);
 
+    }
+
+    /**
+     * Drops item ids that have no JSON on disk, checking the cached directory listing
+     * rather than stat-ing each item individually.
+     *
+     * <p>With caching disabled this runs on every collection request (page render and
+     * each carousel AJAX call), so a per-item {@code File.exists()} costs one syscall
+     * per item every time — tens of seconds for Genizah's ~142k items, which is enough
+     * to exceed a gateway timeout. The listing is rebuilt by {@link #init(boolean)} at
+     * startup and on /refresh, so newly added items appear after the next refresh.
+     */
+    private void pruneItemsWithNoJSON(Collection collection) {
+        final Set<String> snapshot = jsonFiles;
+        if (snapshot == null) { return; }
+        collection.getItemIds().removeIf(itemid -> !snapshot.contains(itemid + ".json"));
     }
 
     public List<Collection> getCollections() {
@@ -184,33 +207,6 @@ public class CollectionFactory {
 
     public Set<String> getAllItemIds() {
         return allItemIds;
-    }
-
-    /**
-     * Returns the subset of the given item IDs whose JSON exists only in the
-     * unreleased directory (i.e. not yet present in the main item JSON directory).
-     * Items that exist in both directories are treated as released.
-     */
-    public Set<String> getUnreleasedItemIds(List<String> itemIds) {
-        if (unreleasedItemJSONDirectory == null) return Collections.emptySet();
-        Set<String> result = new HashSet<>();
-        for (String id : itemIds) {
-            String filename = id + ".json";
-            if (!jsonDirPath.resolve(filename).toFile().exists()
-                    && unreleasedItemJSONDirectory.resolve(filename).toFile().exists()) {
-                result.add(id);
-            }
-        }
-        return result;
-    }
-
-    private boolean existsJSON(String filename) {
-        if (filename == null) { return false; }
-        if (jsonDirPath.resolve(filename).toFile().exists()) return true;
-        if (unreleasedItemJSONDirectory != null) {
-            return unreleasedItemJSONDirectory.resolve(filename).toFile().exists();
-        }
-        return false;
     }
 
     /**

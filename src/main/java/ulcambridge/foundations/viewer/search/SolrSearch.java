@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -32,6 +33,9 @@ import java.util.*;
 public class SolrSearch implements Search {
 
     private static final Logger LOG = LoggerFactory.getLogger(SolrSearch.class.getName());
+
+    private static final int SOLR_CONNECT_TIMEOUT_MS = 5_000;
+    private static final int SOLR_READ_TIMEOUT_MS = 15_000;
 
     private final URI searchURL;
     private final URI imageServerURL;
@@ -43,7 +47,7 @@ public class SolrSearch implements Search {
     public SolrSearch(@Qualifier("searchURL") URI searchURL,
                       @Qualifier("imageServerURL") URI imageServerURL,
                       @Value("${appendToThumbnail}") String appendToThumbnail,
-                      @Value("${facets.itemStatus.enabled:false}") boolean itemStatusFacetEnabled) {
+                      @Value("${showReleaseStatus:false}") boolean showReleaseStatus) {
         Assert.notNull(searchURL, "searchURL is required");
         Assert.notNull(imageServerURL, "imageServerURL is required");
         Assert.notNull(appendToThumbnail, "appendToThumbnail is required");
@@ -57,7 +61,7 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Languages","facet-languages");
         this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
         this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
-        if (itemStatusFacetEnabled) {
+        if (showReleaseStatus) {
             this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
         }
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
@@ -69,7 +73,7 @@ public class SolrSearch implements Search {
         this.facetNamesInOrder.add("facet-origin-place");
         this.facetNamesInOrder.add("facet-languages");
         this.facetNamesInOrder.add("facet-creations-century");
-        if (itemStatusFacetEnabled) {
+        if (showReleaseStatus) {
             this.facetNamesInOrder.add("facet-itemStatus");
         }
     }
@@ -114,10 +118,18 @@ public class SolrSearch implements Search {
 
         InputStream in = null;
         try {
-            in = new URL( url ).openStream();
+            // Timeouts are explicit because HttpURLConnection defaults to waiting
+            // indefinitely: a Solr that accepts the connection then stalls would
+            // otherwise hang a page render, and virtual collections query Solr on
+            // the render path.
+            final URLConnection connection = new URL(url).openConnection();
+            connection.setConnectTimeout(SOLR_CONNECT_TIMEOUT_MS);
+            connection.setReadTimeout(SOLR_READ_TIMEOUT_MS);
+            in = connection.getInputStream();
             return new JSONObject(IOUtils.toString( in , StandardCharsets.UTF_8));
         } catch (IOException e) {
             // error from Solr API - e.g. {"detail":"Query contains too many nested clauses; maxClauseCount is set to 1024"}
+            LOG.warn("Solr request failed: {} — {}", url, e.getMessage());
             return null;
         } finally {
             IOUtils.closeQuietly(in);
@@ -425,12 +437,13 @@ public class SolrSearch implements Search {
         String shelfLocator = firstString(result, "documentShelfLocator");
         if (shelfLocator == null) { shelfLocator = ""; }
 
-        String abstractShort = Item.makeShortAbstract(firstString(result, "documentAbstract"));
+        String abstractShort = Item.makeShortAbstract(firstAbstract(result));
 
         String mainDisplay = firstString(result, "mainDisplay");
         if (mainDisplay == null) { mainDisplay = "iiif"; }
 
-        boolean released = result.optBoolean("isReleased", true);
+        boolean released = isReleased(result);
+        String itemStatus = itemStatus(result);
 
         String thumbnailURL = resolveThumbnail(firstString(result, "IIIFImageURL"));
 
@@ -439,7 +452,7 @@ public class SolrSearch implements Search {
 
         return new SearchResult(title, id, startPage, startPageLabel,
             snippets, score, itemType, thumbnailURL, thumbnailOrientation,
-            shelfLocator, abstractShort, mainDisplay, released);
+            shelfLocator, abstractShort, mainDisplay, released, itemStatus);
     }
 
     /**
@@ -448,36 +461,59 @@ public class SolrSearch implements Search {
      * for the collection carousel client. This replaces the per-item filesystem
      * item load and the whole-collection unreleased scan.
      *
-     * <p>Note: this parses only {@code response.docs}. The collection query returns
-     * no {@code highlighting} or {@code facet_counts}, so {@link #parseSearchResults}
-     * cannot be reused here.
+     * <p>Note: this parses only {@code response.docs} and {@code response.numFound}.
+     * The collection query returns no {@code highlighting} or {@code facet_counts},
+     * so {@link #parseSearchResults} cannot be reused here.
      */
     @Override
-    public List<JSONObject> getCollectionItems(final String slug, final int start, final int rows) {
-        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
-        uriB.queryParam("fq", "collection-slug:" + slug);
-        uriB.queryParam("fq", "itemLevel:true");
-        uriB.queryParam("sort", "collection_sort asc");
-        uriB.queryParam("start", Math.max(0, start));
-        uriB.queryParam("rows", Math.max(0, rows));
-
-        final List<JSONObject> items = new ArrayList<>();
-        final JSONObject json = getJSON(uriB.toUriString());
-        if (json == null) { return items; }
+    public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows) {
+        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true));
+        if (json == null) {
+            // The search API rejects the sorted query outright when the collection has
+            // no {slug}_sort field, which is the case for a collection it has never
+            // indexed any items for. Retrying unsorted tells that apart from Solr being
+            // unreachable: an answer of no items is an empty collection, not an outage.
+            LOG.info("Sorted item query failed for collection '{}'; retrying unsorted", slug);
+            json = getJSON(collectionItemsURL(slug, start, rows, false));
+        }
+        if (json == null) { return CollectionItemsPage.empty(); }
 
         final JSONObject response = json.optJSONObject("response");
-        if (response == null) { return items; }
-        final JSONArray docs = response.optJSONArray("docs");
-        if (docs == null) { return items; }
+        if (response == null) { return CollectionItemsPage.empty(); }
 
-        for (int i = 0; i < docs.length(); i++) {
+        // numFound is the total for the whole collection, not just this page: it is
+        // what the carousel paginates against, and it rides on this same response.
+        final int total = response.optInt("numFound", 0);
+
+        final List<JSONObject> items = new ArrayList<>();
+        final JSONArray docs = response.optJSONArray("docs");
+        for (int i = 0; docs != null && i < docs.length(); i++) {
             try {
                 items.add(itemObjectFromSolrDoc(docs.getJSONObject(i), true));
             } catch (Exception e) {
                 LOG.warn("Skipping malformed collection Solr doc at index {}: {}", i, e.getMessage());
             }
         }
-        return items;
+        return new CollectionItemsPage(items, total);
+    }
+
+    /**
+     * Query for a collection's item-level docs, in collection order when {@code sorted}.
+     * Note the search API rewrites {@code collection_sort} to the collection's own sort
+     * field ({@code {slug}_sort}); Solr itself has no {@code collection_sort} field, and
+     * the API rejects the query when the collection's field does not exist.
+     */
+    private String collectionItemsURL(final String slug, final int start, final int rows,
+                                      final boolean sorted) {
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
+        uriB.queryParam("fq", "collection-slug:" + slug);
+        uriB.queryParam("fq", "itemLevel:true");
+        if (sorted) {
+            uriB.queryParam("sort", "collection_sort asc");
+        }
+        uriB.queryParam("start", Math.max(0, start));
+        uriB.queryParam("rows", Math.max(0, rows));
+        return uriB.toUriString();
     }
 
     /**
@@ -499,12 +535,13 @@ public class SolrSearch implements Search {
         String shelfLocator = firstString(doc, "documentShelfLocator");
         item.put("shelfLocator", shelfLocator != null ? shelfLocator : "");
 
-        item.put("abstractShort", Item.makeShortAbstract(firstString(doc, "documentAbstract")));
+        item.put("abstractShort", Item.makeShortAbstract(firstAbstract(doc)));
 
         String mainDisplay = firstString(doc, "mainDisplay");
         item.put("mainDisplay", mainDisplay != null ? mainDisplay : "iiif");
 
-        item.put("unreleased", !doc.optBoolean("isReleased", true));
+        item.put("unreleased", !isReleased(doc));
+        item.put("itemStatus", itemStatus(doc));
 
         String rawThumbnail = itemLevelThumbnail
             ? firstString(doc, "documentThumbnailUrl")
@@ -533,6 +570,34 @@ public class SolrSearch implements Search {
             return "/img/no-thumbnail.jpg";
         }
         return this.imageServerURL.resolve(rawImageId + this.appendToThumbnail).toString();
+    }
+
+    /**
+     * Reads an item's abstract. {@code documentAbstract} is the item-level field and is
+     * preferred; {@code abstract} is the fallback for indexes built before it was added.
+     */
+    private static String firstAbstract(final JSONObject doc) {
+        final String value = firstString(doc, "documentAbstract");
+        return value != null ? value : firstString(doc, "abstract");
+    }
+
+    /**
+     * Reads an item's release flag from {@code isReleased}. Every page doc carries it, and
+     * an item-level doc is that item's first page, so it is present on both doc shapes.
+     * Only an explicit true counts as released; anything else falls back to unreleased,
+     * which badges the result rather than hiding it.
+     */
+    private static boolean isReleased(final JSONObject doc) {
+        return "true".equalsIgnoreCase(firstString(doc, "isReleased"));
+    }
+
+    /**
+     * Reads an item's release status from {@code itemStatus}. Unrecognised values are
+     * passed through: more may be added upstream, and this only reaches badge wording.
+     */
+    private static String itemStatus(final JSONObject doc) {
+        final String status = firstString(doc, "itemStatus");
+        return (status == null || status.isBlank()) ? Item.DEFAULT_STATUS : status;
     }
 
     /**

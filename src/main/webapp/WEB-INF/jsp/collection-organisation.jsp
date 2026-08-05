@@ -1,7 +1,6 @@
 <%@page autoFlush="true" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
@@ -12,7 +11,6 @@
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <%--<json:property name="collectionCookieName" value="${collection.id}_pageNum"/>--%>
-            <json:property name="collectionSize" value="${fn:length(collection.itemIds)}"/>
             <json:property name="collectionUrl" value="${collection.URL}"/>
             <json:property name="collectionTitle" value="${collection.title}"/>
             <json:property name="collectionPage" value="${pageNumber}"/>
@@ -26,11 +24,8 @@
             <div class="campl-wrap clearfix">
                 <div class="campl-column7  campl-main-content" id="content">
                     <div id="summaryDiv" class="campl-content-container">
-                        <c:if test="${collection.unreleased}">
-                            <div class="alert alert-warning" role="alert">
-                                <strong>Unreleased content:</strong> This collection is not yet publicly available.
-                            </div>
-                        </c:if>
+                        <cudl:release-status type="notice" subject="collection"
+                                             unreleased="${collection.unreleased}" status="${collection.status}"/>
                         <%-- FIXME: Make a custom tag for resolving external HTML of different types w/ collection attribute/param --%>
                         <c:catch var="importException">
                             <c:import charEncoding="UTF-8" url="${collectionHTMLURL}/${collection.summary}"/>

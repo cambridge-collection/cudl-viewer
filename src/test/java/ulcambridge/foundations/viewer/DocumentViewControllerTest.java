@@ -1,5 +1,7 @@
 package ulcambridge.foundations.viewer;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,11 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.Items;
 
 import java.net.URI;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -52,12 +59,13 @@ public class DocumentViewControllerTest {
         req.setServerPort(rootUri.getPort());
 
         DocumentViewController c = new DocumentViewController(
-            new CollectionFactory(collectionsdao, "true", Path.of("src/test/resources/cudl-data/"), false, ""),
+            new CollectionFactory(collectionsdao, "true", Path.of("src/test/resources/cudl-data/"), ""),
             itemsDao,
             rootUri,
             iiifImageServer,
             downloadSizes,
-            socialImageDimensions
+            socialImageDimensions,
+            false
         );
 
         ModelAndView mDoc = c.handleRequest(ITEM_ID, req);
@@ -69,6 +77,186 @@ public class DocumentViewControllerTest {
         assertNotNull(mDoc.getModelMap().get("downloadSizes"));
         assertEquals(new HashMap<>(), mDoc.getModelMap().get("downloadSizes"));
         Assertions.assertNull(mDoc.getModelMap().get("socialImageDimensions"));
+    }
+
+    private ModelAndView renderItem(Item item, boolean showReleaseStatus) {
+        when(itemsDao.getItem(ITEM_ID)).thenReturn(item);
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setRequestURI("/view/" + ITEM_ID);
+
+        DocumentViewController c = new DocumentViewController(
+            new CollectionFactory(new MockCollectionsDao(), "true",
+                Path.of("src/test/resources/cudl-data/"), ""),
+            itemsDao,
+            URI.create("http://testurl.testingisthebest.com:8080"),
+            URI.create("http://images.digital.library.example.com/iiif/"),
+            Optional.empty(),
+            Optional.empty(),
+            showReleaseStatus
+        );
+
+        return c.handleRequest(ITEM_ID, req);
+    }
+
+    /**
+     * The notice is driven by the item JSON, not by which directory the file was loaded
+     * from, so an item with no isReleased is reported unreleased.
+     */
+    @Test
+    public void itemUnreleasedComesFromTheItemJSON() {
+        assertEquals(true, renderItem(Items.getExampleItem(ITEM_ID), true)
+            .getModelMap().get("itemUnreleased"));
+    }
+
+    @Test
+    public void releasedItemIsNotReportedUnreleased() {
+        JSONObject json = new JSONObject().put("pages",
+            new JSONArray().put(new JSONObject().put("isReleased", true)));
+
+        assertEquals(false, renderItem(Items.getExampleItem(ITEM_ID, json), true)
+            .getModelMap().get("itemUnreleased"));
+    }
+
+    /**
+     * The item now loads whatever the flag says, so the flag has to reach the JSP for it
+     * to gate the notice.
+     */
+    @Test
+    public void theFlagReachesTheModelSoTheNoticeCanBeGated() {
+        assertEquals(true, renderItem(Items.getExampleItem(ITEM_ID), true)
+            .getModelMap().get("showReleaseStatus"));
+        assertEquals(false, renderItem(Items.getExampleItem(ITEM_ID), false)
+            .getModelMap().get("showReleaseStatus"));
+    }
+
+    /**
+     * A dao returning a distinct collection per id, in the order given, so the breadcrumb
+     * tie-break can be tested. {@link MockCollectionsDao} hands back the same collection
+     * whatever the id, which cannot express it.
+     */
+    private static CollectionsDao daoWithLayouts(LinkedHashMap<String, String> layouts,
+                                                 Map<String, String> parents) {
+        return new CollectionsDao() {
+            @Override
+            public List<String> getCollectionIds() {
+                return new ArrayList<>(layouts.keySet());
+            }
+
+            @Override
+            public Collection getCollection(String collectionId) {
+                String layout = layouts.get(collectionId);
+                if (layout == null) {
+                    return null;
+                }
+                return new Collection(collectionId, "Title of " + collectionId,
+                    new ArrayList<>(List.of(ITEM_ID)),
+                    "collections/" + collectionId + "/summary.html",
+                    "collections/" + collectionId + "/sponsors.html",
+                    layout, parents.get(collectionId), "");
+            }
+        };
+    }
+
+    private static LinkedHashMap<String, String> layouts(String... idsAndLayouts) {
+        LinkedHashMap<String, String> layouts = new LinkedHashMap<>();
+        for (int i = 0; i < idsAndLayouts.length; i += 2) {
+            layouts.put(idsAndLayouts[i], idsAndLayouts[i + 1]);
+        }
+        return layouts;
+    }
+
+    private static JSONObject itemJSONInCollections(String... slugs) {
+        JSONArray collections = new JSONArray();
+        for (String slug : slugs) {
+            collections.put(new JSONObject().put("url-slug", slug));
+        }
+        return new JSONObject()
+            .put("pages", new JSONArray().put(new JSONObject()))
+            .put("collection", collections);
+    }
+
+    private ModelAndView renderWith(CollectionsDao collectionsDao, JSONObject json) {
+        when(itemsDao.getItem(ITEM_ID)).thenReturn(Items.getExampleItem(ITEM_ID, json));
+
+        MockHttpServletRequest req = new MockHttpServletRequest();
+        req.setRequestURI("/view/" + ITEM_ID);
+
+        DocumentViewController c = new DocumentViewController(
+            new CollectionFactory(collectionsDao, "true",
+                Path.of("src/test/resources/cudl-data/"), ""),
+            itemsDao,
+            URI.create("http://testurl.testingisthebest.com:8080"),
+            URI.create("http://images.digital.library.example.com/iiif/"),
+            Optional.empty(),
+            Optional.empty(),
+            false
+        );
+
+        return c.handleRequest(ITEM_ID, req);
+    }
+
+    private static String collectionId(ModelAndView mv, String attribute) {
+        Collection collection = (Collection) mv.getModelMap().get(attribute);
+        return collection == null ? null : collection.getId();
+    }
+
+    @Test
+    public void breadcrumbCollectionIsTheLastOrganisationalCollection() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("chinese", "organisation", "wongavery", "organisation"), Map.of()),
+            itemJSONInCollections("chinese", "wongavery"));
+
+        assertEquals("wongavery", collectionId(mv, "organisationalCollection"));
+    }
+
+    @Test
+    public void breadcrumbCollectionIgnoresTheOrderOfTheItemJSON() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("chinese", "organisation", "wongavery", "organisation"), Map.of()),
+            itemJSONInCollections("wongavery", "chinese"));
+
+        assertEquals("wongavery", collectionId(mv, "organisationalCollection"));
+    }
+
+    @Test
+    public void breadcrumbCollectionFallsBackToTheFirstWhenNoneIsOrganisational() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("exhibitions", "virtual", "treasures", "virtual"), Map.of()),
+            itemJSONInCollections("treasures", "exhibitions"));
+
+        assertEquals("exhibitions", collectionId(mv, "organisationalCollection"));
+    }
+
+    @Test
+    public void parentCollectionComesFromTheBreadcrumbCollection() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("longitude", "parent", "rgo4", "organisation"),
+                Map.of("rgo4", "longitude")),
+            itemJSONInCollections("longitude", "rgo4"));
+
+        assertEquals("rgo4", collectionId(mv, "organisationalCollection"));
+        assertEquals("longitude", collectionId(mv, "parentCollection"));
+    }
+
+    @Test
+    public void unknownCollectionSlugsAreIgnored() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("islamic", "organisation"), Map.of()),
+            itemJSONInCollections("islamic", "not-a-collection"));
+
+        assertEquals("islamic", collectionId(mv, "organisationalCollection"));
+        assertEquals(1, ((List<?>) mv.getModelMap().get("collections")).size());
+    }
+
+    @Test
+    public void itemWithNoCollectionArrayHasNoBreadcrumbCollection() {
+        ModelAndView mv = renderWith(
+            daoWithLayouts(layouts("islamic", "organisation"), Map.of()),
+            new JSONObject().put("pages", new JSONArray().put(new JSONObject())));
+
+        Assertions.assertNull(mv.getModelMap().get("organisationalCollection"));
+        Assertions.assertNull(mv.getModelMap().get("parentCollection"));
     }
 
 }

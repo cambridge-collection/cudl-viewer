@@ -34,20 +34,9 @@
             </div>
 
     </jsp:attribute>
-    <jsp:attribute name="resultInfo">
-
-            <cudl:search-result-info results="${results}"/>
-
-    </jsp:attribute>
     <jsp:attribute name="queryHelp">
 
-            <c:choose>
-                <c:when test="${results.numberOfResults==0}">
-                    <cudl:search-no-results/>
-                    <cudl:search-examples/>
-                </c:when>
-                <c:otherwise/>
-            </c:choose>
+            <cudl:search-examples/>
 
     </jsp:attribute>
     <jsp:body/>

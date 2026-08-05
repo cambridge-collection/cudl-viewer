@@ -23,6 +23,9 @@ import static org.mockito.Mockito.when;
  * Verifies that {@code /search/JSON} builds each result tile purely from the
  * Solr-sourced {@link SearchResult} (no {@code itemDAO}), with the expected shape
  * and {@code unreleased} flag, and that one bad result cannot abort the batch.
+ *
+ * <p>Also covers the facet payload of {@code /search/JSONAdvanced}, which is the
+ * sole source of the results page's facet tree.
  */
 public class SearchControllerResultJsonTest {
 
@@ -31,7 +34,8 @@ public class SearchControllerResultJsonTest {
             "Title " + fileId, fileId, 3, "3r",
             ImmutableList.of("a <b>snippet</b>"), 0, "bookormanuscript",
             "http://img/" + fileId + ".jp2/full/!180,180/0/default.jpg", "portrait",
-            "Shelf " + fileId, "Short abstract", mainDisplay, released);
+            "Shelf " + fileId, "Short abstract", mainDisplay, released,
+            released ? "released" : "draft");
     }
 
     private SearchController controller(SearchResultSet resultSet) {
@@ -44,6 +48,14 @@ public class SearchControllerResultJsonTest {
         return new SearchResultSet(results.size(), "", 1f, results, new ArrayList<>(), "");
     }
 
+    private FacetGroup facetGroup(String field, String... bands) {
+        List<Facet> facets = new ArrayList<>();
+        for (int i = 0; i < bands.length; i++) {
+            facets.add(new Facet(field, bands[i], i + 1, i));
+        }
+        return new FacetGroup(field, facets, 0, 0);
+    }
+
     @Test
     public void searchJson_buildsItemShapeFromSolrResult() throws Exception {
         List<SearchResult> results = new ArrayList<>();
@@ -53,7 +65,7 @@ public class SearchControllerResultJsonTest {
         ResponseEntity<String> response =
             controller(resultSetOf(results)).handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
 
-        JSONArray items = new JSONArray(response.getBody());
+        JSONArray items = new JSONObject(response.getBody()).getJSONArray("items");
         assertEquals(2, items.length());
 
         JSONObject first = items.getJSONObject(0);
@@ -64,12 +76,99 @@ public class SearchControllerResultJsonTest {
         assertEquals("Short abstract", item.getString("abstractShort"));
         assertEquals("iiif", item.getString("mainDisplay"));
         assertFalse(item.getBoolean("unreleased"));
+        assertEquals("released", item.getString("itemStatus"));
         assertEquals(3, first.getInt("startPage"));
         assertEquals("3r", first.getString("startPageLabel"));
         assertEquals("http://img/MS-A.jp2/full/!180,180/0/default.jpg", first.getString("pageThumbnailURL"));
 
         // Second result is unreleased -> badged.
-        assertTrue(items.getJSONObject(1).getJSONObject("item").getBoolean("unreleased"));
+        JSONObject second = items.getJSONObject(1).getJSONObject("item");
+        assertTrue(second.getBoolean("unreleased"));
+        assertEquals("draft", second.getString("itemStatus"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_omitsFacetGroupsWithNoEntries() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
+            ImmutableList.of(
+                facetGroup("Collection", "Darwin Manuscripts", "Sanskrit"),
+                facetGroup("Subject"),
+                facetGroup("Languages"),
+                facetGroup("Place", "Cambridge")),
+            "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONArray available = new JSONObject(response.getBody())
+            .getJSONObject("facets").getJSONArray("available");
+
+        assertEquals(2, available.length());
+        assertEquals("Collection", available.getJSONObject(0).getString("field"));
+        assertEquals("Place", available.getJSONObject(1).getString("field"));
+    }
+
+    /** An unreachable Solr produces 0 hits and an error, not a failed request. */
+    @Test
+    public void searchJsonAdvanced_surfacesTheSearchError() throws Exception {
+        SearchResultSet failed = new SearchResultSet(
+            0, "", 0f, new ArrayList<>(), new ArrayList<>(),
+            "A problem occurred making the search (solr).");
+
+        ResponseEntity<String> response = controller(failed)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(0, info.getInt("hits"));
+        assertEquals("A problem occurred making the search (solr).", info.getString("error"));
+    }
+
+    /** The client displays this, so it must be Solr's QTime rather than a client timing. */
+    @Test
+    public void searchJsonAdvanced_reportsSolrQueryTime() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            749, "", 74f, ImmutableList.of(result("MS-A", true, "iiif")),
+            new ArrayList<>(), "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(749, info.getInt("hits"));
+        assertEquals(74d, info.getDouble("queryTime"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_reportsNoErrorForAGenuinelyEmptyResultSet() throws Exception {
+        ResponseEntity<String> response = controller(resultSetOf(new ArrayList<>()))
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(0, info.getInt("hits"));
+        assertEquals("", info.getString("error"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_omitsFacetGroupsAlreadySelected() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
+            ImmutableList.of(
+                facetGroup("Collection", "Darwin Manuscripts"),
+                facetGroup("Place", "Cambridge")),
+            "");
+
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection::Darwin Manuscripts");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(form, 0, 20);
+
+        JSONArray available = new JSONObject(response.getBody())
+            .getJSONObject("facets").getJSONArray("available");
+
+        assertEquals(1, available.length());
+        assertEquals("Place", available.getJSONObject(0).getString("field"));
     }
 
     @Test
@@ -80,7 +179,7 @@ public class SearchControllerResultJsonTest {
         results.add(result("MS-GOOD-1", true, "iiif"));
         results.add(new SearchResult(
             "boom", "MS-BAD", 1, "1r", ImmutableList.of(), 0, "bookormanuscript",
-            null, null, null, null, null, true) {
+            null, null, null, null, null, true, "released") {
             @Override
             public String getTitle() {
                 throw new RuntimeException("simulated bad result");
@@ -91,8 +190,43 @@ public class SearchControllerResultJsonTest {
         ResponseEntity<String> response =
             controller(resultSetOf(results)).handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
 
-        JSONArray items = new JSONArray(response.getBody());
+        JSONArray items = new JSONObject(response.getBody()).getJSONArray("items");
         // The bad result is skipped; the two good results still render.
         assertEquals(2, items.length());
+    }
+
+    /**
+     * A page turn reports its own query time, and has to be able to tell an
+     * unreachable Solr from a page with nothing on it, so it carries the same
+     * {@code info} block as the full query.
+     */
+    @Test
+    public void searchJson_carriesTheQueryInfo() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            749, "", 74f, ImmutableList.of(result("MS-A", true, "iiif")),
+            new ArrayList<>(), "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject info = new JSONObject(response.getBody()).getJSONObject("info");
+        assertEquals(749, info.getInt("hits"));
+        assertEquals(74d, info.getDouble("queryTime"));
+        assertEquals("", info.getString("error"));
+    }
+
+    @Test
+    public void searchJson_surfacesTheSearchError() throws Exception {
+        SearchResultSet failed = new SearchResultSet(
+            0, "", 0f, new ArrayList<>(), new ArrayList<>(),
+            "A problem occurred making the search (solr).");
+
+        ResponseEntity<String> response = controller(failed)
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject body = new JSONObject(response.getBody());
+        assertEquals(0, body.getJSONArray("items").length());
+        assertEquals("A problem occurred making the search (solr).",
+            body.getJSONObject("info").getString("error"));
     }
 }

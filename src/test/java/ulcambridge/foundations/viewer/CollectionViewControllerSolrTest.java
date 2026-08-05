@@ -3,12 +3,17 @@ package ulcambridge.foundations.viewer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import ulcambridge.foundations.viewer.dao.ItemsDao;
+import org.springframework.web.servlet.ModelAndView;
+import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
+import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,26 +21,27 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.mockito.Mockito.when;
 
 /**
  * Verifies the collection carousel AJAX endpoint sources its tiles from Solr
- * (via {@link Search#getCollectionItems}), preserves the {@code {request, items}}
- * response shape, and no longer performs the whole-collection filesystem scan.
+ * (via {@link Search#getCollectionItems}), returns the {@code {request, items,
+ * total}} response shape, and that rendering the page itself makes no Solr query.
  */
 public class CollectionViewControllerSolrTest {
 
     @Test
     public void handleItemsAjaxRequest_sourcesTilesFromSolrAndPreservesShape() throws Exception {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
         Search search = mock(Search.class);
         JSONObject item = new JSONObject().put("id", "MS-1").put("title", "T").put("unreleased", true);
         when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
-            .thenReturn(List.of(item));
+            .thenReturn(new CollectionItemsPage(List.of(item), 1));
 
         CollectionViewController controller = new CollectionViewController(
-            collectionFactory, mock(ItemsDao.class), search, "./html", false, "");
+            collectionFactory, search, "./html", false, "");
 
         String body = controller.handleItemsAjaxRequest("treasures", 0, 8);
         JSONObject data = new JSONObject(body);
@@ -48,5 +54,198 @@ public class CollectionViewControllerSolrTest {
 
         // Solr is the item source; the (start, rows) pagination is derived from start/end.
         verify(search).getCollectionItems("treasures", 0, 8);
+    }
+
+    @Test
+    public void handleItemsAjaxRequest_reportsTheSolrTotalForPagination() throws Exception {
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("genizah"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(new JSONObject().put("id", "MS-1")), 141368));
+
+        String body = organisationController(search).handleItemsAjaxRequest("genizah", 0, 8);
+
+        // Not the 2 ids listed in the collection file: the carousel's tiles come from
+        // Solr, so its page count has to come from the same place or trailing pages
+        // render empty. It rides on the response that carries the tiles.
+        assertEquals(141368, new JSONObject(body).getInt("total"));
+    }
+
+    @Test
+    public void handleItemsAjaxRequest_reportsZeroTotalWhenSolrUnavailable() throws Exception {
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("genizah"), anyInt(), anyInt()))
+            .thenReturn(CollectionItemsPage.empty());
+
+        JSONObject data = new JSONObject(
+            organisationController(search).handleItemsAjaxRequest("genizah", 0, 8));
+
+        // No items to paginate over, so no pages; must not throw or omit the field.
+        assertEquals(0, data.getInt("total"));
+        assertEquals(0, data.getJSONArray("items").length());
+    }
+
+    @Test
+    public void handleRequest_rendersTheCollectionPageWithoutQueryingSolr() {
+        // The carousel fetches its items and its total together over AJAX, so the
+        // render must not query Solr — this is where the count query used to run.
+        Search search = mock(Search.class);
+
+        ModelAndView modelAndView = organisationController(search).handleRequest("genizah", 1);
+
+        assertEquals("genizah",
+            ((Collection) modelAndView.getModel().get("collection")).getId());
+        verifyNoInteractions(search);
+    }
+
+    @Test
+    public void handleRequest_sourcesVirtualCollectionTilesFromSolr() {
+        // Virtual collections render their first batch of tiles server-side, so that
+        // item list has to be in the model — and it comes from Solr, not from item
+        // JSON on disk.
+        Search search = mock(Search.class);
+        JSONObject item = new JSONObject()
+            .put("id", "MS-ADD-04004").put("title", "Waste Book")
+            .put("shelfLocator", "MS Add. 4004").put("abstractShort", "A notebook.")
+            .put("thumbnailURL", "http://images/MS-ADD-04004.jpg")
+            .put("thumbnailOrientation", "portrait")
+            .put("mainDisplay", "rti").put("unreleased", true);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(item), 1));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        // One batch from the start of the collection, matching what the search API
+        // serves for a single request; the client appends the rest.
+        verify(search).getCollectionItems("treasures", 0, 20);
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> items =
+            (List<Map<String, Object>>) modelAndView.getModel().get("items");
+        assertEquals(1, items.size());
+        // Exposed as maps because EL cannot read properties off a JSONObject.
+        assertEquals("MS-ADD-04004", items.get(0).get("id"));
+        assertEquals("Waste Book", items.get(0).get("title"));
+        assertEquals("MS Add. 4004", items.get(0).get("shelfLocator"));
+        assertEquals("A notebook.", items.get(0).get("abstractShort"));
+        assertEquals("http://images/MS-ADD-04004.jpg", items.get(0).get("thumbnailURL"));
+        assertEquals("portrait", items.get(0).get("thumbnailOrientation"));
+        assertEquals("rti", items.get(0).get("mainDisplay"));
+        // Badging rides on the Solr doc, replacing the per-item filesystem exists() scan.
+        assertEquals(Boolean.TRUE, items.get(0).get("unreleased"));
+        assertEquals(Boolean.FALSE, modelAndView.getModel().get("itemsUnavailable"));
+    }
+
+    @Test
+    public void handleRequest_flagsVirtualCollectionItemsUnavailableWhenSolrIsDown() {
+        // A Solr outage must be reported rather than silently rendering a collection
+        // that looks empty.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(CollectionItemsPage.empty());
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(Boolean.TRUE, modelAndView.getModel().get("itemsUnavailable"));
+        assertTrue(((List<?>) modelAndView.getModel().get("items")).isEmpty());
+    }
+
+    @Test
+    public void handleRequest_doesNotFlagAnEmptyButIndexedVirtualCollection() {
+        // Distinct from the outage above: Solr answered, this collection just has no
+        // indexed items, so there is nothing to report.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(), 0));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(Boolean.FALSE, modelAndView.getModel().get("itemsUnavailable"));
+    }
+
+    @Test
+    public void handleRequest_publishesTheSolrTotalForTheClientToAppendAgainst() {
+        // The client keeps appending batches until it has this many tiles, so it has to
+        // be Solr's total and not the collection file's, which can list items that were
+        // never indexed.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(
+                List.of(new JSONObject().put("id", "MS-1")), 425));
+
+        ModelAndView modelAndView = virtualController(search).handleRequest("treasures", 1);
+
+        assertEquals(425, modelAndView.getModel().get("collectionTotal"));
+        assertEquals(20, modelAndView.getModel().get("collectionBatchSize"));
+    }
+
+    /**
+     * The collection notice lives on both page types, and an unreleased collection now
+     * loads whatever the flag says, so the gate has to reach the organisation page too —
+     * not only the virtual one, where it used to ride along with the tiles.
+     */
+    @Test
+    public void handleRequest_publishesTheFlagToBothCollectionPageTypes() {
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt()))
+            .thenReturn(new CollectionItemsPage(List.of(), 0));
+
+        assertEquals(Boolean.FALSE,
+            organisationController(search).handleRequest("genizah", 1)
+                .getModel().get("showReleaseStatus"));
+        assertEquals(Boolean.TRUE,
+            organisationController(search, true).handleRequest("genizah", 1)
+                .getModel().get("showReleaseStatus"));
+        assertEquals(Boolean.FALSE,
+            virtualController(search).handleRequest("treasures", 1)
+                .getModel().get("showReleaseStatus"));
+    }
+
+    /** The listing badges unreleased collections, which are now listed either way. */
+    @Test
+    public void handleViewRequest_publishesTheFlagToTheCollectionsListing() throws Exception {
+        Search search = mock(Search.class);
+
+        assertEquals(Boolean.FALSE, organisationController(search)
+            .handleViewRequest().getModel().get("showReleaseStatus"));
+        assertEquals(Boolean.TRUE, organisationController(search, true)
+            .handleViewRequest().getModel().get("showReleaseStatus"));
+    }
+
+    private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");
+
+    /** MockCollectionsDao's collection is virtual. */
+    private CollectionViewController virtualController(Search search) {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
+        return new CollectionViewController(
+            collectionFactory, search, "./html", false, "");
+    }
+
+    private CollectionViewController organisationController(Search search) {
+        return organisationController(search, false);
+    }
+
+    private CollectionViewController organisationController(Search search, boolean showReleaseStatus) {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, "");
+        return new CollectionViewController(
+            collectionFactory, search, "./html", showReleaseStatus, "");
+    }
+
+    /** An organisation collection whose two item ids both have JSON in test resources. */
+    private static class OrganisationCollectionsDao implements CollectionsDao {
+
+        @Override
+        public List<String> getCollectionIds() {
+            return List.of("genizah");
+        }
+
+        @Override
+        public Collection getCollection(String collectionId) {
+            return new Collection("genizah", "Cairo Genizah",
+                new ArrayList<>(List.of("MS-ADD-03958", "MS-ADD-04004")),
+                "collections/genizah/summary.html",
+                "collections/genizah/sponsors.html",
+                "organisation", "", "");
+        }
     }
 }

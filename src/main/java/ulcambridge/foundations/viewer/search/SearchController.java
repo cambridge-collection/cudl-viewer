@@ -62,12 +62,9 @@ public class SearchController {
             return new ModelAndView("forward:/search/query");
         }
 
-        // Perform Search
-        SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
-
+        // No search here: the client's single /search/JSONAdvanced call renders the page.
         ModelAndView modelAndView = new ModelAndView("jsp/search-results");
         modelAndView.addObject("form", searchForm);
-        modelAndView.addObject("results", results);
         modelAndView.addObject("queryString",
             SearchUtil.getURLParameters(searchForm));
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
@@ -106,12 +103,9 @@ public class SearchController {
             @ModelAttribute @Valid SearchForm searchForm,
             @RequestParam(value="tagging", required=false, defaultValue="false") boolean enableTagging) {
 
-        // Perform XTF Search
-        SearchResultSet results = this.search.makeSearch(searchForm, 1, 1);
-
+        // No search here: the client's single /search/JSONAdvanced call renders the page.
         return new ModelAndView("jsp/search-advancedresults")
                 .addObject("form", searchForm)
-                .addObject("results", results)
                 .addObject("queryString",
                         SearchUtil.getURLParameters(searchForm))
                 .addObject("enableTagging", enableTagging)
@@ -152,6 +146,7 @@ public class SearchController {
         item.put("abstractShort", searchResult.getAbstractShort());
         item.put("mainDisplay", searchResult.getMainDisplay());
         item.put("unreleased", !searchResult.isReleased());
+        item.put("itemStatus", searchResult.getItemStatus());
 
         JSONObject itemJSON = new JSONObject();
         itemJSON.put("item", item);
@@ -211,6 +206,11 @@ public class SearchController {
             if(form.getFacets().containsKey(facetGroup.getField()))
                 continue;
 
+            // Solr returns some faceted fields as empty arrays; dropping the group
+            // stops a consumer rendering a heading over an empty list.
+            if(facetGroup.getFacets().isEmpty())
+                continue;
+
             a.add(getFacetGroupJSON(facetGroup));
         }
 
@@ -243,16 +243,29 @@ public class SearchController {
         JSONObject o = new JSONObject();
 
         o.put("hits", results.getNumberOfResults());
+        o.put("queryTime", results.getQueryTime());
+
+        // An unreachable Solr yields 0 hits and an error rather than a failed request,
+        // so the client needs this to tell an outage from an empty result set.
+        o.put("error", results.getError() == null ? "" : results.getError());
+
+        return o;
+    }
+
+    /** The info block lets a page turn report its own query time and spot an outage. */
+    private JSONObject getItemsJSON(SearchResultSet results) {
+        JSONObject o = new JSONObject();
+
+        o.put("items", getResultsJSON(results));
+        o.put("info", getInfoJSON(results));
 
         return o;
     }
 
     private JSONObject getJSON(SearchResultSet results, SearchForm form) {
-        JSONObject o = new JSONObject();
+        JSONObject o = getItemsJSON(results);
 
-        o.put("items", getResultsJSON(results));
         o.put("facets", getFacetsJSON(results, form));
-        o.put("info", getInfoJSON(results));
 
         return o;
     }
@@ -294,7 +307,7 @@ public class SearchController {
         return ResponseEntity.ok()
             .contentType(MediaType.APPLICATION_JSON)
             .header("Cache-Control", "public, max-age=60")
-            .body(getResultsJSON(results).toString());
+            .body(getItemsJSON(results).toString());
     }
 
     /**

@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,7 +46,7 @@ public class SolrSearchTest {
             .put("label", new JSONArray().put("3r"))
             .put("documentTitle", new JSONArray().put("Early Papers"))
             .put("documentShelfLocator", new JSONArray().put("MS Add. 3958"))
-            .put("documentAbstract", new JSONArray().put("<p>A gathering of notes.</p>"))
+            .put("abstract", new JSONArray().put("<p>A gathering of notes.</p>"))
             .put("IIIFImageURL", new JSONArray().put("MS-ADD-03958-000-00005"))
             .put("thumbnailImageOrientation", new JSONArray().put("portrait"))
             .put("isReleased", true);
@@ -99,6 +100,50 @@ public class SolrSearchTest {
     }
 
     @Test
+    public void createSearchResult_readsReleaseFlagWrappedInArray() {
+        // Solr returns most fields as single-element arrays; optBoolean would miss this.
+        JSONObject doc = pageHitDoc().put("isReleased", new JSONArray().put(false));
+        assertFalse(newSolr().createSearchResult(doc, new JSONObject()).isReleased());
+    }
+
+    @Test
+    public void createSearchResult_treatsADocWithNoReleaseFieldAsUnreleased() {
+        // Every page doc should carry isReleased. If one does not, withhold it rather
+        // than presenting unreleased content as released.
+        JSONObject doc = pageHitDoc();
+        doc.remove("isReleased");
+
+        assertFalse(newSolr().createSearchResult(doc, new JSONObject()).isReleased());
+    }
+
+    @Test
+    public void createSearchResult_readsItemStatusForTheBadgeWording() {
+        JSONObject doc = pageHitDoc().put("itemStatus", new JSONArray().put("released"));
+        assertEquals("released", newSolr().createSearchResult(doc, new JSONObject()).getItemStatus());
+
+        assertEquals("embargoed", newSolr()
+            .createSearchResult(pageHitDoc().put("itemStatus", "embargoed"), new JSONObject())
+            .getItemStatus());
+    }
+
+    @Test
+    public void createSearchResult_treatsADocWithNoItemStatusAsDraft() {
+        assertEquals("draft", newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getItemStatus());
+    }
+
+    @Test
+    public void createSearchResult_fallsBackToDocumentPrefixedAbstract() {
+        // The documentAbstract spelling is set on only a handful of docs but must
+        // still be honoured where it is.
+        JSONObject doc = pageHitDoc();
+        doc.remove("abstract");
+        doc.put("documentAbstract", new JSONArray().put("<p>Legacy field.</p>"));
+        SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
+
+        assertEquals("Legacy field.", r.getAbstractShort());
+    }
+
+    @Test
     public void parseSearchResults_skipsMalformedDocWithoutAbortingBatch() {
         JSONArray docs = new JSONArray();
         docs.put(pageHitDoc());
@@ -123,7 +168,7 @@ public class SolrSearchTest {
             .put("fileID", "MS-CHI-BONES-CUL-00297")
             .put("documentTitle", new JSONArray().put("Oracle Bones"))
             .put("documentShelfLocator", new JSONArray().put("CUL297"))
-            .put("documentAbstract", new JSONArray().put("<p>Ancient inscribed bones.</p>"))
+            .put("abstract", new JSONArray().put("<p>Ancient inscribed bones.</p>"))
             .put("documentThumbnailUrl", new JSONArray().put("MS-CHI-BONES-CUL-00297-000-00001"))
             .put("documentThumbnailOrientation", new JSONArray().put("portrait"))
             .put("mainDisplay", new JSONArray().put("rti"))
@@ -135,7 +180,7 @@ public class SolrSearchTest {
 
         String[] capturedUrl = new String[1];
         List<JSONObject> items = withStubbedResponse(response, capturedUrl)
-            .getCollectionItems("newton", 8, 8);
+            .getCollectionItems("newton", 8, 8).getItems();
 
         // The query targets item-level docs in collection order, paginated.
         assertTrue(capturedUrl[0].contains("collection-slug:newton"));
@@ -170,16 +215,127 @@ public class SolrSearchTest {
                 .put("docs", new JSONArray().put(itemDoc)));
 
         List<JSONObject> items = withStubbedResponse(response, new String[1])
-            .getCollectionItems("newton", 0, 8);
+            .getCollectionItems("newton", 0, 8).getItems();
 
         assertTrue(items.get(0).getBoolean("unreleased"));
     }
 
     @Test
-    public void getCollectionItems_returnsEmptyListWhenSolrUnavailable() {
-        // getJSON returns null on IO error; must not throw.
-        List<JSONObject> items = withStubbedResponse(null, new String[1])
+    public void getCollectionItems_carriesItemStatusForTheTileBadge() {
+        JSONObject itemDoc = new JSONObject()
+            .put("fileID", "MS-ADD-03975")
+            .put("isReleased", false)
+            .put("itemStatus", new JSONArray().put("draft"));
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 1)
+                .put("docs", new JSONArray().put(itemDoc)));
+
+        List<JSONObject> items = withStubbedResponse(response, new String[1])
+            .getCollectionItems("newton", 0, 8).getItems();
+
+        assertEquals("draft", items.get(0).getString("itemStatus"));
+    }
+
+    @Test
+    public void getCollectionItems_treatsDocWithNoReleaseFieldAsUnreleased() {
+        JSONObject itemDoc = new JSONObject().put("fileID", "MS-ADD-03975");
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 1)
+                .put("docs", new JSONArray().put(itemDoc)));
+
+        List<JSONObject> items = withStubbedResponse(response, new String[1])
+            .getCollectionItems("newton", 0, 8).getItems();
+
+        assertTrue(items.get(0).getBoolean("unreleased"));
+        assertEquals("draft", items.get(0).getString("itemStatus"));
+    }
+
+    @Test
+    public void getCollectionItems_reportsWholeCollectionTotalAlongsideThePage() {
+        // numFound is the collection total, not the page size: one page of 8 out of
+        // 141368. The carousel paginates against it, so it must survive the mapping.
+        JSONArray docs = new JSONArray();
+        for (int i = 0; i < 8; i++) {
+            docs.put(new JSONObject().put("fileID", "MS-ADD-0000" + i));
+        }
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 141368).put("docs", docs));
+
+        CollectionItemsPage page = withStubbedResponse(response, new String[1])
+            .getCollectionItems("genizah", 0, 8);
+
+        assertEquals(141368, page.getTotal());
+        assertEquals(8, page.getItems().size());
+    }
+
+    @Test
+    public void getCollectionItems_returnsEmptyPageWhenSolrUnavailable() {
+        // getJSON returns null on IO error; must not throw. A zero total means the
+        // client renders no pagination rather than paginating over nothing.
+        CollectionItemsPage page = withStubbedResponse(null, new String[1])
             .getCollectionItems("newton", 0, 8);
-        assertTrue(items.isEmpty());
+
+        assertTrue(page.getItems().isEmpty());
+        assertEquals(0, page.getTotal());
+        // Distinguishable from a collection that simply has no indexed items, which
+        // the server-side rendered virtual pages need in order to report an outage.
+        assertFalse(page.isAvailable());
+    }
+
+    @Test
+    public void getCollectionItems_reportsAnEmptyButAnsweredCollectionAsAvailable() {
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 0).put("docs", new JSONArray()));
+
+        CollectionItemsPage page = withStubbedResponse(response, new String[1])
+            .getCollectionItems("newton", 0, 8);
+
+        assertTrue(page.getItems().isEmpty());
+        assertTrue(page.isAvailable());
+    }
+
+    @Test
+    public void getCollectionItems_retriesUnsortedWhenTheCollectionHasNoSortField() {
+        // The API rejects the sorted query with 400 when {slug}_sort does not exist,
+        // which is how a collection with no indexed items behaves. getJSON returns null
+        // for that just as it does for an outage, so the unsorted retry is what tells
+        // "empty collection" apart from "Solr is down".
+        List<String> urls = new ArrayList<>();
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+            @Override
+            protected JSONObject getJSON(String url) {
+                urls.add(url);
+                if (url.contains("sort")) { return null; }
+                return new JSONObject().put("response",
+                    new JSONObject().put("numFound", 0).put("docs", new JSONArray()));
+            }
+        };
+
+        CollectionItemsPage page = solr.getCollectionItems("arthurschnitzler", 0, 20);
+
+        assertEquals(2, urls.size());
+        assertTrue(urls.get(0).contains("sort"));
+        assertFalse(urls.get(1).contains("sort"));
+        // Answered, just empty: no outage to report.
+        assertTrue(page.isAvailable());
+        assertTrue(page.getItems().isEmpty());
+    }
+
+    @Test
+    public void getCollectionItems_isUnavailableWhenTheUnsortedRetryAlsoFails() {
+        // Both attempts failing is a real outage, not a missing sort field.
+        List<String> urls = new ArrayList<>();
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+            @Override
+            protected JSONObject getJSON(String url) {
+                urls.add(url);
+                return null;
+            }
+        };
+
+        CollectionItemsPage page = solr.getCollectionItems("treasures", 0, 20);
+
+        assertEquals(2, urls.size());
+        assertFalse(page.isAvailable());
     }
 }

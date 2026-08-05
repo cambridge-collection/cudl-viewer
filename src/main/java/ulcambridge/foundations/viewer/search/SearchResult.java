@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
+import ulcambridge.foundations.viewer.model.Item;
 
 /**
  * Holds information for an individual search result. Item id can be used to
@@ -27,6 +28,7 @@ public class SearchResult implements Comparable<SearchResult> {
     private final String abstractShort;
     private final String mainDisplay;
     private final boolean released;
+    private final String itemStatus;
 
     private final List<String> snippets;
     private final int score; // how relevant is this result, used for ordering.
@@ -38,7 +40,7 @@ public class SearchResult implements Comparable<SearchResult> {
             String startPageLabel, Iterable<String> snippets,
             int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation,
             @Nullable String shelfLocator, @Nullable String abstractShort, @Nullable String mainDisplay,
-            boolean released) {
+            boolean released, String itemStatus) {
 
         Preconditions.checkNotNull(title);
         Preconditions.checkNotNull(fileId);
@@ -60,6 +62,8 @@ public class SearchResult implements Comparable<SearchResult> {
         this.abstractShort = abstractShort;
         this.mainDisplay = mainDisplay;
         this.released = released;
+        this.itemStatus = (itemStatus == null || itemStatus.isBlank())
+            ? Item.DEFAULT_STATUS : itemStatus;
     }
 
     public String getTitle() {
@@ -80,6 +84,10 @@ public class SearchResult implements Comparable<SearchResult> {
 
     public boolean isReleased() {
         return released;
+    }
+
+    public String getItemStatus() {
+        return itemStatus;
     }
 
 
@@ -142,7 +150,8 @@ public class SearchResult implements Comparable<SearchResult> {
             .equals(thumbnailOrientation, that.thumbnailOrientation)
             && Objects.equals(shelfLocator, that.shelfLocator)
             && Objects.equals(abstractShort, that.abstractShort)
-            && Objects.equals(mainDisplay, that.mainDisplay) && snippets
+            && Objects.equals(mainDisplay, that.mainDisplay)
+            && Objects.equals(itemStatus, that.itemStatus) && snippets
             .equals(that.snippets);
     }
 
@@ -151,7 +160,7 @@ public class SearchResult implements Comparable<SearchResult> {
         return Objects
             .hash(title, type, fileId, startPage, startPageLabel, thumbnailURL,
                 thumbnailOrientation, shelfLocator, abstractShort, mainDisplay, released,
-                snippets, score);
+                itemStatus, snippets, score);
     }
 
     @Override
@@ -168,6 +177,7 @@ public class SearchResult implements Comparable<SearchResult> {
             .add("abstractShort", abstractShort)
             .add("mainDisplay", mainDisplay)
             .add("released", released)
+            .add("itemStatus", itemStatus)
             .add("snippets", snippets)
             .add("score", score)
             .toString();

@@ -12,6 +12,23 @@ public final class Items {
     private Items() {}
 
     public static Item getExampleItem(String itemId) {
+        JSONObject json = new JSONObject();
+        JSONArray pages = new JSONArray();
+        pages.put(new JSONObject().put("IIIFImageURL", String.format("%s-000-00001.jp2", itemId)));
+        json.put("pages", pages);
+        // The document view finds an item's collections from here, and "treasures" is the
+        // slug MockCollectionsDao resolves.
+        json.put("collection", new JSONArray()
+            .put(new JSONObject().put("url-slug", "treasures")));
+
+        return getExampleItem(itemId, json);
+    }
+
+    /**
+     * As {@link #getExampleItem(String)} but with caller-supplied item JSON, for tests
+     * that need to vary what the constructor reads out of it.
+     */
+    public static Item getExampleItem(String itemId, JSONObject json) {
         Assert.notNull(itemId, "itemId is required");
 
         final Person aut = new Person(
@@ -30,11 +47,6 @@ public final class Items {
             "", // Missing URLs are represented by empty strings
             String.format("%s-000-00003_files/8/0_0.jpg", itemId)
         );
-
-        JSONObject json = new JSONObject();
-        JSONArray pages = new JSONArray();
-        pages.put(new JSONObject().put("IIIFImageURL", String.format("%s-000-00001.jp2", itemId)));
-        json.put("pages", pages);
 
         return new Item(
             itemId,

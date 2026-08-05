@@ -1,9 +1,7 @@
 package ulcambridge.foundations.viewer.search;
 
-import org.json.JSONObject;
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
-import java.util.List;
 import java.util.Map;
 
 public interface Search {
@@ -14,8 +12,10 @@ public interface Search {
 
     /**
      * Returns one page of a collection's item-level docs, in collection order, as
-     * per-item {@code item} JSON objects ready for the collection carousel.
+     * per-item {@code item} JSON objects ready for the collection carousel, along
+     * with the total Solr holds for the collection so the client can paginate
+     * without a second query.
      */
-    public List<JSONObject> getCollectionItems(String slug, int start, int rows);
+    public CollectionItemsPage getCollectionItems(String slug, int start, int rows);
 
 }

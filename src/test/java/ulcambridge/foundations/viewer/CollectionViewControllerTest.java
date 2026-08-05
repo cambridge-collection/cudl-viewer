@@ -6,13 +6,16 @@ import java.util.Map;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
-import ulcambridge.foundations.viewer.dao.ItemsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CollectionViewControllerTest {
 
@@ -58,8 +61,13 @@ public class CollectionViewControllerTest {
 
     private CollectionViewController createController() {
         CollectionFactory collectionFactory = new CollectionFactory(
-            new MockCollectionsDao(), "true", Path.of("cudl-data/"), false, "");
-        return new CollectionViewController(collectionFactory, mock(ItemsDao.class), mock(Search.class), "./html", false, "");
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
+        // MockCollectionsDao's collection is virtual, so rendering it fetches its
+        // first batch of tiles from Solr.
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(anyString(), anyInt(), anyInt()))
+            .thenReturn(CollectionItemsPage.empty());
+        return new CollectionViewController(collectionFactory, search, "./html", false, "");
     }
 
 }

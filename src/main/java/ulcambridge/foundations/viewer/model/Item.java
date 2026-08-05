@@ -38,6 +38,10 @@ public class Item implements Comparable<Item> {
     protected List<String> pageThumbnailURLs;
     protected JSONObject json; // used for document view
     protected String mainDisplay;
+    protected boolean released;
+    protected String itemStatus;
+
+    public static final String DEFAULT_STATUS = "draft";
 
     public Item(String itemId, String itemType, String itemTitle, List<Person> authors,
             String itemShelfLocator, String itemAbstract,
@@ -79,6 +83,12 @@ public class Item implements Comparable<Item> {
         // default mainDisplay to IIIF
         this.mainDisplay = "iiif";
 
+        // isReleased and itemStatus are on every page and constant across the document,
+        // so the first page decides both. Absent means unreleased: a document indexed or
+        // built without the field must not be presented as public.
+        boolean released = false;
+        String itemStatus = DEFAULT_STATUS;
+
         if (itemJson.has("pages")) {
             JSONArray pages = itemJson.getJSONArray("pages");
             if (!pages.isEmpty()) {
@@ -86,8 +96,16 @@ public class Item implements Comparable<Item> {
                 if (firstPage.has("mainDisplay")) {
                     this.mainDisplay = firstPage.getString("mainDisplay");
                 }
+                released = firstPage.optBoolean("isReleased", false);
+                String status = firstPage.optString("itemStatus", DEFAULT_STATUS);
+                if (!status.isBlank()) {
+                    itemStatus = status;
+                }
             }
         }
+
+        this.released = released;
+        this.itemStatus = itemStatus;
 
         orderCount++;
         this.order = orderCount;
@@ -178,6 +196,22 @@ public class Item implements Comparable<Item> {
     }
 
     public String getMainDisplay() { return mainDisplay; }
+
+    /**
+     * Whether this item is publicly released, read from {@code pages[0].isReleased}
+     * in the item JSON. Only an explicit true counts as released.
+     */
+    public boolean isReleased() {
+        return released;
+    }
+
+    /**
+     * The item's release status, read from {@code pages[0].itemStatus}. Only ever
+     * displayed; gating uses {@link #isReleased()}.
+     */
+    public String getItemStatus() {
+        return itemStatus;
+    }
 
     public JSONObject getSimplifiedJSON() {
         JSONObject json = new JSONObject();

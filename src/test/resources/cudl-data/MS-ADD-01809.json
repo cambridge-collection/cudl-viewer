@@ -351,6 +351,8 @@
     "sourceData": "/v1/metadata/tei/MS-ADD-01809/",
     "pages": [
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "cover",
             "physID": "PHYS-1",
             "sequence": 1,
@@ -363,6 +365,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "cover (inside)",
             "physID": "PHYS-2",
             "sequence": 2,
@@ -375,6 +379,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "1r",
             "physID": "PHYS-3",
             "sequence": 3,
@@ -387,6 +393,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "1v",
             "physID": "PHYS-4",
             "sequence": 4,
@@ -399,6 +407,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "2r",
             "physID": "PHYS-5",
             "sequence": 5,
@@ -411,6 +421,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "2v",
             "physID": "PHYS-6",
             "sequence": 6,
@@ -423,6 +435,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "3r",
             "physID": "PHYS-7",
             "sequence": 7,
@@ -435,6 +449,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "3v",
             "physID": "PHYS-8",
             "sequence": 8,
@@ -447,6 +463,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "4r",
             "physID": "PHYS-9",
             "sequence": 9,
@@ -459,6 +477,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "4v",
             "physID": "PHYS-10",
             "sequence": 10,
@@ -471,6 +491,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "5r",
             "physID": "PHYS-11",
             "sequence": 11,
@@ -483,6 +505,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "5v",
             "physID": "PHYS-12",
             "sequence": 12,
@@ -495,6 +519,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "6r",
             "physID": "PHYS-13",
             "sequence": 13,
@@ -507,6 +533,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "6v",
             "physID": "PHYS-14",
             "sequence": 14,
@@ -519,6 +547,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "7r",
             "physID": "PHYS-15",
             "sequence": 15,
@@ -531,6 +561,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "7v",
             "physID": "PHYS-16",
             "sequence": 16,
@@ -543,6 +575,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "8r",
             "physID": "PHYS-17",
             "sequence": 17,
@@ -555,6 +589,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "8v",
             "physID": "PHYS-18",
             "sequence": 18,
@@ -567,6 +603,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "9r",
             "physID": "PHYS-19",
             "sequence": 19,
@@ -579,6 +617,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "9v",
             "physID": "PHYS-20",
             "sequence": 20,
@@ -591,6 +631,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "10r",
             "physID": "PHYS-21",
             "sequence": 21,
@@ -603,6 +645,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "10v",
             "physID": "PHYS-22",
             "sequence": 22,
@@ -615,6 +659,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "11r",
             "physID": "PHYS-23",
             "sequence": 23,
@@ -627,6 +673,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "11v",
             "physID": "PHYS-24",
             "sequence": 24,
@@ -639,6 +687,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "12r",
             "physID": "PHYS-25",
             "sequence": 25,
@@ -651,6 +701,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "12v",
             "physID": "PHYS-26",
             "sequence": 26,
@@ -663,6 +715,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "13r",
             "physID": "PHYS-27",
             "sequence": 27,
@@ -675,6 +729,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "13v",
             "physID": "PHYS-28",
             "sequence": 28,
@@ -687,6 +743,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "14r",
             "physID": "PHYS-29",
             "sequence": 29,
@@ -699,6 +757,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "14v",
             "physID": "PHYS-30",
             "sequence": 30,
@@ -711,6 +771,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "15r",
             "physID": "PHYS-31",
             "sequence": 31,
@@ -723,6 +785,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "15v",
             "physID": "PHYS-32",
             "sequence": 32,
@@ -735,6 +799,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "16r",
             "physID": "PHYS-33",
             "sequence": 33,
@@ -747,6 +813,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "16v",
             "physID": "PHYS-34",
             "sequence": 34,
@@ -759,6 +827,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "17r",
             "physID": "PHYS-35",
             "sequence": 35,
@@ -771,6 +841,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "17v",
             "physID": "PHYS-36",
             "sequence": 36,
@@ -783,6 +855,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "18r",
             "physID": "PHYS-37",
             "sequence": 37,
@@ -795,6 +869,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "18v",
             "physID": "PHYS-38",
             "sequence": 38,
@@ -807,6 +883,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "19r",
             "physID": "PHYS-39",
             "sequence": 39,
@@ -819,6 +897,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "19v",
             "physID": "PHYS-40",
             "sequence": 40,
@@ -831,6 +911,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "20r",
             "physID": "PHYS-41",
             "sequence": 41,
@@ -843,6 +925,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "20v",
             "physID": "PHYS-42",
             "sequence": 42,
@@ -855,6 +939,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "21r",
             "physID": "PHYS-43",
             "sequence": 43,
@@ -867,6 +953,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "21v",
             "physID": "PHYS-44",
             "sequence": 44,
@@ -879,6 +967,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "22r",
             "physID": "PHYS-45",
             "sequence": 45,
@@ -891,6 +981,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "22v",
             "physID": "PHYS-46",
             "sequence": 46,
@@ -903,6 +995,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "23r",
             "physID": "PHYS-47",
             "sequence": 47,
@@ -915,6 +1009,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "23v",
             "physID": "PHYS-48",
             "sequence": 48,
@@ -927,6 +1023,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "24r",
             "physID": "PHYS-49",
             "sequence": 49,
@@ -939,6 +1037,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "24v",
             "physID": "PHYS-50",
             "sequence": 50,
@@ -951,6 +1051,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "25r",
             "physID": "PHYS-51",
             "sequence": 51,
@@ -963,6 +1065,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "25v",
             "physID": "PHYS-52",
             "sequence": 52,
@@ -975,6 +1079,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "26r",
             "physID": "PHYS-53",
             "sequence": 53,
@@ -987,6 +1093,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "26v",
             "physID": "PHYS-54",
             "sequence": 54,
@@ -999,6 +1107,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "27r",
             "physID": "PHYS-55",
             "sequence": 55,
@@ -1011,6 +1121,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "27v",
             "physID": "PHYS-56",
             "sequence": 56,
@@ -1023,6 +1135,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "28r",
             "physID": "PHYS-57",
             "sequence": 57,
@@ -1035,6 +1149,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "28v",
             "physID": "PHYS-58",
             "sequence": 58,
@@ -1047,6 +1163,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "29r",
             "physID": "PHYS-59",
             "sequence": 59,
@@ -1059,6 +1177,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "29v",
             "physID": "PHYS-60",
             "sequence": 60,
@@ -1071,6 +1191,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "30r",
             "physID": "PHYS-61",
             "sequence": 61,
@@ -1083,6 +1205,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "30v",
             "physID": "PHYS-62",
             "sequence": 62,
@@ -1095,6 +1219,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "31r",
             "physID": "PHYS-63",
             "sequence": 63,
@@ -1107,6 +1233,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "31v",
             "physID": "PHYS-64",
             "sequence": 64,
@@ -1119,6 +1247,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "32r",
             "physID": "PHYS-65",
             "sequence": 65,
@@ -1131,6 +1261,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "32v",
             "physID": "PHYS-66",
             "sequence": 66,
@@ -1143,6 +1275,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "33r",
             "physID": "PHYS-67",
             "sequence": 67,
@@ -1155,6 +1289,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "33v",
             "physID": "PHYS-68",
             "sequence": 68,
@@ -1167,6 +1303,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "34r",
             "physID": "PHYS-69",
             "sequence": 69,
@@ -1179,6 +1317,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "34v",
             "physID": "PHYS-70",
             "sequence": 70,
@@ -1191,6 +1331,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "35r",
             "physID": "PHYS-71",
             "sequence": 71,
@@ -1203,6 +1345,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "35v",
             "physID": "PHYS-72",
             "sequence": 72,
@@ -1215,6 +1359,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "36r",
             "physID": "PHYS-73",
             "sequence": 73,
@@ -1227,6 +1373,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "36v",
             "physID": "PHYS-74",
             "sequence": 74,
@@ -1239,6 +1387,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "37r",
             "physID": "PHYS-75",
             "sequence": 75,
@@ -1251,6 +1401,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "37v",
             "physID": "PHYS-76",
             "sequence": 76,
@@ -1263,6 +1415,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "38r",
             "physID": "PHYS-77",
             "sequence": 77,
@@ -1275,6 +1429,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "38v",
             "physID": "PHYS-78",
             "sequence": 78,
@@ -1287,6 +1443,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "39r",
             "physID": "PHYS-79",
             "sequence": 79,
@@ -1299,6 +1457,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "39v",
             "physID": "PHYS-80",
             "sequence": 80,
@@ -1311,6 +1471,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "40r",
             "physID": "PHYS-81",
             "sequence": 81,
@@ -1323,6 +1485,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "40v",
             "physID": "PHYS-82",
             "sequence": 82,
@@ -1335,6 +1499,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "41r",
             "physID": "PHYS-83",
             "sequence": 83,
@@ -1347,6 +1513,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "41v",
             "physID": "PHYS-84",
             "sequence": 84,
@@ -1359,6 +1527,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "42r",
             "physID": "PHYS-85",
             "sequence": 85,
@@ -1371,6 +1541,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "42v",
             "physID": "PHYS-86",
             "sequence": 86,
@@ -1383,6 +1555,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "43r",
             "physID": "PHYS-87",
             "sequence": 87,
@@ -1395,6 +1569,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "43v",
             "physID": "PHYS-88",
             "sequence": 88,
@@ -1407,6 +1583,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "44r",
             "physID": "PHYS-89",
             "sequence": 89,
@@ -1419,6 +1597,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "44v",
             "physID": "PHYS-90",
             "sequence": 90,
@@ -1431,6 +1611,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "45r",
             "physID": "PHYS-91",
             "sequence": 91,
@@ -1443,6 +1625,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "45v",
             "physID": "PHYS-92",
             "sequence": 92,
@@ -1455,6 +1639,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "46r",
             "physID": "PHYS-93",
             "sequence": 93,
@@ -1467,6 +1653,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "46v",
             "physID": "PHYS-94",
             "sequence": 94,
@@ -1479,6 +1667,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "47r",
             "physID": "PHYS-95",
             "sequence": 95,
@@ -1491,6 +1681,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "47v",
             "physID": "PHYS-96",
             "sequence": 96,
@@ -1503,6 +1695,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "48r",
             "physID": "PHYS-97",
             "sequence": 97,
@@ -1515,6 +1709,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "48v",
             "physID": "PHYS-98",
             "sequence": 98,
@@ -1527,6 +1723,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "49r",
             "physID": "PHYS-99",
             "sequence": 99,
@@ -1539,6 +1737,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "49v",
             "physID": "PHYS-100",
             "sequence": 100,
@@ -1551,6 +1751,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "50r",
             "physID": "PHYS-101",
             "sequence": 101,
@@ -1563,6 +1765,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "50v",
             "physID": "PHYS-102",
             "sequence": 102,
@@ -1575,6 +1779,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "51r",
             "physID": "PHYS-103",
             "sequence": 103,
@@ -1587,6 +1793,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "51v",
             "physID": "PHYS-104",
             "sequence": 104,
@@ -1599,6 +1807,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "52r",
             "physID": "PHYS-105",
             "sequence": 105,
@@ -1611,6 +1821,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "52v",
             "physID": "PHYS-106",
             "sequence": 106,
@@ -1623,6 +1835,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "53r",
             "physID": "PHYS-107",
             "sequence": 107,
@@ -1635,6 +1849,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "53v",
             "physID": "PHYS-108",
             "sequence": 108,
@@ -1647,6 +1863,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "54r",
             "physID": "PHYS-109",
             "sequence": 109,
@@ -1659,6 +1877,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "54v",
             "physID": "PHYS-110",
             "sequence": 110,
@@ -1671,6 +1891,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "55r",
             "physID": "PHYS-111",
             "sequence": 111,
@@ -1683,6 +1905,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "55v",
             "physID": "PHYS-112",
             "sequence": 112,
@@ -1695,6 +1919,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "56r",
             "physID": "PHYS-113",
             "sequence": 113,
@@ -1707,6 +1933,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "56v",
             "physID": "PHYS-114",
             "sequence": 114,
@@ -1719,6 +1947,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "57r",
             "physID": "PHYS-115",
             "sequence": 115,
@@ -1731,6 +1961,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "57v",
             "physID": "PHYS-116",
             "sequence": 116,
@@ -1743,6 +1975,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "58r",
             "physID": "PHYS-117",
             "sequence": 117,
@@ -1755,6 +1989,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "58v",
             "physID": "PHYS-118",
             "sequence": 118,
@@ -1767,6 +2003,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "59r",
             "physID": "PHYS-119",
             "sequence": 119,
@@ -1779,6 +2017,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "59v",
             "physID": "PHYS-120",
             "sequence": 120,
@@ -1791,6 +2031,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "60r",
             "physID": "PHYS-121",
             "sequence": 121,
@@ -1803,6 +2045,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "60v",
             "physID": "PHYS-122",
             "sequence": 122,
@@ -1815,6 +2059,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "61r",
             "physID": "PHYS-123",
             "sequence": 123,
@@ -1827,6 +2073,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "61v",
             "physID": "PHYS-124",
             "sequence": 124,
@@ -1839,6 +2087,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "62r",
             "physID": "PHYS-125",
             "sequence": 125,
@@ -1851,6 +2101,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "62v",
             "physID": "PHYS-126",
             "sequence": 126,
@@ -1863,6 +2115,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "63r",
             "physID": "PHYS-127",
             "sequence": 127,
@@ -1875,6 +2129,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "63v",
             "physID": "PHYS-128",
             "sequence": 128,
@@ -1887,6 +2143,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "64r",
             "physID": "PHYS-129",
             "sequence": 129,
@@ -1899,6 +2157,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "64v",
             "physID": "PHYS-130",
             "sequence": 130,
@@ -1911,6 +2171,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "65r",
             "physID": "PHYS-131",
             "sequence": 131,
@@ -1923,6 +2185,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "65v",
             "physID": "PHYS-132",
             "sequence": 132,
@@ -1935,6 +2199,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "66r",
             "physID": "PHYS-133",
             "sequence": 133,
@@ -1947,6 +2213,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "66v",
             "physID": "PHYS-134",
             "sequence": 134,
@@ -1959,6 +2227,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "67r",
             "physID": "PHYS-135",
             "sequence": 135,
@@ -1971,6 +2241,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "67v",
             "physID": "PHYS-136",
             "sequence": 136,
@@ -1983,6 +2255,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "68r",
             "physID": "PHYS-137",
             "sequence": 137,
@@ -1995,6 +2269,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "68v",
             "physID": "PHYS-138",
             "sequence": 138,
@@ -2007,6 +2283,8 @@
             "imageHeight": 3875
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "69r",
             "physID": "PHYS-139",
             "sequence": 139,
@@ -2019,6 +2297,8 @@
             "imageHeight": 4448
         },
         {
+            "isReleased": true,
+            "itemStatus": "released",
             "label": "69v",
             "physID": "PHYS-140",
             "sequence": 140,

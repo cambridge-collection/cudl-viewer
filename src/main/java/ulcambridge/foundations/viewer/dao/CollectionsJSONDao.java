@@ -32,17 +32,14 @@ public class CollectionsJSONDao implements CollectionsDao {
     private final File uiFile;
     private UI uiTheme;
     private final String cachingEnabled;
-    private final boolean showUnreleasedContent;
     private final Path unreleasedCollectionsDir;
 
     public CollectionsJSONDao(@Qualifier("datasetFile") File datasetFile,
                               @Value("${dataUIFile}") String uiFilepath,
                               String cachingEnabled,
-                              boolean showUnreleasedContent,
                               Path unreleasedCollectionsDir) throws IOException {
 
         this.cachingEnabled = cachingEnabled;
-        this.showUnreleasedContent = showUnreleasedContent;
         this.unreleasedCollectionsDir = unreleasedCollectionsDir;
         this.datasetFile = datasetFile;
         this.uiFile = new File(uiFilepath);
@@ -79,14 +76,16 @@ public class CollectionsJSONDao implements CollectionsDao {
             }
         }
 
-        // When unreleased content is enabled, scan the unreleased collections
-        // directory and merge any collections not already loaded above.
-        if (showUnreleasedContent && unreleasedCollectionsDir != null) {
-            log.debug("[showUnreleasedContent] scanning unreleased collections dir: {}", unreleasedCollectionsDir);
+        // Scan the unreleased collections directory and merge any collections not
+        // already loaded above. This is not gated on showReleaseStatus: the flag
+        // governs whether the badge and notice render, not whether the collection
+        // loads, so an unreleased collection page stays reachable either way.
+        if (unreleasedCollectionsDir != null) {
+            log.debug("scanning unreleased collections dir: {}", unreleasedCollectionsDir);
             File[] files = unreleasedCollectionsDir.toFile()
                 .listFiles((dir, name) -> name.endsWith(".collection.json"));
 
-            log.debug("[showUnreleasedContent] found {} unreleased collection files", files == null ? 0 : files.length);
+            log.debug("found {} unreleased collection files", files == null ? 0 : files.length);
             if (files != null) {
                 Set<String> loadedIds = collections.keySet();
 
@@ -95,11 +94,10 @@ public class CollectionsJSONDao implements CollectionsDao {
                         Collection c = getCollectionFromFile(file, subCollections);
                         // Skip if this collection id was already loaded from the main dataset.
                         if (c != null && !loadedIds.contains(c.getId())) {
-                            c.setUnreleased(true);
                             collections.put(c.getId(), c);
-                            log.debug("[showUnreleasedContent] added unreleased collection: id={} type={}", c.getId(), c.getType());
+                            log.debug("added unreleased collection: id={} type={}", c.getId(), c.getType());
                         } else if (c != null) {
-                            log.debug("[showUnreleasedContent] skipping unreleased collection (already loaded): {}", c.getId());
+                            log.debug("skipping unreleased collection (already loaded): {}", c.getId());
                         }
                     } catch (IOException e) {
                         log.warn("Skipping unreadable unreleased collection file: {} — {}", file.getName(), e.getMessage());
@@ -131,6 +129,12 @@ public class CollectionsJSONDao implements CollectionsDao {
 
         String metaDescription = description.getString("medium");
 
+        // Release state comes from the file's own properties, not from which directory
+        // it was found in. Absent isReleased means unreleased and absent status means
+        // draft, matching the item rule; most collection files carry neither yet.
+        boolean released = collectionJson.optBoolean("isReleased", false);
+        String status = collectionJson.optString("status", Collection.DEFAULT_STATUS);
+
         if (collectionJson.has("collections")) {
             List<String> subcollectionIds = new ArrayList<>();
             for (int i = 0; i < collectionJson.getJSONArray("collections").length(); i++) {
@@ -141,8 +145,10 @@ public class CollectionsJSONDao implements CollectionsDao {
             subCollections.put(collectionId, subcollectionIds);
         }
 
-        return new Collection(collectionId, collectionTitle, collectionItemIds, collectionSummary,
-            collectionSponsors, collectionType, parentCollectionId, metaDescription);
+        Collection collectionObject = new Collection(collectionId, collectionTitle, collectionItemIds,
+            collectionSummary, collectionSponsors, collectionType, parentCollectionId, metaDescription);
+        collectionObject.setReleaseState(released, status);
+        return collectionObject;
     }
 
     private List<String> getItemIds(JSONObject collectionJson) {

@@ -4,10 +4,8 @@ import org.jsoup.Jsoup;
 import org.springframework.web.util.UriUtils;
 import ulcambridge.foundations.viewer.CollectionFactory;
 import ulcambridge.foundations.viewer.dao.ItemsDao;
-import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
-import ulcambridge.foundations.viewer.search.SearchUtil;
 
 /**
  * This class defines custom JSP Expression Language (EL) functions required to
@@ -61,32 +59,19 @@ public final class ElFunctions {
     }
 
     /**
-     * @see SearchUtil#getURLParametersWithoutFacet(SearchForm, String)
-     */
-    public static String urlParamsWithoutFacet(SearchForm form, String facet) {
-        return SearchUtil.getURLParametersWithoutFacet(form, facet);
-    }
-
-    /**
-     * @see SearchUtil#getURLParametersWithExtraFacet(SearchForm, String, String)
-     */
-    public static String urlParamsWithFacet(SearchForm form, String facet, String value) {
-        return SearchUtil.getURLParametersWithExtraFacet(form, facet, value);
-    }
-
-    /**
-     * @see SearchUtil#getURLParametersWithFacetExpanded(SearchForm, String)
-     */
-    public static String urlParamsWithFacetExpanded(SearchForm form, String facet) {
-        return SearchUtil.getURLParametersWithFacetExpanded(form, facet);
-    }
-
-    /**
      * Strip HTML tags from input, returning the plain text content.
      * @see org.jsoup.nodes.Element#text()
      */
     public static String stripTags(String html) {
         return Jsoup.parse(html).text();
+    }
+
+    /** Upper-case the first letter, for displaying the lower-case release status values. */
+    public static String capitalise(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 
     private ElFunctions() { throw new RuntimeException("No instantiation"); }

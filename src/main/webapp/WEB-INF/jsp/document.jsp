@@ -197,11 +197,8 @@
                 <div id="doc-breadcrumb"></div>
                 <button id="right-panel-toggle" class="btn toggle-btn fa fa-bars"
                      aria-label="Toggle sidebar"></button>
-                <c:if test="${itemUnreleased}">
-                    <div class="alert alert-warning" role="alert" style="margin: 8px;">
-                        <strong>Unreleased:</strong> This item is not yet publicly available.
-                    </div>
-                </c:if>
+                <cudl:release-status type="notice" subject="item" unreleased="${itemUnreleased}"
+                                     status="${item.itemStatus}" style="margin: 8px;"/>
 
                 <div role="tabpanel" id="rightTabs">
 
