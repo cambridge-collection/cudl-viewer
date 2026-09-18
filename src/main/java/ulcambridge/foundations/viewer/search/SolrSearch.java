@@ -61,6 +61,7 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Languages","facet-languages");
         this.displayNameToFacetNameMap.put("Page_Has_Transcription","facet-pageHasTranscription");
         this.displayNameToFacetNameMap.put("Page_Has_Translation","facet-pageHasTranslation");
+        this.displayNameToFacetNameMap.put("Item_Level", "facet-itemLevel");
         if (showReleaseStatus) {
             this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
         }
@@ -75,6 +76,7 @@ public class SolrSearch implements Search {
         this.facetNamesInOrder.add("facet-creations-century");
         if (showReleaseStatus) {
             this.facetNamesInOrder.add("facet-itemStatus");
+            this.facetNamesInOrder.add("facet-itemLevel");
         }
     }
 
