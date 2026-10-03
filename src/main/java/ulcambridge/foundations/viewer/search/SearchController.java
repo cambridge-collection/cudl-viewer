@@ -166,6 +166,20 @@ public class SearchController {
         // The matched-page thumbnail was already resolved from Solr's IIIFImageURL.
         itemJSON.put("pageThumbnailURL", searchResult.getThumbnailURL());
 
+        // Place shown as [west, south, east, north], only for results that have one.
+        if (searchResult.getCoverage() != null) {
+            JSONArray coverage = new JSONArray();
+            coverage.addAll(searchResult.getCoverage());
+            itemJSON.put("coverage", coverage);
+        }
+
+        // Place of origin as [lat, lon], only for results that have one.
+        if (searchResult.getOrigin() != null) {
+            JSONArray origin = new JSONArray();
+            origin.addAll(searchResult.getOrigin());
+            itemJSON.put("origin", origin);
+        }
+
         return itemJSON;
     }
 
@@ -344,6 +358,49 @@ public class SearchController {
         return ResponseEntity.ok()
                 .header("Cache-Control", "public, max-age=60")
                 .body(o.toString());
+    }
+
+
+    /**
+     * Every matching item with a location, for the search results map:
+     * {total, locations: [{id, title, startPage, coverage?, origin?}], error?}.
+     * total can exceed the number of locations when the search API caps them.
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/locationsJSON",
+            produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> handleLocationsAjaxRequest(@Valid SearchForm searchForm) {
+
+        SearchResultSet results = this.search.getLocations(searchForm);
+
+        JSONArray locations = new JSONArray();
+        for (SearchResult result : results.getResults()) {
+            JSONObject location = new JSONObject();
+            location.put("id", result.getFileId());
+            location.put("title", result.getTitle());
+            location.put("startPage", result.getStartPage());
+            if (result.getCoverage() != null) {
+                JSONArray coverage = new JSONArray();
+                coverage.addAll(result.getCoverage());
+                location.put("coverage", coverage);
+            }
+            if (result.getOrigin() != null) {
+                JSONArray origin = new JSONArray();
+                origin.addAll(result.getOrigin());
+                location.put("origin", origin);
+            }
+            locations.add(location);
+        }
+
+        JSONObject json = new JSONObject();
+        json.put("total", results.getNumberOfResults());
+        json.put("locations", locations);
+        if (results.getError() != null && !results.getError().isEmpty()) {
+            json.put("error", results.getError());
+        }
+
+        return ResponseEntity.ok()
+            .header("Cache-Control", "public, max-age=60")
+            .body(json.toString());
     }
 
 

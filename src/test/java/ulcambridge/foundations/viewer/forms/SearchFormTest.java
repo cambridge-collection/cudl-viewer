@@ -76,4 +76,22 @@ public class SearchFormTest {
 
         assertEquals(List.of("Subject", "Place", "Languages"), form.getExpandFacet());
     }
+
+    @Test
+    public void setBboxKeepsFourCommaSeparatedNumbers() {
+        SearchForm form = new SearchForm();
+        form.setBbox(" -0.5, 52.1, 0.25 ,52.3 ");
+
+        assertEquals("-0.5,52.1,0.25,52.3", form.getBbox());
+        assertTrue(form.getQueryParams().contains("bbox=-0.5%2C52.1%2C0.25%2C52.3"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "1,2,3", "1,2,3,4,5", "a,b,c,d", "0,0,1,1) OR *:*"})
+    public void setBboxDropsMalformedValues(String bbox) {
+        SearchForm form = new SearchForm();
+        form.setBbox(bbox);
+
+        assertEquals("", form.getBbox());
+    }
 }

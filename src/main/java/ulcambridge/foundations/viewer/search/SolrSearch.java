@@ -42,6 +42,14 @@ public class SolrSearch implements Search {
     // Most values Solr is asked for per collection filter facet
     private static final int COLLECTION_FILTER_FACET_LIMIT = 200;
 
+    // Solr returns origin_p as "lat,lon"
+    private static final Pattern LAT_LON_PATTERN =
+        Pattern.compile("^\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*$");
+
+    // Solr returns coverage_srpt as ENVELOPE(west, east, north, south)
+    private static final Pattern ENVELOPE_PATTERN = Pattern.compile(
+        "^ENVELOPE\\(\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*\\)$");
+
     private final URI searchURL;
     private final URI imageServerURL;
     private final String appendToThumbnail;
@@ -146,6 +154,27 @@ public class SolrSearch implements Search {
     }
 
     @Override
+    public SearchResultSet getLocations(final SearchForm searchForm) {
+        final JSONObject json = getJSON(buildQueryURL(searchForm, 0, "items/locations", false, false));
+        if (json == null || json.optJSONObject("response") == null) {
+            return new SearchResultSet(0, "", 0f, new ArrayList<>(), new ArrayList<>(),
+                "A problem occurred fetching locations (Solr).");
+        }
+        final JSONObject response = json.getJSONObject("response");
+        final JSONArray docs = response.optJSONArray("docs");
+        final List<SearchResult> results = new ArrayList<>();
+        for (int i = 0; docs != null && i < docs.length(); i++) {
+            try {
+                results.add(createSearchResult(docs.getJSONObject(i), null));
+            } catch (Exception e) {
+                LOG.warn("Skipping location doc {}: {}", i, e.getMessage());
+            }
+        }
+        return new SearchResultSet(response.optInt("numFound", results.size()), "", 0f,
+            results, new ArrayList<>(), "");
+    }
+
+    @Override
     public Map<String, String> getFacetNameMap() {
         return displayNameToFacetNameMap;
     }
@@ -174,7 +203,13 @@ public class SolrSearch implements Search {
 
     protected String buildQueryURL(final SearchForm searchForm, final int start, final int end,
                                    final boolean withFacets, final boolean facetsOnly) {
-        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
+        return buildQueryURL(searchForm, start, "items", withFacets, facetsOnly);
+    }
+
+    /** The search API URL for searchForm, against the given API path. */
+    protected String buildQueryURL(final SearchForm searchForm, final int start, final String path,
+                                   final boolean withFacets, final boolean facetsOnly) {
+        final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve(path));
         HashMap<String, String> QueryTerms = new HashMap<String, String>();
 
         uriB.queryParam("start", start);
@@ -256,6 +291,11 @@ public class SolrSearch implements Search {
 
         if (searchForm.getYearEnd() != null) {
             QueryTerms.put("yearEnd", Integer.toString(searchForm.getYearEnd()));
+        }
+
+        // Map area; the search API validates it and builds the spatial filter
+        if (searchForm.getBbox() != null && !searchForm.getBbox().isEmpty()) {
+            uriB.queryParam("bbox", searchForm.getBbox());
         }
 
         if (searchForm.getFacets() != null) {
@@ -503,9 +543,49 @@ public class SolrSearch implements Search {
         String thumbnailOrientation = firstString(result, "thumbnailImageOrientation");
         if (thumbnailOrientation == null) { thumbnailOrientation = "landscape"; }
 
+        List<Double> coverage = parseEnvelope(firstString(result, "coverage_srpt"));
+        List<Double> origin = parseLatLon(firstString(result, "origin_p"));
+
         return new SearchResult(title, id, startPage, startPageLabel,
             snippets, score, itemType, thumbnailURL, thumbnailOrientation,
-            shelfLocator, abstractShort, mainDisplay, released, itemStatus);
+            shelfLocator, abstractShort, mainDisplay, released, itemStatus, coverage, origin);
+    }
+
+    /**
+     * Converts a Solr {@code "lat,lon"} point into {@code [lat, lon]}, or null if
+     * absent, unparseable or out of range.
+     */
+    static List<Double> parseLatLon(final String latLon) {
+        if (latLon == null) { return null; }
+        final Matcher m = LAT_LON_PATTERN.matcher(latLon);
+        if (!m.matches()) { return null; }
+        try {
+            final double lat = Double.parseDouble(m.group(1));
+            final double lon = Double.parseDouble(m.group(2));
+            if (Math.abs(lat) > 90 || Math.abs(lon) > 180) { return null; }
+            return Arrays.asList(lat, lon);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Converts a Solr {@code ENVELOPE(west, east, north, south)} value into
+     * {@code [west, south, east, north]}, or null if absent or unparseable.
+     */
+    static List<Double> parseEnvelope(final String envelope) {
+        if (envelope == null) { return null; }
+        final Matcher m = ENVELOPE_PATTERN.matcher(envelope.trim());
+        if (!m.matches()) { return null; }
+        try {
+            final double west = Double.parseDouble(m.group(1));
+            final double east = Double.parseDouble(m.group(2));
+            final double north = Double.parseDouble(m.group(3));
+            final double south = Double.parseDouble(m.group(4));
+            return Arrays.asList(west, south, east, north);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     /**

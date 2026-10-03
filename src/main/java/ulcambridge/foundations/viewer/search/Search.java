@@ -2,6 +2,7 @@ package ulcambridge.foundations.viewer.search;
 
 import ulcambridge.foundations.viewer.forms.SearchForm;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public interface Search {
@@ -32,6 +33,15 @@ public interface Search {
     public default CollectionItemsPage getCollectionItems(String slug, int start, int rows,
                                                           CollectionFilter filter) {
         return getCollectionItems(slug, start, rows);
+    }
+
+    /**
+     * Returns every item matching the search that has a location (place shown
+     * or place of origin), one result per item, for drawing on a map.
+     * Searches without location support return no results.
+     */
+    public default SearchResultSet getLocations(SearchForm searchForm) {
+        return new SearchResultSet(0, "", 0f, new ArrayList<>(), new ArrayList<>(), "");
     }
 
 }

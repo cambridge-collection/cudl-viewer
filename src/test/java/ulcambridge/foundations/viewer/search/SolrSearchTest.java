@@ -14,6 +14,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -619,5 +620,86 @@ public class SolrSearchTest {
     @Test
     public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
         assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
+    }
+
+    @Test
+    public void createSearchResult_readsMapCoverageAsWestSouthEastNorth() {
+        JSONObject doc = pageHitDoc()
+            .put("coverage_srpt", "ENVELOPE(20.266667, 23.733333, 38.5, 36.383333)");
+
+        SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
+
+        assertEquals(List.of(20.266667, 36.383333, 23.733333, 38.5), r.getCoverage());
+    }
+
+    @Test
+    public void createSearchResult_leavesCoverageNullWhenAbsentOrMalformed() {
+        assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getCoverage());
+
+        JSONObject doc = pageHitDoc().put("coverage_srpt", "POLYGON((0 0, 1 0, 1 1, 0 0))");
+        assertNull(newSolr().createSearchResult(doc, new JSONObject()).getCoverage());
+    }
+
+    @Test
+    public void buildQueryURL_passesBboxToTheSearchApi() {
+        SearchForm form = new SearchForm();
+        form.setBbox("0.11,52.19,0.14,52.22");
+
+        String url = newSolr().buildQueryURL(form, 0, 20, true, false);
+
+        assertTrue(url.contains("bbox=0.11,52.19,0.14,52.22"), url);
+    }
+
+    @Test
+    public void buildQueryURL_omitsBboxWhenNotSet() {
+        String url = newSolr().buildQueryURL(new SearchForm(), 0, 20, true, false);
+
+        assertFalse(url.contains("bbox"), url);
+    }
+
+    @Test
+    public void createSearchResult_readsPlaceOfOriginAsLatLon() {
+        JSONObject doc = pageHitDoc().put("origin_p", "52.175613,0.141032");
+
+        SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
+
+        assertEquals(List.of(52.175613, 0.141032), r.getOrigin());
+    }
+
+    @Test
+    public void createSearchResult_leavesOriginNullWhenAbsentOrInvalid() {
+        assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getOrigin());
+
+        JSONObject doc = pageHitDoc().put("origin_p", "95.0,0.0");
+        assertNull(newSolr().createSearchResult(doc, new JSONObject()).getOrigin());
+    }
+
+    @Test
+    public void getLocations_queriesTheLocationsEndpointAndMapsEachItem() {
+        JSONObject response = new JSONObject().put("response", new JSONObject()
+            .put("numFound", 2)
+            .put("docs", new JSONArray()
+                .put(pageHitDoc().put("coverage_srpt", "ENVELOPE(0.1, 0.2, 52.3, 52.1)"))
+                .put(pageHitDoc().put("fileID", "PH-GEOGRAPHY-AGR-00062")
+                    .put("origin_p", "52.186474,0.137165"))));
+        String[] url = new String[1];
+        SearchForm form = new SearchForm();
+        form.setBbox("0.1,52,0.2,52.4");
+
+        SearchResultSet results = withStubbedResponse(response, url).getLocations(form);
+
+        assertTrue(url[0].startsWith("http://search.example.com/items/locations?"), url[0]);
+        assertTrue(url[0].contains("bbox=0.1,52,0.2,52.4"), url[0]);
+        assertEquals(2, results.getNumberOfResults());
+        assertEquals(List.of(0.1, 52.1, 0.2, 52.3), results.getResults().get(0).getCoverage());
+        assertEquals(List.of(52.186474, 0.137165), results.getResults().get(1).getOrigin());
+    }
+
+    @Test
+    public void getLocations_reportsAnErrorWhenSolrIsUnavailable() {
+        SearchResultSet results = withStubbedResponse(null, new String[1]).getLocations(new SearchForm());
+
+        assertEquals(0, results.getNumberOfResults());
+        assertFalse(results.getError().isEmpty());
     }
 }

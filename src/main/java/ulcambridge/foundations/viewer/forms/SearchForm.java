@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class SearchForm {
 
@@ -34,6 +35,11 @@ public class SearchForm {
 
     // Expand facet results
     private List<String> expandFacet = new ArrayList<>();
+
+    // Map area as west,south,east,north in decimal degrees
+    private static final Pattern BBOX_PATTERN =
+        Pattern.compile("^-?\\d+(\\.\\d+)?(,-?\\d+(\\.\\d+)?){3}$");
+    private String bbox = "";
 
     // This translates the form object into GET request parameters
     public String getQueryParams() {
@@ -80,6 +86,9 @@ public class SearchForm {
         }
         if (yearEnd!=null) {
             queryParams.append("yearEnd=" + URLEncoder.encode(yearEnd.toString(), StandardCharsets.UTF_8)  + "&");
+        }
+        if (bbox!=null && !bbox.isEmpty()) {
+            queryParams.append("bbox=" + URLEncoder.encode(bbox, StandardCharsets.UTF_8)  + "&");
         }
         if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
             queryParams.append("facetCollection=" + URLEncoder.encode(facets.get("Collection"), StandardCharsets.UTF_8) + "&");
@@ -288,6 +297,17 @@ public class SearchForm {
         this.expandFacet = names;
     }
 
+    /** Map area **/
+
+    public String getBbox() { return bbox; }
+
+    /* Malformed values are dropped rather than failing the search. The search API
+       does the range checks. */
+    public void setBbox(String bbox) {
+        String trimmed = bbox == null ? "" : bbox.replaceAll("\\s", "");
+        this.bbox = BBOX_PATTERN.matcher(trimmed).matches() ? trimmed : "";
+    }
+
     /**
      * Sets the values in this form to the values in the form passed in.
      *
@@ -313,6 +333,7 @@ public class SearchForm {
         this.facets = input.facets;
 
         this.expandFacet = input.expandFacet;
+        this.bbox = input.bbox;
     }
 
 

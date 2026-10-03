@@ -41,6 +41,10 @@ public final class SearchUtil {
                     .queryParam("yearEnd", searchForm.getYearEnd());
         }
 
+        if (!searchForm.getBbox().isEmpty()) {
+            builder.queryParam("bbox", searchForm.getBbox());
+        }
+
         return builder;
     }
 
