@@ -3,10 +3,12 @@ package ulcambridge.foundations.viewer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.dao.CollectionsDao;
 import ulcambridge.foundations.viewer.dao.MockCollectionsDao;
 import ulcambridge.foundations.viewer.model.Collection;
+import ulcambridge.foundations.viewer.search.CollectionFilter;
 import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
@@ -247,5 +250,43 @@ public class CollectionViewControllerSolrTest {
                 "collections/genizah/sponsors.html",
                 "organisation", "", "");
         }
+    }
+
+    @Test
+    public void handleItemsAjaxRequest_passesFiltersAndReturnsFacets() throws Exception {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
+        Search search = mock(Search.class);
+        JSONObject subject = new JSONObject().put("name", "Subject").put("values", new JSONArray()
+            .put(new JSONObject().put("value", "Fens").put("count", 3)));
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt(), any(CollectionFilter.class)))
+            .thenReturn(new CollectionItemsPage(List.of(), 3, List.of(subject)));
+        CollectionViewController controller = new CollectionViewController(
+            collectionFactory, search, "./html", false, "");
+
+        JSONObject data = new JSONObject(controller.handleItemsAjaxRequest(
+            "treasures", 0, 8, "fen", "Subject::Fens", false));
+
+        assertEquals(3, data.getInt("total"));
+        assertEquals("Subject", data.getJSONArray("facets").getJSONObject(0).getString("name"));
+        ArgumentCaptor<CollectionFilter> filter = ArgumentCaptor.forClass(CollectionFilter.class);
+        verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), filter.capture());
+        assertEquals("fen", filter.getValue().getText());
+        assertEquals("Fens", filter.getValue().getFacets().get("Subject"));
+    }
+
+    @Test
+    public void handleItemsAjaxRequest_asksForFacetsWithoutAFilterWhenRequested() throws Exception {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new MockCollectionsDao(), "true", Path.of("cudl-data/"), "");
+        Search search = mock(Search.class);
+        when(search.getCollectionItems(eq("treasures"), anyInt(), anyInt(), any(CollectionFilter.class)))
+            .thenReturn(new CollectionItemsPage(List.of(), 0, List.of()));
+        CollectionViewController controller = new CollectionViewController(
+            collectionFactory, search, "./html", false, "");
+
+        controller.handleItemsAjaxRequest("treasures", 0, 8, null, null, true);
+
+        verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), any(CollectionFilter.class));
     }
 }

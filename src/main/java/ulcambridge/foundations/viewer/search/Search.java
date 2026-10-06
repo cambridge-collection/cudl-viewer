@@ -18,4 +18,14 @@ public interface Search {
      */
     public CollectionItemsPage getCollectionItems(String slug, int start, int rows);
 
+    /**
+     * As {@link #getCollectionItems(String, int, int)}, restricted by filter, with
+     * counts for the facets a collection page can filter on. Searches without
+     * filter support ignore the filter.
+     */
+    public default CollectionItemsPage getCollectionItems(String slug, int start, int rows,
+                                                          CollectionFilter filter) {
+        return getCollectionItems(slug, start, rows);
+    }
+
 }

@@ -13,20 +13,27 @@ import java.util.List;
 public final class CollectionItemsPage {
 
     private static final CollectionItemsPage EMPTY =
-        new CollectionItemsPage(Collections.emptyList(), 0, false);
+        new CollectionItemsPage(Collections.emptyList(), 0, Collections.emptyList(), false);
 
     private final List<JSONObject> items;
     private final int total;
+    private final List<JSONObject> facets;
     private final boolean available;
 
     public CollectionItemsPage(final List<JSONObject> items, final int total) {
-        this(items, total, true);
+        this(items, total, Collections.emptyList(), true);
+    }
+
+    public CollectionItemsPage(final List<JSONObject> items, final int total,
+                               final List<JSONObject> facets) {
+        this(items, total, facets, true);
     }
 
     private CollectionItemsPage(final List<JSONObject> items, final int total,
-                                final boolean available) {
+                                final List<JSONObject> facets, final boolean available) {
         this.items = Collections.unmodifiableList(items);
         this.total = total;
+        this.facets = Collections.unmodifiableList(facets);
         this.available = available;
     }
 
@@ -47,6 +54,15 @@ public final class CollectionItemsPage {
 
     public int getTotal() {
         return total;
+    }
+
+    /**
+     * Facets the collection page can filter on, as
+     * {@code {name, values: [{value, count}]}}, with counts for the filtered items.
+     * Empty unless the page was fetched with a filter.
+     */
+    public List<JSONObject> getFacets() {
+        return facets;
     }
 
     /**

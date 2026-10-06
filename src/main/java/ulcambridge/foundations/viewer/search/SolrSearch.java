@@ -37,6 +37,11 @@ public class SolrSearch implements Search {
     private static final int SOLR_CONNECT_TIMEOUT_MS = 5_000;
     private static final int SOLR_READ_TIMEOUT_MS = 15_000;
 
+    // Facets a collection page can filter on, by display name, in display order
+    private static final List<String> COLLECTION_FILTER_FACETS = List.of("Date", "Subject", "Languages");
+    // Most values listed for one collection filter facet
+    private static final int COLLECTION_FILTER_FACET_LIMIT = 200;
+
     private final URI searchURL;
     private final URI imageServerURL;
     private final String appendToThumbnail;
@@ -469,14 +474,25 @@ public class SolrSearch implements Search {
      */
     @Override
     public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows) {
-        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true));
+        return collectionItems(slug, start, rows, CollectionFilter.none(), false);
+    }
+
+    @Override
+    public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows,
+                                                  final CollectionFilter filter) {
+        return collectionItems(slug, start, rows, filter, true);
+    }
+
+    private CollectionItemsPage collectionItems(final String slug, final int start, final int rows,
+                                                final CollectionFilter filter, final boolean withFacets) {
+        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true, filter));
         if (json == null) {
             // The search API rejects the sorted query outright when the collection has
             // no {slug}_sort field, which is the case for a collection it has never
             // indexed any items for. Retrying unsorted tells that apart from Solr being
             // unreachable: an answer of no items is an empty collection, not an outage.
             LOG.info("Sorted item query failed for collection '{}'; retrying unsorted", slug);
-            json = getJSON(collectionItemsURL(slug, start, rows, false));
+            json = getJSON(collectionItemsURL(slug, start, rows, false, filter));
         }
         if (json == null) { return CollectionItemsPage.empty(); }
 
@@ -496,7 +512,43 @@ public class SolrSearch implements Search {
                 LOG.warn("Skipping malformed collection Solr doc at index {}: {}", i, e.getMessage());
             }
         }
-        return new CollectionItemsPage(items, total);
+        if (!withFacets) {
+            return new CollectionItemsPage(items, total);
+        }
+        return new CollectionItemsPage(items, total,
+            collectionFilterFacets(json.optJSONObject("facet_counts"), filter));
+    }
+
+    /**
+     * The collection filter facets from a Solr response, as
+     * {@code {name, values: [{value, count}]}}. A facet with a single value
+     * cannot narrow the list, so it is left out unless it is the one selected.
+     */
+    private List<JSONObject> collectionFilterFacets(final JSONObject facetCounts,
+                                                    final CollectionFilter filter) {
+        final List<JSONObject> facets = new ArrayList<>();
+        final JSONObject fields = facetCounts == null ? null : facetCounts.optJSONObject("facet_fields");
+        if (fields == null) { return facets; }
+        for (String name : COLLECTION_FILTER_FACETS) {
+            // Solr returns facet values as a flat [value, count, value, count, ...] list
+            final JSONArray counts = fields.optJSONArray(displayNameToFacetNameMap.get(name));
+            final JSONArray values = new JSONArray();
+            for (int i = 0; counts != null && i + 1 < counts.length()
+                    && values.length() < COLLECTION_FILTER_FACET_LIMIT; i += 2) {
+                values.put(new JSONObject()
+                    .put("value", counts.optString(i))
+                    .put("count", counts.optInt(i + 1)));
+            }
+            if (values.length() > 1 || filter.getFacets().containsKey(name)) {
+                facets.add(new JSONObject().put("name", name).put("values", values));
+            }
+        }
+        return facets;
+    }
+
+    /** Escapes a value for use inside a quoted Solr phrase. */
+    private static String escapePhrase(final String value) {
+        return value.replace("\\", "\\\\").replace("\"", "\\\"");
     }
 
     /**
@@ -506,16 +558,28 @@ public class SolrSearch implements Search {
      * the API rejects the query when the collection's field does not exist.
      */
     private String collectionItemsURL(final String slug, final int start, final int rows,
-                                      final boolean sorted) {
+                                      final boolean sorted, final CollectionFilter filter) {
         final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
         uriB.queryParam("fq", "collection-slug:" + slug);
         uriB.queryParam("fq", "itemLevel:true");
+        // The search API's query parser treats unbalanced syntax in free text as
+        // plain words, so the text needs no escaping here.
+        if (!filter.getText().isEmpty()) {
+            uriB.queryParam("q", filter.getText());
+        }
+        for (Map.Entry<String, String> facet : filter.getFacets().entrySet()) {
+            final String field = displayNameToFacetNameMap.get(facet.getKey());
+            if (field != null) {
+                uriB.queryParam("fq", field + ":\"" + escapePhrase(facet.getValue()) + "\"");
+            }
+        }
         if (sorted) {
             uriB.queryParam("sort", "collection_sort asc");
         }
         uriB.queryParam("start", Math.max(0, start));
         uriB.queryParam("rows", Math.max(0, rows));
-        return uriB.toUriString();
+        // Encoded, as filter text and facet values can hold spaces, quotes and "&"
+        return uriB.build().encode().toUriString();
     }
 
     /**
