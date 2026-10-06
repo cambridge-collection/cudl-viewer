@@ -39,7 +39,7 @@ public class SolrSearch implements Search {
 
     // Facets a collection page can filter on, by display name, in display order
     private static final List<String> COLLECTION_FILTER_FACETS = List.of("Date", "Subject", "Languages");
-    // Most values listed for one collection filter facet
+    // Most values Solr is asked for per collection filter facet
     private static final int COLLECTION_FILTER_FACET_LIMIT = 200;
 
     private final URI searchURL;
@@ -468,9 +468,10 @@ public class SolrSearch implements Search {
      * for the collection carousel client. This replaces the per-item filesystem
      * item load and the whole-collection unreleased scan.
      *
-     * <p>Note: this parses only {@code response.docs} and {@code response.numFound}.
-     * The collection query returns no {@code highlighting} or {@code facet_counts},
-     * so {@link #parseSearchResults} cannot be reused here.
+     * <p>Note: this parses {@code response.docs} and {@code response.numFound}, plus
+     * {@code facet_counts} for filtered and {@code withFacets} requests. It does not
+     * use {@link #parseSearchResults}, as collection items are mapped from item-level
+     * docs and need no {@code highlighting}.
      */
     @Override
     public CollectionItemsPage getCollectionItems(final String slug, final int start, final int rows) {
@@ -485,14 +486,14 @@ public class SolrSearch implements Search {
 
     private CollectionItemsPage collectionItems(final String slug, final int start, final int rows,
                                                 final CollectionFilter filter, final boolean withFacets) {
-        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true, filter));
+        JSONObject json = getJSON(collectionItemsURL(slug, start, rows, true, filter, withFacets));
         if (json == null) {
             // The search API rejects the sorted query outright when the collection has
             // no {slug}_sort field, which is the case for a collection it has never
             // indexed any items for. Retrying unsorted tells that apart from Solr being
             // unreachable: an answer of no items is an empty collection, not an outage.
             LOG.info("Sorted item query failed for collection '{}'; retrying unsorted", slug);
-            json = getJSON(collectionItemsURL(slug, start, rows, false, filter));
+            json = getJSON(collectionItemsURL(slug, start, rows, false, filter, withFacets));
         }
         if (json == null) { return CollectionItemsPage.empty(); }
 
@@ -533,8 +534,7 @@ public class SolrSearch implements Search {
             // Solr returns facet values as a flat [value, count, value, count, ...] list
             final JSONArray counts = fields.optJSONArray(displayNameToFacetNameMap.get(name));
             final JSONArray values = new JSONArray();
-            for (int i = 0; counts != null && i + 1 < counts.length()
-                    && values.length() < COLLECTION_FILTER_FACET_LIMIT; i += 2) {
+            for (int i = 0; counts != null && i + 1 < counts.length(); i += 2) {
                 values.put(new JSONObject()
                     .put("value", counts.optString(i))
                     .put("count", counts.optInt(i + 1)));
@@ -558,7 +558,8 @@ public class SolrSearch implements Search {
      * the API rejects the query when the collection's field does not exist.
      */
     private String collectionItemsURL(final String slug, final int start, final int rows,
-                                      final boolean sorted, final CollectionFilter filter) {
+                                      final boolean sorted, final CollectionFilter filter,
+                                      final boolean withFacets) {
         final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
         uriB.queryParam("fq", "collection-slug:" + slug);
         uriB.queryParam("fq", "itemLevel:true");
@@ -578,6 +579,9 @@ public class SolrSearch implements Search {
         }
         uriB.queryParam("start", Math.max(0, start));
         uriB.queryParam("rows", Math.max(0, rows));
+        if (withFacets) {
+            uriB.queryParam("facet.limit", COLLECTION_FILTER_FACET_LIMIT);
+        }
         // Encoded, as filter text and facet values can hold spaces, quotes and "&"
         return uriB.build().encode().toUriString();
     }

@@ -384,4 +384,45 @@ public class SolrSearchTest {
         assertTrue(withStubbedResponse(response, new String[1])
             .getCollectionItems("maps", 0, 8).getFacets().isEmpty());
     }
+
+    @Test
+    public void getCollectionItems_asksSolrToLimitFacetValuesOnlyWhenFacetsAreWanted() {
+        List<String> urls = new ArrayList<>();
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+            @Override
+            protected JSONObject getJSON(String url) {
+                urls.add(url);
+                return null;
+            }
+        };
+
+        solr.getCollectionItems("maps", 0, 8, CollectionFilter.none());
+        solr.getCollectionItems("maps", 0, 8);
+
+        // Sorted call and unsorted retry for each request
+        assertEquals(4, urls.size());
+        assertTrue(urls.get(0).contains("facet.limit=200"), urls.get(0));
+        assertTrue(urls.get(1).contains("facet.limit=200"), urls.get(1));
+        assertFalse(urls.get(2).contains("facet.limit"), urls.get(2));
+        assertFalse(urls.get(3).contains("facet.limit"), urls.get(3));
+    }
+
+    @Test
+    public void getCollectionItems_listsEveryFacetValueSolrReturns() {
+        JSONArray subjects = new JSONArray();
+        for (int i = 0; i < 250; i++) {
+            subjects.put("Subject " + i).put(1);
+        }
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 250))
+            .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
+                .put("facet-subjects", subjects)));
+
+        JSONArray values = withStubbedResponse(response, new String[1])
+            .getCollectionItems("maps", 0, 8, CollectionFilter.none())
+            .getFacets().get(0).getJSONArray("values");
+
+        assertEquals(250, values.length());
+        assertEquals("Subject 249", values.getJSONObject(249).getString("value"));
+    }
 }
