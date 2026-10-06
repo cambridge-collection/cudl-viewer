@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ulcambridge.foundations.viewer.exceptions.ResourceNotFoundException;
 import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Properties;
+import ulcambridge.foundations.viewer.search.CollectionFilter;
 import ulcambridge.foundations.viewer.search.CollectionItemsPage;
 import ulcambridge.foundations.viewer.search.Search;
 
@@ -198,16 +199,28 @@ public class CollectionViewController {
         modelAndView.addObject("itemsUnavailable", !page.isAvailable());
     }
 
+    /** The unfiltered item list, as requested without filter parameters. */
+    public String handleItemsAjaxRequest(String collectionId, int startIndex, int endIndex)
+            throws Exception {
+        return handleItemsAjaxRequest(collectionId, startIndex, endIndex, null, null, false);
+    }
+
     // on path
     // /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
     // To get information for items 0 to 8 url would be
     // /collections/{collectionId}/itemJSON?start=0&end=8
+    // Optional filters, as on the search page: q (free text) and facets
+    // (Name::value||Name::value). With a filter the response also carries the
+    // facets the collection can be filtered on.
     @RequestMapping(value = "/{collectionId}/itemJSON", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String handleItemsAjaxRequest(
             @PathVariable("collectionId") String collectionId,
             @RequestParam("start") int startIndex,
-            @RequestParam("end") int endIndex)
+            @RequestParam("end") int endIndex,
+            @RequestParam(value = "q", required = false) String text,
+            @RequestParam(value = "facets", required = false) String facets,
+            @RequestParam(value = "withFacets", required = false, defaultValue = "false") boolean withFacets)
             throws Exception {
 
         final Collection collection = collectionFactory
@@ -224,8 +237,12 @@ public class CollectionViewController {
 
         // Replaces the per-item filesystem item load and the whole-collection
         // unreleased scan; unreleased badging now rides on each item's Solr data.
-        final CollectionItemsPage page =
-            search.getCollectionItems(collectionId, startIndex, rows);
+        // Unfiltered requests keep the original call; withFacets asks for facet
+        // counts even with no filter, for the filter bar's first render.
+        final CollectionFilter filter = CollectionFilter.of(text, facets);
+        final CollectionItemsPage page = filter.isEmpty() && !withFacets
+            ? search.getCollectionItems(collectionId, startIndex, rows)
+            : search.getCollectionItems(collectionId, startIndex, rows, filter);
 
         // build the request object
         final JSONObject dataRequest = new JSONObject();
@@ -241,6 +258,7 @@ public class CollectionViewController {
         // count, which can list items that were never indexed. It comes back on the
         // same Solr response as the items, so it costs no extra query.
         data.put("total", page.getTotal());
+        data.put("facets", page.getFacets());
 
         return data.toString();
     }

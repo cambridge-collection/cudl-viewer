@@ -338,4 +338,50 @@ public class SolrSearchTest {
         assertEquals(2, urls.size());
         assertFalse(page.isAvailable());
     }
+
+    @Test
+    public void getCollectionItems_appliesTheFilterAndListsFacetsWithChoices() {
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 2).put("docs", new JSONArray()
+                .put(pageHitDoc())))
+            .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
+                .put("facet-subjects", new JSONArray().put("Fens -- Maps").put(2).put("Ely -- Maps").put(1))
+                .put("facet-creations-century", new JSONArray().put("1800s C.E.").put(3))
+                .put("facet-languages", new JSONArray().put("English").put(3))));
+        String[] url = new String[1];
+
+        CollectionItemsPage page = withStubbedResponse(response, url).getCollectionItems("maps", 0, 8,
+            CollectionFilter.of("fen & ely", "Languages::English"));
+
+        assertTrue(url[0].contains("q=fen%20%26%20ely"), url[0]);
+        assertTrue(url[0].contains("fq=facet-languages:%22English%22"), url[0]);
+        assertTrue(url[0].contains("collection_sort"), url[0]);
+        // Subject has a choice; Date has one value so is left out; Languages has one
+        // value but is the selected facet, so stays.
+        List<String> names = new ArrayList<>();
+        page.getFacets().forEach((f) -> names.add(f.getString("name")));
+        assertEquals(List.of("Subject", "Languages"), names);
+        assertEquals(2, page.getFacets().get(0).getJSONArray("values").getJSONObject(0).getInt("count"));
+        assertEquals(1, page.getItems().size());
+    }
+
+    @Test
+    public void getCollectionItems_escapesQuotesInFacetValues() {
+        String[] url = new String[1];
+        withStubbedResponse(new JSONObject().put("response", new JSONObject().put("numFound", 0)), url)
+            .getCollectionItems("maps", 0, 8, CollectionFilter.of("", "Subject::A \"quoted\" value"));
+
+        assertTrue(url[0].contains("facet-subjects:%22A%20%5C%22quoted%5C%22%20value%22"), url[0]);
+    }
+
+    @Test
+    public void getCollectionItems_unfilteredReturnsNoFacets() {
+        JSONObject response = new JSONObject()
+            .put("response", new JSONObject().put("numFound", 0))
+            .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
+                .put("facet-subjects", new JSONArray().put("A").put(1).put("B").put(1))));
+
+        assertTrue(withStubbedResponse(response, new String[1])
+            .getCollectionItems("maps", 0, 8).getFacets().isEmpty());
+    }
 }
