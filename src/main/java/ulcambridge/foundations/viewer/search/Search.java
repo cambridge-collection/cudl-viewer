@@ -1,7 +1,9 @@
 package ulcambridge.foundations.viewer.search;
 
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Collection;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Search {
@@ -32,6 +34,15 @@ public interface Search {
     public default CollectionItemsPage getCollectionItems(String slug, int start, int rows,
                                                           CollectionFilter filter) {
         return getCollectionItems(slug, start, rows);
+    }
+
+    /**
+     * Top-level collections (no parent), sorted by title, with only id, title and
+     * release state set. Empty when the search API can't be reached or its response
+     * isn't the expected shape.
+     */
+    public default List<Collection> getTopLevelCollections() {
+        return List.of();
     }
 
 }

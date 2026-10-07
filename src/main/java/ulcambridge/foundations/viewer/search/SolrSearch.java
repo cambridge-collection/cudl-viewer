@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.util.UriComponentsBuilder;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Collection;
 import ulcambridge.foundations.viewer.model.Item;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -564,6 +565,38 @@ public class SolrSearch implements Search {
         }
         return new CollectionItemsPage(items, total,
             collectionFilterFacets(json.optJSONObject("facet_counts"), filter));
+    }
+
+    @Override
+    public List<Collection> getTopLevelCollections() {
+        final String url = UriComponentsBuilder.fromUri(this.searchURL.resolve("collections"))
+            .queryParam("topLevel", true)
+            .toUriString();
+        final JSONObject json = getJSON(url);
+        final JSONObject response = json == null ? null : json.optJSONObject("response");
+        final JSONArray docs = response == null ? null : response.optJSONArray("docs");
+        if (docs == null || docs.isEmpty()) {
+            LOG.warn("Top-level collections response unusable; falling back to collection files");
+            return List.of();
+        }
+
+        final List<Collection> collections = new ArrayList<>();
+        for (int i = 0; i < docs.length(); i++) {
+            final JSONObject doc = docs.optJSONObject(i);
+            final String id = firstString(doc, "id");
+            final String title = firstString(doc, "name.full");
+            final String released = firstString(doc, "isReleased");
+            final String status = firstString(doc, "status");
+            if (Strings.isBlank(id) || Strings.isBlank(title)
+                    || Strings.isBlank(released) || Strings.isBlank(status)) {
+                LOG.warn("Malformed top-level collection doc at index {}; falling back to collection files", i);
+                return List.of();
+            }
+            final Collection c = new Collection(id, title, List.of(), null, null, null, null);
+            c.setReleaseState(isReleased(doc), status);
+            collections.add(c);
+        }
+        return collections;
     }
 
     /**
