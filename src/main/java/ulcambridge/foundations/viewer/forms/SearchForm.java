@@ -33,7 +33,7 @@ public class SearchForm {
   //  private String facetCollection;
 
     // Expand facet results
-    private String expandFacet = "";
+    private List<String> expandFacet = new ArrayList<>();
 
     // This translates the form object into GET request parameters
     public String getQueryParams() {
@@ -80,9 +80,6 @@ public class SearchForm {
         }
         if (yearEnd!=null) {
             queryParams.append("yearEnd=" + URLEncoder.encode(yearEnd.toString(), StandardCharsets.UTF_8)  + "&");
-        }
-        if (expandFacet!=null && !expandFacet.isEmpty()) {
-            queryParams.append("expandFacet=" + URLEncoder.encode(expandFacet, StandardCharsets.UTF_8)  + "&");
         }
         if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
             queryParams.append("facetCollection=" + URLEncoder.encode(facets.get("Collection"), StandardCharsets.UTF_8) + "&");
@@ -277,10 +274,18 @@ public class SearchForm {
 
     /** Expand Facet **/
 
-    public String getExpandFacet() { return expandFacet; }
+    public List<String> getExpandFacet() { return expandFacet; }
 
-    public void setExpandFacet(String expandFacet) {
-        this.expandFacet = expandFacet;
+    public void setExpandFacet(List<String> expandFacet) {
+        List<String> names = new ArrayList<>();
+        for (String value : expandFacet) {
+            for (String name : value.split(",")) {
+                if (!name.isBlank()) {
+                    names.add(name.trim());
+                }
+            }
+        }
+        this.expandFacet = names;
     }
 
     /**

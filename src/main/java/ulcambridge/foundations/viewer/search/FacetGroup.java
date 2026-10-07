@@ -16,7 +16,7 @@ public class FacetGroup {
     private String field;
     private String fieldLabel;
     private int occurrences;
-    private int totalGroups;
+    private boolean hasMore;
 
     /**
      * Facets are sorted after the group is created
@@ -26,13 +26,13 @@ public class FacetGroup {
      * @param field
      * @param facets
      */
-    public FacetGroup(String field, List<Facet> facets, int occurrences, int totalGroups) {
+    public FacetGroup(String field, List<Facet> facets, int occurrences, boolean hasMore) {
 
         this.field = field;
         this.fieldLabel = field.substring(0, 1).toUpperCase() + field.substring(1);
         this.facets = facets;
         this.occurrences = occurrences;
-        this.totalGroups = totalGroups;
+        this.hasMore = hasMore;
 
     }
 
@@ -52,7 +52,7 @@ public class FacetGroup {
         return this.occurrences;
     }
 
-    public int getTotalGroups() { return totalGroups; }
+    public boolean hasMore() { return hasMore; }
 
     public int getNumBands() {
         return facets.size();

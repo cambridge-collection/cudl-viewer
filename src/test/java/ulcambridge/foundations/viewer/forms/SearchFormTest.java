@@ -4,7 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -55,5 +58,22 @@ public class SearchFormTest {
 
         assertTrue(form.getFacets().isEmpty());
         assertEquals("", form.getFacetsAsString());
+    }
+
+    @Test
+    public void expandFacetIsNotPartOfTheQueryParams() {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        form.setExpandFacet(List.of("Subject"));
+
+        assertFalse(form.getQueryParams().contains("expandFacet"));
+    }
+
+    @Test
+    public void setExpandFacetSplitsCommaSeparatedValues() {
+        SearchForm form = new SearchForm();
+        form.setExpandFacet(List.of("Subject,Place", "Languages", ""));
+
+        assertEquals(List.of("Subject", "Place", "Languages"), form.getExpandFacet());
     }
 }
