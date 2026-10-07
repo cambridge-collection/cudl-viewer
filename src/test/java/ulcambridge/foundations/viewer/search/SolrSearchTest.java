@@ -5,11 +5,13 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Collection;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -619,5 +621,84 @@ public class SolrSearchTest {
     @Test
     public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
         assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
+    }
+
+    private JSONObject collectionDoc(final String id, final String title,
+                                     final boolean released, final String status) {
+        return new JSONObject()
+            .put("id", id)
+            .put("name.full", new JSONArray().put(title))
+            .put("isReleased", released)
+            .put("status", status);
+    }
+
+    private JSONObject collectionsResponse(final JSONObject... docs) {
+        return new JSONObject().put("response", new JSONObject()
+            .put("numFound", docs.length).put("docs", new JSONArray(List.of(docs))));
+    }
+
+    private List<Collection> topLevelCollections(final JSONObject response) {
+        return withStubbedResponse(response, new String[1]).getTopLevelCollections();
+    }
+
+    @Test
+    public void getTopLevelCollections_mapsDocToCollection() {
+        Collection c = topLevelCollections(collectionsResponse(
+            collectionDoc("baskerville", "Baskerville Books and Archives", false, "draft"))).get(0);
+
+        assertEquals("baskerville", c.getId());
+        assertEquals("Baskerville Books and Archives", c.getTitle());
+        assertEquals("/collections/baskerville", c.getURL());
+        assertTrue(c.isUnreleased());
+        assertEquals("draft", c.getStatus());
+    }
+
+    @Test
+    public void getTopLevelCollections_keepsResponseOrder() {
+        List<Collection> collections = topLevelCollections(collectionsResponse(
+            collectionDoc("zeta", "Zeta", true, "released"),
+            collectionDoc("alpha", "Alpha", true, "released"),
+            collectionDoc("mu", "Mu", true, "released")));
+
+        assertEquals(List.of("zeta", "alpha", "mu"),
+            collections.stream().map(Collection::getId).collect(Collectors.toList()));
+        assertFalse(collections.get(0).isUnreleased());
+    }
+
+    @Test
+    public void getTopLevelCollections_requestsTopLevelOnly() {
+        String[] url = new String[1];
+        withStubbedResponse(collectionsResponse(collectionDoc("a", "A", true, "released")), url)
+            .getTopLevelCollections();
+
+        assertEquals("http://search.example.com/collections?topLevel=true", url[0]);
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenRequestFails() {
+        assertTrue(topLevelCollections(null).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenNoDocs() {
+        assertTrue(topLevelCollections(new JSONObject()).isEmpty());
+        assertTrue(topLevelCollections(new JSONObject().put("response", new JSONObject())).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenDocsEmpty() {
+        assertTrue(topLevelCollections(collectionsResponse()).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenAnyDocLacksARequiredField() {
+        for (String field : List.of("id", "name.full", "isReleased", "status")) {
+            JSONObject bad = collectionDoc("b", "B", true, "released");
+            bad.remove(field);
+
+            assertTrue(topLevelCollections(collectionsResponse(
+                collectionDoc("a", "A", true, "released"), bad,
+                collectionDoc("c", "C", true, "released"))).isEmpty(), field);
+        }
     }
 }
