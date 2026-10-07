@@ -234,6 +234,18 @@ Search remains a separate service. To use a locally running `cudl-search-api`,
 set `searchURL` in the global properties file selected by your environment file
 to that service's URL. This workflow does not manage Solr or the Search API.
 
+### Search facet value limit
+
+The search results sidebar shows up to 200 values per facet group. This is set
+only by the `searchFacetLimit` property, which defaults to 200 if it is not set
+and must be at least 1. Staging and production set it in their cudl-terraform
+`cudl-global.properties.ttfpl` templates; locally, set it in the properties file
+your environment file selects. Searches ask the search API for one more value
+than that, and a group gets `hasMore` when that extra value comes back. Its
+"more" button calls `/search/JSONFacets`, which asks for that group's full list.
+`cudl-viewer-ui` takes the number shown from what the viewer sends, so it needs
+no change when the limit does.
+
 ### Development troubleshooting
 
 The development commands report missing tools and unsupported versions before

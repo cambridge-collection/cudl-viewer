@@ -8,6 +8,12 @@ public interface Search {
 
     public SearchResultSet makeSearch(SearchForm searchForm);
     public SearchResultSet makeSearch(SearchForm searchForm, int start, int end);
+
+    public SearchResultSet makeSearch(SearchForm searchForm, int start, int end, boolean withFacets);
+
+    /** Facet counts only, listing every value of the form's expandFacet fields. */
+    public SearchResultSet makeFacetSearch(SearchForm searchForm);
+
     public Map<String, String> getFacetNameMap();
 
     /**

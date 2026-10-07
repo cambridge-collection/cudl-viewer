@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -41,6 +42,8 @@ public class SearchControllerResultJsonTest {
     private SearchController controller(SearchResultSet resultSet) {
         Search search = mock(Search.class);
         when(search.makeSearch(any(SearchForm.class), anyInt(), anyInt())).thenReturn(resultSet);
+        when(search.makeSearch(any(SearchForm.class), anyInt(), anyInt(), anyBoolean())).thenReturn(resultSet);
+        when(search.makeFacetSearch(any(SearchForm.class))).thenReturn(resultSet);
         return new SearchController(mock(CollectionFactory.class), search, "./html");
     }
 
@@ -49,11 +52,15 @@ public class SearchControllerResultJsonTest {
     }
 
     private FacetGroup facetGroup(String field, String... bands) {
+        return facetGroup(field, false, bands);
+    }
+
+    private FacetGroup facetGroup(String field, boolean hasMore, String... bands) {
         List<Facet> facets = new ArrayList<>();
         for (int i = 0; i < bands.length; i++) {
             facets.add(new Facet(field, bands[i], i + 1, i));
         }
-        return new FacetGroup(field, facets, 0, 0);
+        return new FacetGroup(field, facets, 0, hasMore);
     }
 
     @Test
@@ -107,6 +114,43 @@ public class SearchControllerResultJsonTest {
         assertEquals(2, available.length());
         assertEquals("Collection", available.getJSONObject(0).getString("field"));
         assertEquals("Place", available.getJSONObject(1).getString("field"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_saysWhetherEachFacetGroupHasMoreValues() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
+            ImmutableList.of(
+                facetGroup("Subject", true, "Botany"),
+                facetGroup("Place", false, "Cambridge")),
+            "");
+
+        ResponseEntity<String> response = controller(resultSet)
+            .handleItemsAdvancedAjaxRequest(new SearchForm(), 0, 20);
+
+        JSONArray available = new JSONObject(response.getBody())
+            .getJSONObject("facets").getJSONArray("available");
+
+        assertTrue(available.getJSONObject(0).getBoolean("hasMore"));
+        assertFalse(available.getJSONObject(1).getBoolean("hasMore"));
+        assertFalse(available.getJSONObject(0).has("totalFacets"));
+    }
+
+    @Test
+    public void searchJsonFacets_carriesFacetsAndInfoButNoItems() throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            749, "", 74f, new ArrayList<>(),
+            ImmutableList.of(facetGroup("Subject", false, "Botany", "Zoology")),
+            "");
+
+        JSONObject body = new JSONObject(controller(resultSet)
+            .handleFacetsAjaxRequest(new SearchForm()).getBody());
+
+        assertFalse(body.has("items"));
+        assertEquals(749, body.getJSONObject("info").getInt("hits"));
+        JSONObject subject = body.getJSONObject("facets").getJSONArray("available").getJSONObject(0);
+        assertEquals("Subject", subject.getString("field"));
+        assertEquals(2, subject.getJSONArray("facets").length());
     }
 
     /** An unreachable Solr produces 0 hits and an error, not a failed request. */
