@@ -45,6 +45,7 @@ public class SolrSearch implements Search {
     private final URI searchURL;
     private final URI imageServerURL;
     private final String appendToThumbnail;
+    private final int searchFacetLimit;
     private final BiMap<String, String> displayNameToFacetNameMap = HashBiMap.create();
     private final BiMap<String, String> facetNameToDisplayNameMap;
     private final ArrayList<String> facetNamesInOrder = new ArrayList<>();
@@ -52,13 +53,16 @@ public class SolrSearch implements Search {
     public SolrSearch(@Qualifier("searchURL") URI searchURL,
                       @Qualifier("imageServerURL") URI imageServerURL,
                       @Value("${appendToThumbnail}") String appendToThumbnail,
-                      @Value("${showReleaseStatus:false}") boolean showReleaseStatus) {
+                      @Value("${showReleaseStatus:false}") boolean showReleaseStatus,
+                      @Value("${searchFacetLimit:200}") int searchFacetLimit) {
         Assert.notNull(searchURL, "searchURL is required");
         Assert.notNull(imageServerURL, "imageServerURL is required");
         Assert.notNull(appendToThumbnail, "appendToThumbnail is required");
+        Assert.isTrue(searchFacetLimit >= 1, "searchFacetLimit must be at least 1");
         this.searchURL = searchURL;
         this.imageServerURL = imageServerURL;
         this.appendToThumbnail = appendToThumbnail;
+        this.searchFacetLimit = searchFacetLimit;
         this.displayNameToFacetNameMap.put("Collection", "facet-collection");
         this.displayNameToFacetNameMap.put("Subject", "facet-subjects");
         this.displayNameToFacetNameMap.put("Date", "facet-creations-century");
@@ -101,9 +105,23 @@ public class SolrSearch implements Search {
     public SearchResultSet makeSearch(final SearchForm searchForm,
                                       final int start,
                                       final int end) {
+        return makeSearch(searchForm, start, end, true);
+    }
 
-        // Construct the URL we are going to use to query Solr
-        final String searchSolrURL = buildQueryURL(searchForm, start, end);
+    @Override
+    public SearchResultSet makeSearch(final SearchForm searchForm,
+                                      final int start,
+                                      final int end,
+                                      final boolean withFacets) {
+        return search(buildQueryURL(searchForm, start, end, withFacets, false), Set.of());
+    }
+
+    @Override
+    public SearchResultSet makeFacetSearch(final SearchForm searchForm) {
+        return search(buildQueryURL(searchForm, 0, 0, true, true), expandedFacetFields(searchForm));
+    }
+
+    private SearchResultSet search(final String searchSolrURL, final Set<String> expandedFacetFields) {
 
         // if the query URL is null return empty result set.
         if (searchSolrURL == null) {
@@ -113,7 +131,18 @@ public class SolrSearch implements Search {
         }
 
         // parse search results into a SearchResultSet
-        return parseSearchResults(getJSON(searchSolrURL));
+        return parseSearchResults(getJSON(searchSolrURL), expandedFacetFields);
+    }
+
+    private Set<String> expandedFacetFields(final SearchForm searchForm) {
+        final Set<String> fields = new LinkedHashSet<>();
+        for (String name : searchForm.getExpandFacet()) {
+            final String field = displayNameToFacetNameMap.get(name);
+            if (field != null) {
+                fields.add(field);
+            }
+        }
+        return fields;
     }
 
     @Override
@@ -143,15 +172,22 @@ public class SolrSearch implements Search {
         }
     }
 
-    protected String buildQueryURL(final SearchForm searchForm, final int start, final int end) {
+    protected String buildQueryURL(final SearchForm searchForm, final int start, final int end,
+                                   final boolean withFacets, final boolean facetsOnly) {
         final UriComponentsBuilder uriB = UriComponentsBuilder.fromUri(this.searchURL.resolve("items"));
         HashMap<String, String> QueryTerms = new HashMap<String, String>();
 
         uriB.queryParam("start", start);
+        // One extra value shows whether a facet has more
+        uriB.queryParam("facet.limit", searchFacetLimit + 1);
 
-        // Expand/contract facet
-        if (searchForm.getExpandFacet() != null) {
-            uriB.queryParam("expand", searchForm.getExpandFacet());
+        if (!withFacets) {
+            uriB.queryParam("facet", false);
+        } else if (facetsOnly) {
+            uriB.queryParam("rows", 0);
+            for (String field : expandedFacetFields(searchForm)) {
+                uriB.queryParam("f." + field + ".facet.limit", -1);
+            }
         }
 
         // Keywords
@@ -302,9 +338,11 @@ public class SolrSearch implements Search {
      * SearchResult objects.
      *
      * @param json
+     * @param expandedFacetFields fields to list in full
      * @return List of the search results
      */
-    protected SearchResultSet parseSearchResults(final JSONObject json) {
+    protected SearchResultSet parseSearchResults(final JSONObject json,
+                                                 final Set<String> expandedFacetFields) {
 
         if (json == null) {
             return new SearchResultSet(0, "", 0f,
@@ -363,7 +401,9 @@ public class SolrSearch implements Search {
         // facets
         final ArrayList<FacetGroup> facetGroups = new ArrayList<>();
 
-        JSONObject facetFields = json.getJSONObject("facet_counts").getJSONObject("facet_fields");
+        final JSONObject facetCounts = json.optJSONObject("facet_counts");
+        final JSONObject facetFields = facetCounts == null ? new JSONObject()
+            : facetCounts.getJSONObject("facet_fields");
         for (String facetName: facetNamesInOrder) {
 
             if (!facetFields.has(facetName)) { continue; }
@@ -371,7 +411,6 @@ public class SolrSearch implements Search {
             JSONArray fields = facetFields.getJSONArray(facetName);
             final ArrayList<Facet> facets = new ArrayList<>();
 
-            final int facetGroupTotalGroups = 0;// TODO
             final int facetGroupOccurrences = 0;// TODO
 
             // Find out if this is a supported facet, and if not discard:
@@ -380,7 +419,14 @@ public class SolrSearch implements Search {
                 continue;
             }
 
+            final boolean expanded = expandedFacetFields.contains(facetName);
+            // Counted before :: values are skipped, so skipping cannot hide "more"
+            final boolean hasMore = !expanded && fields.length() / 2 > searchFacetLimit;
+
             for (int i = 0; i < fields.length(); i=i+2) {
+                if (!expanded && facets.size() == searchFacetLimit) {
+                    break;
+                }
                 String band = fields.getString(i);
                 int band_count = fields.getInt(i+1);
                 // Note: Do not show any bands that contain ::
@@ -392,7 +438,7 @@ public class SolrSearch implements Search {
                 facets.add(facet);
             }
 
-            final FacetGroup facetGroup = new FacetGroup(displayName, facets, facetGroupOccurrences, facetGroupTotalGroups);
+            final FacetGroup facetGroup = new FacetGroup(displayName, facets, facetGroupOccurrences, hasMore);
             facetGroups.add(facetGroup);
         }
 
@@ -581,6 +627,8 @@ public class SolrSearch implements Search {
         uriB.queryParam("rows", Math.max(0, rows));
         if (withFacets) {
             uriB.queryParam("facet.limit", COLLECTION_FILTER_FACET_LIMIT);
+        } else {
+            uriB.queryParam("facet", false);
         }
         // Encoded, as filter text and facet values can hold spaces, quotes and "&"
         return uriB.build().encode().toUriString();

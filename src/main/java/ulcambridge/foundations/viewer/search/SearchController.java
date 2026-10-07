@@ -193,7 +193,7 @@ public class SearchController {
 
         o.put("label", group.getFieldLabel());
         o.put("field", group.getField());
-        o.put("totalFacets", group.getTotalGroups());
+        o.put("hasMore", group.hasMore());
         o.put("facets", getGroupFacetsJSON(group));
 
         return o;
@@ -301,7 +301,7 @@ public class SearchController {
             @Valid Range range) {
 
         SearchResultSet results = this.search.makeSearch(
-            searchForm, range.start, range.end);
+            searchForm, range.start, range.end, false);
 
         // Write out JSON file.
         return ResponseEntity.ok()
@@ -328,6 +328,22 @@ public class SearchController {
         return ResponseEntity.ok()
                 .header("Cache-Control", "public, max-age=60")
                 .body(getJSON(results, searchForm).toString());
+    }
+
+    /** For a facet group's "more": its full value list, with no results. */
+    @RequestMapping(method = RequestMethod.GET, value = "/JSONFacets",
+            produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> handleFacetsAjaxRequest(@Valid SearchForm searchForm) {
+
+        SearchResultSet results = this.search.makeFacetSearch(searchForm);
+
+        JSONObject o = new JSONObject();
+        o.put("facets", getFacetsJSON(results, searchForm));
+        o.put("info", getInfoJSON(results));
+
+        return ResponseEntity.ok()
+                .header("Cache-Control", "public, max-age=60")
+                .body(o.toString());
     }
 
 

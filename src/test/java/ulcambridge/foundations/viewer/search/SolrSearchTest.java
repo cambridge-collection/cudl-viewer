@@ -3,13 +3,17 @@ package ulcambridge.foundations.viewer.search;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StringUtils;
+import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -24,12 +28,12 @@ public class SolrSearchTest {
     private static final String APPEND = ".jp2/full/!180,180/0/default.jpg";
 
     private SolrSearch newSolr() {
-        return new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false);
+        return new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 200);
     }
 
     /** A SolrSearch whose Solr call is stubbed with a fixed response. */
     private SolrSearch withStubbedResponse(final JSONObject response, final String[] capturedUrl) {
-        return new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+        return new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 200) {
             @Override
             protected JSONObject getJSON(String url) {
                 capturedUrl[0] = url;
@@ -50,6 +54,56 @@ public class SolrSearchTest {
             .put("IIIFImageURL", new JSONArray().put("MS-ADD-03958-000-00005"))
             .put("thumbnailImageOrientation", new JSONArray().put("portrait"))
             .put("isReleased", true);
+    }
+
+    private JSONObject searchResponse(final JSONObject facetFields) {
+        JSONObject json = new JSONObject()
+            .put("responseHeader", new JSONObject().put("QTime", 12))
+            .put("response", new JSONObject().put("numFound", 0).put("docs", new JSONArray()));
+        if (facetFields != null) {
+            json.put("facet_counts", new JSONObject().put("facet_fields", facetFields));
+        }
+        return json;
+    }
+
+    private SearchForm formExpanding(final String... names) {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        form.setExpandFacet(List.of(names));
+        return form;
+    }
+
+    private String searchUrl(final SearchForm form, final boolean withFacets) {
+        String[] url = new String[1];
+        withStubbedResponse(searchResponse(new JSONObject()), url).makeSearch(form, 0, 20, withFacets);
+        return url[0];
+    }
+
+    private String facetSearchUrl(final SearchForm form) {
+        String[] url = new String[1];
+        withStubbedResponse(searchResponse(new JSONObject()), url).makeFacetSearch(form);
+        return url[0];
+    }
+
+    private JSONArray facetValues(final List<String> values) {
+        JSONArray counts = new JSONArray();
+        values.forEach((v) -> counts.put(v).put(1));
+        return counts;
+    }
+
+    private List<String> numbered(final String prefix, final int count) {
+        List<String> values = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            values.add(prefix + i);
+        }
+        return values;
+    }
+
+    private FacetGroup group(final SearchResultSet set, final String field) {
+        for (FacetGroup g : set.getFacets()) {
+            if (g.getField().equals(field)) { return g; }
+        }
+        return null;
     }
 
     @Test
@@ -156,7 +210,7 @@ public class SolrSearchTest {
             .put("highlighting", new JSONObject())
             .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()));
 
-        SearchResultSet set = newSolr().parseSearchResults(response);
+        SearchResultSet set = newSolr().parseSearchResults(response, Set.of());
 
         // Two good docs survive; the malformed one is skipped, not fatal.
         assertEquals(2, set.getResults().size());
@@ -301,7 +355,7 @@ public class SolrSearchTest {
         // for that just as it does for an outage, so the unsorted retry is what tells
         // "empty collection" apart from "Solr is down".
         List<String> urls = new ArrayList<>();
-        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 200) {
             @Override
             protected JSONObject getJSON(String url) {
                 urls.add(url);
@@ -325,7 +379,7 @@ public class SolrSearchTest {
     public void getCollectionItems_isUnavailableWhenTheUnsortedRetryAlsoFails() {
         // Both attempts failing is a real outage, not a missing sort field.
         List<String> urls = new ArrayList<>();
-        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 200) {
             @Override
             protected JSONObject getJSON(String url) {
                 urls.add(url);
@@ -386,9 +440,9 @@ public class SolrSearchTest {
     }
 
     @Test
-    public void getCollectionItems_asksSolrToLimitFacetValuesOnlyWhenFacetsAreWanted() {
+    public void getCollectionItems_limitsFacetValuesWhenWantedAndSkipsThemOtherwise() {
         List<String> urls = new ArrayList<>();
-        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false) {
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 200) {
             @Override
             protected JSONObject getJSON(String url) {
                 urls.add(url);
@@ -403,8 +457,10 @@ public class SolrSearchTest {
         assertEquals(4, urls.size());
         assertTrue(urls.get(0).contains("facet.limit=200"), urls.get(0));
         assertTrue(urls.get(1).contains("facet.limit=200"), urls.get(1));
+        assertFalse(urls.get(0).contains("facet=false"), urls.get(0));
         assertFalse(urls.get(2).contains("facet.limit"), urls.get(2));
-        assertFalse(urls.get(3).contains("facet.limit"), urls.get(3));
+        assertTrue(urls.get(2).contains("facet=false"), urls.get(2));
+        assertTrue(urls.get(3).contains("facet=false"), urls.get(3));
     }
 
     @Test
@@ -424,5 +480,144 @@ public class SolrSearchTest {
 
         assertEquals(250, values.length());
         assertEquals("Subject 249", values.getJSONObject(249).getString("value"));
+    }
+
+    @Test
+    public void makeSearch_asksSolrForOneMoreFacetValueThanItShows() {
+        String url = searchUrl(new SearchForm(), true);
+
+        assertTrue(url.contains("facet.limit=201"), url);
+        assertFalse(url.contains("expand"), url);
+        assertFalse(url.contains("rows="), url);
+        assertFalse(url.contains("facet=false"), url);
+    }
+
+    @Test
+    public void makeSearch_usesTheConfiguredFacetLimit() {
+        String[] url = new String[1];
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 10) {
+            @Override
+            protected JSONObject getJSON(String requested) {
+                url[0] = requested;
+                return searchResponse(new JSONObject()
+                    .put("facet-subjects", facetValues(numbered("Subject ", 11))));
+            }
+        };
+
+        FacetGroup subjects = group(solr.makeSearch(new SearchForm(), 0, 20), "Subject");
+
+        assertTrue(url[0].contains("facet.limit=11"), url[0]);
+        assertEquals(10, subjects.getFacets().size());
+        assertTrue(subjects.hasMore());
+    }
+
+    @Test
+    public void constructor_rejectsAFacetLimitBelowOne() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, false, 0));
+    }
+
+    @Test
+    public void makeSearch_ignoresExpandFacet() {
+        String url = searchUrl(formExpanding("Subject"), true);
+
+        assertTrue(url.contains("facet.limit=201"), url);
+        assertFalse(url.contains("rows="), url);
+        assertFalse(url.contains("f.facet-subjects"), url);
+    }
+
+    @Test
+    public void makeFacetSearch_asksForTheExpandedFacetsFullListAndNoResults() {
+        String url = facetSearchUrl(formExpanding("Subject"));
+
+        assertTrue(url.contains("rows=0"), url);
+        assertTrue(url.contains("facet.limit=201"), url);
+        assertTrue(url.contains("f.facet-subjects.facet.limit=-1"), url);
+        assertFalse(url.contains("f.facet-origin-place"), url);
+        assertFalse(url.contains("expand"), url);
+    }
+
+    @Test
+    public void makeFacetSearch_expandsEachKnownFacetAndIgnoresUnknownNames() {
+        String url = facetSearchUrl(formExpanding("Subject", "Place", "Nonsense"));
+
+        assertTrue(url.contains("rows=0"), url);
+        assertTrue(url.contains("f.facet-subjects.facet.limit=-1"), url);
+        assertTrue(url.contains("f.facet-origin-place.facet.limit=-1"), url);
+        assertEquals(2, StringUtils.countOccurrencesOf(url, ".facet.limit=-1"), url);
+    }
+
+    @Test
+    public void makeFacetSearch_keepsEveryValueOfTheExpandedFacets() {
+        SolrSearch solr = withStubbedResponse(searchResponse(new JSONObject()
+            .put("facet-subjects", facetValues(numbered("Subject ", 500)))), new String[1]);
+
+        assertEquals(500, group(solr.makeFacetSearch(formExpanding("Subject")), "Subject").getFacets().size());
+        assertEquals(200, group(solr.makeSearch(formExpanding("Subject"), 0, 20), "Subject").getFacets().size());
+    }
+
+    @Test
+    public void makeSearch_pageChangesAskSolrNotToCountFacets() {
+        String url = searchUrl(new SearchForm(), false);
+
+        assertTrue(url.contains("facet=false"), url);
+    }
+
+    @Test
+    public void parseSearchResults_keepsTheFirst200ValuesAndSaysThereAreMore() {
+        SearchResultSet set = newSolr().parseSearchResults(searchResponse(new JSONObject()
+            .put("facet-subjects", facetValues(numbered("Subject ", 201)))
+            .put("facet-origin-place", facetValues(numbered("Place ", 200)))), Set.of());
+
+        FacetGroup subjects = group(set, "Subject");
+        assertEquals(200, subjects.getFacets().size());
+        assertEquals("Subject 199", subjects.getFacets().get(199).getBand());
+        assertTrue(subjects.hasMore());
+
+        FacetGroup places = group(set, "Place");
+        assertEquals(200, places.getFacets().size());
+        assertFalse(places.hasMore());
+    }
+
+    @Test
+    public void parseSearchResults_keepsEveryValueOfAnExpandedFacet() {
+        SearchResultSet set = newSolr().parseSearchResults(searchResponse(new JSONObject()
+            .put("facet-subjects", facetValues(numbered("Subject ", 500)))
+            .put("facet-origin-place", facetValues(numbered("Place ", 201)))),
+            Set.of("facet-subjects"));
+
+        assertEquals(500, group(set, "Subject").getFacets().size());
+        assertFalse(group(set, "Subject").hasMore());
+        assertEquals(200, group(set, "Place").getFacets().size());
+        assertTrue(group(set, "Place").hasMore());
+    }
+
+    @Test
+    public void parseSearchResults_trimsAfterSkippingSubCollectionValues() {
+        List<String> values = new ArrayList<>(List.of("A::sub", "B::sub"));
+        values.addAll(numbered("Collection ", 199));
+
+        FacetGroup collections = group(newSolr().parseSearchResults(searchResponse(new JSONObject()
+            .put("facet-collection", facetValues(values))), Set.of()), "Collection");
+
+        assertEquals(199, collections.getFacets().size());
+        assertEquals("Collection 0", collections.getFacets().get(0).getBand());
+        // 201 values came back, so there are more even though 2 were skipped
+        assertTrue(collections.hasMore());
+    }
+
+    @Test
+    public void parseSearchResults_skipsSubCollectionValuesInEveryField() {
+        FacetGroup places = group(newSolr().parseSearchResults(searchResponse(new JSONObject()
+            .put("facet-origin-place", facetValues(List.of("Cambridge", "England::Cambridge")))),
+            Set.of()), "Place");
+
+        assertEquals(1, places.getFacets().size());
+        assertEquals("Cambridge", places.getFacets().get(0).getBand());
+    }
+
+    @Test
+    public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
+        assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
     }
 }
