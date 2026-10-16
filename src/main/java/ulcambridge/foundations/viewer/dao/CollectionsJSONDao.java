@@ -124,7 +124,8 @@ public class CollectionsJSONDao implements CollectionsDao {
         List<String> collectionItemIds = getItemIds(collectionJson);
         String collectionSummary = description.getJSONObject("full").getString("@id");
         String collectionSponsors = credit.getJSONObject("prose").getString("@id");
-        String collectionType = getCollectionType(collectionId);
+        UIDataCollection uiCollection = getUICollection(collectionId);
+        String collectionType = uiCollection == null ? null : uiCollection.getLayout();
         String parentCollectionId = null;
 
         String metaDescription = description.getString("medium");
@@ -148,6 +149,9 @@ public class CollectionsJSONDao implements CollectionsDao {
         Collection collectionObject = new Collection(collectionId, collectionTitle, collectionItemIds,
             collectionSummary, collectionSponsors, collectionType, parentCollectionId, metaDescription);
         collectionObject.setReleaseState(released, status);
+        if (uiCollection != null) {
+            collectionObject.setMap(uiCollection.isMapEnabled(), uiCollection.isMapCollapsed());
+        }
         return collectionObject;
     }
 
@@ -161,12 +165,13 @@ public class CollectionsJSONDao implements CollectionsDao {
         return itemIds;
     }
 
-    private String getCollectionType(String collectionId) {
+    /** The collection's entry in cudl.ui.json5, or null if it has none. */
+    private UIDataCollection getUICollection(String collectionId) {
 
         List<UIDataCollection> uiCollections = uiTheme.getThemeData().getCollections();
         for (UIDataCollection uiCollection : uiCollections) {
             if (uiCollection.getCollection().getId().endsWith(File.separator + collectionId + ".collection.json")) {
-                return uiCollection.getLayout();
+                return uiCollection;
             }
         }
         return null;

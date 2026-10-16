@@ -68,6 +68,7 @@ public class SearchController {
         modelAndView.addObject("queryString",
             SearchUtil.getURLParameters(searchForm));
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
+        modelAndView.addObject("mapCollections", getMapCollections());
 
         return modelAndView;
     }
@@ -109,7 +110,23 @@ public class SearchController {
                 .addObject("queryString",
                         SearchUtil.getURLParameters(searchForm))
                 .addObject("enableTagging", enableTagging)
-                .addObject("contentHTMLURL", contentHtmlUrl);
+                .addObject("contentHTMLURL", contentHtmlUrl)
+                .addObject("mapCollections", getMapCollections());
+    }
+
+    /**
+     * Collections whose search results can be shown on a map, as set by "map" in
+     * cudl.ui.json5. The results page shows the map when one of them is the
+     * selected Collection facet.
+     */
+    List<Collection> getMapCollections() {
+        List<Collection> mapCollections = new ArrayList<>();
+        for (Collection collection : collectionFactory.getCollections()) {
+            if (collection.isMapEnabled()) {
+                mapCollections.add(collection);
+            }
+        }
+        return mapCollections;
     }
 
     private JSONArray getResultsJSON(SearchResultSet results) {

@@ -1,5 +1,6 @@
 <%@tag description="Base search results page" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <%@taglib prefix="cudl" tagdir="/WEB-INF/tags" %>
@@ -12,6 +13,14 @@
     <jsp:attribute name="pageData">
         <cudl:default-context>
             <json:property name="queryString" value="${queryString}"/>
+            <%-- Collections with a map, keyed by title (the Collection facet value) --%>
+            <json:object name="mapCollections">
+                <c:forEach items="${mapCollections}" var="mapCollection">
+                    <json:object name="${mapCollection.title}">
+                        <json:property name="collapsed" value="${mapCollection.mapCollapsed}"/>
+                    </json:object>
+                </c:forEach>
+            </json:object>
         </cudl:default-context>
     </jsp:attribute>
 
