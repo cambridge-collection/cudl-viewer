@@ -48,6 +48,12 @@ public class Collection implements Comparable<Collection> {
     /** Whether that map starts closed, as many of the collection's items have no location. */
     private boolean mapCollapsed = false;
 
+    /** Whether the collection's own page offers a map of its items, from cudl.ui.json5. */
+    private boolean collectionMapEnabled = false;
+
+    /** Whether that map notes that many of the collection's items have no location. */
+    private boolean collectionMapCollapsed = false;
+
     /**
      * Constructor for a Collection setting the metaDescription to null.
      */
@@ -160,6 +166,19 @@ public class Collection implements Comparable<Collection> {
     public void setMap(boolean enabled, boolean collapsed) {
         this.mapEnabled = enabled;
         this.mapCollapsed = enabled && collapsed;
+    }
+
+    public boolean isCollectionMapEnabled() {
+        return collectionMapEnabled;
+    }
+
+    public boolean isCollectionMapCollapsed() {
+        return collectionMapCollapsed;
+    }
+
+    public void setCollectionMap(boolean enabled, boolean collapsed) {
+        this.collectionMapEnabled = enabled;
+        this.collectionMapCollapsed = enabled && collapsed;
     }
 
     public void setSubCollections(List<Collection> subCollections) {

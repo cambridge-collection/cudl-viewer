@@ -28,4 +28,23 @@ public class UIDataCollectionTest {
         assertMap("{\"collapsed\":false}", true, false);
         assertMap("{\"collapsed\":true}", true, true);
     }
+
+    @Test
+    public void readsTheCollectionMapSettingSeparately() throws Exception {
+        UIDataCollection collection = new ObjectMapper().readValue(
+            "{\"map\":true,\"collectionMap\":{\"collapsed\":true}}", UIDataCollection.class);
+        assertEquals(true, collection.isCollectionMapEnabled());
+        assertEquals(true, collection.isCollectionMapCollapsed());
+        assertEquals(false, collection.isMapCollapsed());
+
+        UIDataCollection searchOnly = parse("true");
+        assertEquals(true, searchOnly.isMapEnabled());
+        assertEquals(false, searchOnly.isCollectionMapEnabled());
+
+        UIDataCollection pageOnly = new ObjectMapper().readValue(
+            "{\"collectionMap\":true}", UIDataCollection.class);
+        assertEquals(false, pageOnly.isMapEnabled());
+        assertEquals(true, pageOnly.isCollectionMapEnabled());
+        assertEquals(false, pageOnly.isCollectionMapCollapsed());
+    }
 }

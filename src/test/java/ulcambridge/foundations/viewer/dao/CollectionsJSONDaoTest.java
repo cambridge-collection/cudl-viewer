@@ -220,7 +220,7 @@ public class CollectionsJSONDaoTest {
         writeCollection(tempDir, "unlisted", "Unlisted");
         File datasetFile = writeDataset(tempDir, "maps", "constable", "darwin", "unlisted");
         JSONArray uiCollections = new JSONArray()
-            .put(uiCollection("maps").put("map", true))
+            .put(uiCollection("maps").put("map", true).put("collectionMap", true))
             .put(uiCollection("constable").put("map", new JSONObject().put("collapsed", true)))
             .put(uiCollection("darwin").put("map", false));
         Path uiFile = tempDir.resolve("cudl.ui.json5");
@@ -233,6 +233,9 @@ public class CollectionsJSONDaoTest {
         assertThat(dao.getCollection("maps").isMapEnabled()).isTrue();
         assertThat(dao.getCollection("maps").isMapCollapsed()).isFalse();
         assertThat(dao.getCollection("maps").getType()).isEqualTo("organisation");
+        assertThat(dao.getCollection("maps").isCollectionMapEnabled()).isTrue();
+        // collectionMap is separate from map, and off unless set
+        assertThat(dao.getCollection("constable").isCollectionMapEnabled()).isFalse();
         assertThat(dao.getCollection("constable").isMapEnabled()).isTrue();
         assertThat(dao.getCollection("constable").isMapCollapsed()).isTrue();
         assertThat(dao.getCollection("darwin").isMapEnabled()).isFalse();

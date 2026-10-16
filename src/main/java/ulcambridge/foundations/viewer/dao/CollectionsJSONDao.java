@@ -151,6 +151,8 @@ public class CollectionsJSONDao implements CollectionsDao {
         collectionObject.setReleaseState(released, status);
         if (uiCollection != null) {
             collectionObject.setMap(uiCollection.isMapEnabled(), uiCollection.isMapCollapsed());
+            collectionObject.setCollectionMap(
+                uiCollection.isCollectionMapEnabled(), uiCollection.isCollectionMapCollapsed());
         }
         return collectionObject;
     }

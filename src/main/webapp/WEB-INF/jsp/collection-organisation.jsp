@@ -14,12 +14,13 @@
             <json:property name="collectionUrl" value="${collection.URL}"/>
             <json:property name="collectionTitle" value="${collection.title}"/>
             <json:property name="collectionPage" value="${pageNumber}"/>
-            <%-- This collection's map setting from cudl.ui.json5, in the same shape as
-                 the search results page's mapCollections: empty when it has no map --%>
+            <%-- This collection's "collectionMap" setting from cudl.ui.json5, in the same
+                 shape as the search results page's mapCollections: empty when its page
+                 has no map --%>
             <json:object name="mapCollections">
-                <c:if test="${collection.mapEnabled}">
+                <c:if test="${collection.collectionMapEnabled}">
                     <json:object name="${collection.title}">
-                        <json:property name="collapsed" value="${collection.mapCollapsed}"/>
+                        <json:property name="collapsed" value="${collection.collectionMapCollapsed}"/>
                     </json:object>
                 </c:if>
             </json:object>
