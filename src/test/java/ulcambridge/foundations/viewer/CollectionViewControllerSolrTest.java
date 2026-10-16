@@ -265,7 +265,7 @@ public class CollectionViewControllerSolrTest {
             collectionFactory, search, "./html", false, "");
 
         JSONObject data = new JSONObject(controller.handleItemsAjaxRequest(
-            "treasures", 0, 8, "fen", "Subject::Fens", false));
+            "treasures", 0, 8, "fen", "Subject::Fens", "0,52,1,53", false));
 
         assertEquals(3, data.getInt("total"));
         assertEquals("Subject", data.getJSONArray("facets").getJSONObject(0).getString("name"));
@@ -273,6 +273,7 @@ public class CollectionViewControllerSolrTest {
         verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), filter.capture());
         assertEquals("fen", filter.getValue().getText());
         assertEquals("Fens", filter.getValue().getFacets().get("Subject"));
+        assertEquals("0,52,1,53", filter.getValue().getBbox());
     }
 
     @Test
@@ -285,7 +286,7 @@ public class CollectionViewControllerSolrTest {
         CollectionViewController controller = new CollectionViewController(
             collectionFactory, search, "./html", false, "");
 
-        controller.handleItemsAjaxRequest("treasures", 0, 8, null, null, true);
+        controller.handleItemsAjaxRequest("treasures", 0, 8, null, null, null, true);
 
         verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), any(CollectionFilter.class));
     }

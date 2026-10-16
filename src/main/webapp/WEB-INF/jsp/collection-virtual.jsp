@@ -15,6 +15,15 @@
             <json:property name="collectionTitle" value="${collection.title}"/>
             <json:property name="collectionTotal" value="${collectionTotal}"/>
             <json:property name="collectionBatchSize" value="${collectionBatchSize}"/>
+            <%-- This collection's map setting from cudl.ui.json5, in the same shape as
+                 the search results page's mapCollections: empty when it has no map --%>
+            <json:object name="mapCollections">
+                <c:if test="${collection.mapEnabled}">
+                    <json:object name="${collection.title}">
+                        <json:property name="collapsed" value="${collection.mapCollapsed}"/>
+                    </json:object>
+                </c:if>
+            </json:object>
         </cudl:default-context>
     </jsp:attribute>
 

@@ -398,7 +398,7 @@ public class SolrSearchTest {
     public void getCollectionItems_appliesTheFilterAndListsFacetsWithChoices() {
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 2).put("docs", new JSONArray()
-                .put(pageHitDoc())))
+                .put(pageHitDoc().put("coverage_srpt", "ENVELOPE(0.1, 0.2, 52.3, 52.1)"))))
             .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
                 .put("facet-subjects", new JSONArray().put("Fens -- Maps").put(2).put("Ely -- Maps").put(1))
                 .put("facet-creations-century", new JSONArray().put("1800s C.E.").put(3))
@@ -406,10 +406,11 @@ public class SolrSearchTest {
         String[] url = new String[1];
 
         CollectionItemsPage page = withStubbedResponse(response, url).getCollectionItems("maps", 0, 8,
-            CollectionFilter.of("fen & ely", "Languages::English"));
+            CollectionFilter.of("fen & ely", "Languages::English", "0.1,52,0.2,52.4"));
 
         assertTrue(url[0].contains("q=fen%20%26%20ely"), url[0]);
         assertTrue(url[0].contains("fq=facet-languages:%22English%22"), url[0]);
+        assertTrue(url[0].contains("bbox=0.1,52,0.2,52.4"), url[0]);
         assertTrue(url[0].contains("collection_sort"), url[0]);
         // Subject has a choice; Date has one value so is left out; Languages has one
         // value but is the selected facet, so stays.
@@ -418,6 +419,8 @@ public class SolrSearchTest {
         assertEquals(List.of("Subject", "Languages"), names);
         assertEquals(2, page.getFacets().get(0).getJSONArray("values").getJSONObject(0).getInt("count"));
         assertEquals(1, page.getItems().size());
+        assertEquals(List.of(0.1, 52.1, 0.2, 52.3),
+            page.getItems().get(0).getJSONArray("coverage").toList());
     }
 
     @Test

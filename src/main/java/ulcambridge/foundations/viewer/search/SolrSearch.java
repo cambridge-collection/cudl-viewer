@@ -700,6 +700,9 @@ public class SolrSearch implements Search {
                 uriB.queryParam("fq", field + ":\"" + escapePhrase(facet.getValue()) + "\"");
             }
         }
+        if (!filter.getBbox().isEmpty()) {
+            uriB.queryParam("bbox", filter.getBbox());
+        }
         if (sorted) {
             uriB.queryParam("sort", "collection_sort asc");
         }
@@ -753,6 +756,16 @@ public class SolrSearch implements Search {
 
         if (doc.has("authors")) {
             item.put("authors", doc.get("authors"));
+        }
+
+        // Locations, so collection pages can offer "Show on map"
+        final List<Double> coverage = parseEnvelope(firstString(doc, "coverage_srpt"));
+        if (coverage != null) {
+            item.put("coverage", new JSONArray(coverage));
+        }
+        final List<Double> origin = parseLatLon(firstString(doc, "origin_p"));
+        if (origin != null) {
+            item.put("origin", new JSONArray(origin));
         }
 
         return item;
