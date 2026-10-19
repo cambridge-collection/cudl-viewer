@@ -43,6 +43,9 @@ public class SolrSearch implements Search {
     // Most values Solr is asked for per collection filter facet
     private static final int COLLECTION_FILTER_FACET_LIMIT = 200;
 
+    // The flat field holds every level's own title; facet-collection-N holds level N's paths
+    private static final String COLLECTION_FACET_FIELD = "facet-collection";
+
     private final URI searchURL;
     private final URI imageServerURL;
     private final String appendToThumbnail;
@@ -114,15 +117,24 @@ public class SolrSearch implements Search {
                                       final int start,
                                       final int end,
                                       final boolean withFacets) {
-        return search(buildQueryURL(searchForm, start, end, withFacets, false), Set.of());
+        return search(buildQueryURL(searchForm, start, end, withFacets, false), Set.of(),
+            searchForm.getFacetCollection());
     }
 
+    /**
+     * With expandCollection set, that collection also filters the facet counts, which is
+     * what makes the search API return its children, and the tree is built around it.
+     */
     @Override
     public SearchResultSet makeFacetSearch(final SearchForm searchForm) {
-        return search(buildQueryURL(searchForm, 0, 0, true, true), expandedFacetFields(searchForm));
+        final String treeCollection = searchForm.getExpandCollection() != null
+            ? searchForm.getExpandCollection() : searchForm.getFacetCollection();
+        return search(buildQueryURL(searchForm, 0, 0, true, true), expandedFacetFields(searchForm),
+            treeCollection);
     }
 
-    private SearchResultSet search(final String searchSolrURL, final Set<String> expandedFacetFields) {
+    private SearchResultSet search(final String searchSolrURL, final Set<String> expandedFacetFields,
+                                   final String selectedCollection) {
 
         // if the query URL is null return empty result set.
         if (searchSolrURL == null) {
@@ -132,7 +144,7 @@ public class SolrSearch implements Search {
         }
 
         // parse search results into a SearchResultSet
-        return parseSearchResults(getJSON(searchSolrURL), expandedFacetFields);
+        return parseSearchResults(getJSON(searchSolrURL), expandedFacetFields, selectedCollection);
     }
 
     private Set<String> expandedFacetFields(final SearchForm searchForm) {
@@ -261,8 +273,11 @@ public class SolrSearch implements Search {
 
         if (searchForm.getFacets() != null) {
             for (Map.Entry<String, String> facet : searchForm.getFacets().entrySet()) {
-                uriB.queryParam("fq", String.format("%s:\"%s\"", displayNameToFacetNameMap.get(facet.getKey()), facet.getValue()));
+                uriB.queryParam("fq", facetFilterQuery(facet.getKey(), facet.getValue()));
             }
+        }
+        if (facetsOnly && searchForm.getExpandCollection() != null) {
+            uriB.queryParam("fq", facetFilterQuery("Collection", searchForm.getExpandCollection()));
         }
 
         String query = "";
@@ -335,6 +350,40 @@ public class SolrSearch implements Search {
     }
 
     /**
+     * A Collection path filters on its level's field. A single title can be a top-level
+     * collection or, in older URLs, a subcollection. The flat field matches both, and
+     * leading with level 0 is what makes the search API return that level's children.
+     */
+    private String facetFilterQuery(final String name, final String value) {
+        final String field = displayNameToFacetNameMap.get(name);
+        final String phrase = "\"" + escapePhrase(value) + "\"";
+        if (!COLLECTION_FACET_FIELD.equals(field)) {
+            return field + ":" + phrase;
+        }
+        final int depth = value.split(Facet.HIERARCHY_SEPARATOR, -1).length - 1;
+        return depth > 0
+            ? collectionLevelField(depth) + ":" + phrase
+            : collectionLevelField(0) + ":" + phrase + " OR " + field + ":" + phrase;
+    }
+
+    private static String collectionLevelField(final int level) {
+        return COLLECTION_FACET_FIELD + "-" + level;
+    }
+
+    // Level N's values that have children in the results
+    private static String collectionPrefixesField(final int level) {
+        return COLLECTION_FACET_FIELD + "-prefixes-" + level;
+    }
+
+    private static Set<String> facetBands(final JSONArray counts) {
+        final Set<String> bands = new HashSet<>();
+        for (int i = 0; counts != null && i < counts.length(); i += 2) {
+            bands.add(counts.getString(i));
+        }
+        return bands;
+    }
+
+    /**
      * Parse the JSON and put the results into a list of
      * SearchResult objects.
      *
@@ -344,6 +393,13 @@ public class SolrSearch implements Search {
      */
     protected SearchResultSet parseSearchResults(final JSONObject json,
                                                  final Set<String> expandedFacetFields) {
+        return parseSearchResults(json, expandedFacetFields, null);
+    }
+
+    /** @param selectedCollection the Collection facet's selected value, if any */
+    protected SearchResultSet parseSearchResults(final JSONObject json,
+                                                 final Set<String> expandedFacetFields,
+                                                 final String selectedCollection) {
 
         if (json == null) {
             return new SearchResultSet(0, "", 0f,
@@ -407,6 +463,12 @@ public class SolrSearch implements Search {
             : facetCounts.getJSONObject("facet_fields");
         for (String facetName: facetNamesInOrder) {
 
+            if (COLLECTION_FACET_FIELD.equals(facetName) && facetFields.has(collectionLevelField(0))) {
+                facetGroups.add(collectionTree(facetFields, facetNameToDisplayNameMap.get(facetName),
+                    expandedFacetFields.contains(facetName), selectedCollection, totalDocs));
+                continue;
+            }
+
             if (!facetFields.has(facetName)) { continue; }
 
             JSONArray fields = facetFields.getJSONArray(facetName);
@@ -445,6 +507,97 @@ public class SolrSearch implements Search {
 
         return new SearchResultSet(totalDocs, suggestedTerm, queryTime,
             results, facetGroups, "");
+    }
+
+    /**
+     * The Collection facet as a tree. The search API returns every top-level value, and
+     * only the selected value's children, so the levels between are rebuilt from the
+     * selected path itself.
+     */
+    private FacetGroup collectionTree(final JSONObject facetFields, final String displayName,
+                                      final boolean expanded, final String selected, final int hits) {
+        final JSONArray topValues = facetFields.getJSONArray(collectionLevelField(0));
+        final boolean hasMore = !expanded && topValues.length() / 2 > searchFacetLimit;
+        final Set<String> topParents = facetBands(facetFields.optJSONArray(collectionPrefixesField(1)));
+        final List<Facet> top = new ArrayList<>();
+        final Map<String, Facet> topByBand = new HashMap<>();
+        for (int i = 0; i + 1 < topValues.length(); i += 2) {
+            if (!expanded && top.size() == searchFacetLimit) {
+                break;
+            }
+            final Facet facet = new Facet(displayName, topValues.getString(i), topValues.getInt(i + 1), i);
+            facet.setHasChildren(topParents.contains(facet.getBand()));
+            top.add(facet);
+            topByBand.put(facet.getBand(), facet);
+        }
+
+        final FacetGroup group = new FacetGroup(displayName, top, 0, hasMore, true);
+        final String path = selectedCollectionPath(selected, topByBand, facetFields);
+        if (path != null && addSelectedPath(path, topByBand, facetFields, displayName, hits)) {
+            group.setTreePath(path);
+        }
+        return group;
+    }
+
+    /**
+     * The tree path a selection refers to. A legacy URL can name a subcollection by its
+     * title alone; that resolves only when exactly one returned child has the title.
+     */
+    private static String selectedCollectionPath(final String selected, final Map<String, Facet> topByBand,
+                                                 final JSONObject facetFields) {
+        if (selected == null || selected.isBlank()) {
+            return null;
+        }
+        if (selected.contains(Facet.HIERARCHY_SEPARATOR) || topByBand.containsKey(selected)) {
+            return selected;
+        }
+        final String suffix = Facet.HIERARCHY_SEPARATOR + selected;
+        final List<String> matches = new ArrayList<>();
+        for (String band : facetBands(facetFields.optJSONArray(collectionLevelField(1)))) {
+            if (band.endsWith(suffix)) {
+                matches.add(band);
+            }
+        }
+        return matches.size() == 1 ? matches.get(0) : null;
+    }
+
+    /**
+     * Adds the nodes from the selected path's top-level value down to it, then the
+     * selected value's children. Every result lies within the selected value, so the
+     * search's hit count is the count for each node rebuilt below the top level.
+     *
+     * @return false if the path's top-level value isn't listed, so nothing was added
+     */
+    private boolean addSelectedPath(final String path, final Map<String, Facet> topByBand,
+                                 final JSONObject facetFields, final String displayName, final int hits) {
+        final String[] segments = path.split(Facet.HIERARCHY_SEPARATOR, -1);
+        Facet node = topByBand.get(segments[0]);
+        if (node == null) {
+            return false;
+        }
+        for (int depth = 1; depth < segments.length; depth++) {
+            final Facet child = new Facet(displayName,
+                String.join(Facet.HIERARCHY_SEPARATOR, Arrays.copyOf(segments, depth + 1)), hits, 0);
+            node.addChild(child);
+            node = child;
+        }
+
+        final int childLevel = segments.length;
+        final JSONArray children = facetFields.optJSONArray(collectionLevelField(childLevel));
+        final Set<String> parents = facetBands(facetFields.optJSONArray(collectionPrefixesField(childLevel + 1)));
+        final String childPrefix = path + Facet.HIERARCHY_SEPARATOR;
+        for (int i = 0; children != null && i + 1 < children.length(); i += 2) {
+            final String band = children.getString(i);
+            // Results that are also in other collections bring those collections' children too
+            if (!band.startsWith(childPrefix)) {
+                continue;
+            }
+            final Facet child = new Facet(displayName, band, children.getInt(i + 1), i);
+            child.setHasChildren(parents.contains(band));
+            node.addChild(child);
+        }
+        node.setHasChildren(facetBands(facetFields.optJSONArray(collectionPrefixesField(childLevel))).contains(path));
+        return true;
     }
 
     /**

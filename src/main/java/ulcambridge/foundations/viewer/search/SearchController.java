@@ -178,11 +178,25 @@ public class SearchController {
         return o;
     }
 
+    private JSONObject getTreeFacetJson(Facet facet) {
+        JSONObject o = getFacetJson(facet);
+
+        o.put("label", facet.getLabel());
+        o.put("hasChildren", facet.hasChildren());
+        JSONArray children = new JSONArray();
+        for(Facet child : facet.getChildren()) {
+            children.add(getTreeFacetJson(child));
+        }
+        o.put("children", children);
+
+        return o;
+    }
+
     private JSONArray getGroupFacetsJSON(FacetGroup group) {
         JSONArray a = new JSONArray();
 
         for(Facet f : group.getFacets()) {
-            a.add(getFacetJson(f));
+            a.add(group.isHierarchical() ? getTreeFacetJson(f) : getFacetJson(f));
         }
 
         return a;
@@ -194,6 +208,10 @@ public class SearchController {
         o.put("label", group.getFieldLabel());
         o.put("field", group.getField());
         o.put("hasMore", group.hasMore());
+        if(group.isHierarchical())
+            o.put("hierarchical", true);
+        if(group.getTreePath() != null)
+            o.put("path", group.getTreePath());
         o.put("facets", getGroupFacetsJSON(group));
 
         return o;
@@ -203,7 +221,8 @@ public class SearchController {
         JSONArray a = new JSONArray();
 
         for(FacetGroup facetGroup : results.getFacets()) {
-            if(form.getFacets().containsKey(facetGroup.getField()))
+            // A tree stays listed so the selection can be shown in place and narrowed
+            if(form.getFacets().containsKey(facetGroup.getField()) && !facetGroup.isHierarchical())
                 continue;
 
             // Solr returns some faceted fields as empty arrays; dropping the group

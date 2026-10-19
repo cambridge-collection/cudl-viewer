@@ -8,6 +8,8 @@ import ulcambridge.foundations.viewer.forms.SearchForm;
 import ulcambridge.foundations.viewer.model.Collection;
 
 import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -621,6 +624,201 @@ public class SolrSearchTest {
     @Test
     public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
         assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
+    }
+
+    private String collectionFilterUrl(final String facets) {
+        SearchForm form = new SearchForm();
+        form.setFacets(facets);
+        return URLDecoder.decode(searchUrl(form, true), StandardCharsets.UTF_8);
+    }
+
+    private JSONArray counts(final Object... valueCountPairs) {
+        JSONArray counts = new JSONArray();
+        for (Object o : valueCountPairs) { counts.put(o); }
+        return counts;
+    }
+
+    private FacetGroup collectionGroup(final JSONObject facetFields) {
+        return collectionGroup(facetFields, null, 0);
+    }
+
+    private FacetGroup collectionGroup(final JSONObject facetFields, final String selected, final int hits) {
+        JSONObject response = searchResponse(facetFields);
+        response.getJSONObject("response").put("numFound", hits);
+        return group(newSolr().parseSearchResults(response, Set.of(), selected), "Collection");
+    }
+
+    private List<String> bands(final List<Facet> facets) {
+        return facets.stream().map(Facet::getBand).collect(Collectors.toList());
+    }
+
+    private Facet child(final Facet parent, final String band) {
+        return parent.getChildren().stream().filter(f -> f.getBand().equals(band)).findFirst().orElseThrow();
+    }
+
+    @Test
+    public void collectionFacet_singleTitleFiltersOnLevelZeroOrTheFlatField() {
+        String url = collectionFilterUrl("Collection::Papers of Nevil Maskelyne");
+
+        assertTrue(url.contains("fq=facet-collection-0:\"Papers of Nevil Maskelyne\""
+            + " OR facet-collection:\"Papers of Nevil Maskelyne\""), url);
+    }
+
+    @Test
+    public void collectionFacet_pathFiltersOnItsLevelField() {
+        assertTrue(collectionFilterUrl("Collection::RGO::Maskelyne")
+            .contains("fq=facet-collection-1:\"RGO::Maskelyne\"&"));
+        assertTrue(collectionFilterUrl("Collection::A::B::C")
+            .contains("fq=facet-collection-2:\"A::B::C\"&"));
+    }
+
+    @Test
+    public void facetFilter_escapesQuotesInTheValue() {
+        String url = collectionFilterUrl("Subject::Letters \"to\" Darwin");
+
+        assertTrue(url.contains("fq=facet-subjects:\"Letters \\\"to\\\" Darwin\""), url);
+    }
+
+    @Test
+    public void collectionFacet_marksTopLevelValuesThatHaveChildren() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection", counts("Maskelyne", 2, "Newton Papers", 3, "RGO", 5))
+            .put("facet-collection-0", counts("Newton Papers", 3, "RGO", 5))
+            .put("facet-collection-prefixes-1", counts("RGO", 2)));
+
+        assertTrue(collections.isHierarchical());
+        assertEquals(List.of("Newton Papers", "RGO"), bands(collections.getFacets()));
+        assertFalse(collections.getFacets().get(0).hasChildren());
+        assertTrue(collections.getFacets().get(1).hasChildren());
+        assertTrue(collections.getFacets().get(1).getChildren().isEmpty());
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_listsTheSelectedValuesChildrenOnly() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-prefixes-1", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-1", counts("Other::Y", 1, "RGO::Board", 1, "RGO::Maskelyne", 2))
+            .put("facet-collection-prefixes-2", counts("RGO::Maskelyne", 1)), "RGO", 5);
+
+        Facet rgo = collections.getFacets().get(1);
+        assertEquals(List.of("RGO::Board", "RGO::Maskelyne"), bands(rgo.getChildren()));
+        assertEquals("Maskelyne", child(rgo, "RGO::Maskelyne").getLabel());
+        assertEquals(2, child(rgo, "RGO::Maskelyne").getOccurrences());
+        assertTrue(child(rgo, "RGO::Maskelyne").hasChildren());
+        assertFalse(child(rgo, "RGO::Board").hasChildren());
+        assertTrue(collections.getFacets().get(0).getChildren().isEmpty());
+        assertEquals("RGO", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_rebuildsThePathDownToADeeperSelection() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("A", 7))
+            .put("facet-collection-prefixes-1", counts("A", 7))
+            .put("facet-collection-prefixes-2", counts("A::B", 4))
+            .put("facet-collection-2", counts("A::B::C", 4))
+            .put("facet-collection-prefixes-3", counts()), "A::B", 7);
+
+        Facet b = child(collections.getFacets().get(0), "A::B");
+        assertEquals(7, b.getOccurrences());
+        assertTrue(b.hasChildren());
+        assertEquals(List.of("A::B::C"), bands(b.getChildren()));
+        assertFalse(child(b, "A::B::C").hasChildren());
+        assertEquals("A::B", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_resolvesALegacyTitleToItsOnlyMatchingChild() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-1", counts("RGO::Maskelyne", 2)), "Maskelyne", 2);
+
+        Facet maskelyne = child(collections.getFacets().get(1), "RGO::Maskelyne");
+        assertEquals(2, maskelyne.getOccurrences());
+        assertFalse(maskelyne.hasChildren());
+        assertEquals("RGO::Maskelyne", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_leavesAnAmbiguousLegacyTitleUnplaced() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("A", 1, "B", 1))
+            .put("facet-collection-1", counts("A::Letters", 1, "B::Letters", 1)), "Letters", 2);
+
+        assertTrue(collections.getFacets().stream().allMatch(f -> f.getChildren().isEmpty()));
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_ignoresASelectionWhoseTopLevelValueIsNotListed() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("RGO", 5))
+            .put("facet-collection-2", counts("Other::X::Y", 1)), "Other::X", 1);
+
+        assertEquals(List.of("RGO"), bands(collections.getFacets()));
+        assertTrue(collections.getFacets().get(0).getChildren().isEmpty());
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_withoutLevelFieldsStaysFlat() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection", counts("RGO", 5, "Maskelyne", 2, "A::B", 1)));
+
+        assertFalse(collections.isHierarchical());
+        assertEquals(List.of("RGO", "Maskelyne"), bands(collections.getFacets()));
+    }
+
+    private SearchForm formOpening(final String selected, final String expandCollection) {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        if (selected != null) {
+            form.setFacets("Collection::" + selected);
+        }
+        form.setExpandCollection(expandCollection);
+        return form;
+    }
+
+    @Test
+    public void makeFacetSearch_filtersOnTheCollectionBeingOpened() {
+        String[] url = new String[1];
+        withStubbedResponse(searchResponse(new JSONObject()), url)
+            .makeFacetSearch(formOpening("Newton Papers", "RGO::Board"));
+        String decoded = URLDecoder.decode(url[0], StandardCharsets.UTF_8);
+
+        assertTrue(decoded.contains("fq=facet-collection-0:\"Newton Papers\" OR facet-collection:\"Newton Papers\""), decoded);
+        assertTrue(decoded.contains("fq=facet-collection-1:\"RGO::Board\""), decoded);
+    }
+
+    @Test
+    public void makeSearch_ignoresTheCollectionBeingOpened() {
+        assertFalse(URLDecoder.decode(searchUrl(formOpening(null, "RGO"), true), StandardCharsets.UTF_8)
+            .contains("facet-collection-0"));
+    }
+
+    @Test
+    public void makeFacetSearch_buildsTheTreeAroundTheCollectionBeingOpened() {
+        JSONObject response = searchResponse(new JSONObject()
+            .put("facet-collection-0", counts("Newton Papers", 3, "RGO", 3))
+            .put("facet-collection-prefixes-1", counts("RGO", 3))
+            .put("facet-collection-1", counts("RGO::Board", 2, "RGO::Maskelyne", 1))
+            .put("facet-collection-prefixes-2", counts()));
+
+        SearchResultSet set = withStubbedResponse(response, new String[1])
+            .makeFacetSearch(formOpening("Newton Papers", "RGO"));
+
+        Facet rgo = group(set, "Collection").getFacets().get(1);
+        assertEquals(List.of("RGO::Board", "RGO::Maskelyne"), bands(rgo.getChildren()));
+    }
+
+    @Test
+    public void makeFacetSearch_leavesCollectionLevelLimitsToTheSearchApi() {
+        String url = facetSearchUrl(formExpanding("Collection"));
+
+        assertTrue(url.contains("f.facet-collection.facet.limit=-1"), url);
+        assertFalse(url.contains("f.facet-collection-"), url);
     }
 
     private JSONObject collectionDoc(final String id, final String title,

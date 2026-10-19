@@ -34,6 +34,7 @@ public class SearchForm {
 
     // Expand facet results
     private List<String> expandFacet = new ArrayList<>();
+    private String expandCollection;
 
     // This translates the form object into GET request parameters
     public String getQueryParams() {
@@ -231,9 +232,9 @@ public class SearchForm {
         Map<String,String> facets = new Hashtable<>();
         String[] pairs = facetString.split("\\|\\|");
         for (String pair : pairs) {
-            String[] keyValue = pair.split("::");
-            // split() drops trailing empty strings, so "Collection::" yields one
-            // element and "::" none. A malformed facet must not 400 the request.
+            // A value can itself be a path, e.g. Collection::Parent::Child
+            String[] keyValue = pair.split("::", 2);
+            // A malformed facet such as "Collection::" or "::" must not 400 the request.
             if (keyValue.length < 2 || keyValue[0].isEmpty() || keyValue[1].isEmpty()) {
                 continue;
             }
@@ -289,6 +290,17 @@ public class SearchForm {
     }
 
     /**
+     * A collection whose children a facets-only request should return, so the tree can
+     * open it without selecting it.
+     */
+    public String getExpandCollection() { return expandCollection; }
+
+    public void setExpandCollection(String expandCollection) {
+        this.expandCollection = (expandCollection == null || expandCollection.isBlank())
+            ? null : expandCollection;
+    }
+
+    /**
      * Sets the values in this form to the values in the form passed in.
      *
      * @return
@@ -313,6 +325,7 @@ public class SearchForm {
         this.facets = input.facets;
 
         this.expandFacet = input.expandFacet;
+        this.expandCollection = input.expandCollection;
     }
 
 
