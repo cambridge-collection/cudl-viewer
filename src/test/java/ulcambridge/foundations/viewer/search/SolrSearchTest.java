@@ -622,6 +622,37 @@ public class SolrSearchTest {
     }
 
     @Test
+    public void parseSearchResults_showsCollectionCountOnlyWithReleaseStatus() {
+        JSONObject response = searchResponse(new JSONObject()
+            .put("facet-collectionCount", facetValues(List.of("01", "02"))));
+
+        FacetGroup counts = group(new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, true, 200)
+            .parseSearchResults(response, Set.of()), "Collection_Count");
+        assertEquals("01", counts.getFacets().get(0).getBand());
+        assertEquals("02", counts.getFacets().get(1).getBand());
+
+        assertNull(group(newSolr().parseSearchResults(response, Set.of()), "Collection_Count"));
+    }
+
+    @Test
+    public void makeSearch_filtersOnCollectionCountWithReleaseStatus() {
+        String[] url = new String[1];
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, true, 200) {
+            @Override
+            protected JSONObject getJSON(String requested) {
+                url[0] = requested;
+                return searchResponse(new JSONObject());
+            }
+        };
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection_Count::01");
+
+        solr.makeSearch(form, 0, 20);
+
+        assertTrue(url[0].contains("fq=facet-collectionCount:%2201%22"), url[0]);
+    }
+
+    @Test
     public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
         assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
     }

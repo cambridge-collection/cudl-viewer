@@ -77,6 +77,7 @@ public class SolrSearch implements Search {
         this.displayNameToFacetNameMap.put("Item_Level", "facet-itemLevel");
         if (showReleaseStatus) {
             this.displayNameToFacetNameMap.put("Item_Status", "facet-itemStatus");
+            this.displayNameToFacetNameMap.put("Collection_Count", "facet-collectionCount");
         }
         this.facetNameToDisplayNameMap = displayNameToFacetNameMap.inverse();
 
@@ -90,6 +91,7 @@ public class SolrSearch implements Search {
         if (showReleaseStatus) {
             this.facetNamesInOrder.add("facet-itemStatus");
             this.facetNamesInOrder.add("facet-itemLevel");
+            this.facetNamesInOrder.add("facet-collectionCount");
         }
     }
 
