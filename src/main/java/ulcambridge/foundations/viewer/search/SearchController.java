@@ -183,14 +183,14 @@ public class SearchController {
         // The matched-page thumbnail was already resolved from Solr's IIIFImageURL.
         itemJSON.put("pageThumbnailURL", searchResult.getThumbnailURL());
 
-        // Place shown as [west, south, east, north], only for results that have one.
+        // Places shown, each [west, south, east, north], only for results that have any.
         if (searchResult.getCoverage() != null) {
             JSONArray coverage = new JSONArray();
             coverage.addAll(searchResult.getCoverage());
             itemJSON.put("coverage", coverage);
         }
 
-        // Place of origin as [lat, lon], only for results that have one.
+        // Places of origin, each [lat, lon], only for results that have any.
         if (searchResult.getOrigin() != null) {
             JSONArray origin = new JSONArray();
             origin.addAll(searchResult.getOrigin());

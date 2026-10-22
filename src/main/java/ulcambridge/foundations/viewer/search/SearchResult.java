@@ -29,10 +29,10 @@ public class SearchResult implements Comparable<SearchResult> {
     private final String mainDisplay;
     private final boolean released;
     private final String itemStatus;
-    // Place shown as [west, south, east, north], or null if the page has none
-    private final List<Double> coverage;
-    // Place of origin as [lat, lon], or null if the page has none
-    private final List<Double> origin;
+    // Places shown, each [west, south, east, north], or null if the page has none
+    private final List<List<Double>> coverage;
+    // Places of origin, each [lat, lon], or null if the page has none
+    private final List<List<Double>> origin;
 
     private final List<String> snippets;
     private final int score; // how relevant is this result, used for ordering.
@@ -54,8 +54,8 @@ public class SearchResult implements Comparable<SearchResult> {
             String startPageLabel, Iterable<String> snippets,
             int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation,
             @Nullable String shelfLocator, @Nullable String abstractShort, @Nullable String mainDisplay,
-            boolean released, String itemStatus, @Nullable List<Double> coverage,
-            @Nullable List<Double> origin) {
+            boolean released, String itemStatus, @Nullable List<List<Double>> coverage,
+            @Nullable List<List<Double>> origin) {
 
         Preconditions.checkNotNull(title);
         Preconditions.checkNotNull(fileId);
@@ -79,12 +79,18 @@ public class SearchResult implements Comparable<SearchResult> {
         this.released = released;
         this.itemStatus = (itemStatus == null || itemStatus.isBlank())
             ? Item.DEFAULT_STATUS : itemStatus;
-        Preconditions.checkArgument(coverage == null || coverage.size() == 4,
-            "coverage must be [west, south, east, north]");
-        this.coverage = coverage == null ? null : ImmutableList.copyOf(coverage);
-        Preconditions.checkArgument(origin == null || origin.size() == 2,
-            "origin must be [lat, lon]");
-        this.origin = origin == null ? null : ImmutableList.copyOf(origin);
+        this.coverage = copyPlaces(coverage, 4, "coverage must be [west, south, east, north]");
+        this.origin = copyPlaces(origin, 2, "origin must be [lat, lon]");
+    }
+
+    @Nullable
+    private static List<List<Double>> copyPlaces(@Nullable List<List<Double>> places, int size,
+                                                 String message) {
+        if (places == null) {
+            return null;
+        }
+        places.forEach((place) -> Preconditions.checkArgument(place.size() == size, message));
+        return places.stream().map(ImmutableList::copyOf).collect(ImmutableList.toImmutableList());
     }
 
     public String getTitle() {
@@ -112,12 +118,12 @@ public class SearchResult implements Comparable<SearchResult> {
     }
 
     @Nullable
-    public List<Double> getCoverage() {
+    public List<List<Double>> getCoverage() {
         return coverage;
     }
 
     @Nullable
-    public List<Double> getOrigin() {
+    public List<List<Double>> getOrigin() {
         return origin;
     }
 

@@ -27,6 +27,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.function.Function;
 
 @Component
 @Profile("!test")
@@ -42,11 +43,11 @@ public class SolrSearch implements Search {
     // Most values Solr is asked for per collection filter facet
     private static final int COLLECTION_FILTER_FACET_LIMIT = 200;
 
-    // Solr returns origin_p as "lat,lon"
+    // Solr returns each origin_ps value as "lat,lon"
     private static final Pattern LAT_LON_PATTERN =
         Pattern.compile("^\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*$");
 
-    // Solr returns coverage_srpt as ENVELOPE(west, east, north, south)
+    // Solr returns each coverage_srpts value as ENVELOPE(west, east, north, south)
     private static final Pattern ENVELOPE_PATTERN = Pattern.compile(
         "^ENVELOPE\\(\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*,\\s*(-?[\\d.]+)\\s*\\)$");
 
@@ -543,8 +544,8 @@ public class SolrSearch implements Search {
         String thumbnailOrientation = firstString(result, "thumbnailImageOrientation");
         if (thumbnailOrientation == null) { thumbnailOrientation = "landscape"; }
 
-        List<Double> coverage = parseEnvelope(firstString(result, "coverage_srpt"));
-        List<Double> origin = parseLatLon(firstString(result, "origin_p"));
+        List<List<Double>> coverage = places(result, "coverage_srpts", SolrSearch::parseEnvelope);
+        List<List<Double>> origin = places(result, "origin_ps", SolrSearch::parseLatLon);
 
         return new SearchResult(title, id, startPage, startPageLabel,
             snippets, score, itemType, thumbnailURL, thumbnailOrientation,
@@ -759,11 +760,11 @@ public class SolrSearch implements Search {
         }
 
         // Locations, so collection pages can offer "Show on map"
-        final List<Double> coverage = parseEnvelope(firstString(doc, "coverage_srpt"));
+        final List<List<Double>> coverage = places(doc, "coverage_srpts", SolrSearch::parseEnvelope);
         if (coverage != null) {
             item.put("coverage", new JSONArray(coverage));
         }
-        final List<Double> origin = parseLatLon(firstString(doc, "origin_p"));
+        final List<List<Double>> origin = places(doc, "origin_ps", SolrSearch::parseLatLon);
         if (origin != null) {
             item.put("origin", new JSONArray(origin));
         }
@@ -826,5 +827,18 @@ public class SolrSearch implements Search {
             return array.length() > 0 ? String.valueOf(array.get(0)) : null;
         }
         return String.valueOf(value);
+    }
+
+    private static List<List<Double>> places(final JSONObject doc, final String key,
+                                             final Function<String, List<Double>> parse) {
+        final Object value = doc.opt(key);
+        final Iterable<?> values = value instanceof JSONArray ? (JSONArray) value
+            : value == null ? List.of() : List.of(value);
+        final List<List<Double>> places = new ArrayList<>();
+        for (Object v : values) {
+            final List<Double> place = parse.apply(String.valueOf(v));
+            if (place != null) { places.add(place); }
+        }
+        return places.isEmpty() ? null : places;
     }
 }

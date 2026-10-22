@@ -398,7 +398,7 @@ public class SolrSearchTest {
     public void getCollectionItems_appliesTheFilterAndListsFacetsWithChoices() {
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 2).put("docs", new JSONArray()
-                .put(pageHitDoc().put("coverage_srpt", "ENVELOPE(0.1, 0.2, 52.3, 52.1)"))))
+                .put(pageHitDoc().put("coverage_srpts", new JSONArray().put("ENVELOPE(0.1, 0.2, 52.3, 52.1)")))))
             .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
                 .put("facet-subjects", new JSONArray().put("Fens -- Maps").put(2).put("Ely -- Maps").put(1))
                 .put("facet-creations-century", new JSONArray().put("1800s C.E.").put(3))
@@ -419,7 +419,7 @@ public class SolrSearchTest {
         assertEquals(List.of("Subject", "Languages"), names);
         assertEquals(2, page.getFacets().get(0).getJSONArray("values").getJSONObject(0).getInt("count"));
         assertEquals(1, page.getItems().size());
-        assertEquals(List.of(0.1, 52.1, 0.2, 52.3),
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)),
             page.getItems().get(0).getJSONArray("coverage").toList());
     }
 
@@ -626,21 +626,31 @@ public class SolrSearchTest {
     }
 
     @Test
-    public void createSearchResult_readsMapCoverageAsWestSouthEastNorth() {
-        JSONObject doc = pageHitDoc()
-            .put("coverage_srpt", "ENVELOPE(20.266667, 23.733333, 38.5, 36.383333)");
+    public void createSearchResult_readsEveryMapCoverageAsWestSouthEastNorth() {
+        JSONObject doc = pageHitDoc().put("coverage_srpts", new JSONArray()
+            .put("ENVELOPE(20.266667, 23.733333, 38.5, 36.383333)")
+            .put("ENVELOPE(0.118611, 0.118889, 52.205556, 52.205556)"));
 
         SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
 
-        assertEquals(List.of(20.266667, 36.383333, 23.733333, 38.5), r.getCoverage());
+        assertEquals(List.of(
+            List.of(20.266667, 36.383333, 23.733333, 38.5),
+            List.of(0.118611, 52.205556, 0.118889, 52.205556)), r.getCoverage());
     }
 
     @Test
-    public void createSearchResult_leavesCoverageNullWhenAbsentOrMalformed() {
+    public void createSearchResult_skipsMalformedCoverageAndLeavesNullWhenNoneParse() {
         assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getCoverage());
 
-        JSONObject doc = pageHitDoc().put("coverage_srpt", "POLYGON((0 0, 1 0, 1 1, 0 0))");
-        assertNull(newSolr().createSearchResult(doc, new JSONObject()).getCoverage());
+        JSONObject bad = pageHitDoc().put("coverage_srpts",
+            new JSONArray().put("POLYGON((0 0, 1 0, 1 1, 0 0))"));
+        assertNull(newSolr().createSearchResult(bad, new JSONObject()).getCoverage());
+
+        JSONObject mixed = pageHitDoc().put("coverage_srpts", new JSONArray()
+            .put("POLYGON((0 0, 1 0, 1 1, 0 0))")
+            .put("ENVELOPE(0.1, 0.2, 52.3, 52.1)"));
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)),
+            newSolr().createSearchResult(mixed, new JSONObject()).getCoverage());
     }
 
     @Test
@@ -662,18 +672,18 @@ public class SolrSearchTest {
 
     @Test
     public void createSearchResult_readsPlaceOfOriginAsLatLon() {
-        JSONObject doc = pageHitDoc().put("origin_p", "52.175613,0.141032");
+        JSONObject doc = pageHitDoc().put("origin_ps", new JSONArray().put("52.175613,0.141032"));
 
         SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
 
-        assertEquals(List.of(52.175613, 0.141032), r.getOrigin());
+        assertEquals(List.of(List.of(52.175613, 0.141032)), r.getOrigin());
     }
 
     @Test
     public void createSearchResult_leavesOriginNullWhenAbsentOrInvalid() {
         assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getOrigin());
 
-        JSONObject doc = pageHitDoc().put("origin_p", "95.0,0.0");
+        JSONObject doc = pageHitDoc().put("origin_ps", new JSONArray().put("95.0,0.0"));
         assertNull(newSolr().createSearchResult(doc, new JSONObject()).getOrigin());
     }
 
@@ -682,9 +692,9 @@ public class SolrSearchTest {
         JSONObject response = new JSONObject().put("response", new JSONObject()
             .put("numFound", 2)
             .put("docs", new JSONArray()
-                .put(pageHitDoc().put("coverage_srpt", "ENVELOPE(0.1, 0.2, 52.3, 52.1)"))
+                .put(pageHitDoc().put("coverage_srpts", new JSONArray().put("ENVELOPE(0.1, 0.2, 52.3, 52.1)")))
                 .put(pageHitDoc().put("fileID", "PH-GEOGRAPHY-AGR-00062")
-                    .put("origin_p", "52.186474,0.137165"))));
+                    .put("origin_ps", new JSONArray().put("52.186474,0.137165")))));
         String[] url = new String[1];
         SearchForm form = new SearchForm();
         form.setBbox("0.1,52,0.2,52.4");
@@ -694,8 +704,8 @@ public class SolrSearchTest {
         assertTrue(url[0].startsWith("http://search.example.com/items/locations?"), url[0]);
         assertTrue(url[0].contains("bbox=0.1,52,0.2,52.4"), url[0]);
         assertEquals(2, results.getNumberOfResults());
-        assertEquals(List.of(0.1, 52.1, 0.2, 52.3), results.getResults().get(0).getCoverage());
-        assertEquals(List.of(52.186474, 0.137165), results.getResults().get(1).getOrigin());
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)), results.getResults().get(0).getCoverage());
+        assertEquals(List.of(List.of(52.186474, 0.137165)), results.getResults().get(1).getOrigin());
     }
 
     @Test

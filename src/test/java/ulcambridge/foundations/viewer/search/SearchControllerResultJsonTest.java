@@ -95,6 +95,21 @@ public class SearchControllerResultJsonTest {
     }
 
     @Test
+    public void searchJson_writesEachPlaceAsItsOwnArray() throws Exception {
+        List<List<Double>> coverage = List.of(List.of(0.1, 52.1, 0.2, 52.3), List.of(0.3, 52.05, 0.4, 52.2));
+        List<List<Double>> origin = List.of(List.of(52.18, 0.13));
+        SearchResult located = new SearchResult("Title", "MS-MAP", 1, "1r", ImmutableList.of(), 0,
+            "bookormanuscript", null, null, null, null, null, true, "released", coverage, origin);
+
+        ResponseEntity<String> response = controller(resultSetOf(List.of(located)))
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject first = new JSONObject(response.getBody()).getJSONArray("items").getJSONObject(0);
+        assertEquals("[[0.1,52.1,0.2,52.3],[0.3,52.05,0.4,52.2]]", first.getJSONArray("coverage").toString());
+        assertEquals("[[52.18,0.13]]", first.getJSONArray("origin").toString());
+    }
+
+    @Test
     public void searchJsonAdvanced_omitsFacetGroupsWithNoEntries() throws Exception {
         SearchResultSet resultSet = new SearchResultSet(
             1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")),
