@@ -10,6 +10,7 @@ import ulcambridge.foundations.viewer.forms.SearchForm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -92,6 +93,21 @@ public class SearchControllerResultJsonTest {
         JSONObject second = items.getJSONObject(1).getJSONObject("item");
         assertTrue(second.getBoolean("unreleased"));
         assertEquals("draft", second.getString("itemStatus"));
+    }
+
+    @Test
+    public void searchJson_writesEachPlaceAsItsOwnArray() throws Exception {
+        List<List<Double>> coverage = List.of(List.of(0.1, 52.1, 0.2, 52.3), List.of(0.3, 52.05, 0.4, 52.2));
+        List<List<Double>> origin = List.of(List.of(52.18, 0.13));
+        SearchResult located = new SearchResult("Title", "MS-MAP", 1, "1r", ImmutableList.of(), 0,
+            "bookormanuscript", null, null, null, null, null, true, "released", coverage, origin);
+
+        ResponseEntity<String> response = controller(resultSetOf(List.of(located)))
+            .handleItemsAjaxRequest(new SearchForm(), new SearchController.Range());
+
+        JSONObject first = new JSONObject(response.getBody()).getJSONArray("items").getJSONObject(0);
+        assertEquals("[[0.1,52.1,0.2,52.3],[0.3,52.05,0.4,52.2]]", first.getJSONArray("coverage").toString());
+        assertEquals("[[52.18,0.13]]", first.getJSONArray("origin").toString());
     }
 
     @Test
@@ -213,6 +229,71 @@ public class SearchControllerResultJsonTest {
 
         assertEquals(1, available.length());
         assertEquals("Place", available.getJSONObject(0).getString("field"));
+    }
+
+    private FacetGroup collectionTree() {
+        Facet rgo = new Facet("Collection", "RGO", 5, 0);
+        rgo.setHasChildren(true);
+        rgo.addChild(new Facet("Collection", "RGO::Maskelyne", 2, 0));
+        Facet newton = new Facet("Collection", "Newton Papers", 3, 2);
+        return new FacetGroup("Collection", List.of(rgo, newton), 0, false, true);
+    }
+
+    private JSONArray availableFacets(SearchForm form, FacetGroup... groups) throws Exception {
+        SearchResultSet resultSet = new SearchResultSet(
+            1, "", 1f, ImmutableList.of(result("MS-A", true, "iiif")), ImmutableList.copyOf(groups), "");
+        ResponseEntity<String> response = controller(resultSet).handleItemsAdvancedAjaxRequest(form, 0, 20);
+        return new JSONObject(response.getBody()).getJSONObject("facets").getJSONArray("available");
+    }
+
+    @Test
+    public void searchJsonAdvanced_keepsASelectedTreeGroupAvailable() throws Exception {
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection::RGO::Maskelyne");
+
+        JSONArray available = availableFacets(form, collectionTree(), facetGroup("Place", "Cambridge"));
+
+        assertEquals(2, available.length());
+        assertEquals("Collection", available.getJSONObject(0).getString("field"));
+        assertTrue(available.getJSONObject(0).getBoolean("hierarchical"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_givesTreeNodesTheirLabelAndChildren() throws Exception {
+        JSONArray nodes = availableFacets(new SearchForm(), collectionTree())
+            .getJSONObject(0).getJSONArray("facets");
+
+        JSONObject rgo = nodes.getJSONObject(0);
+        assertEquals("RGO", rgo.getString("value"));
+        assertEquals("RGO", rgo.getString("label"));
+        assertEquals(5, rgo.getInt("occurrences"));
+        assertTrue(rgo.getBoolean("hasChildren"));
+        JSONObject maskelyne = rgo.getJSONArray("children").getJSONObject(0);
+        assertEquals("RGO::Maskelyne", maskelyne.getString("value"));
+        assertEquals("Maskelyne", maskelyne.getString("label"));
+        assertFalse(maskelyne.getBoolean("hasChildren"));
+        assertEquals(0, maskelyne.getJSONArray("children").length());
+        assertEquals(0, nodes.getJSONObject(1).getJSONArray("children").length());
+    }
+
+    @Test
+    public void searchJsonAdvanced_givesATreeGroupThePathItWasBuiltAround() throws Exception {
+        FacetGroup placed = collectionTree();
+        placed.setTreePath("RGO::Maskelyne");
+
+        assertEquals("RGO::Maskelyne",
+            availableFacets(new SearchForm(), placed).getJSONObject(0).getString("path"));
+        assertFalse(availableFacets(new SearchForm(), collectionTree()).getJSONObject(0).has("path"));
+    }
+
+    @Test
+    public void searchJsonAdvanced_leavesFlatFacetGroupsAsTheyWere() throws Exception {
+        JSONObject place = availableFacets(new SearchForm(), facetGroup("Place", "Cambridge")).getJSONObject(0);
+
+        assertFalse(place.has("hierarchical"));
+        assertFalse(place.has("path"));
+        JSONObject cambridge = place.getJSONArray("facets").getJSONObject(0);
+        assertEquals(Set.of("value", "occurrences"), cambridge.keySet());
     }
 
     @Test

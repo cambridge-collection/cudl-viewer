@@ -17,6 +17,8 @@ public class FacetGroup {
     private String fieldLabel;
     private int occurrences;
     private boolean hasMore;
+    private boolean hierarchical;
+    private String treePath;
 
     /**
      * Facets are sorted after the group is created
@@ -36,6 +38,13 @@ public class FacetGroup {
 
     }
 
+    /** A hierarchical group's facets are the top level, each holding its children. */
+    public FacetGroup(String field, List<Facet> facets, int occurrences, boolean hasMore,
+                      boolean hierarchical) {
+        this(field, facets, occurrences, hasMore);
+        this.hierarchical = hierarchical;
+    }
+
     public String getField() {
         return field;
     }
@@ -53,6 +62,16 @@ public class FacetGroup {
     }
 
     public boolean hasMore() { return hasMore; }
+
+    public boolean isHierarchical() { return hierarchical; }
+
+    /**
+     * The full path the tree was built around: the selection, resolved from a bare title
+     * if need be, or the collection being opened. Null when nothing was placed.
+     */
+    public String getTreePath() { return treePath; }
+
+    public void setTreePath(String treePath) { this.treePath = treePath; }
 
     public int getNumBands() {
         return facets.size();
