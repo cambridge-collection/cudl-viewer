@@ -21,9 +21,9 @@ import ulcambridge.foundations.viewer.search.Search;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controller for viewing a collection.
@@ -96,14 +96,19 @@ public class CollectionViewController {
     public ModelAndView handleViewRequest()
             throws Exception {
 
-        List<Collection> collections = collectionFactory.getCollections();
+        List<Collection> collections = search.getTopLevelCollections();
+        final boolean fromSearch = !collections.isEmpty();
+        if (!fromSearch) {
+            collections = collectionFactory.getCollections().stream()
+                .filter(c -> c.getParentCollectionId() == null)
+                .sorted(Collection.SORT_BY_TITLE)
+                .collect(Collectors.toList());
+        }
         final ModelAndView modelAndView = new ModelAndView("jsp/collections");
-
-        // order by alphabetical title for this page
-        Collections.sort(collections, Collection.SORT_BY_TITLE);
 
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collections", collections);
+        modelAndView.addObject("collectionsSource", fromSearch ? "search" : "files");
         // Unreleased collections are listed whatever this deployment shows, so the
         // badge gates on the flag rather than on the collection being absent.
         modelAndView.addObject("showReleaseStatus", showReleaseStatus);

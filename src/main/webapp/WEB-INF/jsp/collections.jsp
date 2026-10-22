@@ -16,11 +16,10 @@
 
 
                 <div class="container" id="content">
-                    <div id="collectionsDiv">
+                    <div id="collectionsDiv" data-collections-source="${collectionsSource}">
                         <cudl:page-title title="${pagetitle}"/>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3">
                             <c:forEach items="${collections}" var="c">
-                              <c:if test="${empty c.parentCollectionId}">
 
                                     <div class="col">
                                         <a href="${fn:escapeXml(c.URL)}">
@@ -47,7 +46,6 @@
                                             </div>
                                         </a>
                                     </div>
-                              </c:if>
                             </c:forEach>
                         </div>
                     </div>

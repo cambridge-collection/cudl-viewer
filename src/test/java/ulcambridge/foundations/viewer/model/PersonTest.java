@@ -1,8 +1,8 @@
 package ulcambridge.foundations.viewer.model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for testing individual people objects

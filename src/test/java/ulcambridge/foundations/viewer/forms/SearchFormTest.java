@@ -46,6 +46,34 @@ public class SearchFormTest {
         assertEquals("Darwin Manuscripts", form.getFacets().get("Collection"));
     }
 
+    @Test
+    public void setFacetsKeepsACollectionPathWhole() {
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection::Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne"
+            + "||Place::Cambridge");
+
+        assertEquals("Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne",
+            form.getFacets().get("Collection"));
+        assertEquals("Cambridge", form.getFacets().get("Place"));
+    }
+
+    @Test
+    public void getFacetsAsStringWritesACollectionPathBackUnchanged() {
+        String facets = "Collection::Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne";
+        SearchForm form = new SearchForm();
+        form.setFacets(facets);
+
+        assertEquals(facets, form.getFacetsAsString());
+    }
+
+    @Test
+    public void setFacetCollectionSelectsTheCollection() {
+        SearchForm form = new SearchForm();
+        form.setFacetCollection("Newton Papers");
+
+        assertEquals("Newton Papers", form.getFacets().get("Collection"));
+    }
+
     /**
      * An empty collection dropdown must not register a facet — the advanced search
      * form submits the field on every search.
@@ -58,6 +86,23 @@ public class SearchFormTest {
 
         assertTrue(form.getFacets().isEmpty());
         assertEquals("", form.getFacetsAsString());
+    }
+
+    @Test
+    public void expandCollectionTreatsBlankAsUnset() {
+        SearchForm form = new SearchForm();
+        form.setExpandCollection("  ");
+
+        assertEquals(null, form.getExpandCollection());
+    }
+
+    @Test
+    public void expandCollectionIsNotPartOfTheQueryParams() {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        form.setExpandCollection("Royal Greenwich Observatory Archives");
+
+        assertFalse(form.getQueryParams().contains("expandCollection"));
     }
 
     @Test
