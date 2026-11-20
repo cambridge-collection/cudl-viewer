@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   tomcat:
-    image: tomcat:9.0.99-jdk11
+    image: tomcat:9.0.124-jdk11
     environment:
       CATALINA_OPTS: "-Dcudl.ui.dev.override=true"
     volumes:

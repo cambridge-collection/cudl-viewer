@@ -1,4 +1,4 @@
-FROM tomcat:9.0.99-jdk11
+FROM tomcat:9.0.124-jdk11
 
 ENV JAVA_OPTS="-server -Djava.awt.headless=true -Xms512m -Xmx2560m" \
     VIEWER_USER="digilib" \
