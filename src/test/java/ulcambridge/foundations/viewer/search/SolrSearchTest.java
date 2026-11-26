@@ -5,14 +5,19 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 import ulcambridge.foundations.viewer.forms.SearchForm;
+import ulcambridge.foundations.viewer.model.Collection;
 
 import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -397,7 +402,7 @@ public class SolrSearchTest {
     public void getCollectionItems_appliesTheFilterAndListsFacetsWithChoices() {
         JSONObject response = new JSONObject()
             .put("response", new JSONObject().put("numFound", 2).put("docs", new JSONArray()
-                .put(pageHitDoc())))
+                .put(pageHitDoc().put("coverage_srpts", new JSONArray().put("ENVELOPE(0.1, 0.2, 52.3, 52.1)")))))
             .put("facet_counts", new JSONObject().put("facet_fields", new JSONObject()
                 .put("facet-subjects", new JSONArray().put("Fens -- Maps").put(2).put("Ely -- Maps").put(1))
                 .put("facet-creations-century", new JSONArray().put("1800s C.E.").put(3))
@@ -405,10 +410,11 @@ public class SolrSearchTest {
         String[] url = new String[1];
 
         CollectionItemsPage page = withStubbedResponse(response, url).getCollectionItems("maps", 0, 8,
-            CollectionFilter.of("fen & ely", "Languages::English"));
+            CollectionFilter.of("fen & ely", "Languages::English", "0.1,52,0.2,52.4"));
 
         assertTrue(url[0].contains("q=fen%20%26%20ely"), url[0]);
         assertTrue(url[0].contains("fq=facet-languages:%22English%22"), url[0]);
+        assertTrue(url[0].contains("bbox=0.1,52,0.2,52.4"), url[0]);
         assertTrue(url[0].contains("collection_sort"), url[0]);
         // Subject has a choice; Date has one value so is left out; Languages has one
         // value but is the selected facet, so stays.
@@ -417,6 +423,8 @@ public class SolrSearchTest {
         assertEquals(List.of("Subject", "Languages"), names);
         assertEquals(2, page.getFacets().get(0).getJSONArray("values").getJSONObject(0).getInt("count"));
         assertEquals(1, page.getItems().size());
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)),
+            page.getItems().get(0).getJSONArray("coverage").toList());
     }
 
     @Test
@@ -617,7 +625,403 @@ public class SolrSearchTest {
     }
 
     @Test
+    public void parseSearchResults_showsCollectionCountOnlyWithReleaseStatus() {
+        JSONObject response = searchResponse(new JSONObject()
+            .put("facet-collectionCount", facetValues(List.of("01", "02"))));
+
+        FacetGroup counts = group(new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, true, 200)
+            .parseSearchResults(response, Set.of()), "Collection_Count");
+        assertEquals("01", counts.getFacets().get(0).getBand());
+        assertEquals("02", counts.getFacets().get(1).getBand());
+
+        assertNull(group(newSolr().parseSearchResults(response, Set.of()), "Collection_Count"));
+    }
+
+    @Test
+    public void makeSearch_filtersOnCollectionCountWithReleaseStatus() {
+        String[] url = new String[1];
+        SolrSearch solr = new SolrSearch(SEARCH_URL, IMAGE_URL, APPEND, true, 200) {
+            @Override
+            protected JSONObject getJSON(String requested) {
+                url[0] = requested;
+                return searchResponse(new JSONObject());
+            }
+        };
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection_Count::01");
+
+        solr.makeSearch(form, 0, 20);
+
+        assertTrue(url[0].contains("fq=facet-collectionCount:%2201%22"), url[0]);
+    }
+
+    @Test
     public void parseSearchResults_returnsNoFacetGroupsWhenSolrCountedNone() {
         assertTrue(newSolr().parseSearchResults(searchResponse(null), Set.of()).getFacets().isEmpty());
+    }
+
+    @Test
+    public void createSearchResult_readsEveryMapCoverageAsWestSouthEastNorth() {
+        JSONObject doc = pageHitDoc().put("coverage_srpts", new JSONArray()
+            .put("ENVELOPE(20.266667, 23.733333, 38.5, 36.383333)")
+            .put("ENVELOPE(0.118611, 0.118889, 52.205556, 52.205556)"));
+
+        SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
+
+        assertEquals(List.of(
+            List.of(20.266667, 36.383333, 23.733333, 38.5),
+            List.of(0.118611, 52.205556, 0.118889, 52.205556)), r.getCoverage());
+    }
+
+    @Test
+    public void createSearchResult_skipsMalformedCoverageAndLeavesNullWhenNoneParse() {
+        assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getCoverage());
+
+        JSONObject bad = pageHitDoc().put("coverage_srpts",
+            new JSONArray().put("POLYGON((0 0, 1 0, 1 1, 0 0))"));
+        assertNull(newSolr().createSearchResult(bad, new JSONObject()).getCoverage());
+
+        JSONObject mixed = pageHitDoc().put("coverage_srpts", new JSONArray()
+            .put("POLYGON((0 0, 1 0, 1 1, 0 0))")
+            .put("ENVELOPE(0.1, 0.2, 52.3, 52.1)"));
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)),
+            newSolr().createSearchResult(mixed, new JSONObject()).getCoverage());
+    }
+
+    @Test
+    public void buildQueryURL_passesBboxToTheSearchApi() {
+        SearchForm form = new SearchForm();
+        form.setBbox("0.11,52.19,0.14,52.22");
+
+        String url = newSolr().buildQueryURL(form, 0, 20, true, false);
+
+        assertTrue(url.contains("bbox=0.11,52.19,0.14,52.22"), url);
+    }
+
+    @Test
+    public void buildQueryURL_omitsBboxWhenNotSet() {
+        String url = newSolr().buildQueryURL(new SearchForm(), 0, 20, true, false);
+
+        assertFalse(url.contains("bbox"), url);
+    }
+
+    @Test
+    public void createSearchResult_readsPlaceOfOriginAsLatLon() {
+        JSONObject doc = pageHitDoc().put("origin_ps", new JSONArray().put("52.175613,0.141032"));
+
+        SearchResult r = newSolr().createSearchResult(doc, new JSONObject());
+
+        assertEquals(List.of(List.of(52.175613, 0.141032)), r.getOrigin());
+    }
+
+    @Test
+    public void createSearchResult_leavesOriginNullWhenAbsentOrInvalid() {
+        assertNull(newSolr().createSearchResult(pageHitDoc(), new JSONObject()).getOrigin());
+
+        JSONObject doc = pageHitDoc().put("origin_ps", new JSONArray().put("95.0,0.0"));
+        assertNull(newSolr().createSearchResult(doc, new JSONObject()).getOrigin());
+    }
+
+    @Test
+    public void getLocations_queriesTheLocationsEndpointAndMapsEachItem() {
+        JSONObject response = new JSONObject().put("response", new JSONObject()
+            .put("numFound", 2)
+            .put("docs", new JSONArray()
+                .put(pageHitDoc().put("coverage_srpts", new JSONArray().put("ENVELOPE(0.1, 0.2, 52.3, 52.1)")))
+                .put(pageHitDoc().put("fileID", "PH-GEOGRAPHY-AGR-00062")
+                    .put("origin_ps", new JSONArray().put("52.186474,0.137165")))));
+        String[] url = new String[1];
+        SearchForm form = new SearchForm();
+        form.setBbox("0.1,52,0.2,52.4");
+
+        SearchResultSet results = withStubbedResponse(response, url).getLocations(form);
+
+        assertTrue(url[0].startsWith("http://search.example.com/items/locations?"), url[0]);
+        assertTrue(url[0].contains("bbox=0.1,52,0.2,52.4"), url[0]);
+        assertEquals(2, results.getNumberOfResults());
+        assertEquals(List.of(List.of(0.1, 52.1, 0.2, 52.3)), results.getResults().get(0).getCoverage());
+        assertEquals(List.of(List.of(52.186474, 0.137165)), results.getResults().get(1).getOrigin());
+    }
+
+    @Test
+    public void getLocations_reportsAnErrorWhenSolrIsUnavailable() {
+        SearchResultSet results = withStubbedResponse(null, new String[1]).getLocations(new SearchForm());
+
+        assertEquals(0, results.getNumberOfResults());
+        assertFalse(results.getError().isEmpty());
+    }
+
+    private String collectionFilterUrl(final String facets) {
+        SearchForm form = new SearchForm();
+        form.setFacets(facets);
+        return URLDecoder.decode(searchUrl(form, true), StandardCharsets.UTF_8);
+    }
+
+    private JSONArray counts(final Object... valueCountPairs) {
+        JSONArray counts = new JSONArray();
+        for (Object o : valueCountPairs) { counts.put(o); }
+        return counts;
+    }
+
+    private FacetGroup collectionGroup(final JSONObject facetFields) {
+        return collectionGroup(facetFields, null, 0);
+    }
+
+    private FacetGroup collectionGroup(final JSONObject facetFields, final String selected, final int hits) {
+        JSONObject response = searchResponse(facetFields);
+        response.getJSONObject("response").put("numFound", hits);
+        return group(newSolr().parseSearchResults(response, Set.of(), selected), "Collection");
+    }
+
+    private List<String> bands(final List<Facet> facets) {
+        return facets.stream().map(Facet::getBand).collect(Collectors.toList());
+    }
+
+    private Facet child(final Facet parent, final String band) {
+        return parent.getChildren().stream().filter(f -> f.getBand().equals(band)).findFirst().orElseThrow();
+    }
+
+    @Test
+    public void collectionFacet_singleTitleFiltersOnLevelZeroOrTheFlatField() {
+        String url = collectionFilterUrl("Collection::Papers of Nevil Maskelyne");
+
+        assertTrue(url.contains("fq=facet-collection-0:\"Papers of Nevil Maskelyne\""
+            + " OR facet-collection:\"Papers of Nevil Maskelyne\""), url);
+    }
+
+    @Test
+    public void collectionFacet_pathFiltersOnItsLevelField() {
+        assertTrue(collectionFilterUrl("Collection::RGO::Maskelyne")
+            .contains("fq=facet-collection-1:\"RGO::Maskelyne\"&"));
+        assertTrue(collectionFilterUrl("Collection::A::B::C")
+            .contains("fq=facet-collection-2:\"A::B::C\"&"));
+    }
+
+    @Test
+    public void facetFilter_escapesQuotesInTheValue() {
+        String url = collectionFilterUrl("Subject::Letters \"to\" Darwin");
+
+        assertTrue(url.contains("fq=facet-subjects:\"Letters \\\"to\\\" Darwin\""), url);
+    }
+
+    @Test
+    public void collectionFacet_marksTopLevelValuesThatHaveChildren() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection", counts("Maskelyne", 2, "Newton Papers", 3, "RGO", 5))
+            .put("facet-collection-0", counts("Newton Papers", 3, "RGO", 5))
+            .put("facet-collection-prefixes-1", counts("RGO", 2)));
+
+        assertTrue(collections.isHierarchical());
+        assertEquals(List.of("Newton Papers", "RGO"), bands(collections.getFacets()));
+        assertFalse(collections.getFacets().get(0).hasChildren());
+        assertTrue(collections.getFacets().get(1).hasChildren());
+        assertTrue(collections.getFacets().get(1).getChildren().isEmpty());
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_listsTheSelectedValuesChildrenOnly() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-prefixes-1", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-1", counts("Other::Y", 1, "RGO::Board", 1, "RGO::Maskelyne", 2))
+            .put("facet-collection-prefixes-2", counts("RGO::Maskelyne", 1)), "RGO", 5);
+
+        Facet rgo = collections.getFacets().get(1);
+        assertEquals(List.of("RGO::Board", "RGO::Maskelyne"), bands(rgo.getChildren()));
+        assertEquals("Maskelyne", child(rgo, "RGO::Maskelyne").getLabel());
+        assertEquals(2, child(rgo, "RGO::Maskelyne").getOccurrences());
+        assertTrue(child(rgo, "RGO::Maskelyne").hasChildren());
+        assertFalse(child(rgo, "RGO::Board").hasChildren());
+        assertTrue(collections.getFacets().get(0).getChildren().isEmpty());
+        assertEquals("RGO", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_rebuildsThePathDownToADeeperSelection() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("A", 7))
+            .put("facet-collection-prefixes-1", counts("A", 7))
+            .put("facet-collection-prefixes-2", counts("A::B", 4))
+            .put("facet-collection-2", counts("A::B::C", 4))
+            .put("facet-collection-prefixes-3", counts()), "A::B", 7);
+
+        Facet b = child(collections.getFacets().get(0), "A::B");
+        assertEquals(7, b.getOccurrences());
+        assertTrue(b.hasChildren());
+        assertEquals(List.of("A::B::C"), bands(b.getChildren()));
+        assertFalse(child(b, "A::B::C").hasChildren());
+        assertEquals("A::B", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_resolvesALegacyTitleToItsOnlyMatchingChild() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("Other", 1, "RGO", 5))
+            .put("facet-collection-1", counts("RGO::Maskelyne", 2)), "Maskelyne", 2);
+
+        Facet maskelyne = child(collections.getFacets().get(1), "RGO::Maskelyne");
+        assertEquals(2, maskelyne.getOccurrences());
+        assertFalse(maskelyne.hasChildren());
+        assertEquals("RGO::Maskelyne", collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_leavesAnAmbiguousLegacyTitleUnplaced() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("A", 1, "B", 1))
+            .put("facet-collection-1", counts("A::Letters", 1, "B::Letters", 1)), "Letters", 2);
+
+        assertTrue(collections.getFacets().stream().allMatch(f -> f.getChildren().isEmpty()));
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_ignoresASelectionWhoseTopLevelValueIsNotListed() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection-0", counts("RGO", 5))
+            .put("facet-collection-2", counts("Other::X::Y", 1)), "Other::X", 1);
+
+        assertEquals(List.of("RGO"), bands(collections.getFacets()));
+        assertTrue(collections.getFacets().get(0).getChildren().isEmpty());
+        assertNull(collections.getTreePath());
+    }
+
+    @Test
+    public void collectionFacet_withoutLevelFieldsStaysFlat() {
+        FacetGroup collections = collectionGroup(new JSONObject()
+            .put("facet-collection", counts("RGO", 5, "Maskelyne", 2, "A::B", 1)));
+
+        assertFalse(collections.isHierarchical());
+        assertEquals(List.of("RGO", "Maskelyne"), bands(collections.getFacets()));
+    }
+
+    private SearchForm formOpening(final String selected, final String expandCollection) {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        if (selected != null) {
+            form.setFacets("Collection::" + selected);
+        }
+        form.setExpandCollection(expandCollection);
+        return form;
+    }
+
+    @Test
+    public void makeFacetSearch_filtersOnTheCollectionBeingOpened() {
+        String[] url = new String[1];
+        withStubbedResponse(searchResponse(new JSONObject()), url)
+            .makeFacetSearch(formOpening("Newton Papers", "RGO::Board"));
+        String decoded = URLDecoder.decode(url[0], StandardCharsets.UTF_8);
+
+        assertTrue(decoded.contains("fq=facet-collection-0:\"Newton Papers\" OR facet-collection:\"Newton Papers\""), decoded);
+        assertTrue(decoded.contains("fq=facet-collection-1:\"RGO::Board\""), decoded);
+    }
+
+    @Test
+    public void makeSearch_ignoresTheCollectionBeingOpened() {
+        assertFalse(URLDecoder.decode(searchUrl(formOpening(null, "RGO"), true), StandardCharsets.UTF_8)
+            .contains("facet-collection-0"));
+    }
+
+    @Test
+    public void makeFacetSearch_buildsTheTreeAroundTheCollectionBeingOpened() {
+        JSONObject response = searchResponse(new JSONObject()
+            .put("facet-collection-0", counts("Newton Papers", 3, "RGO", 3))
+            .put("facet-collection-prefixes-1", counts("RGO", 3))
+            .put("facet-collection-1", counts("RGO::Board", 2, "RGO::Maskelyne", 1))
+            .put("facet-collection-prefixes-2", counts()));
+
+        SearchResultSet set = withStubbedResponse(response, new String[1])
+            .makeFacetSearch(formOpening("Newton Papers", "RGO"));
+
+        Facet rgo = group(set, "Collection").getFacets().get(1);
+        assertEquals(List.of("RGO::Board", "RGO::Maskelyne"), bands(rgo.getChildren()));
+    }
+
+    @Test
+    public void makeFacetSearch_leavesCollectionLevelLimitsToTheSearchApi() {
+        String url = facetSearchUrl(formExpanding("Collection"));
+
+        assertTrue(url.contains("f.facet-collection.facet.limit=-1"), url);
+        assertFalse(url.contains("f.facet-collection-"), url);
+    }
+
+    private JSONObject collectionDoc(final String id, final String title,
+                                     final boolean released, final String status) {
+        return new JSONObject()
+            .put("id", id)
+            .put("name.full", new JSONArray().put(title))
+            .put("isReleased", released)
+            .put("status", status);
+    }
+
+    private JSONObject collectionsResponse(final JSONObject... docs) {
+        return new JSONObject().put("response", new JSONObject()
+            .put("numFound", docs.length).put("docs", new JSONArray(List.of(docs))));
+    }
+
+    private List<Collection> topLevelCollections(final JSONObject response) {
+        return withStubbedResponse(response, new String[1]).getTopLevelCollections();
+    }
+
+    @Test
+    public void getTopLevelCollections_mapsDocToCollection() {
+        Collection c = topLevelCollections(collectionsResponse(
+            collectionDoc("baskerville", "Baskerville Books and Archives", false, "draft"))).get(0);
+
+        assertEquals("baskerville", c.getId());
+        assertEquals("Baskerville Books and Archives", c.getTitle());
+        assertEquals("/collections/baskerville", c.getURL());
+        assertTrue(c.isUnreleased());
+        assertEquals("draft", c.getStatus());
+    }
+
+    @Test
+    public void getTopLevelCollections_keepsResponseOrder() {
+        List<Collection> collections = topLevelCollections(collectionsResponse(
+            collectionDoc("zeta", "Zeta", true, "released"),
+            collectionDoc("alpha", "Alpha", true, "released"),
+            collectionDoc("mu", "Mu", true, "released")));
+
+        assertEquals(List.of("zeta", "alpha", "mu"),
+            collections.stream().map(Collection::getId).collect(Collectors.toList()));
+        assertFalse(collections.get(0).isUnreleased());
+    }
+
+    @Test
+    public void getTopLevelCollections_requestsTopLevelOnly() {
+        String[] url = new String[1];
+        withStubbedResponse(collectionsResponse(collectionDoc("a", "A", true, "released")), url)
+            .getTopLevelCollections();
+
+        assertEquals("http://search.example.com/collections?topLevel=true", url[0]);
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenRequestFails() {
+        assertTrue(topLevelCollections(null).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenNoDocs() {
+        assertTrue(topLevelCollections(new JSONObject()).isEmpty());
+        assertTrue(topLevelCollections(new JSONObject().put("response", new JSONObject())).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenDocsEmpty() {
+        assertTrue(topLevelCollections(collectionsResponse()).isEmpty());
+    }
+
+    @Test
+    public void getTopLevelCollections_emptyWhenAnyDocLacksARequiredField() {
+        for (String field : List.of("id", "name.full", "isReleased", "status")) {
+            JSONObject bad = collectionDoc("b", "B", true, "released");
+            bad.remove(field);
+
+            assertTrue(topLevelCollections(collectionsResponse(
+                collectionDoc("a", "A", true, "released"), bad,
+                collectionDoc("c", "C", true, "released"))).isEmpty(), field);
+        }
     }
 }

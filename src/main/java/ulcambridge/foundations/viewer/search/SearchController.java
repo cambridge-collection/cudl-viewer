@@ -68,6 +68,7 @@ public class SearchController {
         modelAndView.addObject("queryString",
             SearchUtil.getURLParameters(searchForm));
         modelAndView.addObject("contentHTMLURL", contentHtmlUrl);
+        modelAndView.addObject("mapCollections", getMapCollections());
 
         return modelAndView;
     }
@@ -109,7 +110,23 @@ public class SearchController {
                 .addObject("queryString",
                         SearchUtil.getURLParameters(searchForm))
                 .addObject("enableTagging", enableTagging)
-                .addObject("contentHTMLURL", contentHtmlUrl);
+                .addObject("contentHTMLURL", contentHtmlUrl)
+                .addObject("mapCollections", getMapCollections());
+    }
+
+    /**
+     * Collections whose search results can be shown on a map, as set by "map" in
+     * cudl.ui.json5. The results page shows the map when one of them is the
+     * selected Collection facet.
+     */
+    List<Collection> getMapCollections() {
+        List<Collection> mapCollections = new ArrayList<>();
+        for (Collection collection : collectionFactory.getCollections()) {
+            if (collection.isMapEnabled()) {
+                mapCollections.add(collection);
+            }
+        }
+        return mapCollections;
     }
 
     private JSONArray getResultsJSON(SearchResultSet results) {
@@ -166,6 +183,20 @@ public class SearchController {
         // The matched-page thumbnail was already resolved from Solr's IIIFImageURL.
         itemJSON.put("pageThumbnailURL", searchResult.getThumbnailURL());
 
+        // Places shown, each [west, south, east, north], only for results that have any.
+        if (searchResult.getCoverage() != null) {
+            JSONArray coverage = new JSONArray();
+            coverage.addAll(searchResult.getCoverage());
+            itemJSON.put("coverage", coverage);
+        }
+
+        // Places of origin, each [lat, lon], only for results that have any.
+        if (searchResult.getOrigin() != null) {
+            JSONArray origin = new JSONArray();
+            origin.addAll(searchResult.getOrigin());
+            itemJSON.put("origin", origin);
+        }
+
         return itemJSON;
     }
 
@@ -178,11 +209,25 @@ public class SearchController {
         return o;
     }
 
+    private JSONObject getTreeFacetJson(Facet facet) {
+        JSONObject o = getFacetJson(facet);
+
+        o.put("label", facet.getLabel());
+        o.put("hasChildren", facet.hasChildren());
+        JSONArray children = new JSONArray();
+        for(Facet child : facet.getChildren()) {
+            children.add(getTreeFacetJson(child));
+        }
+        o.put("children", children);
+
+        return o;
+    }
+
     private JSONArray getGroupFacetsJSON(FacetGroup group) {
         JSONArray a = new JSONArray();
 
         for(Facet f : group.getFacets()) {
-            a.add(getFacetJson(f));
+            a.add(group.isHierarchical() ? getTreeFacetJson(f) : getFacetJson(f));
         }
 
         return a;
@@ -194,6 +239,10 @@ public class SearchController {
         o.put("label", group.getFieldLabel());
         o.put("field", group.getField());
         o.put("hasMore", group.hasMore());
+        if(group.isHierarchical())
+            o.put("hierarchical", true);
+        if(group.getTreePath() != null)
+            o.put("path", group.getTreePath());
         o.put("facets", getGroupFacetsJSON(group));
 
         return o;
@@ -203,7 +252,8 @@ public class SearchController {
         JSONArray a = new JSONArray();
 
         for(FacetGroup facetGroup : results.getFacets()) {
-            if(form.getFacets().containsKey(facetGroup.getField()))
+            // A tree stays listed so the selection can be shown in place and narrowed
+            if(form.getFacets().containsKey(facetGroup.getField()) && !facetGroup.isHierarchical())
                 continue;
 
             // Solr returns some faceted fields as empty arrays; dropping the group
@@ -344,6 +394,49 @@ public class SearchController {
         return ResponseEntity.ok()
                 .header("Cache-Control", "public, max-age=60")
                 .body(o.toString());
+    }
+
+
+    /**
+     * Every matching item with a location, for the search results map:
+     * {total, locations: [{id, title, startPage, coverage?, origin?}], error?}.
+     * total can exceed the number of locations when the search API caps them.
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/locationsJSON",
+            produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> handleLocationsAjaxRequest(@Valid SearchForm searchForm) {
+
+        SearchResultSet results = this.search.getLocations(searchForm);
+
+        JSONArray locations = new JSONArray();
+        for (SearchResult result : results.getResults()) {
+            JSONObject location = new JSONObject();
+            location.put("id", result.getFileId());
+            location.put("title", result.getTitle());
+            location.put("startPage", result.getStartPage());
+            if (result.getCoverage() != null) {
+                JSONArray coverage = new JSONArray();
+                coverage.addAll(result.getCoverage());
+                location.put("coverage", coverage);
+            }
+            if (result.getOrigin() != null) {
+                JSONArray origin = new JSONArray();
+                origin.addAll(result.getOrigin());
+                location.put("origin", origin);
+            }
+            locations.add(location);
+        }
+
+        JSONObject json = new JSONObject();
+        json.put("total", results.getNumberOfResults());
+        json.put("locations", locations);
+        if (results.getError() != null && !results.getError().isEmpty()) {
+            json.put("error", results.getError());
+        }
+
+        return ResponseEntity.ok()
+            .header("Cache-Control", "public, max-age=60")
+            .body(json.toString());
     }
 
 

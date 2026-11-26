@@ -21,9 +21,9 @@ import ulcambridge.foundations.viewer.search.Search;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controller for viewing a collection.
@@ -96,14 +96,19 @@ public class CollectionViewController {
     public ModelAndView handleViewRequest()
             throws Exception {
 
-        List<Collection> collections = collectionFactory.getCollections();
+        List<Collection> collections = search.getTopLevelCollections();
+        final boolean fromSearch = !collections.isEmpty();
+        if (!fromSearch) {
+            collections = collectionFactory.getCollections().stream()
+                .filter(c -> c.getParentCollectionId() == null)
+                .sorted(Collection.SORT_BY_TITLE)
+                .collect(Collectors.toList());
+        }
         final ModelAndView modelAndView = new ModelAndView("jsp/collections");
-
-        // order by alphabetical title for this page
-        Collections.sort(collections, Collection.SORT_BY_TITLE);
 
         modelAndView.addObject("contentHTMLURL", Paths.get(contentHtmlPath).toUri().toString());
         modelAndView.addObject("collections", collections);
+        modelAndView.addObject("collectionsSource", fromSearch ? "search" : "files");
         // Unreleased collections are listed whatever this deployment shows, so the
         // badge gates on the flag rather than on the collection being absent.
         modelAndView.addObject("showReleaseStatus", showReleaseStatus);
@@ -202,16 +207,16 @@ public class CollectionViewController {
     /** The unfiltered item list, as requested without filter parameters. */
     public String handleItemsAjaxRequest(String collectionId, int startIndex, int endIndex)
             throws Exception {
-        return handleItemsAjaxRequest(collectionId, startIndex, endIndex, null, null, false);
+        return handleItemsAjaxRequest(collectionId, startIndex, endIndex, null, null, null, false);
     }
 
     // on path
     // /collections/{collectionId}/itemJSON?start=<startItemPosition>&end=<endItemPosition>
     // To get information for items 0 to 8 url would be
     // /collections/{collectionId}/itemJSON?start=0&end=8
-    // Optional filters, as on the search page: q (free text) and facets
-    // (Name::value||Name::value). With a filter the response also carries the
-    // facets the collection can be filtered on.
+    // Optional filters, as on the search page: q (free text), facets
+    // (Name::value||Name::value) and bbox (west,south,east,north). With a filter
+    // the response also carries the facets the collection can be filtered on.
     @RequestMapping(value = "/{collectionId}/itemJSON", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String handleItemsAjaxRequest(
@@ -220,6 +225,7 @@ public class CollectionViewController {
             @RequestParam("end") int endIndex,
             @RequestParam(value = "q", required = false) String text,
             @RequestParam(value = "facets", required = false) String facets,
+            @RequestParam(value = "bbox", required = false) String bbox,
             @RequestParam(value = "withFacets", required = false, defaultValue = "false") boolean withFacets)
             throws Exception {
 
@@ -239,7 +245,7 @@ public class CollectionViewController {
         // unreleased scan; unreleased badging now rides on each item's Solr data.
         // Unfiltered requests keep the original call; withFacets asks for facet
         // counts even with no filter, for the filter bar's first render.
-        final CollectionFilter filter = CollectionFilter.of(text, facets);
+        final CollectionFilter filter = CollectionFilter.of(text, facets, bbox);
         final CollectionItemsPage page = filter.isEmpty() && !withFacets
             ? search.getCollectionItems(collectionId, startIndex, rows)
             : search.getCollectionItems(collectionId, startIndex, rows, filter);

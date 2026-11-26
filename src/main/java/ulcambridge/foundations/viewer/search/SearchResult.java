@@ -29,6 +29,10 @@ public class SearchResult implements Comparable<SearchResult> {
     private final String mainDisplay;
     private final boolean released;
     private final String itemStatus;
+    // Places shown, each [west, south, east, north], or null if the page has none
+    private final List<List<Double>> coverage;
+    // Places of origin, each [lat, lon], or null if the page has none
+    private final List<List<Double>> origin;
 
     private final List<String> snippets;
     private final int score; // how relevant is this result, used for ordering.
@@ -41,6 +45,17 @@ public class SearchResult implements Comparable<SearchResult> {
             int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation,
             @Nullable String shelfLocator, @Nullable String abstractShort, @Nullable String mainDisplay,
             boolean released, String itemStatus) {
+        this(title, fileId, startPage, startPageLabel, snippets, score, type,
+            thumbnailURL, thumbnailOrientation, shelfLocator, abstractShort,
+            mainDisplay, released, itemStatus, null, null);
+    }
+
+    public SearchResult(String title, String fileId, int startPage,
+            String startPageLabel, Iterable<String> snippets,
+            int score, String type, @Nullable String thumbnailURL, @Nullable String thumbnailOrientation,
+            @Nullable String shelfLocator, @Nullable String abstractShort, @Nullable String mainDisplay,
+            boolean released, String itemStatus, @Nullable List<List<Double>> coverage,
+            @Nullable List<List<Double>> origin) {
 
         Preconditions.checkNotNull(title);
         Preconditions.checkNotNull(fileId);
@@ -64,6 +79,18 @@ public class SearchResult implements Comparable<SearchResult> {
         this.released = released;
         this.itemStatus = (itemStatus == null || itemStatus.isBlank())
             ? Item.DEFAULT_STATUS : itemStatus;
+        this.coverage = copyPlaces(coverage, 4, "coverage must be [west, south, east, north]");
+        this.origin = copyPlaces(origin, 2, "origin must be [lat, lon]");
+    }
+
+    @Nullable
+    private static List<List<Double>> copyPlaces(@Nullable List<List<Double>> places, int size,
+                                                 String message) {
+        if (places == null) {
+            return null;
+        }
+        places.forEach((place) -> Preconditions.checkArgument(place.size() == size, message));
+        return places.stream().map(ImmutableList::copyOf).collect(ImmutableList.toImmutableList());
     }
 
     public String getTitle() {
@@ -88,6 +115,16 @@ public class SearchResult implements Comparable<SearchResult> {
 
     public String getItemStatus() {
         return itemStatus;
+    }
+
+    @Nullable
+    public List<List<Double>> getCoverage() {
+        return coverage;
+    }
+
+    @Nullable
+    public List<List<Double>> getOrigin() {
+        return origin;
     }
 
 
@@ -151,7 +188,9 @@ public class SearchResult implements Comparable<SearchResult> {
             && Objects.equals(shelfLocator, that.shelfLocator)
             && Objects.equals(abstractShort, that.abstractShort)
             && Objects.equals(mainDisplay, that.mainDisplay)
-            && Objects.equals(itemStatus, that.itemStatus) && snippets
+            && Objects.equals(itemStatus, that.itemStatus)
+            && Objects.equals(coverage, that.coverage)
+            && Objects.equals(origin, that.origin) && snippets
             .equals(that.snippets);
     }
 
@@ -160,7 +199,7 @@ public class SearchResult implements Comparable<SearchResult> {
         return Objects
             .hash(title, type, fileId, startPage, startPageLabel, thumbnailURL,
                 thumbnailOrientation, shelfLocator, abstractShort, mainDisplay, released,
-                itemStatus, snippets, score);
+                itemStatus, coverage, origin, snippets, score);
     }
 
     @Override
@@ -178,6 +217,8 @@ public class SearchResult implements Comparable<SearchResult> {
             .add("mainDisplay", mainDisplay)
             .add("released", released)
             .add("itemStatus", itemStatus)
+            .add("coverage", coverage)
+            .add("origin", origin)
             .add("snippets", snippets)
             .add("score", score)
             .toString();

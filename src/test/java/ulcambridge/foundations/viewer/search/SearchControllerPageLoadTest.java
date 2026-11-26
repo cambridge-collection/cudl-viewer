@@ -28,7 +28,7 @@ public class SearchControllerPageLoadTest extends BaseCUDLApplicationContextTest
                 .param("keyword", "bees"))
             .andExpect(status().isOk())
             .andExpect(view().name("jsp/search-results"))
-            .andExpect(model().attributeExists("form", "queryString"))
+            .andExpect(model().attributeExists("form", "queryString", "mapCollections"))
             .andExpect(model().attributeDoesNotExist("results"));
 
         verifyNoInteractions(search);
@@ -41,7 +41,7 @@ public class SearchControllerPageLoadTest extends BaseCUDLApplicationContextTest
                 .param("facets", "Collection::Darwin Manuscripts"))
             .andExpect(status().isOk())
             .andExpect(view().name("jsp/search-advancedresults"))
-            .andExpect(model().attributeExists("form", "queryString"))
+            .andExpect(model().attributeExists("form", "queryString", "mapCollections"))
             .andExpect(model().attributeDoesNotExist("results"));
 
         verifyNoInteractions(search);

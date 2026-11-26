@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class SearchForm {
 
@@ -34,6 +35,12 @@ public class SearchForm {
 
     // Expand facet results
     private List<String> expandFacet = new ArrayList<>();
+    private String expandCollection;
+
+    // Map area as west,south,east,north in decimal degrees
+    private static final Pattern BBOX_PATTERN =
+        Pattern.compile("^-?\\d+(\\.\\d+)?(,-?\\d+(\\.\\d+)?){3}$");
+    private String bbox = "";
 
     // This translates the form object into GET request parameters
     public String getQueryParams() {
@@ -80,6 +87,9 @@ public class SearchForm {
         }
         if (yearEnd!=null) {
             queryParams.append("yearEnd=" + URLEncoder.encode(yearEnd.toString(), StandardCharsets.UTF_8)  + "&");
+        }
+        if (bbox!=null && !bbox.isEmpty()) {
+            queryParams.append("bbox=" + URLEncoder.encode(bbox, StandardCharsets.UTF_8)  + "&");
         }
         if (facets.containsKey("Collection") && !facets.get("Collection").isEmpty()) {
             queryParams.append("facetCollection=" + URLEncoder.encode(facets.get("Collection"), StandardCharsets.UTF_8) + "&");
@@ -231,9 +241,9 @@ public class SearchForm {
         Map<String,String> facets = new Hashtable<>();
         String[] pairs = facetString.split("\\|\\|");
         for (String pair : pairs) {
-            String[] keyValue = pair.split("::");
-            // split() drops trailing empty strings, so "Collection::" yields one
-            // element and "::" none. A malformed facet must not 400 the request.
+            // A value can itself be a path, e.g. Collection::Parent::Child
+            String[] keyValue = pair.split("::", 2);
+            // A malformed facet such as "Collection::" or "::" must not 400 the request.
             if (keyValue.length < 2 || keyValue[0].isEmpty() || keyValue[1].isEmpty()) {
                 continue;
             }
@@ -288,6 +298,28 @@ public class SearchForm {
         this.expandFacet = names;
     }
 
+    /** Map area **/
+
+    public String getBbox() { return bbox; }
+
+    /* Malformed values are dropped rather than failing the search. The search API
+       does the range checks. */
+    public void setBbox(String bbox) {
+        String trimmed = bbox == null ? "" : bbox.replaceAll("\\s", "");
+        this.bbox = BBOX_PATTERN.matcher(trimmed).matches() ? trimmed : "";
+    }
+
+    /**
+     * A collection whose children a facets-only request should return, so the tree can
+     * open it without selecting it.
+     */
+    public String getExpandCollection() { return expandCollection; }
+
+    public void setExpandCollection(String expandCollection) {
+        this.expandCollection = (expandCollection == null || expandCollection.isBlank())
+            ? null : expandCollection;
+    }
+
     /**
      * Sets the values in this form to the values in the form passed in.
      *
@@ -313,6 +345,8 @@ public class SearchForm {
         this.facets = input.facets;
 
         this.expandFacet = input.expandFacet;
+        this.bbox = input.bbox;
+        this.expandCollection = input.expandCollection;
     }
 
 

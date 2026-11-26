@@ -46,6 +46,34 @@ public class SearchFormTest {
         assertEquals("Darwin Manuscripts", form.getFacets().get("Collection"));
     }
 
+    @Test
+    public void setFacetsKeepsACollectionPathWhole() {
+        SearchForm form = new SearchForm();
+        form.setFacets("Collection::Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne"
+            + "||Place::Cambridge");
+
+        assertEquals("Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne",
+            form.getFacets().get("Collection"));
+        assertEquals("Cambridge", form.getFacets().get("Place"));
+    }
+
+    @Test
+    public void getFacetsAsStringWritesACollectionPathBackUnchanged() {
+        String facets = "Collection::Royal Greenwich Observatory Archives::Papers of Nevil Maskelyne";
+        SearchForm form = new SearchForm();
+        form.setFacets(facets);
+
+        assertEquals(facets, form.getFacetsAsString());
+    }
+
+    @Test
+    public void setFacetCollectionSelectsTheCollection() {
+        SearchForm form = new SearchForm();
+        form.setFacetCollection("Newton Papers");
+
+        assertEquals("Newton Papers", form.getFacets().get("Collection"));
+    }
+
     /**
      * An empty collection dropdown must not register a facet — the advanced search
      * form submits the field on every search.
@@ -58,6 +86,23 @@ public class SearchFormTest {
 
         assertTrue(form.getFacets().isEmpty());
         assertEquals("", form.getFacetsAsString());
+    }
+
+    @Test
+    public void expandCollectionTreatsBlankAsUnset() {
+        SearchForm form = new SearchForm();
+        form.setExpandCollection("  ");
+
+        assertEquals(null, form.getExpandCollection());
+    }
+
+    @Test
+    public void expandCollectionIsNotPartOfTheQueryParams() {
+        SearchForm form = new SearchForm();
+        form.setKeyword("bees");
+        form.setExpandCollection("Royal Greenwich Observatory Archives");
+
+        assertFalse(form.getQueryParams().contains("expandCollection"));
     }
 
     @Test
@@ -75,5 +120,23 @@ public class SearchFormTest {
         form.setExpandFacet(List.of("Subject,Place", "Languages", ""));
 
         assertEquals(List.of("Subject", "Place", "Languages"), form.getExpandFacet());
+    }
+
+    @Test
+    public void setBboxKeepsFourCommaSeparatedNumbers() {
+        SearchForm form = new SearchForm();
+        form.setBbox(" -0.5, 52.1, 0.25 ,52.3 ");
+
+        assertEquals("-0.5,52.1,0.25,52.3", form.getBbox());
+        assertTrue(form.getQueryParams().contains("bbox=-0.5%2C52.1%2C0.25%2C52.3"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "1,2,3", "1,2,3,4,5", "a,b,c,d", "0,0,1,1) OR *:*"})
+    public void setBboxDropsMalformedValues(String bbox) {
+        SearchForm form = new SearchForm();
+        form.setBbox(bbox);
+
+        assertEquals("", form.getBbox());
     }
 }

@@ -16,8 +16,10 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -213,6 +215,54 @@ public class CollectionViewControllerSolrTest {
             .handleViewRequest().getModel().get("showReleaseStatus"));
     }
 
+    @Test
+    public void handleViewRequest_listsTheSearchApiCollectionsAsReturned() throws Exception {
+        List<Collection> fromApi = List.of(
+            new Collection("zeta", "Zeta", List.of(), null, null, null, null),
+            new Collection("alpha", "Alpha", List.of(), null, null, null, null));
+        Search search = mock(Search.class);
+        when(search.getTopLevelCollections()).thenReturn(fromApi);
+
+        ModelAndView modelAndView = listingController(search).handleViewRequest();
+
+        assertSame(fromApi, collectionsIn(modelAndView));
+        assertEquals("search", modelAndView.getModel().get("collectionsSource"));
+    }
+
+    @Test
+    public void handleViewRequest_fallsBackToTopLevelFactoryCollectionsByTitle() throws Exception {
+        ModelAndView modelAndView = listingController(mock(Search.class)).handleViewRequest();
+
+        assertEquals(List.of("alpha", "beta"), ids(collectionsIn(modelAndView)));
+        assertEquals("files", modelAndView.getModel().get("collectionsSource"));
+    }
+
+    @Test
+    public void handleViewRequest_returnsToTheSearchApiOnceItRecovers() throws Exception {
+        Search search = mock(Search.class);
+        when(search.getTopLevelCollections()).thenReturn(
+            List.of(),
+            List.of(new Collection("fromapi", "From API", List.of(), null, null, null, null)));
+        CollectionViewController controller = listingController(search);
+
+        ModelAndView whileDown = controller.handleViewRequest();
+        assertEquals(List.of("alpha", "beta"), ids(collectionsIn(whileDown)));
+        assertEquals("files", whileDown.getModel().get("collectionsSource"));
+
+        ModelAndView recovered = controller.handleViewRequest();
+        assertEquals(List.of("fromapi"), ids(collectionsIn(recovered)));
+        assertEquals("search", recovered.getModel().get("collectionsSource"));
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Collection> collectionsIn(ModelAndView modelAndView) {
+        return (List<Collection>) modelAndView.getModel().get("collections");
+    }
+
+    private List<String> ids(List<Collection> collections) {
+        return collections.stream().map(Collection::getId).collect(Collectors.toList());
+    }
+
     private static final Path TEST_JSON_DIR = Path.of("src/test/resources/cudl-data/");
 
     /** MockCollectionsDao's collection is virtual. */
@@ -232,6 +282,34 @@ public class CollectionViewControllerSolrTest {
             new OrganisationCollectionsDao(), "true", TEST_JSON_DIR, "");
         return new CollectionViewController(
             collectionFactory, search, "./html", showReleaseStatus, "");
+    }
+
+    private CollectionViewController listingController(Search search) {
+        CollectionFactory collectionFactory = new CollectionFactory(
+            new ListingCollectionsDao(), "true", Path.of("cudl-data/"), "");
+        return new CollectionViewController(
+            collectionFactory, search, "./html", false, "");
+    }
+
+    /** Two top-level collections, in reverse title order, and a child of one of them. */
+    private static class ListingCollectionsDao implements CollectionsDao {
+
+        @Override
+        public List<String> getCollectionIds() {
+            return List.of("beta", "alpha", "child");
+        }
+
+        @Override
+        public Collection getCollection(String collectionId) {
+            switch (collectionId) {
+                case "beta":
+                    return new Collection("beta", "Beta", new ArrayList<>(), null, null, "organisation", null);
+                case "alpha":
+                    return new Collection("alpha", "Alpha", new ArrayList<>(), null, null, "parent", null);
+                default:
+                    return new Collection("child", "Aardvark", new ArrayList<>(), null, null, "organisation", "alpha");
+            }
+        }
     }
 
     /** An organisation collection whose two item ids both have JSON in test resources. */
@@ -265,7 +343,7 @@ public class CollectionViewControllerSolrTest {
             collectionFactory, search, "./html", false, "");
 
         JSONObject data = new JSONObject(controller.handleItemsAjaxRequest(
-            "treasures", 0, 8, "fen", "Subject::Fens", false));
+            "treasures", 0, 8, "fen", "Subject::Fens", "0,52,1,53", false));
 
         assertEquals(3, data.getInt("total"));
         assertEquals("Subject", data.getJSONArray("facets").getJSONObject(0).getString("name"));
@@ -273,6 +351,7 @@ public class CollectionViewControllerSolrTest {
         verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), filter.capture());
         assertEquals("fen", filter.getValue().getText());
         assertEquals("Fens", filter.getValue().getFacets().get("Subject"));
+        assertEquals("0,52,1,53", filter.getValue().getBbox());
     }
 
     @Test
@@ -285,7 +364,7 @@ public class CollectionViewControllerSolrTest {
         CollectionViewController controller = new CollectionViewController(
             collectionFactory, search, "./html", false, "");
 
-        controller.handleItemsAjaxRequest("treasures", 0, 8, null, null, true);
+        controller.handleItemsAjaxRequest("treasures", 0, 8, null, null, null, true);
 
         verify(search).getCollectionItems(eq("treasures"), eq(0), eq(8), any(CollectionFilter.class));
     }
