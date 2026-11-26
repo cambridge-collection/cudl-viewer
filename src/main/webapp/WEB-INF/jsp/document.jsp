@@ -197,8 +197,6 @@
                 <div id="doc-breadcrumb"></div>
                 <button id="right-panel-toggle" class="btn toggle-btn fa fa-bars"
                      aria-label="Toggle sidebar"></button>
-                <cudl:release-status type="notice" subject="item" unreleased="${itemUnreleased}"
-                                     status="${item.itemStatus}" style="margin: 8px;"/>
 
                 <div role="tabpanel" id="rightTabs">
 
@@ -240,6 +238,11 @@
                     <!-- Tab panes -->
                     <div id="tab-content" class="tab-content"
                         style="overflow-x: hidden; overflow-y: auto">
+                        <%-- Inside #tab-content rather than above #rightTabs: viewer-ui sizes
+                             #tab-content to fill the window minus the other panel parts, so
+                             anything added outside it pushes the #use buttons off-screen. --%>
+                        <cudl:release-status type="notice" subject="item" unreleased="${itemUnreleased}"
+                                             status="${item.itemStatus}" style="margin: 8px;"/>
                         <div role="tabpanel" class="tab-pane active" id="abouttab">
                             <div id='about-content'>
                                 <h3>
