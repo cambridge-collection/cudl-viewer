@@ -21,8 +21,6 @@ import ulcambridge.foundations.viewer.dao.*;
 import ulcambridge.foundations.viewer.dao.items.huwiiifdataworkaround.ImageURLResolution;
 import ulcambridge.foundations.viewer.model.Item;
 import ulcambridge.foundations.viewer.model.UI;
-import ulcambridge.foundations.viewer.pdf.FullDocumentPdf;
-import ulcambridge.foundations.viewer.pdf.SinglePagePdf;
 
 import java.io.File;
 import java.io.IOException;
@@ -196,30 +194,6 @@ public class AppConfig {
         return restTemplate;
     }
 
-
-    @Bean
-    public SinglePagePdf singlePagePdf(@Value("${IIIFImageServer}") String IIIFImageServer,
-                                       @Value("${rootURL}") String baseURL,
-                                       @Value("${pdf.header.text}") String headerText,
-                                       @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
-                                       @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
-                                       @Value("${pdf.fonts.default}") String defaultFont,
-                                       @Value("${pdf.cache.path}") String cachePath) throws IOException {
-
-        return new SinglePagePdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
-    }
-
-    @Bean
-    public FullDocumentPdf fullDocumentPdf(@Value("${IIIFImageServer}") String IIIFImageServer,
-                                           @Value("${rootURL}") String baseURL,
-                                           @Value("${pdf.header.text}") String headerText,
-                                           @Value("${pdf.style.highlight-color.rgb}") int[] pdfColour,
-                                           @Value("${pdf.fonts.zip-urls}") String[] zipFonts,
-                                           @Value("${pdf.fonts.default}") String defaultFont,
-                                           @Value("${pdf.cache.path}") String cachePath) throws IOException {
-
-        return new FullDocumentPdf(IIIFImageServer, baseURL, headerText, pdfColour, zipFonts, defaultFont, cachePath);
-    }
 
     @Bean (name = "uiThemeBean")
     //@RequestScope // temporary for demo
