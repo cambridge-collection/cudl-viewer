@@ -328,24 +328,6 @@
                                     </a>
                                 </div>
                             </div>
-                            <c:if test="${pdfSinglePage eq true}">
-                                <div id="singlePagePdfDownloadOption">
-                                    <div class="button usebutton">
-                                        <a class="btn btn-info left" href="" download="${docId}-${page}.pdf">
-                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Page<br/>PDF
-                                        </a>
-                                    </div>
-                                </div>
-                            </c:if>
-                            <c:if test="${pdfFullDocument eq true}">
-                                <div id="fullDocumentPdfDownloadOption">
-                                    <div class="button usebutton">
-                                        <a class="btn btn-info left" href="" download="${docId}.pdf">
-                                            <i class="fa fa-file-pdf-o fa-2x pull-left"></i>Document<br/>PDF
-                                        </a>
-                                    </div>
-                                </div>
-                            </c:if>
                             <div id="rightsOption">
                                 <div class="button usebutton" >
                                     <a class="btn btn-info left"
@@ -403,25 +385,6 @@
                 <a href="#" class="close">&times;</a> Do
                 you want to create a bookmark for this page in 'My Library'?<br /> <br />
                 <button type="button" class="btn btn-default btn-success">Yes</button>
-                <button type="button" class="btn btn-default">Cancel</button>
-            </div>
-            <div id="singlePagePdfConfirmation" class="alert alert-info"
-                 style="display: none">
-                <a href="#" class="close">&times;</a>
-                <p>The images contained in the pdf download have the following copyright:</p>
-                <div class="well" id="pdfSinglePageDownloadCopyright"></div>
-                <button type="button" class="btn btn-default btn-success">Download</button>
-                <button type="button" class="btn btn-default">Cancel</button>
-            </div>
-            <div id="fullDocumentPdfConfirmation" class="alert alert-info"
-                 style="display: none">
-                <a href="#" class="close">&times;</a>
-                <p>This will create a PDF with thumbnail images for all pages, and
-                    may take some time for large documents.</p>
-                <p>The images contained in this document have the following
-                    copyright: </p>
-                <div class="well" id="pdfFullDocumentDownloadCopyright"></div>
-                <button type="button" class="btn btn-default btn-success">Download</button>
                 <button type="button" class="btn btn-default">Cancel</button>
             </div>
             <div id="downloadConfirmation" class="alert alert-info"
