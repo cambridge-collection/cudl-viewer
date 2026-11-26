@@ -161,6 +161,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Imported before spring-boot-dependencies so it overrides the
+                 Spring Framework version that BOM pins (5.3.27). 5.3.39 is the
+                 last open-source 5.3.x release. -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.3.39</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
