@@ -31,4 +31,5 @@ release.properties
 terraform.tfstate
 terraform.tfstate.backup
 /cudl-release.md
-
+.claude/
+.github/
